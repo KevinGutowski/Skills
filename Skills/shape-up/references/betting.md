@@ -1,7 +1,4 @@
----
-name: betting-on-work
-description: Evaluate pitches and make betting decisions for 6-week cycles. Use during cool-down when deciding what to build next, and at cycle end when projects haven't shipped.
----
+# Betting on Work
 
 ## No Backlogs
 
@@ -11,7 +8,7 @@ Backlogs are a weight that makes you feel perpetually behind. The time spent gro
 
 **Example:** A feature request comes in. Instead of adding it to a backlog, the product person might track it privately. If customers keep asking, it gets shaped and pitched. If not, it fades—and that's fine.
 
-Details: [no-backlogs-philosophy.md](no-backlogs-philosophy.md)
+Details: [no-backlogs-philosophy.md](betting/no-backlogs-philosophy.md)
 
 ## The Rhythm: Cycles + Cool-Down
 
@@ -27,7 +24,7 @@ Details: [no-backlogs-philosophy.md](no-backlogs-philosophy.md)
 
 Two weeks every six weeks adds up to ~4 months per year of flexible time.
 
-Details: [cool-down-period.md](cool-down-period.md)
+Details: [cool-down-period.md](betting/cool-down-period.md)
 
 ## Evaluating Pitches
 
@@ -43,7 +40,7 @@ At the betting table, ask five questions:
 
 **Decision:** All good → Bet. Any red flags → Fix first or don't bet.
 
-Details: [betting-table-decision.md](betting-table-decision.md)
+Details: [betting-table-decision.md](betting/betting-table-decision.md)
 
 ## Circuit Breaker (End of Cycle, Didn't Ship)
 
@@ -57,7 +54,7 @@ If a project doesn't ship in the cycle, the default is NOT to extend it. This so
 
 If you need an extension, something went wrong in shaping. Use the next cycle to reshape with lessons learned.
 
-Details: [circuit-breaker-decision.md](circuit-breaker-decision.md)
+Details: [circuit-breaker-decision.md](betting/circuit-breaker-decision.md)
 
 ## Handling Bugs
 
@@ -71,7 +68,7 @@ Bugs aren't automatically more important than everything else. Most can wait.
 
 **Example:** A programmer wants to change a slow synchronous process to async. That's not a quick fix—it's a project. They shape the solution, write a pitch, and bring it to the betting table like any other work.
 
-Details: [handle-bugs.md](handle-bugs.md)
+Details: [handle-bugs.md](betting/handle-bugs.md)
 
 ## Project Modes (New Products)
 
@@ -85,4 +82,4 @@ When building something new, you pass through three phases:
 
 Don't try to run normal Shape Up during R&D—you can't shape what you don't understand yet.
 
-Details: [project-modes.md](project-modes.md)
+Details: [project-modes.md](betting/project-modes.md)

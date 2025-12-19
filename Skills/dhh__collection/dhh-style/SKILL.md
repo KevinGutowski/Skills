@@ -60,6 +60,24 @@ end
 
 Details: [references/models.md](references/models.md)
 
+### Delegated Types (Advanced Pattern)
+
+```ruby
+# Powers Basecamp/HEY - uniform interface for mixed content types
+class Recording < ApplicationRecord
+  delegated_type :recordable, types: %w[ Message Document Comment Upload ]
+  belongs_to :bucket
+  belongs_to :parent, optional: true
+  has_many :children, foreign_key: :parent_id
+end
+
+# Query: Recording.messages, Recording.documents
+# Access: recording.recordable or recording.message
+# Benefit: One controller for all types, efficient copying, mixed pagination
+```
+
+Details: [references/delegated-types.md](references/delegated-types.md)
+
 ### Current Attributes
 
 ```ruby
@@ -99,6 +117,7 @@ end
 |-------|------|
 | Controllers, REST mapping, Turbo responses, concerns | [references/controllers.md](references/controllers.md) |
 | Models, concerns, state records, callbacks, scopes | [references/models.md](references/models.md) |
+| Delegated types pattern (Basecamp/HEY architecture) | [references/delegated-types.md](references/delegated-types.md) |
 | Turbo, Stimulus, CSS architecture, view patterns | [references/frontend.md](references/frontend.md) |
 | Routing, auth, jobs, caching, multi-tenancy | [references/architecture.md](references/architecture.md) |
 | Gem choices and what to avoid | [references/gems.md](references/gems.md) |

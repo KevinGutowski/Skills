@@ -4,6 +4,7 @@
 
 - [Concerns for Horizontal Behavior](#concerns-for-horizontal-behavior)
 - [State as Records, Not Booleans](#state-as-records-not-booleans)
+- [Delegated Types](#delegated-types)
 - [Callbacks - Used Sparingly](#callbacks---used-sparingly)
 - [Scope Naming](#scope-naming)
 - [Plain Old Ruby Objects](#plain-old-ruby-objects)
@@ -98,6 +99,49 @@ end
 Card.joins(:closure)         # closed cards
 Card.where.missing(:closure) # open cards
 ```
+
+## Delegated Types
+
+**The signature 37signals pattern** for content systems. Powers Basecamp (10+ years) and HEY.
+
+**Use when:** You have many content types that share common operations but vary in specifics.
+
+```ruby
+# Parent model with lean metadata
+class Recording < ApplicationRecord
+  delegated_type :recordable, types: %w[ Message Document Comment Upload Event ]
+  
+  belongs_to :bucket  # Container (project, etc)
+  belongs_to :creator, class_name: "User"
+end
+
+# Child models with specific content
+class Message < ApplicationRecord
+  include Recordable
+  has_one :recording, as: :recordable
+end
+
+class Document < ApplicationRecord
+  include Recordable
+  has_one :recording, as: :recordable
+end
+```
+
+**Key benefits:**
+- Single controller for all types (`RecordingsController`)
+- Efficient copying (just duplicate metadata row)
+- Mixed-type pagination (timeline views)
+- Easy to add new types (no migration of parent table)
+
+**Query patterns:**
+```ruby
+Recording.messages           # Filter by type
+Recording.documents.recent   # Chainable
+recording.recordable         # Polymorphic access
+recording.message            # Type-specific access
+```
+
+**For complete guide:** See [delegated-types.md](delegated-types.md)
 
 ## Callbacks - Used Sparingly
 

@@ -1,7 +1,4 @@
----
-name: building-work
-description: Build projects during 6-week cycles by handing over work, integrating slices, mapping scopes, showing progress, and cutting scope when needed. Use during the build phase after projects have been bet on.
----
+# Building Work
 
 ## Assign Projects, Not Tasks
 
@@ -11,7 +8,7 @@ Don't break work into tasks and assign them. Give the team the whole project and
 
 **Example:** After kick-off, expect 1-3 days of silence. The team is reading the pitch, poking around the codebase, and discovering what's actually involved. Don't panic. Don't ask for updates.
 
-Details: [team-ownership.md](team-ownership.md), [hand-over-project.md](hand-over-project.md)
+Details: [team-ownership.md](building/team-ownership.md), [hand-over-project.md](building/hand-over-project.md)
 
 ## Get One Piece Done First
 
@@ -26,7 +23,7 @@ Don't build all the back-end, then all the front-end. Integrate one slice—fron
 
 **Goal:** Something working in week 1, not everything in week 6.
 
-Details: [integrate-one-slice.md](integrate-one-slice.md)
+Details: [integrate-one-slice.md](building/integrate-one-slice.md)
 
 ## Mapping Scopes
 
@@ -43,7 +40,7 @@ A good scope:
 
 **Example:** A "Message Drafts" project might break into: Start New, Locate, Send, Store, Reply, Trash. Each scope has design and programming work interleaved.
 
-Details: [map-project-scopes.md](map-project-scopes.md)
+Details: [map-project-scopes.md](building/map-project-scopes.md)
 
 ## Showing Progress
 
@@ -58,7 +55,7 @@ Traditional task lists lie. They show items completed, not uncertainty resolved.
 
 A scope that hasn't moved in a week is a red flag—even if tasks are getting checked off.
 
-Details: [show-project-progress.md](show-project-progress.md)
+Details: [show-project-progress.md](building/show-project-progress.md)
 
 ## Cutting Scope (Scope Hammering)
 
@@ -73,7 +70,7 @@ Mark nice-to-haves with ~ so everyone knows they're negotiable.
 
 **Cutting scope ≠ lowering quality.** It's making smart trade-offs to ship something great instead of nothing perfect.
 
-Details: [scope-hammering.md](scope-hammering.md)
+Details: [scope-hammering.md](building/scope-hammering.md)
 
 ## Deciding "Good Enough"
 
@@ -83,7 +80,7 @@ Is this better than what customers have now? Ship it.
 
 **Example:** The calendar isn't as full-featured as Outlook. But compared to driving to the office to look at a chalkboard? Massively better. Ship it.
 
-Details: [compare-to-baseline.md](compare-to-baseline.md)
+Details: [compare-to-baseline.md](building/compare-to-baseline.md)
 
 ## QA Approach
 
@@ -91,7 +88,7 @@ Details: [compare-to-baseline.md](compare-to-baseline.md)
 
 QA focuses on edge cases toward the end of the cycle. QA issues are nice-to-haves by default—the team decides what's worth fixing.
 
-Details: [qa-approach.md](qa-approach.md)
+Details: [qa-approach.md](building/qa-approach.md)
 
 ## Handling Feedback After Ship
 
@@ -99,4 +96,4 @@ Details: [qa-approach.md](qa-approach.md)
 2. **Stay debt-free** — Say "no" to keep a clean slate for next cycle
 3. **Shape feedback** — Important requests go through shaping like any other idea
 
-Details: [handle-feedback.md](handle-feedback.md)
+Details: [handle-feedback.md](building/handle-feedback.md)

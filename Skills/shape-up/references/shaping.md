@@ -1,7 +1,4 @@
----
-name: shaping-work
-description: Shape product work by setting boundaries, finding elements, identifying risks, and writing pitches. Use during the shaping phase before betting on projects.
----
+# Shaping Work
 
 ## The Right Level of Abstraction
 
@@ -9,7 +6,7 @@ Shaped work lives between two extremes. Too concrete (wireframes) and you're tel
 
 **The sweet spot:** Rough enough for creativity, solved enough for confidence, bounded enough to ship.
 
-Details: [principles-of-shaping.md](principles-of-shaping.md)
+Details: [principles-of-shaping.md](shaping/principles-of-shaping.md)
 
 ## Is Work Shaped Enough?
 
@@ -23,7 +20,7 @@ Check three properties:
 
 **Decision:** All 3 ✓ → Ready. Any weak → More shaping needed.
 
-Details: [evaluate-shaped-work.md](evaluate-shaped-work.md)
+Details: [evaluate-shaped-work.md](shaping/evaluate-shaped-work.md)
 
 ## Setting Appetite
 
@@ -34,7 +31,7 @@ Details: [evaluate-shaped-work.md](evaluate-shaped-work.md)
 | Interesting but not pressing | "Maybe someday" |
 | Vague or unclear | Narrow the problem first |
 
-Details: [set-appetite.md](set-appetite.md)
+Details: [set-appetite.md](shaping/set-appetite.md)
 
 ## Fixed Time, Variable Scope
 
@@ -44,7 +41,7 @@ This is the core mindset shift. Don't ask "How long will it take?" Ask "How much
 
 The appetite constrains the solution, not the other way around.
 
-Details: [fixed-time-variable-scope.md](fixed-time-variable-scope.md)
+Details: [fixed-time-variable-scope.md](shaping/fixed-time-variable-scope.md)
 
 ## Spotting Grab-Bags
 
@@ -54,7 +51,7 @@ Red flags: "Redesign the...", "Notifications 2.0", "Refactor...", "Clean up..."
 
 **Example:** We kicked off "Files 2.0" without considering what it meant. The project was a mess because we didn't know what "done" looked like. We recovered by splitting into smaller projects: "Better file previews" and "Custom folder colors."
 
-Details: [spot-grab-bags.md](spot-grab-bags.md)
+Details: [spot-grab-bags.md](shaping/spot-grab-bags.md)
 
 ## Sketching: Breadboard vs Fat Marker
 
@@ -67,7 +64,7 @@ Details: [spot-grab-bags.md](spot-grab-bags.md)
 
 Use the coarsest tool that captures the idea. If you can solve it with words and arrows, don't draw boxes.
 
-Details: [breadboard-vs-fat-marker.md](breadboard-vs-fat-marker.md)
+Details: [breadboard-vs-fat-marker.md](shaping/breadboard-vs-fat-marker.md)
 
 ## Identifying Rabbit Holes
 
@@ -77,7 +74,7 @@ Ask: "Could this take 2 days or 2 weeks?" If uncertain → rabbit hole.
 
 **Example:** We shaped To-Do Groups but hadn't addressed how to display completed items. That was a hole. We patched it by deciding to leave completed items exactly as before—just append the group name. A little messy, but it cut off a big tail of risk.
 
-Details: [identify-rabbit-holes.md](identify-rabbit-holes.md)
+Details: [identify-rabbit-holes.md](shaping/identify-rabbit-holes.md)
 
 ## Writing the Pitch
 
@@ -91,4 +88,4 @@ Five ingredients, in order:
 
 The pitch is the handoff document. If a concept isn't in the pitch, it's not in scope.
 
-Details: [write-pitch.md](write-pitch.md)
+Details: [write-pitch.md](shaping/write-pitch.md)

@@ -165,6 +165,29 @@ end
 
 ## Model Patterns
 
+### Delegated Types for Content Systems
+
+**See [delegated-types.md](delegated-types.md) for the complete guide.**
+
+The signature 37signals pattern used in Basecamp and HEY. One parent table (`recordings`) with lean metadata delegates to specific content tables (`recordables`).
+
+```ruby
+class Recording < ApplicationRecord
+  delegated_type :recordable, types: %w[ Message Document Comment ]
+  belongs_to :bucket
+end
+
+# Query by type
+Recording.messages           
+Recording.documents.where(bucket: @project)
+
+# Access recordable
+recording.recordable         # Polymorphic
+recording.message            # Type-specific
+```
+
+**Benefits:** Uniform interface, efficient copying, mixed-type queries, easy to add new types.
+
 ### Semantic Association Naming
 
 ```ruby
