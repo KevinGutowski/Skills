@@ -1,17 +1,48 @@
 ---
 name: archival-research
 description: >
-    Build per-subject research bundles by following source trails across the open web — fan wikis → upload-archive comments → canonical source → press partners → official social media → press reviews. Save HTML snapshots and imagery to disk with attribution preserved. Use when collecting venue/exhibition/artwork/event/person dossiers, building offline reference archives, or systematically gathering imagery + sources for editorial work. Triggers: research bundle, source trail, archive a page, save imagery, Wayback Machine, fan wiki, press kit, install shots, museum research, exhibition research.
+    Build per-subject research bundles and offline reference archives, whether the source material is on the open web or already on disk. Two modes share one discipline (provenance + separation of auto-captured vs. human-curated + read-it-yourself verification + never-invent-attributions): (1) WEB — follow source trails (fan wikis → upload-archive comments → canonical source → press partners → official social media → press reviews), saving HTML snapshots and imagery with attribution preserved; (2) LOCAL — OCR and transcribe scanned PDFs/magazines/documents you already have into a layered text corpus (raw OCR → audited source-language transcription → translation), with provenance and uncertainty preserved inline. Use when collecting venue/exhibition/artwork/event/person dossiers, building offline reference archives, gathering imagery + sources for editorial work, OR doing OCR/transcription/translation of a scanned-document corpus. Triggers: research bundle, source trail, archive a page, save imagery, Wayback Machine, fan wiki, press kit, install shots, museum research, exhibition research, OCR, transcribe, transcription, scanned PDF/magazine, build a text corpus, layered transcription, clean up OCR, translate scans, documentation pass.
 ---
 
 ## When to use
 
 User asks to gather information and imagery about a *finite set of subjects* (venues, artworks, artists, events, products, etc.) and wants the artifacts persisted to disk for later use — UI design, documentation, citation, or just personal archive. The output is a folder per subject containing source HTML, images, and a curated README that documents the trail.
 
+**The source can be local, not just the web.** This skill applies just as much when the artifacts already sit on disk — a folder of scanned magazine PDFs, document images, a photographed archive — and the job is to turn them into a durable, citable text corpus. The *acquisition* step differs (OCR a page vs. fetch a URL), but everything else is identical: preserve provenance, keep the auto layer separate from the curated layer, read the source yourself instead of trusting the tool, and never invent text to fill a gap. If you're about to write an ad-hoc OCR/transcription pipeline, you're doing archival work — operate from this skill. See "Local-source corpora" below.
+
 **Don't use for:**
 - Quick factual lookup (just WebFetch + summarize).
 - Live monitoring or scraping at scale (write a proper scraper).
 - Building general search indices (this is for *deliberate single-URL fetches*, one subject at a time).
+- A one-off "what does this one page say?" OCR — just OCR it. The skill is for building a *corpus* with layers and provenance.
+
+## Local-source corpora: OCR → clean → translate
+
+When the source is scanned documents you already hold (magazines, catalogs, flyers, photographed pages), the deliverable is a **layered text corpus**, not an image bundle. The layers mirror the auto-vs-curated split that governs the whole skill:
+
+1. **`*_ocr_pages/` — raw OCR (auto).** Machine output, one file per logical page, never hand-edited. On macOS, prefer the **Apple Vision framework** (`VNRecognizeTextRequest`, `.accurate`, set `recognitionLanguages`) over Tesseract for CJK and mixed layouts — it is dramatically more accurate, runs locally with no API/network, and returns per-line bounding boxes + confidence. A compiled Swift binary OCRs a 300-DPI page in ~2s. Emit a JSON sidecar per page (bbox + confidence per line) — it's what makes verification croppable. Carry a `Source locator` line (source file + page) in every output so provenance is recoverable, exactly like a web bundle's source URL.
+2. **`cleaned_text_pages/` — audited source-language transcription (curated).** Created only after checking the OCR against the page image. This layer is *sacred* the same way `from_user/` is: the raw layer must never overwrite it.
+3. **`translated_text_pages/` — translation (curated).** Built *from the cleaned layer*, not from raw OCR, with uncertainty preserved inline in `[brackets]`.
+
+**Page geometry matters.** Two-page magazine spreads render as one landscape image; split at the gutter into single pages before OCR — it removes the cross-column reading-order problem and isolates dense tables. Check binding direction from the folios (page numbers): if they increase left→right the spread reads L→R; a right-bound Japanese magazine reads R→L.
+
+**"READ the page yourself" applies verbatim to OCR.** OCR confidence is the script's signal; your eyes are the primary tool. For low-confidence regions, crop the bbox, re-OCR the crop in isolation (single lines are far more accurate), and if still unclear **open the crop with `Read` and read it yourself.** Only what's genuinely illegible gets flagged to the user. Note that low confidence ≠ wrong — display type and stylized headings routinely score ~0.3 while being perfectly correct; confirm by eye rather than "fixing" them.
+
+**Anti-hallucination — the cardinal rule applies to "cleaning" too.** "Cleaning" OCR is the most dangerous moment in this mode: the temptation is to silently turn a garbled string into a plausible guess — a mangled card name into the *wrong* card, a broken kanji into a confident-but-fabricated one. This is the same failure as inventing artist names from visual style (see "Canonical inventory first"). Discipline: **correct only what the page image confirms; for proper names (cards, Pokémon, sets, people) grep a canonical inventory before normalizing; where neither the image nor a canonical source resolves it, preserve the uncertainty inline rather than inventing.** A `[?]` or `[unclear: …]` marker is cheap; a fabricated card name propagates into the translation and the consuming UI.
+
+**Bundle layout (local mode):**
+```
+<corpus>/
+  <source>_ocr_pages/<source_id>/page_NNN[_L|_R].md   raw OCR (auto), + _json/ sidecars
+  cleaned_text_pages/<source_id>/page_NNN[_L|_R].md    audited source-language (curated)
+  translated_text_pages/<source_id>/page_NNN[_L|_R].md translation (curated)
+  <source>_ocr_manifest.tsv     one row/page: source, page, dims, confidence, quality flag
+  STATUS.md / VERIFICATION_SUMMARY.md   the README-as-index for this corpus
+```
+
+**Same cadence: pilot then batch.** OCR one magazine end-to-end (benchmark engine + DPI, validate splitting and reading order), record the findings in a `SPEED_LAB.md`/`STATUS.md`, then batch the rest with the validated config. Keep auto and curated separate so a re-run of the OCR layer never clobbers audited text — identical to "the script captures, the README curates."
+
+**README-as-index, varied forms** apply unchanged: a manifest TSV (machine log), a status doc (what's done, what's flagged), a **glossary box** for recurring source-language terms, and a flagged-pages gap list with the residual that needs human eyes. (This mode was added after an OCR-a-magazine task reinvented all of the above from scratch instead of starting here.)
 
 ## Stance: be an exhaustive, breadth-first research partner
 
