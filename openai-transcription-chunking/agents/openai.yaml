@@ -1,0 +1,7 @@
+interface:
+  display_name: "OpenAI Transcription Chunking"
+  short_description: "Chunk, transcribe, audit, and retry ASR"
+  default_prompt: "Use $openai-transcription-chunking to transcribe this long recording with chunked OpenAI ASR and targeted retries."
+
+policy:
+  allow_implicit_invocation: true

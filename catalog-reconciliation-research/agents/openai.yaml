@@ -1,0 +1,7 @@
+interface:
+  display_name: "Catalog Reconciliation Research"
+  short_description: "Reconcile sources, images, and catalog records"
+  default_prompt: "Use $catalog-reconciliation-research to audit this research bundle and reconcile source-backed catalog records."
+
+policy:
+  allow_implicit_invocation: true

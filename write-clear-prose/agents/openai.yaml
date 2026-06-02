@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write Clear Prose"
+  short_description: "Clearer, stronger prose revision"
+  default_prompt: "Use $write-clear-prose to revise this draft for clarity, structure, voice, and rhythm."

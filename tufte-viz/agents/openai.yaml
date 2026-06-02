@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tufte Viz"
+  short_description: "Tufte-style visualization critique"
+  default_prompt: "Use $tufte-viz to critique this chart and suggest a clearer redesign."

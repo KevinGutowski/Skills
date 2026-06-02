@@ -1,0 +1,7 @@
+interface:
+  display_name: "Source Translation Workflow"
+  short_description: "Preserve, translate, and promote source text"
+  default_prompt: "Use $source-translation-workflow to turn this bilingual source into source-backed English research excerpts."
+
+policy:
+  allow_implicit_invocation: true

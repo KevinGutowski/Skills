@@ -1,0 +1,4 @@
+interface:
+  display_name: "Airtable MCP"
+  short_description: "Set up and troubleshoot Airtable MCP auth in Codex."
+  default_prompt: "Help me set up, authenticate, or debug the Airtable MCP server in Codex."

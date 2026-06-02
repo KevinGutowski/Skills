@@ -1,0 +1,3 @@
+display_name: Chart Selection
+short_description: Pick the right chart type
+default_prompt: Use chart-selection to choose, justify, and refine the best chart type for this data visualization.

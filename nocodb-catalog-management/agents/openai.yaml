@@ -1,0 +1,4 @@
+interface:
+  display_name: "NocoDB Catalog Management"
+  short_description: "Work with NocoDB tables, links, records, views, and attachments."
+  default_prompt: "Use this skill to inspect a NocoDB base, create or update tables, link records across tables, upload attachments, and keep CSV/local research data in sync."
