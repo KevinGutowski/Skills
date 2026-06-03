@@ -14,6 +14,7 @@ Links to source material, documentation, and further reading for mastering DHH's
 - [Community Resources](#community-resources)
 - [Key Philosophy Documents](#key-philosophy-documents)
 - [Source Material](#source-material)
+- [Maintenance Source Map](sources.md)
 
 ## Primary Source Code
 
@@ -46,6 +47,15 @@ The main codebase this style guide is derived from.
 - **DHH - System tests have failed**: https://world.hey.com/dhh/system-tests-have-failed-d90af718
   - Keep browser-driven tests mostly for top-level smoke coverage
   - Prefer cheaper model/controller tests for business logic
+- **DHH - Test-induced design damage**: https://gist.github.com/dhh/4849a20d2ba89b34b201
+  - Avoid reshaping Rails MVC around test isolation
+  - Add architecture only when the domain, not the test harness, asks for it
+- **DHH - We're moving continuous integration back to developer machines**: https://world.hey.com/dhh/we-re-moving-continuous-integration-back-to-developer-machines-3ac6c611
+  - Run realistic style, security, and test signoff locally when it is practical
+  - Use modern machine speed to remove remote-only process where possible
+- **DHH - Magic machines**: https://world.hey.com/dhh/magic-machines-10c534bd
+  - Treat testing as confidence-building, not a promise of certainty
+  - Local and remote computers are both just machines with tradeoffs
 - **37signals Dev - Pending Tests**: https://dev.37signals.com/pending-tests/
   - How 37signals handles incomplete tests
   - Pragmatic approach to test coverage
@@ -59,6 +69,26 @@ The main codebase this style guide is derived from.
 - **Deploy Campfire on Railway**: https://railway.com/deploy/campfire
   - Single-container deployment example
   - SQLite in production patterns
+
+### Rails Design Technique
+- **37signals Dev - Code I like series**: https://dev.37signals.com/series/code-i-like/
+  - Rails design techniques with examples from 37signals applications
+- **37signals Dev - Vanilla Rails is plenty**: https://dev.37signals.com/vanilla-rails-is-plenty/
+  - Controllers call rich domain models directly
+  - Avoid default service/action/command/interactor layers
+- **37signals Dev - Fractal journeys**: https://dev.37signals.com/fractal-journeys/
+  - Keep each method or object at a coherent level of abstraction
+  - Prefer domain names, encapsulation, cohesiveness, and symmetry
+- **37signals Dev - Good concerns**: https://dev.37signals.com/good-concerns/
+  - Concerns should capture cohesive traits or roles, not arbitrary slices
+- **37signals Dev - Active Record, nice and blended**: https://dev.37signals.com/active-record-nice-and-blended/
+  - Active Record can blend persistence and domain behavior cleanly
+  - Associations and scopes are part of the domain modeling toolkit
+- **37signals Dev - Globals, callbacks and other sacrileges**: https://dev.37signals.com/globals-callbacks-and-other-sacrileges/
+  - Use callbacks, CurrentAttributes, and suppress with nuance
+  - Keep orthogonal concerns out of primary controller paths
+- **37signals Dev - Domain driven boldness**: https://dev.37signals.com/domain-driven-boldness/
+  - Use vivid domain language and roles instead of aseptic generic names
 
 ## Official Documentation
 

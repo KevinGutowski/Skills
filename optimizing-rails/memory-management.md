@@ -79,6 +79,14 @@ report.pretty_print
 # Look at "retained" section — these survive GC
 ```
 
+For production-only leaks, take heap dumps from one isolated host and compare
+them rather than guessing from RSS alone. Use `rbtrace` to trigger
+`ObjectSpace.dump_all`, enable `ObjectSpace.trace_object_allocations_start` only
+briefly because it slows requests and increases memory, then compare dumps with
+tools like `heapy` or `sheap` to find what retains the suspicious objects.
+
+Source: https://dev.37signals.com/adventures-hunting-down-ruby-memory-leak/
+
 ## jemalloc
 
 jemalloc is a memory allocator developed by Facebook. It reduces fragmentation in multithreaded programs (Puma, Sidekiq). Real-world savings: 10-30% less RSS.

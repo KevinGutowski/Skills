@@ -314,12 +314,24 @@ end
 
 **Regression tests for security fixes** - always.
 
+**Do not let tests damage design.** Avoid introducing service layers, command
+objects, repositories, or hexagonal boundaries merely to isolate unit tests.
+Rails code should be tested through realistic model, controller, integration,
+and smoke-test boundaries first; extra architecture has to earn its keep through
+domain clarity, not test convenience.
+
 **System tests are smoke tests, not the foundation.** Use a small number of
 browser-driven tests to prove the full app boots, logs in, and completes the
 most important flows. Prefer model and controller/integration tests for business
 logic because they are faster, less brittle, and easier to debug. For UI
 behavior and interaction feel, do a real browser pass by hand; automation can
 catch breakage, but it cannot judge whether the interface feels right.
+
+**Local signoff is part of the workflow.** For small and mid-sized Rails apps,
+prefer a fast developer-machine signoff that runs style, security, and test
+checks before sharing a change. Remote CI can still be useful as coordination or
+a backstop, but do not add mocks, layers, or remote-only ceremony when modern
+local machines can run the real suite quickly.
 
 ## Event Tracking
 

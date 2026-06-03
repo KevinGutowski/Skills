@@ -6,6 +6,7 @@
 - Select only what you need
 - Counter caches
 - Database indexing
+- Large pagination queries
 - Bulk operations
 - Query method placement
 - Using production-like data
@@ -154,6 +155,27 @@ EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'foo@bar.com';
 ```
 
 Take your top 5 worst queries from your performance monitor and run `EXPLAIN ANALYZE` on them.
+
+## Large Pagination Queries
+
+For multi-tenant tables, the slowest pagination queries often come from loading
+too many scattered index or table pages before sorting down to one screen of
+records. When a page joins and filters across tables, inspect whether the
+database can read the target rows in sort order from a compact index.
+
+37signals' HEY pagination fix used this shape:
+
+1. Add a covering index prefixed by the tenant key, such as `account_id`.
+2. Include the tenant key in the query or join condition so the optimizer can
+   use that prefix.
+3. Select only the columns contained in the covering index for the first query.
+4. Load the full rows in a second query by the small set of returned IDs.
+
+Use index hints only after the plan proves the optimizer is choosing poorly, and
+keep the optimization wrapped in a named scope or object so the controller still
+speaks domain language.
+
+Source: https://dev.37signals.com/faster-paging-in-hey/
 
 ## Bulk Operations
 

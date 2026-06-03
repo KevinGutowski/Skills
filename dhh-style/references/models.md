@@ -8,6 +8,7 @@
 - [Callbacks - Used Sparingly](#callbacks---used-sparingly)
 - [Scope Naming](#scope-naming)
 - [Plain Old Ruby Objects](#plain-old-ruby-objects)
+- [Abstraction Levels and Domain Language](#abstraction-levels-and-domain-language)
 - [Method Naming](#method-naming)
 
 ## Concerns for Horizontal Behavior
@@ -223,6 +224,24 @@ end
 ```
 
 **NOT used for service objects.** Business logic stays in models.
+
+## Abstraction Levels and Domain Language
+
+Keep each jump through the code at one level of meaning. Public model methods
+should read in the domain language the caller is already using, then hide lower
+level persistence, delivery, or formatting details behind private methods,
+concerns, or small namespaced objects.
+
+Extract when it improves the reader's path through the domain, not because a
+pattern demands another layer. A concern should capture a cohesive trait or role
+of the host model. A PORO should represent a real domain concept, such as a
+signup, copier, relayer, or filtering object. Avoid generic service, command, or
+repository layers that merely forward work away from the model API.
+
+Active Record associations, scopes, and persistence calls are allowed inside
+domain behavior when they make the operation clearer. In Rails, persistence and
+domain logic often belong together; split them only when the resulting object has
+its own name, responsibility, and natural public interface.
 
 ## Method Naming
 

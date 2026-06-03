@@ -128,6 +128,14 @@ Now saving a Brake updates `updated_at` on the Brake, its Car, and the Corporati
 | **MemoryStore** | Single server, small cache (<20MB). Can't share across processes. |
 | **FileStore** | Low traffic, need large cache. NOT on Heroku (ephemeral filesystem). Not LRU—expires by creation time, not access time. |
 
+37signals' Solid Cache results are a useful reminder that cache speed is not
+just memory access. Network round trips, serialization, compression, storage
+price, and cache size all matter. A much larger database-backed cache can beat a
+smaller Redis cache for fragment-heavy apps because more useful entries stay
+warm.
+
+Source: https://dev.37signals.com/solid-cache/
+
 ### Redis configuration for caching
 
 ```ruby

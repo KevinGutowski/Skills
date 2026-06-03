@@ -62,6 +62,7 @@ Details: [measurement-and-profiling.md](measurement-and-profiling.md)
 
 | Action | Why |
 |--------|-----|
+| Enable and measure YJIT on modern Ruby | 37signals saw broad request-time gains with no app-code changes |
 | `async defer` on non-critical scripts | Unblocks HTML parsing |
 | `preconnect` to external domains | Saves 100-300ms per domain |
 | Subset webfonts (latin only) | 90%+ smaller font files |
@@ -113,6 +114,7 @@ ActiveRecord's convenience hides expensive database patterns. In most Rails apps
 | `SELECT *` when you need 2 columns | `.select(:id, :name)` or `.pluck(:id, :name)` |
 | Counting with Ruby | `counter_cache: true` on `belongs_to` |
 | Missing indexes | Index foreign keys and frequent WHERE columns |
+| Slow tenant pagination | Prefer covering tenant-prefixed indexes, narrow selects, then load rows |
 | Math in Ruby over AR objects | Use `.sum(:amount)`, `.average(:score)` in DB |
 | Bulk updates one-by-one | `update_all` or `activerecord-import` gem |
 | Query methods in instance methods | Restrict `where`/`find` to scopes and controllers |

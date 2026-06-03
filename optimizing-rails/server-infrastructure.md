@@ -8,6 +8,7 @@
 - CDNs
 - PostgreSQL tuning
 - Connection pooling
+- YJIT
 - SSL optimization
 - The Easy Mode Stack
 
@@ -161,6 +162,20 @@ Sidekiq.configure_server do |config|
 end
 ```
 
+## YJIT
+
+On modern Ruby, try YJIT before reaching for deeper code changes. Enable it
+behind metrics, compare p50/p90/p95 request times, and watch YJIT memory with
+`RubyVM::YJIT.runtime_stats[:code_region_size]` so
+`--yjit-exec-mem-size` is large enough for the app.
+
+37signals enabled YJIT at runtime to avoid slower boot, measured with Prometheus
+and Grafana, and saw broad Basecamp request-time gains. Treat the exact memory
+number as app-specific; the durable practice is to enable, measure, and tune the
+code region size from runtime stats.
+
+Source: https://dev.37signals.com/yjit-is-fast/
+
 ## SSL Optimization
 
 SSL adds 1-2 round-trips to connection setup. Key optimizations:
@@ -238,3 +253,16 @@ The recommended default stack for most Rails applications:
 | Templates | ERB | 5-8x faster than HAML, 2-4x faster than Slim |
 | HTTP Library | Typhoeus (or Faraday) | Parallel requests, response cache, no exceptions for failures |
 | Auth | `has_secure_password` | Built-in, bcrypt, covers 80% of needs |
+
+## Synthetic Monitoring
+
+Use synthetic checks for uptime and critical flows, not just server metrics.
+HTTP checks catch basic availability. Browser checks are worth it for the
+small number of flows where login, routing, JavaScript, and external network
+conditions all have to work together. Run probes from multiple regions so one
+regional failure does not masquerade as a full outage.
+
+37signals' Upright is a Rails engine deployed with Kamal, using SQLite, Solid
+Queue, Prometheus, AlertManager, OpenTelemetry, and Playwright probes.
+
+Source: https://dev.37signals.com/introducing-upright/

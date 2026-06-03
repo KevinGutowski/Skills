@@ -123,6 +123,7 @@ end
 | Gem choices and what to avoid | [references/gems.md](references/gems.md) |
 | Comprehensive code patterns and examples | [references/patterns.md](references/patterns.md) |
 | Links to source material and further reading | [references/resources.md](references/resources.md) |
+| Maintenance source map and confidence rubric | [references/sources.md](references/sources.md) |
 
 ## Naming Conventions
 
