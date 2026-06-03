@@ -149,11 +149,11 @@ Use `touch: true` on `belongs_to` to propagate cache busting up the association 
 
 | Backend | Use When |
 |---------|----------|
-| Redis | 2+ servers, shared distributed cache (recommended) |
+| SolidCache | Rails 8+/37signals-style apps, DB-backed, simple infrastructure |
+| Redis | Measured high-throughput or distributed cache needs |
 | Memcached | Similar to Redis, less flexible eviction policies |
 | MemoryStore | 1 server, < 20MB cache, can't share across processes |
 | FileStore | Low traffic, large cache, NOT on Heroku |
-| SolidCache | Rails 8+, DB-backed, simple infrastructure |
 
 **Key rule:** Don't cache anything that takes less than ~10-20ms to generate if using a network cache store. Network latency can exceed the savings.
 
@@ -207,8 +207,8 @@ Details: [backgrounding.md](backgrounding.md)
 |-----------|--------|-----|
 | App Server | Puma | Multi-threaded + multi-process |
 | Database | PostgreSQL | Performance, full-text search, JSONB |
-| Cache/Queue Store | Redis | Fast, flexible eviction policies |
-| Background Jobs | Sidekiq | Threaded, efficient with Redis |
+| Cache/Queue Store | Solid Cache by default; Redis when measured needs justify it | Fewer moving parts first, external services when the workload demands them |
+| Background Jobs | Solid Queue by default; Sidekiq when measured needs justify it | Rails-integrated reliability first, Redis-backed throughput when necessary |
 | CDN | Cloudflare | Free tier, HTTP/2, global edge |
 | Frontend | Turbo + Stimulus | Minimal JS, server-rendered |
 | Memory Allocator | jemalloc | Less fragmentation for threaded apps |

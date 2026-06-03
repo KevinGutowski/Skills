@@ -30,6 +30,7 @@ The main codebase this style guide is derived from.
 - **Solid Cache**: https://github.com/rails/solid_cache - Database-backed Rails cache
 - **Solid Cable**: https://github.com/rails/solid_cable - Database-backed Action Cable adapter
 - **Kamal**: https://github.com/basecamp/kamal - Zero-downtime deployment tool
+- **Lexxy**: https://github.com/basecamp/lexxy - Basecamp rich text editor built on Lexical
 - **Turbo**: https://github.com/hotwired/turbo-rails - Hotwire's SPA-like page accelerator
 - **Stimulus**: https://github.com/hotwired/stimulus - Modest JavaScript framework
 
@@ -42,6 +43,9 @@ The main codebase this style guide is derived from.
   - Shows how to create new controllers instead of custom actions
 
 ### Testing Philosophy
+- **DHH - System tests have failed**: https://world.hey.com/dhh/system-tests-have-failed-d90af718
+  - Keep browser-driven tests mostly for top-level smoke coverage
+  - Prefer cheaper model/controller tests for business logic
 - **37signals Dev - Pending Tests**: https://dev.37signals.com/pending-tests/
   - How 37signals handles incomplete tests
   - Pragmatic approach to test coverage
@@ -50,6 +54,8 @@ The main codebase this style guide is derived from.
   - Balance between automated and manual testing
 
 ### Architecture & Deployment
+- **DHH - A pond of interesting problems**: https://world.hey.com/dhh/a-pond-of-interesting-problems-5f697567
+  - Kamal as the 37signals answer to avoiding Kubernetes complexity
 - **Deploy Campfire on Railway**: https://railway.com/deploy/campfire
   - Single-container deployment example
   - SQLite in production patterns

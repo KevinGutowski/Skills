@@ -5,6 +5,7 @@
 - [Routing](#routing)
 - [Authentication](#authentication)
 - [Background Jobs](#background-jobs)
+- [Action Cable](#action-cable)
 - [Current Attributes](#current-attributes)
 - [Caching](#caching)
 - [Configuration](#configuration)
@@ -137,6 +138,16 @@ end
 - No Redis required
 - Same transactional guarantees as your data
 - Simpler infrastructure
+
+## Action Cable
+
+Keep channel and connection code at the application level. Avoid coupling app code
+to WebSocket handling, socket lifecycle, or executor internals; Rails is moving
+Action Cable toward cleaner server abstractions so transport and concurrency
+details can change without rewriting channels.
+
+Design channels around domain events and authorization. Let adapters, pub/sub,
+and server configuration handle delivery mechanics.
 
 ## Current Attributes
 
@@ -302,6 +313,13 @@ end
 **Tests ship with features** - same commit, not TDD-first but together.
 
 **Regression tests for security fixes** - always.
+
+**System tests are smoke tests, not the foundation.** Use a small number of
+browser-driven tests to prove the full app boots, logs in, and completes the
+most important flows. Prefer model and controller/integration tests for business
+logic because they are faster, less brittle, and easier to debug. For UI
+behavior and interaction feel, do a real browser pass by hand; automation can
+catch breakage, but it cannot judge whether the interface feels right.
 
 ## Event Tracking
 

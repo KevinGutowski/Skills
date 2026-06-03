@@ -230,8 +230,8 @@ The recommended default stack for most Rails applications:
 |-----------|--------|-----|
 | App Server | Puma | Multi-threaded + forking, battle-tested |
 | Database | PostgreSQL | Performance, full-text search, JSONB, parallel queries |
-| Cache | Redis (separate from Sidekiq) | LRU eviction, fast, persistent |
-| Background Jobs | Sidekiq | Threaded, 20-25x throughput vs Resque |
+| Cache | Solid Cache by default; Redis when measured needs justify it | Simpler Rails 8 infrastructure first, external cache when workload demands it |
+| Background Jobs | Solid Queue by default; Sidekiq when measured needs justify it | Rails-integrated reliability first, Redis-backed throughput when necessary |
 | CDN | Cloudflare | Free tier, HTTP/2, global edge |
 | Frontend | Turbo + Stimulus | Minimal JS, server-rendered HTML |
 | Memory Allocator | jemalloc | Less fragmentation for threaded apps |

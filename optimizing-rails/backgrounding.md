@@ -162,12 +162,15 @@ Set up exception notifications so you're alerted when jobs fail repeatedly (not 
 
 | Processor | Backend | Threading | Best For |
 |-----------|---------|-----------|----------|
-| **Sidekiq** | Redis | Multi-threaded | Most apps. Fast. 20-25x throughput vs Resque per worker. |
-| **SolidQueue** | Database | Multi-threaded | Rails 8+, no Redis needed |
+| **SolidQueue** | Database | Multi-threaded | Rails 8+/37signals-style apps, no Redis needed |
+| **Sidekiq** | Redis | Multi-threaded | Very high throughput or existing Redis/Sidekiq systems |
 | **Que** | PostgreSQL | Advisory locks | High reliability requirements |
 | **Resque** | Redis | Multi-process | Legacy apps |
 
-**Sidekiq** is the default recommendation. For maximum reliability (every job must execute), use a database-backed queue like Que or SolidQueue.
+Start with **Solid Queue** for Rails 8 apps when simplicity and transactional
+reliability matter more than raw queue throughput. Use **Sidekiq** when measured
+job volume, latency targets, or existing infrastructure justify Redis-backed
+throughput.
 
 ### Scaling workers
 
@@ -203,7 +206,7 @@ Sidekiq especially aggravates fragmentation due to its multi-threaded nature. Us
 | Sidekiq Pro (super_fetch) | Better reliability with blocking pop/push | Fast |
 | Database-backed (Que, SolidQueue) | ACID-compliant, highly reliable | Slower |
 
-If a lost job would cause real harm (financial transactions, critical notifications), use a database-backed queue or Sidekiq Pro.
+If a lost job would cause real harm (financial transactions, critical notifications), use a database-backed queue or Sidekiq Pro. In Rails 8 apps, Solid Queue is the default database-backed option to consider before adding Redis.
 
 ### Colocation
 

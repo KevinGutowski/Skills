@@ -3,6 +3,7 @@
 ## Contents
 
 - [Turbo Patterns](#turbo-patterns)
+- [Action Text / Rich Text](#action-text--rich-text)
 - [Stimulus Controllers](#stimulus-controllers)
 - [CSS Architecture](#css-architecture)
 - [View Patterns](#view-patterns)
@@ -26,6 +27,13 @@ render turbo_stream: turbo_stream.morph(@card)
 ```
 
 **No ViewComponents** - standard partials work fine.
+
+## Action Text / Rich Text
+
+Lexxy is the 37signals/Basecamp direction for richer editing: tables, markdown,
+live syntax highlighting, and voice notes on top of Meta's Lexical toolkit. Treat
+it as an emerging Action Text direction rather than a blanket replacement until
+it lands as a stable Rails default.
 
 ## Stimulus Controllers
 

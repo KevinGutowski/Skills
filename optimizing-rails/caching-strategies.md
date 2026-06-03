@@ -122,9 +122,9 @@ Now saving a Brake updates `updated_at` on the Brake, its Car, and the Corporati
 
 | Backend | Best For |
 |---------|----------|
-| **Redis** | 2+ servers/processes, recommended default. Configure with LRU eviction. Use a separate instance from Sidekiq. |
+| **SolidCache** | Rails 8+/37signals-style apps. DB-backed, simpler infrastructure, no Redis required. |
+| **Redis** | Measured high-throughput or distributed-cache needs. Configure with LRU eviction. Use a separate instance from Sidekiq. |
 | **Memcached** | Similar to Redis but fewer eviction options. Fine if already using it. |
-| **SolidCache** | Rails 8+ DB-backed cache. Simpler infrastructure (no Redis needed). |
 | **MemoryStore** | Single server, small cache (<20MB). Can't share across processes. |
 | **FileStore** | Low traffic, need large cache. NOT on Heroku (ephemeral filesystem). Not LRU—expires by creation time, not access time. |
 
