@@ -35,6 +35,10 @@ quoted technical thread before judging relevance. Skip political, product-launch
 work-culture, and personal posts unless they link to durable Rails, Ruby,
 architecture, performance, deployment, testing, database, or tooling guidance.
 
+For Rails World or Rails Foundation keynote videos, look for official summaries,
+captions, transcripts, or transcript-skill output before extracting guidance.
+Record whether a finding came from transcript, captions, notes, or summary.
+
 ## Confidence Rubric
 
 - High: primary or near-primary source, durable practice, direct fit with the
