@@ -19,6 +19,8 @@ description: Optimize Rails performance using measurement-first methodology. Cov
 
 Details: [performance-mindset.md](performance-mindset.md)
 
+Source maintenance: [sources.md](sources.md)
+
 ## Measurement & Profiling
 
 ### Which Tool When
