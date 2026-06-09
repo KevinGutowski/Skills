@@ -1,0 +1,17 @@
+# How Apple's Sounds Were Made
+
+*Source: WWDC 2017, session 803 — "Designing Sound" (Hugo Verweij); button-sound material from WWDC 2018, session 804. https://developer.apple.com/videos/play/wwdc2017/803/*
+
+Reason-by-analogy material: each story encodes a principle.
+
+- **Messages tri-tone = a marimba**, played live on stage "for the first time in the history of this sound since it was introduced." Principle: a message can contain *anything*, so the sound must be **neutral** — and it must cut through pocket/street/airport noise (380,000 messages per second during the Super Bowl).
+- **Calendar default = a kalimba** — characteristic *because uncommon*, yet simple and clear. Principle: distinctiveness can come from instrument choice, not complexity.
+- **Apple Watch sounds are recordings of the actual watch housings** — they struck the stainless steel, aluminum, and gold cases "to create the illusion that the sounds are actually made by the device itself." Principle: source material can *be* the product; sound reinforces material identity.
+- **iOS keyboard clicks** — inspired by typewriters ("not every key sounds the same"): space bar, modifiers, and backspace each sound different, and **when you type faster, the volume drops ever so slightly**. Principle: micro-variation and velocity-sensitivity keep repeated sounds humane — "even these little things make a difference."
+- **iPhone 7 home button** — the solid-state button has no mechanical click; a very subtle click *sound* layered on the Taptic Engine tap creates the feel, and makes multiple selectable "click feels" possible. Principle: **sound changes how haptics feel** — the same tap reads sharp or soft depending on the paired sound. "It's really interesting how we can fool ourselves using sound this way."
+- **Apple TV transitions** — the envelope is "shaped in a way similar to that of an object passing you by" (a doppler-ish swell), and forward vs. backward navigation use **two different sounds for a sense of direction**. Principle: sound can carry spatial meaning (depth, direction) that visuals alone don't.
+- **Dark Sky's rain alert** (third-party exemplar) — not a literal raindrop recording, but "a liquid quality" links sound to meaning; friendly, simple, clean. Principle: abstract from the literal source; keep the semantic thread.
+- **The toast-app exercise** — record everything (eject, buttering, breaking, biting), build a palette, add what's missing (timer tick, chime), test on device, then subtract the harsh parts until only timer + chime remain. Principle: "First we have to make mistakes to come up with something great."
+- **Button click A/B/C test (2018)** — A: minimalist but missing something; B: physical but "a little harsh and a little metallic"; **C wins**: friendly character, unique, with "a tonal confirmation built in — like throwing a checkmark telling you your action succeeded." Plus: two-click (down/up) pairs are "much more satisfying," and the amplified iPhone X volume-button recording shows real buttons sound cheap or premium *by their materials*.
+- **The pitch trick** — the toaster eject pitched up "sounds like a tiny little toaster"; pitched down, "like this big giant toaster." Principle: pitch encodes implied object size.
+- **The closing image** — the ring/silent switch: "when we start hearing more and more wonderful notifications and UI sounds… maybe, just maybe, you'll start seeing people reach for it a little less."

@@ -13,6 +13,8 @@ The specific values in this skill (scale magnitudes, stagger delays, shadow reci
 
 For motion-specific work, `web-animation-design` is the default theme — defer to its values when both are loaded. When the user is mixing skills and a genuine choice surfaces, briefly present the options as a menu rather than picking silently.
 
+This skill is the *how* of the **Craft** principle. For the strategic layer — whether a feature should exist, what to cut, and how to weigh craft against the other design principles — use `design-principles`. For applying this polish to *custom iOS components* (Liquid Glass, concentric edges, branded controls that must still feel native), use `ios-brand-identity`. For the before/during/after feedback model behind press states and hit areas (Apple's "Life of a Button"), see `touch-interaction-design`.
+
 ## Quick Reference
 
 | Category | When to Use |
@@ -26,7 +28,7 @@ For motion-specific work, `web-animation-design` is the default theme — defer 
 
 ### 1. Concentric Border Radius
 
-Outer radius = inner radius + padding. Mismatched radii on nested elements is the most common thing that makes interfaces feel off.
+Outer radius = inner radius + padding. Mismatched radii on nested elements is the most common thing that makes interfaces feel off. (Apple's design system formalizes this as the *concentric* shape type — see `liquid-glass-design-system` for the fixed/capsule/concentric taxonomy on Apple platforms.)
 
 ### 2. Optical Over Geometric Alignment
 

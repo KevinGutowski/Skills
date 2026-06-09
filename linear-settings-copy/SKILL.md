@@ -59,3 +59,8 @@ When asked for settings copy, provide:
 - Any subpage split recommendations
 - Notes for edge cases such as destructive actions, empty states, or integration ownership
 
+## Relationship to Other Skills
+
+- **`naming-features-and-labels`** decides *what to call* a feature, setting, value, or option, and how to defend that choice against clarity/fit/tone criteria. **This skill** decides *where a setting lives* in the IA and writes the full row (title + helper + control). They compose: choose the word with `naming-features-and-labels` first — especially for a new feature name, a value label, or dropdown option labels — then place and surround it here.
+- **`ui-voice-and-tone`** sets the overall product voice this settings copy should sound like; keep the quiet, operational register here consistent with that voice.
+

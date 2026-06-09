@@ -143,3 +143,4 @@ If the system knows, write a specific message per case. If it truly doesn't, wri
 - **`user-onboarding`** handles empty states for *new* users (no data yet) and welcome/first-run copy. Use it for "you have no projects yet" — celebratory framing.
 - **This skill** handles failure states (something tried and didn't work). Use it for "we couldn't load your projects" — recovery framing.
 - Some screens straddle both (a new user hits an API failure on first load). In those cases, prioritize the failure-state framing — clarity about what's wrong beats a welcome message.
+- **`ui-voice-and-tone`** sets the product's overall voice and where the serious/clinical tone dial sits; this skill owns the failure-state specifics (the four anti-patterns, the five essentials). Inherit the voice from there; apply the failure rules here.

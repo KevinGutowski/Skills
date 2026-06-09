@@ -111,3 +111,7 @@ Cut any sentence that exists mainly to sound like writing.
 Preserve the user's purpose and dignity. Be candid but not theatrical. If a draft has serious problems, say so plainly and give a path through it.
 
 Do not flatten every unusual sentence into generic "clean" prose. Distinctive voice is not clutter; confusion is.
+
+## Related skills
+
+This skill is for long-form nonfiction (essays, articles, emails, explanations). For **in-product UI microcopy** — voice/tone definition, welcome screens, notifications, alerts, buttons, empty states — use `ui-voice-and-tone`; for the single word that **names** a feature/label, use `naming-features-and-labels`. The shared instinct across all three is *read it aloud*.

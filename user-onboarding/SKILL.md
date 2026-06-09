@@ -90,3 +90,7 @@ When deciding what to build or cut from an onboarding flow:
 [Briefest possible explanation of how]
 [CTA to try it]
 ```
+
+## Related skills
+
+Define the product's writing voice with `ui-voice-and-tone`, then structure the first-run flow and write the welcome/empty-state copy here in that voice — this skill owns the *flow and quick-win framing*, that one owns the *voice*. For failure states, route to `error-messages`. For in-app *feature* teaching after signup — no-tutorial first launches, visual cues, gesture hints, tips — use `feature-discoverability` (the Apple counterpart to this skill's journey framework).

@@ -71,3 +71,4 @@ Use this checklist before finalizing a recommendation:
 
 - Read `references/tufte-principles.md` for the core critique vocabulary: graphical excellence, graphical integrity, lie factor, data-ink ratio, chartjunk, small multiples, density, and multifunctioning elements.
 - Read `references/analytical-design.md` for dense dashboards, sparklines, layering, micro/macro displays, explanatory graphics, causality, and evidence documentation.
+- For charts living *inside an app* (anatomy, accessibility/Audio Graphs, platter→detail progressive disclosure, multi-chart design systems), compose with `chart-experience-design`; for picking the chart type, `chart-selection`.
