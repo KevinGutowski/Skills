@@ -190,3 +190,7 @@ Code follows DHH style when:
 ---
 
 Based on analysis of 37signals production codebases (Campfire/Fizzy) and [The Unofficial DHH Rails Style Guide](https://gist.github.com/marckohlbrugge/d363fb90c89f71bd0c816d24d7642aca).
+
+## Related skills
+
+When coding agents (Claude Code, etc.) generate Rails code, encode these conventions as project rules so they're applied consistently — the workflow for that lives in `agentic-coding`.

@@ -44,7 +44,7 @@ A curated library of Claude Code skills. The largest cluster is a design library
 `chart-selection` (pick the chart type) · `tufte-viz` (integrity/data-ink critique) · `chart-experience-design` (in-app chart UX — listed above).
 
 ### Coding (non-Apple)
-`dhh-style` (Rails/37signals conventions) · `optimizing-rails` (Rails performance).
+`dhh-style` (Rails/37signals conventions) · `optimizing-rails` (Rails performance) · `agentic-coding` (running coding agents on real projects: constraints, AGENTS.md/project rules, orchestrator role, vibe-coding security).
 
 ### Research & cataloging
 `archival-research` (research bundles, OCR/transcription corpora) · `catalog-reconciliation-research` · `source-translation-workflow` · `image-archival` · `x-post-reader` · `route-planning`.

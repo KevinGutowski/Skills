@@ -96,3 +96,4 @@ See `references/methods.md` for the full Toast Modern walkthrough, the Keynote t
 - **`feature-discoverability`** / **`sound-design`** — both close with "prototype and test"; this is the how.
 - **`figma:figma-use`** / **`paper-desktop:design-to-code`** — modern tooling for the same make-fast ethic; the method here is tool-agnostic ("subvert your tools").
 - **`swiftui-layout`** / **`swiftui-animation`** — the building blocks for the real-code tier; this skill says *why and when* to prototype in SwiftUI, those say *how*.
+- **`agentic-coding`** — when prototyping graduates to production engineering with agents (designer shipping code in the production repo, encoding decisions as rules). Cautionary datum from its case study: prototyping in a tool outside the production stack creates a **two-system tax** — every iteration gets re-ported — so once past concept validation, prototype in the real repo.

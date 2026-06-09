@@ -249,3 +249,7 @@ Details: [server-infrastructure.md](server-infrastructure.md)
 - [ ] Track memory growth trends over 24+ hours
 
 Full checklist (68 items): [checklist.md](checklist.md)
+
+## Related skills
+
+Performance decisions worth repeating (N+1 strategy, caching patterns) are prime material to encode as project rules for coding agents — see `agentic-coding`.
