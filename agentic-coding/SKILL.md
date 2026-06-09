@@ -67,3 +67,5 @@ A designer can ship production frontend the engineer starts from — one shared 
 - **`design-prototyping`** — its agents tier covers *design exploration* with agents ("collaborators, not designers"); this skill covers *production engineering* with agents, including the designer-ships-production-code workflow and the prototype-outside-the-stack tax that motivates skipping straight to the real repo.
 - **`shape-up`** — scoping what the MVP even is; this skill is the build engine once scoped.
 - **`creating-skills`** / **`skill-creator`** — the mechanics of writing the skill/rule files this method depends on.
+- **`rails-docker-dev`** — the container sandbox that makes permissive agent flags safe (project-only mounts).
+- **`devtool-interface-design`** — the inverse perspective: this skill runs agents *on your codebase*; its AX section designs your *product* for agents as customers.
