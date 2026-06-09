@@ -252,4 +252,7 @@ Full checklist (68 items): [checklist.md](checklist.md)
 
 ## Related skills
 
-Performance decisions worth repeating (N+1 strategy, caching patterns) are prime material to encode as project rules for coding agents — see `agentic-coding`.
+- **`layered-rails`** — when tuning isn't enough, its "extraction without microservices" rules govern what to offload to Go/C/Rust tools (plug into Rails abstractions; never move business logic) and what stays in Ruby.
+- **`rails-testing`** — the test suite's performance is its own discipline (TestProf, factory cascades, CI parallelization); this skill owns the runtime request path.
+- **`rails-realtime`** — persistent-connection capacity and delivery guarantees are a separate failure domain from request-path tuning.
+- **`agentic-coding`** — performance decisions worth repeating (N+1 strategy, caching patterns) are prime material to encode as project rules for coding agents.

@@ -44,7 +44,18 @@ A curated library of Claude Code skills. The largest cluster is a design library
 `chart-selection` (pick the chart type) · `tufte-viz` (integrity/data-ink critique) · `chart-experience-design` (in-app chart UX — listed above).
 
 ### Coding (non-Apple)
-`dhh-style` (Rails/37signals conventions) · `optimizing-rails` (Rails performance) · `agentic-coding` (running coding agents on real projects: constraints, AGENTS.md/project rules, orchestrator role, vibe-coding security).
+| Skill | Use it for |
+|---|---|
+| `agentic-coding` | Running coding agents on real projects: constraints, AGENTS.md/project rules, orchestrator role, vibe-coding security |
+| `dhh-style` | Writing Rails the 37signals way (fat models, Hotwire, Solid suite, fixtures/Minitest) |
+| `layered-rails` | The competing Evil Martians school: extracted layers, Action Policy, transactional integrity, gem selection, Go/Rust extraction rules |
+| `inertia-rails` | React-on-Rails without an API layer (the layered school's frontend) |
+| `rails-testing` | Test-suite speed (TestProf, factory cascades) and reliability (flaky taxonomy, quarantine, CI parallelization) |
+| `rails-realtime` | WebSocket/Action Cable scale: connection avalanches, delivery guarantees, LLM streaming |
+| `rails-docker-dev` | Containerized Rails dev environments (Ruby on Whales) + agent sandboxing |
+| `optimizing-rails` | Runtime/production Rails performance (profiling, N+1, caching, Puma) |
+
+**Rails school rule:** `dhh-style` (37signals) and `layered-rails`/`inertia-rails` (Evil Martians) converge on "stay vanilla as long as you can" but diverge on extraction layers, testing stack, jobs/real-time infra, and frontend. Pick one school per project and stay consistent; never blend idioms in one codebase.
 
 ### Research & cataloging
 `archival-research` (research bundles, OCR/transcription corpora) · `catalog-reconciliation-research` · `source-translation-workflow` · `image-archival` · `x-post-reader` · `route-planning`.
