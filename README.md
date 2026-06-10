@@ -8,11 +8,11 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | Skill | Use it for |
 |---|---|
 | `design-principles` | Whether/why decisions, design critique, trade-offs (purpose, agency, craft, delight…) — the strategic layer the rest sit under |
-| `design-prototyping` | Validating ideas before building: fake-it → SwiftUI-as-design-tool → coding agents; presenting design work |
+| `design-prototyping` | Validating ideas before building: fake-it → SwiftUI-as-design-tool → coding agents (incl. Cursor's design-in-code endpoint); presenting design work |
 | `naming-features-and-labels` | What to call a feature, label, plan, button |
 | `feature-discoverability` | First launches, tips/TipKit, features users can't find |
 | `user-onboarding` | First-run flows, empty states, onboarding copy (Hulick method) |
-| `shape-up` | Product scoping/betting (Basecamp method) |
+| `shape-up` | Product scoping/betting (Basecamp method) + the competing Linear school (design as reference, no handoff/PMs, taste over data) and routing between them |
 
 ### Apple platform design (HIG-grounded)
 | Skill | Use it for |
