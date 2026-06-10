@@ -9,6 +9,8 @@ description: "Express a brand identity in an iOS app without breaking the native
 
 Branding on iOS is both **aesthetic** (typography, color, iconography) and a **feeling** (how your product makes people feel). The goal is brand expression *in service of* the app experience — distinct where it matters, native everywhere it should be. iOS users expect apps to look and feel like iOS, and they usually have no experience of your app on other platforms — so don't default to making your iOS app match your website/retail/other-platform brand. **Each placement should respect its context.** Forcing brand where it oversteps system behavior or confuses familiar conventions compromises the experience.
 
+A practitioner who built an almost-fully-custom app puts the base rate bluntly (Paul Stamatiou, "Stocketa," 2023 — https://paulstamatiou.com/stocketa/): "going custom is almost always the absolutely wrong thing to do 99% of the time. The operating system… has invested a ton in a highly-considered suite of components. They're remarkably accessible, well-tested, and work on a variety of devices." When custom *does* make sense and you accept the added scope and responsibility, "the app becomes your canvas to do whatever you want and make it yours" — but that's an explicit, costed decision, never the default.
+
 ## The core mental model: two layers (Liquid Glass, iOS 26)
 
 - **UI layer** — global navigation and actions (tab bars, top toolbars). It floats above the content. **Lean into familiar iOS patterns here; don't reinvent the wheel.** Establishing platform familiarity is what lets people instinctively know how to use your app. (What "native navigation" concretely means — tabs, push, modality, sidebars — lives in `apple-navigation-design`.)

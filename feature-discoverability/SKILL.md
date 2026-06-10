@@ -19,6 +19,8 @@ description: "Make app features discoverable — design first launches that lead
 - **Question whether instruction is needed at all** — the Phone app needs zero tooltips. Then **teach by doing**: Lara Croft GO's first levels teach every gesture with no tutorial; "it's been seconds since you first launched this app and you're already using it like a pro."
 - **Permissions on a need-to-know basis:** ask in context (location when starting a ride, photos when adding one). If one is genuinely required upfront, make the value obvious *before* asking and reinforce *immediately after* (Transit: tap Allow → map instantly shows nearby departures).
 
+Field datum shipping these rules solo (Paul Stamatiou, "Stocketa," 2023 — https://paulstamatiou.com/stocketa/): "I didn't want the onboarding flow to be too long or required, opting to get people into the app sooner" — a short skippable intro, then a **tips card living in the main feed** teaching the core interactions (chart scrubbing, swipe actions) at the user's own pace. Onboarding gets them in; in-context tips do the teaching.
+
 ## The five principles (2021)
 
 1. **Prioritize important features** — essentials immediately visible; hamburger menus fail testing ("the three lines don't convey anything about the features inside") → tab bar; but 6+ tabs fails too. Match placement to frequency (frequent = thumb-reachable).

@@ -67,6 +67,8 @@ Provide concrete next steps or a descriptive link.
 
 If the fix is a button, label it for the action: "Retry payment" not "OK".
 
+**When the failure cost something, say what it cost — in-product.** From crypto wallet design, where a failed transaction still burns fees (Paul Stamatiou, "Crypto design challenges," 2021 — https://paulstamatiou.com/crypto-design-challenges/): "Show me how much money I just lost on gas with this failed transaction. Don't make me go to Etherscan to try to piece it all together." Generalized: state the concrete cost (money, lost data, time), and never make the user reconstruct what happened from logs or an external dashboard. If a parameter caused the failure, suggest the corrected retry ("trying again but with more gas if that was the reason it failed").
+
 ### 5. Always give a way out
 If the user can't self-resolve, include a path to support. Never trap them in a dead end.
 

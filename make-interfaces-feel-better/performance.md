@@ -1,6 +1,6 @@
 # Performance
 
-Transition specificity and GPU compositing hints.
+Transition specificity, GPU compositing hints, and perceived performance.
 
 ## Transition Only What Changes
 
@@ -86,3 +86,15 @@ This particularly helps when an element is changing `scale`, `rotation`, or movi
 ### When to Skip
 
 Modern browsers are already good at optimizing on their own. Only add `will-change` when you notice first-frame stutter — Safari in particular benefits from it. Don't add it preemptively to every animated element; each extra compositing layer costs memory.
+
+## Perceived Performance: Spinner Choice Assigns Blame
+
+A branded/custom loading indicator makes users attribute the wait to *your product*; the platform's system spinner makes them attribute it to *the device or OS*. Field datum from Facebook (~2014, relayed by Paul Stamatiou, ex-Twitter design — https://x.com/Stammy/status/1940938534212260012):
+
+> "when they used the custom loader, people blamed Facebook for the slowness. when they used the system spinner, people assumed their phone/iOS was the issue."
+
+How to apply:
+
+- For waits you can't control (network, OS-level work), prefer the platform's native activity indicator over a custom-branded one.
+- A custom loader is a signature moment only when the wait is short and consistent; on slow paths it becomes a branded apology.
+- This is a complement to, not a substitute for, actually making it fast — and skeleton screens/optimistic UI sidestep the blame question entirely by not presenting a spinner at all.
