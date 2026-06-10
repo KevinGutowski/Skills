@@ -1,6 +1,6 @@
 ---
 name: optimizing-rails
-description: Optimize Rails performance using measurement-first methodology. Covers profiling (rack-mini-profiler, stackprof), N+1 fixes, Russian Doll caching, jemalloc, Puma tuning, and CDN setup. Use when diagnosing slow requests, memory bloat, or reviewing Rails code for performance.
+description: "Optimize Rails performance with measurement-first methodology — request-path profiling (rack-mini-profiler, stackprof/Speedscope), N+1 fixes, Russian-doll caching, jemalloc, Puma tuning (the 3-thread default; the GVL model: I/O releases the lock, 3–5 web threads, 16+ for I/O-heavy jobs), Sidekiq at scale (latency-named queues like within_5_seconds, one process per queue, small jobs), queue-time autoscaling (never CPU), runtime tuning (YJIT, GC via production experiment groups), and the audit shape (business outcomes, p95, observability first). Use when diagnosing slow requests or jobs, memory bloat, queue backlog, choosing thread/process counts, planning Sidekiq queues, setting up autoscaling, tuning GC/JIT, or structuring a performance audit. Sources: Rails-performance canon + Judoscale, Rails at Scale, Speedshop. Triggers: slow Rails, N+1, caching, Puma threads, GVL, Sidekiq queues, queue latency, autoscaling, YJIT, GC tuning, memory bloat, p95, performance audit."
 ---
 
 ## Core Philosophy

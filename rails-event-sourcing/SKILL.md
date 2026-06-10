@@ -82,3 +82,4 @@ Workflows become objects: a process manager waits for multiple events ("Only aft
 - **`rails-realtime`** — event-driven plumbing at the transport layer; domain events here are about persistence and truth, not delivery.
 - **`optimizing-rails`** — read models are also a performance tool (precomputed views); profile before reaching for either.
 - **`rails-testing`** — aggregate tests are pure-Ruby fast by construction; the suite discipline lives there.
+- **`ruby-refactoring`** — local smell fixes; when its diagnosis reveals *process state on entities*, the answer graduates to this school.

@@ -62,4 +62,7 @@ When Ruby itself is the bottleneck: "Keep your cake recipe (business logic) in R
 - **`inertia-rails`** — this school's frontend wing for JS-component-heavy apps.
 - **`rails-realtime`** — AnyCable and real-time reliability, the same lineage's real-time layer.
 - **`rails-testing`** — the test-suite discipline (TestProf lineage, same author).
+- **`rails-event-sourcing`** — the next escalation: this school's service objects are its migration step 1; when the pain is processes and modules rather than layers, route there.
+- **`ruby-refactoring`** — the nearest catalog: its form/query/value-object solutions are this school's layer moves; it supplies the smells and thresholds for *when*.
+- **`rails-docker-dev`** — same school/author; the dev-environment layer of this stack.
 - **`agentic-coding`** — this school ships its decisions as agent skills (palkan/skills `/layered-rails:analyze`); the Gemfile post is designed to be fed to agents as a trusted reference.
