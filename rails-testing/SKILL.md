@@ -48,6 +48,17 @@ The taxonomy (full remedies in `references/flaky-taxonomy.md`):
 
 System tests: retries **only** for browser tests (low count — "retries in unit tests can mask real issues"); fixed viewport; animations disabled; `data-testid` selectors; **always waiting matchers** (`not_to have_css` vs `have_no_css` is the subtle one); "never use `sleep`"; lockstep JS synchronization. Debug order-dependent failures with `rspec --bisect --seed`; for stuck CI runs, dump thread backtraces on the kill signal — and "always use timeouts for looped conditions."
 
+## The thoughtbot canon (the factories school's own discipline)
+
+*Sources: thoughtbot's Mystery Guest (Croak, 2009/2022), Four-Phase Test (Croak, 2012/2022), Factories Should Be the Bare Minimum (Sumner, 2016/2022), build_stubbed (Clayton, 2012/2022) — they created factory_bot; this is its intended usage.*
+
+- **Four-phase structure:** setup / exercise / verify / teardown, separated by newlines — the test reads as a story.
+- **No mystery guests:** "the test reader is not able to see the cause and effect between fixture and verification logic because part of it is done outside the Test Method" — shared fixture files, far-away instance variables, and prebuilt response files all break tests-as-documentation. Inline what matters; name what you assert.
+- **Bare-minimum factories:** "only add the bare minimum required to create this model and then add the other attributes in the test or as traits"; required associations earn a validation before they earn a factory default. Fat factories are cascades waiting to happen — the two schools agree on the disease (this skill's FactoryProf diagnoses it) even where they differ on fixtures-vs-factories.
+- **`build_stubbed` as the go-to** over build/create — looks persisted, builds associations stubbed, raises on DB access. Exception: uniqueness constraints, scopes — anything needing real DB state. "Code should typically depend less on the state of the data in relation to the database and more on its state in relation to other objects."
+
+**Skips are signals (Rails at Scale, 2026):** reserve `skip` for *actionable* states — temporarily-disabled tests during upgrades, missing local services. Never conditionally skip on permanent runtime factors ("it completely ruins the value of the skip signal") — instead organize shared tests by capability, conditionally *define* tests, or exclude at configuration time.
+
 ## CI parallelization
 
 File-level static splitting means "the total build time is always dictated by the slowest worker" — prefer a **queue-based runner** (workers pull individual examples). Expect it to expose every hidden dependency: switching runners is "the ultimate stress test for your suite… a microscope that mercilessly exposed every bit of 'leaky' state." The citizenship rule: "Every test must clean up after itself completely." Cache CI seed databases keyed on schema/seed checksums.

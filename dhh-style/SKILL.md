@@ -191,6 +191,12 @@ Code follows DHH style when:
 
 Based on analysis of 37signals production codebases (Campfire/Fizzy) and [The Unofficial DHH Rails Style Guide](https://gist.github.com/marckohlbrugge/d363fb90c89f71bd0c816d24d7642aca).
 
+## Patterns from dev.37signals.com (primary-source extensions)
+
+- **"A vanilla Rails stack is plenty" (Manrubia, 2024):** the dependency discipline behind everything above — "Fight hard before adding Ruby dependencies. Keep that Gemfile that Rails generates as close to the original one as possible"; Hotwire over JSON APIs, import maps over bundling, the Solid suite over Redis, Minitest, Kamal. "Vanilla means your app stays nimble. Fewer dependencies mean fewer future headaches."
+- **Delegated types (Hardy, 2025):** the Basecamp Recording/Recordable architecture, "running this architecture for 10 years" — a lean `recordings` table (identity, tree via parent_id, creator, timestamps) delegating to dumb per-type recordable tables ("literally just a title and content… no connection to the outside world"). Recordables are *immutable* — edits create a new recordable and repoint (versioning + cheap copying for free); capabilities are boolean methods subtypes override (`commentable?`). Beats STI (no ever-growing table) and polymorphism (associations point the right way — one query paginates all types). "You can build entirely new features that should take months in a week."
+- **Multi-tenancy (Dalessio, 2026):** database-per-tenant via Active Record Tenanted — tenant resolved at the network layer (subdomain → connection), runtime cross-tenant write guards ("you can't cross the streams anymore"), tenant identity threaded through cache keys, Active Storage, Action Cable, Solid Queue; supports multi-dimensional tenanting (customer × region). Honest caveat from Fizzy: SQLite-per-tenant replication wasn't production-ready in time — they launched on MySQL with manual scoping, the exact risk the gem exists to remove.
+
 ## Related skills
 
 - **Competing school — `layered-rails` (Evil Martians / Dementyev):** converges with this skill on staying vanilla as long as possible and modeling business logic in Active Record, but diverges where 37signals stays plain: it extracts named layers (Action Policy, form/query/collaborator objects, dry-monads Results), tests with RSpec + FactoryBot (not Minitest + fixtures), runs Sidekiq/AnyCable (not the Solid suite), and often ships Inertia + React (see `inertia-rails`) instead of Hotwire. **Pick one school per project and stay consistent — route, don't blend.**

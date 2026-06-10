@@ -53,9 +53,12 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `rails-testing` | Test-suite speed (TestProf, factory cascades) and reliability (flaky taxonomy, quarantine, CI parallelization) |
 | `rails-realtime` | WebSocket/Action Cable scale: connection avalanches, delivery guarantees, LLM streaming |
 | `rails-docker-dev` | Containerized Rails dev environments (Ruby on Whales) + agent sandboxing |
-| `optimizing-rails` | Runtime/production Rails performance (profiling, N+1, caching, Puma) |
+| `optimizing-rails` | Runtime/production Rails performance (profiling, N+1, caching, Puma, GVL, Sidekiq scaling, GC/JIT tuning) |
+| `rails-event-sourcing` | The Arkency school: DDD, events, aggregates, read models, process managers — applied selectively |
+| `rails-upgrades` | FastRuby's upgrade methodology: dual boot, deprecations-first, broken-build triage |
+| `ruby-refactoring` | thoughtbot's Ruby Science smell→refactoring catalog (extraction-school doctrine — route by project) |
 
-**Rails school rule:** `dhh-style` (37signals) and `layered-rails`/`inertia-rails` (Evil Martians) converge on "stay vanilla as long as you can" but diverge on extraction layers, testing stack, jobs/real-time infra, and frontend. Pick one school per project and stay consistent; never blend idioms in one codebase.
+**Rails school rule (default: vanilla):** four positions — `dhh-style` (vanilla, the default) → `layered-rails` (extraction, when models/controllers bloat) → packwerk-style module boundaries (when "200 models, zero modules" but simple processes) → `rails-event-sourcing` (when *processes* are the pain). Escalate only on named pains; pick one school per project and stay consistent; never blend idioms in one codebase. The full router with each school's own warranted/overkill criteria lives in `rails-event-sourcing`.
 
 ### Research & cataloging
 `archival-research` (research bundles, OCR/transcription corpora) · `catalog-reconciliation-research` · `source-translation-workflow` · `image-archival` · `x-post-reader` · `route-planning`.
