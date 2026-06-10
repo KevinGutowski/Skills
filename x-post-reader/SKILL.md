@@ -1,6 +1,6 @@
 ---
 name: x-post-reader
-description: Read public X (Twitter) posts without authentication. Handles single tweet URLs (via VxTwitter JSON), browsing a user's recent timeline (via Nitter RSS), and finding topical tweets from a known account (via Google search + VxTwitter). Use whenever the user pastes an x.com or twitter.com status URL, asks to read/analyze/summarize/quote/reply to a specific tweet, asks "what has @handle been posting", or asks to find tweets from a specific user about a topic. For authenticated X API operations (mentions, follower lists, full search), use the `x-api` skill instead.
+description: Read public X (Twitter) posts without authentication. Handles single tweet URLs (via VxTwitter JSON), browsing a user's recent timeline (via Nitter RSS), a user's top ~100 tweets (via the Twitter syndication endpoint), and finding topical tweets from a known account (via Google search + VxTwitter). Use whenever the user pastes an x.com or twitter.com status URL, asks to read/analyze/summarize/quote/reply to a specific tweet, asks "what has @handle been posting", asks for someone's best/notable tweets, or asks to find tweets from a specific user about a topic. For authenticated X API operations (mentions, follower lists, full search), use the `x-api` skill instead.
 ---
 
 # X Post Reader: Fetch a public tweet via VxTwitter
@@ -100,7 +100,7 @@ Returns an RSS feed where each `<item>` has:
 
 **Coverage**: ~20 most recent posts, typically the last few weeks for an active account. No pagination.
 
-**Mirror health**: `nitter.net` is the only consistently working public instance as of testing — `xcancel.com`, `nitter.poast.org`, and most others 503 or have cert issues. If `nitter.net` returns 5xx, try once more after a moment, then fall back to Path B.
+**Mirror health** (re-tested June 2026): `nitter.net` was returning 502s for days. `xcancel.com/{handle}/rss` redirects to `rss.xcancel.com`, which requires emailing them to whitelist your reader. `nitter.poast.org`, `nitter.tiekoetter.com`, and `nitter.privacyredirect.com` front with Anubis bot-checks (JS proof-of-work — curl gets a "Making sure you're not a bot!" page). If `nitter.net` returns 5xx, try once more after a moment, then fall back to Path C (syndication) or Path B (search).
 
 To extract tweet IDs from the feed:
 
@@ -132,13 +132,44 @@ Notes:
 - Results include profile pages, `/status/` URLs, and unrelated accounts with similar names — filter by URL prefix `https://x.com/{handle}/status/`.
 - For each `/status/{id}` URL you find, fetch the full post via VxTwitter to get the actual text (Google snippets are often truncated or stale).
 
+### Path C — Top ~100 tweets: Twitter's syndication endpoint
+
+Best for "what are @handle's notable/best tweets" or as the timeline fallback when Nitter is down. This is the official embed-widget backend — no auth:
+
+```bash
+curl -sS -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" \
+  "https://syndication.twitter.com/srv/timeline-profile/screen-name/{handle}" -o timeline.html
+```
+
+Returns a ~500KB HTML page with the timeline embedded as JSON. Extract it:
+
+```bash
+python3 - <<'EOF'
+import re, json
+html = open('timeline.html').read()
+m = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', html, re.S)
+entries = json.loads(m.group(1))['props']['pageProps']['timeline']['entries']
+for e in entries:
+    t = e.get('content', {}).get('tweet')
+    if t:
+        print(t['id_str'], t['created_at'], t['favorite_count'], t['full_text'][:200], sep=' | ')
+EOF
+```
+
+Caveats (as of June 2026):
+- Returns ~100 tweets sorted roughly by **engagement (top tweets), not recency** — the pinned tweet comes first. Good for finding someone's best content; it does NOT replace Path A for "what did they post this week."
+- Each tweet object includes `full_text`, `favorite_count`, `in_reply_to_screen_name`, and nested `retweeted_status`/`quoted_status` — usually no VxTwitter enrichment needed.
+- `cdn.syndication.twimg.com/timeline/profile?screen_name={handle}` (the older JSON variant) returns an empty 200 — use the `syndication.twitter.com` HTML endpoint above.
+- A plain `curl/8.x` User-Agent may be rejected; send a browser UA.
+
 ### Recommended workflow for "find good detailed tweets from @handle about {topic}"
 
 1. Pull `nitter.net/{handle}/rss` and scan the ~20 recent items by topic — fast, no rate limits.
-2. If nothing relevant is recent, run `WebSearch` with `{handle} {topic} site:x.com` to surface historical posts.
-3. Collect candidate tweet IDs from both sources.
-4. For each candidate, `curl https://api.vxtwitter.com/{handle}/status/{id}` to confirm it's real, get the full text, metrics, media, and quote-tweet context.
-5. Present the user a short ranked list with URL + 1-line summary + why it matched.
+2. Pull the syndication endpoint (Path C) for their ~100 top tweets — catches high-signal older posts that recency and search both miss.
+3. If still thin, run `WebSearch` with `{handle} {topic} site:x.com` to surface historical posts.
+4. Collect candidate tweet IDs from all sources.
+5. For each candidate, `curl https://api.vxtwitter.com/{handle}/status/{id}` to confirm it's real, get the full text, metrics, media, and quote-tweet context.
+6. Present the user a short ranked list with URL + 1-line summary + why it matched.
 
 ### Profile metadata
 

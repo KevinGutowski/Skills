@@ -38,6 +38,8 @@ Ask two questions:
 - **Standard tab** → displayed uniformly with the other tabs; tapping lands on a search landing page with the field at top. "Choose the standard tab style to provide suggestions, promote discovery, and encourage exploration" (*Apple TV* surfaces genres/categories before searching).
 - **Button appearance** → displayed as a separate button; tapping **immediately** focuses the field + keyboard. "Choose the button appearance to help people quickly find what they need" — a "more transient experience that brings people directly back to their previous tab after they exit search." Always one tap away.
 
+**Field pattern — pull-to-search** (Paul Stamatiou, "Stocketa," 2023 — https://paulstamatiou.com/stocketa/): in a single-feed app with minimal chrome and no tab bar, the pull-down gesture opened *search* instead of refresh. The reasoning generalizes: his data auto-updated so refresh added nothing, and the pull gesture should introduce a new cell into the list — which search-to-add does and refresh doesn't. Match the gesture to what it actually adds to the view. (See also https://x.com/Stammy/status/1492335795847450626 — "every app needs a fun and fast 'pull down to search' interaction.")
+
 ### iPad & Mac (keep the two as aligned as possible)
 
 | Placement | Use when | Example |
