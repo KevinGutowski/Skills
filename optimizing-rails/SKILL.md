@@ -203,6 +203,22 @@ ProcessUploadJob.perform_later(@upload.id)
 
 Details: [backgrounding.md](backgrounding.md)
 
+## Background jobs, scaling & the runtime (Judoscale / Shopify / Speedshop extensions)
+
+*Sources: Judoscale blog (McCrea/Sully, 2024–25: Sidekiq queue planning, scaling guide, Puma default change, autoscaling insights) · Rails at Scale (Kokubun 2023 YJIT, Zhu 2024 Autotuner) · Speedshop (Berkopec: GVL model; the 2026 AO3 audit).*
+
+**The GVL mental model (Speedshop):** only one thread per process holds the VM lock; **I/O releases it**, CPU-bound Ruby holds it — so threads give concurrency always, parallelism only during I/O (Amdahl's Law governs the ceiling). Thread-count rules: "more typical workloads see benefit from just 3 to 5 threads" (web); "workloads with high percentages of time spent in I/O (75%+ or more) often benefit from 16 threads or even more" (jobs); above ~5 web threads "can lead to contention for the GVL… increases service latency." Threads exist for memory economics (~64MB/thread vs ~512MB/process). Go multithreaded in the job processor before the web server.
+
+**Puma default = 3 threads (Rails 7.2+):** Berkopec's benchmarks — 3 threads ≈ 70% more throughput than 1 for ~1.3× average latency; at 95%+ utilization more threads worsen p99. Measure *your* I/O-wait % in APM: 25–50% → keep 3; 75%+ → raise; CPU-heavy → lower. Watch **p95, not averages**.
+
+**Sidekiq queues (Judoscale):** name queues by latency SLA — `within_5_seconds` / `within_5_minutes` / `within_5_hours` — because "queue depth is a lie" (10×1s and 10,000×1ms both clear in 10s) and vague names breed queue explosion. Three queues to start; special-purpose queues named for *performance characteristics* (`high_memory`), never business function. **One dedicated process per queue** — weighted multi-queue processes can't help "once that process is actually busy processing long-running jobs." Keep jobs small ("fan out large jobs into many small jobs"); start at 5 threads and tune by CPU headroom (100% → fewer; <50% at max throughput → more); "Redis is almost never the problem."
+
+**Autoscaling:** scale on **queue latency / request queue time**, never CPU — "Sidekiq workloads are more often I/O-bound than CPU-bound… an inappropriate and frustrating metric." Reactive queue-time autoscaling fits "90+% of applications"; scale idle queue processes to zero EXCEPT tight-SLA queues (30–45s cold boot violates a 5s promise); downscale web one instance at a time. "Stability isn't a hero move; it's a series of small, boring, repeatable decisions."
+
+**Runtime tuning (Shopify):** enable YJIT — ~15% production gains measured (2023) via the durable method: A/B two Ruby builds on equal-traffic production clusters over 24h, compare percentiles. GC tuning via the Autotuner protocol: three production groups (untuned control / stable / experimental), one suggestion at a time for days-to-a-week, promote winners — they cut p99.9 GC time 87%. Caveats: fewer major GCs can worsen tails; **GC/JIT tunings rot across Ruby versions — re-run experiments after upgrades**.
+
+**The audit shape (Speedshop's AO3 deliverable):** organize by business outcome, not technical category; two headline metrics (active DB connections, controller p95 service time); cost/benefit score per recommendation; **fix observability gaps first** (infra monitoring, APM/RUM, DB monitoring). Heuristics from it: "old processes are fast processes" (don't aggressively kill workers); fragment caching that multiplies cache round-trips isn't free — "if the entire readings section was a single fragment keyed per-user, you could turn 30 cache ops into 1."
+
 ## Server & Infrastructure
 
 ### The Easy Mode Stack
@@ -249,22 +265,6 @@ Details: [server-infrastructure.md](server-infrastructure.md)
 - [ ] Track memory growth trends over 24+ hours
 
 Full checklist (68 items): [checklist.md](checklist.md)
-
-## Background jobs, scaling & the runtime (Judoscale / Shopify / Speedshop extensions)
-
-*Sources: Judoscale blog (McCrea/Sully, 2024–25: Sidekiq queue planning, scaling guide, Puma default change, autoscaling insights) · Rails at Scale (Kokubun 2023 YJIT, Zhu 2024 Autotuner) · Speedshop (Berkopec: GVL model; the 2026 AO3 audit).*
-
-**The GVL mental model (Speedshop):** only one thread per process holds the VM lock; **I/O releases it**, CPU-bound Ruby holds it — so threads give concurrency always, parallelism only during I/O (Amdahl's Law governs the ceiling). Thread-count rules: "more typical workloads see benefit from just 3 to 5 threads" (web); "workloads with high percentages of time spent in I/O (75%+ or more) often benefit from 16 threads or even more" (jobs); above ~5 web threads "can lead to contention for the GVL… increases service latency." Threads exist for memory economics (~64MB/thread vs ~512MB/process). Go multithreaded in the job processor before the web server.
-
-**Puma default = 3 threads (Rails 7.2+):** Berkopec's benchmarks — 3 threads ≈ 70% more throughput than 1 for ~1.3× average latency; at 95%+ utilization more threads worsen p99. Measure *your* I/O-wait % in APM: 25–50% → keep 3; 75%+ → raise; CPU-heavy → lower. Watch **p95, not averages**.
-
-**Sidekiq queues (Judoscale):** name queues by latency SLA — `within_5_seconds` / `within_5_minutes` / `within_5_hours` — because "queue depth is a lie" (10×1s and 10,000×1ms both clear in 10s) and vague names breed queue explosion. Three queues to start; special-purpose queues named for *performance characteristics* (`high_memory`), never business function. **One dedicated process per queue** — weighted multi-queue processes can't help "once that process is actually busy processing long-running jobs." Keep jobs small ("fan out large jobs into many small jobs"); start at 5 threads and tune by CPU headroom (100% → fewer; <50% at max throughput → more); "Redis is almost never the problem."
-
-**Autoscaling:** scale on **queue latency / request queue time**, never CPU — "Sidekiq workloads are more often I/O-bound than CPU-bound… an inappropriate and frustrating metric." Reactive queue-time autoscaling fits "90+% of applications"; scale idle queue processes to zero EXCEPT tight-SLA queues (30–45s cold boot violates a 5s promise); downscale web one instance at a time. "Stability isn't a hero move; it's a series of small, boring, repeatable decisions."
-
-**Runtime tuning (Shopify):** enable YJIT — ~15% production gains measured (2023) via the durable method: A/B two Ruby builds on equal-traffic production clusters over 24h, compare percentiles. GC tuning via the Autotuner protocol: three production groups (untuned control / stable / experimental), one suggestion at a time for days-to-a-week, promote winners — they cut p99.9 GC time 87%. Caveats: fewer major GCs can worsen tails; **GC/JIT tunings rot across Ruby versions — re-run experiments after upgrades**.
-
-**The audit shape (Speedshop's AO3 deliverable):** organize by business outcome, not technical category; two headline metrics (active DB connections, controller p95 service time); cost/benefit score per recommendation; **fix observability gaps first** (infra monitoring, APM/RUM, DB monitoring). Heuristics from it: "old processes are fast processes" (don't aggressively kill workers); fragment caching that multiplies cache round-trips isn't free — "if the entire readings section was a single fragment keyed per-user, you could turn 30 cache ops into 1."
 
 ## Related skills
 
