@@ -60,6 +60,11 @@ Dummy data illustrates what the product is *capable of*, which should have alrea
 
 If you want to show a populated dashboard, put it on the marketing site (like Baremetrics does with their live dashboard).
 
+### Don't show zero counts on user content
+The "showing zeros is demoralizing" rule extends past first-run to ongoing metrics. When Twitter tested per-tweet view counts (~2015), most people's tweets got almost no views and showing **"0 views" was depressing** — the team added minimum thresholds before displaying a count at all, then concluded the vanity metric wasn't worth investing in further. (Source: the designer who worked on it — https://x.com/Stammy/status/1606021753725034497)
+
+Apply it: gate any engagement counter (views, likes, followers, usage stats) behind a threshold; render nothing rather than a zero next to the user's own work.
+
 ### Content-as-Tutorial (Recommended Alternative)
 Instead of fake data, pre-load content that actively instructs. Basecamp does this brilliantly with an "Explore Basecamp!" sample project. The content is self-referential — each piece guides you through using its own little corner of the interface.
 

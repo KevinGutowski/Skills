@@ -24,6 +24,8 @@ Two meta-rules: "No salesy BS" and "Clever and simple wins" — solid typography
 - **Supporting:** "you probably only need an FAQ." Comparison tables only in crowded execution-competition markets; pricing usually on its own page.
 - **Final CTA:** full-width, one button, one goal — "a safety net." (Few-leads startups: an embedded booking calendar beats another Sign up.)
 
+Maintenance cost is a hero-choice criterion too (Paul Stamatiou's Stocketa site v1→v2 retro, 2023 — https://paulstamatiou.com/stocketa/): his scroll-driven 3D phone-frame sequence (Apple-product-page style) demoed well but "it was just there for show; it wasn't the best way to show off parts of the app," and every content update meant regenerating and re-optimizing the whole frame sequence. V2 swapped it for a fixed device frame beside a skimmable feature list — updatable with plain simulator screenshots. Pick a hero you can refresh as fast as the product changes. (Same retro: bento-box feature grids "become very common" — they now read as default rather than distinctive.)
+
 ## The five conversion killers
 
 1. **Vague language** — "technical audiences need specificity and the lowest possible level of abstraction." Not "blazing fast" but "handles JPEG images at least 35% faster than leading alternatives"; not "leading companies trust us" but the named case with numbers.

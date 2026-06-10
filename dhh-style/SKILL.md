@@ -199,8 +199,9 @@ Based on analysis of 37signals production codebases (Campfire/Fizzy) and [The Un
 
 ## Related skills
 
+- **Vanilla-school satellites (vendored from [marckohlbrugge/37signals-skills](https://github.com/marckohlbrugge/37signals-skills), mined from 265 Fizzy PRs):** `rails-webhooks`, `rails-migrations`, `rails-security-multitenancy`, `rails-jobs`, `rails-hotwire-realtime`, `rails-fixtures-testing` for domain depth, and `dhh` for reviewing a diff in DHH's literal review voice (`/dhh`). This skill stays the doctrine layer; route domain work there.
 - **Competing school — `layered-rails` (Evil Martians / Dementyev):** converges with this skill on staying vanilla as long as possible and modeling business logic in Active Record, but diverges where 37signals stays plain: it extracts named layers (Action Policy, form/query/collaborator objects, dry-monads Results), tests with RSpec + FactoryBot (not Minitest + fixtures), runs Sidekiq/AnyCable (not the Solid suite), and often ships Inertia + React (see `inertia-rails`) instead of Hotwire. **Pick one school per project and stay consistent — route, don't blend.**
-- **`rails-testing`** — test-suite speed/reliability method (TestProf lineage; factory-centric — note the fixtures-first tension with this skill).
+- **`rails-testing`** — test-suite speed/reliability method (TestProf lineage; factory-centric — note the fixtures-first tension with this skill). This school's own testing practice lives in `rails-fixtures-testing`.
 - **`agentic-coding`** — when coding agents generate Rails code, encode these conventions as project rules so they're applied consistently.
 - **`rails-event-sourcing`** — the escalation school when *processes* become the pain (workflow enums, `*_sent_at` columns); its router names this skill the default starting point.
 - **`ruby-refactoring`** — competing extraction doctrine (it lists callbacks as a smell; this school treats them as idiomatic). Its smell *diagnosis* transfers; temper its extraction prescriptions here.

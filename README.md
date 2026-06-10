@@ -48,6 +48,13 @@ A curated library of Claude Code skills. The largest cluster is a design library
 |---|---|
 | `agentic-coding` | Running coding agents on real projects: constraints, AGENTS.md/project rules, orchestrator role, vibe-coding security |
 | `dhh-style` | Writing Rails the 37signals way (fat models, Hotwire, Solid suite, fixtures/Minitest) |
+| `dhh` | `/dhh` — review a diff in DHH's literal review voice (calibrated against ~200 of his Fizzy review comments) |
+| `rails-webhooks` | Webhook systems: outbox deliveries, failure classification, delinquency circuit breakers, signing, SSRF |
+| `rails-migrations` | Safe schema changes: staged rollouts, script backfills, constraint discipline, multi-DB/adapter |
+| `rails-security-multitenancy` | Tenant boundaries, Identity→Session→User auth, scoped lookups, SSRF defense, rate limiting |
+| `rails-jobs` | Active Job design: `_later`/`_now` naming, idempotency, Solid Queue, recurring jobs, error taxonomy |
+| `rails-fixtures-testing` | Testing the fixtures school's way: coverage budget, fixture craft, Turbo/broadcast assertions, multi-tenant test wiring — factory/RSpec suites go to `rails-testing` |
+| `rails-hotwire-realtime` | App-level Turbo/Stimulus/broadcast patterns (streams-only vs cable-augmented, morph, optimistic UI) — websocket *scale* goes to `rails-realtime` |
 | `layered-rails` | The competing Evil Martians school: extracted layers, Action Policy, transactional integrity, gem selection, Go/Rust extraction rules |
 | `inertia-rails` | React-on-Rails without an API layer (the layered school's frontend) |
 | `rails-testing` | Test-suite speed (TestProf, factory cascades) and reliability (flaky taxonomy, quarantine, CI parallelization) |
@@ -58,7 +65,7 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `rails-upgrades` | FastRuby's upgrade methodology: dual boot, deprecations-first, broken-build triage |
 | `ruby-refactoring` | thoughtbot's Ruby Science smell→refactoring catalog (extraction-school doctrine — route by project) |
 
-**Rails school rule (default: vanilla):** four positions — `dhh-style` (vanilla, the default) → `layered-rails` (extraction, when models/controllers bloat) → packwerk-style module boundaries (when "200 models, zero modules" but simple processes) → `rails-event-sourcing` (when *processes* are the pain). Escalate only on named pains; pick one school per project and stay consistent; never blend idioms in one codebase. The full router with each school's own warranted/overkill criteria lives in `rails-event-sourcing`.
+**Rails school rule (default: vanilla):** four positions — `dhh-style` (vanilla, the default) → `layered-rails` (extraction, when models/controllers bloat) → packwerk-style module boundaries (when "200 models, zero modules" but simple processes) → `rails-event-sourcing` (when *processes* are the pain). The vanilla school has seven vendored 37signals satellites (`dhh`, `rails-webhooks`, `rails-migrations`, `rails-security-multitenancy`, `rails-jobs`, `rails-hotwire-realtime`, `rails-fixtures-testing` — from `marckohlbrugge/37signals-skills`, mined from Fizzy's PRs); note the testing split: `rails-testing` is the *factories* school, `rails-fixtures-testing` the *fixtures* school — route by the project's existing choice. Escalate only on named pains; pick one school per project and stay consistent; never blend idioms in one codebase. The full router with each school's own warranted/overkill criteria lives in `rails-event-sourcing`.
 
 ### Research & cataloging
 `archival-research` (research bundles, OCR/transcription corpora) · `catalog-reconciliation-research` · `source-translation-workflow` · `image-archival` · `x-post-reader` · `route-planning`.
@@ -67,7 +74,7 @@ A curated library of Claude Code skills. The largest cluster is a design library
 `devtool-interface-design` (dev-tool UI: contexts, control flow, zones, CLI UX, devtool onboarding, agent experience) · `developer-tool-gtm` (landing pages, copy, conversion, PMF Compass) · `oss-strategy` (OSS popularity, READMEs, maintainer survival, monetization). Boundary: `devtool-interface-design` makes the tool worth adopting; `developer-tool-gtm` gets it adopted; `agentic-coding` is agents working *on your code* while devtool AX is agents as *customers of your tool*.
 
 ### Tooling & meta
-`creating-skills` / `skill-creator` / `converting-books-to-skills` (authoring skills) · `goal` (session goals) · `airtable-mcp`, `nocodb-catalog-management`, `openai-transcription-chunking` (integrations).
+`creating-skills` / `skill-creator` / `converting-books-to-skills` / `converting-codebases-to-skills` (authoring skills — books/docs vs. living repos with PR history) · `goal` (session goals) · `airtable-mcp`, `nocodb-catalog-management`, `openai-transcription-chunking` (integrations).
 
 ## Routing rules (overlap boundaries)
 

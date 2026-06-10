@@ -74,6 +74,8 @@ Ask: "Could this take 2 days or 2 weeks?" If uncertain → rabbit hole.
 
 **Example:** We shaped To-Do Groups but hadn't addressed how to display completed items. That was a hole. We patched it by deciding to leave completed items exactly as before—just append the group name. A little messy, but it cut off a big tail of risk.
 
+**Third-party dependencies are rabbit holes too.** A cautionary field case (Paul Stamatiou's Stocketa, 2023 — https://paulstamatiou.com/stocketa/): two years of nights-and-weekends on a polished stock app, killed not by design or engineering but by its data supply chain — commercial market-data licensing started at ~$2,000/month, cheaper providers returned wrong data and ignored bug reports, and one dropped mutual-fund data entirely "without any advance notice." His conclusion: "The risk of running your project or business solely on top of another company's API… is extremely high." If a pitch depends on an external API, patch the hole during shaping: verify pricing at your scale, licensing for your use, and reliability — before betting a cycle on it.
+
 Details: [identify-rabbit-holes.md](shaping/identify-rabbit-holes.md)
 
 ## Writing the Pitch

@@ -77,5 +77,5 @@ File-level static splitting means "the total build time is always dictated by th
 ## Relationship to other skills
 
 - **`optimizing-rails`** — runtime/production performance (N+1, caching, Puma); this skill owns the *test suite* as the artifact. Shared vocabulary (StackProf, Speedscope) but different entry points and fixes.
-- **`dhh-style`** — 37signals tests with fixtures and Minitest; this corpus is factory_bot/RSpec-centric and argues "use both." Different schools — route by the project's existing choice, don't blend.
+- **`dhh-style`** — 37signals tests with fixtures and Minitest; this corpus is factory_bot/RSpec-centric and argues "use both." Different schools — route by the project's existing choice, don't blend. The fixtures school's own playbook is `rails-fixtures-testing`.
 - **`agentic-coding`** — encode this skill's nudges ("replace `let` with `let_it_be`", "don't create 50 records to test pagination") as project rules; fast reliable tests are its feedback-loop layer.
