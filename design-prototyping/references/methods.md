@@ -25,6 +25,16 @@ Keynote doc at iPhone size; shapes for the clock face and Start button; the **ro
 - Duarte structure applied: "Today, people are frustrated — cold, joyless toast. It's an epidemic. But imagine happy, flawless toast at the top of the button on your iPhone."
 - "If I had more time, I would have written a shorter letter."
 
+## Quotables trimmed from SKILL.md (2014/2017/2023, Stamatiou)
+
+- On Magic Move vs code: "It's so much easier to pare down… when you don't have to throw away code." (2014)
+- On hacking interactions: "It doesn't have to be good code or reusable code." (2014)
+- On parallel exploration: a diverse team "will let you stumble upon things you never would have on your own." (2017)
+- The 2023 framing that supersedes "never real code": "common things should be easy and complex things should be possible" — SwiftUI "lowers the floor for simple tasks and raises the ceiling."
+- The elevation bug texture: hilly San Francisco data hid a Y-axis bug that flat New York routes exposed — "as if you were hiking a mountain"; "I can get carried away designing for ideal scenarios… it's important to find out where my designs break." (2023)
+- On demos leading reviews: "No slide deck in the world can compare with one spectacular demo." (2023)
+- Stammy on mocks (Craft, 2022): "Figma is where initial hunches live; a starting point. Not final designs. It's not until I start building and really using it that I get more signal to understand what aspects of the design feel good." And: "never treat design as something you just handoff to engineers… Treat it more like a conversation between design and engineering."
+
 ## The complete question battery
 
 Before making: what needs to be more real? · what can we fake? · where will they use it?
