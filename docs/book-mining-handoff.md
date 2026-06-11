@@ -68,8 +68,8 @@ human) picking up where the prior sessions left off. Companion files:
    skill and landed in user-research, shape-up, user-onboarding, design-org-influence,
    and client-engagements. Manifest/archive: `docs/pending-folds-product-trio.md`;
    completion ledger: `docs/mining-ledger.md`.
-2. **Remaining shelf** (extract + screen): Kleon *Show Your Work* (→ building-in-public
-   likely), Dirksen *Design For How People Learn*, *Made to Stick*, *The User Experience
+2. **Remaining shelf** (extract + screen): ~~Kleon *Show Your Work*~~ folded 2026-06-11
+   into building-in-public; next: Dirksen *Design For How People Learn*, *Made to Stick*, *The User Experience
    Team of One*, *Universal Principles of Design* (2003 — expect heavy model-known),
    *The UX Reader*, *Light: Science & Magic* + Tony Northrup (photography — assess
    whether a photography skill has a task shape Kevin needs), *Generative Design* (p5.js,

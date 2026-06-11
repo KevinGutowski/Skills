@@ -1,6 +1,9 @@
 # Product-trio book fold — DONE 2026-06-11
 Folded Perri (*Escaping the Build Trap*), Gothelf/Seiden (*Lean UX* 1st ed.), and Klein (*Build Better Products*) per `docs/pending-folds-product-trio.md`: no new skill. Main deltas: `user-research/references/validation-and-metrics.md` (assumption stacks, predictive personas, Lean UX validation economics, metrics hygiene, no-neutral decisions), `shape-up` metrics-led fourth school, `user-onboarding` Designing Backward/core-loop-first, `design-org-influence` build-trap/Bungay gaps, `client-engagements` deliverables→outcomes contract note. Conflicts scoped: measurement-led school vs Linear taste-led school; Lean UX speed/fidelity advice era-tagged and limited to validation artifacts.
 
+# Show Your Work book fold — DONE 2026-06-11
+Screened Austin Kleon, *Show Your Work!* in full from `/tmp/books/show-your-work.txt`. Density: MED-HIGH for `building-in-public`; no new skill. Folded daily-dispatch, stock/flow, own-your-turf, attribution-as-context, teach-what-you-know, human-spam/open-node behavior, permission email list, and momentum/boundary notes into `building-in-public`. Extracted but not yet screened/folded in this pass: `/tmp/books/made-to-stick.txt`, `/tmp/books/design-for-how-people-learn.txt`.
+
 # sweep: animations.dev — FINAL 2026-06-10
 ## Coverage: SWEPT — all 45 lesson nodes + 4 interviews + emil-skill page + vault opened personally; evidence in /tmp/animdev-lessons/ + /tmp/animdev-interview-*.txt
 ## Lessons (45/45 opened & read)
