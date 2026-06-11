@@ -77,6 +77,15 @@ When deciding what to build or cut from an onboarding flow:
 - **For any personal-data field, explain why you ask and what you'll do with the answer; make it optional and editable** (Metts & Welfle, *Writing Is Designing*, ch. 5 — Fitbit's sex question, which trans users can't answer without knowing whether it's demographic or biometric). Exclusion compounds at scale: "If you exclude even one-tenth of one percent, that means there are 755 million people" less able to use your product.
 - **The quick win must:** demonstrate core product value, be achievable in one sitting, not depend on other people, harness the user's current intent.
 
+**Design backward from the behavior** (Cindy Alvarez, *Build Better Products*, ch. 8). "Features don't matter. They don't matter at all. All that matters is customer behavior." Start with the recurring behavior the product needs, then classify onboarding work:
+- **Required** — the minimum path to the user's first real value.
+- **Encouraged** — actions that make future success more likely but can wait.
+- **Eventual** — advanced setup, mastery, integrations, polish.
+
+"When a new user comes to your product, give them a task." Empty welcomes and feature tours are weaker than a constrained job with a visible finish. For habit products, use Amy Jo Kim's sequence via Klein: core loop first, then onboarding, then discovery, then mastery. If there is no strong loop, "you're building a leaky bucket." Build the thing someone will do every day before decorating the path into it.
+
+**Dark-pattern boundary:** a dark pattern is any interface element that benefits the company at the expense of what a reasonable, fully informed user would agree to. If the onboarding goal depends on hiding cost, commitment, consent, or cancellation, route to `error-messages` / `form-design` ethics rather than conversion optimization.
+
 ## Quick Copy Formulas
 
 **Empty state pattern:**

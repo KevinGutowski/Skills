@@ -64,14 +64,10 @@ human) picking up where the prior sessions left off. Companion files:
 
 ## Immediate queue (in order)
 
-1. **Fold the product trio** — screen complete, ~100 quotes verified, manifest at
-   `docs/pending-folds-product-trio.md`. Verdict: NO new skill. Targets:
-   user-research (Klein validation machinery — biggest fold, likely new
-   references/validation-and-metrics.md), shape-up (Perri strategy levels as the FOURTH
-   metrics-led school + Klein scope tools — explicit routing vs the Linear school),
-   user-onboarding (Designing Backward + Game Thinking build order), design-org-influence
-   (Bungay gaps, product death cycle, six product-led questions), client-engagements
-   (minor). Era-tag the 2013 Lean UX material; flag the measurement-vs-taste conflict.
+1. **Product trio folded 2026-06-11** — Perri / Gothelf-Seiden / Klein stayed NO new
+   skill and landed in user-research, shape-up, user-onboarding, design-org-influence,
+   and client-engagements. Manifest/archive: `docs/pending-folds-product-trio.md`;
+   completion ledger: `docs/mining-ledger.md`.
 2. **Remaining shelf** (extract + screen): Kleon *Show Your Work* (→ building-in-public
    likely), Dirksen *Design For How People Learn*, *Made to Stick*, *The User Experience
    Team of One*, *Universal Principles of Design* (2003 — expect heavy model-known),

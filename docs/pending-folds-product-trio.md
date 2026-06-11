@@ -1,13 +1,13 @@
-# Pending folds: Perri / Gothelf / Klein (screened 2026-06-11, NOT yet folded)
+# Folded: Perri / Gothelf / Klein (screened and folded 2026-06-11)
 
-Screen verdict: **no new skill** — extend user-research, shape-up, user-onboarding,
+Screen verdict: **no new skill** — extended user-research, shape-up, user-onboarding,
 design-org-influence, client-engagements. Sources (re-extract if /tmp was cleared):
 `/tmp/books/escaping-build-trap.txt` (Perri, *Escaping the Build Trap*, O'Reilly 2018),
 `/tmp/books/lean-ux.txt` (Gothelf/Seiden, *Lean UX* 1st ed. 2013 — era-tag heavily),
 `/tmp/books/build-better-products.txt` (Klein, *Build Better Products*, Rosenfeld 2016).
 Extraction recipes in docs/book-mining-handoff.md. All quotes below were verified with
-scripts/verify_quotes.py (100/100 OK); fold agents should copy them VERBATIM and
-spot-check ~20% rather than re-verifying everything.
+scripts/verify_quotes.py (100/100 OK). This file is now the archive/manifest for the
+fold; future agents should use it for provenance, not as an open queue item.
 
 ## Conflicts to flag at fold time (scope, don't merge)
 - Measurement-led (Perri/Klein/Lean UX) vs taste-led (Linear school in shape-up):
