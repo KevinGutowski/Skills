@@ -17,7 +17,9 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `hardware-product-design` | Physical products: form-factor positioning, mockups/rigs/jigs, input selection, manufacturing/supplier reality |
 | `ai-ui-direction` | Directing/fixing AI-generated UI: layout-primitive diagnosis, prompt-vs-edit, the fresh-context judge loop |
 | `design-org-influence` | Designer influence in the org: business cases, stakeholder objections, PM partnership, promotion/reviews |
-| `pricing-creative-work` | Client-services pricing & negotiation: value-based pricing, the Sequence Flip, objection scripts |
+| `pricing-creative-work` | Client-services pricing & negotiation: value-based pricing (Do/Stark/Mall three schools), objection scripts, terms |
+| `client-engagements` | Running client projects: qualification, kickoff, the feedback system, health signals, failure/firing (Monteiro) |
+| `user-research` | Research planning & methods: question→method map, interviewing craft, validation, synthesis (Hall/Portigal/Sharon) |
 
 ### Apple platform design (HIG-grounded)
 | Skill | Use it for |

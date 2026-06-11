@@ -9,6 +9,8 @@ description: "Price and negotiate creative client work — value-based pricing, 
 
 **Third school** — Dan Mall, *Pricing Design* (A Book Apart, 2016): an agency owner's value-pricing playbook with a full worked RFP case study (SuperFriendly × Mega Agency). Mall agrees with Do/Stark on the fundamentals (price the customer, hourly is broken, value first) but forks on proposal mechanics and on pricing yourself *down* — forks are marked inline wherever they occur. Mall's own credits: Dale Furtwengler (*Pricing for Profit*), Ronald J. Baker (*Implementing Value Pricing*), Dan Ariely (*Predictably Irrational*, the Economist decoy experiment), plus Weiss and Enns again. Mike Monteiro's foreword carries the book's thesis: "You are going to make more money from this book than Dan Mall ever will" (Dan Mall, *Pricing Design*, A Book Apart 2016).
 
+**Fourth voice — terms and contracts** — Mike Monteiro, *You're My Favorite Client* (A Book Apart 2014): the engagement-terms layer the other three mostly skip — deposits, the kill fee, completion definitions, the nine estimate factors, bake-off/spec refusal, termination money. Written to the *client*, which makes its scripts double as what a confident studio says across the table. See [engagement-terms.md](references/engagement-terms.md).
+
 ## Core stance
 
 - **"You price the client and not the job."** The same logo drawn for a mom-and-pop and for a corporation with a $40M printing budget is worth wildly different amounts — the work is identical, the risk and value are not. Paul Rand for a mom-and-pop "is going to do it for a sandwich. Cuz that's what it's worth to them."
@@ -60,6 +62,7 @@ The flip: **desired future state → success metrics → value → price → sco
 | Setting the number: formulas, three options, guarantees, retainers, risk-share | [pricing-mechanics.md](references/pricing-mechanics.md) |
 | Client pushback — verbatim lines keyed by objection, scope creep | [objection-scripts.md](references/objection-scripts.md) |
 | Qualifying buyers, gatekeepers, mindset and confidence | [qualifying-and-mindset.md](references/qualifying-and-mindset.md) |
+| Contract terms — deposits, kill fee, completion triggers, estimate factors, bake-offs, termination pay (Monteiro) | [engagement-terms.md](references/engagement-terms.md) |
 
 ## Checklist
 
@@ -79,6 +82,7 @@ The flip: **desired future state → success metrics → value → price → sco
 
 - **developer-tool-gtm** — pricing/selling a *product* to developers (landing pages, conversion, PMF metrics). This skill is services: pricing a *client engagement*.
 - **building-in-public** — company-of-one indie-product economics and audience. Use it for what to charge for your own product; use this for what to charge a client.
+- **client-engagements** — running the engagement after you've won it (kickoff, feedback, health signals, firing/being fired); this skill prices and contracts the work, that one delivers it.
 - **design-org-influence / design-prototyping** — presenting work inside an org; this skill's journey-presentation pattern (value-conversation.md) is the client-facing cousin.
 
 ## Staleness note
