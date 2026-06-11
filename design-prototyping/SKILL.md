@@ -119,6 +119,8 @@ Four-part structure for any exploration share: context → concepts → rational
 
 ## Relationship to other skills
 
+- **`user-research`** — when the question is discovery/validation rather than artifact feedback: method selection, interviewing craft, screeners; concept-reaction sessions use its neutral-presentation rules with this skill's artifacts.
+
 - **`design-org-influence`** — the business case, stakeholder politics, and objection handling around a pitch; this skill owns the artifact and the session.
 
 - **`touch-interaction-design`** — "the interactive demo is worth a million static designs" (Fluid Interfaces) is this skill in action; prototype interactions with these methods, judge them with that skill.

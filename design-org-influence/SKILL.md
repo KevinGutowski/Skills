@@ -80,6 +80,8 @@ Full anti-patterns, SBI detail, and the review-logging workflow: [references/pro
 
 ## Relationship to other skills
 
+- **`user-research`** — runs the studies whose findings power your business case; its research-as-leadership tactics feed this skill's credibility ladder.
+
 - **`design-prototyping`** — owns session mechanics and pitch presentation craft (how to structure a review, fidelity, demos); this skill owns the business case and political context around the pitch.
 - **`building-in-public`** — influence with an external audience; this skill is influence inside the org.
 - **`interface-craft-principles`** — defines the quality bar; this skill gets the org to fund it.
