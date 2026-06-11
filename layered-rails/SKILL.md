@@ -1,6 +1,6 @@
 ---
 name: layered-rails
-description: "Architect Rails apps the Evil Martians way (Extended Rails Way / layered design, Dementyev's school) — stay on the Rails Way as long as you can, then extract named layers that look framework-built (collaborator objects, form/query objects, Action Policy, typed store attributes, Result objects), enforce transactional integrity, pick gems by category from a trusted curated map, and extract performance machinery to Go/C/Rust tools that plug into Rails abstractions without owning business logic. Use when structuring a growing Rails app, fighting god objects or anemic jobs, choosing gems, splitting authentication from authorization, taming transaction side effects, or weighing monolith-extension vs microservice. Distinct school from dhh-style — route by project, don't blend. Based on four Evil Martians sources (2023–2026). Triggers: layered design, Extended Rails Way, Rails architecture, service objects, god object, collaborator object, Action Policy, which gem, store_model, isolator, after_commit."
+description: "Architect Rails apps the Evil Martians way (Extended Rails Way) — stay vanilla as long as you can, then extract named layers; curated gem map included. Distinct school from dhh-style — route by project, don't blend. Use when structuring a growing Rails app, fighting god objects, choosing gems, or splitting authn from authz. Triggers: layered design, Extended Rails Way, service objects, god object, Action Policy, which gem."
 ---
 
 # Layered Rails (the Extended Rails Way)

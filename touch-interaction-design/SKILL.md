@@ -1,6 +1,6 @@
 ---
 name: touch-interaction-design
-description: "Design touch controls, gestures, and fluid interactions — the three feedback phases of a control (before: affordance/labels; during: instant highlight, generous hit areas, drag-out-to-cancel; after: connected result feedback, distinct states) plus fluid-interface principles (interruptible/redirectable gestures, hysteresis ~10pt, one-to-one tracking, rubberbanding, momentum projection, spatial consistency, teaching through play). Use when designing or reviewing buttons, custom gestures, or swipe interactions; fixing laggy or rigid-feeling interactions; or snapping draggable elements by intent. Based on Apple WWDC 2018 sessions 804 (interaction half; sound half in sound-design) and 803 \"Designing Fluid Interfaces\". Triggers: button design, affordance, hit area, feedforward, drag out to cancel, fluid interface, hysteresis, one-to-one tracking, rubberband, momentum projection, feels unresponsive."
+description: "Designs touch controls, gestures, and fluid interactions — a control's three feedback phases plus fluid-interface principles (hysteresis, rubberbanding, momentum projection). Use when designing buttons, custom gestures, or swipes, or fixing laggy or rigid-feeling interactions. Based on WWDC 2018 sessions 804 (interaction half; sound half in sound-design) and 803. Triggers: button design, hit area, hysteresis, rubberband, feels unresponsive."
 ---
 
 # Touch Interaction Design
@@ -32,6 +32,7 @@ description: "Design touch controls, gestures, and fluid interactions — the th
 - Decide the un-highlight: immediate, or slightly delayed "so that even fast taps can be seen." Double-tap support forces a confirmation delay — weigh it.
 - **Connect control feedback to result feedback:** button flash + the toaster icon starting to animate + a "toast started" label (tell *and* show).
 - **States must not be confusable.** A "Stop Toasting" button that replaced "Make Toast" "looks an awful lot like" the original — rejected; they moved to a separate, visually distinct stop control (and toned down an alarming red).
+- **Windup for weighty actions** (Andy Allen's "most satisfying checkbox," (Not Boring)): "Every action needs a windup. A big action… needs a big wind up" — use a *long press* (not a tap) to make a significant moment deliberate, play the animation **in reverse if released early**, and layer redundant sensory channels (visual + sound + haptic) because digital experiences are "trapped behind a hard pane of glass." Route haptic/AHAP mechanics to `sound-design`.
 
 ## Fluid interactions (beyond a single control)
 

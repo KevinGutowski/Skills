@@ -1,5 +1,17 @@
 # Capture techniques — worked procedures and code
 
+## Contents
+- Section-extraction pattern (for fan-wiki articles)
+- Wayback Machine + the hidden-server-assets trick
+- Same URL, different era: compare live pages against Wayback snapshots
+- Higher-res via URL manipulation
+- Finding social handles by parsing the official site
+- Capture mechanics — what works against what
+- Reusable downloader pattern
+- Scraping virtualized lists (Instagram profile grids, Twitter timelines, infinite scroll)
+- URL-encoding non-ASCII characters
+
+
 Detailed mechanics referenced from `SKILL.md`. The discipline (provenance, auto vs. curated, read-it-yourself, never-invent-attributions) lives in `SKILL.md`; this file holds the how-to.
 
 ## Section-extraction pattern (for fan-wiki articles)

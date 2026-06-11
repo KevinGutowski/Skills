@@ -1,15 +1,6 @@
 ---
 name: catalog-reconciliation-research
-description: >
-  Turn archival research into a source-backed catalog by reconciling object identities,
-  evidence levels, image provenance, local archive paths, and downstream database/site
-  records. Use alongside archival-research when a project has inventories, artworks,
-  goods, venues, artists, images, Airtable records, or other structured records that
-  must be kept internally consistent. Use alongside source-translation-workflow when
-  multilingual source text, bilingual transcripts, or translated excerpts are being
-  promoted into catalog/database records. Triggers: catalog reconciliation, image coverage
-  audit, source-backed inventory, Airtable research cleanup, best image selection,
-  object identity, evidence tiers, source chase, provenance gap, local archive path.
+description: "Turn archival research into a source-backed catalog — reconcile object identities, evidence tiers, image provenance, archive paths, downstream records. Use alongside archival-research when structured records (inventories, artworks, images, Airtable) need internal consistency; alongside source-translation-workflow when translations are promoted into catalog records. Triggers: catalog reconciliation, image coverage audit, provenance gap."
 ---
 
 # Catalog Reconciliation Research

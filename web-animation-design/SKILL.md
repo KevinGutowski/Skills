@@ -1,6 +1,6 @@
 ---
 name: web-animation-design
-description: "Design and implement web animations that feel natural and purposeful. Use this skill proactively whenever the user asks questions about animations, motion, easing, timing, duration, springs, transitions, or animation performance. This includes questions about how to animate specific UI elements, which easing to use, animation best practices, or accessibility considerations for motion. Triggers on: easing, ease-out, ease-in, ease-in-out, cubic-bezier, bounce, spring physics, keyframes, transform, opacity, fade, slide, scale, hover effects, microinteractions, Framer Motion, React Spring, GSAP, CSS transitions, entrance/exit animations, page transitions, stagger, will-change, GPU acceleration, prefers-reduced-motion, modal/dropdown/tooltip/popover/drawer animations, gesture animations, drag interactions, button press feel, feels janky, make it smooth."
+description: "Designs web animations that feel natural — easing, timing, duration, springs, transitions, performance and accessibility. The DEFAULT theme for web motion values: when design skills overlap on easing/duration/spring choices, route here. Use when animating UI elements, choosing easing, or handling motion accessibility. Triggers: easing, cubic-bezier, spring physics, keyframes, microinteractions, stagger, prefers-reduced-motion."
 metadata:
   short-description: Design and implement web animations that feel natural and purposeful
 ---
@@ -171,6 +171,8 @@ Determine how often users will see the animation:
 - Marketing: More elaborate, longer durations allowed
 - Product: Fast, purposeful, never frivolous
 
+**Animation is brand voice** (course's "big little details" lesson): timing and curves carry the same brand signal as type and color. Stripe's marketing animations are deliberately slow — "we are not in a hurry, we are here for you" (premium, reliable); Vercel's product animations are fast or absent because the brand *is* speed; a slower ease-in-out over ease-out reads elegant instead of snappy. Convey feeling on marketing surfaces; in the product itself, default to speed. Orchestrated entrances ("wave" stagger — Apple's nav columns) are trial-and-error until right; there's no formula. Two interview corollaries: when showing app animations on the marketing site, don't copy them 1:1 — slow them down into a *flourish* (the app optimizes for the result; the site showcases the process) yet keep the site slightly **less** extravagant than the product, so expectations aren't set higher than the app delivers (Lochie Axon, Family). And gate every marketing animation with the story test: "How do I tell a story with this animation? Is it even contributing to that story?" — sometimes the best animation is no animation (Henry Heffernan, Vercel).
+
 ## Spring Animations
 
 Springs feel more natural because they don't have fixed durations—they simulate real physics.
@@ -275,9 +277,10 @@ Whenever you add an animation, also add a media query to disable it:
 ### Reduced Motion Guidelines
 
 - Every animated element needs its own `prefers-reduced-motion` media query
-- Set `animation: none` or `transition: none` (no `!important`)
-- No exceptions for opacity or color - disable all animations
 - Show play buttons instead of autoplay videos
+- **Reduce does not mean none** (per the course's accessibility lesson, which is more nuanced than this skill's original "disable all" stance): disable *movement* — anything translating, scaling, or changing layout — but keep non-moving animations (`opacity`, `color`, `blur`) that convey meaning. A modal can still fade; it shouldn't slide or scale. For explanatory motion visuals, jump between keyframe states instead of animating — removing them entirely would reduce understandability.
+- App-wide safety net in Motion: `<MotionConfig reducedMotion="user">` (not the default — set it yourself); it limits animation to opacity/color when the preference is on.
+- Workflow: build the animation → test with DevTools' emulated `prefers-reduced-motion` → ship two variants.
 
 ### Framer Motion Implementation
 

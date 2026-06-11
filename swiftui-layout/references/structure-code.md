@@ -1,5 +1,14 @@
 # App Structure — Split Views, Tables, Toolbars (Code)
 
+## Contents
+- NavigationSplitView (10058 · 16:55)
+- Table with sorting + selection (10058 · 3:18 / 10:25)
+- Selection-aware context menus (10058 · 12:34)
+- Toolbars: from More-menu to system overflow (110343)
+- Titles, rename, documents (110343 · 0:13–0:17)
+- Data-driven navigation (WWDC 2022 · 10054, added by extension)
+
+
 *Sources (verbatim from each session's Code tab):*
 - *WWDC 2022, 10058 — "SwiftUI on iPad: Organize your interface" (Raj Ramamurthy). https://developer.apple.com/videos/play/wwdc2022/10058/*
 - *WWDC 2022, 110343 — "SwiftUI on iPad: Add toolbars, titles, and more" (Harry Lee). https://developer.apple.com/videos/play/wwdc2022/110343/*

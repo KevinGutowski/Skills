@@ -1,6 +1,6 @@
 ---
 name: rails-testing
-description: "Make Rails test suites fast and reliable — the TestProf diagnosis playbook (eye-profile → sampled StackProf → TagProf/EventProf/FactoryProf), the factory-cascade anti-pattern and its fix ladder (build_stubbed → let_it_be/before_all → FactoryDefault → AnyFixture), hidden-I/O killers (test logging, coverage overhead), the flaky-test taxonomy with quarantine governance, CI parallelization (queue-based runners as a flakiness microscope), and the thoughtbot canon (four-phase test, no mystery guests, bare-minimum factories, skips-are-signals). Use when a test suite or CI is slow, profiling specs, fixing flaky tests, untangling factory bloat, structuring readable tests, or parallelizing CI. Based on six Evil Martians posts + thoughtbot's canon + Rails at Scale. Triggers: slow tests, slow specs, CI time, TestProf, FactoryProf, factory cascade, let_it_be, before_all, flaky tests, state leak, rspec --bisect, parallel CI, Capybara waiting, VCR, factories vs fixtures, mystery guest, four-phase test, build_stubbed."
+description: "Makes Rails test suites fast and reliable — TestProf diagnosis, the factory-cascade fix ladder, hidden-I/O killers, the flaky-test taxonomy, CI parallelization. Use when a suite or CI is slow, fixing flaky tests, untangling factory bloat, or structuring readable tests. Based on Evil Martians and thoughtbot posts. Triggers: slow tests, TestProf, factory cascade, let_it_be, flaky tests, rspec --bisect, parallel CI."
 ---
 
 # Rails Testing — Speed & Reliability

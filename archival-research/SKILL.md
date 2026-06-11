@@ -1,6 +1,6 @@
 ---
 name: archival-research
-description: "Build per-subject research bundles and offline reference archives from web or on-disk sources. Two modes share one discipline (provenance + auto-captured vs. human-curated separation + read-it-yourself verification + never-invent-attributions): (1) WEB — follow source trails (fan wikis → upload-archive comments → canonical source → press partners → official social media → press reviews), saving HTML snapshots and imagery with attribution; (2) LOCAL — OCR/transcribe scanned PDFs/magazines/documents into a layered text corpus (raw OCR → audited transcription → translation) with uncertainty preserved inline. Use when collecting venue/exhibition/artwork/event/person dossiers, building offline archives, gathering imagery + sources for editorial work, or OCR/transcription/translation of a scanned-document corpus. Triggers: research bundle, source trail, archive a page, Wayback Machine, fan wiki, press kit, install shots, museum research, OCR, transcribe, scanned PDF/magazine, text corpus, translate scans."
+description: "Build per-subject research bundles and offline reference archives, with provenance and verification — web source trails with saved snapshots and attributed imagery, or OCR/transcription of scanned PDFs into a layered corpus. Use when collecting venue/exhibition/artwork dossiers, gathering imagery + sources, or transcribing scanned documents. Triggers: research bundle, source trail, Wayback Machine, museum research, OCR, scanned PDF."
 ---
 
 ## Reference files

@@ -1,6 +1,6 @@
 ---
 name: rails-docker-dev
-description: "Set up a containerized Rails dev environment the Ruby on Whales way — three layers (Dockerfile for runtime, compose.yml as services registry, dip.yml as the developer-facing command layer) and the rules that keep it fast: versioned image tags (never :latest), volumes for generated content (bundle, node_modules), tmpfs for tmp/pids, healthcheck-gated dependencies, run-not-up for debugging, idempotent provisioning, and container-sandboxed AI agents with project-only mounts. Use when dockerizing Rails development, setting up or debugging a Compose dev env, choosing Dip vs DevContainers, fixing slow Docker builds, onboarding engineers reproducibly, or sandboxing coding agents from the host. Based on Evil Martians' living guide Ruby on Whales (2019–2026). Triggers: dockerize Rails, Docker dev environment, dip, dip.yml, compose.yml, docker compose Rails, DevContainers, reproducible dev env, works on my machine, sandbox agent, Aptfile."
+description: "Set up containerized Rails dev the Ruby on Whales way — three layers (Dockerfile, compose.yml as services registry, dip.yml as command layer) plus rules that keep it fast. Use when dockerizing Rails dev, debugging a Compose env, choosing Dip vs DevContainers, or sandboxing coding agents. Based on Evil Martians' Ruby on Whales. Triggers: dockerize Rails, dip.yml, compose.yml, docker compose Rails, DevContainers, sandbox agent."
 ---
 
 # Rails Docker Dev (Ruby on Whales)

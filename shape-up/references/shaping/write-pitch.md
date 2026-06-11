@@ -1,5 +1,13 @@
 # Writing the Pitch
 
+## Contents
+- Why Write a Pitch?
+- The Five Ingredients
+- Help Them See It
+- Example Pitch Structure
+- Ready to Present
+
+
 ## Why Write a Pitch?
 
 We've got the elements of a solution now, and we've de-risked our concept to the point that we're confident it's a good option to give a team. But the concept is still in our heads or in some hard-to-decipher drawings on the whiteboard.

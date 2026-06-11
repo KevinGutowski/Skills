@@ -1,5 +1,16 @@
 # The Betting Table
 
+## Contents
+- What It Is
+- Who Attends
+- The Inputs
+- Five Questions to Ask
+- Making the Call
+- What Gets Bet
+- The Anti-Patterns
+- Post-Betting
+
+
 ## What It Is
 
 The betting table is where stakeholders decide what to build in the next cycle. It happens during cool-down, before each six-week cycle begins.

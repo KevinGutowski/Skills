@@ -1,5 +1,11 @@
 # Visual Accessibility — Settings, APIs & Code
 
+## Contents
+- Per-setting reference
+- The 2020 code samples (verbatim)
+- Worked examples
+
+
 *Sources:*
 - *WWDC 2020, 10020 — "Make your app visually accessible" (code samples verbatim from the session's Code tab). https://developer.apple.com/videos/play/wwdc2020/10020/*
 - *WWDC 2019, 244 — "Visual Design and Accessibility" (no Code tab; APIs as spoken). https://developer.apple.com/videos/play/wwdc2019/244/*

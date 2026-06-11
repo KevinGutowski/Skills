@@ -1,6 +1,6 @@
 ---
 name: x-post-reader
-description: Read public X (Twitter) posts without authentication. Handles single tweet URLs (via VxTwitter JSON), browsing a user's recent timeline (via Nitter RSS), a user's top ~100 tweets (via the Twitter syndication endpoint), and finding topical tweets from a known account (via Google search + VxTwitter). Use whenever the user pastes an x.com or twitter.com status URL, asks to read/analyze/summarize/quote/reply to a specific tweet, asks "what has @handle been posting", asks for someone's best/notable tweets, or asks to find tweets from a specific user about a topic. For authenticated X API operations (mentions, follower lists, full search), use the `x-api` skill instead.
+description: "Reads public X (Twitter) posts without authentication — single tweets, a user's recent timeline, a user's top ~100 tweets (syndication endpoint), or topical tweets from an account. Use when the user pastes an x.com/twitter.com status URL or asks to read, summarize, or find a user's tweets or best tweets. For authenticated X API operations (mentions, followers, search), use x-api instead. Triggers: tweet URL, x.com, what has @handle posted, top tweets."
 ---
 
 # X Post Reader: Fetch a public tweet via VxTwitter

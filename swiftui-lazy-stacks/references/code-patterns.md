@@ -1,5 +1,16 @@
 # Lazy Stack Code Patterns
 
+## Contents
+- Baseline composition
+- Rule 3 — scroll transitions must not push views out of frame
+- Rule 1 — relative visibility, not absolute offset
+- Rule 4 — view resolution & static subview counts
+- Rule 5 — prefetching: initialize early, don't rebuild in `onAppear`
+- Rule 6 — scroll-surviving state belongs in a model/binding
+- Programmatic scrolling
+- Rule 7 — don't change layout after a subview appears
+
+
 *Source: Apple WWDC 2026, session 321 — "Dive into lazy stacks and scrolling with SwiftUI." Code samples below are transcribed verbatim from the session's **Code** tab (timestamps preserved for traceability); `/* ... */` marks code Apple elided. https://developer.apple.com/videos/play/wwdc2026/321*
 
 Grouped by the rule in SKILL.md. Where a rule has a wrong/right pair, the ❌/✅ shows Apple's own before/after.

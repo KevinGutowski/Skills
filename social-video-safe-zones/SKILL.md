@@ -1,14 +1,6 @@
 ---
 name: social-video-safe-zones
-description: >-
-  Keep key content (text, logos, CTAs, faces) clear of the platform UI "chrome"
-  when designing or rendering vertical/social videos — Instagram Reels & Stories,
-  TikTok, YouTube Shorts. Use whenever building or reviewing a 9:16 (or social)
-  video composition (Remotion, After Effects, CapCut, etc.) so captions/usernames,
-  the right-side action rail (like/comment/share/save), and bottom CTA don't cover
-  important elements. Triggers: instagram reels, stories, tiktok, youtube shorts,
-  safe zone, safe area, vertical video, 1080x1920, 9:16, social video layout,
-  "where do the buttons go", caption overlap.
+description: "Keeps key content (text, logos, faces, CTAs) clear of platform UI chrome in vertical 9:16 social video. Use when building or reviewing a Reels/Stories/TikTok/Shorts composition so captions, the action rail, and bottom CTA don't cover key elements. Triggers: safe zone, safe area, vertical video, 9:16, 1080x1920, reels, tiktok, caption overlap."
 ---
 
 # Social video safe zones

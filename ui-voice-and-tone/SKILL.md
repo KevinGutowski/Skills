@@ -1,6 +1,6 @@
 ---
 name: ui-voice-and-tone
-description: "Define an app's writing voice and adapt its tone per situation, and craft the microcopy that carries them — welcome screens, notifications, alerts, buttons, empty states, conversational flows — plus the simplify pass (remove fillers, avoid repetition, lead with the why, keep a word list). Use when establishing or auditing a product's voice, dialing tone for a moment (celebratory, clinical, playful), writing or reviewing UI microcopy, or trimming copy. Defers naming to naming-features-and-labels, failure copy to error-messages, long-form to write-clear-prose. Based on Apple WWDC sessions 10037 (2022), 10140 (2024), and 404 (2025). Triggers: voice and tone, UX writing, microcopy, copy review, welcome screen copy, notification copy, button label wording, empty state copy, dial up tone, filler words."
+description: "Defines an app's writing voice, adapts tone per situation, and crafts the microcopy that carries them. Use when establishing a product's voice, dialing tone for a moment, writing or reviewing UI microcopy, or trimming copy. Defers naming to naming-features-and-labels, failure copy to error-messages, long-form to write-clear-prose. Triggers: voice and tone, UX writing, microcopy, copy review, empty state copy, dial up tone."
 ---
 
 # UI Voice and Tone
@@ -71,6 +71,12 @@ The 2022 framework is the screen-level craft that carries the voice:
 ## Keep it useful (the guardrail both talks share)
 
 Personality serves the experience, never the reverse — look for the **special moments** where it can shine, and don't trade away usefulness for it. Then **read it aloud** and ask: *does this sound like the best version of this app?* Avoid jargon; write inclusively.
+
+From Andy Welfle's "Writing is designing" (Config 2025):
+- **The take-the-words-away test** (via Mig Reyes): strip all text from a screen — the brand survives, usability dies. The fastest demonstration that words are design.
+- **The button-copy question set** — "what should this button say?" is never answerable alone: where did the user enter from? what happens immediately after? is a button even the right component? what's the inverse action? will it truncate in Norwegian? does it match voice and tone?
+- **Voice run amok kills usability**: Caviar's "Eat a salad cuz sure" — brand personality applied where a person just needs to order food. The triad to balance: *usable* (helps do), *useful* (does what's wanted), *responsible* (serves stress cases — "content designers are the connective tissue").
+- **Research the language itself**: harvest users' own words from interviews for terms and actions; run card sorts for taxonomy and mental models; usability-test for language gaps. Vocabulary should come from users, not the org chart (cautionary tale: a transit kiosk's "Accept an e-cash upgrade" meaning "add $20").
 
 ## Checklist
 

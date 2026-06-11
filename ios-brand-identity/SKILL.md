@@ -1,6 +1,6 @@
 ---
 name: ios-brand-identity
-description: "Express a brand identity in an iOS app without breaking the native feel — decide where brand belongs (UI layer vs. content layer / Liquid Glass), when to customize a component vs. use a standard one, and how to apply brand color/tint, custom fonts (with Dynamic Type), iconography (vs. SF Symbols), logos, Dark Mode, and widgets. Use when designing or reviewing iOS app branding, deciding how much to customize, moving brand color into the content area, adding custom fonts or icons, supporting Dynamic Type/Dark Mode, or judging whether a custom component hurts the native feel. Based on Apple WWDC 2026 session 251 + the HIG. Triggers: brand identity, branding, iOS branding, custom vs standard components, tint/accent color, color in content area, custom fonts, Dynamic Type, SF Symbols, iconography, logo, Liquid Glass, content layer, UI layer, dark mode, widget branding."
+description: "Express brand identity in an iOS app without breaking the native feel — UI layer vs content layer (Liquid Glass), custom vs standard components, brand color, fonts, logos, Dark Mode, widgets. Use when designing or reviewing iOS branding, deciding how much to customize, or judging whether a custom component hurts the native feel. Based on WWDC 251 + the HIG. Triggers: brand identity, iOS branding, custom vs standard components, tint color, logo."
 ---
 
 # iOS Brand Identity
@@ -55,6 +55,14 @@ Rules of thumb:
 - **Not every app needs custom icons. SF Symbols** (7,000+, free) are built like a font (scale like text), neutral, with line weights plus accessibility and localization support — and built into Xcode, so no export/handoff.
 - **Logos:** in iOS people already know which app they're in, so logos waste valuable real estate. *NYT Cooking* shows its logo only on the Home tab and fades it on scroll. Keep branding refined and unobtrusive.
 - For symbol *mechanics* — configuration, scales, rendering modes, Variable Color, animations, custom-symbol templates — use **`sf-symbols`**. This section decides custom-vs-system iconography; that skill makes either work.
+
+## Logo & wordmark equity (Jessica Hische + Robinhood/Porto Rocha, Config 2024–25)
+
+- **Refresh vs rebrand decision rule**: refresh when legibility/accessibility problems, tech-era drafting artifacts ("things drafted in the 90s have a 90s feel because that's what the software was capable of"), or maturation; rebrand only for a pivot, a new audience, or "you never actually had a well-articulated voice."
+- **The blur test**: "a brand has strong equity if you blur it and you can still recognize it." Before touching anything, inventory the equity — literally list every formal feature (NY Mag: "unique N and Y forms, long swashes with teardrop terminals"). Color is one of the top equity holders.
+- **Timelessness checklist**: stay in continuous use; avoid trendy gimmicks (random ligatures, decorative cuts, "extreme thicks and thins, digital ink traps"); never set the logo in a free font ("nothing guarantees a sea of similar logos more than using a font available to everyone"). And ship it flawless: "if there's anything you can critique, it's going to get thrown out at the next refresh."
+- Letterform micro-rules: one pen logic informs all letterforms (inconsistency "feels unsafe"); shorten script entrance/exit strokes to feel bespoke; don't round internal corners (reads as ink bleed); lean tall strokes back optically or they "look like they're falling forward"; **small-size variants get less stroke contrast, more white space, sometimes a higher x-height**.
+- **Equity decays when copied** (Robinhood): their once-distinctive illustration style became the fintech category default — when your style is the genre, it's no longer equity. Their rebalance: make one medium precise (geometric illustration) and move the emotion into another (metaphor-by-closeup photography). Palette rationing: neutrals + **one ownable signature color** used only when it means something — "expand the content, not the colors." (Same move as teenage engineering's "own one attribute" — claim transparency, claim a color, and every sighting recalls you.)
 
 ## Review checklist
 

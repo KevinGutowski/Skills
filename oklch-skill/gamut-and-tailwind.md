@@ -1,5 +1,13 @@
 # Gamut Awareness & Tailwind v4
 
+## Contents
+- sRGB vs Display P3
+- Max chroma varies by lightness and hue
+- Gamut checking
+- CSS fallback patterns
+- Tailwind v4
+
+
 ## sRGB vs Display P3
 
 Every sRGB color exists within Display P3, but not every P3 color exists within sRGB. Display P3 covers ~50% more colors.

@@ -1,6 +1,6 @@
 ---
 name: apple-typography
-description: "Use typography well on Apple platforms — the San Francisco family (SF Pro/Compact/Mono/Rounded, New York, the Condensed/Compressed/Expanded widths), optical sizes, tracking vs kerning, leading, text styles, and full Dynamic Type support (custom fonts via UIFontMetrics/Font.custom relativeTo, ScaledMetric, layout flips at accessibility sizes, the Large Content Viewer). Use when choosing or pairing system fonts, building type hierarchy, fixing truncated/clipped text at large sizes, supporting Dynamic Type in SwiftUI or UIKit, or reviewing typography for legibility. Based on Apple WWDC sessions 10074 (2024), 10175 (2020), and 110381 (2022). Triggers: Dynamic Type, text styles, preferredFont, ScaledMetric, UIFontMetrics, dynamicTypeSize, large content viewer, SF Pro, New York font, font widths, optical size, tracking, leading, custom font scaling."
+description: "Use typography well on Apple platforms — the San Francisco family, optical sizes, text styles, and full Dynamic Type support including custom font scaling. Use when choosing system fonts, building type hierarchy, fixing truncated text at large sizes, or supporting Dynamic Type in SwiftUI or UIKit. Based on 3 Apple WWDC sessions. Triggers: Dynamic Type, text styles, ScaledMetric, UIFontMetrics, SF Pro, New York font, optical size."
 ---
 
 # Apple Typography
@@ -54,6 +54,16 @@ People choose from 7 default sizes + 5 accessibility sizes; supporting them is n
 7. **Test:** Xcode Previews → Dynamic Type Variants; the debugger's Dynamic Type override; and run **accessibility audits** (also available in UI tests).
 
 > **Staleness note (Kevin's rule):** code above verified against current docs as of mid-2026. The UIKit size-category observation shown in the 2024 talk uses `UIContentSizeCategory.didChangeNotification`; on iOS 17+ prefer `registerForTraitChanges`. Web equivalents: `system-ui`, `ui-rounded`, `ui-serif`, `ui-monospace`. Re-verify API names against developer.apple.com/documentation when applying.
+
+## Type mechanics beyond the Apple stack (Elliot Jay Stocks, Config 2025)
+
+- **Grade vs weight**: "whereas weight is designed to serve as a differentiator, **grade exists to unify**" — and grade changes don't change character widths, so no reflow. Modern use: keeping type optically consistent across **light/dark mode** (dark backgrounds make light text bloom; drop a grade). SF has grades; Roboto Flex exposes a GRAD axis.
+- **There's no such thing as a shared font size across typefaces** — apparent size is x-height, not font-size; the em square is an invisible container. CSS adds **half-leading** above and below, so you can't set a true visual gap between text blocks without trimming: `text-box-trim` (CSS), Figma's vertical-trim, or measure optically from x-height ("cap height to baseline is exactly how all design apps should have been treating text frames forever").
+- **Fluid type scales**: pick one modular scale for small viewports and a higher-contrast scale for large, then interpolate (utopia.fyi) — "design for extremes and let the browser do all the hard parts in between."
+- **Optical sizing mechanics** (Stocks, "The old typography is new again," Adobe Design 2026): for 500 years every metal-type size was a distinct design — small sizes got sturdier stems, open counters, higher x-height; large sizes earned contrast and personality. Named optical sizes run display → subhead → text → caption. With a variable font's `opsz` axis, InDesign, Figma, and most browsers **auto-map font size to optical size** (rem → px → opsz); override deliberately with `font-variation-settings: "opsz" N` at breakpoints when context beats canvas — "always design for the eye and not just the canvas" (a billboard across a park and a phone at arm's length can present the same *perceived* size).
+- **Measure (line length): 45–75 characters** (Bringhurst, via Stocks). As the viewport grows, fix an over-long measure by increasing font size or container padding at breakpoints — Stocks resists `max-width` as a first resort. **Trent Walton's asterisk technique**: drop asterisks at characters 45 and 75; add a breakpoint whenever both land on one line. And leading must respond when size or measure changes — gaps that look right at one width open up at another.
+- **Typography failure modes are semantic**: the Mitt Romney webfont problem (Zach Leatherman) — an italic font failed to load with no fallback and the word "not" vanished, inverting the headline's meaning. Always define italic/weight fallbacks.
+- Maxims: "if you have a typeface and you have a color then you have a brand" (Spiekermann); "Good typographers… obsess over the detail so that readers don't have to" (Boardley).
 
 ## Checklist
 

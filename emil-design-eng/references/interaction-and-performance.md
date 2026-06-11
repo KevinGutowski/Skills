@@ -1,5 +1,11 @@
 # Interaction and Performance
 
+## Contents
+- Spring-based mouse interactions
+- Gesture and Drag Interactions
+- Performance Rules
+
+
 Detailed walkthroughs and code for spring-driven interactions, gesture/drag handling, and rendering performance. Part of the `emil-design-eng` skill — see `SKILL.md` for the core philosophy and decision rules.
 
 ## Spring-based mouse interactions

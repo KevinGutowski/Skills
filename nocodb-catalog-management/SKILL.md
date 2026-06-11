@@ -1,6 +1,6 @@
 ---
 name: nocodb-catalog-management
-description: "Work with local or remote NocoDB bases from Codex: inspect bases/tables/fields, create and update records, create linked-record relation columns, link rows across tables, upload image/file attachments, keep CSV research catalogs in sync with NocoDB, and shape research-database views. Use when the user mentions NocoDB, nocodb, base/table IDs, linked tables, linked records, attachments, gallery views, relation fields, record upserts, or syncing a local research bundle into NocoDB."
+description: "Works with local or remote NocoDB bases — inspect bases/tables/fields, create and update records, create linked-record relations, upload attachments, sync CSV research catalogs, shape views. Use when the user mentions NocoDB, base/table IDs, linked records, attachments, gallery views, or syncing a research bundle into NocoDB. Triggers: NocoDB, linked records, relation field, attachment upload, gallery view, record upsert."
 ---
 
 # NocoDB Catalog Management

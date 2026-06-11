@@ -1,5 +1,15 @@
 # Writing Effective Descriptions
 
+## Contents
+- Why Descriptions Matter
+- The Golden Rule
+- The Formula
+- Effective Examples
+- Common Mistakes
+- Include Key Terms
+- Length Guidelines
+
+
 Source: [Best Practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)
 
 ## Why Descriptions Matter

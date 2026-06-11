@@ -1,5 +1,17 @@
 # Tufte Principles for Data Visualization
 
+## Contents
+- 1. Graphical Excellence
+- 2. Graphical Integrity
+- 3. Data-Ink Ratio
+- 4. Chartjunk
+- 5. Small Multiples
+- 6. Data Density and Information Resolution
+- 7. Multifunctioning Elements
+- 8. Technique
+- Quick Tufte Test
+
+
 Use this reference when reviewing a chart, dashboard, report, or proposed visualization through Tufte-style information design.
 
 ## 1. Graphical Excellence

@@ -1,5 +1,19 @@
 # Delegated Types Pattern - 37signals Architecture
 
+## Contents
+- What Problem Does It Solve?
+- The Pattern
+- Rails Implementation
+- The Power: Uniform Operations
+- When to Use Delegated Types
+- Comparison to Alternatives
+- Trade-offs
+- Architecture in Practice
+- Migration Path
+- DHH Quote
+- Resources
+
+
 **The core pattern powering Basecamp and HEY content systems.**
 
 Used for 10+ years in Basecamp without requiring a rewrite. Enables treating all content uniformly while maintaining type-specific behavior.

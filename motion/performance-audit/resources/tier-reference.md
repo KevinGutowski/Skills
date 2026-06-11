@@ -1,5 +1,16 @@
 # Tier Reference
 
+## Contents
+- Render Pipeline
+- S-Tier: Compositor Thread
+- A-Tier: Main Thread → Compositor
+- B-Tier: DOM Setup + S/A-Tier Animation
+- C-Tier: Paint Trigger
+- D-Tier: Layout Trigger
+- F-Tier: Layout Thrashing
+- Quick Lookup Table
+
+
 Detailed classification guide for the motion-audit skill. Read this when classifying animations.
 
 ## Render Pipeline

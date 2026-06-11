@@ -1,5 +1,14 @@
 # Checklists, templates, and labeling failure modes
 
+## Contents
+- Widening questions to ask about every subject
+- Present data in a variety of structured ways
+- Spread the work — per-section sweep (Pokémon × Kogei / Bulbapedia article structure)
+- README per subject — recommended sections
+- Lateral discovery patterns
+- Visual-labeling failure modes I've hit
+
+
 Exhaustive checklists and worked templates referenced from `SKILL.md`.
 
 ## Widening questions to ask about every subject

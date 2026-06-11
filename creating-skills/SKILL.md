@@ -99,6 +99,20 @@ skill-name/
 
 Details: [progressive-disclosure.md](progressive-disclosure.md)
 
+## House Style (this corpus — 2026-06 audit)
+
+Rules layered on top of the official guidance, derived from a 73-skill corpus with a routing eval:
+
+1. **Descriptions: ~350–450 chars, never the 1024 cap.** The cap is an API limit, not a budget; all descriptions preload into every session (~73 × 450 ≈ 8k tokens here). Shape: `What it does (verb-led). Use when <3–5 situations>. <Boundary clause>. Based on <credit>. Triggers: <6–8 query-like terms>.` The validator warns >700.
+2. **Boundary clauses are sacred.** Dense corpora have near-neighbors (8 Rails skills, 5 SwiftUI skills, 6 motion/polish skills). Clauses like "DEFAULT school; escalate on named pains" or "Distinct from X's perf audit" exist because of real routing misses — compress, never drop. The official one-liner examples assume no neighbors; the *shape* generalizes, the length doesn't.
+3. **The routing eval is the gate.** ~/.claude/skill-evals/routing-eval.md: 44 prompts → fresh agent routes by descriptions only. Run after any description change, new skill, or consolidation. Add 1–2 probes (plus a control that must NOT route to the new skill) with every new skill. This is the docs' "build evaluations first" applied to discovery.
+4. **Naming: noun phrases by task shape, never by industry** (house divergence from the gerund suggestion below — both are sanctioned; consistency within the corpus is what matters). "hardware-product-design", not "designing-hardware" or "fintech-skills".
+5. **Body budget: <5k tokens** (Agent Skills spec recommendation), 500-line hard max. On compaction only the **first 5,000 tokens** of an invoked skill are re-attached (25k shared across skills) — front-load the load-bearing rules; push long quotes, walkthroughs, and per-source detail to `references/`. Reference files >100 lines get a `## Contents` block (partial reads see full scope).
+6. **Knowledge-skill anatomy** (talk/article-derived skills): Sources block with titles+speakers → task-shape framing sentence → principle sections with verified short quotes → Checklist → "Relationship to other skills" (bidirectional) → staleness note separating durable doctrine from fast-decaying specifics.
+7. **Gotchas are the highest-signal content** (Anthropic's internal finding). Populate from observed failures, not anticipation — the corpus analog is the verified-quote + failure-driven-rule discipline (e.g. source-sweep was born from a real sampling failure).
+8. **Don't restate what Claude knows.** A skill earns its place with non-obvious, source-verified material: numbers, named techniques, counter-intuitive rules, decision boundaries. "One skill per task shape; the best skills fit cleanly into one category."
+9. **Corpus governance:** extend existing > new skill > skip; new skills need ≥2–3 independent sources and a coherent task shape (seed-and-wait in a ledger until then); consolidate clusters under umbrella skills (encapsulation) when descriptions start competing; README.md table = human index; validate_skills.py after every change.
+
 ## Checklist Before Shipping
 
 **Core quality:**

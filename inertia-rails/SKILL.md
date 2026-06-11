@@ -1,6 +1,6 @@
 ---
 name: inertia-rails
-description: "Build Rails apps with React (or Vue/Svelte) components without an API layer using Inertia.js — the decision rule (Hotwire for low interactivity; Inertia for rich JS components; never API+SPA by default) and the pattern catalog: server-driven navigation with Rails routes as the source of truth, props from controllers, partial reloads and deferred props, shared data over global client state, Rails-validated forms with automatic error flow, modals from the same controller actions, real-time via Action Cable reloads, and serializer-generated TypeScript. Use when choosing between Hotwire/Inertia/SPA on Rails, building or reviewing an Inertia + Rails app, or escaping a Rails-API + separate-SPA architecture. Based on Evil Martians' Inertia series (2025–2026). Triggers: Inertia, inertia_rails, React on Rails, Rails + React, SPA vs monolith, API layer, shared props, partial reload, deferred props, useForm, Typelizer, alba, js-routes, optimistic UI."
+description: "Build Rails apps with React/Vue/Svelte components and no API layer using Inertia.js. Decision rule: Hotwire for low interactivity, Inertia for rich JS components, never API+SPA by default. Use when choosing Hotwire vs Inertia vs SPA on Rails, building an Inertia + Rails app, or escaping a Rails-API + separate-SPA split. Based on Evil Martians' series. Triggers: Inertia, inertia_rails, React on Rails, SPA vs monolith, partial reload, useForm."
 ---
 
 # Inertia.js on Rails

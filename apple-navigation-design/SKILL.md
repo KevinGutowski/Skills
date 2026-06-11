@@ -1,6 +1,6 @@
 ---
 name: apple-navigation-design
-description: "Design navigation and layout for iOS and iPad — tab bars (balanced tabs, no Home catch-alls), push navigation, modality (sheet rules, Cancel/X), menus/pickers (menus vs action sheets, destructive friction), iPad-native layout (sidebars, density, desktop-class toolbars/tables/selection), iPadOS 26 windowing and the menu bar, and the pointer. Use when structuring an app's navigation, deciding tabs vs sidebar, choosing push vs modal, designing sheets/menus or destructive confirmations, making an app iPad-native, or reviewing navigation clarity. Based on Apple WWDC sessions 10001 & 10009 (2022), 10205/10206/10640 (2020), and 208 (2025). Triggers: tab bar design, Home tab, push vs modal, cancel vs close button, sidebar vs tab bar, stretched iPhone app, document menu, browser-style navigation, menu vs action sheet, destructive confirmation, iPad windowing, menu bar iPad, pointer effects."
+description: "Design navigation and layout for iOS and iPad — tab bars, push vs modal, sheet and menu rules, iPad-native layout, iPadOS 26 windowing. Use when structuring an app's navigation, deciding tabs vs sidebar, choosing push vs modal, designing sheets, menus, or destructive confirmations, or making an app iPad-native. Based on 6 Apple WWDC sessions. Triggers: tab bar, push vs modal, sidebar vs tab bar, menu vs action sheet, iPad windowing."
 ---
 
 # Apple Navigation Design

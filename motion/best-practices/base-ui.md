@@ -1,5 +1,10 @@
 # Animating Base UI with Motion for React
 
+## Contents
+- Adding Animations
+- Exit Animations
+
+
 Rules for integrating Motion animations with Base UI components.
 
 ## Adding Animations

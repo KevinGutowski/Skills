@@ -1,7 +1,6 @@
 ---
 name: image-archival
-description: >
-    Shrink oversized image assets (PNG/TIFF/PSD exports that are tens or hundreds of MB) for archiving, while keeping them visually identical to the original. The core move is to DIAGNOSE why a file is huge — almost always 16-bit depth, an unused/near-empty alpha channel, or sheer print-resolution pixel count — before compressing, then re-encode (WebP / JPEG / AVIF) or re-optimize PNG, VERIFY the result is visually lossless (PSNR/SSIM + amplified diff, read with your own eyes), and NEVER overwrite the originals. Use when the user says an image or folder is "huge", wants to compress/archive/shrink large images, convert big PNGs to JPG or WebP, reduce file size while keeping quality, drop wasted bit-depth or unused alpha, or trim dead transparent borders. Triggers: huge image, image too big, compress image, archive image, shrink PNG, PNG to WebP, PNG to JPG, reduce image file size, lightly compress, visually lossless, 16-bit to 8-bit, strip alpha, big asset, light compression.
+description: "Shrink oversized images (PNG/TIFF/PSD exports) to visually identical smaller files — diagnose why they're huge, re-encode (WebP/JPEG/AVIF) or re-optimize PNG, verify lossless, never overwrite originals. Use when an image or folder is 'huge' or needs compressing for archive. Triggers: huge image, compress image, shrink PNG, PNG to WebP, visually lossless."
 ---
 
 ## When to use

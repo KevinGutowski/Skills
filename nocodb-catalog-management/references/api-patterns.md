@@ -1,5 +1,16 @@
 # NocoDB API Patterns
 
+## Contents
+- Setup
+- Discover Bases And Tables
+- Read Records
+- Upsert Records
+- Create A Many-To-Many Relation Column
+- Link Records
+- Attachment Upload
+- Views And Gallery Covers
+
+
 ## Setup
 
 Use `xc-token: <token>` for API auth.

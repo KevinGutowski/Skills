@@ -1,5 +1,17 @@
 # Analytical Design, Sparklines, and Layering
 
+## Contents
+- 1. Analytical Design
+- 2. Sparklines
+- 3. Layering and Separation
+- 4. Micro/Macro Design
+- 5. Escaping Flatland
+- 6. Range Frames and Dot-Dash Plots
+- 7. Confections, Parallelism, and Narrative
+- 8. Cause and Effect
+- Extended Tufte Test
+
+
 Use this reference when the task involves dense dashboards, explanatory graphics, sparklines, small multiples, evidence documentation, or visualizations that need to show mechanism as well as pattern.
 
 ## 1. Analytical Design

@@ -1,6 +1,6 @@
 ---
 name: sound-design
-description: "Design sound for apps and products — decide when sound helps and when silence is better, craft notification sounds that are distinguishable/short/repeatable, build a sound palette from real recordings, pair sound with haptics and animation, and use the four building blocks (timbre, pitch, duration, loudness) deliberately. Use when adding or reviewing app sounds, designing a notification sound or UI click, deciding whether an interaction needs audio, pairing sound with haptic feedback, branding through sound, or producing/cleaning sound assets (sync, fades, denoising, speaker limits). Based on Apple WWDC sessions 803 (2017) and the sound half of 804 (2018), both by Hugo Verweij. Triggers: sound design, notification sound, UI sounds, app sounds, audio feedback, sound and haptics, click sound, chime, sound palette, sound branding, earcon, when to use sound, silence, ringtone, audio cue."
+description: "Designs sound for apps — when sound helps vs silence, distinguishable notification sounds, sound palettes, pairing with haptics. Use when adding or reviewing app sounds, designing a notification sound or UI click, or deciding whether an interaction needs audio. Sound half of touch-interaction-design. Based on Apple WWDC sessions. Triggers: sound design, notification sound, UI sounds, audio feedback, sound and haptics, earcon."
 ---
 
 # Sound Design
@@ -65,6 +65,8 @@ Three principles:
 - **Causality** — it must be obvious what caused the feedback; ground it in physical plausibility (Apple Pay's confirmation ended up as *two simple taps*, not a waveform mimic).
 - **Harmony** — "things should feel the way they look, the way they sound." Match feedback to the visual's size, energy, and pace; **synchronization is where the magic happens** — any latency between visual and feedback "is clearly broken." Match *magnitudes across senses* (a dense haptic texture needs a dense visual texture). The Watch crown went further: the *animation* was changed to snap to the sound and haptic.
 - **Utility** — feedback only where it adds clear value; "don't add sound and haptics just because you can… it will diminish the value of what's really important."
+
+Andy Allen's checkbox sound anatomy (Config 2024): a satisfying action sound "follows this action with a **lead-up, punctuation, and sustain**" — windup swell, the ka-thunk, and a tail — layered with custom haptics; multi-sensory redundancy matters because digital experiences are "trapped behind a hard pane of glass."
 
 Techniques worth stealing: **ghost-tap priming** (people miss the first of four back-to-back transients — use tap one to "wake up the skin"); **anticipation flips** (Watch alarm ramps the haptic, cuts it, *then* plays the sound "as an answer"); **contrast over literal symmetry** (left/right cues doubled the haptic strikes on one side so they're distinguishable by feel). Practice loop (2021): dissect each moment per sense → audition AHAP assets → mix-and-match haptic and audio events in the JSON → use `CHHapticAdvancedPatternPlayer` for looping/speed-modulated textures. (AHAP = JSON haptic patterns; QuickLook previews them on macOS; haptics need a real device.)
 

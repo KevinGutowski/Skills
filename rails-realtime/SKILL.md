@@ -1,6 +1,6 @@
 ---
 name: rails-realtime
-description: "Make Rails real-time features reliable at scale — connection-avalanche safety (client init is O(clients × subscriptions)) via the four-level mitigation taxonomy (operations: slow rollouts + least-connections balancing; client: backoff with jitter, linearized subscriptions; protocol: disconnect notices, session resume; server: pre-authorized signed streams, slow-drain shutdown, real-time proxy), plus delivery guarantees: Action Cable is at-most-once with no FIFO ordering — LLM token streaming needs at-least-once + ordering via log-backed streams with client-tracked offsets. Use when designing WebSocket/Action Cable/Turbo Streams features at scale, debugging reconnect storms or out-of-order messages, streaming LLM responses, or choosing Action Cable vs AnyCable. Based on two Evil Martians posts (Dementyev, 2024–2025). Triggers: WebSockets, Action Cable, AnyCable, LLM streaming, message ordering, at-least-once, reconnect storm, connection avalanche, signed streams, slow drain."
+description: "Makes Rails real-time features reliable at scale — connection-avalanche mitigation, plus delivery guarantees: Action Cable is at-most-once and unordered; LLM streaming needs log-backed ordered delivery. Use when designing Action Cable/Turbo Streams at scale, debugging reconnect storms or message ordering, streaming LLM responses, or choosing AnyCable. Triggers: WebSockets, Action Cable, AnyCable, LLM streaming, message ordering, reconnect storm."
 ---
 
 # Rails Real-Time Reliability

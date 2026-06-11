@@ -1,5 +1,15 @@
 # Worked Examples
 
+## Contents
+- 1. Apple Cash — labeling the available amount → **Balance**
+- 2. Gym app — subscription tiers → clarity vs. brand
+- 3. Apple Maps — places you've been → **Visited Places** (full exercise)
+- 4. Photos — algorithmic photo grouping → **Memories** (emotional register)
+- 5. Apple Podcasts — voice isolation → **Enhance Dialogue** (elimination chain)
+- 6. Apple Music — automatic song transitions → **AutoMix** (invented compound)
+- Cross-cutting takeaways
+
+
 *Source: Apple WWDC 2026, session 290 — "Craft clear names for features and labels in your app." https://developer.apple.com/videos/play/wwdc2026/290/*
 
 Full case studies behind the principles in SKILL.md. Each shows the criteria (Belongs / Sets expectation / Works everywhere) doing real work. Use these as patterns to reason by analogy when naming something new.

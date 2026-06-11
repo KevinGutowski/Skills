@@ -1,6 +1,6 @@
 ---
 name: devtool-interface-design
-description: "Design interfaces for developer tools — software people live in for hours daily, with no happy path: a tiny edge case may be someone's main case. Covers the three contexts (immediate/intermediate/broad), the layout control-flow rule (top controls bottom, left controls right), the five UI zones (tabs, toolbars, nav sidebars, properties panels, tables), CLI progress patterns (spinner / X-of-Y / progress bar) and clean-log rules, devtool onboarding to the a-ha moment (everything skippable, test data, never a blank workspace), dev-data viz mappings, and agent experience (AX): designing your tool for AI agents as discoverers and users. Use when designing or reviewing a developer tool's UI, panel layout, CLI output, devtool onboarding, dashboard, or agent-facing surface. Based on seven Evil Martians Chronicles posts. Triggers: dev tool UI, devtool design, IDE layout, properties panel, command palette, CLI UX, spinner, progress bar, terminal output, devtool onboarding, agent experience, AX, MCP discovery."
+description: "Design interfaces for developer tools — software with no happy path: the five UI zones, CLI progress and clean-log rules, devtool onboarding, agent experience (AX). Use when designing or reviewing a devtool's UI, panel layout, CLI output, onboarding, or agent-facing surface. Based on seven Evil Martians Chronicles posts. Triggers: dev tool UI, properties panel, command palette, CLI UX, devtool onboarding, agent experience, AX."
 ---
 
 # Developer-Tool Interface Design
@@ -44,7 +44,19 @@ For long-running async work beyond the CLI (builds, deploys, queues, agent runs)
 
 ## Onboarding to the a-ha moment
 
+Motion policy for docs (Lochie Axon, Family — animations.dev interview): "docs aren't marketing, they're functionality" — no page transitions, snappy navigation; tiny *non-blocking* decorative animations (icon loops) are fine because they never gate use.
+
 "Developer tool users don't need the typical onboarding process, period" — no feature walkthroughs. The goal is the **a-ha moment**: grasping the tool's data model and how to be productive. Four steps: (1) ruthlessly cut setup — "if it's optional, it's postponable"; (2) show what to do next — "never leave users stranded in a blank workspace"; (3) **offer domain-specific test data** that teaches best practices; (4) wizards/tutorials that end in a *real working project* — "for developer tools, everything should be skippable. But that doesn't mean that everything should be skipped." (Consumer-grade onboarding → `user-onboarding`; this is its explicit inverse.)
+
+**The exploded view** (Andy Allen, Config 2024): for deep data disclosure, borrow the game-inventory pattern — "pause the action, then dive in and explore in minute detail." A dedicated full-attention inspection mode beats cramming detail into the live view.
+
+## Pro-tool lessons from Config (Figma UI3 redesign 2024; Replit; Perplexity)
+
+- **Stability by default beats contextual cleverness** — Figma prototyped properties appearing "contextually next to your cursor," built hundreds of prototypes, dogfooded for months, and *rejected it*: "it lacked stability… made it difficult to anticipate where your controls would appear next… for a tool you use every single day" you crave rock-solid predictability. (A documented negative result against floating/contextual panel trends.)
+- **One place to look**: contextual actions consolidated into the properties panel "because it gives your eye one place to look to find all the things you can do to a given object"; tools moved to the bottom "because our eyes read from top to bottom," freeing the canvas to the top edge. Respect **muscle memory** — Figma kept panel layout stable for a decade; pixel-perfectionists still get hover pixel values even when set to fill/hug.
+- **Labels-above-controls as an opt-in view setting** solves icon-dense panel learnability without taxing experts; ship the beta, watch, and **backtrack publicly** when users hate it (collapsed component properties → reverted).
+- **"Mouse feel"** (Barron Webster, Replit): experts are keyboard-only; novices live on the mouse — drag previews, visible pop-in/out thresholds. **Complexity stacks**: "all those little pieces of complexity you take for granted really stack up, especially for new users." And **the right edge extends to infinity**: power-chasing for experts has no finish line and may never convert them (their run-Replit-on-Replit took half a year; engineers still didn't switch — tooling is *social pride*). Decision prompt: "If you build more power into your product, who is going to come and why?" ("worse is better" — Richard Gabriel — names the dynamic; route GTM implications to `developer-tool-gtm`.)
+- **Speed has a usage law** (Henry Modisett, Perplexity): "the most important user experience is speed… the more they use your product, the faster they'll want to go" — including decision count and click count, not just latency.
 
 ## Visualizing dev data & designing for agents
 

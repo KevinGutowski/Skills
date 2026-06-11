@@ -1,5 +1,14 @@
 # Animations
 
+## Contents
+- Interruptible Animations
+- Enter Animations: Split and Stagger
+- Exit Animations
+- Contextual Icon Animations
+- Scale on Press
+- Skip Animation on Page Load
+
+
 Interruptible animations, enter/exit transitions, and contextual icon animations.
 
 ## Interruptible Animations
@@ -132,6 +141,20 @@ Exit animations should be softer and less attention-grabbing than enter animatio
     filter: "blur(4px)",
     transition: { duration: 0.15, ease: "easeIn" },
   }}
+>
+  {content}
+</motion.div>
+```
+
+### Asymmetric Properties (Enter Moves, Exit Dissolves)
+
+The asymmetry doesn't have to be only speed — you can animate *different properties* in each direction. Movement (`translateX`/`translateY`) announces an arrival; a dissolve (blur + opacity, no translation) lets a departure recede in place. As Jakub Krehel puts it: "Exiting elements often don't need the same level of attention as entering ones" — in his example `translateX` animates on enter, while blur and opacity animate on exit (https://x.com/jakubkrehel/status/2064726630874959958).
+
+```tsx
+<motion.div
+  initial={{ opacity: 0, x: 16 }}            // enter: spatial movement
+  animate={{ opacity: 1, x: 0 }}
+  exit={{ opacity: 0, filter: "blur(4px)" }} // exit: dissolve in place, no movement
 >
   {content}
 </motion.div>

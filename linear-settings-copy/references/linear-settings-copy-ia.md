@@ -1,5 +1,17 @@
 # Linear Settings Copy And IA Reference
 
+## Contents
+- Sidebar IA
+- Page Archetypes
+- Row Anatomy
+- Description Formulae
+- Option Labels
+- Action Labels
+- Subpage Split Rules
+- Naming Pages And Sections
+- Good Settings Copy Checklist
+
+
 Grounded in a live inspection of Linear settings pages on May 20, 2026. This file is a structured analysis, not a verbatim transcript. It captures the patterns needed to write similar settings copy and organize settings surfaces.
 
 ## Sidebar IA

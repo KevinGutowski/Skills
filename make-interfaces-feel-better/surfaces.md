@@ -1,5 +1,14 @@
 # Surfaces
 
+## Contents
+- Concentric Border Radius
+- Optical Alignment
+- Shadows Instead of Borders
+- Eased Gradients
+- Backdrop Blur × mix-blend-mode (Chrome Gotcha)
+- Image Outlines
+- Minimum Hit Area
+
 Border radius, optical alignment, shadows, eased gradients, backdrop blur, and image outlines.
 
 ## Concentric Border Radius

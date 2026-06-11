@@ -1,6 +1,6 @@
 ---
 name: swiftui-identity
-description: "Reason about SwiftUI identity, lifetime, and dependencies — explicit identity (id, ForEach identifiers) vs structural identity (type + position, if/else branches), why @State resets or transitions fade instead of animating in place, AnyView pitfalls, stable-and-unique identifier rules, and inert modifiers over branches. Use when @State unexpectedly resets, an animation cross-fades instead of moving, the wrong row updates or rows flash, choosing ForEach identifiers, debugging excessive body re-evaluation, or deciding between if/else branches and a single modified view. Based on Apple WWDC 2021 session 10022 \"Demystify SwiftUI\". Triggers: SwiftUI identity, structural identity, view lifetime, @State resets, state lost, ForEach id, Identifiable, AnyView, ConditionalContent, fades instead of animating, rows flashing, dependency graph, body re-runs, inert modifier."
+description: "Reasons about SwiftUI identity and lifetime — explicit (id, ForEach) vs structural identity, why @State resets or transitions fade instead of moving, AnyView pitfalls. Use when @State unexpectedly resets, animations cross-fade instead of moving, the wrong row updates, or body re-runs excessively. Based on WWDC 'Demystify SwiftUI'. Triggers: SwiftUI identity, view lifetime, @State resets, ForEach id, AnyView, body re-runs, inert modifier."
 ---
 
 # SwiftUI Identity
@@ -33,6 +33,8 @@ description: "Reason about SwiftUI identity, lifetime, and dependencies — expl
 ## Dependencies — why body runs
 
 Inputs (properties, bindings, environment, state, observed objects) form a **dependency graph** across views — SwiftUI re-runs `body` only for views whose dependencies changed. "Identity is the backbone of the dependency graph," and "identity is one of the secrets to amazing performance."
+- **Over-invalidation is also a battery bug** (WWDC26 Power & Performance lab): "by definition, over-invalidation is you are recreating a view that looks exactly the same… nothing's changing on screen, but the CPU is just churning" — any invalidation fix is a power fix too. Diagnose with the SwiftUI instrument's **cause-and-effect graph**.
+- **Environment churn:** environment values are cheap to *read*; the cost is **high-frequency writes**, which re-evaluate every reader. Don't route fast-changing values (scroll offsets, sensor data) through `@Environment` — coalesce upstream (see `swift-concurrency`).
 - **Inert modifiers over branches:** a modifier whose body contains `if expired { content.opacity(0.3) } else { content }` silently creates two identities. Fold the condition into the value — `.opacity(isExpired ? 0.3 : 1)`; `opacity(1)` is *inert* (no render effect, cheap, pruned). Same trick: `transformEnvironment` for conditional environment writes.
 
 ## Checklist
@@ -50,3 +52,4 @@ Inputs (properties, bindings, environment, state, observed objects) form a **dep
 - **`swiftui-lazy-stacks`** — its Rule 4 (static subview counts) and Rule 6 (state loss on recycle) are this skill's identity/lifetime model applied to lazy containers.
 - **`swiftui-animation`** — fluid in-place animation vs. fade-transition is decided by identity; `AnyLayout` switching works *because* structural identity is preserved.
 - **`swiftui-layout`** — ForEach identifier choices and `_ConditionalContent` structure underlie its containers.
+- **`swift-concurrency`** — the language layer feeding this graph: coalesce/debounce high-frequency updates *before* they cross isolation into `@Observable`, so the dependency graph never sees the firehose.

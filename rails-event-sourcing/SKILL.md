@@ -1,6 +1,6 @@
 ---
 name: rails-event-sourcing
-description: "Apply Arkency's Rails school — DDD, event sourcing, and CQRS, selectively: events as immutable past-tense facts (never 'Updated'), the two-methods aggregate pattern (public command guards invariants and emits; private apply mutates), read models ('Event Sourcing basically requires CQRS'), process managers for multi-step workflows (process state doesn't belong on entity tables), bounded contexts ('layers are not modules'), side effects as lambdas, and the ladder CRUD → event-driven → event-sourced applied only where it earns its cost. Includes the four-school router (vanilla default → layered → packwerk → this). Use when entity tables accrete process state (status enums that are workflows, *_sent_at/retry columns), multi-step flows span contexts, or you're weighing event sourcing. Based on twelve Arkency posts (2014–2026). Triggers: event sourcing, CQRS, DDD Rails, aggregate, read model, process manager, bounded context, domain events, Rails Event Store, god model, event-driven Rails."
+description: "Apply Arkency's Rails school — selective DDD, event sourcing, and CQRS: past-tense events, aggregates, read models, process managers. Includes the four-school router (vanilla default → layered → packwerk → this). Use when entity tables accrete process state (status enums, *_sent_at/retry columns), flows span contexts, or weighing event sourcing. Triggers: event sourcing, CQRS, DDD Rails, aggregate, read model, Rails Event Store."
 ---
 
 # Rails Event Sourcing (the Arkency school)

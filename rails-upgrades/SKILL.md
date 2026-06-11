@@ -1,6 +1,6 @@
 ---
 name: rails-upgrades
-description: "Upgrade Rails apps safely with FastRuby.io's methodology — dual booting via next_rails (Gemfile.next symlink, never a long-lived branch), deprecations-first (fix and DEPLOY them on the current version before bumping), strictly sequential versions, config.load_defaults aligned before each bump, broken-build triage (errors before failures, unit tests first, batch by root cause, commit per batch), post-flip cleanup, and gem vetting ('sometimes the safest dependency is the one you never add'). Use when planning or executing a Rails or Ruby version upgrade, estimating upgrade effort, fixing a suite that's red under the next version, removing dual-boot scaffolding, or auditing dependencies for upgrade risk. Based on FastRuby.io posts and their open-sourced upgrade skills (2019–2026). Triggers: Rails upgrade, dual boot, next_rails, Gemfile.next, deprecation warnings, load_defaults, broken build, version bump, legacy Rails, gem audit."
+description: "Upgrades Rails apps safely with FastRuby.io's methodology — dual booting via next_rails, deprecations-first, strictly sequential versions, broken-build triage, gem vetting. Use when planning or executing a Rails/Ruby upgrade, estimating effort, fixing a suite red under the next version, or auditing gems for upgrade risk. Based on FastRuby.io posts. Triggers: Rails upgrade, dual boot, next_rails, Gemfile.next, deprecation warnings, load_defaults."
 ---
 
 # Rails Upgrades (the FastRuby method)

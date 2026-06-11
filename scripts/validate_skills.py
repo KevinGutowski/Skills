@@ -4,7 +4,7 @@
 Checks:
   1. Frontmatter parses as strict YAML (--- delimited block at top of file)
   2. `name` and `description` keys present; name matches the directory name
-  3. description <= 1024 chars (official Agent Skills limit)
+  3. description <= 1024 chars (official limit); warn > 700 (house conciseness target)
   4. SKILL.md body <= 500 lines (progressive-disclosure guidance)
   5. Relative links / referenced files in SKILL.md resolve on disk
 
@@ -22,6 +22,7 @@ except ImportError:
     sys.exit("pyyaml required: pip3 install pyyaml")
 
 MAX_DESC = 1024
+TARGET_DESC = 700  # house style: concise descriptions; 1024 is the API hard cap, not a budget
 MAX_LINES = 500
 
 problems = []
@@ -55,6 +56,8 @@ for path in sorted(glob.glob("*/SKILL.md")):
     # 3. description length
     if len(meta["description"]) > MAX_DESC:
         problems.append(f"{path}: description {len(meta['description'])} chars (max {MAX_DESC})")
+    elif len(meta["description"]) > TARGET_DESC:
+        warnings.append(f"{path}: description {len(meta['description'])} chars (house target ≤{TARGET_DESC} — descriptions preload into every session)")
 
     # 4. body line count
     lines = text.count("\n") + 1

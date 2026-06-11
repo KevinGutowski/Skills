@@ -48,7 +48,7 @@ Don't animate a single container. Break content into semantic chunks and stagger
 
 ### 6. Subtle Exit Animations
 
-Use a small fixed `translateY` instead of full height. Exits should be softer than enters.
+Use a small fixed `translateY` instead of full height. Exits should be softer than enters — asymmetry can be in the *properties*, not just speed: movement (`translateX/Y`) on enter, dissolve (blur + opacity, no movement) on exit. See [animations.md](animations.md) → Asymmetric Properties.
 
 ### 7. Contextual Icon Animations
 
@@ -90,9 +90,28 @@ Only for `transform`, `opacity`, `filter` — properties the GPU can composite. 
 
 Interactive elements need at least 40×40px hit area. Extend with a pseudo-element if the visible element is smaller. Never let hit areas of two elements overlap.
 
-### 17. Eased Gradients
+### 17. Layout Stability Over Skeletons
 
-Two-stop linear gradients leave a visible edge where they start and stop — especially fade-to-transparent scrims and significant color changes. Add intermediate stops sampled from an easing curve so the transition starts and ends gently. For color-to-color gradients also interpolate in a better space (`in oklab`) to avoid muddy midpoints — but only eased stops fix the hard edges. For dark mode, make a dedicated dark-mode hero asset rather than overlaying a gradient on the light-mode one.
+(Dennis Brotzky, Fey — animations.dev interview.) "When you open a page, things don't move around. There aren't loaders. And if you can achieve that, I think you'll be in the top, top 1% of web apps."
+- **Preload over placeholders**: have the data ready before the click whenever possible — a burst of spinners/skeletons on navigation "completely ruins the experience."
+- If a skeleton is unavoidable, the loaded content must land **exactly where the skeleton was** — no shift.
+- A skeleton for content of *unknown width* (a team name, a title) is a design smell — "an engineering solution thinking first." Redesign so the unknown isn't load-bearing (lead with an icon or fixed-size element instead).
+- **Motion as wayfinding**: animate things *toward where they live* (Linear's composer minimizes into the sidebar, teaching you where drafts go) — the animation is the tutorial.
+
+### 18. Modern CSS Primitives (Jhey Tompkins, Config 2024)
+
+Let the browser do the boring stuff "so we can focus on the really important stuff":
+- `@starting-style` + `transition-behavior: allow-discrete` — transition from `display: none` (dialogs/popovers) with zero JS.
+- **Popover + anchor positioning** — top layer ("z-index, see you later"), free light-dismiss/focus; `position-try: flip-block flip-inline` keeps it in-viewport; `anchor-size()` enables button-morphs-into-form patterns.
+- **Scroll-driven animations** — `view-timeline`/`scroll-timeline`, `animation-range: entry`, `timeline-scope` to scroll one element and animate another.
+- **Gradient borders** via layered `padding-box`/`border-box` backgrounds + transparent border; `offset-path` for constant-speed perimeter motion (mask rotation speeds up in corners); progressive blur via stacked masked blur layers with exponential multipliers.
+- Write-once habits: `pow()`-based fluid type scale (`--font-level` per element), `color-mix()` theming toward white/transparent, `light-dark()`, a `linear()` spring dropped into the stylesheet "and never touched again," **`sin()`-based eased staggers** (set a spread angle instead of guessing per-index delays).
+- Small wins: `field-sizing: content` for auto-growing textareas; `scrollbar-color`/`scrollbar-width`.
+
+### 19. The Squint Test & Anti-Sterile Texture
+
+- **Squint test** (Henry Modisett, Perplexity): "squint at the screen and still flow through the product… the best products have almost a gravitational pull to them. You can't really use them the wrong way."
+- **Anti-sterile texture** (Inga Hampton, Raycast): "Blur is a superpower. Nothing in the real world is perfectly sharp" — even ~0.3px of blur de-sterilizes vector art; grain "ties everything together and helps with color banding"; in raster-painting, "blend modes do most of the work" (lighten, color dodge, plus-darker).
 
 ## Common Mistakes
 
@@ -162,3 +181,7 @@ Rows should cite the specific file and the specific property that changed when i
 - [surfaces.md](surfaces.md) — Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines
 - [animations.md](animations.md) — Interruptible animations, enter/exit transitions, icon animations, scale on press
 - [performance.md](performance.md) — Transition specificity, `will-change` usage, perceived performance (spinner choice assigns blame)
+
+### 20. Eased Gradients
+
+Two-stop linear gradients leave a visible edge where they start and stop — especially fade-to-transparent scrims and significant color changes. Add intermediate stops sampled from an easing curve so the transition starts and ends gently. For color-to-color gradients also interpolate in a better space (`in oklab`) to avoid muddy midpoints — but only eased stops fix the hard edges. For dark mode, make a dedicated dark-mode hero asset rather than overlaying a gradient on the light-mode one.

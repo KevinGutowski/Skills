@@ -1,6 +1,6 @@
 ---
 name: swiftui-lazy-stacks
-description: "Build and debug SwiftUI scrolling content with LazyVStack/LazyHStack — understand layout estimation, view resolution, prefetching, scroll position, and the performance pitfalls that cause jank, disappearing views, leaked state, or broken programmatic scrolling. Use when building or reviewing SwiftUI ScrollView/lazy-stack code, composing nested or mixed scrolling content, adding scroll transitions, pinned headers, infinite scroll, or scroll-driven UI, or diagnosing scroll hitches, views vanishing too early, state lost on scroll, or slow programmatic scrolling. Based on Apple WWDC 2026 session 321. Triggers: LazyVStack, LazyHStack, ScrollView, lazy stack, scroll performance, scroll jank, hitch, scrollTransition, onScrollGeometryChange, onScrollTargetVisibilityChange, ScrollPosition, scrollPosition, pinnedViews, prefetching, infinite scroll, programmatic scroll."
+description: "Builds and debugs SwiftUI scrolling content with LazyVStack/LazyHStack — layout estimation, prefetching, scroll position. Use when building or reviewing ScrollView/lazy-stack code, nesting scrolling content, adding pinned headers or infinite scroll, or diagnosing scroll hitches and state lost on scroll. Based on WWDC 2026 session 321. Triggers: LazyVStack, ScrollView, scroll performance, jank, scrollPosition, pinnedViews, infinite scroll."
 ---
 
 # SwiftUI Lazy Stacks & Scrolling
@@ -54,6 +54,8 @@ init(detailLevel: DetailLevel) {
 ```
 
 If content is gated (e.g. an optional auth token unwrapped in the body), show a `ContentUnavailableView` *higher up* instead of rendering the lazy stack at all.
+
+The WWDC26 Power & Performance lab reinforced this from the energy side: "instead of having an if statement in your ForEach… do that before you even provide the list to SwiftUI" — pre-filter in the model. And **keep cell sizes constant where you can**: "if something in the middle changes size… cascading effect" — one resizing row relayouts everything after it, which costs CPU and battery, not just smoothness.
 
 ### 5. Set up subviews in their initializer, not `onAppear` — respect prefetching
 Lazy stacks **prefetch**: they do part of a view's work (body eval, layout) before it scrolls on, split across frames, to avoid dropped frames (hitches). So `body` may run during prefetch and — if the scroll reverses — `onAppear` may never fire. Heavy setup in `onAppear` that changes a view's size/content *after* placement throws away prefetch work and can over-load views. Put the view in a reasonable state in `init`; use a cache/loader that starts work in its initializer to fetch *earlier* than `.task`/`onAppear` would. **Good** `onAppear` use: triggering the next page for infinite scroll from a trailing `ProgressView`.

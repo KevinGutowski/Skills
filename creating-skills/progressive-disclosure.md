@@ -1,5 +1,14 @@
 # Progressive Disclosure
 
+## Contents
+- The Concept
+- How It Works
+- Directory Patterns
+- Token Economics
+- Best Practices
+- Example: Complete Structure
+
+
 Source: [Skills Overview](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
 
 ## The Concept

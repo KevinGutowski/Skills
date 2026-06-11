@@ -1,5 +1,15 @@
 # Handling Bugs
 
+## Contents
+- Bugs Aren't Automatically Special
+- The Severity Spectrum
+- Three Strategies for Bugs
+- The Key Principle
+- Why This Works
+- Example Conversation
+- Tracking Bugs
+
+
 ## Bugs Aren't Automatically Special
 
 The first thing to understand about bugs is that they aren't automatically more important than everything else. The default response is: bugs can wait.

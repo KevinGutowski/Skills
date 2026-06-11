@@ -1,13 +1,6 @@
 ---
 name: source-translation-workflow
-description: >
-  Preserve, clean, translate, and promote multilingual research sources without
-  collapsing provenance. Use when handling Japanese/English research translation,
-  bilingual transcripts, ASR cleanup, manual JA-to-EN translation, source excerpts,
-  Airtable excerpt fields, interview translation, captions, subtitles, or publication
-  copy derived from translated source text. Triggers: translation workflow, four-layer
-  transcript, English session transcript, translated from JA, direct transcript excerpt,
-  excerpt JA EN, interpreter echo, source-language transcript, caption QA.
+description: "Preserves, cleans, translates, and promotes multilingual research sources without collapsing provenance. Use for Japanese/English research translation, bilingual transcripts, ASR cleanup, source excerpts and Airtable excerpt fields, captions/subtitles, or publication copy derived from translated text. Triggers: translation workflow, four-layer transcript, translated from JA, direct transcript excerpt, interpreter echo, caption QA."
 ---
 
 # Source Translation Workflow

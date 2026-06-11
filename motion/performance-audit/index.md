@@ -1,5 +1,13 @@
 # MotionScore performance audit
 
+## Contents
+- Step 1: Audit
+- Step 2: Report
+- Step 3: Fix
+- Voice rules
+- Library-specific notes
+
+
 Use the procedure in this skill to find & fix animation performance issues either by analysing code or, if requested, runtime profiling.
 
 1. Audit: Classify every animation by its render-pipeline cost. Identify fixes and upgrade paths.

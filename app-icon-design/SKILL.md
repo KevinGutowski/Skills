@@ -1,6 +1,6 @@
 ---
 name: app-icon-design
-description: "Design app icons for Apple platforms — the timeless craft (metaphor, simplicity, connection, lineage; testing at small sizes) and the layered Liquid Glass icon system (light/dark/clear/tinted appearance modes, the unified cross-platform grid, layering rules, Icon Composer workflow from flat vector source art to one .icon file). Use when designing, redesigning, or reviewing an app icon, preparing layered icons or appearance variants, using Icon Composer, choosing an icon metaphor, or fixing icons that read poorly at small sizes or in tinted/clear modes. Based on Apple WWDC sessions 822 (2017) and 220 & 361 (2025). Triggers: app icon, icon design, icon metaphor, Icon Composer, .icon file, layered icon, icon appearance modes, tinted icon, clear icon, dark mode icon, icon grid, 1024 canvas, icon at small sizes, home screen icon."
+description: "Design app icons for Apple platforms — timeless craft (metaphor, simplicity, small-size testing) and the layered Liquid Glass icon system with appearance modes via Icon Composer. Use when designing or reviewing an app icon, preparing layered icons or dark/tinted/clear variants, or fixing icons that read poorly small. Based on 3 Apple WWDC sessions. Triggers: app icon, icon metaphor, Icon Composer, layered icon, tinted icon, dark mode icon."
 ---
 
 # App Icon Design
@@ -19,6 +19,8 @@ description: "Design app icons for Apple platforms — the timeless craft (metap
 - **Connection** — emotional, fun, engaging; the icon can become the brand (Instagram's glyph).
 - **Lineage** — "don't change your app icon every single time you update your app. Refine your identity over time." Think of the icon as an investment.
 - **Process:** be unique in your category; sketch on paper first; the "only app on the Home screen" test (does it communicate without its name?); **test on the Home screen, in a folder, and in Settings — squint**; "oftentimes it's the simplest design or an early direction that you abandoned that's ultimately right."
+
+Two practitioner data points (Config 2024): the entire personality of Susan Kare's Chicago lives in ~**1,800 pixels** — tiny canvases can carry identity if every pixel is a decision; and Hische's small-size rules apply to icon marks too: less stroke contrast, more white space, simplified details that would vanish (run the **blur test** — a strong mark survives blurring).
 
 ## The Liquid Glass icon system (2025)
 

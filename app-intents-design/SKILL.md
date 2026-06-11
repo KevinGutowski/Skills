@@ -1,6 +1,6 @@
 ---
 name: app-intents-design
-description: "Design App Intents and App Shortcuts across Siri, Spotlight, widgets, controls, the Action button, and Shortcuts — pick which features to expose, phrase invocation phrases with synonyms, structure parameters (optional-first, toggle defaults), choose the lightest collection pattern (assume → confirm → disambiguate → open-ended → confirmation), design interactive snippets and voice-only dialog, and decide when an intent opens the app. Use when designing or reviewing intents/shortcuts, writing Siri phrases, structuring parameters, or designing snippets vs Live Activities. Based on Apple WWDC sessions 10169 (2022), 10176 (2024), and 281 (2025). Triggers: App Intents, App Shortcuts, invocation phrase, parameter summary, Siri snippet, interactive snippet, disambiguation, intent confirmation, Siri Tip, Action button, OpenIntent."
+description: "Design App Intents and App Shortcuts across Siri, Spotlight, widgets, controls, and the Action button. Use when deciding which features to expose as intents, writing invocation phrases, structuring parameters, designing interactive snippets, or choosing snippet vs Live Activity. Based on 3 Apple WWDC sessions. Triggers: App Intents, App Shortcuts, invocation phrase, parameter summary, interactive snippet, Siri."
 ---
 
 # App Intents Design

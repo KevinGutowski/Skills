@@ -9,10 +9,12 @@ A curated library of Claude Code skills. The largest cluster is a design library
 |---|---|
 | `design-principles` | Whether/why decisions, design critique, trade-offs (purpose, agency, craft, delight…) — the strategic layer the rest sit under |
 | `design-prototyping` | Validating ideas before building: fake-it → SwiftUI-as-design-tool → coding agents (incl. Cursor's design-in-code endpoint); presenting design work |
+| `interface-craft-principles` | *(local-only, gitignored — members-only source)* Quality practice (Josh Puckett): noticing, range→depth, facets of quality, live tuning, uncommon care. Its core heuristics are also folded into `design-principles` and `design-prototyping` |
 | `naming-features-and-labels` | What to call a feature, label, plan, button |
 | `feature-discoverability` | First launches, tips/TipKit, features users can't find |
 | `user-onboarding` | First-run flows, empty states, onboarding copy (Hulick method) |
 | `shape-up` | Product scoping/betting (Basecamp method) + the competing Linear school (design as reference, no handoff/PMs, taste over data) and routing between them |
+| `hardware-product-design` | Physical products: form-factor positioning, mockups/rigs/jigs, input selection, manufacturing/supplier reality |
 
 ### Apple platform design (HIG-grounded)
 | Skill | Use it for |
@@ -32,10 +34,10 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `ai-experience-design` | ML/LLM-backed feature design, generative UX, model safety |
 
 ### SwiftUI engineering
-`swiftui-identity` (the identity/lifetime/dependencies mental model — debug state resets here) · `swiftui-layout` (containers, Layout protocol, navigation structure) · `swiftui-lazy-stacks` (scroll performance) · `swiftui-animation` (springs, transitions, shaders).
+`swiftui-identity` (the identity/lifetime/dependencies mental model — debug state resets here) · `swiftui-layout` (containers, Layout protocol, navigation structure) · `swiftui-lazy-stacks` (scroll performance) · `swiftui-animation` (springs, transitions, shaders) · `swift-concurrency` (the language layer beneath the trio: structured concurrency, sendability, Swift 6 migration, measure-first performance features).
 
 ### Motion & frontend (web)
-`web-animation-design` (the default theme for web motion values) · `motion` / `motion-javascript` / `motion-audit` / `css-spring` / `see-transition` (Motion library, perf audits, spring tooling) · `make-interfaces-feel-better` + `emil-design-eng` (UI polish craft) · `frontend-design` (building distinctive web UI) · `oklch-skill` (color) · `social-video-safe-zones`.
+`web-performance` (load + interaction speed: fluid-UI frame budgets, Core Web Vitals, perf culture) · `web-animation-design` (the default theme for web motion values) · `motion` (the Motion AI Kit umbrella — encapsulates best-practices, docs search, CSS spring generation, performance audit, transition visualisation as sub-capabilities) · `make-interfaces-feel-better` + `emil-design-eng` (UI polish craft) · `frontend-design` (building distinctive web UI) · `oklch-skill` (color) · `social-video-safe-zones`.
 
 ### Writing & content
 `write-clear-prose` · `ui-voice-and-tone` (product voice + microcopy) · `error-messages` (failure-state copy) · `linear-settings-copy` (settings IA/copy).
@@ -68,10 +70,10 @@ A curated library of Claude Code skills. The largest cluster is a design library
 **Rails school rule (default: vanilla):** four positions — `dhh-style` (vanilla, the default) → `layered-rails` (extraction, when models/controllers bloat) → packwerk-style module boundaries (when "200 models, zero modules" but simple processes) → `rails-event-sourcing` (when *processes* are the pain). The vanilla school has seven vendored 37signals satellites (`dhh`, `rails-webhooks`, `rails-migrations`, `rails-security-multitenancy`, `rails-jobs`, `rails-hotwire-realtime`, `rails-fixtures-testing` — from `marckohlbrugge/37signals-skills`, mined from Fizzy's PRs); note the testing split: `rails-testing` is the *factories* school, `rails-fixtures-testing` the *fixtures* school — route by the project's existing choice. Escalate only on named pains; pick one school per project and stay consistent; never blend idioms in one codebase. The full router with each school's own warranted/overkill criteria lives in `rails-event-sourcing`.
 
 ### Research & cataloging
-`archival-research` (research bundles, OCR/transcription corpora) · `catalog-reconciliation-research` · `source-translation-workflow` · `image-archival` · `x-post-reader` · `route-planning`.
+`source-sweep` (exhaustive coverage of bounded sources: inventory, ledger, open every node) · `archival-research` (research bundles, OCR/transcription corpora) · `catalog-reconciliation-research` · `source-translation-workflow` · `image-archival` · `x-post-reader` · `route-planning`.
 
 ### Developer tools as products
-`devtool-interface-design` (dev-tool UI: contexts, control flow, zones, CLI UX, devtool onboarding, agent experience) · `developer-tool-gtm` (landing pages, copy, conversion, PMF Compass) · `oss-strategy` (OSS popularity, READMEs, maintainer survival, monetization). Boundary: `devtool-interface-design` makes the tool worth adopting; `developer-tool-gtm` gets it adopted; `agentic-coding` is agents working *on your code* while devtool AX is agents as *customers of your tool*.
+`design-systems` (tokens, theming, governance/federation, adoption metrics, DS-as-AI-context — from 9 Config talks) · `devtool-interface-design` (dev-tool UI: contexts, control flow, zones, CLI UX, devtool onboarding, agent experience) · `developer-tool-gtm` (landing pages, copy, conversion, PMF Compass) · `building-in-public` (audience-led indie growth: rough-beats-polished content, prototype-stage validation, company-of-one economics) · `oss-strategy` (OSS popularity, READMEs, maintainer survival, monetization). Boundary: `devtool-interface-design` makes the tool worth adopting; `developer-tool-gtm` gets it adopted; `agentic-coding` is agents working *on your code* while devtool AX is agents as *customers of your tool*.
 
 ### Tooling & meta
 `creating-skills` / `skill-creator` / `converting-books-to-skills` / `converting-codebases-to-skills` (authoring skills — books/docs vs. living repos with PR history) · `goal` (session goals) · `airtable-mcp`, `nocodb-catalog-management`, `openai-transcription-chunking` (integrations).

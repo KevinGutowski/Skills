@@ -1,5 +1,22 @@
 # SwiftUI Animation & Effects — Code Patterns
 
+## Contents
+- Zoom transition
+- SwiftUI Animation driving UIKit
+- Scroll effects
+- MeshGradient
+- Custom view transition
+- TextRenderer (per-glyph text transition)
+- Metal shader: Ripple
+- Quick facts worth keeping
+- Composing effects: domain warp + time (WWDC 2026 · 322, added by extension)
+- Springs by duration + bounce (10158)
+- Scoped animations & different animations per attribute (10156)
+- Custom Animatable (runs body every frame — last resort) (10156)
+- CustomAnimation — animate(value:time:context:), velocity, shouldMerge (10156)
+- Transaction & TransactionKey (10156)
+
+
 *Sources (samples transcribed verbatim from each session's Code tab; timestamps preserved):*
 - *WWDC 2024, session 10145 — "Enhance your UI animations and transitions." https://developer.apple.com/videos/play/wwdc2024/10145/*
 - *WWDC 2024, session 10151 — "Create custom visual effects with SwiftUI." https://developer.apple.com/videos/play/wwdc2024/10151/*

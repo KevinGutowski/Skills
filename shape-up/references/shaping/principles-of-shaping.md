@@ -1,5 +1,16 @@
 # Principles of Shaping
 
+## Contents
+- The Right Level of Abstraction
+- Wireframes Are Too Concrete
+- Words Are Too Abstract
+- The Sweet Spot
+- Case Study: The Dot Grid Calendar
+- Who Shapes
+- Two Tracks
+- The Four Steps
+
+
 ## The Right Level of Abstraction
 
 When we shape the work, we need to do it at the right level of abstraction: not too vague and not too concrete. Product managers often err on one of these two extremes.

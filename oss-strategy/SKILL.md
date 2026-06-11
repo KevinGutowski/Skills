@@ -1,6 +1,6 @@
 ---
 name: oss-strategy
-description: "Make an open source project adopted, sustainable, and profitable — Sitnik's popularity formula (your popularity + promotion + benefits for users + luck), the progressive-JPEG README discipline (first paragraph carries everything; the bar test; real stats), the iterative promotion loop (content → feedback → fix → repeat; PRs as promotion), maintainer survival (circle of guilt, 15 min/day on issues, systemic fixes, tick-tack deprecation, befriend competitors), and four monetization models honestly ranked (donations; consulting; SaaS; open core). Use when launching or promoting an open source library, writing or reviewing a README, fighting maintainer burnout, planning breaking changes, growing a plugin ecosystem, or monetizing OSS. Based on three Evil Martians Chronicles posts. Triggers: open source, OSS, README, GitHub stars, promote my library, maintainer burnout, issue backlog, deprecation policy, open core, COSS, monetize open source, sponsorships, plugin ecosystem."
+description: "Make an open source project adopted, sustainable, and profitable — Sitnik's popularity formula, progressive-JPEG README, the promotion loop, maintainer survival, honest monetization models. Use when launching or promoting an OSS library, writing a README, fighting burnout, planning breaking changes, or monetizing. Based on Evil Martians posts. Triggers: open source, README, GitHub stars, promote my library, maintainer burnout, open core."
 ---
 
 # Open Source Strategy

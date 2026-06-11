@@ -1,5 +1,13 @@
 # Project Modes for New Products
 
+## Contents
+- When These Apply
+- The Three Modes
+- The Transitions
+- Examples
+- The Key Insight
+
+
 ## When These Apply
 
 These modes apply when you're building something **new**—a new product, a new major initiative, something that doesn't exist yet.

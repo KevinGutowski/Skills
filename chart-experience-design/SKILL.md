@@ -1,6 +1,6 @@
 ---
 name: chart-experience-design
-description: "Design effective, accessible charts and the experience around them in apps — the five-part anatomy (marks, axes, descriptions, interaction, color), when information deserves a chart, progressive disclosure from static platters to interactive detail charts, pairing charts with text at macro/medium/micro perspectives, and multi-chart design systems. Use when designing or reviewing in-app charts (Swift Charts or any framework), choosing marks and axis ranges, writing chart titles and accessibility labels, supporting VoiceOver/Audio Graphs, or linking preview charts to detail views. Based on Apple WWDC 2022 sessions 110340 and 110342. Triggers: chart design, in-app charts, chart anatomy, Audio Graphs, chart accessibility, chart platter, progressive disclosure charts, chart design system."
+description: "Design accessible charts and the experience around them in apps — five-part chart anatomy, progressive disclosure from static platters to interactive detail charts. Use when designing or reviewing in-app charts, choosing marks and axis ranges, writing accessibility labels, or supporting Audio Graphs. Based on 2 Apple WWDC sessions. Triggers: chart design, in-app charts, Swift Charts, Audio Graphs, chart accessibility, chart platter."
 ---
 
 # Chart Experience Design
@@ -14,6 +14,8 @@ An effective chart is **focused** (a few key insights, intentionally), **approac
 ## When does information deserve a chart?
 
 Three strong cases: **change over time** (historical/predicted values), **portion of a whole** (progress toward a goal, filling/emptying), and **comparison** (items or categories). Charts are a strong focal signal — "only the most important information should become a chart."
+
+A fourth display mode beyond charts: **simulation over enum states** (Andy Allen, (Not Boring) Weather — Config 2024). Instead of collapsing rich data into one coded state (a "partly cloudy" icon), render the continuous values — cloud coverage as actual cloud density ("you can tell the difference between 73% and 72%"), rainfall rate as particle-emitter rate, wind as a force field. Multiple data points in one living visualization: "you're not really reading the weather so much as you're *feeling* it." Use simulation when the data is ambient and continuous; use charts when precision and comparison matter.
 
 ## The five-part anatomy (per chart)
 

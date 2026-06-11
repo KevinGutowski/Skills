@@ -1,5 +1,16 @@
 # Showing Project Progress
 
+## Contents
+- The Problem with Task Lists
+- Work Is Like a Hill
+- Scopes on the Hill
+- The Power of Second-Order View
+- Nobody Says "I Don't Know"
+- When a Scope Won't Move
+- Build Your Way Uphill
+- Solve in the Right Sequence
+
+
 ## The Problem with Task Lists
 
 Managers want to see status without asking. But to-do lists have problems that make them insufficient for judging status.

@@ -1,5 +1,11 @@
 # Typography
 
+## Contents
+- Text Wrapping
+- Font Smoothing (macOS)
+- Tabular Numbers
+
+
 Typography rendering details that make interfaces feel better.
 
 ## Text Wrapping

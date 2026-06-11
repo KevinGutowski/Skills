@@ -1,6 +1,6 @@
 ---
 name: naming-features-and-labels
-description: "Craft and critique clear, well-fitting names for anything users see in a product — features, labels, settings, values, buttons, tabs, menu items, modes, toggles, subscription plans/tiers, and product or feature names. Use when naming or renaming a feature, deciding what to call a label/setting/value/button, choosing between a descriptive vs. clever/branded name, generating name candidates, running a naming exercise, or evaluating a proposed name for clarity, fit, and tone. Based on Apple's Human Interface \"Craft clear names for features and labels in your app\" session. Triggers: what should we call this, name this feature, rename, label copy, plan names, tab/menu names, naming criteria, clarity vs brand."
+description: "Craft and critique clear names for anything users see — features, labels, settings, buttons, tabs, modes, plan tiers, product names. Use when naming or renaming a feature, choosing descriptive vs clever/branded, generating candidates, or judging a name's clarity, fit, and tone. Based on Apple's 'Craft clear names' WWDC session. Triggers: what should we call this, name this feature, rename, label copy, plan names, clarity vs brand."
 ---
 
 # Naming Features and Labels

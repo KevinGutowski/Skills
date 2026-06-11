@@ -1,5 +1,15 @@
 # Apple Typography — Code Patterns
 
+## Contents
+- Text styles (the foundation)
+- Tracking (prefer the system's tables)
+- Dynamic Type with custom fonts
+- Dynamic layouts at accessibility sizes
+- Scaling images and symbols with text
+- Large Content Viewer (bars that can't grow)
+- Quick facts worth keeping
+
+
 *Sources (samples transcribed verbatim from each session's Code tab; timestamps preserved):*
 - *WWDC 2024, session 10074 — "Get started with Dynamic Type." https://developer.apple.com/videos/play/wwdc2024/10074/*
 - *WWDC 2020, session 10175 — "The details of UI typography." https://developer.apple.com/videos/play/wwdc2020/10175/*

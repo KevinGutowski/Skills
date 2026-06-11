@@ -1,6 +1,6 @@
 ---
 name: swiftui-animation
-description: "Build animations, transitions, and custom visual effects in SwiftUI — the animation architecture (Animatable, Transaction/TransactionKey, scoped .animation, CustomAnimation), springs by duration+bounce (.smooth/.snappy/.bouncy, velocity-preserving gesture handoff), zoom navigation transitions, scroll-driven effects (scrollTransition/visualEffect), MeshGradient, custom Transition conformances, TextRenderer glyph animation, Metal shader effects, and composing effect pipelines; bridges SwiftUI Animation into UIKit/AppKit and cross-framework springs. Use when implementing or reviewing SwiftUI motion, choosing or tuning springs, animating from gestures, adding parallax or shaders, or debugging transitions. Based on Apple WWDC 2023 sessions 10156 & 10158, 2024 sessions 10145 & 10151, and 2026 session 322. Triggers: withAnimation, spring bounce, Animatable, Transaction, CustomAnimation, navigationTransition, scrollTransition, visualEffect, MeshGradient, TextRenderer, ShaderLibrary, keyframeAnimator."
+description: "Builds animations, transitions, and visual effects in SwiftUI — springs by duration+bounce, navigation and scroll-driven transitions, custom Transitions, TextRenderer and shader effects. Use when implementing SwiftUI motion, tuning springs, animating from gestures, or debugging transitions. Based on Apple WWDC sessions. Triggers: withAnimation, spring bounce, Animatable, navigationTransition, scrollTransition, visualEffect, keyframeAnimator."
 ---
 
 # SwiftUI Animation & Visual Effects

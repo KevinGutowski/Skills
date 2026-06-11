@@ -1,5 +1,17 @@
 # Fixed Time, Variable Scope
 
+## Contents
+- The Core Mindset Shift
+- Why This Matters
+- How It Works in Practice
+- "Good" Is Relative
+- Example: The Calendar
+- Example: The Dot Grid
+- The Trade-Off Triangle
+- In Practice
+- The Mindset
+
+
 ## The Core Mindset Shift
 
 An appetite is completely different from an estimate.

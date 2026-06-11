@@ -1,6 +1,6 @@
 ---
 name: ruby-refactoring
-description: "Diagnose Ruby/Rails code smells and pick the right refactoring with thoughtbot's Ruby Science catalog — 13 smells with thresholds (Long Method at flog ≥10, Large Class at >7 methods or flog ≥50, Long Parameter List at ≥3 args, plus Rails-specific STI and Callback smells) mapped to 20 solutions (Extract Method/Class/Value Object, Replace Conditional with Polymorphism/Null Object, Form/Parameter Objects, Replace Mixin with Composition). Governing rule: 'Don't treat code smells as bugs… Not every smell is the symptom of a problem.' Use when reviewing or refactoring Ruby code, deciding whether/how to extract, or untangling god classes, feature envy, shotgun surgery, callback soup, or mixin overuse. NOTE: the extraction school — conflicts with dhh-style on callbacks; route by project school. Based on thoughtbot's Ruby Science. Triggers: code smell, refactor Ruby, extract class, god class, feature envy, shotgun surgery, long method, flog, form object, null object, value object, replace conditional."
+description: "Diagnoses Ruby/Rails code smells and picks the right fix from thoughtbot's Ruby Science — 13 smells mapped to 20 solutions; not every smell is a problem. The extraction school — conflicts with dhh-style on callbacks; route by project school. Use when reviewing or refactoring Ruby, deciding whether/how to extract, or untangling god classes or callback soup. Triggers: code smell, refactor Ruby, extract class, god class, feature envy, form object."
 ---
 
 # Ruby Refactoring (thoughtbot's Ruby Science)

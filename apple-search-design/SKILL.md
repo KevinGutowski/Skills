@@ -1,6 +1,6 @@
 ---
 name: apple-search-design
-description: "Design intuitive search experiences on Apple platforms (iOS, iPadOS, macOS) — the search field, where to place it (bottom/top toolbar, search tab, inline, sidebar, trailing toolbar), how placement signals scope, and best practices for suggestions, recent searches, predictive completion, filtering (scope bars, tokens), and empty/no-results states. Use when designing or reviewing in-app search, deciding where search should live, choosing a search pattern for iOS vs iPad/Mac, adding a search tab, scope bar, or search tokens, surfacing recent searches or predictive suggestions, or handling no-results states. Based on Apple WWDC 2026 session 292 + the HIG. Triggers: search field, search UX, where to put search, search placement, search tab, scope bar, search tokens, recent searches, predictive suggestions, search filters, no results, empty state, ContentUnavailableView, Liquid Glass search."
+description: "Design search experiences on Apple platforms — field placement and how it signals scope, suggestions, recent searches, scope bars and tokens, no-results states. Use when designing or reviewing in-app search, deciding where search lives, choosing iOS vs iPad/Mac patterns, or adding a search tab or tokens. Based on Apple WWDC 2026 session 292 + the HIG. Triggers: search field, search placement, search tab, scope bar, search tokens, no results."
 ---
 
 # Apple Search Design

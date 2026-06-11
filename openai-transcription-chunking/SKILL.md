@@ -1,14 +1,6 @@
 ---
 name: openai-transcription-chunking
-description: >
-  Run reliable OpenAI audio transcription/Whisper-style ASR on long recordings by
-  preserving platform captions, extracting normalized audio, splitting into chunks,
-  saving raw JSON per chunk, auditing for hallucinated loops or name drift, and
-  retrying only failed chunks or smaller slices. Use when working with OpenAI
-  transcription APIs, Whisper API workflows, chunked ASR, retrying bad transcript
-  chunks, bilingual talks, caption-first transcript QA, or raw-to-working transcript
-  assembly. Triggers: OpenAI transcription, Whisper API, chunk audio, retry chunk,
-  ASR retry, transcript hallucination, openai_chunk, gpt-4o-transcribe, caption QA.
+description: "Run reliable OpenAI/Whisper transcription on long recordings — preserve captions, split audio into chunks, save raw JSON per chunk, audit hallucinated loops, retry only failed chunks. Use for chunked ASR, retrying bad chunks, bilingual talks, or caption-first QA. Triggers: OpenAI transcription, Whisper API, chunk audio, retry chunk, transcript hallucination, gpt-4o-transcribe."
 ---
 
 # OpenAI Transcription Chunking

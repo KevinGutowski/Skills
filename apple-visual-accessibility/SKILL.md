@@ -1,6 +1,6 @@
 ---
 name: apple-visual-accessibility
-description: "Make apps accessible and inclusive on Apple platforms — respect the visual accessibility settings (Dynamic Type, Bold Text, Button Shapes, Increase Contrast, Differentiate Without Color, Smart Invert, Reduce Motion/Transparency, cross-fade, autoplay), meet contrast ratios (4.5:1), never let color carry meaning alone, and apply inclusive-design principles across the vision/hearing/motor/speech/cognitive spectra. Use when adding or auditing accessibility, handling colorblindness or low vision, adapting motion or transparency, fixing truncation at large text, or designing for cognitive and situational contexts. Based on Apple WWDC sessions 10020 (2020), 244 (2019), and 316 (2025). Triggers: accessibility, a11y, inclusive design, inclusion gap, colorblind, contrast ratio, UIAccessibility, accessibilityReduceMotion, Button Shapes, Smart Invert, motion sensitivity."
+description: "Make apps accessible and inclusive on Apple platforms — respect settings like Bold Text, Increase Contrast, Differentiate Without Color, and Reduce Motion; meet 4.5:1 contrast; never let color carry meaning alone. Use when adding or auditing accessibility, handling colorblindness or low vision, or adapting motion. Based on 3 Apple WWDC sessions. Triggers: accessibility, a11y, colorblind, contrast ratio, Reduce Motion, Smart Invert."
 ---
 
 # Apple Visual Accessibility
