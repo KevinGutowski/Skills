@@ -18,6 +18,8 @@ description: "Win org buy-in for design via business-case framing. Use when pitc
 - *hh1UXn8ZPwc — portfolio as a living product (guests: Sarah Doody, Aneta Kmiecik).*
 - *uQLAUq4TstI — presenting explorations in Figma (mechanics live in design-prototyping; MVP-vs-vision framing cited here).*
 
+Plus Dive Club podcast interviews (auto-captioned YouTube): Ryan Scott (ex-DoorDash/Airbnb — LOkdM6frkak), Henry Modisett (Perplexity — Vt3oTBvx7xw), Cam Worboys (Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), Luis Ouriach (Figma — Pn2G7JhxNKc), Brian Lovin (Notion — dvEwb1Ajkwo), Megan Choy (Anthropic — hKeDfupbA4U), NYC panel (V-jd3v9P-Ps).
+
 ## Core reframe: it's the framing, not the design
 
 **"It's not your design they don't trust, it's how you're framing the value."** Rejection is rarely about craft, leadership, or politics — it's solution-first thinking: falling in love with a solution before understanding the business problem, presenting features instead of outcomes. The designers who consistently get ideas approved "think business first and design second."
@@ -66,6 +68,28 @@ Full anti-patterns, SBI detail, and the review-logging workflow: [references/pro
 - **Invisible work** — "everything that doesn't leave a visible artifact": the reversed bad decision ("There's no Figma file for prevented a bad decision"), the aligning brief, the 45-minute unblock. Log it when it happens or it's gone.
 - **The credibility ladder** (Miranda): master the language → find small wins → build credibility gradually → then ask for your seat at the table ("I know planning's coming up. Can I be included…?").
 - **Her stateful Claude-skill review logger** — a reusable workflow: setup interview (role, competencies, review period) → drop in artifacts as they happen, converted to SBI entries tagged to competencies and dated → attributed peer-feedback log → end-of-period synthesis (themes + summary). Build the review doc in the background, not at the deadline.
+
+## Career as a business case (Ryan Scott, Dive Club LOkdM6frkak)
+
+- **Hired vs promoted.** "There are skills that designers are getting hired for right now which are like visual design skills, high craft, but what they're getting promoted for is providing more value to the business." Treat the gap as the career strategy.
+- **Sell to budget-holders, not design managers.** Design managers often "don't have budget control. They're not the final approver" — they pitch you to a product leader who cares about different things. And the buyer's frame is fair: "you are an investment that they are making and they want to understand what they're getting for that investment and that is not wrong."
+- **Overfiltering, not competition.** Today's market: "It's not a competition problem. It's a do you meet this specific puzzle piece problem that most people actually don't" — companies overfilter on finite detail (rejected for managing five reports where six were required).
+- **Metric-direction language.** Don't label portfolio work "a redesign of booking for Airbnb" and pray. "Use their language and say this work drove this metric in this direction."
+- **Business value beyond metrics.** Many projects exist to neutralize a competitor (DoorDash launching food photography after Uber Eats shipped with it day one — it moved metrics, *and* McDonald's expected it for national deals), or improve velocity, quality, bug rates, culture, brand reputation, positioning. No numbers? "Look at: did the company launch it? Then it's probably producing value… it's been a couple years and it's still driving value." "You tell the best story you can with the evidence you have at hand."
+- **"Shock and awe" results slides:** mention so many kinds of value (metrics + how the team learned to operate + efficiency + positioning) "that it really kind of takes the pressure off all the numbers being exactly right."
+- **Role-convergence game theory.** Via Andy Budd: designers are chess players (thinking ahead), PMs poker players (maximize hands played) — and C-suite executives are chess players too; speak chess to them. Everyone's insecure right now; "we're all having to renegotiate everything" — renegotiate role lines out loud rather than guarding turf.
+- **No-fidelity + idea sequencing.** PMs excel at *no* fidelity — "It's just the idea. What do you think about this?" Float ideas casually, recruit "yes and type people… how might we type people" first, kick the tires with that smaller, safer group, "and then bring it to larger and larger and larger groups." Never skip levels: he once took an idea straight to the CEO, got buy-in, used it to strong-arm teams — "ended up pissing off a lot of people… Do not make that mistake."
+- **Value–Cost–Risk over RICE.** "Outside of work, I have never used RICE as a prioritization framework to make any other decision in my life" — but humans weigh value, cost, and risk in every decision. Cost includes *organizational* cost (legal, marketing, complexity), not just engineering hours; risk includes morale, exposure, timing, legal. Mind the sub-MVP cliff: "There's a line where cost has been reduced too much. It's too sub-MVP and then value just plummets."
+- **Data practice.** Ask for the analytics tool yourself and look for weird outliers from the human angle: "Everything we're measuring is someone's doing something differently." His receipts: at early DoorDash, the post-checkout order-status page had 3x the homepage's views (refresh-refresh-refresh) → he proposed live order tracking; at Airbnb, past experiments recontextualized → "why do we have a five-step checkout flow?" → single page, single button, dramatically improved conversion pre-IPO.
+
+## Org-building and the AI-era operating model
+
+Hiring for capability gaps, the underdog binary, Core+3 flattening, five-lines-of-process, the three archetypes, designers-shipping-PRs, kill-mediocre-even-shipped, and the panel's CEO-in-the-tool diagnostic (Modisett, Worboys, Dill, Choy/Shipper/Zipper): [references/team-building.md](references/team-building.md).
+
+Smaller Dive Club deltas:
+- **Write before pixels** (Luis Ouriach, Pn2G7JhxNKc): "Writing down before you commit to a pixel is the best way to get buy-in for an idea. And you're not going to get the ability to ship an idea unless you get buy-in." Also his role contract for blurred-role anxiety: accept "what our role can do at a bare minimum plus" — the plus set by industry, company, team, level; and the enterprise/startup gap is *widening* because tool access differs so much.
+- **Titles** (Brian Lovin, dvEwb1Ajkwo): "Our obsession with titles is what will screw people over… these things are going away" — be the person who moves between disciplines. And a contrarian advantage: "the ability to focus and be undistractable for 2 hours a day is like a meaningful competitive advantage right now, which is insane."
+- **Ship governance** (Megan Choy, hKeDfupbA4U): "just because everyone can ship doesn't mean not everything should ship… we need better systems that scale" as everyone gains push-to-production ability.
 
 ## Checklist
 

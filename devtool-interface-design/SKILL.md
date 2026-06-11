@@ -14,6 +14,7 @@ description: "Design interfaces for developer tools — software with no happy p
 - *"Beyond bars and lines: 7 cool ways to visualize data in your dev tool" (Lozhkin & Turner, 2024). https://evilmartians.com/chronicles/beyond-bars-and-lines-7-cool-ways-to-visualize-data-in-your-dev-tool*
 - *"3 rules for getting AI agents to find, use — and not exploit — your devtool" (Nazarova & Turner, 2026). https://evilmartians.com/chronicles/3-rules-for-getting-ai-agents-to-find-use-and-not-exploit-your-devtool*
 - *Ryo Lu (Head of Design, Cursor) — 2025 interviews: Dive Club (youtube.com/watch?v=dsZqOPVQTNg), Dialectic (8ncYSGbfeyY), Async Z (PQhcHrCyU8M) — the AI-era devtool section below.*
+- *Steve Ruiz (tldraw) — Dive Club podcast (3SvL0r-Lhh8); Brian Lovin (Notion) — Dive Club (dvEwb1Ajkwo).*
 
 The worldview: dev tools are **workbenches, not funnels**. "There is no 'happy path' for a dev tool… what seems to be a tiny edge case might actually be the main case for a particular user." Users live in the tool for hours daily and paths jump between panels with no final conversion action — so optimize for density, control-flow legibility, friction-per-repetition, and time-to-a-ha, not guided journeys.
 
@@ -63,7 +64,15 @@ Motion policy for docs (Lochie Axon, Family — animations.dev interview): "docs
 
 The dev-tool data→chart mapping (heatmaps for activity density, force-directed graphs for dependencies, treemaps/sunbursts for hierarchy+size, Sankey for pipelines/flows, bullet charts for metric-vs-target, box plots for latency distributions) plus the **agent experience (AX)** rules — agents as discoverers (baked-in training data vs live retrieval; "specificity wins": "'P95 latency of 62ms' gets recommended. 'Fast and reliable' gets listed but not chosen"), as users (invert the funnel to **use → create → claim**; the test: "can an external agent ship a feature with your tool using only your docs and a prompt?"), and as threats (four progressive-trust tiers, tiered structured errors, rate-limit by identity) — live in `references/data-viz-and-agents.md`.
 
+## Tools as decision-making machines (Steve Ruiz, tldraw — Dive Club 3SvL0r-Lhh8)
+
+- **All tools are decision-making tools.** "I think of all tools as like kind of decision-making tools" — a hex input technically picks colors, but "you're not dialing anything in… you're not getting that really quick feedback on one decision or another and being able to compare things." A good tool gives fast comparison plus a safety net ("very safely make a change and go back… I'm not destroying anything"). Corollary: where the tool slows you down should map to where decisions deserve precision.
+- **Convention triage for commodity surfaces.** Conventionalized features done wrong make the whole product read as fake: "if you pinch on the canvas… It should zoom in to where you're pinching… if it doesn't work like that, it feels broken. It feels like this is a tech demo." The toolmaker's real job is recognizing which of thousands of features "needs to be the same way every time" and which are legitimately different for your product.
+- **Verticalize general-purpose canvases.** Miro serving research, off-sites, education, onboarding at once "is a strength… but it's also kind of a little bit of like a bad fit for all of them" — ask what the feature set would be if it served only one job; "probably a lot less, number one, but also it would probably have things in there that are unique."
+
 ## AI-era devtool design (Ryo Lu, Cursor)
+
+- **Company-level AX** (Brian Lovin, Notion — dvEwb1Ajkwo): expose your whole product surface to agents, even if you're not a devtool — "Notion has a CLI so that everything you can do through the Notion API is now legible to an AI." CLIs/MCP are how a non-devtool "pokes at the edges" to stay positioned as models change shape.
 
 - **Engineers "forget to build the doors."** "They build the most hard part of the whole problem, but they forget to build the doors — or they forget to make the paths flow into the same thing." Great cores ship with no entrances; the designer's job in a devtool is the paths in.
 - **Design the container, not the screen.** "The ideal interface is different for every single person… you are actually designing a container" — invariant core primitives plus per-user configurations. But reject fully generative UI: "arbitrary generating UI that even the creators of the tool cannot control or cannot predict" "just creates more chaos."

@@ -175,6 +175,10 @@ Determine how often users will see the animation:
 
 **Motion only when earned** (Ryo Lu, Cursor — YC-website roast, 2025): "I don't like moving things when I'm not moving" — ambient motion steals attention from reading. Fire animation when the user arrives at the element, not before (hide a CTA "until say you're here and then it kind of animates in… you pay attention to it"), and "don't hijack the scroll."
 
+**The overcooking hazard** (Andy Madrick + Ridd, Dive Club podcast, IfPK0LwbX_0): when you polish interactions in isolation (a single bug, a single component), "you run the risk of zooming out and you realize every single piece of the interface is overcooked." Two study prompts as the antidote — "where are the best products *not* using any interactions? Where are instant transitions applied?" (e.g. where Linear ships instant) — and the no-decoration baseline: "the default is, what does this thing look like with no decoration? With the same size typeface, with no animations. Take that and say, okay, where can I add a little flourish of delight here, and how does that help the user instead of detract?"
+
+**Anti-spring-default + physical semantics** (Karl Koch, DuckDuckGo — Dive Club podcast, 7_VEb9iDW2c): AI-generated motion "springs everything. Everything's a spring" — boing is wrong when the user clicked to *read*; the animation "needs to not be overly gratuitous." This skill's spring section agrees: springs are for gestures and alive elements, not default. And derive direction/character from the physical meaning of the act: inserting an item slides in because "I'm inserting it. I'm pushing it — in real life that's what we would do"; discarding is "more of a just poof and go away" because you've lost interest in it.
+
 ## Spring Animations
 
 Springs feel more natural because they don't have fixed durations—they simulate real physics.

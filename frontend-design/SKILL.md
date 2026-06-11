@@ -62,6 +62,8 @@ For hand-tuning the custom vectors this skill calls for. (Dan Hollick, *Making S
 
 The hero visual must *truthfully demonstrate* the product's core mechanic, not decorate around it: if you draw a calendar, align events to its real time axis; if you show data, make the numbers internally consistent. A blind A/B eval (2026-06-11) found a distinctive page lost to a plainer one solely because its hero artifact was fake under inspection — "polish is surface-level in exactly the place that matters most." Distinctiveness never excuses a dishonest artifact. Also: no perpetual motion (marquees/loops that never rest), and prefer system/self-hosted fonts over CDN dependencies in self-contained artifacts.
 
+Production layouts must also survive real text: "English, a very compact language, contains words that can expand up to 300% when translated into a less compact language such as Italian" — and user font-size overrides (Amazon's header gracefully drops lower-priority links as text grows). Never size containers to ideal-length English. (Yablonski, *Laws of UX*, ch. 5.)
+
 ## De-slop substrate (Ryo Lu, Cursor — interviews, 2025)
 
 - **Build on proven primitives**: use shadcn/Radix for every standard control — keyboard nav and accessibility come free, and AI "is really good at composing patterns that exist."

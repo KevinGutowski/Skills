@@ -13,6 +13,7 @@ description: "Grow an audience-led indie product as a designer/maker — build i
 - *"How to build for, and with, Gen Z" (Jiaona Zhang, Linktree CPO, 2024) — the content/community evidence.*
 - *"Ready, set, IDK" (Michael Di Genova, Work Louder, 2024) — the bootstrap-hardware variant.*
 - *Valio Con 2012–14 talks (Drew Wilson's conference): Todd Garland (BuySellAds), Jeff Sheldon (Ugmonk), Kai Brach (Offscreen), Aubrey Johnson, Josh Long, Shane Mielke, Michael Flarup, GMUNK, app-maker panel, Dann Petty — distilled in [references/valio-field-notes.md](references/valio-field-notes.md).*
+- *Luis Ouriach (Figma) with Ridd — Dive Club podcast (Pn2G7JhxNKc): the niche-economy section.*
 
 The task: you're a designer/maker launching your own thing — build the audience *while* building the product, validate before you ship, and make it pay as a team of one. (Devtool landing pages/PMF → `developer-tool-gtm`; OSS promotion → `oss-strategy`; onboarding flows → `user-onboarding`.)
 
@@ -49,6 +50,11 @@ The task: you're a designer/maker launching your own thing — build the audienc
 - **Own the core**: don't outsource the heart of the product — no-code is fine ("the entire platform runs on a no-code solution") as long as you understand what's under the hood.
 - **Satellite products**: shipping one product surfaces adjacent demand — aim for "a little mini portfolio rather than just one product."
 - Positioning humility: "just build anything and do it well… think of it more like books" — you don't need to be the world's best; you need an audience that picks your book. Real growth is "small and steady organic… it looks quite boring but this is how it happened." Review triage: fix bugs, fix real flaws, otherwise "focus on the ones that like my product."
+
+## The niche economy (Luis Ouriach + Ridd — Dive Club podcast, Pn2G7JhxNKc)
+
+- **Distribution didn't get cheaper, only production did:** "Just because we have access to the tools, we can make things faster, we can get it into production, doesn't mean there's any eyeballs at all on it… keep it tighter, keep the scope smaller. And maybe something for your family is the best place to get that itch scratched."
+- **The financial-viability line has fallen:** "there was a literal line on a graph where if you could not generate this much profit… it's not worth pursuing. And that line has just fallen. So there's this whole category of problems that previously nobody had the financial incentive to solve that are just wide open" — local businesses, family tools, thousand-person problems. (Ridd's label: the niche economy.)
 
 ## Side projects compound (Smith)
 

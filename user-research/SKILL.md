@@ -69,6 +69,8 @@ Notes are **descriptive, not interpretive**: "Worked 14 hrs/day for 10 years," n
 
 Research must change something: "If you don't make any changes, your online usability test has failed" (Sharon). Prioritize changes by impact, persistence, frequency — and politics: "Develop changes as if you live in a bubble." Full pipeline → `references/synthesis-and-impact.md`.
 
+**Test-design caveat — the aesthetic-usability effect.** Beautiful stimuli contaminate usability tests: "perceived aesthetic quality has the potential to mask usability issues" (Yablonski, *Laws of UX*, ch. 7, citing Sonderegger & Sauer, 2010 — an attractive phone mock scored as more usable despite identical function). Mitigate by "listening to what users say … and, more importantly, watching what they do" — one more reason behavior outranks attitude (§2.2) and notes stay descriptive.
+
 ## 6. The school dial: Portigal-deep vs Sharon-lean
 
 Same doctrine, different postures. Set the dial per project; don't blend mid-study.

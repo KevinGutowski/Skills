@@ -40,6 +40,7 @@ The car analogy: **TTFB** = key in the ignition → **First Contentful Paint** =
   - **Anticipate** — can it move earlier? (prefetch routes/data so the click is instant)
   - **Offload** — does it belong on the main thread at all? (uploads → web worker; some logic → an API)
 - **Perceived performance is real performance**: a faster spinner makes identical load times feel faster; optimistic states, specific progress copy, and choreographed latency (confirm steps that absorb API time) all buy real felt speed. (Animation-side specifics live in `web-animation-design`.)
+- **The too-fast exception** (Yablonski, *Laws of UX*, ch. 10): the Doherty threshold — respond under 400 ms — is the default, but instant responses to work the user believes is *hard* can erode comprehension and trust. "Purposefully adding a delay to a process can actually increase its perceived value and instill a sense of trust, even when the process actually takes much less time." Facebook's Security Checkup animates a scan that finishes far sooner — the pacing makes the thoroughness legible. Reserve for trust-critical operations; never slow routine interactions.
 - **Page-load entrances must be CSS** (Heffernan): JS-library entrance animations wait on JavaScript — they visibly delay first paint. Save Motion/React Spring for post-hydration interactions.
 - Animating `box-shadow` is expensive; animate the opacity of a pre-rendered shadow layer. Avoid animating inherited CSS variables on ancestors (recalc storms across all children — the Vaul drag bug).
 

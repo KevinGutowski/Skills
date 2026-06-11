@@ -1,0 +1,44 @@
+# Building & Running a Design Org — Dive Club field notes
+
+Hiring, org shape, and operating models from three design leaders. Sources (Dive Club podcast, auto-captioned YouTube): Henry Modisett (VP of Design, Perplexity — Vt3oTBvx7xw), Cam Worboys (Head of Product Design, Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), and a live NYC panel with Megan Choy (Anthropic), Dan Shipper (Every), Bradley Zipper (Ramp) — V-jd3v9P-Ps.
+
+## Hiring (Modisett, Perplexity)
+
+- **Hire for capability gaps, not headcount.** Every hire is a calculation: "what do we wish we could do that we can't do today — let's add a person that can do that." His first hire ever was a brand designer because he couldn't do brand well. Think of the team as "a combination of capabilities," not seats. "It's very rare that we are just bringing someone in and not really knowing what they would do."
+- **The underdog binary.** Be honest that you're the scrappy underdog and screen for fit explicitly: "Does that stress you out or does that fire you up? It's pretty binary and it's important to get that figured out like in the interview process."
+- **The intern signal = unassigned work.** "It's pretty easy to find someone who did their homework. But I want to find someone who didn't do their homework and did something else instead, something that they weren't asked to do" — the student who broke the norm and made an app on the weekend. "You only just need one little indication, then you can take a bet on them."
+- **The cold-start founding-designer pitch.** Founders must have a strategic theory of why design matters, not just assert it: "We can beat our competition cuz design will help us do that and we're fully committed to using design as a weapon in the market — through marketing, through product." And prove it before hiring: "pay a freelancer to make something really nice and then be like, boom, we're hiring designers… We know how to ship good design."
+- **People join the brand.** "People are not joining the company, they're joining the brand… If you tell a clear story with your brand, you're providing a narrative that is going to resonate with people." Corollary: "if the product is beautiful, people will want to join the company. You can't fake it."
+
+## Operating the team (Modisett)
+
+- **Diagnose above the pixels.** A recurring crit moment: "This is not a UI problem. This is a product problem. They need to make up their mind what feature they want." Design is "not putting ornaments on the tree. It's product strategy, it's brand strategy, it's company strategy."
+- **No universal design process.** "There is not like a design process that is a universal concept. There's problems, and people… follow whatever process is going to help them" solve them — Perplexity's way and Apple's way can both be right, as adaptions to different problems.
+- **Crit timing.** Ask each person when feedback is actually useful: "sometimes feedback is extremely important, you know, at the beginning, at the end, not often in the middle — and sometimes it's not important at all." Ownership stays with the designer; plenty of phones to ring.
+- **Velocity-first inversion.** Early-startup values trade toward velocity ("you want to just ship and learn"); at scale "you're not trying to gain a user, you're trying to keep a user" — revisit the values that got you there rather than letting them ossify.
+- **Deep-end management.** "It is the best thing for the org, for me to just throw everyone in the deep end, but give them a way to ask for a backup if they need it." The alternative — directing everyone — "doesn't scale" and "prevents growth"; don't use the team "as a tool for my brain."
+
+## Org shape for the AI era (Worboys, Cash App)
+
+- **Bottleneck relocation.** "The biggest blockers across all of the tech industry in the next 2 years will not be the speed of building. It's going to be the operational side" — moving a built thing through the cogs to customers. Design the org for that constraint, not for production capacity.
+- **Vision comes from reps.** There's a misconception that product vision "comes from a designer sitting in some cave for three months… It literally doesn't. It comes from reps and the speed which you can be wrong, and the speed that you can go again and experiment."
+- **Core+3 flattening.** Cash App design runs "core plus three" — only three management layers from Jack. Flattening was the scariest move and got the most positive feedback.
+- **Five lines of process + delete-and-see.** All of Cash product design process is "about five lines of stuff." Process existed "to provide consistency in output when design started to scale"; now they "systematically gone through and deleted an uncomfortable amount of stuff." Test for any ritual (e.g. the design crit where the designer "ignores like 90% of the comments anyways"): "why don't we just try deleting it? And so you delete it and then you see what happens." Weekly cadence: plan Monday, optional unblock Wednesday, demo Friday.
+- **The Friday demo bar.** A good demo is the fourth prototype that "almost works… it's scrappy, it's raw, but you can see like a glimmer of a technological breakthrough" (the first Moneybot demo).
+- **Designers shipping PRs.** Over 90% of product designers now ship PRs (heading to ~100%), supported by a code-fluency ladder ("from zero where they don't have a GitHub account" → sandbox PRs → shipping to product). Designers gravitate to "the most designery stuff" — fixing refinements that bugged them for years; the "pixel janitors" group cleans up after developers page by page.
+- **The three archetypes.** DRI (drives the work; "your strength as a DRI is your ability to take a loose strategic nugget" and lead creatively) · builder-IC (craft makers/taste makers producing high-craft output) · player coach (the leadership layer). No professional managers: "The idea that you have a manager who is not responsible for the output of their team is just like one of the dumbest things in the world." The non-producing middle-management layer "doesn't exist anymore."
+- **Output inflation raises the price of vision.** "As the output increases, the value of clarity and vision just becomes more and more important — because otherwise you will end up in this jack-of-all-trades, master-of-none software."
+- **Craft is ~95% of rejections.** "Most people fail a portfolio phase or an interview phase because they don't have… craft… probably closer to like 95%. The other stuff that surrounds craft is much easier to teach." And ignore logos: "I transparently like don't give a [—] about where someone worked" — one of their best designers came from designing for Yo! Sushi.
+
+## Quality leadership (Katie Dill, Stripe)
+
+- **Kill mediocre work even after it ships.** "We are not okay with good enough and we are not okay with mediocre" — she and Patrick Collison have pulled the plug last-minute, and he "has asked us to make changes to billboards that were already up… we've talked about how that's a good thing, because a lot of companies don't do that."
+- **Leaders stay in the work.** Her reviews now: "one sentence is set up and then it's like, okay, let's go into it" — straight to the prototype, like a user, no pitch theater.
+- **Hiring = curiosity + agency.** Curiosity ("constantly looking to grow and constantly better understand the circumstances of the work") now includes leaning into the AI shift; agency is "the other side of curiosity… doing something with it" — often visible outside work ("I made my husband this website…"). "The fact that you can just build now is so exciting… does that person demonstrate agency."
+
+## Panel notes (Megan Choy, Dan Shipper, Bradley Zipper — V-jd3v9P-Ps)
+
+- **The CEO-in-the-tool diagnostic** (Shipper): AI working groups fail; "the organizations that seem to do the best are the ones where the leadership team is in the tool all day. And that's the only way that you'll have an intuition for how to manage a team who's in the tool all day — and it's not outsourcable."
+- **The letting-go milestone:** "in the same way that we're asking our engineers to let us in and help us code, you need to be more comfortable letting go of design… a lot of features can go out without you" — V1–V3 can be pretty good and design-system-aligned if you build the automations and checks.
+- **Shipper's two buckets** for any maker role: (1) tools "make competence cheap for everyone," creating "this huge glut of people doing design work… that are not designers" — the good designer builds systems to *harness* that work rather than rejecting it; (2) "how do I use these tools to make something that no one has ever made before."
+- **Bradley's AI-fluency definition:** cutting out noise to think about what matters most — synthesis and looking deeply at what comes next. "I think that's AI fluency to me. Just carve out more. Be selfish."
