@@ -15,6 +15,9 @@ Screened Julie Dirksen, *Design For How People Learn* from `/tmp/books/design-fo
 # The User Experience Team of One targeted fold — DONE 2026-06-11
 Extracted Leah Buley, *The User Experience Team of One* via `pdftotext` to `/tmp/books/the-user-experience-team-of-one.txt` (font-weight warnings only; text usable). Density: MED. No new skill: the method catalog largely routes to existing `user-research` and `design-prototyping`, while solo-UX influence routes to `design-org-influence`. Folded principles-over-process, good-enough artifacts, Listening Tour, scope-not-permission framing, and pyramid evangelism into `design-org-influence`; folded participatory sketching and no-async-prototype-drop into `design-prototyping`.
 
+# PR #5 review lesson — ENCODED 2026-06-11
+Reviewer fix `24d5001` did not reject the book-fold placements; it enforced the skill-body budget. `design-org-influence` was slimmed from 6,352 to 4,799 o200k tokens and `design-prototyping` from 5,187 to 4,999 by moving quote banks, examples, and source-specific texture to references while leaving the operating rules and one load-bearing quote in the body. Future folds should treat 5k body tokens as a hard cap even when `validate_skills.py` passes, because the validator checks line count, not token budget. Also log attribution corrections explicitly: `Build Better Products` is Laura Klein; Cindy Alvarez is quoted within the book, not the author.
+
 # sweep: animations.dev — FINAL 2026-06-10
 ## Coverage: SWEPT — all 45 lesson nodes + 4 interviews + emil-skill page + vault opened personally; evidence in /tmp/animdev-lessons/ + /tmp/animdev-interview-*.txt
 ## Lessons (45/45 opened & read)

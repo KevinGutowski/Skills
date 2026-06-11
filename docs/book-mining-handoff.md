@@ -33,6 +33,15 @@ human) picking up where the prior sessions left off. Companion files:
      MISS = fix wording from source or drop. NEVER ship unverified quotes.
    - Merge into the relevant section, don't append at the end. Bodies ≤5k tokens —
      push depth to `references/` (## Contents on >100-line files).
+   - **PR #5 review lesson:** treat the 5k body budget as a hard operating cap even
+     when the validator is clean. Main `SKILL.md` bodies keep routing rules, the
+     durable operating move, and at most one load-bearing quote per point; full quote
+     banks, source texture, examples, and secondary deltas move to the nearest
+     `references/` file with a pointer back from the body. The accepted pattern was:
+     Made to Stick sticky-framing stayed in `design-org-influence`, but its full
+     SUCCESs notes moved to `references/influence-field-notes.md`; Buley's influence
+     stance stayed in `design-org-influence`, while prototyping/session mechanics
+     stayed in `design-prototyping` with depth in references.
    - Cite: (Author, *Book*, chapter). Era-tag stale specifics ("verify against current docs").
 
 4. **Gate + ship**: run `python3 scripts/validate_skills.py` from repo root; independent
