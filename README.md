@@ -38,6 +38,7 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `sound-design`, `touch-interaction-design` | Audio/haptics; gesture feel and fluid interfaces |
 | `ai-experience-design` | ML/LLM-backed feature design, generative UX, model safety |
 | `malleable-software` | Software users can reshape — expose structure not modes (nightmare bicycle), 40th-hour design, interop/jigs, human-AI work as version control (Litt, Ink & Switch) |
+| `ai-enablement` | Org-level AI context & adoption — decision archives behind MCP, company-specific agents, team skills, enablement programs (Shopify, Ramp, Atlassian, OpenAI) |
 
 ### SwiftUI engineering
 `swiftui-identity` (the identity/lifetime/dependencies mental model — debug state resets here) · `swiftui-layout` (containers, Layout protocol, navigation structure) · `swiftui-lazy-stacks` (scroll performance) · `swiftui-animation` (springs, transitions, shaders) · `swift-concurrency` (the language layer beneath the trio: structured concurrency, sendability, Swift 6 migration, measure-first performance features).
