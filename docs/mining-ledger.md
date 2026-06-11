@@ -7,6 +7,9 @@ Screened Austin Kleon, *Show Your Work!* in full from `/tmp/books/show-your-work
 # Made to Stick targeted fold — DONE 2026-06-11
 Screened Chip Heath & Dan Heath, *Made to Stick* from `/tmp/books/made-to-stick.txt` for this queue pass. Density: LOW-MED overall (famous/model-known SUCCESs framework), MED for `design-org-influence` because it strengthens business-case pitch mechanics. No new skill. Folded Commander’s Intent/one-lead framing, meaningful surprise, concrete language, human-scale statistics, and story-as-behavior-carrier into `design-org-influence`. `/tmp/books/design-for-how-people-learn.txt` remains extracted but needs a fuller screen before deciding whether to create/fold learning-design material.
 
+# Design For How People Learn skill creation — DONE 2026-06-11
+Screened Julie Dirksen, *Design For How People Learn* from `/tmp/books/design-for-how-people-learn.txt`. Density: HIGH because the corpus had onboarding, feature discoverability, and people management but no general skill for courses/workshops/internal training/job aids. Created `learning-experience-design` as a single-deep-method skill under the house-style exception: gap diagnosis (knowledge/skill/motivation/environment/communication), learner observation, contextual goals, CCAF, practice/feedback, motivation, and environmental performance support. Added README row and bidirectional boundaries with `user-onboarding`, `feature-discoverability`, and `people-management`.
+
 # sweep: animations.dev — FINAL 2026-06-10
 ## Coverage: SWEPT — all 45 lesson nodes + 4 interviews + emil-skill page + vault opened personally; evidence in /tmp/animdev-lessons/ + /tmp/animdev-interview-*.txt
 ## Lessons (45/45 opened & read)

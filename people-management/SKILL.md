@@ -86,6 +86,7 @@ Zhuo's intersection rule: "spend your time and energy on the intersection of 1) 
 ## Relationship to other skills
 
 - **`design-org-influence`** — the other direction: influence up/sideways (business cases, PM partnership) and your *own* promotion/reviews. Hiring *philosophy and signals* (spike hiring, AI-fluency interviews, team archetypes) live in its `references/team-building.md`; this skill owns hiring *process* mechanics and firing. Note the deliberate tension: as an IC influencing up, "always have a pitch for your complaints" (Steiner); as a manager receiving ideas, Scott/Laraway invert it — demand-a-recommendation kills innovation; nurture fragile ideas, and deciders get facts, not recommendations. Same person, two roles, opposite defaults — see [meetings-and-comms.md](references/meetings-and-comms.md).
+- **`learning-experience-design`** — designing manager training, coaching curricula, practice/feedback loops, and job aids; this skill owns the manager's actual relationship with reports.
 - **`user-research`** / **`design-prototyping`** — what your team does; this skill is how you run the team doing it.
 - **`write-clear-prose`** — the writing layer for feedback emails, comms plans, and recap emails.
 
