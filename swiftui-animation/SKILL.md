@@ -93,6 +93,11 @@ Conform to `Transition`; `body(content:phase:)` mirrors `scrollTransition`. Use 
 - **Layout pipe:** alignment guides as semantic pins — hang a view below its container with `.alignmentGuide(.bottom) { $0[.top] }` ("bottom is top"), no manual offsets.
 - Generalize by swapping inputs/shaders/foregrounds: "the APIs are the same. What you feed in and how you connect them, that's yours."
 
+## Group-lab clarifications (WWDC26 Group Lab, 7g-Xg5xiH4o)
+
+- **`compositingGroup` is visual, `drawingGroup` is performance.** Compositing group "is not strictly about performance": without it, effects like shadow apply "to each individual visual element" of a ZStack; with it, you shadow the composed result. `drawingGroup` flattens all the would-be rendered layers "onto a single one" — the fix when many on-screen layers (custom graphics, pie charts) tank rendering even though the SwiftUI view count is unchanged; gestures still work per-view. `Canvas` goes further (direct draw calls) but loses per-element gestures and accessibility — pair it with `accessibilityRepresentation` ("here's my overall canvas, but actually it's three sliders").
+- **Why some closures are `@Sendable`:** as an optimization SwiftUI "would execute them from off main thread" — notably animation closures, "something that has to be done at frame rate." Fix capture errors by copying state via an explicit capture list. And keep state updates in views "mostly synchronous" — async dribbles produce the glitchy back-to-back updates that break animation continuity; do background work in a separate async function, await it, then update the observable once. `TimelineView` is the sanctioned per-frame update path.
+
 ## Taste rules (both talks)
 
 - Effects must stay pleasant "well after the novelty has worn off" — live with them, test in context.

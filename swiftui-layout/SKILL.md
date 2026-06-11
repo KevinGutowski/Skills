@@ -36,7 +36,13 @@ Two required methods: `sizeThatFits(proposal:subviews:cache:)` and `placeSubview
 - **Per-view data** flows in via `LayoutValueKey` + `.layoutValue(key:value:)`, read as `subview[Rank.self]`.
 - **Why not GeometryReader:** it measures its container and sends size *down*; measuring a child to push size back *up* bypasses the layout engine and can loop. The Layout protocol works inside the engine — this is the sanctioned replacement (it also fixes `swiftui-lazy-stacks` Rule 7's post-appear relayout problem).
 - The `cache` parameter exists for shared intermediate math — add it only after Instruments shows layout cost.
+- **GeometryReader is also a resize tax** (WWDC26 Group Lab, 7g-Xg5xiH4o): "using geometry reader means on every single frame as you resize, we are updating that view's body" — and windows now resize on iPad, Mac, *and* iPhone (iPad windowing, iPhone mirroring), where users expect smoothness. Keep resize-time invalidation scoped to layout, not bodies.
+- **No lazy custom layouts** (same lab): there is "no protocol for describing a custom lazy layout" today — file feedback if you need one. Workarounds, in order: compose a non-lazy custom `Layout` *inside* a built-in lazy stack/grid (laziness from the container, custom arrangement per chunk — mosaic layouts ship this way), or interop a `UICollectionView`.
 - **`ViewThatFits`** picks the first listed alternative that fits (equal-width HStack → VStack fallback at big Dynamic Type). **`AnyLayout`** switches layout *types* on one view tree with animation, since structural identity is preserved (`isThreeWayTie ? AnyLayout(HStackLayout()) : AnyLayout(MyRadialLayout())` — note `HStackLayout`, not `HStack`).
+
+## Reusable controls: styles over wrappers
+
+WWDC26 Group Lab ruling (7g-Xg5xiH4o): don't build `MyCustomButton` wrapper views around `Button` — "explore button styles" (and the other style protocols). A `ButtonStyle` can pass the configuration through to another button or just restyle the label, so you keep every built-in initializer ("convenience ones for localization and using system images") instead of re-declaring them — and stock components restyled this way evolve with each OS design refresh for free, where forgotten wrappers become the half-hour debugging mystery ("why isn't this updating?"). Padding nuance from the same answer: pad the *label* (or do it in the style), not the button. And when SwiftUI lacks a standard component, wrapping the UIKit/AppKit one is the recommended path, not rebuilding from scratch.
 
 ## App structure (split views, tables, toolbars)
 

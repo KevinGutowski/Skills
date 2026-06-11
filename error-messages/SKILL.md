@@ -7,6 +7,15 @@ description: "Writes and reviews error messages and failure-state copy — any i
 
 Principles for writing error and failure-state copy that respects users in their hardest moments. Apply when writing or reviewing any in-app text shown when something doesn't work as expected.
 
+## Non-negotiables (check every message against these)
+
+Found via blind A/B eval (2026-06-11): outputs following this skill matched bare-model tone but lost on *mechanics* — these four rules are where error copy is won or lost. They override everything below when in tension.
+
+1. **No dead-end buttons.** Never close an error with "OK" or "Got it" alone — every button is labeled for an action ("Retry payment", "Reconnect bank") and at least one button moves the user toward recovery. If the only honest action is acknowledgment, pair it with a path ("View affected transactions").
+2. **Take them to the work.** When the error created a backlog or partial state, the primary action opens it — "View uncategorized", not a dismissal.
+3. **Give the 5xx page a reference ID** the user can quote to support — it converts "something broke" into a tractable conversation.
+4. **State the data's condition explicitly** (what saved, what didn't, what may look wrong until sync) — and never promise resolution timing you can't verify ("usually resolves in a few minutes").
+
 ## Core Philosophy
 
 **Write it like you're talking to a friend.** Empathetic, clear, and grounded — not cute, not technical, not generic.

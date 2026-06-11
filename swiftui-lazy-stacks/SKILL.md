@@ -55,6 +55,8 @@ init(detailLevel: DetailLevel) {
 
 If content is gated (e.g. an optional auth token unwrapped in the body), show a `ContentUnavailableView` *higher up* instead of rendering the lazy stack at all.
 
+The WWDC26 SwiftUI Group Lab (7g-Xg5xiH4o) added the `ForEach`-counting angle: an `if` (or `AnyView`) in a ForEach body means SwiftUI must "iterate through the whole for each" just to get the total element count it needs internally — filter the data up front, or wrap the dynamic content "in an h stack or zstack" so each element resolves to a constant count of one. There's also "a flag you can pass to debug" this (see the ForEach docs).
+
 The WWDC26 Power & Performance lab reinforced this from the energy side: "instead of having an if statement in your ForEach… do that before you even provide the list to SwiftUI" — pre-filter in the model. And **keep cell sizes constant where you can**: "if something in the middle changes size… cascading effect" — one resizing row relayouts everything after it, which costs CPU and battery, not just smoothness.
 
 ### 5. Set up subviews in their initializer, not `onAppear` — respect prefetching
