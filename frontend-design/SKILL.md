@@ -39,6 +39,25 @@ Focus on:
 - **Spatial Composition**: Unexpected layouts. Asymmetry. Overlap. Diagonal flow. Grid-breaking elements. Generous negative space OR controlled density.
 - **Backgrounds & Visual Details**: Create atmosphere and depth rather than defaulting to solid colors. Add contextual effects and textures that match the overall aesthetic. Apply creative forms like gradient meshes, noise textures, geometric patterns, layered transparencies, dramatic shadows, decorative borders, custom cursors, and grain overlays.
 
+## SVG mental model
+
+For hand-tuning the custom vectors this skill calls for. (Dan Hollick, *Making Software*, makingsoftware.com/chapters/scalable-vector-graphics — quotes verbatim.)
+
+- **viewBox is a coordinate-system override**: the viewport (CSS/width/height) sets the default coordinate system; the viewbox is "a way of overriding the default coordinate system for the SVG by creating a user space coordinate system." Its `x y w h` pan (origin can be negative) and scale the infinite canvas — this decoupling is what makes SVG responsive.
+- **preserveAspectRatio = anchor + scaling behavior.** First parameter anchors on a 3×3 grid (`xMin|xMid|xMax` × `YMin|YMid|YMax`, default `XMid YMid`). Second parameter: `meet` scales the viewbox to fit inside the viewport ("sort of like when you set an image to fit") and `slice` "behaves more like fill in image terms" — fills the viewport and lets it crop. `none` allows non-uniform squash.
+- **Path data reads as function calls**: in `d`, "the letter is basically a function call, telling the renderer which command to use, and the numbers are the parameters." Uppercase = absolute coordinates, lowercase = relative to the previous position (relative deltas are smaller, so they compress better).
+
+| Command | Letter | Does |
+| --- | --- | --- |
+| Move | `M/m` | Moves the pen without drawing |
+| Line | `L/l` | Straight line |
+| Quad curve | `Q/q` | Curve, one control point |
+| Smooth quad | `T/t` | Reflects previous control point |
+| Cubic curve | `C/c` | Curve, two control points |
+| Smooth cubic | `S/s` | Reflects previous control point |
+| Arc | `A/a` | Ellipse/circle segment (radii, rotation, large-arc + sweep flags, end point) |
+| Close path | `Z/z` | Straight line back to start |
+
 ## Demonstration over decoration
 
 The hero visual must *truthfully demonstrate* the product's core mechanic, not decorate around it: if you draw a calendar, align events to its real time axis; if you show data, make the numbers internally consistent. A blind A/B eval (2026-06-11) found a distinctive page lost to a plainer one solely because its hero artifact was fake under inspection — "polish is surface-level in exactly the place that matters most." Distinctiveness never excuses a dishonest artifact. Also: no perpetual motion (marquees/loops that never rest), and prefer system/self-hosted fonts over CDN dependencies in self-contained artifacts.

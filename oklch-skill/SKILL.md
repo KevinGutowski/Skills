@@ -15,6 +15,7 @@ OKLCH is a perceptually uniform color space where the numbers actually mean what
 | Palettes | Generate scales, multi-hue, dark mode | [palette-generation.md](palette-generation.md) |
 | Contrast | APCA/WCAG checks, fixing failing contrast | [accessibility-contrast.md](accessibility-contrast.md) |
 | Gamut & Tailwind | P3 fallbacks, `@theme` scales, gamut clamping | [gamut-and-tailwind.md](gamut-and-tailwind.md) |
+| Theory | Why OKLCH/gamut/gamma behave this way | [color-theory.md](color-theory.md) |
 
 ## Why OKLCH
 
@@ -22,6 +23,12 @@ OKLCH is a perceptually uniform color space where the numbers actually mean what
 - **Stable hue.** HSL blue shifts toward purple as lightness changes. OKLCH hue stays constant across the full lightness range.
 - **Independent chroma.** Chroma is an absolute measure of colorfulness that doesn't depend on lightness. HSL saturation does.
 - **Finite gamut.** Not every oklch value maps to a displayable sRGB color. High-chroma values at certain hues will clip — gamut awareness is required.
+
+## Why it works (theory backstop)
+
+A color space = chromaticities of the primaries + white point + transfer curve; "These values give meaning to our RGB values" (so the same RGB triplet is a different color in sRGB vs P3). OKLCH vs oklab is only a color model change — "just a different geometric arrangement of the colors," same gamut. The trap to know cold: "The chroma peaks are also relative to the hue and lightness so you can't actually be sure that there will be an equivalent chroma in a different hue… you can end up picking colors that are out of gamut without realising it and blaming oklch for looking bad. In reality, you're still at the mercy of your display's gamut." Most software *clips* out-of-gamut colors, so "previously distinct colors collapse into the same boundary color" — check chroma per hue/lightness, never copy chroma across hues. Full backstop (gamma's dual origin + standard gamma table, D50 print vs D65 display, bit depth vs gamut, DCI-P3 vs Display P3, banding/dithering, sRGB and oklab origin stories): [color-theory.md](color-theory.md).
+
+*Source: Dan Hollick, Making Software, makingsoftware.com/chapters/color-spaces-models-and-gamuts.*
 
 ## OKLCH Syntax
 
@@ -99,3 +106,4 @@ This keeps feedback scannable and diff-friendly. Each row is a self-contained ch
 - [palette-generation.md](palette-generation.md) — Scale convention, generation algorithm, multi-hue palettes, dark mode, why not HSL
 - [accessibility-contrast.md](accessibility-contrast.md) — APCA and WCAG 2 thresholds, fixing contrast with L, lightness gap guide, hue drift detection
 - [gamut-and-tailwind.md](gamut-and-tailwind.md) — sRGB vs P3, gamut clamping, CSS fallback patterns, Tailwind v4 @theme and migration
+- [color-theory.md](color-theory.md) — Color space vs model, gamma, gamut mapping, white points, bit depth, banding (Dan Hollick, *Making Software*)

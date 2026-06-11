@@ -104,6 +104,15 @@ Inspect all candidates first (`for f in *.png; do sips -g ... "$f"; done`), then
 
 Log per-file before/after and a total. Skip files already small (<~2 MB) unless asked.
 
+## Why formats compress the way they do
+
+Knowing the mechanism explains every routing rule above. (Dan Hollick, *Making Software*, makingsoftware.com/chapters/image-compression — quotes verbatim.)
+
+- **JPEG** = Y'CbCr conversion → chroma subsampling → 8×8 DCT → quantization → Huffman. The color split first, because we are "much less sensitive to changes in color than in luminance"; subsampling throws away chroma, not luma. Each 8×8 block becomes 64 cosine-pattern coefficients, then a quantization table divides them so small high-frequency ones go to 0 — "It's really in this step that we permanently lose information because there's no way for us to figure out the original values after they've been quantized." The quality slider is literally scaling that table: "we are changing the values in the quantization table to make them larger, for more quantization and less quality, or smaller for less quantization and higher quality."
+- **PNG** = per-scanline prediction filters (None/Sub/Up/Average/Paeth) → DEFLATE (LZ77 + Huffman). The filters transmit pixel *differences*, clustering values near 0 to lower entropy. Why PNG fails on photos: "A high resolution photograph tends to contain a lot of noise … and LZ77 has a tough time compressing this because it can't find any patterns to match." That's the mechanism behind "photographic PNG → lossy WebP."
+- **GIF** = Median Cut quantization to a 256-color indexed table → LZW. Great for "logos and illustrations" (long runs of identical indexes), terrible for photos. Unisys patented LZW and "forced any software that could compress or decompress GIFs to pay for a license" — which is why PNG "was born - out of spite."
+- **WebP** = a hybrid: JPEG-style YCbCr + chroma downsampling, then PNG-style prediction but per *block* (16×16, tries modes, keeps lowest error), DCT on the *residuals*, context-adaptive arithmetic coding. Lossless WebP is "like an improved version of PNG" (prediction + color transforms + per-region Huffman trees). "Now that WebP is widely supported by browsers and operating systems, there's really no downside to using it" — better compression than both JPEG and PNG, hence this skill's default.
+
 ## Gotchas
 
 - **Bit depth is usually the real bloat**, not "lack of compression." Check `bitsPerSample` before anything else.

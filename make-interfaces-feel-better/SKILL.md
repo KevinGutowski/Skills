@@ -30,6 +30,8 @@ This skill is the *how* of the **Craft** principle. For the strategic layer — 
 
 Outer radius = inner radius + padding. Mismatched radii on nested elements is the most common thing that makes interfaces feel off. (Apple's design system formalizes this as the *concentric* shape type — see `liquid-glass-design-system` for the fixed/capsule/concentric taxonomy on Apple platforms.)
 
+**The geometry behind the rule** (Dan Hollick, *Making Software*, makingsoftware.com/chapters/drawing-curves): a rounded corner is a circle arc placed at tangent distance `d = r / tan(θ/2)` from the corner point along each edge — for 90° corners, d equals the radius. Nested curves run parallel exactly when "the radius of the inner circle needs to be equal to the radius of the outer circle minus the distance between the two rectangles" (e.g. 40 − 13 = 28) — `outer − gap = inner`, the same formula as above. For squircles, CSS superellipses interpolate by exponent: 0 = straight chamfer between tangent points, 4 = the classic squircle, and large values square off — "10 or higher, effectively approximate a square."
+
 ### 2. Optical Over Geometric Alignment
 
 When geometric centering looks off, align optically. Buttons with icons, play triangles, and asymmetric icons all need manual adjustment.
@@ -185,6 +187,14 @@ Rows should cite the specific file and the specific property that changed when i
 ### 20. Eased Gradients
 
 Two-stop linear gradients leave a visible edge where they start and stop — especially fade-to-transparent scrims and significant color changes. Add intermediate stops sampled from an easing curve so the transition starts and ends gently. For color-to-color gradients also interpolate in a better space (`in oklab`) to avoid muddy midpoints — but only eased stops fix the hard edges. For dark mode, make a dedicated dark-mode hero asset rather than overlaying a gradient on the light-mode one.
+
+## Rendering physics worth knowing
+
+(Dan Hollick, *Making Software* — makingsoftware.com/chapters/blurs-noise-and-other-effects and /chapters/how-a-screen-works.)
+
+- **Why blur radius is the cost knob.** "A 3x3 kernel requires 9 multiplications for every single pixel in the image but a 20x20 kernel means 400 multiplications." The saving grace: "because the Gaussian function is separable, we can split a 2D blur into two 1D passes… we only need 40 operations per pixel instead of 400. This is actually how most blur implementations work in practice, including CSS filter: blur()". Cost still scales linearly with radius — large `backdrop-filter` blurs over big areas are the expensive case, not blur per se.
+- **OLED economics of dark UI.** OLED pixels "can simply be turned off when not in use. This means they can be perfectly black… while also having the benefit of reducing power consumption in practice." True-black (`#000`) backgrounds are free battery on OLED; near-black isn't.
+- **Burn-in is a static-chrome risk.** OLED compounds "slowly degrade after use… This is what causes burn in on OLED displays that are used to display static images for long periods of time, with the blue sub-pixels tending to degrade faster than the others." For always-on or kiosk-style UI, avoid bright static chrome — and be most careful with blue-heavy elements.
 
 ## MDS field rules (live polish sessions)
 
