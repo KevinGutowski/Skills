@@ -68,6 +68,7 @@ The car analogy: **TTFB** = key in the ignition → **First Contentful Paint** =
 - **`motion`** (performance-audit capability) — ranks *animation* techniques by render-pipeline cost (S–F); this skill owns the app-level loading/interaction discipline around them. Audit an animation there; budget the interaction here.
 - **`web-animation-design`** — perceived-speed and animation-performance rules (transform/opacity only, under-20px blurs) live there; this skill supplies the frame budgets and process that enforce them.
 - **`make-interfaces-feel-better`** — §17 layout stability (anti-skeleton, no-shift loads) is the CLS doctrine; §18's modern CSS primitives are the prefer-CSS toolbox.
+- **`web-typography`** — font-loading strategy (WOFF2, subsetting, `font-display`, FOUT-over-FOIT, fallback matching) lives there; this skill owns the budgets it must fit.
 - **`optimizing-rails`** — the server side of TTFB and API latency; this skill takes over once bytes reach the browser. Same measure-first creed.
 - **`devtool-interface-design`** — the speed usage-law and frequency rules for tools people live in.
 - **`swiftui-lazy-stacks`** / **`swift-concurrency`** — the native-platform analogs (scroll perf; coalesce-before-isolation).

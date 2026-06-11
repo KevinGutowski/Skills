@@ -66,7 +66,7 @@ Use `font-variant-numeric: tabular-nums` for any dynamically updating numbers to
 
 ### 10. Text Wrapping
 
-Use `text-wrap: balance` on headings. Use `text-wrap: pretty` for body text to avoid orphans.
+Use `text-wrap: balance` on headings. Use `text-wrap: pretty` for body text to avoid orphans. (Deeper web typography reference — measure, scales, pairing, OpenType, font loading: `web-typography`.)
 
 ### 11. Image Outlines
 
