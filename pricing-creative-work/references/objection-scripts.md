@@ -1,9 +1,10 @@
 # Objection Scripts — Verbatim Lines, Keyed by Objection
 
-All lines verified against the transcripts. "Whoever says the price first wins" — walk in knowing your number; if you never say a price, "he can't negotiate with you cuz you've given him no amount of money to negotiate with." You get to determine the price; they get to determine if it's fair for them.
+All lines verified against the transcripts (Do/Stark) or the book text (Mall, *Pricing Design*, A Book Apart 2016). "Whoever says the price first wins" — walk in knowing your number; if you never say a price, "he can't negotiate with you cuz you've given him no amount of money to negotiate with." You get to determine the price; they get to determine if it's fair for them.
 
 ## Contents
 - "What's your rate?"
+- "We want to know how much YOU think it'll cost"
 - "I need to see the hours breakdown"
 - "You're four times more expensive"
 - "The last guy charged us $200"
@@ -18,6 +19,12 @@ All lines verified against the transcripts. "Whoever says the price first wins" 
 ## "What's your rate?"
 
 Stark: **"I say, I don't have one."** Then let the silence stretch — don't fill the pregnant pause. When they ask how you do bill: "I'll price the project for you so you'll know in advance how much it's going to be. Is that acceptable?" They always say yes — "nobody wants to make a big purchasing decision based on an estimate. Everyone would much prefer to have a price." (Shoe-store test: "How much are these shoes?" "I'll tell you later — wear them for a few months.")
+
+**Three-school verbatim convergence flag:** Mall's published script opens with the identical four words. "Client: What's your rate? / Me: I don't have one. / Client: So how do you know what to charge me? / Me: I'll spend as much time with you as I can to understand what you need and want. Based on what I hear, I'll come up with a few options that simultaneously seem like a steal for you and are lucrative for me. I want to make sure that we can both profit by working together." (Dan Mall, *Pricing Design*, A Book Apart 2016.) Stark, Do, and Mall all refuse the rate question with the same move: no rate exists; the price comes after the value conversation.
+
+## "We want to know how much YOU think it'll cost"
+
+Mall's read: "Sometimes they honestly don't know. Most times, though, they have a number in mind and they're hoping you come in lower." The counter is the **sticker-shock bracket**: "Ask: 'Are you aiming to spend closer to $500K, $50K, or $5K?' You're trying to force sticker shock to get a feel for a range. Look for a gut reaction." — "Oh, definitely not $500K." → "Of course not! How do you feel about spending $50K?" → "Yeah, if we can stick to about $50K, that'd feel right." → "Voilà: you've got a starting point for your project price" (Dan Mall, *Pricing Design*, A Book Apart 2016). Same maneuver as Stark's range float (qualifying-and-mindset.md), run on a direct prospect instead of a gatekeeper.
 
 ## "I need to see the hours breakdown" (the accountants demand it)
 
@@ -72,6 +79,8 @@ Companion lessons from the failed first run: ask **"Why do you need these photos
 ## The speed trap
 
 "You could do it faster now, right? So it'll take you less time — 500 bucks is even more money, cuz now I'm paying you more per hour." Counter by making them disown the frame: **"Is the speed at which it's done really the most important thing to you?"** ("Of course I want to sell it fast—") Then reorient to the outcome's worth: "How much is selling this listing worth to you?" ($1M house, 2.5% = ~$20K commission) — now $500 vs. the value is the absurdity, not your rate.
+
+Flip side (Mall): real urgency is a value you *charge* for — "customers that value speed would pay double for a project that gets done in half the time they expect—charge for that." But run the **false-urgency test** first: "'Our CEO wants it done by May' isn't a real deadline, but 'We want this fantasy football app done two weeks before the season starts' is" (Dan Mall, *Pricing Design*, A Book Apart 2016). Manufactured deadlines earn no rush premium and signal a client who'll manufacture other pressures too.
 
 ## The package-deal trap
 

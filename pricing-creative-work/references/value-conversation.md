@@ -3,6 +3,9 @@
 ## Contents
 - Amateurs advise, experts diagnose
 - The Seven Essential Questions (The Coaching Habit)
+- Mall's questionnaire (eight questions, listening for value)
+- Propose the job you want (Mall, RFP reshaping)
+- Value = both profits (Mall's blackjack model)
 - Stark's why-conversation: why this / why now / why me
 - Home run / disaster pair
 - The revenue-channel + margin discovery roleplay (double keystone, $20M → $1.2M)
@@ -27,6 +30,30 @@ In the TqczYbFPWnk demo Chris runs an entire strategic diagnosis by — his word
 - "What's the real challenge here for you?"
 
 Plus Chris's own closer: "What does the business represent to you?" — the bridge from coaching to assigning a dollar value. "I've taken you basically through a strategic conversation and assigned a dollar value to it. So I know exactly how much to bid."
+
+## Mall's questionnaire (third school)
+
+All quotes: Dan Mall, *Pricing Design*, A Book Apart 2016. Mall's structured counterpart to the Seven Essential Questions: **eight rapid-fire questions, emailed first, then a follow-up phone call**. "The trick is to keep your ears open for value, not just the specifics of the answers."
+
+1. **"What's the timeframe? Does a certain event depend on this project launching?"** — speed is a value; charge for it. **False-urgency test:** "Look out for customers who manufacture false urgency. 'Our CEO wants it done by May' isn't a real deadline, but 'We want this fantasy football app done two weeks before the season starts' is."
+2. **"What are you looking for from us?"** — actual scope, fit, tasteful up-sell openings, and a timeline cross-check (six months of work in six weeks = misaligned expectations).
+3. **"Have you already started on any part of the project?"** — execute-without-questions jobs make it "difficult to provide real value—and charge for it"; fired-their-last-agency baggage; existing partners.
+4. **"How large is your team?"** — **team size is a value signal:** "Team size says a lot about how much an organization values the project they're hiring you for." Whole marketing team for a year = priority; "something they're sticking the new guy on" = "they likely won't spend a lot either." Also reveals stakeholders → scope and price accordingly (pain-in-the-butt surcharge).
+5. **"How did you hear about our work? What specifically interests you about it?"** — the weed-out. "If they don't know you from a hole in the wall, make like a tree and stop wasting your time."
+6. **"How much money have you set aside for this project?"** — "If you're not asking about money when you talk to a prospective client, you're doing it wrong." **Money, not budget:** "Notice that I asked about 'money,' not 'budget.' The word budget connotes cheap… Focusing on 'money' keeps the conversation on maximum value, whereas 'budget' draws attention to minimum spending." **Placement:** "about three-quarters of the way through, after I've lobbed them an easy one—why they thought to contact me. Bonus: that question perfectly lines me up to say I'm worth a premium."
+   **The sticker-shock bracket** when they counter with "we want to know how much you think it'll cost": "Ask: 'Are you aiming to spend closer to $500K, $50K, or $5K?' You're trying to force sticker shock to get a feel for a range." — "Oh, definitely not $500K." → "Of course not! How do you feel about spending $50K?" → "Voilà: you've got a starting point." (Cross-ref Stark's range float in qualifying-and-mindset.md — same maneuver run through a gatekeeper.)
+7. **"Are you talking to other companies about this project? Might we ask how many?"** — "If you're one out of twenty competitors, run!… I've rarely entered situations where more than three studios were pitching."
+8. **"Anything else we should know about?"** — the catch-all, plus the meal test: would you have a meal with this client? Close by proving you listened (rush → "turn around a proposal before the end of the week"; portfolio doubt → introduce a vouching former client). "Projects where the client feels heard often end in success."
+
+## Propose the job you want (Mall, RFP reshaping)
+
+From the Mega Agency case study (Dan Mall, *Pricing Design*, A Book Apart 2016). Faced with a rigid 22-page RFP, Mall replied: "we can't really do our best work under a rigid RFP process. We're different from a lot of other agencies, and a process that forces us to look the same as everyone else makes us look … well, kinda the same as everyone else" — offering to "politely bow out" otherwise (honesty, differentiation, and "establishing our ability to walk away" in one email). On the call, learning it was development-only with comps already done, he put up roadblocks: "if they're after a chop shop, I'm probably way too expensive and others would be better; in fact, I'm happy to recommend some." Then: "I offer to write a proposal that restructures their design process to get to their desired outcome. Essentially, I'll write a proposal for the job I want, not the job they're offering. They agree vigorously."
+
+## Value = both profits (Mall's blackjack model)
+
+"Every transaction has another kind of profit that most people forget about: the customer's profit. The combination of your profit and your customer's profit is called value" (Dan Mall, *Pricing Design*, A Book Apart 2016). "The more profit—read: value—you can create for them, the more of that profit you're entitled to."
+
+The **blackjack aligning-value model**: you and the client each write an honest number on paper — theirs, what they're willing to spend ("'As little as possible' is not an appropriate response"); yours, what you'd do it for ("'As much as possible' is not an appropriate response"). When both papers say $10,000, each number encodes a stack of values (their failed $5K freelancer, reclaimed weekends, half their audience-development budget; your booked pipeline, reusable tools, niche expertise, $4K/month family needs). "The magic in pricing is when you can match what your customer values with how valuable you are."
 
 ## Stark's why-conversation: why this / why now / why me
 

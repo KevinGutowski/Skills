@@ -9,7 +9,10 @@
 - Confidence: "the first time I charged $10,000"
 - Context makes numbers high or low
 - Let them name the price (it comes in at the top)
+- Pricing the moment + scarcity (Mall)
+- The Esther story + pricing as a muscle (Mall)
 - The walkaway
+- Losing well (Mall)
 - Specialize or be a commodity
 
 ## The stakeholder + entrepreneur filter
@@ -54,9 +57,29 @@ The price must be "relative to the risk of the company" — and remember the buy
 
 The live demo: attendees paid $1,100 for the conference; asked "based on the value you got, name your own price," the answers came back at or above what they paid. "When you name a price, you could be underselling yourself. When you talk about value and you let the client decide how valuable it is, **in all instances it's at the top end.**" (This is the closing half of "when you say it you're selling; when they say it you're closing.")
 
+## Pricing the moment + scarcity (Mall — school difference)
+
+All quotes: Dan Mall, *Pricing Design*, A Book Apart 2016. Mall's twist on price-the-customer: "As I'm pricing a customer, I can't help but think about another crucial part of the equation: me. How badly do I need this work?… For me, value pricing is even more than pricing the customer. It's about pricing the moment." Same-project proof that nothing has an inherent price: "My agency once designed and built a website for $18,000, and we did the same project for a different client for $230,000 that year."
+
+The engine is the **scarcity principle**: "The largest factor in your current value is your ability to walk away from a prospect." Full bank account + stacked portfolio = "If you won't take their project for $10K, the only recourse they have is to offer you $20K, then $50K, then $100K, until you finally take it—or don't." A set rate fails in both directions — at peak demand "an industry standard price makes you seem less scarce than you actually might be"; and, the contested half: "if you're struggling to pay the bills and have no projects on deck, you take what you can get. The scarcity principle works both ways." **Mark the fork:** the Do school calls down-pricing on a dry pipeline the race to zero — its answer is keep-the-lights-on runway so you never price desperate (see pricing-mechanics.md). Present both positions.
+
+## The Esther story + pricing as a muscle (Mall)
+
+Mall's go-away price that came back (Dan Mall, *Pricing Design*, A Book Apart 2016): booked five months out, he tried to repel a referral with a "Save the Date" contract — "You agree to pay a one-time, additional, nonrefundable fee of $7,000." "Esther never responded. Five days later, I received a check for $7,000 in the mail. I learned a terrific lesson that day: people will pay for things they value, no matter how wildly out of reach you might think it is."
+
+The training principle: "Pricing is a muscle. You need to keep exercising it to get stronger."
+
+The tempering counter-position — value pricing is not maximal pricing: "value pricing is about making the price match the value. If the value of what you're doing is small, it's okay for the price to be small. If the value is immense, the price should follow suit."
+
+Book credit, from Mike Monteiro's foreword: "You are going to make more money from this book than Dan Mall ever will." Why: "that's what Dan does for a living. He builds value… his clients will make more money from his work than he ever will, especially if he does it right."
+
 ## The walkaway
 
 Chris's Hollywood story: invited in by a former client's new partner, drove out, swanky office, and the first words were "So, what are you going to do for us?" — "I'm out of here." Every power-player stereotype confirmed; he left politely without answering a question. The friend who stayed signed a "partnership" that was a name with no equity and spent years trying to escape. The lesson: "As soon as I see somebody exhibit those traits, I'll ask a few questions to make sure I'm not crazy, and then I'm leaving… I've had feelings like that on really big jobs — seven-figure jobs — and I'm like, I don't like the feeling, I'm out." (To his own sales team: "If you like it so much, you do the job, not me.")
+
+## Losing well (Mall)
+
+The Mega Agency case study ends in a loss — by design as much as accident (Dan Mall, *Pricing Design*, A Book Apart 2016): "Since I've started using value pricing, my loss rate on proposals has gone way up—my agency lands significantly fewer projects than when we had a standard hourly rate. (But we make way more money now.)" Across a few hundred lost proposals: "Only one of those rejections has involved an objection to price." Of the rejection letter itself: "There isn't one word about price." The options made the client "reexamine the project at a fundamental level. (I'm adding value without even being hired yet.)" The good loss: "If you're going to lose a project, this is the way to do it: when a customer says, 'We see the value. This isn't the right thing, but we'll be back.'" (They came back.) High proposal loss-rate at higher money is the expected shape of value pricing, not a failure signal.
 
 ## Specialize or be a commodity
 

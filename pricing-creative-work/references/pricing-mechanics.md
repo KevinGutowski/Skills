@@ -3,6 +3,10 @@
 ## Contents
 - Stark's starter formula (cost floor vs one-year value ÷ 10)
 - Three options priced on attention, not labor
+- Mall's Goldilocks proposals (options on different client values)
+- Cost-plus as floor math (Mall)
+- Mall's hourly autopsy
+- Object value pricing + tolerance pricing (Mall)
 - Guarantees: 3x, pro-rata, guarantee the leading indicator
 - Performance / risk-share pricing as a close lever
 - Advisory retainers — selling access
@@ -20,6 +24,10 @@
 2. **Value ceiling-anchor:** establish the one-year annualized value to the client, then **divide by 10** — "a no-brainer type price… I'm going to deliver something worth a million dollars to you this year, so I can price that at $100,000 for sure."
 3. **Take the greater of the two.**
 
+**Mall's tenth-of-bounty (independent convergence):** "I don't have any specific science on picking 10%, but I've found that around a tenth of the total potential bounty is both small enough for the client to consider a worthy investment and large enough to be lucrative for me" (Dan Mall, *Pricing Design*, A Book Apart 2016). **Three-school ~10% convergence flag:** Stark's value÷10, Do's "discount for uncertainty" 10%-of-one-year-value, and Mall's tenth-of-bounty all land on the same fraction by different routes — treat ~10% of quantified value as the corpus-wide default anchor.
+
+**Price the intermediary's gain (Mall subtlety):** when an agency hires you for *their* client's project, the bounty is the agency's gain, not the end client's. In the Mega Agency case study, Mall priced the expertise option off what an award-winning site would be worth to the *agency* — "similar agency-of-record work is worth about $8 million of revenue per year on average. Based on those factors, it's reasonable to ask for 10% of their potential gain. 10% of $8,000,000 = $800,000 … $800,000 ÷ 5 phases = $160,000/phase." Find whose P&L your work actually moves; price that.
+
 Why beginners need it: they sell to their own wallet — "they can't imagine somebody would write a check that big for little old me and they talk themselves down into lower and lower fixed prices," get burned, "and hourly billing lives another day." If the value isn't comfortably above your cost, the problem is too small — solve a bigger problem (or solve a smaller one: mom-and-pop's mobile orders worth $30K/yr → you can charge $3K → don't build a website, set them up on Instacart).
 
 ## Three options priced on attention, not labor
@@ -31,6 +39,51 @@ Pick the prices first ("bottom $10,000, middle $22,000, top $50,000 — increasi
 - **Bottom:** DIY — diagnose, prescribe, hand over a roadmap/report/brand guide.
 
 Real example: Stark bid one at **$65,000 / $125,000 / $3.5 million** — the huge top jump because he'd take over implementation entirely, subcontracting a design team and an implementation team. (His own product ladder mirrors it: book → book bundle → call with him — "more attention, therefore more money… not because it's more work for me.")
+
+## Mall's Goldilocks proposals (school difference)
+
+All quotes: Dan Mall, *Pricing Design*, A Book Apart 2016. Mall's go-to is also three options — but **mark the fork**: Stark tiers on *your attention* (top = most of you); Mall tiers each option on a **different client value** — in the Mega Agency case study: expertise ($160K/phase, with consults from Brad Frost / Paravel / Ethan Marcotte), availability ($100K/month exclusivity), deliverables ($400K for Phases 1–2). "When I'm pricing options, I base each one on a different trait or result that's important to the client," sorted high/medium/low value — never on deliverable types: per Alan Weiss, consultants wrongly "focus on their ability to do rather than on the client's ability to improve."
+
+Why three options work, in Mall's words:
+
+- **The anchoring effect / Ariely's Economist decoy:** Ariely's MIT experiment on the Economist's $59 web / $125 print / $125 both pricing — 84% chose both; remove the print decoy and it flipped to 68% web-only. "The inclusion of the print-only subscription, at $125, made the combo, also $125, feel like a deal."
+- **Own framing:** "By listing multiple options with their own individual prices, you encourage your client to compare you with you."
+- It forces you to invent value: "Exploring these options can lead you to unearth ideas you or your client may not have dreamed of otherwise."
+
+**Deliberately incomparable units.** Each Mega Agency price had a different unit — per phase, per month, fixed. "You may object, 'But how can the client compare these with one another? Or with other bids?' Well, they can't. And you don't want them to—not on price, anyway. You want your client to focus on the value, on the results… Pricing with these options puts you in a category of your own."
+
+**Name the options.** "'Option 1' won't inspire anyone to drop a quarter of a million dollars. You're selling here; add a little romance." For a boat company: expertise = "The Eclipse" (most luxurious yacht in the world), availability = "The RMS Olympic" (the reliable troopship), deliverables = "Steamboat Willie" (chuggin' along, yet innovative).
+
+**Charge MORE per unit for less scope.** Option 3 was a subset of Option 1: "Since Option 1 is $160,000/phase and Option 3 has two phases, I estimate $320,000 for this option. However, doing less work with a client is often less efficient than doing more, so I bump the price up to $400,000 to accommodate any complexity that arises from covering only two phases."
+
+**Exclusivity formula:** replace your annual gross, round up. "In 2013, SuperFriendly grossed about $1 million. To get an exclusive for a yearlong project, they'd have to at least replace that income. That's $83,333.33/month, but I'll round up to $100,000 to make the math easier."
+
+**Present live, never email-only:** "whenever possible, walk your customer through their options on the phone or in person, never solely through email."
+
+## Cost-plus as floor math (Mall)
+
+Mall's break-even arithmetic (Dan Mall, *Pricing Design*, A Book Apart 2016): tally monthly bills ($7,038.95/month to break even), add margin — "most agencies go for somewhere between a 15% and 50% margin"; his was 42%, landing at a $10,000/month rate. Useful exactly as a floor — the same role as Stark's cost floor. But Mall himself flags the flaw: "cost-plus has a big drawback—it's all about one thing: you. Pricing is like the tango; it takes two." **Do-school caveat:** any formula you reveal invites unbundling — "anytime you have a formula I can argue with you." Compute the floor; never present the math.
+
+## Mall's hourly autopsy
+
+Mall's Chapter 1 case against time-based rates (all quotes: Dan Mall, *Pricing Design*, A Book Apart 2016) — the third school's version of Stark's hourly-billing-is-nuts argument, with distinct exhibits:
+
+- **The frame-of-reference problem:** "When you tell a client that you have an hourly rate, they compare you with all the other people they know to have hourly rates" — fast-food workers, plumbers, electricians, lawyers. "When I started freelancing, I found it incredibly difficult to get more than $150/hour, because my customers slotted my skills alongside those of their plumber or electrician."
+- **The growth penalty (Ms. Real Estate):** first flyer at $50/hour × 10 hours = $500. Five years later, twice the rate, half the time: $100/hour × 5 hours = $500. "You made the same amount of money that you made way back then? … Why are you being penalized for your experience and efficiency?" Quadruple the rate and she refuses — and even then you'd only have doubled your fee. "It's a lose-lose situation."
+- **The artificial ceiling:** 40 billable hours × 52 weeks = "2,080 billable hours in one year… Assuming a rate of $100/hour, you make an annual $208,000 if you are 100% billable." Even working every hour of the year (8,760 × $100 = $876,000): "it's a lot of money, but how are people out there making millions?"
+- **The restaurant with no prices:** a menu with no prices, a delicious meal, then a bill hundreds over what you expected — "you can't regurgitate and return it… This is what your customers go through when you bill them hourly."
+- **Padding the estimate:** "Some designers give in to temptation and pad their hourly estimate to land on a bigger fixed price. I have a word for that: lying."
+- **Price is not a scoping tool:** "most professionals who charge for time use pricing to solve a scoping problem. But that's like bringing an atom bomb to a pocket-knife fight." And: "So what's the best way to solve for the lack of scope? Create one."
+
+## Object value pricing + tolerance pricing (Mall)
+
+**Object value pricing** — the gut-calibration drill for any new inquiry: "Don't think about money; instead, think about what object you would take in trade for the job. Would you do the website for a new camera? No way. What about a new MacBook Pro? Meh. A used Honda Accord? Maybe. Two years' worth of mortgage payments? Now we're talking." Accord ≈ $12K, $1,000/month mortgage × 24 = $24K → the job feels like $12–24K (Dan Mall, *Pricing Design*, A Book Apart 2016).
+
+**Tolerance pricing** — values beyond the deliverable carry prices:
+
+- **Speed:** "customers that value speed would pay double for a project that gets done in half the time they expect—charge for that" (vs. hourly, where speed cuts your bill — same trap as the Do-school speed trap in objection-scripts.md).
+- **Pain-in-the-butt surcharge:** difficult prospects → "putting a price on tolerance."
+- **Furtwengler's list** (Dale Furtwengler, *Pricing for Profit*, via Mall): clients pay for "friendliness, integrity, dependability, convenience, image, service, innovation, and knowledgeable salespeople" — "all things that you can—and should!—put a price on."
 
 ## Guarantees
 
