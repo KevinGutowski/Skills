@@ -5,7 +5,7 @@ description: "Prototype and present design work across three tiers — fake-it (
 
 # Design Prototyping & Presenting
 
-**Sources** (full annotated list with titles + URLs: [references/sources.md](references/sources.md)): Apple WWDC 2014-223, 2017-818, 2018-811, 2018-801, 2023-10115, 2026-227 + the 2022 prototypers Q&A; ADA articles (PBJ – The Musical; CapWords); Config 2024–25 (Cheechee Lin, Duolingo, Figma UI3, Jeremy Hindle, Wojtek Dziedzic, Jae Park, Basheer Tome, Femke van Schoonhoven); Dive Club 2025–26 (Ryo Lu/Cursor, MDS, Brian Lovin, Geoffrey Litt, Steve Ruiz, Luis Ouriach, Kyle Santos, Josh Puckett, Andy Madrick, Katie Dill, Rafa Conde, Katarina Batina, Ridd, Ian Silber, Kris Puckett, Ron Goldin, Steven Haney); Paul Stamatiou; Kevin Twohy/Browser Co.; Evil Martians; Mariana Castilho; Vox Media/Polygon (Valio Con 2013); Carlos Montoya.
+**Sources** (full annotated list with titles + URLs: [references/sources.md](references/sources.md)): Apple WWDC 2014-223, 2017-818, 2018-811, 2018-801, 2023-10115, 2026-227 + the 2022 prototypers Q&A; ADA articles (PBJ – The Musical; CapWords); Config 2024–25 (Cheechee Lin, Duolingo, Figma UI3, Jeremy Hindle, Wojtek Dziedzic, Jae Park, Basheer Tome, Femke van Schoonhoven); Dive Club 2025–26 (Ryo Lu/Cursor, MDS, Brian Lovin, Geoffrey Litt, Steve Ruiz, Luis Ouriach, Kyle Santos, Josh Puckett, Andy Madrick, Katie Dill, Rafa Conde, Katarina Batina, Ridd, Ian Silber, Kris Puckett, Ron Goldin, Steven Haney); Paul Stamatiou; Kevin Twohy/Browser Co.; Evil Martians; Mariana Castilho; Vox Media/Polygon (Valio Con 2013); Carlos Montoya; Leah Buley.
 
 The trap is *idea → build → disappointment*. "The more prototypes we can put between your idea and your application, the better the result." The mantra: **"Make fake apps, show people, and learn from their feedback. And do that over and over again until the experience of your app feels great."** Prototype to *test* ideas (build the right thing) and to *get new* ideas.
 
@@ -31,6 +31,7 @@ Routing rules:
 - The 60-second bar: a working-feeling Keynote timer "in less time than it took you to brush your teeth." Speed buys *breadth* — many parallel explorations across a diverse team.
 - **Keep exploration loose — structure later** (Stamatiou): auto layout / design systems are "the worst thing when you're quickly exploring wildly different concepts"; to break your own tendencies ask **"how would [another company] design this?"**
 - **Field notes** ([references/methods.md](references/methods.md)): prototype at true spatial context (Jae Park; physical tier → `hardware-product-design`); scaffold, don't script, for collaborators (PBJ); prototype the core loop before the app exists (CapWords); at publishing scale (Vox/Polygon): real content gut-checks everything, embed the front-end dev in exploration, plan polish as an end stage, the decoy mood board, verify production dependencies early.
+- **Team-of-one adaptation** (Buley, *The User Experience Team of One*): when you need buy-in as much as answers, make the artifact participatory. "Turn any meeting into a design session" by sketching live and inviting non-designers to sketch; "people love it when ideas start to become tangible."
 
 ## Tier 2 — real code: SwiftUI as a design tool (2023)
 
@@ -66,6 +67,7 @@ Amplifiers and cautions (full notes: [references/agents-field-notes.md](referenc
 - Show the people the app is *for* ("if your app isn't for engineers, go find some people who are not engineers"), in the real context. A recurring representative outsider works — Stollenmayer's "mom test": voluntary enjoyment, not polite completion.
 - During: **Do you know how to do X? · Is it easy? · How can we make this better?** Have theories beforehand; look for evidence for or against. **"Don't argue, defend or dismiss. You're not there to debate — you're there to get information."**
 - Review stance for context-rich prototypes (Katie Dill): "Please don't present. Please don't pitch… I just want to see it like a user."
+- **Avoid the prototype drop.** Buley: "Don't just release the prototypes into the wild and ask people to send feedback." Review synchronously; if testing, "invite the team to observe" so learning transfers to the room.
 - **When words fail on visual nits, draw a caricature** (type-designer technique, 2018-801): exaggerate the feature until others see the toned-down real one — find "the joint gaze" ([references/methods.md](references/methods.md)).
 - **Make shareable, reactable artifacts:** "Make an ad, right? Sell this idea" — under 10 minutes, "ideally five"; shoot the device in a hand (Rafa Conde). Chase heat with async video that can be passed around (Katarina Batina); Ian Silber's PD-whip channel bans raw musings — "It's got to be a prototype or video."
 
@@ -115,6 +117,7 @@ Four-part structure: context → concepts → rationale → **always a recommend
 - [ ] Agent output diffed against the mock — typography, colors, radii, spacing, missing states, gradient scale?
 - [ ] Tested with real (ugly, edge-case) data and in real environments — found where it breaks?
 - [ ] Feedback sessions use the question sets; no defending or debating?
+- [ ] Solo/low-support context: meeting made participatory, not a big reveal or async prototype drop?
 - [ ] Open questions logged; ideas triaged (keep / recombine / kill) before the next loop?
 - [ ] Presentation: objectives + problem statements up front, story over slides, dialogue over monologue?
 

@@ -10,6 +10,9 @@ Screened Chip Heath & Dan Heath, *Made to Stick* from `/tmp/books/made-to-stick.
 # Design For How People Learn skill creation — DONE 2026-06-11
 Screened Julie Dirksen, *Design For How People Learn* from `/tmp/books/design-for-how-people-learn.txt`. Density: HIGH because the corpus had onboarding, feature discoverability, and people management but no general skill for courses/workshops/internal training/job aids. Created `learning-experience-design` as a single-deep-method skill under the house-style exception: gap diagnosis (knowledge/skill/motivation/environment/communication), learner observation, contextual goals, CCAF, practice/feedback, motivation, and environmental performance support. Added README row and bidirectional boundaries with `user-onboarding`, `feature-discoverability`, and `people-management`.
 
+# The User Experience Team of One targeted fold — DONE 2026-06-11
+Extracted Leah Buley, *The User Experience Team of One* via `pdftotext` to `/tmp/books/the-user-experience-team-of-one.txt` (font-weight warnings only; text usable). Density: MED. No new skill: the method catalog largely routes to existing `user-research` and `design-prototyping`, while solo-UX influence routes to `design-org-influence`. Folded principles-over-process, good-enough artifacts, Listening Tour, scope-not-permission framing, and pyramid evangelism into `design-org-influence`; folded participatory sketching and no-async-prototype-drop into `design-prototyping`.
+
 # sweep: animations.dev — FINAL 2026-06-10
 ## Coverage: SWEPT — all 45 lesson nodes + 4 interviews + emil-skill page + vault opened personally; evidence in /tmp/animdev-lessons/ + /tmp/animdev-interview-*.txt
 ## Lessons (45/45 opened & read)

@@ -71,8 +71,8 @@ human) picking up where the prior sessions left off. Companion files:
 2. **Remaining shelf** (extract + screen): ~~Kleon *Show Your Work*~~ folded 2026-06-11
    into building-in-public; ~~Heath & Heath *Made to Stick*~~ targeted fold 2026-06-11
    into design-org-influence; ~~Dirksen *Design For How People Learn*~~ created
-   `learning-experience-design` 2026-06-11; next: *The User Experience
-   Team of One*, *Universal Principles of Design* (2003 — expect heavy model-known),
+   `learning-experience-design` 2026-06-11; ~~Buley *The User Experience
+   Team of One*~~ targeted fold 2026-06-11; next: *Universal Principles of Design* (2003 — expect heavy model-known),
    *The UX Reader*, *Light: Science & Magic* + Tony Northrup (photography — assess
    whether a photography skill has a task shape Kevin needs), *Generative Design* (p5.js,
    dated), misc UX PDFs (Treder, UserTesting/UXPin guides — probably skip-thin).

@@ -23,3 +23,4 @@ This skill aggregates three Apple design-process sessions (one continuous toast-
 - *Evil Martians — "weeks → days" design-engineering case, 2025.*
 - *Mariana Castilho (poolside/Vercel) — Figma-diverges-code-decides field note.*
 - *Rachel Nabors — "Animation at Work" (A Book Apart, 2017), ch. 4 "Communicating Animation" — the animation documentation matrix (storyboards carry values + reasoning, animatics carry feel, prototypes are testable; always couple verbal + visual) in methods.md.*
+- *Leah Buley — "The User Experience Team of One" (Rosenfeld, 2013), chs. 7-8 — participatory sketching, sketchboards, and prototype-review mechanics for solo UX practitioners.*

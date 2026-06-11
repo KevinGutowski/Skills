@@ -24,6 +24,8 @@ Plus Dive Club podcast interviews (auto-captioned YouTube): Ryan Scott (ex-DoorD
 
 Plus Chip Heath & Dan Heath, *Made to Stick* (2007), chs. 1-6 — the SUCCESs pitch-framing checklist, folded narrowly into approval and persuasion mechanics.
 
+Plus Leah Buley, *The User Experience Team of One* (Rosenfeld, 2013), chs. 2-3 and 9 — solo-UX influence, listening tours, and relationship-building methods.
+
 ## Core reframe: it's the framing, not the design
 
 **"It's not your design they don't trust, it's how you're framing the value."** Rejection is rarely about craft, leadership, or politics — it's solution-first thinking: falling in love with a solution before understanding the business problem, presenting features instead of outcomes. The designers who consistently get ideas approved "think business first and design second."
@@ -126,6 +128,16 @@ Smaller Dive Club deltas:
 - **Pre-agreed regression tolerance for big bets** (Katarina Batina, Shop app/Shopify — 0YjO7wShTkQ): redesigns vs. years-optimized incumbents "almost always lose" at first — so negotiate the tolerance *before* the work: "we're actually going out to beat the incumbent and we're going to reset a baseline that inherently might be a little lower than what status quo is today." The leadership counterpart is "making sure that we're not locally maximizing at any given point" (her credit to Toby). Expect the data team's flinch — "wow, this really thwarts what we understand best practices to look like" — and treat it as the negotiated deal working, not a stop signal.
 - **Data narratives are contestable** (Batina): "data itself is objective. The reading of it is never objective. It is always subjective" — when a metric is read against your work, contest the reading, not the number.
 
+## Team-of-one influence (Buley)
+
+Use this when you are the only UX/design person on a product team, or when the org is too immature for formal design process. Density verdict: MED; much of the method catalog routes to `user-research` and `design-prototyping`, but the operating stance is valuable here.
+
+- **Principles over process.** Buley's warning for immature orgs: pushing process first can become a distraction. Anchor on principles and behavior: "invite non-UX people into your process. Listen with genuine curiosity. Make ideas tangible."
+- **Good enough is an influence tool.** Do not wait for polished proof. The useful threshold is "good enough to convey the basic idea" and "good enough to have a conversation about it." Imperfect artifacts invite participation and make the work less threatening.
+- **Run a Listening Tour before the big pitch.** If you only do one team-of-one method, use the "Listening Tour": it "lays bare other people's ideas and hopes for the product" and shows the assumptions, politics, and conditions you will be working with. Share what you heard before prescribing what should happen.
+- **Make the negotiation about size, not permission.** Instead of asking "Can we do some research," offer a range: large study vs. "a small informal evaluation to get some quick feedback." The decision becomes not whether UX happens, but how much UX is right for the constraint.
+- **Build the pyramid, not the executive-only pitch.** Buley's pyramid evangelism: "build an army of supporters throughout the organization." The lunch date is the durable unit of influence; if there is no formal UX mandate, start with a few key supporters and grow the base.
+
 ## Checklist
 
 - [ ] Pre-Figma gate answered: business problem, user problem, success measure?
@@ -137,6 +149,7 @@ Smaller Dive Club deltas:
 - [ ] Roles negotiated with the PM, with a quarterly retro — not assumed?
 - [ ] Wins doc current (one SBI entry/week), invisible work included?
 - [ ] Timing window chosen or urgency manufactured?
+- [ ] If solo/early UX: listening tour done, informal supporters named, and the ask framed as scope rather than permission?
 
 ## Relationship to other skills
 
