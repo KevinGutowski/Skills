@@ -57,7 +57,7 @@ The third process school — it *removes* structure rather than adding it, betti
 
 ## The metrics-led product strategy school (Perri / Klein / Lean UX)
 
-*Sources: Melissa Perri, Escaping the Build Trap (2018); Cindy Alvarez, Build Better Products (2016); Gothelf/Seiden, Lean UX, 1st ed. (2013). This school conflicts with Linear's taste-over-data stance; route by org maturity, traffic volume, and whether the team is discovering demand or refining a craft-led product.*
+*Sources: Melissa Perri, Escaping the Build Trap (2018); Laura Klein, Build Better Products (2016); Gothelf/Seiden, Lean UX, 1st ed. (2013). This school conflicts with Linear's taste-over-data stance; route by org maturity, traffic volume, and whether the team is discovering demand or refining a craft-led product.*
 
 The fourth process school treats shaping as strategy deployment plus learning loops.
 

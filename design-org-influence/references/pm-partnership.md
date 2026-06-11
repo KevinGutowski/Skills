@@ -109,3 +109,9 @@ From rO68VwacBoE (stakeholder management):
 From fRdUMGzMNLo (pattern 3): only talking to your PM at deadlines, weeks of heads-down work with no WIP shared, no idea what adjacent teams are doing — then surprise pushback from stakeholders you never built a relationship with. "You treat your PM like they're your boss… instead of seeing them as a peer or a partner."
 
 The fix: schedule two recurring one-on-ones — one with your PM, one with a designer or PM from another team whose work touches yours. Ask about their goals and where you might collaborate, "not because you need something right now, but because you're building the relationship before you need it." At senior+ levels, that horizontal influence — thinking in systems, not just features — is "what differentiates senior designers from mid-level designers."
+
+## Invite yourself to the rooms you're left out of (Metts & Welfle)
+
+Michael Metts & Andy Welfle, *Writing Is Designing*, ch. 8 — three scripts: the *listen-in* ("Can you add me just so I can listen in?" — for big egos and hierarchy), the *productivity enabler* ("I'd hate for any changes to come late and block the dev team" — nothing opens doors like dev-team risk), the *helping hand* (offer to facilitate a workshop that aligns the group). And **office hours** as an influence channel: weekly bookable slots rarely solve the problem brought in, but surface systemic problems, build relationships, and earn buy-in for headcount (Adobe's lone UX writer → a team).
+
+**"Don't confuse making a deliverable with making a difference"** (WID ch. 8): meet the team's needs first — the cool UX deliverable you've been dreaming of may not be one of them — and the support to meet users' needs follows.

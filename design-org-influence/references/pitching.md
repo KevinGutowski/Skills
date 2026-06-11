@@ -1,6 +1,6 @@
 # Pitching design work for approval
 
-Source: VTnT5zFjzfQ (impact framework; guests Filippos, Florian, Miranda Slater) and -dtCf1DAAKc (strategic narrative framework, four lenses). All quotes verified against auto-captions; speaker is Femke unless credited.
+Source: VTnT5zFjzfQ (impact framework; guests Filippos, Florian, Miranda Slater) and -dtCf1DAAKc (strategic narrative framework, four lenses). All quotes verified against auto-captions; speaker is Femke unless credited. Plus Rachel Nabors, *Animation at Work* (A Book Apart, 2017), ch. 4, and Lara Hogan, *Resilient Management*, ch. 4.
 
 ## Contents
 
@@ -13,6 +13,9 @@ Source: VTnT5zFjzfQ (impact framework; guests Filippos, Florian, Miranda Slater)
 - [Timing windows and manufactured urgency](#timing-windows-and-manufactured-urgency)
 - [The before/after transformation](#the-beforeafter-transformation)
 - [The credibility ladder (Miranda Slater)](#the-credibility-ladder-miranda-slater)
+- [The animation-adoption case (Nabors)](#the-animation-adoption-case-nabors)
+- [Gardener, not gatekeeper (Nabors)](#gardener-not-gatekeeper-nabors)
+- [Translate your message into each audience's motivations (Hogan)](#translate-your-message-into-each-audiences-motivations-hogan)
 
 ## The diagnosis: solution-first thinking
 
@@ -144,3 +147,15 @@ Bad timing: "Here's a nice improvement we should probably make someday." Good ti
 4. **Then ask for your seat at the table** — "I know planning's coming up. Can I be included to add more design exploration and give you more confidence behind the product decisions we're making?"
 
 "You have to prove your value before they'll even consider including you in strategic conversations."
+
+## The animation-adoption case (Nabors)
+
+Rachel Nabors, *Animation at Work* (A Book Apart, 2017), ch. 4 — selling a craft investment (quotes verified against source). Skip the science debate and "talk benefits" — lighter code, reliable interaction patterns, maintainability, "shorter design and development time". And show, don't tell — "so often when animation is picked up for a project, it's because someone placed an animated version next to a static comp so stakeholders could see the difference for themselves."
+
+## Gardener, not gatekeeper (Nabors)
+
+Nabors, ch. 4 — the lone-evangelist bus factor: "I've watched companies lose all momentum… when the one person who internally evangelized motion design left. Setting yourself up as a lone gatekeeper is dangerous." Build allied experts and shared part-ownership instead.
+
+## Translate your message into each audience's motivations (Hogan)
+
+Lara Hogan, *Resilient Management*, ch. 4 — "speak their language" made concrete: running a web-perf team, her dashboards and graphs instantly won the engineers but moved designers and PMs not at all. Listening for what each group optimized for fixed it — designers cared about brand, so she "created videos of our site loading around the world, on different internet speeds—and saw a huge shift in the design team's reaction"; PMs were optimizing for looking good to their boss, who "received daily reports of the fastest and slowest pages on our site" — shown that, "they were suddenly game to prioritize performance work." Rule: "translate your message into something that's much more digestible and easy for that audience to care about" — one elevator pitch per audience, repeated often.
