@@ -18,7 +18,7 @@ description: "Win org buy-in for design via business-case framing. Use when pitc
 - *hh1UXn8ZPwc — portfolio as a living product (guests: Sarah Doody, Aneta Kmiecik).*
 - *uQLAUq4TstI — presenting explorations in Figma (mechanics live in design-prototyping; MVP-vs-vision framing cited here).*
 
-Plus Dive Club podcast interviews (auto-captioned YouTube): Ryan Scott (ex-DoorDash/Airbnb — LOkdM6frkak), Henry Modisett (Perplexity — Vt3oTBvx7xw), Cam Worboys (Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), Luis Ouriach (Figma — Pn2G7JhxNKc), Brian Lovin (Notion — dvEwb1Ajkwo), Megan Choy (Anthropic — hKeDfupbA4U), NYC panel (V-jd3v9P-Ps).
+Plus Dive Club podcast interviews (auto-captioned YouTube): Ryan Scott (ex-DoorDash/Airbnb — LOkdM6frkak), Henry Modisett (Perplexity — Vt3oTBvx7xw), Cam Worboys (Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), Luis Ouriach (Figma — Pn2G7JhxNKc), Brian Lovin (Notion — dvEwb1Ajkwo), Megan Choy (Anthropic — hKeDfupbA4U), NYC panel (V-jd3v9P-Ps); tranche 2: Katarina Batina (Shop app, Shopify — 0YjO7wShTkQ), Polly D'Arcy (Wealthsimple — vdYBohOQYm0), Marvin Schwaibold (Molly Studio → Shopify — KpJs7mZYErg), Tommy Geoco (OYNoy468kS8).
 
 ## Core reframe: it's the framing, not the design
 
@@ -91,6 +91,8 @@ Smaller Dive Club deltas:
 - **Write before pixels** (Luis Ouriach, Pn2G7JhxNKc): "Writing down before you commit to a pixel is the best way to get buy-in for an idea. And you're not going to get the ability to ship an idea unless you get buy-in." Also his role contract for blurred-role anxiety: accept "what our role can do at a bare minimum plus" — the plus set by industry, company, team, level; and the enterprise/startup gap is *widening* because tool access differs so much.
 - **Titles** (Brian Lovin, dvEwb1Ajkwo): "Our obsession with titles is what will screw people over… these things are going away" — be the person who moves between disciplines. And a contrarian advantage: "the ability to focus and be undistractable for 2 hours a day is like a meaningful competitive advantage right now, which is insane."
 - **Ship governance** (Megan Choy, hKeDfupbA4U): "just because everyone can ship doesn't mean not everything should ship… we need better systems that scale" as everyone gains push-to-production ability.
+- **Pre-agreed regression tolerance for big bets** (Katarina Batina, Shop app/Shopify — 0YjO7wShTkQ): redesigns vs. years-optimized incumbents "almost always lose" at first — so negotiate the tolerance *before* the work: "we're actually going out to beat the incumbent and we're going to reset a baseline that inherently might be a little lower than what status quo is today." The leadership counterpart is "making sure that we're not locally maximizing at any given point" (her credit to Toby). Expect the data team's flinch — "wow, this really thwarts what we understand best practices to look like" — and treat it as the negotiated deal working, not a stop signal.
+- **Data narratives are contestable** (Batina): "data itself is objective. The reading of it is never objective. It is always subjective" — when a metric is read against your work, contest the reading, not the number.
 
 ## Checklist
 

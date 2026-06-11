@@ -1,6 +1,6 @@
 # Building & Running a Design Org — Dive Club field notes
 
-Hiring, org shape, and operating models from three design leaders. Sources (Dive Club podcast, auto-captioned YouTube): Henry Modisett (VP of Design, Perplexity — Vt3oTBvx7xw), Cam Worboys (Head of Product Design, Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), and a live NYC panel with Megan Choy (Anthropic), Dan Shipper (Every), Bradley Zipper (Ramp) — V-jd3v9P-Ps.
+Hiring, org shape, and operating models from design leaders. Sources (Dive Club podcast, auto-captioned YouTube): Henry Modisett (VP of Design, Perplexity — Vt3oTBvx7xw), Cam Worboys (Head of Product Design, Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), a live NYC panel with Megan Choy (Anthropic), Dan Shipper (Every), Bradley Zipper (Ramp) — V-jd3v9P-Ps; tranche 2: Polly D'Arcy (VP of Design, Wealthsimple — vdYBohOQYm0), Marvin Schwaibold (Molly Studio, acquired by Shopify — KpJs7mZYErg), Tommy Geoco (OYNoy468kS8).
 
 ## Hiring (Modisett, Perplexity)
 
@@ -35,6 +35,23 @@ Hiring, org shape, and operating models from three design leaders. Sources (Dive
 - **Kill mediocre work even after it ships.** "We are not okay with good enough and we are not okay with mediocre" — she and Patrick Collison have pulled the plug last-minute, and he "has asked us to make changes to billboards that were already up… we've talked about how that's a good thing, because a lot of companies don't do that."
 - **Leaders stay in the work.** Her reviews now: "one sentence is set up and then it's like, okay, let's go into it" — straight to the prototype, like a user, no pitch theater.
 - **Hiring = curiosity + agency.** Curiosity ("constantly looking to grow and constantly better understand the circumstances of the work") now includes leaning into the AI shift; agency is "the other side of curiosity… doing something with it" — often visible outside work ("I made my husband this website…"). "The fact that you can just build now is so exciting… does that person demonstrate agency."
+
+## Hiring and coherence (Polly D'Arcy, Wealthsimple — vdYBohOQYm0)
+
+- **Spike hiring.** Every candidate must have a nameable spike: "We ask what their spike is and if you cannot name a spike this person has… we're not interested" — recruit a team of complementary spikes, not well-rounded generalists.
+- **The app-review interview.** "We ask you to open an app on your phone. We don't tell you what it is ahead of time" — a live crit of an app (they've been choosing Spotify) shows noticing and critical range with zero prep, no portfolio theater.
+- **Portfolio signals.** Show shipped product and the messy middle: "A lot of people actually like show static Figma stuff in their presentation, which I feel like is unacceptable at this stage" — open the real product, walk the iteration, show what the tension between versions taught you.
+- **One-hand coherence.** "The goal is that I want the app to feel like it was designed by one hand and not 40. That is incredibly hard to do" — admittedly near-impossible, but it's the bar, which is why coherence is an org-design problem, not a crit comment.
+- **Anti-silo rituals.** Teams heads-down "doing their own stuff cuz that's how you ship the org chart" — so build deliberate cross-visibility rituals (everyone aware of what's going on across surfaces) as the structural antidote.
+
+## Studio operating model (Marvin Schwaibold, Molly Studio → Shopify — KpJs7mZYErg)
+
+- **Narrow the plane of attack** (via Frank Slootman, Snowflake): "You don't want to be a mile wide and an inch deep with your team. That's how you lose creativity." Keep the team close and "you want to sequence more than you do parallel. You sequence one after the other" — one concentrated thing at a time beats many shallow parallel streams, especially when many stakeholders want a say.
+
+## AI-fluency hiring (Tommy Geoco — OYNoy468kS8)
+
+- **The workflow interview.** "The biggest question that I want to know is like show me your workflow. Show me how you design something… take me through an idea that you've created" — process fluency is now the interview, not the deliverable.
+- **The number-one red flag** (Ridd, from hiring-manager data): "a candidate has not demonstrated any interest or curiosity in new AI processes or tools." Curiosity about the new toolchain is the cheapest screen available.
 
 ## Panel notes (Megan Choy, Dan Shipper, Bradley Zipper — V-jd3v9P-Ps)
 

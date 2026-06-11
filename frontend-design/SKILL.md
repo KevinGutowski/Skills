@@ -70,6 +70,7 @@ Production layouts must also survive real text: "English, a very compact languag
 - **Then theme by hand**: a custom layer overrides the styles — "paint it in a way that… fits the thing I want. But underneath, there are still these pretty standard shared components."
 - **Banned slop tells**: "massive shadows, purple gradients," purple buttons, the default icon set "AI will just pick." His safe fallback when unsure — "you just use system fonts" — sets the floor (never slop defaults); this skill's distinctive-type guidance above sets the ceiling.
 - **Tokens make AI composable**: "with like a really robust like foundational set of tokens and components, AI is able to compose them pretty well."
+- **Seed the brand early** (Ron Goldin, ex-Google/Shopify/Uber Eats — Dive Club UkQpgslyR3A; second practitioner vote for the anti-generic doctrine): "don't wait till like the very end to think about branding and differentiation" — once you know what the product is, establish the visual language up front so AI extrapolates *your* aesthetic instead of defaulting to slop.
 
 ## MDS field tactics (Matt D. Smith, Shift Nudge — YouTube -VSXVDr5HW0, Uno5dpotRgo, k8dcRRgA3T8, jSLfQ0sJDCw; Dive Club K_7ECqNlTtE)
 

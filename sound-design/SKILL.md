@@ -13,6 +13,7 @@ description: "Designs sound for apps — when sound helps vs silence, distinguis
 - *Apple Developer article — "How Philipp Stollenmayer is spreading joy with PBJ – The Musical" (2026; adaptive-music field notes). https://developer.apple.com/articles/pbj-the-musical/*
 - *Ryo Lu (Cursor) — interview, 2025 (feedback-density note).*
 - *Netta Marshall (Rdio) — Valio Con 2013/2014 talk (Drew Wilson's conference): music-memory note.*
+- *Rafa Conde — Dive Club interview (youtube.com/watch?v=3rnhlZj25iY): the motif-first multi-channel note.*
 
 Design isn't just what a product looks like or how it works — it's what it *sounds* like. Sound is a universal language: it gives context, early warning, quick confirmation (the seatbelt click — "you hear the click, and you know you're good to go"), and emotional nuance. The framing question to start any project: **"Imagine the next version of your app will have no graphical UI at all. How would you interact with it? What could that sound like?"** And George Lucas's line: "50% of the experience of a movie is determined by what we hear." Invite sound design *early*, not last.
 
@@ -73,6 +74,8 @@ Three principles:
 Andy Allen's checkbox sound anatomy (Config 2024): a satisfying action sound "follows this action with a **lead-up, punctuation, and sustain**" — windup swell, the ka-thunk, and a tail — layered with custom haptics; multi-sensory redundancy matters because digital experiences are "trapped behind a hard pane of glass."
 
 Techniques worth stealing: **ghost-tap priming** (people miss the first of four back-to-back transients — use tap one to "wake up the skin"); **anticipation flips** (Watch alarm ramps the haptic, cuts it, *then* plays the sound "as an answer"); **contrast over literal symmetry** (left/right cues doubled the haptic strikes on one side so they're distinguishable by feel). Practice loop (2021): dissect each moment per sense → audition AHAP assets → mix-and-match haptic and audio events in the JSON → use `CHHapticAdvancedPatternPlayer` for looping/speed-modulated textures. (AHAP = JSON haptic patterns; QuickLook previews them on macOS; haptics need a real device.)
+
+**Motif-first multi-channel design** (Rafa Conde, Dive Club): when haptics, sound, and visual pacing must converge, find one motif and let every channel serve it. Worked example — a retro "unboxing" onboarding slideshow: a haptic fires with each new picture, fast at first, then slowing; tuning it he noticed "I realized with the haptics that I was actually feeling the pacing of the slideshow" — so the sound followed the same arc, "kind of slowing down, focusing on the music and like removing noise. So, once you got that motif, that like metaphor, everything else was just working around that and it fell into place." The search is the expensive part ("maybe I'll spend days in search of the motif"), but once found "everything just unravels from there." This is the 2019 Harmony principle run in reverse: instead of matching feedback to a finished visual, pick the metaphor first and derive haptic, sound, and pacing from it together.
 
 ## Production craft
 

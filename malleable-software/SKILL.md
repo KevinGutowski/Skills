@@ -57,6 +57,20 @@ Litt's lens: "human-AI collaboration is fundamentally a version control problem"
 
 The sanctioned home for disposable software: "I call these tools jigs, from woodworking — you make a tool just for the purpose of making one project." Litt's example: instead of reviewing an unreadable AI migration script, he asked for "a command center that will walk me through the process of doing this port myself but visualize the entire process" — old/new site previews live, stepwise file diffs — "that tool is a one-time thing just for this one PR, but I was able to economically build that because AI exists." Jigs still require the preconditions: "I'm not going to make a new disposable tool if that requires me to totally migrate all my data… I need my new tool to fit with my existing ecosystem."
 
+## 7. Designers building their own tools (2025–26 practitioner notes)
+
+Field grounding for the Litt/Ink & Switch philosophy: by 2025–26 the malleable thesis stopped being speculative — working designers routinely make their own tools. Sources (Dive Club, auto-captioned): Ryan [Moshi] (head of design, Column — onQY0PrUulw; surname uncertain in captions), Tommy Geoco (OYNoy468kS8), Marvin Schwaibold (Molly Studio → Shopify — KpJs7mZYErg), Kris Puckett (nPyxVMd1LIA).
+
+- **Tools-of-one** (Ryan): "I get to make it for my exact user needs and not consider like what anyone else needs" — the per-person fit malleability promises, achieved today by building rather than reshaping.
+- **Tooling-gravity as a moat** (Ryan): "we tend to gravitate towards the things that our tooling makes easy" — effects awkward in Photoshop but trivial in his own tool become a signature: "it's like kind of making a moat to your brand." Your tools shape your output; owning them shapes it distinctively.
+- **Build the tool, not the output** (Ryan): "I don't want it to jump to the end result. I think where AI is really successful is helping you along the way to build a tool or learn the software." Ridd's conversion: "how can I prompt AI to create a tool that I can then use to arrive at the output. And I could have 100xed my iteration speed by thinking about it that way." Litt's AI-as-teacher-of-primitives stance, in production use.
+- **Deceptively simple** (Ryan, on his first tool): "these tools are deceptively simple to make… Getting a tool to, you know, just run locally and produce an image was very straightforward" — and "the actual like hard part that I don't know how to do myself — it nailed it." The coding bottleneck Litt says LLMs removed is, empirically, removed.
+- **The numbers** (Geoco): 59% of designers in his survey data "have built their own like tool for their workflow"; Ramp reported "1,500 vibe coded tools" internally — "how much of that is throwaway? Well, most of it" — and the keepers spread organically: "it's useful, someone tries it, and then it starts to spread like, oh, so and so built a thing for this." Communal creation plus jig-grade disposability, at company scale.
+- **The platform view** (Schwaibold): "that whole paradigm of throwaway software and contextual software versus large-tech software, which we're experiencing right now. And we're just entering a world where you'll be able to build tools for your specific workflow." Shopify's direction: "we're looking at more of a malleable interface that morphs and shapes itself around contextual needs of the merchants" — a large vendor designing for reshaping rather than against it.
+- **The two-hour personal app** (Puckett): a personal health app — Apple Watch metrics synced over a local network to a Mac mini, daily AI review of his HRV and energy — "in terms of like the permissionless building, like I'm able to in 2 hours build this." Software far below any commercial viability line, built anyway because the cost fell to an evening.
+
+Read against §2 and §6: most of this wave is jigs and tools-of-one, not yet the interop + document-style distribution the essay calls for — Ramp's spread pattern is the closest thing to communal creation in the wild.
+
 ## Checklist
 
 - [ ] Any "mode" buttons that paper over a learnable system? Could numbered-gear-style structure replace them?

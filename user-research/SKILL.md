@@ -5,7 +5,7 @@ description: "Plan and run user research — pick the method for the question, c
 
 # User Research
 
-Three-book synthesis: Erika Hall, *Just Enough Research* (2nd ed., A Book Apart, 2019) — scoping, rigor, bias; Steve Portigal, *Interviewing Users* (Rosenfeld Media, 2013) — interview craft; Tomer Sharon, *Validating Product Ideas* (Rosenfeld Media, 2016) — lean method selection and behavioral validation.
+Three-book synthesis: Erika Hall, *Just Enough Research* (2nd ed., A Book Apart, 2019) — scoping, rigor, bias; Steve Portigal, *Interviewing Users* (Rosenfeld Media, 2013) — interview craft; Tomer Sharon, *Validating Product Ideas* (Rosenfeld Media, 2016) — lean method selection and behavioral validation. Plus Dive Club interview field notes (Ron Goldin, UkQpgslyR3A; Polly D'Arcy, vdYBohOQYm0) — the empathy-transfer and dogfooding notes in §5.
 
 **References (read the one that matches the task):**
 - `references/method-selection.md` — Sharon's question→method playbooks: experience sampling, diary studies, concierge MVP, fake doors, A/B rules, tree/first-click/lostness, surveys, metrics
@@ -70,6 +70,10 @@ Notes are **descriptive, not interpretive**: "Worked 14 hrs/day for 10 years," n
 Research must change something: "If you don't make any changes, your online usability test has failed" (Sharon). Prioritize changes by impact, persistence, frequency — and politics: "Develop changes as if you live in a bubble." Full pipeline → `references/synthesis-and-impact.md`.
 
 **Test-design caveat — the aesthetic-usability effect.** Beautiful stimuli contaminate usability tests: "perceived aesthetic quality has the potential to mask usability issues" (Yablonski, *Laws of UX*, ch. 7, citing Sonderegger & Sauer, 2010 — an attractive phone mock scored as more usable despite identical function). Mitigate by "listening to what users say … and, more importantly, watching what they do" — one more reason behavior outranks attitude (§2.2) and notes stay descriptive.
+
+**Engineer the empathy transfer** (Ron Goldin, Dive Club). Findings that the org merely *reads* don't change behavior — design the delivery so people feel them. His Uber Eats move: mount an Insta360 camera on the courier bike, record real trips, send Google Cardboard viewers to leadership with the 360° footage — and in the all-hands cut, "we just like left a minute. We left a minute in that presentation of just like the feeling of sitting in a car waiting for nothing to happen." A minute of enforced boredom communicated the courier wait problem better than any chart. Same doctrine as Portigal's bring-colleagues-to-the-field (§2.12), extended to the people who'll never go: bring the field to them, uncompressed.
+
+**Dogfooding only counts with real stakes** (Polly D'Arcy, Dive Club): "it's one thing to like test something in staging and it's another thing to actually like use a product with your own money because you just… deeply feel the pain points" — and the team rule with teeth: if people at the company "do not want to use it with your own money, it's not good enough." Staging walkthroughs are evaluative theater; stake-bearing use is behavioral data on yourselves (§2.2 applied inward).
 
 ## 6. The school dial: Portigal-deep vs Sharon-lean
 

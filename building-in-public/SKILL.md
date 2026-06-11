@@ -51,10 +51,12 @@ The task: you're a designer/maker launching your own thing — build the audienc
 - **Satellite products**: shipping one product surfaces adjacent demand — aim for "a little mini portfolio rather than just one product."
 - Positioning humility: "just build anything and do it well… think of it more like books" — you don't need to be the world's best; you need an audience that picks your book. Real growth is "small and steady organic… it looks quite boring but this is how it happened." Review triage: fix bugs, fix real flaws, otherwise "focus on the ones that like my product."
 
-## The niche economy (Luis Ouriach + Ridd — Dive Club podcast, Pn2G7JhxNKc)
+## The niche economy & the audience bottleneck (Dive Club: Luis Ouriach Pn2G7JhxNKc; Ron Goldin UkQpgslyR3A; Tommy Geoco OYNoy468kS8)
 
 - **Distribution didn't get cheaper, only production did:** "Just because we have access to the tools, we can make things faster, we can get it into production, doesn't mean there's any eyeballs at all on it… keep it tighter, keep the scope smaller. And maybe something for your family is the best place to get that itch scratched."
 - **The financial-viability line has fallen:** "there was a literal line on a graph where if you could not generate this much profit… it's not worth pursuing. And that line has just fallen. So there's this whole category of problems that previously nobody had the financial incentive to solve that are just wide open" — local businesses, family tools, thousand-person problems. (Ridd's label: the niche economy.)
+- **Audience is the remaining bottleneck** (Ron Goldin, ex-Google/Shopify/Uber Eats — Dive Club UkQpgslyR3A): "building software isn't as hard as it used to be, but growing an audience is as hard as it always has been" — the distribution point restated by a builder shipping AI-built products; the product is no longer the moat, so budget effort accordingly.
+- **Posting is proof-of-work** (Tommy Geoco — Dive Club OYNoy468kS8): "social media is the new discovery engine right now… for better or worse, that is the way to prove" you're someone who experiments — sharing your workflow and tools publicly is product discovery and career discovery at once. The career lever: a designer-builder shipping brand work in code got renamed by his org — "they started referring to him as a brand engineer" — and the title is spreading ("Brand engineers are on the rise"). Public hybrid-skill work can mint the role before the org knows it exists.
 
 ## Side projects compound (Smith)
 

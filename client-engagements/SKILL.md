@@ -76,6 +76,10 @@ Detail in [references/health-and-failure.md](references/health-and-failure.md). 
 - **Convergence heuristic:** ~10 interviews hearing the same things = solid.
 - **Feasibility trick:** ask the developer if it's technically tricky — they always say no, but if they *hesitate* first, get an hour estimate, double it, and ask if there's an easier way.
 
+## 7. Field delta — entertain the room, don't educate it
+
+Marvin Schwaibold (Molly Studio → Shopify; Dive Club KpJs7mZYErg, auto-captioned), learned working with Brian Collins: "there's this difference between educating a client or educating a room versus entertaining a room. When you're entertaining I think people are more inclined to listen to you" — educating clients or peers can land as patronizing. Collins at demo nights was "very good at just entertaining the room and keeping the room inspired… everybody was always having a lot of fun." The delivery layer over §3's feedback system: the honesty rules govern *what's* said; entertainment-over-education governs how the room receives it.
+
 ## Reference map
 
 | Situation | Read |
