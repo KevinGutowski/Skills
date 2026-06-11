@@ -1,6 +1,6 @@
 ---
 name: ai-enablement
-description: "Make AI context legible, distributed, and adopted across a design/product org — decision archives wired to MCP, company-specific internal agents, team skills, enablement programs. Use when rolling out AI tooling to a team, sharing agent context beyond one person, or planning AI training. Repo agent rules → agentic-coding; DS-as-AI-context → design-systems. Based on Dive Club interviews. Triggers: AI enablement, AI adoption, internal agents, team skills, builder week."
+description: "Make AI context legible, distributed, and adopted across a design/product org — decision archives wired to MCP, internal agents, team skills, enablement programs. Use when rolling out AI tooling to a team, sharing agent context beyond one person, or planning AI training. Repo agent rules → agentic-coding; DS-as-AI-context → design-systems. (Dive Club.) Triggers: AI enablement, AI adoption, internal agents, team skills, builder week."
 ---
 
 # AI Enablement

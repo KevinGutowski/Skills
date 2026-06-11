@@ -1,6 +1,6 @@
 ---
 name: web-typography
-description: "Sets type on the web — measure, line-height, scales, pairing, OpenType, font loading. Use when styling CSS text or choosing/pairing/loading fonts. Apple platforms → apple-typography; rendering internals → graphics-fundamentals. Based on Rutter, Santa Maria, Latin. Triggers: line-height, measure, font pairing, type scale, web fonts, font-display, FOUT, font-feature-settings, tabular numbers, small caps, smart quotes, drop cap, fluid typography, hyphenation."
+description: "Sets type on the web — measure, line-height, scales, pairing, OpenType, font loading. Use when styling CSS text or choosing/pairing/loading fonts. Apple platforms → apple-typography; rendering internals → graphics-fundamentals. (Rutter, Santa Maria, Latin.) Triggers: line-height, measure, font pairing, type scale, web fonts, font-display, FOUT, font-feature-settings, tabular numbers, drop cap, fluid typography, hyphenation."
 ---
 
 # Web Typography

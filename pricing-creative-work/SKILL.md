@@ -1,6 +1,6 @@
 ---
 name: pricing-creative-work
-description: "Price and negotiate creative client work — value-based pricing, the Sequence Flip (desired future state → value → price → scope), verbatim objection scripts, qualifying buyers, when to walk. From The Futur (Chris Do) + Jonathan Stark. Product/devtool pricing and GTM → developer-tool-gtm; indie-product economics → building-in-public; this skill is client-services pricing and negotiation. Triggers: value based pricing, hourly rate, price is too high, too expensive, client negotiation, proposal options, scope creep, discovery call, retainer, what should I charge."
+description: "Price and negotiate creative client work — value-based pricing, the Sequence Flip (desired future state → value → price → scope), verbatim objection scripts, qualifying buyers, when to walk. (Chris Do, Jonathan Stark.) Product/devtool pricing and GTM → developer-tool-gtm; indie-product economics → building-in-public. Triggers: value based pricing, hourly rate, price is too high, client negotiation, scope creep, what should I charge."
 ---
 
 # Pricing Creative Work

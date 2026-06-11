@@ -1,6 +1,6 @@
 ---
 name: shape-up
-description: "Scope and bet on product work with Basecamp's Shape Up — appetite, fat-marker shaping, betting table, 6-week cycles, scope hammering — plus the competing Linear school (design as reference, no handoff/PMs, taste over data) and Nan Yu's org-shape rules, with routing between schools. Use when shaping or pitching work, running a betting table, cutting scope, choosing a process school, or designing team structure. Triggers: Shape Up, appetite, betting table, fat-marker, pitch, cycle, Linear method, design handoff, org chart."
+description: "Scope and bet on product work with Basecamp's Shape Up — appetite, fat-marker shaping, betting table, 6-week cycles, scope hammering — plus the competing Linear school (design as reference, no handoff/PMs, taste over data) and Nan Yu's org-shape rules. Use when shaping or pitching work, running a betting table, cutting scope, or choosing a process school. Triggers: Shape Up, appetite, betting table, fat-marker, pitch, cycle, Linear method."
 ---
 
 # Shape Up

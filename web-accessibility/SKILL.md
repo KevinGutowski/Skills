@@ -1,6 +1,6 @@
 ---
 name: web-accessibility
-description: "Accessible-web practice — semantic HTML first, keyboard/focus, contrast nuance, forms, media, testing. Use when building or auditing accessible sites. Apple → apple-visual-accessibility; type → web-typography; error copy → error-messages; disabled-participant research → user-research. Triggers: web accessibility, WCAG, a11y audit, screen reader, skip link, keyboard navigation, ARIA, alt text, captions, transcripts, focus management, accessible forms."
+description: "Accessible-web practice — semantic HTML first, keyboard/focus, contrast nuance, forms, media, testing. Use when building or auditing accessible sites. Apple → apple-visual-accessibility; type → web-typography; error copy → error-messages; disabled-participant research → user-research. Triggers: web accessibility, WCAG, a11y audit, screen reader, skip link, keyboard navigation, ARIA, alt text, captions, focus management."
 ---
 
 # Web Accessibility

@@ -1,6 +1,6 @@
 ---
 name: design-org-influence
-description: "Win org buy-in for design via business-case framing. Use when pitches stall, PMs push back, or at review/promo time. Session mechanics and pitch presentation craft → design-prototyping; this skill owns the business case and political context around the pitch. Triggers: stakeholder buy-in, design pitch rejected, PM pushback, business case for design, opportunity cost, promotion, performance review, self-review, wins doc, order taker, seat at the table."
+description: "Win org buy-in for design via business-case framing. Use when pitches stall, PMs push back, or at review/promo time. Session mechanics and pitch presentation craft → design-prototyping. Triggers: stakeholder buy-in, design pitch rejected, PM pushback, business case for design, opportunity cost, promotion, performance review, self-review, wins doc, order taker, seat at the table."
 ---
 
 # Design Org Influence

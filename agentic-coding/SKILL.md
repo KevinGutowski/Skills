@@ -1,6 +1,6 @@
 ---
 name: agentic-coding
-description: "Run coding agents well on real projects — constrained generation, the non-delegable human review role, guardrail abstractions, vibe-coding security. Use when setting up a repo for AI-assisted development, writing AGENTS.md/CLAUDE.md rules, deciding what to delegate, reviewing AI code, fixing agent drift, or running multi-agent/designer-in-the-repo workflows. Based on Evil Martians Chronicles + Dive Club interviews. Triggers: agentic coding, AGENTS.md, CLAUDE.md, vibe coding, AI drift, AI code review, worktrees, designer PRs."
+description: "Run coding agents well on real projects — constrained generation, the non-delegable human review role, guardrail abstractions, vibe-coding security. Use when setting up a repo for AI-assisted development, writing AGENTS.md/CLAUDE.md rules, deciding what to delegate, reviewing AI code, fixing agent drift, or running multi-agent workflows. (Evil Martians, Dive Club.) Triggers: agentic coding, vibe coding, AI drift, worktrees, designer PRs."
 ---
 
 # Agentic Coding

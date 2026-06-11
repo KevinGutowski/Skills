@@ -1,6 +1,6 @@
 ---
 name: client-engagements
-description: "Run client design engagements — qualification, kickoff, feedback system, health signals, failure handling. Use when starting a client project, training a client on feedback, an engagement going sideways, or firing/being fired. Pricing → pricing-creative-work; session craft → design-prototyping. Triggers: client feedback, kickoff, sign-off, scope of work, client relationship, stakeholder surprise, design presentation to client, project going wrong, kill fee, fire a client."
+description: "Run client design engagements — qualification, kickoff, feedback system, health signals, failure handling. Use when starting a client project, training a client on feedback, an engagement going sideways, or firing/being fired. Pricing → pricing-creative-work; session craft → design-prototyping. Triggers: client feedback, kickoff, sign-off, scope of work, client relationship, stakeholder surprise, kill fee, fire a client."
 ---
 
 # Client Engagements

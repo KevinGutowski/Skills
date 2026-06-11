@@ -1,6 +1,6 @@
 ---
 name: people-management
-description: "Run a team of direct reports — 1:1s and trust, feedback, career growth, hiring/firing, team comms (Scott, Zhuo, Hogan). Use when new to managing, giving a report feedback, handling an underperformer, running career conversations or skip-levels, or announcing a reorg. Influence up/sideways + your own promotion → design-org-influence. Triggers: new manager, 1:1, direct report, radical candor, BICEPS, career conversation, rock star superstar, fire someone, delegation, comms plan."
+description: "Run a team of direct reports — 1:1s and trust, feedback, career growth, hiring/firing, team comms (Scott, Zhuo, Hogan). Use when new to managing, giving a report feedback, handling an underperformer, running career conversations or skip-levels, or announcing a reorg. Influence up/sideways + your own promotion → design-org-influence. Triggers: new manager, 1:1, direct report, radical candor, BICEPS, career conversation, fire someone, delegation."
 ---
 
 # People Management
