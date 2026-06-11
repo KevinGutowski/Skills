@@ -298,6 +298,8 @@ See `references/interaction-and-performance.md` for the code and full reasoning.
 - **CSS animations beat JS under load.** They run off the main thread. Use CSS for predetermined animations; JS for dynamic, interruptible ones.
 - **Use WAAPI for programmatic CSS animations.** JavaScript control with CSS performance — hardware-accelerated, interruptible, no library needed.
 
+**MDS field numbers** (Matt D. Smith — Dive Club K_7ECqNlTtE; Shift Nudge YouTube 7zBp4ZNDto4): for canvas/WebGL work keep an FPS meter visible — "you want your frames per second to be very high. If you're down in the 20s or 30s, you're doing something wrong." Load-ready micro-signal: placeholder first, then the element "bounces to let you know that it's ready." Icon-hover magnitudes from Claude.ai's sidebar: 1px translations ("move one bubble one pixel to the left and the other bubble one pixel to the right"), ~5° rotations, "150 milliseconds and ease out" — "These micro interactions are so subtle you might not even notice them consciously, but you feel them."
+
 ## Accessibility
 
 ### prefers-reduced-motion

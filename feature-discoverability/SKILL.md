@@ -9,6 +9,7 @@ description: "Make app features discoverable — first launches that lead with c
 - *Apple WWDC 2017, session 816 — "Love at First Launch." https://developer.apple.com/videos/play/wwdc2017/816/*
 - *Apple WWDC 2021, session 10126 — "Discoverable design" (Jiabao Li & Mylène Dreyer). https://developer.apple.com/videos/play/wwdc2021/10126/*
 - *Apple WWDC 2023, session 10229 — "Make features discoverable with TipKit" (Ellie Gattozzi & Charlie Parks). https://developer.apple.com/videos/play/wwdc2023/10229/*
+- *Ryo Lu (Head of Design, Cursor) — "designing in layers" tweet (https://x.com/ryolu_/status/1946314616352440655) + 2025 interviews: Async Z (youtube.com/watch?v=PQhcHrCyU8M), Dialectic (8ncYSGbfeyY).*
 
 "Your app doesn't get a second chance at a first impression" — and onboarding tutorials don't work ("I always skip through these onboarding screens"). Discoverable means people "can look at a screen and, before they touch anything, know what they can do, and how." **Learning by doing beats reading instructions.**
 
@@ -37,6 +38,14 @@ Tips are **education, not promotion**: teach a new feature, surface a hidden one
 - **Frequency & exit:** one tip at a time; `DisplayFrequency` (daily/hourly/custom); `invalidate(.userPerformedAction)` the moment they do the thing; `maxDisplayCount` caps unactioned impressions; iCloud sync avoids teaching twice.
 
 > **Staleness note (Kevin's rule):** the 2023 talk uses beta-era API names (`TipsCenter`, `.popoverMiniTip`); the shipped SDK renamed these (`Tips.configure`, `.popoverTip(_:)`, etc.) — verify against current TipKit docs before writing code. The design rules are stable.
+
+## Designing in layers (Ryo Lu)
+
+Discoverability over a product's lifetime, not just first launch — software should grow with the user through layers that "reveal themselves exactly when you need them" (tweet). In the Alan Kay open-the-hood lineage: "the goal isn't to hide complexity — it's to sequence its reveal."
+- **The hard part is transitions.** Outgrowing the defaults "shouldn't feel like hitting a wall. it should feel like discovering a secret door that was always there" (tweet).
+- **Layered, not additive.** Secondary capabilities must stay "layers of the core concepts… not kind of linearly like additive" thrown "all at you at once" — each layer reuses the concepts the user already holds.
+- **Migration ethic.** Move defaults as the world moves, but bring existing users "onto better ways to do things… without feeling like they're behind" — "carry them over instead of like teleporting them to the new world." Nudges and defaults are the most powerful levers; always leave a way out.
+- **Design re-entry for churned users.** Lu himself tried Cursor and churned three times before the agent hooked him — people who bounced "kind of lost their trust" "and then they never" return on their own; the comeback path ("to come back cuz it's good now") is a discoverability surface too.
 
 ## Checklist
 

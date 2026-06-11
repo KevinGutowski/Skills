@@ -5,7 +5,7 @@ description: "Craft and critique clear names for anything users see — features
 
 # Naming Features and Labels
 
-*Source: Apple WWDC 2026, session 290 — "Craft clear names for features and labels in your app" (Heej, Human Interface design team). https://developer.apple.com/videos/play/wwdc2026/290/*
+*Source: Apple WWDC 2026, session 290 — "Craft clear names for features and labels in your app" (Heej, Human Interface design team). https://developer.apple.com/videos/play/wwdc2026/290/. Plus MDS (Matt D. Smith) — https://www.youtube.com/watch?v=6153Upr2BDM · https://www.youtube.com/watch?v=k8dcRRgA3T8 (CTA grammar).*
 
 Naming is as fundamental to a product as layout, interaction, and visual design. A name is the first thing a user reads, and they predict what they'll find before they tap. Get it right and trust builds; get it wrong and every interaction starts from confusion.
 
@@ -82,6 +82,13 @@ Clarity isn't only achieved by being literal. Pick the register that fits the re
 - **Invented / branded compound** — a coined word that earns its clarity from its parts. Apple Music's **AutoMix** (Auto = happens without you + Mix = blends songs) is a word that doesn't exist, yet is understood immediately. Naming with intention means you don't have to default to existing words — but the parts must carry the meaning so the invented word doesn't have to explain itself.
 
 The criteria don't change across registers. Only how you weigh them does.
+
+## CTA and button grammar (MDS)
+
+Two rules from Matt D. Smith that sharpen the verb register for buttons specifically:
+
+- **A call to action must be an action**: "typically your call to action needs to be in action so like newsletter is not really an action it's a noun" — write the verb phrase ("subscribe to our newsletter"), not the noun.
+- **Name the outcome, not the mechanism**: "you're not really submitting a form you are logging in" — the label says what happens for the user (Log in, Subscribe, Save), never the plumbing (Submit).
 
 ## Evaluation checklist
 

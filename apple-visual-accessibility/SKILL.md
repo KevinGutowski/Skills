@@ -9,6 +9,7 @@ description: "Make apps accessible and inclusive on Apple platforms — respect 
 - *Apple WWDC 2020, session 10020 — "Make your app visually accessible" (Drew Haas, Accessibility engineer). https://developer.apple.com/videos/play/wwdc2020/10020/*
 - *Apple WWDC 2019, session 244 — "Visual Design and Accessibility" (Sommer Panage, Accessibility engineering manager). https://developer.apple.com/videos/play/wwdc2019/244/*
 - *Apple WWDC 2025, session 316 — "Principles of inclusive app design" (Chris & Lisa, Apple accessibility design). https://developer.apple.com/videos/play/wwdc2025/316/*
+- *MDS (Matt D. Smith, Shift Nudge) — contrast videos. https://www.youtube.com/watch?v=ULUNaH-G2uY · https://www.youtube.com/watch?v=wXAa2HNNjM4 · https://www.youtube.com/watch?v=ZRBq8UYLa-0*
 
 Vision is a continuum — full sight, low vision, no sight, color blindness, light sensitivity, motion sensitivity ("one in three people has some form of motion sensitivity"). iOS exposes settings for each; your job is to **observe and respect every one**. Three pillars: color & shapes, text readability, display accommodations. The meta-rule: **turn these settings on yourself and audit your own app.**
 
@@ -24,6 +25,20 @@ Disability isn't a fixed bodily trait — it emerges from "a difference between 
 - **Contrast ratios:** check with the Accessibility Inspector's Color Contrast Calculator. **4.5:1 is the floor for most cases**; the talk's high-contrast fix hit 7.5:1 by darkening the background.
 - **Smart Invert** is asserted *over* your app (unlike Dark Mode, which you design). Flag photos, videos, and app icons with `accessibilityIgnoresInvertColors` so they don't invert.
 - Prefer **SF Symbols** for status/meaning glyphs — weight-matched, scale with text, extensible (see `sf-symbols`).
+
+## The 5-band contrast system (MDS)
+
+Matt D. Smith's working bands go materially beyond the 4.5:1 floor — offered as "suggestions it's not a law":
+
+- **12–21 — light-mode body text.** Below ~12, dark-on-light body copy "starts to get washed out."
+- **7–12 — dark-mode body text.** Above 12, white-on-black will "vibrate in your eyeballs": in a dark room "your pupils are going to dilate," letting more light in — so be "much more careful than you do designing the exact same thing in light mode."
+- **4.5 — supporting/secondary text** (helpers, captions — the familiar floor).
+- **3.0 — placeholders, large text, icons, button borders.** The large-text score only counts "at least 18 pixels bold roughly or 21 pixels regular."
+- **1.2–1.5 — deliberate decorative failures**: borders, secondary-CTA backgrounds, disabled states — "disabled buttons have no contrast requirements."
+
+Placeholder nuance: 3.0 is the standard — "I like to go 3.0 for this placeholder text assuming we have a nice strong contrast label above it"; a 4.5 placeholder reads like input someone has already typed. With an external label he sometimes treats placeholders as decorative at 1.5 (contested — he expects the disagreeing comments).
+
+Two caveats on the score itself. The WCAG formula has a luminance blind spot: white on orange scores 3.5 vs. black's 5.9, yet "if you ask almost anyone" the white jumps out more — the formula "doesn't really account for all of the luminance"; APCA is the experimental successor lens. And passing ≠ good: a "passing contrast score does not automatically mean that your designs will look good" — the bands are legibility floors, not a design grade.
 
 ## Text readability
 

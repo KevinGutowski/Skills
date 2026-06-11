@@ -10,6 +10,7 @@ description: "Run coding agents well on real projects — constrained generation
 - *"Vibe coding in style.md" (Nazarova, Dementyev, Turner, 2025). https://evilmartians.com/chronicles/vibe-coding-in-style-dot-md*
 - *"The 4 most common security risks when vibe coding your app" (Torgunakova, Turner, 2026). https://evilmartians.com/chronicles/four-most-common-security-risks-when-vibe-coding-your-app*
 - *"So, your developers use AI now — here's what to know" (Eltsov, Turner, 2026). https://evilmartians.com/chronicles/so-your-developers-use-ai-now-here-is-what-to-know*
+- *Ryo Lu (Head of Design, Cursor) — plan-mode demo interview (youtube.com/watch?v=bdh8k6DyKxE), Dialectic (8ncYSGbfeyY); Jin Park (Notion) at "Building with Cursor" (T8T2gHCKWCE) — the Cursor-school section below.*
 
 The core claim: agentic coding "lives on constrained generation; **the quality of those constraints determines the quality of the output**." Three things let a two-person team ship a production MVP in four weeks: an opinionated stack's default constraints, project decisions encoded as reusable rules, and "a senior engineer [who] realizes the vision and catches what the AI misses." The slogan: **"AI needs a prompter, not just a prompt."**
 
@@ -37,6 +38,14 @@ To turn "an expert cleans up my vibe code" into a reusable asset:
 - Anchor on value, not volume: "An engineer's goal isn't to write code, it's to bring business value" — choosing what *not* to build, cutting the right 5% of a feature, and knowing **when not to use AI at all** (mature unfamiliar codebases, rare stacks, small scoped tasks where the rule-writing loop costs more than it saves). Expect ~30–40% gains under good conditions — greenfield, popular stack, patternized tasks — and possibly negative gains outside them.
 
 **Sandbox the agent itself** (Ruby on Whales, 2026): run agents *inside* the dev container with project-only volume mounts and per-project credentials — "a way to prevent unrestricted access to the host system by development software." The container boundary, not the agent's permission prompts, is the guarantee; permissive flags become safe inside it (setup in `rails-docker-dev`).
+
+## The Cursor school (Ryo Lu & Jin Park, 2025)
+
+- **The plan-mode/spec pattern:** vague idea → agent researches the codebase and asks clarifying questions → an editable markdown spec (≈ a PRD: "that's where a lot of the product decisions get made") → review, edit, then build — optionally handing the build to a different model. "The spec is dead" is backwards — better models make specs *more* valuable: they'll be "really good at implementing exact… specifications," but "without a lot of specifications, the model will only make you something mediocre, like something really generic."
+- **One-local-agent topology:** keep the main agent local for visual work — "I still prefer kind of being in the driver's seat. I want to look at everything and see it happen" — and ship "more defined problems, say like a bug to fix" to background agents.
+- **Bricks:** "AI is really good at composing parts. I'm actually thinking we need to like build bricks. Really good bricks" — extract your core patterns from the codebase, because agents without guidance reinvent wheels ("weird patterns emerge… you need to wrangle it back"). The Martians' step-2 rules, restated from the design side.
+- **Jin Park's prompt protocol (Notion):** "pre-context confirmation" warm-ups before real tasks; scoping checks — "do you see X… really helps me to target my changes. You don't want to be changing code across other people's prototypes"; and a graded response temperature: "This looks great" = aligned, keep this style → "can you simplify this" = try again, wrong method → "no" = "I'm unsubscribing."
+- **Code is the shared truth across roles.** The old loop — drop a mock "into my PM's PRD and I'll wait for things to happen and things don't happen" — inverts: designers and PMs edit the product directly via specs and agents; a PRD is just an indirect code edit.
 
 ## Security checklist (vibe-coded apps' four recurring holes)
 

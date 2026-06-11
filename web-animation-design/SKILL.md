@@ -173,6 +173,8 @@ Determine how often users will see the animation:
 
 **Animation is brand voice** (course's "big little details" lesson): timing and curves carry the same brand signal as type and color. Stripe's marketing animations are deliberately slow — "we are not in a hurry, we are here for you" (premium, reliable); Vercel's product animations are fast or absent because the brand *is* speed; a slower ease-in-out over ease-out reads elegant instead of snappy. Convey feeling on marketing surfaces; in the product itself, default to speed. Orchestrated entrances ("wave" stagger — Apple's nav columns) are trial-and-error until right; there's no formula. Two interview corollaries: when showing app animations on the marketing site, don't copy them 1:1 — slow them down into a *flourish* (the app optimizes for the result; the site showcases the process) yet keep the site slightly **less** extravagant than the product, so expectations aren't set higher than the app delivers (Lochie Axon, Family). And gate every marketing animation with the story test: "How do I tell a story with this animation? Is it even contributing to that story?" — sometimes the best animation is no animation (Henry Heffernan, Vercel).
 
+**Motion only when earned** (Ryo Lu, Cursor — YC-website roast, 2025): "I don't like moving things when I'm not moving" — ambient motion steals attention from reading. Fire animation when the user arrives at the element, not before (hide a CTA "until say you're here and then it kind of animates in… you pay attention to it"), and "don't hijack the scroll."
+
 ## Spring Animations
 
 Springs feel more natural because they don't have fixed durations—they simulate real physics.

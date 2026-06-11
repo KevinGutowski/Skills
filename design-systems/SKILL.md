@@ -6,7 +6,7 @@ description: "Build, govern, and scale a design system — token architecture, t
 # Design Systems
 
 **Sources** — Figma Config talks, 2024–25:
-- *"Design systems best practices" (Figma Designer Advocates, 2024)* · *"Unifying design and development through design systems" (panel: Marcel Weekes/Figma, Tali Krakowsky Appel/Coinbase, Samira Rahimi/Uber & ex-Microsoft, 2025)* · *"The value of opinions in design systems" (Nate Baldwin, Intuit, 2024)* · *"Delivering a multi-sub-brand design system for e-commerce" (Zalando, 2024)* · *"Building design systems together" (Jake Albaugh & Chad Bergman, Figma, 2025)* · *"Design systems for XL displays" (Alaska Airlines Auro, 2024)* · *"Programmable colors" (Evil Martians, 2025)* · *"Unlocking creativity with GitHub and Figma" (Diana Mounter & Cole Bemis, 2025)* · *"Typography is the foundation of any design system" (Elliot Jay Stocks, 2025 — type specifics live in `apple-typography`)*.
+- *"Design systems best practices" (Figma Designer Advocates, 2024)* · *"Unifying design and development through design systems" (panel: Marcel Weekes/Figma, Tali Krakowsky Appel/Coinbase, Samira Rahimi/Uber & ex-Microsoft, 2025)* · *"The value of opinions in design systems" (Nate Baldwin, Intuit, 2024)* · *"Delivering a multi-sub-brand design system for e-commerce" (Zalando, 2024)* · *"Building design systems together" (Jake Albaugh & Chad Bergman, Figma, 2025)* · *"Design systems for XL displays" (Alaska Airlines Auro, 2024)* · *"Programmable colors" (Evil Martians, 2025)* · *"Unlocking creativity with GitHub and Figma" (Diana Mounter & Cole Bemis, 2025)* · *"Typography is the foundation of any design system" (Elliot Jay Stocks, 2025 — type specifics live in `apple-typography`)*. Plus *Ryo Lu (Cursor) — Dive Club + Dialectic interviews, 2025 (the "bricks"/de-slop additions)* and *MDS (Matt D. Smith, Shift Nudge) — https://www.youtube.com/watch?v=4p5LzrAYN30 · https://www.youtube.com/watch?v=PFi9WfNUlps (the dial + handoff sections)*.
 
 A design system is a **product with customers**, not a library: "treat it like a product team — clear OKRs, roadmap, customers — or it won't succeed" (Rahimi). The deeper frame (Henry Modisett, Linear quality series): **"you can invest in systems that make it hard to make things bad… if you make it so hard to make a bad button, you're going to have less bad buttons"** — a DS is quality infrastructure, not just consistency tooling. And sell it honestly: "a design system is not the most efficient way to build things. It's slow and costly… it must have clear business impact and ROI" — the pitch that works is per-stakeholder incentive alignment: "components for free, performance for free, dark mode for free" (Coinbase), accessibility and internationalization free.
 
@@ -87,12 +87,28 @@ A design system is a **product with customers**, not a library: "treat it like a
 - **The sea of sameness**: "our strive for consistency is coming at the cost of commodification… we cannot conflate consistency with a complete lack of expression." Be "deliberately different… because what's different gets remembered and what's remembered wins" (Wise spent 700 hours on its headline typography; Cash themes the app hot-pink when you buy a hot-pink card). Hold this against the panel's consistency goals — both are true; the failure mode is shipping only the functional half.
 - (AI extension from Superside: store the DS **plus unstructured brand data** in one knowledge graph — graph RAG gives token-exact retrieval *and* brand-level abstraction; fine-tune image models (LoRA) on brand art and bring generation back inside the design tool. "That ground truth of your design data is the most valuable thing there is.")
 
+## Systems are a dial, not a switch (MDS)
+
+- Size the investment to the pain: "is this design system solving a legitimate problem? And if it is, how deep do we need to go?" Sometimes "maybe everybody just Pinky promises we're going to use four" and multiples of four beats building a spacer component.
+- Explore **outside** the system: "it's almost critical that you don't have a system when you're when you're exploring new ideas" — and "Sometimes it's nice to just break the system completely and then rebuild it in a way that makes more sense to you." (Rhymes with Worboys's create-then-lint above.)
+- Loop back: re-evaluate early components as the system grows around them rather than letting them ossify.
+- Warning for careers, not just systems: designers who've only ever assembled from a DS lose generative craft — "I'm not even sure where to begin. I've just always used this design system… I just don't even know how to inject any craft."
+
+## Handoff is communication, not a file (MDS)
+
+- "the term handoff is not even really a great way to look at it" — Andy Ingram: the concept "has a strong smell of waterfall." It's an ongoing conversation, not a deliverable.
+- Declare your grid as an error-correcting code: "if you see something that's like 27 pixels you know go ahead and feel free to make that 28 or 32" — the stated system lets developers fix your slips.
+- Ship at "about 90 complete" with a wiggle-room map: tell developers "which parts of the design are set in stone and which are flexible" — the last 10–20% "is going to have to happen in the browser."
+- Cover the four forgotten states — "error empty loading overflow" — plus an interactive-state pack: hover/focus/disabled, motion references, tab order.
+- Follow up on a 1/3/5-day cadence, and check the ego at the door: "i need to lose my ego about my great design and and actually listen to the person who's going to be coding it up."
+
 ## The design system as AI context
 
 - "The best time to invest in design systems — LLMs are really good at understanding the structure of a design system" (Weekes). Default prompt-to-app output converges on the same generic look; **your DS fed as context (Code Connect, token JSON, component specs) is how generated UI keeps your identity.**
 - **Designers write the first draft of the prompt** when product UX is determined by AI behavior (Mounter) — and compare models on your actual use case before defaulting to the fancy one. Use generation's non-determinism as exploration: same prompt 3×, fan out, then build the real component with system touch.
 - DS knowledge bots need RAG with permission-awareness and clickable citations; wishlist patterns: AI compliance linting, context-aware approved copy, accessibility assessment.
 - Keep the *why* attached to the *what*: rationale scattered across docs/Slack/Jira kills adoption — centralize or link it.
+- **Build bricks** (Ryo Lu, Cursor): "because AI is really good at composing parts… we need to like build bricks. Really good bricks" — suck the core patterns out of shipped product into the system so agents compose instead of reinvent. The DS/design team's emerging job: "help people like D slop" — engineers throw a Figma mock at an agent and lose exactly the details the mock encoded ("you want this easing curve to be exactly this value… the AI won't know what that is"). The designers' edge to build on: "AI really sucks at the things you all are good at. It's like all the details that we care about."
 
 ## Checklist
 

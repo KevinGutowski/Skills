@@ -11,6 +11,7 @@ description: "Uses SF Symbols well — symbols as typographic objects (point siz
 - *Apple WWDC 2022, session 10158 — "Adopt Variable Color in SF Symbols" (Paul, SF Symbols app). https://developer.apple.com/videos/play/wwdc2022/10158/*
 - *Apple WWDC 2024, session 10188 — "What's new in SF Symbols 6" (Thalia). https://developer.apple.com/videos/play/wwdc2024/10188/*
 - *Apple WWDC 2025, session 337 — "What's new in SF Symbols 7" (Kelsey). https://developer.apple.com/videos/play/wwdc2025/337/*
+- *MDS (Matt D. Smith, Shift Nudge) — live design sessions, YouTube.*
 
 SF Symbols (6,000+) solve icon design's core problem: pairing symbols with text. Symbols are **typographic objects** — specified in font point sizes, sitting on the text baseline, drawn in all nine weights to match San Francisco — so they scale with Dynamic Type and localize automatically. (For the type system itself, see `apple-typography`.)
 
@@ -59,6 +60,15 @@ Use via SwiftUI `symbolEffect(_:)` / UIKit-AppKit `addSymbolEffect(_:)`; replace
 - **Unified annotation** (SF Symbols 4+): one layer structure for all rendering modes; mind z-order. Layer tools: **Erase** (punches a hole through layers behind — badges, plus/minus), **Hidden** (exclude a layer from a mode). For Variable Color, split each sequence step into its own layer — bottom fills first.
 - Animation annotation: per-symbol wiggle direction; breathe by layer; rotation needs a **canRotate** layer + anchor point defined in the three weights (snap to path points; always preview).
 - Minimum coverage: Regular/Medium first, then other Regular scales, then **Bold** (for the bold-text accessibility setting); cover Medium–Semibold/Bold to support all Dynamic Type styles.
+
+### Custom icon craft (MDS — Matt D. Smith, Shift Nudge)
+
+Field practice for drawing your own icons (upstream of the SF Symbols template pipeline):
+- **Containment frame:** "I will always typically create like a 24 by 24 pixel frame to keep all of my icons in" — one standard frame keeps the set's sizing honest.
+- **Stroke recipe:** "a 1 and 1/2 pixel stroke" with center alignment and rounded joins/corners.
+- **Build from unioned simple geometry:** "you bring the rectangle to the midpoint of the circle and union them together… that's how you design an icon" — compose primitives, then union, rather than drawing freehand paths.
+- **Bezier QA:** inspect the points — "your handlebars shouldn't look [like] that on your icons, they should be straight up and down"; skewed handles betray a sloppy curve.
+- **Calibrate against a native glyph:** "it is really good to just paste in the arrow and just see how big it is" — dropping a real iOS glyph next to yours instantly exposes icons drawn too tiny or too large.
 
 > **Staleness note (Kevin's rule):** these talks span 2019–2025 and the API surface kept moving. Verified against current docs (mid-2026): wiggle/rotate/breathe/pulse/bounce/variableColor/replace + DrawOn/DrawOff + `NSSymbolMagicReplaceContentTransition` all current. The unspecified-rendering-mode default has changed across releases (monochrome → per-symbol preferred/Automatic) — confirm `symbolRenderingMode` behavior against current docs for your deployment target. Template format versions gate features for back-deployment; the SF Symbols app's **Copy Code button** gives current snippets. **SF Symbols 8 beta (June 2026, OS 27 era):** headline addition is **semantic search** in the app (describe the symbol in your own words); library passes 7,000 symbols; Draw/Variable Draw/gradients carry over unchanged. Re-verify once a WWDC26 symbols session ships.
 

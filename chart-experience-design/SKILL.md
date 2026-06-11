@@ -8,6 +8,7 @@ description: "Design accessible charts and the experience around them in apps �
 **Sources** — this skill aggregates two Apple WWDC 2022 design sessions:
 - *Session 110340 — "Design an effective chart" (Halden & Lilian, Apple Design). https://developer.apple.com/videos/play/wwdc2022/110340/*
 - *Session 110342 — "Design app experiences with charts" (Nicholas Felton, Human Interface). https://developer.apple.com/videos/play/wwdc2022/110342/*
+- *MDS (Matt D. Smith, Shift Nudge) — data-density redesign critique. https://www.youtube.com/watch?v=z11_gP9VzFQ*
 
 An effective chart is **focused** (a few key insights, intentionally), **approachable** (easy to interpret), and **accessible** (works non-visually). This skill covers a single chart's anatomy *and* the experience around charts in an app. It composes with `chart-selection` (which chart type fits the data) and `tufte-viz` (graphical integrity and data-ink critique) — pick the form there, design the in-app experience here.
 
@@ -16,6 +17,10 @@ An effective chart is **focused** (a few key insights, intentionally), **approac
 Three strong cases: **change over time** (historical/predicted values), **portion of a whole** (progress toward a goal, filling/emptying), and **comparison** (items or categories). Charts are a strong focal signal — "only the most important information should become a chart."
 
 A fourth display mode beyond charts: **simulation over enum states** (Andy Allen, (Not Boring) Weather — Config 2024). Instead of collapsing rich data into one coded state (a "partly cloudy" icon), render the continuous values — cloud coverage as actual cloud density ("you can tell the difference between 73% and 72%"), rainfall rate as particle-emitter rate, wind as a force field. Multiple data points in one living visualization: "you're not really reading the weather so much as you're *feeling* it." Use simulation when the data is ambient and continuous; use charts when precision and comparison matter.
+
+## Data-density triage (MDS)
+
+For dense data UIs (a table with 100+ columns): "it's almost never a good idea to show every piece of information." Before designing the display, interview the actual user — "what are the 10 to 12 different types of information like what can you safely ignore and what is critical." Then segment: identify "the three most important types of people viewing this content" and pre-screen them into role-specific views instead of landing everyone on everything.
 
 ## The five-part anatomy (per chart)
 

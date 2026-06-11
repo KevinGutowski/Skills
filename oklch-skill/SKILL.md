@@ -56,6 +56,17 @@ oklch(0.8 0.05 200 / 0.5)
 | WCAG 2 normal text | 4.5:1 AA, 7:1 AAA |
 | Contrast fix | Adjust L only — chroma has negligible effect |
 
+## Working Methods (MDS)
+
+Field techniques from Matt D. Smith (Shift Nudge) — stated in HSB, but they map directly onto OKLCH's L/C/H:
+
+- **Single-hue cohesion:** "choosing a single Hue and only adjusting the saturation and brightness is the easiest way to keep your color scheme cohesive."
+- **Status-tag recipe:** text at 4.5:1, background the same hue at ~10% opacity — then **flatten before testing**. Contrast tools can't read opacity ("it's not going to test against this yellow versus this pale yellow"); sample the rendered hex and test that.
+- **Hue-only walks:** lock S/B and rotate hue alone to build a status family (in progress / done / error) that stays in the same contrast ballpark. Exception: white text on yellow "is basically impossible" — yellow needs its own treatment.
+- **Score-constrained brand tuning:** tune the brand color *inside* a contrast window — "trying to see what looks good and also what will hit in the 3.0 range" — so the aesthetic search never leaves passing territory.
+
+*Source: MDS YouTube — Uno5dpotRgo · ZRBq8UYLa-0 · jSLfQ0sJDCw.*
+
 ## Review Output Format
 
 Always present color changes as a markdown table with **Before** and **After** columns. Include **every color that was changed** — not just a subset. Never list findings as separate "Before:" / "After:" lines outside of a table.

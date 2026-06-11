@@ -13,6 +13,7 @@ description: "Design interfaces for developer tools — software with no happy p
 - *"Ease and epiphany: 4 ways to stop misguided dev tools user onboarding" (Stroganov, Turner, Shamin, 2024). https://evilmartians.com/chronicles/easy-and-epiphany-4-ways-to-stop-misguided-dev-tools-users-onboarding*
 - *"Beyond bars and lines: 7 cool ways to visualize data in your dev tool" (Lozhkin & Turner, 2024). https://evilmartians.com/chronicles/beyond-bars-and-lines-7-cool-ways-to-visualize-data-in-your-dev-tool*
 - *"3 rules for getting AI agents to find, use — and not exploit — your devtool" (Nazarova & Turner, 2026). https://evilmartians.com/chronicles/3-rules-for-getting-ai-agents-to-find-use-and-not-exploit-your-devtool*
+- *Ryo Lu (Head of Design, Cursor) — 2025 interviews: Dive Club (youtube.com/watch?v=dsZqOPVQTNg), Dialectic (8ncYSGbfeyY), Async Z (PQhcHrCyU8M) — the AI-era devtool section below.*
 
 The worldview: dev tools are **workbenches, not funnels**. "There is no 'happy path' for a dev tool… what seems to be a tiny edge case might actually be the main case for a particular user." Users live in the tool for hours daily and paths jump between panels with no final conversion action — so optimize for density, control-flow legibility, friction-per-repetition, and time-to-a-ha, not guided journeys.
 
@@ -61,6 +62,14 @@ Motion policy for docs (Lochie Axon, Family — animations.dev interview): "docs
 ## Visualizing dev data & designing for agents
 
 The dev-tool data→chart mapping (heatmaps for activity density, force-directed graphs for dependencies, treemaps/sunbursts for hierarchy+size, Sankey for pipelines/flows, bullet charts for metric-vs-target, box plots for latency distributions) plus the **agent experience (AX)** rules — agents as discoverers (baked-in training data vs live retrieval; "specificity wins": "'P95 latency of 62ms' gets recommended. 'Fast and reliable' gets listed but not chosen"), as users (invert the funnel to **use → create → claim**; the test: "can an external agent ship a feature with your tool using only your docs and a prompt?"), and as threats (four progressive-trust tiers, tiered structured errors, rate-limit by identity) — live in `references/data-viz-and-agents.md`.
+
+## AI-era devtool design (Ryo Lu, Cursor)
+
+- **Engineers "forget to build the doors."** "They build the most hard part of the whole problem, but they forget to build the doors — or they forget to make the paths flow into the same thing." Great cores ship with no entrances; the designer's job in a devtool is the paths in.
+- **Design the container, not the screen.** "The ideal interface is different for every single person… you are actually designing a container" — invariant core primitives plus per-user configurations. But reject fully generative UI: "arbitrary generating UI that even the creators of the tool cannot control or cannot predict" "just creates more chaos."
+- **The to-do list is the multi-agent management primitive.** Reviewing/merging swarm output collapses to a universal form — "anybody who have seen like a list view can start doing these things" — and the agent needs the same list as memory: "a thing to keep track of what is the high-level things it needs to do, where is it, which item is it thinking about right now."
+- **The anti-slot-machine test:** "slot machines they don't let you open it up." A good AI tool opens up at every level; terminal-box agents — "you're in this little box and then you're kind of constrained in just that input" — fail it.
+- **Packaging over SKUs.** Cursor was "intentionally making cursor pretty hard to get in for say the nontechnical people" (three expert-shaped buttons at open). The fix is "different preconfigurations and packaging of the same thing," never "creating new products or splitting" the product.
 
 ## Checklist
 

@@ -38,6 +38,7 @@ Rules of thumb:
 
 - **Move brand color into the content area** (the scroll view), not onto solid toolbars/tab bars. Pre-iOS 26 solid bars were bulky and letterboxed the content; now Liquid Glass controls sit above the content and **pick up your brand color dynamically** as it scrolls.
 - **Use color for meaning, not decoration** — hierarchy, grouping, interaction. That's why color lives mostly on controls and actions: your **accent/tint color**. (Liquid Glass tightened this further: tint **only primary actions** on glass — see `liquid-glass-design-system`.) *Slack* tints primary actions, new-info sections, unread badges, new-message, and the selected tab — communicating status, feedback, and selection. Too much color overwhelms; exercise restraint.
+- **Don't water down a color's definition** (MDS, Shift Nudge YouTube -VSXVDr5HW0): "if you're defining action with a color and i recommend it that you don't go watering down that definition by using it for the background color and the header and the highlight color" — every off-definition use dilutes what the color means.
 - **Dark Mode is not optional.** iPhone is deeply personal and Dark Mode is a comfort/accessibility preference; ship a refined low-light palette. Skipping it gives people a negative experience that reflects on your product.
 - **Brand extends past the app** — e.g. *Crumbl*'s Widgets carry their pastel palette and imagery and are instantly recognizable.
 
@@ -53,7 +54,7 @@ Rules of thumb:
 - You can use custom iconography almost anywhere (content and controls). *NYT Cooking*'s icons have sharper edges and a line-weight variant — unique but **not over-detailed, so they scale to small sizes** — used consistently on tab bar, toolbars, and inline.
 - **Respect platform conventions even in a custom style.** NYT Cooking's Share icon differs across iOS/Android/Web yet each stays true to that platform's sharing pattern. Icons should be **identifiable and purposeful**, not heavily stylized.
 - **Not every app needs custom icons. SF Symbols** (7,000+, free) are built like a font (scale like text), neutral, with line weights plus accessibility and localization support — and built into Xcode, so no export/handoff.
-- **Logos:** in iOS people already know which app they're in, so logos waste valuable real estate. *NYT Cooking* shows its logo only on the Home tab and fades it on scroll. Keep branding refined and unobtrusive.
+- **Logos:** in iOS people already know which app they're in, so logos waste valuable real estate. *NYT Cooking* shows its logo only on the Home tab and fades it on scroll. Keep branding refined and unobtrusive. Say-it-once test (MDS critiquing a coffee-shop app, Shift Nudge YouTube k8dcRRgA3T8): "we're saying waves and coffee three different times in this one area" — logo, wordmark, *and* branded imagery — "we only need to say wave coffee once… it can be implied or it can be direct"; pick one carrier per view.
 - For symbol *mechanics* — configuration, scales, rendering modes, Variable Color, animations, custom-symbol templates — use **`sf-symbols`**. This section decides custom-vs-system iconography; that skill makes either work.
 
 ## Logo & wordmark equity (Jessica Hische + Robinhood/Porto Rocha, Config 2024–25)

@@ -15,6 +15,7 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `user-onboarding` | First-run flows, empty states, onboarding copy (Hulick method) |
 | `shape-up` | Product scoping/betting (Basecamp method) + the competing Linear school (design as reference, no handoff/PMs, taste over data) and routing between them |
 | `hardware-product-design` | Physical products: form-factor positioning, mockups/rigs/jigs, input selection, manufacturing/supplier reality |
+| `ai-ui-direction` | Directing/fixing AI-generated UI: layout-primitive diagnosis, prompt-vs-edit, the fresh-context judge loop |
 
 ### Apple platform design (HIG-grounded)
 | Skill | Use it for |

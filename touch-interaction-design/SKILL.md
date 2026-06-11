@@ -8,6 +8,7 @@ description: "Designs touch controls, gestures, and fluid interactions — a con
 **Sources** — this skill aggregates two Apple WWDC 2018 sessions:
 - *Session 804 — "The Life of a Button" (Julian, designer/prototyper; Hugo Verweij's sound half lives in `sound-design`). https://developer.apple.com/videos/play/wwdc2018/804/*
 - *Session 803 — "Designing Fluid Interfaces" (Chan Karunamuni, Nathan de Vries, Marcos Alonso — the iPhone X gesture team). https://developer.apple.com/videos/play/wwdc2018/803/*
+- *MDS (Matt D. Smith, Shift Nudge) — live design sessions, YouTube.*
 
 "Details are designed, even if they seem obvious." A button is an *indirect* controller — the result happens somewhere else — so both the control and its result need designed feedback, separately and connected. The whole talk is one lens: **feedback across the three phases of an interaction — before, during, after** — modeled on a physical button (resting, being pressed, springing back). Two kinds of feedback throughout: **tell** people (text/icons) and **show** people (visual/audio/haptic change over time) — often both, "because I might have missed that animation."
 
@@ -49,6 +50,12 @@ A fluid interface is one where "the tool feels like an extension of your mind" �
 - **Prototype interactively** — "the interactive demo… is really worth a million static designs" (the how lives in `design-prototyping`).
 
 (Spring tuning — damping/response, momentum-rewarding overshoot — lives in `swiftui-animation`'s spring section, sourced from this same talk.)
+
+## MDS field rules (live sessions)
+
+- **Unified 48px touch-target rhythm.** Don't size targets per-control — pick one increment and apply it everywhere: swatches, steppers, and buttons all at 48 ("48 would be also just a really good consistent touch Target size"). "If we are obsessive about these increments at this fundamental level it's going to make everything work out much better" as the design builds on top of it.
+- **Keyboard-first mobile design.** "Anytime you're designing a mobile design you really need to grab a keyboard and pop that joker in" — an active field *means* the keyboard is up, so "do not design an active input field" without the keyboard showing. The keyboard eats half the layout; design for that reality, not the empty canvas.
+- **Payment-adjacency safety.** Keep destructive or charge actions clear of casual tap zones — MDS added breathing room above a payment row because "we don't want… someone accidentally tapping their card when they are trying to pay." Treat the area around a charge button as a no-fly zone for other targets.
 
 ## Checklist
 

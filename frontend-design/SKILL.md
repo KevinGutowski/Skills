@@ -39,6 +39,20 @@ Focus on:
 - **Spatial Composition**: Unexpected layouts. Asymmetry. Overlap. Diagonal flow. Grid-breaking elements. Generous negative space OR controlled density.
 - **Backgrounds & Visual Details**: Create atmosphere and depth rather than defaulting to solid colors. Add contextual effects and textures that match the overall aesthetic. Apply creative forms like gradient meshes, noise textures, geometric patterns, layered transparencies, dramatic shadows, decorative borders, custom cursors, and grain overlays.
 
+## De-slop substrate (Ryo Lu, Cursor — interviews, 2025)
+
+- **Build on proven primitives**: use shadcn/Radix for every standard control — keyboard nav and accessibility come free, and AI "is really good at composing patterns that exist."
+- **Then theme by hand**: a custom layer overrides the styles — "paint it in a way that… fits the thing I want. But underneath, there are still these pretty standard shared components."
+- **Banned slop tells**: "massive shadows, purple gradients," purple buttons, the default icon set "AI will just pick." His safe fallback when unsure — "you just use system fonts" — sets the floor (never slop defaults); this skill's distinctive-type guidance above sets the ceiling.
+- **Tokens make AI composable**: "with like a really robust like foundational set of tokens and components, AI is able to compose them pretty well."
+
+## MDS field tactics (Matt D. Smith, Shift Nudge — YouTube -VSXVDr5HW0, Uno5dpotRgo, k8dcRRgA3T8, jSLfQ0sJDCw; Dive Club K_7ECqNlTtE)
+
+- **Buy a real typeface**: "find a font foundry try out the trial fonts download a good font and buy a good font especially for your brand it's just going to make you stand out."
+- **Imagery is a multiplier**: "great images are going to make your designs 10 times better than subpar images" — Nike would sell fewer shoes with bad photos; source or create deliberately.
+- **Image-seam tricks**: faux fade-out — duplicate the image area, sample "the color that's like the darkest in that," then lay "a gradient that is the same color" (100%→0) over the seam to "create like a faux Fade Out into that section." White-band fix: raise the image's highlights and "set the blend mode to multiply and that'll get rid of that White Band."
+- **Vision-first AI prompting**: "they will produce slop if you're trying to oneshot a website, which is a sloppy prompt"; "You're not going to swing a hammer and accidentally build your dream home" — your dream home comes from your vision (bedrooms, stories, site). Bring a concrete end goal, then iterate with curiosity — the tool produces whatever you direct it to.
+
 NEVER use generic AI-generated aesthetics like overused font families (Inter, Roboto, Arial, system fonts), cliched color schemes (particularly purple gradients on white backgrounds), predictable layouts and component patterns, and cookie-cutter design that lacks context-specific character.
 
 Interpret creatively and make unexpected choices that feel genuinely designed for the context. No design should be the same. Vary between light and dark themes, different fonts, different aesthetics. NEVER converge on common choices (Space Grotesk, for example) across generations.

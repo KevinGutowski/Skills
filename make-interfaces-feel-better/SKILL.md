@@ -185,3 +185,17 @@ Rows should cite the specific file and the specific property that changed when i
 ### 20. Eased Gradients
 
 Two-stop linear gradients leave a visible edge where they start and stop — especially fade-to-transparent scrims and significant color changes. Add intermediate stops sampled from an easing curve so the transition starts and ends gently. For color-to-color gradients also interpolate in a better space (`in oklab`) to avoid muddy midpoints — but only eased stops fix the hard edges. For dark mode, make a dedicated dark-mode hero asset rather than overlaying a gradient on the light-mode one.
+
+## MDS field rules (live polish sessions)
+
+(MDS — Matt D. Smith, Shift Nudge — live design sessions, YouTube.)
+
+- **Layout connectors.** Every element corner should line up with something else — from any edge you should be able to draw a straight line to another element. If "you couldn't draw these straight lines, these lines of continuation… it would just feel off balance." This is how a grid is actually *used*: not columns to fill, lines to connect. Maxim: "negative space is design oxygen."
+- **Border/spacing trade law.** "When you have a distinct and like overt divider you can get away with a smaller amount of space"; with no border or background change you need more "negative space to give that implied separation." It's one knob — don't turn both up (wasted room) or both down (lost grouping).
+- **One stroke color, deliberate weights.** Every divider/border on a screen uses the exact same color (and the same width unless consciously different): "a lot of UI design is just exercising constraint and building these little systems."
+- **Contrast = depth control.** "Every time you use a contrast color you're playing with depth." Don't put everything at 4.5:1 — uniform contrast feels "washed out and flat." And "failing scores are great for borders": 1.2–1.5 is a *deliberate* range for hairlines, disabled states, and decorative text.
+- **Mud City.** Low-contrast fill + drop shadow = "bad muddy color combination" — "as soon as we put a drop shadow on this it's just Mud City." Never shadow a low-contrast button; earn the shadow with contrast first.
+- **Proximity law.** "The space between two different elements… should be larger than the space between two similar elements."
+- **Shape scarcity.** Reserve a shape for the primary action: "the only thing that's a rectangle on this screen is the add to cart button… the shapes allow us to kind of subconsciously know what to choose." The primary CTA gets a unique color *and* a unique shape — "an unmistakable undeniable clickability."
+- **Baseline-align adjacent text rows.** When different text sizes sit side by side, "anytime you align Baseline it's just going to be so much tighter."
+- **Button padding ratios.** Horizontal padding ≈ double vertical — "16 and 8 or 20 and 10" is the starting point. Kill default layout gaps ("I always change this to zero"). And verify concentric radii in outline mode (⌘Y in Figma) — measure inner radius + gap on the actual paths instead of eyeballing (the formula is Principle 1).

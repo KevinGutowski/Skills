@@ -9,6 +9,7 @@ description: "Use typography well on Apple platforms — the San Francisco famil
 - *Apple WWDC 2024, session 10074 — "Get started with Dynamic Type" (Gaeth, Accessibility engineer). https://developer.apple.com/videos/play/wwdc2024/10074/*
 - *Apple WWDC 2022, session 110381 — "Meet the expanded San Francisco font family" (Vincenzo, type designer). https://developer.apple.com/videos/play/wwdc2022/110381/*
 - *Apple WWDC 2020, session 10175 — "The details of UI typography" (Loïc Sander, type designer; Jiang, engineer). https://developer.apple.com/videos/play/wwdc2020/10175/*
+- *MDS (Matt D. Smith, Shift Nudge) — live design sessions, YouTube.*
 
 Great UI typography is about the *dynamic behavior* of text — optical sizes, tracking, and leading are legibility mechanics, not aesthetic trivia. The system fonts handle them automatically; your job is to use **text styles** and system APIs so you inherit that engineering, and to keep it working when type scales up. (For SF Symbols — which are typographic objects too — see `sf-symbols`.)
 
@@ -64,6 +65,15 @@ People choose from 7 default sizes + 5 accessibility sizes; supporting them is n
 - **Measure (line length): 45–75 characters** (Bringhurst, via Stocks). As the viewport grows, fix an over-long measure by increasing font size or container padding at breakpoints — Stocks resists `max-width` as a first resort. **Trent Walton's asterisk technique**: drop asterisks at characters 45 and 75; add a breakpoint whenever both land on one line. And leading must respond when size or measure changes — gaps that look right at one width open up at another.
 - **Typography failure modes are semantic**: the Mitt Romney webfont problem (Zach Leatherman) — an italic font failed to load with no fallback and the word "not" vanished, inverting the headline's meaning. Always define italic/weight fallbacks.
 - Maxims: "if you have a typeface and you have a color then you have a brand" (Spiekermann); "Good typographers… obsess over the detail so that readers don't have to" (Boardley).
+
+### MDS field numbers (Matt D. Smith, Shift Nudge — live sessions)
+
+- **iOS size pairs:** "iOS is really big on using 17. a lot of their stuff is 17 and 15 not necessarily 16 and 14." And 11 "is the smallest that you'll see Apple using for legal copy" — treat it as the legal-copy floor, nothing else.
+- **Display threshold (practitioner's cut):** when picking SF Pro Display vs Text by hand, "you don't want to use display unless you're at 20 or or larger."
+- **Component budget:** "three font sizes is typically the maximum that I would want to use in any particular component," paired with at most two weights — same constraint-builds-the-system logic as his one-border-color rule.
+- **All-caps optical compensation:** "when you go all caps it's going to make your font size seem larger than it really is" — he pairs 12px all-caps against 14px regular; size caps labels a step down.
+- **Line height:** start UI text at "100% line height" and control spacing with component padding, not leading — he'll even drop to 97% to land an even 48px button height.
+- **One-size exercise:** "you can do a lot of really good design with one font size" — hierarchy from weight, case, and color before reaching for another size.
 
 ## Checklist
 
