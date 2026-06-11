@@ -47,7 +47,7 @@ With the audience in mind, ask: when they encounter this feature, what should th
 Step back and cluster the notes. Different words pointing at the same feeling become a theme. For the Maps example: **Ease**, **Excitement (rediscovery)**, **Security**.
 
 ### 4. Generate candidates per theme, then eliminate against the criteria
-Produce name options that honor each theme. Then cross out the ones that fail a criterion — doesn't fit the product, too vague, won't translate. Make the elimination explicit (see "Iterate by elimination" below).
+For abstract values, borrow the noun-metaphor move from logo design (Allan Peters, *Logos that Last*): convert the value to a concrete noun metaphor — trust → shield, key, lock — "a noun that serves as a metaphor for that word." Produce name options that honor each theme. Then cross out the ones that fail a criterion — doesn't fit the product, too vague, won't translate. Make the elimination explicit (see "Iterate by elimination" below).
 
 ### 5. The say-it-out-loud test
 Drop each surviving candidate into a real sentence a user would read or say to a friend:

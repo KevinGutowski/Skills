@@ -47,6 +47,8 @@ The heart of the book — full scripts and rationale in [references/feedback-sys
 - **Keep the designer honest:** "What led you down this path?" is a fair question on every share.
 - **Shared vocabulary.** When a client said the concepts weren't "extreme" enough, the right next sentence was "What do you mean by extreme?" — he learned that by presenting a second wrong round.
 - **Defending vs. defensive.** A designer must defend work and never be defensive about it; past the point where the problem is obvious, they're fighting for ego, not quality.
+- **The silent ballot (anti-HiPPO tally)** — Allan Peters, *Logos that Last*: in a large stakeholder room, present all options without commentary, then ask everyone to "quietly write down on a piece of paper which three they would pick" and tally the votes aloud, starting with your own top picks — it "keeps the person in charge on the client end from dominating the conversation."
+- **Decoding feedback (Peters):** "Make the logo bigger" means the surrounding branding is too weak, not that the logo is too small — fix the layout's brand strength (see `logo-design` §7). And the root cause behind most bad rounds: "Most bad design is created by fear-based decisions."
 
 ## 4. Health signals & anti-patterns
 

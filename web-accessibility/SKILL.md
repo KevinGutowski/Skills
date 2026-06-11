@@ -8,6 +8,7 @@ description: "Accessible-web practice — semantic HTML first, keyboard/focus, c
 **Sources:**
 - *Laura Kalbag, Accessibility for Everyone (A Book Apart, 2017)* — the spine: practice, priority order, testing, org layer
 - *Michael J. Metts & Andy Welfle, Writing Is Designing, ch. 5 "Inclusivity and Accessibility" (Rosenfeld, 2020)* — the writing-accessibly layer
+- *Adham Dannaway, Practical UI (2nd ed., 2024)* and *Wathan & Schoger, Refactoring UI* — the contrast-metrics layer (§5b)
 
 The durable practice layer for accessible websites. Standards-era warning up front: Kalbag wrote against **WCAG 2.0**; current is **WCAG 2.2** (2.x success criteria are additive, so her criteria still hold) and EAA enforcement began June 2025 — **verify every standards, tooling, or legal specific against current WAI/MDN docs** (see Staleness appendix). Extended passages: [references/source-extracts.md](references/source-extracts.md).
 
@@ -43,6 +44,26 @@ The durable practice layer for accessible websites. Standards-era warning up fro
 - High contrast is the default aim, but **too-high contrast harms too**: "if the contrast between text and background is too high, the text can appear to dance on screen. … **People with SSS find that high-contrast text appears to shimmer or wobble on the screen**" (scotopic sensitivity syndrome). Near-black on near-white usually beats pure #000-on-#fff.
 - **Big or bold type buys contrast headroom**: size and weight "will do some of the work of distinguishing text from background," freeing slightly lower-contrast palettes.
 - **Grayscale check** (Geri Coady, via Kalbag): work in or convert to grayscale to verify text survives without hue — also catches color-only meaning. Ratio math, bands, and APCA → `apple-visual-accessibility` §contrast and `web-typography`.
+
+### 5b. Contrast metrics & compliance tactics
+
+(Adham Dannaway, *Practical UI* 2nd ed., 2024; Wathan & Schoger, *Refactoring UI*.)
+
+- **APCA thresholds** (WCAG 3 draft; signed Lc scores, not ratios — "Smaller and thinner text gets a lower score"). Dannaway's table:
+
+  | Lc | Minimum for |
+  | --- | --- |
+  | 90 | "Preferred for body text (14px regular and above)" |
+  | 75 | "Minimum for body text (18px regular and above)" |
+  | 60 | "Minimum for other text (24px regular or 16px bold and above)" |
+  | 45 | "Minimum for large text (36px regular or 24px bold and above) and interface elements" |
+  | 30 | "Absolute minimum for text like form field placeholder text and disabled button text" |
+  | 15 | "Minimum for non-text elements" |
+
+- **Polarity matters in APCA** — swapping foreground and background changes the score: "white text on a blue background passes, while blue text on a white background doesn't." WCAG 2 treats both the same, and "WCAG 2 contrast requirements don't work well for interfaces with dark backgrounds."
+- **Adoption rule:** personal projects — use APCA. "For commercial projects, where accessibility compliance is a requirement, it's safest to stick with WCAG 2 until WCAG 3 is released" — and try to pass both.
+- **Flip the contrast** (RUI) — when white-on-color needs a background so dark it hijacks hierarchy, invert: "Instead of using light text on a dark colored background, use dark colored text on a light colored background." The color still supports the text but "doesn't interfere as much with other actions on the page" — compliance without promoting every labeled element to primary.
+- **Colored-on-colored text** (RUI): adjusting only lightness drags secondary text toward pure white before it passes. RUI's HSL-era tactic: "rotate the hue towards a brighter color, like cyan, magenta, or yellow." The durable intent — perceived brightness varies by hue, so a small hue shift buys contrast without washing out; in OKLCH you can also just raise L honestly. Mechanics → `oklch-skill` (accessibility-contrast.md, plus its Palette Roles & State Layers section, which bakes per-role contrast floors into the palette itself).
 
 ## 6. Forms & errors
 

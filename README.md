@@ -11,6 +11,8 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `design-prototyping` | Validating ideas before building: fake-it → SwiftUI-as-design-tool → coding agents (incl. Cursor's design-in-code endpoint); presenting design work |
 | `interface-craft-principles` | *(local-only, gitignored — members-only source)* Quality practice (Josh Puckett): noticing, range→depth, facets of quality, live tuning, uncommon care. Its core heuristics are also folded into `design-principles` and `design-prototyping` |
 | `naming-features-and-labels` | What to call a feature, label, plan, button |
+| `logo-design` | Brand marks, badges, identity systems — the Peters method (brand nouns → 50 sketches → B/W presentation); app icons → `app-icon-design` |
+| `form-design` | Web form structure, field types, buttons, validation flows — the Dannaway method; form copy → the words chain; Apple forms → `apple-navigation-design` |
 | `feature-discoverability` | First launches, tips/TipKit, features users can't find |
 | `user-onboarding` | First-run flows, empty states, onboarding copy (Hulick method) |
 | `shape-up` | Product scoping/betting (Basecamp method) + the competing Linear school (design as reference, no handoff/PMs, taste over data) and routing between them |
@@ -37,6 +39,7 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `widget-design`, `notification-design`, `app-intents-design` | Those system surfaces |
 | `chart-experience-design` | In-app charts and the experience around them |
 | `sound-design`, `touch-interaction-design` | Audio/haptics; gesture feel and fluid interfaces |
+
 ### AI & agents
 | Skill | Use it for |
 |---|---|

@@ -1,5 +1,7 @@
 # Palette Generation
 
+For *what each step is for* — anchoring the base on a button background, edges from an alert component (Refactoring UI), and the six-role palette with state layers (Practical UI) — see SKILL.md → Palette Roles & State Layers. Generate the scale here, then anchor-correct by eye.
+
 ## The scale convention
 
 Design system palettes use a numeric scale from 50 (lightest) to 950 (darkest). The standard labels by palette size:

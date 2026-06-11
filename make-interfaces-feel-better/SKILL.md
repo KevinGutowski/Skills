@@ -192,6 +192,16 @@ Rows should cite the specific file and the specific property that changed when i
 
 Two-stop linear gradients leave a visible edge where they start and stop — especially fade-to-transparent scrims and significant color changes. Add intermediate stops sampled from an easing curve so the transition starts and ends gently. For color-to-color gradients also interpolate in a better space (`in oklab`) to avoid muddy midpoints — but only eased stops fix the hard edges. For dark mode, make a dedicated dark-mode hero asset rather than overlaying a gradient on the light-mode one.
 
+### 22. Spacing Scale Construction
+
+(Wathan & Schoger, *Refactoring UI*; Adham Dannaway, *Practical UI* 2nd ed.)
+
+- **The 25% rule** (RUI): spacing perception is relative — 12px→16px "is an increase of 33%!" while 500px→520px is 4%. So "make sure no two values in your scale are ever closer than about 25%": packed at the small end, spreading at the large end.
+- **Pick by process of elimination** (RUI): "start by taking a guess… Then try the values on either side (12px and 24px) for comparison." Both outer options obviously wrong → the middle wins; if an outer one looks best, re-run with it as the middle.
+- **A concrete default** (PUI): t-shirt sizes on an 8pt grid — XS 8 / S 16 / M 24 / L 32 / XL 48 / XXL 80 (4pt increments for dense UI). Like a type scale, options "should grow by larger amounts as they get bigger."
+- **Assign by relatedness, growing outward** (PUI): "Space elements based on how closely related they are" — interfaces are rectangles within rectangles; apply XS to the innermost rectangles and "gradually increase the spacing between rectangles as you move outwards" (XXL between page sections).
+- **Theme note:** these numbers are one coherent set satisfying the 25% rule. If another loaded skill carries a different scale, pick one system whole — never mix values from two scales. Elevation systems and light-source shadow recipes from the same books: [surfaces.md](surfaces.md) → Elevation Systems.
+
 ## Rendering physics worth knowing
 
 (Dan Hollick, *Making Software* — makingsoftware.com/chapters/blurs-noise-and-other-effects and /chapters/how-a-screen-works.)
