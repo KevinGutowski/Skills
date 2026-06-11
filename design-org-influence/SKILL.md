@@ -22,6 +22,8 @@ Plus Rachel Nabors, *Animation at Work* (A Book Apart, 2017), ch. 4 — the anim
 
 Plus Dive Club podcast interviews (auto-captioned YouTube): Ryan Scott (ex-DoorDash/Airbnb — LOkdM6frkak), Henry Modisett (Perplexity — Vt3oTBvx7xw), Cam Worboys (Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), Luis Ouriach (Figma — Pn2G7JhxNKc), Brian Lovin (Notion — dvEwb1Ajkwo), Megan Choy (Anthropic — hKeDfupbA4U), NYC panel (V-jd3v9P-Ps); tranche 2: Katarina Batina (Shop app, Shopify — 0YjO7wShTkQ), Polly D'Arcy (Wealthsimple — vdYBohOQYm0), Marvin Schwaibold (Molly Studio → Shopify — KpJs7mZYErg), Tommy Geoco (OYNoy468kS8).
 
+Plus Chip Heath & Dan Heath, *Made to Stick* (2007), chs. 1-6 — the SUCCESs pitch-framing checklist, folded narrowly into approval and persuasion mechanics.
+
 ## Core reframe: it's the framing, not the design
 
 **"It's not your design they don't trust, it's how you're framing the value."** Rejection is rarely about craft, leadership, or politics — it's solution-first thinking: falling in love with a solution before understanding the business problem, presenting features instead of outcomes. The designers who consistently get ideas approved "think business first and design second."
@@ -45,6 +47,16 @@ Full scripts, worked numbers, and timing windows: [references/pitching.md](refer
 - **Translate your message into each audience's motivations** (Lara Hogan, *Resilient Management*, ch. 4) — "speak their language" made concrete: running a web-perf team, her dashboards and graphs instantly won the engineers but moved designers and PMs not at all. Listening for what each group optimized for fixed it — designers cared about brand, so she "created videos of our site loading around the world, on different internet speeds—and saw a huge shift in the design team's reaction"; PMs were optimizing for looking good to their boss, who "received daily reports of the fastest and slowest pages on our site" — shown that, "they were suddenly game to prioritize performance work." Rule: "translate your message into something that's much more digestible and easy for that audience to care about" — one elevator pitch per audience, repeated often.
 - **Gardener, not gatekeeper** (Nabors, ch. 4) — the lone-evangelist bus factor: "I've watched companies lose all momentum… when the one person who internally evangelized motion design left. Setting yourself up as a lone gatekeeper is dangerous." Build allied experts and shared part-ownership instead.
 - **Before/after**: "I redesigned our mobile app because the current design looks outdated" → "Mobile app engagement dropped 23% this quarter, while our competitors grew 15%… projected to increase screen time by 40%… here's the six-week rollout plan." Same design, completely different reception.
+
+## Sticky framing (Heath & Heath)
+
+Use this as the last pass on a stakeholder pitch or strategy memo, not as a substitute for evidence. Density verdict for this corpus: LOW-MED overall because the framework is model-known; MED for this skill because it gives compact checks for making business-case framing memorable enough to survive the meeting.
+
+- **Find the Commander’s Intent.** One pitch gets one lead. Heath & Heath: "If you say three things, you don't say anything." Strip the deck until the message can guide an unscripted tradeoff like Southwest's "THE low-fare airline." "Simple = Core + Compact" means the core is decision-useful, not merely short: "An accurate but useless idea is still useless."
+- **Break the right guessing machine.** Surprise should expose the uncommon-sense implication of the core, not decorate the deck. Their rule: "break someone's guessing machine and then fix it" by naming the current assumption, showing why it fails, and replacing it with a better decision rule. Swap "What information do I need to convey?" for "What questions do I want my audience to ask?"
+- **Make it concrete before asking for belief.** "If you can examine something with your senses, it's concrete"; most concrete strategy language is "specific people doing specific things." Do not ask a mixed room to reason from abstractions alone: "Abstraction is the luxury of the expert." Lead with a customer scene, team workflow, support ticket, prototype moment, or named decision.
+- **Put numbers at human scale.** Statistics need a comparison frame, unit, or everyday scale before they become credible: "Statistics aren't inherently helpful; it's the scale and context that make them so." Turn "$500/employee/year" into "one or two minutes a day"; turn conversion impact into missed signups, seats, renewals, or weeks of engineering waste.
+- **Carry the moral in a story.** For strategy and culture change, prefer a concrete incident over a slogan. "The moral is implicit in the story, but the story is not implicit in the moral." Stories work because they simulate action: "Stories are effective teaching tools."
 
 ## Handling objections
 
@@ -118,6 +130,7 @@ Smaller Dive Club deltas:
 
 - [ ] Pre-Figma gate answered: business problem, user problem, success measure?
 - [ ] Pitch leads with the business problem in one sentence, with numbers?
+- [ ] Pitch has one Commander’s Intent, a concrete customer/team scene, and human-scale numbers?
 - [ ] Three layers of evidence + implementation plan (phases, MVP, success metrics, rollback)?
 - [ ] Objections anticipated — and the stakeholder's goal/motivation decoded first?
 - [ ] Pushback handled as ask-why → reframe-to-goal → propose-a-test, using the conflict script?

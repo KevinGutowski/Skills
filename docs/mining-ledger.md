@@ -4,6 +4,9 @@ Folded Perri (*Escaping the Build Trap*), Gothelf/Seiden (*Lean UX* 1st ed.), an
 # Show Your Work book fold — DONE 2026-06-11
 Screened Austin Kleon, *Show Your Work!* in full from `/tmp/books/show-your-work.txt`. Density: MED-HIGH for `building-in-public`; no new skill. Folded daily-dispatch, stock/flow, own-your-turf, attribution-as-context, teach-what-you-know, human-spam/open-node behavior, permission email list, and momentum/boundary notes into `building-in-public`. Extracted but not yet screened/folded in this pass: `/tmp/books/made-to-stick.txt`, `/tmp/books/design-for-how-people-learn.txt`.
 
+# Made to Stick targeted fold — DONE 2026-06-11
+Screened Chip Heath & Dan Heath, *Made to Stick* from `/tmp/books/made-to-stick.txt` for this queue pass. Density: LOW-MED overall (famous/model-known SUCCESs framework), MED for `design-org-influence` because it strengthens business-case pitch mechanics. No new skill. Folded Commander’s Intent/one-lead framing, meaningful surprise, concrete language, human-scale statistics, and story-as-behavior-carrier into `design-org-influence`. `/tmp/books/design-for-how-people-learn.txt` remains extracted but needs a fuller screen before deciding whether to create/fold learning-design material.
+
 # sweep: animations.dev — FINAL 2026-06-10
 ## Coverage: SWEPT — all 45 lesson nodes + 4 interviews + emil-skill page + vault opened personally; evidence in /tmp/animdev-lessons/ + /tmp/animdev-interview-*.txt
 ## Lessons (45/45 opened & read)
