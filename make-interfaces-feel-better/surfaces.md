@@ -4,6 +4,8 @@
 - Concentric Border Radius
 - Optical Alignment
 - Shadows Instead of Borders
+- Natural Shadow Stacks
+- Dark Mode Edge Highlights
 - Eased Gradients
 - Backdrop Blur × mix-blend-mode (Chrome Gotcha)
 - Image Outlines
@@ -185,6 +187,54 @@ Apply the variable and add `transition-[box-shadow]` for a smooth hover:
 | Elevated elements (dropdowns, modals) | Form input outlines (for accessibility) |
 | Elements on varied backgrounds | Hairline separators in dense UI |
 | Hover/focus states for lift effect | |
+
+## Natural Shadow Stacks
+
+When a surface needs richer elevation than a single shadow, build a stack with internally consistent geometry. Derek Briggs' PixelJanitor shadow recipe (Dec 2023: https://x.com/PixelJanitor/status/1735758919509684360) is a useful default:
+
+- Use several shadow layers that increase together.
+- Set each layer's `blur` equal to its positive `y` offset.
+- Set each layer's negative spread to half the `y` offset.
+- Keep the color and opacity constant across layers unless the local background forces a change.
+
+```css
+.elevated-card {
+  box-shadow:
+    0 1px 1px -0.5px rgb(0 0 0 / 0.18),
+    0 3px 3px -1.5px rgb(0 0 0 / 0.18),
+    0 6px 6px -3px rgb(0 0 0 / 0.18),
+    0 12px 12px -6px rgb(0 0 0 / 0.18);
+}
+```
+
+Tune opacity to the product, but keep the relationship stable. The stack should read as one natural falloff, not four visible shadow bands. On low-contrast fills, reduce or remove the outer shadow first; shadowing a muddy button makes the whole control look dirty.
+
+## Dark Mode Edge Highlights
+
+Dark mode surfaces often need light, not more darkness. Add tiny inner highlights and local reflections to sharpen edges and imply material. PixelJanitor's dark-container note (Feb 2024: https://x.com/PixelJanitor/status/1756003193236938880) and Campsite component threads show the pattern:
+
+```css
+.dark-panel {
+  background: #11161d;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    inset 0 0 0 1px rgb(255 255 255 / 0.05),
+    0 12px 24px -12px rgb(0 0 0 / 0.7);
+}
+
+.dark-toggle-thumb {
+  background:
+    radial-gradient(100% 100% at 50% 0%, rgb(255 255 255 / 0.9), rgb(255 255 255 / 0.72)),
+    #f8fafc;
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.16),
+    0 1px 2px rgb(0 0 0 / 0.5),
+    -6px 0 10px -8px rgb(255 255 255 / 0.45),
+    6px 0 10px -8px rgb(255 255 255 / 0.35);
+}
+```
+
+Use these as optical details, not decorative chrome: a 1px top inset can be enough. Check at 100% zoom on the actual background; if the highlight is visible as a line before it is felt as crispness, lower the alpha.
 
 ## Eased Gradients
 

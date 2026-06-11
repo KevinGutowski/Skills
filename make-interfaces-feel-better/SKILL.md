@@ -40,6 +40,8 @@ When geometric centering looks off, align optically. Buttons with icons, play tr
 
 Layer multiple transparent `box-shadow` values for natural depth. Shadows adapt to any background; solid borders don't.
 
+For richer elevation, use PixelJanitor's natural shadow stack rule: blur equals positive Y offset, negative spread equals half the Y offset, color/opacity stay constant across layers. In dark mode, add crispness with tiny inner highlights and local reflections before adding heavier black shadows.
+
 ### 4. Interruptible Animations
 
 Use CSS transitions for interactive state changes — they can be interrupted mid-animation. Reserve keyframes for staged sequences that run once.
@@ -55,6 +57,8 @@ Use a small fixed `translateY` instead of full height. Exits should be softer th
 ### 7. Contextual Icon Animations
 
 Animate icons with `opacity`, `scale`, and `blur` instead of toggling visibility. Use exactly these values: scale from `0.25` to `1`, opacity from `0` to `1`, blur from `4px` to `0px`. If the project has `motion` or `framer-motion` in `package.json`, use `transition: { type: "spring", duration: 0.3, bounce: 0 }` — bounce must always be `0`. If no motion library is installed, keep both icons in the DOM (one absolute-positioned) and cross-fade with CSS transitions using `cubic-bezier(0.2, 0, 0, 1)` — this gives both enter and exit animations without any dependency.
+
+For custom switches and pill indicators, consider a sequenced middle state: stretch the thumb/indicator to span the control, swap the state while it is spanning, then contract to the destination. Use it only when the control has enough space for the morph to read clearly.
 
 ### 8. Font Smoothing
 

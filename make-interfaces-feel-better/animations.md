@@ -5,6 +5,7 @@
 - Enter Animations: Split and Stagger
 - Exit Animations
 - Contextual Icon Animations
+- Sequenced Toggle Motion
 - Scale on Press
 - Skip Animation on Page Load
 
@@ -300,6 +301,35 @@ The non-absolute icon (InactiveIcon) defines the layout size. The absolute icon 
 - `opacity`: `0` → `1`
 - `filter`: `"blur(4px)"` → `"blur(0px)"`
 - `transition`: `{ type: "spring", duration: 0.3, bounce: 0 }` — **bounce must always be `0`**, never `0.1` or any other value
+
+## Sequenced Toggle Motion
+
+For custom switches, segmented controls, and pill indicators, avoid treating state change as a single linear slide when the object can morph in a way that explains the transition. PixelJanitor's Campsite switch thread (Feb 2023: https://threadreaderapp.com/thread/1628068543261732864.html) used a middle-state swap:
+
+1. Idle state.
+2. Thumb stretches to full width.
+3. State changes while the thumb spans both ends.
+4. Thumb contracts into the final side.
+
+This works because the temporary full-width shape hides the layout jump and makes the control feel elastic without guessing at a complex path.
+
+```tsx
+async function animateToggle(nextChecked: boolean) {
+  await controls.start({
+    width: "100%",
+    transition: { type: "spring", duration: 0.22, bounce: 0 },
+  });
+
+  setChecked(nextChecked);
+
+  await controls.start({
+    width: "auto",
+    transition: { type: "spring", duration: 0.26, bounce: 0 },
+  });
+}
+```
+
+Use this only for controls with enough physical space for the middle state. For tiny toggles or frequently repeated rows, a standard translate transition is usually clearer and cheaper.
 
 ## Scale on Press
 

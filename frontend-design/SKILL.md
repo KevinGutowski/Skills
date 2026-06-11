@@ -62,6 +62,10 @@ For hand-tuning the custom vectors this skill calls for. (Dan Hollick, *Making S
 
 The hero visual must *truthfully demonstrate* the product's core mechanic, not decorate around it: if you draw a calendar, align events to its real time axis; if you show data, make the numbers internally consistent. A blind A/B eval (2026-06-11) found a distinctive page lost to a plainer one solely because its hero artifact was fake under inspection — "polish is surface-level in exactly the place that matters most." Distinctiveness never excuses a dishonest artifact. Also: no perpetual motion (marquees/loops that never rest), and prefer system/self-hosted fonts over CDN dependencies in self-contained artifacts.
 
+## Fidelity survives implementation
+
+PixelJanitor / Derek Briggs' recurring design-engineering lesson: users never see the design file, so high polish only counts when it survives into HTML/CSS. His UI Engineering 101 course centers on translating high-fidelity Figma components into polished HTML/CSS, including layout, states, interactions, SVG motion, concentric radii, stacked shadows, and elevation highlights (https://maven.com/pixeljanitor/uiengineering-101-for-designers). When building a distinctive frontend, prefer visual ideas you can implement exactly, then inspect the live result at real size. If the production artifact drops the lighting, state behavior, responsive fit, or motion intent, the design is unfinished.
+
 ## De-slop substrate (Ryo Lu, Cursor — interviews, 2025)
 
 - **Build on proven primitives**: use shadcn/Radix for every standard control — keyboard nav and accessibility come free, and AI "is really good at composing patterns that exist."
