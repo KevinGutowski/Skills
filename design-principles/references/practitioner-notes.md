@@ -14,6 +14,8 @@ Long-form practitioner material distilled in `SKILL.md`. Everything here is verb
 - Counter-positions worth holding in tension with Simplicity
 - System thinking (Ryo Lu) — interviews
 - System thinking (Ryo Lu) — essays
+- Ryo Lu — tweet-essay maxims
+- Valio panel notes (Valio Con 2012–14)
 
 ## The 2018 "Qualities of Great Design" sharpening of Craft
 
@@ -110,3 +112,21 @@ From his essays ("How to make something great," ryolu.notion.site; the complexit
 - **System design > design systems:** "designing the fundamental architecture of an entire product so they work together, not just the visual surface… finding the simplest fundamental concepts, then making these concepts combinable" — flexible but not complex, powerful but not intimidating.
 - **The 9-9-6 local-maxima trap:** "real breakthroughs happen in the spaces between" — his method: phone Notion doc + hours of walking, then sit with the problem ("what would this look like if it were in its most beautiful configuration?"); "the most productive thing you can do is to not do." Counterpart: **stop overthinking, start building** — "overthinking is just fear dressed up as preparation"; "the material talks back"; "perfect doesn't exist at the beginning. it only emerges through iteration."
 - **The builder's ethics list** ("don't build slot machines… don't sacrifice agency for convenience" / "build tools that teach… build for the person you once were") — the values screen for what to make at all.
+
+## Valio panel notes (Valio Con 2012–14)
+
+From the designer panel at Valio Con (Drew Wilson's conference, 2012–14; panelists incl. Tim Van Damme — Fitbit/Instagram/Facebook — and designers from Nest and Mixpanel; auto-captioned, quotes verbatim from captions):
+
+- **The tool-vs-expression dial**: on one end expressive work where the design itself confers value; on the other, tools — where "the design should almost be invisible — as soon as someone notices the design it means you did something wrong." A graph, not a binary: the more hours a day people spend in your product, the closer to invisible the design should sit. (The panel-era statement of "great design recedes," above — with the dial that says when it *shouldn't*.)
+- **"Making something pretty is the easiest part of design"** — "it's all about the user experience… the content comes first." The panel's check against equating craft with surface polish.
+- **The five-colors-from-a-photo palette technique** (Van Damme): "whenever I came across a photo I really liked… I would save it… open it in Photoshop and… kind of pick my five" favorite "colors out of that photo… the colors that really make the photo work" as one whole — and keep a folder of those palettes as starting points. Borrowed harmony beats invented harmony.
+- **The three-pillar test**: "there's three things that I always strive… to excel" — layout, color, typography; nail all three and you get "a killer website." And the failure mode is conjunctive: "if you know like the typography sucks then the website sucks." One weak pillar caps the whole.
+
+## Intentional Design — the five elements (Apple WWDC 2018 session 802, Doug LeMoine — lost session, via WWDC Index archive)
+
+Intent is "less about a specific design vision… and more on a mindset" — "turning off the automatic part of your brain, of slowing down, and challenging the obvious" (bad UI comes from patterns applied automatically). The five elements, each tied to a shipped app:
+1. **Radical simplification** — remove actions until the context's one need remains (iTranslate Converse: "The screen is essentially one big button," designed for a jetlagged user and a stranger; Vanido: one control, top-left, so the phone holds like a microphone).
+2. **Deep understanding** — "superficial needs often mask deeper needs": Streaks Workout's real problem is *inertia*, so one tap starts a randomized workout. Origin lesson: they prototyped a literal deck-of-cards metaphor, then **dropped the literal metaphor and kept its spirit** (randomness, surprise) — stay true to intent, not the artifact.
+3. **Extreme focus** — the Rollaboard was designed for flight crews, "only 0.1% of 1% of the market," and that edge-case focus "allowed the real needs of a lot of people to come to the surface."
+4. **Personal connection** — Carrot Weather's voice channels people the developer knows; "edgy text would be less funny or perhaps not funny at all if the app didn't work" — personality rides on a working core.
+5. **Direct communication** — the Home-tab anti-pattern: a tab bar is "a high-level map of your app"; Home "is a copout. You're avoiding a decision by naming a tab Home"; "Indirect labels feel conventional and they feel safe but they mask utility." Metaphors must extend utility (Tinycards respects the card; Gorogoa extends it) — "Bending and extending metaphors doesn't work if the result doesn't extend the utility, or value, or delight of your app." (Cross-refs: `naming-features-and-labels`, `apple-navigation-design`.)

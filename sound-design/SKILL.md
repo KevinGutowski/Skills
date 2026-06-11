@@ -12,6 +12,7 @@ description: "Designs sound for apps — when sound helps vs silence, distinguis
 - *Apple WWDC 2021, session 10278 — "Practice audio haptic design" (Camille Moussette). https://developer.apple.com/videos/play/wwdc2021/10278/*
 - *Apple Developer article — "How Philipp Stollenmayer is spreading joy with PBJ – The Musical" (2026; adaptive-music field notes). https://developer.apple.com/articles/pbj-the-musical/*
 - *Ryo Lu (Cursor) — interview, 2025 (feedback-density note).*
+- *Netta Marshall (Rdio) — Valio Con 2013/2014 talk (Drew Wilson's conference): music-memory note.*
 
 Design isn't just what a product looks like or how it works — it's what it *sounds* like. Sound is a universal language: it gives context, early warning, quick confirmation (the seatbelt click — "you hear the click, and you know you're good to go"), and emotional nuance. The framing question to start any project: **"Imagine the next version of your app will have no graphical UI at all. How would you interact with it? What could that sound like?"** And George Lucas's line: "50% of the experience of a movie is determined by what we hear." Invite sound design *early*, not last.
 
@@ -21,6 +22,7 @@ Design isn't just what a product looks like or how it works — it's what it *so
 - **"Silence is golden."** The absence of sound is as important as its presence — sound on every interaction is "a bit much," and "we don't want every app to sound like a game." In software, unlike physical buttons, you can choose *no* sound — and often that's right.
 - **Always provide an off switch** — "the last thing we want is for people to always hit the ringer switch, or even worse, delete your app."
 - Whether sound fits depends on category, audience expectations, and context of use (a toast app earns sound because kitchens already speak in audible cues).
+- **Design for emotional association** (Netta Marshall, Rdio — Valio Con): the "darling they're playing our tune" theory — "music through Association can actually stimulate the recall of these events," strongest when the events carry strong emotion; it works because "rhythmic responses require little to no mental processing" (why music therapy reaches late-stage dementia patients). Sound is the lowest-processing channel to memory and emotion you have — and when the *content* is the emotional trigger, design steps back: Rdio's player let the "large beautiful artwork" nearly fill the screen — "it kind of brings back these memories" — visuals summoning the listener's own associations rather than the app's chrome.
 - **Feedback density should track user maturity** (Ryo Lu, Cursor): early GUIs sounded busy because everything was new — "a lot of people really need more feedback… as we kind of grew out of it, you know, there's like less sounds." Calibrate to the audience's familiarity, and expect to dial feedback *down* over a product's life.
 
 ## A good notification sound is…

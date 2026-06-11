@@ -12,6 +12,7 @@ description: "Grow an audience-led indie product as a designer/maker — build i
 - *"Making the leap from design to business" (Parteek Saran, 2025).*
 - *"How to build for, and with, Gen Z" (Jiaona Zhang, Linktree CPO, 2024) — the content/community evidence.*
 - *"Ready, set, IDK" (Michael Di Genova, Work Louder, 2024) — the bootstrap-hardware variant.*
+- *Valio Con 2012–14 talks (Drew Wilson's conference): Todd Garland (BuySellAds), Jeff Sheldon (Ugmonk), Kai Brach (Offscreen), Aubrey Johnson, Josh Long, Shane Mielke, Michael Flarup, GMUNK, app-maker panel, Dann Petty — distilled in [references/valio-field-notes.md](references/valio-field-notes.md).*
 
 The task: you're a designer/maker launching your own thing — build the audience *while* building the product, validate before you ship, and make it pay as a team of one. (Devtool landing pages/PMF → `developer-tool-gtm`; OSS promotion → `oss-strategy`; onboarding flows → `user-onboarding`.)
 
@@ -55,6 +56,19 @@ The task: you're a designer/maker launching your own thing — build the audienc
 - **Couple products to principles, not tools**: his Illustrator-specific course died when Sketch arrived; the durable products taught "fundamental, foundational principles… something that would stand the test of time."
 - "Most side projects will fail… those failures are not just inevitable, they're invaluable."
 - Ship faster than feels ready (Saran): "more features don't get you closer to product-market fit. Once we started shipping faster, we learned faster."
+
+## Bootstrapper field notes (Valio Con 2012–14)
+
+The pre-algorithm-era bootstrap corpus; full material in [references/valio-field-notes.md](references/valio-field-notes.md). The sharpest items:
+
+- **Spreadsheet before code** (Todd Garland): the first artifact for BuySellAds was an Excel model that validated the money side *and* surfaced a real constraint (ad serving "isn't going to scale at 140k a month") — make sure the math works before you dive in. (Receipts: 5 yrs, 19 people all-remote, ~$50M transactions, $0 raised.)
+- **The ship gap is the killer mistake** (Garland): a six-month hiatus between finishing the software and launching — "you just got a ship no matter what it looks like no matter how many things are broken." And fake what can be faked: his invite codes "didn't actually do anything."
+- **The bootstrapping press law — nobody cares** (Garland): TechCrunch results for "bootstrap" ≈ 9,370 vs ≈ 143,000 for venture capital; "if you need to build traction through press coverage go raise some money."
+- **Pre-sell before you make** (Josh Long): his book went idea-to-"completely sold in eight days" — then he scrapped the draft with three days left and rewrote; the pre-committed audience forced the finish.
+- **The counterweight voice** (Aubrey Johnson) — hold against this skill's build-for-yourself leanings: building for yourself "sometimes I think feels a little bit lazy"; investors weigh traction > team > product; and the purist consolation is fake — "if the product fails and you didn't raise money you still failed it's still zero."
+- **Boundary mechanics are survival infrastructure** (Shane Mielke + Dann Petty): no late-night email — "they're gonna get used to that"; "more time does not equal better work." Petty's floor: five same-day deadlines ended in an ER visit — "I thought I was dying and it was all because of my work."
+- **The story filter** (Michael Flarup): "ask yourself if this would make a great story — if the answer is yes there's probably some sort of fun in that process"; he runs business choices on it (a one-star review became Thermodo).
+- **The unglamorous ratio** (Jeff Sheldon): "it's 98% when you're home on a Friday night answering customer service emails" — plus his QA test ("If I won't wear it," he won't sell it) and the retort to idea-havers: "I could do that." "Yeah, but you didn't."
 
 ## Checklist
 

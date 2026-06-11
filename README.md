@@ -16,6 +16,8 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `shape-up` | Product scoping/betting (Basecamp method) + the competing Linear school (design as reference, no handoff/PMs, taste over data) and routing between them |
 | `hardware-product-design` | Physical products: form-factor positioning, mockups/rigs/jigs, input selection, manufacturing/supplier reality |
 | `ai-ui-direction` | Directing/fixing AI-generated UI: layout-primitive diagnosis, prompt-vs-edit, the fresh-context judge loop |
+| `design-org-influence` | Designer influence in the org: business cases, stakeholder objections, PM partnership, promotion/reviews |
+| `pricing-creative-work` | Client-services pricing & negotiation: value-based pricing, the Sequence Flip, objection scripts |
 
 ### Apple platform design (HIG-grounded)
 | Skill | Use it for |
