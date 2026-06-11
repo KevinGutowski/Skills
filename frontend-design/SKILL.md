@@ -39,6 +39,10 @@ Focus on:
 - **Spatial Composition**: Unexpected layouts. Asymmetry. Overlap. Diagonal flow. Grid-breaking elements. Generous negative space OR controlled density.
 - **Backgrounds & Visual Details**: Create atmosphere and depth rather than defaulting to solid colors. Add contextual effects and textures that match the overall aesthetic. Apply creative forms like gradient meshes, noise textures, geometric patterns, layered transparencies, dramatic shadows, decorative borders, custom cursors, and grain overlays.
 
+## Demonstration over decoration
+
+The hero visual must *truthfully demonstrate* the product's core mechanic, not decorate around it: if you draw a calendar, align events to its real time axis; if you show data, make the numbers internally consistent. A blind A/B eval (2026-06-11) found a distinctive page lost to a plainer one solely because its hero artifact was fake under inspection — "polish is surface-level in exactly the place that matters most." Distinctiveness never excuses a dishonest artifact. Also: no perpetual motion (marquees/loops that never rest), and prefer system/self-hosted fonts over CDN dependencies in self-contained artifacts.
+
 ## De-slop substrate (Ryo Lu, Cursor — interviews, 2025)
 
 - **Build on proven primitives**: use shadcn/Radix for every standard control — keyboard nav and accessibility come free, and AI "is really good at composing patterns that exist."
