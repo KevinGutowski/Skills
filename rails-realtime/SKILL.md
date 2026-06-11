@@ -1,6 +1,6 @@
 ---
 name: rails-realtime
-description: "Makes Rails real-time features reliable at scale — connection-avalanche mitigation, plus delivery guarantees: Action Cable is at-most-once and unordered; LLM streaming needs log-backed ordered delivery. Use when designing Action Cable/Turbo Streams at scale, debugging reconnect storms or message ordering, streaming LLM responses, or choosing AnyCable. Triggers: WebSockets, Action Cable, AnyCable, LLM streaming, message ordering, reconnect storm."
+description: "Makes Rails real-time features reliable at scale — connection-avalanche mitigation, plus delivery guarantees: Action Cable is at-most-once and unordered; LLM streaming needs log-backed ordered delivery. Use when designing Action Cable/Turbo Streams at scale, debugging reconnect storms or message ordering, streaming LLM responses, or choosing AnyCable. For building the Turbo/Stimulus patterns themselves use rails-hotwire-realtime. Triggers: WebSockets, Action Cable, AnyCable, LLM streaming, message ordering, reconnect storm."
 ---
 
 # Rails Real-Time Reliability

@@ -1,6 +1,6 @@
 ---
 name: rails-security-multitenancy
-description: Apply Rails security and multi-tenant safety practices including scoped queries, SSRF defenses, rate limiting, and tenant-scoped realtime updates. Use when implementing auth, webhooks, tenant boundaries, or security-sensitive endpoints.
+description: "Secure multi-tenant Rails apps — tenant-scoped queries everywhere, SSRF defenses for user-supplied URLs, rate limiting, tenant-scoped realtime broadcasts, authorization boundaries. Use when implementing auth, tenant isolation, security-sensitive endpoints, or reviewing for cross-tenant leaks. Database-per-tenant architecture lives in dhh-style. Triggers: multi-tenant, tenant scoping, SSRF, rate limiting, cross-tenant leak, authorization boundary, current tenant."
 ---
 
 # Rails Security + Multi-Tenancy

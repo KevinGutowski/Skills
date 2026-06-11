@@ -1,6 +1,6 @@
 ---
 name: rails-jobs
-description: Apply best practices for Rails background jobs using simple orchestration, idempotency, and safe retries. Use when creating, refactoring, or debugging Active Job and queue-backed workflows.
+description: "Write reliable Rails background jobs — simple orchestration over workflow gems, idempotency keys, safe retries, failure isolation. Use when creating, refactoring, or debugging Active Job/queue-backed work. For queue performance (Sidekiq tuning, queue-time autoscaling) use optimizing-rails — this skill is job design, that one is throughput. Triggers: background job, Active Job, idempotency, retries, perform_later, job orchestration, dead jobs."
 ---
 
 # Rails Jobs

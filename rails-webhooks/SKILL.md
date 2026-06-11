@@ -1,6 +1,6 @@
 ---
 name: rails-webhooks
-description: Build and review Rails webhook systems with safe delivery, retries, observability, and tenant-aware security controls. Use when adding webhook endpoints, outbound deliveries, retry logic, or webhook admin tooling.
+description: "Build Rails webhook systems — inbound endpoint safety (signature verification, replay windows), outbound delivery with retries and backoff, observability, and admin tooling. Use when adding webhook endpoints, outbound deliveries, retry logic, or debugging missed/duplicate webhooks. Security layer (SSRF, tenant scoping) → rails-security-multitenancy. Triggers: webhook, signature verification, replay attack, delivery retries, outbound events, HMAC."
 ---
 
 # Rails Webhooks

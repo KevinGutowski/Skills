@@ -1,6 +1,6 @@
 ---
 name: shape-up
-description: Shape Up product development methodology from Basecamp. Use for shaping work (setting boundaries, finding elements, identifying risks, writing pitches), betting on work (evaluating pitches, making cycle decisions, handling bugs), and building work (handing over projects, integrating slices, mapping scopes, showing progress, cutting scope). Covers the full 6-week cycle workflow, plus the competing Linear school (design as reference not deliverable, no handoff, no PMs, taste over data, quality via reduced scope) and how to route between them. Triggers include Shape Up, appetite, betting table, fat-marker sketch, design process, Linear method, how Linear designs, design handoff, minimum lovable product.
+description: "Scope and bet on product work with Basecamp's Shape Up — appetite, fat-marker shaping, betting table, 6-week cycles, scope hammering — plus the competing Linear school (design as reference, no handoff/PMs, taste over data) and Nan Yu's org-shape rules, with routing between schools. Use when shaping or pitching work, running a betting table, cutting scope, choosing a process school, or designing team structure. Triggers: Shape Up, appetite, betting table, fat-marker, pitch, cycle, Linear method, design handoff, org chart."
 ---
 
 # Shape Up

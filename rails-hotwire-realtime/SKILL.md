@@ -1,6 +1,6 @@
 ---
 name: rails-hotwire-realtime
-description: Apply Hotwire, Turbo, Stimulus, and ActionCable best practices for real-time Rails interfaces. Use when building Turbo Streams/Frames, Stimulus interactions, or websocket-driven updates.
+description: "Build real-time Rails interfaces with Hotwire — Turbo Streams/Frames defaults, broadcast patterns, reconnect catch-up, Stimulus conventions, scroll/interaction contracts. Use when building or reviewing Turbo/Stimulus features or websocket-driven UI. For scale and reliability (connection avalanches, delivery guarantees, AnyCable) use rails-realtime — this skill is the building patterns, that one keeps them alive under load. Triggers: Turbo Streams, Turbo Frames, Stimulus, broadcast, morph, hotwire patterns."
 ---
 
 # Rails Hotwire + Realtime

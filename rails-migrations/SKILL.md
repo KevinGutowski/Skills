@@ -1,6 +1,6 @@
 ---
 name: rails-migrations
-description: Write and review Rails database migrations safely, including reversible changes, lock-aware operations, and rollout sequencing. Use when adding or changing schema, indexes, constraints, or backfills.
+description: "Write and review Rails database migrations safely — reversible changes, lock-aware operations (no long table locks), backfill sequencing, deploy-ordering. Use when adding or changing schema, indexes, constraints, or running backfills, or reviewing a risky migration. Triggers: migration, add_column, add_index concurrently, backfill, strong_migrations, schema change, locked table, reversible."
 ---
 
 # Rails Migrations

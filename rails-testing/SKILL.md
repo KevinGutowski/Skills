@@ -1,6 +1,6 @@
 ---
 name: rails-testing
-description: "Makes Rails test suites fast and reliable — TestProf diagnosis, the factory-cascade fix ladder, hidden-I/O killers, the flaky-test taxonomy, CI parallelization. Use when a suite or CI is slow, fixing flaky tests, untangling factory bloat, or structuring readable tests. Based on Evil Martians and thoughtbot posts. Triggers: slow tests, TestProf, factory cascade, let_it_be, flaky tests, rspec --bisect, parallel CI."
+description: "Makes Rails test suites fast and reliable — TestProf diagnosis, the factory-cascade fix ladder, hidden-I/O killers, the flaky-test taxonomy, CI parallelization. Use when a suite or CI is slow, fixing flaky tests, untangling factory bloat, or structuring readable tests. Based on Evil Martians and thoughtbot posts. For Minitest+fixtures suites (37signals school) use rails-fixtures-testing. Triggers: slow tests, TestProf, factory cascade, let_it_be, flaky tests, rspec --bisect, parallel CI."
 ---
 
 # Rails Testing — Speed & Reliability
