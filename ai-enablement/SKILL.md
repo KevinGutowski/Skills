@@ -73,5 +73,6 @@ DS-specific mechanics (icon hallucination fixes, navigation templates, prompt-re
 
 - **`agentic-coding`** — repo-level agent rules (AGENTS.md/CLAUDE.md), individual workflows, and the NYC-panel org-adoption notes (public channels, Cody, skill libraries being personal); this skill is the org-wide enablement layer above the repo.
 - **`design-systems`** — DS-as-AI-context mechanics (system knowledge wired into codegen, hallucination fixes); this skill covers the *programs* that get people using it.
+- **`learning-experience-design`** — curriculum, practice, feedback, job aids, and behavior-change design for training programs. This skill owns the AI rollout system: shared context, tooling, social proof, protected time, and adoption nudges.
 - **`design-org-influence`** — the business case and political capital for design initiatives; use it when the enablement budget or mandate itself needs selling.
 - **`creating-skills`** — the craft of writing the team-level skills this skill says someone must own.
