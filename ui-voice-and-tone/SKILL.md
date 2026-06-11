@@ -9,6 +9,7 @@ description: "Defines an app's writing voice, adapts tone per situation, and cra
 - *Apple WWDC 2024, session 10140 — "Add personality to your app through UX writing" (Alex & Liv, Human Interface design team). https://developer.apple.com/videos/play/wwdc2024/10140/*
 - *Apple WWDC 2022, session 10037 — "Writing for interfaces" (Kaely Coon & Jennifer Bush). https://developer.apple.com/videos/play/wwdc2022/10037/*
 - *Apple WWDC 2025, session 404 — "Make a big impact with small writing changes" (Liv Huntley & Jennifer Bush). https://developer.apple.com/videos/play/wwdc2025/404/*
+- *Apple WWDC 2017 session 819 — "Designing for a Global Audience" (Sarah Harling) (lost session, via WWDC Index archive) — the localization-ready-writing layer.*
 
 Writing is a design discipline, not decoration — when words work seamlessly with the design, you barely notice them, yet they carry every part of the experience. Every app already has a personality whether or not you chose it. This skill **defines the voice, adapts the tone per moment, and writes the microcopy** that expresses both. It owns overall voice/tone and general in-product copy; it routes naming, failure copy, and long-form prose to the skills below.
 
@@ -67,6 +68,16 @@ The 2022 framework is the screen-level craft that carries the voice:
 2. **Avoid repetition** — don't restate the headline in the body; combine. ("Uh oh. We're running late…" collapsed to **"Delivery delayed 10 minutes. Check the app for your driver's location."**)
 3. **Lead with the why** — "To get reservation updates, enter your phone number," not the reverse. Especially for errors, notifications, and tips.
 4. **Keep a word list** — words you use / words you avoid / definitions ("alias," not Handle/User Name); button labels belong on it; seed from the Apple Style Guide. "Consistency helps provide clarity."
+
+## Localization-ready writing (2017 global-audience layer)
+
+Extends PACE's Empathy point — write so the copy survives translation, partial or full:
+
+- **When near-synonyms exist, pick the term that travels.** Picture vs photo are interchangeable in English, but across languages "Photo is the clear winner for multilingual clarity" — check key terms against your target languages before they ossify into the word list.
+- **If you can't translate everything, prioritize**: headings/titles (orientation), the important information in instructions, commonly used terms — and "make sure that users can read error messages just in case something goes wrong."
+- **Slang and figures of speech aren't banned** — they add character — but offense-check them and "offer contextual clues" so someone who doesn't parse the idiom can still figure out the meaning. (Stricter than PACE's avoid-idioms default: allowed, with a safety net.)
+- Plan: have translations for key terms *before* you need them; batch second-market artwork in one pass; check iTunes Connect/App Store analytics — your audience map may surprise you.
+- Cheap research paths: informal focus groups recruited by language/cultural background, language-learning and travel references, libraries. Visual/cultural symbol choices (gestures, iconography, associations) → `apple-visual-accessibility`.
 
 ## Keep it useful (the guardrail both talks share)
 

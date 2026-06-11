@@ -10,12 +10,24 @@ description: "Make apps accessible and inclusive on Apple platforms — respect 
 - *Apple WWDC 2019, session 244 — "Visual Design and Accessibility" (Sommer Panage, Accessibility engineering manager). https://developer.apple.com/videos/play/wwdc2019/244/*
 - *Apple WWDC 2025, session 316 — "Principles of inclusive app design" (Chris & Lisa, Apple accessibility design). https://developer.apple.com/videos/play/wwdc2025/316/*
 - *MDS (Matt D. Smith, Shift Nudge) — contrast videos. https://www.youtube.com/watch?v=ULUNaH-G2uY · https://www.youtube.com/watch?v=wXAa2HNNjM4 · https://www.youtube.com/watch?v=ZRBq8UYLa-0*
+- *Apple WWDC 2017 session 819 — "Designing for a Global Audience" (Sarah Harling) (lost session, via WWDC Index archive) — the cultural-inclusion layer.*
 
 Vision is a continuum — full sight, low vision, no sight, color blindness, light sensitivity, motion sensitivity ("one in three people has some form of motion sensitivity"). iOS exposes settings for each; your job is to **observe and respect every one**. Three pillars: color & shapes, text readability, display accommodations. The meta-rule: **turn these settings on yourself and audit your own app.**
 
 ## The inclusion gap (2025 framing)
 
 Disability isn't a fixed bodily trait — it emerges from "a difference between what a person can actually do and what society expects." Five spectra, not binaries: **vision, hearing, motor, speech, cognitive** — say "*some* vision" and design decisions get more inclusive. Contexts are also temporary and situational (a loud concert, a quiet library, sticky hands while cooking), so inclusive design "makes things better for everyone" (the curb-cut effect). Four practical actions: **support multiple senses** (parallel input *and* output paths), **provide customization** ("an app adapts to people rather than expecting people to adapt to an app" — Carrot Weather scales data-rich → super simple), **adopt the Accessibility API** (one API powers VoiceOver, Switch Control, Voice Control; support Larger Text up to 3×), and **track inclusion debt** like tech debt. And: "nothing about us without us" — test with people with disabilities.
+
+### Cultural inclusion (2017 global-audience layer)
+
+Inclusion also spans culture and language — "language and symbols are grounded in cultural context," so audit visual choices the way you audit settings:
+
+- **Gestures vary**: even counting to three on your fingers differs by culture — verify any depicted gesture "means what you intend and plan ahead to localize when appropriate."
+- **Place each icon on the local↔global spectrum** (Apple Maps' post office: Japan Post logo in Japan → postal horn in 31 countries → plain letter outline everywhere else). There's no right answer, but decide deliberately "exactly how specific do you want to be with your symbols."
+- **Depicting people**: "more detailed icons may exclude some of your users" — a simple silhouette is more general (UIKit ships one).
+- **Check associations**: an owl reads as wisdom in English-speaking contexts but bad luck or death in much of the Arabic-speaking world — "make sure that your associations are what you expect."
+
+Writing-side counterpart (term choice, partial-localization priorities, idiom safety nets) → `ui-voice-and-tone`. Glyph-concept universality (the heart-for-delicious rule) → `sf-symbols`.
 
 ## Color & shapes
 

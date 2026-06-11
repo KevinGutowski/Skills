@@ -102,6 +102,12 @@ A design system is a **product with customers**, not a library: "treat it like a
 - Cover the four forgotten states — "error empty loading overflow" — plus an interactive-state pack: hover/focus/disabled, motion references, tab order.
 - Follow up on a 1/3/5-day cadence, and check the ego at the door: "i need to lose my ego about my great design and and actually listen to the person who's going to be coding it up."
 
+**Apple's designer↔engineer layer** (*Apple WWDC 2017 session 809 — "Communication Between Designers and Engineers" (lost session, via WWDC Index archive)*):
+- **Same terminology** — use platform-correct names (that "pop-up/modal" is an *Alert*; it's a *Navigation Bar*, a *Tool Bar*, a *Switch* — not header/drawer/toggle); the HIG and API reference docs are the shared dictionary. Cheap fixes: a 30-minute terms-only postmortem, or a report of breakdowns caused by terminology confusion.
+- **One source of truth** — agree up front on the "single place where all of the approved deliverables can be accessed"; no mockups-on-a-server + strings-on-a-wiki + assets-by-email.
+- **Thoughtful focus before custom UI** — write down all use cases together, start from "standard patterns and resources you get for free in the SDK" (free accessibility, stable implementations), and "build accessibility considerations up front"; *then* ask whether custom is worth it.
+- **"Show more than tell"** — an animation spec = curve graphics + parameter value pairs + "the exact API reference," coupled with a video; designers opening Xcode (asset catalog, storyboards, the object library's real control names) pays twice: "Using the same tool helps build empathy, keeps you informed, and thereby build credibility." Review face-to-face while in context — "grab your designer or engineer teammate while your project is still open and before you're about to check in your work." (Prototyping tiers and tooling → `design-prototyping`.)
+
 ## The design system as AI context
 
 - "The best time to invest in design systems — LLMs are really good at understanding the structure of a design system" (Weekes). Default prompt-to-app output converges on the same generic look; **your DS fed as context (Code Connect, token JSON, component specs) is how generated UI keeps your identity.**

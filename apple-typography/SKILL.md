@@ -10,6 +10,7 @@ description: "Use typography well on Apple platforms — the San Francisco famil
 - *Apple WWDC 2022, session 110381 — "Meet the expanded San Francisco font family" (Vincenzo, type designer). https://developer.apple.com/videos/play/wwdc2022/110381/*
 - *Apple WWDC 2020, session 10175 — "The details of UI typography" (Loïc Sander, type designer; Jiang, engineer). https://developer.apple.com/videos/play/wwdc2020/10175/*
 - *MDS (Matt D. Smith, Shift Nudge) — live design sessions, YouTube.*
+- *Apple WWDC 2017 session 815 — "How to Pick a Custom Font" (Loïc Sander — same type designer as the 2020 session) (lost session, via WWDC Index archive).*
 
 Great UI typography is about the *dynamic behavior* of text — optical sizes, tracking, and leading are legibility mechanics, not aesthetic trivia. The system fonts handle them automatically; your job is to use **text styles** and system APIs so you inherit that engineering, and to keep it working when type scales up. (For SF Symbols — which are typographic objects too — see `sf-symbols`.)
 
@@ -74,6 +75,16 @@ People choose from 7 default sizes + 5 accessibility sizes; supporting them is n
 - **All-caps optical compensation:** "when you go all caps it's going to make your font size seem larger than it really is" — he pairs 12px all-caps against 14px regular; size caps labels a step down.
 - **Line height:** start UI text at "100% line height" and control spacing with component padding, not leading — he'll even drop to 97% to land an even 48px button height.
 - **One-size exercise:** "you can do a lot of really good design with one font size" — hierarchy from weight, case, and color before reaching for another size.
+
+## Picking a custom font (WWDC 2017, Sander)
+
+When SF isn't the answer, answer two questions before opening the font menu: **what is my intended use** (functional) and **what impression do I want to make** (stylistic). The vocabulary: **structure** (ductus — the path the tool follows: single-stroke *cursive* = dynamic, constructed strokes = static) and **contrast** (stroke modulation, thick vs thin).
+
+- **Display vs text is a contrast-and-spacing decision, not a name.** High contrast looks sharp large, but scaled down "the thin strokes will eventually disappear" and reading becomes unpleasant; text faces need sturdier (lower) contrast and *looser* spacing at small sizes, headlines look better tightly spaced. Avoid extremes of weight or style for text — "A good reading experience is usually the one you don't notice." (Complements the MDS 20pt Display/Text cut below.)
+- **Don't pick a typeface by its name** — the "LTypI" (Lack of Typographic Imagination) trap: a sign-painter font for a sign-painting app is fine only if the style *also* serves the function; "a matching name should really just be the cherry on top of the cake."
+- **Point size ≠ apparent size.** Glyphs are drawn inside a font body; "at the same point size, two fonts can appear to have different scales because of their design." When pairing, set candidates side by side at one point size and prefer the closest apparent-scale match — otherwise you'll tweak point sizes at every pairing site. (Same x-height physics as Stocks's "no shared font size" point above.)
+- **Pairing strategy:** start with two typefaces, add only if truly needed. Easiest win: one family, contrast by weight. If pairing styles, make the stylistic difference (structure *and* contrast) strong enough to be obvious. A "strong display typeface and using the system font" for text is a legitimate pattern — your style on top, SF as the workhorse. "The key element is typographic contrast" — via size, weight, or style; books run low display/text contrast (long reading), news layouts run high (grab attention, then read with ease).
+- Style perception is learned association (geometric sans ≈ "fresh" yet ~100 years old; book faces feel "literary" from exposure) — learn the layers, old and new, rather than trusting first impressions.
 
 ## Checklist
 

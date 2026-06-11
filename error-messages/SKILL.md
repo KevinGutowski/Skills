@@ -126,10 +126,30 @@ Tone scales with stakes. Use this rough mapping:
 
 **Never** use exclamation points, emoji, or "Oops!" for high-stakes errors. They read as dismissive.
 
+## Apple's alert doctrine (complementary layer)
+
+*Source: Apple WWDC 2017 session 813 — "Writing Great Alerts" (lost session, via WWDC Index archive).* The Wix rules above govern the *words*; this layer governs whether an alert should exist and how its parts divide the work.
+
+**Should this be an alert at all?** "Alerts are disruptive by design" — before putting anything in one, ask "do people really need to know this, and do they need to know this now." Only three legitimate jobs: correct an error, request access to user data, or announce a major update (significant feature, critical security fix — "certainly not every update merits an alert"). Alerts are also *lightweight* by design — disqualifiers:
+- **Not settings or multiple-choice questions** — if the alert takes most of the viewport, cut choices or move the task to a larger UI element.
+- **Not diagnostic tools** — no technical data, especially error codes (matches anti-pattern 2).
+- **Not afterthoughts for preventable problems** — if you have password rules, state them on the main screen and disallow invalid input; don't let the error happen and then alert about it.
+
+**Structure — each part has one job:**
+- **Title**: the main point in one sentence or less. Name the specific object ("file.pdf", not "this file").
+- **Message**: brief cause or reason, only if necessary. Ideally people understand the situation from **title + buttons alone**, without reading the message.
+- **Buttons**: easy to understand and perform; if an action takes people outside the app or to another state, *navigate them there* — don't leave them to find their way.
+- Mnemonic: a good alert answers **what happened, why am I seeing this, how do I proceed**.
+
+**The Cancel-download trap**: "Cancel download? … [Cancel] [OK]" follows every guideline and is still ambiguous — "even when using guidelines, always check the result for any ambiguity or confusion." When the action verb collides with a button convention, rephrase the title and restate the choices in the buttons ("Stop Download" / "Continue Download").
+
+Style: "Avoid platitudes, jargon or fillers"; correct formatting/spelling/punctuation; match the editorial voice to your audience. Periodically re-audit: do you still need every alert you ship?
+
 ## Review Checklist
 
 When reviewing error copy, walk through this:
 
+- If it's a dialog/alert: does it need to interrupt at all — and was the problem preventable upstream?
 - Does it say specifically what happened? (not "something went wrong" if cause is known)
 - Does it explain *why* in plain language? (no jargon, no error codes alone)
 - Does it avoid blaming the user or third parties?

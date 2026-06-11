@@ -12,6 +12,7 @@ description: "Uses SF Symbols well — symbols as typographic objects (point siz
 - *Apple WWDC 2024, session 10188 — "What's new in SF Symbols 6" (Thalia). https://developer.apple.com/videos/play/wwdc2024/10188/*
 - *Apple WWDC 2025, session 337 — "What's new in SF Symbols 7" (Kelsey). https://developer.apple.com/videos/play/wwdc2025/337/*
 - *MDS (Matt D. Smith, Shift Nudge) — live design sessions, YouTube.*
+- *Apple WWDC 2017 session 823 — "Designing Glyphs" (Mani Amini) (lost session, via WWDC Index archive).*
 
 SF Symbols (6,000+) solve icon design's core problem: pairing symbols with text. Symbols are **typographic objects** — specified in font point sizes, sitting on the text baseline, drawn in all nine weights to match San Francisco — so they scale with Dynamic Type and localize automatically. (For the type system itself, see `apple-typography`.)
 
@@ -69,6 +70,16 @@ Field practice for drawing your own icons (upstream of the SF Symbols template p
 - **Build from unioned simple geometry:** "you bring the rectangle to the midpoint of the circle and union them together… that's how you design an icon" — compose primitives, then union, rather than drawing freehand paths.
 - **Bezier QA:** inspect the points — "your handlebars shouldn't look [like] that on your icons, they should be straight up and down"; skewed handles betray a sloppy curve.
 - **Calibrate against a native glyph:** "it is really good to just paste in the arrow and just see how big it is" — dropping a real iOS glyph next to yours instantly exposes icons drawn too tiny or too large.
+
+### Glyph craft — concept and family (Apple, pre-SF Symbols doctrine)
+
+From WWDC 2017 session 823 — the conceptual layer MDS's drawing mechanics sit on. Glyphs are "for the most part… monochromatic and should be colorized programmatically."
+
+- **Conceptualize: "simplify and think globally."** Specific objects don't travel (cheeseburger/pizza/ice cream for *delicious* — people don't relate to them the same way); faces, mouths, and body parts "can be seen as inappropriate" in some cultures; abstract to the universal feeling instead (a **heart** for delicious). See `apple-visual-accessibility` for the wider global-iconography spectrum.
+- **Make sets family** — three levers: **optical weight** (narrow/elliptical shapes have less surface area — scale them *past* the shared vertical bounds until they balance), **line weight** (normalize stroke weight across the set, including gaps/negative space — inconsistent weight makes some glyphs look more emphasized "and they just don't family well"), **optical positioning** (asymmetric glyphs perfectly centered "just look off" — nudge a play triangle right, a share arrow up; you can "bake this padding right into the asset" so integration is a plain center + asset swap).
+- **Match type:** "consider the relationship between type and the glyphs" — light type → matching thin lines; heavy type → weighted or filled glyphs.
+- **Adapt for system spaces** (quick actions, system bars): mirror the platform's shared glyphs; these run "a bit larger and heavier than their in-app counterparts."
+- Process: "build them as sets. Test them in context, and always preview them on device."
 
 > **Staleness note (Kevin's rule):** these talks span 2019–2025 and the API surface kept moving. Verified against current docs (mid-2026): wiggle/rotate/breathe/pulse/bounce/variableColor/replace + DrawOn/DrawOff + `NSSymbolMagicReplaceContentTransition` all current. The unspecified-rendering-mode default has changed across releases (monochrome → per-symbol preferred/Automatic) — confirm `symbolRenderingMode` behavior against current docs for your deployment target. Template format versions gate features for back-deployment; the SF Symbols app's **Copy Code button** gives current snippets. **SF Symbols 8 beta (June 2026, OS 27 era):** headline addition is **semantic search** in the app (describe the symbol in your own words); library passes 7,000 symbols; Draw/Variable Draw/gradients carry over unchanged. Re-verify once a WWDC26 symbols session ships.
 
