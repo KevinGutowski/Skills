@@ -103,3 +103,4 @@ A practitioner's market read on the integration surface (Kris Puckett, Dive Club
 - **`linear-settings-copy`** — wording of settings rows; this skill argues for their existence and density.
 - **`agentic-coding`** — agents working *on your codebase*; this skill's AX section is the inverse: agents as *customers of your tool*.
 - **`developer-tool-gtm`** — getting the tool adopted; this skill makes the tool worth adopting.
+- **`malleable-software`** — end-user customization/extensibility of the tool (plugins, user scripts, exposing structure) routes there; this skill owns the tool's own UI conventions.

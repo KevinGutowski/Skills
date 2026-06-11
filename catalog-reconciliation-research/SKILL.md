@@ -17,7 +17,7 @@ Research is not done when a page is saved. It is done when the finding has been 
 - The source tier is explicit: primary, near-primary, secondary, visitor, mirror, or lead-only.
 - The local archive path, source URL, source type, caption, dimensions, and notes are recorded.
 - The best current asset is selected, while alternates remain preserved.
-- Downstream records, indexes, and site data are updated from the same source-backed facts.
+- Downstream records, indexes, and site data are updated from the same source-backed facts (Airtable MCP setup → `airtable-mcp`; NocoDB operations → `nocodb-catalog-management`).
 - Gaps stay visible with exact next leads instead of disappearing into prose.
 
 ## Working loop

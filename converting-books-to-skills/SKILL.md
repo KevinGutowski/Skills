@@ -4,6 +4,8 @@ description: Convert books, guides, or documentation into Claude skills using pr
 ---
 
 > **Prerequisite:** For general skill authoring (structure, naming, descriptions), see the `creating-skills` skill or the [official documentation](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices).
+>
+> **Sibling:** If the source is a living codebase with PR-review history (the reasoning lives in review threads, not prose), use `converting-codebases-to-skills` — this skill is for books, docs, and guides.
 
 ## Quick Start: Book → Skills
 

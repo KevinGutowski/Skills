@@ -272,3 +272,4 @@ Full checklist (68 items): [checklist.md](checklist.md)
 - **`rails-testing`** — the test suite's performance is its own discipline (TestProf, factory cascades, CI parallelization); this skill owns the runtime request path.
 - **`rails-realtime`** — persistent-connection capacity and delivery guarantees are a separate failure domain from request-path tuning.
 - **`agentic-coding`** — performance decisions worth repeating (N+1 strategy, caching patterns) are prime material to encode as project rules for coding agents.
+- **`rails-jobs`** — job *design* (idempotency, naming, error taxonomy) lives there; this skill owns queue *throughput and performance*.

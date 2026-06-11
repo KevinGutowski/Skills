@@ -128,3 +128,5 @@ Field practices from people running agents daily. Extended notes + context: `ref
 - **`rails-docker-dev`** — the container sandbox that makes permissive agent flags safe (project-only mounts).
 - **`malleable-software`** — Litt's philosophy layer (version control as the human-AI substrate, jigs, teaching primitives); this skill is the daily practice on real repos — his surgeon/prep-brief workflow lives here.
 - **`devtool-interface-design`** — the inverse perspective: this skill runs agents *on your codebase*; its AX section designs your *product* for agents as customers.
+- **`ai-ui-direction`** — UI-specific direction of AI output (layout diagnosis, prompt-vs-edit, the judge loop); this skill owns the workflow mechanics around the agent.
+- **`ai-enablement`** — team/org-level rollout: shared context, internal agents, enablement programs; this skill owns single-repo practice.

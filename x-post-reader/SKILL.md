@@ -1,6 +1,6 @@
 ---
 name: x-post-reader
-description: "Reads public X (Twitter) posts without authentication — single tweets, a user's recent timeline, a user's top ~100 tweets (syndication endpoint), or topical tweets from an account. Use when the user pastes an x.com/twitter.com status URL or asks to read, summarize, or find a user's tweets or best tweets. For authenticated X API operations (mentions, followers, search), use x-api instead. Triggers: tweet URL, x.com, what has @handle posted, top tweets."
+description: "Reads public X (Twitter) posts without authentication — single tweets, a user's recent timeline, a user's top ~100 tweets (syndication endpoint), or topical tweets from an account. Use when the user pastes an x.com/twitter.com status URL or asks to read, summarize, or find a user's tweets or best tweets. For authenticated X API operations (mentions, followers, search), use x-api instead (needs X_BEARER_TOKEN; if not installed, say authenticated ops unavailable). Triggers: tweet URL, x.com, what has @handle posted, top tweets."
 ---
 
 # X Post Reader: Fetch a public tweet via VxTwitter
@@ -73,7 +73,7 @@ Returns JSON like:
 ## Tips
 
 - **Quote tweets**: check `qrt`. If non-null, you have a quote tweet — read both `text` (the wrapper) and `qrt.text` (the quoted post) to understand the full meaning. Don't summarize a QT without the quoted content.
-- **Threads**: VxTwitter returns a single post, not the full thread. If the user wants a thread, fetch the root post, then walk replies via the `x-api` skill (`conversation_id` search) or ask the user for each URL in the chain.
+- **Threads**: VxTwitter returns a single post, not the full thread. If the user wants a thread, fetch the root post, then walk replies via the `x-api` skill if installed (`conversation_id` search) — otherwise ask the user for each URL in the chain.
 - **Replies**: if `replyingTo` is set, the post may not make sense in isolation. Fetch the parent (`replyingToID`) for context before drafting your own reply.
 - **Media**: `media_extended` has richer info (type, dimensions, video bitrates) than `mediaURLs`. For images you can `curl -O` directly; for video, pick the highest-bitrate variant from `media_extended[].variants`.
 - **Long posts**: VxTwitter returns the full text for long-form posts — no `note_tweet` flag needed (unlike the official API).
@@ -182,6 +182,6 @@ curl -sS "https://api.fxtwitter.com/{handle}"   # similar shape, slightly differ
 
 ## When NOT to use this skill
 
-- Authenticated search across all of X, fetching a user's mentions/followers/following, list members, or anything requiring auth → use the `x-api` skill (requires `X_BEARER_TOKEN`).
+- Authenticated search across all of X, fetching a user's mentions/followers/following, list members, or anything requiring auth → use the `x-api` skill (requires `X_BEARER_TOKEN`; if it's not installed, tell the user authenticated operations are unavailable).
 - Going beyond ~20 recent posts AND beyond what Google has indexed → only the authenticated API can paginate a user's full timeline.
 - Posting, liking, replying, or any write action → not supported by either skill.
