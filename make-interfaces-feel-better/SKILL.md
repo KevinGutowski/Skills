@@ -115,6 +115,10 @@ Let the browser do the boring stuff "so we can focus on the really important stu
 - **Squint test** (Henry Modisett, Perplexity): "squint at the screen and still flow through the product… the best products have almost a gravitational pull to them. You can't really use them the wrong way."
 - **Anti-sterile texture** (Inga Hampton, Raycast): "Blur is a superpower. Nothing in the real world is perfectly sharp" — even ~0.3px of blur de-sterilizes vector art; grain "ties everything together and helps with color banding"; in raster-painting, "blend modes do most of the work" (lighten, color dodge, plus-darker).
 
+### 20. Emphasis Can Read as an Ad
+
+Visual emphasis backfires past a threshold: banner blindness means highly differentiated content gets filtered as advertising — "it's good to be aware of when visually differentiating content could inadvertently lead to it being mistaken for an ad" (Jon Yablonski, *Laws of UX*, ch. 8, von Restorff). If a promoted card uses gradient-on-color treatment unlike anything around it, users may skip it entirely; emphasize within the page's own visual language.
+
 ## Common Mistakes
 
 | Mistake | Fix |
@@ -184,7 +188,7 @@ Rows should cite the specific file and the specific property that changed when i
 - [animations.md](animations.md) — Interruptible animations, enter/exit transitions, icon animations, scale on press
 - [performance.md](performance.md) — Transition specificity, `will-change` usage, perceived performance (spinner choice assigns blame)
 
-### 20. Eased Gradients
+### 21. Eased Gradients
 
 Two-stop linear gradients leave a visible edge where they start and stop — especially fade-to-transparent scrims and significant color changes. Add intermediate stops sampled from an easing curve so the transition starts and ends gently. For color-to-color gradients also interpolate in a better space (`in oklab`) to avoid muddy midpoints — but only eased stops fix the hard edges. For dark mode, make a dedicated dark-mode hero asset rather than overlaying a gradient on the light-mode one.
 
