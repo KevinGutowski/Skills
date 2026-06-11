@@ -30,3 +30,25 @@ Keynote doc at iPhone size; shapes for the clock face and Start button; the **ro
 Before making: what needs to be more real? · what can we fake? · where will they use it?
 While showing: do you know how to do X? · is it easy? · how can we make this better?
 After: what's working? · what's not? · what other ideas does this give us?
+
+## Field note — keep exploration loose, structure later (Stamatiou)
+
+**Keep exploration loose — structure later.** Field note (Paul Stamatiou, 2022 — https://x.com/Stammy/status/1488310850008104960): "figma auto layout is great when you have mature designs, ready to scale / componentize. but auto layout is the worst thing when you're quickly exploring wildly different concepts and you spend most of your time fighting it." The same defer-the-engineering ethic as "hack it, don't engineer it" — don't pay the systemization tax during divergence. His "Craft" essay extends it to design systems and a divergence prompt (https://paulstamatiou.com/craft/): for new products don't start from the design system — "applying your design systems thinking… all too eagerly may prevent you from noticing the obvious"; to break your own aesthetic tendencies, ask **"how would [another company] design this?"** and mock up their answer — "I may hate it, but it will get me thinking."
+
+## Field notes — Make tier (spatial context, scaffolds, Figma's role)
+
+- **Prototype at true spatial context** (Jae Park, Config 2025): for anything viewed off-desk, fake it at real distance/angle — his foam-core Echo Show model with a 7-inch tablet, evaluated from 10 feet across a conference table ("it was two Kleenex boxes short"), beat a PRD spec'd at desk distance. Full physical-tier methods (mockups, rigs, jigs) → `hardware-product-design`.
+- **Scaffold, don't script, for collaborators** (PBJ article): hand a collaborator structure that frames the problem (10 acts of storyboards — "a scaffold") while leaving the craft decisions theirs. **Prototype the core loop before the app exists** (CapWords): they validated photo→cutout→LLM-naming by manually feeding VisionKit cutouts into ChatGPT — "we didn't even have an app yet."
+- **Figma diverges, code decides** (Mariana Castilho, poolside/Vercel): use the drawing tool only for fast divergent exploration and flow communication — "most of the times I don't even finish my designs in Figma… 99% of the times the final output in code looks nothing like my initial sketch." Component motion and interaction feel are *never* prototyped in Figma — always tuned in code where the real parameters live.
+
+## Field note — the caricature technique (Show)
+
+**When words fail on visual nits, draw a caricature** (type-designer technique, 2018-801): redraw the shape "with exaggerated features… through that drawing, usually the other people can start seeing that much more toned down but existing feature." Finding "the joint gaze… is the key of a successful collaboration in design." And budget patience: "you can't hire more people to get there faster. You just have to sit with it."
+
+## The prototyping team's 2022 Q&A (Learn)
+
+From the team's 2022 Q&A:
+- **No hole-in-ones:** "If we're not getting feedback on something, we're just not showing it to the right people."
+- **Keep multiple directions alive** — several prototypes, or one with sliders/preferences; when feedback conflicts with the current direction, "we keep both around to let people compare."
+- **Phrase feedback as the experience, not taste:** not "I don't like this color" but "I think blue instead of red would better communicate what the experience is about."
+- **Refocus on what wins hearts:** with dozens of ideas competing, advance the two or three people loved; "no one true winner" is fine — the rest recycle into future work. And the recurring trap: "we sometimes get caught up in trying for a perfectly polished prototype" — always remember the question the prototype exists to answer.

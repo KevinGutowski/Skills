@@ -8,7 +8,9 @@ description: "Build per-subject research bundles and offline reference archives,
 Detailed worked procedures live in `references/` — load them when you reach the relevant step:
 
 - `references/capture-techniques.md` — section-extraction code for fan wikis, Wayback hidden-server-assets trick, live-vs-Wayback era diffing, the URL-surgery table for hi-res recovery, social-handle parsing, capture mechanics per site type, the reusable downloader pattern, virtualized-list scraping code, URL-encoding non-ASCII paths.
-- `references/checklists-and-templates.md` — widening-question checklists (venue/artwork/artist), data-presentation forms, the per-section sweep map (Pokémon × Kogei / Bulbapedia), the per-subject README template, lateral discovery patterns, visual-labeling failure modes.
+- `references/checklists-and-templates.md` — widening-question checklists (venue/artwork/artist), data-presentation forms, the per-section sweep map (Pokémon × Kogei / Bulbapedia), the per-subject README template, lateral discovery patterns, visual-labeling failure modes, cross-reference matrix examples, the user-drops procedure, what not to capture.
+- `references/local-corpus-ocr.md` — local-mode layer specs (raw OCR / cleaned / translated), Apple Vision setup, page geometry and binding direction, local bundle layout, pilot-then-batch cadence.
+- `references/attribution-discipline.md` — the wrong vs. right attribution workflows, incomplete-inventory handling, the attribution failure-mode catalog.
 
 ## When to use
 
@@ -24,31 +26,9 @@ User asks to gather information and imagery about a *finite set of subjects* (ve
 
 ## Local-source corpora: OCR → clean → translate
 
-When the source is scanned documents you already hold (magazines, catalogs, flyers, photographed pages), the deliverable is a **layered text corpus**, not an image bundle. The layers mirror the auto-vs-curated split that governs the whole skill:
-
-1. **`*_ocr_pages/` — raw OCR (auto).** Machine output, one file per logical page, never hand-edited. On macOS, prefer the **Apple Vision framework** (`VNRecognizeTextRequest`, `.accurate`, set `recognitionLanguages`) over Tesseract for CJK and mixed layouts — it is dramatically more accurate, runs locally with no API/network, and returns per-line bounding boxes + confidence. A compiled Swift binary OCRs a 300-DPI page in ~2s. Emit a JSON sidecar per page (bbox + confidence per line) — it's what makes verification croppable. Carry a `Source locator` line (source file + page) in every output so provenance is recoverable, exactly like a web bundle's source URL.
-2. **`cleaned_text_pages/` — audited source-language transcription (curated).** Created only after checking the OCR against the page image. This layer is *sacred* the same way `from_user/` is: the raw layer must never overwrite it.
-3. **`translated_text_pages/` — translation (curated).** Built *from the cleaned layer*, not from raw OCR, with uncertainty preserved inline in `[brackets]`.
-
-**Page geometry matters.** Two-page magazine spreads render as one landscape image; split at the gutter into single pages before OCR — it removes the cross-column reading-order problem and isolates dense tables. Check binding direction from the folios (page numbers): if they increase left→right the spread reads L→R; a right-bound Japanese magazine reads R→L.
-
-**"READ the page yourself" applies verbatim to OCR.** OCR confidence is the script's signal; your eyes are the primary tool. For low-confidence regions, crop the bbox, re-OCR the crop in isolation (single lines are far more accurate), and if still unclear **open the crop with `Read` and read it yourself.** Only what's genuinely illegible gets flagged to the user. Note that low confidence ≠ wrong — display type and stylized headings routinely score ~0.3 while being perfectly correct; confirm by eye rather than "fixing" them.
+When the source is scanned documents you already hold (magazines, catalogs, flyers, photographed pages), the deliverable is a **layered text corpus**, not an image bundle. Three layers, mirroring the auto-vs-curated split that governs the whole skill: **raw OCR (auto, never hand-edited — Apple Vision over Tesseract for CJK)** → **`cleaned_text_pages/` audited against the page image (curated, sacred — raw must never overwrite it)** → **`translated_text_pages/` built from the cleaned layer**, uncertainty preserved inline in `[brackets]`. "READ the page yourself" applies verbatim to OCR — your eyes are the primary tool; low confidence ≠ wrong. Split spreads at the gutter before OCR; check binding direction from the folios. Full layer specs, page-geometry rules, bundle layout, and cadence: [references/local-corpus-ocr.md](references/local-corpus-ocr.md).
 
 **Anti-hallucination — the cardinal rule applies to "cleaning" too.** "Cleaning" OCR is the most dangerous moment in this mode: the temptation is to silently turn a garbled string into a plausible guess — a mangled card name into the *wrong* card, a broken kanji into a confident-but-fabricated one. This is the same failure as inventing artist names from visual style (see "Canonical inventory first"). Discipline: **correct only what the page image confirms; for proper names (cards, Pokémon, sets, people) grep a canonical inventory before normalizing; where neither the image nor a canonical source resolves it, preserve the uncertainty inline rather than inventing.** A `[?]` or `[unclear: …]` marker is cheap; a fabricated card name propagates into the translation and the consuming UI.
-
-**Bundle layout (local mode):**
-```
-<corpus>/
-  <source>_ocr_pages/<source_id>/page_NNN[_L|_R].md   raw OCR (auto), + _json/ sidecars
-  cleaned_text_pages/<source_id>/page_NNN[_L|_R].md    audited source-language (curated)
-  translated_text_pages/<source_id>/page_NNN[_L|_R].md translation (curated)
-  <source>_ocr_manifest.tsv     one row/page: source, page, dims, confidence, quality flag
-  STATUS.md / VERIFICATION_SUMMARY.md   the README-as-index for this corpus
-```
-
-**Same cadence: pilot then batch.** OCR one magazine end-to-end (benchmark engine + DPI, validate splitting and reading order), record the findings in a `SPEED_LAB.md`/`STATUS.md`, then batch the rest with the validated config. Keep auto and curated separate so a re-run of the OCR layer never clobbers audited text — identical to "the script captures, the README curates."
-
-**README-as-index, varied forms** apply unchanged: a manifest TSV (machine log), a status doc (what's done, what's flagged), a **glossary box** for recurring source-language terms, and a flagged-pages gap list with the residual that needs human eyes. (This mode was added after an OCR-a-magazine task reinvented all of the above from scratch instead of starting here.)
 
 ## Stance: be an exhaustive, breadth-first research partner
 
@@ -70,14 +50,7 @@ For fan-wiki articles, pre-extract named sections to `_shared/<wiki>_sections/` 
 
 ## Cross-reference matrices belong at the index
 
-Once you have multi-subject data, put a *cross-reference matrix* at the top-level `<topic>/README.md`. Examples that have proven valuable:
-
-- **Subject × feature presence**: did each venue have a café? freebies? new works? collaboration items?
-- **Subject × inventory counts**: pages/images/videos per venue, side by side.
-- **Subject × dimensions**: poster sizes per venue, helps spot the low-res outliers.
-- **Subject × dates**: chronological timeline of the whole tour, one row per stop.
-
-The matrix surfaces *gaps* faster than reading any single subject README. If column "Has café" is mostly empty but two cells are filled, that's a story.
+Once you have multi-subject data, put a *cross-reference matrix* at the top-level `<topic>/README.md` — subject × feature presence, × inventory counts, × dimensions, × dates. The matrix surfaces *gaps* faster than reading any single subject README. If column "Has café" is mostly empty but two cells are filled, that's a story. Worked matrix examples: [references/checklists-and-templates.md](references/checklists-and-templates.md).
 
 ## Spread the work across the whole subject domain
 
@@ -129,9 +102,7 @@ The recommended per-subject README skeleton (source trail table, hero candidates
 
 **Default behavior should be: never accept the first-returned image bytes as final.** Every CDN serves multiple resolutions; the URL the page hands you is almost always a downsized variant. *Before saving any image, do the URL surgery, then re-fetch.* Then `sips -g pixelWidth -g pixelHeight` to confirm you got the master. The per-CDN surgery table (MediaWiki thumbs, WordPress suffixes, Movable Type auto-thumbnails, Cloudinary transforms, Twitter/X `?name=orig`, etc.) is in `references/capture-techniques.md`.
 
-The cost is a single extra HTTP request per image. The reward is sometimes 5–20× the resolution. A page-cached "1200×800" rendering is useless for print-quality use; the same source URL with `?name=orig` or with the WordPress `-WIDTHxHEIGHT` suffix dropped often returns a 4096×2731 or 6192×8256 master. **If you save without checking, you've effectively lost the master forever** — the user will not know the larger version exists, and the bundle becomes a thumbnail collection.
-
-When you've already saved at low res, do a *retroactive bulk re-fetch pass*: walk the bundle's saved images, derive the original URL, request `?name=orig` (or equivalent), and overwrite if the new file is meaningfully larger (e.g. >10% bigger). One pass over the bundle catches whatever the initial pass missed.
+The cost is one extra HTTP request per image; the reward is sometimes 5–20× the resolution. **If you save without checking, you've effectively lost the master forever** — the bundle becomes a thumbnail collection. If you've already saved at low res, do a *retroactive bulk re-fetch pass* over the bundle. Cost/reward numbers and the re-fetch procedure: [references/capture-techniques.md](references/capture-techniques.md).
 
 ## Source trail — the canonical chain
 
@@ -189,7 +160,7 @@ After every page capture, before declaring done:
 4. **Note every nav-bar link** to other pages on the same site that might also have PXK content (talks, events, news, articles).
 5. **Note every cross-link** to external press partners, sponsors, ticket sellers, photographers.
 
-A real-world miss that motivated this section: a museum exhibition page for the Hiroshima PXK stop linked two flyer PDFs ("チラシ（表裏）ダウンロード [PDF：1MB]" and "チラシ（中）ダウンロード [PDF：2MB]") in plain `<a href>` tags. The image-extracting script captured all 71 images on the page but missed both PDFs because they weren't `<img>` tags. A 30-second human read would have caught both. Worse: across 16 captured pages in the same project, the same pattern silently dropped **the National Crafts Museum's official bilingual work-list PDF** (the canonical artwork inventory), two NCM press releases, and several other primary-source documents.
+A real-world miss that motivated this section: an image-extracting script captured all 71 images on a museum exhibition page but missed both flyer PDFs (plain `<a href>` tags) — and across 16 captured pages silently dropped the canonical bilingual work-list PDF and two press releases. A 30-second human read would have caught them all. Full anecdote: [references/capture-techniques.md](references/capture-techniques.md).
 
 **Symptom that you skipped this step**: you have 50+ images captured but no PDFs. Almost any institutional site of this type has a flyer PDF. If your `pdfs/` is empty, you didn't read the page.
 
@@ -217,21 +188,7 @@ Without per-image provenance, you cannot:
 - Tell the user *which post* an install shot came from
 - Distinguish near-duplicates from the same source vs. different sources
 
-**Where to write it:** the per-bundle `capture_log.tsv` is the canonical store. Append one row per saved image with the full set of fields above. The bundle's `README.md` curates the highlights from this log; the log itself is the durable record.
-
-**Format** (TSV recommended; CSV/JSONL also fine):
-```
-captured_at  page_url  page_label  image_url  hint  local_path  result  content_type  bytes  width  height  date_posted  account
-```
-
-(`hint` = how you found it: `og:image`, `img@src`, `srcset`, `manual`, `carousel-slide-3`, etc. `account` may be empty for non-social sources.)
-
-**For social-media captures specifically**, also record:
-- The post date (parse from `og:description` for Instagram; from tweet timestamp for X/Twitter)
-- The carousel index when applicable (slide 0, 1, 2…)
-- The poster's @handle
-
-**Backfill if you forgot.** If you've been saving images without logging, do a backfill pass before adding more: walk the existing files, derive what provenance you can (from filenames, parent dir conventions, sibling `capture_log.tsv` rows, `info.json` files left by `yt-dlp`), and produce a `provenance.tsv` at the bundle root. Note explicitly which fields you couldn't recover.
+**Where to write it:** the per-bundle `capture_log.tsv` is the canonical store. Append one row per saved image with the full set of fields above. The bundle's `README.md` curates the highlights from this log; the log itself is the durable record. The TSV column format, social-media extras (post date, carousel index, @handle), and the backfill procedure for unlogged images are in [references/capture-techniques.md](references/capture-techniques.md).
 
 **The test:** pick any image at random in your bundle. Within 10 seconds you should be able to tell the user (a) what page it came from, (b) when it was posted, (c) who posted it. If not, your logging is incomplete.
 
@@ -245,24 +202,11 @@ For multi-subject research (e.g. 9 venues, 30 products, all members of a band):
 
 ## Working with the user's drops
 
-When the user adds files to `from_user/`:
-
-1. **List what they dropped** — use `ls -la` (catches dotfiles + spaces).
-2. **Read their `from_user/README.md` for notes** — they may have flagged what each item shows or why it matters. Their notes are gold; quote them in the parent README.
-3. **Use `Read` on a representative image** — confirm what it shows so you can describe it in the parent README. (The `Read` tool can render images directly; use it.)
-4. **Don't move their files into `images/`.** Leave them in `from_user/` and reference by path. They may keep adding.
-5. **Integrate insight, not files.** Update the parent README's "Hero candidates" / "Gaps" / "Notes" sections with what you learned from their drops. If they found a higher-res poster than the auto-pass, surface it.
-
-### `from_user_misc/` — cross-subject drops
-
-In addition to per-subject `<slug>/from_user/` folders, expect a top-level `from_user_misc/` (or similar — the user names it). This is for leads that don't yet fit one subject: a list of social-media URLs, a press article that mentions multiple venues, screenshots of unsorted material. Same rules: leave files alone, fold insight into the right place. After integrating, update `from_user_misc/README.md` so it's clear what's unprocessed vs. integrated.
+The rules in brief: read their `from_user/README.md` notes (they're gold — quote them), `Read` a representative image yourself, **don't move their files** (reference by path; they may keep adding), and **integrate insight, not files** into the parent README. A top-level `from_user_misc/` holds cross-subject leads — same rules; after integrating, update its README so unprocessed vs. integrated is clear. Full five-step procedure: [references/checklists-and-templates.md](references/checklists-and-templates.md).
 
 ## What not to capture
 
-- **Site chrome** (logos, social icons, header SVGs) — fine if your script grabs them, but don't surface in the README.
-- **Generic stock imagery** (Pixabay, Shutterstock placeholders) — usually not subject-specific.
-- **Tracking pixels / analytics gifs** — `pixel.wp.com/g.gif`, `googletagmanager.com`, etc. Filter by zero-byte response or `image/gif` 1×1.
-- **Social-media login walls** — if the page returns "log in to see this content," don't save the wall HTML.
+Site chrome, generic stock imagery, tracking pixels (filter zero-byte / 1×1 gifs), and social-media login-wall HTML. Full list with filters: [references/checklists-and-templates.md](references/checklists-and-templates.md).
 
 ## License & attribution
 
@@ -280,27 +224,9 @@ Many archival projects have a **canonical inventory** that authoritatively lists
 
 **The canonical inventory must be your starting reference for any labeling, attribution, or "is this piece new?" question.** Visual labeling is for matching observations to known canonical entries — never for inventing new entries.
 
-### The wrong workflow (which I keep falling into)
+### The wrong vs. right workflow
 
-1. Look at a visitor photo
-2. Describe what I see ("round red crab-like ceramic with claws emerging from black spheres")
-3. Try to infer the artist from style ("texture looks like Imai's chip-fragment work")
-4. When the inference doesn't match a known piece, declare it "new / undocumented"
-5. Invent a plausible-sounding artist kanji name to fill the gap
-
-This produced **3 fabricated Japanese artist names** (森前武明, 坂本一正, 合田泰美) that don't exist anywhere on the open web. They were entirely my hallucinations, propagated through 4 passes of "confirmation."
-
-### The right workflow
-
-1. Look at the visitor photo
-2. Describe what I see (forms, colors, scale, display context)
-3. **Identify candidate Pokémon names from the silhouettes**
-4. **Grep the canonical inventory for each candidate Pokémon name** (Japanese kana / kanji)
-5. Pull up the canonical reference image for each TSV hit
-6. Match the visitor photo to one of the canonical pieces
-7. If genuinely no match: mark as **"unidentified, awaiting catalog cross-reference"** — never invent an attribution
-
-The canonical TSV has ~84 rows. Grepping it costs nothing. Skipping that step costs hours of recursive error-correction.
+The wrong workflow infers the artist from visual style, declares non-matches "new / undocumented," and invents a plausible name — this once produced **3 fabricated Japanese artist names** propagated through 4 passes of "confirmation." The right workflow: describe → identify candidate names → **grep the canonical inventory** → match against canonical reference images → if genuinely no match, mark **"unidentified, awaiting catalog cross-reference"** — never invent an attribution. Full worked workflows: [references/attribution-discipline.md](references/attribution-discipline.md).
 
 ### Anti-hallucination rules for proper names
 
@@ -313,14 +239,7 @@ The catalogued visual-labeling failure modes (silhouette confusion, crop-vs-wide
 
 ### When the canonical inventory is incomplete
 
-Sometimes new venues add pieces not yet in the canonical TSV. The correct handling:
-
-- Mark as **"observed at [venue], not in canonical inventory [TSV name] as of [date]"**
-- Note the strong visual style match if there is one ("style matches [artist], piece title TBD")
-- **Add to a `gaps_to_verify.tsv` file** rather than inventing a title or attribution
-- Re-check at next venue catalog capture
-
-The discipline is: a missing entry is an `unidentified` row in a gap file, never a fabricated row in research notes.
+A missing entry is an `unidentified` row in a `gaps_to_verify.tsv` gap file — "observed at [venue], not in canonical inventory as of [date]; style matches [artist], title TBD" — never a fabricated row in research notes. Full handling: [references/attribution-discipline.md](references/attribution-discipline.md).
 
 ### Cardinal rule
 
@@ -333,11 +252,7 @@ The discipline is: a missing entry is an `unidentified` row in a gap file, never
 - **Skipping social media because "it's noisy."** Official institutional social accounts are often the *only* source for install/opening photos.
 - **Not archiving videos.** Promo videos get pulled when the show ends. yt-dlp them on first encounter.
 - **Stopping at the script's auto-pass.** The script captures static HTML's imagery. JS-rendered galleries and login-gated content require Playwright + manual sweeps.
-- **Inventing proper names to fill attribution gaps.** When visual labeling produces a piece that doesn't match anything in the canonical inventory, the temptation is to invent a plausible-sounding artist name (Japanese kanji are easy to combine into plausible-but-fake names). Don't. Grep the canonical inventory first; if not found, mark "unidentified" — never write a kanji name without a verifiable source. See "Canonical inventory first" above.
-- **Recursive self-confirmation.** Writing "Pass 2 confirms Pass 1" / "Pass 3 confirms Pass 2" without grounding each pass in the canonical source. Errors compound across passes. Every pass must re-check against the authoritative source, not against the previous pass's output.
-- **"Visual style match = attribution".** Similar surface texture across two pieces tells you "probably same artist" — it does NOT tell you who that artist is. Style-matching is for *grouping*, not for *naming*. Name only from canonical source.
-- **One reference photo treated as the artist's whole style.** Artists use different surface treatments for different pieces. Comparing a visitor photo against ONE canonical reference and concluding "doesn't match artist X" is wrong. Check multiple reference photos per artist before ruling them out.
-- **Defaulting to "new piece" when canonical match fails.** Default should be "I haven't matched this yet" not "this is undocumented." Most "undocumented" claims turn out to be canonical pieces I failed to match by sight (close-up vs wide-shot blindness, Pokémon ID errors, etc.). The canonical inventory is closed; new pieces are rare; expand your matching effort before declaring something new.
+- **The attribution failure-mode family** — inventing proper names to fill gaps, recursive self-confirmation across passes, "visual style match = attribution," one reference photo treated as the artist's whole style, defaulting to "new piece" when a match fails. Style-matching is for *grouping*, never *naming*; ground every pass in the canonical source. Full catalog: [references/attribution-discipline.md](references/attribution-discipline.md).
 - **Inferring "no content exists" from a single virtualized-list scrape.** Modern social/feed UIs (Instagram, Twitter, TikTok, Pinterest, infinite-scroll product grids) use *virtual scrolling* — after a scroll-to-bottom loop, `document.querySelectorAll(...)` returns only the *currently-visible* slice, not "everything you loaded." The wrong inference: "I see only old IDs in the DOM, therefore the account stopped posting after that date." Accumulate during scroll instead — see `references/capture-techniques.md`. And when the user tells you "the relevant content is on screen now," **trust them over your own inference** — they're seeing the live UI, you're seeing a stale DOM snapshot.
 
 ## Update this skill

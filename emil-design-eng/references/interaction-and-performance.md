@@ -4,6 +4,8 @@
 - Spring-based mouse interactions
 - Gesture and Drag Interactions
 - Performance Rules
+- MDS field numbers
+- Debugging Animations
 
 
 Detailed walkthroughs and code for spring-driven interactions, gesture/drag handling, and rendering performance. Part of the `emil-design-eng` skill — see `SKILL.md` for the core philosophy and decision rules.
@@ -112,3 +114,28 @@ element.animate([{ clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0 0)'
   easing: 'cubic-bezier(0.77, 0, 0.175, 1)',
 });
 ```
+
+## MDS field numbers
+
+**MDS field numbers** (Matt D. Smith — Dive Club K_7ECqNlTtE; Shift Nudge YouTube 7zBp4ZNDto4): for canvas/WebGL work keep an FPS meter visible — "you want your frames per second to be very high. If you're down in the 20s or 30s, you're doing something wrong." Load-ready micro-signal: placeholder first, then the element "bounces to let you know that it's ready." Icon-hover magnitudes from Claude.ai's sidebar: 1px translations ("move one bubble one pixel to the left and the other bubble one pixel to the right"), ~5° rotations, "150 milliseconds and ease out" — "These micro interactions are so subtle you might not even notice them consciously, but you feel them."
+
+## Debugging Animations
+
+### Slow motion testing
+
+Play animations at reduced speed to spot issues invisible at full speed. Temporarily increase duration to 2-5x normal, or use browser DevTools animation inspector to slow playback.
+
+Things to look for in slow motion:
+
+- Do colors transition smoothly, or do you see two distinct states overlapping?
+- Does the easing feel right, or does it start/stop abruptly?
+- Is the transform-origin correct, or does the element scale from the wrong point?
+- Are multiple animated properties (opacity, transform, color) in sync?
+
+### Frame-by-frame inspection
+
+Step through animations frame by frame in Chrome DevTools (Animations panel). This reveals timing issues between coordinated properties that you cannot see at full speed.
+
+### Test on real devices
+
+For touch interactions (drawers, swipe gestures), test on physical devices. Connect your phone via USB, visit your local dev server by IP address, and use Safari's remote devtools. The Xcode Simulator is an alternative but real hardware is better for gesture testing.

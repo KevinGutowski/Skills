@@ -10,6 +10,9 @@
 - Reusable downloader pattern
 - Scraping virtualized lists (Instagram profile grids, Twitter timelines, infinite scroll)
 - URL-encoding non-ASCII characters
+- Provenance log format and backfill
+- The Hiroshima PDF miss — why "READ the page yourself" exists
+- Hi-res URL surgery — cost/reward and the retroactive re-fetch pass
 
 
 Detailed mechanics referenced from `SKILL.md`. The discipline (provenance, auto vs. curated, read-it-yourself, never-invent-attributions) lives in `SKILL.md`; this file holds the how-to.
@@ -183,3 +186,29 @@ def encode_url(url: str) -> str:
 ```
 
 Without this, Japanese/Korean/Chinese paths throw `URL can't contain control characters`.
+
+## Provenance log format and backfill
+
+**Format** (TSV recommended; CSV/JSONL also fine):
+```
+captured_at  page_url  page_label  image_url  hint  local_path  result  content_type  bytes  width  height  date_posted  account
+```
+
+(`hint` = how you found it: `og:image`, `img@src`, `srcset`, `manual`, `carousel-slide-3`, etc. `account` may be empty for non-social sources.)
+
+**For social-media captures specifically**, also record:
+- The post date (parse from `og:description` for Instagram; from tweet timestamp for X/Twitter)
+- The carousel index when applicable (slide 0, 1, 2…)
+- The poster's @handle
+
+**Backfill if you forgot.** If you've been saving images without logging, do a backfill pass before adding more: walk the existing files, derive what provenance you can (from filenames, parent dir conventions, sibling `capture_log.tsv` rows, `info.json` files left by `yt-dlp`), and produce a `provenance.tsv` at the bundle root. Note explicitly which fields you couldn't recover.
+
+## The Hiroshima PDF miss — why "READ the page yourself" exists
+
+A real-world miss that motivated the "READ the page yourself" rule: a museum exhibition page for the Hiroshima PXK stop linked two flyer PDFs ("チラシ（表裏）ダウンロード [PDF：1MB]" and "チラシ（中）ダウンロード [PDF：2MB]") in plain `<a href>` tags. The image-extracting script captured all 71 images on the page but missed both PDFs because they weren't `<img>` tags. A 30-second human read would have caught both. Worse: across 16 captured pages in the same project, the same pattern silently dropped **the National Crafts Museum's official bilingual work-list PDF** (the canonical artwork inventory), two NCM press releases, and several other primary-source documents.
+
+## Hi-res URL surgery — cost/reward and the retroactive re-fetch pass
+
+The cost is a single extra HTTP request per image. The reward is sometimes 5–20× the resolution. A page-cached "1200×800" rendering is useless for print-quality use; the same source URL with `?name=orig` or with the WordPress `-WIDTHxHEIGHT` suffix dropped often returns a 4096×2731 or 6192×8256 master. **If you save without checking, you've effectively lost the master forever** — the user will not know the larger version exists, and the bundle becomes a thumbnail collection.
+
+When you've already saved at low res, do a *retroactive bulk re-fetch pass*: walk the bundle's saved images, derive the original URL, request `?name=orig` (or equivalent), and overwrite if the new file is meaningfully larger (e.g. >10% bigger). One pass over the bundle catches whatever the initial pass missed.

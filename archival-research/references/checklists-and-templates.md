@@ -7,6 +7,9 @@
 - README per subject — recommended sections
 - Lateral discovery patterns
 - Visual-labeling failure modes I've hit
+- Cross-reference matrices — worked examples
+- Working with the user's drops — full procedure
+- What not to capture — full list
 
 
 Exhaustive checklists and worked templates referenced from `SKILL.md`.
@@ -130,3 +133,33 @@ When you're vision-labeling images and want to map them to canonical pieces, wat
 4. **Composition misreading.** "Two black spheres bound with rope" struck me as not-a-single-artwork. It IS Imai's Kingler — the bound-spheres arrangement is part of the composition. Compositions don't always have to match a "standard form" for the Pokémon depicted.
 
 5. **Texture-to-medium inference is unreliable.** I called Yoshida Taiichiro's overlapping copper-scale technique "shredded paper / fibers." I called Ikemoto Kazumi's vitreous-pigment-on-glass "painted ceramic." A texture can have many candidate mediums; the **artist's documented medium** (per their README) overrides what you think you see.
+
+## Cross-reference matrices — worked examples
+
+Once you have multi-subject data, put a *cross-reference matrix* at the top-level `<topic>/README.md`. Examples that have proven valuable:
+
+- **Subject × feature presence**: did each venue have a café? freebies? new works? collaboration items?
+- **Subject × inventory counts**: pages/images/videos per venue, side by side.
+- **Subject × dimensions**: poster sizes per venue, helps spot the low-res outliers.
+- **Subject × dates**: chronological timeline of the whole tour, one row per stop.
+
+## Working with the user's drops — full procedure
+
+When the user adds files to `from_user/`:
+
+1. **List what they dropped** — use `ls -la` (catches dotfiles + spaces).
+2. **Read their `from_user/README.md` for notes** — they may have flagged what each item shows or why it matters. Their notes are gold; quote them in the parent README.
+3. **Use `Read` on a representative image** — confirm what it shows so you can describe it in the parent README. (The `Read` tool can render images directly; use it.)
+4. **Don't move their files into `images/`.** Leave them in `from_user/` and reference by path. They may keep adding.
+5. **Integrate insight, not files.** Update the parent README's "Hero candidates" / "Gaps" / "Notes" sections with what you learned from their drops. If they found a higher-res poster than the auto-pass, surface it.
+
+### `from_user_misc/` — cross-subject drops
+
+In addition to per-subject `<slug>/from_user/` folders, expect a top-level `from_user_misc/` (or similar — the user names it). This is for leads that don't yet fit one subject: a list of social-media URLs, a press article that mentions multiple venues, screenshots of unsorted material. Same rules: leave files alone, fold insight into the right place. After integrating, update `from_user_misc/README.md` so it's clear what's unprocessed vs. integrated.
+
+## What not to capture — full list
+
+- **Site chrome** (logos, social icons, header SVGs) — fine if your script grabs them, but don't surface in the README.
+- **Generic stock imagery** (Pixabay, Shutterstock placeholders) — usually not subject-specific.
+- **Tracking pixels / analytics gifs** — `pixel.wp.com/g.gif`, `googletagmanager.com`, etc. Filter by zero-byte response or `image/gif` 1×1.
+- **Social-media login walls** — if the page returns "log in to see this content," don't save the wall HTML.

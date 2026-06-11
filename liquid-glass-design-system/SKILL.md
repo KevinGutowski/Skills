@@ -54,6 +54,10 @@ How real teams moved existing apps onto the system — LTK, Slack, CNN, Tide Gui
 
 See `references/adoption-case-studies.md` for the four case studies with quotes and outcomes.
 
+## The counter-position (carry it into reviews)
+
+Ryo Lu's "stay true to the medium" critique (X, Aug 2025 — the most-cited case against): unified glass is "peak 'design system' gone wrong — when you optimize for visual consistency over interaction fidelity, you lose the soul in each medium." Each input has its own physics — "touch needs bigger targets and gestures; mouse wants click, hover, press, release, precise cursors; keyboards need focus, press, combos and modifiers." His test for any cross-platform unification: are you designing "for the conversation between human and machine, not for the screenshot"? Use this as the adversarial lens when reviewing an adoption — where did visual consistency override the medium's native interaction? (His earlier datum: iPhone buttons ~44px tall vs ~28 on Mac — for input-physics reasons.)
+
 ## Checklist
 
 - [ ] Glass only on the navigation layer; no glass-on-glass; no glassed content views?
