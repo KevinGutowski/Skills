@@ -5,7 +5,7 @@ description: "Plan and run user research — pick the method for the question, c
 
 # User Research
 
-Three-book synthesis: Erika Hall, *Just Enough Research* (2nd ed., A Book Apart, 2019) — scoping, rigor, bias; Steve Portigal, *Interviewing Users* (Rosenfeld Media, 2013) — interview craft; Tomer Sharon, *Validating Product Ideas* (Rosenfeld Media, 2016) — lean method selection and behavioral validation. Plus Dive Club interview field notes (Ron Goldin, UkQpgslyR3A; Polly D'Arcy, vdYBohOQYm0) — the empathy-transfer and dogfooding notes in §5.
+Three-book synthesis: Erika Hall, *Just Enough Research* (2nd ed., A Book Apart, 2019) — scoping, rigor, bias; Steve Portigal, *Interviewing Users* (Rosenfeld Media, 2013) — interview craft; Tomer Sharon, *Validating Product Ideas* (Rosenfeld Media, 2016) — lean method selection and behavioral validation. Plus Dive Club interview field notes (Ron Goldin, UkQpgslyR3A; Polly D'Arcy, vdYBohOQYm0) — the empathy-transfer and dogfooding notes in §5; Laura Kalbag, *Accessibility for Everyone* (A Book Apart, 2017) — disabled-participant recruiting in §3; Metts & Welfle, *Writing Is Designing* (Rosenfeld, 2020) — content-testing methods in §4.
 
 **References (read the one that matches the task):**
 - `references/method-selection.md` — Sharon's question→method playbooks: experience sampling, diary studies, concierge MVP, fake doors, A/B rules, tree/first-click/lostness, surveys, metrics
@@ -28,6 +28,7 @@ Three-book synthesis: Erika Hall, *Just Enough Research* (2nd ed., A Book Apart,
 | Can people use the product? | Online usability testing | 5 (qual) or 500 (quant) | Any design artifact |
 | Which design generates better results? | A/B testing | Live traffic, ≥7 days | Live product |
 | How do people find stuff? | Tree test + first-click + lostness | ~500 | IA, pre-code onward |
+| Is the copy understood and trusted? | Content testing — words stripped from the UI (§4) | 5–8 | Any artifact with words |
 | How do I find participants? | Criteria → benchmarks → masked screener via social media | — | Always; start now |
 
 Hall's typology for placing any question: **generative** ("What's up with…?"), **descriptive** ("What and how?"), **evaluative** ("Are we getting close?"), **causal** ("Why is this happening?"). Details → `references/method-selection.md` and `research-fundamentals.md`.
@@ -51,6 +52,7 @@ Hall's typology for placing any question: **generative** ("What's up with…?"),
 
 - **One-page plan** (Sharon): Background · Goals · Research questions · Methodology · Participants · Schedule. Hall's problem statement discipline: use outcome verbs ("describe," "evaluate," "identify") — never "understand" or "explore."
 - **Recruiting pipeline** (Sharon): criteria → measurable benchmarks ("Uses Facebook" → "Posts on Facebook at least once a week") → masked screener questions (broad question, decoy options) → post where the audience lives. Hall: screen for *behaviors*, never enthusiasm; "If you're talking to the wrong people, it doesn't matter what you ask."
+- **Always include disabled participants — recruited skillfully** (Kalbag). Recruit for AT fluency: "you probably want people who are skilled with their assistive technology" (Shawn Henry) — experts teach you about your product, novices about the learning curve; save novices for later rounds. One person ≠ the group: "Be careful not to assume that feedback from one person with a disability applies to all people with disabilities" (Henry). And they must still match your target audience (Léonie Watson): "If you're building an app for teenage girls, there's no point in asking a forty year old man to test it just because he happens to use a screen reader."
 - **Ethics floor:** informed consent (purpose, recording, data use, voluntary, can stop anytime), no research while anyone is driving, safety rule ("If you feel unsafe, don't go in" — Portigal), minors need parental consent. "Half-assing your research ethics, means you're half-assing your learning process" (Sharon). Full checklists → `references/study-logistics.md`.
 
 ## 4. The interview, compressed
@@ -60,6 +62,8 @@ Portigal's seven stages: **1 Crossing the threshold → 2 Restating objectives �
 Top question moves: sequence ("Walk me through your day yesterday"), specific example (last time), exhaustive list ("What else?"), reenactment ("Please demonstrate exactly how you did that"), outsider perspective (explain it to a newcomer), native language ("Why do you call it the bat cave?"), three wishes ("What really matters here are not the wishes but the reasons" — Sharon). Signal lane changes: "Okay, this is great. I'm just going to shift direction here…"
 
 Six anti-patterns: pass/fail quizzing (USB story); correcting the participant (TiVo); imposing your framework (Old Keith/New Keith); answering their questions about the concept (use the Interviewer Sidestep); filling silence with suggested answers ("…was it toast, or juice?"); talking about yourself beyond strategic self-disclosure. Full craft → `references/interviewing-craft.md`.
+
+**Content testing — test the words themselves** (Metts & Welfle). The best way to test how users perceive what's written "is to remove it from the interface completely and test it by itself." The gov.uk highlighter method: print the writing and have users "highlight the sections that make them more confident in green and sections that make them less confident in red" (variant for tone: circle helpful, underline unhelpful); for product UI, add a scenario narrative. Follow up on three axes: **motivation** (why was that helpful/unhelpful?), **expectation** (what do you expect to happen next?), **perception** (rate the message against the intended voice, e.g. 1 = casual to 7 = professional). Harvest language without sessions too — search analytics and call-center logs/support tickets carry the users' own vocabulary; interviews showed one team that, for most users, "post" was a much more casual and less final sharing action than "publish," and the writing changed accordingly. Walter's emotional-response probe fits here: "If this website were a person, who would it be and why?" — and avoid question wording that baits/primes a particular answer.
 
 ## 5. Data to decision
 

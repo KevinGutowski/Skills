@@ -61,6 +61,8 @@ Full negotiation scripts, translation templates, and Craig/Julie Zhuo framings: 
 - **Set the expectation early**: ask to be "approached with problems and not solutions," then co-create discovery. Your PM isn't your boss; they're your partner.
 - **Empathy-first decode** (Miranda): don't conclude "the PM is just a control freak" — "It could be a past experience or lack of experience" with designers. We don't extend PMs the empathy we extend users.
 - **"Think of your stakeholders as your users"** (Miranda): of 16 things you did, pull forward the four that prove strategic value; be strategic about when/to whom/how you communicate. Speak their language — with UX jargon "you're setting that barrier for yourself."
+- **Invite yourself to the rooms you're left out of** (Metts & Welfle, *Writing Is Designing*, ch. 8) — three scripts: the *listen-in* ("Can you add me just so I can listen in?" — for big egos and hierarchy), the *productivity enabler* ("I'd hate for any changes to come late and block the dev team" — nothing opens doors like dev-team risk), the *helping hand* (offer to facilitate a workshop that aligns the group). And **office hours** as an influence channel: weekly bookable slots rarely solve the problem brought in, but surface systemic problems, build relationships, and earn buy-in for headcount (Adobe's lone UX writer → a team).
+- **"Don't confuse making a deliverable with making a difference"** (WID ch. 8): meet the team's needs first — the cool UX deliverable you've been dreaming of may not be one of them — and the support to meet users' needs follows.
 
 ## Promotion & reviews
 

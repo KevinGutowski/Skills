@@ -130,5 +130,6 @@ Durable: everything above. Decayed specifics:
 - **`make-interfaces-feel-better`** / **`emil-design-eng`** — the polish-tip layer (tabular-nums, font smoothing, text-wrap); this is the deeper reference behind those tips.
 - **`web-performance`** — budgets and load-lifecycle there; font-loading strategy here.
 - **`tufte-viz`** — data-ink doctrine for tables and charts.
+- **`web-accessibility`** — the broader web accessibility practice (semantic structure, keyboard, contrast nuance like SSS shimmer); type-specific sizing and contrast stay here.
 
 > **Staleness note (Kevin's rule):** sources are 2014–2017; §12 separates the durable doctrine from decayed specifics. Verify CSS support claims against caniuse before relying on the hyphenation suite, `initial-letter`, or `hanging-punctuation`.

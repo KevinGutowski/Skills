@@ -5,7 +5,17 @@ description: "Writes and reviews error messages and failure-state copy — any i
 
 # Error Messages
 
-Principles for writing error and failure-state copy that respects users in their hardest moments. Apply when writing or reviewing any in-app text shown when something doesn't work as expected.
+Principles for writing error and failure-state copy that respects users in their hardest moments. Apply when writing or reviewing any in-app text shown when something doesn't work as expected. Layers: Wix UX rules (the words), Metts & Welfle's *Writing Is Designing* ch. 4 (Rosenfeld, 2020 — the Avoid → Explain → Resolve frame, stress cases, testing, the business case), Apple's alert doctrine, and Walter's *Designing for Emotion* ch. 6 (A Book Apart, 2011 — incident communication).
+
+## Avoid → Explain → Resolve (the organizing frame)
+
+Metts & Welfle: "The best error message is no error message at all." Three principles in order — one involves no writing:
+
+1. **Avoid** — "Find ways to help your user without showing them an error." Fix upstream: prevent the state, accept what the user gave you. Kalbag's forms rule (*Accessibility for Everyone*): formatting input is the developer's job — "the burden should be on the developers to convert user input into the necessary format," never on the user.
+2. **Explain** — "Tell your users what's going on and what went wrong" (→ Essentials 1–2 below).
+3. **Resolve** — "Provide a solution to the problem that the user is facing" (→ Essentials 4–5 and the Non-negotiables' recovery actions).
+
+A/E/R organizes the work; the Non-negotiables above stay binding on mechanics, and Apple's "not afterthoughts for preventable problems" doctrine below is the same Avoid step.
 
 ## Non-negotiables (check every message against these)
 
@@ -28,6 +38,8 @@ Found via blind A/B eval (2026-06-11): outputs following this skill matched bare
 
 Push back on generic copy when the underlying error is knowable. The fix is often code, not words.
 
+**Stress cases, not "edge cases."** Eric Meyer & Sara Wachter-Boettcher (*Design for Real Life*, via Metts & Welfle): the term "edge cases" "is designed to make it seem like those people don't matter"; they prefer "stress case," "because it draws attention to the frustration and emotion these users might feel." Write failure copy for the user at their worst moment, not the statistical median.
+
 ## The Four Anti-Patterns
 
 Reject error messages that do any of these:
@@ -44,6 +56,8 @@ Don't shame the user. Don't blame third parties by name.
 - Good: "We're having trouble connecting to our payment processor"
 
 Use *we* language for backend failures. Take responsibility on behalf of the product.
+
+When the failure *is* yours, blame-shouldering builds loyalty: Slack's most popular error message of all time (per Metts & Welfle) "demonstrated what a company could do by shouldering the emotional burden of something going wrong" — wordy, but it took the blame for a failed connection and helped users move forward.
 
 ### 4. Generic without cause
 "Something went wrong" when the cause is actually known is the worst offender. If the system knows the file is too large, the password is wrong, or the network dropped — say so.
@@ -126,6 +140,16 @@ Tone scales with stakes. Use this rough mapping:
 
 **Never** use exclamation points, emoji, or "Oops!" for high-stakes errors. They read as dismissive.
 
+## Incident communication (outages, breaches, big mistakes)
+
+Walter's sequencing rule — **facts before fun**: "you must explain what happened swiftly, honestly, and clearly. Give people the facts of the event, communicate that you're doing your best to resolve things, then update users regularly, even if not much has changed." Only after the honest explanation may you redirect attention — Flickr's storage-failure coloring contest (print the outage page, win a Pro account) turned downtime into goodwill, but it *followed* the facts, never replaced them.
+
+Why it works: "you must accrue goodwill as an insurance policy for the problems that are certain to occur," and psychologists' rosy effect — "this phenomenon of positive recollection" — means a well-handled failure fades while the good response is remembered.
+
+## Test the error copy
+
+Natalie Yee's method (via Metts & Welfle): print the screens and put them in front of users with no way to interact — reactions surface immediately ("That would make me mad." / "That's fine. I would wait."). A daily-limit message read as data loss; rewritten and retested, "the error message was reassuring instead of concerning." Her summary: "We actually changed a lot of text from those tests because we realized the messages were alarming, or that people would have no idea what to do next." Test methods and follow-up question types → `user-research`.
+
 ## Apple's alert doctrine (complementary layer)
 
 *Source: Apple WWDC 2017 session 813 — "Writing Great Alerts" (lost session, via WWDC Index archive).* The Wix rules above govern the *words*; this layer governs whether an alert should exist and how its parts divide the work.
@@ -168,6 +192,8 @@ Writers should reject requests for generic fallback copy without investigation. 
 - Does the system know which one fired?
 
 If the system knows, write a specific message per case. If it truly doesn't, write the most useful generic possible — but flag the underlying gap as a backend/product issue, not a content one.
+
+**Make the business case in money** (Sue Lucchese, via Metts & Welfle): "You have to monetize the risk of not considering these things." Her playbook: pull call-center data — how many people called because they were locked out and couldn't figure out why, and how long each call lasted — and price the bad error flow in support cost. Better avoidance/explanation copy becomes a measurable savings line, not a taste argument.
 
 ## Relationship to Other Skills
 

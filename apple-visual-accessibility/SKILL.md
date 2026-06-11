@@ -114,3 +114,4 @@ See `references/settings-and-code.md` for the per-setting API table with all eig
 - **`swiftui-animation`** / **`web-animation-design`** — where the motion lives that Reduce Motion (or `prefers-reduced-motion` on the web) must tame; route implementation there.
 - **`ios-brand-identity`** — Dark Mode and brand color choices must survive Increase Contrast and Smart Invert; brand never overrides accommodation settings.
 - **`chart-experience-design`** — charts have their own accessibility layer (VoiceOver over data, Audio Graphs, redundant encodings).
+- **`web-accessibility`** — the web-scoped counterpart (semantic HTML, ARIA, skip links, WCAG testing programs); same platform split as apple-/web-typography.
