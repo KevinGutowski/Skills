@@ -5,7 +5,7 @@ description: "Plan and run user research — pick the method for the question, f
 
 # User Research
 
-Three-book synthesis: Erika Hall, *Just Enough Research* (2nd ed., A Book Apart, 2019) — scoping, rigor, bias; Steve Portigal, *Interviewing Users* (Rosenfeld Media, 2013) — interview craft; Tomer Sharon, *Validating Product Ideas* (Rosenfeld Media, 2016) — lean method selection and behavioral validation. Plus Dive Club interview field notes (Ron Goldin, UkQpgslyR3A; Polly D'Arcy, vdYBohOQYm0) — the empathy-transfer and dogfooding notes in §5; Laura Kalbag, *Accessibility for Everyone* (A Book Apart, 2017) — disabled-participant recruiting in §3; Metts & Welfle, *Writing Is Designing* (Rosenfeld, 2020) — content-testing methods in §4.
+Three-book synthesis: Erika Hall, *Just Enough Research* (2nd ed., A Book Apart, 2019) — scoping, rigor, bias; Steve Portigal, *Interviewing Users* (Rosenfeld Media, 2013) — interview craft; Tomer Sharon, *Validating Product Ideas* (Rosenfeld Media, 2016) — lean method selection and behavioral validation. Plus Cindy Alvarez, *Build Better Products* (Rosenfeld Media, 2016), Melissa Perri, *Escaping the Build Trap* (O'Reilly, 2018), and Gothelf/Seiden, *Lean UX* (1st ed., 2013) — assumption validation, metrics hygiene, and lightweight learning artifacts. Plus Dive Club interview field notes (Ron Goldin, UkQpgslyR3A; Polly D'Arcy, vdYBohOQYm0) — the empathy-transfer and dogfooding notes in §5; Laura Kalbag, *Accessibility for Everyone* (A Book Apart, 2017) — disabled-participant recruiting in §3; Metts & Welfle, *Writing Is Designing* (Rosenfeld, 2020) — content-testing methods in §4.
 
 **References (read the one that matches the task):**
 - `references/method-selection.md` — Sharon's question→method playbooks: experience sampling, diary studies, concierge MVP, fake doors, A/B rules, tree/first-click/lostness, surveys, metrics
@@ -13,6 +13,7 @@ Three-book synthesis: Erika Hall, *Just Enough Research* (2nd ed., A Book Apart,
 - `references/study-logistics.md` — plans, stakeholder interviews, screeners, recruiting, field guides, scheduling, consent/releases, equipment, roles
 - `references/synthesis-and-impact.md` — debriefs, topline, affinity/KJ, storytelling, rainbow spreadsheet, prioritizing changes, research-as-leadership
 - `references/research-fundamentals.md` — Hall: just-enough scoping, research types, bias catalog, assumptions-as-risk, personas, surveys/analytics warnings, maxims
+- `references/validation-and-metrics.md` — Klein/Perri/Gothelf: assumption stacks, predictive personas, Lean UX experiments, baselines, counter-metrics, danger metrics
 
 ## 1. Start from the question, not the method
 
@@ -47,6 +48,8 @@ Hall's typology for placing any question: **generative** ("What's up with…?"),
 10. **Recruiting is the bottleneck and is itself data.** "Recruiting is data" (Portigal). "Recruiting participants is the greatest bottleneck of user research. Start as soon as you can" (Sharon). Hall: "always be recruiting."
 11. **Synthesis is a team activity.** Affinity walls / KJ with the whole team beat any circulated report (all three).
 12. **Bring colleagues to the field.** "The most impact for the least effort comes from your colleagues joining you in the field" (Portigal). Hall: shared understanding doesn't transfer by report.
+13. **Make assumptions falsifiable before you test them.** Klein's prompt starts "This product/feature/service will fail unless"; then convert each claim into a two-number hypothesis (e.g. X out of Y people in the persona had a specific recent story). If you cannot name evidence that would disprove it, the hypothesis is not testable.
+14. **Every target metric needs a guardrail.** Perri's "mutually destructive pairs" and Klein's danger metrics prevent teams from improving one number by silently harming another. A metric without a baseline, time component, and counter-metric is usually a story prop.
 
 ## 3. Minimum viable study
 
@@ -78,6 +81,8 @@ Research must change something: "If you don't make any changes, your online usab
 **Engineer the empathy transfer** (Ron Goldin, Dive Club). Findings that the org merely *reads* don't change behavior — design the delivery so people feel them. His Uber Eats move: mount an Insta360 camera on the courier bike, record real trips, send Google Cardboard viewers to leadership with the 360° footage — and in the all-hands cut, "we just like left a minute. We left a minute in that presentation of just like the feeling of sitting in a car waiting for nothing to happen." A minute of enforced boredom communicated the courier wait problem better than any chart. Same doctrine as Portigal's bring-colleagues-to-the-field (§2.12), extended to the people who'll never go: bring the field to them, uncompressed.
 
 **Dogfooding only counts with real stakes** (Polly D'Arcy, Dive Club): "it's one thing to like test something in staging and it's another thing to actually like use a product with your own money because you just… deeply feel the pain points" — and the team rule with teeth: if people at the company "do not want to use it with your own money, it's not good enough." Staging walkthroughs are evaluative theater; stake-bearing use is behavioral data on yourselves (§2.2 applied inward).
+
+**No-neutral validation.** Before an experiment starts, write the success threshold, failure threshold, and danger metrics. Klein's rule is explicit: if a danger metric moves in the wrong direction, "it is not a neutral result" — the experiment failed. Gothelf/Seiden's 2013 Lean UX loop is useful here only as validation economics: small artifacts, weekly contact, and contradictory-data triage; do not import its "Speed first, aesthetics second" line into production craft.
 
 ## 6. The school dial: Portigal-deep vs Sharon-lean
 

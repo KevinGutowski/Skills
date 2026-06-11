@@ -14,6 +14,7 @@ description: "Grow an audience-led indie product as a designer/maker — build i
 - *"Ready, set, IDK" (Michael Di Genova, Work Louder, 2024) — the bootstrap-hardware variant.*
 - *Valio Con 2012–14 talks (Drew Wilson's conference): Todd Garland (BuySellAds), Jeff Sheldon (Ugmonk), Kai Brach (Offscreen), Aubrey Johnson, Josh Long, Shane Mielke, Michael Flarup, GMUNK, app-maker panel, Dann Petty — distilled in [references/valio-field-notes.md](references/valio-field-notes.md).*
 - *Luis Ouriach (Figma) with Ridd — Dive Club podcast (Pn2G7JhxNKc): the niche-economy section.*
+- *Austin Kleon, Show Your Work! (Workman, 2014) — the daily-dispatch / stock-flow / own-your-turf operating layer.*
 
 The task: you're a designer/maker launching your own thing — build the audience *while* building the product, validate before you ship, and make it pay as a team of one. (Devtool landing pages/PMF → `developer-tool-gtm`; OSS promotion → `oss-strategy`; onboarding flows → `user-onboarding`.)
 
@@ -26,6 +27,22 @@ The task: you're a designer/maker launching your own thing — build the audienc
 - **Validate at the prototype stage**: "you can start working towards product-market fit in the prototyping stage" — the loop runs on Figma prototypes and comment sections, no build required. His receipts: comment-to-launch in **32 days**; 75k users at 4.5★ in 3 months; ~100k waitlist emails from speculative concept posts.
 - **The two-way loop is the point**: "the marketing has educated the product and the product is constantly educating the marketing."
 - Cadence maxim: "Passion will get you started, persistence will get you to the turning point, and patience will keep you going."
+
+## Show your work as an operating system (Kleon)
+
+Kleon's book is not a new skill; it is the pre-product, craft-person version of this one. Density verdict: medium-high because the thesis is familiar, but the mechanics are crisp.
+
+- **Be findable while getting good**: "in order to be found, you have to be findable." The stance is anti-self-promotion: make the work discoverable while the craft remains the main job.
+- **Join a scenius, then contribute**: replace lone-genius positioning with Brian Eno's "scenius" frame — a scene of people sharing work, references, and attention. The practical move: find the community, notice what is missing, fill that void in public before worrying about monetization.
+- **Daily dispatch**: after the day's real work, share one small process artifact. Early: influences. Middle: methods or WIP. End: final product, cut-room-floor scraps, or lessons. "A daily dispatch is even better than a resume or a portfolio" because it shows current practice, not old artifacts. Set a timer so sharing never eats the work.
+- **Stock and flow**: flow is the feed; stock is the durable piece people can find months or years later. Convert repeated daily notes into posts, essays, talks, products, and books. The blog/newsletter/archive turns ephemeral proof-of-work into compounding assets.
+- **Own your turf**: social networks decay; keep a domain/list/archive you control. Kleon's "world headquarters" rule fits this skill's audience bottleneck: platforms create reach, owned surfaces preserve memory and monetization.
+- **Attribution is context**: when sharing influences, credit like a museum label — what it is, who made it, how/where/when, why it matters, and a link. "Don't share things you can't properly credit." Poor attribution robs the audience of the trail.
+- **Tell the work's story**: "our work doesn't speak for itself." Use the work-project arc: initial problem → work done → solution/result. For open-ended pitches, tell past → present → future, then make the listener the person who can help the story finish.
+- **Teach what you know**: "The minute you learn something, turn around and teach it to others." Tutorials, reading lists, recipes, and process walkthroughs create demand rather than giving away the store; people still pay for mastery, taste, and execution.
+- **Do not become human spam**: be a fan first, an open node, and a connector. If you only point to your own work, you are doing it wrong. Quality of followers beats count; the right people are peers, collaborators, and patrons, not eyeballs.
+- **Monetize with consent**: donations, crowdfunding, products, and services work best after people already value the free work. Always collect email with permission, set frequency expectations, and "treat it with respect."
+- **Keep momentum without burning out**: chain-smoke projects by using the end of one to light the next, but protect practical sabbaticals and boundaries. The operating rule is generous enough to build the scene, selfish enough to keep making the work.
 
 ## When the product is physical (Di Genova / Work Louder)
 
@@ -87,6 +104,9 @@ The pre-algorithm-era bootstrap corpus; full material in [references/valio-field
 - [ ] One opinionated, screenshot-able design decision that markets itself?
 - [ ] Unit economics framed as margin + time, with automation eating the decoupled work?
 - [ ] Product coupled to durable principles, not a single tool/platform?
+- [ ] Daily flow being converted into durable stock on an owned surface?
+- [ ] Influences credited with enough context and links for someone else to follow the trail?
+- [ ] Audience/community work includes listening, connecting, and teaching — not only posting your own links?
 
 ## Relationship to other skills
 
@@ -97,4 +117,4 @@ The pre-algorithm-era bootstrap corpus; full material in [references/valio-field
 - **`design-prototyping`** — the prototype-stage validation mechanics (what to fake, how to demo); here they double as content.
 - **`shape-up`** — appetite/betting once the indie product grows a team.
 
-> **Staleness note (Kevin's rule):** auto-captioned 2024–25 talks; platform/algorithm specifics (TikTok duets, trend-jacking) decay fastest — the feedback-over-downloads, persona×cohort, and margin-over-revenue rules are the durable layer.
+> **Staleness note (Kevin's rule):** auto-captioned 2024–25 talks plus a 2014 book; platform/algorithm specifics (TikTok duets, trend-jacking, newsletter vendors, social-network examples) decay fastest — the feedback-over-downloads, persona×cohort, owned-surface, and margin-over-revenue rules are the durable layer.

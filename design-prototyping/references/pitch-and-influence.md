@@ -4,6 +4,7 @@ Case studies and mechanics distilled in `SKILL.md`. Everything here is verbatim 
 
 ## Influencing via prototypes (Config 2024–25: Cheechee Lin/Instagram; Duolingo; Figma UI3; Severance's Jeremy Hindle)
 
+- **Prototypes win arguments** (Ron Goldin, Dive Club): "moving away from slide decks, moving away from PRDs" — his same-day vibe-coded counter-demo overturned a VP "can't be done."
 - **The Spectrum technique** (Lin): align the room on (1) the problem, (2) why it matters, (3) a *spectrum* of solutions — "either end doesn't need to be what you ship, but it does need to be far apart enough to force a clear conversation." "You don't need a perfect prototype. You just need one that moves the room."
 - **Prototype in engineering's stack to save craft details**: when eng says "not possible," build it in their language — the Stories ring animation was prototyped in iOS code days before code cut; "engineering realized, wait, we can port this code over." Prototype against **real data and real models** (a feed-ranking simulator with knobs avoided the sunk-cost trap; real generative models surface loading time and error states).
 - **The vision-prototype recipe**: know the audience and what they care about + start the conversation at the right time + "details just right enough so the first step feels inspiring yet believable" — including putting the decision-maker's own face in the demo. Opening maxim: "The best way to complain is to make things."

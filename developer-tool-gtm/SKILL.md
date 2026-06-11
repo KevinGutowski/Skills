@@ -13,6 +13,7 @@ description: "Earn developer adoption and revenue for a developer tool — landi
 - *"Product-market fit methodology for early-stage devtool companies" (Nazarova, 2026 — the PMF Compass). https://evilmartians.com/chronicles/product-market-fit-methodology-devtools*
 - *Ryo Lu (Head of Design, Cursor) — live YC-startup website roast, 2025.*
 - *Jared Erondu — Valio Con 2013/2014 talk (Drew Wilson's conference): story mechanics for product pages.*
+- *Chip Heath & Dan Heath — "Made to Stick" (2007), chs. 1-6 — message-shaping checks for landing pages and technical marketing.*
 
 The audience truth behind everything: developers are skeptical, scan rather than read, distrust marketing, and evaluate before talking to sales. The summary rule: **"Everything comes down to respecting developers' time and intelligence."** The pipeline: product quality earns trust → page + copy convert attention → PMF metrics tell you whether the problem is product or distribution.
 
@@ -46,6 +47,12 @@ Draft by pretending you're telling a fellow developer about their exact pain —
 
 The structural version of the problem-oriented-story rule, and why feature lists fail: **"features don't convert if they don't connect."** Three steps — **theme** (the core message: who are you, why do you do it, why would I use it) → **characters** (the features — the step teams already have down, "because this is the stuff that we actually do") → **"craft the connection"**, "the part that we just" plain forget: tying theme and characters into one story. His proof case: Dropbox's original get-dropbox.com video opened on the *problem* ("you're about to buy lunch and realize your wallet is in your other pants… you need one place for everything, like a magic pocket") — complexity sold as a story people relate to, not a feature dump. Two guardrails: design paradigms "should be used as templates" and not as escapes — think about the actual content filling the lines, don't drag a pattern over an empty page; and never self-describe by other products (his parody: "we're kind of like an Airbnb for Uber for Facebook for Instagram cats with a synergistic social graph disruption" — Ryo Lu's "one name / own it" rule, a decade earlier).
 
+**Sticky-message pass** (Heath & Heath, *Made to Stick*) for landing pages:
+- **One core, not three.** If the hero tries to sell performance, workflow, governance, AI, and team adoption at once, it sells nothing: "If you say three things, you don't say anything." Pick the Commander’s Intent for the page.
+- **Concrete beats comprehensive.** Developer-tool pages often hide behind category abstractions. "If you can examine something with your senses, it's concrete." Show the broken workflow, command, diff, error, trace, queue, PR, or dashboard state.
+- **Stats need scale.** "Statistics aren't inherently helpful; it's the scale and context that make them so." Turn benchmark claims into p95 latency, minutes saved per deploy, failed jobs prevented, dollars per seat, or an apples-to-apples comparison.
+- **Story carries strategy.** A feature list names characters; the sticky page gives them a plot. "The moral is implicit in the story, but the story is not implicit in the moral." Use a concrete before/after work scene before asking readers to believe the positioning line.
+
 ## The live-critique checklist (Ryo Lu roasting YC startup sites, 2025)
 
 - **The visitor question order**: "What is this? Is it for me? Does it work? Is it credible?" — answer them in that order. Per scroll: "There's always like a priority. Your main message, what the hell is it? The CTAs, and then it's like the proofs." And "kill all the distractions" — one main CTA per scroll, not Discord + GitHub + docs + signup all at once.
@@ -68,6 +75,7 @@ Developers drop tools over usability, time cost, security, and pricing — "'no 
 
 - [ ] Page follows the anatomy; hero visual matches product maturity; CTAs specific and unrivaled?
 - [ ] Every claim specific and numbered; cliché blocklist clean; scannable; capitalization consistent?
+- [ ] Sticky-message pass: one core, concrete workflow scene, human-scale numbers, and a story before the moral?
 - [ ] No forms where a calendar or trial would do; first screen stripped to essentials?
 - [ ] The six product qualities audited — especially TTFV and the slow tail?
 - [ ] PMF dual-score read: is the bottleneck product (signal) or distribution (revenue)? Weakest metric targeted first?

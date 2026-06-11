@@ -15,6 +15,7 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `form-design` | Web form structure, field types, buttons, validation flows — the Dannaway method; form copy → the words chain; Apple forms → `apple-navigation-design` |
 | `feature-discoverability` | First launches, tips/TipKit, features users can't find |
 | `user-onboarding` | First-run flows, empty states, onboarding copy (Hulick method) |
+| `learning-experience-design` | Courses, workshops, internal training, tutorials, job aids — gap diagnosis, practice, feedback, motivation, transfer (Dirksen method) |
 | `shape-up` | Product scoping/betting (Basecamp method) + the competing Linear school (design as reference, no handoff/PMs, taste over data) and routing between them |
 | `hardware-product-design` | Physical products: form-factor positioning, mockups/rigs/jigs, input selection, manufacturing/supplier reality |
 | `design-org-influence` | Designer influence in the org: business cases, stakeholder objections, PM partnership, promotion/reviews |
@@ -23,7 +24,7 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `client-engagements` | Running client projects: qualification, kickoff, the feedback system, health signals, failure/firing (Monteiro) |
 | `user-research` | Research planning & methods: question→method map, interviewing craft, validation, synthesis (Hall/Portigal/Sharon) |
 
-**Boundary (the working-designer chain):** evidence → `user-research` · internal buy-in/career → `design-org-influence` · external client relationship → `client-engagements` · money → `pricing-creative-work` · the pitch/demo artifact itself → `design-prototyping`.
+**Boundary (the working-designer chain):** evidence → `user-research` · internal buy-in/career → `design-org-influence` · external client relationship → `client-engagements` · money → `pricing-creative-work` · the pitch/demo artifact itself → `design-prototyping` · training/curriculum/job aids → `learning-experience-design`.
 
 ### Apple platform design (HIG-grounded)
 | Skill | Use it for |

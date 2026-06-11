@@ -83,3 +83,12 @@ From the team's 2022 Q&A:
 - **Phrase feedback as the experience, not taste:** not "I don't like this color" but "I think blue instead of red would better communicate what the experience is about."
 - **Let the creators scope the feedback** (Metts & Welfle, *Writing Is Designing*, ch. 8): before someone presents, ask "What sort of feedback are you looking for?" — "It empowers them to control the conversation and avoids a feeling of vulnerability, like they've been thrown to the wolves." Same chapter's facilitation move: worksheets/canvases make "the thing… asking for information," shifting you from interrogator to facilitator.
 - **Refocus on what wins hearts:** with dozens of ideas competing, advance the two or three people loved; "no one true winner" is fine — the rest recycle into future work. And the recurring trap: "we sometimes get caught up in trying for a perfectly polished prototype" — always remember the question the prototype exists to answer.
+
+## Team-of-one prototyping (Leah Buley, *The User Experience Team of One*, Rosenfeld 2013)
+
+When you need buy-in as much as answers, make the artifact participatory:
+
+- **Turn any meeting into a design session.** Sketch live and invite non-designers to sketch — "people love it when ideas start to become tangible." The imperfect, in-progress artifact is the invitation; it makes the work less threatening and turns spectators into co-authors.
+- **Avoid the prototype drop.** "Don't just release the prototypes into the wild and ask people to send feedback." Review synchronously; if testing, "invite the team to observe" so learning transfers to the room rather than landing in an unread doc.
+
+The influence stance around these methods (listening tours, pyramid evangelism, size-not-permission negotiation) lives in `design-org-influence`.

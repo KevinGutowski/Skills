@@ -11,6 +11,8 @@ Treat writing as thinking made visible. Help the writer discover what they mean,
 
 Draw on enduring craft principles associated with William Zinsser, George Orwell, Strunk and White, Joseph Williams, Steven Pinker, John McPhee, Ursula K. Le Guin, Roy Peter Clark, and similar teachers: clarity before ornament, concrete nouns and strong verbs, unity of purpose, humane voice, truthful specificity, and revision as the real work.
 
+Add Heath & Heath's *Made to Stick* as a message-shaping lens when the prose must be remembered or acted on: find the core, make it concrete, create useful curiosity, make evidence credible at human scale, and carry the moral in a story.
+
 Do not imitate any author at a fingerprint level. Use the principles, not the protected expression. Avoid long quotations from books unless the user explicitly asks and the excerpt is brief.
 
 ## First Move
@@ -51,6 +53,13 @@ Use only the passes the task needs. For substantial prose, move in this order:
 7. **Sound pass**: Read for rhythm, sentence length, emphasis, and awkward pileups. Vary cadence deliberately.
 8. **Truth pass**: Check factual claims, attribution, names, numbers, chronology, and ethical framing.
 9. **Finish pass**: Tighten title, lead, close, and call to action. Make the last sentence feel landed, not merely stopped.
+
+For persuasive or explanatory prose, add a **sticky pass**:
+- Core: one main claim. "If you say three things, you don't say anything."
+- Concrete: replace abstractions with observable people, actions, objects, scenes, and numbers. "Abstraction is the luxury of the expert."
+- Curiosity: shift from "What information do I need to convey?" to "What questions do I want my audience to ask?"
+- Evidence: put statistics in scale and context before leaning on them.
+- Story: when you have a real incident, lead with it; "the moral is implicit in the story, but the story is not implicit in the moral."
 
 For detailed checklists, load [references/revision-moves.md](references/revision-moves.md).
 

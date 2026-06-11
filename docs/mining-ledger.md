@@ -1,3 +1,20 @@
+# Product-trio book fold — DONE 2026-06-11
+Folded Perri (*Escaping the Build Trap*), Gothelf/Seiden (*Lean UX* 1st ed.), and Klein (*Build Better Products*) per `docs/pending-folds-product-trio.md`: no new skill. Main deltas: `user-research/references/validation-and-metrics.md` (assumption stacks, predictive personas, Lean UX validation economics, metrics hygiene, no-neutral decisions), `shape-up` metrics-led fourth school, `user-onboarding` Designing Backward/core-loop-first, `design-org-influence` build-trap/Bungay gaps, `client-engagements` deliverables→outcomes contract note. Conflicts scoped: measurement-led school vs Linear taste-led school; Lean UX speed/fidelity advice era-tagged and limited to validation artifacts.
+
+# Show Your Work book fold — DONE 2026-06-11
+Screened Austin Kleon, *Show Your Work!* in full from `/tmp/books/show-your-work.txt`. Density: MED-HIGH for `building-in-public`; no new skill. Folded daily-dispatch, stock/flow, own-your-turf, attribution-as-context, teach-what-you-know, human-spam/open-node behavior, permission email list, and momentum/boundary notes into `building-in-public`. Extracted but not yet screened/folded in this pass: `/tmp/books/made-to-stick.txt`, `/tmp/books/design-for-how-people-learn.txt`.
+
+# Made to Stick targeted fold — DONE 2026-06-11
+Screened Chip Heath & Dan Heath, *Made to Stick* from `/tmp/books/made-to-stick.txt` for this queue pass. Density: LOW-MED overall (famous/model-known SUCCESs framework), MED for `design-org-influence` because it strengthens business-case pitch mechanics. No new skill. Folded Commander’s Intent/one-lead framing, meaningful surprise, concrete language, human-scale statistics, and story-as-behavior-carrier into `design-org-influence`. `/tmp/books/design-for-how-people-learn.txt` remains extracted but needs a fuller screen before deciding whether to create/fold learning-design material.
+
+Supplemental audit after review question: Made to Stick should not live only in `design-org-influence`. Added scoped folds to `developer-tool-gtm` (landing-page sticky-message pass: one core, concrete workflow scene, human-scale numbers, story before moral) and `write-clear-prose` (sticky pass for remembered/acted-on prose). Still skipped `ui-voice-and-tone`, `building-in-public`, and `user-onboarding` for now to avoid re-teaching generic SUCCESs where stronger local methods already own the surface.
+
+# Design For How People Learn skill creation — DONE 2026-06-11
+Screened Julie Dirksen, *Design For How People Learn* from `/tmp/books/design-for-how-people-learn.txt`. Density: HIGH because the corpus had onboarding, feature discoverability, and people management but no general skill for courses/workshops/internal training/job aids. Created `learning-experience-design` as a single-deep-method skill under the house-style exception: gap diagnosis (knowledge/skill/motivation/environment/communication), learner observation, contextual goals, CCAF, practice/feedback, motivation, and environmental performance support. Added README row and bidirectional boundaries with `user-onboarding`, `feature-discoverability`, and `people-management`.
+
+# The User Experience Team of One targeted fold — DONE 2026-06-11
+Extracted Leah Buley, *The User Experience Team of One* via `pdftotext` to `/tmp/books/the-user-experience-team-of-one.txt` (font-weight warnings only; text usable). Density: MED. No new skill: the method catalog largely routes to existing `user-research` and `design-prototyping`, while solo-UX influence routes to `design-org-influence`. Folded principles-over-process, good-enough artifacts, Listening Tour, scope-not-permission framing, and pyramid evangelism into `design-org-influence`; folded participatory sketching and no-async-prototype-drop into `design-prototyping`.
+
 # sweep: animations.dev — FINAL 2026-06-10
 ## Coverage: SWEPT — all 45 lesson nodes + 4 interviews + emil-skill page + vault opened personally; evidence in /tmp/animdev-lessons/ + /tmp/animdev-interview-*.txt
 ## Lessons (45/45 opened & read)
