@@ -11,6 +11,7 @@ description: "Make apps accessible and inclusive on Apple platforms — respect 
 - *Apple WWDC 2025, session 316 — "Principles of inclusive app design" (Chris & Lisa, Apple accessibility design). https://developer.apple.com/videos/play/wwdc2025/316/*
 - *MDS (Matt D. Smith, Shift Nudge) — contrast videos. https://www.youtube.com/watch?v=ULUNaH-G2uY · https://www.youtube.com/watch?v=wXAa2HNNjM4 · https://www.youtube.com/watch?v=ZRBq8UYLa-0*
 - *Apple WWDC 2017 session 819 — "Designing for a Global Audience" (Sarah Harling) (lost session, via WWDC Index archive) — the cultural-inclusion layer.*
+- *Dan Hollick, Making Software, makingsoftware.com/chapters/the-problem-of-color-contrast — the contrast-math mechanism layer.*
 
 Vision is a continuum — full sight, low vision, no sight, color blindness, light sensitivity, motion sensitivity ("one in three people has some form of motion sensitivity"). iOS exposes settings for each; your job is to **observe and respect every one**. Three pillars: color & shapes, text readability, display accommodations. The meta-rule: **turn these settings on yourself and audit your own app.**
 
@@ -51,6 +52,19 @@ Matt D. Smith's working bands go materially beyond the 4.5:1 floor — offered a
 Placeholder nuance: 3.0 is the standard — "I like to go 3.0 for this placeholder text assuming we have a nice strong contrast label above it"; a 4.5 placeholder reads like input someone has already typed. With an external label he sometimes treats placeholders as decorative at 1.5 (contested — he expects the disagreeing comments).
 
 Two caveats on the score itself. The WCAG formula has a luminance blind spot: white on orange scores 3.5 vs. black's 5.9, yet "if you ask almost anyone" the white jumps out more — the formula "doesn't really account for all of the luminance"; APCA is the experimental successor lens. And passing ≠ good: a "passing contrast score does not automatically mean that your designs will look good" — the bands are legibility floors, not a design grade.
+
+### Why contrast math misleads (mechanism)
+
+The WHY beneath both the 4.5:1 floor and the MDS bands. What a WCAG 2 ratio actually computes: undo the sRGB gamma encoding to get linear light, weight the channels by the sRGB luminance coefficients (~0.2126 R, 0.7152 G, 0.0722 B — green dominates perceived brightness, blue barely registers), sum into a relative luminance from 0 to 1, then take `(L1 + 0.05) / (L2 + 0.05)` — lighter over darker, the 0.05 to avoid division by zero — yielding 1:1 to 21:1. Thresholds (SC 1.4.3): **4.5:1** normal text (AA), **3:1** large text (18pt+, or 14pt bold), **7:1** AAA. Reasonable — but "the calculations we use cut a lot of corners":
+
+- **Polarity blindness.** The ratio is symmetric — it can't know which color is the text. But "human contrast perception is polarity-dependent"; "we generally perceive light-on-dark as having more contrast than dark-on-light." That's the general law under the orange case above, and the same story on brand blues — major platforms ship white-on-blue against WCAG's verdict, and APCA scores them right: "the platforms were following their own eyes, not the formula."
+- **Dark-mode breakdown.** WCAG 2 "notoriously overstates contrast for dark color combinations" — a dark gray on black can scrape past 4.5:1 while genuinely unreadable, because the formula treats the low end of the luminance range like the high end while real perception of differences collapses there. In dark mode "its math falls apart." (Mechanism behind the MDS 7–12 dark-mode band's extra caution.)
+- **No size/weight axis.** Readability follows the contrast sensitivity function: small, thin text needs far more contrast than large, bold text — a continuous curve that two thresholds handle only crudely. A 4.5:1 pair "might be perfectly readable at 24px bold but completely illegible at 12px light."
+- The fallout: "Some 86% of the top million websites fail WCAG 2 contrast requirements" (WebAIM Million) — part genuine failure, part formula artifact, so designers learn not to trust the number.
+
+**How APCA differs mechanically:** it outputs a polarity-aware lightness-contrast value **Lc** (0 to 105+) that changes depending on which color is text vs background, models luminance with perceptual lightness curves instead of WCAG's simple linearization (so dark backgrounds are handled correctly), and replaces pass/fail with a font lookup — "what is the minimum size and weight at which this color pair is readable?" Hollick's guideline levels: **Lc 90** preferred for body text (≥14px normal) · **Lc 75** body-text floor at 18px+ · **Lc 60** non-column content text (≥24px normal / 16px bold) · **Lc 45** large headlines (36px / 24px bold) and detailed pictograms · **Lc 30** absolute floor for placeholders/disabled/large non-text · **Lc 15** "the point of invisibility for many users." Dark-mode guidance WCAG 2 simply lacks: cap large text below Lc 90 on dark backgrounds — very bright white on pure black is uncomfortable over time, especially with astigmatism. Why you still ship to 4.5:1 anyway: WCAG 2 remains the legal/compliance standard; APCA is part of the still-draft WCAG 3, and **Bridge PCA** is the interim — APCA's perceptual math inside WCAG 2's conformance structure.
+
+*(Dan Hollick, Making Software, makingsoftware.com/chapters/the-problem-of-color-contrast.)*
 
 ## Text readability
 
