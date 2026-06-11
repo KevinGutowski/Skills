@@ -1,6 +1,6 @@
 ---
 name: agentic-coding
-description: "Run coding agents well on real projects — constrained generation, the non-delegable human review role, guardrail abstractions, vibe-coding security. Use when setting up a repo for AI-assisted development, writing AGENTS.md/CLAUDE.md rules, deciding what to delegate, reviewing AI code, or fixing agent drift. Based on Evil Martians Chronicles. Triggers: agentic coding, AGENTS.md, CLAUDE.md, vibe coding, AI drift, AI code review."
+description: "Run coding agents well on real projects — constrained generation, the non-delegable human review role, guardrail abstractions, vibe-coding security. Use when setting up a repo for AI-assisted development, writing AGENTS.md/CLAUDE.md rules, deciding what to delegate, reviewing AI code, fixing agent drift, or running multi-agent/designer-in-the-repo workflows. Based on Evil Martians Chronicles + Dive Club interviews. Triggers: agentic coding, AGENTS.md, CLAUDE.md, vibe coding, AI drift, AI code review, worktrees, designer PRs."
 ---
 
 # Agentic Coding
@@ -11,6 +11,7 @@ description: "Run coding agents well on real projects — constrained generation
 - *"The 4 most common security risks when vibe coding your app" (Torgunakova, Turner, 2026). https://evilmartians.com/chronicles/four-most-common-security-risks-when-vibe-coding-your-app*
 - *"So, your developers use AI now — here's what to know" (Eltsov, Turner, 2026). https://evilmartians.com/chronicles/so-your-developers-use-ai-now-here-is-what-to-know*
 - *Ryo Lu (Head of Design, Cursor) — plan-mode demo interview (youtube.com/watch?v=bdh8k6DyKxE), Dialectic (8ncYSGbfeyY); Jin Park (Notion) at "Building with Cursor" (T8T2gHCKWCE) — the Cursor-school section below.*
+- *Dive Club podcast (2025–26 episodes): Megan Choy (hKeDfupbA4U), Brian Lovin (dvEwb1Ajkwo), Geoffrey Litt (zJf0UeCwQqE), Kyle Santos (HcLz3ikw-n0), NYC panel — Choy, Dan Shipper, Bradley Zipper (V-jd3v9P-Ps), Andy Madrick (IfPK0LwbX_0), Karl Koch (7_VEb9iDW2c) — the designer-engineers section below; extended notes in `references/ai-era-field-notes.md`.*
 
 The core claim: agentic coding "lives on constrained generation; **the quality of those constraints determines the quality of the output**." Three things let a two-person team ship a production MVP in four weeks: an opinionated stack's default constraints, project decisions encoded as reusable rules, and "a senior engineer [who] realizes the vision and catches what the AI misses." The slogan: **"AI needs a prompter, not just a prompt."**
 
@@ -58,6 +59,44 @@ To turn "an expert cleans up my vibe code" into a reusable asset:
 
 A designer can ship production frontend the engineer starts from — one shared repo, the design system as the design environment (Storybook), agents bridging skill gaps. Two lessons: a prototype tool outside the production stack creates a **two-system tax** ("constantly translating between separate worlds" — every iteration re-ported); and the mature stance is **"modifying a real, already-configured design system, tweaking what's there rather than conjuring what isn't"** — the payoff is "code consistency, UX coherence, and how much less the AI has to get right on the first try."
 
+## Designer-engineers in the agent era (Dive Club, 2025–26)
+
+Field practices from people running agents daily. Extended notes + context: `references/ai-era-field-notes.md`.
+
+**Meta-rules — the half-life layer:**
+- **Assumption decay:** "every 6 months everything that we did before becomes more or less irrelevant" — Notion rewrote its agent harness ~3 times on that cadence (Brian Lovin, Dive Club podcast, dvEwb1Ajkwo). Kyle Santos: "the recommendations from 4 months ago almost certainly are not ones you should follow today… unless it's a philosophical" one — adopt philosophies, not setups, and run scheduled "tune-up days" where the only allowed work is improving your own harness (Kyle Santos, Dive Club podcast, HcLz3ikw-n0).
+- **Write automation ahead of model capability** (Megan Choy, Claude Code's lead designer — Dive Club podcast, hKeDfupbA4U): her design-cop routine (scrape repos for frontend changes shipped without a designer, draft an adversarial design PR, DM the engineer) failed on today's model and she kept it anyway: "I'm always ready for when the next model's going to come out and this is actually going to be ready." Think "not just the first step, but like the next step, the next step, the next step after that."
+- **"Build with vibes but ship with rigor"** (Karl Koch, Dive Club podcast, 7_VEb9iDW2c).
+
+**The Claude Code workflow (Megan Choy, Dive Club podcast, hKeDfupbA4U):**
+- "If you're multi-Clauding, use worktrees" — worktrees as the default for parallel sessions.
+- The `/prototype` skill shape: generate n implementation options (default five) as HTML previews, and make the model commit — "you should choose what you're going to do and then tell me why."
+- "No one ever writes their skills by hand anymore. If anyone tells you they do, they're lying. Everyone just prompts them."
+- Point research prompts at org telemetry: "please look at Slack, Google Docs, any discussions, and… BigQuery… and figure out which is the best one."
+- Review the PR, not the transcript: "I actually don't review the outputs anymore of Claude in the transcript. I'm typically reviewing a PR… that has a recording of the feature" — require screenshots/recordings on every PR; Claude-in-Chrome is "the best way to have Claude be able to self-verify" frontend changes.
+- Cloud polish drip: "hundreds of tiny little polish fixes" sent via cloud sessions, not worth a local session each; squash into one PR when engineers complain.
+- Borrow engineering hygiene skills (simplify / code-review / commit-push-PR — "ask your engineering partners… what skills do you guys have") and the merge-shepherd that reviews open PRs and DMs reviewers via Slack: "the full integration of your suite is where it's at."
+- Tenets: Claude "and most LLMs are not good at design yet" — stay in the loop for craft; think "more than just code when we think about AI automation"; and "just because everyone can ship doesn't mean not everything should ship."
+
+**Prompting & self-healing (Brian Lovin, Dive Club podcast, dvEwb1Ajkwo):**
+- Horoscope prompts — Simon Last's snippet: "let's step back and think really hard. How can we make this simpler and dumber while still achieving our goals?" Run "20 times a day," after every plan and every bug fix.
+- The vocabulary advantage: engineers can *name* queues, parallelization, edge cases; cultivate substrate curiosity instead of letting the model take the wheel — "wait, what is grep?" leads to sed, awk, the actual machine.
+- Dual-model review is partly cope: "you've just been like slop cannoning thinking that you're doing this genius like two models reviewing each other. They don't know yet."
+- The rock-tumbler loop: Sentry + Supabase + Axiom log drain wired into the agent — paste a user's email and it replays "exactly what happened leading up to the moment of failure."
+- "I've stopped writing late night prompts" — tired prompts produce tired work.
+
+**Protect the human hours (Geoffrey Litt, Dive Club podcast, zJf0UeCwQqE):** code like a surgeon — "A surgeon does the damn surgery," not the admin. Spend overnight tokens on a morning prep brief ("a brief on all the code I'm going to be touching today, how it works, what the traps are") so the protected "three-hour sprint" is purely your high-skill work. And AIs are "the best learning machines ever invented… but they happen to also be cheat on your homework machines" — demand pedagogy from every AI explanation.
+
+**Context discipline (Kyle Santos, Dive Club podcast, HcLz3ikw-n0):** "be slimmer on your cloud.mds [CLAUDE.mds]" — global, project, *and* per-subdirectory files so only relevant context loads; bloat makes "its memory worse." Claude Code as general computer: it sits on his Obsidian vault and drives Linear, not just code.
+
+**Org adoption (panel — Choy/Shipper/Zipper, Dive Club podcast, V-jd3v9P-Ps; Andy Madrick, Dive Club podcast, IfPK0LwbX_0):**
+- The milestone: "let your designers get access to your production codebase" — sandbox forks are "always going to be out of date[s]" and lack the org's internal tooling.
+- Frontier polish triage: "is it worth polishing something that's not going to be here 6 months from now?"
+- Skill libraries half-work: "skills turn out to be pretty personal… you can download it but then you have to customize it for yourself anyway."
+- Run agents in public channels — "you get to see other people prompting." Agents become culture carriers: Ramp's Cody taught "other agents how to work and then how to teach their humans how to work."
+- Pair/shadow on real work instead of writing workflow docs: "it's actually really hard to explain your workflow to someone."
+- Designer PR-size law (Madrick): "a hundred-line PR" — never "a 500-line PR that you didn't even review yourself." Review shifts upstream to plan mode — share the plan MD before code exists, or expect: "The fundamental premise of how you built this is wrong. Like why am I looking at a code diff right now?" Engineers bring features "up to 80 to 90%"; designers own the last mile — "own the outcome."
+
 ## Checklist
 
 - [ ] Opinionated stack, popular technologies, default configs; strict typing + linting wired before generation?
@@ -77,4 +116,5 @@ A designer can ship production frontend the engineer starts from — one shared 
 - **`shape-up`** — scoping what the MVP even is; this skill is the build engine once scoped.
 - **`creating-skills`** / **`skill-creator`** — the mechanics of writing the skill/rule files this method depends on.
 - **`rails-docker-dev`** — the container sandbox that makes permissive agent flags safe (project-only mounts).
+- **`malleable-software`** — Litt's philosophy layer (version control as the human-AI substrate, jigs, teaching primitives); this skill is the daily practice on real repos — his surgeon/prep-brief workflow lives here.
 - **`devtool-interface-design`** — the inverse perspective: this skill runs agents *on your codebase*; its AX section designs your *product* for agents as customers.
