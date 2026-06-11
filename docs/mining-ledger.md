@@ -18,6 +18,9 @@ Extracted Leah Buley, *The User Experience Team of One* via `pdftotext` to `/tmp
 # PR #5 review lesson — ENCODED 2026-06-11
 Reviewer fix `24d5001` did not reject the book-fold placements; it enforced the skill-body budget. `design-org-influence` was slimmed from 6,352 to 4,799 o200k tokens and `design-prototyping` from 5,187 to 4,999 by moving quote banks, examples, and source-specific texture to references while leaving the operating rules and one load-bearing quote in the body. Future folds should treat 5k body tokens as a hard cap even when `validate_skills.py` passes, because the validator checks line count, not token budget. Also log attribution corrections explicitly: `Build Better Products` is Laura Klein; Cindy Alvarez is quoted within the book, not the author.
 
+# Universal Principles of Design targeted fold — PASS 1 2026-06-11
+Extracted Lidwell/Holden/Butler, *Universal Principles of Design* (2003) to `/tmp/books/universal-principles-of-design.txt`. Density: LOW overall because the 100-entry encyclopedia is mostly model-known and already covered by stronger local sources (`design-principles`, Apple discoverability, Laws of UX, accessibility, polish). Targeted high-signal folds only: `Advance Organizer` → `learning-experience-design` (linear-path orientation; expository vs comparative organizers), `Entry Point` → `user-onboarding` (minimal barriers + points of prospect + progressive lures for first use), `Errors` → `error-messages` (slip vs mistake prevention before writing copy). Quotes verified via `scripts/verify_quotes.py`. This was not an exhaustive 100-entry fold; revisit only if a future candidate entry has a named target skill and non-generic delta.
+
 # sweep: animations.dev — FINAL 2026-06-10
 ## Coverage: SWEPT — all 45 lesson nodes + 4 interviews + emil-skill page + vault opened personally; evidence in /tmp/animdev-lessons/ + /tmp/animdev-interview-*.txt
 ## Lessons (45/45 opened & read)

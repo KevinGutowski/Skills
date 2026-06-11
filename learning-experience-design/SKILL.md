@@ -5,7 +5,7 @@ description: "Designs courses, workshops, training, tutorials, and job aids that
 
 # Learning Experience Design
 
-**Source** — Julie Dirksen, *Design For How People Learn* (New Riders), a single deep method for designing learning experiences. Density verdict: HIGH for this corpus because no existing skill owns general training/curriculum design; create rather than fold.
+**Source** — Julie Dirksen, *Design For How People Learn* (New Riders), a single deep method for designing learning experiences. Density verdict: HIGH for this corpus because no existing skill owns general training/curriculum design; create rather than fold. Supplemental: Lidwell/Holden/Butler, *Universal Principles of Design* (2003), for advance organizers.
 
 ## Start With The Gap
 
@@ -36,6 +36,7 @@ Write goals as actions in context, not content coverage. "Understand project man
 - Decide how far the experience can take someone: familiarity, conscious effort, conscious action, proficiency, or transfer across messy contexts.
 - Be honest about time. "You absolutely cannot get past Conscious Action without a significant amount of practice distributed over time."
 - Skip objective slides. Start with a challenge, scenario, mission, or concrete problem that focuses attention and sets direction.
+- **Use advance organizers when the path is linear.** For a course, workshop, or guided tutorial, orient before detail with an abstract frame that presents the "big picture" prior to the details (Lidwell/Holden/Butler, *Universal Principles of Design*, "Advance Organizer"). Use **expository** organizers for genuinely new domains and **comparative** organizers when learners already know a nearby system. Do not force this into nonlinear exploration; even the book notes the technique is hard to validate and fits defined-entry learning best.
 
 ## Design Knowledge
 
