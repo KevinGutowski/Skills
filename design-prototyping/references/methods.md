@@ -51,6 +51,16 @@ After: what's working? · what's not? · what other ideas does this give us?
 - **Scaffold, don't script, for collaborators** (PBJ article): hand a collaborator structure that frames the problem (10 acts of storyboards — "a scaffold") while leaving the craft decisions theirs. **Prototype the core loop before the app exists** (CapWords): they validated photo→cutout→LLM-naming by manually feeding VisionKit cutouts into ChatGPT — "we didn't even have an app yet."
 - **Figma diverges, code decides** (Mariana Castilho, poolside/Vercel): use the drawing tool only for fast divergent exploration and flow communication — "most of the times I don't even finish my designs in Figma… 99% of the times the final output in code looks nothing like my initial sketch." Component motion and interaction feel are *never* prototyped in Figma — always tuned in code where the real parameters live.
 
+## The animation documentation matrix (Rachel Nabors, *Animation at Work*, A Book Apart 2017, ch. 4 "Communicating Animation")
+
+Three artifacts document animation, and each carries only part of what a team needs:
+
+- **Storyboards** — values + reasoning, no feel. "Storyboards are useful because they put words, even values, next to snapshots of an animation… a great place to document *why* a decision was made." But "you can't demonstrate or test an animation's look and feel with them, and they are clunky to integrate with existing online design guidelines. But, as far as quantifying what changes when, tried and true storyboards can't be beat."
+- **Animatics** — feel, no values. "Where storyboards excel at providing deliverable values and inline reasoning, they fall short at conveying an animation's 'mouthfeel'… If a picture is worth a thousand words, then an animatic must be worth a thousand meetings." Yet "animatics are terrible for developers to work from because they don't provide values for an animation's easing, duration, and properties."
+- **Prototypes** — testable, unarchivable. "Prototypes give us the chance to observe real people doing real things with our animations" — but "prototypes, unlike storyboards, are terrible for documentation: only code-savvy team members can read them, and the files must be organized and sometimes compiled or served before inspection."
+
+The rule that falls out — always couple verbal + visual: "The best approach to get both deliverables and archival information is to combine two of these approaches: coupling animatics with storyboards, or adding live microinteractions to design systems along with the values necessary to reproduce them. The former works great on smaller teams and projects on a shoestring budget, while the latter reinforces the authority of a larger enterprise." (DS-side counterpart — timing tokens, microanimation vocabularies → `design-systems`.)
+
 ## Field note — the caricature technique (Show)
 
 **When words fail on visual nits, draw a caricature** (type-designer technique, 2018-801): redraw the shape "with exaggerated features… through that drawing, usually the other people can start seeing that much more toned down but existing feature." Finding "the joint gaze… is the key of a successful collaboration in design." And budget patience: "you can't hire more people to get there faster. You just have to sit with it."

@@ -18,6 +18,8 @@ description: "Win org buy-in for design via business-case framing. Use when pitc
 - *hh1UXn8ZPwc — portfolio as a living product (guests: Sarah Doody, Aneta Kmiecik).*
 - *uQLAUq4TstI — presenting explorations in Figma (mechanics live in design-prototyping; MVP-vs-vision framing cited here).*
 
+Plus Rachel Nabors, *Animation at Work* (A Book Apart, 2017), ch. 4 — the animation-adoption case (quotes verified against source).
+
 Plus Dive Club podcast interviews (auto-captioned YouTube): Ryan Scott (ex-DoorDash/Airbnb — LOkdM6frkak), Henry Modisett (Perplexity — Vt3oTBvx7xw), Cam Worboys (Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), Luis Ouriach (Figma — Pn2G7JhxNKc), Brian Lovin (Notion — dvEwb1Ajkwo), Megan Choy (Anthropic — hKeDfupbA4U), NYC panel (V-jd3v9P-Ps); tranche 2: Katarina Batina (Shop app, Shopify — 0YjO7wShTkQ), Polly D'Arcy (Wealthsimple — vdYBohOQYm0), Marvin Schwaibold (Molly Studio → Shopify — KpJs7mZYErg), Tommy Geoco (OYNoy468kS8).
 
 ## Core reframe: it's the framing, not the design
@@ -38,6 +40,8 @@ Full scripts, worked numbers, and timing windows: [references/pitching.md](refer
 - **The strategic narrative framework — 4 parts**: problem context (what's broken, in business terms) → your insight (what you discovered that others haven't) → design solution (features connected to outcomes) → expected impact (quantify where you can, "be directional when you can't").
 - **Four lenses for craft/design-system asks** (when you hear "opportunity cost"): customer impact · company goals · team efficiency ("That's not opportunity cost, that's opportunity creation") · tech-debt timing — "this is the cheapest it will ever be to do this work." And bring engineering allies so it isn't you advocating alone.
 - **Timing**: planning/budget cycles, competitor launches, bad metrics, churn spikes — and manufactured urgency ("If we don't address this by Q2, we'll miss our annual targets"). "Smart designers don't just wait for the perfect timing, they create it."
+- **The animation-adoption case** (Nabors, *Animation at Work*, ch. 4) — selling a craft investment: skip the science debate and "talk benefits" — lighter code, reliable interaction patterns, maintainability, "shorter design and development time"; and show, don't tell — "so often when animation is picked up for a project, it's because someone placed an animated version next to a static comp so stakeholders could see the difference for themselves."
+- **Gardener, not gatekeeper** (Nabors, ch. 4) — the lone-evangelist bus factor: "I've watched companies lose all momentum… when the one person who internally evangelized motion design left. Setting yourself up as a lone gatekeeper is dangerous." Build allied experts and shared part-ownership instead.
 - **Before/after**: "I redesigned our mobile app because the current design looks outdated" → "Mobile app engagement dropped 23% this quarter, while our competitors grew 15%… projected to increase screen time by 40%… here's the six-week rollout plan." Same design, completely different reception.
 
 ## Handling objections

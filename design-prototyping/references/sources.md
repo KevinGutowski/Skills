@@ -22,3 +22,4 @@ This skill aggregates three Apple design-process sessions (one continuous toast-
 - *Vox Media Polygon launch team — Valio Con 2013 (Drew Wilson's conference).*
 - *Evil Martians — "weeks → days" design-engineering case, 2025.*
 - *Mariana Castilho (poolside/Vercel) — Figma-diverges-code-decides field note.*
+- *Rachel Nabors — "Animation at Work" (A Book Apart, 2017), ch. 4 "Communicating Animation" — the animation documentation matrix (storyboards carry values + reasoning, animatics carry feel, prototypes are testable; always couple verbal + visual) in methods.md.*

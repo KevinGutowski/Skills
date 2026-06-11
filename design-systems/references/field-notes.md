@@ -14,6 +14,7 @@ Depth moved out of SKILL.md: full source list, worked examples, outcome numbers,
 - [Worboys counter-position details](#worboys-counter-position-details)
 - [MDS: systems are a dial details](#mds-systems-are-a-dial-details)
 - [Dive Club deltas — full quotes](#dive-club-deltas--full-quotes)
+- [Motion as a design-system layer (Nabors)](#motion-as-a-design-system-layer-rachel-nabors-animation-at-work-a-book-apart-2017)
 - [Misc details](#misc-details)
 
 ## Full source list
@@ -23,6 +24,7 @@ Figma Config talks, 2024–25:
 - Plus *Ryo Lu (Cursor) — Dive Club + Dialectic interviews, 2025 (the "bricks"/de-slop additions)* and *MDS (Matt D. Smith, Shift Nudge) — https://www.youtube.com/watch?v=4p5LzrAYN30 · https://www.youtube.com/watch?v=PFi9WfNUlps (the dial + handoff sections)*.
 - Plus *Dive Club podcast interviews, 2025–26: Brian Lovin (Notion, dvEwb1Ajkwo), Luis Ouriach (Figma, Pn2G7JhxNKc), Cam Worboys (Cash App, KH9GBasDTI8), Louis Healey & Kyler Hall (Atlassian, CqMZTg7L-wE — the flagship of the DS-as-AI-context section), Steven Haney (Y0n6F9VlLVc)*.
 - Plus *Apple WWDC 2017 session 809 — "Communication Between Designers and Engineers" (lost session, via WWDC Index archive)*.
+- Plus *Rachel Nabors, "Animation at Work" (A Book Apart, 2017) — chs. 3–4: timing scales as tokens, microanimation vocabularies (the motion-as-a-DS-layer section)*.
 
 ## Intuit: the token death spiral
 
@@ -117,6 +119,13 @@ Figma Config talks, 2024–25:
 - **Siblings, not twins** (Cam Worboys, KH9GBasDTI8): multi-brand DNA done right is "shared foundations that make it feel like it's a block designed product, whether that's type, some shared like base tokens, approach to the grid, and then there are these unique personalities that get put on top of it that allow each of the brands to shine."
 - **Peak library?** (Steven Haney, Y0n6F9VlLVc): "is this peak library?… because everyone's building with them, the AI trains on them more. It gets better at them" — established stacks have AI-gravity; weigh that lock-in when planning a DS's underlying stack.
 - **Build bricks** (Ryo Lu, Cursor, Dive Club + Dialectic '25): "because AI is really good at composing parts… we need to like build bricks. Really good bricks" — suck the core patterns out of shipped product into the system so agents compose instead of reinvent. The DS/design team's emerging job: "help people like D slop" — engineers throw a Figma mock at an agent and lose exactly the details the mock encoded ("you want this easing curve to be exactly this value… the AI won't know what that is"). The designers' edge to build on: "AI really sucks at the things you all are good at. It's like all the details that we care about."
+
+## Motion as a design-system layer (Rachel Nabors, *Animation at Work*, A Book Apart, 2017)
+
+- **Timing scales as tokens** (ch. 3, "Anatomy of a Web Animation"): "Just as with easings, durations can be arranged into reusable sets, with different durations for color changes, localized reactions like button presses, and large movements… we can use timing scales. The concept is similar to modular scales in typography: all values are related, and if you combine them with a vertical rhythm, a piece exhibits overall harmony." "You can generate a timing scale the same way you generate a typographic scale" — her example is Fibonacci-inspired (100 + 300 = 400, 300 + 400 = 700), which makes it "easy to line overlapping animations up to end at the same time." Salesforce's Lightning Design System "uses timing scales to let developers tokenize their timing values."
+- **The orchestra metaphor** (Amy Lee, "prototyper at Salesforce by day and musician by night," who first introduced Nabors to interlocking timing values on Lightning): a timing scale "is about an agreed-upon synchronization of animation choreography. Imagine how an orchestra might play together. Without a common timing system, each player would drift through the score at their own rate. However, if we agree that a quarter note is 400ms long, then we all can play together at a peppy tempo of 150 beats per minute."
+- **Microanimation vocabularies** (ch. 4, "Communicating Animation"): combine easing + duration + properties "to create microanimations with descriptive names like 'pop,' 'fade,' and 'slide.'" Microanimations compose into macroanimations — "a modal that fades onto the screen then pops to grab user attention. We might then label that combined animation as an 'alert,' and use it over and over again." Codified, they "form animation vocabularies that yield huge benefits when it comes time to document visual deliverables with text." Lightning ships these as composable presets — "Salesforce engenders brand compliance by providing easy-to-reach-for defaults," choosing "to lead by examples and easy, composable presets, providing a path of least resistance" over lengthy rationale docs.
+- **Pave the onomatopoeia cowpaths**: "Many of these microanimation names start as friendly onomatopoeias around a meeting room table: swoosh, zoom, plonk, boom." People "hold a sound longer to indicate extended duration: 'Can you make it more like *voooooosh* and less like *voosh*?' It makes sense to 'pave the cowpaths' and adopt the words your company is using already."
 
 ## Misc details
 

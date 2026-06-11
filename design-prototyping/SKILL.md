@@ -21,6 +21,7 @@ Routing rules:
 - **One concern per artifact — a "breakable toy"** (Josh Puckett): name the single question the artifact answers; go only as far as needed — sometimes "dangerously close to a wireframe" is correct. One artifact (or prompt) solving everything produces myopic rabbit holes. Fidelity is set by *audience + the decision at hand*.
 - **Medium-matching** (Rafa Conde; Cursor school): pick by data needs — "Actually, I need real data… it is just faster to create a new branch of the main app." Walks + bullet lists for conceptual problems; Figma for exact pixel placement; code when states and AI behavior matter — AI interactions "you just can't fake" in mocks.
 - **Static mocks are hunches, not handoffs** (Stamatiou "Craft" 2022; Castilho): "It's not until I start building and really using it that I get more signal"; motion and interaction feel are *never* prototyped in Figma — always tuned in code. Design is "a conversation between design and engineering," not a handoff.
+- **Animation docs: pair verbal + visual artifacts** (Nabors, *Animation at Work*, ch. 4 → [references/methods.md](references/methods.md)).
 
 ## Tier 1 — fake it at the cheapest fidelity that answers the question
 
