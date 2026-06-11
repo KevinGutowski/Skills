@@ -53,7 +53,7 @@ Full negotiation scripts, translation templates, and Craig/Julie Zhuo framings: 
 - **Negotiate roles explicitly** (Miranda Slater): "These are what I feel like I should be responsible for. What do you feel like you should be responsible for?" — try lines for a quarter, run a retro, iterate. Otherwise it's a permanent tug-of-war.
 - **Set the expectation early**: ask to be "approached with problems and not solutions," then co-create discovery. Your PM isn't your boss; they're your partner.
 - **Empathy-first decode** (Miranda): don't conclude "the PM is just a control freak" — "It could be a past experience or lack of experience" with designers. We don't extend PMs the empathy we extend users.
-- **"Think of your stakeholders as your users"** (Miranda): of 16 things you did, pull forward the four that prove strategic value; be strategic about when/to whom/how you communicate. Speak their language — UX jargon "is setting that barrier for yourself."
+- **"Think of your stakeholders as your users"** (Miranda): of 16 things you did, pull forward the four that prove strategic value; be strategic about when/to whom/how you communicate. Speak their language — with UX jargon "you're setting that barrier for yourself."
 
 ## Promotion & reviews
 

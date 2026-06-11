@@ -33,7 +33,7 @@ Five years in at talk time: **19 people, all remote, ~$50M in transactions acros
 - **"I could do that." "Yeah, but you didn't."** — his answer to the armchair-founder objection. Execution is the moat.
 - **Reinvest everything**: "every single penny that I made, I put right back into the business" for "almost two and a half years" while he and his wife both worked full-time.
 - **Limited editions as cadence, not identity**: only the anniversary tee is limited — "rather than making everything we do limited edition… to keep that drive, but not to kill ourselves by having to come up with designs every single week."
-- **Name for headroom + searchability**: never "Ugmonk T-shirts" — "I knew that I didn't want to limit myself" when the product line broadened. And a unique string wins search: a made-up name means every result "somehow make[s] their way back" to you.
+- **Name for headroom + searchability**: "I never called it UGG Monk T-shirts" (caption sic) — "I knew that I didn't want to limit myself" when the product line broadened. And a unique string wins search: a made-up name means every result "somehow make[s] their way back" to you.
 - **Show imperfect process**: on sharing how you make things — "someone's going to figure out how to do it, too. So, if you just show them, they're a lot more likely to come to you."
 - **Find a niche** (his rule #3): the leather journals are "a really niche thing… you'll appreciate these… from a different standpoint than the average consumer" — depth with a small audience beats breadth with none.
 - **The unglamorous ratio**: "it's not the 10% or the 2% glamorous side of the press coverage… it's 98% when you're home on a Friday night answering customer service emails and all your friends are out partying."
@@ -41,7 +41,7 @@ Five years in at talk time: **19 people, all remote, ~$50M in transactions acros
 ## Kai Brach (Offscreen Magazine)
 
 - **The maker's curse**: as the maker "you see all the decisions you made" — you can never read your own product the way a reader does.
-- **Sponsorship as design**: eight center pages on different stock, every sponsor "presented the same way… very consistent and very unified — a black page with the logo in the middle." Readers reported that "for the first time ever [they] read every single word of the magazine including the ads." Constrain advertisers harder and the ads get *more* attention.
+- **Sponsorship as design**: eight center pages on different stock, every sponsor "presented the same way… very consistent and very unified… a black page with the logo in the middle." Readers reported that "for the first time ever [they] read every single word of the magazine including the ads." Constrain advertisers harder and the ads get *more* attention.
 - **Distribution economics force direct sales**: distributors don't buy inventory, they take it on consignment; distributor takes ~20% of cover price, retail ~40%, "you're left with about 40%"; some pay up to 365 days later by paper check; unsold copies "they just destroy everything else." So the website became the main sales channel.
 - **Perfectionism is inertia**: "the need for Perfection is sort of a source of an anxiety… really creates a lot of self-doubt… leads to a lot of inertia and… you simply just don't get started."
 - **The publisher's treadmill**: "after one issue is always before the next" — recurring products convert a launch into a lifestyle; price that in.
@@ -73,7 +73,7 @@ Deltas only (the rest overlaps the skill's existing content):
 
 - **The uncommittable outside commitment as forcing function**: 16 years coaching football alongside a full creative-director career — a fixed obligation he "couldn't get away from" forced "working effectively and working efficiently" during the hours that remained. An immovable commitment is a productivity system.
 - **Foosball-time compounding**: at his early job, in the two-three unbillable hours when "they were all playing foosball I was off to learn in Flash… the things that I did after that led to… everything that I ever dreamed about." Unique skill → "suddenly you have a little bit of power." His maxim: "foosball is the enemy" (it isn't about foosball).
-- **Boundary mechanics**: "don't answer emails late at night… if you're answering responding at 10 11 12 at night… they're gonna get used to that." And the identity trap: "Superman never gets a day off" — be in-and-out of hero mode, never permanently in it.
+- **Boundary mechanics**: "don't answer emails late at night… you're answering responding at 10 11 12 at night… they're gonna get used to that." And the identity trap: "Superman never gets a day off" — be in-and-out of hero mode, never permanently in it.
 - **"Playing mental Tetris"** — slotting work into the gaps a constrained life leaves; **"run yourself like a business"** — your time, energy, and skills are the P&L.
 - **The core claim**: "more time does not equal better work."
 

@@ -76,7 +76,7 @@ PMs view products through features; designers through user journeys/stories. Kee
 - Consider "what your company actually cares about and then making that connection for them."
 - Be strategic about cadence and channel — don't default to "an hour session every two months"; choose when, to whom, and how deliberately.
 
-The outputs-vs-outcomes contrast (2v4mEMAt_80): 12 slides of iterations vs leading with "we reduced drop-off by 23% just by simplifying the signup steps from five down to three — and here's what changed and why." "One buries the value in the process and the other leads with impact."
+The outputs-vs-outcomes contrast (2v4mEMAt_80): 12 slides of iterations vs leading with "we reduce[d] drop off by 23% just by simplifying the signup steps from five down to three. And here's what changed and why." "One buries the value in the process and the other leads with impact or outcomes."
 
 Steven Steiner's standing door-opener belongs here too: in every one-on-one ask "How can I help you right now?" — "that is your ability to open up the door for them to give you ownership of something that they didn't offer first." And when you complain, pitch: "always have a pitch for your complaints."
 
@@ -92,7 +92,7 @@ Ask yourself: where in my process could my PM's perspective strengthen the outco
 
 ## The Craig and Julie Zhuo framings
 
-**Craig** (design leader, crAaxd30NMg) on the overlap: "Why avoid? What's wrong with overlap?" He's acted as PM himself; "honestly the main difference is that PMs are spending way more time in prioritization and strategy stuff than most designers." PMs vary enormously — from ML-org PMs who've never worked with a designer to ex-designer PMs — so calibrate per person. "If you're a good strategic partner and you show the value… then the overlap isn't that much of a concern long term." His one red line: the dictating PM who hands you finished wireframes as orders — "why am I here? I'm just a decorator. That's a different conversation."
+**Craig** (design leader, crAaxd30NMg) on the overlap: "Why avoid? What's wrong with overlap?" He's acted as PM himself; "honestly the main difference is that PMs are spending way more time in prioritization and strategy stuff than most designers." PMs vary enormously — from ML-org PMs who've never worked with a designer to ex-designer PMs — so calibrate per person. "If you're like a good strategic partner and you show the value… the overlap I think isn't that much of a concern long term." His one red line: the dictating PM who hands you finished wireframes as orders — "why am I here? I'm just a decorator. That's a different conversation."
 
 **Julie Zhuo** (quoted in jhtqP9wT8tg): "If you expand your definition of design, if you think of it as translating problems into solutions… design isn't just what it looks and feels like, design is how it works — then you will see the design arena expand. Problems are eternal. Tomorrow's design jobs will simply be product jobs." The partnership skills in this file *are* the career path.
 
