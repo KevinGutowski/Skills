@@ -15,3 +15,5 @@ Plus:
 - *MailChimp, "The UX Reader" (2014) — pattern-library evolution and slat-system reuse*
 
 Worked examples, outcome numbers, and playbook specifics live in [field-notes.md](field-notes.md).
+- *Figma blog — "Meet the design pioneers taking on the venture world" (Combine: Soleio Cuervo & Adam Michela, 2017, https://www.figma.com/blog/meet-the-design-pioneers-taking-on-the-venture-world/) — keep-the-system-alive note.*
+- *Soleio Cuervo — Design MBA podcast (hZ3Z2frAWvM, 2023 — cited as "Soleio, Design MBA"; UFI/Like-button story, thumbs-up icon decision); Bryce Roberts, "Cults & Culture w/ Soleio" (video vdaGXRvzIq4, 2025 — cited as "Soleio, Cults & Culture"; Canon library name, Dropbox illustration strip-out) — Soleio section in field-notes.md. Quotes verbatim caption text; garble: "face Booky"=Facebooky.*

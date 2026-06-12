@@ -6,7 +6,6 @@ description: "Prototype and present design work across three tiers — fake-it (
 # Design Prototyping & Presenting
 
 **Sources:** [references/sources.md](references/sources.md) — 6 WWDC sessions + 2 ADA articles + Config, Dive Club, and field sources.
-
 The trap is *idea → build → disappointment*. "The more prototypes we can put between your idea and your application, the better the result." The mantra: **"Make fake apps, show people, and learn from their feedback. And do that over and over again until the experience of your app feels great."** Prototype to *test* ideas (build the right thing) and to *get new* ideas.
 
 ## Choose the tier first
@@ -65,6 +64,7 @@ Amplifiers and cautions (full notes: [references/agents-field-notes.md](referenc
 ## Show — structured, on device, in context
 
 - Show the people the app is *for* ("if your app isn't for engineers, go find some people who are not engineers"), in the real context. A recurring representative outsider works — Stollenmayer's "mom test": voluntary enjoyment, not polite completion.
+- **Personalize the sandbox when personalization is the point** (Soleio Cuervo, First Round, 2014): a generic screenshot cannot test a personalized experience. Pull in the stakeholder's/user's own graph data or realistic personal context so they feel what the product would actually know, infer, and change. The feedback quality jumps when the prototype is experienced through a personal lens.
 - During: **Do you know how to do X? · Is it easy? · How can we make this better?** Have theories beforehand; look for evidence for or against. **"Don't argue, defend or dismiss. You're not there to debate — you're there to get information."**
 - Review stance for context-rich prototypes (Katie Dill): "Please don't present. Please don't pitch… I just want to see it like a user."
 - **Avoid the prototype drop** (Buley): don't release prototypes "into the wild" for async feedback — review synchronously, invite the team to observe ([references/methods.md](references/methods.md)).
@@ -76,6 +76,10 @@ Amplifiers and cautions (full notes: [references/agents-field-notes.md](referenc
 After: **What's working? · What's not? · What other ideas does this give us?** Collect open questions — "the goal isn't to answer all of those questions, but to know what you don't know." Triage: some ideas survive; most get recombined; "a few things won't work at all, and it is great when that happens" (the grid-view "concept sucked" — killed by a drawing, not a build).
 
 Budget the loop so insights land: "always leave adequate time after gathering new insights to not only design refinements, but build them and **live with them for a bit** first" — research arriving just before ship buys only a compromise (Stamatiou, "Craft").
+
+**Soleio's reality-collision rule** (Julie Zhuo interview, 2026; Design Buddies recap, 2025): the Like button was one of many shipped experiments, while Dropbox Carousel paid for hiding from users too long — full camera-roll access collided with storage-quota anxiety late. Treat speed as a way to collide with reality sooner, not a license to ship junk. If the scary assumption is "will people trust this?", prototype the trust moment first and get it in front of real users before polishing the rest.
+
+**Test social mechanics in the graph, not in isolation** (Soleio, Design MBA + PBS): the Like button sat in "product purgatory" on the fear it "would cannibalize commenting" — "our intuition was just dead wrong." The unblocking experiment: "we chose two pairs of networks where there was high friend density," ship vs. control countries — likes *increased* commenting ("a social lubricant"). Pick test cells where network effects can appear; measure the downstream behavior the feature might suppress or unlock. More: [references/soleio-field-notes.md](references/soleio-field-notes.md).
 
 From the prototyping team's 2022 Q&A ([references/methods.md](references/methods.md)): **no hole-in-ones** ("If we're not getting feedback on something, we're just not showing it to the right people"); **keep multiple directions alive**; **phrase feedback as the experience, not taste**; and the trap — "we sometimes get caught up in trying for a perfectly polished prototype" — always remember the question the prototype exists to answer.
 

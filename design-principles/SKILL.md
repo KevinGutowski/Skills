@@ -6,7 +6,6 @@ description: "Apply Apple's eight design principles — purpose, agency, respons
 # Principles of Great Design
 
 **Sources:** [references/sources.md](references/sources.md) — 4 WWDC sessions + Ryo Lu + MDS interviews.
-
 *As of June 2026 the HIG carries a reintroduced, canonical **Design principles** page (fetch via the `hig` skill, slug `design-principles`) — this skill is the reasoning companion; check that page when exact current wording matters.*
 
 Design is **making something with intention** — focusing on what's most important to people so you build something they'll truly value. Every feature you add asks the user for their **time, attention, and trust** — valuable things you can't waste. So choosing what to build is often a matter of deciding what *not* to include.
@@ -22,7 +21,7 @@ These eight principles guide that choice. **There's no formula.** Leaning into o
 ## The eight principles
 
 ### 1. Purpose — build with intention
-Before a sketch or a line of code, ask whether what you're making has a reason to exist. Every feature spends the user's time, attention, and trust. **Deciding what to build is mostly deciding what to leave out.** Watch for: features added because they're possible, not because they're valuable.
+Before a sketch or a line of code, ask whether what you're making has a reason to exist. Every feature spends the user's time, attention, and trust. **Deciding what to build is mostly deciding what to leave out.** Watch for: features added because they're possible, not because they're valuable — craft on a self-serving premise only sharpens the wrong thing (Soleio's Share Bar case → practitioner-notes).
 
 ### 2. Agency — put people in control
 People are far more engaged when they control their own experience. **Offer choices**; don't force a pre-determined path. Let people dive in and explore at their own pace; the interface should never stand between a person and what they're trying to do.
@@ -68,6 +67,8 @@ Craft is the attention to detail that signals you care. People feel a cheap, rus
 The 2018 "Qualities of Great Design" interviews sharpen Craft three ways: **quality is earned, never claimed** ("being cool doesn't involve saying you're cool… quality has to be earned"); **the durability test** — will this feel dated in 1/5/10 years?; and **great design recedes** ("you're not at all aware of an interface which has been well designed"). Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
 
 Practitioner corroboration, distilled — **Stamatiou** ("ship, then iterate" is a trap — "it ends up being more *shiterate*"; ditch MVP for **SLC — Simple, Lovable, Complete**, cut as a vertical slice; target feeling: "someone has already thought of you"), **Puckett** (care lives in the skippable places; the **depth spectrum** — most work ships at 1–3 of 10 because it's easy to stop pushing; the industry bar is the floor, not the goal), and **MDS** (craft is "spending an obscene amount of time on the details," checked against a user goal; the Adidas/Crayola/Rolex calibration question; a senior gut gets you ~70%). Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
+
+**Soleio's shipping counterweight** (Dive Club): teams don't die from lack of craft; they "flailed around in irrelevance because they just refuse to ship"; designers "hide behind craft." Fix the janky ("the soup tastes funny"); defer sheen.
 
 ### 8. Delight — create an emotional connection
 Hard to define, instantly recognized. Delightful interfaces are satisfying, enriching, and feel **human**. You don't manufacture delight with confetti or flourishes bolted on at the end. You **identify the emotion** you want people to feel — relaxed, confident, excited — and find ways to reinforce it throughout. Delight is the *sum* of the consideration you put in: the natural result of getting the other seven principles right.

@@ -6,7 +6,6 @@ description: "Build, govern, and scale a design system — token architecture, t
 # Design Systems
 
 **Sources:** [references/sources.md](references/sources.md) — 9 Figma Config talks ('24–25) + Dive Club + books; worked examples in [references/field-notes.md](references/field-notes.md).
-
 A design system is a **product with customers**, not a library: "treat it like a product team — clear OKRs, roadmap, customers — or it won't succeed" (Rahimi). The deeper frame (Henry Modisett, Linear): a DS is *quality infrastructure* — "if you make it so hard to make a bad button, you're going to have less bad buttons." Sell it honestly: "a design system is not the most efficient way to build things… it must have clear business impact and ROI" — the pitch that works is per-stakeholder incentive alignment: "components for free, performance for free, dark mode for free" (Coinbase), accessibility and i18n free.
 
 ## Opinions are the product
@@ -55,6 +54,7 @@ A design system is a **product with customers**, not a library: "treat it like a
 
 - **"Federated is the only model that works in large organizations. Design by committee — the worst idea — is actually the best way to get adoption"** (Rahimi). Shape: **core team** builds only high-value shared components, guards quality, says *no* to one-offs; **extension libraries** own product-unique pieces; when **two products** need a thing, the extension contributes it to core. Decisions made *with* experts from each app; core "normalizes the decision, documents it, shares it."
 - **One ecosystem, one system**: unless a product has its own design language *and* token system, it's part of this design system — "'we have our own design system' claims are miscommunication that creates chaos."
+- **Keep the system alive, not just written down** (Figma blog on Combine, 2017 — https://www.figma.com/blog/meet-the-design-pioneers-taking-on-the-venture-world/): Facebook's cross-product design standards existed, but the hard problem was keeping them from going stale as teams and platforms changed. A design system is not a historical artifact; it needs ownership, contribution paths, and review loops that update the standard at the same pace the product learns.
 - **Move up the stack as you mature** (Coinbase): primitives → complex components (DS-owned) → **product components** (co-owned, sprint-built with a product-team "ambassador"). Some patterns legitimately live Figma-documented only, never coded.
 - New apps may break the rules — they're exploring the system's next version (Microsoft Loop). Respect the platform over the brand: "designing for Android: 80% Android, 20% Microsoft."
 - **Deprecation is a feature**: visual deprecation mode, migrations tested simplest → real files, merges synced with code releases. "Almost everything you make in the system… will run its course" (PJ Onori). The DS moves slower than product — no riff-publishing.

@@ -100,7 +100,7 @@ Returns an RSS feed where each `<item>` has:
 
 **Coverage**: ~20 most recent posts, typically the last few weeks for an active account. No pagination.
 
-**Mirror health** (re-tested June 2026): `nitter.net` was returning 502s for days. `xcancel.com/{handle}/rss` redirects to `rss.xcancel.com`, which requires emailing them to whitelist your reader. `nitter.poast.org`, `nitter.tiekoetter.com`, and `nitter.privacyredirect.com` front with Anubis bot-checks (JS proof-of-work — curl gets a "Making sure you're not a bot!" page). If `nitter.net` returns 5xx, try once more after a moment, then fall back to Path C (syndication) or Path B (search).
+**Mirror health** (re-tested June 11, 2026): treat Nitter RSS as opportunistic only. `nitter.net/{handle}/rss` returns `502 Bad Gateway` with body `stream reset by client (INTERNAL_ERROR)` in this environment. `xcancel.com/{handle}/rss` resolves to `rss.xcancel.com` and returns an RSS-shaped whitelist stub ("RSS reader not yet whitelisted"), not the user's timeline. `nitter.poast.org`, `nitter.tiekoetter.com`, and `nitter.privacyredirect.com` front with JS/bot-check pages (Anubis / "Making sure you're not a bot!"). Probe `nitter.net` once; if it returns 5xx or any mirror returns a bot-check/whitelist page, stop trying Nitter for that run and fall back to Path C (syndication) or Path B (search).
 
 To extract tweet IDs from the feed:
 
