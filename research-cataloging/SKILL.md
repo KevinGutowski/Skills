@@ -1,6 +1,6 @@
 ---
 name: research-cataloging
-description: "Router for research, archiving, and cataloging work — web research bundles with provenance, OCR/transcription of scanned PDFs and long recordings, exhaustive source sweeps with coverage ledgers (“go through this entire site/course and encode everything” starts HERE, before any conversion skill), translation promotion, catalog/record reconciliation, NocoDB and Airtable MCP record operations, archival image compression. Read this skill's body, then read the named reference file. Triggers: research bundle, source trail, Wayback Machine, OCR, scanned PDF, source sweep, coverage ledger, provenance, translation promotion, NocoDB, Airtable MCP, Whisper transcription, chunk audio, compress image, visually lossless."
+description: "Router for research, archiving, and cataloging work — web research bundles with provenance, OCR/transcription of scanned PDFs and long recordings, exhaustive source sweeps with coverage ledgers (“go through this entire site/course and encode everything” starts HERE, before any conversion skill), translation promotion, catalog reconciliation, NocoDB/Airtable MCP record ops, archival image compression. Read this skill's body, then read the named reference file. Triggers: research bundle, source trail, Wayback Machine, OCR, scanned PDF, source sweep, coverage ledger, provenance, translation promotion, NocoDB, Airtable MCP, Whisper transcription, chunk audio, compress image, visually lossless."
 ---
 
 # Research & Cataloging (router)
