@@ -5,7 +5,7 @@ description: "Build, govern, and scale a design system — token architecture, t
 
 # Design Systems
 
-**Sources** (full list + worked examples → `references/field-notes.md`) — Figma Config 2024–25: DS best practices (Figma DAs '24) · design/dev panel (Weekes/Figma, Krakowsky Appel/Coinbase, Rahimi/Uber ex-Microsoft '25) · opinions (Baldwin/Intuit '24) · multi-sub-brand (Zalando '24) · building together (Albaugh & Bergman/Figma '25) · XL displays (Alaska Auro '24) · programmable colors (Evil Martians '25) · GitHub+Figma (Mounter & Bemis '25) · typography (Stocks '25 → `apple-typography`). Plus Rachel Nabors, *Animation at Work* (A Book Apart, 2017); Ryo Lu (Cursor, Dive Club + Dialectic '25); MDS (Shift Nudge, yt 4p5LzrAYN30 + PFi9WfNUlps); Dive Club '25–26: Lovin (Notion, dvEwb1Ajkwo), Ouriach (Figma, Pn2G7JhxNKc), Worboys (Cash App, KH9GBasDTI8), Healey & Hall (Atlassian, CqMZTg7L-wE), Haney (Y0n6F9VlLVc); Apple WWDC 2017 session 809.
+**Sources:** [references/sources.md](references/sources.md) — 9 Figma Config talks ('24–25) + Dive Club + books; worked examples in [references/field-notes.md](references/field-notes.md).
 
 A design system is a **product with customers**, not a library: "treat it like a product team — clear OKRs, roadmap, customers — or it won't succeed" (Rahimi). The deeper frame (Henry Modisett, Linear): a DS is *quality infrastructure* — "if you make it so hard to make a bad button, you're going to have less bad buttons." Sell it honestly: "a design system is not the most efficient way to build things… it must have clear business impact and ROI" — the pitch that works is per-stakeholder incentive alignment: "components for free, performance for free, dark mode for free" (Coinbase), accessibility and i18n free.
 

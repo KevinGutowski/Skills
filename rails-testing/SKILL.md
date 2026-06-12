@@ -5,13 +5,7 @@ description: "Makes Rails test suites fast and reliable — TestProf diagnosis, 
 
 # Rails Testing — Speed & Reliability
 
-**Sources** — this skill aggregates six Evil Martians Chronicles posts (largely Vladimir Dementyev's TestProf lineage; canonical playbook: https://test-prof.evilmartians.io/playbook):
-- *"TestProf: a good doctor for slow Ruby tests" (Dementyev, 2017, rev. 2024). https://evilmartians.com/chronicles/testprof-a-good-doctor-for-slow-ruby-tests*
-- *"TestProf II: Factory therapy" (Dementyev, 2018, rev. 2024). https://evilmartians.com/chronicles/testprof-2-factory-therapy-for-your-ruby-tests-rspec-minitest*
-- *"TestProf III: guided and automated Ruby test profiling" (Dementyev & Turner, 2024). https://evilmartians.com/chronicles/test-prof-3-guided-and-automated-ruby-test-profiling*
-- *"The Whop chop: how we cut a Rails test suite and CI time in half" (Platonov & Turner, 2025). https://evilmartians.com/chronicles/the-whop-chop-how-we-cut-a-rails-test-suite-and-ci-time-in-half*
-- *"Flaky tests, be gone" (Petrov & Turner, 2025). https://evilmartians.com/chronicles/flaky-tests-be-gone-long-lasting-relief-chronic-ci-retry-irritation*
-- *"TestProf Digest 2026.4: surprising finds from 30k specs" (Dementyev & Turner, 2026). https://evilmartians.com/chronicles/test-prof-digest-2026-surprising-finds-from-30k-specs*
+**Sources:** [references/sources.md](references/sources.md) — 6 Evil Martians TestProf-lineage posts (canonical playbook: https://test-prof.evilmartians.io/playbook).
 
 "Your biggest performance bottleneck is rarely where you think it is" — profile before touching anything; "guessing is a waste of time." And: "All fast tests are alike; each slow test is slow in its own way."
 

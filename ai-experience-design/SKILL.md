@@ -5,12 +5,7 @@ description: "Design AI/ML-powered experiences — confidence as actions, attrib
 
 # AI Experience Design
 
-**Sources** — this skill aggregates two Apple sessions a generation apart:
-- *Apple WWDC 2019, session 803 — "Designing Great ML Experiences" (Kayur Patel, Rubii & Cas). https://developer.apple.com/videos/play/wwdc2019/803/*
-- *Apple WWDC 2025, session 248 — "Explore prompt design & safety for on-device foundation models" (Mary Beth Kery & Sprite). https://developer.apple.com/videos/play/wwdc2025/248/*
-- *Apple Developer article — "Behind the appealing design of CapWords" (2025; the field notes below). https://developer.apple.com/articles/capwords/*
-- *Ryo Lu (Head of Design, Cursor) — 2025 interviews: Async Z (youtube.com/watch?v=PQhcHrCyU8M), Dialectic (8ncYSGbfeyY), website-teardown review (RynySryqM_0) — the Cursor laws below.*
-- *Dive Club podcast (2025–26): Brian Lovin (dvEwb1Ajkwo), Geoffrey Litt (zJf0UeCwQqE), Steve Ruiz (3SvL0r-Lhh8), Luis Ouriach (Pn2G7JhxNKc), Cam Worboys (KH9GBasDTI8), NYC panel w/ Megan Choy (V-jd3v9P-Ps) — the agent-era surfaces section below; Ruiz + Campbell worked examples in `references/patterns.md`.*
+**Sources:** [references/sources.md](references/sources.md) — 2 WWDC sessions + CapWords article + Ryo Lu + Dive Club.
 
 With ML, you design **how the product works, not just how it looks** — "machine learning decisions are all design decisions." The 2019 interface patterns remain the vocabulary; 2025 adds the generative model layer (prompting, guardrails, eval). Also see `design-principles`' *Responsibility* section, which already demands anticipating model harm.
 

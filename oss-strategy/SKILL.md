@@ -5,11 +5,7 @@ description: "Make an open source project adopted, sustainable, and profitable �
 
 # Open Source Strategy
 
-**Sources** — this skill aggregates three Evil Martians Chronicles posts:
-- *"PostCSS creator shares how to make your open source popular" (Andrey Sitnik & Turner, 2026). https://evilmartians.com/chronicles/how-to-make-your-open-source-popular*
-- *"What we learned from creating PostCSS" (Sitnik & Turner, 2025). https://evilmartians.com/chronicles/what-we-learned-from-creating-postcss*
-- *"How to turn an open source project into a profitable business" (Melnikova & Turner, 2023). https://evilmartians.com/chronicles/how-to-turn-an-open-source-project-into-a-profitable-business*
-- *Steve Ruiz (tldraw) — Dive Club podcast (3SvL0r-Lhh8): the design-answer pattern below.*
+**Sources:** [references/sources.md](references/sources.md) — 3 Evil Martians posts + Steve Ruiz (Dive Club).
 
 The motivation gate first: don't do OSS for fame (talks and articles have better ROI) or your resume (contribute to big projects instead — "it's so much easier than building a project"). "The best reason to make open source is if you want to change the world." And the realism: of Sitnik's ~56 projects, **4 are popular** — "the proper mindset going into each project may be expecting failure."
 

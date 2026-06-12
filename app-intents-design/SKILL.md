@@ -5,10 +5,7 @@ description: "Design App Intents and App Shortcuts across Siri, Spotlight, widge
 
 # App Intents Design
 
-**Sources** — this skill aggregates two Apple design sessions:
-- *Apple WWDC 2022, session 10169 — "Design App Shortcuts" (Lynn, Siri & Shortcuts design). https://developer.apple.com/videos/play/wwdc2022/10169/*
-- *Apple WWDC 2024, session 10176 — "Design App Intents for system experiences" (Ray, Apple Design). https://developer.apple.com/videos/play/wwdc2024/10176/*
-- *Apple WWDC 2025, session 281 — "Design interactive snippets" (Ray). https://developer.apple.com/videos/play/wwdc2025/281/*
+**Sources:** [references/sources.md](references/sources.md) — 3 Apple WWDC design sessions (2022–2025).
 
 App Intents are units of your app's functionality the *system* can run — surfaced in Siri, Spotlight, widgets, controls, the Action button, Apple Pencil squeeze, and the Shortcuts app, available the moment the app is installed. The recurring design theme: **make it memorable, and make it readable as a sentence.**
 

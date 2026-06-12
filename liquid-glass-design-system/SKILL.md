@@ -5,10 +5,7 @@ description: "Apply Liquid Glass and Apple's 2025+ design system — the materia
 
 # Liquid Glass Design System
 
-**Sources** — this skill aggregates the two foundational WWDC 2025 sessions plus Apple's adoption-showcase series:
-- *Session 219 — "Meet Liquid Glass" (Chan, Shubham & Bruno, Human Interface Design). https://developer.apple.com/videos/play/wwdc2025/219/*
-- *Session 356 — "Get to know the new design system" (Maria, Apple Design). https://developer.apple.com/videos/play/wwdc2025/356/*
-- *Meet with Apple, "Liquid Glass showcase" sessions 254 (LTK), 255 (Slack), 256 (CNN), 257 (Tide Guide). https://developer.apple.com/videos/play/meet-with-apple/254/ …255/ …256/ …257/*
+**Sources:** [references/sources.md](references/sources.md) — 2 foundational WWDC 2025 sessions + 4 Liquid Glass showcase sessions.
 
 Liquid Glass is "a new digital meta-material that dynamically bends and shapes light" while behaving like a lightweight liquid — not a recreation of a physical material (lineage: Aqua → iOS 7 blurs → iPhone X fluidity → Dynamic Island → visionOS). It forms **one floating functional layer for navigation and controls above content**, unifying design across platforms. This is the primary source behind the Liquid Glass references in `ios-brand-identity`, `apple-search-design`, and `apple-navigation-design`.
 

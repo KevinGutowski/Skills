@@ -5,12 +5,7 @@ description: "Direct and fix AI-generated UI — diagnose layout bugs in primiti
 
 # AI UI Direction
 
-**Sources:**
-- *"The Skill Behind Every AI-Generated UI" + "Good Enough UI Is the Problem" — Matt D. Smith (MDS, Shift Nudge), 2025–26. The layout-primitive literacy thesis.*
-- *Ryo Lu (Head of Design, Cursor) — design-to-code tutorial + Cursor panel, 2025. The substrate and bricks discipline.*
-- *Jin Park (Notion) — "Building with Cursor" panel, 2025. The Figma-to-code pipeline.*
-- *Paul Stamatiou's Claude-Design field test (the 65/100 diff — details in `design-prototyping`).*
-- *Dive Club podcast interviews, 2025–26: Brian Lovin (Notion, dvEwb1Ajkwo), Kyle Santos (HcLz3ikw-n0), Karl Koch (7_VEb9iDW2c), Andy Madrick (Notion, IfPK0LwbX_0); tranche 2: Katarina Batina (0YjO7wShTkQ), Tommy Geoco (OYNoy468kS8), Louis Healey (Atlassian, CqMZTg7L-wE), Kyle Xantos (oYc_dF95VAE), Ryan Moshi (onQY0PrUulw; surname per auto-captions), Ron Goldin (UkQpgslyR3A), Marvin Schwaibold (KpJs7mZYErg).*
+**Sources:** [references/sources.md](references/sources.md) — MDS's layout-primitive essays + Cursor/Notion practitioners + 11 Dive Club interviews.
 
 The task shape: an AI produced UI and you have to make it *right* — which is a directing job, not a generating job. The thesis (MDS): **layout-primitive literacy is the prompting skill.** If you can't name what's wrong in the layout system's own vocabulary, "sometimes not having the knowledge makes it where you don't even know what questions to ask" — you prompt into the ether and iterate blindly. The master frame (Brian Lovin, Dive Club podcast, dvEwb1Ajkwo): "we just need to make our intent legible to AI" — primitive vocabulary, named layers, reference URLs, and codified taste are all intent-legibility moves. Independent corroboration from the critique tradition (Katarina Batina, Dive Club podcast, 0YjO7wShTkQ): "our material language for building is now becoming words. We now have to give critique to our agents… The higher fidelity that designers can have in the language they use to make their work better, the better off they're going to be in an agentic era" — vague language ("this doesn't feel right") means "you're probably not going to one-shot something." Two lineages, same skill.
 
