@@ -291,6 +291,8 @@ Tranche 2 candidates (not captured): Tommy Geoco industry state, Katarina Batina
 
 - CLOSED 2026-06-11: design-team-leadership parking spot superseded by people-management (created from Scott/Zhuo/Hogan trio; design-specific hiring signals remain in design-org-influence/references/team-building.md).
 
+- CLOSED 2026-06-12: Routing-probe recheck — Codex probes 84–90 spot-checked 7/7 by a fresh descriptions-only judge (both learning-experience-design probes, both photographic-lighting probes, all three controls held).
+
 - CLOSED 2026-06-12: Gal Shir *60 Tips for Logo Design* OCR recheck completed. Rendered 77 image pages via `pdftoppm` to `/private/tmp/gal60-ocr`, OCR'd with Tesseract, assembled `/tmp/books/60-tips-logo.txt`, and verified 19 short quotes. Density MED as a corroborator, not a replacement for Peters. Folded four-lane intake, three keyword lanes, time-boxed sketch warmup, rest/profile-image/application/uniqueness tests, and presentation sequencing into `logo-design`; added TOC/source-map entry. The `logo-design` skill is now two-source, with Peters still primary.
 
 - CLOSED 2026-06-12: Photography lighting pair targeted pass completed. `Light: Science & Magic` extracted to `/tmp/books/light-science-magic.txt`; Tony Northrup DSLR EPUB extracted to `/tmp/books/tony-northrup-dslr.txt`. Created `photographic-lighting` from the coherent task shape: hard/soft source size, direction, reflection/family-of-angles, metal/glass/extreme-surface diagnosis, portraits, fill/bounce/off-camera flash, and field-light constraints. Added README row, source-map entries, and routing probes 88-90. Note: Tony pass was lighting/portrait-targeted, not a whole-book photography screen.
