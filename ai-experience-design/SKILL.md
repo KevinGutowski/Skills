@@ -11,6 +11,7 @@ description: "Design AI/ML-powered experiences — confidence as actions, attrib
 - *Apple Developer article — "Behind the appealing design of CapWords" (2025; the field notes below). https://developer.apple.com/articles/capwords/*
 - *Ryo Lu (Head of Design, Cursor) — 2025 interviews: Async Z (youtube.com/watch?v=PQhcHrCyU8M), Dialectic (8ncYSGbfeyY), website-teardown review (RynySryqM_0) — the Cursor laws below.*
 - *Dive Club podcast (2025–26): Brian Lovin (dvEwb1Ajkwo), Geoffrey Litt (zJf0UeCwQqE), Steve Ruiz (3SvL0r-Lhh8), Luis Ouriach (Pn2G7JhxNKc), Cam Worboys (KH9GBasDTI8), NYC panel w/ Megan Choy (V-jd3v9P-Ps) — the agent-era surfaces section below; Ruiz + Campbell worked examples in `references/patterns.md`.*
+- *Soleio Cuervo — First Round "Dawn of Personalized Products" (2014), Design Buddies recap (2025), X AI-app/design posts (2025), and X Design Chat clip (2026) — personalization stack, context, agency, and world-building below.*
 
 With ML, you design **how the product works, not just how it looks** — "machine learning decisions are all design decisions." The 2019 interface patterns remain the vocabulary; 2025 adds the generative model layer (prompting, guardrails, eval). Also see `design-principles`' *Responsibility* section, which already demands anticipating model harm.
 
@@ -33,6 +34,8 @@ With ML, you design **how the product works, not just how it looks** — "machin
 2. **Implicit feedback** — from natural use; slow but accurate: "It's better to be patient and become certain of a suggestion than to be quick and show an unhelpful suggestion." Give privacy controls.
 3. **Explicit feedback** — **prioritize negative over positive** (positive is better inferred; a "Love" button is homework). Consequence-precise labels ("Suggest less," "Hide this suggestion") and act immediately and persistently.
 4. **Corrections** — fix mistakes through **familiar UI, not new chrome**: retype over the bad autocorrect; the suggested crop is a *starting point* on the standard handles. Reuse corrections as feedback.
+
+**Personalization stack** (Soleio Cuervo, First Round Design+Startup, 2014 — https://review.firstround.com/dropboxs-head-of-design-on-the-dawn-of-personalized-products/): personalized products combine **identity** (who the product helps the person become), **graphs** (which relationships/data networks create value), **context** (device, location, cadence, attention state), and **behavior** (what the person is likely to do next). The design rule is opinionated-but-adjustable: be purposeful about the behavior you want, then give people contextual chances to confirm, tune, or switch to manual. You are not competing against other services; you are competing against existing habits and trying to create a better routine around your utility.
 
 ## The generative layer (2025, on-device Foundation Models)
 
@@ -83,6 +86,8 @@ The on-device model is ~3B parameters: great at summarization, classification, c
 - **Tokens before pixels** (Ian Silber, OpenAI, oM1d9Tau27w): "Can we do this with tokens? Can we do this with the model itself?" — design into the **capability gap** (Madden: "you can't put 11 people on the field"); a dynamic-UI library it can interpret.
 - **Swarm via spreadsheet** (Flora Guo, mdV8APhz2j4): "prompt basically a thousand agents at once" — ask "what are the invariants?" Load-time cyclable tips: Kyle Xantos, oYc_dF95VAE.
 - **Early-days posture** (panel, Dive Club podcast, V-jd3v9P-Ps): "we have really only solved two use cases… Search and coding" — and design from observed behavior, not assumed preference: "if you were to tell me last year that people would like having four terminal windows open I would have been like that's crazy… and then we saw our team do that."
+- **Context and agency are the durable design job** (Soleio Cuervo, Design Chat clip, 2026 — https://x.com/soleio/status/2052435210365477305): if agents can handle visual execution, the designer's leverage moves to influencing the product directly and owning the iteration cycle. Design Buddies' recap (2025) frames the same shift as increased surface area and orchestration: designers guide intelligent systems, connect choices to metrics, and create coherent releases across surfaces. In practice: design the context the agent sees, the knobs the human can steer, the evidence loop after generation, and the system/story/world the outputs belong to.
+- **AI apps compete as products, not model wrappers** (Soleio Cuervo, X 2025 — https://x.com/soleio/status/1885074028848964011): raising from designers and hiring top design talent is a market signal that the company intends to compete through design. When model capability commoditizes, durable advantage shifts to workflow fit, speed, trust, craft, and how cleanly the AI vanishes into the job.
 
 > **Staleness note (Kevin's rule):** the 2019 HIG ML chapter is now supplemented by the HIG's **Generative AI guidelines**; Foundation Models API names (`LanguageModelSession`, guided generation, `#Playground`) are 2025-era — verify against current docs. The interface patterns (options/attributions/confidence/corrections) are stable.
 

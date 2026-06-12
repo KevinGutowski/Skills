@@ -12,6 +12,7 @@ description: "Apply Apple's eight design principles — purpose, agency, respons
 - *Apple WWDC 2018, session 801 — "The Qualities of Great Design" (Lauren Strehlow + 13 designer interviews) — the earned-quality/durability additions under Craft; its techniques live in `design-prototyping`. https://developer.apple.com/videos/play/wwdc2018/801/*
 - *Ryo Lu (Head of Design, Cursor; first designer at Notion) — 2025 interviews: Dive Club (youtube.com/watch?v=dsZqOPVQTNg), Dialectic (8ncYSGbfeyY), Async Z podcast (PQhcHrCyU8M) — the System thinking cluster below.*
 - *Matt D. Smith (MDS, Shift Nudge) — "Good Enough UI" interview (youtube.com/watch?v=4p5LzrAYN30), Dive Club (K_7ECqNlTtE), Shift Nudge critiques (ZRBq8UYLa-0, 6153Upr2BDM) — the MDS craft notes under Craft.*
+- *Soleio Cuervo — Julie Zhuo, "How to Spot a World-Class Designer" (2026), Design Buddies recap (2025), and X posts (2013–2026) — the Purpose/Craft shipping rules below.*
 
 *As of June 2026 the HIG carries a reintroduced, canonical **Design principles** page (fetch via the `hig` skill, slug `design-principles`) — this skill is the reasoning companion; check that page when exact current wording matters.*
 
@@ -29,6 +30,8 @@ These eight principles guide that choice. **There's no formula.** Leaning into o
 
 ### 1. Purpose — build with intention
 Before a sketch or a line of code, ask whether what you're making has a reason to exist. Every feature spends the user's time, attention, and trust. **Deciding what to build is mostly deciding what to leave out.** Watch for: features added because they're possible, not because they're valuable.
+
+**Optimize the user, not the artifact** (Soleio Cuervo, via Julie Zhuo, 2026). The Facebook Share Bar had thoughtful mechanics and polish, but users experienced it as Facebook hijacking an intentionally shared external link. The failure was not the chrome; it was the premise. Ask the pre-craft question early: *Should this exist at all? Is it respectful, useful, and trustworthy from the user's side?* Craft applied to a self-serving premise only makes the wrong thing sharper.
 
 ### 2. Agency — put people in control
 People are far more engaged when they control their own experience. **Offer choices**; don't force a pre-determined path. Let people dive in and explore at their own pace; the interface should never stand between a person and what they're trying to do.
@@ -74,6 +77,8 @@ Craft is the attention to detail that signals you care. People feel a cheap, rus
 The 2018 "Qualities of Great Design" interviews sharpen Craft three ways: **quality is earned, never claimed** ("being cool doesn't involve saying you're cool… quality has to be earned"); **the durability test** — will this feel dated in 1/5/10 years?; and **great design recedes** ("you're not at all aware of an interface which has been well designed"). Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
 
 Practitioner corroboration, distilled — **Stamatiou** ("ship, then iterate" is a trap — "it ends up being more *shiterate*"; ditch MVP for **SLC — Simple, Lovable, Complete**, cut as a vertical slice; target feeling: "someone has already thought of you"), **Puckett** (care lives in the skippable places; the **depth spectrum** — most work ships at 1–3 of 10 because it's easy to stop pushing; the industry bar is the floor, not the goal), and **MDS** (craft is "spending an obscene amount of time on the details," checked against a user goal; the Adidas/Crayola/Rolex calibration question; a senior gut gets you ~70%). Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
+
+**Soleio's shipping counterweight:** "The only design choices that matter / Are the ones that ship" (X, 2025) and "Being wrong is forgivable. Being slow is not" (X, 2015). Do not use craft as cover for hiding from reality. The bar is shipped learning: ship a coherent, respectful slice, dogfood it, watch real behavior, then push the next level. Speed is a quality only when it shortens the loop between intention and evidence.
 
 ### 8. Delight — create an emotional connection
 Hard to define, instantly recognized. Delightful interfaces are satisfying, enriching, and feel **human**. You don't manufacture delight with confetti or flourishes bolted on at the end. You **identify the emotion** you want people to feel — relaxed, confident, excited — and find ways to reinforce it throughout. Delight is the *sum* of the consideration you put in: the natural result of getting the other seven principles right.

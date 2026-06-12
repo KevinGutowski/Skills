@@ -1,6 +1,6 @@
 # Building & Running a Design Org — Dive Club field notes
 
-Hiring, org shape, and operating models from design leaders. Sources (Dive Club podcast, auto-captioned YouTube): Henry Modisett (VP of Design, Perplexity — Vt3oTBvx7xw), Cam Worboys (Head of Product Design, Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), a live NYC panel with Megan Choy (Anthropic), Dan Shipper (Every), Bradley Zipper (Ramp) — V-jd3v9P-Ps; tranche 2: Polly D'Arcy (VP of Design, Wealthsimple — vdYBohOQYm0), Marvin Schwaibold (Molly Studio, acquired by Shopify — KpJs7mZYErg), Tommy Geoco (OYNoy468kS8).
+Hiring, org shape, and operating models from design leaders. Sources (Dive Club podcast, auto-captioned YouTube): Henry Modisett (VP of Design, Perplexity — Vt3oTBvx7xw), Cam Worboys (Head of Product Design, Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), a live NYC panel with Megan Choy (Anthropic), Dan Shipper (Every), Bradley Zipper (Ramp) — V-jd3v9P-Ps; tranche 2: Polly D'Arcy (VP of Design, Wealthsimple — vdYBohOQYm0), Marvin Schwaibold (Molly Studio, acquired by Shopify — KpJs7mZYErg), Tommy Geoco (OYNoy468kS8); Soleio Cuervo (Dive Club / Julie Zhuo / Dive article, 2024–26).
 
 ## Hiring (Modisett, Perplexity)
 
@@ -10,6 +10,14 @@ Hiring, org shape, and operating models from design leaders. Sources (Dive Club 
 - **The cold-start founding-designer pitch.** Founders must have a strategic theory of why design matters, not just assert it: "We can beat our competition cuz design will help us do that and we're fully committed to using design as a weapon in the market — through marketing, through product." And prove it before hiring: "pay a freelancer to make something really nice and then be like, boom, we're hiring designers… We know how to ship good design."
 - **People join the brand.** "People are not joining the company, they're joining the brand… If you tell a clear story with your brand, you're providing a narrative that is going to resonate with people." Corollary: "if the product is beautiful, people will want to join the company. You can't fake it."
 
+## Hiring (Soleio Cuervo)
+
+- **The favorite-product strategy interview** (Dive article, Dec 2025 — https://www.dive.club/ideas/soleios-interview-prompt): ask a senior candidate to bring 2–3 apps/services they love and use, preferably unfamiliar to you. Pick one together. First, have them sell you on it: what is fantastic, how they use it, what details are well made, where onboarding worked, and where expectations fall short. Then make them head of design for three months: what should the company work on next, why, and what can reasonably ship in that window?
+- **What it reveals:** taste values, context-building from scratch, selling another team's idea before selling their own, strategy, forecasting, engineering-risk instincts, and resourcefulness. Watch the proposal: a brand refresh or UI cleanup may be right, but the stronger signal is whether they find a more strategic or cunning lever and can name what skills/people are needed to execute it.
+- **Portfolio as trailer, not museum** (Julie Zhuo interview, 2026): hiring managers are scanning many URLs, so completeness is the wrong first job. Look for a visceral core message, evidence of appetite, side projects that show creative hunger, and case studies that remember the painful texture: what failed, what got cut, what tradeoffs mattered, and what the candidate personally owned.
+- **Recruit by selling impact at scale** (Figma blog on Combine, 2017 — https://www.figma.com/blog/meet-the-design-pioneers-taking-on-the-venture-world/): Soleio helped stack Dropbox's design team by selling designers on the scale and stakes of the work, not just the role. If a startup wants top design talent, the pitch is not "come make us pretty"; it is "this product can change the fabric of people's lives, and you can shape it early."
+- **Founder signal: cave-art energy** (X 2021 — https://x.com/soleio/status/1463588724344823813): look for primal, self-propelled making before polish. In candidates and founders, the question is whether they make evidence of an inner drive visible: sketches, prototypes, side quests, weird artifacts, or a worldview strong enough to generate work without permission.
+
 ## Operating the team (Modisett)
 
 - **Diagnose above the pixels.** A recurring crit moment: "This is not a UI problem. This is a product problem. They need to make up their mind what feature they want." Design is "not putting ornaments on the tree. It's product strategy, it's brand strategy, it's company strategy."
@@ -17,6 +25,12 @@ Hiring, org shape, and operating models from design leaders. Sources (Dive Club 
 - **Crit timing.** Ask each person when feedback is actually useful: "sometimes feedback is extremely important, you know, at the beginning, at the end, not often in the middle — and sometimes it's not important at all." Ownership stays with the designer; plenty of phones to ring.
 - **Velocity-first inversion.** Early-startup values trade toward velocity ("you want to just ship and learn"); at scale "you're not trying to gain a user, you're trying to keep a user" — revisit the values that got you there rather than letting them ossify.
 - **Deep-end management.** "It is the best thing for the org, for me to just throw everyone in the deep end, but give them a way to ask for a backup if they need it." The alternative — directing everyone — "doesn't scale" and "prevents growth"; don't use the team "as a tool for my brain."
+
+## Operating the team (Soleio Cuervo)
+
+- **Culture is the deepest moat** (Bryce Roberts, *Cults & Culture with Soleio*, 2025 — https://bryce.medium.com/cults-culture-w-soleio-cuervo-0b0ef178c960): culture gets set early by the business model and founders' personalities. Facebook's insurgent speed and Dropbox's "space shuttle quality" were not interchangeable process choices; they were company strategies made operational. Don't import another company's rituals without importing its context.
+- **Design belongs in the core, or it is cosmetic** (X 2023 — https://x.com/soleio/status/1712083234723364966): for a company trying to build a category-defining product, design cannot be a checkout-flow add-on. It has to shape company culture, product strategy, and hiring. The early test: is design involved when the company decides what to become, or only after the roadmap is written?
+- **Write the team's playbook, not just the product** (First Round founding-designer guide, Soleio/Patrick Weiss session — https://review.firstround.com/the-ultimate-guide-to-the-founding-designer-role/): ask "what's your version of the West Coast offense?" Treat ways of working as designed artifacts: iterate team plays that amplify the actual people you have, rather than copying a generic design process.
 
 ## Org shape for the AI era (Worboys, Cash App)
 
