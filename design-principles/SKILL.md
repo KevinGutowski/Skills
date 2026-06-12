@@ -21,9 +21,7 @@ These eight principles guide that choice. **There's no formula.** Leaning into o
 ## The eight principles
 
 ### 1. Purpose — build with intention
-Before a sketch or a line of code, ask whether what you're making has a reason to exist. Every feature spends the user's time, attention, and trust. **Deciding what to build is mostly deciding what to leave out.** Watch for: features added because they're possible, not because they're valuable.
-
-**Optimize the user, not the artifact** (Soleio Cuervo, via Julie Zhuo, 2026). The Facebook Share Bar had thoughtful mechanics and polish, but users experienced it as Facebook hijacking an intentionally shared external link. The failure was not the chrome; it was the premise. Ask the pre-craft question early: *Should this exist at all? Is it respectful, useful, and trustworthy from the user's side?* Craft applied to a self-serving premise only makes the wrong thing sharper.
+Before a sketch or a line of code, ask whether what you're making has a reason to exist. Every feature spends the user's time, attention, and trust. **Deciding what to build is mostly deciding what to leave out.** Watch for: features added because they're possible, not because they're valuable — craft on a self-serving premise only sharpens the wrong thing (Soleio's Share Bar case → practitioner-notes).
 
 ### 2. Agency — put people in control
 People are far more engaged when they control their own experience. **Offer choices**; don't force a pre-determined path. Let people dive in and explore at their own pace; the interface should never stand between a person and what they're trying to do.
@@ -70,7 +68,7 @@ The 2018 "Qualities of Great Design" interviews sharpen Craft three ways: **qual
 
 Practitioner corroboration, distilled — **Stamatiou** ("ship, then iterate" is a trap — "it ends up being more *shiterate*"; ditch MVP for **SLC — Simple, Lovable, Complete**, cut as a vertical slice; target feeling: "someone has already thought of you"), **Puckett** (care lives in the skippable places; the **depth spectrum** — most work ships at 1–3 of 10 because it's easy to stop pushing; the industry bar is the floor, not the goal), and **MDS** (craft is "spending an obscene amount of time on the details," checked against a user goal; the Adidas/Crayola/Rolex calibration question; a senior gut gets you ~70%). Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
 
-**Soleio's shipping counterweight:** "The only design choices that matter / Are the ones that ship" (X, 2025) and "Being wrong is forgivable. Being slow is not" (X, 2015). Do not use craft as cover for hiding from reality. The bar is shipped learning: ship a coherent, respectful slice, dogfood it, watch real behavior, then push the next level. Speed is a quality only when it shortens the loop between intention and evidence.
+**Soleio's shipping counterweight** (Dive Club): teams don't die from lack of craft; they "flailed around in irrelevance because they just refuse to ship"; designers "hide behind craft." Fix the janky ("the soup tastes funny"); defer sheen.
 
 ### 8. Delight — create an emotional connection
 Hard to define, instantly recognized. Delightful interfaces are satisfying, enriching, and feel **human**. You don't manufacture delight with confetti or flourishes bolted on at the end. You **identify the emotion** you want people to feel — relaxed, confident, excited — and find ways to reinforce it throughout. Delight is the *sum* of the consideration you put in: the natural result of getting the other seven principles right.

@@ -12,7 +12,7 @@ description: "Run a team of direct reports — 1:1s and trust, feedback, career 
 
 Task shape: managing **down** — your direct reports. The frameworks themselves (Radical Candor 2×2, BICEPS as an acronym, Tuckman stages, give-away-your-Legos) are assumed known; this skill encodes the named *procedures*. Influence **up and sideways** (business cases, PM partnership, your own promotion) → `design-org-influence`.
 
-**References:** [feedback-and-guidance.md](references/feedback-and-guidance.md) · [growth-and-careers.md](references/growth-and-careers.md) · [hiring-and-firing.md](references/hiring-and-firing.md) · [meetings-and-comms.md](references/meetings-and-comms.md)
+**References:** [feedback-and-guidance.md](references/feedback-and-guidance.md) · [growth-and-careers.md](references/growth-and-careers.md) · [hiring-and-firing.md](references/hiring-and-firing.md) · [meetings-and-comms.md](references/meetings-and-comms.md) · [sources.md](references/sources.md) (incl. Soleio Cuervo + Steve Ruiz interview material in hiring-and-firing.md)
 
 ## How the job is graded
 

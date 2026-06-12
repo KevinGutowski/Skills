@@ -35,6 +35,14 @@ Kleon's book is not a new skill; it is the pre-product, craft-person version of 
 - **Monetize with consent**: donations, crowdfunding, products, and services work best after people already value the free work. Always collect email with permission, set frequency expectations, and "treat it with respect."
 - **Keep momentum without burning out**: chain-smoke projects by using the end of one to light the next, but protect practical sabbaticals and boundaries. The operating rule is generous enough to build the scene, selfish enough to keep making the work.
 
+## Development chaff is the content (Ruiz, SPC fireside)
+
+Steve Ruiz (tldraw), in an SPC fireside moderated by Soleio — the devtool-builder's implementation of Perkins's rough-beats-polished and Kleon's daily dispatch:
+
+- **The build's exhaust is the feed**: "your your actual building is giving you the material from which to tell the story I I post a lot of like like gifts and stuff because I I needed to I was taking them for debugging" ("gifts" = gifs, auto-caption) — debugging recordings, half-working demos, and dev chaff are zero-marginal-cost posts; no separate content production line.
+- **"you own the now and then you you own the now again"** — don't hoard a polished backlog; "you're should be looking at the part of the fuse that is burning because there's nothing behind it." Post the live edge of the work, repeatedly.
+- **The embarrassment loop self-corrects the product**: "I'm embarrassed to post this because the API is bad like I'm going to go fix the API so that I can make a better post" — posting pressure doubles as a quality forcing function; Perkins's marketing↔product loop running at the API level.
+
 ## When the product is physical (Di Genova / Work Louder)
 
 - **Sell the render before the product exists**: the Creator Board "was never intended on actually being a real product" — a 3D-modeling practice exercise whose Instagram following proved demand before any tooling was paid for.

@@ -1,6 +1,6 @@
 # Hiring and Firing
 
-Sources: Julie Zhuo, *The Making of a Manager* (2019); Kim Scott, *Radical Candor* (2017). Quotes verified.
+Sources: Julie Zhuo, *The Making of a Manager* (2019); Kim Scott, *Radical Candor* (2017); Soleio Cuervo and Steve Ruiz interviews (auto-captioned video — IDs and garble notes in [sources.md](sources.md)). Quotes verified.
 
 **Boundary:** this file is hiring *process* and firing — funnel math, committees, debriefs, the decision to part ways. Hiring *philosophy and signals* (spike hiring, AI-fluency interviews, team archetypes) → `design-org-influence/references/team-building.md`.
 
@@ -9,6 +9,7 @@ Sources: Julie Zhuo, *The Making of a Manager* (2019); Kim Scott, *Radical Cando
 - Hiring is your job, and it's a funnel (Zhuo)
 - Decision rules: weak hires, advocates, pre-debrief write-ups
 - Declined offers are pipeline
+- Recruiting outreach and interview signals (Soleio; Ruiz)
 - Scott's committee mechanics
 - Firing: the 3-questions test
 - The four lies managers tell themselves
@@ -32,6 +33,14 @@ Sources: Julie Zhuo, *The Making of a Manager* (2019); Kim Scott, *Radical Cando
 ## Declined offers are pipeline
 
 Top people decline; months or years later the email arrives out of the blue: the situation has changed — "Are there any opportunities on my team?" "Jobs may be short, but careers are long." Many of Zhuo's current leaders said no once or twice first. So: tell decliners you hope your paths cross again, track rising stars, build the team's external reputation — recruiting top talent is a relationships business, not a transactions business.
+
+## Recruiting outreach and interview signals (Soleio; Ruiz)
+
+- **"Who made that?" outreach** (Soleio, Dive Club): "I love answering the question of like well who made that there's somebody out there who designed that I'm going to go and find that person" — source candidates from artifacts you admire, not just inbound. Standing practice (Soleio, Design MBA): "some people like to play Wordle I like to just like lurk on the internet and find incredible portfolios… I'm just a talent spotter."
+- **Recruiting is a long game** (Soleio, Dive Club): "even if they don't join you in year one… you want to be top of their list in year three or year five" (Adam Mosseri re-entered Facebook's design pipeline by shipping a hit platform app, Boombox). Pairs with Zhuo's declined-offers-are-pipeline above.
+- **Recruiting is the most-leveraged design activity** (Soleio, Design MBA): "that was the most leverag thing that I can do at the company" [leveraged]. Keep the CEO in the close — Drew Houston "never backed off from helping out with closing candidates… they want to hear directly from The Keeper of the vision and the strategy."
+- **Interview for slope: time-to-proficiency** (Soleio, Dive Club): "what is it time to proficiency name a thing you're proficient at when did you start learning" — "sometimes you'll find slope just in the simple question of like you're really good at guitar like when did you start playing Guitar." Because "one's ability to learn new things quickly is like a meta skill in and of itself and then ask the question of uh you know what are you learning now where are you early in the curve over the next 2 years what do you wish to learn." Watch for horizontal movers — "moving through their careers horizontally across disciplines rather than like going depthwise into a particular field sort of going straight into Mastery mode perhaps prematurely" (Lee Byron: data scientist → product designer → co-creator of React/GraphQL).
+- **Hire one profile across all roles** (Ruiz, SPC fireside — Steve Ruiz, tldraw; Soleio moderated): "I I try and hire like the same person, the same type of profile across all roles" — "generally full stack," someone "who like spikes in in in various places," with "Open source maintainer being like the best kind of profile": a person who "had to like triage issues that they didn't create themselves about something that was still theirs. But but someone who had to make the logo for the thing."
 
 ## Scott's committee mechanics
 

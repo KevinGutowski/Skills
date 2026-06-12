@@ -16,6 +16,7 @@ Depth moved out of SKILL.md: full source list, worked examples, outcome numbers,
 - [Dive Club deltas — full quotes](#dive-club-deltas--full-quotes)
 - [Motion as a design-system layer (Nabors)](#motion-as-a-design-system-layer-rachel-nabors-animation-at-work-a-book-apart-2017)
 - [MailChimp pattern-library prework](#mailchimp-pattern-library-prework-the-ux-reader-2014)
+- [Soleio: UFI, Canon, and the Dropbox illustration strip-out](#soleio-ufi-canon-and-the-dropbox-illustration-strip-out)
 - [Misc details](#misc-details)
 
 ## Full source list
@@ -130,6 +131,15 @@ Moved to [sources.md](sources.md).
 - **Pattern library as shortcut + test page.** The first internal "cheat sheet" gave front-end developers a faster way to use shared classes and a page that exposed whether pattern CSS changes broke app screens.
 - **Systemize the boring surfaces.** The slat pattern began on high-traffic dashboards, then generalized to Segments, Conversations, and Exports. The payoff was speed plus quality: "Adapting our slat system to the Exports dashboard took me all of 45 minutes," including mobile.
 - **Parallelize foundation and interior.** One group refined the slat pattern while others worked forms, page structure, and navigation; the shared system let them work independently from "a common place."
+
+## Soleio: UFI, Canon, and the Dropbox illustration strip-out
+
+Soleio Cuervo (early Facebook design, Dropbox Head of Design); quotes are verbatim auto-caption text, garble fixed in [brackets]; video IDs in [sources.md](sources.md).
+
+- **Ship the controversial feature as a rider on consolidation** (Soleio, Design MBA): the Like button reached production inside a platform-consolidation project — "we staffed a project that we called the ufi the universal feedback interface… we had years of commenting code across all the different products and features that we had built that needed to be standardized we needed to have one component for how it appeared to the end user one point of integration into privacy into Newsfeed into all the algorithms and ideally like a an interface that could be hot swappable across different contexts." The DS lesson cuts both ways: standardizing scattered implementations into one component is real system work — and the consolidation project is also how a years-blocked feature gets to ship.
+- **Icon choices are brand decisions** (Soleio, Design MBA): thumbs-up beat heart/star "because of poke and because of the universality of the hand as a visual symbol it just felt very face Booky to use a hand" [Facebooky].
+- **Facebook's first UI library was named Canon** (Soleio, Cults & Culture): "we had our our first UI Library we called Canon" — naming the library is part of making the system an institution rather than a folder.
+- **The Dropbox illustration strip-out** (Soleio, Cults & Culture): "we had gone through a short work Sprint where we stripped out all the illustrations from Dropbox and it felt cold and utilitarian and… we sort of lost the soul of of the business." The reversal's rationale: "we are visual communicators we can convey really abstract Concepts visually in a manner that like no 10 or 12 or 15 words can really capture" (e.g. the laptop-on-fire support illustration) — and it led to "an official illustration team." Expression layers (illustration, motion, icons) are system content, not decoration; cf. the expression-team rule in SKILL.md's Team design section.
 
 ## Misc details
 

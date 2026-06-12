@@ -5,7 +5,7 @@ description: "Run client design engagements — qualification, kickoff, feedback
 
 # Client Engagements
 
-**Source** — Mike Monteiro, *You're My Favorite Client* (A Book Apart, 2014). Written *to clients* about how to buy and participate in design; read it from both chairs. Foreword by Austin Kleon ("for client services to succeed, both the craftsperson and the client must take responsibility for their roles"). The designer-side companion is Monteiro's *Design Is a Job* (A Book Apart, 2012) — a future corpus candidate. All quotes below are from the 2014 book unless tagged otherwise.
+**Source** — Mike Monteiro, *You're My Favorite Client* (A Book Apart, 2014). Written *to clients* about how to buy and participate in design; read it from both chairs. Foreword by Austin Kleon ("for client services to succeed, both the craftsperson and the client must take responsibility for their roles"). The designer-side companion is Monteiro's *Design Is a Job* (A Book Apart, 2012) — a future corpus candidate. All quotes below are from the 2014 book unless tagged otherwise. Full bibliography incl. podcast video IDs → [references/sources.md](references/sources.md).
 
 ## 1. Qualification gates (before any work starts)
 
@@ -18,6 +18,7 @@ Refuse or fix these before scoping. Each gate failed is a project that fails lat
 - **The stealth-stakeholder question.** Before scoping, ask: **"Who can kill this project?"** Involve that person now. "No work is so good that it makes people happy they were left out." The board/investor/dean who appears at launch like Batman resets everything.
 - **Chain of command.** Someone on the client side must own the final call. Model client Larry: "When I say 'Sold,' it means that you've convinced me and the discussion is over."
 - **Partner, not vendor.** "A vendor fills your soda machine every Tuesday. A partner works with you to solve a problem."
+- **Dual roles: name which hat you're wearing** (Soleio, Cults & Culture — his Combine post-mortem, where the firm rendered services to founders it had also invested in): "when you are a service provider and an investor a major investor to a Founder you can find yourself in conversations where it's like are you my dad or you my doctor" — and "to a first-time founder that ambiguity can kind of create tumult am I getting advice… because the way which I listen to it will materially impact how I respond to it." Any dual role with a client (provider + investor, designer + advisor, agency + board seat) needs the hat named per conversation, or your feedback gets mis-weighted. Same post-mortem, the offering-design lesson — the studio-with-a-fund hybrid ("it was a Happy Meal") didn't survive: "it was a lesson that I still have to relearn simple beats clever every time it was too clever."
 - **No bake-offs, no parallel designers.** "A designer only has to win a job once." Mule declined a paid three-studio concept bake-off rather than design without research — and won the job when the research-free concepts missed. A designer who won a job shouldn't compete to keep it; a client quietly hiring a second designer behind the first's back is a fire-the-client signal.
 
 ## 2. The engagement spine
