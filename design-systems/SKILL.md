@@ -41,6 +41,7 @@ A design system is a **product with customers**, not a library: "treat it like a
 - **Split-the-set tests** — split if either is no: (a) is every option crystal clear on sight? (b) is every variant used interchangeably in the same use cases? (Cautionary tale: >20,000 variants.) Nathan Curtis: every addition raises cost and dilutes per-component value.
 - Order props so related ones stack; action-verb booleans; expose nested instances only when key to flows — past an inflection point exposure is information overload.
 - Spec the invisible: i18n/long-string behavior, focus-visible, tab order, ARIA, reflow — "code-only concerns designers skip" (Albaugh/Bergman).
+- **Prework before redesign** (MailChimp): harvest repeated UI into reusable patterns before the visual direction lands; they used CSS size as a proxy and "managed to cut about 120k" before launch. Keep the pattern library as both shortcut and regression test page; deeper slat-system notes → field-notes.
 
 ## Design–code parity & handoff
 

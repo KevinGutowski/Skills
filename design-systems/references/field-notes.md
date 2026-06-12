@@ -15,6 +15,7 @@ Depth moved out of SKILL.md: full source list, worked examples, outcome numbers,
 - [MDS: systems are a dial details](#mds-systems-are-a-dial-details)
 - [Dive Club deltas — full quotes](#dive-club-deltas--full-quotes)
 - [Motion as a design-system layer (Nabors)](#motion-as-a-design-system-layer-rachel-nabors-animation-at-work-a-book-apart-2017)
+- [MailChimp pattern-library prework](#mailchimp-pattern-library-prework-the-ux-reader-2014)
 - [Misc details](#misc-details)
 
 ## Full source list
@@ -121,6 +122,13 @@ Moved to [sources.md](sources.md).
 - **The orchestra metaphor** (Amy Lee, "prototyper at Salesforce by day and musician by night," who first introduced Nabors to interlocking timing values on Lightning): a timing scale "is about an agreed-upon synchronization of animation choreography. Imagine how an orchestra might play together. Without a common timing system, each player would drift through the score at their own rate. However, if we agree that a quarter note is 400ms long, then we all can play together at a peppy tempo of 150 beats per minute."
 - **Microanimation vocabularies** (ch. 4, "Communicating Animation"): combine easing + duration + properties "to create microanimations with descriptive names like 'pop,' 'fade,' and 'slide.'" Microanimations compose into macroanimations — "a modal that fades onto the screen then pops to grab user attention. We might then label that combined animation as an 'alert,' and use it over and over again." Codified, they "form animation vocabularies that yield huge benefits when it comes time to document visual deliverables with text." Lightning ships these as composable presets — "Salesforce engenders brand compliance by providing easy-to-reach-for defaults," choosing "to lead by examples and easy, composable presets, providing a path of least resistance" over lengthy rationale docs.
 - **Pave the onomatopoeia cowpaths**: "Many of these microanimation names start as friendly onomatopoeias around a meeting room table: swoosh, zoom, plonk, boom." People "hold a sound longer to indicate extended duration: 'Can you make it more like *voooooosh* and less like *voosh*?' It makes sense to 'pave the cowpaths' and adopt the words your company is using already."
+
+## MailChimp pattern-library prework (*The UX Reader*, 2014)
+
+- **Refactor before the redesign screenshot exists.** MailChimp started months before seeing the new look, combining repeated CSS into reusable patterns so the redesign had a substrate. Their proxy metric was total CSS size; before launch they "managed to cut about 120k from our CSS."
+- **Pattern library as shortcut + test page.** The first internal "cheat sheet" gave front-end developers a faster way to use shared classes and a page that exposed whether pattern CSS changes broke app screens.
+- **Systemize the boring surfaces.** The slat pattern began on high-traffic dashboards, then generalized to Segments, Conversations, and Exports. The payoff was speed plus quality: "Adapting our slat system to the Exports dashboard took me all of 45 minutes," including mobile.
+- **Parallelize foundation and interior.** One group refined the slat pattern while others worked forms, page structure, and navigation; the shared system let them work independently from "a common place."
 
 ## Misc details
 

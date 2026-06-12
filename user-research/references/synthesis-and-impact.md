@@ -1,6 +1,6 @@
 # Synthesis and Impact — From Field Data to Decisions
 
-Sources: Steve Portigal, *Interviewing Users* (Rosenfeld Media, 2013); Tomer Sharon, *Validating Product Ideas* (Rosenfeld Media, 2016); Erika Hall, *Just Enough Research* (2nd ed., A Book Apart, 2019). Quotes verified.
+Sources: Steve Portigal, *Interviewing Users* (Rosenfeld Media, 2013); Tomer Sharon, *Validating Product Ideas* (Rosenfeld Media, 2016); Erika Hall, *Just Enough Research* (2nd ed., A Book Apart, 2019); MailChimp, *The UX Reader* (2014). Quotes verified.
 
 ## Debrief worksheets — same day, every session
 
@@ -63,3 +63,16 @@ Hall's severity × frequency tiers for usability findings: severity high/moderat
 - Be proactive: propose strategic studies ("digital daily lives") instead of waiting for tactical requests; train others — research isn't just "talking to people."
 
 For winning budget, executive sponsorship, and the business case around research → see the **design-org-influence** skill; Hall's framing to carry there: "facts will never change minds. … In order to influence decisions with evidence, you have to work with existing beliefs, not against them," and "evidence-based design" as the rallying cry.
+
+## Research distribution channels (MailChimp)
+
+MailChimp's *The UX Reader* makes Portigal's impact rule operational: "Research that goes unapplied is of little value," and research "can’t create change in an organization until it has been turned into a compelling story." Do not treat the formal report as the deliverable. Pick channels by attention mode:
+
+- **Posters** for ambient reminders and persona/customer quotes in shared space.
+- **Coffee Hours / Lunch & Learns** for company-wide themes or cross-functional footage review.
+- **Internal newsletters** for small stats, current work, and links to the deeper source.
+- **Mini-documentaries** for empathy transfer: faces, workplaces, tools, and daily struggles.
+- **Collaborative reports** for the durable record and async discussion.
+- **Research evangelists** for the hallway/slack connective tissue: route "you are working on X" to "talk to this person / read this study."
+
+Their distribution rule: "repeat information in different ways through multiple channels." The same finding should become a skimmable artifact, a live conversation, and a durable reference.

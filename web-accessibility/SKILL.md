@@ -83,6 +83,7 @@ The durable practice layer for accessible websites. Standards-era warning up fro
 - **Transcripts are the cheap universal alternative**: they serve deaf users, skimmers, search engines, slow connections, and translators. Publish as plain well-structured HTML with headings and links. **Clean verbatim** (irrelevant noises removed) vs **true verbatim** (every um/er — costlier, more human): choose per content; "[Jessica coughs]" rarely aids understanding, but hesitations can.
 - Include relevant non-speech information in brackets, script-style, with speakers named.
 - **Captions**: WebVTT (`.vtt`) files work for HTML video and YouTube/Vimeo — timestamps, ≤2 lines, break at phrase boundaries (watch TV captions for the craft). Don't trust auto-captioning unedited.
+- **Avoid bitmap text** (Kalbag, *Accessibility for Everyone*, ch. 4): text baked into JPG/GIF/PNG cannot resize cleanly, be read by screen readers, be indexed, be translated, or be revised cheaply. The real exception is a logo. If text must be part of a graphic, SVG text can stay scalable and stylable, but informative graphics still need an accessible name/description or adjacent explanation.
 
 ## 9. The testing program (layered, in order)
 

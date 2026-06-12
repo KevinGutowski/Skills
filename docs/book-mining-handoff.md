@@ -6,6 +6,8 @@ human) picking up where the prior sessions left off. Companion files:
 `docs/mining-ledger.md` (full history + parked candidates + rechecks),
 `docs/skill-listing-budget.md` (description-budget constraints),
 `docs/pending-folds-product-trio.md` (verified quotes ready to fold),
+`docs/book-source-map.md` (processed-book TOCs, chapter summaries, and cross-source
+theme leads for future skill edits),
 `creating-skills/SKILL.md` House Style section (the canonical authoring rules).
 
 ## The pipeline (per book or book-batch)
@@ -23,6 +25,11 @@ human) picking up where the prior sessions left off. Companion files:
      worked examples, decision tables, specific values with reasoning.
    - **Fold-routing table**: lesson → verified quote → target skill / new-skill candidate /
      skip-as-known. Check existing neighbors' SKILL.md before routing.
+   - **Source-map update**: after the screen, add/update `docs/book-source-map.md`
+     with the book's TOC/chapter summaries, density verdict, folded routes, and
+     cross-reference candidates. Use it before future themed edits (e.g. SVG,
+     sketching, typography, metrics) so agents can check already-processed books
+     without rereading the whole corpus.
    - **Fold-vs-create call** under governance (below).
    - **Emit a quotes.json manifest** of all verified quotes (q + src + route) so fold
      agents copy verbatim instead of retyping (kills transcription drift).
