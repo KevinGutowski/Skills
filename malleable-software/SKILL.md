@@ -5,10 +5,7 @@ description: "Design software users can reshape — expose structure instead of 
 
 # Malleable Software
 
-**Sources** — this skill codifies Geoffrey Litt's malleable-software philosophy from three sources:
-- *Dive Club podcast interview with Geoffrey Litt (design engineer at Notion; previously Ink & Switch, MIT PhD), host Ridd, 2025. youtube.com/watch?v=zJf0UeCwQqE. Quotes verified against the auto-transcript; known garbles corrected: "humanity collaboration" = human-AI collaboration, "non-extual" = non-textual, "SAS" = SaaS, "Incan/Incin Switch" = Ink & Switch, "Andy Desessa" = Andrea diSessa.*
-- *"Avoid the nightmare bicycle" — Geoffrey Litt, blog post, March 3, 2025. https://www.geoffreylitt.com/2025/03/03/the-nightmare-bicycle*
-- *"Malleable software: Restoring user agency in a world of locked-down apps" — Geoffrey Litt, Josh Horowitz, Peter van Hardenberg, Todd Matthews. Ink & Switch, June 2025. https://www.inkandswitch.com/essay/malleable-software/*
+**Sources:** [references/sources.md](references/sources.md) — Litt: Dive Club interview + nightmare-bicycle post + Ink & Switch essay. ⚠️ Dive Club quotes come from the auto-transcript with garbles corrected: "humanity collaboration" = human-AI collaboration, "non-extual" = non-textual, "SAS" = SaaS, "Incan/Incin Switch" = Ink & Switch, "Andy Desessa" = Andrea diSessa.
 
 The worldview: "The original promise of personal computing was a new kind of clay—a malleable material that users could reshape at will. Instead, we got appliances: built far away, sealed, unchangeable" (Ink & Switch). Goal: "a software ecosystem where anyone can adapt their tools to their needs with minimal friction." Use this skill as a value system when deciding how much of a product users may reshape, and how.
 

@@ -5,12 +5,7 @@ description: "Builds animations, transitions, and visual effects in SwiftUI — 
 
 # SwiftUI Animation & Visual Effects
 
-**Sources** — this skill aggregates five Apple WWDC sessions:
-- *Session 10145 — "Enhance your UI animations and transitions" (UI Frameworks). https://developer.apple.com/videos/play/wwdc2024/10145/*
-- *Session 10151 — "Create custom visual effects with SwiftUI" (Philip & Robb). https://developer.apple.com/videos/play/wwdc2024/10151/*
-- *WWDC 2026, session 322 — "Compose advanced graphics effects with SwiftUI" (Haotian, UI Frameworks). https://developer.apple.com/videos/play/wwdc2026/322/*
-- *WWDC 2023, session 10156 — "Explore SwiftUI animation" (Kyle Macomber). https://developer.apple.com/videos/play/wwdc2023/10156/*
-- *WWDC 2023, session 10158 — "Animate with springs" (Jacob Xiao). https://developer.apple.com/videos/play/wwdc2023/10158/*
+**Sources:** [references/sources.md](references/sources.md) — 5 Apple WWDC sessions.
 
 Great experiences are the aggregate of many small details, and motion is a big one. This skill covers the SwiftUI animation/effects toolchain — from the zoom transition and SwiftUI↔UIKit animation bridging up the ladder to scroll effects, mesh gradients, custom transitions, per-glyph text animation, and per-pixel Metal shaders. Engineering sibling of `swiftui-lazy-stacks`; the *web* counterpart values live in `web-animation-design` — don't cross-apply.
 

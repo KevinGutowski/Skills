@@ -5,13 +5,7 @@ description: "Run coding agents well on real projects — constrained generation
 
 # Agentic Coding
 
-**Sources** — this skill aggregates four Evil Martians Chronicles posts:
-- *"2 Martians, greenfield to MVP in 4 weeks: agentic coding on Rails" (Stroganov, Nekhina, Turner; engineering voice Svyatoslav Kryukov & Vladimir Dementyev, 2026). https://evilmartians.com/chronicles/2-martians-greenfield-to-mvp-in-4-weeks-agentic-coding-on-rails*
-- *"Vibe coding in style.md" (Nazarova, Dementyev, Turner, 2025). https://evilmartians.com/chronicles/vibe-coding-in-style-dot-md*
-- *"The 4 most common security risks when vibe coding your app" (Torgunakova, Turner, 2026). https://evilmartians.com/chronicles/four-most-common-security-risks-when-vibe-coding-your-app*
-- *"So, your developers use AI now — here's what to know" (Eltsov, Turner, 2026). https://evilmartians.com/chronicles/so-your-developers-use-ai-now-here-is-what-to-know*
-- *Ryo Lu (Head of Design, Cursor) — plan-mode demo interview (youtube.com/watch?v=bdh8k6DyKxE), Dialectic (8ncYSGbfeyY); Jin Park (Notion) at "Building with Cursor" (T8T2gHCKWCE) — the Cursor-school section below.*
-- *Dive Club podcast (2025–26 episodes): Megan Choy (hKeDfupbA4U), Brian Lovin (dvEwb1Ajkwo), Geoffrey Litt (zJf0UeCwQqE), Kyle Santos (HcLz3ikw-n0), NYC panel — Choy, Dan Shipper, Bradley Zipper (V-jd3v9P-Ps), Andy Madrick (IfPK0LwbX_0), Karl Koch (7_VEb9iDW2c); 2026 tranche — Haney, D'Arcy, Batina, Schwaibold, Guo, Goldin, Puckett, Ridd, Santos pt. 2, Ryan M. — the designer-engineers section below; extended notes, full quotes + video IDs in `references/ai-era-field-notes.md`.*
+**Sources:** [references/sources.md](references/sources.md) — 4 Evil Martians posts + Cursor-school interviews + Dive Club 2025–26 episodes. Extended notes, full quotes + video IDs in [references/ai-era-field-notes.md](references/ai-era-field-notes.md).
 
 The core claim: agentic coding "lives on constrained generation; **the quality of those constraints determines the quality of the output**." Three things let a two-person team ship a production MVP in four weeks: an opinionated stack's default constraints, project decisions encoded as reusable rules, and "a senior engineer [who] realizes the vision and catches what the AI misses." The slogan: **"AI needs a prompter, not just a prompt."**
 

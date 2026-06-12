@@ -5,10 +5,7 @@ description: "Sets type on the web — measure, line-height, scales, pairing, Op
 
 # Web Typography
 
-**Sources:**
-- *Richard Rutter, Web Typography (2017)* — the backbone: ~170 named guidelines with CSS and reasoning
-- *Jason Santa Maria, On Web Typography (A Book Apart, 2014)* — the choosing/judgment frameworks
-- *Matej Latin, Better Web Typography for a Better Web (2017)* — triangle covariation rules, language adjustments, scale-vs-grid reconciliation
+**Sources:** [references/sources.md](references/sources.md) — 3 books: Rutter, Santa Maria, Latin.
 
 Use this skill when setting, sizing, pairing, or loading type for the web. References: [rutter-guidelines.md](references/rutter-guidelines.md) (full guideline index), [choosing-and-pairing.md](references/choosing-and-pairing.md) (selection/pairing methods), [opentype-and-micro.md](references/opentype-and-micro.md) (OpenType recipes + character craft).
 

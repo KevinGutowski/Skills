@@ -5,13 +5,7 @@ description: "Design navigation and layout for iOS and iPad — tab bars, push v
 
 # Apple Navigation Design
 
-**Sources** — this skill aggregates four Apple design sessions:
-- *Apple WWDC 2022, session 10001 — "Explore navigation design for iOS" (Sarah McClanahan). https://developer.apple.com/videos/play/wwdc2022/10001/*
-- *Apple WWDC 2022, session 10009 — "What's new in iPad app design" (Bryant Jow & Grant Paul). https://developer.apple.com/videos/play/wwdc2022/10009/*
-- *Apple WWDC 2020, session 10206 — "Designed for iPad" (Grant Paul & Vince Lane). https://developer.apple.com/videos/play/wwdc2020/10206/*
-- *Apple WWDC 2020, session 10640 — "Design for the iPadOS pointer" (Brandon Walkin, Marcos Alonzo, CC Wan, Dylan Edwards). https://developer.apple.com/videos/play/wwdc2020/10640/*
-- *Apple WWDC 2020, session 10205 — "Design with iOS pickers, menus and actions" (Cas Lemmens). https://developer.apple.com/videos/play/wwdc2020/10205/*
-- *Apple WWDC 2025, session 208 — "Elevate the design of your iPad app" (Rene Lee). https://developer.apple.com/videos/play/wwdc2025/208/*
+**Sources:** [references/sources.md](references/sources.md) — 6 Apple WWDC sessions.
 
 Great navigation goes unnoticed — people just focus on content. The job is familiarity: when navigation deviates from natural expectations, the app feels hard to use. This skill covers the three foundational iOS patterns (tab bars, push, modality), what makes an app iPad-native rather than a stretched iPhone app, and pointer interaction.
 

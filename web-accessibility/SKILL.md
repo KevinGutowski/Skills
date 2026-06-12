@@ -5,10 +5,7 @@ description: "Accessible-web practice — semantic HTML first, keyboard/focus, c
 
 # Web Accessibility
 
-**Sources:**
-- *Laura Kalbag, Accessibility for Everyone (A Book Apart, 2017)* — the spine: practice, priority order, testing, org layer
-- *Michael J. Metts & Andy Welfle, Writing Is Designing, ch. 5 "Inclusivity and Accessibility" (Rosenfeld, 2020)* — the writing-accessibly layer
-- *Adham Dannaway, Practical UI (2nd ed., 2024)* and *Wathan & Schoger, Refactoring UI* — the contrast-metrics layer (§5b)
+**Sources:** [references/sources.md](references/sources.md) — Kalbag's Accessibility for Everyone + Writing Is Designing ch. 5 + Practical UI/Refactoring UI.
 
 The durable practice layer for accessible websites. Standards-era warning up front: Kalbag wrote against **WCAG 2.0**; current is **WCAG 2.2** (2.x success criteria are additive, so her criteria still hold) and EAA enforcement began June 2025 — **verify every standards, tooling, or legal specific against current WAI/MDN docs** (see Staleness appendix). Extended passages: [references/source-extracts.md](references/source-extracts.md).
 

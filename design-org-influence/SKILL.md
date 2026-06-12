@@ -5,11 +5,7 @@ description: "Win org buy-in for design via business-case framing. Use when pitc
 
 # Design Org Influence
 
-**Sources** — Femke van Schoonhoven (@femkedesign; design manager, ex-Uber/Wealthsimple), auto-captioned YouTube corpus: VTnT5zFjzfQ (rejection + impact framework; guests Filippos, Florian, Miranda Slater) · -dtCf1DAAKc (strategic framing vs "opportunity cost"; strategic narrative framework) · 2v4mEMAt_80 (influential designer; guests Steven Steiner, Miranda Slater, Angelina Lou) · 7pdqbyJ8Yuc (PM pushback, the four phrases) · crAaxd30NMg (PM roles overlap; Miranda Slater, Craig) · jhtqP9wT8tg (product-thinking designer; quotes Julie Zhuo) · fRdUMGzMNLo (five patterns blocking leading roles) · Up07knsch7I (self-reflections, SBI, her Claude-skill review logger) · rO68VwacBoE (soft skills) · hh1UXn8ZPwc (portfolio; Sarah Doody, Aneta Kmiecik) · uQLAUq4TstI (presenting explorations → design-prototyping).
-
-Plus Dive Club podcast interviews (auto-captioned YouTube): Ryan Scott (ex-DoorDash/Airbnb — LOkdM6frkak), Henry Modisett (Perplexity — Vt3oTBvx7xw), Cam Worboys (Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), Luis Ouriach (Figma — Pn2G7JhxNKc), Brian Lovin (Notion — dvEwb1Ajkwo), Megan Choy (Anthropic — hKeDfupbA4U), NYC panel (V-jd3v9P-Ps), Katarina Batina (Shop app, Shopify — 0YjO7wShTkQ), Polly D'Arcy (Wealthsimple — vdYBohOQYm0), Marvin Schwaibold (Molly Studio → Shopify — KpJs7mZYErg), Tommy Geoco (OYNoy468kS8).
-
-Plus books: Rachel Nabors, *Animation at Work* (A Book Apart, 2017), ch. 4 (animation-adoption case; quotes verified against source) · Chip Heath & Dan Heath, *Made to Stick* (2007), chs. 1-6 (SUCCESs pitch framing) · Leah Buley, *The User Experience Team of One* (Rosenfeld, 2013), chs. 2-3 and 9 (solo-UX influence).
+**Sources:** [references/sources.md](references/sources.md) — Femke corpus + Dive Club interviews + Nabors/Heath/Buley books.
 
 ## Core reframe: it's the framing, not the design
 

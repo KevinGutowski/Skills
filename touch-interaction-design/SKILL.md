@@ -5,10 +5,7 @@ description: "Designs touch controls, gestures, and fluid interactions — a con
 
 # Touch Interaction Design
 
-**Sources** — this skill aggregates two Apple WWDC 2018 sessions:
-- *Session 804 — "The Life of a Button" (Julian, designer/prototyper; Hugo Verweij's sound half lives in `sound-design`). https://developer.apple.com/videos/play/wwdc2018/804/*
-- *Session 803 — "Designing Fluid Interfaces" (Chan Karunamuni, Nathan de Vries, Marcos Alonso — the iPhone X gesture team). https://developer.apple.com/videos/play/wwdc2018/803/*
-- *MDS (Matt D. Smith, Shift Nudge) — live design sessions, YouTube.*
+**Sources:** [references/sources.md](references/sources.md) — 2 Apple WWDC 2018 sessions + MDS.
 
 "Details are designed, even if they seem obvious." A button is an *indirect* controller — the result happens somewhere else — so both the control and its result need designed feedback, separately and connected. The whole talk is one lens: **feedback across the three phases of an interaction — before, during, after** — modeled on a physical button (resting, being pressed, springing back). Two kinds of feedback throughout: **tell** people (text/icons) and **show** people (visual/audio/haptic change over time) — often both, "because I might have missed that animation."
 

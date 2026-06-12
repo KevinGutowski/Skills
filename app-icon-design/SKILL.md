@@ -5,10 +5,7 @@ description: "Design app icons for Apple platforms — timeless craft (metaphor,
 
 # App Icon Design
 
-**Sources** — this skill aggregates three Apple sessions (the timeless craft + the current system):
-- *Apple WWDC 2017, session 822 — "App Icon Design" (Apple Design). https://developer.apple.com/videos/play/wwdc2017/822/*
-- *Apple WWDC 2025, session 220 — "Say hello to the new look of app icons" (Marie). https://developer.apple.com/videos/play/wwdc2025/220/*
-- *Apple WWDC 2025, session 361 — "Create icons with Icon Composer" (Lyam). https://developer.apple.com/videos/play/wwdc2025/361/*
+**Sources:** [references/sources.md](references/sources.md) — 3 WWDC sessions.
 
 "The icon is the face of your app as much as the UI." The craft principles are timeless; the delivery system changed completely in 2025 — icons are now **layered Liquid Glass artworks** that adapt across six appearances, built once and rendered everywhere.
 

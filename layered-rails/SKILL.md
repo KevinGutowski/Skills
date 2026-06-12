@@ -5,11 +5,7 @@ description: "Architect Rails apps the Evil Martians way (Extended Rails Way) �
 
 # Layered Rails (the Extended Rails Way)
 
-**Sources** — this skill aggregates the Evil Martians architecture lineage:
-- *"Gemfile of dreams: the libraries we use to build Rails apps" (Dementyev, 2023, rev. 2026 — a living document, explicitly agent-readable at the URL + ".md"). https://evilmartians.com/chronicles/gemfile-of-dreams-libraries-we-use-to-build-rails-apps*
-- *"Baking with Rails at scale: recipes in Ruby, cookware from Go, C, and Rust" (Nazarova & Kryukov, 2025). https://evilmartians.com/chronicles/baking-with-rails-at-scale-recipes-in-ruby-cookware-from-go-c-rust*
-- *"It deserved its own tome" — layered-design interview (Dementyev, 2023; the book: "Layered Design for Ruby on Rails Applications"). https://evilmartians.com/chronicles/it-deserved-its-own-tome-vladimir-dementyev-on-his-rails-design-book*
-- *Their open-sourced agent skills: https://github.com/palkan/skills/tree/master/layered-rails*
+**Sources:** [references/sources.md](references/sources.md) — the Evil Martians architecture lineage (Gemfile of dreams + 2 more posts + their open-sourced agent skills).
 
 The stance: "not contradicting the Rails Way… we just need to *extend* the Rails Way to better match our use cases." Stick to framework defaults "for as long as you can" (onboarding, free upgrades) — and when you do extract a layer, "if you want to make something look like it was built by the Rails team — do that." Anti-patterns are "patterns that are helpful in the beginning, but may hurt in the long term."
 
