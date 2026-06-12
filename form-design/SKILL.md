@@ -1,6 +1,6 @@
 ---
 name: form-design
-description: "Design web forms — the Dannaway method: single column, field types, 3 button weights, destructive friction. Use for web forms, confirm dialogs, or buttons. Failure copy → error-messages; signup → user-onboarding; Apple forms → apple-navigation-design. Triggers: form layout, radio vs dropdown, checkbox vs toggle, disabled button, destructive action, multi-step form."
+description: "Design web forms — the Dannaway method: single column, field types, 3 button weights, destructive friction. Use for web forms, confirm dialogs, or buttons. Failure copy → error-messages; signup → user-onboarding; Apple forms → apple-design. Triggers: form layout, radio vs dropdown, checkbox vs toggle, disabled button, destructive action, multi-step form."
 ---
 
 # Form Design (Practical UI)
@@ -11,7 +11,7 @@ Form structure, field selection, buttons, validation, and destructive-action fri
 
 Dannaway's conventions are **web-scoped**. Two known conflicts with Apple platforms — never cross-apply:
 
-- **Button alignment.** Dannaway left-aligns buttons everywhere, ordered "from left to right, most important to least important" (he acknowledges right alignment is "a familiar pattern used widely on operating systems like Mac OS"). Apple platforms put the primary action on the right. For Apple-platform forms, sheets, and confirmations, route to `apple-navigation-design` and `hig`.
+- **Button alignment.** Dannaway left-aligns buttons everywhere, ordered "from left to right, most important to least important" (he acknowledges right alignment is "a familiar pattern used widely on operating systems like Mac OS"). Apple platforms put the primary action on the right. For Apple-platform forms, sheets, and confirmations, route to `apple-design` (apple-navigation-design) and `hig`.
 - **Capitalization.** Dannaway: sentence case everywhere — title case "is also harder to read, as the capital letters of each word interrupt scanning." Apple uses title case for many controls; follow `hig` conventions on Apple platforms.
 
 ## 1. Form architecture
@@ -78,7 +78,7 @@ Match friction to severity, in increasing order:
 4. **Heavy:** "use red and include a checkbox" that must be checked before the destructive button works.
 5. **Undo:** "consider allowing people to undo or reverse destructive actions… it removes a lot of risk."
 
-Corroborated by Wathan & Schoger, *Refactoring UI*: a destructive action that isn't the page's primary action gets secondary/tertiary treatment — "Combine this with a confirmation step where the destructive action actually is the primary action, and apply the big, red, bold styling there." Red belongs in the confirmation, not the entry point. Apple destructive confirmations (action sheets, red menu items) → `apple-navigation-design`.
+Corroborated by Wathan & Schoger, *Refactoring UI*: a destructive action that isn't the page's primary action gets secondary/tertiary treatment — "Combine this with a confirmation step where the destructive action actually is the primary action, and apply the big, red, bold styling there." Red belongs in the confirmation, not the entry point. Apple destructive confirmations (action sheets, red menu items) → `apple-design` (apple-navigation-design).
 
 ## 6. Copy crumbs that ride along
 
@@ -100,7 +100,7 @@ Corroborated by Wathan & Schoger, *Refactoring UI*: a destructive action that is
 - [ ] No disabled buttons — enabled+validate, removed, or locked instead
 - [ ] Destructive friction matches severity; red only at confirmation
 - [ ] Labels avoid my/your; buttons are verb+noun
-- [ ] Platform check: web conventions only — Apple forms routed to apple-navigation-design/hig
+- [ ] Platform check: web conventions only — Apple forms routed to apple-design (apple-navigation-design)/hig
 
 ## Relationship to other skills
 
@@ -108,7 +108,7 @@ Corroborated by Wathan & Schoger, *Refactoring UI*: a destructive action that is
 - **user-onboarding** — owns signup-step cutting and which fields exist at all; this skill lays out the fields that survive.
 - **ui-voice-and-tone** — owns the overall voice; this skill carries only form-label/button-text crumbs.
 - **web-accessibility** — owns contrast floors and accessible-form mechanics in depth; the 3:1 / 4.5:1 / 48pt specs here are Dannaway's working subset.
-- **apple-navigation-design** + **hig** — own Apple-platform forms, sheets, and destructive confirmations. Never cross-apply Dannaway's left-aligned buttons or sentence-case-everywhere to Apple platforms.
+- **`apple-design`** (apple-navigation-design) + **hig** — own Apple-platform forms, sheets, and destructive confirmations. Never cross-apply Dannaway's left-aligned buttons or sentence-case-everywhere to Apple platforms.
 - **linear-settings-copy** — owns settings rows and settings IA.
 
 ## Staleness

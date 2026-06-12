@@ -1,11 +1,8 @@
----
-name: app-icon-design
-description: "Design app icons for Apple platforms — timeless craft (metaphor, simplicity, small-size testing) and the layered Liquid Glass icon system via Icon Composer. Use for designing or reviewing an app icon, layered icons, dark/tinted/clear variants, or icons that read poorly small. Triggers: app icon, icon metaphor, Icon Composer, layered icon, tinted icon, dark mode icon."
----
-
 # App Icon Design
 
-**Sources:** [references/sources.md](references/sources.md) — 3 WWDC sessions.
+*Scope: Design app icons for Apple platforms — timeless craft (metaphor, simplicity, small-size testing) and the layered Liquid Glass icon system via Icon Composer. Use for designing or reviewing an app icon, layered icons, dark/tinted/clear variants, or icons that read poorly small. Triggers: app icon, icon metaphor, Icon Composer, layered icon, tinted icon, dark mode icon.*
+
+**Sources:** [app-icon-design/sources.md](app-icon-design/sources.md) — 3 WWDC sessions.
 
 "The icon is the face of your app as much as the UI." The craft principles are timeless; the delivery system changed completely in 2025 — icons are now **layered Liquid Glass artworks** that adapt across six appearances, built once and rendered everywhere.
 
@@ -71,12 +68,12 @@ Apple's Icon Composer engineers + icon designers, on the iOS 27 update:
 - [ ] Background from system gradient presets (not pure white/black)?
 - [ ] Lineage respected — evolution, not reinvention, of the existing identity?
 
-See `references/examples.md` for the worked redesigns (News, Keynote, Podcasts, Chess, Photos, Home, Translate, Calendar, Dictionary).
+See `app-icon-design/examples.md` for the worked redesigns (News, Keynote, Podcasts, Chess, Photos, Home, Translate, Calendar, Dictionary).
 
 ## Relationship to other skills
 
-- **`liquid-glass-design-system`** — the same material; that skill covers it in UI, this one in icons (icon-specific rules like the 4-group cap and mono/tint modes live here).
-- **`ios-brand-identity`** — the icon is the brand's most concentrated expression; brand strategy there, icon craft here. Its "personality from the app icon's visual language" line (widgets) draws from this.
+- **[liquid-glass-design-system.md](liquid-glass-design-system.md)** — the same material; that skill covers it in UI, this one in icons (icon-specific rules like the 4-group cap and mono/tint modes live here).
+- **[ios-brand-identity.md](ios-brand-identity.md)** — the icon is the brand's most concentrated expression; brand strategy there, icon craft here. Its "personality from the app icon's visual language" line (widgets) draws from this.
 - **`logo-design`** — creating the brand mark itself (Peters method). Shared core: metaphor selection and small-size survival. Different task shape: a logo is a containerless multi-format system; an icon is one artwork in an OS-owned container. Logos, badges, identity systems → there.
 - **`naming-features-and-labels`** — metaphor selection parallels its naming criteria (identifiable, travels, ages well).
 - **`swiftui` (sf-symbols)** — glyph craft inside the app; icon glyphs share the simplicity/scale rules but live on the icon grid, not the type baseline.

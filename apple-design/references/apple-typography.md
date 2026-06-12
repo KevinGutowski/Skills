@@ -1,11 +1,8 @@
----
-name: apple-typography
-description: "Use typography well on Apple platforms — the San Francisco family, optical sizes, text styles, and full Dynamic Type support including custom font scaling. Use when choosing system fonts, fixing truncated text at large sizes, or supporting Dynamic Type in SwiftUI or UIKit. Triggers: Dynamic Type, text styles, ScaledMetric, UIFontMetrics, SF Pro, New York font, optical size."
----
-
 # Apple Typography
 
-**Sources:** [references/sources.md](references/sources.md) — 3 Apple WWDC sessions + MDS + Hollick's font internals.
+*Scope: Use typography well on Apple platforms — the San Francisco family, optical sizes, text styles, and full Dynamic Type support including custom font scaling. Use when choosing system fonts, fixing truncated text at large sizes, or supporting Dynamic Type in SwiftUI or UIKit. Triggers: Dynamic Type, text styles, ScaledMetric, UIFontMetrics, SF Pro, New York font, optical size.*
+
+**Sources:** [apple-typography/sources.md](apple-typography/sources.md) — 3 Apple WWDC sessions + MDS + Hollick's font internals.
 
 Great UI typography is about the *dynamic behavior* of text — optical sizes, tracking, and leading are legibility mechanics, not aesthetic trivia. The system fonts handle them automatically; your job is to use **text styles** and system APIs so you inherit that engineering, and to keep it working when type scales up. (For SF Symbols — which are typographic objects too — see `swiftui` (sf-symbols).)
 
@@ -105,14 +102,14 @@ When SF isn't the answer, answer two questions before opening the font menu: **w
 - [ ] System tracking/leading/kerning left alone unless exceptional (and then size-specific)?
 - [ ] Width styles chosen for hierarchy with legibility first; fallback plan for non-Latin scripts?
 
-See `references/code-patterns.md` for all 23 verbatim code samples from the talks, organized by rule.
+See `apple-typography/code-patterns.md` for all 23 verbatim code samples from the talks, organized by rule.
 
 ## Relationship to other skills
 
 - **`swiftui` (sf-symbols)** — the sibling: symbols are typographic objects (baseline-aligned, weight-matched, scaled by Dynamic Type). Type questions here; symbol rendering/animation there.
-- **`ios-brand-identity`** — owns the brand decision (custom typeface vs. system fonts, where type expresses brand); this skill owns the *mechanics* of making either choice work (Dynamic Type, text styles, widths). Its typography section routes here.
+- **[ios-brand-identity.md](ios-brand-identity.md)** — owns the brand decision (custom typeface vs. system fonts, where type expresses brand); this skill owns the *mechanics* of making either choice work (Dynamic Type, text styles, widths). Its typography section routes here.
 - **`design-principles`** — *Craft* (typographic detail) and *Flexibility* (Dynamic Type as accessibility); use it to weigh trade-offs.
 - **`swiftui` (swiftui-lazy-stacks)** — fixed-height text in lazy stacks (line limits, reserved space) interacts with Dynamic Type; check both when text lives in scrolling content.
 - **`design-polish`** — web-oriented typography polish (font smoothing, tabular numbers); this skill is the Apple-platform counterpart.
 - **`web-typography`** — the full web/CSS typography discipline (measure, line-height, scales, pairing, web-font loading); never cross-apply its rules to Apple platforms or vice versa.
-- **`apple-visual-accessibility`** — the audit layer: Dynamic Type/Bold Text are accessibility settings first; audit there, implement the type mechanics here.
+- **[apple-visual-accessibility.md](apple-visual-accessibility.md)** — the audit layer: Dynamic Type/Bold Text are accessibility settings first; audit there, implement the type mechanics here.

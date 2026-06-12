@@ -57,6 +57,6 @@ See `references/examples.md` for the pancake food-truck walkthrough and the per-
 
 - **`data-viz` (chart-selection)** — picks the chart *type* for the data (line vs. bar vs. dot plot…). Choose the form there; design the marks/axes/experience here. They overlap on "bars vs. lines for gappy data" — this skill adds the Apple in-app experience layer.
 - **`data-viz` (tufte-viz)** — the critique lens (data-ink, graphical integrity, chartjunk). Use it to audit what this skill produces; its data-ink instinct matches this skill's "no grids on platters."
-- **`apple-visual-accessibility`** — the broader accessibility settings behind this skill's color and VoiceOver rules (Differentiate Without Color, contrast, Increase Contrast).
+- **`apple-design` (apple-visual-accessibility)** — the broader accessibility settings behind this skill's color and VoiceOver rules (Differentiate Without Color, contrast, Increase Contrast).
 - **`design-principles`** — *Simplicity* (distill data to a graphic, "exactly enough") and *Flexibility*; the "complex data better understood as a graphic" line in its Simplicity section routes here.
 - **`swiftui` (swiftui-lazy-stacks)** — chart platters in scrolling feeds are lazy-stack content; follow its rules for stable layout.

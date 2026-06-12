@@ -1,13 +1,10 @@
----
-name: apple-search-design
-description: "Design search experiences on Apple platforms — field placement and how it signals scope, suggestions, recent searches, scope bars and tokens, no-results states. Use when designing or reviewing in-app search, deciding where search lives, or adding a search tab or tokens. Triggers: search field, search placement, search tab, scope bar, search tokens, no results."
----
-
 # Apple Search Design
+
+*Scope: Design search experiences on Apple platforms — field placement and how it signals scope, suggestions, recent searches, scope bars and tokens, no-results states. Use when designing or reviewing in-app search, deciding where search lives, or adding a search tab or tokens. Triggers: search field, search placement, search tab, scope bar, search tokens, no results.*
 
 *Source: Apple WWDC 2026, session 292 — "Design intuitive search experiences" (Rob, Apple Design team). https://developer.apple.com/videos/play/wwdc2026/292*
 
-Search is often the first thing people reach for, and how effortless it feels depends mostly on **where it lives** and **how it helps before and after typing**. This skill covers the system Search Field, the placement decision, and the interaction best practices — for iOS, iPad, and Mac. (For the *visual* side of a branded search field, see `ios-brand-identity`.)
+Search is often the first thing people reach for, and how effortless it feels depends mostly on **where it lives** and **how it helps before and after typing**. This skill covers the system Search Field, the placement decision, and the interaction best practices — for iOS, iPad, and Mac. (For the *visual* side of a branded search field, see [ios-brand-identity.md](ios-brand-identity.md).)
 
 ## The Search Field
 
@@ -76,14 +73,14 @@ Ask two questions:
 - [ ] Right refine control (scope bar / filters / tokens), with tokens backed by visible filter UI?
 - [ ] A considered no-results state that echoes the query?
 
-See `references/patterns.md` for the full placement examples and decision walkthroughs.
+See `apple-search-design/patterns.md` for the full placement examples and decision walkthroughs.
 
 ## Relationship to other skills
 
 - **`design-principles`** is the parent — search placement is *Familiarity* (use the conventional component and location), *Simplicity* (fewest steps to a result), and *Flexibility* (adapt across iOS/iPad/Mac). Use it to resolve trade-offs; use this skill for the concrete search patterns.
-- **`liquid-glass-design-system`** — the material behind the glass search field and the dedicated bottom Search tab; placement patterns here, material rules there.
-- **`apple-navigation-design`** — answers this skill's first question, "how do people navigate my app?" (tabs, push, modality, sidebars). Structure navigation there, then place search here; nav-bar search filters the current view, whole-app search gets a search tab.
-- **`ios-brand-identity`** — covers how a branded/custom search field should still keep the magnifying glass and native feel. Sibling skill; use together when search is part of a branded UI.
+- **[liquid-glass-design-system.md](liquid-glass-design-system.md)** — the material behind the glass search field and the dedicated bottom Search tab; placement patterns here, material rules there.
+- **[apple-navigation-design.md](apple-navigation-design.md)** — answers this skill's first question, "how do people navigate my app?" (tabs, push, modality, sidebars). Structure navigation there, then place search here; nav-bar search filters the current view, whole-app search gets a search tab.
+- **[ios-brand-identity.md](ios-brand-identity.md)** — covers how a branded/custom search field should still keep the magnifying glass and native feel. Sibling skill; use together when search is part of a branded UI.
 - **`swiftui` (swiftui-lazy-stacks)** — search results are usually a scrolling list; that skill governs the lazy-stack/scroll implementation beneath the results.
 - **`naming-features-and-labels`** — for the placeholder text and scope/filter labels (clear, scope-signaling wording).
 - **`error-messages`** — the no-results view is an empty state, not a failure; keep it neutral and helpful rather than error-toned.

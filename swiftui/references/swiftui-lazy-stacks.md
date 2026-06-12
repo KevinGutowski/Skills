@@ -96,7 +96,7 @@ See `swiftui-lazy-stacks/code-patterns.md` for fuller before/after examples (vie
 
 This is the first **Apple-platform engineering** skill in the library — it's about SwiftUI *implementation*, distinct from the platform-agnostic design/copy skills. It's the build layer beneath the design-pattern skills:
 
-- **`apple-search-design`** and **`ios-brand-identity`** decide *what* scrolling/search/branded UI to build; this skill governs *how* the SwiftUI scrolling that realizes them performs.
+- **`apple-design` (apple-search-design)** and **`apple-design` (ios-brand-identity)** decide *what* scrolling/search/branded UI to build; this skill governs *how* the SwiftUI scrolling that realizes them performs.
 - **`design-principles`** — the *Craft* principle (responsive, hitch-free scrolling) is what these rules operationalize in SwiftUI.
 - **[swiftui-animation.md](swiftui-animation.md)** — the sibling for animations, transitions, and visual effects; its scroll effects (`scrollTransition`, parallax) must respect this skill's Rule 3 (no out-of-frame transforms). Animate there; keep scrolling correct here.
 - **[swiftui-layout.md](swiftui-layout.md)** — the sibling for choosing containers and building custom ones; Rule 7's custom-`Layout` fix is implemented there (Layout protocol, ViewThatFits, AnyLayout), and its container table says when lazy is even warranted.

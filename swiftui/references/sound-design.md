@@ -87,7 +87,7 @@ See `sound-design/apple-sound-stories.md` for how Apple's own sounds were made (
 
 - **[touch-interaction-design.md](touch-interaction-design.md)** — the other half of "The Life of a Button": the visual/touch feedback this sound layer pairs with.
 - **`design-principles`** — *Craft* and *Delight*; sound is delight's most easily-overdone channel — "silence is golden" is the trade-off to weigh there.
-- **`ios-brand-identity`** — sound is a brand layer beyond the visual (the talk's identity argument); fold a sound palette into the brand decision there.
+- **`apple-design` (ios-brand-identity)** — sound is a brand layer beyond the visual (the talk's identity argument); fold a sound palette into the brand decision there.
 - **`ui-voice-and-tone`** — sound is tone without words; a celebratory chime and a clinical alert follow the same dial logic as copy.
-- **`apple-visual-accessibility`** — sound must never be the *only* channel (mirror of color-alone); pair with visual + haptic.
+- **`apple-design` (apple-visual-accessibility)** — sound must never be the *only* channel (mirror of color-alone); pair with visual + haptic.
 - **`notification-design`** — whether/when to notify lives there; this skill makes the sound that arrives worth hearing.

@@ -106,10 +106,10 @@ A design system is a **product with customers**, not a library: "treat it like a
 
 ## Relationship to other skills
 
-- **`liquid-glass-design-system`** — consuming Apple's *platform* design system; this skill is about *owning* one. The panel's "respect the platform: 80% Android, 20% Microsoft" is the bridge rule.
-- **`ios-brand-identity`** — where brand may live inside a platform's system; this skill governs the brand's own token/theming machinery.
+- **`apple-design` (liquid-glass-design-system)** — consuming Apple's *platform* design system; this skill is about *owning* one. The panel's "respect the platform: 80% Android, 20% Microsoft" is the bridge rule.
+- **`apple-design` (ios-brand-identity)** — where brand may live inside a platform's system; this skill governs the brand's own token/theming machinery.
 - **`oklch-skill`** — the color math behind programmable tokens (hover = L+0.1, dark = mirror L).
-- **`apple-typography`** — type mechanics (grade, optical sizes, metrics) that a DS's type layer must encode.
+- **`apple-design` (apple-typography)** — type mechanics (grade, optical sizes, metrics) that a DS's type layer must encode.
 - **`devtool-interface-design`** — the DS team's tooling (dashboards, linters, theming editors) is an internal devtool; its onboarding/AX rules apply.
 - **`agentic-coding`** / **`design-prototyping`** — DS-as-AI-context is the constrained-generation stance applied to UI; prototype-with-the-system before codifying ownership.
 - **`ai-enablement`** — rollout, pilots, and training for the AI-context layer.

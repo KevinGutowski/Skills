@@ -51,8 +51,8 @@ Two layout strategies: **expanding** (same layout gains info per size — Weathe
 
 ## Relationship to other skills
 
-- **`ios-brand-identity`** — widgets extend brand beyond the app (its Crumbl example); decide the brand expression there, apply these widget rules here.
-- **`app-intents-design`** — widget configuration and (iOS 17+) interactive widgets run on App Intents; structure the intents there.
+- **`apple-design` (ios-brand-identity)** — widgets extend brand beyond the app (its Crumbl example); decide the brand expression there, apply these widget rules here.
+- **`apple-design` (app-intents-design)** — widget configuration and (iOS 17+) interactive widgets run on App Intents; structure the intents there.
 - **`chart-experience-design`** — a chart in a widget is a small static platter: no grids/labels, preview of a detail chart "a tap away."
-- **`apple-typography`** / **[sf-symbols.md](sf-symbols.md)** — the type and symbol mechanics inside the widget.
+- **`apple-design` (apple-typography)** / **[sf-symbols.md](sf-symbols.md)** — the type and symbol mechanics inside the widget.
 - **`design-principles`** — *Simplicity* ("exactly enough" is the entire widget brief) and *Flexibility* (contextual relevance).

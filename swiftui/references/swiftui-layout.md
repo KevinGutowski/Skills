@@ -4,7 +4,7 @@
 
 **Sources:** [swiftui-layout/sources.md](swiftui-layout/sources.md) — 5 WWDC SwiftUI sessions (2020–2022).
 
-SwiftUI layout primitives are designed for **composition** — when one type isn't enough, combine it with a complementary one. This skill covers picking the right container, building custom ones with the `Layout` protocol, and the structure layer (split views, tables, toolbars) that the design rules in `apple-navigation-design` get implemented with.
+SwiftUI layout primitives are designed for **composition** — when one type isn't enough, combine it with a complementary one. This skill covers picking the right container, building custom ones with the `Layout` protocol, and the structure layer (split views, tables, toolbars) that the design rules in `apple-design` (apple-navigation-design) get implemented with.
 
 ## Choosing a container
 
@@ -38,11 +38,11 @@ WWDC26 Group Lab ruling (7g-Xg5xiH4o): don't build `MyCustomButton` wrapper view
 
 ## App structure (split views, tables, toolbars)
 
-- **`NavigationSplitView`** — two columns (sidebar+detail) or three (+content); styles `.automatic` (recommended)/`.balanced`/`.prominentDetail`; collapses to a stack in compact. This is the implementation of `apple-navigation-design`'s sidebar patterns. "Start with NavigationSplitView when it makes sense" — it adapts down to iPhone free.
+- **`NavigationSplitView`** — two columns (sidebar+detail) or three (+content); styles `.automatic` (recommended)/`.balanced`/`.prominentDetail`; collapses to a stack in compact. This is the implementation of `apple-design` (apple-navigation-design)'s sidebar patterns. "Start with NavigationSplitView when it makes sense" — it adapts down to iPhone free.
 - **Data-driven navigation (the cookbook):** links present *values*, not views — `NavigationLink(title, value:)` + `.navigationDestination(for:)` maps value types to views; `NavigationStack(path: $path)` binds the whole stack to a collection. **Deep link by mutating the path; pop to root with `path = []`**; heterogeneous values use type-erasing `NavigationPath`. In a split view, a value link inside a `List(selection:)` of matching type drives selection automatically; compose a NavigationStack *inside* the detail column for push-within-column. ⚠️ **Never attach `navigationDestination` inside a lazy container** (List/Table/LazyVGrid) — the destination may not be loaded when needed; attach it outside the ScrollView, near its links. **State restoration:** keep navigation state in one Codable model — encode **ids, not model values** ("I don't want my navigation state to contain stale data"), decode with `compactMap`, persist via `@SceneStorage` + a task that restores on appear and saves on change. Binding-based programmatic `NavigationLink(isActive:)` is deprecated since iOS 16.
 - **`Table`** — column builder (`TableColumn("Name", value: \.name) { … }`); sortable via `sortOrder: $sortOrder` + `KeyPathComparator` (Table doesn't sort your data — do it in `onChange`). In compact widths a Table shows **only its first column** — keep the Table (don't swap to List) to preserve scroll/selection; make column one the compact representation. iPad tables don't scroll horizontally — budget columns.
 - **Selection** = tags + state: tags auto-synthesize from identity; all tags in a container share one type; selection binding can be optional single, required (macOS sidebar), or `Set` for multi-select. iPadOS 16+: keyboard multi-select without edit mode, two-finger pan to select — but still offer an `EditButton` ("a good iPad app shines both with and without the keyboard").
-- **`.contextMenu(forSelectionType:)`** — one modifier, three cases: empty set (empty-area menu → create), one item, many items. Implements `apple-navigation-design`'s empty-area/selection menu patterns.
+- **`.contextMenu(forSelectionType:)`** — one modifier, three cases: empty set (empty-area menu → create), one item, many items. Implements `apple-design` (apple-navigation-design)'s empty-area/selection menu patterns.
 - **Toolbars** — don't hand-roll a "More" ellipsis menu: put controls in a `ToolbarItemGroup` and the system overflows automatically. `.secondaryAction` placement for useful-but-not-primary (defaults into overflow); `.toolbarRole(.editor)` moves the title leading so secondary actions can render center. **Customizable toolbars:** `.toolbar(id:)` + stable `id` on every `ToolbarItem` (persisted); on iPadOS only secondary actions are customizable. `ControlGroup` (with a label) groups items that customize as a unit and can collapse to a menu. `ShareLink` for sharing (`Transferable`).
 - **Titles & documents** — `.navigationTitle(title) { actions }` adds a title menu ("like the File menu on macOS"); pass a **Binding** + `RenameButton()` for inline rename; `.navigationDocument(url)` adds a draggable document header + macOS proxy icon, even outside `DocumentGroup`.
 
@@ -63,8 +63,8 @@ See `swiftui-layout/layout-code.md` (containers + Layout protocol, verbatim) and
 ## Relationship to other skills
 
 - **[swiftui-lazy-stacks.md](swiftui-lazy-stacks.md)** — owns the lazy-scrolling deep rules (estimation, prefetching); this skill owns the *choice* of container and custom layouts. Its Rule 7 (custom `Layout` over post-appear relayout) is implemented here.
-- **`apple-navigation-design`** — the design layer this implements: sidebars/tab bars → `NavigationSplitView`; desktop-class tables/toolbars/selection menus → `Table`/`.toolbar(id:)`/`contextMenu(forSelectionType:)`. Decide structure there; build it here.
-- **`apple-typography`** — `ViewThatFits` + `AnyLayout` are the tools behind its accessibility-size layout flips.
+- **`apple-design` (apple-navigation-design)** — the design layer this implements: sidebars/tab bars → `NavigationSplitView`; desktop-class tables/toolbars/selection menus → `Table`/`.toolbar(id:)`/`contextMenu(forSelectionType:)`. Decide structure there; build it here.
+- **`apple-design` (apple-typography)** — `ViewThatFits` + `AnyLayout` are the tools behind its accessibility-size layout flips.
 - **[swiftui-animation.md](swiftui-animation.md)** — `AnyLayout` switching animates via structural identity; motion specifics there.
 - **[swiftui-identity.md](swiftui-identity.md)** — the identity/lifetime model beneath ForEach identifier choices and `_ConditionalContent` branching; route state-reset and wrong-row bugs there.
-- **`liquid-glass-design-system`** — toolbar grouping and sidebar behavior on glass; the material rules constrain what these APIs should produce.
+- **`apple-design` (liquid-glass-design-system)** — toolbar grouping and sidebar behavior on glass; the material rules constrain what these APIs should produce.

@@ -21,7 +21,7 @@
 | Increase Contrast | system colors auto; asset-catalog High Contrast variants | `\.colorSchemeContrast` | Darker in Light Mode, lighter in Dark; ≥4.5:1 |
 | Smart Invert | `accessibilityIgnoresInvertColors` on views (iOS 11) | `.accessibilityIgnoresInvertColors()`* | Flag photos/videos/icons to opt out of inversion |
 | Bold Text | `UIAccessibility.isBoldTextEnabled` | `\.legibilityWeight` | Heavier weights for custom fonts (system styles free) |
-| Larger text | `traitCollection.preferredContentSizeCategory` | `\.dynamicTypeSize` | See `apple-typography` |
+| Larger text | `traitCollection.preferredContentSizeCategory` | `\.dynamicTypeSize` | See [apple-typography.md](../apple-typography.md) |
 | Reduce Motion | `UIAccessibility.isReduceMotionEnabled` | `\.accessibilityReduceMotion` | Drop idle/parallax/autoplay motion |
 | Cross-Fade Transitions | `UIAccessibility.prefersCrossFadeTransitions` (iOS 14) | — (system nav free) | Replace slides with dissolves in custom transitions |
 | Video Autoplay | `UIAccessibility.isVideoAutoplayEnabled` (iOS 13) | `\.accessibilityPlayAnimatedImages`* (related) | Require interaction; show play/pause |

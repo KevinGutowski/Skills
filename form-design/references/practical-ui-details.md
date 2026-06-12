@@ -39,7 +39,7 @@ Order left to right, most → least important:
 - The most-used button placed first decreases interaction cost.
 - Mobile: stack top to bottom, most → least important, full-width (one-handed reach for left- and right-handers).
 
-**Small dialog boxes — the honest debate.** Dannaway left-aligns "for consistency" but concedes "Right alignment can work well too, as long as buttons have a clear visual hierarchy." For right: forward/backward momentum mapping, and "It's a familiar pattern used widely on operating systems like Mac OS." For left: Windows-OS/web familiarity and product-wide consistency. (Apple platforms: follow Apple — `apple-navigation-design`/`hig`.)
+**Small dialog boxes — the honest debate.** Dannaway left-aligns "for consistency" but concedes "Right alignment can work well too, as long as buttons have a clear visual hierarchy." For right: forward/backward momentum mapping, and "It's a familiar pattern used widely on operating systems like Mac OS." For left: Windows-OS/web familiarity and product-wide consistency. (Apple platforms: follow Apple — `apple-design` (apple-navigation-design)/`hig`.)
 
 **Multi-step forms.** Right-aligned primary + bottom-left Back is problematic: prominent Back invites mis-clicks that "lose the data they just entered"; the primary lands further from the fields. Instead keep the primary left-aligned and "Put a tertiary 'Back' button at the top left of the form" — matching browser/breadcrumb convention and letting people go back without scrolling to the bottom.
 

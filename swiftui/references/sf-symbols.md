@@ -4,7 +4,7 @@
 
 **Sources:** [sf-symbols/sources.md](sf-symbols/sources.md) — 5 Apple WWDC sessions (2019–2025) + MDS + the lost "Designing Glyphs" session.
 
-SF Symbols (6,000+) solve icon design's core problem: pairing symbols with text. Symbols are **typographic objects** — specified in font point sizes, sitting on the text baseline, drawn in all nine weights to match San Francisco — so they scale with Dynamic Type and localize automatically. (For the type system itself, see `apple-typography`.)
+SF Symbols (6,000+) solve icon design's core problem: pairing symbols with text. Symbols are **typographic objects** — specified in font point sizes, sitting on the text baseline, drawn in all nine weights to match San Francisco — so they scale with Dynamic Type and localize automatically. (For the type system itself, see `apple-design` (apple-typography).)
 
 ## Symbols behave like text
 
@@ -65,7 +65,7 @@ Field practice for drawing your own icons (upstream of the SF Symbols template p
 
 From WWDC 2017 session 823 — the conceptual layer MDS's drawing mechanics sit on. Glyphs are "for the most part… monochromatic and should be colorized programmatically."
 
-- **Conceptualize: "simplify and think globally."** Specific objects don't travel (cheeseburger/pizza/ice cream for *delicious* — people don't relate to them the same way); faces, mouths, and body parts "can be seen as inappropriate" in some cultures; abstract to the universal feeling instead (a **heart** for delicious). See `apple-visual-accessibility` for the wider global-iconography spectrum.
+- **Conceptualize: "simplify and think globally."** Specific objects don't travel (cheeseburger/pizza/ice cream for *delicious* — people don't relate to them the same way); faces, mouths, and body parts "can be seen as inappropriate" in some cultures; abstract to the universal feeling instead (a **heart** for delicious). See `apple-design` (apple-visual-accessibility) for the wider global-iconography spectrum.
 - **Make sets family** — three levers: **optical weight** (narrow/elliptical shapes have less surface area — scale them *past* the shared vertical bounds until they balance), **line weight** (normalize stroke weight across the set, including gaps/negative space — inconsistent weight makes some glyphs look more emphasized "and they just don't family well"), **optical positioning** (asymmetric glyphs perfectly centered "just look off" — nudge a play triangle right, a share arrow up; you can "bake this padding right into the asset" so integration is a plain center + asset swap).
 - **Match type:** "consider the relationship between type and the glyphs" — light type → matching thin lines; heavy type → weighted or filled glyphs.
 - **Adapt for system spaces** (quick actions, system bars): mirror the platform's shared glyphs; these run "a bit larger and heavier than their in-app counterparts."
@@ -87,8 +87,8 @@ See `sf-symbols/evolution-and-examples.md` for the version-by-version history, t
 
 ## Relationship to other skills
 
-- **`apple-typography`** — the sibling: symbols are typographic objects; Dynamic Type scaling, text styles, and `SymbolConfiguration(textStyle:)` live at the boundary. Type mechanics there; symbol rendering/animation here.
-- **`ios-brand-identity`** — owns the *brand* decision (custom iconography vs. SF Symbols, platform-true icon style); this skill owns the symbol *mechanics* either way. Its iconography section routes here.
+- **`apple-design` (apple-typography)** — the sibling: symbols are typographic objects; Dynamic Type scaling, text styles, and `SymbolConfiguration(textStyle:)` live at the boundary. Type mechanics there; symbol rendering/animation here.
+- **`apple-design` (ios-brand-identity)** — owns the *brand* decision (custom iconography vs. SF Symbols, platform-true icon style); this skill owns the symbol *mechanics* either way. Its iconography section routes here.
 - **`design-principles`** — *Familiarity* (symbols carry established meaning — don't hijack them; see also `naming-features-and-labels` on the trash-can rule) and *Craft*/*Delight* (purposeful animation).
 - **[swiftui-animation.md](swiftui-animation.md)** — general SwiftUI animation/transitions/effects; use this skill's semantic presets for symbols before hand-rolling motion there.
 - **`web-animation-design`** / **`motion`** — web/CSS animation values don't transfer; symbol animation is its own system with semantic presets.

@@ -1,6 +1,6 @@
 ---
 name: web-typography
-description: "Sets type on the web — measure, line-height, scales, pairing, OpenType, font loading. Use when styling CSS text or choosing/pairing/loading fonts. Apple platforms → apple-typography; rendering internals → graphics-fundamentals. Triggers: line-height, measure, font pairing, type scale, web fonts, font-display, FOUT, font-feature-settings, tabular numbers, fluid typography"
+description: "Sets type on the web — measure, line-height, scales, pairing, OpenType, font loading. Use when styling CSS text or choosing/pairing/loading fonts. Apple platforms → apple-design; rendering internals → graphics-fundamentals. Triggers: line-height, measure, font pairing, type scale, web fonts, font-display, FOUT, font-feature-settings, tabular numbers, fluid typography"
 ---
 
 # Web Typography
@@ -121,7 +121,7 @@ Durable: everything above. Decayed specifics:
 
 ## Relationship to other skills
 
-- **`apple-typography`** — Apple platforms (SF, Dynamic Type, text styles). Never cross-apply: web rules here, platform rules there.
+- **`apple-design` (apple-typography)** — Apple platforms (SF, Dynamic Type, text styles). Never cross-apply: web rules here, platform rules there.
 - **`graphics-fundamentals`** — the rendering-mechanism *why* (rasterization, hinting, font internals, half-leading) lives there.
 - **`frontend-design`** — interface-level aesthetics and page generation; this skill is the text-setting discipline inside it.
 - **`design-polish`** / **`design-polish` (emil-kowalski reference)** — the polish-tip layer (tabular-nums, font smoothing, text-wrap); this is the deeper reference behind those tips.

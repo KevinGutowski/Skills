@@ -1,6 +1,6 @@
 ---
 name: web-accessibility
-description: "Accessible-web practice — semantic HTML first, keyboard/focus, contrast, testing. Use for building or auditing accessible sites. Apple → apple-visual-accessibility; type → web-typography; error copy → error-messages; disabled-participant research → user-research. Triggers: web accessibility, WCAG, a11y audit, screen reader, keyboard navigation, ARIA, alt text, focus management."
+description: "Accessible-web practice — semantic HTML first, keyboard/focus, contrast, testing. Use for building or auditing accessible sites. Apple → apple-design; type → web-typography; error copy → error-messages; disabled-participant research → user-research. Triggers: web accessibility, WCAG, a11y audit, screen reader, keyboard navigation, ARIA, alt text, focus management."
 ---
 
 # Web Accessibility
@@ -40,7 +40,7 @@ The durable practice layer for accessible websites. Standards-era warning up fro
 
 - High contrast is the default aim, but **too-high contrast harms too**: "if the contrast between text and background is too high, the text can appear to dance on screen. … **People with SSS find that high-contrast text appears to shimmer or wobble on the screen**" (scotopic sensitivity syndrome). Near-black on near-white usually beats pure #000-on-#fff.
 - **Big or bold type buys contrast headroom**: size and weight "will do some of the work of distinguishing text from background," freeing slightly lower-contrast palettes.
-- **Grayscale check** (Geri Coady, via Kalbag): work in or convert to grayscale to verify text survives without hue — also catches color-only meaning. Ratio math, bands, and APCA → `apple-visual-accessibility` §contrast and `web-typography`.
+- **Grayscale check** (Geri Coady, via Kalbag): work in or convert to grayscale to verify text survives without hue — also catches color-only meaning. Ratio math, bands, and APCA → `apple-design` (apple-visual-accessibility) §contrast and `web-typography`.
 
 ### 5b. Contrast metrics & compliance tactics
 
@@ -129,7 +129,7 @@ Durable: everything above. Decayed:
 
 ## Relationship to other skills
 
-- **`apple-visual-accessibility`** — Apple-platform counterpart (settings, VoiceOver, contrast math/APCA mechanism); platform split mirrors apple-/web-typography.
+- **`apple-design` (apple-visual-accessibility)** — Apple-platform counterpart (settings, VoiceOver, contrast math/APCA mechanism); platform split mirrors apple-/web-typography.
 - **`web-typography`** — owns type-specific contrast, sizing, and measure; this skill owns the broader practice around it.
 - **`error-messages`** — the error copy itself; this skill owns the delivery mechanics (`aria-live`, placement).
 - **`user-research`** — full method for research/testing with disabled participants; this skill carries only the recruiting discipline.

@@ -2,7 +2,7 @@
 
 Figma Config talks, 2024–25:
 
-- *"Design systems best practices" (Figma Designer Advocates, 2024)* · *"Unifying design and development through design systems" (panel: Marcel Weekes/Figma, Tali Krakowsky Appel/Coinbase, Samira Rahimi/Uber & ex-Microsoft, 2025)* · *"The value of opinions in design systems" (Nate Baldwin, Intuit, 2024)* · *"Delivering a multi-sub-brand design system for e-commerce" (Zalando, 2024)* · *"Building design systems together" (Jake Albaugh & Chad Bergman, Figma, 2025)* · *"Design systems for XL displays" (Alaska Airlines Auro, 2024)* · *"Programmable colors" (Evil Martians, 2025)* · *"Unlocking creativity with GitHub and Figma" (Diana Mounter & Cole Bemis, 2025)* · *"Typography is the foundation of any design system" (Elliot Jay Stocks, 2025 — type specifics live in `apple-typography`)*.
+- *"Design systems best practices" (Figma Designer Advocates, 2024)* · *"Unifying design and development through design systems" (panel: Marcel Weekes/Figma, Tali Krakowsky Appel/Coinbase, Samira Rahimi/Uber & ex-Microsoft, 2025)* · *"The value of opinions in design systems" (Nate Baldwin, Intuit, 2024)* · *"Delivering a multi-sub-brand design system for e-commerce" (Zalando, 2024)* · *"Building design systems together" (Jake Albaugh & Chad Bergman, Figma, 2025)* · *"Design systems for XL displays" (Alaska Airlines Auro, 2024)* · *"Programmable colors" (Evil Martians, 2025)* · *"Unlocking creativity with GitHub and Figma" (Diana Mounter & Cole Bemis, 2025)* · *"Typography is the foundation of any design system" (Elliot Jay Stocks, 2025 — type specifics live in `apple-design` (apple-typography))*.
 
 Plus:
 

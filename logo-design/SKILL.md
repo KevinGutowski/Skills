@@ -1,6 +1,6 @@
 ---
 name: logo-design
-description: "Create brand marks, badges, and identity systems via the Peters method — brand nouns, 50 sketches, noun combination, B/W presentation. Use when designing or evolving a logo or decoding 'make the logo bigger'. App icons → app-icon-design; brand in iOS → ios-brand-identity. Triggers: logo design, brand mark, logomark, brand identity, badge design, rebrand, logo presentation."
+description: "Create brand marks, badges, and identity systems via the Peters method — brand nouns, 50 sketches, noun combination, B/W presentation. Use when designing or evolving a logo or decoding 'make the logo bigger'. App icons and brand in iOS → apple-design. Triggers: logo design, brand mark, logomark, brand identity, badge design, rebrand, logo presentation."
 ---
 
 # Logo Design (the Peters Method)
@@ -115,10 +115,10 @@ Order of attack: functional pain points first (ask the client what breaks in rep
 
 ## Relationship to other skills
 
-- **`app-icon-design`** — shared core (metaphor selection, simplicity, small-size testing: Peters' thin-lines/negative-space diagnosis = the squint/blur test family). Different task shape: an icon is a single artwork inside an OS-owned container and rendering system; a logo is a containerless multi-format system. Route icon work there.
+- **`apple-design` (app-icon-design)** — shared core (metaphor selection, simplicity, small-size testing: Peters' thin-lines/negative-space diagnosis = the squint/blur test family). Different task shape: an icon is a single artwork inside an OS-owned container and rendering system; a logo is a containerless multi-format system. Route icon work there.
 - **`naming-features-and-labels`** — the noun-metaphor move (abstract value → concrete noun) is the visual twin of its candidate-generation exercises; its criteria judge the brand *name* this skill draws marks for.
 - **`client-engagements`** — the presentation protocol and silent ballot here are logo-specific instances of its feedback system; qualification, kickoff, and failure handling for the engagement live there.
-- **`ios-brand-identity`** — once the identity exists, expressing it natively in an app (tint, type, components) is that skill's job.
+- **`apple-design` (ios-brand-identity)** — once the identity exists, expressing it natively in an app (tint, type, components) is that skill's job.
 - **`pricing-creative-work`** — the six-week scoped process is the thing being priced; pricing itself lives there.
 
 ## Staleness note

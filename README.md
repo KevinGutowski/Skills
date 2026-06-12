@@ -11,8 +11,8 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `design-prototyping` | Validating ideas before building: fake-it → SwiftUI-as-design-tool → coding agents (incl. Cursor's design-in-code endpoint); presenting design work |
 | `interface-craft-principles` | *(local-only, gitignored — members-only source)* Quality practice (Josh Puckett): noticing, range→depth, facets of quality, live tuning, uncommon care. Its core heuristics are also folded into `design-principles` and `design-prototyping` |
 | `naming-features-and-labels` | What to call a feature, label, plan, button |
-| `logo-design` | Brand marks, badges, identity systems — the Peters method (brand nouns → 50 sketches → B/W presentation); app icons → `app-icon-design` |
-| `form-design` | Web form structure, field types, buttons, validation flows — the Dannaway method; form copy → the words chain; Apple forms → `apple-navigation-design` |
+| `logo-design` | Brand marks, badges, identity systems — the Peters method (brand nouns → 50 sketches → B/W presentation); app icons → `apple-design` (app-icon-design) |
+| `form-design` | Web form structure, field types, buttons, validation flows — the Dannaway method; form copy → the words chain; Apple forms → `apple-design` (apple-navigation-design) |
 | `feature-discoverability` | First launches, tips/TipKit, features users can't find |
 | `user-onboarding` | First-run flows, empty states, onboarding copy (Hulick method) |
 | `learning-experience-design` | Courses, workshops, internal training, tutorials, job aids — gap diagnosis, practice, feedback, motivation, transfer (Dirksen method) |
@@ -31,17 +31,12 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | Skill | Use it for |
 |---|---|
 | `hig` | **Lookup router**: topic map + fetch method for the canonical HIG; current letter-of-the-law specs; staleness tiebreaker |
-| `liquid-glass-design-system` | The current design language: the glass material, system anatomy, migration playbook |
-| `apple-navigation-design` | Tabs, push, modality, menus, iPad layout/windowing, pointer |
-| `apple-search-design` | Search placement, suggestions, scope bars/tokens, no-results |
-| `apple-typography` | SF family, Dynamic Type, text styles |
 | `sf-symbols` | Symbol usage, rendering modes, animations, custom symbols |
-| `apple-visual-accessibility` | Accessibility settings, contrast, inclusive design |
-| `ios-brand-identity` | Expressing brand without breaking native feel |
-| `app-icon-design` | Icon craft + the layered Liquid Glass icon system / Icon Composer |
-| `widget-design`, `notification-design`, `app-intents-design` | Those system surfaces |
+| `widget-design`, `notification-design` | Those system surfaces |
 | `chart-experience-design` | In-app charts and the experience around them |
 | `sound-design`, `touch-interaction-design` | Audio/haptics; gesture feel and fluid interfaces |
+
+`apple-design` — one consolidated skill; its body routes to reference files: apple-navigation-design (tabs, push, modality, menus, iPad layout/windowing, pointer), apple-search-design (search placement, suggestions, scope bars/tokens, no-results), apple-typography (SF family, Dynamic Type, text styles), apple-visual-accessibility (accessibility settings, contrast, inclusive design), liquid-glass-design-system (the current design language: the glass material, system anatomy, migration playbook), ios-brand-identity (expressing brand without breaking native feel), app-icon-design (icon craft + the layered Liquid Glass icon system / Icon Composer), app-intents-design (App Intents/App Shortcuts across Siri, Spotlight, widgets, controls).
 
 ### AI & agents
 | Skill | Use it for |
@@ -58,7 +53,7 @@ A curated library of Claude Code skills. The largest cluster is a design library
 `swiftui` — one consolidated skill; its body routes to reference files: swiftui-identity (the identity/lifetime/dependencies mental model — debug state resets here), swiftui-layout (containers, Layout protocol, navigation structure), swiftui-lazy-stacks (scroll performance), swiftui-animation (springs, transitions, shaders), swift-concurrency (structured concurrency, sendability, Swift 6 migration), plus platform craft: touch-interaction-design, widget-design, sf-symbols, sound-design.
 
 ### Motion & frontend (web)
-`web-performance` (load + interaction speed: fluid-UI frame budgets, Core Web Vitals, perf culture) · `web-typography` (CSS/web type practice: measure/leading/scales, choosing & pairing, OpenType craft, font loading — from Rutter, Santa Maria, Latin; Apple platforms → `apple-typography`) · `web-animation-design` (the default theme for web motion values) · `motion` (the Motion AI Kit umbrella — encapsulates best-practices, docs search, CSS spring generation, performance audit, transition visualisation as sub-capabilities) · `design-polish` (UI polish craft; Emil Kowalski school in its references) · `frontend-design` (building distinctive web UI) · `oklch-skill` (color) · `social-video-safe-zones` · `photographic-lighting` (shoot lighting: portraits, products, glare, flash/fill/bounce) · `web-accessibility` (web-scoped a11y practice: AT discipline, semantic-HTML-first priority order, focus mechanics, accessible writing, testing program, org policies — Kalbag + Metts/Welfle; Apple platforms → `apple-visual-accessibility`) · `graphics-fundamentals` *(local-only, gitignored — purchased source)*: the mechanism layer beneath all of these (screens, color spaces, rasterization, blurs, compression) — route "how/why does X actually work" questions there.
+`web-performance` (load + interaction speed: fluid-UI frame budgets, Core Web Vitals, perf culture) · `web-typography` (CSS/web type practice: measure/leading/scales, choosing & pairing, OpenType craft, font loading — from Rutter, Santa Maria, Latin; Apple platforms → `apple-design` (apple-typography)) · `web-animation-design` (the default theme for web motion values) · `motion` (the Motion AI Kit umbrella — encapsulates best-practices, docs search, CSS spring generation, performance audit, transition visualisation as sub-capabilities) · `design-polish` (UI polish craft; Emil Kowalski school in its references) · `frontend-design` (building distinctive web UI) · `oklch-skill` (color) · `social-video-safe-zones` · `photographic-lighting` (shoot lighting: portraits, products, glare, flash/fill/bounce) · `web-accessibility` (web-scoped a11y practice: AT discipline, semantic-HTML-first priority order, focus mechanics, accessible writing, testing program, org policies — Kalbag + Metts/Welfle; Apple platforms → `apple-design` (apple-visual-accessibility)) · `graphics-fundamentals` *(local-only, gitignored — purchased source)*: the mechanism layer beneath all of these (screens, color spaces, rasterization, blurs, compression) — route "how/why does X actually work" questions there.
 
 ### Writing & content
 `write-clear-prose` · `ui-voice-and-tone` (product voice + microcopy) · `error-messages` (failure-state copy) · `linear-settings-copy` (settings IA/copy).
@@ -88,7 +83,7 @@ A curated library of Claude Code skills. The largest cluster is a design library
 
 - **Strategy vs tactics:** `design-principles` decides *whether/why*; the specific skills decide *how*. Don't restate principles in tactical work.
 - **Motion default:** platform unstated → `web-animation-design` values; SwiftUI/iOS stated → `swiftui` (swiftui-animation reference). Never cross-apply web timing values to native or vice versa.
-- **Typography split:** web/CSS → `web-typography`; Apple platforms → `apple-typography`; rendering internals (why fonts look different) → `graphics-fundamentals`. Never cross-apply platform conventions.
+- **Typography split:** web/CSS → `web-typography`; Apple platforms → `apple-design` (apple-typography); rendering internals (why fonts look different) → `graphics-fundamentals`. Never cross-apply platform conventions.
 - **AI chain:** design the AI feature → `ai-experience-design`; fix AI-generated UI → `ai-ui-direction`; agents on your repo → `agentic-coding`; org rollout/context sharing → `ai-enablement`; users reshaping the product → `malleable-software`.
 - **Overlapping polish themes** (`design-polish` and its Emil Kowalski reference, `web-animation-design`) are *themes*: pick one theme's values and apply them consistently; when a genuine choice surfaces, present a menu rather than silently mixing aesthetics.
 - **Words:** name the thing in `naming-features-and-labels` → set the voice in `ui-voice-and-tone` → failure copy in `error-messages` → settings rows in `linear-settings-copy`.

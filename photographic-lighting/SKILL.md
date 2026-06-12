@@ -118,4 +118,4 @@ White-on-white and black-on-black need separation before cleverness.
 - `research-cataloging` (image-archival) owns file size, format choice, and visually lossless compression after images exist.
 - `graphics-fundamentals` owns color-space, rasterization, SVG, blur, and image-compression mechanisms.
 - `frontend-design` owns choosing imagery for a web/app interface; use this only when the issue is how to light or shoot the image.
-- `app-icon-design` and `logo-design` own marks/icons; use this only for photographing physical objects or people.
+- `apple-design` (app-icon-design) and `logo-design` own marks/icons; use this only for photographing physical objects or people.

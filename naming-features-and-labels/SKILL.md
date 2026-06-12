@@ -127,8 +127,8 @@ When reviewing any proposed name:
 - **`error-messages`** handles failure-state copy (what to say when something breaks). No overlap, but a feature's *name* should still appear correctly inside an error message.
 - **`user-onboarding`** introduces and explains features to new users. A clear name does much of onboarding's job for free; name first, then onboard.
 - **`write-clear-prose`** is for sentences and paragraphs. This skill is for the single word or short phrase that labels a thing — a different unit of work, though the say-it-out-loud instinct is shared.
-- **`ios-brand-identity`** treats words/voice as part of brand in the content layer. This skill names the individual thing; situate that naming within the app's overall voice and brand there.
+- **`apple-design` (ios-brand-identity)** treats words/voice as part of brand in the content layer. This skill names the individual thing; situate that naming within the app's overall voice and brand there.
 - **`ui-voice-and-tone`** defines the app's overall writing voice and the microcopy around a name; this skill picks the name itself. Set the voice there, choose and defend the word here. (The exercises rhyme — adjective-clustering vs. Think/Feel/Do — but produce different outputs.)
-- **`app-intents-design`** — Siri invocation phrases and intent names are naming problems with extra constraints (app name in phrase, synonyms, say-it-aloud). Judge the words with this skill's criteria; structure the intent there.
+- **`apple-design` (app-intents-design)** — Siri invocation phrases and intent names are naming problems with extra constraints (app name in phrase, synonyms, say-it-aloud). Judge the words with this skill's criteria; structure the intent there.
 
 See `references/worked-examples.md` for the full case studies (Apple Cash, gym plans, Visited Places, Memories, Enhance Dialogue, AutoMix) with the reasoning spelled out.

@@ -22,7 +22,7 @@ Both are design-track talks with no Code-tab samples; the implementation counter
 2. **Parameter confirmation:** assume the *last-ordered* coffee and ask "Order a large iced chai latte?" — one tap/word to proceed.
 3. **Disambiguation:** first-time meditation → "What kind of meditation? Focus, Gratitude, Walking, Compassion, or Sleep?" — **≤5 options** because AirPods users hear the whole list.
 4. **Open-ended:** "How many minutes?" — built-in number type gets Siri's NLU + standard visuals free.
-5. **Intent confirmation:** reserved for money/destructive/high-stakes (a calendar invite to a big group). Buttons restate the verb — "Order" / "Cancel," never "Confirm" (ambiguous against a Cancel button; same finding as the subscription-alert example in `apple-navigation-design`).
+5. **Intent confirmation:** reserved for money/destructive/high-stakes (a calendar invite to a big group). Buttons restate the verb — "Order" / "Cancel," never "Confirm" (ambiguous against a Cancel button; same finding as the subscription-alert example in [apple-navigation-design.md](../apple-navigation-design.md)).
 
 ## Output examples (2022)
 

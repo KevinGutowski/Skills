@@ -1,13 +1,10 @@
----
-name: liquid-glass-design-system
-description: "Apply Liquid Glass and Apple's 2025+ design system — the material (lensing, Regular vs Clear, tinting, never glass-on-glass), shapes, toolbars, scroll edge effects. Use when adopting the new design language, planning a migration, deciding where glass belongs, or fixing pinched corners. Triggers: Liquid Glass, lensing, glass on glass, glassEffect, concentric, iOS 26 design."
----
-
 # Liquid Glass Design System
 
-**Sources:** [references/sources.md](references/sources.md) — 2 foundational WWDC 2025 sessions + 4 Liquid Glass showcase sessions.
+*Scope: Apply Liquid Glass and Apple's 2025+ design system — the material (lensing, Regular vs Clear, tinting, never glass-on-glass), shapes, toolbars, scroll edge effects. Use when adopting the new design language, planning a migration, deciding where glass belongs, or fixing pinched corners. Triggers: Liquid Glass, lensing, glass on glass, glassEffect, concentric, iOS 26 design.*
 
-Liquid Glass is "a new digital meta-material that dynamically bends and shapes light" while behaving like a lightweight liquid — not a recreation of a physical material (lineage: Aqua → iOS 7 blurs → iPhone X fluidity → Dynamic Island → visionOS). It forms **one floating functional layer for navigation and controls above content**, unifying design across platforms. This is the primary source behind the Liquid Glass references in `ios-brand-identity`, `apple-search-design`, and `apple-navigation-design`.
+**Sources:** [liquid-glass-design-system/sources.md](liquid-glass-design-system/sources.md) — 2 foundational WWDC 2025 sessions + 4 Liquid Glass showcase sessions.
+
+Liquid Glass is "a new digital meta-material that dynamically bends and shapes light" while behaving like a lightweight liquid — not a recreation of a physical material (lineage: Aqua → iOS 7 blurs → iPhone X fluidity → Dynamic Island → visionOS). It forms **one floating functional layer for navigation and controls above content**, unifying design across platforms. This is the primary source behind the Liquid Glass references in [ios-brand-identity.md](ios-brand-identity.md), [apple-search-design.md](apple-search-design.md), and [apple-navigation-design.md](apple-navigation-design.md).
 
 ## The material (219)
 
@@ -29,7 +26,7 @@ Three shape types — **fixed** (constant radius), **capsule** (radius = half he
 
 ### Structure
 - **Toolbars:** remove custom backgrounds/borders — "hierarchy should be expressed through layout and grouping, not decoration." Group by function and frequency; secondary actions into a More menu; **never group a symbol with a text button** (reads as one control); the primary action stays separate and tinted.
-- **Tab bars:** iOS gains a dedicated bottom **Search tab** (see `apple-search-design`); **accessory views** host persistent features (playback controls) — never screen-specific actions (a checkout button belongs with its content).
+- **Tab bars:** iOS gains a dedicated bottom **Search tab** (see [apple-search-design.md](apple-search-design.md)); **accessory views** host persistent features (playback controls) — never screen-specific actions (a checkout button belongs with its content).
 - **Sheets & menus:** action sheets spring **from the action itself**, not the screen bottom. Interrupting task → glass + dimming; parallel task → glass alone; dragging a sheet up makes the glass recede and grow more opaque (deeper engagement). Apply the material to the control, not its inner views.
 - **Scroll edge effects** — "not decorative": they "ensure controls stay visually distinct" where a scroll view sits *behind* floating elements. ⚠️ *HIG June 2026 update:* **prefer the automatic style** (more opaque separation for control-heavy top toolbars, text outside glass, pinned table headers — all platforms); if you opt into **soft**, "thoroughly test… to ensure your controls maintain legibility"; **hard** is no longer framed as macOS-specific (automatic covers those cases). One per view, never stacked; consistent heights across split-view panes.
 - **Sidebars:** inset, made of glass, content flows behind. The **background extension effect** stretches hero images/tinted backgrounds behind the sidebar full-width (visuals stay centered; keep text/controls layered above).
@@ -49,7 +46,7 @@ How real teams moved existing apps onto the system — LTK, Slack, CNN, Tide Gui
 - **Engineering pitfalls (CNN):** never nest `glassEffect` (double translucency, unpredictable rendering — apply at the highest level needed, write internal guidelines); put padding *outside* the modifier scope (wrap in background/overlay to restore layout); glass is **GPU-intensive** — keep it off lists and high-frequency animations, reserve for static top-level chrome; gate with an iOS-26-only conditional modifier; budget real layout+performance test time.
 - **Content-layer glass, used sparingly (Tide Guide):** the *identity* variant (invisible at rest, revealed on interaction) for in-content elements; *interactive* glass on small finger-occluded buttons for instant visible response; glass popovers over deconstructing context menus for fiddly grouped settings. Backport the non-material wins (spacing, hierarchy, concentric corners) below the iOS 26 floor.
 
-See `references/adoption-case-studies.md` for the four case studies with quotes and outcomes.
+See `liquid-glass-design-system/adoption-case-studies.md` for the four case studies with quotes and outcomes.
 
 ## The counter-position (carry it into reviews)
 
@@ -66,15 +63,15 @@ Ryo Lu's "stay true to the medium" critique (X, Aug 2025 — the most-cited case
 - [ ] Sidebar background extension used for hero content; text kept above the effect?
 - [ ] One anatomy scaling across iPhone/iPad/Mac; ambiguous glyphs labeled?
 
-See `references/material-and-rules.md` for the full rule inventory with the talks' reasoning and quotables.
+See `liquid-glass-design-system/material-and-rules.md` for the full rule inventory with the talks' reasoning and quotables.
 
 ## Relationship to other skills
 
 This is the **primary source** for the new design language; several skills' staleness notes defer here.
-- **`ios-brand-identity`** — its UI-layer/content-layer model is built on this material; its "brand color in the content area" rule is this skill's tinting rule. Brand decisions there; material rules here.
-- **`apple-navigation-design`** — tab bars, toolbars, sidebars, menus *structurally* live there; their glass treatment, grouping rules, and scroll edge effects live here. Its pre-Liquid-Glass visual specifics are superseded by this skill.
-- **`apple-search-design`** — the dedicated Search tab and glass search-field presentation are this system's expression of its placement patterns.
+- **[ios-brand-identity.md](ios-brand-identity.md)** — its UI-layer/content-layer model is built on this material; its "brand color in the content area" rule is this skill's tinting rule. Brand decisions there; material rules here.
+- **[apple-navigation-design.md](apple-navigation-design.md)** — tab bars, toolbars, sidebars, menus *structurally* live there; their glass treatment, grouping rules, and scroll edge effects live here. Its pre-Liquid-Glass visual specifics are superseded by this skill.
+- **[apple-search-design.md](apple-search-design.md)** — the dedicated Search tab and glass search-field presentation are this system's expression of its placement patterns.
 - **`design-polish`** — its concentric border-radius principle now has the system formula (radius = parent − padding) and named shape types.
 - **`swiftui` (swiftui-animation)** / **`swiftui` (swiftui-lazy-stacks)** — implementation layer for glass morphing, scroll edge behavior, and sheet transitions.
 - **`design-principles`** — *Familiarity* and *Craft*; use it to weigh how far to customize within this system.
-- **`apple-visual-accessibility`** — Reduced Transparency/Contrast/Motion adaptations are automatic here, but custom surfaces must still honor them.
+- **[apple-visual-accessibility.md](apple-visual-accessibility.md)** — Reduced Transparency/Contrast/Motion adaptations are automatic here, but custom surfaces must still honor them.

@@ -1,11 +1,8 @@
----
-name: apple-visual-accessibility
-description: "Make apps accessible on Apple platforms — respect Bold Text, Increase Contrast, Differentiate Without Color, and Reduce Motion; meet 4.5:1 contrast; never let color carry meaning alone. Use when adding or auditing accessibility, handling colorblindness or low vision, or adapting motion. Triggers: accessibility, a11y, colorblind, contrast ratio, Reduce Motion, Smart Invert."
----
-
 # Apple Visual Accessibility
 
-**Sources:** [references/sources.md](references/sources.md) — 4 WWDC sessions + MDS contrast videos + Hollick.
+*Scope: Make apps accessible on Apple platforms — respect Bold Text, Increase Contrast, Differentiate Without Color, and Reduce Motion; meet 4.5:1 contrast; never let color carry meaning alone. Use when adding or auditing accessibility, handling colorblindness or low vision, or adapting motion. Triggers: accessibility, a11y, colorblind, contrast ratio, Reduce Motion, Smart Invert.*
+
+**Sources:** [apple-visual-accessibility/sources.md](apple-visual-accessibility/sources.md) — 4 WWDC sessions + MDS contrast videos + Hollick.
 
 Vision is a continuum — full sight, low vision, no sight, color blindness, light sensitivity, motion sensitivity ("one in three people has some form of motion sensitivity"). iOS exposes settings for each; your job is to **observe and respect every one**. Three pillars: color & shapes, text readability, display accommodations. The meta-rule: **turn these settings on yourself and audit your own app.**
 
@@ -64,7 +61,7 @@ The WHY beneath both the 4.5:1 floor and the MDS bands. What a WCAG 2 ratio actu
 
 The four Dynamic Type principles (2019): make as much text dynamic as possible ("if it can grow, it should grow"); use the full screen width; **never truncate** — show the same content as the default size; **scale glyphs next to text**. Plus **Bold Text**: free with system text styles; otherwise check `isBoldTextEnabled` and raise weights.
 
-The mechanics — text styles, `UIFontMetrics`/`Font.custom(relativeTo:)`, `@ScaledMetric`, layout-axis flips at accessibility sizes, the Large Content Viewer — live in **`apple-typography`**; this skill is the *why and the audit*, that one is the *how*. (The classic flip: `preferredContentSizeCategory < .accessibilityMedium` → horizontal stack, else vertical + leading.)
+The mechanics — text styles, `UIFontMetrics`/`Font.custom(relativeTo:)`, `@ScaledMetric`, layout-axis flips at accessibility sizes, the Large Content Viewer — live in **[apple-typography.md](apple-typography.md)**; this skill is the *why and the audit*, that one is the *how*. (The classic flip: `preferredContentSizeCategory < .accessibilityMedium` → horizontal stack, else vertical + leading.)
 
 ## Display accommodations
 
@@ -92,20 +89,20 @@ Apple accessibility engineers (incl. VoiceOver and low-vision users), on priorit
 - [ ] Custom colors meet **4.5:1**; High Contrast variants supplied in the asset catalog?
 - [ ] Buttons identifiable with Button Shapes on?
 - [ ] Photos/videos/logos flagged `accessibilityIgnoresInvertColors`?
-- [ ] Largest accessibility text size: nothing truncated or clipped; glyphs scale; layouts reflow? (→ `apple-typography`)
+- [ ] Largest accessibility text size: nothing truncated or clipped; glyphs scale; layouts reflow? (→ [apple-typography.md](apple-typography.md))
 - [ ] Bold Text raises custom font weights?
 - [ ] Reduce Motion: idle animations, parallax, autoplay suppressed; slides become cross-fades?
 - [ ] Reduce Transparency: custom blurs go opaque?
 - [ ] You actually turned the settings on and used the app?
 
-See `references/settings-and-code.md` for the per-setting API table with all eight verbatim 2020 code samples and the worked examples.
+See `apple-visual-accessibility/settings-and-code.md` for the per-setting API table with all eight verbatim 2020 code samples and the worked examples.
 
 ## Relationship to other skills
 
-- **`apple-typography`** — owns the Dynamic Type *mechanics* this skill audits for (text styles, scaling, Large Content Viewer). Audit here, fix there.
+- **[apple-typography.md](apple-typography.md)** — owns the Dynamic Type *mechanics* this skill audits for (text styles, scaling, Large Content Viewer). Audit here, fix there.
 - **`design-principles`** — *Flexibility* (range of abilities) and *Responsibility*; accessibility is those principles made concrete.
 - **`swiftui` (sf-symbols)** — the recommended replacement for color-only meaning; covers Bold Text coverage for custom symbols.
 - **`swiftui` (swiftui-animation)** / **`web-animation-design`** — where the motion lives that Reduce Motion (or `prefers-reduced-motion` on the web) must tame; route implementation there.
-- **`ios-brand-identity`** — Dark Mode and brand color choices must survive Increase Contrast and Smart Invert; brand never overrides accommodation settings.
+- **[ios-brand-identity.md](ios-brand-identity.md)** — Dark Mode and brand color choices must survive Increase Contrast and Smart Invert; brand never overrides accommodation settings.
 - **`chart-experience-design`** — charts have their own accessibility layer (VoiceOver over data, Audio Graphs, redundant encodings).
 - **`web-accessibility`** — the web-scoped counterpart (semantic HTML, ARIA, skip links, WCAG testing programs); same platform split as apple-/web-typography.

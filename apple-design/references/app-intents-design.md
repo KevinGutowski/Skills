@@ -1,11 +1,8 @@
----
-name: app-intents-design
-description: "Design App Intents and App Shortcuts across Siri, Spotlight, widgets, controls, and the Action button. Use when deciding which features to expose as intents, writing invocation phrases, structuring parameters, or choosing snippet vs Live Activity. Triggers: App Intents, App Shortcuts, invocation phrase, parameter summary, interactive snippet, Siri."
----
-
 # App Intents Design
 
-**Sources:** [references/sources.md](references/sources.md) — 3 Apple WWDC design sessions (2022–2025).
+*Scope: Design App Intents and App Shortcuts across Siri, Spotlight, widgets, controls, and the Action button. Use when deciding which features to expose as intents, writing invocation phrases, structuring parameters, or choosing snippet vs Live Activity. Triggers: App Intents, App Shortcuts, invocation phrase, parameter summary, interactive snippet, Siri.*
+
+**Sources:** [app-intents-design/sources.md](app-intents-design/sources.md) — 3 Apple WWDC design sessions (2022–2025).
 
 App Intents are units of your app's functionality the *system* can run — surfaced in Siri, Spotlight, widgets, controls, the Action button, Apple Pencil squeeze, and the Shortcuts app, available the moment the app is installed. The recurring design theme: **make it memorable, and make it readable as a sentence.**
 
@@ -76,14 +73,14 @@ Foregrounding is no longer a last resort — it's how people *see the result*. T
 - [ ] Open-the-app behavior deliberate (OpenIntent vs. Open When Run)?
 - [ ] Siri Tip placed at the moment of value and dismissible?
 
-See `references/patterns.md` for the worked examples (meditation app, Voice Memos phrasing, coffee-order disambiguation, flashlight toggle, Notes optional-folder).
+See `app-intents-design/patterns.md` for the worked examples (meditation app, Voice Memos phrasing, coffee-order disambiguation, flashlight toggle, Notes optional-folder).
 
 ## Relationship to other skills
 
 - **`naming-features-and-labels`** — invocation phrases and intent names *are* naming problems (belongs / sets-expectation / travels, plus the say-it-aloud test both skills share). Pick the words there; structure the intent here.
 - **`ui-voice-and-tone`** — Siri dialog is microcopy in your voice; dial it with that skill (concise + helpful turned up for voice-only).
 - **`design-principles`** — *Simplicity* (lightest collection pattern) and *Agency* (confirmation only when consequential).
-- **`apple-navigation-design`** — intents bypass navigation; when an intent opens the app, it should land where navigation would have taken you.
+- **[apple-navigation-design.md](apple-navigation-design.md)** — intents bypass navigation; when an intent opens the app, it should land where navigation would have taken you.
 - **`error-messages`** — when an intent fails, failure dialog follows that skill's rules.
 - **`swiftui` (widget-design)** — widget configuration and interactive widgets run on App Intents; design the widget there, structure its intents here.
 - **`ai-experience-design`** — disambiguation/confirmation are its low-confidence patterns applied to voice; for LLM-backed intents, its prompting and safety rules apply.

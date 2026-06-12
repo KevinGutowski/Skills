@@ -90,7 +90,7 @@ Extends PACE's Empathy point — write so the copy survives translation, partial
 - **If you can't translate everything, prioritize**: headings/titles (orientation), the important information in instructions, commonly used terms — and "make sure that users can read error messages just in case something goes wrong."
 - **Slang and figures of speech aren't banned** — they add character — but offense-check them and "offer contextual clues" so someone who doesn't parse the idiom can still figure out the meaning. (Stricter than PACE's avoid-idioms default: allowed, with a safety net.)
 - Plan: have translations for key terms *before* you need them; batch second-market artwork in one pass; check iTunes Connect/App Store analytics — your audience map may surprise you.
-- Cheap research paths: informal focus groups recruited by language/cultural background, language-learning and travel references, libraries. Visual/cultural symbol choices (gestures, iconography, associations) → `apple-visual-accessibility`.
+- Cheap research paths: informal focus groups recruited by language/cultural background, language-learning and travel references, libraries. Visual/cultural symbol choices (gestures, iconography, associations) → `apple-design` (apple-visual-accessibility).
 
 ## Keep it useful (the guardrail both talks share)
 
@@ -129,9 +129,9 @@ This skill owns the app's **overall voice and tone** and the general microcopy t
 - **`naming-features-and-labels`** — names the individual *thing* (feature, label, value, button, plan). Voice is the felt character of prose; a name is one chosen word judged on belongs / sets-expectation / travels. Define the voice here; pick and defend the word there. The exercises rhyme (adjective-clustering vs. Think/Feel/Do) but produce different outputs — run the right one.
 - **`error-messages`** — owns failure-state copy and its tone rules. This skill sets the general serious/clinical dial; route any "write/review an error" task there.
 - **`write-clear-prose`** — long-form nonfiction craft (sentence rhythm, structure, cutting clutter). UI microcopy is a different unit; share the read-aloud instinct, route essays/articles there.
-- **`ios-brand-identity`** — places brand in the iOS content layer and names this skill as the voice/tone arm. Decide *where* brand belongs there; define and write the voice here.
+- **`apple-design` (ios-brand-identity)** — places brand in the iOS content layer and names this skill as the voice/tone arm. Decide *where* brand belongs there; define and write the voice here.
 - **`user-onboarding`** / **`linear-settings-copy`** — voice applied to specific surfaces (first-run, empty/welcome states; settings IA/rows). Set the voice here; structure and write the surface there.
-- **`app-intents-design`** — Siri dialog and snippets are voice-only microcopy with their own constraints (full dialog for AirPods, ≤5 disambiguation options); set the voice here, apply the intent patterns there.
+- **`apple-design` (app-intents-design)** — Siri dialog and snippets are voice-only microcopy with their own constraints (full dialog for AirPods, ≤5 disambiguation options); set the voice here, apply the intent patterns there.
 - **`notification-design`** — owns notification *strategy and anatomy* (when to send, grouping, rich content); this skill writes the notification's words in the right tone.
 
 See `references/voice-and-tone-examples.md` for the worked voice-definition exercise, the welcome-screen before→best ladders, the tone-dial notification set, the PACE before/afters, the full this-but-not-that lists (Mailchimp + Walter's design persona), the four-tone password-reset drill, and the tone-profile worksheet.

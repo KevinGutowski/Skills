@@ -1,11 +1,8 @@
----
-name: apple-navigation-design
-description: "Design navigation and layout for iOS and iPad — tab bars, push vs modal, sheet and menu rules, iPad-native layout, iPadOS 26 windowing. Use when structuring navigation, deciding tabs vs sidebar, designing sheets, menus, or destructive confirmations, or making an app iPad-native. Triggers: tab bar, push vs modal, sidebar vs tab bar, menu vs action sheet, iPad windowing."
----
-
 # Apple Navigation Design
 
-**Sources:** [references/sources.md](references/sources.md) — 6 Apple WWDC sessions.
+*Scope: Design navigation and layout for iOS and iPad — tab bars, push vs modal, sheet and menu rules, iPad-native layout, iPadOS 26 windowing. Use when structuring navigation, deciding tabs vs sidebar, designing sheets, menus, or destructive confirmations, or making an app iPad-native. Triggers: tab bar, push vs modal, sidebar vs tab bar, menu vs action sheet, iPad windowing.*
+
+**Sources:** [apple-navigation-design/sources.md](apple-navigation-design/sources.md) — 6 Apple WWDC sessions.
 
 Great navigation goes unnoticed — people just focus on content. The job is familiarity: when navigation deviates from natural expectations, the app feels hard to use. This skill covers the three foundational iOS patterns (tab bars, push, modality), what makes an app iPad-native rather than a stretched iPhone app, and pointer interaction.
 
@@ -40,7 +37,7 @@ iPad is not halfway between iPhone and Mac — design for what's unique. Four wa
 
 **Sidebar:** top section = your tab-bar items (same top-level items in both); below = long user-generated lists under collapsible headers (duplicate paths are fine — sidebar items are shortcuts). Don't use a sidebar in compact width, don't surface the entire app, don't force deep hierarchy into it. ⚠️ *HIG June 2026 retires two 2020/22 rules:* the never-mix rule — "you don't need to choose between a tab bar or sidebar… you can adopt a style of tab bar that provides both" (the adaptable style, which also lifted the blanket iOS-sidebar ban); and the outlined-sidebar/filled-tab-bar glyph split — current guidance is "prefer filled symbols," with sidebar icons in your accent color (follow the user's macOS accent; fixed colors only sparingly and meaningfully, like Mail's VIP yellow).
 
-**Desktop-class features (10009):** toolbars with a customizable center section (must-see items go *trailing* — at small sizes only leading/trailing survive); a **document menu** for whole-document actions (Duplicate/Rename/Move/Export — share goes to Share, content edits go elsewhere); **browser-style back/forward** for complex jumpy hierarchies (Files yes, Photos no); nav-bar search for filtering the current view (whole-app search belongs in a search tab — see `apple-search-design`); **multi-column sortable tables** ("not much of a table if it only has a single column") that collapse to lists at compact width; multi-selection without edit mode + context menus on selections and in **empty areas** (create-new); pop-up buttons for in-place option edits ("you change the priority right in place"); inputs: support touch *and* pointer, keyboard shortcuts for all common actions ("if you're on the fence… add it"), and combined inputs (Cmd+tap, Option+drag).
+**Desktop-class features (10009):** toolbars with a customizable center section (must-see items go *trailing* — at small sizes only leading/trailing survive); a **document menu** for whole-document actions (Duplicate/Rename/Move/Export — share goes to Share, content edits go elsewhere); **browser-style back/forward** for complex jumpy hierarchies (Files yes, Photos no); nav-bar search for filtering the current view (whole-app search belongs in a search tab — see [apple-search-design.md](apple-search-design.md)); **multi-column sortable tables** ("not much of a table if it only has a single column") that collapse to lists at compact width; multi-selection without edit mode + context menus on selections and in **empty areas** (create-new); pop-up buttons for in-place option edits ("you change the priority right in place"); inputs: support touch *and* pointer, keyboard shortcuts for all common actions ("if you're on the fence… add it"), and combined inputs (Cmd+tap, Option+drag).
 
 ## Menus, pickers, and destructive friction
 
@@ -57,7 +54,7 @@ The modern iPad building blocks (2025) — adopt together, "more than the sum of
 - **Windowing:** any app resizes into a floating window; **wrap your toolbar around the window controls** (top-left, leading edge — un-updated apps get a wasteful safe area above the toolbar). Open each document in **its own window** ("Open in Place" is no longer recommended); give every window a **unique descriptive name** (the app menu lists them). Treat rotation/floating as a width change; layout adaptation must be **non-destructive** (resizing never permanently rearranges).
 - **Menu bar on iPad:** pointer-to-top or swipe down; app menu → system menus → custom menus. Order items by **frequency, not alphabet**; group into sections; submenu the secondary; give each item the symbol it has in-app + keyboard shortcuts. Populate the **View menu** (tabs + sidebar toggle). **Never hide menus or items — dim them** (hiding breaks spatial memory and discovery).
 - **New pointer (supersedes the 2020 model below):** no longer the fingertip circle — tracks **1:1 with no magnetism or rubberbanding**; hover shows a **Liquid Glass platter** over buttons that catches up as you move across clusters. **Re-test your app with it.**
-- Navigation: sidebar for numerous/nested content, tab bar for compact immersive apps — "if unsure, start with a tab bar" (it scales into a sidebar; Music's morphs fluidly). Extend content under bars with scroll edge effects (see `liquid-glass-design-system`).
+- Navigation: sidebar for numerous/nested content, tab bar for compact immersive apps — "if unsure, start with a tab bar" (it scales into a sidebar; Music's morphs fluidly). Extend content under bars with scroll edge effects (see [liquid-glass-design-system.md](liquid-glass-design-system.md)).
 
 ## The iPadOS pointer (2020 foundations)
 
@@ -70,7 +67,7 @@ Three effects — **try Automatic first**:
 
 Rules: consistency within a group beats per-control theory; no gaps between adjacent hit regions (~12pt padding bezeled, ~24pt bezel-less); use precision to make existing features *faster* — **never add pointer-only features or change layout**; two-finger gestures are yours (three = system); secondary click = free context menu; never enable snapping without a custom pointer; no purely decorative pointer effects.
 
-> **Staleness note (Kevin's rule):** these are 2020–2022 sessions. The **navigation principles persist**, but Liquid Glass changed the visual treatment of tab bars, toolbars, and search placement — for the current material, grouping rules, and scroll edge effects defer to **`liquid-glass-design-system`** (the primary source), plus `apple-search-design` and `ios-brand-identity`; check the current HIG before citing visual specifics.
+> **Staleness note (Kevin's rule):** these are 2020–2022 sessions. The **navigation principles persist**, but Liquid Glass changed the visual treatment of tab bars, toolbars, and search placement — for the current material, grouping rules, and scroll edge effects defer to **[liquid-glass-design-system.md](liquid-glass-design-system.md)** (the primary source), plus [apple-search-design.md](apple-search-design.md) and [ios-brand-identity.md](ios-brand-identity.md); check the current HIG before citing visual specifics.
 
 ## Review checklist
 
@@ -82,13 +79,13 @@ Rules: consistency within a group beats per-control theory; no gaps between adja
 - [ ] Desktop-class: must-see toolbar items trailing; document menu scoped to whole-document actions; tables collapse gracefully?
 - [ ] Pointer: Automatic effects first; no hit-region gaps; nothing pointer-only; two-finger gestures only?
 
-See `references/patterns.md` for the worked examples (cycling-routes app rebalance, Slopes, Home app sidebar, pointer mechanics like magnetism and recentering) and the quotable numbers.
+See `apple-navigation-design/patterns.md` for the worked examples (cycling-routes app rebalance, Slopes, Home app sidebar, pointer mechanics like magnetism and recentering) and the quotable numbers.
 
 ## Relationship to other skills
 
-- **`apple-search-design`** — the sibling: its first question is "how do people navigate my app?" — answer it here, then place search there. Nav-bar search filters the current view; whole-app search gets a search tab (both skills state this boundary).
+- **[apple-search-design.md](apple-search-design.md)** — the sibling: its first question is "how do people navigate my app?" — answer it here, then place search there. Nav-bar search filters the current view; whole-app search gets a search tab (both skills state this boundary).
 - **`design-principles`** — *Familiarity* is this skill's engine (chevron = push, persistent tabs); *Flexibility* covers the iPad/input adaptation. Use it for trade-offs.
-- **`ios-brand-identity`** — the UI layer (navigation chrome) should stay native; brand lives in the content layer. This skill is what "native navigation" concretely means.
+- **[ios-brand-identity.md](ios-brand-identity.md)** — the UI layer (navigation chrome) should stay native; brand lives in the content layer. This skill is what "native navigation" concretely means.
 - **`swiftui` (swiftui-layout)** — the SwiftUI implementation of these structures: sidebars → `NavigationSplitView`, desktop-class tables/toolbars/selection menus → `Table`/`.toolbar(id:)`/`contextMenu(forSelectionType:)`. Decide here; build there.
 - **`swiftui` (swiftui-lazy-stacks)** / **`swiftui` (swiftui-animation)** — the engineering beneath: scrolling content within these structures, and transitions between them (e.g. the zoom transition for large cells).
 - **`linear-settings-copy`** — settings IA is a navigation sub-problem with its own conventions; route settings-specific structure there.
