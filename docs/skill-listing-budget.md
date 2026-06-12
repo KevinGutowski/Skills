@@ -29,9 +29,27 @@ roughly half the descriptions were being silently evicted.
   "nocodb-catalog-management": "name-only", "image-archival": "name-only",
   "source-sweep": "name-only", "route-planning": "name-only", "airtable-mcp": "name-only",
   "openai-transcription-chunking": "name-only", "skill-creator": "name-only",
+  "swiftui-animation": "name-only", "swiftui-identity": "name-only",
+  "swiftui-layout": "name-only", "swiftui-lazy-stacks": "name-only",
+  "swift-concurrency": "name-only", "touch-interaction-design": "name-only",
+  "widget-design": "name-only", "sf-symbols": "name-only", "sound-design": "name-only",
+  "emil-design-eng": "name-only", "tufte-viz": "name-only",
+  "write-clear-prose": "name-only",
   "dhh": "user-invocable-only", "goal": "user-invocable-only"
 }
 ```
+
+## 2026-06-12 extension (98 skills): swiftui-hub
+At 98 skills, /doctor showed demand ~2x budget again; the evictor was silently
+dropping ~20 HOT descriptions (web-animation-design, ui-voice-and-tone,
+user-research, web-typography, the swiftui-* family). Fix: `swiftui-hub` router
+(SwiftUI implementation + Apple-platform craft: swiftui-×4, swift-concurrency,
+touch-interaction-design, widget-design, sf-symbols, sound-design) — these were
+already evicted, so hubbing strictly improves their routing — plus name-only for
+theme-covered singles: emil-design-eng (make-interfaces-feel-better carries the
+polish triggers), tufte-viz (chart-selection carries viz triggers),
+write-clear-prose (self-describing name). Net ~5.3k chars freed → the hot
+web/book skills return to full descriptions.
 
 ## House rules going forward
 - Hot design-core skills stay flat with full descriptions (their boundary clauses do
