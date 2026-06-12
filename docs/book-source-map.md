@@ -22,6 +22,9 @@ Rules:
 | Typography systems | MailChimp, *The UX Reader*, "Tightening Type and Relative Font Sizing"; Rutter/Santa Maria/Butterick typography books already extracted; Elliot Jay Stocks articles | MailChimp has a vertical-rhythm/baseline-grid case study, but stronger dedicated typography sources own most future folds. |
 | Roadmaps / release cycles / cleanup | Perri, Gothelf/Seiden, Klein product trio; MailChimp, *The UX Reader*, "Release Cycles and Roadmaps" and "Iteration and the Feature/Refinement Balance"; Linear quality series | Product trio owns measurement-led strategy; MailChimp adds a craft/org practice for annual cleanup releases and feedback-fed refinement. |
 | Research impact / synthesis | Product trio; Buley; MailChimp, *The UX Reader*, research section | MailChimp adds distribution channels and parallel-cycle research cadence; Buley owns solo-UX influence mechanics. |
+| Logo design | Allan Peters, *Logos that Last*; Gal Shir, *60 Tips for Logo Design* | Peters remains the primary method source. Shir corroborates the process and adds practical checks: four-lane intake, keyword lanes, time-boxed sketch warmup, rest overnight, profile-image/uniqueness tests, and presentation sequencing. |
+| Photographic lighting | Hunter/Biver/Fuqua, *Light: Science & Magic*; Tony Northrup, *Tony Northrup's DSLR Book* | Created `photographic-lighting` from a targeted lighting pass. Check here for photo shoots, glare/reflections, metal/glass, hard/soft light, fill/bounce flash, portraits, and product/still-life lighting. |
+| Creative coding / generative visuals | Gross et al., *Generative Design* | Parked as a future `creative-coding` candidate. Current fold is only the designer-built-tool / abstraction-process precedent in `malleable-software`; needs a second source such as Reas/Fry, *Nature of Code*, or current p5.js docs before a new technical skill. |
 
 ## MailChimp, *The UX Reader* (2014)
 
@@ -97,6 +100,104 @@ for motion principles. SVG is a minor implementation lead, not a new fold by its
 | Ch. 5, frame rates | For strobing or large-distance movement, manual motion blur via SVG filters or sprites can help special projects, but the book treats it as beyond scope. | Source-map lead only; current `web-animation-design` frame-rate/perception guidance is stronger. |
 
 Verified quote: "manually add motion blur using SVG filters or sprites".
+
+## Gal Shir, *60 Tips for Logo Design* (2025)
+
+Extraction: OCR'd image-only PDF from Apple Books with `pdftoppm` + Tesseract to
+`/tmp/books/60-tips-logo.txt`. Density: MED for `logo-design` as a corroborator,
+not a replacement for Peters. Source is a purchased ebook; use distill-only rules
+and short verified quotes.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| 1. Purpose | Defines a logo as a brand-identification tool and distinguishes logo from brand ecosystem. | Corroborates `logo-design` framing. |
+| 2. Researching | Intake across business, audience, brand, client taste, term/trait/object keywords, and competitor logo boards. | Folded four-lane intake + keyword lanes to `logo-design`. |
+| 3. Sketching | Fast rough sketches, quantity before quality, object/characteristic/letter connections, combining sketches, and concept elimination. | Folded time-boxed warmup; Peters' 50-sketch standard remains stricter. |
+| 4. Cleaning | Simplify repeatedly, use grids, geometry, symmetry, shared radii, and shared angles. | Mostly covered by Peters; useful corroboration for geometric vectorization. |
+| 5. Personality | Tune balance, shape, weight, orientation, and color to match brand character. | Covered by existing logo/app-icon/design-principles material; no separate fold. |
+| 6. Wordmark | Match capitalization, weight, style, spacing, baseline, line weight, negative space, radius, and angles between symbol and wordmark. | Lightly reinforces `logo-design` wordmark geometry in tests/presentation; possible future depth. |
+| 7. Testing | Test readability at scales, rest overnight, profile image alignment, applications, color/contrast, and uniqueness via image search. | Folded to `logo-design` tests. |
+| 8. Showcasing | Set context, let the mark speak first, explain symbolism/characteristics, show sizes/colors/mockups, and present confidently. | Folded to `logo-design` presentation protocol. |
+
+Verified short quotes include: "A logo is a tool representing a brand"; "A logo is like a handshake between a business and its audience"; "Don’t spend more than 30 seconds on each sketch"; "Let it rest overnight"; "Test for uniqueness"; "Let the logo speak first"; "Show mockups".
+
+## Hunter / Biver / Fuqua, *Light: Science & Magic*
+
+Extraction: `/tmp/books/light-science-magic.txt` from Apple Books PDF via `pdftotext`.
+Density: HIGH for photographic lighting. Pass type: targeted lighting pass across the
+book's core chapters, not a general photography screen. Some extracted text has
+PDF/OCR drift (`Te`, `sofer`, `refection`), so verify any direct quote before use.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| 1. Light: the Beginning | Lighting is governed by principles rather than gear: effective source size, reflection types, and family of angles. | Created `photographic-lighting` framing. |
+| 2. Light: The Raw Material of Photography | Brightness/color/contrast, hard vs soft shadows, source size vs effective size, and light-vs-lighting distinction. | Folded hard/soft decision rules. |
+| 3. The Management of Reflection and the Family of Angles | Diffuse, direct, and polarized direct reflection; angle of incidence/reflection; family-of-angles placement. | Folded surface/reflection workflow. |
+| 4. Surface Appearances | Surface texture, diffuse/direct balance, copy-lighting setups, and controlling flat surfaces. | Folded lightly through surface diagnosis. |
+| 5. Revealing Shape and Contour | Depth clues, perspective vs tonal variation, light size/distance, and front/side/back/top direction. | Folded direction and shape rules. |
+| 6. Metal | Polished metal as environment reflection; bright/dark metal controlled by filling or avoiding the family of angles. | Folded to surface reference. |
+| 7. The Case of the Disappearing Glass | Glass edge definition, bright-field and dark-field setups, and removing distracting reflections. | Folded to surface reference. |
+| 8. Making Portraits | Single-key portrait setup, soft source size, catchlights, key triangle, fill, hair/kicker/background lights. | Folded to portrait reference. |
+| 9. The Extremes | White-on-white and black-on-black need lighting plus exposure to preserve edge separation and detail. | Folded to extremes checklist. |
+| 10. Traveling Light / Working on Location | Portable flash/LED/location constraints, exposure, off-camera flash, bounce, and practical quality fixes. | Folded to field-lighting reference. |
+| 11. Setting Up a Studio | Studio space/equipment planning and practical setup considerations. | Source-map only for now. |
+
+Verified clean quotes used/foldable: "A small light source is always a hard light source"; "Most good lighting is, at least to some extent, side lighting."; "A single light is adequate for most portraits; the rest are optional."
+
+## Tony Northrup, *Tony Northrup's DSLR Book: How to Create Stunning Digital Photography*
+
+Extraction: `/tmp/books/tony-northrup-dslr.txt` from unpacked Apple Books EPUB
+directory via `xmllint`. Density: MED overall, HIGH as a practical corroborator for
+field lighting, flash, and portraits. Pass type: targeted lighting/portrait pass; the
+camera/composition/genre chapters remain available for future screens if needed.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| Introduction | Advanced readers can start at lighting; beginners should read early camera chapters. | Context only. |
+| 1. Quick Tips | Field checklist; includes fill/bounce flash reminders. | Folded only where lighting-specific. |
+| 2. Composition | Focal point, frame-edge scan, foreground/background, story planning. | Mostly skipped as model-known; quote parked for future composition pass. |
+| 3. Lighting and Flash | Natural light, hard/soft, direction, environmental reflection, golden hour, sun control, fill flash, bounce flash, modifiers, off-camera flash, white balance. | Folded practical flash/field moves. |
+| 4. Controlling your Camera | Exposure modes, aperture/shutter/ISO, focus, RAW, stabilization, histogram. | Not routed in this pass. |
+| 5. Problem Solving | Troubleshooting blur, exposure, focus, noise, dynamic range. | Not routed in this pass. |
+| 6. Portraits | Outdoor/indoor portraits, locations, sun behind subject, shade/clouds, diffusers/reflectors, posing, studio basics, groups. | Folded portrait/field moves. |
+| 7. Weddings | Event coverage, bounce/fill practice, batteries/recycle, venue scouting. | Lightly informs event flash; no separate fold. |
+| 8. Animals | Catchlights, off-camera fill, umbrellas, polarizers for wildlife/aquariums. | Source-map only for future wildlife/photo pass. |
+| 9. Landscapes | Golden hour, polarizers, water reflection, long exposure. | Not routed in this pass. |
+| 10. Night Photography | Tripods, light painting, stars/fireworks/night scenes. | Not routed in this pass. |
+| 11. HDR | Exposure bracketing and high-dynamic-range workflow. | Not routed in this pass. |
+| 12. Close-up/Macro Photography | Macro technique and lighting constraints. | Not routed in this pass. |
+| 13. Underwater | Underwater equipment, light/color loss, backscatter. | Not routed in this pass. |
+
+Verified quotes used/foldable: "You always have some control over the lighting."; "Flash isn’t just for dark spaces."; "Use fill flash outdoors when your subject is backlit to fill in shadows and create catch lights in your model’s eyes."; "Use bounce flash indoors to softly light both the foreground and the background."; "Everything in the picture is part of the story, so plan every element carefully."; "Catchlights add life and interest to a subject."
+
+## Gross / Bohnacker / Laub / Lazzeroni, *Generative Design: Visualize, Program, and Create with JavaScript in p5.js*
+
+Extraction: `/tmp/books/generative-design-p5js.txt` from Apple Books PDF via
+`pdftotext`. Density: MED. Strong as a tutorial/pattern catalog for creative coding,
+but dated as technical p5.js guidance (book code targets p5.js 0.5.11) and not enough
+alone for a new public `creative-coding` skill under the 2-source bar. Current route:
+small fold to `malleable-software`; park future creative-coding skill until a second
+source lands.
+
+### TOC / Chapter Map
+
+| Section | Short summary | Routing |
+| --- | --- | --- |
+| I.0-I.3 Introduction / Projects | Frames generative design as the designer shifting from hand performer to conductor of computer-aided variation; includes 13 project examples from daily sketches to data art, computational fashion, and type installations. | Folded process stance lightly to `malleable-software`. |
+| P.0 Introduction to p5.js | p5.js/Processing lineage, browser editor vs local workflow, JavaScript basics, setup/draw, variables, loops, functions, arrays. | Dated technical tutorial; skip for now. |
+| P.1 Color | Interactive HSB spectra, palette interpolation, extracting palettes from images, rule-bounded random palettes, ASE export. | Parked for future creative-coding/color-tool skill; stronger color theory remains `oklch-skill`/`graphics-fundamentals`. |
+| P.2 Shape | Grids, moire, random/grid movement, SVG modules, agents, growth structures, circle packing, pendulum traces, drawing tools. | Parked; useful pattern bank for future generative visuals. |
+| P.3 Type | Time-based text, text as blueprint, character frequency diagrams, treemaps, font-outline points, kinetic/noise type. | Parked; possible future typography/creative-coding corroboration. |
+| P.4 Image | Image cutouts, image collections, pixel-value graphics, type from pixels, real-time image/camera values, emoji/pixel translation. | Parked; possible future creative-coding/image-processing skill. |
+| A.1 Looking ahead / Reflection | Process reflection: abstract vague ideas into executable rules; use repetition, controlled randomness, logic, parameters, and interaction; designers become creators of individualized tools. | Folded to `malleable-software`. |
+
+Verified quotes: "How do I abstract?"; "True randomness rarely produces compositionally interesting results."; "randomness is limited and applied in measured doses"; "Perhaps the most important aspect of this increase in possibilities is that the designer is now the creator of individualized tools"; "customized software tool".
 
 ## Lidwell / Holden / Butler, *Universal Principles of Design* (2003)
 
