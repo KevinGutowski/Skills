@@ -1,6 +1,6 @@
 ---
 name: app-intents-design
-description: "Design App Intents and App Shortcuts across Siri, Spotlight, widgets, controls, and the Action button. Use when deciding which features to expose as intents, writing invocation phrases, structuring parameters, designing interactive snippets, or choosing snippet vs Live Activity. Based on 3 Apple WWDC sessions. Triggers: App Intents, App Shortcuts, invocation phrase, parameter summary, interactive snippet, Siri."
+description: "Design App Intents and App Shortcuts across Siri, Spotlight, widgets, controls, and the Action button. Use when deciding which features to expose as intents, writing invocation phrases, structuring parameters, or choosing snippet vs Live Activity. Triggers: App Intents, App Shortcuts, invocation phrase, parameter summary, interactive snippet, Siri."
 ---
 
 # App Intents Design

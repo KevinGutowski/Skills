@@ -1,9 +1,6 @@
----
-name: airtable-mcp
-description: Set up, authenticate, verify, and troubleshoot Airtable's remote MCP server in Codex. Use when the user asks about Airtable MCP auth, connecting Airtable to Codex, `Auth required`, `codex mcp login airtable`, `mcp.airtable.com/mcp`, missing Airtable connector UI, resetting/reloading Airtable MCP, or using Airtable MCP tools to list bases, inspect schemas, or update records.
----
-
 # Airtable MCP
+
+*Scope: Set up, authenticate, verify, and troubleshoot Airtable's remote MCP server in Codex; list bases, inspect schemas, update records.*
 
 ## Core Facts
 

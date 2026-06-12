@@ -1,6 +1,6 @@
 ---
 name: devtool-interface-design
-description: "Design interfaces for developer tools — software with no happy path: the five UI zones, CLI progress and clean-log rules, devtool onboarding, agent experience (AX). Use when designing or reviewing a devtool's UI, panel layout, CLI output, onboarding, or agent-facing surface. Based on seven Evil Martians Chronicles posts. Triggers: dev tool UI, properties panel, command palette, CLI UX, devtool onboarding, agent experience, AX."
+description: "Design interfaces for developer tools — software with no happy path: the five UI zones, CLI progress and clean-log rules, devtool onboarding, agent experience (AX). Use for a devtool's UI, panel layout, CLI output, onboarding, or agent-facing surface. Triggers: dev tool UI, properties panel, command palette, CLI UX, devtool onboarding, agent experience, AX."
 ---
 
 # Developer-Tool Interface Design

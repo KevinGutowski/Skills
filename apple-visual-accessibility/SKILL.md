@@ -1,6 +1,6 @@
 ---
 name: apple-visual-accessibility
-description: "Make apps accessible and inclusive on Apple platforms — respect settings like Bold Text, Increase Contrast, Differentiate Without Color, and Reduce Motion; meet 4.5:1 contrast; never let color carry meaning alone. Use when adding or auditing accessibility, handling colorblindness or low vision, or adapting motion. Based on 3 Apple WWDC sessions. Triggers: accessibility, a11y, colorblind, contrast ratio, Reduce Motion, Smart Invert."
+description: "Make apps accessible on Apple platforms — respect Bold Text, Increase Contrast, Differentiate Without Color, and Reduce Motion; meet 4.5:1 contrast; never let color carry meaning alone. Use when adding or auditing accessibility, handling colorblindness or low vision, or adapting motion. Triggers: accessibility, a11y, colorblind, contrast ratio, Reduce Motion, Smart Invert."
 ---
 
 # Apple Visual Accessibility

@@ -1,6 +1,6 @@
 ---
 name: motion
-description: "Animation skill for Motion (prev Framer Motion) and CSS animation. Provides: best practices (vanilla JS, React, Vue, Base UI, Radix), docs search, example code, CSS spring generation, MotionScore performance audit, transition visualisation. Use for animations (motion/react, motion-v, framer-motion), CSS linear() springs, jank audits, or spring/easing visuals. Triggers: Motion, framer-motion, animate UI, CSS spring, linear(), MotionScore."
+description: "Animation skill for Motion (prev Framer Motion) and CSS animation. Provides best practices (vanilla JS, React, Vue, Base UI, Radix), docs search, CSS spring generation, MotionScore perf audit. Use for animations (motion/react, motion-v), CSS linear() springs, jank audits, or spring/easing visuals. Triggers: Motion, framer-motion, animate UI, CSS spring, linear(), MotionScore."
 argument-hint: "[subcommand or question, e.g. 'audit src/Modal.tsx', 'spring bounce 0.3', 'see easeOut', 'how do I animate a list']"
 ---
 

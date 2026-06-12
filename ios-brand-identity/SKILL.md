@@ -1,6 +1,6 @@
 ---
 name: ios-brand-identity
-description: "Express brand identity in an iOS app without breaking the native feel — UI layer vs content layer (Liquid Glass), custom vs standard components, brand color, fonts, logos, Dark Mode, widgets. Use when designing or reviewing iOS branding, deciding how much to customize, or judging whether a custom component hurts the native feel. Based on WWDC 251 + the HIG. Triggers: brand identity, iOS branding, custom vs standard components, tint color, logo."
+description: "Express brand identity in an iOS app without breaking the native feel — UI layer vs content layer (Liquid Glass), custom vs standard components, brand color, fonts, logos, Dark Mode, widgets. Use for iOS branding: how much to customize, and whether a custom component hurts the native feel. Triggers: brand identity, iOS branding, custom vs standard components, tint color, logo."
 ---
 
 # iOS Brand Identity

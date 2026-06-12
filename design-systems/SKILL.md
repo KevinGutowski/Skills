@@ -1,6 +1,6 @@
 ---
 name: design-systems
-description: "Build, govern, and scale a design system — token architecture, theming/multi-brand, governance, adoption as a measured product, DS-as-AI-context. Use when creating or auditing a design system, designing token taxonomies, naming tokens, planning governance or adoption, or wiring a DS into AI codegen. Based on nine Figma Config talks. Triggers: design system, design tokens, semantic tokens, theming, token naming, governance, Code Connect."
+description: "Build, govern, and scale a design system — token architecture, theming/multi-brand, governance, adoption as a measured product, DS-as-AI-context. Use for creating or auditing a design system, token taxonomies, planning governance or adoption, or wiring a DS into AI codegen. Triggers: design system, design tokens, semantic tokens, theming, token naming, governance, Code Connect."
 ---
 
 # Design Systems

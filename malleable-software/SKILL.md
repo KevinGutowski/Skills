@@ -1,6 +1,6 @@
 ---
 name: malleable-software
-description: "Design software users can reshape — expose structure instead of modes (the nightmare bicycle), design for the 40th hour, composable customization, human-AI collaboration as version control. Use for customization/extensibility, end-user tooling, or AI features that modify the product. Tool-UI conventions → devtool-interface-design; AI patterns → ai-experience-design. Triggers: extensibility, end-user programming, plugins, nightmare bicycle."
+description: "Design software users can reshape — expose structure instead of modes, design for the 40th hour, human-AI collaboration as version control. Use for customization, end-user tooling, or AI features that modify the product. Tool-UI conventions → devtool-interface-design; AI patterns → ai-experience-design. Triggers: extensibility, end-user programming, plugins, nightmare bicycle."
 ---
 
 # Malleable Software

@@ -1,6 +1,6 @@
 ---
 name: x-post-reader
-description: "Reads public X (Twitter) posts without authentication — single tweets, a user's recent timeline, top ~100 tweets, or topical tweets from an account. Use when the user pastes an x.com/twitter.com status URL or asks to read, summarize, or find a user's tweets or best tweets. For authenticated X API operations (mentions, followers, search), use x-api instead (needs X_BEARER_TOKEN). Triggers: tweet URL, x.com, what has @handle posted, top tweets."
+description: "Reads public X (Twitter) posts without auth — single tweets, a user's timeline, top ~100 tweets, or topical tweets. Use when the user pastes an x.com/twitter.com status URL or asks for a user's tweets. For authenticated X API operations (mentions, followers, search), use x-api instead (needs X_BEARER_TOKEN). Triggers: tweet URL, x.com, what has @handle posted, top tweets."
 ---
 
 # X Post Reader: Fetch a public tweet via VxTwitter

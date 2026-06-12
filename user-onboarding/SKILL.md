@@ -1,6 +1,6 @@
 ---
 name: user-onboarding
-description: "Designs and writes user onboarding — empty states, first-run flows, signup-step cutting, setup wizards, lifecycle emails — selling the better user, not the product. Use when shaping what new users see first, writing onboarding or welcome copy, handling blank screens, or introducing features. Based on Samuel Hulick's 'The Elements of User Onboarding'. Triggers: onboarding, empty state, first run, welcome copy, setup wizard, lifecycle email."
+description: "Designs and writes user onboarding — empty states, first-run flows, signup-step cutting, setup wizards, lifecycle emails — selling the better user, not the product. Use when shaping what new users see first, writing onboarding or welcome copy, or handling blank screens. Triggers: onboarding, empty state, first run, welcome copy, setup wizard, lifecycle email."
 ---
 
 # User Onboarding

@@ -1,6 +1,6 @@
 ---
 name: design-prototyping
-description: "Prototype and present design work across three tiers — fake-it (Keynote Magic Move), real code (SwiftUI as a design tool), and agents (collaborators, never designers). Use when validating an idea before building, choosing prototyping fidelity, planning feedback sessions, or structuring a review or pitch. Based on six WWDC sessions and two ADA articles. Triggers: prototype, fake it, Magic Move, SwiftUI prototype, tuning panel, present design work."
+description: "Prototype and present design work across three tiers — fake-it (Keynote Magic Move), real code (SwiftUI as a design tool), and agents (collaborators, never designers). Use when validating an idea before building, planning feedback sessions, or structuring a review or pitch. Triggers: prototype, fake it, Magic Move, SwiftUI prototype, tuning panel, present design work."
 ---
 
 # Design Prototyping & Presenting

@@ -1,6 +1,6 @@
 ---
 name: user-research
-description: "Plan and run user research — pick the method for the question, field interviews, recruiting/screening, behavioral validation, synthesis into decisions. Use when writing a research plan/screener/field guide or choosing among interviews, diary studies, usability/A/B/tree tests. Prototype sessions → design-prototyping; selling research → design-org-influence. (Hall, Portigal, Sharon.) Triggers: user research, user interviews, screener, persona."
+description: "Plan and run user research — pick the method for the question, recruiting/screening, synthesis into decisions. Use when writing a research plan/screener/field guide or choosing among interviews, diary studies, usability/A/B/tree tests. Prototype sessions → design-prototyping; selling research → design-org-influence. Triggers: user research, user interviews, screener, persona."
 ---
 
 # User Research

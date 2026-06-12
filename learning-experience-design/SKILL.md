@@ -1,6 +1,6 @@
 ---
 name: learning-experience-design
-description: "Designs courses, workshops, training, tutorials, and job aids that change behavior — gap diagnosis, practice, feedback, motivation, transfer, and performance support. Use when people need to learn a skill or adopt a process. Product onboarding → user-onboarding/feature-discoverability; managing reports → people-management. Based on Julie Dirksen. Triggers: training, course, workshop, curriculum, practice, feedback, job aid."
+description: "Designs courses, workshops, training, tutorials, and job aids that change behavior — gap diagnosis, practice, feedback, motivation, transfer. Use when people need to learn a skill or adopt a process. Product onboarding → user-onboarding/feature-discoverability; managing reports → people-management. Triggers: training, course, workshop, curriculum, practice, feedback, job aid."
 ---
 
 # Learning Experience Design

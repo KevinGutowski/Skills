@@ -1,6 +1,6 @@
 ---
 name: apple-navigation-design
-description: "Design navigation and layout for iOS and iPad — tab bars, push vs modal, sheet and menu rules, iPad-native layout, iPadOS 26 windowing. Use when structuring an app's navigation, deciding tabs vs sidebar, choosing push vs modal, designing sheets, menus, or destructive confirmations, or making an app iPad-native. Based on 6 Apple WWDC sessions. Triggers: tab bar, push vs modal, sidebar vs tab bar, menu vs action sheet, iPad windowing."
+description: "Design navigation and layout for iOS and iPad — tab bars, push vs modal, sheet and menu rules, iPad-native layout, iPadOS 26 windowing. Use when structuring navigation, deciding tabs vs sidebar, designing sheets, menus, or destructive confirmations, or making an app iPad-native. Triggers: tab bar, push vs modal, sidebar vs tab bar, menu vs action sheet, iPad windowing."
 ---
 
 # Apple Navigation Design

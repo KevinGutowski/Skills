@@ -1,6 +1,6 @@
 ---
 name: app-icon-design
-description: "Design app icons for Apple platforms — timeless craft (metaphor, simplicity, small-size testing) and the layered Liquid Glass icon system with appearance modes via Icon Composer. Use when designing or reviewing an app icon, preparing layered icons or dark/tinted/clear variants, or fixing icons that read poorly small. Based on 3 Apple WWDC sessions. Triggers: app icon, icon metaphor, Icon Composer, layered icon, tinted icon, dark mode icon."
+description: "Design app icons for Apple platforms — timeless craft (metaphor, simplicity, small-size testing) and the layered Liquid Glass icon system via Icon Composer. Use for designing or reviewing an app icon, layered icons, dark/tinted/clear variants, or icons that read poorly small. Triggers: app icon, icon metaphor, Icon Composer, layered icon, tinted icon, dark mode icon."
 ---
 
 # App Icon Design

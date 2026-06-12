@@ -1,6 +1,6 @@
 ---
 name: logo-design
-description: "Create brand marks, badges, and identity systems via the Peters method — brand nouns, 50 sketches, noun combination, B/W presentation. Use when designing or evolving a logo, presenting logo options, or decoding 'make the logo bigger'. App icons → app-icon-design; brand in iOS → ios-brand-identity. Based on Allan Peters' Logos that Last. Triggers: logo design, brand mark, logomark, brand identity, badge design, rebrand, logo presentation, favicon."
+description: "Create brand marks, badges, and identity systems via the Peters method — brand nouns, 50 sketches, noun combination, B/W presentation. Use when designing or evolving a logo or decoding 'make the logo bigger'. App icons → app-icon-design; brand in iOS → ios-brand-identity. Triggers: logo design, brand mark, logomark, brand identity, badge design, rebrand, logo presentation."
 ---
 
 # Logo Design (the Peters Method)

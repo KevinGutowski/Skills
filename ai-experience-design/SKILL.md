@@ -1,6 +1,6 @@
 ---
 name: ai-experience-design
-description: "Design AI/ML-powered experiences — confidence as actions, attributions, calibration, corrections, plus prompting and safety for Apple's on-device model. Use when designing ML/LLM-backed features, correction flows, Foundation Models prompts, or agent/multi-agent surfaces (harness, canvas, personalization bounds). (Apple WWDC, Dive Club.) Triggers: AI feature UX, confidence display, attributions, Foundation Models, hallucination, agent UX."
+description: "Design AI/ML-powered experiences — confidence as actions, attributions, calibration, corrections, plus prompting and safety for Apple's on-device model. Use when designing ML/LLM-backed features, correction flows, Foundation Models prompts, or agent/multi-agent surfaces. Triggers: AI feature UX, confidence display, attributions, Foundation Models, hallucination, agent UX."
 ---
 
 # AI Experience Design

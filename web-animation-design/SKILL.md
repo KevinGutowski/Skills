@@ -1,6 +1,6 @@
 ---
 name: web-animation-design
-description: "Designs web animations that feel natural — easing, timing, duration, springs, transitions, performance and accessibility. The DEFAULT theme for web motion values: when design skills overlap on easing/duration/spring choices, route here. Use when animating UI elements, choosing easing, or handling motion accessibility. Triggers: easing, cubic-bezier, spring physics, keyframes, microinteractions, stagger, prefers-reduced-motion."
+description: "Designs web animations that feel natural — easing, duration, springs, performance and accessibility. The DEFAULT theme for web motion values: when design skills overlap on easing/duration/spring choices, route here. Use when animating UI elements or handling motion accessibility. Triggers: easing, cubic-bezier, spring physics, microinteractions, stagger, prefers-reduced-motion."
 metadata:
   short-description: Design and implement web animations that feel natural and purposeful
 ---

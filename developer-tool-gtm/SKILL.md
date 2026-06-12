@@ -1,6 +1,6 @@
 ---
 name: developer-tool-gtm
-description: "Earn developer adoption and revenue for a developer tool — landing-page anatomy, the five conversion killers, devtool copywriting, the PMF Compass (TTFV/retention/NRR). Use when writing or reviewing a devtool landing page or copy, diagnosing weak conversion or adoption, or assessing product-market fit. Based on five Evil Martians Chronicles posts. Triggers: devtool landing page, developer marketing, CTA, free-to-paid conversion, NRR, PMF."
+description: "Earn developer adoption and revenue for a developer tool — landing-page anatomy, the five conversion killers, devtool copywriting, the PMF Compass (TTFV/retention/NRR). Use for devtool landing pages and copy, diagnosing weak conversion or adoption, or assessing product-market fit. Triggers: devtool landing page, developer marketing, CTA, free-to-paid conversion, NRR, PMF."
 ---
 
 # Developer-Tool Go-To-Market

@@ -1,6 +1,6 @@
 ---
 name: apple-typography
-description: "Use typography well on Apple platforms — the San Francisco family, optical sizes, text styles, and full Dynamic Type support including custom font scaling. Use when choosing system fonts, building type hierarchy, fixing truncated text at large sizes, or supporting Dynamic Type in SwiftUI or UIKit. Based on 3 Apple WWDC sessions. Triggers: Dynamic Type, text styles, ScaledMetric, UIFontMetrics, SF Pro, New York font, optical size."
+description: "Use typography well on Apple platforms — the San Francisco family, optical sizes, text styles, and full Dynamic Type support including custom font scaling. Use when choosing system fonts, fixing truncated text at large sizes, or supporting Dynamic Type in SwiftUI or UIKit. Triggers: Dynamic Type, text styles, ScaledMetric, UIFontMetrics, SF Pro, New York font, optical size."
 ---
 
 # Apple Typography

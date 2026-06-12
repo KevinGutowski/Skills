@@ -1,6 +1,6 @@
 ---
 name: ui-voice-and-tone
-description: "Defines an app's writing voice, adapts tone per situation, and crafts the microcopy that carries them. Use when establishing a product's voice, dialing tone for a moment, writing or reviewing UI microcopy, or trimming copy. Defers naming to naming-features-and-labels, failure copy to error-messages, long-form to write-clear-prose. Triggers: voice and tone, UX writing, microcopy, copy review, empty state copy, dial up tone."
+description: "Defines an app's writing voice, adapts tone per situation, and crafts the microcopy. Use when establishing a product's voice, dialing tone, or writing or reviewing UI microcopy. Defers naming to naming-features-and-labels, failure copy to error-messages, long-form to write-clear-prose. Triggers: voice and tone, UX writing, microcopy, copy review, empty state copy, dial up tone."
 ---
 
 # UI Voice and Tone

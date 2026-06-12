@@ -1,6 +1,6 @@
 ---
 name: design-principles
-description: "Apply Apple's eight design principles — purpose, agency, responsibility, familiarity, flexibility, simplicity, craft, delight — to guide and critique design decisions. Use when making high-level design choices, evaluating whether a feature is well-designed, or reviewing a UI against principles. Based on Apple's 'Principles of great design' (WWDC 2026). Triggers: is this good design, design principles, design critique, delight."
+description: "Apply Apple's eight design principles — purpose, agency, responsibility, familiarity, flexibility, simplicity, craft, delight — to guide and critique design decisions. Use when making high-level design choices, evaluating whether a feature is well-designed, or reviewing a UI against principles. Triggers: is this good design, design principles, design critique, delight."
 ---
 
 # Principles of Great Design

@@ -1,6 +1,6 @@
 ---
 name: building-in-public
-description: "Grow an audience-led indie product as a designer/maker — build in public from the prototype stage, problem-first demos, the marketing↔product loop, company-of-one economics. Use when launching a side project, building an audience for it, deciding what to post, or operating as a solo maker. Based on six Figma Config talks. Triggers: build in public, indie product, side project, solopreneur, audience building, launch strategy, company of one."
+description: "Grow an audience-led indie product as a designer/maker — build in public from the prototype stage, problem-first demos, the marketing↔product loop, company-of-one economics. Use when launching a side project, building an audience for it, or operating as a solo maker. Triggers: build in public, indie product, side project, solopreneur, audience building, launch strategy."
 ---
 
 # Building in Public

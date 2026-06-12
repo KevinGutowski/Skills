@@ -1,6 +1,6 @@
 ---
 name: form-design
-description: "Design web form structure, fields, buttons, and validation — the Dannaway method: single column, field types, 3 button weights, destructive friction. Use for web forms, confirm dialogs, or buttons. Failure copy → error-messages; signup → user-onboarding; Apple forms → apple-navigation-design. (Dannaway, Practical UI.) Triggers: form layout, radio vs dropdown, checkbox vs toggle, disabled button, destructive action, multi-step form."
+description: "Design web forms — the Dannaway method: single column, field types, 3 button weights, destructive friction. Use for web forms, confirm dialogs, or buttons. Failure copy → error-messages; signup → user-onboarding; Apple forms → apple-navigation-design. Triggers: form layout, radio vs dropdown, checkbox vs toggle, disabled button, destructive action, multi-step form."
 ---
 
 # Form Design (Practical UI)

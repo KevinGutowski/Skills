@@ -1,6 +1,6 @@
 ---
 name: write-clear-prose
-description: "Drafts, revises, critiques, and coaches nonfiction prose for clarity, simplicity, structure, rhythm, voice, and audience. Use for essays, articles, business or technical writing, emails, speeches, opinion pieces, or developmental/line/copy editing. Based on William Zinsser's On Writing Well and other craft books. Triggers: clear writing, simplify prose, edit my essay, line edit, copyedit, clutter, rewrite."
+description: "Drafts, revises, critiques, and coaches nonfiction prose for clarity, simplicity, structure, rhythm, voice, and audience — Zinsser-school craft. Use for essays, articles, business or technical writing, emails, speeches, opinion pieces, or developmental/line/copy editing. Triggers: clear writing, simplify prose, edit my essay, line edit, copyedit, clutter, rewrite."
 ---
 
 # Write Clear Prose

@@ -1,6 +1,6 @@
 ---
 name: error-messages
-description: "Writes and reviews error messages and failure-state copy — any in-app text shown when something goes wrong. Use when writing error toasts, dialogs, form validation, 404/500 pages, retry prompts, or API/payment/auth failure copy, or reviewing error copy for tone, clarity, or blame. Based on Wix UX's 'Write better error messages'. Triggers: error message, error copy, validation message, something went wrong, failure state, retry prompt."
+description: "Writes and reviews error messages and failure-state copy — any in-app text shown when something goes wrong. Use for error toasts, dialogs, form validation, 404/500 pages, retry prompts, or API/payment/auth failure copy, or reviewing error copy for tone, clarity, or blame. Triggers: error message, error copy, validation message, something went wrong, failure state, retry prompt."
 ---
 
 # Error Messages

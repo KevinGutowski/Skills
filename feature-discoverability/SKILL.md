@@ -1,6 +1,6 @@
 ---
 name: feature-discoverability
-description: "Make app features discoverable — first launches that lead with content, the five discoverability principles, and TipKit done well. Use when designing a first-run experience, deciding what's visible vs hidden, adding tips or gesture hints, or fixing features users never find. Based on WWDC sessions. Triggers: discoverability, first launch, TipKit, hidden feature, hint at gesture, defer signup, users can't find."
+description: "Make app features discoverable — first launches that lead with content, the five discoverability principles, and TipKit. Use when designing a first-run experience, deciding what's visible vs hidden, adding gesture hints, or fixing features users never find. Triggers: discoverability, first launch, TipKit, hidden feature, hint at gesture, defer signup, users can't find."
 ---
 
 # Feature Discoverability

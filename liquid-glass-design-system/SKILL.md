@@ -1,6 +1,6 @@
 ---
 name: liquid-glass-design-system
-description: "Apply Liquid Glass and Apple's 2025+ design system — the material (lensing, Regular vs Clear, tinting, never glass-on-glass), shapes, toolbars, scroll edge effects, and the adoption playbook. Use when adopting or reviewing the new design language, planning a migration, deciding where glass belongs, or fixing pinched corners. Based on WWDC 2025 sessions. Triggers: Liquid Glass, lensing, glass on glass, glassEffect, concentric, iOS 26 design."
+description: "Apply Liquid Glass and Apple's 2025+ design system — the material (lensing, Regular vs Clear, tinting, never glass-on-glass), shapes, toolbars, scroll edge effects. Use when adopting the new design language, planning a migration, deciding where glass belongs, or fixing pinched corners. Triggers: Liquid Glass, lensing, glass on glass, glassEffect, concentric, iOS 26 design."
 ---
 
 # Liquid Glass Design System

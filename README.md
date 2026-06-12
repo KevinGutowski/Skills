@@ -82,7 +82,7 @@ A curated library of Claude Code skills. The largest cluster is a design library
 `design-systems` (tokens, theming, governance/federation, adoption metrics, DS-as-AI-context — from 9 Config talks) · `devtool-interface-design` (dev-tool UI: contexts, control flow, zones, CLI UX, devtool onboarding, agent experience) · `developer-tool-gtm` (landing pages, copy, conversion, PMF Compass) · `building-in-public` (audience-led indie growth: rough-beats-polished content, prototype-stage validation, company-of-one economics) · `oss-strategy` (OSS popularity, READMEs, maintainer survival, monetization). Boundary: `devtool-interface-design` makes the tool worth adopting; `developer-tool-gtm` gets it adopted; `agentic-coding` is agents working *on your code* while devtool AX is agents as *customers of your tool*.
 
 ### Tooling & meta
-`creating-skills` / `skill-creator` / `converting-books-to-skills` / `converting-codebases-to-skills` (authoring skills — books/docs vs. living repos with PR history) · `goal` (session goals) · `airtable-mcp`, `nocodb-catalog-management`, `openai-transcription-chunking` (integrations).
+`creating-skills` (authoring skills + conversion playbooks for books/docs and living repos with PR history — its references/) · `goal` (session goals). Airtable MCP, NocoDB, and transcription-chunking integrations live in `research-cataloging`'s references.
 
 ## Routing rules (overlap boundaries)
 

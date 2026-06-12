@@ -1,6 +1,6 @@
 ---
 name: rails
-description: "Router for ALL Ruby on Rails and Ruby work — writing/reviewing code (four schools: vanilla 37signals default, Evil Martians layered, packwerk, Arkency event sourcing), webhooks, migrations, multitenancy/security, jobs, Hotwire/realtime, testing (fixtures AND factories schools), Docker dev, performance, upgrades, Inertia, Ruby refactoring, DHH review voice. Read this skill's body, then read the named reference file. Triggers: Rails, Ruby, Hotwire, Turbo, Sidekiq, Active Job, migration, backfill, multitenant, RSpec, Minitest, factory, fixture, Puma, N+1, webhook, Action Cable, event sourcing, refactoring, DHH, Basecamp."
+description: "Router for ALL Ruby on Rails and Ruby work — four schools (vanilla 37signals default, Evil Martians layered, packwerk, Arkency event sourcing), webhooks, migrations, multitenancy/security, jobs, Hotwire/realtime, both testing schools, Docker dev, performance, upgrades, Inertia, Ruby refactoring. Read this skill's body, then read the named reference file. Triggers: Rails, Ruby, Hotwire, Turbo, Sidekiq, migration, backfill, multitenant, RSpec, Minitest, factory, fixture, Puma, N+1, webhook, Action Cable, event sourcing, refactoring, DHH."
 ---
 
 # Rails (router)

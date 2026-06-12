@@ -1,6 +1,6 @@
 ---
 name: apple-search-design
-description: "Design search experiences on Apple platforms — field placement and how it signals scope, suggestions, recent searches, scope bars and tokens, no-results states. Use when designing or reviewing in-app search, deciding where search lives, choosing iOS vs iPad/Mac patterns, or adding a search tab or tokens. Based on Apple WWDC 2026 session 292 + the HIG. Triggers: search field, search placement, search tab, scope bar, search tokens, no results."
+description: "Design search experiences on Apple platforms — field placement and how it signals scope, suggestions, recent searches, scope bars and tokens, no-results states. Use when designing or reviewing in-app search, deciding where search lives, or adding a search tab or tokens. Triggers: search field, search placement, search tab, scope bar, search tokens, no results."
 ---
 
 # Apple Search Design

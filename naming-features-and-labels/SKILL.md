@@ -1,6 +1,6 @@
 ---
 name: naming-features-and-labels
-description: "Craft and critique clear names for anything users see — features, labels, settings, buttons, tabs, modes, plan tiers, product names. Use when naming or renaming a feature, choosing descriptive vs clever/branded, generating candidates, or judging a name's clarity, fit, and tone. Based on Apple's 'Craft clear names' WWDC session. Triggers: what should we call this, name this feature, rename, label copy, plan names, clarity vs brand."
+description: "Craft and critique clear names for anything users see — features, labels, settings, buttons, tabs, modes, plan tiers, product names. Use when naming or renaming a feature, choosing descriptive vs clever/branded, generating candidates, or judging a name's clarity and tone. Triggers: what should we call this, name this feature, rename, label copy, plan names, clarity vs brand."
 ---
 
 # Naming Features and Labels

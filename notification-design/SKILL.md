@@ -1,6 +1,6 @@
 ---
 name: notification-design
-description: "Design notifications worth receiving — when a notification earns the interruption, timing and frequency, quiet/provisional delivery, grouping, and the self-contained package incl. Apple Watch. Use when designing or reviewing notification strategy, permission flows, threading, or fatigue. Based on WWDC sessions. Triggers: notification design, push strategy, notification fatigue, deliver quietly, provisional authorization, when to notify."
+description: "Design notifications worth receiving — when a notification earns the interruption, timing and frequency, grouping, and the self-contained package incl. Apple Watch. Use for notification strategy, permission flows, threading, or fatigue. Triggers: notification design, push strategy, notification fatigue, deliver quietly, provisional authorization, when to notify."
 ---
 
 # Notification Design

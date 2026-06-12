@@ -1,6 +1,6 @@
 ---
 name: chart-experience-design
-description: "Design accessible charts and the experience around them in apps — five-part chart anatomy, progressive disclosure from static platters to interactive detail charts. Use when designing or reviewing in-app charts, choosing marks and axis ranges, writing accessibility labels, or supporting Audio Graphs. Based on 2 Apple WWDC sessions. Triggers: chart design, in-app charts, Swift Charts, Audio Graphs, chart accessibility, chart platter."
+description: "Design accessible charts and the experience around them in apps — five-part chart anatomy, progressive disclosure from static platters to interactive detail charts. Use when designing or reviewing in-app charts, choosing marks and axis ranges, or writing accessibility labels. Triggers: chart design, in-app charts, Swift Charts, Audio Graphs, chart accessibility, chart platter."
 ---
 
 # Chart Experience Design

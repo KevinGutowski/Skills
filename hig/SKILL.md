@@ -1,6 +1,6 @@
 ---
 name: hig
-description: "Look up Apple's Human Interface Guidelines — the canonical, current reference for Apple platform conventions, component specs, and patterns. A *lookup* skill (topic map + JSON-endpoint fetch; HTML fetches empty), not copied content. Use when a question needs Apple's authoritative guidance or exact specs beyond the talk-derived design skills. Triggers: HIG, Human Interface Guidelines, what does Apple say about, component spec, alerts, popovers."
+description: "Look up Apple's Human Interface Guidelines — the canonical reference for Apple platform conventions and component specs. A *lookup* skill (topic map + JSON-endpoint fetch; HTML fetches empty), not copied content. Use when a question needs Apple's authoritative guidance or exact specs. Triggers: HIG, Human Interface Guidelines, what does Apple say about, component spec, alerts."
 ---
 
 # Human Interface Guidelines (lookup)

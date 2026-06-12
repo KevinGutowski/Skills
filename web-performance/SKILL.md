@@ -1,6 +1,6 @@
 ---
 name: web-performance
-description: "Makes web apps load fast and feel instant — Core Web Vitals, perceived performance, defer/anticipate/offload triage, performance budgets. Use when a web app feels slow or janky, setting budgets, or debugging dropped frames. Distinct from motion's perf audit (animation pipeline) and optimizing-rails (server). Based on frame.io/Adobe + Config 2025. Triggers: web performance, Core Web Vitals, LCP, INP, dropped frames, performance budget."
+description: "Makes web apps load fast and feel instant — Core Web Vitals, perceived performance, defer/anticipate/offload triage. Use when a web app feels slow, setting budgets, or debugging dropped frames. Distinct from motion's perf audit (animation pipeline) and optimizing-rails (server). Triggers: web performance, Core Web Vitals, LCP, INP, dropped frames, performance budget."
 ---
 
 # Web Performance

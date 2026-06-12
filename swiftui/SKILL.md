@@ -1,6 +1,6 @@
 ---
 name: swiftui
-description: "SwiftUI implementation and Apple-platform craft details — view identity/state resets, layout containers, lazy stacks/scroll performance, springs/transitions/shaders, Swift 6 concurrency/sendability, touch gestures and hit targets, widgets, SF Symbols, app sound design. Read this skill's body, then read the named reference file. Triggers: SwiftUI, @State resets, Layout protocol, LazyVStack, scroll stutter, spring animation, transition, Metal shader, Swift concurrency, Sendable, actor, gesture, hit target, widget, WidgetKit, SF Symbol, symbol animation, haptics, app sounds."
+description: "SwiftUI implementation and Apple-platform craft — view identity/state resets, layout containers, lazy stacks/scroll performance, springs/transitions/shaders, Swift 6 concurrency, touch gestures and hit targets, widgets, SF Symbols, app sounds. Read this skill's body, then read the named reference file. Triggers: SwiftUI, @State resets, LazyVStack, scroll stutter, spring animation, Metal shader, Sendable, actor, gesture, hit target, WidgetKit, SF Symbol, haptics."
 ---
 
 # SwiftUI & Apple-Platform Craft

@@ -1,6 +1,6 @@
 ---
 name: ai-ui-direction
-description: "Direct and fix AI-generated UI — diagnose layout bugs in primitive vocabulary (fixed/fill/hug, padding vs gap, nesting), prompt surgically, choose prompt-vs-edit, run the independent-judge loop. Use when AI UI output looks wrong or when reviewing AI frontend output. Generation itself → frontend-design; agent mechanics → agentic-coding. Triggers: AI generated UI, fix this layout, vibe coded UI, AI slop, v0 output, direct the agent."
+description: "Direct and fix AI-generated UI — diagnose layout bugs in primitive vocabulary (fixed/fill/hug, padding vs gap, nesting), prompt surgically, choose prompt-vs-edit, run the independent-judge loop. Use when AI UI output looks wrong. Generation itself → frontend-design; agent mechanics → agentic-coding. Triggers: AI generated UI, fix this layout, vibe coded UI, AI slop, v0 output."
 ---
 
 # AI UI Direction

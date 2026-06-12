@@ -1,7 +1,6 @@
----
-name: converting-books-to-skills
-description: Convert books, guides, or documentation into Claude skills using progressive disclosure patterns. Use when the user wants to encode a book's knowledge into skills.
----
+# Converting Books to Skills
+
+*Scope: Convert books, guides, or documentation into Claude skills using progressive disclosure patterns.*
 
 > **Prerequisite:** For general skill authoring (structure, naming, descriptions), see the `creating-skills` skill or the [official documentation](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices).
 >
@@ -15,7 +14,7 @@ description: Convert books, guides, or documentation into Claude skills using pr
 4. **Write** — Follow the principle → example → principle pattern
 5. **Test** — Verify triggers, navigation, and completeness
 
-Details: [workflow-overview.md](workflow-overview.md)
+Details: [workflow-overview.md](converting-books-to-skills/workflow-overview.md)
 
 ## Should I Create One Skill or Multiple?
 
@@ -27,7 +26,7 @@ Details: [workflow-overview.md](workflow-overview.md)
 
 **Rule of thumb:** If someone would use chapters A and B in the same work session, bundle them together.
 
-Details: [bundling-strategy.md](bundling-strategy.md)
+Details: [bundling-strategy.md](converting-books-to-skills/bundling-strategy.md)
 
 ## SKILL.md Structure
 
@@ -42,7 +41,7 @@ Keep SKILL.md under **500 lines**. It's the quick reference that Claude loads fi
 
 **Example:** [One concrete case from the book]
 
-Details: [reference-file.md](reference-file.md)
+Details: [reference-file.md](converting-books-to-skills/reference-file.md)
 ```
 
 **Key rules:**
@@ -50,7 +49,7 @@ Details: [reference-file.md](reference-file.md)
 - One grounding example per section
 - Link to reference files for depth
 
-Details: [writing-skill-md.md](writing-skill-md.md)
+Details: [writing-skill-md.md](converting-books-to-skills/writing-skill-md.md)
 
 ## Reference File Structure
 
@@ -67,7 +66,7 @@ Reference files hold the full narrative. Claude loads these on demand.
 - Duplicating SKILL.md content
 - Abstract explanations without examples
 
-Details: [writing-reference-files.md](writing-reference-files.md)
+Details: [writing-reference-files.md](converting-books-to-skills/writing-reference-files.md)
 
 ## Writing Effective Descriptions
 
@@ -80,7 +79,7 @@ The description determines when Claude loads the skill.
 
 **Template:** "[Action verb] [domain] by [key techniques]. Use when [trigger context]."
 
-Details: [writing-descriptions.md](writing-descriptions.md)
+Details: [writing-descriptions.md](converting-books-to-skills/writing-descriptions.md)
 
 ## Preserving the Book's Voice
 
@@ -97,7 +96,7 @@ Principle → Concrete example/quote → Principle reinforced
 
 Don't strip examples out—they're what make concepts stick.
 
-Details: [preserving-voice.md](preserving-voice.md)
+Details: [preserving-voice.md](converting-books-to-skills/preserving-voice.md)
 
 ## Capturing Mindset, Not Just Process
 
@@ -110,7 +109,7 @@ Books teach ideology, not just procedures. Create dedicated reference files for 
 
 These aren't techniques—they're the ideology that makes techniques work.
 
-Details: [capturing-mindset.md](capturing-mindset.md)
+Details: [capturing-mindset.md](converting-books-to-skills/capturing-mindset.md)
 
 ## Checklist Before Shipping
 
@@ -123,4 +122,4 @@ Details: [capturing-mindset.md](capturing-mindset.md)
 - [ ] Core mindsets have dedicated files
 - [ ] No nested references (one level deep)
 
-Details: [checklist.md](checklist.md)
+Details: [checklist.md](converting-books-to-skills/checklist.md)
