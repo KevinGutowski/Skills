@@ -7,7 +7,7 @@ description: "Use typography well on Apple platforms — the San Francisco famil
 
 **Sources:** [references/sources.md](references/sources.md) — 3 Apple WWDC sessions + MDS + Hollick's font internals.
 
-Great UI typography is about the *dynamic behavior* of text — optical sizes, tracking, and leading are legibility mechanics, not aesthetic trivia. The system fonts handle them automatically; your job is to use **text styles** and system APIs so you inherit that engineering, and to keep it working when type scales up. (For SF Symbols — which are typographic objects too — see `sf-symbols`.)
+Great UI typography is about the *dynamic behavior* of text — optical sizes, tracking, and leading are legibility mechanics, not aesthetic trivia. The system fonts handle them automatically; your job is to use **text styles** and system APIs so you inherit that engineering, and to keep it working when type scales up. (For SF Symbols — which are typographic objects too — see `swiftui` (sf-symbols).)
 
 **The HIG legibility floor:** minimum text sizes 11pt (iOS/iPadOS), 10pt (macOS), 23pt (tvOS), 12pt (watchOS) — defaults 17/13/29/16 — and "avoid Ultralight, Thin, and Light font weights" in UI text.
 
@@ -58,7 +58,7 @@ People choose from 7 default sizes + 5 accessibility sizes; supporting them is n
 1. **Use text styles everywhere** (above). The two failure modes to hunt: *truncated* text (not enough lines) and *clipped* text (fixed frames).
 2. **Custom fonts still scale:** UIKit `UIFontMetrics(forTextStyle:).scaledFont(for:)` / `.scaledValue(for:)`; SwiftUI `Font.custom(name, size:, relativeTo:)` (custom fonts scale relative to `.body` by default since iOS 14; `fixedSize:` opts out). Each text style has a different scaling curve — match `relativeTo` to the role.
 3. **Scale layout constants** with `@ScaledMetric(relativeTo:)`.
-4. **Adapt layout direction at accessibility sizes:** read `@Environment(\.dynamicTypeSize)` and check `.isAccessibilitySize`, swap `AnyLayout(HStackLayout())` ↔ `AnyLayout(VStackLayout())` — or let `ViewThatFits` pick automatically (see `swiftui-layout`); UIKit: drive `UIStackView.axis` from `traitCollection.preferredContentSizeCategory.isAccessibilityCategory`.
+4. **Adapt layout direction at accessibility sizes:** read `@Environment(\.dynamicTypeSize)` and check `.isAccessibilitySize`, swap `AnyLayout(HStackLayout())` ↔ `AnyLayout(VStackLayout())` — or let `ViewThatFits` pick automatically (see `swiftui` (swiftui-layout)); UIKit: drive `UIStackView.axis` from `traitCollection.preferredContentSizeCategory.isAccessibilityCategory`.
 5. **Images:** decorative images should *not* grow (wrap text under them; at the largest sizes you may drop purely decorative views — never functionality). Content images scale via `@ScaledMetric`; inline symbols in `Text` scale free; UIKit inline images via `NSTextAttachment`, symbols via `UIImage.SymbolConfiguration(textStyle:)`.
 6. **Bars that can't grow get the Large Content Viewer** (a tab bar that scaled would eat ~¼ of the screen): system bars are free; custom bars use `.accessibilityShowsLargeContentViewer { … }` (SwiftUI) or `UILargeContentViewerInteraction` + the `UILargeContentViewerItem` properties (UIKit).
 7. **Test:** Xcode Previews → Dynamic Type Variants; the debugger's Dynamic Type override; and run **accessibility audits** (also available in UI tests).
@@ -109,10 +109,10 @@ See `references/code-patterns.md` for all 23 verbatim code samples from the talk
 
 ## Relationship to other skills
 
-- **`sf-symbols`** — the sibling: symbols are typographic objects (baseline-aligned, weight-matched, scaled by Dynamic Type). Type questions here; symbol rendering/animation there.
+- **`swiftui` (sf-symbols)** — the sibling: symbols are typographic objects (baseline-aligned, weight-matched, scaled by Dynamic Type). Type questions here; symbol rendering/animation there.
 - **`ios-brand-identity`** — owns the brand decision (custom typeface vs. system fonts, where type expresses brand); this skill owns the *mechanics* of making either choice work (Dynamic Type, text styles, widths). Its typography section routes here.
 - **`design-principles`** — *Craft* (typographic detail) and *Flexibility* (Dynamic Type as accessibility); use it to weigh trade-offs.
-- **`swiftui-lazy-stacks`** — fixed-height text in lazy stacks (line limits, reserved space) interacts with Dynamic Type; check both when text lives in scrolling content.
+- **`swiftui` (swiftui-lazy-stacks)** — fixed-height text in lazy stacks (line limits, reserved space) interacts with Dynamic Type; check both when text lives in scrolling content.
 - **`make-interfaces-feel-better`** — web-oriented typography polish (font smoothing, tabular numbers); this skill is the Apple-platform counterpart.
 - **`web-typography`** — the full web/CSS typography discipline (measure, line-height, scales, pairing, web-font loading); never cross-apply its rules to Apple platforms or vice versa.
 - **`apple-visual-accessibility`** — the audit layer: Dynamic Type/Bold Text are accessibility settings first; audit there, implement the type mechanics here.

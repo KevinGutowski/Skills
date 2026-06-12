@@ -89,6 +89,6 @@ See `references/patterns.md` for the worked examples (cycling-routes app rebalan
 - **`apple-search-design`** — the sibling: its first question is "how do people navigate my app?" — answer it here, then place search there. Nav-bar search filters the current view; whole-app search gets a search tab (both skills state this boundary).
 - **`design-principles`** — *Familiarity* is this skill's engine (chevron = push, persistent tabs); *Flexibility* covers the iPad/input adaptation. Use it for trade-offs.
 - **`ios-brand-identity`** — the UI layer (navigation chrome) should stay native; brand lives in the content layer. This skill is what "native navigation" concretely means.
-- **`swiftui-layout`** — the SwiftUI implementation of these structures: sidebars → `NavigationSplitView`, desktop-class tables/toolbars/selection menus → `Table`/`.toolbar(id:)`/`contextMenu(forSelectionType:)`. Decide here; build there.
-- **`swiftui-lazy-stacks`** / **`swiftui-animation`** — the engineering beneath: scrolling content within these structures, and transitions between them (e.g. the zoom transition for large cells).
+- **`swiftui` (swiftui-layout)** — the SwiftUI implementation of these structures: sidebars → `NavigationSplitView`, desktop-class tables/toolbars/selection menus → `Table`/`.toolbar(id:)`/`contextMenu(forSelectionType:)`. Decide here; build there.
+- **`swiftui` (swiftui-lazy-stacks)** / **`swiftui` (swiftui-animation)** — the engineering beneath: scrolling content within these structures, and transitions between them (e.g. the zoom transition for large cells).
 - **`linear-settings-copy`** — settings IA is a navigation sub-problem with its own conventions; route settings-specific structure there.

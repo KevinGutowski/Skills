@@ -1,60 +1,39 @@
-# Skill-listing budget & the hub overlay (2026-06)
+# Skill-listing budget (Claude Code)
 
-Claude Code loads every skill's description into context, capped at **1% of the context
-window (in characters)**. Overflow silently shortens descriptions and drops least-used
-skills to name-only (`/doctor` shows which). At ~94 skills this corpus needed ~2%, so
-roughly half the descriptions were being silently evicted.
+Claude Code reserves ~1% of the context window (in characters) for the skill
+listing; over budget, it silently shortens/drops least-used descriptions
+(`/doctor` reveals it). Constraint from Kevin: do NOT raise
+`skillListingBudgetFraction`; and (2026-06-12) the library must be
+**environment-agnostic** — no per-machine `skillOverrides`, because other
+machines and other agents (Codex) never see those settings.
 
-## The overlay architecture (validated — see routing-experiment-2026-06.md)
-- Two **router skills** (`rails-hub`, `research-cataloging-hub`) carry cluster-level
-  trigger vocabulary and point to member skills BY NAME. Model reads the router body
-  (one hop) → invokes the member → full body loads. Experiment: 36/36 routing accuracy,
-  zero loss vs flat, including keyword-free adversarial probes.
-- Member skills keep their full SKILL.md descriptions in the repo (portable; baseline
-  environments behave exactly as before, routers are additive/harmless there).
-- On machines that want the savings, hide member descriptions via `skillOverrides`
-  in `~/.claude/settings.json` (NOT in this repo — it's a per-machine overlay):
+## Current approach: repo-native consolidation (2026-06-12)
+Low-fire-rate clusters are single skills whose members live as reference files
+(progressive disclosure — works identically in every environment):
 
-```json
-"skillOverrides": {
-  "dhh-style": "name-only", "layered-rails": "name-only", "inertia-rails": "name-only",
-  "optimizing-rails": "name-only", "ruby-refactoring": "name-only",
-  "rails-webhooks": "name-only", "rails-migrations": "name-only",
-  "rails-security-multitenancy": "name-only", "rails-jobs": "name-only",
-  "rails-fixtures-testing": "name-only", "rails-hotwire-realtime": "name-only",
-  "rails-testing": "name-only", "rails-realtime": "name-only",
-  "rails-docker-dev": "name-only", "rails-event-sourcing": "name-only",
-  "rails-upgrades": "name-only", "archival-research": "name-only",
-  "catalog-reconciliation-research": "name-only", "source-translation-workflow": "name-only",
-  "nocodb-catalog-management": "name-only", "image-archival": "name-only",
-  "source-sweep": "name-only", "route-planning": "name-only", "airtable-mcp": "name-only",
-  "openai-transcription-chunking": "name-only", "skill-creator": "name-only",
-  "swiftui-animation": "name-only", "swiftui-identity": "name-only",
-  "swiftui-layout": "name-only", "swiftui-lazy-stacks": "name-only",
-  "swift-concurrency": "name-only", "touch-interaction-design": "name-only",
-  "widget-design": "name-only", "sf-symbols": "name-only", "sound-design": "name-only",
-  "emil-design-eng": "name-only", "tufte-viz": "name-only",
-  "write-clear-prose": "name-only",
-  "dhh": "user-invocable-only", "goal": "user-invocable-only"
-}
-```
+- `rails` — 16 former member skills under `rails/references/` (four schools +
+  topics). `dhh` stays standalone (user-invocable /dhh).
+- `research-cataloging` — 6 former members under `research-cataloging/references/`.
+- `swiftui` — 9 former members (swiftui-×4, swift-concurrency,
+  touch-interaction-design, widget-design, sf-symbols, sound-design).
 
-## 2026-06-12 extension (98 skills): swiftui-hub
-At 98 skills, /doctor showed demand ~2x budget again; the evictor was silently
-dropping ~20 HOT descriptions (web-animation-design, ui-voice-and-tone,
-user-research, web-typography, the swiftui-* family). Fix: `swiftui-hub` router
-(SwiftUI implementation + Apple-platform craft: swiftui-×4, swift-concurrency,
-touch-interaction-design, widget-design, sf-symbols, sound-design) — these were
-already evicted, so hubbing strictly improves their routing — plus name-only for
-theme-covered singles: emil-design-eng (make-interfaces-feel-better carries the
-polish triggers), tufte-viz (chart-selection carries viz triggers),
-write-clear-prose (self-describing name). Net ~5.3k chars freed → the hot
-web/book skills return to full descriptions.
+This took the listing from 99 skills (~41k chars, ~2x budget, ~20 hot
+descriptions silently evicted) to 68 skills. Hot design/book skills stay flat
+with full descriptions — their boundary clauses do real routing work.
+
+## History
+- 2026-06-11: first hit the wall at 94 skills (46 descriptions dropped). Interim
+  fix was a per-machine `skillOverrides` overlay (validated 36/36 in
+  docs/routing-experiment-2026-06.md) — retired 2026-06-12 in favor of
+  consolidation when /doctor showed the wall again at 98 and Kevin set the
+  agnostic requirement.
 
 ## House rules going forward
-- Hot design-core skills stay flat with full descriptions (their boundary clauses do
-  real routing work — eval-proven). Hub-ify only LOW-FIRE-RATE clusters.
-- Description band: 350–450 chars (routers may run ~600). Boundary clauses are sacred.
-- When adding a skill to a hubbed cluster: update the hub body + add the override.
-- Re-check `/doctor` after corpus growth; prefer demand reduction over raising
-  `skillListingBudgetFraction`.
+- Hot design-core skills stay flat with full descriptions. Consolidate only
+  LOW-FIRE-RATE clusters, in the repo, never via settings.
+- Description band: 350-450 chars (consolidated routers may run ~600-700).
+  Boundary clauses are sacred.
+- Adding to a consolidated cluster: new content = a reference file + a line in
+  the cluster SKILL.md body + vocabulary in its description if novel.
+- Re-check /doctor after corpus growth; prefer consolidation/demand reduction
+  over raising skillListingBudgetFraction.

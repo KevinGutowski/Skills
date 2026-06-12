@@ -66,8 +66,8 @@ The car analogy: **TTFB** = key in the ignition → **First Contentful Paint** =
 - **`web-animation-design`** — perceived-speed and animation-performance rules (transform/opacity only, under-20px blurs) live there; this skill supplies the frame budgets and process that enforce them.
 - **`make-interfaces-feel-better`** — §17 layout stability (anti-skeleton, no-shift loads) is the CLS doctrine; §18's modern CSS primitives are the prefer-CSS toolbox.
 - **`web-typography`** — font-loading strategy (WOFF2, subsetting, `font-display`, FOUT-over-FOIT, fallback matching) lives there; this skill owns the budgets it must fit.
-- **`optimizing-rails`** — the server side of TTFB and API latency; this skill takes over once bytes reach the browser. Same measure-first creed.
+- **`rails` (optimizing-rails)** — the server side of TTFB and API latency; this skill takes over once bytes reach the browser. Same measure-first creed.
 - **`devtool-interface-design`** — the speed usage-law and frequency rules for tools people live in.
-- **`swiftui-lazy-stacks`** / **`swift-concurrency`** — the native-platform analogs (scroll perf; coalesce-before-isolation).
+- **`swiftui` (swiftui-lazy-stacks)** / **`swiftui` (swift-concurrency)** — the native-platform analogs (scroll perf; coalesce-before-isolation).
 
 > **Staleness note (Kevin's rule):** framework specifics (Next.js app router, React `useTransition`/`useOptimistic`/compiler, router-cache behavior) are 2024–25-era — verify against current docs. INP replaced FID as a Core Web Vital in March 2024. The frame budgets, fluid-UI principles, triage model, and process rules are the durable layer.

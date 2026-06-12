@@ -33,7 +33,7 @@ iOS groups by app by default — usually leave it. Thread (`threadIdentifier`) o
 - **Quick actions** complete the task in place (Accept with availability shown, Like/Comment, play an episode, "Can I help you?" to the doorbell camera) — then the user gets back to what they were doing.
 - **Apple Watch:** notifications are "the primary way people interact with apps on Apple Watch," and alerts route to the most accessible device — design for both. Watch qualities: informative yet succinct, visually rich, actionable, quick — "we don't want to recreate the app experience." Tailor to the journey (the ticket QR going full-screen at the venue).
 
-> **Staleness note (Kevin's rule):** 2017–2018 sessions. The strategy and anatomy persist; the delivery system has since gained **interruption levels** (passive/active/time-sensitive/critical, iOS 15), **Focus**, scheduled summaries, and **Live Activities** (which absorb the "live-updating notification" use case — see `app-intents-design`/`widget-design`). Verify current UserNotifications APIs before implementation.
+> **Staleness note (Kevin's rule):** 2017–2018 sessions. The strategy and anatomy persist; the delivery system has since gained **interruption levels** (passive/active/time-sensitive/critical, iOS 15), **Focus**, scheduled summaries, and **Live Activities** (which absorb the "live-updating notification" use case — see `app-intents-design`/`swiftui` (widget-design)). Verify current UserNotifications APIs before implementation.
 
 ## Checklist
 
@@ -48,7 +48,7 @@ See `references/examples.md` for the worked examples (Duolingo's pause, the Podc
 ## Relationship to other skills
 
 - **`ui-voice-and-tone`** — owns the notification *copy* (tone dialing per moment); this skill owns the *strategy and anatomy* (whether/when/what form).
-- **`sound-design`** — the notification sound criteria (distinguishable, short, neutral when content varies) pair with this skill's restraint rules.
+- **`swiftui` (sound-design)** — the notification sound criteria (distinguishable, short, neutral when content varies) pair with this skill's restraint rules.
 - **`feature-discoverability`** — shares the permission ethic: ask in context, value first.
-- **`widget-design`** / **`app-intents-design`** — Live Activities now own continuous glanceable state; route persistent-status use cases there.
+- **`swiftui` (widget-design)** / **`app-intents-design`** — Live Activities now own continuous glanceable state; route persistent-status use cases there.
 - **`design-principles`** — *Responsibility* (attention as a resource) and *Utility*; use it to weigh whether a moment earns an interruption.

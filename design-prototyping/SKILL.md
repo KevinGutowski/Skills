@@ -132,11 +132,11 @@ References: [methods.md](references/methods.md) — Toast Modern walkthrough, Ke
 - **`user-research`** — when the question is discovery/validation rather than artifact feedback: method selection, interviewing craft, screeners; concept-reaction sessions use its neutral-presentation rules with this skill's artifacts.
 - **`design-org-influence`** — the business case, stakeholder politics, and objection handling around a pitch; this skill owns the artifact and the session.
 - **`client-engagements`** — presenting/prototyping inside a client engagement (feedback training, session health); this skill owns the artifact and session craft.
-- **`touch-interaction-design`** — "the interactive demo is worth a million static designs" is this skill in action; prototype interactions with these methods, judge them with that skill.
+- **`swiftui` (touch-interaction-design)** — "the interactive demo is worth a million static designs" is this skill in action; prototype interactions with these methods, judge them with that skill.
 - **`design-principles`** — supplies what to evaluate *against*; this skill supplies the loop that produces evidence.
 - **`hardware-product-design`** — the physical tier: non-functional mockups, cabled rigs, test jigs, foam core at true viewing distance.
-- **`feature-discoverability`** / **`sound-design`** — both close with "prototype and test"; this is the how.
+- **`feature-discoverability`** / **`swiftui` (sound-design)** — both close with "prototype and test"; this is the how.
 - **`figma:figma-use`** / **`paper-desktop:design-to-code`** — modern tooling for the same make-fast, tool-agnostic ethic ("subvert your tools").
-- **`swiftui-layout`** / **`swiftui-animation`** — the building blocks for the real-code tier; this skill says *why and when* to prototype in SwiftUI, those say *how*.
+- **`swiftui` (swiftui-layout)** / **`swiftui` (swiftui-animation)** — the building blocks for the real-code tier; this skill says *why and when* to prototype in SwiftUI, those say *how*.
 - **`interface-craft-principles`** *(Kevin-local)* — Josh Puckett's quality-practice loop; its prototyping moves (breakable toy, live tuning, iterations grid) are folded in above. Route "is it good enough" to `design-principles`' depth-spectrum heuristic.
 - **`agentic-coding`** — when prototyping graduates to production engineering with agents (designer shipping production code, encoding decisions as rules); owns the **two-system tax** case study.

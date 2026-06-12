@@ -105,4 +105,4 @@ Match how DHH actually writes review comments:
 
 ## Related skills
 
-- `dhh-style` — teaches *writing* in this school and auto-triggers on Rails work; this skill *reviews* in DHH's literal voice, on explicit request only.
+- `rails` (dhh-style) — teaches *writing* in this school and auto-triggers on Rails work; this skill *reviews* in DHH's literal voice, on explicit request only.

@@ -32,7 +32,7 @@ To turn "an expert cleans up my vibe code" into a reusable asset:
 - The agent "is like a junior developer without the professional vision… It sprints confidently in one direction. But if the architecture needs to pivot, it won't notice." When a bug reveals a pattern problem, **don't patch — build the abstraction that gates future generation, then encode it as a skill** (their filter/sort DSL case: one clean abstraction, and "the AI consistently applied [it] everywhere" after).
 - Anchor on value, not volume: "An engineer's goal isn't to write code, it's to bring business value" — choosing what *not* to build, cutting the right 5% of a feature, and knowing **when not to use AI at all** (mature unfamiliar codebases, rare stacks, small scoped tasks where the rule-writing loop costs more than it saves). Expect ~30–40% gains under good conditions — greenfield, popular stack, patternized tasks — and possibly negative gains outside them.
 
-**Sandbox the agent itself** (Ruby on Whales, 2026): run agents *inside* the dev container with project-only volume mounts and per-project credentials — "a way to prevent unrestricted access to the host system by development software." The container boundary, not the agent's permission prompts, is the guarantee; permissive flags become safe inside it (setup in `rails-docker-dev`).
+**Sandbox the agent itself** (Ruby on Whales, 2026): run agents *inside* the dev container with project-only volume mounts and per-project credentials — "a way to prevent unrestricted access to the host system by development software." The container boundary, not the agent's permission prompts, is the guarantee; permissive flags become safe inside it (setup in `rails` (rails-docker-dev)).
 
 ## The Cursor school (Ryo Lu & Jin Park, 2025)
 
@@ -114,12 +114,12 @@ Field practices from people running agents daily. Extended notes + context: `ref
 
 ## Relationship to other skills
 
-- **`dhh-style`** — *what good Rails code looks like*; this skill is *how to get an agent to produce it*. The two compose: dhh-style conventions are exactly the kind of rules step 2 encodes.
-- **`optimizing-rails`** — performance decisions (like their N+1 strategy) are prime skill-encoding material; the measurement-first method lives there.
+- **`rails` (dhh-style)** — *what good Rails code looks like*; this skill is *how to get an agent to produce it*. The two compose: dhh-style conventions are exactly the kind of rules step 2 encodes.
+- **`rails` (optimizing-rails)** — performance decisions (like their N+1 strategy) are prime skill-encoding material; the measurement-first method lives there.
 - **`design-prototyping`** — its agents tier covers *design exploration* with agents ("collaborators, not designers"); this skill covers *production engineering* with agents, including the designer-ships-production-code workflow and the prototype-outside-the-stack tax that motivates skipping straight to the real repo.
 - **`shape-up`** — scoping what the MVP even is; this skill is the build engine once scoped.
 - **`creating-skills`** / **`skill-creator`** — the mechanics of writing the skill/rule files this method depends on.
-- **`rails-docker-dev`** — the container sandbox that makes permissive agent flags safe (project-only mounts).
+- **`rails` (rails-docker-dev)** — the container sandbox that makes permissive agent flags safe (project-only mounts).
 - **`malleable-software`** — Litt's philosophy layer (version control as the human-AI substrate, jigs, teaching primitives); this skill is the daily practice on real repos — his surgeon/prep-brief workflow lives here.
 - **`devtool-interface-design`** — the inverse perspective: this skill runs agents *on your codebase*; its AX section designs your *product* for agents as customers.
 - **`ai-ui-direction`** — UI-specific direction of AI output (layout diagnosis, prompt-vs-edit, the judge loop); this skill owns the workflow mechanics around the agent.

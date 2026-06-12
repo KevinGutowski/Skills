@@ -1,13 +1,13 @@
 ---
 name: photographic-lighting
-description: "Plan and troubleshoot photographic lighting for portraits, product/still-life, field shoots, and tricky surfaces using hard/soft light, direction, fill, bounce, and family-of-angles tests. Use when lighting a photo, diagnosing glare/shadows/reflections, or planning flash/natural-light setups. Image compression -> image-archival; graphics internals -> graphics-fundamentals. Triggers: photo lighting, glare, softbox, fill flash."
+description: "Plan and troubleshoot photographic lighting for portraits, product/still-life, field shoots, and tricky surfaces using hard/soft light, direction, fill, bounce, and family-of-angles tests. Use when lighting a photo, diagnosing glare/shadows/reflections, or planning flash/natural-light setups. Image compression -> research-cataloging; graphics internals -> graphics-fundamentals. Triggers: photo lighting, glare, softbox, fill flash."
 ---
 
 # Photographic Lighting
 
 Sources: [references/sources.md](references/sources.md) — Hunter/Biver/Fuqua's *Light: Science & Magic* for lighting physics and surface diagnosis; Tony Northrup for field, flash, and portrait practice.
 
-Use this skill when the user needs to make a photograph work by changing light: portraits, products, shiny objects, glass, black-on-black, white-on-white, room flash, outdoor sun, glare, catchlights, or shadow shape. Do not use it for image file compression (`image-archival`) or graphics/rendering internals (`graphics-fundamentals`).
+Use this skill when the user needs to make a photograph work by changing light: portraits, products, shiny objects, glass, black-on-black, white-on-white, room flash, outdoor sun, glare, catchlights, or shadow shape. Do not use it for image file compression (`research-cataloging` (image-archival)) or graphics/rendering internals (`graphics-fundamentals`).
 
 ## Start With The Lighting Diagnosis
 
@@ -115,7 +115,7 @@ White-on-white and black-on-black need separation before cleverness.
 
 ## Relationship To Other Skills
 
-- `image-archival` owns file size, format choice, and visually lossless compression after images exist.
+- `research-cataloging` (image-archival) owns file size, format choice, and visually lossless compression after images exist.
 - `graphics-fundamentals` owns color-space, rasterization, SVG, blur, and image-compression mechanisms.
 - `frontend-design` owns choosing imagery for a web/app interface; use this only when the issue is how to light or shoot the image.
 - `app-icon-design` and `logo-design` own marks/icons; use this only for photographing physical objects or people.

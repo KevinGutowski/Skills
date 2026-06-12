@@ -84,6 +84,6 @@ See `references/patterns.md` for the full placement examples and decision walkth
 - **`liquid-glass-design-system`** — the material behind the glass search field and the dedicated bottom Search tab; placement patterns here, material rules there.
 - **`apple-navigation-design`** — answers this skill's first question, "how do people navigate my app?" (tabs, push, modality, sidebars). Structure navigation there, then place search here; nav-bar search filters the current view, whole-app search gets a search tab.
 - **`ios-brand-identity`** — covers how a branded/custom search field should still keep the magnifying glass and native feel. Sibling skill; use together when search is part of a branded UI.
-- **`swiftui-lazy-stacks`** — search results are usually a scrolling list; that skill governs the lazy-stack/scroll implementation beneath the results.
+- **`swiftui` (swiftui-lazy-stacks)** — search results are usually a scrolling list; that skill governs the lazy-stack/scroll implementation beneath the results.
 - **`naming-features-and-labels`** — for the placeholder text and scope/filter labels (clear, scope-signaling wording).
 - **`error-messages`** — the no-results view is an empty state, not a failure; keep it neutral and helpful rather than error-toned.

@@ -5,7 +5,7 @@ description: "Run reliable OpenAI/Whisper transcription on long recordings — p
 
 # OpenAI Transcription Chunking
 
-Use this for the mechanical ASR layer before `source-translation-workflow`. The goal is to create auditable transcript evidence, not a final translation or summary.
+Use this for the mechanical ASR layer before `research-cataloging` (source-translation-workflow). The goal is to create auditable transcript evidence, not a final translation or summary.
 
 ## Core rule
 
@@ -76,7 +76,7 @@ Prompt guidance:
 - Ask for accurate transcription, not summary.
 - Tell the model to mark `[unclear]` instead of repeating phrases.
 - Include known speaker names, Pokemon names, venue names, and craft terms.
-- Do not ask the transcription pass to translate; translation belongs to `source-translation-workflow`.
+- Do not ask the transcription pass to translate; translation belongs to `research-cataloging` (source-translation-workflow).
 
 ## Official OpenAI references
 
@@ -173,4 +173,4 @@ Before saying the transcript is ready for translation or excerpting:
 - Rerun loop/name scans after retry assembly.
 - Mark unresolved thin sections explicitly instead of filling them in from inference.
 
-Then use `source-translation-workflow` for manual English-session translation, interpreter-echo handling, and Airtable/source excerpt promotion.
+Then use `research-cataloging` (source-translation-workflow) for manual English-session translation, interpreter-echo handling, and Airtable/source excerpt promotion.

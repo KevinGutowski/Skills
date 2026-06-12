@@ -83,7 +83,7 @@ When the product has a screen or touch surface, brief from this layer before spe
 - **`design-principles`** — Teenage Engineering/Kouthoofd's craft values and Tome's two-sided quality + least-lying doctrine live there; this skill is their shop-floor counterpart.
 - **`building-in-public`** — Work Louder's audience/GTM mechanics (render-before-product, community pricing, defect-as-edition marketing) from the same talk.
 - **`ai-experience-design`** — input/output models when the device is AI-first (push vs pull, presenting a design space); Humane's and the panel's AI framings live there.
-- **`touch-interaction-design`** / **`sound-design`** — the interaction-feel layers once the hardware exists.
+- **`swiftui` (touch-interaction-design)** / **`swiftui` (sound-design)** — the interaction-feel layers once the hardware exists.
 - **`shape-up`** — comms-enables-craft and appetite-setting for hardware's cliff deadlines.
 
 > **Staleness note (Kevin's rule):** auto-captioned 2024–25 talks; company specifics (Humane's fate, ICON's Vitruvius/CODEX, Augmental's roadmap) decay fast — the positioning map, rig/jig discipline, supplier rules, and yield/inventory economics are the durable layer.

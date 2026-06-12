@@ -68,5 +68,5 @@ Practice: validate the pain recurs before open-sourcing; ~10 hrs/week minimum; "
 - **`developer-tool-gtm`** — commercial devtool pages and PMF; "open source users are users, too" bridges them. README discipline here; landing-page anatomy there.
 - **`write-clear-prose`** — sentence mechanics for the README's prose; the structure/benefit ordering lives here.
 - **`user-onboarding`** — "benefits for users" is its sell-the-better-user in OSS form; first-run flows for products live there.
-- **`layered-rails`** / **`dhh-style`** — the plugins-need-batteries lesson is convention-over-configuration, the principle both Rails schools share.
+- **`rails` (layered-rails)** / **`rails` (dhh-style)** — the plugins-need-batteries lesson is convention-over-configuration, the principle both Rails schools share.
 - **`agentic-coding`** — open-sourcing your project skills ("every project makes the harness smarter") is this skill's promotion loop applied to agent rules.

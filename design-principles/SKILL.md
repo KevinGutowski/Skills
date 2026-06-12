@@ -147,12 +147,12 @@ This is the **strategic / decision-and-critique layer**. It decides *whether and
 - **`ui-voice-and-tone`** — *Delight* and *Familiarity* at the level of the product's writing voice and microcopy. Set direction here; define and write the voice there.
 - **`linear-settings-copy`** and **`user-onboarding`** — *Simplicity* and *Flexibility* in settings IA, personalization, and first-run; *Agency* in letting people choose their path.
 - **`apple-search-design`** and **`ios-brand-identity`** — these principles applied to specific Apple-platform domains (search patterns; expressing brand within iOS conventions). They lean heavily on *Familiarity*, *Simplicity*, *Flexibility*, *Craft*, and *Delight*; use them for the iOS specifics and this skill for the underlying trade-offs.
-- **`apple-typography`** and **`sf-symbols`** — *Craft* and *Flexibility* (Dynamic Type as accessibility) in Apple type and symbols; the mechanics layer beneath `ios-brand-identity`.
+- **`apple-typography`** and **`swiftui` (sf-symbols)** — *Craft* and *Flexibility* (Dynamic Type as accessibility) in Apple type and symbols; the mechanics layer beneath `ios-brand-identity`.
 - **`apple-navigation-design`** — *Familiarity* applied to app structure (tabs, push, modality, iPad layout, pointer).
 - **`apple-visual-accessibility`** — *Flexibility* and *Responsibility* made concrete: the accessibility settings and how to honor them.
 - **`app-intents-design`** — *Simplicity* and *Agency* in exposing app functionality to Siri/Spotlight/system surfaces.
 - **`chart-experience-design`** — *Simplicity*'s "complex data better understood as a graphic," fully worked out for in-app charts.
-- **`sound-design`** / **`touch-interaction-design`** / **`widget-design`** — *Craft* and *Delight* in the auditory channel, the press of a control, and the home-screen surface respectively.
+- **`swiftui` (sound-design)** / **`swiftui` (touch-interaction-design)** / **`swiftui` (widget-design)** — *Craft* and *Delight* in the auditory channel, the press of a control, and the home-screen surface respectively.
 - **`liquid-glass-design-system`** — *Familiarity* and *Craft* embodied in the current platform design language; the material and system rules everything Apple-visual now sits on.
 - **`feature-discoverability`** / **`notification-design`** / **`app-icon-design`** — *Agency*+*Familiarity* in finding features; *Responsibility* toward attention; the icon as concentrated *Simplicity*+*Delight*.
 - **`design-prototyping`** — the evidence loop these principles get tested through (make → show → learn; presenting design work).

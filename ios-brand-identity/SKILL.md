@@ -55,7 +55,7 @@ Rules of thumb:
 - **Respect platform conventions even in a custom style.** NYT Cooking's Share icon differs across iOS/Android/Web yet each stays true to that platform's sharing pattern. Icons should be **identifiable and purposeful**, not heavily stylized.
 - **Not every app needs custom icons. SF Symbols** (7,000+, free) are built like a font (scale like text), neutral, with line weights plus accessibility and localization support — and built into Xcode, so no export/handoff.
 - **Logos:** in iOS people already know which app they're in, so logos waste valuable real estate. *NYT Cooking* shows its logo only on the Home tab and fades it on scroll. Keep branding refined and unobtrusive. Say-it-once test (MDS critiquing a coffee-shop app, Shift Nudge YouTube k8dcRRgA3T8): "we're saying waves and coffee three different times in this one area" — logo, wordmark, *and* branded imagery — "we only need to say wave coffee once… it can be implied or it can be direct"; pick one carrier per view.
-- For symbol *mechanics* — configuration, scales, rendering modes, Variable Color, animations, custom-symbol templates — use **`sf-symbols`**. This section decides custom-vs-system iconography; that skill makes either work.
+- For symbol *mechanics* — configuration, scales, rendering modes, Variable Color, animations, custom-symbol templates — use **`swiftui` (sf-symbols)**. This section decides custom-vs-system iconography; that skill makes either work.
 
 ## Logo & wordmark equity (Jessica Hische + Robinhood/Porto Rocha, Config 2024–25)
 
@@ -83,9 +83,9 @@ See `references/examples.md` for the full app-by-app breakdown (Gentler Streak, 
 
 - **`design-principles`** is the parent — this is *Familiarity* (honor platform patterns) balanced against brand expression, plus *Craft* and *Delight*. The talk even closes on the same note: "people remember how a product makes them feel… satisfying, enriching, a joy to use." Use `design-principles` to weigh brand vs. convention; use this skill for the iOS specifics.
 - **`make-interfaces-feel-better`** / **`emil-design-eng`** — the component-level craft this relies on (concentric radii, optical detail, polish). Route "make this custom component feel right" there.
-- **`web-animation-design`** / **`motion`** cover web/JS motion; on iOS the brand-through-motion ideas here are realized with SwiftUI — implement with `swiftui-animation` (transitions, effects, shaders) and `swiftui-lazy-stacks` (scroll). Don't cross-apply CSS specifics.
+- **`web-animation-design`** / **`motion`** cover web/JS motion; on iOS the brand-through-motion ideas here are realized with SwiftUI — implement with `swiftui` (swiftui-animation) (transitions, effects, shaders) and `swiftui` (swiftui-lazy-stacks) (scroll). Don't cross-apply CSS specifics.
 - **`naming-features-and-labels`** / **`ui-voice-and-tone`** — the wording and voice side of brand in the content layer: name the individual thing with the former, define and write the app's voice with the latter.
 - **`apple-search-design`** — sibling Apple-platform skill; it notes a branded search field must keep the magnifying glass and native field elements. Use together when search is part of a branded UI.
 - **`liquid-glass-design-system`** — the primary source for the Liquid Glass material and its rules (variants, tinting, glass-on-glass, concentric shapes). This skill's UI/content-layer model and tint guidance are that system applied to brand.
-- **`apple-typography`** / **`sf-symbols`** — the mechanics beneath this skill's Typography and Iconography sections (Dynamic Type, text styles, widths; symbol configuration, rendering modes, animation, custom symbols).
-- **`widget-design`** / **`sound-design`** — brand beyond the app's visuals: widgets extend the palette/imagery to the home screen (the Crumbl example); a sound palette is the brand's auditory voice.
+- **`apple-typography`** / **`swiftui` (sf-symbols)** — the mechanics beneath this skill's Typography and Iconography sections (Dynamic Type, text styles, widths; symbol configuration, rendering modes, animation, custom symbols).
+- **`swiftui` (widget-design)** / **`swiftui` (sound-design)** — brand beyond the app's visuals: widgets extend the palette/imagery to the home screen (the Crumbl example); a sound palette is the brand's auditory voice.

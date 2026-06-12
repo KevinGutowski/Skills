@@ -9,7 +9,7 @@ description: Extract Claude skills from an open-source codebase and its pull-req
 
 "Reading the code shows the outcome. Pull requests show the decisions." (Rob Zolkos.) PRs carry the options considered, the review pushback, the failed first attempt, the trade-offs that survived. A skill distilled only from source code captures conventions; one distilled from PRs also captures decision rules — which is what agents actually need.
 
-**Case study:** [`marckohlbrugge/37signals-skills`](https://github.com/marckohlbrugge/37signals-skills) — 8 skills + a 35-topic guide from 265 PRs in Basecamp's Fizzy repo, seeded by [Rob Zolkos's PR catalog](https://www.zolkos.com/2025/12/10/fizzys-pull-requests). Its evolution is the lesson: v1 analyzed *code only* ([gist](https://gist.github.com/marckohlbrugge/d363fb90c89f71bd0c816d24d7642aca)); v2 added the PR/review mining; v3 packaged installable skills and re-ran with a newer model. Seven of its skills are vendored into this library as `dhh-style` satellites.
+**Case study:** [`marckohlbrugge/37signals-skills`](https://github.com/marckohlbrugge/37signals-skills) — 8 skills + a 35-topic guide from 265 PRs in Basecamp's Fizzy repo, seeded by [Rob Zolkos's PR catalog](https://www.zolkos.com/2025/12/10/fizzys-pull-requests). Its evolution is the lesson: v1 analyzed *code only* ([gist](https://gist.github.com/marckohlbrugge/d363fb90c89f71bd0c816d24d7642aca)); v2 added the PR/review mining; v3 packaged installable skills and re-ran with a newer model. Seven of its skills are vendored into this library as `rails` (dhh-style) satellites.
 
 ## Qualify the Source First
 

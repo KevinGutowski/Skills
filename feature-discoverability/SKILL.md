@@ -57,7 +57,7 @@ See `references/examples.md` for the worked examples (Jetsetter, Strava, Toasty,
 
 - **`user-onboarding`** — Hulick's flow/persuasion framework (sell the better user, quick wins) for signup and empty states; this skill is the Apple in-app teaching layer (no-tutorial first launch, cues, gestures, tips). Compose: structure the journey there, make features findable here.
 - **`learning-experience-design`** — courses, workshops, internal training, job aids, and practice/feedback systems. This skill owns teaching inside the app surface; learning-experience-design owns broader instruction and transfer.
-- **`touch-interaction-design`** — its teach-by-showing section (clipped content, planes, gesture-aligned animation) is the interaction mechanics behind principle 3.
+- **`swiftui` (touch-interaction-design)** — its teach-by-showing section (clipped content, planes, gesture-aligned animation) is the interaction mechanics behind principle 3.
 - **`app-intents-design`** — the Siri Tip is this skill's pattern applied to shortcuts; same dismissibility ethic.
 - **`apple-navigation-design`** — tab bars vs hidden menus is its structural domain; this skill supplies the *why* (discoverability testing).
 - **`design-principles`** — *Agency* (explore at your own pace) and *Familiarity*; permission timing also lives under its *Responsibility*.

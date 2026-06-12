@@ -22,7 +22,7 @@ Inclusion also spans culture and language — "language and symbols are grounded
 - **Depicting people**: "more detailed icons may exclude some of your users" — a simple silhouette is more general (UIKit ships one).
 - **Check associations**: an owl reads as wisdom in English-speaking contexts but bad luck or death in much of the Arabic-speaking world — "make sure that your associations are what you expect."
 
-Writing-side counterpart (term choice, partial-localization priorities, idiom safety nets) → `ui-voice-and-tone`. Glyph-concept universality (the heart-for-delicious rule) → `sf-symbols`.
+Writing-side counterpart (term choice, partial-localization priorities, idiom safety nets) → `ui-voice-and-tone`. Glyph-concept universality (the heart-for-delicious rule) → `swiftui` (sf-symbols).
 
 ## Color & shapes
 
@@ -31,7 +31,7 @@ Writing-side counterpart (term choice, partial-localization priorities, idiom sa
 - **Increase Contrast** — system colors adapt free. Rule of thumb: **darker in Light Mode, lighter in Dark Mode**. Custom colors/symbols: add High Contrast variants in the asset catalog (Attributes Inspector → High Contrast checkbox); iOS switches automatically.
 - **Contrast ratios:** check with the Accessibility Inspector's Color Contrast Calculator. **4.5:1 is the floor for most cases**; the talk's high-contrast fix hit 7.5:1 by darkening the background.
 - **Smart Invert** is asserted *over* your app (unlike Dark Mode, which you design). Flag photos, videos, and app icons with `accessibilityIgnoresInvertColors` so they don't invert.
-- Prefer **SF Symbols** for status/meaning glyphs — weight-matched, scale with text, extensible (see `sf-symbols`).
+- Prefer **SF Symbols** for status/meaning glyphs — weight-matched, scale with text, extensible (see `swiftui` (sf-symbols)).
 
 ## The 5-band contrast system (MDS)
 
@@ -104,8 +104,8 @@ See `references/settings-and-code.md` for the per-setting API table with all eig
 
 - **`apple-typography`** — owns the Dynamic Type *mechanics* this skill audits for (text styles, scaling, Large Content Viewer). Audit here, fix there.
 - **`design-principles`** — *Flexibility* (range of abilities) and *Responsibility*; accessibility is those principles made concrete.
-- **`sf-symbols`** — the recommended replacement for color-only meaning; covers Bold Text coverage for custom symbols.
-- **`swiftui-animation`** / **`web-animation-design`** — where the motion lives that Reduce Motion (or `prefers-reduced-motion` on the web) must tame; route implementation there.
+- **`swiftui` (sf-symbols)** — the recommended replacement for color-only meaning; covers Bold Text coverage for custom symbols.
+- **`swiftui` (swiftui-animation)** / **`web-animation-design`** — where the motion lives that Reduce Motion (or `prefers-reduced-motion` on the web) must tame; route implementation there.
 - **`ios-brand-identity`** — Dark Mode and brand color choices must survive Increase Contrast and Smart Invert; brand never overrides accommodation settings.
 - **`chart-experience-design`** — charts have their own accessibility layer (VoiceOver over data, Audio Graphs, redundant encodings).
 - **`web-accessibility`** — the web-scoped counterpart (semantic HTML, ARIA, skip links, WCAG testing programs); same platform split as apple-/web-typography.

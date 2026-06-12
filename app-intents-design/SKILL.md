@@ -85,5 +85,5 @@ See `references/patterns.md` for the worked examples (meditation app, Voice Memo
 - **`design-principles`** — *Simplicity* (lightest collection pattern) and *Agency* (confirmation only when consequential).
 - **`apple-navigation-design`** — intents bypass navigation; when an intent opens the app, it should land where navigation would have taken you.
 - **`error-messages`** — when an intent fails, failure dialog follows that skill's rules.
-- **`widget-design`** — widget configuration and interactive widgets run on App Intents; design the widget there, structure its intents here.
+- **`swiftui` (widget-design)** — widget configuration and interactive widgets run on App Intents; design the widget there, structure its intents here.
 - **`ai-experience-design`** — disambiguation/confirmation are its low-confidence patterns applied to voice; for LLM-backed intents, its prompting and safety rules apply.
