@@ -1,6 +1,6 @@
 # Building & Running a Design Org — Dive Club field notes
 
-Hiring, org shape, and operating models from design leaders. Sources (Dive Club podcast, auto-captioned YouTube): Henry Modisett (VP of Design, Perplexity — Vt3oTBvx7xw), Cam Worboys (Head of Product Design, Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), a live NYC panel with Megan Choy (Anthropic), Dan Shipper (Every), Bradley Zipper (Ramp) — V-jd3v9P-Ps; tranche 2: Polly D'Arcy (VP of Design, Wealthsimple — vdYBohOQYm0), Marvin Schwaibold (Molly Studio, acquired by Shopify — KpJs7mZYErg), Tommy Geoco (OYNoy468kS8).
+Hiring, org shape, and operating models from design leaders. Sources (Dive Club podcast, auto-captioned YouTube): Henry Modisett (VP of Design, Perplexity — Vt3oTBvx7xw), Cam Worboys (Head of Product Design, Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), a live NYC panel with Megan Choy (Anthropic), Dan Shipper (Every), Bradley Zipper (Ramp) — V-jd3v9P-Ps; tranche 2: Polly D'Arcy (VP of Design, Wealthsimple — vdYBohOQYm0), Marvin Schwaibold (Molly Studio, acquired by Shopify — KpJs7mZYErg), Tommy Geoco (OYNoy468kS8); MailChimp, *The UX Reader* (2014).
 
 ## Hiring (Modisett, Perplexity)
 
@@ -17,6 +17,13 @@ Hiring, org shape, and operating models from design leaders. Sources (Dive Club 
 - **Crit timing.** Ask each person when feedback is actually useful: "sometimes feedback is extremely important, you know, at the beginning, at the end, not often in the middle — and sometimes it's not important at all." Ownership stays with the designer; plenty of phones to ring.
 - **Velocity-first inversion.** Early-startup values trade toward velocity ("you want to just ship and learn"); at scale "you're not trying to gain a user, you're trying to keep a user" — revisit the values that got you there rather than letting them ossify.
 - **Deep-end management.** "It is the best thing for the org, for me to just throw everyone in the deep end, but give them a way to ask for a backup if they need it." The alternative — directing everyone — "doesn't scale" and "prevents growth"; don't use the team "as a tool for my brain."
+
+## MailChimp UX operating model (*The UX Reader*, 2014)
+
+- **Generalists plus specialists.** Aarron Walter's team was deliberately small: "Small teams make communication easier" and leave less room for weak links, but the real shape was broad UX generalism with detail specialists for research, UI, front-end, and email.
+- **Autonomy with connective tissue.** Teams need freedom to decide quickly, but absolute autonomy creates chaos; use short check-ins and cross-team hallway/context sharing to keep independent work tied to the whole company.
+- **Parallel research and product cycles.** MailChimp's release cycle was too short for deep studies, so long-running research ran in parallel with rapid product work. The bridge rule: "Research that goes unapplied is of little value" — share salient insights as they emerge rather than waiting for a final report.
+- **Empathy as refinement fuel.** Invite UX, engineering, and QA to watch real customers struggle. The goal is not research theater; it creates discomfort strong enough to make bug-fixing and workflow refinement feel urgent.
 
 ## Org shape for the AI era (Worboys, Cash App)
 
