@@ -64,6 +64,11 @@ human) picking up where the prior sessions left off. Companion files:
 - **Descriptions**: 350–450 chars, official shape (what + use-when + boundary clause +
   triggers). Boundary clauses ("X → other-skill") are load-bearing — never cut them.
 - **Cross-refs bidirectional** for load-bearing relationships.
+- **Citation economics (rule 12, 2026-06-11)**: inline citations are short name-tags
+  only — "(Klein)", "(Rutter, ch. 9)" — never numbered [1] refs (they rot under parallel
+  edits) and never full bibliography inline. Titles/years/URLs/video IDs go in the
+  skill's `references/sources.md`; SKILL.md carries one pointer line. Operational notes
+  (supersession ⚠️, caption-garble keys, staleness paragraphs) stay in the body.
 - **Budget constraint** (see docs/skill-listing-budget.md): do NOT raise
   skillListingBudgetFraction. If a new skill joins a hubbed cluster (rails, research/
   cataloging), update the hub body AND the overlay snippet in that doc.
