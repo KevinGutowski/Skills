@@ -23,6 +23,7 @@ Rules:
 | Roadmaps / release cycles / cleanup | Perri, Gothelf/Seiden, Klein product trio; MailChimp, *The UX Reader*, "Release Cycles and Roadmaps" and "Iteration and the Feature/Refinement Balance"; Linear quality series | Product trio owns measurement-led strategy; MailChimp adds a craft/org practice for annual cleanup releases and feedback-fed refinement. |
 | Research impact / synthesis | Product trio; Buley; MailChimp, *The UX Reader*, research section | MailChimp adds distribution channels and parallel-cycle research cadence; Buley owns solo-UX influence mechanics. |
 | Logo design | Allan Peters, *Logos that Last*; Gal Shir, *60 Tips for Logo Design* | Peters remains the primary method source. Shir corroborates the process and adds practical checks: four-lane intake, keyword lanes, time-boxed sketch warmup, rest overnight, profile-image/uniqueness tests, and presentation sequencing. |
+| Photographic lighting | Hunter/Biver/Fuqua, *Light: Science & Magic*; Tony Northrup, *Tony Northrup's DSLR Book* | Created `photographic-lighting` from a targeted lighting pass. Check here for photo shoots, glare/reflections, metal/glass, hard/soft light, fill/bounce flash, portraits, and product/still-life lighting. |
 
 ## MailChimp, *The UX Reader* (2014)
 
@@ -120,6 +121,59 @@ and short verified quotes.
 | 8. Showcasing | Set context, let the mark speak first, explain symbolism/characteristics, show sizes/colors/mockups, and present confidently. | Folded to `logo-design` presentation protocol. |
 
 Verified short quotes include: "A logo is a tool representing a brand"; "A logo is like a handshake between a business and its audience"; "Don’t spend more than 30 seconds on each sketch"; "Let it rest overnight"; "Test for uniqueness"; "Let the logo speak first"; "Show mockups".
+
+## Hunter / Biver / Fuqua, *Light: Science & Magic*
+
+Extraction: `/tmp/books/light-science-magic.txt` from Apple Books PDF via `pdftotext`.
+Density: HIGH for photographic lighting. Pass type: targeted lighting pass across the
+book's core chapters, not a general photography screen. Some extracted text has
+PDF/OCR drift (`Te`, `sofer`, `refection`), so verify any direct quote before use.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| 1. Light: the Beginning | Lighting is governed by principles rather than gear: effective source size, reflection types, and family of angles. | Created `photographic-lighting` framing. |
+| 2. Light: The Raw Material of Photography | Brightness/color/contrast, hard vs soft shadows, source size vs effective size, and light-vs-lighting distinction. | Folded hard/soft decision rules. |
+| 3. The Management of Reflection and the Family of Angles | Diffuse, direct, and polarized direct reflection; angle of incidence/reflection; family-of-angles placement. | Folded surface/reflection workflow. |
+| 4. Surface Appearances | Surface texture, diffuse/direct balance, copy-lighting setups, and controlling flat surfaces. | Folded lightly through surface diagnosis. |
+| 5. Revealing Shape and Contour | Depth clues, perspective vs tonal variation, light size/distance, and front/side/back/top direction. | Folded direction and shape rules. |
+| 6. Metal | Polished metal as environment reflection; bright/dark metal controlled by filling or avoiding the family of angles. | Folded to surface reference. |
+| 7. The Case of the Disappearing Glass | Glass edge definition, bright-field and dark-field setups, and removing distracting reflections. | Folded to surface reference. |
+| 8. Making Portraits | Single-key portrait setup, soft source size, catchlights, key triangle, fill, hair/kicker/background lights. | Folded to portrait reference. |
+| 9. The Extremes | White-on-white and black-on-black need lighting plus exposure to preserve edge separation and detail. | Folded to extremes checklist. |
+| 10. Traveling Light / Working on Location | Portable flash/LED/location constraints, exposure, off-camera flash, bounce, and practical quality fixes. | Folded to field-lighting reference. |
+| 11. Setting Up a Studio | Studio space/equipment planning and practical setup considerations. | Source-map only for now. |
+
+Verified clean quotes used/foldable: "A small light source is always a hard light source"; "Most good lighting is, at least to some extent, side lighting."; "A single light is adequate for most portraits; the rest are optional."
+
+## Tony Northrup, *Tony Northrup's DSLR Book: How to Create Stunning Digital Photography*
+
+Extraction: `/tmp/books/tony-northrup-dslr.txt` from unpacked Apple Books EPUB
+directory via `xmllint`. Density: MED overall, HIGH as a practical corroborator for
+field lighting, flash, and portraits. Pass type: targeted lighting/portrait pass; the
+camera/composition/genre chapters remain available for future screens if needed.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| Introduction | Advanced readers can start at lighting; beginners should read early camera chapters. | Context only. |
+| 1. Quick Tips | Field checklist; includes fill/bounce flash reminders. | Folded only where lighting-specific. |
+| 2. Composition | Focal point, frame-edge scan, foreground/background, story planning. | Mostly skipped as model-known; quote parked for future composition pass. |
+| 3. Lighting and Flash | Natural light, hard/soft, direction, environmental reflection, golden hour, sun control, fill flash, bounce flash, modifiers, off-camera flash, white balance. | Folded practical flash/field moves. |
+| 4. Controlling your Camera | Exposure modes, aperture/shutter/ISO, focus, RAW, stabilization, histogram. | Not routed in this pass. |
+| 5. Problem Solving | Troubleshooting blur, exposure, focus, noise, dynamic range. | Not routed in this pass. |
+| 6. Portraits | Outdoor/indoor portraits, locations, sun behind subject, shade/clouds, diffusers/reflectors, posing, studio basics, groups. | Folded portrait/field moves. |
+| 7. Weddings | Event coverage, bounce/fill practice, batteries/recycle, venue scouting. | Lightly informs event flash; no separate fold. |
+| 8. Animals | Catchlights, off-camera fill, umbrellas, polarizers for wildlife/aquariums. | Source-map only for future wildlife/photo pass. |
+| 9. Landscapes | Golden hour, polarizers, water reflection, long exposure. | Not routed in this pass. |
+| 10. Night Photography | Tripods, light painting, stars/fireworks/night scenes. | Not routed in this pass. |
+| 11. HDR | Exposure bracketing and high-dynamic-range workflow. | Not routed in this pass. |
+| 12. Close-up/Macro Photography | Macro technique and lighting constraints. | Not routed in this pass. |
+| 13. Underwater | Underwater equipment, light/color loss, backscatter. | Not routed in this pass. |
+
+Verified quotes used/foldable: "You always have some control over the lighting."; "Flash isn’t just for dark spaces."; "Use fill flash outdoors when your subject is backlit to fill in shadows and create catch lights in your model’s eyes."; "Use bounce flash indoors to softly light both the foreground and the background."; "Everything in the picture is part of the story, so plan every element carefully."; "Catchlights add life and interest to a subject."
 
 ## Lidwell / Holden / Butler, *Universal Principles of Design* (2003)
 
