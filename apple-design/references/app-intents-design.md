@@ -77,10 +77,10 @@ See `app-intents-design/patterns.md` for the worked examples (meditation app, Vo
 
 ## Relationship to other skills
 
-- **`naming-features-and-labels`** — invocation phrases and intent names *are* naming problems (belongs / sets-expectation / travels, plus the say-it-aloud test both skills share). Pick the words there; structure the intent here.
-- **`ui-voice-and-tone`** — Siri dialog is microcopy in your voice; dial it with that skill (concise + helpful turned up for voice-only).
+- **`ux-writing` (naming-features-and-labels)** — invocation phrases and intent names *are* naming problems (belongs / sets-expectation / travels, plus the say-it-aloud test both skills share). Pick the words there; structure the intent here.
+- **`ux-writing` (ui-voice-and-tone)** — Siri dialog is microcopy in your voice; dial it with that skill (concise + helpful turned up for voice-only).
 - **`design-principles`** — *Simplicity* (lightest collection pattern) and *Agency* (confirmation only when consequential).
 - **[apple-navigation-design.md](apple-navigation-design.md)** — intents bypass navigation; when an intent opens the app, it should land where navigation would have taken you.
-- **`error-messages`** — when an intent fails, failure dialog follows that skill's rules.
+- **`ux-writing` (error-messages)** — when an intent fails, failure dialog follows that skill's rules.
 - **`swiftui` (widget-design)** — widget configuration and interactive widgets run on App Intents; design the widget there, structure its intents here.
 - **`ai-experience-design`** — disambiguation/confirmation are its low-confidence patterns applied to voice; for LLM-backed intents, its prompting and safety rules apply.

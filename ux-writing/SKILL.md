@@ -1,0 +1,22 @@
+---
+name: ux-writing
+description: "Router for UX writing — this skill owns the words users read in the UI: voice and tone, microcopy, copy review, empty state copy, dial up tone; error messages, error copy, validation messages, failure-state copy, something went wrong, retry prompts; settings IA, settings pages, row titles, helper descriptions, option labels; what should we call this, name this feature, rename, label copy, plan names. Read this skill's body, then read the named reference file. Long-form prose → write-clear-prose; onboarding flows/empty-state strategy → user-onboarding."
+---
+
+# UX Writing
+
+Read exactly one reference file below; each carries the full distillation for its area (deeper worked examples and sources live in a same-named subdirectory next to it).
+
+- **Voice, tone & microcopy** — defining a product's voice, dialing tone per moment, writing or reviewing general UI microcopy, empty state copy, PACE, localization-ready writing: [references/ui-voice-and-tone.md](references/ui-voice-and-tone.md)
+- **Error messages** — writing or reviewing any failure-state copy: error toasts, dialogs, form validation, 404/500 pages, retry prompts, payment/auth failures, incident communication: [references/error-messages.md](references/error-messages.md)
+- **Settings IA & copy** — Linear-style settings pages, subpages, sidebar taxonomy, section groupings, row titles, helper descriptions, dropdown option and action labels: [references/linear-settings-copy.md](references/linear-settings-copy.md)
+- **Naming features & labels** — crafting and critiquing names for features, settings, buttons, tabs, modes, plan tiers; descriptive vs clever/branded; candidate generation and elimination: [references/naming-features-and-labels.md](references/naming-features-and-labels.md)
+
+**Internal deference chain (route between references the same way the original skills deferred):**
+- Voice/tone sets the overall register; when the task is choosing the actual *word* for a feature, button, value, or plan, route from ui-voice-and-tone to naming-features-and-labels.
+- Voice/tone sets where the serious/clinical dial sits in general; any "write/review an error" task routes from ui-voice-and-tone to error-messages, which owns the failure-state ruleset.
+- Settings work composes both ways: pick the word with naming-features-and-labels, then place it and write the row with linear-settings-copy; keep its quiet register consistent with ui-voice-and-tone.
+
+**Boundary splits to respect:**
+- **Long-form prose → `write-clear-prose`** — essays, articles, emails, sentence-level prose mechanics. This skill owns the words users read in the UI.
+- **Onboarding flows and empty-state strategy → `user-onboarding`** — first-run flows, welcome copy, "no data yet" empty states for new users. Failure-state empty screens ("we couldn't load your projects") stay here in error-messages.

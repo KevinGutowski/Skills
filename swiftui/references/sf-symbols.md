@@ -89,6 +89,6 @@ See `sf-symbols/evolution-and-examples.md` for the version-by-version history, t
 
 - **`apple-design` (apple-typography)** — the sibling: symbols are typographic objects; Dynamic Type scaling, text styles, and `SymbolConfiguration(textStyle:)` live at the boundary. Type mechanics there; symbol rendering/animation here.
 - **`apple-design` (ios-brand-identity)** — owns the *brand* decision (custom iconography vs. SF Symbols, platform-true icon style); this skill owns the symbol *mechanics* either way. Its iconography section routes here.
-- **`design-principles`** — *Familiarity* (symbols carry established meaning — don't hijack them; see also `naming-features-and-labels` on the trash-can rule) and *Craft*/*Delight* (purposeful animation).
+- **`design-principles`** — *Familiarity* (symbols carry established meaning — don't hijack them; see also `ux-writing` (naming-features-and-labels) on the trash-can rule) and *Craft*/*Delight* (purposeful animation).
 - **[swiftui-animation.md](swiftui-animation.md)** — general SwiftUI animation/transitions/effects; use this skill's semantic presets for symbols before hand-rolling motion there.
-- **`web-animation-design`** / **`motion`** — web/CSS animation values don't transfer; symbol animation is its own system with semantic presets.
+- **`web-design` (web-animation-design)** / **`motion`** — web/CSS animation values don't transfer; symbol animation is its own system with semantic presets.

@@ -6,7 +6,7 @@
 
 The specific values in this skill (timings, scales, stagger delays, opacities) form a coherent design language — like a color scheme, they hang together as a set. If another design skill is also loaded with different numbers, pick one skill's values and apply them consistently rather than averaging across skills.
 
-For motion-specific work, `web-animation-design` is the default theme — defer to its values when both are loaded. This skill leads on broader UI craft, taste, and component polish. When the user is mixing skills and a genuine choice surfaces, briefly present the options as a menu rather than picking silently.
+For motion-specific work, `web-design` (web-animation-design) is the default theme — defer to its values when both are loaded. This skill leads on broader UI craft, taste, and component polish. When the user is mixing skills and a genuine choice surfaces, briefly present the options as a menu rather than picking silently.
 
 This skill is the *how* of the **Craft** principle. For the strategic layer — whether a feature should exist, what to cut, and how to weigh craft against the other design principles — use `design-principles`.
 

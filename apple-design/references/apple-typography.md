@@ -111,5 +111,5 @@ See `apple-typography/code-patterns.md` for all 23 verbatim code samples from th
 - **`design-principles`** — *Craft* (typographic detail) and *Flexibility* (Dynamic Type as accessibility); use it to weigh trade-offs.
 - **`swiftui` (swiftui-lazy-stacks)** — fixed-height text in lazy stacks (line limits, reserved space) interacts with Dynamic Type; check both when text lives in scrolling content.
 - **`design-polish`** — web-oriented typography polish (font smoothing, tabular numbers); this skill is the Apple-platform counterpart.
-- **`web-typography`** — the full web/CSS typography discipline (measure, line-height, scales, pairing, web-font loading); never cross-apply its rules to Apple platforms or vice versa.
+- **`web-design` (web-typography)** — the full web/CSS typography discipline (measure, line-height, scales, pairing, web-font loading); never cross-apply its rules to Apple platforms or vice versa.
 - **[apple-visual-accessibility.md](apple-visual-accessibility.md)** — the audit layer: Dynamic Type/Bold Text are accessibility settings first; audit there, implement the type mechanics here.

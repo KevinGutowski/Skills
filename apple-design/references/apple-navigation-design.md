@@ -67,7 +67,7 @@ Three effects — **try Automatic first**:
 
 Rules: consistency within a group beats per-control theory; no gaps between adjacent hit regions (~12pt padding bezeled, ~24pt bezel-less); use precision to make existing features *faster* — **never add pointer-only features or change layout**; two-finger gestures are yours (three = system); secondary click = free context menu; never enable snapping without a custom pointer; no purely decorative pointer effects.
 
-> **Staleness note (Kevin's rule):** these are 2020–2022 sessions. The **navigation principles persist**, but Liquid Glass changed the visual treatment of tab bars, toolbars, and search placement — for the current material, grouping rules, and scroll edge effects defer to **[liquid-glass-design-system.md](liquid-glass-design-system.md)** (the primary source), plus [apple-search-design.md](apple-search-design.md) and [ios-brand-identity.md](ios-brand-identity.md); check the current HIG before citing visual specifics.
+> **Staleness note (Kevin's rule):** these are 2020–2022 sessions. The **navigation principles persist**, but Liquid Glass changed the visual treatment of tab bars, toolbars, and search placement — for the current material, grouping rules, and scroll edge effects defer to **[liquid-glass-design-system.md](liquid-glass-design-system.md)** (the primary source), plus [apple-search-design.md](apple-search-design.md) and [ios-brand-identity.md](ios-brand-identity.md); check the current HIG ([hig.md](hig.md)) before citing visual specifics.
 
 ## Review checklist
 
@@ -88,4 +88,4 @@ See `apple-navigation-design/patterns.md` for the worked examples (cycling-route
 - **[ios-brand-identity.md](ios-brand-identity.md)** — the UI layer (navigation chrome) should stay native; brand lives in the content layer. This skill is what "native navigation" concretely means.
 - **`swiftui` (swiftui-layout)** — the SwiftUI implementation of these structures: sidebars → `NavigationSplitView`, desktop-class tables/toolbars/selection menus → `Table`/`.toolbar(id:)`/`contextMenu(forSelectionType:)`. Decide here; build there.
 - **`swiftui` (swiftui-lazy-stacks)** / **`swiftui` (swiftui-animation)** — the engineering beneath: scrolling content within these structures, and transitions between them (e.g. the zoom transition for large cells).
-- **`linear-settings-copy`** — settings IA is a navigation sub-problem with its own conventions; route settings-specific structure there.
+- **`ux-writing` (linear-settings-copy)** — settings IA is a navigation sub-problem with its own conventions; route settings-specific structure there.

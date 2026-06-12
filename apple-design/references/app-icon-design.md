@@ -75,5 +75,5 @@ See `app-icon-design/examples.md` for the worked redesigns (News, Keynote, Podca
 - **[liquid-glass-design-system.md](liquid-glass-design-system.md)** — the same material; that skill covers it in UI, this one in icons (icon-specific rules like the 4-group cap and mono/tint modes live here).
 - **[ios-brand-identity.md](ios-brand-identity.md)** — the icon is the brand's most concentrated expression; brand strategy there, icon craft here. Its "personality from the app icon's visual language" line (widgets) draws from this.
 - **`logo-design`** — creating the brand mark itself (Peters method). Shared core: metaphor selection and small-size survival. Different task shape: a logo is a containerless multi-format system; an icon is one artwork in an OS-owned container. Logos, badges, identity systems → there.
-- **`naming-features-and-labels`** — metaphor selection parallels its naming criteria (identifiable, travels, ages well).
+- **`ux-writing` (naming-features-and-labels)** — metaphor selection parallels its naming criteria (identifiable, travels, ages well).
 - **`swiftui` (sf-symbols)** — glyph craft inside the app; icon glyphs share the simplicity/scale rules but live on the icon grid, not the type baseline.

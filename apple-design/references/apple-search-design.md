@@ -82,5 +82,5 @@ See `apple-search-design/patterns.md` for the full placement examples and decisi
 - **[apple-navigation-design.md](apple-navigation-design.md)** — answers this skill's first question, "how do people navigate my app?" (tabs, push, modality, sidebars). Structure navigation there, then place search here; nav-bar search filters the current view, whole-app search gets a search tab.
 - **[ios-brand-identity.md](ios-brand-identity.md)** — covers how a branded/custom search field should still keep the magnifying glass and native feel. Sibling skill; use together when search is part of a branded UI.
 - **`swiftui` (swiftui-lazy-stacks)** — search results are usually a scrolling list; that skill governs the lazy-stack/scroll implementation beneath the results.
-- **`naming-features-and-labels`** — for the placeholder text and scope/filter labels (clear, scope-signaling wording).
-- **`error-messages`** — the no-results view is an empty state, not a failure; keep it neutral and helpful rather than error-toned.
+- **`ux-writing` (naming-features-and-labels)** — for the placeholder text and scope/filter labels (clear, scope-signaling wording).
+- **`ux-writing` (error-messages)** — the no-results view is an empty state, not a failure; keep it neutral and helpful rather than error-toned.

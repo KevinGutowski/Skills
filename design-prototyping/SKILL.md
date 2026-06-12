@@ -57,7 +57,7 @@ Amplifiers and cautions (full notes: [references/agents-field-notes.md](referenc
 - **Visual prompting:** the screenshot or sketch *is* the prompt (Steve Ruiz, Make Real — iterate by drawing arrows on the output; paste a reference image); storyboard-as-prompt, but don't dial fidelity in Figma — "Figma's a lie. It's not your actual code base" (Josh Puckett).
 - **MDS workflow:** 85%-in-Figma, finish in code — hover states designed *only* in code ("it's all about how it feels"); components only when they pay — too many too early constrains creativity.
 - **Jigs** (Geoffrey Litt): disposable one-project tools an agent makes economical. **Start from anywhere** (Luis Ouriach): "the canvas is very important for ideation… but the browser is where we commit" — "not faster, but further."
-- **Prototype → production seam:** render the idea, don't ship it (Katarina Batina — "Just render the whole idea and then use that as the thing you talk to engineering with"; not shippable ≠ failure). Editable stakeholder prototypes, hedged variants, the playground-to-production one-shot (Andy Madrick). The two-system tax (→ `agentic-coding`): past concept validation, prototype in the real repo.
+- **Prototype → production seam:** render the idea, don't ship it (Katarina Batina — "Just render the whole idea and then use that as the thing you talk to engineering with"; not shippable ≠ failure). Editable stakeholder prototypes, hedged variants, the playground-to-production one-shot (Andy Madrick). The two-system tax (→ `working-with-ai` (agentic-coding)): past concept validation, prototype in the real repo.
 
 > Perishable layer: Xcode-agents UI specifics (Xcode 26; WWDC26-259) and 2025–26 tool names. Durable layer: the prompt patterns and collaborator-not-designer stance.
 
@@ -131,7 +131,7 @@ References: [methods.md](references/methods.md) — Toast Modern walkthrough, Ke
 
 - **`user-research`** — when the question is discovery/validation rather than artifact feedback: method selection, interviewing craft, screeners; concept-reaction sessions use its neutral-presentation rules with this skill's artifacts.
 - **`design-org-influence`** — the business case, stakeholder politics, and objection handling around a pitch; this skill owns the artifact and the session.
-- **`client-engagements`** — presenting/prototyping inside a client engagement (feedback training, session health); this skill owns the artifact and session craft.
+- **`client-work` (client-engagements)** — presenting/prototyping inside a client engagement (feedback training, session health); this skill owns the artifact and session craft.
 - **`swiftui` (touch-interaction-design)** — "the interactive demo is worth a million static designs" is this skill in action; prototype interactions with these methods, judge them with that skill.
 - **`design-principles`** — supplies what to evaluate *against*; this skill supplies the loop that produces evidence.
 - **`hardware-product-design`** — the physical tier: non-functional mockups, cabled rigs, test jigs, foam core at true viewing distance.
@@ -139,4 +139,4 @@ References: [methods.md](references/methods.md) — Toast Modern walkthrough, Ke
 - **`figma:figma-use`** / **`paper-desktop:design-to-code`** — modern tooling for the same make-fast, tool-agnostic ethic ("subvert your tools").
 - **`swiftui` (swiftui-layout)** / **`swiftui` (swiftui-animation)** — the building blocks for the real-code tier; this skill says *why and when* to prototype in SwiftUI, those say *how*.
 - **`interface-craft-principles`** *(Kevin-local)* — Josh Puckett's quality-practice loop; its prototyping moves (breakable toy, live tuning, iterations grid) are folded in above. Route "is it good enough" to `design-principles`' depth-spectrum heuristic.
-- **`agentic-coding`** — when prototyping graduates to production engineering with agents (designer shipping production code, encoding decisions as rules); owns the **two-system tax** case study.
+- **`working-with-ai` (agentic-coding)** — when prototyping graduates to production engineering with agents (designer shipping production code, encoding decisions as rules); owns the **two-system tax** case study.

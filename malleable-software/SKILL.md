@@ -1,6 +1,6 @@
 ---
 name: malleable-software
-description: "Design software users can reshape — expose structure instead of modes, design for the 40th hour, human-AI collaboration as version control. Use for customization, end-user tooling, or AI features that modify the product. Tool-UI conventions → devtool-interface-design; AI patterns → ai-experience-design. Triggers: extensibility, end-user programming, plugins, nightmare bicycle."
+description: "Design software users can reshape — expose structure instead of modes, design for the 40th hour, human-AI collaboration as version control. Use for customization, end-user tooling, or AI features that modify the product. Tool-UI conventions → devtools; AI patterns → ai-experience-design. Triggers: extensibility, end-user programming, plugins, nightmare bicycle."
 ---
 
 # Malleable Software
@@ -85,7 +85,7 @@ Read against §2 and §6: most of this wave is jigs and tools-of-one, not yet th
 
 ## Relationship to other skills
 
-- **`devtool-interface-design`** — owns tool-UI conventions (zones, control flow, CLI). Its "instruments, not appliances" (Ryo Lu) and this skill's 40th-hour design are the same value system — mastery available, black boxes refused; cite either, apply both.
+- **`devtools` (devtool-interface-design)** — owns tool-UI conventions (zones, control flow, CLI). Its "instruments, not appliances" (Ryo Lu) and this skill's 40th-hour design are the same value system — mastery available, black boxes refused; cite either, apply both.
 - **`ai-experience-design`** — owns AI interaction/feedback patterns (confidence, corrections). This skill supplies the limits-of-chat critique (pointing at shared artifacts; non-textual AI output — "I want back an interactive chart that I can mess with myself, not just a number") and where personalization bounds sit.
 - **`design-principles`** — Apple's familiarity/metaphor and agency principles are the HIG-flavored cousins of exposed structure and the agency mindset; route platform-convention critiques there.
-- **`agentic-coding`** — jigs in practice: one-PR tools, review-first agent workflows, branch-everything discipline on real repos.
+- **`working-with-ai` (agentic-coding)** — jigs in practice: one-PR tools, review-first agent workflows, branch-everything discipline on real repos.

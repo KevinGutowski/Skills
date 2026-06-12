@@ -47,7 +47,7 @@ See `references/examples.md` for the worked examples (Duolingo's pause, the Podc
 
 ## Relationship to other skills
 
-- **`ui-voice-and-tone`** — owns the notification *copy* (tone dialing per moment); this skill owns the *strategy and anatomy* (whether/when/what form).
+- **`ux-writing` (ui-voice-and-tone)** — owns the notification *copy* (tone dialing per moment); this skill owns the *strategy and anatomy* (whether/when/what form).
 - **`swiftui` (sound-design)** — the notification sound criteria (distinguishable, short, neutral when content varies) pair with this skill's restraint rules.
 - **`feature-discoverability`** — shares the permission ethic: ask in context, value first.
 - **`swiftui` (widget-design)** / **`apple-design` (app-intents-design)** — Live Activities now own continuous glanceable state; route persistent-status use cases there.

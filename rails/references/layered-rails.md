@@ -58,4 +58,4 @@ When Ruby itself is the bottleneck: "Keep your cake recipe (business logic) in R
 - **[rails-event-sourcing.md](rails-event-sourcing.md)** — the next escalation: this school's service objects are its migration step 1; when the pain is processes and modules rather than layers, route there.
 - **[ruby-refactoring.md](ruby-refactoring.md)** — the nearest catalog: its form/query/value-object solutions are this school's layer moves; it supplies the smells and thresholds for *when*.
 - **[rails-docker-dev.md](rails-docker-dev.md)** — same school/author; the dev-environment layer of this stack.
-- **`agentic-coding`** — this school ships its decisions as agent skills (palkan/skills `/layered-rails:analyze`); the Gemfile post is designed to be fed to agents as a trusted reference.
+- **`working-with-ai` (agentic-coding)** — this school ships its decisions as agent skills (palkan/skills `/layered-rails:analyze`); the Gemfile post is designed to be fed to agents as a trusted reference.

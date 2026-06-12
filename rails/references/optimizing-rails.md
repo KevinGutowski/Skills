@@ -285,5 +285,5 @@ Full checklist (68 items): [checklist.md](optimizing-rails/checklist.md)
 - **[layered-rails.md](layered-rails.md)** — when tuning isn't enough, its "extraction without microservices" rules govern what to offload to Go/C/Rust tools (plug into Rails abstractions; never move business logic) and what stays in Ruby.
 - **[rails-testing.md](rails-testing.md)** — the test suite's performance is its own discipline (TestProf, factory cascades, CI parallelization); this skill owns the runtime request path.
 - **[rails-realtime.md](rails-realtime.md)** — persistent-connection capacity and delivery guarantees are a separate failure domain from request-path tuning.
-- **`agentic-coding`** — performance decisions worth repeating (N+1 strategy, caching patterns) are prime material to encode as project rules for coding agents.
+- **`working-with-ai` (agentic-coding)** — performance decisions worth repeating (N+1 strategy, caching patterns) are prime material to encode as project rules for coding agents.
 - **[rails-jobs.md](rails-jobs.md)** — job *design* (idempotency, naming, error taxonomy) lives there; this skill owns queue *throughput and performance*.

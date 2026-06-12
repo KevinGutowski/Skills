@@ -48,4 +48,4 @@ Selection logic: start from the smell column above; prefer the cheapest move (Ex
 - **[layered-rails.md](layered-rails.md)** — the nearest school: form objects, validators, and extracted classes are its layer moves; this skill supplies the *when* (smells + thresholds).
 - **[rails-event-sourcing.md](rails-event-sourcing.md)** — when the smell is *process state on entities*, the answer is that school, not a local extraction.
 - **[rails-testing.md](rails-testing.md)** — heavy test setup is both a smell signal here (Long Parameter List, Mystery Guest territory) and a performance problem there.
-- **`agentic-coding`** — don't patch, build the gating abstraction: this catalog names the abstractions.
+- **`working-with-ai` (agentic-coding)** — don't patch, build the gating abstraction: this catalog names the abstractions.

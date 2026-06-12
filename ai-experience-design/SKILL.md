@@ -99,7 +99,7 @@ See `references/patterns.md` for the worked examples (Portrait mode data, Hopper
 - **`design-principles`** — its *Responsibility* section (anticipate model harm, remove features whose risk outweighs value) is the values layer; this skill is the practice.
 - **`apple-design` (app-intents-design)** — Siri/intent disambiguation and confirmation are this skill's low-confidence patterns applied to voice.
 - **`feature-discoverability`** — "convey a sense of control" over personalization is shared territory; recommendation controls live in both.
-- **`error-messages`** — model-failure copy follows its rules; this skill decides *what* the failure experience is.
+- **`ux-writing` (error-messages)** — model-failure copy follows its rules; this skill decides *what* the failure experience is.
 - **`claude-api`** — for building with Claude rather than Apple's on-device model; the interface patterns here apply to either.
 - **`malleable-software`** — owns the version-control fix to chat's limits (Patchwork, branch/review/discard) and the philosophy under personalization bounds; this skill owns the interaction patterns around AI output.
 - **`hardware-product-design`** — when the AI lives in a device: input-method ownership, voice/light feedback channels, far-field pacing.

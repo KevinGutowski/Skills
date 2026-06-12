@@ -28,7 +28,7 @@ A discipline for mining bounded sources (courses, libraries, archives, vaults) c
 
 ```
 # sweep: animations.dev — 2026-06-10
-[mined]     /learn/animation-theory/the-easing-blueprint → web-animation-design (already its source; verified no delta)
+[mined]     /learn/animation-theory/the-easing-blueprint → web-design (already its source; verified no delta)
 [read-skip] /learn/css-animations/transforms — mechanics tutorial, fully represented in skill's Transforms section
 [blocked]   /library/layout-alignment — marked "Soon", unpublished; recheck ~July 2026
 [pending]   /vault → https://ui.land

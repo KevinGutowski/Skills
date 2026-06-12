@@ -12,9 +12,9 @@ The user provides frontend requirements: a component, page, application, or inte
 
 This skill represents a **bold/distinctive aesthetic theme** — deliberately different from the restrained "invisible polish" theme of `design-polish` (emil-kowalski reference) and `design-polish`. These themes shouldn't be mixed: a single project should pick one direction and commit.
 
-For motion-specific work, `web-animation-design` is the default theme — defer to its values when both are loaded. When this skill triggers alongside the restraint-focused skills, surface the choice as a menu rather than blending — "bold/distinctive vs restrained/invisible" is a real design decision, not noise.
+For motion-specific work, `web-design` (web-animation-design) is the default theme — defer to its values when both are loaded. When this skill triggers alongside the restraint-focused skills, surface the choice as a menu rather than blending — "bold/distinctive vs restrained/invisible" is a real design decision, not noise.
 
-When AI generated the UI and the task is directing or repairing it (layout diagnosis, prompt-vs-edit decisions), use `ai-ui-direction` — this skill owns generation itself.
+When AI generated the UI and the task is directing or repairing it (layout diagnosis, prompt-vs-edit decisions), use `working-with-ai` (ai-ui-direction) — this skill owns generation itself.
 
 ## Design Thinking
 

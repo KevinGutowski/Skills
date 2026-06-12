@@ -324,7 +324,7 @@ People look slightly downward at screens — simulate an overhead light:
 
 ### Dark-mode elevation is colour, not shadow (PUI)
 
-"Shadows can be difficult to see in dark interfaces, so you mostly need to rely on colour to indicate depth." Use "3 background colours to indicate elevation": **Base** (darkest, main background), **Raised**, **Overlay** — three small lightness steps (PUI uses HSB brightness 10/15/20). Keep foregrounds consistently prominent across all three with a transparent foreground palette — see `oklch-skill` → Palette Roles & State Layers.
+"Shadows can be difficult to see in dark interfaces, so you mostly need to rely on colour to indicate depth." Use "3 background colours to indicate elevation": **Base** (darkest, main background), **Raised**, **Overlay** — three small lightness steps (PUI uses HSB brightness 10/15/20). Keep foregrounds consistently prominent across all three with a transparent foreground palette — see `web-design` (oklch-skill) → Palette Roles & State Layers.
 
 ### Shadow value-systems menu
 
@@ -373,7 +373,7 @@ Any smooth curve works — sample your preferred easing at 6–12 points and use
 
 Two separate problems, two separate fixes — large color jumps often need both:
 
-- **Muddy gray midpoints** come from interpolating in sRGB. Use a better interpolation space: `linear-gradient(in oklab, blue, hotpink)`. (See `oklch-skill` for color-space details.)
+- **Muddy gray midpoints** come from interpolating in sRGB. Use a better interpolation space: `linear-gradient(in oklab, blue, hotpink)`. (See `web-design` (oklch-skill) for color-space details.)
 - **Hard start/end edges** come from linear stop spacing. Only eased stops fix this — interpolation space doesn't.
 
 ### Dark Mode Note

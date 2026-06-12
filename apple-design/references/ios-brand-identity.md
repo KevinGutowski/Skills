@@ -28,7 +28,7 @@ Rules of thumb:
 ## Content layer = your canvas
 
 - **Imagery / video** — make it purposeful, not generic. *Crumbl* uses full-bleed weekly-flavor videos that change weekly; *Moonlitt* goes edge-to-edge with night-sky color and 3D elements. Content should have a clear reason to be immersive.
-- **Words / voice & tone** — words shape feeling. Be deliberate about the emotion you're targeting (playful, trustworthy, etc.). (Copywriting is its own craft — see `naming-features-and-labels` for naming/labels, and `ui-voice-and-tone` for defining and writing the app's voice.)
+- **Words / voice & tone** — words shape feeling. Be deliberate about the emotion you're targeting (playful, trustworthy, etc.). (Copywriting is its own craft — see `ux-writing` (naming-features-and-labels) for naming/labels, and `ux-writing` (ui-voice-and-tone) for defining and writing the app's voice.)
 - **Motion** — people experience content *through* transitions and animation. *NYT Cooking* uses Zoom Transitions that tie the tap target to the transition state; *Gentler Streak*'s spring animations emphasize hierarchy and make content pop. But delayed loads or dropped frames read as low quality even when people can't say why.
 
 ## Color
@@ -80,8 +80,8 @@ See `ios-brand-identity/examples.md` for the full app-by-app breakdown (Gentler 
 
 - **`design-principles`** is the parent — this is *Familiarity* (honor platform patterns) balanced against brand expression, plus *Craft* and *Delight*. The talk even closes on the same note: "people remember how a product makes them feel… satisfying, enriching, a joy to use." Use `design-principles` to weigh brand vs. convention; use this skill for the iOS specifics.
 - **`design-polish`** / **`design-polish` (emil-kowalski reference)** — the component-level craft this relies on (concentric radii, optical detail, polish). Route "make this custom component feel right" there.
-- **`web-animation-design`** / **`motion`** cover web/JS motion; on iOS the brand-through-motion ideas here are realized with SwiftUI — implement with `swiftui` (swiftui-animation) (transitions, effects, shaders) and `swiftui` (swiftui-lazy-stacks) (scroll). Don't cross-apply CSS specifics.
-- **`naming-features-and-labels`** / **`ui-voice-and-tone`** — the wording and voice side of brand in the content layer: name the individual thing with the former, define and write the app's voice with the latter.
+- **`web-design` (web-animation-design)** / **`motion`** cover web/JS motion; on iOS the brand-through-motion ideas here are realized with SwiftUI — implement with `swiftui` (swiftui-animation) (transitions, effects, shaders) and `swiftui` (swiftui-lazy-stacks) (scroll). Don't cross-apply CSS specifics.
+- **`ux-writing` (naming-features-and-labels)** / **`ux-writing` (ui-voice-and-tone)** — the wording and voice side of brand in the content layer: name the individual thing with the former, define and write the app's voice with the latter.
 - **[apple-search-design.md](apple-search-design.md)** — sibling Apple-platform skill; it notes a branded search field must keep the magnifying glass and native field elements. Use together when search is part of a branded UI.
 - **[liquid-glass-design-system.md](liquid-glass-design-system.md)** — the primary source for the Liquid Glass material and its rules (variants, tinting, glass-on-glass, concentric shapes). This skill's UI/content-layer model and tint guidance are that system applied to brand.
 - **[apple-typography.md](apple-typography.md)** / **`swiftui` (sf-symbols)** — the mechanics beneath this skill's Typography and Iconography sections (Dynamic Type, text styles, widths; symbol configuration, rendering modes, animation, custom symbols).

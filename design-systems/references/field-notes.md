@@ -88,7 +88,7 @@ Moved to [sources.md](sources.md).
 - **Curate, don't dump.** "We try and describe, I guess, the 80% mark for most of these components… if you give it all of those different types, it will hallucinate more and more" and start cross-breeding props. Their context file: ~5,000 lines vibe-coded at first, "settled on something more 2 to 3,000 lines" covering 20–30 components — not the full library.
 - **Generate docs from the monorepo.** The old failure: "if we want to document something, [we] document in five different places." Docs now derive from the code source of truth, so the AI context can't drift from the components.
 - **The remit explosion.** "The design system remit has just blown up into like anyone in the organization can essentially ship" — the DS team's surface is no longer "just this 1% box that is the design system" but everyone whose agent emits UI. Plan headcount and docs for that audience.
-- Enablement and adoption mechanics around all this (pilot teams, distribution, training) → `ai-enablement`.
+- Enablement and adoption mechanics around all this (pilot teams, distribution, training) → `working-with-ai` (ai-enablement).
 
 ## Worboys counter-position details
 

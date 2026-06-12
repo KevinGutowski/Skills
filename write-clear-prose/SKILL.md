@@ -123,4 +123,4 @@ Do not flatten every unusual sentence into generic "clean" prose. Distinctive vo
 
 ## Related skills
 
-This skill is for long-form nonfiction (essays, articles, emails, explanations). For **in-product UI microcopy** — voice/tone definition, welcome screens, notifications, alerts, buttons, empty states — use `ui-voice-and-tone`; for the single word that **names** a feature/label, use `naming-features-and-labels`. The shared instinct across all three is *read it aloud*.
+This skill is for long-form nonfiction (essays, articles, emails, explanations). For **in-product UI microcopy** — voice/tone definition, welcome screens, notifications, alerts, buttons, empty states — use `ux-writing` (ui-voice-and-tone); for the single word that **names** a feature/label, use `ux-writing` (naming-features-and-labels). The shared instinct across all three is *read it aloud*.

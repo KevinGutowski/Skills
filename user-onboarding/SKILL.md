@@ -85,7 +85,7 @@ When deciding what to build or cut from an onboarding flow:
 
 "When a new user comes to your product, give them a task." Empty welcomes and feature tours are weaker than a constrained job with a visible finish. For habit products, use Amy Jo Kim's sequence via Klein: core loop first, then onboarding, then discovery, then mastery. If there is no strong loop, "you're building a leaky bucket." Build the thing someone will do every day before decorating the path into it.
 
-**Dark-pattern boundary:** a dark pattern is any interface element that benefits the company at the expense of what a reasonable, fully informed user would agree to. If the onboarding goal depends on hiding cost, commitment, consent, or cancellation, route to `error-messages` / `form-design` ethics rather than conversion optimization.
+**Dark-pattern boundary:** a dark pattern is any interface element that benefits the company at the expense of what a reasonable, fully informed user would agree to. If the onboarding goal depends on hiding cost, commitment, consent, or cancellation, route to `ux-writing` (error-messages) / `web-design` (form-design) ethics rather than conversion optimization.
 
 ## Quick Copy Formulas
 
@@ -112,4 +112,4 @@ When deciding what to build or cut from an onboarding flow:
 
 ## Related skills
 
-Define the product's writing voice with `ui-voice-and-tone`, then structure the first-run flow and write the welcome/empty-state copy here in that voice — this skill owns the *flow and quick-win framing*, that one owns the *voice*. For failure states, route to `error-messages`. For in-app *feature* teaching after signup — no-tutorial first launches, visual cues, gesture hints, tips — use `feature-discoverability` (the Apple counterpart to this skill's journey framework). For courses, workshops, curricula, practice/feedback systems, and job aids, route to `learning-experience-design`.
+Define the product's writing voice with `ux-writing` (ui-voice-and-tone), then structure the first-run flow and write the welcome/empty-state copy here in that voice — this skill owns the *flow and quick-win framing*, that one owns the *voice*. For failure states, route to `ux-writing` (error-messages). For in-app *feature* teaching after signup — no-tutorial first launches, visual cues, gesture hints, tips — use `feature-discoverability` (the Apple counterpart to this skill's journey framework). For courses, workshops, curricula, practice/feedback systems, and job aids, route to `learning-experience-design`.

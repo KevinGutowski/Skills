@@ -7,7 +7,7 @@ description: "Grow an audience-led indie product as a designer/maker — build i
 
 **Sources:** [references/sources.md](references/sources.md) — 6 Config talks + Valio Con + Show Your Work! + Dive Club.
 
-The task: you're a designer/maker launching your own thing — build the audience *while* building the product, validate before you ship, and make it pay as a team of one. (Devtool landing pages/PMF → `developer-tool-gtm`; OSS promotion → `oss-strategy`; onboarding flows → `user-onboarding`.)
+The task: you're a designer/maker launching your own thing — build the audience *while* building the product, validate before you ship, and make it pay as a team of one. (Devtool landing pages/PMF → `devtools` (developer-tool-gtm); OSS promotion → `devtools` (oss-strategy); onboarding flows → `user-onboarding`.)
 
 ## Content that works (Perkins's mechanics)
 
@@ -109,8 +109,8 @@ The pre-algorithm-era bootstrap corpus; full material in [references/valio-field
 
 ## Relationship to other skills
 
-- **`developer-tool-gtm`** — landing-page anatomy, conversion mechanics, and PMF measurement when the product is a devtool (much of its copy/conversion guidance generalizes; this skill owns the audience/content/solo-economics side).
-- **`oss-strategy`** — the sibling playbook when the artifact is open-source code (READMEs, promotion loops, maintainer economics).
+- **`devtools` (developer-tool-gtm)** — landing-page anatomy, conversion mechanics, and PMF measurement when the product is a devtool (much of its copy/conversion guidance generalizes; this skill owns the audience/content/solo-economics side).
+- **`devtools` (oss-strategy)** — the sibling playbook when the artifact is open-source code (READMEs, promotion loops, maintainer economics).
 - **`user-onboarding`** — owns the funnel itself (sell the dream, quick wins, share artifacts, ask-after-value); this skill fills the funnel.
 - **`hardware-product-design`** — when the indie product is physical: suppliers, tolerances, inventory, unit economics (Work Louder's ops side).
 - **`design-prototyping`** — the prototype-stage validation mechanics (what to fake, how to demo); here they double as content.

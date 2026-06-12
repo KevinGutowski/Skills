@@ -55,7 +55,7 @@ First gate: do you need a gem at all? Small utilities → write in-house; comple
 
 ## Relationship to other skills
 
-- **`agentic-coding`** — the dual-boot quote is a textbook "encode hard-won constraints agents will argue against": put this methodology in project rules so the agent doesn't optimize it away. FastRuby pre-codified theirs as Claude Code skills.
+- **`working-with-ai` (agentic-coding)** — the dual-boot quote is a textbook "encode hard-won constraints agents will argue against": put this methodology in project rules so the agent doesn't optimize it away. FastRuby pre-codified theirs as Claude Code skills.
 - **[rails-testing.md](rails-testing.md)** — a fast, reliable suite is this method's precondition (green before starting) and its instrument (the triage works through the suite).
 - **[dhh-style.md](dhh-style.md)** / **[layered-rails.md](layered-rails.md)** — "keep that Gemfile as close to the original one as possible" (37signals) and the trusted gem map (Evil Martians) are the two schools' answers to the same risk this skill's vetting checklist measures.
 - **[optimizing-rails.md](optimizing-rails.md)** — GC/JIT tunings can become counterproductive across Ruby versions — re-run performance experiments after upgrading.

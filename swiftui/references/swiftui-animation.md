@@ -4,7 +4,7 @@
 
 **Sources:** [swiftui-animation/sources.md](swiftui-animation/sources.md) — 5 Apple WWDC sessions.
 
-Great experiences are the aggregate of many small details, and motion is a big one. This skill covers the SwiftUI animation/effects toolchain — from the zoom transition and SwiftUI↔UIKit animation bridging up the ladder to scroll effects, mesh gradients, custom transitions, per-glyph text animation, and per-pixel Metal shaders. Engineering sibling of [swiftui-lazy-stacks.md](swiftui-lazy-stacks.md); the *web* counterpart values live in `web-animation-design` — don't cross-apply.
+Great experiences are the aggregate of many small details, and motion is a big one. This skill covers the SwiftUI animation/effects toolchain — from the zoom transition and SwiftUI↔UIKit animation bridging up the ladder to scroll effects, mesh gradients, custom transitions, per-glyph text animation, and per-pixel Metal shaders. Engineering sibling of [swiftui-lazy-stacks.md](swiftui-lazy-stacks.md); the *web* counterpart values live in `web-design` (web-animation-design) — don't cross-apply.
 
 ## Zoom transition (iOS 18+)
 
@@ -118,7 +118,7 @@ See `swiftui-animation/code-patterns.md` for all verbatim samples (zoom, bridgin
 - **[touch-interaction-design.md](touch-interaction-design.md)** — the design layer for gestures this skill implements (hysteresis, 1:1 tracking, momentum projection, interruptibility — from "Designing Fluid Interfaces").
 - **`apple-design` (liquid-glass-design-system)** — glass morphing, sheet recession, and scroll edge effects are that system's motion; implement here, follow its rules there.
 - **[sf-symbols.md](sf-symbols.md)** — symbol animation is its own semantic preset system (wiggle/breathe/Magic Replace); use it for symbols before hand-rolling.
-- **`web-animation-design`** / **`motion`** — web/CSS/JS counterpart; principles rhyme (springs, taste, restraint) but values and APIs don't transfer either way.
+- **`web-design` (web-animation-design)** / **`motion`** — web/CSS/JS counterpart; principles rhyme (springs, taste, restraint) but values and APIs don't transfer either way.
 - **`apple-design` (ios-brand-identity)** — brand-through-motion on iOS (Zoom Transitions, spring personality) routes here for implementation.
 - **`design-principles`** — *Craft* (responsive, interruptible) and *Delight* (purposeful motion); use it to decide *whether*, this skill for *how*.
 - **`apple-design` (apple-visual-accessibility)** — Reduce Motion and Prefer Cross-Fade Transitions govern everything in this skill; check the settings before shipping motion.

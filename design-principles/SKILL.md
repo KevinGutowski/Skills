@@ -6,7 +6,7 @@ description: "Apply Apple's eight design principles — purpose, agency, respons
 # Principles of Great Design
 
 **Sources:** [references/sources.md](references/sources.md) — 4 WWDC sessions + Ryo Lu + MDS interviews.
-*As of June 2026 the HIG carries a reintroduced, canonical **Design principles** page (fetch via the `hig` skill, slug `design-principles`) — this skill is the reasoning companion; check that page when exact current wording matters.*
+*As of June 2026 the HIG carries a reintroduced, canonical **Design principles** page (fetch via the `apple-design` (hig) skill, slug `design-principles`) — this skill is the reasoning companion; check that page when exact current wording matters.*
 
 Design is **making something with intention** — focusing on what's most important to people so you build something they'll truly value. Every feature you add asks the user for their **time, attention, and trust** — valuable things you can't waste. So choosing what to build is often a matter of deciding what *not* to include.
 
@@ -140,24 +140,24 @@ This is the **strategic / decision-and-critique layer**. It decides *whether and
 
 - **`interface-craft-principles`** *(Kevin-local, not in the shared repo)* — the full Josh Puckett quality-practice loop (range→depth, live tuning, uncommon care). Its core heuristics (depth spectrum, industry-bar floor, noticing, facets) are folded into this skill above, so nothing here depends on it.
 - **`design-polish`** and **`design-polish` (emil-kowalski reference)** — the *Craft* principle at pixel level (spacing, shadows, optical alignment, micro-interactions, component polish). When the task is "make this detail feel right," use those.
-- **`web-animation-design`** (default for motion) and **`motion`** — *Craft*'s responsive feedback and much of *Delight* in motion form (easing, springs, transitions). Route animation specifics there.
+- **`web-design` (web-animation-design)** (default for motion) and **`motion`** — *Craft*'s responsive feedback and much of *Delight* in motion form (easing, springs, transitions). Route animation specifics there.
 - **`frontend-design`** — generative building of distinctive, production-grade UI. This skill is the principles layer that should guide what it builds.
-- **`naming-features-and-labels`** — *Familiarity* and *Simplicity* at the word level (clear labels, metaphor-true names, plain language).
-- **`error-messages`** — *Forgiveness* and *Responsibility* in failure-state copy (recover, reassure, don't blame).
-- **`ui-voice-and-tone`** — *Delight* and *Familiarity* at the level of the product's writing voice and microcopy. Set direction here; define and write the voice there.
-- **`linear-settings-copy`** and **`user-onboarding`** — *Simplicity* and *Flexibility* in settings IA, personalization, and first-run; *Agency* in letting people choose their path.
+- **`ux-writing` (naming-features-and-labels)** — *Familiarity* and *Simplicity* at the word level (clear labels, metaphor-true names, plain language).
+- **`ux-writing` (error-messages)** — *Forgiveness* and *Responsibility* in failure-state copy (recover, reassure, don't blame).
+- **`ux-writing` (ui-voice-and-tone)** — *Delight* and *Familiarity* at the level of the product's writing voice and microcopy. Set direction here; define and write the voice there.
+- **`ux-writing` (linear-settings-copy)** and **`user-onboarding`** — *Simplicity* and *Flexibility* in settings IA, personalization, and first-run; *Agency* in letting people choose their path.
 - **`apple-design` (apple-search-design)** and **`apple-design` (ios-brand-identity)** — these principles applied to specific Apple-platform domains (search patterns; expressing brand within iOS conventions). They lean heavily on *Familiarity*, *Simplicity*, *Flexibility*, *Craft*, and *Delight*; use them for the iOS specifics and this skill for the underlying trade-offs.
 - **`apple-design` (apple-typography)** and **`swiftui` (sf-symbols)** — *Craft* and *Flexibility* (Dynamic Type as accessibility) in Apple type and symbols; the mechanics layer beneath `apple-design` (ios-brand-identity).
 - **`apple-design` (apple-navigation-design)** — *Familiarity* applied to app structure (tabs, push, modality, iPad layout, pointer).
 - **`apple-design` (apple-visual-accessibility)** — *Flexibility* and *Responsibility* made concrete: the accessibility settings and how to honor them.
 - **`apple-design` (app-intents-design)** — *Simplicity* and *Agency* in exposing app functionality to Siri/Spotlight/system surfaces.
-- **`chart-experience-design`** — *Simplicity*'s "complex data better understood as a graphic," fully worked out for in-app charts.
+- **`apple-design` (chart-experience-design)** — *Simplicity*'s "complex data better understood as a graphic," fully worked out for in-app charts.
 - **`swiftui` (sound-design)** / **`swiftui` (touch-interaction-design)** / **`swiftui` (widget-design)** — *Craft* and *Delight* in the auditory channel, the press of a control, and the home-screen surface respectively.
 - **`apple-design` (liquid-glass-design-system)** — *Familiarity* and *Craft* embodied in the current platform design language; the material and system rules everything Apple-visual now sits on.
 - **`feature-discoverability`** / **`notification-design`** / **`apple-design` (app-icon-design)** — *Agency*+*Familiarity* in finding features; *Responsibility* toward attention; the icon as concentrated *Simplicity*+*Delight*.
 - **`design-prototyping`** — the evidence loop these principles get tested through (make → show → learn; presenting design work).
 - **`ai-experience-design`** — *Responsibility*'s anticipate-model-harm mandate, fully worked out (data/metrics/outputs/inputs + generative safety).
-- **`hig`** — the canonical Human Interface Guidelines lookup (topic map + fetch method); when a question needs Apple's current letter-of-the-law on a specific component or pattern, fetch it there.
+- **`apple-design` (hig)** — the canonical Human Interface Guidelines lookup (topic map + fetch method); when a question needs Apple's current letter-of-the-law on a specific component or pattern, fetch it there.
 
 Per the user's preference on overlapping design skills: when a task is purely tactical (motion, polish, copy), apply that specific skill's values; use this skill to set direction and resolve trade-offs between principles.
 

@@ -2,6 +2,10 @@
 
 A curated library of Claude Code skills. The largest cluster is a design library distilled from ~94 Apple WWDC sessions, the Human Interface Guidelines, and Apple's design case studies — organized by **theme, not by source**: one skill may aggregate several talks, and cross-references route between skills instead of duplicating content.
 
+## How this library is organized
+
+Top-level entries are one of three things: a **platform** you target (`rails`, `swiftui`, `apple-design`, `web-design`), an **activity** you do (consolidated clusters like `ux-writing`, `working-with-ai`, `devtools`, `client-work`, plus flat activity skills), or a **cross-domain tool** (`motion`, `x-post-reader`, `route-planning`, …). Topics don't get top-level slots: they live as reference files inside the platform or activity cluster they serve, and the cluster's body routes to them. The graph of boundary clauses — the "Boundary:" lines and the Routing rules below — is the routing fabric between clusters; a `cluster` (member) reference in those clauses points at a specific reference file. Full reorganization plan: [docs/taxonomy-2026-06.md](docs/taxonomy-2026-06.md).
+
 ## Which skill do I want?
 
 ### Design strategy & critique
@@ -10,9 +14,7 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `design-principles` | Whether/why decisions, design critique, trade-offs (purpose, agency, craft, delight…) — the strategic layer the rest sit under |
 | `design-prototyping` | Validating ideas before building: fake-it → SwiftUI-as-design-tool → coding agents (incl. Cursor's design-in-code endpoint); presenting design work |
 | `interface-craft-principles` | *(local-only, gitignored — members-only source)* Quality practice (Josh Puckett): noticing, range→depth, facets of quality, live tuning, uncommon care. Its core heuristics are also folded into `design-principles` and `design-prototyping` |
-| `naming-features-and-labels` | What to call a feature, label, plan, button |
 | `logo-design` | Brand marks, badges, identity systems — the Peters method (brand nouns → 50 sketches → B/W presentation); app icons → `apple-design` (app-icon-design) |
-| `form-design` | Web form structure, field types, buttons, validation flows — the Dannaway method; form copy → the words chain; Apple forms → `apple-design` (apple-navigation-design) |
 | `feature-discoverability` | First launches, tips/TipKit, features users can't find |
 | `user-onboarding` | First-run flows, empty states, onboarding copy (Hulick method) |
 | `learning-experience-design` | Courses, workshops, internal training, tutorials, job aids — gap diagnosis, practice, feedback, motivation, transfer (Dirksen method) |
@@ -21,50 +23,43 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `hardware-product-design` | Physical products: form-factor positioning, mockups/rigs/jigs, input selection, manufacturing/supplier reality |
 | `design-org-influence` | Designer influence in the org: business cases, stakeholder objections, PM partnership, promotion/reviews |
 | `people-management` | Running a team of direct reports: 1:1s, feedback, career conversations, hiring/firing, team comms (Scott + Zhuo + Hogan); influence up/sideways → `design-org-influence` |
-| `pricing-creative-work` | Client-services pricing & negotiation: value-based pricing (Do/Stark/Mall three schools), objection scripts, terms |
-| `client-engagements` | Running client projects: qualification, kickoff, the feedback system, health signals, failure/firing (Monteiro) |
+| `client-work` | Client services — one consolidated skill; its body routes to reference files: client-engagements (running client projects: qualification, kickoff, the feedback system, health signals, failure/firing — Monteiro), pricing-creative-work (client-services pricing & negotiation: value-based pricing — Do/Stark/Mall three schools, objection scripts, terms) |
 | `user-research` | Research planning & methods: question→method map, interviewing craft, validation, synthesis (Hall/Portigal/Sharon) |
 
-**Boundary (the working-designer chain):** evidence → `user-research` · internal buy-in/career → `design-org-influence` · external client relationship → `client-engagements` · money → `pricing-creative-work` · the pitch/demo artifact itself → `design-prototyping` · training/curriculum/job aids → `learning-experience-design`.
+**Boundary (the working-designer chain):** evidence → `user-research` · internal buy-in/career → `design-org-influence` · external client relationship → `client-work` (client-engagements) · money → `client-work` (pricing-creative-work) · the pitch/demo artifact itself → `design-prototyping` · training/curriculum/job aids → `learning-experience-design`.
 
 ### Apple platform design (HIG-grounded)
-| Skill | Use it for |
-|---|---|
-| `hig` | **Lookup router**: topic map + fetch method for the canonical HIG; current letter-of-the-law specs; staleness tiebreaker |
-| `sf-symbols` | Symbol usage, rendering modes, animations, custom symbols |
-| `widget-design`, `notification-design` | Those system surfaces |
-| `chart-experience-design` | In-app charts and the experience around them |
-| `sound-design`, `touch-interaction-design` | Audio/haptics; gesture feel and fluid interfaces |
+`apple-design` — one consolidated skill; its body routes to reference files: hig (**lookup router**: topic map + fetch method for the canonical HIG; current letter-of-the-law specs; staleness tiebreaker), apple-navigation-design (tabs, push, modality, menus, iPad layout/windowing, pointer), apple-search-design (search placement, suggestions, scope bars/tokens, no-results), apple-typography (SF family, Dynamic Type, text styles), apple-visual-accessibility (accessibility settings, contrast, inclusive design), liquid-glass-design-system (the current design language: the glass material, system anatomy, migration playbook), ios-brand-identity (expressing brand without breaking native feel), app-icon-design (icon craft + the layered Liquid Glass icon system / Icon Composer), app-intents-design (App Intents/App Shortcuts across Siri, Spotlight, widgets, controls), chart-experience-design (in-app charts and the experience around them — Swift Charts/Audio Graphs; general viz stays in `data-viz`).
 
-`apple-design` — one consolidated skill; its body routes to reference files: apple-navigation-design (tabs, push, modality, menus, iPad layout/windowing, pointer), apple-search-design (search placement, suggestions, scope bars/tokens, no-results), apple-typography (SF family, Dynamic Type, text styles), apple-visual-accessibility (accessibility settings, contrast, inclusive design), liquid-glass-design-system (the current design language: the glass material, system anatomy, migration playbook), ios-brand-identity (expressing brand without breaking native feel), app-icon-design (icon craft + the layered Liquid Glass icon system / Icon Composer), app-intents-design (App Intents/App Shortcuts across Siri, Spotlight, widgets, controls).
+System-surface and interaction *craft* — sf-symbols (symbol usage, rendering modes, animations, custom symbols), widget-design, sound-design (audio/haptics), touch-interaction-design (gesture feel and fluid interfaces) — lives as references under `swiftui` (see SwiftUI engineering). `notification-design` remains a standalone activity skill for that surface.
 
 ### AI & agents
 | Skill | Use it for |
 |---|---|
 | `ai-experience-design` | Designing AI/ML-backed *features*: confidence, corrections, agent surfaces, pattern vocabulary (wayfinders/tuners/governors), model safety |
-| `ai-ui-direction` | Directing/fixing AI-*generated* UI: layout-primitive diagnosis, prompt-vs-edit, the fresh-context judge loop |
-| `agentic-coding` | Running coding agents on *your repo* (listed in Coding below — the workflow/mechanics layer) |
-| `ai-enablement` | Rolling AI out across an *org*: decision archives behind MCP, company-specific agents, team skills, enablement programs (Shopify, Ramp, Atlassian, OpenAI) |
+| `working-with-ai` | You and your team working *with* AI — one consolidated skill; its body routes to reference files: ai-ui-direction (directing/fixing AI-*generated* UI: layout-primitive diagnosis, prompt-vs-edit, the fresh-context judge loop), agentic-coding (running coding agents on *your repo* — the workflow/mechanics layer, also listed in Coding below), ai-enablement (rolling AI out across an *org*: decision archives behind MCP, company-specific agents, team skills, enablement programs — Shopify, Ramp, Atlassian, OpenAI) |
 | `malleable-software` | Software *users* can reshape: expose structure not modes (nightmare bicycle), 40th-hour design, interop/jigs, human-AI work as version control (Litt, Ink & Switch) |
 
-**Boundary:** designing the AI feature → `ai-experience-design` · fixing what AI generated → `ai-ui-direction` · agents working on your code → `agentic-coding` · getting a team/org to adopt AI → `ai-enablement` · letting end users reshape the product → `malleable-software`. The DS-as-AI-context mechanics live in `design-systems`.
+**Boundary:** designing the AI feature → `ai-experience-design` · fixing what AI generated → `working-with-ai` (ai-ui-direction) · agents working on your code → `working-with-ai` (agentic-coding) · getting a team/org to adopt AI → `working-with-ai` (ai-enablement) · letting end users reshape the product → `malleable-software`. The DS-as-AI-context mechanics live in `design-systems`.
 
 ### SwiftUI engineering
 `swiftui` — one consolidated skill; its body routes to reference files: swiftui-identity (the identity/lifetime/dependencies mental model — debug state resets here), swiftui-layout (containers, Layout protocol, navigation structure), swiftui-lazy-stacks (scroll performance), swiftui-animation (springs, transitions, shaders), swift-concurrency (structured concurrency, sendability, Swift 6 migration), plus platform craft: touch-interaction-design, widget-design, sf-symbols, sound-design.
 
 ### Motion & frontend (web)
-`web-performance` (load + interaction speed: fluid-UI frame budgets, Core Web Vitals, perf culture) · `web-typography` (CSS/web type practice: measure/leading/scales, choosing & pairing, OpenType craft, font loading — from Rutter, Santa Maria, Latin; Apple platforms → `apple-design` (apple-typography)) · `web-animation-design` (the default theme for web motion values) · `motion` (the Motion AI Kit umbrella — encapsulates best-practices, docs search, CSS spring generation, performance audit, transition visualisation as sub-capabilities) · `design-polish` (UI polish craft; Emil Kowalski school in its references) · `frontend-design` (building distinctive web UI) · `oklch-skill` (color) · `social-video-safe-zones` · `photographic-lighting` (shoot lighting: portraits, products, glare, flash/fill/bounce) · `web-accessibility` (web-scoped a11y practice: AT discipline, semantic-HTML-first priority order, focus mechanics, accessible writing, testing program, org policies — Kalbag + Metts/Welfle; Apple platforms → `apple-design` (apple-visual-accessibility)) · `graphics-fundamentals` *(local-only, gitignored — purchased source)*: the mechanism layer beneath all of these (screens, color spaces, rasterization, blurs, compression) — route "how/why does X actually work" questions there.
+`web-design` — one consolidated skill; its body routes to reference files: web-typography (CSS/web type practice: measure/leading/scales, choosing & pairing, OpenType craft, font loading — from Rutter, Santa Maria, Latin; Apple platforms → `apple-design` (apple-typography)), web-accessibility (web-scoped a11y practice: AT discipline, semantic-HTML-first priority order, focus mechanics, accessible writing, testing program, org policies — Kalbag + Metts/Welfle; Apple platforms → `apple-design` (apple-visual-accessibility)), web-animation-design (the default theme for web motion values), web-performance (load + interaction speed: fluid-UI frame budgets, Core Web Vitals, perf culture), form-design (web form structure, field types, buttons, validation flows — the Dannaway method; form copy → the words chain; Apple forms → `apple-design` (apple-navigation-design)), oklch-skill (color), social-video-safe-zones (9:16 vertical-video safe zones).
+
+Alongside it: `motion` (the Motion AI Kit umbrella — encapsulates best-practices, docs search, CSS spring generation, performance audit, transition visualisation as sub-capabilities) · `design-polish` (UI polish craft; Emil Kowalski school in its references) · `frontend-design` (building distinctive web UI) · `photographic-lighting` (shoot lighting: portraits, products, glare, flash/fill/bounce) · `graphics-fundamentals` *(local-only, gitignored — purchased source)*: the mechanism layer beneath all of these (screens, color spaces, rasterization, blurs, compression) — route "how/why does X actually work" questions there.
 
 ### Writing & content
-`write-clear-prose` · `ui-voice-and-tone` (product voice + microcopy) · `error-messages` (failure-state copy) · `linear-settings-copy` (settings IA/copy).
+`write-clear-prose` · `ux-writing` — one consolidated skill; its body routes to reference files: ui-voice-and-tone (product voice + microcopy), error-messages (failure-state copy), linear-settings-copy (settings IA/copy), naming-features-and-labels (what to call a feature, label, plan, button).
 
 ### Data visualization
-`data-viz` (pick the chart type + Tufte integrity/data-ink critique — two references) · `chart-experience-design` (in-app chart UX — listed above).
+`data-viz` (pick the chart type + Tufte integrity/data-ink critique — two references) · `apple-design` (chart-experience-design) (in-app chart UX — listed above).
 
 ### Coding (non-Apple)
 | Skill | Use it for |
 |---|---|
-| `agentic-coding` | Running coding agents on real projects: constraints, AGENTS.md/project rules, orchestrator role, vibe-coding security |
+| `working-with-ai` (agentic-coding) | Running coding agents on real projects: constraints, AGENTS.md/project rules, orchestrator role, vibe-coding security |
 | `rails` | ALL Ruby/Rails work — one consolidated skill; body routes to reference files: four schools (dhh-style vanilla default, layered-rails, packwerk, rails-event-sourcing), webhooks, migrations, security/multitenancy, jobs, both testing schools, Hotwire/realtime, websocket scale, Docker dev, performance, upgrades, Inertia, ruby-refactoring |
 | `dhh` | `/dhh` — review a diff in DHH's literal review voice (calibrated against ~200 of his Fizzy review comments) |
 
@@ -74,21 +69,21 @@ A curated library of Claude Code skills. The largest cluster is a design library
 `research-cataloging` — one consolidated skill; its body routes to reference files: source-sweep (exhaustive coverage of bounded sources), archival-research (research bundles, OCR/transcription corpora), catalog-reconciliation-research, source-translation-workflow, image-archival. Standalone utilities: `x-post-reader` · `route-planning`.
 
 ### Developer tools as products
-`design-systems` (tokens, theming, governance/federation, adoption metrics, DS-as-AI-context — from 9 Config talks) · `devtool-interface-design` (dev-tool UI: contexts, control flow, zones, CLI UX, devtool onboarding, agent experience) · `developer-tool-gtm` (landing pages, copy, conversion, PMF Compass) · `building-in-public` (audience-led indie growth: rough-beats-polished content, prototype-stage validation, company-of-one economics) · `oss-strategy` (OSS popularity, READMEs, maintainer survival, monetization). Boundary: `devtool-interface-design` makes the tool worth adopting; `developer-tool-gtm` gets it adopted; `agentic-coding` is agents working *on your code* while devtool AX is agents as *customers of your tool*.
+`design-systems` (tokens, theming, governance/federation, adoption metrics, DS-as-AI-context — from 9 Config talks) · `devtools` — one consolidated skill; its body routes to reference files: devtool-interface-design (dev-tool UI: contexts, control flow, zones, CLI UX, devtool onboarding, agent experience), developer-tool-gtm (landing pages, copy, conversion, PMF Compass), oss-strategy (OSS popularity, READMEs, maintainer survival, monetization) · `building-in-public` (audience-led indie growth: rough-beats-polished content, prototype-stage validation, company-of-one economics). Boundary: `devtools` (devtool-interface-design) makes the tool worth adopting; `devtools` (developer-tool-gtm) gets it adopted; `working-with-ai` (agentic-coding) is agents working *on your code* while devtool AX is agents as *customers of your tool*.
 
 ### Tooling & meta
-`creating-skills` (authoring skills + conversion playbooks for books/docs and living repos with PR history — its references/) · `goal` (session goals). Airtable MCP, NocoDB, and transcription-chunking integrations live in `research-cataloging`'s references.
+`creating-skills` (authoring skills + conversion playbooks for books/docs and living repos with PR history — its references/). Airtable MCP, NocoDB, and transcription-chunking integrations live in `research-cataloging`'s references.
 
 ## Routing rules (overlap boundaries)
 
 - **Strategy vs tactics:** `design-principles` decides *whether/why*; the specific skills decide *how*. Don't restate principles in tactical work.
-- **Motion default:** platform unstated → `web-animation-design` values; SwiftUI/iOS stated → `swiftui` (swiftui-animation reference). Never cross-apply web timing values to native or vice versa.
-- **Typography split:** web/CSS → `web-typography`; Apple platforms → `apple-design` (apple-typography); rendering internals (why fonts look different) → `graphics-fundamentals`. Never cross-apply platform conventions.
-- **AI chain:** design the AI feature → `ai-experience-design`; fix AI-generated UI → `ai-ui-direction`; agents on your repo → `agentic-coding`; org rollout/context sharing → `ai-enablement`; users reshaping the product → `malleable-software`.
-- **Overlapping polish themes** (`design-polish` and its Emil Kowalski reference, `web-animation-design`) are *themes*: pick one theme's values and apply them consistently; when a genuine choice surfaces, present a menu rather than silently mixing aesthetics.
-- **Words:** name the thing in `naming-features-and-labels` → set the voice in `ui-voice-and-tone` → failure copy in `error-messages` → settings rows in `linear-settings-copy`.
-- **Charts:** type + integrity critique in `data-viz` → in-app experience in `chart-experience-design`.
-- **Apple specifics vs current truth:** talk-derived skills carry reasoning and craft; the `hig` skill fetches the canonical current spec. When they disagree, the live HIG wins (skills carry ⚠️ supersession notes where this has already happened).
+- **Motion default:** platform unstated → `web-design` (web-animation-design) values; SwiftUI/iOS stated → `swiftui` (swiftui-animation reference). Never cross-apply web timing values to native or vice versa.
+- **Typography split:** web/CSS → `web-design` (web-typography); Apple platforms → `apple-design` (apple-typography); rendering internals (why fonts look different) → `graphics-fundamentals`. Never cross-apply platform conventions.
+- **AI chain:** design the AI feature → `ai-experience-design`; fix AI-generated UI → `working-with-ai` (ai-ui-direction); agents on your repo → `working-with-ai` (agentic-coding); org rollout/context sharing → `working-with-ai` (ai-enablement); users reshaping the product → `malleable-software`.
+- **Overlapping polish themes** (`design-polish` and its Emil Kowalski reference, `web-design` (web-animation-design)) are *themes*: pick one theme's values and apply them consistently; when a genuine choice surfaces, present a menu rather than silently mixing aesthetics.
+- **Words:** name the thing in `ux-writing` (naming-features-and-labels) → set the voice in `ux-writing` (ui-voice-and-tone) → failure copy in `ux-writing` (error-messages) → settings rows in `ux-writing` (linear-settings-copy).
+- **Charts:** type + integrity critique in `data-viz` → in-app experience in `apple-design` (chart-experience-design).
+- **Apple specifics vs current truth:** talk-derived skills carry reasoning and craft; the `apple-design` (hig) skill fetches the canonical current spec. When they disagree, the live HIG wins (skills carry ⚠️ supersession notes where this has already happened).
 
 ## Conventions
 

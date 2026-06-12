@@ -36,6 +36,6 @@
 
 ## Relationship to other skills
 
-- **`agentic-coding`** — the container sandbox here is the infrastructure for its guardrails: isolation makes "dangerously skip permissions" workflows safe.
+- **`working-with-ai` (agentic-coding)** — the container sandbox here is the infrastructure for its guardrails: isolation makes "dangerously skip permissions" workflows safe.
 - **[layered-rails.md](layered-rails.md)** — same school/author; this is the dev-environment layer of the stack it describes.
 - **[rails-testing.md](rails-testing.md)** — a reproducible env is what makes "runs on a plane" test suites portable across machines and CI.

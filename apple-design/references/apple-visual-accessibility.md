@@ -19,7 +19,7 @@ Inclusion also spans culture and language — "language and symbols are grounded
 - **Depicting people**: "more detailed icons may exclude some of your users" — a simple silhouette is more general (UIKit ships one).
 - **Check associations**: an owl reads as wisdom in English-speaking contexts but bad luck or death in much of the Arabic-speaking world — "make sure that your associations are what you expect."
 
-Writing-side counterpart (term choice, partial-localization priorities, idiom safety nets) → `ui-voice-and-tone`. Glyph-concept universality (the heart-for-delicious rule) → `swiftui` (sf-symbols).
+Writing-side counterpart (term choice, partial-localization priorities, idiom safety nets) → `ux-writing` (ui-voice-and-tone). Glyph-concept universality (the heart-for-delicious rule) → `swiftui` (sf-symbols).
 
 ## Color & shapes
 
@@ -81,7 +81,7 @@ Apple accessibility engineers (incl. VoiceOver and low-vision users), on priorit
 - **Announcing async completion:** layout-changed notification for small in-place updates (optionally passing an element to focus — don't yank focus often), screen-changed for whole-screen swaps, announcement for a plain string.
 - **Process:** keep accessibility in every iteration, but "make room at the end" for a dedicated refinement pass once views stop churning; when weighing features, judge "criticality to users," not just utilization counts. Dev tip: put VoiceOver on the accessibility shortcut ("triple click to turn it on and off"); macOS toggles with Command-F5, and triple-press Touch ID opens the shortcut panel with zero configuration.
 
-> **Staleness note (Kevin's rule):** the code is 2019–2020 **UIKit** (`UIAccessibility.*` checks + NotificationCenter observation). All still valid, but SwiftUI now exposes most of these as environment values (`\.accessibilityReduceMotion`, `\.accessibilityDifferentiateWithoutColor`, `\.accessibilityReduceTransparency`, `\.legibilityWeight`, etc.) — prefer those in SwiftUI code, and verify names against current docs. "1,500+ SF Symbols" is the 2020 count (6,000+ now). Web counterpart: `prefers-reduced-motion` / `prefers-contrast` (see `web-animation-design`).
+> **Staleness note (Kevin's rule):** the code is 2019–2020 **UIKit** (`UIAccessibility.*` checks + NotificationCenter observation). All still valid, but SwiftUI now exposes most of these as environment values (`\.accessibilityReduceMotion`, `\.accessibilityDifferentiateWithoutColor`, `\.accessibilityReduceTransparency`, `\.legibilityWeight`, etc.) — prefer those in SwiftUI code, and verify names against current docs. "1,500+ SF Symbols" is the 2020 count (6,000+ now). Web counterpart: `prefers-reduced-motion` / `prefers-contrast` (see `web-design` (web-animation-design)).
 
 ## Audit checklist
 
@@ -102,7 +102,7 @@ See `apple-visual-accessibility/settings-and-code.md` for the per-setting API ta
 - **[apple-typography.md](apple-typography.md)** — owns the Dynamic Type *mechanics* this skill audits for (text styles, scaling, Large Content Viewer). Audit here, fix there.
 - **`design-principles`** — *Flexibility* (range of abilities) and *Responsibility*; accessibility is those principles made concrete.
 - **`swiftui` (sf-symbols)** — the recommended replacement for color-only meaning; covers Bold Text coverage for custom symbols.
-- **`swiftui` (swiftui-animation)** / **`web-animation-design`** — where the motion lives that Reduce Motion (or `prefers-reduced-motion` on the web) must tame; route implementation there.
+- **`swiftui` (swiftui-animation)** / **`web-design` (web-animation-design)** — where the motion lives that Reduce Motion (or `prefers-reduced-motion` on the web) must tame; route implementation there.
 - **[ios-brand-identity.md](ios-brand-identity.md)** — Dark Mode and brand color choices must survive Increase Contrast and Smart Invert; brand never overrides accommodation settings.
-- **`chart-experience-design`** — charts have their own accessibility layer (VoiceOver over data, Audio Graphs, redundant encodings).
-- **`web-accessibility`** — the web-scoped counterpart (semantic HTML, ARIA, skip links, WCAG testing programs); same platform split as apple-/web-typography.
+- **[chart-experience-design.md](chart-experience-design.md)** — charts have their own accessibility layer (VoiceOver over data, Audio Graphs, redundant encodings).
+- **`web-design` (web-accessibility)** — the web-scoped counterpart (semantic HTML, ARIA, skip links, WCAG testing programs); same platform split as apple-/web-typography.

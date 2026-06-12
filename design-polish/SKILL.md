@@ -11,7 +11,7 @@ Great interfaces rarely come from a single thing. It's usually a collection of s
 
 The specific values in this skill (scale magnitudes, stagger delays, shadow recipes, radii) are tuned to work as a coherent set — like a color scheme, they look best when committed to as a whole. If another design skill is also loaded with different numbers, pick one skill's values and apply them consistently rather than averaging across skills.
 
-For motion-specific work, `web-animation-design` is the default theme — defer to its values when both are loaded. When the user is mixing skills and a genuine choice surfaces, briefly present the options as a menu rather than picking silently.
+For motion-specific work, `web-design` (web-animation-design) is the default theme — defer to its values when both are loaded. When the user is mixing skills and a genuine choice surfaces, briefly present the options as a menu rather than picking silently.
 
 This skill is the *how* of the **Craft** principle. For the strategic layer — whether a feature should exist, what to cut, and how to weigh craft against the other design principles — use `design-principles`. For applying this polish to *custom iOS components* (Liquid Glass, concentric edges, branded controls that must still feel native), use `apple-design` (ios-brand-identity). For the before/during/after feedback model behind press states and hit areas (Apple's "Life of a Button"), see `swiftui` (touch-interaction-design).
 
@@ -70,7 +70,7 @@ Use `font-variant-numeric: tabular-nums` for any dynamically updating numbers to
 
 ### 10. Text Wrapping
 
-Use `text-wrap: balance` on headings. Use `text-wrap: pretty` for body text to avoid orphans. (Deeper web typography reference — measure, scales, pairing, OpenType, font loading: `web-typography`.)
+Use `text-wrap: balance` on headings. Use `text-wrap: pretty` for body text to avoid orphans. (Deeper web typography reference — measure, scales, pairing, OpenType, font loading: `web-design` (web-typography).)
 
 ### 11. Image Outlines
 
