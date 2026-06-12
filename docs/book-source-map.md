@@ -24,6 +24,7 @@ Rules:
 | Research impact / synthesis | Product trio; Buley; MailChimp, *The UX Reader*, research section | MailChimp adds distribution channels and parallel-cycle research cadence; Buley owns solo-UX influence mechanics. |
 | Logo design | Allan Peters, *Logos that Last*; Gal Shir, *60 Tips for Logo Design* | Peters remains the primary method source. Shir corroborates the process and adds practical checks: four-lane intake, keyword lanes, time-boxed sketch warmup, rest overnight, profile-image/uniqueness tests, and presentation sequencing. |
 | Photographic lighting | Hunter/Biver/Fuqua, *Light: Science & Magic*; Tony Northrup, *Tony Northrup's DSLR Book* | Created `photographic-lighting` from a targeted lighting pass. Check here for photo shoots, glare/reflections, metal/glass, hard/soft light, fill/bounce flash, portraits, and product/still-life lighting. |
+| Creative coding / generative visuals | Gross et al., *Generative Design* | Parked as a future `creative-coding` candidate. Current fold is only the designer-built-tool / abstraction-process precedent in `malleable-software`; needs a second source such as Reas/Fry, *Nature of Code*, or current p5.js docs before a new technical skill. |
 
 ## MailChimp, *The UX Reader* (2014)
 
@@ -174,6 +175,29 @@ camera/composition/genre chapters remain available for future screens if needed.
 | 13. Underwater | Underwater equipment, light/color loss, backscatter. | Not routed in this pass. |
 
 Verified quotes used/foldable: "You always have some control over the lighting."; "Flash isn’t just for dark spaces."; "Use fill flash outdoors when your subject is backlit to fill in shadows and create catch lights in your model’s eyes."; "Use bounce flash indoors to softly light both the foreground and the background."; "Everything in the picture is part of the story, so plan every element carefully."; "Catchlights add life and interest to a subject."
+
+## Gross / Bohnacker / Laub / Lazzeroni, *Generative Design: Visualize, Program, and Create with JavaScript in p5.js*
+
+Extraction: `/tmp/books/generative-design-p5js.txt` from Apple Books PDF via
+`pdftotext`. Density: MED. Strong as a tutorial/pattern catalog for creative coding,
+but dated as technical p5.js guidance (book code targets p5.js 0.5.11) and not enough
+alone for a new public `creative-coding` skill under the 2-source bar. Current route:
+small fold to `malleable-software`; park future creative-coding skill until a second
+source lands.
+
+### TOC / Chapter Map
+
+| Section | Short summary | Routing |
+| --- | --- | --- |
+| I.0-I.3 Introduction / Projects | Frames generative design as the designer shifting from hand performer to conductor of computer-aided variation; includes 13 project examples from daily sketches to data art, computational fashion, and type installations. | Folded process stance lightly to `malleable-software`. |
+| P.0 Introduction to p5.js | p5.js/Processing lineage, browser editor vs local workflow, JavaScript basics, setup/draw, variables, loops, functions, arrays. | Dated technical tutorial; skip for now. |
+| P.1 Color | Interactive HSB spectra, palette interpolation, extracting palettes from images, rule-bounded random palettes, ASE export. | Parked for future creative-coding/color-tool skill; stronger color theory remains `oklch-skill`/`graphics-fundamentals`. |
+| P.2 Shape | Grids, moire, random/grid movement, SVG modules, agents, growth structures, circle packing, pendulum traces, drawing tools. | Parked; useful pattern bank for future generative visuals. |
+| P.3 Type | Time-based text, text as blueprint, character frequency diagrams, treemaps, font-outline points, kinetic/noise type. | Parked; possible future typography/creative-coding corroboration. |
+| P.4 Image | Image cutouts, image collections, pixel-value graphics, type from pixels, real-time image/camera values, emoji/pixel translation. | Parked; possible future creative-coding/image-processing skill. |
+| A.1 Looking ahead / Reflection | Process reflection: abstract vague ideas into executable rules; use repetition, controlled randomness, logic, parameters, and interaction; designers become creators of individualized tools. | Folded to `malleable-software`. |
+
+Verified quotes: "How do I abstract?"; "True randomness rarely produces compositionally interesting results."; "randomness is limited and applied in measured doses"; "Perhaps the most important aspect of this increase in possibilities is that the designer is now the creator of individualized tools"; "customized software tool".
 
 ## Lidwell / Holden / Butler, *Universal Principles of Design* (2003)
 
