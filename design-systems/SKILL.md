@@ -14,7 +14,7 @@ A design system is a **product with customers**, not a library: "treat it like a
 - **Unopinionated systems fail** (Baldwin, Intuit): internal customers "wanted us to tell them no from time to time." A central team that won't take positions forfeits the system.
 - But opinions are *listened into existence*: "**if people are breaking the system, it's time the system changed**" (panel). Figma's team absorbed a dev's prop exploit as a considered "custom" variant rather than punishing (Albaugh/Bergman).
 - Rules must be **actionable and enforceable or they're vibes**: Intuit's unmeasurable "20% may be uniquely styled" rule died; Uber's ~80% target works because dashboards measure it per screen.
-- **Build, then constrain**: theming workshops deadlocked on abstract constraints; a live theming editor gave designers something real — "opinions should be rooted in a vision" (Baldwin). Zalando built token system and theme #1 *in parallel*, wrote governance after. Don't speculate: "product teams move faster than design system teams — address future needs when they're real" (Albaugh/Bergman). Hitting limits is growth (the "midlarge" t-shirt size).
+- **Build, then constrain**: theming workshops deadlocked on abstract constraints; a live theming editor gave designers something real — "opinions should be rooted in a vision" (Baldwin). Zalando built token system and theme #1 *in parallel*, wrote governance after. Don't speculate: "product teams move faster than design system teams — address future needs when they're real" (Albaugh/Bergman). Component-level form: use it a few places, "allow the API [to] create itself based on the usage," then document (Briggs). Hitting limits is growth (the "midlarge" t-shirt size).
 
 ## Token architecture
 

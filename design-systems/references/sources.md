@@ -9,6 +9,7 @@ Plus:
 - *Ryo Lu (Cursor) — Dive Club + Dialectic interviews, 2025 (the "bricks"/de-slop additions)*
 - *MDS (Matt D. Smith, Shift Nudge) — https://www.youtube.com/watch?v=4p5LzrAYN30 · https://www.youtube.com/watch?v=PFi9WfNUlps (the dial + handoff sections)*
 - *Dive Club podcast interviews, 2025–26: Brian Lovin (Notion, dvEwb1Ajkwo), Luis Ouriach (Figma, Pn2G7JhxNKc), Cam Worboys (Cash App, KH9GBasDTI8), Louis Healey & Kyler Hall (Atlassian, CqMZTg7L-wE — the flagship of the DS-as-AI-context section), Steven Haney (Y0n6F9VlLVc)*
+- *Derek Briggs (PixelJanitor; ex-PlanetScale/Campsite/Clerk/Notion, now Shopify) — Dive Club S4 "Creating a design culture of craft" (Jan 2024, Clerk era), z4hP80tzBL4 (the codify-late clause)*
 - *Apple WWDC 2017 session 809 — "Communication Between Designers and Engineers" (lost session, via WWDC Index archive)*
 - *Rachel Nabors, "Animation at Work" (A Book Apart, 2017) — chs. 3–4: timing scales as tokens, microanimation vocabularies (the motion-as-a-DS-layer section)*
 - *MailChimp, "The UX Reader" (2014) — pattern-library evolution and slat-system reuse*
