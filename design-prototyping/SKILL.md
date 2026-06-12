@@ -5,8 +5,7 @@ description: "Prototype and present design work across three tiers — fake-it (
 
 # Design Prototyping & Presenting
 
-**Sources** (full annotated list with titles + URLs: [references/sources.md](references/sources.md)): Apple WWDC 2014-223, 2017-818, 2018-811, 2018-801, 2023-10115, 2026-227 + the 2022 prototypers Q&A; ADA articles (PBJ – The Musical; CapWords); Config 2024–25 (Cheechee Lin, Duolingo, Figma UI3, Jeremy Hindle, Wojtek Dziedzic, Jae Park, Basheer Tome, Femke van Schoonhoven); Dive Club 2025–26 (Ryo Lu/Cursor, MDS, Brian Lovin, Geoffrey Litt, Steve Ruiz, Luis Ouriach, Kyle Santos, Josh Puckett, Andy Madrick, Katie Dill, Rafa Conde, Katarina Batina, Ridd, Ian Silber, Kris Puckett, Ron Goldin, Steven Haney, Soleio); First Round (Soleio on personalized products); Paul Stamatiou; Kevin Twohy/Browser Co.; Evil Martians; Mariana Castilho; Vox Media/Polygon (Valio Con 2013); Carlos Montoya; Leah Buley.
-
+**Sources:** [references/sources.md](references/sources.md) — 6 WWDC sessions + 2 ADA articles + Config, Dive Club, and field sources.
 The trap is *idea → build → disappointment*. "The more prototypes we can put between your idea and your application, the better the result." The mantra: **"Make fake apps, show people, and learn from their feedback. And do that over and over again until the experience of your app feels great."** Prototype to *test* ideas (build the right thing) and to *get new* ideas.
 
 ## Choose the tier first

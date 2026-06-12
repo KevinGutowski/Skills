@@ -30,6 +30,7 @@ Read the appropriate phase reference based on user context.
 - **Shaping** happens continuously, producing pitches ready for the betting table
 - **Betting** happens during cool-down, selecting what to build next
 - **Building** happens during the 6-week cycle, with teams owning complete projects
+- **Budget refinement deliberately** (MailChimp, *The UX Reader*): bugs and confusing workflows erode trust and support capacity, so some cycles must be cleanup by design, not leftovers. Their practice: at least once a year, "an entire release focused solely on cleanup and maintenance," fed by support, social feedback, analytics, interviews, surveys, and account-closing reasons.
 
 ## Design sprints & design-build overlap (Evil Martians extension)
 

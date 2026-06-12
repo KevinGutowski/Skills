@@ -5,12 +5,7 @@ description: "Win org buy-in for design via business-case framing. Use when pitc
 
 # Design Org Influence
 
-**Sources** — Femke van Schoonhoven (@femkedesign; design manager, ex-Uber/Wealthsimple), auto-captioned YouTube corpus: VTnT5zFjzfQ (rejection + impact framework; guests Filippos, Florian, Miranda Slater) · -dtCf1DAAKc (strategic framing vs "opportunity cost"; strategic narrative framework) · 2v4mEMAt_80 (influential designer; guests Steven Steiner, Miranda Slater, Angelina Lou) · 7pdqbyJ8Yuc (PM pushback, the four phrases) · crAaxd30NMg (PM roles overlap; Miranda Slater, Craig) · jhtqP9wT8tg (product-thinking designer; quotes Julie Zhuo) · fRdUMGzMNLo (five patterns blocking leading roles) · Up07knsch7I (self-reflections, SBI, her Claude-skill review logger) · rO68VwacBoE (soft skills) · hh1UXn8ZPwc (portfolio; Sarah Doody, Aneta Kmiecik) · uQLAUq4TstI (presenting explorations → design-prototyping).
-
-Plus Dive Club podcast interviews (auto-captioned YouTube): Ryan Scott (ex-DoorDash/Airbnb — LOkdM6frkak), Henry Modisett (Perplexity — Vt3oTBvx7xw), Cam Worboys (Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), Luis Ouriach (Figma — Pn2G7JhxNKc), Brian Lovin (Notion — dvEwb1Ajkwo), Megan Choy (Anthropic — hKeDfupbA4U), NYC panel (V-jd3v9P-Ps), Katarina Batina (Shop app, Shopify — 0YjO7wShTkQ), Polly D'Arcy (Wealthsimple — vdYBohOQYm0), Marvin Schwaibold (Molly Studio → Shopify — KpJs7mZYErg), Tommy Geoco (OYNoy468kS8), Soleio Cuervo (WHIXWOmT7_I / ffoMwdLGcFo; plus Julie Zhuo 2026 interview and Design Buddies 2025 recap).
-
-Plus books: Rachel Nabors, *Animation at Work* (A Book Apart, 2017), ch. 4 (animation-adoption case; quotes verified against source) · Chip Heath & Dan Heath, *Made to Stick* (2007), chs. 1-6 (SUCCESs pitch framing) · Leah Buley, *The User Experience Team of One* (Rosenfeld, 2013), chs. 2-3 and 9 (solo-UX influence).
-
+**Sources:** [references/sources.md](references/sources.md) — Femke corpus + Dive Club interviews + Nabors/Heath/Buley books.
 ## Core reframe: it's the framing, not the design
 
 **"It's not your design they don't trust, it's how you're framing the value."** Rejection is rarely about craft, leadership, or politics — it's solution-first thinking: falling in love with a solution before understanding the business problem, presenting features instead of outcomes. The designers who consistently get ideas approved "think business first and design second."
@@ -31,6 +26,7 @@ Full scripts, worked numbers, and timing windows: [references/pitching.md](refer
 - **The strategic narrative framework — 4 parts**: problem context (what's broken, in business terms) → your insight → design solution (features connected to outcomes) → expected impact (quantify where you can, "be directional when you can't").
 - **Four lenses for craft/design-system asks** (when you hear "opportunity cost"): customer impact · company goals · team efficiency ("That's not opportunity cost, that's opportunity creation") · tech-debt timing ("the cheapest it will ever be"). Bring engineering allies so it isn't you advocating alone.
 - **Timing**: planning/budget cycles, competitor launches, bad metrics, churn spikes — and manufactured urgency. "Smart designers don't just wait for the perfect timing, they create it."
+- **The before/after craft deck** (Briggs, Dive Club): sell UI craft with side-by-side default-vs-crafted slides; the reaction to engineer: "it's so obvious now that I see the comparison." Comparison axes → [references/influence-field-notes.md](references/influence-field-notes.md).
 - **The animation-adoption case** (Nabors, *Animation at Work*, ch. 4): skip the science debate, "talk benefits"; show, don't tell — the animated version next to the static comp. And be a **gardener, not gatekeeper**: the lone evangelist is a bus-factor risk — build allied experts. Full quotes: [references/pitching.md](references/pitching.md).
 - **Translate your message into each audience's motivations** (Lara Hogan, *Resilient Management*, ch. 4): "translate your message into something that's much more digestible and easy for that audience to care about" — one elevator pitch per audience, repeated often (her web-perf case: [references/pitching.md](references/pitching.md)).
 - **Before/after**: "I redesigned our mobile app because the current design looks outdated" → "Mobile app engagement dropped 23% this quarter… projected to increase screen time by 40%… here's the six-week rollout plan." Same design, completely different reception.
@@ -108,6 +104,7 @@ Smaller Dive Club deltas (full quotes: [references/influence-field-notes.md](ref
 - **Ship governance** (Megan Choy, hKeDfupbA4U): "just because everyone can ship doesn't mean not everything should ship" — build systems that scale.
 - **Pre-agreed regression tolerance for big bets** (Katarina Batina, 0YjO7wShTkQ): redesigns vs. years-optimized incumbents "almost always lose" at first — negotiate the acceptable baseline reset *before* the work; treat the data team's flinch as the deal working, not a stop signal.
 - **Data narratives are contestable** (Batina): "the reading of it is never objective" — when a metric is read against your work, contest the reading, not the number.
+- **UI engineers report to design** (Briggs, Dive Club): "your design quality and your design capabilities of your team is only as good as the UI Engineers that are implementing it" — staff them as translators between design and product engineering. Pairing pattern + his anti-deadline stance (his position, not house consensus) → [references/influence-field-notes.md](references/influence-field-notes.md).
 
 ## Team-of-one influence (Buley)
 

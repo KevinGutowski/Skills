@@ -5,8 +5,7 @@ description: "Build, govern, and scale a design system — token architecture, t
 
 # Design Systems
 
-**Sources** (full list + worked examples → `references/field-notes.md`) — Figma Config 2024–25: DS best practices (Figma DAs '24) · design/dev panel (Weekes/Figma, Krakowsky Appel/Coinbase, Rahimi/Uber ex-Microsoft '25) · opinions (Baldwin/Intuit '24) · multi-sub-brand (Zalando '24) · building together (Albaugh & Bergman/Figma '25) · XL displays (Alaska Auro '24) · programmable colors (Evil Martians '25) · GitHub+Figma (Mounter & Bemis '25) · typography (Stocks '25 → `apple-typography`). Plus Rachel Nabors, *Animation at Work* (A Book Apart, 2017); Ryo Lu (Cursor, Dive Club + Dialectic '25); MDS (Shift Nudge, yt 4p5LzrAYN30 + PFi9WfNUlps); Dive Club '25–26: Lovin (Notion, dvEwb1Ajkwo), Ouriach (Figma, Pn2G7JhxNKc), Worboys (Cash App, KH9GBasDTI8), Healey & Hall (Atlassian, CqMZTg7L-wE), Haney (Y0n6F9VlLVc); Figma blog on Combine/Soleio/Adam Michela (2017); Apple WWDC 2017 session 809.
-
+**Sources:** [references/sources.md](references/sources.md) — 9 Figma Config talks ('24–25) + Dive Club + books; worked examples in [references/field-notes.md](references/field-notes.md).
 A design system is a **product with customers**, not a library: "treat it like a product team — clear OKRs, roadmap, customers — or it won't succeed" (Rahimi). The deeper frame (Henry Modisett, Linear): a DS is *quality infrastructure* — "if you make it so hard to make a bad button, you're going to have less bad buttons." Sell it honestly: "a design system is not the most efficient way to build things… it must have clear business impact and ROI" — the pitch that works is per-stakeholder incentive alignment: "components for free, performance for free, dark mode for free" (Coinbase), accessibility and i18n free.
 
 ## Opinions are the product
@@ -14,7 +13,7 @@ A design system is a **product with customers**, not a library: "treat it like a
 - **Unopinionated systems fail** (Baldwin, Intuit): internal customers "wanted us to tell them no from time to time." A central team that won't take positions forfeits the system.
 - But opinions are *listened into existence*: "**if people are breaking the system, it's time the system changed**" (panel). Figma's team absorbed a dev's prop exploit as a considered "custom" variant rather than punishing (Albaugh/Bergman).
 - Rules must be **actionable and enforceable or they're vibes**: Intuit's unmeasurable "20% may be uniquely styled" rule died; Uber's ~80% target works because dashboards measure it per screen.
-- **Build, then constrain**: theming workshops deadlocked on abstract constraints; a live theming editor gave designers something real — "opinions should be rooted in a vision" (Baldwin). Zalando built token system and theme #1 *in parallel*, wrote governance after. Don't speculate: "product teams move faster than design system teams — address future needs when they're real" (Albaugh/Bergman). Hitting limits is growth (the "midlarge" t-shirt size).
+- **Build, then constrain**: theming workshops deadlocked on abstract constraints; a live theming editor gave designers something real — "opinions should be rooted in a vision" (Baldwin). Zalando built token system and theme #1 *in parallel*, wrote governance after. Don't speculate: "product teams move faster than design system teams — address future needs when they're real" (Albaugh/Bergman). Component-level form: use it a few places, "allow the API [to] create itself based on the usage," then document (Briggs). Hitting limits is growth (the "midlarge" t-shirt size).
 
 ## Token architecture
 
@@ -41,6 +40,7 @@ A design system is a **product with customers**, not a library: "treat it like a
 - **Split-the-set tests** — split if either is no: (a) is every option crystal clear on sight? (b) is every variant used interchangeably in the same use cases? (Cautionary tale: >20,000 variants.) Nathan Curtis: every addition raises cost and dilutes per-component value.
 - Order props so related ones stack; action-verb booleans; expose nested instances only when key to flows — past an inflection point exposure is information overload.
 - Spec the invisible: i18n/long-string behavior, focus-visible, tab order, ARIA, reflow — "code-only concerns designers skip" (Albaugh/Bergman).
+- **Prework before redesign** (MailChimp): harvest repeated UI into reusable patterns before the visual direction lands; they used CSS size as a proxy and "managed to cut about 120k" before launch. Keep the pattern library as both shortcut and regression test page; deeper slat-system notes → field-notes.
 
 ## Design–code parity & handoff
 

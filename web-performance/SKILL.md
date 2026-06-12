@@ -5,10 +5,7 @@ description: "Makes web apps load fast and feel instant — Core Web Vitals, per
 
 # Web Performance
 
-**Sources:**
-- *"Betting on the web: ensuring fine-tuned performance for dynamic web apps" — Charlton Roberts, frame.io/Adobe (Vercel conference; surfaced via Emil Kowalski's animations.dev Vault). The fluid-UI process discipline.*
-- *"Crossing the chasm between quality and performance" — Ricardo Vazquez (Dropbox, ex-Shopify POS), Figma Config 2025. The metrics-and-principles layer.*
-- *Supporting field sources: Josh Wootonn's sidebar-performance study; Henry Heffernan and Dennis Brotzky (animations.dev interviews); Henry Modisett (Perplexity, Config 2024).*
+**Sources:** [references/sources.md](references/sources.md) — frame.io/Adobe (Roberts) + Config 2025 (Vazquez) + supporting field sources.
 
 The frame: **"Performance is a feature. If it doesn't feel good, it's not working."** And the maxim that kills decoration-first thinking: **"Aesthetics without performance isn't design. It's simply decoration"** (Vazquez). The classic *make it work → make it right → make it fast* loop fails for dynamic apps — fast-at-the-end produces "death by a thousand cuts" jank even when every team did its job. Instead: **"how it feels is as important as how it works the entire way through"** — frame.io budgets **about half of feature-build time** for fluid-UI work, and stopped being surprised by it.
 

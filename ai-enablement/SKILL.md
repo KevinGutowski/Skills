@@ -5,14 +5,7 @@ description: "Make AI context legible, distributed, and adopted across a design/
 
 # AI Enablement
 
-**Sources** — Dive Club podcast (2025–26 episodes):
-- *Katarina Batina (Design Director, Shop app at Shopify) — 0YjO7wShTkQ*
-- *Tommy Geoco — OYNoy468kS8 (incl. survey data + secondhand reports from Ramp, Metalab, Vercel)*
-- *Louis Healey & Hall (Atlassian) — CqMZTg7L-wE*
-- *Ian Silber (OpenAI) — oM1d9Tau27w*
-- *Kris Puckett — nPyxVMd1LIA*
-- *Steven Haney field report — Y0n6F9VlLVc*
-- *NYC panel (Choy/Shipper/Zipper) — V-jd3v9P-Ps (cross-ref: agentic-coding)*
+**Sources:** [references/sources.md](references/sources.md) — 7 Dive Club episodes (2025–26).
 
 The task shape: an individual's AI workflow works; the org's doesn't. This skill covers making organizational context *legible* to agents, making one person's context *visible* to teammates, and making adoption actually happen — because "if you build it they do not come" (Louis Healey, Dive Club podcast, CqMZTg7L-wE).
 
@@ -56,6 +49,7 @@ DS-specific mechanics (icon hallucination fixes, navigation templates, prompt-re
 - **Pilot team vs all-at-once:** Metalab's "Team Zero" — ~three people, one real client project, tasked with working as AI-natively as possible — vs Atlassian's whole-company builder week. Both are deliberate; the failure mode is neither (waiting for organic adoption).
 - **Unblock with money and time:** exploration "is expensive… you go down rabbit holes that are throwaway work a lot. Leaders are saying, 'No, I'm going to unblock it. We're going to throw spend at it. We're going to give people time for this'" (Geoco, OYNoy468kS8) — e.g. Vercel's Friday hackathons.
 - **Mandates are appearing:** "AI usage is being mandated in performance reviews for designers. Full stop" — framed as forcing exploration, not output quotas (Steven Haney, Dive Club podcast, Y0n6F9VlLVc).
+- **Stack choices carry measurable agent-cost consequences** (Briggs, Jun 2026 experiment — two branches, same 10 style prompts, read/edit/write-only harness): "Tailwind used substantially fewer AI coding tokens than CSS Modules because agents could usually edit styles directly in component class strings instead of reading and modifying separate stylesheet files." GPT 5.5: avg 46,163 vs 102,310 tokens (54.9% fewer; 3 vs 15 tool reads); Opus 4.8: 90,447 vs 147,765 (38.8% fewer). The durable lesson is colocation beats indirection for agent-editable styling — audit where your stack forces agents to read-then-edit across files, and budget stack decisions with agent token spend in view.
 - **Infrastructure is a staffed investment, not a side effect:** designer playgrounds (forked repos stripped of env-var/lint/build friction) and internal sharing platforms — one company built an "FTP-like" drag-and-drop platform that auto-deploys previews of vibe-coded work. "100% companies are building tooling around these flows but somebody has to build that" — and maintain it (Haney, Y0n6F9VlLVc).
 
 ## Checklist

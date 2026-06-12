@@ -1,7 +1,6 @@
 # Building & Running a Design Org — Dive Club field notes
 
-Hiring, org shape, and operating models from design leaders. Sources (Dive Club podcast, auto-captioned YouTube): Henry Modisett (VP of Design, Perplexity — Vt3oTBvx7xw), Cam Worboys (Head of Product Design, Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), a live NYC panel with Megan Choy (Anthropic), Dan Shipper (Every), Bradley Zipper (Ramp) — V-jd3v9P-Ps; tranche 2: Polly D'Arcy (VP of Design, Wealthsimple — vdYBohOQYm0), Marvin Schwaibold (Molly Studio, acquired by Shopify — KpJs7mZYErg), Tommy Geoco (OYNoy468kS8); Soleio Cuervo (Dive Club / Julie Zhuo / Dive article, 2024–26).
-
+Hiring, org shape, and operating models from design leaders. Sources (Dive Club podcast, auto-captioned YouTube): Henry Modisett (VP of Design, Perplexity — Vt3oTBvx7xw), Cam Worboys (Head of Product Design, Cash App — KH9GBasDTI8), Katie Dill (Stripe — Dpy-yyYXhgU), a live NYC panel with Megan Choy (Anthropic), Dan Shipper (Every), Bradley Zipper (Ramp) — V-jd3v9P-Ps; tranche 2: Polly D'Arcy (VP of Design, Wealthsimple — vdYBohOQYm0), Marvin Schwaibold (Molly Studio, acquired by Shopify — KpJs7mZYErg), Tommy Geoco (OYNoy468kS8); MailChimp, *The UX Reader* (2014); Soleio Cuervo (Dive Club / Julie Zhuo / Dive article, 2024–26).
 ## Hiring (Modisett, Perplexity)
 
 - **Hire for capability gaps, not headcount.** Every hire is a calculation: "what do we wish we could do that we can't do today — let's add a person that can do that." His first hire ever was a brand designer because he couldn't do brand well. Think of the team as "a combination of capabilities," not seats. "It's very rare that we are just bringing someone in and not really knowing what they would do."
@@ -32,6 +31,12 @@ Hiring, org shape, and operating models from design leaders. Sources (Dive Club 
 - **Design belongs in the core, or it is cosmetic** (X 2023 — https://x.com/soleio/status/1712083234723364966): for a company trying to build a category-defining product, design cannot be a checkout-flow add-on. It has to shape company culture, product strategy, and hiring. The early test: is design involved when the company decides what to become, or only after the roadmap is written?
 - **Write the team's playbook, not just the product** (First Round founding-designer guide, Soleio/Patrick Weiss session — https://review.firstround.com/the-ultimate-guide-to-the-founding-designer-role/): ask "what's your version of the West Coast offense?" Treat ways of working as designed artifacts: iterate team plays that amplify the actual people you have, rather than copying a generic design process.
 
+## MailChimp UX operating model (*The UX Reader*, 2014)
+
+- **Generalists plus specialists.** Aarron Walter's team was deliberately small: "Small teams make communication easier" and leave less room for weak links, but the real shape was broad UX generalism with detail specialists for research, UI, front-end, and email.
+- **Autonomy with connective tissue.** Teams need freedom to decide quickly, but absolute autonomy creates chaos; use short check-ins and cross-team hallway/context sharing to keep independent work tied to the whole company.
+- **Parallel research and product cycles.** MailChimp's release cycle was too short for deep studies, so long-running research ran in parallel with rapid product work. The bridge rule: "Research that goes unapplied is of little value" — share salient insights as they emerge rather than waiting for a final report.
+- **Empathy as refinement fuel.** Invite UX, engineering, and QA to watch real customers struggle. The goal is not research theater; it creates discomfort strong enough to make bug-fixing and workflow refinement feel urgent.
 ## Org shape for the AI era (Worboys, Cash App)
 
 - **Bottleneck relocation.** "The biggest blockers across all of the tech industry in the next 2 years will not be the speed of building. It's going to be the operational side" — moving a built thing through the cogs to customers. Design the org for that constraint, not for production capacity.

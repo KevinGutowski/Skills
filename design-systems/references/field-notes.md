@@ -15,16 +15,12 @@ Depth moved out of SKILL.md: full source list, worked examples, outcome numbers,
 - [MDS: systems are a dial details](#mds-systems-are-a-dial-details)
 - [Dive Club deltas — full quotes](#dive-club-deltas--full-quotes)
 - [Motion as a design-system layer (Nabors)](#motion-as-a-design-system-layer-rachel-nabors-animation-at-work-a-book-apart-2017)
+- [MailChimp pattern-library prework](#mailchimp-pattern-library-prework-the-ux-reader-2014)
 - [Misc details](#misc-details)
 
 ## Full source list
 
-Figma Config talks, 2024–25:
-- *"Design systems best practices" (Figma Designer Advocates, 2024)* · *"Unifying design and development through design systems" (panel: Marcel Weekes/Figma, Tali Krakowsky Appel/Coinbase, Samira Rahimi/Uber & ex-Microsoft, 2025)* · *"The value of opinions in design systems" (Nate Baldwin, Intuit, 2024)* · *"Delivering a multi-sub-brand design system for e-commerce" (Zalando, 2024)* · *"Building design systems together" (Jake Albaugh & Chad Bergman, Figma, 2025)* · *"Design systems for XL displays" (Alaska Airlines Auro, 2024)* · *"Programmable colors" (Evil Martians, 2025)* · *"Unlocking creativity with GitHub and Figma" (Diana Mounter & Cole Bemis, 2025)* · *"Typography is the foundation of any design system" (Elliot Jay Stocks, 2025 — type specifics live in `apple-typography`)*.
-- Plus *Ryo Lu (Cursor) — Dive Club + Dialectic interviews, 2025 (the "bricks"/de-slop additions)* and *MDS (Matt D. Smith, Shift Nudge) — https://www.youtube.com/watch?v=4p5LzrAYN30 · https://www.youtube.com/watch?v=PFi9WfNUlps (the dial + handoff sections)*.
-- Plus *Dive Club podcast interviews, 2025–26: Brian Lovin (Notion, dvEwb1Ajkwo), Luis Ouriach (Figma, Pn2G7JhxNKc), Cam Worboys (Cash App, KH9GBasDTI8), Louis Healey & Kyler Hall (Atlassian, CqMZTg7L-wE — the flagship of the DS-as-AI-context section), Steven Haney (Y0n6F9VlLVc)*.
-- Plus *Apple WWDC 2017 session 809 — "Communication Between Designers and Engineers" (lost session, via WWDC Index archive)*.
-- Plus *Rachel Nabors, "Animation at Work" (A Book Apart, 2017) — chs. 3–4: timing scales as tokens, microanimation vocabularies (the motion-as-a-DS-layer section)*.
+Moved to [sources.md](sources.md).
 
 ## Intuit: the token death spiral
 
@@ -118,6 +114,7 @@ Figma Config talks, 2024–25:
 - **Over-tokenization** (Ouriach): "an over-tokenization of something can mean it's so robust we can't deviate from it." Place yourself on the experimentation↔commitment line per product stage — and re-ask the question now that agents read raw values in seconds: "does the tokenization actually help you at that point?" (Complements Baldwin's opinions-are-the-product: tokens encode opinions; too many encode paralysis.)
 - **Siblings, not twins** (Cam Worboys, KH9GBasDTI8): multi-brand DNA done right is "shared foundations that make it feel like it's a block designed product, whether that's type, some shared like base tokens, approach to the grid, and then there are these unique personalities that get put on top of it that allow each of the brands to shine."
 - **Peak library?** (Steven Haney, Y0n6F9VlLVc): "is this peak library?… because everyone's building with them, the AI trains on them more. It gets better at them" — established stacks have AI-gravity; weigh that lock-in when planning a DS's underlying stack.
+- **Codify late** (Derek Briggs, PixelJanitor — Dive Club S4 "Creating a design culture of craft"): build a component, use it in a few places, and "allow the API [to] create itself based on the usage" (bracket fixes a caption garble) — only then document it into the system. Codifying on first use freezes a guessed API; usage reveals the real one.
 - **Build bricks** (Ryo Lu, Cursor, Dive Club + Dialectic '25): "because AI is really good at composing parts… we need to like build bricks. Really good bricks" — suck the core patterns out of shipped product into the system so agents compose instead of reinvent. The DS/design team's emerging job: "help people like D slop" — engineers throw a Figma mock at an agent and lose exactly the details the mock encoded ("you want this easing curve to be exactly this value… the AI won't know what that is"). The designers' edge to build on: "AI really sucks at the things you all are good at. It's like all the details that we care about."
 
 ## Motion as a design-system layer (Rachel Nabors, *Animation at Work*, A Book Apart, 2017)
@@ -126,6 +123,13 @@ Figma Config talks, 2024–25:
 - **The orchestra metaphor** (Amy Lee, "prototyper at Salesforce by day and musician by night," who first introduced Nabors to interlocking timing values on Lightning): a timing scale "is about an agreed-upon synchronization of animation choreography. Imagine how an orchestra might play together. Without a common timing system, each player would drift through the score at their own rate. However, if we agree that a quarter note is 400ms long, then we all can play together at a peppy tempo of 150 beats per minute."
 - **Microanimation vocabularies** (ch. 4, "Communicating Animation"): combine easing + duration + properties "to create microanimations with descriptive names like 'pop,' 'fade,' and 'slide.'" Microanimations compose into macroanimations — "a modal that fades onto the screen then pops to grab user attention. We might then label that combined animation as an 'alert,' and use it over and over again." Codified, they "form animation vocabularies that yield huge benefits when it comes time to document visual deliverables with text." Lightning ships these as composable presets — "Salesforce engenders brand compliance by providing easy-to-reach-for defaults," choosing "to lead by examples and easy, composable presets, providing a path of least resistance" over lengthy rationale docs.
 - **Pave the onomatopoeia cowpaths**: "Many of these microanimation names start as friendly onomatopoeias around a meeting room table: swoosh, zoom, plonk, boom." People "hold a sound longer to indicate extended duration: 'Can you make it more like *voooooosh* and less like *voosh*?' It makes sense to 'pave the cowpaths' and adopt the words your company is using already."
+
+## MailChimp pattern-library prework (*The UX Reader*, 2014)
+
+- **Refactor before the redesign screenshot exists.** MailChimp started months before seeing the new look, combining repeated CSS into reusable patterns so the redesign had a substrate. Their proxy metric was total CSS size; before launch they "managed to cut about 120k from our CSS."
+- **Pattern library as shortcut + test page.** The first internal "cheat sheet" gave front-end developers a faster way to use shared classes and a page that exposed whether pattern CSS changes broke app screens.
+- **Systemize the boring surfaces.** The slat pattern began on high-traffic dashboards, then generalized to Segments, Conversations, and Exports. The payoff was speed plus quality: "Adapting our slat system to the Exports dashboard took me all of 45 minutes," including mobile.
+- **Parallelize foundation and interior.** One group refined the slat pattern while others worked forms, page structure, and navigation; the shared system let them work independently from "a common place."
 
 ## Misc details
 

@@ -48,6 +48,8 @@ For hand-tuning the custom vectors this skill calls for. (Dan Hollick, *Making S
 - **viewBox is a coordinate-system override**: the viewport (CSS/width/height) sets the default coordinate system; the viewbox is "a way of overriding the default coordinate system for the SVG by creating a user space coordinate system." Its `x y w h` pan (origin can be negative) and scale the infinite canvas — this decoupling is what makes SVG responsive.
 - **preserveAspectRatio = anchor + scaling behavior.** First parameter anchors on a 3×3 grid (`xMin|xMid|xMax` × `YMin|YMid|YMax`, default `XMid YMid`). Second parameter: `meet` scales the viewbox to fit inside the viewport ("sort of like when you set an image to fit") and `slice` "behaves more like fill in image terms" — fills the viewport and lets it crop. `none` allows non-uniform squash.
 - **Path data reads as function calls**: in `d`, "the letter is basically a function call, telling the renderer which command to use, and the numbers are the parameters." Uppercase = absolute coordinates, lowercase = relative to the previous position (relative deltas are smaller, so they compress better).
+- **Prepare animation assets before coding** (MailChimp, *The UX Reader*): "layer hierarchy is key" when scripts need to target groups/paths; name layers, keep frame groups consistent, and remove excess anchors because fewer groups, paths, and points keep SVG code "light and legible." On final export, deselect "Preserve Illustrator Editing Capabilities" to avoid browser-weight cruft. For multi-frame vector animation, prefer one coordinated SVG over several fragments when viewport/coordinate mismatches would make transitions brittle; then watch JS-driven animation for "layout thrashing."
+- **Vector still has an intended size** (Wathan/Schoger, *Refactoring UI*): "Don’t scale up icons" just because they are SVG; a 16-24px icon enlarged 3-4x will not blur, but it will look chunky and under-detailed. Keep the glyph near its drawn size inside a larger colored shape. For web icons generally, prefer SVG over icon fonts when you need flexible sizing/coloring and cleaner accessibility; "SVG is the more flexible solution" (Santa Maria, *On Web Typography*).
 
 | Command | Letter | Does |
 | --- | --- | --- |
@@ -66,6 +68,15 @@ The hero visual must *truthfully demonstrate* the product's core mechanic, not d
 
 Production layouts must also survive real text: "English, a very compact language, contains words that can expand up to 300% when translated into a less compact language such as Italian" — and user font-size overrides (Amazon's header gracefully drops lower-priority links as text grows). Never size containers to ideal-length English. (Yablonski, *Laws of UX*, ch. 5.)
 
+## Fidelity survives implementation
+
+PixelJanitor / Derek Briggs' recurring design-engineering lesson: "Users don't see your Figma design files, so they're only as good as their implementations. Sweat the details in the code too." (Briggs). His UI Engineering 101 course (Maven) centers on translating high-fidelity Figma components into polished HTML/CSS — layout, states, interactions, SVG motion, concentric radii, stacked shadows, elevation highlights. When building a distinctive frontend, prefer visual ideas you can implement exactly, then inspect the live result at real size. If the production artifact drops the lighting, state behavior, responsive fit, or motion intent, the design is unfinished.
+
+- **Re-engineer Figma effects, don't transliterate them.** Progressive blur is GPU-expensive live: "a designer might use a progressive blur to get that sharp edge at the top of the of the gradient to like I wouldn't use that in in development. Like that would be really expensive processing" (Briggs, Shape FM). Rebuild it as a radial-gradient base + inset box-shadows — "if you use a negative spread on that it'll pull it in" to recover the sharp edge. The principle: design in Figma one way, implement differently, as long as it looks the same. (Div/CSS-only progressive blur is achievable — Briggs shipped one for a nav overlay — but no public code.)
+- **Feasibility heuristics when reviewing a Figma file** (Briggs, Shape FM): near-duplicate font families = font-loading/CDN cost for marginal visual difference — consolidate before implementing. Figma corner smoothing (squircles): "recently Chrome added the corner-shape superellipse property... but it's not available in Firefox or Safari [yet]" — elsewhere it needs clip masks or SVGs; budget for that or use plain radii.
+
+Bibliographic detail (course link, post/episode IDs): [references/sources.md](references/sources.md).
+
 ## De-slop substrate (Ryo Lu, Cursor — interviews, 2025)
 
 - **Build on proven primitives**: use shadcn/Radix for every standard control — keyboard nav and accessibility come free, and AI "is really good at composing patterns that exist."
@@ -73,6 +84,7 @@ Production layouts must also survive real text: "English, a very compact languag
 - **Banned slop tells**: "massive shadows, purple gradients," purple buttons, the default icon set "AI will just pick." His safe fallback when unsure — "you just use system fonts" — sets the floor (never slop defaults); this skill's distinctive-type guidance above sets the ceiling.
 - **Tokens make AI composable**: "with like a really robust like foundational set of tokens and components, AI is able to compose them pretty well."
 - **Seed the brand early** (Ron Goldin, ex-Google/Shopify/Uber Eats — Dive Club UkQpgslyR3A; second practitioner vote for the anti-generic doctrine): "don't wait till like the very end to think about branding and differentiation" — once you know what the product is, establish the visual language up front so AI extrapolates *your* aesthetic instead of defaulting to slop.
+- **Global flexbox reset** (Briggs): "Pretty much all flexbox woes have gone away by adding this to the global css of every new project." `*, ::after, ::before { min-width: 0; min-height: 0; }` (his post has a stray trailing comma in the selector; this is the corrected form). "If you add this to an existing project, check for ui regressions (most likely will be some!)."
 
 ## MDS field tactics (Matt D. Smith, Shift Nudge — YouTube -VSXVDr5HW0, Uno5dpotRgo, k8dcRRgA3T8, jSLfQ0sJDCw; Dive Club K_7ECqNlTtE)
 

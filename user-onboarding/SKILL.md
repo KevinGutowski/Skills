@@ -5,7 +5,7 @@ description: "Designs and writes user onboarding — empty states, first-run flo
 
 # User Onboarding
 
-Principles from "The Elements of User Onboarding" by Samuel Hulick for designing and writing onboarding experiences that make users successful. Applies to both **shaping features** (what to build, what to cut, how to structure flows) and **writing copy** (empty states, welcome messages, CTAs).
+Principles from "The Elements of User Onboarding" by Samuel Hulick for designing and writing onboarding experiences that make users successful. Applies to both **shaping features** (what to build, what to cut, how to structure flows) and **writing copy** (empty states, welcome messages, CTAs). Supplemental source: Lidwell/Holden/Butler, *Universal Principles of Design* (2003), for entry-point mechanics.
 
 ## Core Philosophy: The Fire Flower
 
@@ -74,6 +74,7 @@ When deciding what to build or cut from an onboarding flow:
 - **For each step ask:** Does this help them reach their quick win? Can a machine do it? Can we use a smart default? Can we defer it until after they've experienced value?
 - **Define flows by user improvement**, not by steps. Beginning state = who they are arriving. End state = who they are after "base camp."
 - **Points of Friction** slow users down (confusion, tedious fields). **Points of Disconnect** let them drift away (coupon code fields, external links). Eliminate both.
+- **Treat first use as an entry point** (Lidwell/Holden/Butler, *Universal Principles of Design*, "Entry Point"). Check for "minimal barriers, points of prospect, and progressive lures": remove registration/permission/loading barriers, let users survey what is possible, then place one visible lure just past the threshold that pulls them into the quick win.
 - **For any personal-data field, explain why you ask and what you'll do with the answer; make it optional and editable** (Metts & Welfle, *Writing Is Designing*, ch. 5 — Fitbit's sex question, which trans users can't answer without knowing whether it's demographic or biometric). Exclusion compounds at scale: "If you exclude even one-tenth of one percent, that means there are 755 million people" less able to use your product.
 - **The quick win must:** demonstrate core product value, be achievable in one sitting, not depend on other people, harness the user's current intent.
 

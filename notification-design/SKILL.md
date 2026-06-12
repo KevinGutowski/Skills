@@ -5,9 +5,7 @@ description: "Design notifications worth receiving — when a notification earns
 
 # Notification Design
 
-**Sources** — this skill aggregates two Apple Human Interface sessions:
-- *Apple WWDC 2017, session 817 — "Rich Notifications." https://developer.apple.com/videos/play/wwdc2017/817/*
-- *Apple WWDC 2018, session 806 — "Designing Notifications" (Jon Dascola & Heena Ko). https://developer.apple.com/videos/play/wwdc2018/806/*
+**Sources:** [references/sources.md](references/sources.md) — 2 WWDC sessions.
 
 Attention is precious; interrupting people is a privilege — and users can silence or kill a bad channel in two taps. The only sustainable strategy: **fewer, more meaningful, well-organized notifications.** "The best notifications are for connecting people and delivering meaningful information."
 

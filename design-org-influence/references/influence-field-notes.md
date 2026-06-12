@@ -9,6 +9,7 @@ Depth moved out of SKILL.md: the Heath & Heath sticky-framing checks, the Perri/
 - [Waiter → problem owner (Perri, ch. 6)](#waiter--problem-owner-perri-ch-6)
 - [Team-of-one influence (Buley)](#team-of-one-influence-buley)
 - [Dive Club smaller deltas — full quotes](#dive-club-smaller-deltas--full-quotes)
+- [Briggs: craft pitch + UI-engineering org (Dive Club)](#briggs-craft-pitch--ui-engineering-org-dive-club)
 - [Career as a business case — full quotes (Ryan Scott)](#career-as-a-business-case--full-quotes-ryan-scott)
 
 ## Sticky framing (Heath & Heath, *Made to Stick*)
@@ -54,6 +55,14 @@ Source: Leah Buley, *The User Experience Team of One* (Rosenfeld, 2013), chs. 2-
 - **Ship governance** (Megan Choy, Anthropic — hKeDfupbA4U): "just because everyone can ship doesn't mean not everything should ship… we need better systems that scale" as everyone gains push-to-production ability.
 - **Pre-agreed regression tolerance for big bets** (Katarina Batina, Shop app/Shopify — 0YjO7wShTkQ): redesigns vs. years-optimized incumbents "almost always lose" at first — so negotiate the tolerance *before* the work: "we're actually going out to beat the incumbent and we're going to reset a baseline that inherently might be a little lower than what status quo is today." The leadership counterpart is "making sure that we're not locally maximizing at any given point" (her credit to Toby). Expect the data team's flinch — "wow, this really thwarts what we understand best practices to look like" — and treat it as the negotiated deal working, not a stop signal.
 - **Data narratives are contestable** (Batina): "data itself is objective. The reading of it is never objective. It is always subjective" — when a metric is read against your work, contest the reading, not the number.
+
+## Briggs: craft pitch + UI-engineering org (Dive Club)
+
+Derek Briggs (PixelJanitor; ex-PlanetScale/Campsite/Clerk/Notion, now Design+Code at Shopify), Dive Club S4 "Creating a design culture of craft" — bibliographic detail in [sources.md](sources.md).
+
+- **The before/after pitch deck.** He sold UI craft investment to leadership with side-by-side slides: the default implementation next to the crafted version. The reaction he engineered: "it's so obvious now that I see the comparison." Comparison axes that read instantly in a slide: shadow-as-border, multi-shadow stacks, subtle gradients, optical alignment, concentric border radii. The deck makes the case for craft with zero abstraction — the executive sees the delta directly (same show-don't-tell move as Nabors' animated-vs-static comp).
+- **UI engineers report to design, as translators.** "your design quality and your design capabilities of your team is only as good as the UI Engineers that are implementing it" — so he places UI engineers inside the design org, translating between design intent and product engineering. The PlanetScale pairing pattern: the designer builds the UI views in code, the product engineer plugs in the API endpoints — "we met in a PR to where it was just paint by numbers."
+- **Anti-deadline stance — Briggs' position, not house consensus.** "Setting a deadline is going to either allow the person to stretch out that amount of work" over the period — or force descoping; he prefers craft work unscheduled. This conflicts directly with the shape-up appetite school (fixed time, variable scope as a feature). Don't average the two — name both and pick per org.
 
 ## Career as a business case — full quotes (Ryan Scott)
 

@@ -6,6 +6,8 @@ human) picking up where the prior sessions left off. Companion files:
 `docs/mining-ledger.md` (full history + parked candidates + rechecks),
 `docs/skill-listing-budget.md` (description-budget constraints),
 `docs/pending-folds-product-trio.md` (verified quotes ready to fold),
+`docs/book-source-map.md` (processed-book TOCs, chapter summaries, and cross-source
+theme leads for future skill edits),
 `creating-skills/SKILL.md` House Style section (the canonical authoring rules).
 
 ## The pipeline (per book or book-batch)
@@ -23,6 +25,11 @@ human) picking up where the prior sessions left off. Companion files:
      worked examples, decision tables, specific values with reasoning.
    - **Fold-routing table**: lesson → verified quote → target skill / new-skill candidate /
      skip-as-known. Check existing neighbors' SKILL.md before routing.
+   - **Source-map update**: after the screen, add/update `docs/book-source-map.md`
+     with the book's TOC/chapter summaries, density verdict, folded routes, and
+     cross-reference candidates. Use it before future themed edits (e.g. SVG,
+     sketching, typography, metrics) so agents can check already-processed books
+     without rereading the whole corpus.
    - **Fold-vs-create call** under governance (below).
    - **Emit a quotes.json manifest** of all verified quotes (q + src + route) so fold
      agents copy verbatim instead of retyping (kills transcription drift).
@@ -33,6 +40,15 @@ human) picking up where the prior sessions left off. Companion files:
      MISS = fix wording from source or drop. NEVER ship unverified quotes.
    - Merge into the relevant section, don't append at the end. Bodies ≤5k tokens —
      push depth to `references/` (## Contents on >100-line files).
+   - **PR #5 review lesson:** treat the 5k body budget as a hard operating cap even
+     when the validator is clean. Main `SKILL.md` bodies keep routing rules, the
+     durable operating move, and at most one load-bearing quote per point; full quote
+     banks, source texture, examples, and secondary deltas move to the nearest
+     `references/` file with a pointer back from the body. The accepted pattern was:
+     Made to Stick sticky-framing stayed in `design-org-influence`, but its full
+     SUCCESs notes moved to `references/influence-field-notes.md`; Buley's influence
+     stance stayed in `design-org-influence`, while prototyping/session mechanics
+     stayed in `design-prototyping` with depth in references.
    - Cite: (Author, *Book*, chapter). Era-tag stale specifics ("verify against current docs").
 
 4. **Gate + ship**: run `python3 scripts/validate_skills.py` from repo root; independent
@@ -55,6 +71,11 @@ human) picking up where the prior sessions left off. Companion files:
 - **Descriptions**: 350–450 chars, official shape (what + use-when + boundary clause +
   triggers). Boundary clauses ("X → other-skill") are load-bearing — never cut them.
 - **Cross-refs bidirectional** for load-bearing relationships.
+- **Citation economics (rule 12, 2026-06-11)**: inline citations are short name-tags
+  only — "(Klein)", "(Rutter, ch. 9)" — never numbered [1] refs (they rot under parallel
+  edits) and never full bibliography inline. Titles/years/URLs/video IDs go in the
+  skill's `references/sources.md`; SKILL.md carries one pointer line. Operational notes
+  (supersession ⚠️, caption-garble keys, staleness paragraphs) stay in the body.
 - **Budget constraint** (see docs/skill-listing-budget.md): do NOT raise
   skillListingBudgetFraction. If a new skill joins a hubbed cluster (rails, research/
   cataloging), update the hub body AND the overlay snippet in that doc.

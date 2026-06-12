@@ -5,11 +5,7 @@ description: "Build Rails apps with React/Vue/Svelte components and no API layer
 
 # Inertia.js on Rails
 
-**Sources** — this skill aggregates Evil Martians' Inertia-on-Rails series (all by Svyatoslav Kryukov unless noted):
-- *"Simplicity, vanished?! Solving the mystery with Inertia.js + Rails" (2025) — the cost model and pattern catalog. https://evilmartians.com/chronicles/simplicity-vanished-solving-the-mystery-with-inertia-js-and-rails*
-- *"Inertia.js in Rails: a new era of effortless integration" — setup mechanics. https://evilmartians.com/chronicles/inertiajs-in-rails-a-new-era-of-effortless-integration*
-- *"Optimistic UI with Inertia" (2026) — optimistic update patterns. https://evilmartians.com/chronicles/optimistic-ui-with-inertia*
-- *Open-sourced agent rules: https://github.com/inertia-rails/skills*
+**Sources:** [references/sources.md](references/sources.md) — Evil Martians' Inertia-on-Rails series (3 posts, Kryukov) + open-sourced agent rules.
 
 "You build a traditional server-side app that happens to use JavaScript components for the UI." The cost model it eliminates — dual codebases, serialization layers, duplicated routing/validation/business rules, token auth, client-state synchronization: "each of these creates ongoing maintenance burden that serves no user value."
 
