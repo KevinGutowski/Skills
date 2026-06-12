@@ -45,7 +45,7 @@ body { font-variant-numeric: oldstyle-nums; }   /* legacy tag: "onum" */
 - **Lining in headings** and anywhere readers scan/compare numbers (lists, tables, data): `font-variant-numeric: lining-nums;` (`lnum`). Old-style numerals "replicate the patterns of words in running text" — which is exactly wrong for data.
 - **Tabular lining in tables of numbers**: `font-variant-numeric: lining-nums tabular-nums;` (`lnum`+`tnum`) so columns align; pair with right-alignment and decimal alignment.
 - **Proportional** when you need it back: `proportional-nums` (`pnum`).
-- (Modern UI corollary, same mechanism: `tabular-nums` on any dynamically updating number — see `make-interfaces-feel-better`.)
+- (Modern UI corollary, same mechanism: `tabular-nums` on any dynamically updating number — see `design-polish`.)
 
 ## 3. Small caps
 

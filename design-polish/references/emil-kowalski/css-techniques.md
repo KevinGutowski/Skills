@@ -7,7 +7,7 @@
 - Stagger Animations
 
 
-Detailed walkthroughs and code for the CSS-level component and animation techniques. Part of the `emil-design-eng` skill — see `SKILL.md` for the core philosophy and decision rules.
+Detailed walkthroughs and code for the CSS-level component and animation techniques. Part of the this school skill — see `SKILL.md` for the core philosophy and decision rules.
 
 ## Component Techniques
 

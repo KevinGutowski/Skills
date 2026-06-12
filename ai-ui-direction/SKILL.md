@@ -42,7 +42,7 @@ The task shape: an AI produced UI and you have to make it *right* — which is a
 4. **Prompt the symptom outside your wheelhouse** (Ryan Moshi, Dive Club podcast, onQY0PrUulw): when you can't name the right mechanism, prescribing one is risky — telling it "just use transform scale or just like scale up the canvas size, that might have been bad direction. Instead, just telling it like here's what's happening. It's blurry. Can you make it sharp?" Two failed tries → "dig in and try to learn it myself." (Inside your wheelhouse, primitive vocabulary still wins — this is the fallback, not the default.)
 5. **Sketch beats words for spatial intent** (Ron Goldin, Dive Club podcast, UkQpgslyR3A): "when something is off in Claude, I could back and forth with it in words for like 10 minutes or I could go to Figma and sketch it out in 5 minutes" — dual-task between the agent building and a sketch surface. Same family as Madrick's labeled keyframe sketch above. And have the agent reflect rambles back (Marvin Schwaibold, Dive Club podcast, KpJs7mZYErg): "ask me clarifying questions if you're unsure of my prompt cuz I'll ramble or send a voice note" — then it spits "basically my idea back to me" for confirmation before building.
 6. **Evaluate agents by how they drive** (Tommy Geoco, Dive Club podcast, OYNoy468kS8): don't judge a model/tool on one-shot output — "you have to drive them for a little while. When you drive it with intent and you're just like… that's wrong fix, that's wrong fix, and you do that a few iterations, I think then you have a good feel." (Turning those corrections into standing rules → `agentic-coding` / `creating-skills`.)
-7. **Judge in a fresh context**: have an independent judge with its own context window evaluate the output against explicit criteria (the pattern, loadout, and rationale live in `design-prototyping`'s agents tier #4; criteria sources: `design-principles`, `make-interfaces-feel-better`).
+7. **Judge in a fresh context**: have an independent judge with its own context window evaluate the output against explicit criteria (the pattern, loadout, and rationale live in `design-prototyping`'s agents tier #4; criteria sources: `design-principles`, `design-polish`).
 8. **Fundamentals gate the polish stage** (MDS's skateboard maxim): "Have fun dropping into the bowl" — speed is real, but output you can't diagnose is output you can't finish.
 
 ## Checklist
@@ -59,6 +59,6 @@ The task shape: an AI produced UI and you have to make it *right* — which is a
 - **`design-prototyping`** — the agents tier owns the broader prototyping workflow, the mock-diff checklist, and the judge pattern; this skill is its layout-diagnosis sharp end.
 - **`agentic-coding`** — agent workflow mechanics (plan mode, prompt protocol, topology); this skill is UI-specific direction.
 - **`design-systems`** — the bricks/DS-as-AI-context doctrine that makes step 1 possible.
-- **`make-interfaces-feel-better`** / **`emil-design-eng`** — the polish criteria the judge enforces.
+- **`design-polish`** / **`design-polish` (emil-kowalski reference)** — the polish criteria the judge enforces.
 
 > **Staleness note (Kevin's rule):** Tailwind/Figma specifics (4px base, auto-layout terms) are 2025–26-era tooling; the primitive-literacy thesis, failure-mode taxonomy, and direct-the-loop discipline are the durable layer.

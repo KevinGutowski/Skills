@@ -113,6 +113,6 @@ See `references/code-patterns.md` for all 23 verbatim code samples from the talk
 - **`ios-brand-identity`** — owns the brand decision (custom typeface vs. system fonts, where type expresses brand); this skill owns the *mechanics* of making either choice work (Dynamic Type, text styles, widths). Its typography section routes here.
 - **`design-principles`** — *Craft* (typographic detail) and *Flexibility* (Dynamic Type as accessibility); use it to weigh trade-offs.
 - **`swiftui` (swiftui-lazy-stacks)** — fixed-height text in lazy stacks (line limits, reserved space) interacts with Dynamic Type; check both when text lives in scrolling content.
-- **`make-interfaces-feel-better`** — web-oriented typography polish (font smoothing, tabular numbers); this skill is the Apple-platform counterpart.
+- **`design-polish`** — web-oriented typography polish (font smoothing, tabular numbers); this skill is the Apple-platform counterpart.
 - **`web-typography`** — the full web/CSS typography discipline (measure, line-height, scales, pairing, web-font loading); never cross-apply its rules to Apple platforms or vice versa.
 - **`apple-visual-accessibility`** — the audit layer: Dynamic Type/Bold Text are accessibility settings first; audit there, implement the type mechanics here.

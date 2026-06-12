@@ -82,7 +82,7 @@ See `references/examples.md` for the full app-by-app breakdown (Gentler Streak, 
 ## Relationship to other skills
 
 - **`design-principles`** is the parent — this is *Familiarity* (honor platform patterns) balanced against brand expression, plus *Craft* and *Delight*. The talk even closes on the same note: "people remember how a product makes them feel… satisfying, enriching, a joy to use." Use `design-principles` to weigh brand vs. convention; use this skill for the iOS specifics.
-- **`make-interfaces-feel-better`** / **`emil-design-eng`** — the component-level craft this relies on (concentric radii, optical detail, polish). Route "make this custom component feel right" there.
+- **`design-polish`** / **`design-polish` (emil-kowalski reference)** — the component-level craft this relies on (concentric radii, optical detail, polish). Route "make this custom component feel right" there.
 - **`web-animation-design`** / **`motion`** cover web/JS motion; on iOS the brand-through-motion ideas here are realized with SwiftUI — implement with `swiftui` (swiftui-animation) (transitions, effects, shaders) and `swiftui` (swiftui-lazy-stacks) (scroll). Don't cross-apply CSS specifics.
 - **`naming-features-and-labels`** / **`ui-voice-and-tone`** — the wording and voice side of brand in the content layer: name the individual thing with the former, define and write the app's voice with the latter.
 - **`apple-search-design`** — sibling Apple-platform skill; it notes a branded search field must keep the magnifying glass and native field elements. Use together when search is part of a branded UI.

@@ -87,10 +87,10 @@ A practitioner's market read on the integration surface (Kris Puckett, Dive Club
 
 ## Relationship to other skills
 
-- **`make-interfaces-feel-better`** / **`emil-design-eng`** — generic web-UI *polish* (shadows, micro-interactions, feel); this skill owns dev-tool *structure* (control flow, density, zones). Structure here, then polish there.
+- **`design-polish`** / **`design-polish` (emil-kowalski reference)** — generic web-UI *polish* (shadows, micro-interactions, feel); this skill owns dev-tool *structure* (control flow, density, zones). Structure here, then polish there.
 - **`frontend-design`** — builds the UI; this skill shapes what a dev tool's UI should be.
 - **`user-onboarding`** — consumer onboarding (sell the better user); devtool onboarding here is its explicit counter-model. **`feature-discoverability`** agrees on "never a blank workspace."
-- **`chart-selection`** / **`tufte-viz`** — general chart choice and integrity; only the dev-data mapping lives here.
+- **`data-viz` (chart-selection)** / **`data-viz` (tufte-viz)** — general chart choice and integrity; only the dev-data mapping lives here.
 - **`linear-settings-copy`** — wording of settings rows; this skill argues for their existence and density.
 - **`agentic-coding`** — agents working *on your codebase*; this skill's AX section is the inverse: agents as *customers of your tool*.
 - **`developer-tool-gtm`** — getting the tool adopted; this skill makes the tool worth adopting.

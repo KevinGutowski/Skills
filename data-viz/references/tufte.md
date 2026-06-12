@@ -1,9 +1,6 @@
----
-name: tufte-viz
-description: Ideate, critique, and redesign data visualizations using Edward Tufte-inspired principles. Use when Codex is designing charts, reviewing dashboards or reports, improving graphical integrity, reducing chartjunk, checking data-ink ratio, planning small multiples or dense displays, choosing visual encodings, or turning a confusing visualization into a clearer evidence-driven presentation.
----
-
 # Tufte Visualization
+
+*Scope: Critique and redesign visualizations with Tufte-inspired principles — graphical integrity, data-ink ratio, chartjunk, small multiples, dense displays.*
 
 Use this skill to make data displays clearer, more truthful, denser, and less decorative. Favor substance over style: comparisons, evidence, labels, scales, sources, and the data itself should carry the design.
 
@@ -69,6 +66,6 @@ Use this checklist before finalizing a recommendation:
 
 ## References
 
-- Read `references/tufte-principles.md` for the core critique vocabulary: graphical excellence, graphical integrity, lie factor, data-ink ratio, chartjunk, small multiples, density, and multifunctioning elements.
-- Read `references/analytical-design.md` for dense dashboards, sparklines, layering, micro/macro displays, explanatory graphics, causality, and evidence documentation.
+- Read `tufte/tufte-principles.md` for the core critique vocabulary: graphical excellence, graphical integrity, lie factor, data-ink ratio, chartjunk, small multiples, density, and multifunctioning elements.
+- Read `tufte/analytical-design.md` for dense dashboards, sparklines, layering, micro/macro displays, explanatory graphics, causality, and evidence documentation.
 - For charts living *inside an app* (anatomy, accessibility/Audio Graphs, platter→detail progressive disclosure, multi-chart design systems), compose with `chart-experience-design`; for picking the chart type, `chart-selection`.

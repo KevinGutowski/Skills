@@ -139,7 +139,7 @@ Walk a design through these — each maps to a principle:
 This is the **strategic / decision-and-critique layer**. It decides *whether and why*; the skills below decide *how*. Use this to choose and justify; defer to these for tactical depth:
 
 - **`interface-craft-principles`** *(Kevin-local, not in the shared repo)* — the full Josh Puckett quality-practice loop (range→depth, live tuning, uncommon care). Its core heuristics (depth spectrum, industry-bar floor, noticing, facets) are folded into this skill above, so nothing here depends on it.
-- **`make-interfaces-feel-better`** and **`emil-design-eng`** — the *Craft* principle at pixel level (spacing, shadows, optical alignment, micro-interactions, component polish). When the task is "make this detail feel right," use those.
+- **`design-polish`** and **`design-polish` (emil-kowalski reference)** — the *Craft* principle at pixel level (spacing, shadows, optical alignment, micro-interactions, component polish). When the task is "make this detail feel right," use those.
 - **`web-animation-design`** (default for motion) and **`motion`** — *Craft*'s responsive feedback and much of *Delight* in motion form (easing, springs, transitions). Route animation specifics there.
 - **`frontend-design`** — generative building of distinctive, production-grade UI. This skill is the principles layer that should guide what it builds.
 - **`naming-features-and-labels`** — *Familiarity* and *Simplicity* at the word level (clear labels, metaphor-true names, plain language).

@@ -11,7 +11,7 @@ A comprehensive guide for creating animations that feel right, based on Emil Kow
 
 ## Theme Note
 
-The specific values in this skill (durations, easings, scale magnitudes, stagger delays) are tuned to work as a coherent set — like a color scheme, they look best when committed to as a whole. If another design skill (e.g. `emil-design-eng`, `make-interfaces-feel-better`) is also loaded with different numbers, pick one skill's values and apply them consistently rather than averaging across skills.
+The specific values in this skill (durations, easings, scale magnitudes, stagger delays) are tuned to work as a coherent set — like a color scheme, they look best when committed to as a whole. If another design skill or theme (e.g. `design-polish`, or its Emil Kowalski reference) is also loaded with different numbers, pick one theme's values and apply them consistently rather than averaging.
 
 **This skill is the default theme for motion-related work.** When motion questions arise and multiple skills could apply, prefer these values unless the user opts into another. If the user is mixing skills and a genuine choice surfaces, briefly present the options as a menu rather than picking silently.
 

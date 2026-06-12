@@ -1,9 +1,6 @@
----
-name: chart-selection
-description: Choose and critique data visualization chart types. Use when Codex needs to decide whether to use a line chart, bar chart, dot plot, scatter plot, histogram, heatmap, map, table, single value, or other chart; when reviewing whether an existing chart fits the data; or when building dashboards, reports, articles, research explainers, decks, or frontend data visuals.
----
-
 # Chart Selection
+
+*Scope: Choose and critique chart types — line/bar/dot/scatter/histogram/heatmap/map/table/single value — for dashboards, reports, articles, decks, frontend visuals.*
 
 Use this skill to choose the chart that best answers the reader's question without misleading them.
 
@@ -62,7 +59,7 @@ Use this skill to choose the chart that best answers the reader's question witho
 
 ## Reference
 
-For a fuller matrix with rationale, caveats, and source notes, read [references/chart-decision-matrix.md](references/chart-decision-matrix.md).
+For a fuller matrix with rationale, caveats, and source notes, read [references/chart-decision-matrix.md](chart-selection/chart-decision-matrix.md).
 
 ## Related skills
 

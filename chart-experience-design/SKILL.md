@@ -7,7 +7,7 @@ description: "Design accessible charts and the experience around them in apps �
 
 **Sources:** [references/sources.md](references/sources.md) — 2 Apple WWDC 2022 design sessions + an MDS data-density critique.
 
-An effective chart is **focused** (a few key insights, intentionally), **approachable** (easy to interpret), and **accessible** (works non-visually). This skill covers a single chart's anatomy *and* the experience around charts in an app. It composes with `chart-selection` (which chart type fits the data) and `tufte-viz` (graphical integrity and data-ink critique) — pick the form there, design the in-app experience here.
+An effective chart is **focused** (a few key insights, intentionally), **approachable** (easy to interpret), and **accessible** (works non-visually). This skill covers a single chart's anatomy *and* the experience around charts in an app. It composes with `data-viz` (chart-selection) (which chart type fits the data) and `data-viz` (tufte-viz) (graphical integrity and data-ink critique) — pick the form there, design the in-app experience here.
 
 ## When does information deserve a chart?
 
@@ -55,8 +55,8 @@ See `references/examples.md` for the pancake food-truck walkthrough and the per-
 
 ## Relationship to other skills
 
-- **`chart-selection`** — picks the chart *type* for the data (line vs. bar vs. dot plot…). Choose the form there; design the marks/axes/experience here. They overlap on "bars vs. lines for gappy data" — this skill adds the Apple in-app experience layer.
-- **`tufte-viz`** — the critique lens (data-ink, graphical integrity, chartjunk). Use it to audit what this skill produces; its data-ink instinct matches this skill's "no grids on platters."
+- **`data-viz` (chart-selection)** — picks the chart *type* for the data (line vs. bar vs. dot plot…). Choose the form there; design the marks/axes/experience here. They overlap on "bars vs. lines for gappy data" — this skill adds the Apple in-app experience layer.
+- **`data-viz` (tufte-viz)** — the critique lens (data-ink, graphical integrity, chartjunk). Use it to audit what this skill produces; its data-ink instinct matches this skill's "no grids on platters."
 - **`apple-visual-accessibility`** — the broader accessibility settings behind this skill's color and VoiceOver rules (Differentiate Without Color, contrast, Increase Contrast).
 - **`design-principles`** — *Simplicity* (distill data to a graphic, "exactly enough") and *Flexibility*; the "complex data better understood as a graphic" line in its Simplicity section routes here.
 - **`swiftui` (swiftui-lazy-stacks)** — chart platters in scrolling feeds are lazy-stack content; follow its rules for stable layout.

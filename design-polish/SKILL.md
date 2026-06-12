@@ -1,5 +1,5 @@
 ---
-name: make-interfaces-feel-better
+name: design-polish
 description: Design engineering principles for making interfaces feel polished. Use for UI components, frontend review, animations, shadows, typography, micro-interactions, or visual detail work. Triggers on UI polish, "make it feel better", "feels off", stagger animations, optical alignment, font smoothing, tabular numbers, box shadows, eased gradients, scrims, backdrop blur.
 ---
 

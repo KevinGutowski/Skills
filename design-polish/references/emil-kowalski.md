@@ -1,9 +1,6 @@
----
-name: emil-design-eng
-description: This skill encodes Emil Kowalski's philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great.
----
-
 # Design Engineering
+
+*Scope: Emil Kowalski's philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great. An alternate THEME to the main skill's values — pick one theme per project, never average.*
 
 ## Theme Note
 
@@ -33,9 +30,9 @@ When building UI, don't just make it work. Study why the best interfaces feel th
 
 **Train judgement deliberately** (the course's exercise method): compare two versions of the same interaction side by side, pick the better one, and **write down why before reading any expert breakdown**. Choosing A or B is easy — articulating the reason is what trains the instinct. This matters more in the AI era: "AI can write animation code. What it can't do is see"; it produces motion that works but feels mediocre, and if you can't tell the difference, you'll ship it.
 
-**Practitioner habits** (animations.dev interviews — Castilho, Axon, Brotzky), distilled: interrogate your reactions by *named attribute* (balance? composition? color?), not "it feels good"; **frame-by-frame recording review** with coarse-then-fine spring sweeps ("change it by a hundred, change it by 10, change it by one" — Fey's dock took ~200 recordings); and the bar — "If I noticed it, it's probably wrong." Full habits, taste drills, and review cadences: [references/taste-and-craft.md](references/taste-and-craft.md).
+**Practitioner habits** (animations.dev interviews — Castilho, Axon, Brotzky), distilled: interrogate your reactions by *named attribute* (balance? composition? color?), not "it feels good"; **frame-by-frame recording review** with coarse-then-fine spring sweeps ("change it by a hundred, change it by 10, change it by one" — Fey's dock took ~200 recordings); and the bar — "If I noticed it, it's probably wrong." Full habits, taste drills, and review cadences: [references/taste-and-craft.md](emil-kowalski/taste-and-craft.md).
 
-**Config-talk additions (2024–25)**, distilled: engineers own craft ("ultimately the only way you can achieve a high level of craft is when your engineers build it"); "Aesthetics without performance isn't design. It's simply decoration"; invisible craft is the modern acanthus leaf. Full notes (game feel, hidden ornament, Helena Zhang's research method): [references/taste-and-craft.md](references/taste-and-craft.md).
+**Config-talk additions (2024–25)**, distilled: engineers own craft ("ultimately the only way you can achieve a high level of craft is when your engineers build it"); "Aesthetics without performance isn't design. It's simply decoration"; invisible craft is the modern acanthus leaf. Full notes (game feel, hidden ornament, Helena Zhang's research method): [references/taste-and-craft.md](emil-kowalski/taste-and-craft.md).
 
 ### Unseen details compound
 
@@ -171,7 +168,7 @@ Springs feel more natural than duration-based animations because they simulate r
 
 ### Spring-based mouse interactions
 
-Tying visual changes directly to mouse position feels artificial because it lacks motion. Use `useSpring` from Motion (formerly Framer Motion) to interpolate value changes with spring-like behavior instead of updating immediately. This works because the animation is **decorative** — it doesn't serve a function. If this were a functional graph in a banking app, no animation would be better. Know when decoration helps and when it hinders. See `references/interaction-and-performance.md` for the code pattern.
+Tying visual changes directly to mouse position feels artificial because it lacks motion. Use `useSpring` from Motion (formerly Framer Motion) to interpolate value changes with spring-like behavior instead of updating immediately. This works because the animation is **decorative** — it doesn't serve a function. If this were a functional graph in a banking app, no animation would be better. Know when decoration helps and when it hinders. See `emil-kowalski/interaction-and-performance.md` for the code pattern.
 
 ### Spring configuration
 
@@ -250,7 +247,7 @@ Whether the user notices the difference individually does not matter. In the agg
 
 ### More component techniques
 
-Each of these is covered in detail, with code, in `references/css-techniques.md`:
+Each of these is covered in detail, with code, in `emil-kowalski/css-techniques.md`:
 
 - **Tooltips: skip delay on subsequent hovers.** Delay the first tooltip to prevent accidental activation; once one is open, adjacent tooltips open instantly with no animation. Feels faster without defeating the delay's purpose.
 - **Use CSS transitions over keyframes for interruptible UI.** Transitions can be retargeted mid-animation; keyframes restart from zero. For rapidly-triggered interactions (adding toasts, toggling states), transitions produce smoother results.
@@ -259,7 +256,7 @@ Each of these is covered in detail, with code, in `references/css-techniques.md`
 
 ## CSS Transform Mastery and clip-path
 
-See `references/css-techniques.md` for the full walkthroughs and code. The essentials:
+See `emil-kowalski/css-techniques.md` for the full walkthroughs and code. The essentials:
 
 - **`translate()` percentages are relative to the element's own size.** `translateY(100%)` moves an element by its own height regardless of dimensions — how Sonner positions toasts and Vaul hides the drawer. Prefer percentages over hardcoded pixels.
 - **`scale()` scales children too.** Unlike `width`/`height`, fonts and icons scale proportionally. This is a feature, not a bug.
@@ -269,7 +266,7 @@ See `references/css-techniques.md` for the full walkthroughs and code. The essen
 
 ## Gesture and Drag Interactions
 
-See `references/interaction-and-performance.md` for the code. The rules:
+See `emil-kowalski/interaction-and-performance.md` for the code. The rules:
 
 - **Momentum-based dismissal.** Don't require dragging past a threshold; if velocity (`Math.abs(dragDistance) / elapsedTime`) exceeds ~0.11, dismiss regardless of distance. A quick flick should be enough.
 - **Damping at boundaries.** Past the natural boundary, the more they drag, the less it moves. Things in real life don't suddenly stop; they slow down first.
@@ -279,7 +276,7 @@ See `references/interaction-and-performance.md` for the code. The rules:
 
 ## Performance Rules
 
-See `references/interaction-and-performance.md` for the code and full reasoning.
+See `emil-kowalski/interaction-and-performance.md` for the code and full reasoning.
 
 - **Only animate `transform` and `opacity`.** They skip layout and paint, running on the GPU. Animating `padding`, `margin`, `height`, or `width` triggers all three rendering steps.
 - **CSS variables are inheritable.** Updating a variable on a parent recalculates styles for all children — set `transform` directly on the element instead.
@@ -287,7 +284,7 @@ See `references/interaction-and-performance.md` for the code and full reasoning.
 - **CSS animations beat JS under load.** They run off the main thread. Use CSS for predetermined animations; JS for dynamic, interruptible ones.
 - **Use WAAPI for programmatic CSS animations.** JavaScript control with CSS performance — hardware-accelerated, interruptible, no library needed.
 
-**MDS field numbers** (Matt D. Smith), distilled: keep an FPS meter visible for canvas/WebGL ("If you're down in the 20s or 30s, you're doing something wrong"); icon-hover magnitudes — 1px translations, ~5° rotations, "150 milliseconds and ease out." Full numbers: [references/interaction-and-performance.md](references/interaction-and-performance.md).
+**MDS field numbers** (Matt D. Smith), distilled: keep an FPS meter visible for canvas/WebGL ("If you're down in the 20s or 30s, you're doing something wrong"); icon-hover magnitudes — 1px translations, ~5° rotations, "150 milliseconds and ease out." Full numbers: [references/interaction-and-performance.md](emil-kowalski/interaction-and-performance.md).
 
 ## Accessibility
 
@@ -371,11 +368,11 @@ Pressing should be slow when it needs to be deliberate (hold-to-delete: 2s linea
 
 When multiple elements enter together, stagger their appearance. Each element animates in with a small delay after the previous one. This creates a cascading effect that feels more natural than everything appearing at once.
 
-Keep stagger delays short (30-80ms between items). Long delays make the interface feel slow. Stagger is decorative — never block interaction while stagger animations are playing. See `references/css-techniques.md` for the CSS pattern.
+Keep stagger delays short (30-80ms between items). Long delays make the interface feel slow. Stagger is decorative — never block interaction while stagger animations are playing. See `emil-kowalski/css-techniques.md` for the CSS pattern.
 
 ## Debugging Animations
 
-Three moves: **slow-motion testing** (2-5x duration or DevTools playback — watch for overlapping states, abrupt easing, wrong transform-origin, out-of-sync properties), **frame-by-frame inspection** in the DevTools Animations panel, and **test touch interactions on real devices**. Full checklists and setup: [references/interaction-and-performance.md](references/interaction-and-performance.md).
+Three moves: **slow-motion testing** (2-5x duration or DevTools playback — watch for overlapping states, abrupt easing, wrong transform-origin, out-of-sync properties), **frame-by-frame inspection** in the DevTools Animations panel, and **test touch interactions on real devices**. Full checklists and setup: [references/interaction-and-performance.md](emil-kowalski/interaction-and-performance.md).
 
 ## Review Checklist
 

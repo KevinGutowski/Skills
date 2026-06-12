@@ -90,7 +90,7 @@ Full methods in [choosing-and-pairing.md](references/choosing-and-pairing.md). T
 
 ## 11. Tables
 
-- "Tables are not pictures of data: they are catalogues of data to be perused" (Rutter). Tufte's data-ink applies: minimize furniture, fills, rules; whitespace does the grouping (cross-ref `tufte-viz`).
+- "Tables are not pictures of data: they are catalogues of data to be perused" (Rutter). Tufte's data-ink applies: minimize furniture, fills, rules; whitespace does the grouping (cross-ref `data-viz` (tufte-viz)).
 - Rutter's makeover sequence: size columns to data (never stretch) → strip fills/gridlines/bolding → **left-align text, right-align numbers, align headings with data** → group with whitespace → **tabular lining numerals** (`font-variant-numeric: lining-nums tabular-nums`), consistent precision.
 - Numbers star in tables, so lining; align to the decimal point.
 - Small screens: **"It's better to have a readable table that requires scrolling than an unreadable one which doesn't"** (Rutter, 'Adapt tables to small screens') — don't set a width, allow horizontal scroll, `white-space: nowrap` where wrapping destroys readability; linearise only simple tables.
@@ -124,9 +124,9 @@ Durable: everything above. Decayed specifics:
 - **`apple-typography`** — Apple platforms (SF, Dynamic Type, text styles). Never cross-apply: web rules here, platform rules there.
 - **`graphics-fundamentals`** — the rendering-mechanism *why* (rasterization, hinting, font internals, half-leading) lives there.
 - **`frontend-design`** — interface-level aesthetics and page generation; this skill is the text-setting discipline inside it.
-- **`make-interfaces-feel-better`** / **`emil-design-eng`** — the polish-tip layer (tabular-nums, font smoothing, text-wrap); this is the deeper reference behind those tips.
+- **`design-polish`** / **`design-polish` (emil-kowalski reference)** — the polish-tip layer (tabular-nums, font smoothing, text-wrap); this is the deeper reference behind those tips.
 - **`web-performance`** — budgets and load-lifecycle there; font-loading strategy here.
-- **`tufte-viz`** — data-ink doctrine for tables and charts.
+- **`data-viz` (tufte-viz)** — data-ink doctrine for tables and charts.
 - **`web-accessibility`** — the broader web accessibility practice (semantic structure, keyboard, contrast nuance like SSS shimmer); type-specific sizing and contrast stay here.
 
 > **Staleness note (Kevin's rule):** sources are 2014–2017; §12 separates the durable doctrine from decayed specifics. Verify CSS support claims against caniuse before relying on the hyphenation suite, `initial-letter`, or `hanging-punctuation`.

@@ -74,7 +74,7 @@ This is the **primary source** for the new design language; several skills' stal
 - **`ios-brand-identity`** — its UI-layer/content-layer model is built on this material; its "brand color in the content area" rule is this skill's tinting rule. Brand decisions there; material rules here.
 - **`apple-navigation-design`** — tab bars, toolbars, sidebars, menus *structurally* live there; their glass treatment, grouping rules, and scroll edge effects live here. Its pre-Liquid-Glass visual specifics are superseded by this skill.
 - **`apple-search-design`** — the dedicated Search tab and glass search-field presentation are this system's expression of its placement patterns.
-- **`make-interfaces-feel-better`** — its concentric border-radius principle now has the system formula (radius = parent − padding) and named shape types.
+- **`design-polish`** — its concentric border-radius principle now has the system formula (radius = parent − padding) and named shape types.
 - **`swiftui` (swiftui-animation)** / **`swiftui` (swiftui-lazy-stacks)** — implementation layer for glass morphing, scroll edge behavior, and sheet transitions.
 - **`design-principles`** — *Familiarity* and *Craft*; use it to weigh how far to customize within this system.
 - **`apple-visual-accessibility`** — Reduced Transparency/Contrast/Motion adaptations are automatic here, but custom surfaces must still honor them.
