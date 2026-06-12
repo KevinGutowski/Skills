@@ -1,5 +1,7 @@
 # Portrait And Field Lighting
 
+Distilled from Hunter/Biver/Fuqua, *Light: Science & Magic* and Tony Northrup's DSLR book — no verbatim quotes; full bibliography: [sources.md](sources.md).
+
 ## Portrait Key Light
 
 A good portrait starts with one usable key light. Extra lights are rescue or refinement, not the foundation.

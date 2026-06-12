@@ -1,5 +1,7 @@
 # Surface Lighting
 
+Distilled from Hunter/Biver/Fuqua, *Light: Science & Magic* and Tony Northrup's DSLR book — no verbatim quotes; full bibliography: [sources.md](sources.md).
+
 ## Matte And Textured
 
 Matte and textured subjects mainly need shadow control. Direct reflections are scattered, so the viewer reads shape from tonal variation and texture from micro-shadows.
