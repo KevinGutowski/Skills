@@ -111,10 +111,10 @@ Linear feels robotic and unnatural for interactive elements.
 
 ### Physical-reference easing (Briggs school)
 
-Derek Briggs is stricter than the curve tables above: never ship the default CSS keyword easings — "they're not accurate," robotic at start and end; he and peers (Nev Flynn, ElevenLabs) "just don't ever use the out of the box ease in ease out" (Briggs, Shape FM ep. 3). His method: derive a motion's character from a physical analogue — a fan settling back on its ball bearing, the body lurch of a stopping car, sliding a phone across a table (a "soft stop"). The schools are compatible on shape — the named cubic-beziers above already replace raw keywords — Briggs adds:
+Derek Briggs is stricter than the curve tables above: never ship the default CSS keyword easings — "they're not accurate," robotic at start and end (Briggs, Shape FM ep. 3). His method: derive a motion's character from a physical analogue — a fan settling back on its ball bearing, the body lurch of a stopping car, sliding a phone across a table. Compatible with the named cubic-beziers above; Briggs adds:
 
-- **Front-load the velocity peak**: "do not want it to evenly ease into a center point of a top speed and then ease out" — place peak velocity early so the ease-out feels natural. A late peak (speed up, then dampen) only reads right "unless it was coming up against something" — i.e. when the element hits an edge or container (Briggs, Shape FM ep. 3).
-- **Tooling**: motion.dev for nearly all transitions and animations; "I might use a linear CSS function for something if it's very small" — CSS `linear()` for tiny things only.
+- **Front-load the velocity peak**: "do not want it to evenly ease into a center point of a top speed and then ease out" — peak early so the ease-out feels natural; a late peak only reads right when the element is "coming up against something" (an edge or container).
+- **Tooling**: motion.dev for nearly everything; CSS `linear()` for tiny things only.
 
 ### Paired Elements Rule
 
@@ -201,7 +201,7 @@ From Rachel Nabors, *Animation at Work* (A Book Apart, 2017); fuller quotes in [
 
 **Per-primitive identity, not a rigid motion system** (Briggs, Shape FM ep. 3): "there's just all these design system primitives that should have their own sort of styling and visual details based on what their responsibility is" — a tooltip shouldn't enter like a dialog; a toast shouldn't exit like a popover. Consistency lives at the brand level (a shared spring/easing character), not in a small uniform animation taxonomy. Corroborates the brand-voice point above: brand sets the character, each primitive's responsibility sets the move.
 
-**Never slow anyone down** (Briggs, Shape FM ep. 3): "The worst thing you can do with a transition or an animation within a product is slow anybody down" — the most important legitimate reason to animate is "where to draw somebody's eyes." Hover and button states default to NO transition: "just let it be instant, snappy, fast." Reserve animated entrances for acknowledgement containers (dialog, popover, toast), which can use their presentation to signal intent and urgency. Entry rationale: nothing physical is instant — even a light-bulb filament takes time to glow — so a minimal entry transition on those containers reads more natural than a frame-pop; that argues for subtle entrances there, not for animating hovers. Exits carry valence: delete/cancel slips away slowly (a "disappointment" exit); acceptance exits quick and bouncy. Corroborates the Frequency rule above and Emil's Raycast example.
+**Never slow anyone down** (Briggs, Shape FM ep. 3): "The worst thing you can do with a transition or an animation within a product is slow anybody down" — the most important legitimate reason to animate is "where to draw somebody's eyes." Hover and button states default to NO transition: "just let it be instant, snappy, fast." Reserve animated entrances for acknowledgement containers (dialog, popover, toast): nothing physical is instant — even a light-bulb filament takes time to glow — so a minimal entry transition there beats a frame-pop; that argues for subtle entrances, not animated hovers. Exits carry valence: delete/cancel slips away slowly; acceptance exits quick and bouncy. Corroborates the Frequency rule and Emil's Raycast example.
 
 **Motion only when earned** (Ryo Lu, Cursor — YC-website roast, 2025): "I don't like moving things when I'm not moving" — ambient motion steals attention from reading. Fire animation when the user arrives at the element, not before (hide a CTA "until say you're here and then it kind of animates in… you pay attention to it"), and "don't hijack the scroll."
 
@@ -388,7 +388,7 @@ Is the element entering or exiting the viewport?
 
 ## Communicating Motion to Engineers (Briggs)
 
-Designers specifying motion "shouldn't spend their time recreating the design in After Effects" — "They should just use black and white shapes," get the movement dialed in, and "hand that over like as a video" so the engineer can "take that as a blueprint and as guidance" (Briggs, Shape FM ep. 3). The motion study communicates timing and character only — never a full redesign of the screen.
+Designers specifying motion "should just use black and white shapes," get the movement dialed in, and "hand that over like as a video" — a blueprint for the engineer, never a full After Effects redesign of the screen (Briggs, Shape FM ep. 3). The motion study communicates timing and character only.
 
 ## Reference Files
 
