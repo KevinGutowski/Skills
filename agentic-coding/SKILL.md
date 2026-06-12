@@ -1,17 +1,11 @@
 ---
 name: agentic-coding
-description: "Run coding agents well on real projects — constrained generation, the non-delegable human review role, guardrail abstractions, vibe-coding security. Use when setting up a repo for AI-assisted development, writing AGENTS.md/CLAUDE.md rules, deciding what to delegate, reviewing AI code, fixing agent drift, or running multi-agent/designer-in-the-repo workflows. Based on Evil Martians Chronicles + Dive Club interviews. Triggers: agentic coding, AGENTS.md, CLAUDE.md, vibe coding, AI drift, AI code review, worktrees, designer PRs."
+description: "Run coding agents well on real projects — constrained generation, the non-delegable human review role, guardrail abstractions, vibe-coding security. Use when setting up a repo for AI-assisted development, writing AGENTS.md/CLAUDE.md rules, deciding what to delegate, reviewing AI code, fixing agent drift, or running multi-agent workflows. (Evil Martians, Dive Club.) Triggers: agentic coding, vibe coding, AI drift, worktrees, designer PRs."
 ---
 
 # Agentic Coding
 
-**Sources** — this skill aggregates four Evil Martians Chronicles posts:
-- *"2 Martians, greenfield to MVP in 4 weeks: agentic coding on Rails" (Stroganov, Nekhina, Turner; engineering voice Svyatoslav Kryukov & Vladimir Dementyev, 2026). https://evilmartians.com/chronicles/2-martians-greenfield-to-mvp-in-4-weeks-agentic-coding-on-rails*
-- *"Vibe coding in style.md" (Nazarova, Dementyev, Turner, 2025). https://evilmartians.com/chronicles/vibe-coding-in-style-dot-md*
-- *"The 4 most common security risks when vibe coding your app" (Torgunakova, Turner, 2026). https://evilmartians.com/chronicles/four-most-common-security-risks-when-vibe-coding-your-app*
-- *"So, your developers use AI now — here's what to know" (Eltsov, Turner, 2026). https://evilmartians.com/chronicles/so-your-developers-use-ai-now-here-is-what-to-know*
-- *Ryo Lu (Head of Design, Cursor) — plan-mode demo interview (youtube.com/watch?v=bdh8k6DyKxE), Dialectic (8ncYSGbfeyY); Jin Park (Notion) at "Building with Cursor" (T8T2gHCKWCE) — the Cursor-school section below.*
-- *Dive Club podcast (2025–26 episodes): Megan Choy (hKeDfupbA4U), Brian Lovin (dvEwb1Ajkwo), Geoffrey Litt (zJf0UeCwQqE), Kyle Santos (HcLz3ikw-n0), NYC panel — Choy, Dan Shipper, Bradley Zipper (V-jd3v9P-Ps), Andy Madrick (IfPK0LwbX_0), Karl Koch (7_VEb9iDW2c) — the designer-engineers section below; extended notes in `references/ai-era-field-notes.md`.*
+**Sources:** [references/sources.md](references/sources.md) — 4 Evil Martians posts + Cursor-school interviews + Dive Club 2025–26 episodes. Extended notes, full quotes + video IDs in [references/ai-era-field-notes.md](references/ai-era-field-notes.md).
 
 The core claim: agentic coding "lives on constrained generation; **the quality of those constraints determines the quality of the output**." Three things let a two-person team ship a production MVP in four weeks: an opinionated stack's default constraints, project decisions encoded as reusable rules, and "a senior engineer [who] realizes the vision and catches what the AI misses." The slogan: **"AI needs a prompter, not just a prompt."**
 
@@ -97,6 +91,16 @@ Field practices from people running agents daily. Extended notes + context: `ref
 - Pair/shadow on real work instead of writing workflow docs: "it's actually really hard to explain your workflow to someone."
 - Designer PR-size law (Madrick): "a hundred-line PR" — never "a 500-line PR that you didn't even review yourself." Review shifts upstream to plan mode — share the plan MD before code exists, or expect: "The fundamental premise of how you built this is wrong. Like why am I looking at a code diff right now?" Engineers bring features "up to 80 to 90%"; designers own the last mile — "own the outcome."
 
+**Field report — what top orgs actually do (2026 tranche; full quotes + video IDs in the reference file):**
+- AI usage is "mandated in performance reviews for designers"; orgs build "designer copies of their repos" as playgrounds. The local-agent edge is **starting-place economics**: "that starting place that you get is your real app" — nothing to recreate, unlike scratch generators. Handoff survives: "these are still specs. They are specs with a lot more information inside of them." PR-to-prod is a *job boundary* ("do you want to start wearing a pager?"); stay honest about speed ("Was that actually faster than the old way? Not sure. Not sure."); local dev regresses sharing — budget for internal preview platforms (Steven Haney).
+- The review doctrine's demand side (Polly D'Arcy): the "slop drop," and "product and design flooding our poor engineers with PRs… half of them are garbage."
+- **Agent-legible stack as a design concern** (Katarina Batina): "agents choose to write in those things and design is actually now responsible for… reconsidering our commitment to React Native."
+- Onboarding & learning (Marvin Schwaibold, Shopify): designer onboarding requires two PRs to main; "Tools are innately patient. This is the most patient teacher you will ever have" (Flora Guo's "infinitely patient tutor" seconds it); the explain-before-acting prompt: "before you do this, explain to me what you're going to do and why."
+- Non-engineer staged builds (Ron Goldin): ugly PRD → "make me a series of prompts and a plan" → 10-minute sprints with checks → project memory; reading agent output "makes you a more successful builder."
+- Verification & dissent (Kris Puckett): open with "I don't know… Here's how I work"; make it grade its own plan — "Did you hallucinate? Did you pull from accurate sources?"; his anti-autonomy stance (no skip-permissions; "beware the barrenness of a busy life") is the corpus's counterweight to swarm maximalism.
+- Orchestration topologies: Ridd's Claude-as-CTO — plan, have Claude write the parallel worktree agents' prompts, agents "report back to the CTO," it evaluates and writes the next prompt — plus an engineer-empathy review agent. Kyle Santos pt. 2: a senior-engineer memory note ("make my senior engineer… not mad"), project-level MCPs with unused ones disabled, and cross-model review — Codex reviews Claude's work "as a senior reviewer."
+- **Contextual quality bar** (Ryan M.): for personal tools, "this doesn't need to go to production. I don't care about the quality of the code" — and expect goose chases on niche fast-moving OSS where docs outrun training data.
+
 ## Checklist
 
 - [ ] Opinionated stack, popular technologies, default configs; strict typing + linting wired before generation?
@@ -118,3 +122,5 @@ Field practices from people running agents daily. Extended notes + context: `ref
 - **`rails-docker-dev`** — the container sandbox that makes permissive agent flags safe (project-only mounts).
 - **`malleable-software`** — Litt's philosophy layer (version control as the human-AI substrate, jigs, teaching primitives); this skill is the daily practice on real repos — his surgeon/prep-brief workflow lives here.
 - **`devtool-interface-design`** — the inverse perspective: this skill runs agents *on your codebase*; its AX section designs your *product* for agents as customers.
+- **`ai-ui-direction`** — UI-specific direction of AI output (layout diagnosis, prompt-vs-edit, the judge loop); this skill owns the workflow mechanics around the agent.
+- **`ai-enablement`** — team/org-level rollout: shared context, internal agents, enablement programs; this skill owns single-repo practice.

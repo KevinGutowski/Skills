@@ -1,6 +1,6 @@
 ---
 name: shape-up
-description: "Scope and bet on product work with Basecamp's Shape Up — appetite, fat-marker shaping, betting table, 6-week cycles, scope hammering — plus the competing Linear school (design as reference, no handoff/PMs, taste over data) and Nan Yu's org-shape rules, with routing between schools. Use when shaping or pitching work, running a betting table, cutting scope, choosing a process school, or designing team structure. Triggers: Shape Up, appetite, betting table, fat-marker, pitch, cycle, Linear method, design handoff, org chart."
+description: "Scope and bet on product work with Basecamp's Shape Up — appetite, fat-marker shaping, betting table, 6-week cycles, scope hammering — plus the competing Linear school (design as reference, no handoff/PMs, taste over data) and Nan Yu's org-shape rules. Use when shaping or pitching work, running a betting table, cutting scope, or choosing a process school. Triggers: Shape Up, appetite, betting table, fat-marker, pitch, cycle, Linear method."
 ---
 
 # Shape Up
@@ -30,6 +30,7 @@ Read the appropriate phase reference based on user context.
 - **Shaping** happens continuously, producing pitches ready for the betting table
 - **Betting** happens during cool-down, selecting what to build next
 - **Building** happens during the 6-week cycle, with teams owning complete projects
+- **Budget refinement deliberately** (MailChimp, *The UX Reader*): bugs and confusing workflows erode trust and support capacity, so some cycles must be cleanup by design, not leftovers. Their practice: at least once a year, "an entire release focused solely on cleanup and maintenance," fed by support, social feedback, analytics, interviews, surveys, and account-closing reasons.
 
 ## Design sprints & design-build overlap (Evil Martians extension)
 
@@ -55,7 +56,20 @@ The third process school — it *removes* structure rather than adding it, betti
 - **Taste over data:** no A/B tests; "you must develop and trust your intuition"; "to provide the best experience, you must surprise users" — and no experiment produces a surprise. "We establish values and principles so that team members think about what they're building and why" instead of fixed process.
 - **Anti-roadmap + release rings (Ryo Lu, Cursor — plan-mode interview, youtube.com/watch?v=bdh8k6DyKxE):** the same school at Cursor. Most companies do "planning theater… they pretend to have like a one-year road map or like a north star Figma" — a waste; with models and user mindsets shifting constantly, keep a directional bearing plus the present state and flexible aligned next steps, "talk to the users," iterate. QA runs as release rings: ambassadors and "nightly users" absorb bugs first (every build ships nightly — lots of bugs, but also the good surprises), and "The enterprise people get the slowest one."
 
-**Routing among the three:** Shape Up's guardrails (betting table, fat-marker, cool-down) protect mixed or scaling teams from overreach; the Martian sprint serves design-as-deliverable situations; the Linear school assumes a small, senior, taste-dense team dogfooding its own product daily, with leadership that treats craft as a business priority — without those preconditions it degrades into chaos rather than craft. Cursor runs the same school taken to its endpoint — designers shaping the product directly in code with AI agents, roles deliberately "muddy" — covered in `design-prototyping`'s agents tier.
+## The metrics-led product strategy school (Perri / Klein / Lean UX)
+
+*Sources: Melissa Perri, Escaping the Build Trap (2018); Laura Klein, Build Better Products (2016); Gothelf/Seiden, Lean UX, 1st ed. (2013). This school conflicts with Linear's taste-over-data stance; route by org maturity, traffic volume, and whether the team is discovering demand or refining a craft-led product.*
+
+The fourth process school treats shaping as strategy deployment plus learning loops.
+
+- **Strategy is a decision framework, not a plan**: "Good strategy isn't a detailed plan. It's a framework that helps you make decisions." Use intent levels: company vision → strategic intent → product initiative → option/experiment. One intent is enough for a small company; three is plenty for a large one. More becomes Perri's "peanut-buttering" failure: too many initiatives spread over too few people.
+- **Quantified initiative shape**: We believe that doing X for audience Y will achieve outcome Z, with a potential value estimate and a measurement plan. The example form is revenue-bearing and explicit, not a feature list. Pair every initiative with current-state data: Perri's Product Kata starts "What is the goal?" and "Where are we now in relation to that goal?"
+- **Done means outcome, not shipped**: "We are done developing or iterating on a feature only when it has reached its goals." Perri's warning that "Version 2 is the biggest lie in software development" is the same trap Gothelf calls Phase II: don't bet on later cleanup unless the outcome gate forces it.
+- **Roadmaps explain strategy and stage**: use Experiment / Alpha / Beta / GA, not a date-by-feature Gantt. Sales can only sell what has crossed the agreed stage boundary: anything GA, or far enough into Beta by explicit agreement.
+- **Fund product work like a VC**: allocate budget to product lines and stages, not a fixed project list. Keep options alive while evidence is cheap; double down when the learning justifies it.
+- **Scope hammering from Klein**: Finding the Core asks, "What has to happen for this feature NOT TO BREAK"; What-Happens-Next keeps asking until user intent is met; input-output matching cuts screens that do not transform user input into needed output. In constrained environments, build only what is absolutely necessary.
+
+**Routing among the four:** Shape Up's guardrails (betting table, fat-marker, cool-down) protect mixed or scaling teams from overreach; the Martian sprint serves design-as-deliverable situations; the Linear school assumes a small, senior, taste-dense team dogfooding its own product daily, with leadership that treats craft as a business priority; the metrics-led school serves orgs stuck in output thinking, teams with enough traffic/data to learn from behavior, or bets where demand/risk is unknown. Without data maturity it degrades into vanity metrics; without taste it degrades into local-maximum optimization. Cursor runs the Linear school taken to its endpoint — designers shaping the product directly in code with AI agents, roles deliberately "muddy" — covered in `design-prototyping`'s agents tier.
 
 ## Team shape — "ship the org chart you want" (Nan Yu, Linear — Config 2024)
 

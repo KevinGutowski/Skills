@@ -3,8 +3,10 @@
 *Sources:*
 - *Apple WWDC 2024, session 10140 — "Add personality to your app through UX writing" (Alex & Liv). https://developer.apple.com/videos/play/wwdc2024/10140/*
 - *Apple WWDC 2022, session 10037 — "Writing for interfaces" (Kaely Coon & Jennifer Bush). https://developer.apple.com/videos/play/wwdc2022/10037/*
+- *Michael J. Metts & Andy Welfle, "Writing Is Designing" (Rosenfeld Media, 2020) — §§5–7.*
+- *Aarron Walter, "Designing for Emotion" (A Book Apart, 2011) — §5.*
 
-Quotes are transcribed from the talks. Use these to reason by analogy when defining a voice, dialing tone, or reviewing screen copy.
+Quotes are transcribed from the talks / quoted from the books. Use these to reason by analogy when defining a voice, dialing tone, or reviewing screen copy.
 
 ---
 
@@ -79,6 +81,47 @@ Each is turned up or down for the situation; **none goes all the way down.**
 **Empathy** (write for everyone)
 - *Localization* — the same "restart to change language" confirmation grows/shrinks across English, Thai (taller characters), Dutch (wraps to a second line), and Hebrew (right-to-left). Day-of-week abbreviations differ too: one letter in US English, two in Catalan, none in Arabic.
 - *Accessibility / VoiceOver* — describe **intention and context**, not just appearance: `Person tilting head to the side with hand beside mouth as if sharing a secret`; `person meditating with relaxed arms and forefingers touching`; `nervous person biting fingernails`. Each is a "person," not a man/woman — avoid unnecessary gender.
+
+---
+
+## 5. This-but-not-that, both sources in full
+
+**Mailchimp's voice** (Fenton & Kiefer-Lee, via *Writing Is Designing* ch. 6) — "the first word sets a baseline, and the second word … sets a hard outer limit":
+
+> Mailchimp is . . . Fun but not childish · Clever but not silly · Confident but not cocky · Smart but not stodgy · Cool but not alienating · Informal but not sloppy · Helpful but not overbearing · Expert but not bossy · Weird but not inappropriate
+
+**Walter's design persona for Freddie/Mailchimp** (*Designing for Emotion* ch. 3) — same format inside a fuller persona document (personality image, traits, personality map, voice, copy examples):
+
+> Brand traits: Fun, but not childish. Funny, but not goofy. Powerful, but not complicated. Hip, but not alienating. Easy, but not simplistic. Trustworthy, but not stodgy. Informal, but not sloppy.
+> Voice: "MailChimp's voice is familiar, friendly, and—above all— human."
+
+---
+
+## 6. The four-tone drafting drill (Writing Is Designing ch. 7)
+
+Take one message, draft it in each tone profile, read each back aloud: "If it looks ridiculous when you read it back, it's probably not the right tone." The worked message — a forced password reset (confirmation dialog; expires every 90 days; not reset in time; new password >12 chars, letters + numbers):
+
+- **Encouraging** — "Hi, Andy! Let's get your password reset—it's been 90 days since you last updated it. Go ahead and pick a new one that's 12 characters or more, and includes letters and numbers. Then use it to log in again." CTA: Reset Password
+- **Informational** — "Your password is 90 days old and has expired. Create a new one and sign back in." CTA: Reset Password
+- **Trustworthy** — "Your security is important to us, so please create a new password. Make sure that it's 12 characters or more and includes both letters and numbers. Then you can use it to log in securely." CTA: Reset Password
+- **Sympathetic** — "We're sorry, but your password expired, and you need to reset it before logging in again. We want to make sure that your account is safe…" CTA: Reset Password
+
+Eliminate what reads wrong for the moment; what survives tells you the scenario's tone profile.
+
+---
+
+## 7. Tone-profile worksheet (Writing Is Designing ch. 7)
+
+Per scenario group, characterize **them (the user)**:
+- **Emotion:** What might they be feeling when they encounter this message?
+- **Receptiveness:** How open to the message might they be?
+- **Stress:** What are they under?
+
+Facebook Content Strategy's framing questions: What is someone likely to be *doing* when they encounter this message? What is their *mindset* likely to be? What is the *intention* we're showing up with in the UI? How *receptive* is the person likely to be to that intention? How might we express that intention in a way that feels *authentic*?
+
+Then write tactical rules per profile, e.g. an informational tone: "Stick to the facts… Emphasize what's happening at this moment in time"; a supportive tone: "Recognize that the user is under stress. Put your trustworthiness and the user's safety and security first. Emphasize the outcome, or resolution, of their workflow."
+
+Flag-for-rewrite questions during the audit: *Is this message contextual? Is it empathetic? Is it inclusive? Is it ready for translation?* (Cautionary example: Caviar's day-after-Easter "So." modal — funny in a receptive state of mind, "shaming the user for their assumed eating habits" otherwise.)
 
 ---
 

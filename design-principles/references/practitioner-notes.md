@@ -16,6 +16,8 @@ Long-form practitioner material distilled in `SKILL.md`. Everything here is verb
 - System thinking (Ryo Lu) — essays
 - Ryo Lu — tweet-essay maxims
 - Valio panel notes (Valio Con 2012–14)
+- Dive Club practitioner notes (Steve Ruiz; Karl Koch)
+- Dive Club tranche-2 notes (Polly D'Arcy; Rafa Conde)
 
 ## The 2018 "Qualities of Great Design" sharpening of Craft
 
@@ -121,6 +123,17 @@ From the designer panel at Valio Con (Drew Wilson's conference, 2012–14; panel
 - **"Making something pretty is the easiest part of design"** — "it's all about the user experience… the content comes first." The panel's check against equating craft with surface polish.
 - **The five-colors-from-a-photo palette technique** (Van Damme): "whenever I came across a photo I really liked… I would save it… open it in Photoshop and… kind of pick my five" favorite "colors out of that photo… the colors that really make the photo work" as one whole — and keep a folder of those palettes as starting points. Borrowed harmony beats invented harmony.
 - **The three-pillar test**: "there's three things that I always strive… to excel" — layout, color, typography; nail all three and you get "a killer website." And the failure mode is conjunctive: "if you know like the typography sucks then the website sucks." One weak pillar caps the whole.
+
+## Dive Club practitioner notes (Steve Ruiz; Karl Koch)
+
+- **Metaphors must work in both directions** (Steve Ruiz, tldraw — Dive Club podcast, 3SvL0r-Lhh8): "A metaphor is actually work. They work in both directions" — you can reason from fiction to tech *and* from tech back to fiction. His agentic-canvas example: an "enchanted pond" folder where dropping anything triggers an agreed workflow; MCP access pictured as the fairy "warging" into Notion, eyes rolled back; an overloaded fairy taps its chin and "summons other fairies," becoming an orchestrator. The fiction generated the system design (even fairy posture became a legible status signal — "bad fairy" when one builds the wrong thing), and the system design extended the fiction. A metaphor that only decorates, fails; one that answers "what should happen next?" from both ends, earns its place. (Familiarity's metaphor rule, made bidirectional.)
+- **Permission economics** (Karl Koch, DuckDuckGo — Dive Club podcast, 7_VEb9iDW2c): delight spending is budgeted by soundness elsewhere — "I have like the permission to go all out and just like go for it in those little moments because I know that all the things around the edges that I've worked on are sound and it's performant." And the care is self-assigned: the morphing-button moment "makes it feel like I cared because I did care… and no one asked me to do that. Even down to the bezier timing." Craft's discretionary layer is *earned* by the fundamentals, then spent voluntarily.
+
+## Dive Club tranche-2 notes (Polly D'Arcy, Wealthsimple — vdYBohOQYm0; Rafa Conde, Retro — 3rnhlZj25iY)
+
+- **Dogfooding with your own money** (D'Arcy — Craft/Responsibility): Wealthsimple's first culture shift was "all around dogfooding and getting everybody who is building or selling the product… to use the product every day" — and not in staging: "it's another thing to actually like use a product with your own money because you just… are going to like very deeply feel the pain points and the friction." The bar for makers and owners: if you "do not want to use it with your own money, it's not good enough" — either explain why or put a dollar in. Skin in the game converts care from a value statement into a daily sensation; the team "started just like flooding Slack with all of the feedback that they had."
+- **Trust the user** (Conde — Agency/Familiarity counterweight): "trust the user a little bit more. And as I'm saying this, I'm just like it hurts on the inside cuz it goes against everything I've ever like taught" — "Users aren't all that dumb." His unlearning case: "Apple removed the home indicator little grabber thing… from iOS 16. Can you imagine being like the designer in me like, 'Oh, no, but how will people know?'" — and people knew. Habits taught for novices of 20 years ago (pagination dots, grabbers, "they won't scroll") deserve re-testing, not reflexive reapplication; test it if you doubt it.
+- **Wouldn't-it-be-funny delight** (Conde — Delight): his test for shipping a useless detail: "Do you think it's funny? If you think it's funny, that's good enough for me… I always like design for myself in that sense." The receipt: an InFlight sign-in button whose hover waves a little hand — "Oh, hi Rafa" — that "does nothing," and with current tooling "it took me 30 seconds. I was like, 'Why not?' I tried it and I was like, 'Yeah, I like that. I'm leaving that in there.'" When the cost of a humane Easter egg drops to seconds, the only remaining gate is whether it makes you smile.
 
 ## Intentional Design — the five elements (Apple WWDC 2018 session 802, Doug LeMoine — lost session, via WWDC Index archive)
 

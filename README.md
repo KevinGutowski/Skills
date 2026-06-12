@@ -11,15 +11,20 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `design-prototyping` | Validating ideas before building: fake-it → SwiftUI-as-design-tool → coding agents (incl. Cursor's design-in-code endpoint); presenting design work |
 | `interface-craft-principles` | *(local-only, gitignored — members-only source)* Quality practice (Josh Puckett): noticing, range→depth, facets of quality, live tuning, uncommon care. Its core heuristics are also folded into `design-principles` and `design-prototyping` |
 | `naming-features-and-labels` | What to call a feature, label, plan, button |
+| `logo-design` | Brand marks, badges, identity systems — the Peters method (brand nouns → 50 sketches → B/W presentation); app icons → `app-icon-design` |
+| `form-design` | Web form structure, field types, buttons, validation flows — the Dannaway method; form copy → the words chain; Apple forms → `apple-navigation-design` |
 | `feature-discoverability` | First launches, tips/TipKit, features users can't find |
 | `user-onboarding` | First-run flows, empty states, onboarding copy (Hulick method) |
+| `learning-experience-design` | Courses, workshops, internal training, tutorials, job aids — gap diagnosis, practice, feedback, motivation, transfer (Dirksen method) |
 | `shape-up` | Product scoping/betting (Basecamp method) + the competing Linear school (design as reference, no handoff/PMs, taste over data) and routing between them |
 | `hardware-product-design` | Physical products: form-factor positioning, mockups/rigs/jigs, input selection, manufacturing/supplier reality |
-| `ai-ui-direction` | Directing/fixing AI-generated UI: layout-primitive diagnosis, prompt-vs-edit, the fresh-context judge loop |
 | `design-org-influence` | Designer influence in the org: business cases, stakeholder objections, PM partnership, promotion/reviews |
+| `people-management` | Running a team of direct reports: 1:1s, feedback, career conversations, hiring/firing, team comms (Scott + Zhuo + Hogan); influence up/sideways → `design-org-influence` |
 | `pricing-creative-work` | Client-services pricing & negotiation: value-based pricing (Do/Stark/Mall three schools), objection scripts, terms |
 | `client-engagements` | Running client projects: qualification, kickoff, the feedback system, health signals, failure/firing (Monteiro) |
 | `user-research` | Research planning & methods: question→method map, interviewing craft, validation, synthesis (Hall/Portigal/Sharon) |
+
+**Boundary (the working-designer chain):** evidence → `user-research` · internal buy-in/career → `design-org-influence` · external client relationship → `client-engagements` · money → `pricing-creative-work` · the pitch/demo artifact itself → `design-prototyping` · training/curriculum/job aids → `learning-experience-design`.
 
 ### Apple platform design (HIG-grounded)
 | Skill | Use it for |
@@ -36,14 +41,23 @@ A curated library of Claude Code skills. The largest cluster is a design library
 | `widget-design`, `notification-design`, `app-intents-design` | Those system surfaces |
 | `chart-experience-design` | In-app charts and the experience around them |
 | `sound-design`, `touch-interaction-design` | Audio/haptics; gesture feel and fluid interfaces |
-| `ai-experience-design` | ML/LLM-backed feature design, generative UX, model safety |
-| `malleable-software` | Software users can reshape — expose structure not modes (nightmare bicycle), 40th-hour design, interop/jigs, human-AI work as version control (Litt, Ink & Switch) |
+
+### AI & agents
+| Skill | Use it for |
+|---|---|
+| `ai-experience-design` | Designing AI/ML-backed *features*: confidence, corrections, agent surfaces, pattern vocabulary (wayfinders/tuners/governors), model safety |
+| `ai-ui-direction` | Directing/fixing AI-*generated* UI: layout-primitive diagnosis, prompt-vs-edit, the fresh-context judge loop |
+| `agentic-coding` | Running coding agents on *your repo* (listed in Coding below — the workflow/mechanics layer) |
+| `ai-enablement` | Rolling AI out across an *org*: decision archives behind MCP, company-specific agents, team skills, enablement programs (Shopify, Ramp, Atlassian, OpenAI) |
+| `malleable-software` | Software *users* can reshape: expose structure not modes (nightmare bicycle), 40th-hour design, interop/jigs, human-AI work as version control (Litt, Ink & Switch) |
+
+**Boundary:** designing the AI feature → `ai-experience-design` · fixing what AI generated → `ai-ui-direction` · agents working on your code → `agentic-coding` · getting a team/org to adopt AI → `ai-enablement` · letting end users reshape the product → `malleable-software`. The DS-as-AI-context mechanics live in `design-systems`.
 
 ### SwiftUI engineering
 `swiftui-identity` (the identity/lifetime/dependencies mental model — debug state resets here) · `swiftui-layout` (containers, Layout protocol, navigation structure) · `swiftui-lazy-stacks` (scroll performance) · `swiftui-animation` (springs, transitions, shaders) · `swift-concurrency` (the language layer beneath the trio: structured concurrency, sendability, Swift 6 migration, measure-first performance features).
 
 ### Motion & frontend (web)
-`web-performance` (load + interaction speed: fluid-UI frame budgets, Core Web Vitals, perf culture) · `web-animation-design` (the default theme for web motion values) · `motion` (the Motion AI Kit umbrella — encapsulates best-practices, docs search, CSS spring generation, performance audit, transition visualisation as sub-capabilities) · `make-interfaces-feel-better` + `emil-design-eng` (UI polish craft) · `frontend-design` (building distinctive web UI) · `oklch-skill` (color) · `social-video-safe-zones`.
+`web-performance` (load + interaction speed: fluid-UI frame budgets, Core Web Vitals, perf culture) · `web-typography` (CSS/web type practice: measure/leading/scales, choosing & pairing, OpenType craft, font loading — from Rutter, Santa Maria, Latin; Apple platforms → `apple-typography`) · `web-animation-design` (the default theme for web motion values) · `motion` (the Motion AI Kit umbrella — encapsulates best-practices, docs search, CSS spring generation, performance audit, transition visualisation as sub-capabilities) · `make-interfaces-feel-better` + `emil-design-eng` (UI polish craft) · `frontend-design` (building distinctive web UI) · `oklch-skill` (color) · `social-video-safe-zones` · `web-accessibility` (web-scoped a11y practice: AT discipline, semantic-HTML-first priority order, focus mechanics, accessible writing, testing program, org policies — Kalbag + Metts/Welfle; Apple platforms → `apple-visual-accessibility`) · `graphics-fundamentals` *(local-only, gitignored — purchased source)*: the mechanism layer beneath all of these (screens, color spaces, rasterization, blurs, compression) — route "how/why does X actually work" questions there.
 
 ### Writing & content
 `write-clear-prose` · `ui-voice-and-tone` (product voice + microcopy) · `error-messages` (failure-state copy) · `linear-settings-copy` (settings IA/copy).
@@ -88,6 +102,8 @@ A curated library of Claude Code skills. The largest cluster is a design library
 
 - **Strategy vs tactics:** `design-principles` decides *whether/why*; the specific skills decide *how*. Don't restate principles in tactical work.
 - **Motion default:** platform unstated → `web-animation-design` values; SwiftUI/iOS stated → `swiftui-animation`. Never cross-apply web timing values to native or vice versa.
+- **Typography split:** web/CSS → `web-typography`; Apple platforms → `apple-typography`; rendering internals (why fonts look different) → `graphics-fundamentals`. Never cross-apply platform conventions.
+- **AI chain:** design the AI feature → `ai-experience-design`; fix AI-generated UI → `ai-ui-direction`; agents on your repo → `agentic-coding`; org rollout/context sharing → `ai-enablement`; users reshaping the product → `malleable-software`.
 - **Overlapping polish skills** (`make-interfaces-feel-better`, `emil-design-eng`, `web-animation-design`) are *themes*: pick one skill's values and apply them consistently; when a genuine choice surfaces, present a menu rather than silently mixing aesthetics.
 - **Words:** name the thing in `naming-features-and-labels` → set the voice in `ui-voice-and-tone` → failure copy in `error-messages` → settings rows in `linear-settings-copy`.
 - **Charts:** type in `chart-selection` → in-app experience in `chart-experience-design` → integrity critique in `tufte-viz`.
@@ -96,7 +112,7 @@ A curated library of Claude Code skills. The largest cluster is a design library
 ## Conventions
 
 - **Frontmatter:** `name` + single-line `description` (quoted — descriptions contain `:` characters), ≤1024 chars, written as *what + when + sources + trigger keywords*. Descriptions are the always-loaded routing surface; bodies load on demand.
-- **Progressive disclosure:** SKILL.md stays under 500 lines; deep material lives in `references/`.
+- **Progressive disclosure:** SKILL.md stays under 500 lines and under the ~5k-token body budget; deep material lives in `references/`. Keep the body to routing rules, durable operating moves, and one load-bearing quote per point; move quote banks, examples, and source texture to references even when the validator is clean.
 - **Decision rules go high in the file.** Consumers paginate (a real agent trace read only lines 1–220 and missed a tail section) — put the core framework and decision rules before checklists and appendices; when extending a skill, merge into the relevant section rather than appending at the end.
 - **Source fidelity:** WWDC-derived skills cite sessions with URLs; code samples are Apple's verbatim, year-tagged.
 - **Staleness policy:** principles are stable; API/platform specifics are dated and carry staleness notes ("verify against current docs"). ⚠️ markers flag where newer guidance supersedes a talk. The HIG what's-new page (https://developer.apple.com/design/whats-new/) drives periodic audits.

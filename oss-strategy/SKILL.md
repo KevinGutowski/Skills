@@ -5,10 +5,7 @@ description: "Make an open source project adopted, sustainable, and profitable �
 
 # Open Source Strategy
 
-**Sources** — this skill aggregates three Evil Martians Chronicles posts:
-- *"PostCSS creator shares how to make your open source popular" (Andrey Sitnik & Turner, 2026). https://evilmartians.com/chronicles/how-to-make-your-open-source-popular*
-- *"What we learned from creating PostCSS" (Sitnik & Turner, 2025). https://evilmartians.com/chronicles/what-we-learned-from-creating-postcss*
-- *"How to turn an open source project into a profitable business" (Melnikova & Turner, 2023). https://evilmartians.com/chronicles/how-to-turn-an-open-source-project-into-a-profitable-business*
+**Sources:** [references/sources.md](references/sources.md) — 3 Evil Martians posts + Steve Ruiz (Dive Club).
 
 The motivation gate first: don't do OSS for fame (talks and articles have better ROI) or your resume (contribute to big projects instead — "it's so much easier than building a project"). "The best reason to make open source is if you want to change the world." And the realism: of Sitnik's ~56 projects, **4 are popular** — "the proper mindset going into each project may be expecting failure."
 
@@ -39,6 +36,12 @@ The failure mode: "1. They make a single social media post 2. They get nothing. 
 - **Tick-tack deprecation** (from Rails): deprecate in one major, remove in the next; migration guides; ecosystem-migration status pages; pre-release feedback channels.
 - **Boilerplate shapes the ecosystem:** "examples in docs are not just illustrations, but something that forms habits in the community."
 - **Befriend competitors** — collaboration (shared naming, benchmarks) and even promotion of alternatives; "any new 'competitor' could just free you from spending your own time on supporting people for free." Don't fear being late: Autoprefixer and PostCSS outlived every announced killer — "it's better to create a quick prototype and see the real result." And: architecture beats language ("PostCSS, written in JS, was 4 times faster than Sass, written in C++ … because of better architecture and memory management").
+
+## The design-answer pattern (Steve Ruiz, tldraw — Dive Club 3SvL0r-Lhh8)
+
+- **Open-source a design answer, not just a utility.** Perfect Arrows (draw a good arrow between any two boxes) got popular precisely because "there was no answer. It's kind of like a design answer, you know, but expressed through code" — an educated take on all the parameters of a problem, "my best shot at making it look good in all of the circumstances." Taste, packaged as a library, is a differentiated OSS category — "kind of unusual and kind of new for a developer to be trying to tackle."
+- **Build-with-it marketing.** "The best way to market a tool like this is you just build with it. You build interesting things with it and you kind of develop it a little bit in public." (Pairs with the promotion loop above — the content is the artifacts.)
+- **Leave visible unanswered questions.** "Unanswered questions are kind of like things that are obviously not done or maybe even not doneable — are most interesting to builders": the audience wants to follow along and wonder how *they* would do it. Polished completeness is less magnetic than legible open problems.
 
 ## Monetizing (the four models, honestly ranked)
 

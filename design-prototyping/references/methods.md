@@ -25,6 +25,16 @@ Keynote doc at iPhone size; shapes for the clock face and Start button; the **ro
 - Duarte structure applied: "Today, people are frustrated — cold, joyless toast. It's an epidemic. But imagine happy, flawless toast at the top of the button on your iPhone."
 - "If I had more time, I would have written a shorter letter."
 
+## Quotables trimmed from SKILL.md (2014/2017/2023, Stamatiou)
+
+- On Magic Move vs code: "It's so much easier to pare down… when you don't have to throw away code." (2014)
+- On hacking interactions: "It doesn't have to be good code or reusable code." (2014)
+- On parallel exploration: a diverse team "will let you stumble upon things you never would have on your own." (2017)
+- The 2023 framing that supersedes "never real code": "common things should be easy and complex things should be possible" — SwiftUI "lowers the floor for simple tasks and raises the ceiling."
+- The elevation bug texture: hilly San Francisco data hid a Y-axis bug that flat New York routes exposed — "as if you were hiking a mountain"; "I can get carried away designing for ideal scenarios… it's important to find out where my designs break." (2023)
+- On demos leading reviews: "No slide deck in the world can compare with one spectacular demo." (2023)
+- Stammy on mocks (Craft, 2022): "Figma is where initial hunches live; a starting point. Not final designs. It's not until I start building and really using it that I get more signal to understand what aspects of the design feel good." And: "never treat design as something you just handoff to engineers… Treat it more like a conversation between design and engineering."
+
 ## The complete question battery
 
 Before making: what needs to be more real? · what can we fake? · where will they use it?
@@ -40,6 +50,16 @@ After: what's working? · what's not? · what other ideas does this give us?
 - **Prototype at true spatial context** (Jae Park, Config 2025): for anything viewed off-desk, fake it at real distance/angle — his foam-core Echo Show model with a 7-inch tablet, evaluated from 10 feet across a conference table ("it was two Kleenex boxes short"), beat a PRD spec'd at desk distance. Full physical-tier methods (mockups, rigs, jigs) → `hardware-product-design`.
 - **Scaffold, don't script, for collaborators** (PBJ article): hand a collaborator structure that frames the problem (10 acts of storyboards — "a scaffold") while leaving the craft decisions theirs. **Prototype the core loop before the app exists** (CapWords): they validated photo→cutout→LLM-naming by manually feeding VisionKit cutouts into ChatGPT — "we didn't even have an app yet."
 - **Figma diverges, code decides** (Mariana Castilho, poolside/Vercel): use the drawing tool only for fast divergent exploration and flow communication — "most of the times I don't even finish my designs in Figma… 99% of the times the final output in code looks nothing like my initial sketch." Component motion and interaction feel are *never* prototyped in Figma — always tuned in code where the real parameters live.
+
+## The animation documentation matrix (Rachel Nabors, *Animation at Work*, A Book Apart 2017, ch. 4 "Communicating Animation")
+
+Three artifacts document animation, and each carries only part of what a team needs:
+
+- **Storyboards** — values + reasoning, no feel. "Storyboards are useful because they put words, even values, next to snapshots of an animation… a great place to document *why* a decision was made." But "you can't demonstrate or test an animation's look and feel with them, and they are clunky to integrate with existing online design guidelines. But, as far as quantifying what changes when, tried and true storyboards can't be beat."
+- **Animatics** — feel, no values. "Where storyboards excel at providing deliverable values and inline reasoning, they fall short at conveying an animation's 'mouthfeel'… If a picture is worth a thousand words, then an animatic must be worth a thousand meetings." Yet "animatics are terrible for developers to work from because they don't provide values for an animation's easing, duration, and properties."
+- **Prototypes** — testable, unarchivable. "Prototypes give us the chance to observe real people doing real things with our animations" — but "prototypes, unlike storyboards, are terrible for documentation: only code-savvy team members can read them, and the files must be organized and sometimes compiled or served before inspection."
+
+The rule that falls out — always couple verbal + visual: "The best approach to get both deliverables and archival information is to combine two of these approaches: coupling animatics with storyboards, or adding live microinteractions to design systems along with the values necessary to reproduce them. The former works great on smaller teams and projects on a shoestring budget, while the latter reinforces the authority of a larger enterprise." (DS-side counterpart — timing tokens, microanimation vocabularies → `design-systems`.)
 
 ## Field note — the caricature technique (Show)
 
@@ -61,4 +81,14 @@ From the team's 2022 Q&A:
 - **No hole-in-ones:** "If we're not getting feedback on something, we're just not showing it to the right people."
 - **Keep multiple directions alive** — several prototypes, or one with sliders/preferences; when feedback conflicts with the current direction, "we keep both around to let people compare."
 - **Phrase feedback as the experience, not taste:** not "I don't like this color" but "I think blue instead of red would better communicate what the experience is about."
+- **Let the creators scope the feedback** (Metts & Welfle, *Writing Is Designing*, ch. 8): before someone presents, ask "What sort of feedback are you looking for?" — "It empowers them to control the conversation and avoids a feeling of vulnerability, like they've been thrown to the wolves." Same chapter's facilitation move: worksheets/canvases make "the thing… asking for information," shifting you from interrogator to facilitator.
 - **Refocus on what wins hearts:** with dozens of ideas competing, advance the two or three people loved; "no one true winner" is fine — the rest recycle into future work. And the recurring trap: "we sometimes get caught up in trying for a perfectly polished prototype" — always remember the question the prototype exists to answer.
+
+## Team-of-one prototyping (Leah Buley, *The User Experience Team of One*, Rosenfeld 2013)
+
+When you need buy-in as much as answers, make the artifact participatory:
+
+- **Turn any meeting into a design session.** Sketch live and invite non-designers to sketch — "people love it when ideas start to become tangible." The imperfect, in-progress artifact is the invitation; it makes the work less threatening and turns spectators into co-authors.
+- **Avoid the prototype drop.** "Don't just release the prototypes into the wild and ask people to send feedback." Review synchronously; if testing, "invite the team to observe" so learning transfers to the room rather than landing in an unread doc.
+
+The influence stance around these methods (listening tours, pyramid evangelism, size-not-permission negotiation) lives in `design-org-influence`.

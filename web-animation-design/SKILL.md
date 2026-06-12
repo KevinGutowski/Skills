@@ -139,6 +139,8 @@ Elements that animate together must use the same easing and duration. Modal + ov
 - Larger elements animate slower than smaller ones
 - Exit animations can be ~20% faster than entrance
 - Match duration to distance - longer travel = longer duration
+- **Modulate by Cone of Vision** (Nabors, *Animation at Work*, ch. 3): "animations in the center of the user's Cone of Vision do better with shorter durations (closer to the 70-200 ms spectrum)"; animations "on the edge of the Cone of Vision benefit from additional time… in the 300-700 ms spectrum"
+- **Halve your durations** (Nabors, ch. 3): long exposure warps your sense of speed — "Whatever your pre-production duration is, halve it. Then halve it again!"
 
 ### The Frequency
 
@@ -149,6 +151,23 @@ Determine how often users will see the animation:
 - **Rare/first-time** → Can be more special
 
 **Example:** Raycast never animates because users open it hundreds of times a day.
+
+## Why Animation Works (Perception)
+
+From Rachel Nabors, *Animation at Work* (A Book Apart, 2017); fuller quotes in [references/animation-at-work.md](references/animation-at-work.md).
+
+- **Where vs. What systems** (ch. 1): Margaret Livingstone's terms — shape and color tickle the newer What System; "when we design with motion, too, we tap into the older Where System. We can use motion to orient users in an information space."
+- **The brain's GPU** (ch. 1): "Using animation to explicitly show users the in-betweening keeps those processes on the brain's visual cortex instead" — "a shortcut through the brain's GPU." Hudson & Stasko: animation "allows the user to continue thinking about the task domain, with no need to shift contexts to the interface domain."
+- **Animacy habituates** (ch. 1): a little motion defeats change blindness, but "much like New Yorkers don't notice the huge flashing LCD signs" on Broadway, "users quickly become blind to unimportant change."
+- Her caveat (Conclusion): "be wary of outdated research… most of this research is very old and needs to be revisited."
+
+## Animation's Purpose: Five Patterns (Nabors, ch. 2)
+
+"Transitions take users from place to place in the information space… Supplements bring information on or off the page… Feedback indicates causation… Demonstrations explain how something works… Decorations do not convey new information and are purely aesthetic."
+
+- **The context test** (complements the story test below): "That is animation's true purpose: to add context" — "use your words to describe what benefit or new information it supplies." If you can't, it's a decoration.
+- **Prioritize on a 2×2**: justification (nice-to-have → necessary) × ease of implementation; justified-and-easy first. Animations fulfilling multiple patterns rank higher.
+- **Cognitive-bottleneck smells**: "flashes of white" on page loads; content insertion/removal; "Wordy descriptions can indicate something being told instead of shown. Can a demonstration do it better?"
 
 ## When to Animate
 
@@ -174,6 +193,18 @@ Determine how often users will see the animation:
 **Animation is brand voice** (course's "big little details" lesson): timing and curves carry the same brand signal as type and color. Stripe's marketing animations are deliberately slow — "we are not in a hurry, we are here for you" (premium, reliable); Vercel's product animations are fast or absent because the brand *is* speed; a slower ease-in-out over ease-out reads elegant instead of snappy. Convey feeling on marketing surfaces; in the product itself, default to speed. Orchestrated entrances ("wave" stagger — Apple's nav columns) are trial-and-error until right; there's no formula. Two interview corollaries: when showing app animations on the marketing site, don't copy them 1:1 — slow them down into a *flourish* (the app optimizes for the result; the site showcases the process) yet keep the site slightly **less** extravagant than the product, so expectations aren't set higher than the app delivers (Lochie Axon, Family). And gate every marketing animation with the story test: "How do I tell a story with this animation? Is it even contributing to that story?" — sometimes the best animation is no animation (Henry Heffernan, Vercel).
 
 **Motion only when earned** (Ryo Lu, Cursor — YC-website roast, 2025): "I don't like moving things when I'm not moving" — ambient motion steals attention from reading. Fire animation when the user arrives at the element, not before (hide a CTA "until say you're here and then it kind of animates in… you pay attention to it"), and "don't hijack the scroll."
+
+**The overcooking hazard** (Andy Madrick + Ridd, Dive Club podcast, IfPK0LwbX_0): when you polish interactions in isolation (a single bug, a single component), "you run the risk of zooming out and you realize every single piece of the interface is overcooked." Two study prompts as the antidote — "where are the best products *not* using any interactions? Where are instant transitions applied?" (e.g. where Linear ships instant) — and the no-decoration baseline: "the default is, what does this thing look like with no decoration? With the same size typeface, with no animations. Take that and say, okay, where can I add a little flourish of delight here, and how does that help the user instead of detract?"
+
+**Anti-spring-default + physical semantics** (Karl Koch, DuckDuckGo — Dive Club podcast, 7_VEb9iDW2c): AI-generated motion "springs everything. Everything's a spring" — boing is wrong when the user clicked to *read*; the animation "needs to not be overly gratuitous." This skill's spring section agrees: springs are for gestures and alive elements, not default. And derive direction/character from the physical meaning of the act: inserting an item slides in because "I'm inserting it. I'm pushing it — in real life that's what we would do"; discarding is "more of a just poof and go away" because you've lost interest in it.
+
+### Consistency rules (Nabors, *Animation at Work*, ch. 5)
+
+- **Entrance/exit symmetry**: "When a piece of information animates onto the screen, it should also animate as it leaves" — entrance-only alerts that cut out feel "unfinished, unreliable."
+- **Avoid FOULS — always be loading**: "the default state of content in a JavaScript-enabled environment is a loading state"; users see loading → loaded, never the unloaded state.
+- **Consistency beats peak frame rate**: "A 30 FPS animation that consistently runs will appear smoother than a 60 FPS animation that dips from time to time." For fast long-distance moves, fade the object out mid-trajectory, back in at the destination.
+- **Anticipatory signaling**: hover can foreshadow motion — her menu bar "lifts up" on hover: "if you click me, expect me to slide further up."
+- **Waitstaff red flag** (reinforces the overcooking hazard above): a tester's "Oh, that's delightful!" "could be a red flag" — they *noticed* it, spending cognition on it.
 
 ## Spring Animations
 
@@ -281,6 +312,7 @@ Whenever you add an animation, also add a media query to disable it:
 - Every animated element needs its own `prefers-reduced-motion` media query
 - Show play buttons instead of autoplay videos
 - **Reduce does not mean none** (per the course's accessibility lesson, which is more nuanced than this skill's original "disable all" stance): disable *movement* — anything translating, scaling, or changing layout — but keep non-moving animations (`opacity`, `color`, `blur`) that convey meaning. A modal can still fade; it shouldn't slide or scale. For explanatory motion visuals, jump between keyframe states instead of animating — removing them entirely would reduce understandability.
+- **Why this matters** (Nabors, *Animation at Work*, ch. 5): "as many as 35% of Americans aged 40 years or older have experienced vestibular dysfunction"; WCAG advises "elements flash no more than twice per second"; fades "do not trigger vestibular disorders" — why reduce-motion-to-fades (not to nothing) works. Her 2017 mechanics predate `prefers-reduced-motion` — use the facts, not her plumbing.
 - App-wide safety net in Motion: `<MotionConfig reducedMotion="user">` (not the default — set it yourself); it limits animation to opacity/color when the preference is on.
 - Workflow: build the animation → test with DevTools' emulated `prefers-reduced-motion` → ship two variants.
 
@@ -346,5 +378,8 @@ Is the element entering or exiting the viewport?
 ## Reference Files
 
 - [PRACTICAL-TIPS.md](PRACTICAL-TIPS.md) - Detailed implementations for common animation scenarios
+- [references/animation-at-work.md](references/animation-at-work.md) - Fuller verified quotes from Nabors
+
+**Sources**: Emil Kowalski's animations.dev course (primary values and techniques); Rachel Nabors, *Animation at Work* (A Book Apart, 2017) for the perception grounding, pattern taxonomy, and ch. 3/5 craft rules. Staleness: the 2017 book's perceptual/taxonomic layer is durable; its tooling and browser-feature mentions are dated.
 
 ---

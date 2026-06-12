@@ -5,13 +5,7 @@ description: "Apply Apple's eight design principles — purpose, agency, respons
 
 # Principles of Great Design
 
-**Sources:**
-- *Apple WWDC 2026, session 250 — "Principles of great design" (Linda & Doug, Design Evangelism). https://developer.apple.com/videos/play/wwdc2026/250/*
-- *Apple WWDC 2017, session 802 — "Essential Design Principles" (Mike Stern, Design Evangelism) — the classic cognition-based principles. https://developer.apple.com/videos/play/wwdc2017/802/*
-- *Apple WWDC 2025, session 359 — "Design foundations from idea to interface" (Majo, Design Evangelism). https://developer.apple.com/videos/play/wwdc2025/359/*
-- *Apple WWDC 2018, session 801 — "The Qualities of Great Design" (Lauren Strehlow + 13 designer interviews) — the earned-quality/durability additions under Craft; its techniques live in `design-prototyping`. https://developer.apple.com/videos/play/wwdc2018/801/*
-- *Ryo Lu (Head of Design, Cursor; first designer at Notion) — 2025 interviews: Dive Club (youtube.com/watch?v=dsZqOPVQTNg), Dialectic (8ncYSGbfeyY), Async Z podcast (PQhcHrCyU8M) — the System thinking cluster below.*
-- *Matt D. Smith (MDS, Shift Nudge) — "Good Enough UI" interview (youtube.com/watch?v=4p5LzrAYN30), Dive Club (K_7ECqNlTtE), Shift Nudge critiques (ZRBq8UYLa-0, 6153Upr2BDM) — the MDS craft notes under Craft.*
+**Sources:** [references/sources.md](references/sources.md) — 4 WWDC sessions + Ryo Lu + MDS interviews.
 
 *As of June 2026 the HIG carries a reintroduced, canonical **Design principles** page (fetch via the `hig` skill, slug `design-principles`) — this skill is the reasoning companion; check that page when exact current wording matters.*
 
@@ -81,6 +75,8 @@ Hard to define, instantly recognized. Delightful interfaces are satisfying, enri
 ## Practitioner rules & counter-positions (Config 2024–25 talks)
 
 The sharpest operating rules: Linear's **zero-bug policy, fixed within seven days** and **MVPs are internal-only** ("once something goes live for everyone, it hits the standards"; quality = **Belief × Care × Craft**, decided by "intuition & customers over data"); Perplexity's kill-test — "**If we deleted it, would anybody care?**"; and Stripe's Weinstein — "the vast majority of failure modes are attempting to polish something that shouldn't have existed in the first place." Counter-positions to hold in tension with Simplicity: deliberate friction (protect *rewarding* work), the ornament thesis (minimalism done well is maximal hidden care), scarcity as respect ("Wordle only wants three minutes of your day"), and the testing tension — conversion surfaces answer to tests ("almost nothing works"), durable objects to the 20-year test. Full notes (Linear quality series, Golden-Era diagnostic, all counter-positions): [references/practitioner-notes.md](references/practitioner-notes.md).
+
+**Writing your own team principles** (Jon Yablonski, *Laws of UX*, ch. 12): operationalize a principle as a three-part chain — "a clear framework… that consists of a goal (design principle) and an observation (law)" which then "establishes guidelines (rules)". Example chain: principle "clarity over abundance of choice" → law (Hick's) → testable rule like "limit choices to no more than 3 items at a time". His quality tests for the principles themselves: good ones "aren't truisms," solve real questions, are opinionated, and are memorable. A principle nobody could disagree with constrains nothing.
 
 ## System thinking (Ryo Lu)
 

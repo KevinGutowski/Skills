@@ -1,14 +1,11 @@
 ---
 name: malleable-software
-description: "Design software users can reshape — expose structure instead of modes (the nightmare bicycle), design for the 40th hour, make customization composable (interop, jigs, tool-sharing like documents), and treat human-AI collaboration as a version-control problem. Use when designing customization/extensibility, end-user tooling, personalization bounds, or AI features that modify the product itself. Tool-UI conventions → devtool-interface-design; AI interaction patterns → ai-experience-design. Triggers: malleable software, customization, extensibility, end-user programming, user scripts, plugins, personalization bounds, nightmare bicycle."
+description: "Design software users can reshape — expose structure instead of modes (the nightmare bicycle), design for the 40th hour, composable customization, human-AI collaboration as version control. Use for customization/extensibility, end-user tooling, or AI features that modify the product. Tool-UI conventions → devtool-interface-design; AI patterns → ai-experience-design. Triggers: extensibility, end-user programming, plugins, nightmare bicycle."
 ---
 
 # Malleable Software
 
-**Sources** — this skill codifies Geoffrey Litt's malleable-software philosophy from three sources:
-- *Dive Club podcast interview with Geoffrey Litt (design engineer at Notion; previously Ink & Switch, MIT PhD), host Ridd, 2025. youtube.com/watch?v=zJf0UeCwQqE. Quotes verified against the auto-transcript; known garbles corrected: "humanity collaboration" = human-AI collaboration, "non-extual" = non-textual, "SAS" = SaaS, "Incan/Incin Switch" = Ink & Switch, "Andy Desessa" = Andrea diSessa.*
-- *"Avoid the nightmare bicycle" — Geoffrey Litt, blog post, March 3, 2025. https://www.geoffreylitt.com/2025/03/03/the-nightmare-bicycle*
-- *"Malleable software: Restoring user agency in a world of locked-down apps" — Geoffrey Litt, Josh Horowitz, Peter van Hardenberg, Todd Matthews. Ink & Switch, June 2025. https://www.inkandswitch.com/essay/malleable-software/*
+**Sources:** [references/sources.md](references/sources.md) — Litt: Dive Club interview + nightmare-bicycle post + Ink & Switch essay. ⚠️ Dive Club quotes come from the auto-transcript with garbles corrected: "humanity collaboration" = human-AI collaboration, "non-extual" = non-textual, "SAS" = SaaS, "Incan/Incin Switch" = Ink & Switch, "Andy Desessa" = Andrea diSessa.
 
 The worldview: "The original promise of personal computing was a new kind of clay—a malleable material that users could reshape at will. Instead, we got appliances: built far away, sealed, unchangeable" (Ink & Switch). Goal: "a software ecosystem where anyone can adapt their tools to their needs with minimal friction." Use this skill as a value system when deciding how much of a product users may reshape, and how.
 
@@ -56,6 +53,20 @@ Litt's lens: "human-AI collaboration is fundamentally a version control problem"
 ## 6. Jigs: disposable one-project tools
 
 The sanctioned home for disposable software: "I call these tools jigs, from woodworking — you make a tool just for the purpose of making one project." Litt's example: instead of reviewing an unreadable AI migration script, he asked for "a command center that will walk me through the process of doing this port myself but visualize the entire process" — old/new site previews live, stepwise file diffs — "that tool is a one-time thing just for this one PR, but I was able to economically build that because AI exists." Jigs still require the preconditions: "I'm not going to make a new disposable tool if that requires me to totally migrate all my data… I need my new tool to fit with my existing ecosystem."
+
+## 7. Designers building their own tools (2025–26 practitioner notes)
+
+Field grounding for the Litt/Ink & Switch philosophy: by 2025–26 the malleable thesis stopped being speculative — working designers routinely make their own tools. Sources (Dive Club, auto-captioned): Ryan [Moshi] (head of design, Column — onQY0PrUulw; surname uncertain in captions), Tommy Geoco (OYNoy468kS8), Marvin Schwaibold (Molly Studio → Shopify — KpJs7mZYErg), Kris Puckett (nPyxVMd1LIA).
+
+- **Tools-of-one** (Ryan): "I get to make it for my exact user needs and not consider like what anyone else needs" — the per-person fit malleability promises, achieved today by building rather than reshaping.
+- **Tooling-gravity as a moat** (Ryan): "we tend to gravitate towards the things that our tooling makes easy" — effects awkward in Photoshop but trivial in his own tool become a signature: "it's like kind of making a moat to your brand." Your tools shape your output; owning them shapes it distinctively.
+- **Build the tool, not the output** (Ryan): "I don't want it to jump to the end result. I think where AI is really successful is helping you along the way to build a tool or learn the software." Ridd's conversion: "how can I prompt AI to create a tool that I can then use to arrive at the output. And I could have 100xed my iteration speed by thinking about it that way." Litt's AI-as-teacher-of-primitives stance, in production use.
+- **Deceptively simple** (Ryan, on his first tool): "these tools are deceptively simple to make… Getting a tool to, you know, just run locally and produce an image was very straightforward" — and "the actual like hard part that I don't know how to do myself — it nailed it." The coding bottleneck Litt says LLMs removed is, empirically, removed.
+- **The numbers** (Geoco): 59% of designers in his survey data "have built their own like tool for their workflow"; Ramp reported "1,500 vibe coded tools" internally — "how much of that is throwaway? Well, most of it" — and the keepers spread organically: "it's useful, someone tries it, and then it starts to spread like, oh, so and so built a thing for this." Communal creation plus jig-grade disposability, at company scale.
+- **The platform view** (Schwaibold): "that whole paradigm of throwaway software and contextual software versus large-tech software, which we're experiencing right now. And we're just entering a world where you'll be able to build tools for your specific workflow." Shopify's direction: "we're looking at more of a malleable interface that morphs and shapes itself around contextual needs of the merchants" — a large vendor designing for reshaping rather than against it.
+- **The two-hour personal app** (Puckett): a personal health app — Apple Watch metrics synced over a local network to a Mac mini, daily AI review of his HRV and energy — "in terms of like the permissionless building, like I'm able to in 2 hours build this." Software far below any commercial viability line, built anyway because the cost fell to an evening.
+
+Read against §2 and §6: most of this wave is jigs and tools-of-one, not yet the interop + document-style distribution the essay calls for — Ramp's spread pattern is the closest thing to communal creation in the wild.
 
 ## Checklist
 

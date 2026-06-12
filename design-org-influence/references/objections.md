@@ -100,3 +100,7 @@ If you've tried the playbooks and you still can't move forward:
 - **A/B or experiment-driven approach** where the org supports it: get multiple concepts live and let the data decide.
 
 And remember disagreement itself is healthy: "Some of my best design work has come from product feedback or from a PM pushing our team to think differently. These moments of creative tension, when navigated well, often lead to breakthrough solutions."
+
+## Borrowed evidence: citing empirical psychology (Yablonski)
+
+Jon Yablonski, *Laws of UX*, preface: the book exists because he "was being asked to justify a number of design decisions to project stakeholders, without any data to support them" — grounding decisions in named, cited research "became quite useful in convincing project stakeholders to move in the proposed design direction." A study citation is borrowed evidence: weaker than your own data, far stronger than taste-versus-taste.

@@ -1,6 +1,6 @@
 ---
 name: dhh-style
-description: "Write Ruby and Rails code following DHH's 37signals conventions — REST-pure controllers, fat models with concerns, Hotwire, the Solid suite. The DEFAULT Rails school: start here; escalate only on named pains (see rails-event-sourcing's router; ruby-refactoring is a competing extraction school). Use when writing or reviewing vanilla Rails code, or on mentions of DHH, Basecamp, HEY. Triggers: Rails Way, vanilla Rails, Hotwire, 37signals."
+description: "Write Ruby and Rails code following DHH's 37signals conventions — REST-pure controllers, fat models with concerns, Hotwire, the Solid suite. The DEFAULT Rails school: start here; escalate only on named pains (see rails-event-sourcing's router; ruby-refactoring is a competing extraction school). Owns database-per-tenant architecture (tenant *security/scoping* → rails-security-multitenancy). Use when writing or reviewing vanilla Rails code, or on mentions of DHH, Basecamp, HEY. Triggers: Rails Way, vanilla Rails, Hotwire, 37signals."
 ---
 
 Write Ruby and Rails code in DHH's distinctive 37signals style: **clarity over cleverness**, **convention over configuration**, **vanilla Rails is plenty**.
@@ -199,7 +199,7 @@ Based on analysis of 37signals production codebases (Campfire/Fizzy) and [The Un
 
 ## Related skills
 
-- **Vanilla-school satellites (vendored from [marckohlbrugge/37signals-skills](https://github.com/marckohlbrugge/37signals-skills), mined from 265 Fizzy PRs):** `rails-webhooks`, `rails-migrations`, `rails-security-multitenancy`, `rails-jobs`, `rails-hotwire-realtime`, `rails-fixtures-testing` for domain depth, and `dhh` for reviewing a diff in DHH's literal review voice (`/dhh`). This skill stays the doctrine layer; route domain work there.
+- **Vanilla-school satellites (vendored from [marckohlbrugge/37signals-skills](https://github.com/marckohlbrugge/37signals-skills), mined from 265 Fizzy PRs):** `rails-webhooks`, `rails-migrations`, `rails-security-multitenancy`, `rails-jobs`, `rails-hotwire-realtime`, `rails-fixtures-testing` for domain depth, and `dhh` for reviewing a diff in DHH's literal review voice (`/dhh`). This skill stays the doctrine layer; route domain work there. Also `rails-upgrades` (FastRuby upgrade methodology) for Rails/Ruby version upgrades.
 - **Competing school — `layered-rails` (Evil Martians / Dementyev):** converges with this skill on staying vanilla as long as possible and modeling business logic in Active Record, but diverges where 37signals stays plain: it extracts named layers (Action Policy, form/query/collaborator objects, dry-monads Results), tests with RSpec + FactoryBot (not Minitest + fixtures), runs Sidekiq/AnyCable (not the Solid suite), and often ships Inertia + React (see `inertia-rails`) instead of Hotwire. **Pick one school per project and stay consistent — route, don't blend.**
 - **`rails-testing`** — test-suite speed/reliability method (TestProf lineage; factory-centric — note the fixtures-first tension with this skill). This school's own testing practice lives in `rails-fixtures-testing`.
 - **`agentic-coding`** — when coding agents generate Rails code, encode these conventions as project rules so they're applied consistently.

@@ -74,6 +74,54 @@ Field techniques from Matt D. Smith (Shift Nudge) — stated in HSB, but they ma
 
 *Source: MDS YouTube — Uno5dpotRgo · ZRBq8UYLa-0 · jSLfQ0sJDCw.*
 
+## Palette Roles & State Layers
+
+The architecture layer above the scales: what each color is *for*. From Adham Dannaway, *Practical UI* (2nd ed., 2024) and Wathan & Schoger, *Refactoring UI*. Both books state mechanics in HSB/HSL — translated to OKLCH here.
+
+### The six-role palette (Practical UI)
+
+"Create a small set of predefined colours called a colour palette. Define simple rules that govern how each colour is used." Six roles, all variations of the brand hue — in OKLCH: hold H constant, walk L up while easing C down (PUI saturates the darkest step heavily; in OKLCH just keep C% of max):
+
+| Role | Use | Contrast floor (vs Fill) |
+| --- | --- | --- |
+| Brand | "used to indicate interactive elements like text links and buttons" | 4.5:1 |
+| Text strong | primary text — headings, body, form labels | 4.5:1 |
+| Text weak | supporting text, less prominent | 4.5:1 |
+| Stroke strong | "non-decorative borders on interface elements like form input fields. Also used for icons" | 3:1 |
+| Stroke weak | "decorative borders, like dividing lines" — removable without hurting usability | none (decorative) |
+| Fill | "secondary background to help differentiate elements, like tags or badges" | content on it must pass AA |
+
+Test text/strokes against **Fill**, not the page background — Fill is the worst-case surface they'll sit on.
+
+**Brand-colour rules:** apply brand to interactive elements and "avoid using the brand colour on non-interactive elements" — color teaches what's clickable. And "If the brand colour has meaning, it's safest to avoid using it for interactive elements" (red = error/destructive, green = success, amber = warning). *Theme scope:* that's a restrained-UI value — `frontend-design`'s bold aesthetics may deliberately break it; pick one theme, don't average.
+
+### Transparent foreground palette + state layers (Practical UI)
+
+"Using varying levels of transparency on foreground elements… allows some of the background colour to mix with the foreground colour" — one foreground set stays consistently prominent on every background/elevation, and themes for free. In OKLCH: `oklch(1 0 0 / a)` over dark, `oklch(0 0 0 / a)` over light.
+
+| Role | Dark mode (white @) | Light mode (black @) |
+| --- | --- | --- |
+| Text strong | 100% | 90% |
+| Text weak | 78% | 60% |
+| Stroke strong | 60% | 45% |
+| Stroke weak | 12% | 10% |
+| Fill | 6% | 4% |
+
+Light mode starts at 90% because "It's safest to avoid pure black against white for text, as it can cause eye strain and fatigue." (Scope: that rule is about *text on white* — OLED true-black backgrounds and pure-black image outlines in `make-interfaces-feel-better` are different contexts; don't blend into "never #000".) Test contrast against the *brightest* background (Overlay); flatten alpha to the rendered color before measuring (see Working Methods). Same trick works per-color: brand/semantic hues at 100/80/20/5% for Text/Stroke strong/Stroke weak/Fill.
+
+**State layers:** "layer a transparent overlay on top of interactive elements on hover and press" — **hover = the Fill variation, press = Stroke weak**. One overlay pair handles states for every component on every background.
+
+### Anchoring shades (Refactoring UI)
+
+When building a scale, anchor by use, not math: base = "a shade that would work well as a button background"; then the edges — "The darkest shade of a color is usually reserved for text, while the lightest shade might be used to tint the background of an element. A simple alert component is a good example that combines both of these use cases." Call them 900/500/100, pick 700 and 300 as "the perfect compromise between the shades on either side," then halve again for 800/600/400/200. Generate with [palette-generation.md](palette-generation.md), then anchor-correct by eye — "you can't rely purely on math to craft the perfect color palette."
+
+### RUI rules superseded by OKLCH (keep the intent)
+
+RUI's "Ditch hex for HSL" chapter is superseded: OKLCH is the modern endpoint of the same argument. Two famous RUI rules are HSL workarounds for perceptual non-uniformity that OKLCH solves natively:
+
+- **Hue-rotation-toward-bright** ("rotate the hue towards the nearest bright hue — 60°, 180°, or 300°", max 20–30°): needed because HSL lightness lies about perceived brightness. In OKLCH, L is honest — just raise L. The surviving *intent*: lighten yellows toward orange, not toward grey — "the darker shades will feel warm and rich instead of dull and brown." A small deliberate hue walk across a ramp is now an aesthetic choice, not a brightness fix.
+- **Saturation-compensation-at-extremes** ("increase the saturation as the lightness gets further away from 50%"): in OKLCH chroma is independent of L, but *max* chroma still shrinks toward the extremes — hold C% of max constant per step instead of hand-boosting S.
+
 ## Review Output Format
 
 Always present color changes as a markdown table with **Before** and **After** columns. Include **every color that was changed** — not just a subset. Never list findings as separate "Before:" / "After:" lines outside of a table.

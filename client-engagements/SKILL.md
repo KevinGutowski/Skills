@@ -1,6 +1,6 @@
 ---
 name: client-engagements
-description: "Run client design engagements — qualification, kickoff, feedback system, health signals, failure handling. Use when starting a client project, training a client on feedback, an engagement going sideways, or firing/being fired. Pricing → pricing-creative-work; session craft → design-prototyping. Triggers: client feedback, kickoff, sign-off, scope of work, client relationship, stakeholder surprise, design presentation to client, project going wrong, kill fee, fire a client."
+description: "Run client design engagements — qualification, kickoff, feedback system, health signals, failure handling. Use when starting a client project, training a client on feedback, an engagement going sideways, or firing/being fired. Pricing → pricing-creative-work; session craft → design-prototyping. Triggers: client feedback, kickoff, sign-off, scope of work, client relationship, stakeholder surprise, kill fee, fire a client."
 ---
 
 # Client Engagements
@@ -24,6 +24,7 @@ Refuse or fix these before scoping. Each gate failed is a project that fails lat
 
 - **Kickoff** starts every project: everyone who touches the project attends, including blockers — "The people whose feelings may be hurt that you brought in outside designers are the ones who need to be there the most." Purpose: relationships and "a reservoir of goodwill" before the hard conversations, plus watching whether the room actually agrees on the goals (catch the eye-roll from Marketing).
 - **Six-step process** (every methodology reduces to this): find out what the problem is → come up with ideas → pick the best idea → build it → watch people use it → tweak. Research/strategy isn't a pre-design obstacle; "we're in it" from the kickoff.
+- **Deliverables vs outcomes** (Gothelf/Seiden, *Lean UX*, ch. 8 — era-tagged agency advice). The old contract trap is that "clients pay for deliverables, not outcomes"; the healthier engagement sells decisions, learning, and business movement. Keep concrete artifacts in the SOW, but tie payment/review gates to what the artifact is supposed to prove or enable. This is compatible with Monteiro's sign-off discipline: sign off the phase, rationale, and next decision, not just the PDF.
 - **Sign-off gates.** Sign-off per phase keeps things from unraveling beyond the last agreement — but it must be real: "never, ever, ever sign off on work without being absolutely confident in your decision," and anyone who can undo the decision must green-light it. Approved-and-paid work stays paid (§5).
 - **Check-ins beat reveals.** Beware big-reveal designers. Tethering increases risk-taking: "A designer will be more willing to take a risk and try something new if they know they're tethered to a check-in and won't be allowed to go off course irrevocably."
 - **Client involvement minimums** — the client side must, at minimum: project-manage their side, coordinate their team, challenge recommendations against business goals, decide on work in progress, give feedback in one voice, deliver agreed assets, and meet their deadlines. The #1 cause of delay is waiting on client feedback; if the lead can't do day-to-day, they delegate a trusted lieutenant.
@@ -47,6 +48,8 @@ The heart of the book — full scripts and rationale in [references/feedback-sys
 - **Keep the designer honest:** "What led you down this path?" is a fair question on every share.
 - **Shared vocabulary.** When a client said the concepts weren't "extreme" enough, the right next sentence was "What do you mean by extreme?" — he learned that by presenting a second wrong round.
 - **Defending vs. defensive.** A designer must defend work and never be defensive about it; past the point where the problem is obvious, they're fighting for ego, not quality.
+- **The silent ballot (anti-HiPPO tally)** — Allan Peters, *Logos that Last*: in a large stakeholder room, present all options without commentary, then ask everyone to "quietly write down on a piece of paper which three they would pick" and tally the votes aloud, starting with your own top picks — it "keeps the person in charge on the client end from dominating the conversation."
+- **Decoding feedback (Peters):** "Make the logo bigger" means the surrounding branding is too weak, not that the logo is too small — fix the layout's brand strength (see `logo-design` §7). And the root cause behind most bad rounds: "Most bad design is created by fear-based decisions."
 
 ## 4. Health signals & anti-patterns
 
@@ -75,6 +78,10 @@ Detail in [references/health-and-failure.md](references/health-and-failure.md). 
 - **Never post concepts publicly.** The client who posted comps to his site's community got two weeks of flame wars, rival fan-comps, a 5,000-word essay against any change — and a full concept reset.
 - **Convergence heuristic:** ~10 interviews hearing the same things = solid.
 - **Feasibility trick:** ask the developer if it's technically tricky — they always say no, but if they *hesitate* first, get an hour estimate, double it, and ask if there's an easier way.
+
+## 7. Field delta — entertain the room, don't educate it
+
+Marvin Schwaibold (Molly Studio → Shopify; Dive Club KpJs7mZYErg, auto-captioned), learned working with Brian Collins: "there's this difference between educating a client or educating a room versus entertaining a room. When you're entertaining I think people are more inclined to listen to you" — educating clients or peers can land as patronizing. Collins at demo nights was "very good at just entertaining the room and keeping the room inspired… everybody was always having a lot of fun." The delivery layer over §3's feedback system: the honesty rules govern *what's* said; entertainment-over-education governs how the room receives it.
 
 ## Reference map
 

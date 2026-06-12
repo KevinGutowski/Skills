@@ -255,6 +255,14 @@ A missing entry is an `unidentified` row in a `gaps_to_verify.tsv` gap file — 
 - **The attribution failure-mode family** — inventing proper names to fill gaps, recursive self-confirmation across passes, "visual style match = attribution," one reference photo treated as the artist's whole style, defaulting to "new piece" when a match fails. Style-matching is for *grouping*, never *naming*; ground every pass in the canonical source. Full catalog: [references/attribution-discipline.md](references/attribution-discipline.md).
 - **Inferring "no content exists" from a single virtualized-list scrape.** Modern social/feed UIs (Instagram, Twitter, TikTok, Pinterest, infinite-scroll product grids) use *virtual scrolling* — after a scroll-to-bottom loop, `document.querySelectorAll(...)` returns only the *currently-visible* slice, not "everything you loaded." The wrong inference: "I see only old IDs in the DOM, therefore the account stopped posting after that date." Accumulate during scroll instead — see `references/capture-techniques.md`. And when the user tells you "the relevant content is on screen now," **trust them over your own inference** — they're seeing the live UI, you're seeing a stale DOM snapshot.
 
+## Related skills
+
+- **`catalog-reconciliation-research`** — when the bundle's structured records (inventories, artworks, images) need internal consistency: object identities, evidence tiers, provenance gaps.
+- **`source-translation-workflow`** — promoting translations from the layered corpus into citable records.
+- **`image-archival`** — shrinking oversized captured images (PNG/TIFF exports) without losing the master.
+- **`nocodb-catalog-management`** — syncing a finished bundle's catalog into NocoDB (tables, linked records, attachments).
+- **`source-sweep`** — the exhaustive-coverage discipline (open every node, keep a ledger) behind the breadth-first stance above.
+
 ## Update this skill
 
 When a research session teaches you a new pattern — a new gate, a better tool, a clever filename trick, a fresh source-trail step — add it here (or to the matching file in `references/`). The user invoked this skill to *create memory* of how to research well; treat it as living.

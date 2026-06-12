@@ -5,11 +5,7 @@ description: "Make app features discoverable — first launches that lead with c
 
 # Feature Discoverability
 
-**Sources** — this skill aggregates three Apple sessions:
-- *Apple WWDC 2017, session 816 — "Love at First Launch." https://developer.apple.com/videos/play/wwdc2017/816/*
-- *Apple WWDC 2021, session 10126 — "Discoverable design" (Jiabao Li & Mylène Dreyer). https://developer.apple.com/videos/play/wwdc2021/10126/*
-- *Apple WWDC 2023, session 10229 — "Make features discoverable with TipKit" (Ellie Gattozzi & Charlie Parks). https://developer.apple.com/videos/play/wwdc2023/10229/*
-- *Ryo Lu (Head of Design, Cursor) — "designing in layers" tweet (https://x.com/ryolu_/status/1946314616352440655) + 2025 interviews: Async Z (youtube.com/watch?v=PQhcHrCyU8M), Dialectic (8ncYSGbfeyY).*
+**Sources:** [references/sources.md](references/sources.md) — 3 WWDC sessions + Ryo Lu.
 
 "Your app doesn't get a second chance at a first impression" — and onboarding tutorials don't work ("I always skip through these onboarding screens"). Discoverable means people "can look at a screen and, before they touch anything, know what they can do, and how." **Learning by doing beats reading instructions.**
 
@@ -60,6 +56,7 @@ See `references/examples.md` for the worked examples (Jetsetter, Strava, Toasty,
 ## Relationship to other skills
 
 - **`user-onboarding`** — Hulick's flow/persuasion framework (sell the better user, quick wins) for signup and empty states; this skill is the Apple in-app teaching layer (no-tutorial first launch, cues, gestures, tips). Compose: structure the journey there, make features findable here.
+- **`learning-experience-design`** — courses, workshops, internal training, job aids, and practice/feedback systems. This skill owns teaching inside the app surface; learning-experience-design owns broader instruction and transfer.
 - **`touch-interaction-design`** — its teach-by-showing section (clipped content, planes, gesture-aligned animation) is the interaction mechanics behind principle 3.
 - **`app-intents-design`** — the Siri Tip is this skill's pattern applied to shortcuts; same dismissibility ethic.
 - **`apple-navigation-design`** — tab bars vs hidden menus is its structural domain; this skill supplies the *why* (discoverability testing).

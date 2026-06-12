@@ -6,6 +6,7 @@
 - Shadows Instead of Borders
 - Natural Shadow Stacks
 - Dark Mode Edge Highlights
+- Elevation Systems & Light-Source Shadows
 - Eased Gradients
 - Backdrop Blur × mix-blend-mode (Chrome Gotcha)
 - Image Outlines
@@ -22,6 +23,8 @@ outerRadius = innerRadius + padding
 ```
 
 This rule is most useful when nested surfaces are close together. If padding is larger than `24px`, treat the layers as separate surfaces and choose each radius independently instead of forcing strict concentric math.
+
+*Practical UI*'s fixed radius tokens — 8/16/32pt for small, medium, and large elements — can set the *base* sizes, but when surfaces nest, the concentric formula wins: derive the outer radius from inner + padding rather than picking both from the token set.
 
 ### Example
 
@@ -236,6 +239,33 @@ Dark mode surfaces often need light, not more darkness. Add tiny inner highlight
 
 Use these as optical details, not decorative chrome: a 1px top inset can be enough. Check at 100% zoom on the actual background; if the highlight is visible as a line before it is felt as crispness, lower the alpha.
 
+## Elevation Systems & Light-Source Shadows
+
+(Wathan & Schoger, *Refactoring UI*; Adham Dannaway, *Practical UI* 2nd ed.)
+
+### A fixed shadow scale with ambient decay (RUI)
+
+Define shadows like spacing: "You don't need a ton of different shadows — five options is usually plenty." Define the smallest and largest, fill the middle linearly. Good shadows have two parts: a larger, softer cast shadow (big blur, big vertical offset — direct light) and a tighter, darker shadow hugging the bottom edge (where "even ambient light has a hard time reaching"). The rule that makes a 5-step elevation system coherent: as elevation rises, the ambient part fades — "make that shadow more subtle for shadows that represent a higher elevation. It should be quite distinct for your lowest elevation, and almost (or completely) invisible at your highest elevation." Assign shadows by z-position, not by looks: "Don't think about the shadow itself, think about where you want the element to sit on the z-axis." Interaction follows the same axis: a grabbed list item gains shadow (pops forward); a pressed button shrinks or loses its shadow (pushed in).
+
+### Light-source recipes (RUI)
+
+People look slightly downward at screens — simulate an overhead light:
+
+- **Raised elements** (buttons): reveal a sliver of the lighter top edge via a top border or inset shadow with a slight vertical offset, plus a small dark drop shadow below with only a couple of pixels of blur (sharp, like a wall outlet's shadow). "Choose the lighter color by hand instead of using a semi-transparent white for best results — simply overlaying white can suck the saturation out of the underlying color."
+- **Inset wells** (text inputs, checkboxes, wells): the *bottom* lip faces the light — lighter bottom border or inset shadow with a *negative* vertical offset, plus a small dark **inset** shadow with a slight *positive* vertical offset so the page above blocks light at the top.
+
+### Dark-mode elevation is colour, not shadow (PUI)
+
+"Shadows can be difficult to see in dark interfaces, so you mostly need to rely on colour to indicate depth." Use "3 background colours to indicate elevation": **Base** (darkest, main background), **Raised**, **Overlay** — three small lightness steps (PUI uses HSB brightness 10/15/20). Keep foregrounds consistently prominent across all three with a transparent foreground palette — see `oklch-skill` → Palette Roles & State Layers.
+
+### Shadow value-systems menu
+
+Three coherent systems — pick **one** per project, don't blend:
+
+1. **MIB layered recipes** — this file's three-layer `--shadow-border` values (shadow-as-border + lift + ambient).
+2. **RUI 5-step decay scale** — the elevation system above.
+3. **PUI minimalist two** — "You'll generally need 2 shadow options (raised and overlay)."
+
 ## Eased Gradients
 
 A plain two-stop `linear-gradient(A, B)` interpolates linearly, which leaves a visible edge where the gradient starts and stops — the eye picks up the abrupt change in rate. It's most obvious on fade-to-transparent scrims and on gradients with significant color changes (e.g. a brand color melting into a dark background). Ease the gradient instead: add intermediate stops that follow an easing curve so the transition starts and ends gently.
@@ -316,6 +346,7 @@ Add a subtle `1px` outline with low opacity to images. This creates consistent d
 - **Dark mode**: pure white — `rgba(255, 255, 255, 0.1)`. Exact values: R=255, G=255, B=255.
 - Never use a near-black or near-white from the project palette (e.g. slate-900, zinc-900, `#0a0a0a`, `#111827`, `#f5f5f7`). Tinted outlines pick up the surrounding surface color and read as dirt on the image edge.
 - Never match the outline to the project's accent or ink color. The outline is a neutral separator, not a themed element.
+- Scope note: *Practical UI*'s "avoid pure black" rule is about long-form *text* on white (eye strain) — it doesn't apply to these outlines, nor to OLED true-black backgrounds; don't generalize it into "never #000".
 
 ### Light Mode
 

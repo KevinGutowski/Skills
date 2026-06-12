@@ -5,14 +5,7 @@ description: "Grow an audience-led indie product as a designer/maker — build i
 
 # Building in Public
 
-**Sources** — Figma Config talks, 2024–25:
-- *"Building in public with Figma: designers should be creators" (Nolan Perkins, 2025) — the anchor methodology.*
-- *"Building digital products as a company of one" (Christine Vallaure / Moon Learning, 2025; her book: "Solo").*
-- *"Unlocking opportunities: building your brand with side projects" (Matt D. Smith, 2024).*
-- *"Making the leap from design to business" (Parteek Saran, 2025).*
-- *"How to build for, and with, Gen Z" (Jiaona Zhang, Linktree CPO, 2024) — the content/community evidence.*
-- *"Ready, set, IDK" (Michael Di Genova, Work Louder, 2024) — the bootstrap-hardware variant.*
-- *Valio Con 2012–14 talks (Drew Wilson's conference): Todd Garland (BuySellAds), Jeff Sheldon (Ugmonk), Kai Brach (Offscreen), Aubrey Johnson, Josh Long, Shane Mielke, Michael Flarup, GMUNK, app-maker panel, Dann Petty — distilled in [references/valio-field-notes.md](references/valio-field-notes.md).*
+**Sources:** [references/sources.md](references/sources.md) — 6 Config talks + Valio Con + Show Your Work! + Dive Club.
 
 The task: you're a designer/maker launching your own thing — build the audience *while* building the product, validate before you ship, and make it pay as a team of one. (Devtool landing pages/PMF → `developer-tool-gtm`; OSS promotion → `oss-strategy`; onboarding flows → `user-onboarding`.)
 
@@ -25,6 +18,22 @@ The task: you're a designer/maker launching your own thing — build the audienc
 - **Validate at the prototype stage**: "you can start working towards product-market fit in the prototyping stage" — the loop runs on Figma prototypes and comment sections, no build required. His receipts: comment-to-launch in **32 days**; 75k users at 4.5★ in 3 months; ~100k waitlist emails from speculative concept posts.
 - **The two-way loop is the point**: "the marketing has educated the product and the product is constantly educating the marketing."
 - Cadence maxim: "Passion will get you started, persistence will get you to the turning point, and patience will keep you going."
+
+## Show your work as an operating system (Kleon)
+
+Kleon's book is not a new skill; it is the pre-product, craft-person version of this one. Density verdict: medium-high because the thesis is familiar, but the mechanics are crisp.
+
+- **Be findable while getting good**: "in order to be found, you have to be findable." The stance is anti-self-promotion: make the work discoverable while the craft remains the main job.
+- **Join a scenius, then contribute**: replace lone-genius positioning with Brian Eno's "scenius" frame — a scene of people sharing work, references, and attention. The practical move: find the community, notice what is missing, fill that void in public before worrying about monetization.
+- **Daily dispatch**: after the day's real work, share one small process artifact. Early: influences. Middle: methods or WIP. End: final product, cut-room-floor scraps, or lessons. "A daily dispatch is even better than a resume or a portfolio" because it shows current practice, not old artifacts. Set a timer so sharing never eats the work.
+- **Stock and flow**: flow is the feed; stock is the durable piece people can find months or years later. Convert repeated daily notes into posts, essays, talks, products, and books. The blog/newsletter/archive turns ephemeral proof-of-work into compounding assets.
+- **Own your turf**: social networks decay; keep a domain/list/archive you control. Kleon's "world headquarters" rule fits this skill's audience bottleneck: platforms create reach, owned surfaces preserve memory and monetization.
+- **Attribution is context**: when sharing influences, credit like a museum label — what it is, who made it, how/where/when, why it matters, and a link. "Don't share things you can't properly credit." Poor attribution robs the audience of the trail.
+- **Tell the work's story**: "our work doesn't speak for itself." Use the work-project arc: initial problem → work done → solution/result. For open-ended pitches, tell past → present → future, then make the listener the person who can help the story finish.
+- **Teach what you know**: "The minute you learn something, turn around and teach it to others." Tutorials, reading lists, recipes, and process walkthroughs create demand rather than giving away the store; people still pay for mastery, taste, and execution.
+- **Do not become human spam**: be a fan first, an open node, and a connector. If you only point to your own work, you are doing it wrong. Quality of followers beats count; the right people are peers, collaborators, and patrons, not eyeballs.
+- **Monetize with consent**: donations, crowdfunding, products, and services work best after people already value the free work. Always collect email with permission, set frequency expectations, and "treat it with respect."
+- **Keep momentum without burning out**: chain-smoke projects by using the end of one to light the next, but protect practical sabbaticals and boundaries. The operating rule is generous enough to build the scene, selfish enough to keep making the work.
 
 ## When the product is physical (Di Genova / Work Louder)
 
@@ -49,6 +58,13 @@ The task: you're a designer/maker launching your own thing — build the audienc
 - **Own the core**: don't outsource the heart of the product — no-code is fine ("the entire platform runs on a no-code solution") as long as you understand what's under the hood.
 - **Satellite products**: shipping one product surfaces adjacent demand — aim for "a little mini portfolio rather than just one product."
 - Positioning humility: "just build anything and do it well… think of it more like books" — you don't need to be the world's best; you need an audience that picks your book. Real growth is "small and steady organic… it looks quite boring but this is how it happened." Review triage: fix bugs, fix real flaws, otherwise "focus on the ones that like my product."
+
+## The niche economy & the audience bottleneck (Dive Club: Luis Ouriach Pn2G7JhxNKc; Ron Goldin UkQpgslyR3A; Tommy Geoco OYNoy468kS8)
+
+- **Distribution didn't get cheaper, only production did:** "Just because we have access to the tools, we can make things faster, we can get it into production, doesn't mean there's any eyeballs at all on it… keep it tighter, keep the scope smaller. And maybe something for your family is the best place to get that itch scratched."
+- **The financial-viability line has fallen:** "there was a literal line on a graph where if you could not generate this much profit… it's not worth pursuing. And that line has just fallen. So there's this whole category of problems that previously nobody had the financial incentive to solve that are just wide open" — local businesses, family tools, thousand-person problems. (Ridd's label: the niche economy.)
+- **Audience is the remaining bottleneck** (Ron Goldin, ex-Google/Shopify/Uber Eats — Dive Club UkQpgslyR3A): "building software isn't as hard as it used to be, but growing an audience is as hard as it always has been" — the distribution point restated by a builder shipping AI-built products; the product is no longer the moat, so budget effort accordingly.
+- **Posting is proof-of-work** (Tommy Geoco — Dive Club OYNoy468kS8): "social media is the new discovery engine right now… for better or worse, that is the way to prove" you're someone who experiments — sharing your workflow and tools publicly is product discovery and career discovery at once. The career lever: a designer-builder shipping brand work in code got renamed by his org — "they started referring to him as a brand engineer" — and the title is spreading ("Brand engineers are on the rise"). Public hybrid-skill work can mint the role before the org knows it exists.
 
 ## Side projects compound (Smith)
 
@@ -79,6 +95,9 @@ The pre-algorithm-era bootstrap corpus; full material in [references/valio-field
 - [ ] One opinionated, screenshot-able design decision that markets itself?
 - [ ] Unit economics framed as margin + time, with automation eating the decoupled work?
 - [ ] Product coupled to durable principles, not a single tool/platform?
+- [ ] Daily flow being converted into durable stock on an owned surface?
+- [ ] Influences credited with enough context and links for someone else to follow the trail?
+- [ ] Audience/community work includes listening, connecting, and teaching — not only posting your own links?
 
 ## Relationship to other skills
 
@@ -89,4 +108,4 @@ The pre-algorithm-era bootstrap corpus; full material in [references/valio-field
 - **`design-prototyping`** — the prototype-stage validation mechanics (what to fake, how to demo); here they double as content.
 - **`shape-up`** — appetite/betting once the indie product grows a team.
 
-> **Staleness note (Kevin's rule):** auto-captioned 2024–25 talks; platform/algorithm specifics (TikTok duets, trend-jacking) decay fastest — the feedback-over-downloads, persona×cohort, and margin-over-revenue rules are the durable layer.
+> **Staleness note (Kevin's rule):** auto-captioned 2024–25 talks plus a 2014 book; platform/algorithm specifics (TikTok duets, trend-jacking, newsletter vendors, social-network examples) decay fastest — the feedback-over-downloads, persona×cohort, owned-surface, and margin-over-revenue rules are the durable layer.

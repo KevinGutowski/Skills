@@ -5,13 +5,7 @@ description: "Make apps accessible and inclusive on Apple platforms — respect 
 
 # Apple Visual Accessibility
 
-**Sources** — this skill aggregates two Apple Accessibility sessions:
-- *Apple WWDC 2020, session 10020 — "Make your app visually accessible" (Drew Haas, Accessibility engineer). https://developer.apple.com/videos/play/wwdc2020/10020/*
-- *Apple WWDC 2019, session 244 — "Visual Design and Accessibility" (Sommer Panage, Accessibility engineering manager). https://developer.apple.com/videos/play/wwdc2019/244/*
-- *Apple WWDC 2025, session 316 — "Principles of inclusive app design" (Chris & Lisa, Apple accessibility design). https://developer.apple.com/videos/play/wwdc2025/316/*
-- *MDS (Matt D. Smith, Shift Nudge) — contrast videos. https://www.youtube.com/watch?v=ULUNaH-G2uY · https://www.youtube.com/watch?v=wXAa2HNNjM4 · https://www.youtube.com/watch?v=ZRBq8UYLa-0*
-- *Apple WWDC 2017 session 819 — "Designing for a Global Audience" (Sarah Harling) (lost session, via WWDC Index archive) — the cultural-inclusion layer.*
-- *Dan Hollick, Making Software, makingsoftware.com/chapters/the-problem-of-color-contrast — the contrast-math mechanism layer.*
+**Sources:** [references/sources.md](references/sources.md) — 4 WWDC sessions + MDS contrast videos + Hollick.
 
 Vision is a continuum — full sight, low vision, no sight, color blindness, light sensitivity, motion sensitivity ("one in three people has some form of motion sensitivity"). iOS exposes settings for each; your job is to **observe and respect every one**. Three pillars: color & shapes, text readability, display accommodations. The meta-rule: **turn these settings on yourself and audit your own app.**
 
@@ -114,3 +108,4 @@ See `references/settings-and-code.md` for the per-setting API table with all eig
 - **`swiftui-animation`** / **`web-animation-design`** — where the motion lives that Reduce Motion (or `prefers-reduced-motion` on the web) must tame; route implementation there.
 - **`ios-brand-identity`** — Dark Mode and brand color choices must survive Increase Contrast and Smart Invert; brand never overrides accommodation settings.
 - **`chart-experience-design`** — charts have their own accessibility layer (VoiceOver over data, Audio Graphs, redundant encodings).
+- **`web-accessibility`** — the web-scoped counterpart (semantic HTML, ARIA, skip links, WCAG testing programs); same platform split as apple-/web-typography.

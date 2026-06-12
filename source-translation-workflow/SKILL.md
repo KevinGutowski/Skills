@@ -36,7 +36,7 @@ When the user asks for a translation, produce a faithful, readable direct transl
    - Keep craft terms when useful: `kogei`, `urushi`, `raden`, `maki-e`, `yuzen`, etc., with plain-English glosses where needed.
 
 4. **Structured or editorial promotion**
-   - Airtable excerpts, quote fields, source summaries, site copy, artist/venue notes, and public-facing prose.
+   - Airtable excerpts (Airtable MCP setup → `airtable-mcp`; NocoDB operations → `nocodb-catalog-management`), quote fields, source summaries, site copy, artist/venue notes, and public-facing prose.
    - Use only direct source text, direct transcript text, English originals, or manual translations of selected passages.
    - Link the promoted text back to local archive paths and source locators.
    - Keep summaries clearly separate from translated excerpts.

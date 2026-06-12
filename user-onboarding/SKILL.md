@@ -5,7 +5,7 @@ description: "Designs and writes user onboarding — empty states, first-run flo
 
 # User Onboarding
 
-Principles from "The Elements of User Onboarding" by Samuel Hulick for designing and writing onboarding experiences that make users successful. Applies to both **shaping features** (what to build, what to cut, how to structure flows) and **writing copy** (empty states, welcome messages, CTAs).
+Principles from "The Elements of User Onboarding" by Samuel Hulick for designing and writing onboarding experiences that make users successful. Applies to both **shaping features** (what to build, what to cut, how to structure flows) and **writing copy** (empty states, welcome messages, CTAs). Supplemental source: Lidwell/Holden/Butler, *Universal Principles of Design* (2003), for entry-point mechanics.
 
 ## Core Philosophy: The Fire Flower
 
@@ -61,7 +61,9 @@ Read the appropriate reference based on context.
 10. **Sequence trust from low stakes to high** (Jude, ex-Coinbase/Instagram — Config 2025): trust "is really just consistency over time," and first impressions form in **~50 milliseconds**. Climb a *pyramid of trust*: Waymo first asks only for initials and a favorite color (which become the car's beacon), then proves it can find you, and only then asks you to ride — "the car has proven along the way, through lower-stakes moments, that it's worthy of your trust." Never ask for the high-stakes commitment first. Wrap novel tech in a **familiar analog** (Blackbird "works a lot like a credit card — many people don't even realize it's onchain"), and diagnose *whose* trust is missing: Coinbase's seed-phrase anxiety wasn't distrust of the company — "users had trouble trusting *themselves* to be the sole custodian."
 11. **You have ~30 seconds** (Tara Feener, Browser Company): "for most people trying a new web browser you've got like 30 seconds… or I'm going to go back to the thing I know." And **name the private shame** (Arc): "tab hoarding is a 'me problem' people blame themselves for… we made people feel seen" — naming a self-blamed pain creates instant resonance. Caveat from the same team: "a simpler learning experience is not the same as the better UX" — sometimes the better design deserves its learning curve.
 12. **Invert the funnel — ask after value** (Jiaona Zhang, Config 2024): TikTok asks only your birthday before landing you in the For You page, "only prompting you… after you've experienced real value." Radically streamline or fully invert signup. And build "**canvases, not corridors**" — multiple paths to the same goal, as long as "the moments of delight still outweigh the moments of difficulty."
-13. **Free play before signup** (Ryo Lu, Cursor — YC-website roast, 2025): "even in real OS you can send three free messages before you sign in. Like just let people play" — and constrain that first-use surface ("the initial demo is more constrained so that it gives you a better output") so the free taste is a *good* one. Same family as the funnel-inversion rule above.
+13. **Free play before signup** (Ryo Lu, Cursor — YC-website roast, 2025): "even in real OS you can send three free messages before you sign in. Like just let people play" — and constrain that first-use surface ("the initial demo is more constrained so that it gives you a better output") so the free taste is a *good* one. Same family as the funnel-inversion rule above. AI-native version: *inverted onboarding* — prove value at step one instead of asking questions (Emily Campbell → `ai-experience-design`, references/patterns.md).
+14. **Delight has a measured conversion cost — spend it deliberately** (Rafa Conde, Dive Club podcast, 3rnhlZj25iY): an emotional intro video shown before the signup button — "I think we lost like 20% or 30% of sign-ups for people… who would see the video first." The trade is real (softened only by "would those people drop anyways during the onboarding flow?"); pay it only when the emotional frame is the product's edge — and design targeted, not generalized: "if you try to design for everyone then it's harder to make these things."
+15. **Pattern fidelity for utilitarian flows** (Brandon Jacoby, Dive Club podcast, RaKFP_DuqpA): for "utilitarian flows in product… there are patterns that work that show up in 90% of the products out there. Those patterns are there for a reason." The judgment — "know when to reinvent the wheel, know when to follow patterns… is like the number one trait that any, especially junior designer, can have." Signup and setup are usually the follow-patterns zone; save invention for the product's signature moments.
 
 ## Shaping Onboarding Features
 
@@ -72,7 +74,18 @@ When deciding what to build or cut from an onboarding flow:
 - **For each step ask:** Does this help them reach their quick win? Can a machine do it? Can we use a smart default? Can we defer it until after they've experienced value?
 - **Define flows by user improvement**, not by steps. Beginning state = who they are arriving. End state = who they are after "base camp."
 - **Points of Friction** slow users down (confusion, tedious fields). **Points of Disconnect** let them drift away (coupon code fields, external links). Eliminate both.
+- **Treat first use as an entry point** (Lidwell/Holden/Butler, *Universal Principles of Design*, "Entry Point"). Check for "minimal barriers, points of prospect, and progressive lures": remove registration/permission/loading barriers, let users survey what is possible, then place one visible lure just past the threshold that pulls them into the quick win.
+- **For any personal-data field, explain why you ask and what you'll do with the answer; make it optional and editable** (Metts & Welfle, *Writing Is Designing*, ch. 5 — Fitbit's sex question, which trans users can't answer without knowing whether it's demographic or biometric). Exclusion compounds at scale: "If you exclude even one-tenth of one percent, that means there are 755 million people" less able to use your product.
 - **The quick win must:** demonstrate core product value, be achievable in one sitting, not depend on other people, harness the user's current intent.
+
+**Design backward from the behavior** (Cindy Alvarez, *Build Better Products*, ch. 8). "Features don't matter. They don't matter at all. All that matters is customer behavior." Start with the recurring behavior the product needs, then classify onboarding work:
+- **Required** — the minimum path to the user's first real value.
+- **Encouraged** — actions that make future success more likely but can wait.
+- **Eventual** — advanced setup, mastery, integrations, polish.
+
+"When a new user comes to your product, give them a task." Empty welcomes and feature tours are weaker than a constrained job with a visible finish. For habit products, use Amy Jo Kim's sequence via Klein: core loop first, then onboarding, then discovery, then mastery. If there is no strong loop, "you're building a leaky bucket." Build the thing someone will do every day before decorating the path into it.
+
+**Dark-pattern boundary:** a dark pattern is any interface element that benefits the company at the expense of what a reasonable, fully informed user would agree to. If the onboarding goal depends on hiding cost, commitment, consent, or cancellation, route to `error-messages` / `form-design` ethics rather than conversion optimization.
 
 ## Quick Copy Formulas
 
@@ -99,4 +112,4 @@ When deciding what to build or cut from an onboarding flow:
 
 ## Related skills
 
-Define the product's writing voice with `ui-voice-and-tone`, then structure the first-run flow and write the welcome/empty-state copy here in that voice — this skill owns the *flow and quick-win framing*, that one owns the *voice*. For failure states, route to `error-messages`. For in-app *feature* teaching after signup — no-tutorial first launches, visual cues, gesture hints, tips — use `feature-discoverability` (the Apple counterpart to this skill's journey framework).
+Define the product's writing voice with `ui-voice-and-tone`, then structure the first-run flow and write the welcome/empty-state copy here in that voice — this skill owns the *flow and quick-win framing*, that one owns the *voice*. For failure states, route to `error-messages`. For in-app *feature* teaching after signup — no-tutorial first launches, visual cues, gesture hints, tips — use `feature-discoverability` (the Apple counterpart to this skill's journey framework). For courses, workshops, curricula, practice/feedback systems, and job aids, route to `learning-experience-design`.

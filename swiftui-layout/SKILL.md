@@ -5,12 +5,7 @@ description: "Lays out and structures SwiftUI interfaces — choosing containers
 
 # SwiftUI Layout & Structure
 
-**Sources** — this skill aggregates four SwiftUI sessions:
-- *WWDC 2020, session 10031 — "Stacks, Grids, and Outlines in SwiftUI" (Cody & Curt). https://developer.apple.com/videos/play/wwdc2020/10031/*
-- *WWDC 2022, session 10056 — "Compose custom layouts with SwiftUI" (Paul). https://developer.apple.com/videos/play/wwdc2022/10056/*
-- *WWDC 2022, session 10058 — "SwiftUI on iPad: Organize your interface" (Raj Ramamurthy). https://developer.apple.com/videos/play/wwdc2022/10058/*
-- *WWDC 2022, session 110343 — "SwiftUI on iPad: Add toolbars, titles, and more" (Harry Lee). https://developer.apple.com/videos/play/wwdc2022/110343/*
-- *WWDC 2022, session 10054 — "The SwiftUI cookbook for navigation" (Curt Clifton). https://developer.apple.com/videos/play/wwdc2022/10054/*
+**Sources:** [references/sources.md](references/sources.md) — 5 WWDC SwiftUI sessions (2020–2022).
 
 SwiftUI layout primitives are designed for **composition** — when one type isn't enough, combine it with a complementary one. This skill covers picking the right container, building custom ones with the `Layout` protocol, and the structure layer (split views, tables, toolbars) that the design rules in `apple-navigation-design` get implemented with.
 

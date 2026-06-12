@@ -5,10 +5,7 @@ description: "Design app icons for Apple platforms — timeless craft (metaphor,
 
 # App Icon Design
 
-**Sources** — this skill aggregates three Apple sessions (the timeless craft + the current system):
-- *Apple WWDC 2017, session 822 — "App Icon Design" (Apple Design). https://developer.apple.com/videos/play/wwdc2017/822/*
-- *Apple WWDC 2025, session 220 — "Say hello to the new look of app icons" (Marie). https://developer.apple.com/videos/play/wwdc2025/220/*
-- *Apple WWDC 2025, session 361 — "Create icons with Icon Composer" (Lyam). https://developer.apple.com/videos/play/wwdc2025/361/*
+**Sources:** [references/sources.md](references/sources.md) — 3 WWDC sessions.
 
 "The icon is the face of your app as much as the UI." The craft principles are timeless; the delivery system changed completely in 2025 — icons are now **layered Liquid Glass artworks** that adapt across six appearances, built once and rendered everywhere.
 
@@ -20,7 +17,15 @@ description: "Design app icons for Apple platforms — timeless craft (metaphor,
 - **Lineage** — "don't change your app icon every single time you update your app. Refine your identity over time." Think of the icon as an investment.
 - **Process:** be unique in your category; sketch on paper first; the "only app on the Home screen" test (does it communicate without its name?); **test on the Home screen, in a folder, and in Settings — squint**; "oftentimes it's the simplest design or an early direction that you abandoned that's ultimately right."
 
-Two practitioner data points (Config 2024): the entire personality of Susan Kare's Chicago lives in ~**1,800 pixels** — tiny canvases can carry identity if every pixel is a decision; and Hische's small-size rules apply to icon marks too: less stroke contrast, more white space, simplified details that would vanish (run the **blur test** — a strong mark survives blurring).
+Two practitioner data points (Config 2024): the entire personality of Susan Kare's Chicago lives in ~**1,800 pixels** — tiny canvases can carry identity if every pixel is a decision; and Hische's small-size rules apply to icon marks too: less stroke contrast, more white space, simplified details that would vanish (run the **blur test** — a strong mark survives blurring). From logo craft (Allan Peters, *Logos that Last*): when an icon mark breaks at small sizes, "Overly thin lines and tight negative space tend to be the major issues" — and an **embroidery test** is the brutal physical version of the squint test.
+
+Practitioner data points from Michael Flarup, *The macOS App Icon Book* (2024) — artist-spotlight craft; the book is pre-Liquid Glass, so take the concept/testing discipline, not the rendering style:
+- **Key ingredients, not the whole object** (Raven Yu): "you just need the key ingredients that represent it conceptually" — a zoomed notepad with **three grid lines** beats drawing the full notepad, and the simplification buys scalability.
+- **"Live on" the icon** (Malin Sundberg): get it onto your device early and "'live on' (to borrow an Apple term) different versions of the icon for weeks" — dock/home-screen dogfooding beats canvas judgment.
+- **Metaphor over loudness** (Gavin Nelson): "recognizability comes from unique and creative metaphors rather than visual design that makes them 'louder' than their neighbors."
+- **Caricature realism** (Nob Nukui): Apple's most "realistic" icon objects are, up close, "exaggeratedly deformed" — exaggerate for read, don't render literally. And: "Icons are symbols, not just service logos."
+- **Pixel-grid multiples** (Aditya Nugraha Putra): detail at 4px multiples, patterns at 25% multiples, paths snapped to the pixel grid — it survives downscaling.
+- **Icon sets are a family** (Flarup): a set needs "a system of metaphors and techniques that will make a set feel like a family of icons" — judged on shared perspective, color, and detail level.
 
 ## The Liquid Glass icon system (2025)
 
@@ -72,5 +77,6 @@ See `references/examples.md` for the worked redesigns (News, Keynote, Podcasts, 
 
 - **`liquid-glass-design-system`** — the same material; that skill covers it in UI, this one in icons (icon-specific rules like the 4-group cap and mono/tint modes live here).
 - **`ios-brand-identity`** — the icon is the brand's most concentrated expression; brand strategy there, icon craft here. Its "personality from the app icon's visual language" line (widgets) draws from this.
+- **`logo-design`** — creating the brand mark itself (Peters method). Shared core: metaphor selection and small-size survival. Different task shape: a logo is a containerless multi-format system; an icon is one artwork in an OS-owned container. Logos, badges, identity systems → there.
 - **`naming-features-and-labels`** — metaphor selection parallels its naming criteria (identifiable, travels, ages well).
 - **`sf-symbols`** — glyph craft inside the app; icon glyphs share the simplicity/scale rules but live on the icon grid, not the type baseline.

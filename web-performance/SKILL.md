@@ -5,10 +5,7 @@ description: "Makes web apps load fast and feel instant — Core Web Vitals, per
 
 # Web Performance
 
-**Sources:**
-- *"Betting on the web: ensuring fine-tuned performance for dynamic web apps" — Charlton Roberts, frame.io/Adobe (Vercel conference; surfaced via Emil Kowalski's animations.dev Vault). The fluid-UI process discipline.*
-- *"Crossing the chasm between quality and performance" — Ricardo Vazquez (Dropbox, ex-Shopify POS), Figma Config 2025. The metrics-and-principles layer.*
-- *Supporting field sources: Josh Wootonn's sidebar-performance study; Henry Heffernan and Dennis Brotzky (animations.dev interviews); Henry Modisett (Perplexity, Config 2024).*
+**Sources:** [references/sources.md](references/sources.md) — frame.io/Adobe (Roberts) + Config 2025 (Vazquez) + supporting field sources.
 
 The frame: **"Performance is a feature. If it doesn't feel good, it's not working."** And the maxim that kills decoration-first thinking: **"Aesthetics without performance isn't design. It's simply decoration"** (Vazquez). The classic *make it work → make it right → make it fast* loop fails for dynamic apps — fast-at-the-end produces "death by a thousand cuts" jank even when every team did its job. Instead: **"how it feels is as important as how it works the entire way through"** — frame.io budgets **about half of feature-build time** for fluid-UI work, and stopped being surprised by it.
 
@@ -40,6 +37,7 @@ The car analogy: **TTFB** = key in the ignition → **First Contentful Paint** =
   - **Anticipate** — can it move earlier? (prefetch routes/data so the click is instant)
   - **Offload** — does it belong on the main thread at all? (uploads → web worker; some logic → an API)
 - **Perceived performance is real performance**: a faster spinner makes identical load times feel faster; optimistic states, specific progress copy, and choreographed latency (confirm steps that absorb API time) all buy real felt speed. (Animation-side specifics live in `web-animation-design`.)
+- **The too-fast exception** (Yablonski, *Laws of UX*, ch. 10): the Doherty threshold — respond under 400 ms — is the default, but instant responses to work the user believes is *hard* can erode comprehension and trust. "Purposefully adding a delay to a process can actually increase its perceived value and instill a sense of trust, even when the process actually takes much less time." Facebook's Security Checkup animates a scan that finishes far sooner — the pacing makes the thoroughness legible. Reserve for trust-critical operations; never slow routine interactions.
 - **Page-load entrances must be CSS** (Heffernan): JS-library entrance animations wait on JavaScript — they visibly delay first paint. Save Motion/React Spring for post-hydration interactions.
 - Animating `box-shadow` is expensive; animate the opacity of a pre-rendered shadow layer. Avoid animating inherited CSS variables on ancestors (recalc storms across all children — the Vaul drag bug).
 
@@ -67,6 +65,7 @@ The car analogy: **TTFB** = key in the ignition → **First Contentful Paint** =
 - **`motion`** (performance-audit capability) — ranks *animation* techniques by render-pipeline cost (S–F); this skill owns the app-level loading/interaction discipline around them. Audit an animation there; budget the interaction here.
 - **`web-animation-design`** — perceived-speed and animation-performance rules (transform/opacity only, under-20px blurs) live there; this skill supplies the frame budgets and process that enforce them.
 - **`make-interfaces-feel-better`** — §17 layout stability (anti-skeleton, no-shift loads) is the CLS doctrine; §18's modern CSS primitives are the prefer-CSS toolbox.
+- **`web-typography`** — font-loading strategy (WOFF2, subsetting, `font-display`, FOUT-over-FOIT, fallback matching) lives there; this skill owns the budgets it must fit.
 - **`optimizing-rails`** — the server side of TTFB and API latency; this skill takes over once bytes reach the browser. Same measure-first creed.
 - **`devtool-interface-design`** — the speed usage-law and frequency rules for tools people live in.
 - **`swiftui-lazy-stacks`** / **`swift-concurrency`** — the native-platform analogs (scroll perf; coalesce-before-isolation).

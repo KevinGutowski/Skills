@@ -5,7 +5,7 @@ description: "Craft and critique clear names for anything users see — features
 
 # Naming Features and Labels
 
-*Source: Apple WWDC 2026, session 290 — "Craft clear names for features and labels in your app" (Heej, Human Interface design team). https://developer.apple.com/videos/play/wwdc2026/290/. Plus MDS (Matt D. Smith) — https://www.youtube.com/watch?v=6153Upr2BDM · https://www.youtube.com/watch?v=k8dcRRgA3T8 (CTA grammar).*
+*Source: Apple WWDC 2026, session 290 — "Craft clear names for features and labels in your app" (Heej, Human Interface design team). https://developer.apple.com/videos/play/wwdc2026/290/. Plus MDS (Matt D. Smith) — https://www.youtube.com/watch?v=6153Upr2BDM · https://www.youtube.com/watch?v=k8dcRRgA3T8 (CTA grammar). Plus Lisa Maria Martin,* Everyday Information Architecture *(A Book Apart, 2019), ch. 3 — an independent second source on label craft that converges with Apple's criteria.*
 
 Naming is as fundamental to a product as layout, interaction, and visual design. A name is the first thing a user reads, and they predict what they'll find before they tap. Get it right and trust builds; get it wrong and every interaction starts from confusion.
 
@@ -47,7 +47,7 @@ With the audience in mind, ask: when they encounter this feature, what should th
 Step back and cluster the notes. Different words pointing at the same feeling become a theme. For the Maps example: **Ease**, **Excitement (rediscovery)**, **Security**.
 
 ### 4. Generate candidates per theme, then eliminate against the criteria
-Produce name options that honor each theme. Then cross out the ones that fail a criterion — doesn't fit the product, too vague, won't translate. Make the elimination explicit (see "Iterate by elimination" below).
+For abstract values, borrow the noun-metaphor move from logo design (Allan Peters, *Logos that Last*): convert the value to a concrete noun metaphor — trust → shield, key, lock — "a noun that serves as a metaphor for that word." Produce name options that honor each theme. Then cross out the ones that fail a criterion — doesn't fit the product, too vague, won't translate. Make the elimination explicit (see "Iterate by elimination" below).
 
 ### 5. The say-it-out-loud test
 Drop each surviving candidate into a real sentence a user would read or say to a friend:
@@ -82,6 +82,17 @@ Clarity isn't only achieved by being literal. Pick the register that fits the re
 - **Invented / branded compound** — a coined word that earns its clarity from its parts. Apple Music's **AutoMix** (Auto = happens without you + Mix = blends songs) is a word that doesn't exist, yet is understood immediately. Naming with intention means you don't have to default to existing words — but the parts must carry the meaning so the invented word doesn't have to explain itself.
 
 The criteria don't change across registers. Only how you weigh them does.
+
+## Category labels (Martin)
+
+When the name labels a *category* — nav items, sections, filters, board names — the IA discipline adds four rules (Martin, ch. 3):
+
+- **Labels and criteria co-evolve.** A category label isn't chosen once; it's tuned against what falls under it: "you create a label, you test the label, you tweak the label. You create the criteria, you test the criteria, you tweak the criteria." And the lever cuts both ways — "Changing a label narrows or broadens the scope of what content can fall under it." Renaming *is* re-scoping.
+- **Possessive pronouns** (Erika Hall, quoted by Martin): "Things belonging to the company that created the system, such as a feature or privacy policy, are 'ours.' Things belonging to the user, such as a profile or shopping cart, are 'yours.'" And the part everyone overlooks: anything that's just part of the overall experience needs *no* possessive at all — most labels don't.
+- **Parallel structure signals a set.** The Posse Foundation's nav uses matching gerunds — "Notice that all of these categories follow the same linguistic pattern—shaping, recruiting, supporting, connecting." — then deliberately breaks pattern with "Partner with Us" to signal a shift from mission narrative to call-to-action. Match the grammar of sibling names; break it only on purpose.
+- **No catch-alls.** "Avoid, at all costs, miscellaneous or catch-all categories with generalized labels" — a Misc/Other/Resources bucket is a symptom of a classification problem upstream, not a name.
+
+Corroborating myth-bust (Yablonski, *Laws of UX*, ch. 4): visible nav menus don't tax working memory, so the "max 7 items" rule is folklore — "there's no usability gain provided by limiting these links to a specific number." Cut nav items for clarity, not for a magic count.
 
 ## CTA and button grammar (MDS)
 
