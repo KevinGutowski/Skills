@@ -291,6 +291,8 @@ Tranche 2 candidates (not captured): Tommy Geoco industry state, Katarina Batina
 
 - CLOSED 2026-06-11: design-team-leadership parking spot superseded by people-management (created from Scott/Zhuo/Hogan trio; design-specific hiring signals remain in design-org-influence/references/team-building.md).
 
+- CLOSED 2026-06-12: Gal Shir *60 Tips for Logo Design* OCR recheck completed. Rendered 77 image pages via `pdftoppm` to `/private/tmp/gal60-ocr`, OCR'd with Tesseract, assembled `/tmp/books/60-tips-logo.txt`, and verified 19 short quotes. Density MED as a corroborator, not a replacement for Peters. Folded four-lane intake, three keyword lanes, time-boxed sketch warmup, rest/profile-image/application/uniqueness tests, and presentation sequencing into `logo-design`; added TOC/source-map entry. The `logo-design` skill is now two-source, with Peters still primary.
+
 ## 2026-06-11 — PixelJanitor / Derek Briggs sweep (PR #4 completion)
 Cloud agent's PR #4 was a sound base but missed: the 10-tweet shadow-borders thread (production CodePen values), second halves of both cited threads, Chrome 13px baseline bug, flexbox min-size reset, Tailwind-vs-CSS-Modules agent-token experiment (Jun 2026), and ALL video content (Dive Club S4 + Shape FM eps. 3/8 — read in full via yt-dlp). Folded into make-interfaces-feel-better, web-animation-design, frontend-design, design-org-influence, design-systems, ai-enablement. All quotes verified (X via vxtwitter; video via transcripts). Parked: Shape FM eps. 1/2 (may contain gradient/shadow talk per ep. 3 reference), button-in-Figma thread 1636415458378407936 (replies unrecoverable), glass-button/Sonner-shadow values (in images, need OCR or manual read), promised dropdown-breakdown thread (likely never posted).
 

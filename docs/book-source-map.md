@@ -22,6 +22,7 @@ Rules:
 | Typography systems | MailChimp, *The UX Reader*, "Tightening Type and Relative Font Sizing"; Rutter/Santa Maria/Butterick typography books already extracted; Elliot Jay Stocks articles | MailChimp has a vertical-rhythm/baseline-grid case study, but stronger dedicated typography sources own most future folds. |
 | Roadmaps / release cycles / cleanup | Perri, Gothelf/Seiden, Klein product trio; MailChimp, *The UX Reader*, "Release Cycles and Roadmaps" and "Iteration and the Feature/Refinement Balance"; Linear quality series | Product trio owns measurement-led strategy; MailChimp adds a craft/org practice for annual cleanup releases and feedback-fed refinement. |
 | Research impact / synthesis | Product trio; Buley; MailChimp, *The UX Reader*, research section | MailChimp adds distribution channels and parallel-cycle research cadence; Buley owns solo-UX influence mechanics. |
+| Logo design | Allan Peters, *Logos that Last*; Gal Shir, *60 Tips for Logo Design* | Peters remains the primary method source. Shir corroborates the process and adds practical checks: four-lane intake, keyword lanes, time-boxed sketch warmup, rest overnight, profile-image/uniqueness tests, and presentation sequencing. |
 
 ## MailChimp, *The UX Reader* (2014)
 
@@ -97,6 +98,28 @@ for motion principles. SVG is a minor implementation lead, not a new fold by its
 | Ch. 5, frame rates | For strobing or large-distance movement, manual motion blur via SVG filters or sprites can help special projects, but the book treats it as beyond scope. | Source-map lead only; current `web-animation-design` frame-rate/perception guidance is stronger. |
 
 Verified quote: "manually add motion blur using SVG filters or sprites".
+
+## Gal Shir, *60 Tips for Logo Design* (2025)
+
+Extraction: OCR'd image-only PDF from Apple Books with `pdftoppm` + Tesseract to
+`/tmp/books/60-tips-logo.txt`. Density: MED for `logo-design` as a corroborator,
+not a replacement for Peters. Source is a purchased ebook; use distill-only rules
+and short verified quotes.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| 1. Purpose | Defines a logo as a brand-identification tool and distinguishes logo from brand ecosystem. | Corroborates `logo-design` framing. |
+| 2. Researching | Intake across business, audience, brand, client taste, term/trait/object keywords, and competitor logo boards. | Folded four-lane intake + keyword lanes to `logo-design`. |
+| 3. Sketching | Fast rough sketches, quantity before quality, object/characteristic/letter connections, combining sketches, and concept elimination. | Folded time-boxed warmup; Peters' 50-sketch standard remains stricter. |
+| 4. Cleaning | Simplify repeatedly, use grids, geometry, symmetry, shared radii, and shared angles. | Mostly covered by Peters; useful corroboration for geometric vectorization. |
+| 5. Personality | Tune balance, shape, weight, orientation, and color to match brand character. | Covered by existing logo/app-icon/design-principles material; no separate fold. |
+| 6. Wordmark | Match capitalization, weight, style, spacing, baseline, line weight, negative space, radius, and angles between symbol and wordmark. | Lightly reinforces `logo-design` wordmark geometry in tests/presentation; possible future depth. |
+| 7. Testing | Test readability at scales, rest overnight, profile image alignment, applications, color/contrast, and uniqueness via image search. | Folded to `logo-design` tests. |
+| 8. Showcasing | Set context, let the mark speak first, explain symbolism/characteristics, show sizes/colors/mockups, and present confidently. | Folded to `logo-design` presentation protocol. |
+
+Verified short quotes include: "A logo is a tool representing a brand"; "A logo is like a handshake between a business and its audience"; "Don’t spend more than 30 seconds on each sketch"; "Let it rest overnight"; "Test for uniqueness"; "Let the logo speak first"; "Show mockups".
 
 ## Lidwell / Holden / Butler, *Universal Principles of Design* (2003)
 

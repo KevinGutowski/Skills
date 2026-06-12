@@ -5,7 +5,7 @@ description: "Create brand marks, badges, and identity systems via the Peters me
 
 # Logo Design (the Peters Method)
 
-**Source** — Allan Peters, *Logos that Last: How to Create Iconic Visual Branding* (Rockport, 2023). Like `user-onboarding` (Hulick method), this is **one practitioner's complete working method**, not a field survey: the exact six-week brand-mark process Peters Design Company runs with every client. Worked client cases live in [references/worked-cases.md](references/worked-cases.md).
+**Sources** — Primary method: Allan Peters, *Logos that Last: How to Create Iconic Visual Branding* (Rockport, 2023). Corroborator: Gal Shir, *60 Tips for Logo Design* (2025; OCR'd image PDF, distill-only). Like `user-onboarding` (Hulick method), this is **one practitioner's complete working method** with a second practitioner's checklist folded in where it sharpens the process. Worked client cases live in [references/worked-cases.md](references/worked-cases.md).
 
 A logo here is a **containerless system** — mark, logotype, badge, patterns, icons — that must work on a water tower, a favicon, and an embroidered hat. (An app icon is a single artwork in an OS-owned container — a different task shape; see Relationships.)
 
@@ -17,12 +17,13 @@ You **can** control: personal passion, universal beauty, originality, functional
 
 ## 2. The Brand Noun Process
 
-Decide the **subject matter** before anyone draws. Steps:
+Decide the **subject matter** before anyone draws. Before the noun list, run Shir's four-lane intake: business (product, problem, model, competitors), audience (pain, traits, where they'll see the mark), brand (name, mission, values, characteristics), and client taste (expectations, liked/disliked colors and shapes). A logo is "like a handshake between a business and its audience"; don't skip either side.
 
 1. **Designer lists 15–25 nouns** (person/place/thing) that could be the mark's subject. Read the client's site and values first.
 2. **Non-nouns must convert:** "you need to come up with a noun that serves as a metaphor for that word." Trust → image-search "trust icons" → shield, key, keyhole, shaking hands, lock. Abstract values never enter the list raw.
-3. **Homework: every client-side approver** of the final logo makes their own noun list (teach what a noun is — most client lists come back less than half nouns).
-4. **Merge, organize by category, dedupe**, then **narrow to ~15 WITH the client** in a meeting.
+3. **Split notes into three keyword lanes** (Shir): terminological keywords (industry/product words), characterizing keywords (adjectives/traits), and figurative keywords (objects/symbols). The noun list comes mostly from the third lane, but every sketch should still map back to at least one keyword.
+4. **Homework: every client-side approver** of the final logo makes their own noun list (teach what a noun is — most client lists come back less than half nouns).
+5. **Merge, organize by category, dedupe**, then **narrow to ~15 WITH the client** in a meeting.
 
 The payoff is procedural: "Narrowing down the list is more important than making the list. It eliminates everything that the client does not want to see. That way when you are selling logo ideas in the later stages of the project, the decision will only be based on the aesthetics of the design and not the subject matter." Subject-matter fights are settled before sketching; "Including the client in this process is absolutely paramount."
 
@@ -31,6 +32,7 @@ Guard the narrowing: clients will cull clichés (shield, apple, heart) not reali
 ## 3. Sketch discipline
 
 - **Minimum 50 rough sketches** from the approved nouns. "Quantity is king." Rough = just enough to capture the idea; refining a sketch at this stage is wasted time ("You can't polish a turd" — generate, don't polish).
+- **Time-box the warmup** (Shir): don't spend more than 30 seconds on early sketches; keep them on the canvas instead of deleting/refining them. His lower floor is 20 sketches, but Peters' 50 remains this skill's standard.
 - **Vectorize the best 15** with geometry, simple shapes, a grid. Thick line weight for small sizes, but "The negative space in a brand mark is just as important as the positive space." Try variants, always at small sizes, black-on-white *and* white-on-black.
 - **Cull and refill:** before the deck ships, identify the five weakest marks and go back to the sketchbook to replace them with something better.
 
@@ -55,12 +57,14 @@ One noun is a cliché; two combined are ownable (shield = trite, lightning bolt 
 - **The hat test** (universal beauty): "mock up a potential brand mark on a hat. I then ask the client if they would be proud to wear this hat." Clever-but-unwearable fails.
 - **Functionality floor:** works as a **16×16 favicon**; embroiders small; stamps into concrete if the client needs it. Embroider real samples when budget allows (Eagan staff uniforms).
 - **Small-size failure diagnosis:** find where it breaks first — "Overly thin lines and tight negative space tend to be the major issues I see in logo designs in small-scale applications." Fixes in order: thicker lines → more negative space between elements → simplify without losing the meaning.
+- **Shir's extra checks:** let it rest overnight before final judgment; test as a profile image inside a bounding box for optical centering; place it in different applications; run a quick visual-similarity/image-search check for uniqueness before presentation.
 
 ## 6. The presentation protocol (first round)
 
 - **15 marks, black and white only — no typography, no color.** Aesthetic-only decisions, remember, because nouns are pre-approved.
 - **Open with a recap of the approved brand nouns**; list each mark's referenced nouns on its slide (the PDF must self-explain later).
 - Each mark black-on-white and white-on-black; final slide = all 15 side by side.
+- **Let the logo speak first** (Shir): after context, show the mark alone with generous white space before explaining symbolism. Then explain what each element represents, show scale/color behavior, and use mockups so the client sees the mark "in action."
 - **Lead:** pick your top three in advance, place them for impact, and state the meeting's goal up front (client picks their top three). Frame feedback positively — say what you *do* like.
 - **Never email the PDF.** Present live to "answer questions and fend off bad feedback on the fly" — the most crucial presentation of the project.
 - **The silent ballot (anti-HiPPO):** with a large stakeholder room, present all 15 without commentary, then at the side-by-side slide ask everyone to "quietly write down on a piece of paper which three they would pick," then go around the room tallying aloud. "This keeps the person in charge on the client end from dominating the conversation." Start the reveal with your own top three.
@@ -97,12 +101,14 @@ Order of attack: functional pain points first (ask the client what breaks in rep
 ## Checklist
 
 - [ ] Uncontrollables (time, budget, product) named to the client at kickoff?
-- [ ] Abstract values converted to noun metaphors; ~15 nouns narrowed *with* every approver?
-- [ ] 50+ rough sketches before any vectorizing; combinations attempted via all five techniques?
+- [ ] Business/audience/brand/client-taste intake done; abstract values converted to noun metaphors; ~15 nouns narrowed *with* every approver?
+- [ ] Terminological/characterizing/figurative keyword lanes captured; every surviving sketch maps to a keyword?
+- [ ] 50+ rough sketches before any vectorizing; early sketches time-boxed; combinations attempted via all five techniques?
 - [ ] 15 vectorized; five weakest culled and replaced from the sketchbook?
 - [ ] No letter-in-a-circle, no Frankenstein merges, no joke marks, no pure black/white?
-- [ ] Passes the hat test, 16×16 favicon, embroidery; thin lines / tight negative space diagnosed?
-- [ ] First round presented live: B/W only, nouns recapped, silent ballot if the room is big?
+- [ ] Passes the hat test, 16×16 favicon, profile-image box, real applications, embroidery; thin lines / tight negative space diagnosed?
+- [ ] Rested overnight and uniqueness/image-search check run?
+- [ ] First round presented live: B/W only, nouns recapped, logo shown alone before explanation, silent ballot if the room is big?
 - [ ] "Make the logo bigger" answered with brand-mark DNA in patterns/icons/type, not scale?
 - [ ] Badge (if any) earns its place; hierarchy name > mark > tagline > balance words?
 - [ ] Redesign keeps equity — was-working / wasn't-working audit done?
