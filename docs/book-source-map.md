@@ -85,7 +85,7 @@ Extraction: `/tmp/books/accessibility-for-everyone.txt`. Already a primary sourc
 | --- | --- | --- |
 | Ch. 4, rich media / text in images | Bitmap text cannot resize, be read by screen readers, be indexed, be translated, or be revised cheaply; logos are the real exception; SVG text can keep graphic text scalable/stylable when handled accessibly. | Folded to `web-accessibility` rich media. |
 
-Verified quote: "text in JGPs, GIFs, and PNGs can't be resized" (source typo preserved in extraction).
+Verified quote: "text in JGPs, GIFs, and PNGs can’t be resized" (source typo preserved in extraction).
 
 ## Rachel Nabors, *Animation at Work*
 
