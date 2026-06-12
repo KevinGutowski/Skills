@@ -70,7 +70,12 @@ Production layouts must also survive real text: "English, a very compact languag
 
 ## Fidelity survives implementation
 
-PixelJanitor / Derek Briggs' recurring design-engineering lesson: users never see the design file, so high polish only counts when it survives into HTML/CSS. His UI Engineering 101 course centers on translating high-fidelity Figma components into polished HTML/CSS, including layout, states, interactions, SVG motion, concentric radii, stacked shadows, and elevation highlights (https://maven.com/pixeljanitor/uiengineering-101-for-designers). When building a distinctive frontend, prefer visual ideas you can implement exactly, then inspect the live result at real size. If the production artifact drops the lighting, state behavior, responsive fit, or motion intent, the design is unfinished.
+PixelJanitor / Derek Briggs' recurring design-engineering lesson: "Users don't see your Figma design files, so they're only as good as their implementations. Sweat the details in the code too." (Briggs). His UI Engineering 101 course (Maven) centers on translating high-fidelity Figma components into polished HTML/CSS — layout, states, interactions, SVG motion, concentric radii, stacked shadows, elevation highlights. When building a distinctive frontend, prefer visual ideas you can implement exactly, then inspect the live result at real size. If the production artifact drops the lighting, state behavior, responsive fit, or motion intent, the design is unfinished.
+
+- **Re-engineer Figma effects, don't transliterate them.** Progressive blur is GPU-expensive live: "a designer might use a progressive blur to get that sharp edge at the top of the of the gradient to like I wouldn't use that in in development. Like that would be really expensive processing" (Briggs, Shape FM). Rebuild it as a radial-gradient base + inset box-shadows — "if you use a negative spread on that it'll pull it in" to recover the sharp edge. The principle: design in Figma one way, implement differently, as long as it looks the same. (Div/CSS-only progressive blur is achievable — Briggs shipped one for a nav overlay — but no public code.)
+- **Feasibility heuristics when reviewing a Figma file** (Briggs, Shape FM): near-duplicate font families = font-loading/CDN cost for marginal visual difference — consolidate before implementing. Figma corner smoothing (squircles): "recently Chrome added the corner-shape superellipse property... but it's not available in Firefox or Safari [yet]" — elsewhere it needs clip masks or SVGs; budget for that or use plain radii.
+
+Bibliographic detail (course link, post/episode IDs): [references/sources.md](references/sources.md).
 
 ## De-slop substrate (Ryo Lu, Cursor — interviews, 2025)
 
@@ -79,6 +84,7 @@ PixelJanitor / Derek Briggs' recurring design-engineering lesson: users never se
 - **Banned slop tells**: "massive shadows, purple gradients," purple buttons, the default icon set "AI will just pick." His safe fallback when unsure — "you just use system fonts" — sets the floor (never slop defaults); this skill's distinctive-type guidance above sets the ceiling.
 - **Tokens make AI composable**: "with like a really robust like foundational set of tokens and components, AI is able to compose them pretty well."
 - **Seed the brand early** (Ron Goldin, ex-Google/Shopify/Uber Eats — Dive Club UkQpgslyR3A; second practitioner vote for the anti-generic doctrine): "don't wait till like the very end to think about branding and differentiation" — once you know what the product is, establish the visual language up front so AI extrapolates *your* aesthetic instead of defaulting to slop.
+- **Global flexbox reset** (Briggs): "Pretty much all flexbox woes have gone away by adding this to the global css of every new project." `*, ::after, ::before { min-width: 0; min-height: 0; }` (his post has a stray trailing comma in the selector; this is the corrected form). "If you add this to an existing project, check for ui regressions (most likely will be some!)."
 
 ## MDS field tactics (Matt D. Smith, Shift Nudge — YouTube -VSXVDr5HW0, Uno5dpotRgo, k8dcRRgA3T8, jSLfQ0sJDCw; Dive Club K_7ECqNlTtE)
 

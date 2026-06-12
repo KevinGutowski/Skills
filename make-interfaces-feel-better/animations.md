@@ -304,30 +304,42 @@ The non-absolute icon (InactiveIcon) defines the layout size. The absolute icon 
 
 ## Sequenced Toggle Motion
 
-For custom switches, segmented controls, and pill indicators, avoid treating state change as a single linear slide when the object can morph in a way that explains the transition. PixelJanitor's Campsite switch thread (Feb 2023: https://threadreaderapp.com/thread/1628068543261732864.html) used a middle-state swap:
+For custom switches, segmented controls, and pill indicators, avoid treating state change as a single linear slide when the object can morph in a way that explains the transition. Briggs' Campsite switch (thread in [references/sources.md](references/sources.md)) used a middle-state swap:
 
 1. Idle state.
 2. Thumb stretches to full width.
 3. State changes while the thumb spans both ends.
 4. Thumb contracts into the final side.
 
-This works because the temporary full-width shape hides the layout jump and makes the control feel elastic without guessing at a complex path.
+His implementation: "In motion you can write async functions to sequence animation. The magic happens with a middle state swap. After going full width, the state change tells the parent to either flex-start or flex-end based on state, and once that's done, motion animates from `100%` to `auto`." (Briggs)
 
 ```tsx
 async function animateToggle(nextChecked: boolean) {
+  // 1. Stretch the thumb across the flex track
   await controls.start({
     width: "100%",
     transition: { type: "spring", duration: 0.22, bounce: 0 },
   });
 
+  // 2. Middle-state swap: the parent's justify-content flips
+  //    (flex-start ↔ flex-end) based on the new state — invisible
+  //    while the thumb spans the full width
   setChecked(nextChecked);
 
+  // 3. Contract from the new anchor side
   await controls.start({
     width: "auto",
     transition: { type: "spring", duration: 0.26, bounce: 0 },
   });
 }
 ```
+
+This works because the temporary full-width shape hides the justification jump and makes the control feel elastic without animating position at all.
+
+Related sequencing moves (Briggs; sources.md):
+
+- **Pill dot swap indicators**: framer-motion's `Reorder` "with drag disabled and an active index with some other touches for added detail" — reorder machinery as a swap animation, no dragging.
+- **Modal stacks**: polish stacked-modal transitions "with some opacity duration offset and movement stagger" — opacity on a different duration than movement, layers staggered.
 
 Use this only for controls with enough physical space for the middle state. For tiny toggles or frequently repeated rows, a standard translate transition is usually clearer and cheaper.
 

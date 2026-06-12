@@ -130,6 +130,12 @@ Some icons have uneven visual weight. The best fix is adjusting the SVG directly
 </span>
 ```
 
+### Chrome 13px Baseline Gotcha
+
+"If you use 13px font size for your flex-centered button content spans, chrome seems to render its baseline 1px off (lower). If you use 13.01px it aligns correctly. Because browsers." — "Yes 1px off matters. It always matters." (Briggs)
+
+> ⚠️ Staleness: Chrome behavior observed March 2023 — verify the 1px-low baseline still reproduces before shipping the `.01` workaround.
+
 ## Shadows Instead of Borders
 
 For **buttons, cards, and containers** that use a border for depth or elevation, prefer replacing it with a subtle `box-shadow`. Shadows adapt to any background since they use transparency; solid borders don't. This also helps when using images or multiple colors as backgrounds — solid border colors don't work well on backgrounds other than the ones they were designed for.
@@ -181,6 +187,52 @@ Apply the variable and add `transition-[box-shadow]` for a smooth hover:
 }
 ```
 
+### Gradient Border for Free (Briggs)
+
+On elements that already cast a shadow, the 1px shadow-ring beats a CSS border for a second reason: "use a 1px slightly transparent box shadow as a border instead of a traditional css border on elements with shadows to get a gradient border on the element for free. The box shadow blends with the element's shadow as it gets darker towards the bottom." (Briggs; thread + CodePen in [references/sources.md](references/sources.md))
+
+Two gotchas — box shadows paint *outside* the box:
+
+1. **Alignment**: "Because of the shadow being on the outside, it causes the alignment to appear 1px off."
+2. **Sizing**: "Your design system says form items should be 48px tall... the button element actually appears as 50px tall now because of the borders on the outside."
+
+When those matter (form controls in a sized design system), keep a real border and blend it over the shadows instead: "Elements with borders can utilize background-clip: padding-box to prevent the background from showing under the border. This allows the border to blend on top of the shadows as long as your shadows have a negative value of spread equal to the border width so that they overlap."
+
+Production values from his "Contrast borders" CodePen (sources.md):
+
+```css
+.bordered-control {
+  border: 1px solid var(--border-color);
+  background-clip: padding-box; /* background stops under the border */
+  border-radius: 8px;
+  /* every layer: negative spread ≥ border width, one shared color */
+  box-shadow:
+    0px 1px 0px -1px var(--shadow-color),
+    0px 1px 1px -1px var(--shadow-color),
+    0px 1px 2px -1px var(--shadow-color),
+    0px 2px 4px -2px var(--shadow-color),
+    0px 3px 6px -3px var(--shadow-color);
+  /* --shadow-color: black/5 light mode, black/10 dark mode */
+}
+.bordered-control::after {
+  /* inner highlight: 1px inside the element, concentric radius 7px
+     (inner 7 / element 8 / focus ring 11) */
+  inset: 1px;
+  border-radius: 7px;
+  box-shadow:
+    inset 0px 0px 0px 1px var(--highlight-color),
+    inset 0px 1px 0px var(--highlight-color);
+}
+.bordered-control:focus-visible::before {
+  /* focus ring: ::before at -inset-1, 2px ring (blue-500/20), radius 11px */
+  inset: -4px;
+  border-radius: 11px;
+  box-shadow: 0 0 0 2px var(--focus-ring-color);
+}
+```
+
+"Users don't see your Figma design files, so they're only as good as their implementations. Sweat the details in the code too." (Briggs)
+
 ### When to Use Shadows vs. Borders
 
 | Use shadows | Use borders |
@@ -193,28 +245,44 @@ Apply the variable and add `transition-[box-shadow]` for a smooth hover:
 
 ## Natural Shadow Stacks
 
-When a surface needs richer elevation than a single shadow, build a stack with internally consistent geometry. Derek Briggs' PixelJanitor shadow recipe (Dec 2023: https://x.com/PixelJanitor/status/1735758919509684360) is a useful default:
+When a surface needs richer elevation than a single shadow, build a stack with internally consistent geometry. Briggs' production recipe (CodePen in [references/sources.md](references/sources.md)):
 
-- Use several shadow layers that increase together.
-- Set each layer's `blur` equal to its positive `y` offset.
-- Set each layer's negative spread to half the `y` offset.
-- Keep the color and opacity constant across layers unless the local background forces a change.
+- A 0-offset 1px ring layer anchors the stack (shadow-as-border, see above).
+- Y offsets follow a geometric progression (1/3/6/12/24); each layer's `blur` equals its `y` offset; negative spread equals half the `y` offset.
+- One shared color/alpha across all layers.
+- A subtle top-lit gradient on the surface itself.
 
 ```css
 .elevated-card {
-  box-shadow:
-    0 1px 1px -0.5px rgb(0 0 0 / 0.18),
-    0 3px 3px -1.5px rgb(0 0 0 / 0.18),
-    0 6px 6px -3px rgb(0 0 0 / 0.18),
-    0 12px 12px -6px rgb(0 0 0 / 0.18);
+  --shadow-color: rgb(0 0 0 / 0.06);
+  box-shadow: 0px 0px 0px 1px var(--shadow-color),
+    0px 1px 1px -0.5px var(--shadow-color),
+    0px 3px 3px -1.5px var(--shadow-color),
+    0px 6px 6px -3px var(--shadow-color),
+    0px 12px 12px -6px var(--shadow-color),
+    0px 24px 24px -12px var(--shadow-color);
+  background: linear-gradient(#fff, rgb(0 0 0 / 0.02));
 }
 ```
 
-Tune opacity to the product, but keep the relationship stable. The stack should read as one natural falloff, not four visible shadow bands. On low-contrast fills, reduce or remove the outer shadow first; shadowing a muddy button makes the whole control look dirty.
+The framing: "In Figma, and css, you're stacking shadow values to blend them as the final shadow." (Briggs) — the stack should read as one natural falloff, not six visible bands. The rationale is formula over plugin output (Briggs, Dive Club S4): shadow-plugin values pasted as CSS are arbitrary; a UI engineer turns them into "arbitrary values that came out of a formula" — evening out the numbers, creating a pattern between them — so stacks stay uniform across the product.
+
+Tune the alpha to the product, but keep the relationship stable. On low-contrast fills, reduce or remove the outer shadow first; shadowing a muddy button makes the whole control look dirty.
+
+**Complementary school:** "Elevation Systems & Light-Source Shadows" below (Refactoring UI) gives the 5-step elevation *scale* and ambient-decay rule; Briggs gives the per-stack geometric *recipe* — pick one consistently within a project.
 
 ## Dark Mode Edge Highlights
 
-Dark mode surfaces often need light, not more darkness. Add tiny inner highlights and local reflections to sharpen edges and imply material. PixelJanitor's dark-container note (Feb 2024: https://x.com/PixelJanitor/status/1756003193236938880) and Campsite component threads show the pattern:
+Dark mode surfaces often need light, not more darkness. Add tiny inner highlights and local reflections to sharpen edges and imply material.
+
+Briggs' dark-container rule: "Dark mode outline borders that are darker than the background create an even nicer edge contrast. Kick up the contrast and elevation a bit to add some highlight detail and falloff shadows. Using the trick of sharing the same alpha for all makes them easier to code too." (Briggs; sources in [references/sources.md](references/sources.md))
+
+The lighting model is top-light: white highlight on the top edge, accent/reflected color on the underside — light hits the top, environmental reflection comes from below (Briggs, Shape FM ep. 3). Two more material rules from the same conversation:
+
+- **Half-pixel strokes**: for tiny highlights on high-DPI, go sub-pixel — "to use a a half pixel stroke just to get like a super crisp edge" (and 0.5px blur values on inner shadows).
+- **Sub-pixel radius on "square" elements**: "you can't machine anything at that tolerance" — give even square elements 0.5–1px border-radius; hard 90° corners read unnaturally surgical on high-DPI.
+
+The CSS below is illustrative (composed for this skill), not Briggs' shipped values. His own description of the Campsite switch: "There's the component gray/blue background and the background gradient on the switch thumb and then just box shadows for the rest." — "With the switch thumb being white next to dark we can have it emit reflections on the sides of it too 💅" (Briggs)
 
 ```css
 .dark-panel {

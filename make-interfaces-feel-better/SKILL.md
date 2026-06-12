@@ -40,7 +40,7 @@ When geometric centering looks off, align optically. Buttons with icons, play tr
 
 Layer multiple transparent `box-shadow` values for natural depth. Shadows adapt to any background; solid borders don't.
 
-For richer elevation, use PixelJanitor's natural shadow stack rule: blur equals positive Y offset, negative spread equals half the Y offset, color/opacity stay constant across layers. In dark mode, add crispness with tiny inner highlights and local reflections before adding heavier black shadows.
+For richer elevation, use Briggs' (PixelJanitor) natural shadow stack: a 0-offset 1px ring layer, geometric Y progression (1/3/6/12/24) with blur equal to Y and negative spread half of Y, and one shared color/alpha across all layers. In dark mode, prefer outline borders *darker* than the background plus falloff shadows and tiny inner highlights — again sharing one alpha — before adding heavier black shadows.
 
 ### 4. Interruptible Animations
 
@@ -58,7 +58,7 @@ Use a small fixed `translateY` instead of full height. Exits should be softer th
 
 Animate icons with `opacity`, `scale`, and `blur` instead of toggling visibility. Use exactly these values: scale from `0.25` to `1`, opacity from `0` to `1`, blur from `4px` to `0px`. If the project has `motion` or `framer-motion` in `package.json`, use `transition: { type: "spring", duration: 0.3, bounce: 0 }` — bounce must always be `0`. If no motion library is installed, keep both icons in the DOM (one absolute-positioned) and cross-fade with CSS transitions using `cubic-bezier(0.2, 0, 0, 1)` — this gives both enter and exit animations without any dependency.
 
-For custom switches and pill indicators, consider a sequenced middle state: stretch the thumb/indicator to span the control, swap the state while it is spanning, then contract to the destination. Use it only when the control has enough space for the morph to read clearly.
+For custom switches and pill indicators, consider a sequenced middle state: stretch the thumb/indicator to span the control (width to `100%`), swap the parent's justification while it is spanning, then contract to the destination (width to `auto`). Use it only when the control has enough space for the morph to read clearly.
 
 ### 8. Font Smoothing
 
@@ -191,6 +191,7 @@ Rows should cite the specific file and the specific property that changed when i
 - [surfaces.md](surfaces.md) — Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines
 - [animations.md](animations.md) — Interruptible animations, enter/exit transitions, icon animations, scale on press
 - [performance.md](performance.md) — Transition specificity, `will-change` usage, perceived performance (spinner choice assigns blame)
+- [references/sources.md](references/sources.md) — bibliography (Briggs/PixelJanitor tweet IDs, CodePens, video IDs)
 
 ### 21. Eased Gradients
 
