@@ -6,6 +6,8 @@ A curated library of Claude Code skills. The largest cluster is a design library
 
 Top-level entries are one of three things: a **platform** you target (`rails`, `swiftui`, `apple-design`, `web-design`), an **activity** you do (consolidated clusters like `ux-writing`, `working-with-ai`, `devtools`, `client-work`, plus flat activity skills), or a **cross-domain tool** (`motion`, `x-post-reader`, `route-planning`, …). Topics don't get top-level slots: they live as reference files inside the platform or activity cluster they serve, and the cluster's body routes to them. The graph of boundary clauses — the "Boundary:" lines and the Routing rules below — is the routing fabric between clusters; a `cluster` (member) reference in those clauses points at a specific reference file. Full reorganization plan: [docs/taxonomy-2026-06.md](docs/taxonomy-2026-06.md).
 
+Operational maintenance rules for growing the library live in [docs/skill-library-ops.md](docs/skill-library-ops.md): source intake, source maps, folding, external skill screening, routing probes, and validation gates.
+
 ## Which skill do I want?
 
 ### Design strategy & critique
@@ -54,7 +56,7 @@ Alongside it: `motion` (the Motion AI Kit umbrella — encapsulates best-practic
 `write-clear-prose` · `ux-writing` — one consolidated skill; its body routes to reference files: ui-voice-and-tone (product voice + microcopy), error-messages (failure-state copy), linear-settings-copy (settings IA/copy), naming-features-and-labels (what to call a feature, label, plan, button).
 
 ### Data visualization
-`data-viz` (pick the chart type + Tufte integrity/data-ink critique — two references) · `apple-design` (chart-experience-design) (in-app chart UX — listed above).
+`data-viz` (pick the chart type + Tufte integrity/data-ink critique + editorial/interactive chart craft) · `apple-design` (chart-experience-design) (in-app chart UX — listed above).
 
 ### Coding (non-Apple)
 | Skill | Use it for |
