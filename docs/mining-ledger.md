@@ -345,3 +345,6 @@ Backfilled `docs/book-source-map.md` maps for already-folded client-work sources
 
 ## 2026-06-13 — Information architecture source-map pass
 Screened the queued IA pair from `/tmp/books`: Martin's *Everyday Information Architecture* and Yablonski's *Laws of UX*. Added `docs/book-source-map.md` entries and a theme lead for information architecture/findability. Decision: keep `web-information-architecture` parked because Martin is the only dedicated IA source; Yablonski/Sharon corroborate cognitive load, card sorting, tree testing, first-click, and lostness but are adjacent rather than a second dedicated IA spine. No skill bodies changed.
+
+## 2026-06-13 — Practical UI source-map pass
+Backfilled `docs/book-source-map.md` for Dannaway's *Practical UI* 2nd ed. Decision: no new skill and no additional skill-body fold in this pass, because the durable high-signal material is already routed into `web-design` (`form-design`, `oklch-skill`) and `web-accessibility`. The map now marks broad layout, typography, and copywriting chapters as corroboration only, with stronger existing homes owning the guidance.

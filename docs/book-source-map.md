@@ -26,6 +26,7 @@ Rules:
 | User research methods | Erika Hall, *Just Enough Research*; Steve Portigal, *Interviewing Users*; Tomer Sharon, *Validating Product Ideas*; product-trio validation sources; Buley | Hall owns scoping/rigor/bias and research politics; Portigal owns interview craft and field impact; Sharon owns lean method selection and participant sourcing; product trio owns assumption/metric validation. |
 | Client work / pricing | Mike Monteiro, *You're My Favorite Client*; Dan Mall, *Pricing Design*; Chris Do/Futur + Jonathan Stark corpus | Current home is `client-work`: Monteiro owns engagement mechanics and client feedback; Mall adds the third pricing school and value-trait options; Do/Stark remain competing schools for one-price/attention-tier defaults. |
 | Emotional design / product personality | Aarron Walter, *Designing for Emotion*; Metts/Welfle, *Writing Is Designing*; MailChimp, *The UX Reader*; Apple UX writing sessions | Walter owns the design-persona method, surface-specific tone tapering, delight-layer constraints, trust repair, and risk-managed experiments. Already folded across `ux-writing` (including error messages), `user-research`, `design-principles`, and `web-animation-design`; check before adding more personality/delight advice. |
+| Practical UI mechanics | Adham Dannaway, *Practical UI*; Wathan/Schoger, *Refactoring UI* | `Practical UI` already owns `web-design` form/buttons mechanics, color roles/state layers in `oklch-skill`, and contrast tactics in `web-accessibility`. Broad layout/type/copy advice is mostly model-known or covered by stronger dedicated skills; check the chapter map before adding duplicate polish notes. |
 | People management | Kim Scott, *Radical Candor*; Julie Zhuo, *The Making of a Manager*; Lara Hogan, *Resilient Management* | These are the three primary book sources for `people-management`. Scott owns candor/career-conversation/team-result systems; Zhuo owns new-manager transitions, meetings, hiring, delegation, and culture; Hogan owns 1:1 discovery, BICEPS, four support hats, team charters, comms plans, and manager resilience. |
 | Logo design | Allan Peters, *Logos that Last*; Gal Shir, *60 Tips for Logo Design* | Peters remains the primary method source. Shir corroborates the process and adds practical checks: four-lane intake, keyword lanes, time-boxed sketch warmup, rest overnight, profile-image/uniqueness tests, and presentation sequencing. |
 | Photographic lighting | Hunter/Biver/Fuqua, *Light: Science & Magic*; Tony Northrup, *Tony Northrup's DSLR Book* | Created `photographic-lighting` from a targeted lighting pass. Check here for photo shoots, glare/reflections, metal/glass, hard/soft light, fill/bounce flash, portraits, and product/still-life lighting. |
@@ -73,6 +74,27 @@ mostly model-known, but the SVG/icon sizing passage is useful corroboration.
 | "Everything has an intended size" / "Don't scale up icons" | Vector icons do not blur when enlarged, but small icons drawn for 16-24px lack the detail and proportions for 3-4x display; keep the icon near its intended size inside a larger shape. | Folded to `frontend-design` SVG mental model. |
 
 Verified quote: "Don't scale up icons".
+
+## Adham Dannaway, *Practical UI* (2nd ed.)
+
+Extraction: `/tmp/books/practical-ui.txt`. Density: MED. No new skill: this is a
+single-source practical method already routed into the `web-design` cluster. High-signal
+folds are complete for forms/buttons, color roles/state layers, and contrast metrics.
+Broad fundamentals, layout, typography, and copywriting are useful corroboration but
+mostly covered by stronger existing homes. No direct quotes added in this map pass.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| 1. Fundamentals | Familiar patterns, design systems, accessibility, consistency, interaction states, and cost-aware 80/20 prioritization. | Source-map only; already covered by `design-principles`, `design-systems`, and `web-accessibility`. |
+| 2. Less is More | Remove unnecessary information/styles, use progressive disclosure, keep important content visible, design smallest-screen-first, reduce or group choices. | Mostly model-known; `design-principles` only if a future pass needs corroboration. |
+| 3. Colour | Contrast, color-not-alone, status colors, black-and-white-first workflow, six-role palette, transparent foreground palette, state layers, systematic color naming. | Folded to `web-design` (`oklch-skill`) palette roles/state layers and `web-accessibility` contrast nuance. |
+| 4. Layout and Spacing | Group related elements, visual hierarchy, squint test, depth, box model, 8pt spacing options, relationship-based spacing, 12-column grids, text alignment, robust layout. | Mostly covered by `design-polish` and `frontend-design`; no extra fold unless a concrete UI-review checklist needs corroboration. |
+| 5. Typography | Single sans default, optional heading face, regular/bold weights, type scale, long-body sizing, line-height, measure, left alignment, photo text, avoid light grey/pure black. | `web-design` (`web-typography`) owns stronger Rutter/Santa Maria/Latin depth; source-map corroboration only. |
+| 6. Copywriting | Concision, sentence case, simple language, front-loading, chunking, descriptive headings, specific link/error/button text. | Mostly covered by `ux-writing`; form/button crumbs folded in `web-design` (`form-design`). |
+| 7. Buttons | Three button weights, one primary action, avoid disabled buttons, left-align/order web buttons, verb+noun button text, 48pt targets, icon/text balance, destructive friction ladder. | Folded to `web-design` (`form-design`) with Apple-platform conflict scoped. |
+| 8. Forms | Single-column forms, required/optional markings, opt-ins, field width, conventional field styles, hints above fields, label placement, dropdown alternatives, checkbox/toggle choice, validation modes. | Folded to `web-design` (`form-design`) and details reference. |
 
 ## Jason Santa Maria, *On Web Typography*
 
