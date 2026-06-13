@@ -22,6 +22,8 @@ Rules:
 | Typography systems | MailChimp, *The UX Reader*, "Tightening Type and Relative Font Sizing"; Rutter/Santa Maria/Butterick typography books already extracted; Elliot Jay Stocks articles | MailChimp has a vertical-rhythm/baseline-grid case study, but stronger dedicated typography sources own most future folds. |
 | Roadmaps / release cycles / cleanup | Perri, Gothelf/Seiden, Klein product trio; MailChimp, *The UX Reader*, "Release Cycles and Roadmaps" and "Iteration and the Feature/Refinement Balance"; Linear quality series | Product trio owns measurement-led strategy; MailChimp adds a craft/org practice for annual cleanup releases and feedback-fed refinement. |
 | Research impact / synthesis | Product trio; Buley; MailChimp, *The UX Reader*, research section | MailChimp adds distribution channels and parallel-cycle research cadence; Buley owns solo-UX influence mechanics. |
+| Emotional design / product personality | Aarron Walter, *Designing for Emotion*; Metts/Welfle, *Writing Is Designing*; MailChimp, *The UX Reader*; Apple UX writing sessions | Walter owns the design-persona method, surface-specific tone tapering, delight-layer constraints, trust repair, and risk-managed experiments. Already folded across `ux-writing` (including error messages), `user-research`, `design-principles`, and `web-animation-design`; check before adding more personality/delight advice. |
+| People management | Kim Scott, *Radical Candor*; Julie Zhuo, *The Making of a Manager*; Lara Hogan, *Resilient Management* | These are the three primary book sources for `people-management`. Scott owns candor/career-conversation/team-result systems; Zhuo owns new-manager transitions, meetings, hiring, delegation, and culture; Hogan owns 1:1 discovery, BICEPS, four support hats, team charters, comms plans, and manager resilience. |
 | Logo design | Allan Peters, *Logos that Last*; Gal Shir, *60 Tips for Logo Design* | Peters remains the primary method source. Shir corroborates the process and adds practical checks: four-lane intake, keyword lanes, time-boxed sketch warmup, rest overnight, profile-image/uniqueness tests, and presentation sequencing. |
 | Photographic lighting | Hunter/Biver/Fuqua, *Light: Science & Magic*; Tony Northrup, *Tony Northrup's DSLR Book* | Created `photographic-lighting` from a targeted lighting pass. Check here for photo shoots, glare/reflections, metal/glass, hard/soft light, fill/bounce flash, portraits, and product/still-life lighting. |
 | Creative coding / generative visuals | Gross et al., *Generative Design* | Parked as a future `creative-coding` candidate. Current fold is only the designer-built-tool / abstraction-process precedent in `malleable-software`; needs a second source such as Reas/Fry, *Nature of Code*, or current p5.js docs before a new technical skill. |
@@ -222,6 +224,90 @@ principles. Current fold pass only touched entries with a clear, non-generic tar
 | Layering | Organize information into related groupings, exposing only needed layers at a time. | Skipped for now; possible future IA/progressive-disclosure corroboration. |
 | Signal-to-Noise Ratio | Maximize relevant signal, reduce irrelevant noise. | Skipped; covered by `data-viz`, visual accessibility, and UI polish sources. |
 | Similarity / Self-Similarity | Similar elements are perceived as related; repeated structures reduce learning cost. | Skipped; covered by design-system/pattern and visual hierarchy material. |
+
+## Aarron Walter, *Designing for Emotion*
+
+Extraction: `/tmp/books/designing-for-emotion.txt`. Density: MED. Full screen completed
+2026-06-12. No new skill/fold in this pass: the durable material is already routed
+through `ux-writing`, `user-research`, `design-principles`, and `web-animation-design`.
+Use this map as a cross-check before adding advice about delight, personality, tone,
+trust, or playful failure handling. No direct quotes were added in this map pass.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| 1. Emotional Design | Pleasure sits above functional, reliable, and usable foundations; emotion deepens memory, trust, and attachment but cannot substitute for utility. Wufoo and Betabrand are used as personality-heavy examples. | Already covered by `design-principles` hierarchy/delight constraints and `ux-writing` voice/tone. |
+| 2. Designing for Humans | Human-perception hooks include baby-face bias, contrast, proportion, Hick's Law, and the aesthetic-usability effect. | Mostly skipped as covered by `design-principles`, `design-polish`, and Universal Principles material. |
+| 3. Personality | The design persona artifact specifies traits, avoid-traits, voice, visual lexicon, copy examples, engagement methods, and where personality should appear or recede. | Already folded to `ux-writing/references/ui-voice-and-tone.md`; cross-check for brand/personality work. |
+| 4. Emotional Engagement | Surprise, anticipation, exclusivity/status, priming, and variable rewards can deepen engagement, but delight must not carry critical feedback or interrupt workflows. | Already folded across `ux-writing`, `design-principles`, and `web-animation-design`; useful as a guardrail source. |
+| 5. Overcoming Obstacles | Addresses skepticism, laziness, and apathy through trust signals, task momentum, content usefulness, and emotional-response research prompts. | Already folded to `user-research` and design-principles trust/obstacle framing. |
+| 6. Forgiveness | Failure response should lead with facts, cadence, and repair before personality; goodwill helps but does not excuse weak incident handling. | Already folded to `ux-writing/references/error-messages.md`. |
+| 7. Risk & Reward | Emotional-design risk should be bounded with small experiments, opt-out or fallback paths, one meaningful metric, and a clear tie to business goals. | Source-map lead for future `design-org-influence` or experiment-design edits; no new fold needed now. |
+
+## Kim Scott, *Radical Candor*
+
+Extraction: `/tmp/books/radical-candor.txt`. Density: HIGH for direct-report management.
+Already folded as one of the three primary sources for `people-management`; quotes there
+are verified. This backfill maps the book's chapter shape so future manager/feedback
+edits can check the right source without rereading. No direct quotes were added in this
+map pass.
+
+### TOC / Chapter Map
+
+| Part / chapter | Short summary | Routing |
+| --- | --- | --- |
+| Part I. A New Management Philosophy | Establishes the direct-report relationship model and the care/challenge axes, with failure modes for over-soft, harsh, and political behavior. | `people-management/SKILL.md` trust core; `feedback-and-guidance.md` candor framing. |
+| 1. Build Radically Candid Relationships | Treats management as relationship work: caring personally, challenging directly, adapting to listener context, and building trust. | `people-management` trust core and 1:1 expectations. |
+| 2. Get, Give, and Encourage Guidance | Builds the feedback system: solicit criticism first, give clear praise/criticism, reward candor, and avoid vague or biased guidance. | `people-management/references/feedback-and-guidance.md`. |
+| 3. Understand What Motivates Each Person on Your Team | Uses career conversations, growth trajectories, rock-star/superstar distinctions, and growth plans to align work with individual motivation. | `people-management/references/growth-and-careers.md`. |
+| 4. Drive Results Collaboratively | Separates listening, debate, decision, execution, and learning loops; warns against hierarchy-based decision drift. | `people-management/references/meetings-and-comms.md`. |
+| Part II. Tools & Techniques | Converts the philosophy into repeatable manager rituals and org mechanisms. | All `people-management/references/` files. |
+| 5. Relationships | Concrete practices for getting criticism from reports, public upward criticism, and skip-level support. | `feedback-and-guidance.md` and `meetings-and-comms.md`. |
+| 6. Guidance | Tactics for giving praise/criticism, gauging whether it landed, and navigating bias around directness. | `feedback-and-guidance.md`. |
+| 7. Team | Hiring, firing, and sustaining a mix of growth trajectories without neglecting steady high performers. | `growth-and-careers.md` and `hiring-and-firing.md`. |
+| 8. Results | Staff meetings, debate/decision meetings, written updates, and management systems that make work move faster together. | `meetings-and-comms.md`. |
+
+## Julie Zhuo, *The Making of a Manager*
+
+Extraction: `/tmp/books/making-of-a-manager.txt`. Density: HIGH for first-time and
+growing-team managers. Already folded as one of the three primary sources for
+`people-management`; this map is a backfill. No direct quotes were added in this map
+pass.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| Introduction. Great Managers Are Made, Not Born | Frames management as a learnable craft rather than an innate trait. | Context for `people-management`. |
+| 1. What Is Management? | Defines the manager's job around outcomes, people, purpose, and future team health; separates leadership from title. | `people-management/SKILL.md` grading and delegation. |
+| 2. Your First Three Months | Names transition archetypes: apprentice, pioneer, new boss, successor; each has different trust and change risks. | `people-management/SKILL.md` first-90-days section. |
+| 3. Leading a Small Team | Establishes trust, human relationship, strengths, intolerable behavior, and quick people moves. | `people-management/SKILL.md` trust core and 1:1 guidance. |
+| 4. The Art of Feedback | Sets expectations early, makes feedback specific and resonant, avoids compliment sandwiches, and uses feedback to improve outcomes. | `feedback-and-guidance.md`. |
+| 5. Managing Yourself | Covers imposter feelings, self-awareness, best/worst self, confidence, and support needs. | Lightly routed to `people-management` support/Voltron; future manager-self-care edits should also check Hogan. |
+| 6. Amazing Meetings | Classifies meetings by intended outcome, trims attendance, prepares better, and ends with owners/next steps. | `meetings-and-comms.md`. |
+| 7. Hiring Well | Treats hiring as the manager's responsibility and a funnel system; emphasizes role clarity, outreach, interviews, debriefs, and weak-hire rejection. | `hiring-and-firing.md`. |
+| 8. Making Things Happen | Links concrete vision, execution, priorities, process evolution, and team learning. | `people-management/SKILL.md` grading/delegation and `meetings-and-comms.md`. |
+| 9. Leading a Growing Team | Covers delegation, scaling trust through managers, shared vision, struggling leaders, and making yourself less necessary to daily operations. | `people-management/SKILL.md` delegation and grading. |
+| 10. Nurturing Culture | Defines culture through values, incentives, traditions, and what the team gives up to preserve values. | `meetings-and-comms.md` culture/incentives; possible `design-org-influence` cross-check for team norms. |
+
+## Lara Hogan, *Resilient Management*
+
+Extraction: `/tmp/books/resilient-management.txt`. Density: HIGH for practical manager
+rituals, especially individual support, team expectations, comms plans, and resilience.
+Already folded as one of the three primary sources for `people-management`; this map is
+a backfill. No direct quotes were added in this map pass.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| Introduction | Frames the book around management skills matched to team-stage needs, with coaching questions after each chapter. | Context for `people-management`. |
+| 1. Meet Your Team | Uses BICEPS needs, 1:1 discovery questions, feedback preferences, personal operating style, and trust-building to understand each teammate. | `people-management/SKILL.md` trust core and BICEPS diagnosis. |
+| 2. Grow Your Teammates | Distinguishes mentoring, coaching, sponsoring, and feedback; explains when each mode is useful and how to balance them over time. | `growth-and-careers.md` and `feedback-and-guidance.md`. |
+| 3. Set Clear Expectations | Documents roles, responsibilities, vision, mission, strategy, objectives, team norms, and collaborative processes. | `growth-and-careers.md` structural clarity; `meetings-and-comms.md` culture/process. |
+| 4. Communicate Effectively | Builds communication plans for change, confidentiality, disagree-and-commit, audience reactions, message repetition, and recap channels. | `meetings-and-comms.md`. |
+| 5. Build Resiliency | Protects manager/team energy through support networks, crisis handling, input loops, and manager self-management. | `people-management/SKILL.md` Voltron/support and crisis script. |
 
 ## Processed Books Needing Map Backfill
 
