@@ -22,6 +22,8 @@ Rules:
 | Typography systems | MailChimp, *The UX Reader*, "Tightening Type and Relative Font Sizing"; Rutter/Santa Maria/Butterick typography books already extracted; Elliot Jay Stocks articles | MailChimp has a vertical-rhythm/baseline-grid case study, but stronger dedicated typography sources own most future folds. |
 | Roadmaps / release cycles / cleanup | Perri, Gothelf/Seiden, Klein product trio; MailChimp, *The UX Reader*, "Release Cycles and Roadmaps" and "Iteration and the Feature/Refinement Balance"; Linear quality series | Product trio owns measurement-led strategy; MailChimp adds a craft/org practice for annual cleanup releases and feedback-fed refinement. |
 | Research impact / synthesis | Product trio; Buley; MailChimp, *The UX Reader*, research section | MailChimp adds distribution channels and parallel-cycle research cadence; Buley owns solo-UX influence mechanics. |
+| User research methods | Erika Hall, *Just Enough Research*; Steve Portigal, *Interviewing Users*; Tomer Sharon, *Validating Product Ideas*; product-trio validation sources; Buley | Hall owns scoping/rigor/bias and research politics; Portigal owns interview craft and field impact; Sharon owns lean method selection and participant sourcing; product trio owns assumption/metric validation. |
+| Client work / pricing | Mike Monteiro, *You're My Favorite Client*; Dan Mall, *Pricing Design*; Chris Do/Futur + Jonathan Stark corpus | Current home is `client-work`: Monteiro owns engagement mechanics and client feedback; Mall adds the third pricing school and value-trait options; Do/Stark remain competing schools for one-price/attention-tier defaults. |
 | Emotional design / product personality | Aarron Walter, *Designing for Emotion*; Metts/Welfle, *Writing Is Designing*; MailChimp, *The UX Reader*; Apple UX writing sessions | Walter owns the design-persona method, surface-specific tone tapering, delight-layer constraints, trust repair, and risk-managed experiments. Already folded across `ux-writing` (including error messages), `user-research`, `design-principles`, and `web-animation-design`; check before adding more personality/delight advice. |
 | People management | Kim Scott, *Radical Candor*; Julie Zhuo, *The Making of a Manager*; Lara Hogan, *Resilient Management* | These are the three primary book sources for `people-management`. Scott owns candor/career-conversation/team-result systems; Zhuo owns new-manager transitions, meetings, hiring, delegation, and culture; Hogan owns 1:1 discovery, BICEPS, four support hats, team charters, comms plans, and manager resilience. |
 | Logo design | Allan Peters, *Logos that Last*; Gal Shir, *60 Tips for Logo Design* | Peters remains the primary method source. Shir corroborates the process and adds practical checks: four-lane intake, keyword lanes, time-boxed sketch warmup, rest overnight, profile-image/uniqueness tests, and presentation sequencing. |
@@ -474,6 +476,104 @@ routes to `user-research` and `design-prototyping`, while solo-UX influence rout
 | 8. Testing and Validation Methods | Paper/interactive prototypes, black-hat session, quick usability test, five-second test, UX health check. | `design-prototyping`; `user-research` for validation setup. |
 | 9. Evangelism Methods | Bathroom UX, mini case studies, peer learning community, pyramid evangelism. | `design-org-influence` pyramid evangelism and support-building. |
 | 10. What's Next? | Looks forward to UX maturation and sustaining the practice. | Context only. |
+
+## Dan Mall, *Pricing Design*
+
+Extraction: `/tmp/books/pricing-design.txt`. Density: HIGH as a compact pricing-school
+source. Already folded into `client-work/references/pricing-creative-work.md`; this is
+a map backfill only. No direct quotes added here.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| Introduction | Frames pricing as a business skill designers can practice, not a mysterious rate-card exercise. | `client-work/references/pricing-creative-work.md`. |
+| 1. Pricing Methods | Compares cost-plus, market-rate, and value-based pricing; shows why provider-only math caps upside and ignores buyer context. | `client-work` pricing schools; route conflicts against Do/Stark defaults. |
+| 2. Value-Based Pricing | Prices value, risk, trust, scarcity, and client-specific upside rather than hours or deliverables. | `client-work/references/pricing-creative-work.md`. |
+| 3. A Pricing Case Study | Works through Goldilocks/three-option pricing, deliberately different value traits, and incomparable units. | `client-work` pricing mechanics. |
+| 4. Value Pricing: What to Expect | Sets expectations for higher loss rate, better-fit clients, objections, and confidence while applying value pricing. | `client-work` qualification and negotiation. |
+
+## Mike Monteiro, *You're My Favorite Client*
+
+Extraction: `/tmp/books/favorite-client.txt`. Density: HIGH for client engagement
+mechanics. Already folded into `client-work/references/client-engagements.md` and its
+pricing terms references; this is a map backfill only. No direct quotes added here.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| Introduction | Written to clients, but useful from both chairs: good design work requires prepared buyers and accountable designers. | `client-work/references/client-engagements.md`. |
+| 1. Why You Need Design | Explains design as problem-solving under business constraints, not decoration or magic. | `client-work`; `design-org-influence` only for internal design-value advocacy. |
+| 2. Hiring a Designer | Covers in-house vs outside help, designer seniority, portfolio/communication signals, trust, and fit. | `client-work` qualification and hiring. |
+| 3. Working Together | Sets up discovery, goals, decision roles, client participation, business model clarity, and project collaboration. | `client-work` kickoff/sign-off mechanics. |
+| 4. Evaluating Work and Giving Feedback | Teaches feedback discipline: discuss the work, avoid prescriptive solutions, resolve internal disagreement, and train honest critique. | `client-work` feedback system; `design-prototyping` for presentation/session craft. |
+| 5. When Things Go Well | Covers healthy collaboration, sign-off, testing, iteration, and sustaining momentum. | `client-work` engagement health. |
+| 6. When Things Go Wrong | Handles mistakes, trust breakdowns, firing/being fired, kill fees, and recovery after bad engagements. | `client-work` health-and-failure reference. |
+| Glossary / Resources | Defines client-service vocabulary and points to companion design/client books. | Source discovery; no fold needed. |
+
+## Erika Hall, *Just Enough Research* (2nd ed.)
+
+Extraction: `/tmp/books/just-enough-research.txt`. Density: HIGH as one of the three
+primary sources for `user-research`. Already folded into `user-research` and references;
+this is a map backfill only. No direct quotes added here.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| 1. Enough is Enough | Defines practical research, research purposes, and the politics of doing enough to make better decisions. | `user-research/SKILL.md` fundamentals. |
+| 2. The Basics | Covers research roles, collaboration, responsibilities, ethics, bias, rigor, and objections. | `user-research/references/research-fundamentals.md`; `study-logistics.md`. |
+| 3. The Process | Moves from problem definition to approach selection, recruiting, data collection, analysis, and reporting. | `user-research` study setup and synthesis. |
+| 4. Organizational Research | Researches stakeholders, organizations, constraints, and internal systems before user-facing work. | `user-research`; `design-org-influence` if the task is org change. |
+| 5. User and Customer Research | Covers interviews, contextual inquiry, focus groups, and when each method fits. | `user-research/references/method-selection.md`; `interviewing-craft.md`. |
+| 6. Competitive Research | Uses competitive/brand audits and market context without mistaking competitors for users. | `user-research`; possible `design-org-influence` strategy input. |
+| 7. Evaluative Research | Usability testing, heuristic analysis, and other evaluative methods for improving designs. | `user-research`; `design-prototyping` only for prototype session craft. |
+| 8. Analysis and Models | Turns observations into models, personas, journey/workflow artifacts, and shared understanding. | `user-research/references/synthesis-and-impact.md`. |
+| 9. Surveys | Treats surveys as hard-to-design quantitative instruments, not a fallback for blocked qualitative research. | `user-research/references/method-selection.md`. |
+| 10. Analytics | Frames analytics/split testing as optimization and measurement, with limits on what numbers explain. | `user-research`; product-trio metrics cross-check. |
+
+## Steve Portigal, *Interviewing Users*
+
+Extraction: `/tmp/books/interviewing-users.txt`. Density: HIGH for interview craft and
+research impact. Already folded into `user-research/references/interviewing-craft.md`,
+`study-logistics.md`, and `synthesis-and-impact.md`; this is a map backfill only. No
+direct quotes added here.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| 1. The Importance of Interviewing in Design | Sets interviewing apart from other methods and explains why fieldwork reframes product assumptions. | `user-research` fundamentals. |
+| 2. A Framework for Interviewing | Defines the interviewer stance: worldview, curiosity, rapport, and being in the participant's context. | `user-research/references/interviewing-craft.md`. |
+| 3. Getting Ready to Conduct Your Interviews | Identifies objectives, stakeholders, recruiting, participants, field guides, logistics, and consent. | `user-research/references/study-logistics.md`. |
+| 4. More Than Just Asking Questions | Uses stimuli, artifacts, homework, activities, and co-created materials to deepen interviews. | `user-research` method selection and interview craft. |
+| 5. Key Stages of the Interview | Manages crossing the threshold, objectives, kickoff, awkwardness, tipping point, reflection, and soft close. | `user-research/references/interviewing-craft.md`. |
+| 6. How to Ask Questions | Question palette, follow-ups, contrasts, projection, silence, and wording choices. | `user-research/references/interviewing-craft.md`. |
+| 7. Documenting the Interview | Note taking, recordings, photos, debriefs, and field highlights. | `user-research/references/study-logistics.md`; `synthesis-and-impact.md`. |
+| 8. Optimizing the Interview | Troubleshoots reluctant participants, awkward dynamics, team roles, and interviewer improvement. | `user-research/references/interviewing-craft.md`. |
+| 9. Making an Impact with Your Research | Turns data into themes, findings, organizational learning, and research leadership. | `user-research/references/synthesis-and-impact.md`. |
+
+## Tomer Sharon, *Validating Product Ideas*
+
+Extraction: `/tmp/books/validating.txt`. Density: HIGH as a lean validation-method
+source. Already folded into `user-research` alongside Hall/Portigal, with method
+selection and logistics details distributed across references. This is a map backfill
+only. No direct quotes added here.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| 1. What Do People Need? | Uses experience sampling to understand needs before a product exists. | `user-research/references/method-selection.md`. |
+| 2. Who Are the Users? | Uses interviewing to identify audiences and understand people in context. | `user-research/references/interviewing-craft.md`. |
+| 3. How Do People Currently Solve a Problem? | Uses observation to understand current behavior and workarounds. | `user-research/references/method-selection.md`. |
+| 4. What Is the User's Workflow? | Uses diary studies to capture complex or repeated processes over time. | `user-research/references/method-selection.md`; `study-logistics.md`. |
+| 5. Do People Want the Product? | Uses concierge MVPs and fake doors to test demand and marketing before building. | `user-research`; product-trio validation cross-check. |
+| 6. Can People Use the Product? | Uses online usability testing for sketches, prototypes, or working products. | `user-research`; `design-prototyping` for prototype craft. |
+| 7. Which Design Generates Better Results? | Uses A/B testing where traffic and decision stakes justify it. | `user-research` metrics/method selection. |
+| 8. How Do People Find Stuff? | Uses tree testing, first-click testing, and lostness metrics for findability. | `user-research`; parked IA skill candidate if paired with stronger IA sources. |
+| 9. How to Find Participants for Research? | Treats recruiting as the research bottleneck and covers participant sourcing. | `user-research/references/study-logistics.md`. |
 
 ## Processed Books Needing Map Backfill
 

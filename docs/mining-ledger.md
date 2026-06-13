@@ -339,3 +339,6 @@ Converted the already-verified Perri/Gothelf/Seiden/Klein manifest in `docs/pend
 
 ## 2026-06-12 — Remaining 2026-06-11 book queue source-map backfill
 Backfilled `docs/book-source-map.md` chapter maps for the already-folded remainder of the first book queue: Kleon's *Show Your Work!*, Heath & Heath's *Made to Stick*, Dirksen's *Design For How People Learn*, and Buley's *The User Experience Team of One*. No skill bodies changed: existing folds already route to `building-in-public`, `design-org-influence`, `devtools`, `write-clear-prose`, `learning-experience-design`, `user-research`, and `design-prototyping`. Cleared the processed-books-needing-map-backfill list for the 2026-06-11 queue.
+
+## 2026-06-12 — Client-work + user-research source-map backfill
+Backfilled `docs/book-source-map.md` maps for already-folded client-work sources: Mall's *Pricing Design* and Monteiro's *You're My Favorite Client*. Backfilled maps for the already-folded research cluster: Hall's *Just Enough Research*, Portigal's *Interviewing Users*, and Sharon's *Validating Product Ideas*. No skill bodies changed; current homes remain `client-work` and `user-research`.
