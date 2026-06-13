@@ -16,6 +16,7 @@ Read exactly one reference file below; each carries the full distillation for it
 - **App icons** — designing/reviewing an icon: metaphor, simplicity, small-size testing, the layered Liquid Glass icon system and Icon Composer, dark/tinted/clear variants: [references/app-icon-design.md](references/app-icon-design.md)
 - **App Intents & Shortcuts** — which features to expose as intents, invocation phrases, parameters, snippets vs Live Activities, Siri/Spotlight/widgets/controls/Action button: [references/app-intents-design.md](references/app-intents-design.md)
 - **HIG lookup** — canonical/current HIG lookup — exact specs, component conventions; the live-fetch playbook: [references/hig.md](references/hig.md)
+- **Classic HIG principles** — 2014 local iOS/OS X HIG doctrine: deference, clarity, depth, aesthetic integrity, user control, Mac modality/keyboard/help conventions; current specs still defer to HIG lookup: [references/classic-hig-principles.md](references/classic-hig-principles.md)
 - **Chart experience** — in-app chart experience: platters, progressive disclosure, Swift Charts, Audio Graphs, chart a11y labels — general chart-type choice and Tufte critique → data-viz: [references/chart-experience-design.md](references/chart-experience-design.md)
 
 **Boundary splits to respect:**

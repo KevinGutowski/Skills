@@ -31,6 +31,7 @@ Rules:
 | Logo design | Allan Peters, *Logos that Last*; Gal Shir, *60 Tips for Logo Design* | Peters remains the primary method source. Shir corroborates the process and adds practical checks: four-lane intake, keyword lanes, time-boxed sketch warmup, rest overnight, profile-image/uniqueness tests, and presentation sequencing. |
 | Photographic lighting | Hunter/Biver/Fuqua, *Light: Science & Magic*; Tony Northrup, *Tony Northrup's DSLR Book* | Created `photographic-lighting` from a targeted lighting pass. Check here for photo shoots, glare/reflections, metal/glass, hard/soft light, fill/bounce flash, portraits, and product/still-life lighting. |
 | Creative coding / generative visuals | Gross et al., *Generative Design* | Parked as a future `creative-coding` candidate. Current fold is only the designer-built-tool / abstraction-process precedent in `malleable-software`; needs a second source such as Reas/Fry, *Nature of Code*, or current p5.js docs before a new technical skill. |
+| Classic Apple HIG doctrine | Apple, *iOS Human Interface Guidelines* (2014); Apple, *OS X Human Interface Guidelines* (2014); current HIG lookup | Folded to `apple-design/references/classic-hig-principles.md`. Use for durable rationale only: deference/clarity/depth, aesthetic integrity, user control, standard-control semantics, Mac modality/keyboard/help. Current component specs still route through `apple-design` (`hig`). |
 
 ## MailChimp, *The UX Reader* (2014)
 
@@ -181,6 +182,49 @@ for motion principles. SVG is a minor implementation lead, not a new fold by its
 | Ch. 5, frame rates | For strobing or large-distance movement, manual motion blur via SVG filters or sprites can help special projects, but the book treats it as beyond scope. | Source-map lead only; current `web-animation-design` frame-rate/perception guidance is stronger. |
 
 Verified quote: "manually add motion blur using SVG filters or sprites".
+
+## Apple Inc., *iOS Human Interface Guidelines* (2014)
+
+Extraction: local Apple Books EPUB
+`~/Library/Containers/com.apple.BKAgentService/Data/Documents/iBooks/Books/877942287.epub`,
+extracted to `/tmp/books/ios-human-interface-guidelines-2014.txt`. Density: MED-HIGH
+for durable Apple doctrine, LOW for current component specs. Folded to
+`apple-design/references/classic-hig-principles.md`; current HIG lookup remains the
+source of truth for exact specs. Quotes verified via `scripts/verify_quotes.py`.
+
+### TOC / Section Map
+
+| Section | Short summary | Routing |
+| --- | --- | --- |
+| Designing for iOS | iOS 7-era deference, clarity, and depth; content-first UI, negative space, key color, borderless buttons, hierarchy through layers and motion. | Folded as historical doctrine; current material treatment routes to `liquid-glass-design-system.md`. |
+| Anatomy / Layout and Appearance | Bars, content views, controls, temporary views, view-controller anatomy, size classes, Auto Layout, and adaptive layouts. | Source-map only; current implementation/specs route to `swiftui` and `hig.md`. |
+| Navigation / Modal Contexts | Hierarchical, flat, and content-driven navigation; modal tasks as short, narrow, escapable interruptions; alerts as essential/actionable only. | Folded to `classic-hig-principles.md`; modern navigation specifics route to `apple-navigation-design.md`. |
+| Interactivity, Feedback, Animation | Feedback helps people understand action/results; animation should communicate status, direct manipulation, and mental model, not decorate. | Folded to `classic-hig-principles.md`; implementation routes to `swiftui` animation references. |
+| Branding / Color / Text / Iconography | Content-first branding, color as interactivity/state cue, text clarity, and semantic icon use. | Folded partly to `classic-hig-principles.md`; current brand guidance routes to `ios-brand-identity.md`. |
+| Integration / Standard UI Elements | Use standard UIKit controls for standard actions; do not misuse system icons; custom controls must be task-driven and tested. | Folded to `classic-hig-principles.md`. |
+| Design Principles / Process | Aesthetic integrity, consistency, direct manipulation, feedback, metaphors, user control, customization caution, and user testing. | Folded to `classic-hig-principles.md`. |
+| Technologies / UI Elements / Icons | 2014-era technologies and component specs including 3D Touch, old bars, old metrics, and image matrices. | Skip for current specs; use `hig.md` if needed. |
+
+## Apple Inc., *OS X Human Interface Guidelines* (2014)
+
+Extraction: local Apple Books EPUB
+`~/Library/Containers/com.apple.BKAgentService/Data/Documents/iBooks/Books/930571558.epub`,
+extracted to `/tmp/books/osx-human-interface-guidelines-2014.txt`. Density: HIGH for
+Mac interaction doctrine, LOW for current visual/API specifics. Folded to
+`apple-design/references/classic-hig-principles.md`; current HIG lookup remains the
+source of truth for exact specs. Quotes verified via `scripts/verify_quotes.py`.
+
+### TOC / Section Map
+
+| Section | Short summary | Routing |
+| --- | --- | --- |
+| Designing for Yosemite / App Anatomy | Mac app styles, windows plus system menu bar, containment-heavy app structure, and content-focused Yosemite simplification. | Folded to `classic-hig-principles.md`; current window implementation routes to `swiftui`/macOS skills. |
+| Starting and Stopping / Modality | Start instantly, defer setup, onboarding as last resort, Resume/Auto Save, least restrictive modality, visible modes, easy exits, alerts only when necessary. | Folded to `classic-hig-principles.md`; onboarding cross-check with `user-onboarding`. |
+| Interoperability / Feedback | Standard file formats, Finder/Spotlight/Quick Look integration, immediate feedback, partial results, progress, failure explanation. | Folded to `classic-hig-principles.md`. |
+| Menus / Windowing / Controls | Menu bar, contextual menus, windows, sheets, toolbars, controls, labels, and view layout. | Source-map only unless a Mac-specific design task needs historical rationale; current specs route to `hig.md`. |
+| Accessibility / Assistance | Keyboard-only alternatives, no overriding accessibility shortcuts, platform Help menu, context help, and concise help tags/tooltips. | Folded to `classic-hig-principles.md`; current settings route to `apple-visual-accessibility.md`. |
+| Drag and Drop / Keyboard Shortcuts / Pointers | Background selection, drag images, destination feedback, undo/confirmation for non-undoable drops, shortcut scarcity, modifier hierarchy. | Folded to `classic-hig-principles.md`. |
+| Icons and Graphics | Mac app-icon tailoring vs iOS reuse, toolbar/sidebar icon semantics, template images, and system image meanings. | Folded to `classic-hig-principles.md`; current app icon work routes to `app-icon-design.md`. |
 
 ## Gal Shir, *60 Tips for Logo Design* (2025)
 
