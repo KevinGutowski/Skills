@@ -20,6 +20,7 @@ Rules:
 | SVG / vector animation | Dan Hollick, *Making Software*, "Scalable Vector Graphics"; MailChimp, *The UX Reader*, "High Five for SVGs"; Wathan/Schoger, *Refactoring UI*, "Everything has an intended size"; Santa Maria, *On Web Typography*, icon-font discussion; Kalbag, *Accessibility for Everyone*, rich-media chapter; Nabors, *Animation at Work*, frame-rate chapter; animations.dev hero-illustration lessons | Hollick owns coordinate/path fundamentals already folded into `frontend-design`. MailChimp adds asset-prep and exporter hygiene. Refactoring UI + On Web Typography corroborate icon sizing and SVG-over-icon-font practice. Kalbag owns bitmap-text/SVG accessibility. Nabors mentions SVG filters for motion blur, but only as a special-project lead. |
 | Sketching / lo-fi artifacts | Leah Buley, *The User Experience Team of One*; MailChimp, *The UX Reader*, "Why You Should Sketch, And How" | Buley remains the stronger method source for facilitation and solo-UX artifacts; MailChimp mainly reinforces sketch-to-comp handoff and lo-fi signal. |
 | Typography systems | MailChimp, *The UX Reader*, "Tightening Type and Relative Font Sizing"; Rutter/Santa Maria/Butterick typography books already extracted; Elliot Jay Stocks articles | MailChimp has a vertical-rhythm/baseline-grid case study, but stronger dedicated typography sources own most future folds. |
+| Information architecture / findability | Lisa Maria Martin, *Everyday Information Architecture*; Jon Yablonski, *Laws of UX*; Sharon, *Validating Product Ideas* ch. 8; Apple naming/labels material | `web-information-architecture` remains parked until a second dedicated IA source lands. Martin is the spine for audits, categories, labels, structure, navigation, tags, and taxonomy governance. Yablonski/Sharon corroborate cognitive load, card sorting, tree testing, first-click testing, lostness, and Miller's-law misuse. |
 | Roadmaps / release cycles / cleanup | Perri, Gothelf/Seiden, Klein product trio; MailChimp, *The UX Reader*, "Release Cycles and Roadmaps" and "Iteration and the Feature/Refinement Balance"; Linear quality series | Product trio owns measurement-led strategy; MailChimp adds a craft/org practice for annual cleanup releases and feedback-fed refinement. |
 | Research impact / synthesis | Product trio; Buley; MailChimp, *The UX Reader*, research section | MailChimp adds distribution channels and parallel-cycle research cadence; Buley owns solo-UX influence mechanics. |
 | User research methods | Erika Hall, *Just Enough Research*; Steve Portigal, *Interviewing Users*; Tomer Sharon, *Validating Product Ideas*; product-trio validation sources; Buley | Hall owns scoping/rigor/bias and research politics; Portigal owns interview craft and field impact; Sharon owns lean method selection and participant sourcing; product trio owns assumption/metric validation. |
@@ -574,6 +575,52 @@ only. No direct quotes added here.
 | 7. Which Design Generates Better Results? | Uses A/B testing where traffic and decision stakes justify it. | `user-research` metrics/method selection. |
 | 8. How Do People Find Stuff? | Uses tree testing, first-click testing, and lostness metrics for findability. | `user-research`; parked IA skill candidate if paired with stronger IA sources. |
 | 9. How to Find Participants for Research? | Treats recruiting as the research bottleneck and covers participant sourcing. | `user-research/references/study-logistics.md`. |
+
+## Lisa Maria Martin, *Everyday Information Architecture*
+
+Extraction: `/tmp/books/everyday.txt`. Density: HIGH for web information architecture.
+Current route: parked `web-information-architecture` candidate, not a new skill yet,
+because this is one dedicated IA source plus adjacent corroborators rather than the
+2-source dedicated bar. Already lightly folded to
+`ux-writing/references/naming-features-and-labels.md` for label craft. No direct quotes
+added in this map pass.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| Introduction | Information organization changes how people understand and use knowledge; categorization and labels have ethical consequences. | Parked IA mindset; possible `design-principles` ethics/categorization lead. |
+| 1. Systems of Organization | Frames IA as systems work: constraints, organization schemes, and deliberate structure rather than page-by-page cleanup. | Parked `web-information-architecture` candidate. |
+| 2. Content Analysis | Uses audits/inventories, purpose-driven spreadsheets, structure analysis, content effectiveness, and governance questions. | Parked IA skill; `user-research` only when the task is research data collection. |
+| 3. Categories and Labels | Categorization criteria, label clarity, naming power, and the difference between internal mental models and user-facing terms. | Already folded lightly to `ux-writing/references/naming-features-and-labels.md`; future IA skill spine. |
+| 4. Site Structure | Structural audits, hierarchy, IDs, sitemaps, org-chart navigation risks, and page relationships. | Parked IA skill; possible `web-design` routing only for implementation of nav UI. |
+| 5. Navigation and Wayfinding | Navigation structures, wayfinding signals, next steps, and avoiding navigation that mirrors internal politics over user needs. | Parked IA skill; `user-onboarding` only for first-use flows. |
+| 6. Tags and Taxonomies | Taxonomy design, tag governance, user-applied tags, folksonomy decay, and content retrieval over time. | Parked IA skill; possible future `design-systems` metadata/governance cross-check. |
+| Conclusion / Resources | Points to deeper IA sources such as the Rosenfeld/Morville polar-bear book and Donna Spencer. | Source discovery for meeting the 2-source bar. |
+
+## Jon Yablonski, *Laws of UX*
+
+Extraction: `/tmp/books/laws-of-ux.txt`. Density: LOW-MED overall because many laws are
+model-known, but useful as IA/cognition corroboration for the parked IA candidate and
+for specific design-principles checks. Current route: no new skill; map only. No direct
+quotes added here.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| 1. Jakob's Law | Users bring expectations from other sites/products; familiarity can reduce learning cost without forcing sameness. | `design-principles`; IA corroboration for conventional structure. |
+| 2. Fitts's Law | Target size and distance shape pointing effort. | `design-principles`; `web-design` for UI implementation if needed. |
+| 3. Hick's Law | Choice complexity increases decision time; includes card sorting as a way to organize choices around user mental models. | Parked IA corroboration; `design-principles`. |
+| 4. Miller's Law | Corrects the common "seven nav items" misuse; chunking organizes information but does not license arbitrary menu limits. | Parked IA corroboration; `design-principles`. |
+| 5. Postel's Law | Be forgiving in input and precise in output. | `web-design` forms and `ux-writing` error-message adjacency. |
+| 6. Peak-End Rule | People remember intense moments and endings disproportionately. | `user-onboarding`, `ux-writing`, or `design-polish` only when a concrete flow needs memory shaping. |
+| 7. Aesthetic-Usability Effect | Aesthetic interfaces are often perceived as more usable. | `design-polish`; already covered by stronger polish sources. |
+| 8. von Restorff Effect | Distinct items stand out; useful for emphasis but dangerous when overused. | `design-principles`; `data-viz`/UI emphasis cross-check. |
+| 9. Tesler's Law | Complexity can be moved but not eliminated; decide whether the system or user bears it. | `design-principles`; possible `web-design` flow simplification. |
+| 10. Doherty Threshold | Responsiveness keeps attention and productivity. | `design-principles`; future web-performance candidate if broader sources land. |
+| 11. With Power Comes Responsibility | Psychological principles can manipulate; designers must use them ethically. | `design-principles` ethics. |
+| 12. Applying Psychological Principles in Design | Team workflow for identifying, applying, circulating, and advocating psychological principles. | Source-map only; useful for design-principles facilitation. |
 
 ## Processed Books Needing Map Backfill
 

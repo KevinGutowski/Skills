@@ -342,3 +342,6 @@ Backfilled `docs/book-source-map.md` chapter maps for the already-folded remaind
 
 ## 2026-06-12 — Client-work + user-research source-map backfill
 Backfilled `docs/book-source-map.md` maps for already-folded client-work sources: Mall's *Pricing Design* and Monteiro's *You're My Favorite Client*. Backfilled maps for the already-folded research cluster: Hall's *Just Enough Research*, Portigal's *Interviewing Users*, and Sharon's *Validating Product Ideas*. No skill bodies changed; current homes remain `client-work` and `user-research`.
+
+## 2026-06-13 — Information architecture source-map pass
+Screened the queued IA pair from `/tmp/books`: Martin's *Everyday Information Architecture* and Yablonski's *Laws of UX*. Added `docs/book-source-map.md` entries and a theme lead for information architecture/findability. Decision: keep `web-information-architecture` parked because Martin is the only dedicated IA source; Yablonski/Sharon corroborate cognitive load, card sorting, tree testing, first-click, and lostness but are adjacent rather than a second dedicated IA spine. No skill bodies changed.
