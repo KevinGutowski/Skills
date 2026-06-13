@@ -333,3 +333,6 @@ Screened alexmcdonnell-airtable/hyperagent-public-skills (12 JSON skill exports)
 
 ## 2026-06-12 — Book source-map backfill: emotional design + people-management trio
 Merged `codex/skill-library-ops` to `main`, pushed, then started `codex/book-folds-next-pass`. Full-screened Aarron Walter's *Designing for Emotion*: density MED, no new skill/fold because its durable lessons already live in `ux-writing` (including error messages), `user-research`, `design-principles`, and `web-animation-design`; added a chapter map so future personality/delight/trust edits cross-check it first. Backfilled chapter maps for the already-folded management trio: Scott's *Radical Candor*, Zhuo's *The Making of a Manager*, and Hogan's *Resilient Management*, all routed to `people-management` and references. No new direct quotes added in this pass.
+
+## 2026-06-12 — Product-trio source-map backfill
+Converted the already-verified Perri/Gothelf/Seiden/Klein manifest in `docs/pending-folds-product-trio.md` into `docs/book-source-map.md` chapter maps for *Escaping the Build Trap*, *Lean UX* 1st ed., and *Build Better Products*. Removed the product-trio item from the source-map backfill queue. No skill bodies changed; quote reuse still routes to the existing 100/100 verified manifest.

@@ -309,14 +309,87 @@ a backfill. No direct quotes were added in this map pass.
 | 4. Communicate Effectively | Builds communication plans for change, confidentiality, disagree-and-commit, audience reactions, message repetition, and recap channels. | `meetings-and-comms.md`. |
 | 5. Build Resiliency | Protects manager/team energy through support networks, crisis handling, input loops, and manager self-management. | `people-management/SKILL.md` Voltron/support and crisis script. |
 
+## Melissa Perri, *Escaping the Build Trap*
+
+Extraction: `/tmp/books/escaping-build-trap.txt`. Density: HIGH for product strategy,
+metrics-led discovery, and product-led org design. Screened and folded with Gothelf/
+Seiden and Klein; verified quote manifest lives in `docs/pending-folds-product-trio.md`
+and should remain the source for verbatim reuse. This map is a backfill only.
+
+### TOC / Chapter Map
+
+| Part / chapter | Short summary | Routing |
+| --- | --- | --- |
+| Part I. The Build Trap | Defines output obsession, value exchange, projects/products/services, product-led orgs, and knowledge gaps. | `design-org-influence` build-trap diagnosis; `shape-up` metrics-led school. |
+| 1-2. Value exchange and constraints | Frames value as reciprocal customer/business exchange, then shows constraints that block it. | `design-org-influence`; `user-research` for value validation. |
+| 3-5. Projects, products, services, product-led orgs, known/unknown | Separates project funding from product learning and asks what the org actually knows about customers and outcomes. | `shape-up` product strategy; `design-org-influence` org diagnosis. |
+| Part II. Role of the Product Manager | Defines bad archetypes, good PM behavior, career path, and team organization. | Mostly `design-org-influence`; not a standalone PM skill. |
+| 6-9. PM archetypes, great PM, career path, teams | Warns against waiter/order-taker/project-manager PM modes; emphasizes customer problem ownership and team structures. | `design-org-influence`; some `shape-up` routing for team boundaries. |
+| Part III. Strategy | Turns strategy into a decision framework with strategic gaps, company intent, product vision, and portfolio levels. | `shape-up` metrics-led product strategy school. |
+| 10-14. Strategy framework, gaps, intents, vision, portfolio | Covers Bungay-style gaps, strategic intents, product vision, portfolio decisions, and strategy deployment. | `shape-up`; `design-org-influence` for executive communication gaps. |
+| Part IV. Product Management Process | Introduces Product Kata, success metrics, problem exploration, solution exploration, and outcome-gated building. | `user-research/references/validation-and-metrics.md`; `shape-up`. |
+| 15-19. Product Kata through solution optimization | Uses current-state metrics, obstacle diagnosis, hypothesis tests, MVP learning, and outcome-based done criteria. | `user-research` validation/metrics; `shape-up` done/scope rules. |
+| Part V. Product-Led Organization | Covers outcome communication, incentives, safety, budgeting, customer centricity, and a product-led case narrative. | `design-org-influence`; `shape-up` budgeting and roadmap/sales-roadmap split. |
+| 20-25 + Afterword + Appendix | Builds product ops/communication systems, warns about incentives tied to shipping, reframes budgeting, and gives product-led diagnostic questions. | `design-org-influence`; `shape-up`; appendix questions as diagnostic probes. |
+
+## Jeff Gothelf and Josh Seiden, *Lean UX* (1st ed.)
+
+Extraction: `/tmp/books/lean-ux.txt`. Density: MED/HIGH as a validation-process source,
+but era-tag heavily: some process/tool/fidelity advice predates current AI generation
+and current polish standards. Screened and folded with Perri and Klein; verified quote
+manifest lives in `docs/pending-folds-product-trio.md`.
+
+### TOC / Chapter Map
+
+| Part / chapter | Short summary | Routing |
+| --- | --- | --- |
+| Preface / framing | Explains Lean UX as collaborative, cross-functional, outcome-oriented product design with lighter deliverables. | Context; conflict-scoped against polish doctrine where needed. |
+| Part I. Introduction and Principles | Establishes cross-functional teams, small batches, continuous discovery, shared understanding, externalized work, learning over growth, and outcomes over output. | `user-research` validation cadence; `design-org-influence` org/practice shifts. |
+| 1. Why Lean UX? | Software distribution reduces the cost of learning, pushing designers toward shorter cycles and tighter team collaboration. | `design-org-influence`; era-tag old software-distribution claims. |
+| 2. Principles | Lists the operating principles for problem-focused teams, reduced waste, small batches, discovery, and getting out of deliverables. | `user-research`; `design-org-influence`; `client-work/references/client-engagements.md` for deliverables/outcomes. |
+| Part II. Process | Converts principles into hypotheses, collaborative design, MVP experiments, and continuous feedback. | `user-research/references/validation-and-metrics.md`. |
+| 3. Vision, Framing, and Outcomes | Declares assumptions, writes problem statements and hypotheses, breaks hypotheses into subhypotheses, and uses proto-personas/features as testable claims. | `user-research` hypotheses/benchmarks. |
+| 4. Collaborative Design | Runs design studio, style-guide collaboration, and distributed collaborative design practices. | Mostly skipped as covered by `design-prototyping`/design-systems; use as corroboration. |
+| 5. MVPs and Experiments | Maps prototype fidelity and non-prototype MVP types to what needs to be learned. | `user-research`; conflict note that AI changes fidelity economics but not artifact-to-feedback matching. |
+| 6. Feedback and Research | Describes continuous collaborative research, 3-12-1 cadence, Meetup case, test-everything rule, and contradiction triage. | `user-research/references/validation-and-metrics.md`. |
+| Part III. Making It Work | Adapts Lean UX into Agile and organizational change. | `design-org-influence`; `client-work/references/client-engagements.md`. |
+| 7. Integrating Lean UX and Agile | Fits validation, kickoff, themes, and shared vision into Scrum-like rhythms. | Light corroboration for `design-org-influence`; skip stale Agile mechanics unless asked. |
+| 8. Making Organizational Shifts | Covers outcomes, roles, new UX skills, cross-functional teams, UX debt, agencies, vendors, documentation, and managing up. | `design-org-influence`; `client-work/references/client-engagements.md`; UX-debt framing. |
+
+## Laura Klein, *Build Better Products*
+
+Extraction: `/tmp/books/build-better-products.txt`. Density: HIGH for research-backed
+product validation, onboarding behavior, prioritization, metrics, and team shape.
+Screened and folded with Perri and Gothelf/Seiden; verified quote manifest lives in
+`docs/pending-folds-product-trio.md`.
+
+### TOC / Chapter Map
+
+| Part / chapter | Short summary | Routing |
+| --- | --- | --- |
+| Part I. Goal | Starts from measurable business need and lifecycle funnel math while warning that business goals alone can distort product work. | `shape-up` initiative shaping; `user-research` measurement setup. |
+| 1. Defining a Better Business Need | Turns business need into measurable, achievable goals and user-lifecycle math. | `shape-up`; `user-research` metrics. |
+| Part II. Empathy | Defines the user, picks research methods, and improves listening/interviewing. | `user-research`. |
+| 2. Understand Your User Better | Uses provisional/predictive personas, problem patterns, and user maps; warns against overbroad persona claims. | `user-research` predictive personas and sell-it tests. |
+| 3. Do Better Research | Chooses research topics and methodologies matched to what needs to be learned. | `user-research` method selection. |
+| 4. Listen Better | Builds empathy through goal-directed interviewing, question discipline, and better listening. | `user-research`; some `ux-writing` interview-copy adjacency if needed. |
+| Part III. Creation | Generates, prioritizes, designs, and drives behavior from user tasks and constraints. | `shape-up`; `user-onboarding`. |
+| 5. Have Better Ideas | Roots idea generation in user-defined tasks, customer journeys, and problem evidence. | `design-org-influence` idea-source correction; `user-research`. |
+| 6. Prioritize Better | Uses user behavior, quick estimates, and Finding the Core to identify what must be built. | `shape-up` scope hammering. |
+| 7. Design Better | Starts from context and flow, asks what happens next, matches inputs/outputs, and uses style guides/patterns. | `shape-up`; `design-prototyping`/design-systems as secondary. |
+| 8. Create Better User Behavior | Designs backward from behavior, gives new users tasks, maps triggers, and prioritizes core loops before onboarding/discovery/mastery. | `user-onboarding`; `shape-up` behavior-before-feature stance. |
+| Part IV. Validation | Identifies assumptions, turns them falsifiable, and chooses validation methods. | `user-research/references/validation-and-metrics.md`. |
+| 9. Identify Assumptions Better | Categorizes assumptions, finds risky stacks, and creates falsifiable statements with two-number evidence rules. | `user-research`. |
+| 10. Validate Assumptions Better | Chooses validation methods, tracks hypotheses, and treats danger metrics/no-neutral results as part of experiment design. | `user-research`. |
+| Part V. Measurement | Builds metrics early, distinguishes metric types, and warns about gaming and reporting-only analytics. | `user-research` metrics hygiene. |
+| 11. Measure Better | Covers business, UX, engineering, health, leading, feature-specific, and vanity metrics plus segmentation/cohort concerns. | `user-research/references/validation-and-metrics.md`. |
+| 12. Build a Better Team | Compares silos, communes, dictators, anarchies, and a heist-team model for product teams. | `design-org-influence`; possible future team-shape cross-check. |
+
 ## Processed Books Needing Map Backfill
 
 These books have been screened/folded in `docs/mining-ledger.md` but do not yet have
 chapter-level maps here. Backfill when a future theme pass needs them:
 
-- Melissa Perri, *Escaping the Build Trap*; Jeff Gothelf and Josh Seiden, *Lean UX*;
-  Laura Klein, *Build Better Products* — product-trio manifest exists in
-  `docs/pending-folds-product-trio.md`.
 - Austin Kleon, *Show Your Work!* — folded to `building-in-public`.
 - Chip Heath and Dan Heath, *Made to Stick* — folded to `design-org-influence`,
   `developer-tool-gtm`, and `write-clear-prose`; useful for future sticky-message
