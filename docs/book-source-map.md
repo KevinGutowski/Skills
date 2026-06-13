@@ -30,7 +30,7 @@ Rules:
 | People management | Kim Scott, *Radical Candor*; Julie Zhuo, *The Making of a Manager*; Lara Hogan, *Resilient Management* | These are the three primary book sources for `people-management`. Scott owns candor/career-conversation/team-result systems; Zhuo owns new-manager transitions, meetings, hiring, delegation, and culture; Hogan owns 1:1 discovery, BICEPS, four support hats, team charters, comms plans, and manager resilience. |
 | Logo design | Allan Peters, *Logos that Last*; Gal Shir, *60 Tips for Logo Design* | Peters remains the primary method source. Shir corroborates the process and adds practical checks: four-lane intake, keyword lanes, time-boxed sketch warmup, rest overnight, profile-image/uniqueness tests, and presentation sequencing. |
 | Photographic lighting | Hunter/Biver/Fuqua, *Light: Science & Magic*; Tony Northrup, *Tony Northrup's DSLR Book* | Created `photographic-lighting` from a targeted lighting pass. Check here for photo shoots, glare/reflections, metal/glass, hard/soft light, fill/bounce flash, portraits, and product/still-life lighting. |
-| Creative coding / generative visuals | Gross et al., *Generative Design* | Parked as a future `creative-coding` candidate. Current fold is only the designer-built-tool / abstraction-process precedent in `malleable-software`; needs a second source such as Reas/Fry, *Nature of Code*, or current p5.js docs before a new technical skill. |
+| Creative coding / generative visuals | Gross et al., *Generative Design*; Daniel Shiffman, *The Nature of Code* | Created `creative-coding` 2026-06-13. Generative Design owns the designer/tool/pattern-catalog side; Nature of Code owns simulation primitives: distributions/noise, vectors/forces, particles, steering/flocking, automata, fractals, and evolution. |
 | Classic Apple HIG doctrine | Apple, *iOS Human Interface Guidelines* (2014); Apple, *OS X Human Interface Guidelines* (2014); current HIG lookup | Folded to `apple-design/references/classic-hig-principles.md`. Use for durable rationale only: deference/clarity/depth, aesthetic integrity, user control, standard-control semantics, Mac modality/keyboard/help. Current component specs still route through `apple-design` (`hig`). |
 
 ## MailChimp, *The UX Reader* (2014)
@@ -304,11 +304,10 @@ Verified quotes used/foldable: "You always have some control over the lighting."
 ## Gross / Bohnacker / Laub / Lazzeroni, *Generative Design: Visualize, Program, and Create with JavaScript in p5.js*
 
 Extraction: `/tmp/books/generative-design-p5js.txt` from Apple Books PDF via
-`pdftotext`. Density: MED. Strong as a tutorial/pattern catalog for creative coding,
-but dated as technical p5.js guidance (book code targets p5.js 0.5.11) and not enough
-alone for a new public `creative-coding` skill under the 2-source bar. Current route:
-small fold to `malleable-software`; park future creative-coding skill until a second
-source lands.
+`pdftotext`. Density: MED-HIGH as a tutorial/pattern catalog for creative coding,
+but dated as technical p5.js guidance (book code targets p5.js 0.5.11). Current route:
+folded with Shiffman's *The Nature of Code* into `creative-coding`; earlier
+designer-built-tool / abstraction-process precedent remains in `malleable-software`.
 
 ### TOC / Chapter Map
 
@@ -323,6 +322,34 @@ source lands.
 | A.1 Looking ahead / Reflection | Process reflection: abstract vague ideas into executable rules; use repetition, controlled randomness, logic, parameters, and interaction; designers become creators of individualized tools. | Folded to `malleable-software`. |
 
 Verified quotes: "How do I abstract?"; "True randomness rarely produces compositionally interesting results."; "randomness is limited and applied in measured doses"; "Perhaps the most important aspect of this increase in possibilities is that the designer is now the creator of individualized tools"; "customized software tool".
+
+## Daniel Shiffman, *The Nature of Code*
+
+Extraction: local Apple Books EPUB
+`~/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents/The Nature of Code.epub`,
+extracted to `/tmp/books/nature-of-code.txt`. Density: HIGH for `creative-coding`.
+Processing APIs and library names are historical; use the concepts, then verify exact
+syntax against current canvas/p5/Three/WebGL docs. Folded with *Generative Design*
+to create `creative-coding`.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| Acknowledgments / Preface | Processing lineage, course/story framing, ecosystem project, and syllabus arc from vectors through neural networks. | Source context only. |
+| Introduction | Random walks; uniform, weighted, Gaussian, custom probability, Monte Carlo qualification, and Perlin noise. Warns against unbounded randomness as a design answer. | Folded to `creative-coding` randomness ladder. |
+| 1. Vectors | Vectors as motion state; location/velocity/acceleration; magnitude, normalization, static/non-static vector operations, target acceleration. | Folded to `creative-coding` motion primitive. |
+| 2. Forces | Newtonian force as vector; force accumulation; mass; gravity, friction, drag, attraction/repulsion; direction/magnitude decomposition. | Folded to `creative-coding` forces section. |
+| 3. Oscillation | Angular motion, trigonometry, polar/cartesian conversion, sine waves, amplitude/period, pendulums, springs. | Folded as motion-pattern source for `creative-coding`; web UI timing still routes to `web-design`/`motion`. |
+| 4. Particle Systems | Particle lifecycle, system manager, inheritance/polymorphism, global/per-particle forces, repellers, textures, alpha, additive blending. | Folded to `creative-coding` systems section. |
+| 5. Physics Libraries | Custom physics vs libraries; Box2D/toxiclibs examples; world/body/shape/fixture/joint model; pixel-world vs simulation-world translation. | Folded to `creative-coding` library threshold. |
+| 6. Autonomous Agents | Steering force formula, arrive/seek/flee, flow fields, path following, separation, behavior weights, flocking, and spatial subdivision for O(n^2) neighbor checks. | Folded to `creative-coding` steering/agents and performance. |
+| 7. Cellular Automata | Grid cells, finite states, neighborhoods, generations, elementary CA, Wolfram rules, Game of Life, CA variation. | Folded to `creative-coding` automata pattern. |
+| 8. Fractals | Recursion, Cantor/Koch examples, tree branching, L-systems, stochastic variations, fractals in visual/audio/text media. | Folded to `creative-coding` recursive/fractal pattern. |
+| 9. The Evolution of Code | Genetic algorithms; genotype/phenotype; fitness, mating pool, crossover, mutation, interactive selection, ecosystem evolution. | Folded to `creative-coding` evolutionary variation. |
+| 10. Neural Networks | Perceptron basics, steering brain, network diagrams, feed-forward animation; backprop beyond scope. | Source-map only for creative visualization; modern ML product UX routes to `ai-experience-design`. |
+
+Verified quotes: "How do we define the rules that govern the behavior of our objects?"; "Defaulting to randomness is not a particularly thoughtful solution to a design problem"; "A library is great, but it provides a limited set of features."
 
 ## Lidwell / Holden / Butler, *Universal Principles of Design* (2003)
 

@@ -1,0 +1,27 @@
+[
+  {
+    "q": "How do we define the rules that govern the behavior of our objects?",
+    "src": "/tmp/books/nature-of-code.txt",
+    "route": "creative-coding/SKILL.md"
+  },
+  {
+    "q": "Defaulting to randomness is not a particularly thoughtful solution to a design problem",
+    "src": "/tmp/books/nature-of-code.txt",
+    "route": "creative-coding/SKILL.md"
+  },
+  {
+    "q": "A library is great, but it provides a limited set of features.",
+    "src": "/tmp/books/nature-of-code.txt",
+    "route": "creative-coding/SKILL.md"
+  },
+  {
+    "q": "True randomness rarely produces compositionally interesting results.",
+    "src": "/tmp/books/generative-design-p5js.txt",
+    "route": "creative-coding/SKILL.md"
+  },
+  {
+    "q": "randomness is limited and applied in measured doses",
+    "src": "/tmp/books/generative-design-p5js.txt",
+    "route": "creative-coding/SKILL.md"
+  }
+]
