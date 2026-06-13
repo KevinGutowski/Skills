@@ -19,7 +19,7 @@ Rules:
 | --- | --- | --- |
 | SVG / vector animation | Dan Hollick, *Making Software*, "Scalable Vector Graphics"; MailChimp, *The UX Reader*, "High Five for SVGs"; Wathan/Schoger, *Refactoring UI*, "Everything has an intended size"; Santa Maria, *On Web Typography*, icon-font discussion; Kalbag, *Accessibility for Everyone*, rich-media chapter; Nabors, *Animation at Work*, frame-rate chapter; animations.dev hero-illustration lessons | Hollick owns coordinate/path fundamentals already folded into `frontend-design`. MailChimp adds asset-prep and exporter hygiene. Refactoring UI + On Web Typography corroborate icon sizing and SVG-over-icon-font practice. Kalbag owns bitmap-text/SVG accessibility. Nabors mentions SVG filters for motion blur, but only as a special-project lead. |
 | Sketching / lo-fi artifacts | Leah Buley, *The User Experience Team of One*; MailChimp, *The UX Reader*, "Why You Should Sketch, And How" | Buley remains the stronger method source for facilitation and solo-UX artifacts; MailChimp mainly reinforces sketch-to-comp handoff and lo-fi signal. |
-| Typography systems | MailChimp, *The UX Reader*, "Tightening Type and Relative Font Sizing"; Rutter/Santa Maria/Butterick typography books already extracted; Elliot Jay Stocks articles | MailChimp has a vertical-rhythm/baseline-grid case study, but stronger dedicated typography sources own most future folds. |
+| Typography systems | Rutter, *Web Typography*; Santa Maria, *On Web Typography*; Latin, *Better Web Typography*; MailChimp, *The UX Reader*, "Tightening Type and Relative Font Sizing"; Elliot Jay Stocks articles | Rutter/Santa Maria/Latin already own `web-design` (`web-typography`). MailChimp has a vertical-rhythm/baseline-grid case study; use it only as corroboration unless a future theme needs MailChimp-specific org practice. |
 | Information architecture / findability | Lisa Maria Martin, *Everyday Information Architecture*; Jon Yablonski, *Laws of UX*; Sharon, *Validating Product Ideas* ch. 8; Apple naming/labels material | `web-information-architecture` remains parked until a second dedicated IA source lands. Martin is the spine for audits, categories, labels, structure, navigation, tags, and taxonomy governance. Yablonski/Sharon corroborate cognitive load, card sorting, tree testing, first-click testing, lostness, and Miller's-law misuse. |
 | Roadmaps / release cycles / cleanup | Perri, Gothelf/Seiden, Klein product trio; MailChimp, *The UX Reader*, "Release Cycles and Roadmaps" and "Iteration and the Feature/Refinement Balance"; Linear quality series | Product trio owns measurement-led strategy; MailChimp adds a craft/org practice for annual cleanup releases and feedback-fed refinement. |
 | Research impact / synthesis | Product trio; Buley; MailChimp, *The UX Reader*, research section | MailChimp adds distribution channels and parallel-cycle research cadence; Buley owns solo-UX influence mechanics. |
@@ -96,15 +96,69 @@ mostly covered by stronger existing homes. No direct quotes added in this map pa
 | 7. Buttons | Three button weights, one primary action, avoid disabled buttons, left-align/order web buttons, verb+noun button text, 48pt targets, icon/text balance, destructive friction ladder. | Folded to `web-design` (`form-design`) with Apple-platform conflict scoped. |
 | 8. Forms | Single-column forms, required/optional markings, opt-ins, field width, conventional field styles, hints above fields, label placement, dropdown alternatives, checkbox/toggle choice, validation modes. | Folded to `web-design` (`form-design`) and details reference. |
 
+## Richard Rutter, *Web Typography*
+
+Extraction: `/tmp/books/web-typography-epub.txt`. Density: HIGH for `web-design`
+(`web-typography`). Already folded as the backbone for measure, line-height, type
+scales, rhythm, alignment, tracking, OpenType detail, web-font loading, and tables.
+No new quotes added in this map pass.
+
+### Section Map
+
+| Section | Short summary | Routing |
+| --- | --- | --- |
+| Embracing the medium / Preparing the ground | Web type starts from reader control, liquid media, content knowledge, and reader context. | Folded to `web-design/references/web-typography.md` stance. |
+| How to use this book | Three-part guideline structure; typeface choice comes last because text setting is the craft. | Folded to `web-typography` stance and `rutter-guidelines.md`. |
+| Setting Type to be Read | Body text sizing, measure, line-height, rhythm, hierarchy, alignment, justification, and tables. | Folded to `web-typography.md` core sections and table notes. |
+| Typographic Detail | Letterspacing, ligatures, small caps, numeral styles, punctuation, hanging punctuation, drop caps, and OpenType CSS. | Folded to `web-typography/opentype-and-micro.md`. |
+| Choosing and Using Fonts | Typeface description, genre taxonomy, web-font formats, subsetting, FOUT/FOIT, fallback matching, and loading strategy. | Folded to `web-typography/choosing-and-pairing.md`, `web-typography.md`, and `web-performance` cross-ref. |
+| Guideline index | Consolidated list of named guidelines for quick lookup. | Folded to `web-typography/rutter-guidelines.md`. |
+
 ## Jason Santa Maria, *On Web Typography*
 
-Extraction: `/tmp/books/on-web-typography.txt`. Mostly typography-source territory.
+Extraction: `/tmp/books/on-web-typography.txt`. Density: HIGH for type selection,
+pairing, and composition judgment inside `web-design` (`web-typography`). Already
+folded across the main typography reference and `choosing-and-pairing.md`; the
+SVG/icon-font note also corroborates `frontend-design`. No new quotes added in this
+map pass.
+
+### TOC / Chapter Map
 
 | Chapter / section | Short summary | Routing |
 | --- | --- | --- |
-| Icon-font discussion | SVG keeps icons scalable, CSS-colorable, and bundled while avoiding icon-font screen-reader remapping problems. | Folded lightly to `frontend-design`; future icon accessibility work should also check `web-accessibility`. |
+| Introduction | Typography frames and mediates reading; the web changes control, constraints, and rendering. | Folded to `web-typography` stance. |
+| 1. How We Read | Reading texture, rhythm, readability versus legibility, and why type quality shapes willingness to read. | Folded to `web-typography` stance. |
+| 2. How Type Works | Web-font mechanics, type rendering basics, icon-font limitations, SVG icon alternative, OpenType and punctuation basics. | Folded to `web-typography` and lightly to `frontend-design` SVG/icon guidance. |
+| 3. Evaluating Typefaces | Typeface anatomy, x-height, contrast, apertures, distinct letterforms, language coverage, web-service practicalities, and free-font caution. | Folded to `web-typography/choosing-and-pairing.md`. |
+| 4. Choosing and Pairing Typefaces | Moment-versus-live-with distinction, word association, appropriateness/history, ready-made avoidance, narrowing candidates, and pairing judgment. | Folded to `web-typography/choosing-and-pairing.md`. |
+| 5. Typographic Systems | Type scales, hierarchy, relative font sizing, display sizing, and system consistency. | Folded to `web-typography.md`; corroborates MailChimp typography lead. |
+| 6. Composition | Layout, grids, baseline-grid skepticism, measure, whitespace, and responsive composition for reading. | Folded to `web-typography.md`; baseline-grid caution corroborates Rutter. |
+| Resources / References | Tool and reading list, mostly 2014-era. | Source discovery only; verify current tooling before reuse. |
 
 Verified quote: "SVG is the more flexible solution".
+
+## Matej Latin, *Better Web Typography for a Better Web*
+
+Extraction: `/tmp/books/better-web-typography.txt`. Density: HIGH as a worked
+companion to Rutter and Santa Maria. Already folded into `web-design`
+(`web-typography`) for the body-text triangle, language adjustments, scale/rhythm
+tradeoffs, pairing traces, responsive type, and micro-typography. No new quotes added
+in this map pass.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| Introduction to web typography | Frames typography as shaping information for readers, not choosing fashionable fonts. | Folded to `web-typography` stance. |
+| Anatomy of a typeface | Explains type anatomy and evaluation vocabulary. | Supports `web-typography/choosing-and-pairing.md`. |
+| Choosing typefaces | Choose from content, goals, reader expectations, text length, weights/styles, language support, and loading cost. | Folded to `web-typography/choosing-and-pairing.md`. |
+| Equilateral triangle of a perfect paragraph | Treats font size, line-height, and line length as a coupled body-text decision. | Folded to `web-typography.md` body-text triad. |
+| Combining typefaces | Anchor-first pairing process, evaluate combinations, and make contrast clear or absent. | Folded to `web-typography/choosing-and-pairing.md`. |
+| Rhythm in web typography | Paragraph spacing, heading margins, baseline/rhythm grids, and vertical flow. | Folded to `web-typography.md` rhythm section. |
+| Modular scale and meaningful typography | Type scales for font sizes, reconciling scale with leading/rhythm, and optical tiebreakers. | Folded to `web-typography.md` scales/hierarchy. |
+| Page composition | Grid/layout composition around the text block. | Corroborates `design-polish`/`frontend-design`; no direct fold beyond `web-typography`. |
+| Responsive web typography | Breakpoint/fluid type treatment for measure, line-height, and reading context. | Folded to `web-typography.md` with modern `clamp()` staleness note. |
+| Micro Typography | Ligatures, small caps, numerals, punctuation, drop caps, and detail characters. | Folded to `web-typography/opentype-and-micro.md`. |
 
 ## Laura Kalbag, *Accessibility for Everyone*
 

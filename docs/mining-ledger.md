@@ -348,3 +348,6 @@ Screened the queued IA pair from `/tmp/books`: Martin's *Everyday Information Ar
 
 ## 2026-06-13 — Practical UI source-map pass
 Backfilled `docs/book-source-map.md` for Dannaway's *Practical UI* 2nd ed. Decision: no new skill and no additional skill-body fold in this pass, because the durable high-signal material is already routed into `web-design` (`form-design`, `oklch-skill`) and `web-accessibility`. The map now marks broad layout, typography, and copywriting chapters as corroboration only, with stronger existing homes owning the guidance.
+
+## 2026-06-13 — Web typography trio source-map backfill
+Backfilled `docs/book-source-map.md` for the already-folded typography trio: Rutter's *Web Typography*, Santa Maria's *On Web Typography*, and Latin's *Better Web Typography*. Decision: no skill-body changes, because `web-design` (`web-typography`) already contains the durable folds and reference split. The source map now exposes the chapter/section routes for future themed edits around measure, line-height, type scales, pairing, OpenType, web-font loading, responsive type, and SVG/icon-font tradeoffs.
