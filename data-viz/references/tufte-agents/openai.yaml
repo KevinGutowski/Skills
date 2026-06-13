@@ -1,4 +1,4 @@
 interface:
-  display_name: "Tufte Viz"
+  display_name: "Data Viz: Tufte"
   short_description: "Tufte-style visualization critique"
-  default_prompt: "Use $tufte-viz to critique this chart and suggest a clearer redesign."
+  default_prompt: "Use $data-viz to critique this chart and suggest a clearer redesign."

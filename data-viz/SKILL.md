@@ -1,6 +1,6 @@
 ---
 name: data-viz
-description: "Design, choose, and critique data visualizations. Use when picking a chart type (line, bar, dot plot, scatter, histogram, heatmap, map, table, single value), reviewing whether a chart fits its data, or redesigning with Tufte principles — graphical integrity, data-ink ratio, chartjunk, small multiples. In-app chart UX/accessibility → apple-design. Triggers: chart type, which chart, dashboard design, data visualization, chartjunk, data-ink, small multiples."
+description: "Design, choose, and critique data visualizations. Use when picking chart types (line, bar, dot, scatter, histogram, heatmap, map), reviewing fit/integrity, polishing editorial or interactive charts, or applying Tufte principles: graphical integrity, data-ink, chartjunk, small multiples. In-app chart UX/accessibility -> apple-design. Triggers: chart type, dashboard design, data visualization, chartjunk, data-ink, small multiples, D3 tooltip."
 ---
 
 # Data Visualization
@@ -9,5 +9,6 @@ Read the reference that matches the task:
 
 - **Choosing a chart** (which type fits the data and question; building dashboards, reports, decks, frontend visuals): [references/chart-selection.md](references/chart-selection.md)
 - **Critiquing or redesigning** (graphical integrity, data-ink ratio, chartjunk, small multiples, dense displays, visual encodings): [references/tufte.md](references/tufte.md)
+- **Editorial and interactive chart craft** (NYT/Upshot-style chart pages, dashboard polish, direct labels, annotations, hover hit testing, tooltip behavior, mobile prepublish checks): [references/editorial-interaction.md](references/editorial-interaction.md)
 
-Typical flow: select the type first (chart-selection), then refine with the critique principles (tufte). For the *in-app experience* around a chart — platters, progressive disclosure, Swift Charts, Audio Graphs, accessibility labels — use `apple-design` (chart-experience-design) instead.
+Typical flow: select the type first (chart-selection), refine integrity/density with the critique principles (tufte), then use editorial-interaction when the chart must ship as a polished page, dashboard, or interactive artifact. For the *in-app experience* around a chart — platters, progressive disclosure, Swift Charts, Audio Graphs, accessibility labels — use `apple-design` (chart-experience-design) instead.

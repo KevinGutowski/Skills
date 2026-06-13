@@ -63,4 +63,4 @@ For a fuller matrix with rationale, caveats, and source notes, read [references/
 
 ## Related skills
 
-This skill picks the chart *type*. For designing the chart and its surrounding experience inside an app (marks/axes/descriptions, accessibility/Audio Graphs, progressive disclosure from platter to detail chart, multi-chart consistency), use `apple-design` (chart-experience-design); for critique of integrity and data-ink, use `tufte-viz`.
+This skill picks the chart *type*. For designing the chart and its surrounding experience inside an app (marks/axes/descriptions, accessibility/Audio Graphs, progressive disclosure from platter to detail chart, multi-chart consistency), use `apple-design` (chart-experience-design); for critique of integrity and data-ink, read the Tufte reference in `data-viz`.

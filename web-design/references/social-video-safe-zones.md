@@ -37,6 +37,18 @@ Keep key content inside these margins (px):
   focal point. (IG ignores a video's embedded poster; upload a custom cover image.)
 - Don't bake burned-in captions near the very bottom — they fight the app's caption.
 
+## Generated-video text zones
+When a vertical video will combine AI-generated footage with motion-graphics text,
+design the safe zone before generation. Reserve a full left, right, or bottom third
+as a clean text zone with deliberate contrast, then place overlay text only in that
+zone. Do not generate busy footage first and try to rescue legibility with shadows,
+outlines, or scrims afterward.
+
+In the shot prompt or storyboard, name the contrast source that creates the zone:
+deep shadow from an overhang, dark ground filling the bottom third, bright sky for
+dark text, a soft defocused wall, and so on. Add a preservation clause so light,
+objects, and motion do not drift into the text zone during the shot.
+
 ## Export
 - 1080×1920, H.264, `yuv420p`, **~8–10 Mbps**. Platforms re-compress on upload, so
   feed them a **higher-quality** file than the final target — never upload an
@@ -87,3 +99,4 @@ export const SafeArea: React.FC<{
 - [Instagram Safe Zone Guide (Outfy)](https://www.outfy.com/blog/instagram-safe-zone/)
 - [IG Reels Dimensions & Safe Zones (getKoro)](https://getkoro.app/blog/instagram-reels-dimensions)
 - [Safe Zone Overlays for Reels/TikTok/Shorts (Orson Lord)](https://orsonlord.com/articles/free-safe-zone-overlays-for-reels-tiktok-and-shorts)
+- Hyperagent public skill `veo-hyperframes` (Text Zone Composition pattern), alexmcdonnell-airtable/hyperagent-public-skills.

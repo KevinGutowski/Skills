@@ -319,3 +319,14 @@ Kevin-directed, experimentally gated. 8 Apple design-doctrine skills (navigation
 
 ## 2026-06-12 — Global taxonomy reorganization (38 top-level skills, ~15.4k chars)
 Kevin's directive: deep global pass first ("the details is in the abstractions"; "skill organization + the graph references are key"). Plan: docs/taxonomy-2026-06.md — top-level = platform/activity/cross-domain tool; topics nest under their cluster; nesting never severs access (inbound edges preserved as cluster (member reference) cross-refs — the "connection nodes"). Built gated: web-design (7 members incl. the default motion theme surfaced at router level), ux-writing (4), working-with-ai (3), devtools (3), client-work (2), apple-design extended (+hig — Kevin's call, domain-bound lookup; +chart-experience-design). goal/ gitignored (harness-specific, not library content). Centralized edge remap: 59 files; independent audit 0 dangling. BEFORE 22/24 (misses: CLAUDE.md-rules → init builtin; CLI hero copy → write-clear-prose) → AFTER 24/24 incl. second-hop reference selection and all 6 controls — pooled router vocabulary again fixed scattered-vocabulary misses. Graph rules codified as creating-skills house rule 13a.
+
+## 2026-06-12 — Hyperagent public skills screen
+Screened alexmcdonnell-airtable/hyperagent-public-skills (12 JSON skill exports). Routed folds only; no imported scripts or wholesale copied skill bodies.
+
+[folded] `nyt-data-viz` -> `data-viz/references/editorial-interaction.md` plus router entry. High-value deltas: editorial headline/subtitle/source discipline, one-accent color restraint, no rainbow/dual-axis/pie defaults, direct labels before legends, mobile-375 no-hover rule, and D3 interaction bugs (hover hit layer must share mark coordinate space, Delaunay/Voronoi proximity instead of pixel hunting, mark-anchored tooltips, data-derived domains, annotation halos/leader lines).
+
+[folded] `veo-hyperframes` -> `web-design/references/social-video-safe-zones.md`. Durable reusable lesson: for generated vertical video with overlaid text, reserve a full third as a high-contrast text zone in the prompt/storyboard before generation; name the physical contrast source and keep motion/light out of that zone instead of repairing readability afterward.
+
+[parked] Müller-Brockmann grid systems and Vignelli Canon exports are promising for grid/editorial/design-system discipline, especially shared-content-box grid overlays and optical alignment of large display type. Park until verified against primary/public sources or a second corroborating source; do not fold long quoted doctrine from the JSON export alone.
+
+[read-skip] Airtable Kanban tracker, brand-book generator, briefing trailer, claymation video skills, NYC subway campaign, landscaping quote, and business-simulation operator are mostly Hyperagent/demo workflow specifics. Revisit only if this corpus gets a video-production or campaign-generation cluster.

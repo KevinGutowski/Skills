@@ -220,7 +220,7 @@ principles. Current fold pass only touched entries with a clear, non-generic tar
 | Hierarchy / Hierarchy of Needs | Organize perceived importance and satisfy basic functional needs before higher-order delight. | Skipped for now; covered by `design-principles`, onboarding, and polish sources. |
 | Iteration | Design and development iteration improve fitness over cycles. | Skipped as model-known and already covered by Shape Up/product process sources. |
 | Layering | Organize information into related groupings, exposing only needed layers at a time. | Skipped for now; possible future IA/progressive-disclosure corroboration. |
-| Signal-to-Noise Ratio | Maximize relevant signal, reduce irrelevant noise. | Skipped; covered by `tufte-viz`, `chart-selection`, visual accessibility, and UI polish sources. |
+| Signal-to-Noise Ratio | Maximize relevant signal, reduce irrelevant noise. | Skipped; covered by `data-viz`, visual accessibility, and UI polish sources. |
 | Similarity / Self-Similarity | Similar elements are perceived as related; repeated structures reduce learning cost. | Skipped; covered by design-system/pattern and visual hierarchy material. |
 
 ## Processed Books Needing Map Backfill
