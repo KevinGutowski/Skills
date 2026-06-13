@@ -336,3 +336,6 @@ Merged `codex/skill-library-ops` to `main`, pushed, then started `codex/book-fol
 
 ## 2026-06-12 — Product-trio source-map backfill
 Converted the already-verified Perri/Gothelf/Seiden/Klein manifest in `docs/pending-folds-product-trio.md` into `docs/book-source-map.md` chapter maps for *Escaping the Build Trap*, *Lean UX* 1st ed., and *Build Better Products*. Removed the product-trio item from the source-map backfill queue. No skill bodies changed; quote reuse still routes to the existing 100/100 verified manifest.
+
+## 2026-06-12 — Remaining 2026-06-11 book queue source-map backfill
+Backfilled `docs/book-source-map.md` chapter maps for the already-folded remainder of the first book queue: Kleon's *Show Your Work!*, Heath & Heath's *Made to Stick*, Dirksen's *Design For How People Learn*, and Buley's *The User Experience Team of One*. No skill bodies changed: existing folds already route to `building-in-public`, `design-org-influence`, `devtools`, `write-clear-prose`, `learning-experience-design`, `user-research`, and `design-prototyping`. Cleared the processed-books-needing-map-backfill list for the 2026-06-11 queue.

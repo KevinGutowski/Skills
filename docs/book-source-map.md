@@ -218,7 +218,7 @@ principles. Current fold pass only touched entries with a clear, non-generic tar
 | --- | --- | --- |
 | Advance Organizer | Pre-learning orientation that helps learners connect new material to prior knowledge; distinguishes expository and comparative organizers. | Folded to `learning-experience-design`. |
 | Entry Point | First impressions should minimize barriers, expose points of prospect, and lure progressive exploration. | Folded to `user-onboarding`. |
-| Errors | Separate slips from mistakes; prevent where possible with constraints, affordances, confirmations, and forgiving recovery. | Folded to `error-messages`. |
+| Errors | Separate slips from mistakes; prevent where possible with constraints, affordances, confirmations, and forgiving recovery. | Folded to `ux-writing/references/error-messages.md`. |
 | Hierarchy / Hierarchy of Needs | Organize perceived importance and satisfy basic functional needs before higher-order delight. | Skipped for now; covered by `design-principles`, onboarding, and polish sources. |
 | Iteration | Design and development iteration improve fitness over cycles. | Skipped as model-known and already covered by Shape Up/product process sources. |
 | Layering | Organize information into related groupings, exposing only needed layers at a time. | Skipped for now; possible future IA/progressive-disclosure corroboration. |
@@ -385,15 +385,99 @@ Screened and folded with Perri and Gothelf/Seiden; verified quote manifest lives
 | 11. Measure Better | Covers business, UX, engineering, health, leading, feature-specific, and vanity metrics plus segmentation/cohort concerns. | `user-research/references/validation-and-metrics.md`. |
 | 12. Build a Better Team | Compares silos, communes, dictators, anarchies, and a heist-team model for product teams. | `design-org-influence`; possible future team-shape cross-check. |
 
+## Austin Kleon, *Show Your Work!*
+
+Extraction: `/tmp/books/show-your-work.txt`. Density: MED-HIGH for public craft practice
+and audience-building habits. Already folded to `building-in-public`; this is a map
+backfill only. No direct quotes added in this map pass.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| A New Way of Operating | Frames public work as a repeatable operating system, not a launch campaign. | `building-in-public`. |
+| 1. You Don't Have to Be a Genius | Treats creativity as networked participation, attribution, and showing up inside a scene rather than lone-genius performance. | `building-in-public` audience/network stance. |
+| 2. Think Process, Not Product | Share process, drafts, influences, questions, and working traces, not only finished artifacts. | `building-in-public` rough-beats-polished and daily dispatch. |
+| 3. Share Something Small Everyday | Build a daily cadence; separate flow from durable stock; keep small dispatches from becoming performative noise. | `building-in-public` daily-dispatch and stock/flow. |
+| 4. Open Up Your Cabinet of Curiosities | Share influences and source trails with context; curation becomes part of the work. | `building-in-public`; possible `write-clear-prose` attribution/citation cross-check. |
+| 5. Tell Good Stories | Put work inside a narrative so others can understand stakes, sequence, and meaning. | `building-in-public`; `write-clear-prose` if shaping the story itself. |
+| 6. Teach What You Know | Teaching builds audience and clarifies practice without waiting for expert status. | `building-in-public`; possible `learning-experience-design` only when designing a real course/workshop. |
+| 7. Don't Turn Into Human Spam | Be an open node: contribute, listen, credit, and avoid self-promotion without reciprocity. | `building-in-public` human-spam/open-node behavior. |
+| 8. Learn to Take a Punch | Public work requires filtering criticism, protecting boundaries, and continuing after feedback. | `building-in-public` criticism/momentum guardrails. |
+| 9. Sell Out | Build owned surfaces, mailing lists, and value exchange without treating commerce as betrayal. | `building-in-public` own-your-turf and permission list. |
+| 10. Stick Around | Momentum, archives, restarts, and long-term rhythm matter more than a single burst. | `building-in-public` long-game practice. |
+
+## Chip Heath and Dan Heath, *Made to Stick*
+
+Extraction: `/tmp/books/made-to-stick.txt`. Density: LOW-MED overall because SUCCESs is
+model-known, MED as a scoped source for stakeholder pitches, devtool landing pages, and
+prose that must be remembered and acted on. Already folded to `design-org-influence`,
+`devtools/references/developer-tool-gtm.md`, and `write-clear-prose`; this is a map
+backfill only. No direct quotes added in this map pass.
+
+### TOC / Chapter Map
+
+| Chapter / section | Short summary | Routing |
+| --- | --- | --- |
+| Talking Strategy / Teaching That Sticks / Unsticking an Idea | Added-material sections apply the same checklist to internal strategy communication, teaching, and replacing sticky false beliefs. | Source-map lead for future strategy-comms or learning-design corroboration; no current fold needed. |
+| Intro / What Sticks | Defines sticky ideas as understandable, memorable, and behavior-changing; names the Curse of Knowledge as the villain. | `design-org-influence` pitch framing and `write-clear-prose` sticky pass. |
+| 1. Simple | Find the core, make it compact, and use schemas/analogies without losing decision-useful meaning. | `design-org-influence` one-lead framing; `devtools` landing-page core message. |
+| 2. Unexpected | Break patterns in service of the core; open knowledge gaps that sustain attention. | `design-org-influence`; use carefully in `write-clear-prose`, not as gimmick advice. |
+| 3. Concrete | Make abstract ideas sensory, specific, and shared enough for novices and cross-functional groups to coordinate. | `design-org-influence`; `devtools` concrete workflow scenes. |
+| 4. Credible | Make evidence believable through authority, anti-authority, convincing detail, human-scale statistics, and testable credentials. | `design-org-influence`; `devtools` human-scale metrics and proof. |
+| 5. Emotional | Make people care through identity, self-interest, and one-person concreteness rather than abstract importance. | `write-clear-prose`; `design-org-influence` stakeholder care-making. |
+| 6. Stories | Stories simulate action and inspire behavior; the story should carry the moral, not merely decorate it. | `write-clear-prose`; `design-org-influence`; `devtools` story before moral. |
+| What Sticks / symptoms and solutions | Recasts the checklist as a diagnostic for communication failures: attention, understanding, belief, care, and action. | `write-clear-prose` revision lens; no separate skill. |
+
+## Julie Dirksen, *Design For How People Learn*
+
+Extraction: `/tmp/books/design-for-how-people-learn.txt`. Density: HIGH. Created
+`learning-experience-design` as a single-deep-method skill because no existing skill
+owned courses, workshops, internal training, job aids, practice, feedback, and
+performance-support design. This is a map backfill only. No direct quotes added here.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| 1. Where Do We Start? | Diagnose the real gap: knowledge, skill, motivation, environment, or communication; learning is a journey toward doing. | `learning-experience-design` gap diagnosis. |
+| 2. Who Are Your Learners? | Understand learner context, prior knowledge, motivation, and constraints; observe instead of assuming. | `learning-experience-design` learner observation; `user-research` only for broader product research. |
+| 3. What's The Goal? | Define the destination behavior clearly enough to design and evaluate against it. | `learning-experience-design` goals and performance outcomes. |
+| 4. How Do We Remember? | Applies memory, context, retrieval, recognition vs recall, and cognitive load to learning design. | `learning-experience-design`; `design-principles` only as secondary cognition corroboration. |
+| 5. How Do You Get Their Attention? | Attention is prerequisite; use relevance, social context, and curiosity without confusing entertainment for learning. | `learning-experience-design`; possible `user-onboarding` cross-check for first-run attention. |
+| 6. Design for Knowledge | Teach knowledge through context, examples, learner engagement, and application across circumstances. | `learning-experience-design` knowledge design. |
+| 7. Design for Skills | Skills require practice, feedback, progression, and realistic scenarios. | `learning-experience-design` practice/feedback core. |
+| 8. Design for Motivation | Addresses the "I know, but..." gap through motivation-to-learn and motivation-to-do. | `learning-experience-design`; possible `user-onboarding` behavior-change cross-check. |
+| 9. Design for Environment | Sometimes the right solution is environmental support, job aids, process change, or information in the world. | `learning-experience-design` performance support; `design-org-influence` for org-process barriers. |
+| 10. Conclusion | Reasserts capability in the real world as the goal of learning design. | Context only. |
+
+## Leah Buley, *The User Experience Team of One*
+
+Extraction: `/tmp/books/the-user-experience-team-of-one.txt` via `pdftotext`; text is
+usable despite font-weight warnings. Density: MED. No new skill: the method catalog
+routes to `user-research` and `design-prototyping`, while solo-UX influence routes to
+`design-org-influence`. This is a map backfill only. No direct quotes added here.
+
+### TOC / Chapter Map
+
+| Part / chapter | Short summary | Routing |
+| --- | --- | --- |
+| Part I. Philosophy | Explains solo UX conditions: establish enough UX practice to make progress without waiting for a full team or formal mandate. | `design-org-influence` team-of-one stance. |
+| 1. UX 101 | Defines UX broadly, where the field comes from, and how different backgrounds enter the work. | Context only; model-known. |
+| 2. Getting Started | Get to know the UX toolkit, establish a point of view, learn users, and start designing. | `design-org-influence`; `user-research` for user-learning methods. |
+| 3. Building Support for Your Work | Favors principles over process, handles people/org issues, and responds to objections. | `design-org-influence/references/influence-field-notes.md`. |
+| 4. Growing Yourself and Your Career | Uses communities, continuing education, and career-growth cases for solo practitioners. | Possible `design-org-influence` career-growth cross-check; not a current fold target. |
+| Part II. Practice | Method catalog chosen for lightweight execution, stakeholder involvement, and education-by-doing. | Route by method family below. |
+| 5. Planning and Discovery Methods | UX questionnaire, project plan, listening tour, opportunity workshop, project brief, strategy workshop. | `design-org-influence` Listening Tour/scope-not-permission; `user-research` planning. |
+| 6. Research Methods | Learning plan, guerrilla research, proto-personas, heuristic markup, comparative assessment, content patterns. | `user-research`; `design-org-influence` for lightweight adoption constraints. |
+| 7. Design Methods | Design brief, design principles, sketching, sketchboards, task flows, wireframes. | `design-prototyping`; especially participatory sketching and visible artifacts. |
+| 8. Testing and Validation Methods | Paper/interactive prototypes, black-hat session, quick usability test, five-second test, UX health check. | `design-prototyping`; `user-research` for validation setup. |
+| 9. Evangelism Methods | Bathroom UX, mini case studies, peer learning community, pyramid evangelism. | `design-org-influence` pyramid evangelism and support-building. |
+| 10. What's Next? | Looks forward to UX maturation and sustaining the practice. | Context only. |
+
 ## Processed Books Needing Map Backfill
 
 These books have been screened/folded in `docs/mining-ledger.md` but do not yet have
 chapter-level maps here. Backfill when a future theme pass needs them:
 
-- Austin Kleon, *Show Your Work!* — folded to `building-in-public`.
-- Chip Heath and Dan Heath, *Made to Stick* — folded to `design-org-influence`,
-  `developer-tool-gtm`, and `write-clear-prose`; useful for future sticky-message
-  cross-checks.
-- Julie Dirksen, *Design For How People Learn* — created `learning-experience-design`.
-- Leah Buley, *The User Experience Team of One* — folded to `design-org-influence`
-  and `design-prototyping`; useful for future sketching, solo-UX, and influence checks.
+- None currently from the 2026-06-11 book-fold queue.
