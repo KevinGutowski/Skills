@@ -1,0 +1,22 @@
+[
+  {
+    "q": "Keep going through the entire setup process, documenting every step",
+    "src": "/tmp/books/elements-of-user-onboarding.txt",
+    "route": "user-onboarding/SKILL.md"
+  },
+  {
+    "q": "all the pages your site makes available",
+    "src": "/tmp/books/elements-of-user-onboarding.txt",
+    "route": "user-onboarding/SKILL.md"
+  },
+  {
+    "q": "frontloading the relationship with value by educating instead of selling",
+    "src": "/tmp/books/elements-of-user-onboarding.txt",
+    "route": "user-onboarding/references/selling-the-dream.md"
+  },
+  {
+    "q": "No matter how motivated your material may help people become, there’s always a possibility that the timing simply isn’t right.",
+    "src": "/tmp/books/elements-of-user-onboarding.txt",
+    "route": "user-onboarding/references/selling-the-dream.md"
+  }
+]
