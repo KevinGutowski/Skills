@@ -7,7 +7,7 @@ The organizing principle (Kevin: "the details is in the abstractions" / "skill o
 ## Levels
 
 - **Platform clusters:** `rails` · `swiftui` · `apple-design` (+hig, +chart-experience-design per this plan) · `web-design` (new)
-- **Activity skills (flat):** frontend-design (build UI) · design-polish (refine) · design-systems · design-principles (judge) · design-prototyping (validate) · user-research · user-onboarding · shape-up · logo-design · learning-experience-design · photographic-lighting · hardware-product-design (literally physical goods) · malleable-software · ai-experience-design (designing AI INTO the product — deliberately apart from working-with-ai) · design-org-influence (influence up/sideways) · people-management (manage down) · building-in-public · feature-discoverability · notification-design
+- **Activity skills (flat):** frontend-design (build UI) · design-polish (refine) · design-systems · design-principles (judge) · design-prototyping (validate) · user-research · user-onboarding · shape-up · product-decision-making · logo-design · learning-experience-design · photographic-lighting · hardware-product-design (literally physical goods) · malleable-software · ai-experience-design (designing AI INTO the product — deliberately apart from working-with-ai) · design-org-influence (influence up/sideways) · people-management (manage down) · building-in-public · feature-discoverability · notification-design
 - **Activity clusters (new):** `ux-writing` · `working-with-ai` · `devtools` · `client-work`
 - **Existing knowledge clusters:** data-viz · creating-skills · research-cataloging
 - **Cross-domain tools (flat):** x-post-reader · route-planning · motion (vendor kit) · write-clear-prose · dhh (user-invocable /dhh — commands must stay top-level to remain invocable)
@@ -37,4 +37,4 @@ Flagged-and-rejected: building-in-public into client-work (audience-building ≠
 5. Cluster descriptions pool the members' trigger vocabulary (≤700 chars); boundary clauses are bidirectional.
 6. User-invocable commands (dhh, goal) cannot be nested — invocation requires top-level listing.
 
-End state: ~32 top-level skills, one altitude.
+End state: ~33 top-level skills, one altitude.

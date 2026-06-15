@@ -1,6 +1,6 @@
 ---
 name: client-work
-description: "Running and pricing client design work — engagements (qualification, kickoff, feedback system, health signals, going sideways, firing/being fired) and money (Sequence Flip, objection scripts, qualifying buyers, when to walk). Read this skill's body, then read the named reference file. Devtool pricing/GTM → devtools; indie economics → building-in-public; session craft → design-prototyping. Triggers: client feedback, scope of work, kill fee, fire a client, value based pricing, hourly rate, price is too high, scope creep, what should I charge."
+description: "Run and price client design work: qualification, kickoff, feedback systems, health signals, difficult clients, kill fees, value-based pricing, objection scripts, and walk-away calls. Devtool pricing/GTM → devtools; indie economics → building-in-public; session craft → design-prototyping. Triggers: client feedback, scope creep, what should I charge."
 ---
 
 # Client Work
