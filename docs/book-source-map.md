@@ -76,8 +76,9 @@ visual UI refactoring. Primary fold target is
 `design-polish/references/refactoring-ui.md` plus the code-native gallery at
 `design-polish/examples/refactoring-ui-gallery.html`; color-scale mechanics also
 corroborate `web-design` (`oklch-skill`), and image/icon sizing corroborates
-`frontend-design`. The gallery now recreates 45 visual examples in editable
-HTML/CSS and should be preferred over committing book screenshots.
+`frontend-design`. The gallery now recreates 32 visual examples in editable
+HTML/CSS; weak supplemental sketches were pruned after review, so prefer clear
+examples over total image coverage and never commit book screenshots.
 
 | Chapter / section | Short summary | Routing |
 | --- | --- | --- |
