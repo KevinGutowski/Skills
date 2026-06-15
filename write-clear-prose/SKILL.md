@@ -13,6 +13,8 @@ Draw on enduring craft principles associated with William Zinsser, George Orwell
 
 Add Heath & Heath's *Made to Stick* as a message-shaping lens when the prose must be remembered or acted on: find the core, make it concrete, create useful curiosity, make evidence credible at human scale, and carry the moral in a story.
 
+Add Julie Zhuo's Looking Glass writing lens for workplace writing: distinguish whether the draft is meant to **think**, **feel**, or **connect**, then judge quality by that job. Writing to connect requires reader empathy before sentence polish.
+
 Do not imitate any author at a fingerprint level. Use the principles, not the protected expression. Avoid long quotations from books unless the user explicitly asks and the excerpt is brief.
 
 ## First Move
@@ -24,6 +26,13 @@ Before editing, identify:
 - **Form**: Memo, essay, op-ed, profile, landing copy, email, speech, technical note, memoir, or other.
 - **State**: Drafting from scratch, developmental edit, line edit, copyedit, title/lead/ending work, or coaching.
 - **Tolerance**: Preserve the user's voice unless they ask for a stronger transformation.
+
+For memos, updates, and proposals, add Zhuo's reader-empathy pass:
+- Which reader group is this for, and what is the cost of their attention?
+- What is the lowest shared context in that group?
+- What exact reader outcome do you want: decision, behavior change, reassurance, awareness, or feedback?
+- What is the minimum context needed to get that outcome?
+- Would a chart, screenshot, video, numbered list, `DECISION:` block, or `ACTION:` block carry the point better than paragraphs?
 
 If the piece is missing, ask for it. If the task is clear enough, proceed without extra questions.
 

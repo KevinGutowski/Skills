@@ -2,6 +2,8 @@
 
 Sources: Julie Zhuo, *The Making of a Manager* (2019); Kim Scott, *Radical Candor* (2017); Lara Hogan, *Resilient Management* (2019). Quotes verified.
 
+Looking Glass additions: Zhuo, "Managing Remotely" (2020) and "A User Guide To Working With You" (2020).
+
 ## Contents
 
 - Zhuo's five-outcome meeting taxonomy
@@ -11,6 +13,7 @@ Sources: Julie Zhuo, *The Making of a Manager* (2019); Kim Scott, *Radical Cando
 - Quiet vs loud listening
 - The skip-level protocol
 - Hogan: comms plans, tick tock docs, recap emails, All Hands
+- Remote management and user guides (Zhuo)
 - Confidentiality and disagree-and-commit
 - Culture and incentives (Zhuo)
 
@@ -76,6 +79,15 @@ FAQ data points: whole-team loss of faith is rare (three times in Scott's years 
 - **All-Hands script** for big changes — walk through, slowly: (1) high-level what's changing; (2) what to do with questions ("We'll have plenty of time for questions at the end" + office hours); (3) the why, tied to goals; (4) specific changes **plus what's *not* changing and what's still undecided**; (5) pre-answered obvious questions (who does my performance review if my manager changes?). Bigger/scarier news → less live Q&A, more small-setting processing after. Never demean a question-asker; "I don't know, I'll follow up" is a fine answer if you follow up. Hold All Hands routinely even with no news — otherwise gathering everyone *itself* signals catastrophe, and you lose the repetition channel.
 - **Recap email — four messages** for big nuanced changes: (1) the stated company line; (2) facts about what it means in practice (fact-based only); (3) **your personal take** — the vulnerability-and-honesty slot, *the* most important message when you're disagreeing-and-committing; (4) an invitation ("come to me with comments and questions" + where to find you). "Dump buckets of context and clarity in there," include when more clarity is coming, duplicate to a doc/wiki for questions.
 - **Repeat, repeat, repeat**: "People rarely remember information the first time they hear it" — same message, multiple channels, rephrased per audience response.
+
+## Remote management and user guides (Zhuo)
+
+- **Remote kindness is operational, not sentimental.** Assume home constraints are uneven: childcare, loneliness, anxiety, roommates, bad internet, different energy patterns. In crisis/remote periods, late arrivals, lower energy, or dropped balls deserve generous interpretation before performance judgment.
+- **Chat check-ins replace hallway sensing.** Ask "How are you doing? What can I help you with?" more often than you would in person. The point is not novelty; it is making care visible when body language disappears.
+- **Cut video meetings aggressively.** Remote meetings cost more attention. Convert information transfer to docs/comments; keep meetings for decisions, hard discussion, and relationship repair. Send agendas early; if the agenda is thin, cancel.
+- **Design airtime.** Use round-robin prompts, hand-raise norms, chat markers, or explicit facilitation so remote meetings do not privilege the loudest or fastest unmuter.
+- **Use docs over decks when async consumption matters.** Narrative documents travel better across time zones and allow comments before the decision meeting.
+- **Write user guides for humans.** A good guide names values, communication style, annoying habits, trust triggers, strengths, growth areas, expectations, and feedback preferences. Have managers share theirs with new reports and invite reports to share back.
 
 ## Confidentiality and disagree-and-commit
 
