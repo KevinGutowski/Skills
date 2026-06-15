@@ -683,11 +683,17 @@
       box-shadow: inset 0 1px 0 rgb(255 255 255 / 72%);
     }
     .lesson-screen::before {
+      position: absolute;
       top: 10px;
       left: 10px;
+      z-index: 3;
+      display: grid;
       width: 20px;
       height: 20px;
+      place-items: center;
+      border-radius: 999px;
       font-size: 11px;
+      font-weight: 800;
     }
     .lesson-screen.good::before {
       width: 24px;
@@ -862,16 +868,43 @@
     .space-demo.good .mini-card { padding: 20px; }
     .scale-demo {
       display: grid;
-      gap: 6px;
+      gap: 10px;
       margin-top: 30px;
     }
-    .scale-demo span { height: 8px; border-radius: 999px; background: #4c83c4; }
-    .scale.bad .scale-demo span:nth-child(1) { width: 48%; }
-    .scale.bad .scale-demo span:nth-child(2) { width: 51%; }
-    .scale.bad .scale-demo span:nth-child(3) { width: 54%; }
-    .scale.good .scale-demo span:nth-child(1) { width: 35%; }
-    .scale.good .scale-demo span:nth-child(2) { width: 56%; }
-    .scale.good .scale-demo span:nth-child(3) { width: 88%; }
+    .scale-row {
+      display: grid;
+      grid-template-columns: 44px 1fr 86px;
+      align-items: center;
+      gap: 10px;
+    }
+    .scale-row b {
+      display: grid;
+      min-height: 28px;
+      place-items: center;
+      border-radius: 5px;
+      background: #eef3f9;
+      color: #334960;
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+    }
+    .scale-row i {
+      display: block;
+      height: 8px;
+      border-radius: 999px;
+      background: #4c83c4;
+    }
+    .scale-row em {
+      color: #657589;
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 700;
+    }
+    .scale.bad .scale-row:nth-child(1) i { width: 48%; }
+    .scale.bad .scale-row:nth-child(2) i { width: 52%; }
+    .scale.bad .scale-row:nth-child(3) i { width: 56%; }
+    .scale.good .scale-row:nth-child(1) i { width: 30%; }
+    .scale.good .scale-row:nth-child(2) i { width: 55%; }
+    .scale.good .scale-row:nth-child(3) i { width: 92%; }
     .wide-page {
       margin-top: 22px;
       padding: 12px;
@@ -922,11 +955,33 @@
       gap: 8px;
       margin-top: 42px;
     }
+    .baseline-row button {
+      height: 28px;
+      margin-left: auto;
+      padding: 0 10px;
+      border: 0;
+      border-radius: 5px;
+      color: #fff;
+      background: #3f68d8;
+      font-size: 10px;
+      font-weight: 800;
+    }
     .baseline-row strong { font-size: 22px; }
     .baseline.good .baseline-row { align-items: baseline; }
     .lh-copy {
       margin-top: 22px;
       color: #34475d;
+    }
+    .lh-copy h4 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      line-height: inherit;
+    }
+    .lh-copy p {
+      margin: 0;
+      color: #627286;
+      font-size: 12px;
+      line-height: inherit;
     }
     .line-height.bad .lh-copy { font-size: 10px; line-height: 2.35; }
     .line-height.good .lh-copy { font-size: 10px; line-height: 1.55; }
@@ -1171,6 +1226,23 @@
       font-size: 11px;
       font-weight: 800;
     }
+    .choice-row span {
+      display: grid;
+      min-width: 66px;
+      place-items: center;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+    }
+    .choice.bad .choice-row span:nth-child(1)::before { content: "Save"; }
+    .choice.bad .choice-row span:nth-child(2)::before { content: "Update"; }
+    .choice.bad .choice-row span:nth-child(3)::before { content: "Apply"; }
+    .choice.bad .choice-row span:nth-child(4)::before { content: "Confirm"; }
+    .choice.bad .choice-row span:nth-child(5)::before { content: "Submit"; }
+    .choice.bad .choice-row span:nth-child(6)::before { content: "Done"; }
+    .choice.good .choice-row span:nth-child(1)::before { content: "Primary"; }
+    .choice.good .choice-row span:nth-child(2)::before { content: "Secondary"; color: #405064; }
+    .choice.good .choice-row span:nth-child(3)::before { content: "Tertiary"; color: #405064; }
     .quote-box {
       max-width: 310px;
       margin-inline: auto;
@@ -1271,10 +1343,26 @@
       box-shadow: var(--shadow-sm);
     }
     .scale-demo::before {
-      content: "Spacing candidates";
+      content: "Scale tokens";
       color: #627286;
       font-size: 11px;
       font-weight: 800;
+    }
+    .scale.bad .scale-demo::after,
+    .scale.good .scale-demo::after {
+      display: block;
+      margin-top: 2px;
+      padding-top: 10px;
+      border-top: 1px solid #e2eaf2;
+      color: #69798d;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+    .scale.bad .scale-demo::after {
+      content: "12/14/16px are too close; the UI still feels like guessing.";
+    }
+    .scale.good .scale-demo::after {
+      content: "8/16/32px create distinct choices for tight, normal, and loose spacing.";
     }
     .wide-page {
       min-height: 122px;
@@ -1300,6 +1388,26 @@
         linear-gradient(90deg, #4d8ed5 0 36px, transparent 36px) 12px 12px / 100% 7px no-repeat,
         linear-gradient(90deg, #c5d0dc 0 70%, transparent 70%) 12px 28px / 100% 5px no-repeat,
         #fff;
+    }
+    .grid-boxes span::after {
+      content: "Card";
+      display: block;
+      margin: 38px 12px 0;
+      color: #728196;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .grid-over.bad .grid-boxes::before,
+    .grid-over.good .grid-boxes::before {
+      content: "12-column overlay";
+      grid-column: 1 / -1;
+      color: #8a4b4b;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .grid-over.good .grid-boxes::before {
+      content: "Content-sized composition";
+      color: #506176;
     }
     .relative-card {
       max-width: 280px;
@@ -1338,6 +1446,33 @@
     .font-demo .mini-line {
       max-width: 250px;
       margin-inline: auto;
+    }
+    .font-demo .mini-title::before {
+      content: "Regular  Bold  Italic";
+      display: block;
+      margin-bottom: 12px;
+      color: #748297;
+      font-size: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 700;
+    }
+    .font-demo.good .mini-title::after {
+      content: "Open apertures, readable x-height, useful weights.";
+      display: block;
+      margin-top: 12px;
+      color: #69798d;
+      font-size: 11px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 500;
+    }
+    .font-demo.bad .mini-title::after {
+      content: "Default serif chosen without small-size testing.";
+      display: block;
+      margin-top: 12px;
+      color: #69798d;
+      font-size: 11px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 500;
     }
     .measure p {
       padding: 18px;
@@ -1408,11 +1543,30 @@
       font-size: 11px;
       font-weight: 800;
     }
+    .palette.bad .swatches::after,
+    .palette.good .swatches::after,
+    .greys.bad .swatches::after,
+    .greys.good .swatches::after {
+      grid-column: 1 / -1;
+      color: #69798d;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+    .palette.bad .swatches::after { content: "One blue reused for buttons, links, badges, and charts."; }
+    .palette.good .swatches::after { content: "Grey, primary, success, warning, danger, and background roles."; }
+    .greys.bad .swatches::after { content: "Neutral greys drift cold/warm without intent."; }
+    .greys.good .swatches::after { content: "One cool-grey family from ink to background."; }
     .shade-stack {
       padding: 18px;
       border-radius: 8px;
       background: #fff;
       box-shadow: var(--shadow-sm);
+    }
+    .shade-stack::after {
+      content: "Choose endpoints, then fill middle stops.";
+      grid-column: 1 / -1;
+      color: #69798d;
+      font-size: 11px;
     }
     .color-dot-row {
       padding: 18px;
@@ -1432,9 +1586,39 @@
       font-size: 11px;
       font-weight: 800;
     }
+    .chart-mini::after {
+      content: "$300k  +8%";
+      display: block;
+      margin-top: 14px;
+      color: #25384f;
+      font-size: 16px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
     .light-card,
     .shadow-card {
       max-width: 260px;
+    }
+    .light-card::before {
+      content: "Create Account";
+      display: grid;
+      height: 100%;
+      place-items: center;
+      color: #2f4660;
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .shadow-card::before {
+      content: "Agile Meeting";
+      display: block;
+      margin-bottom: 8px;
+      color: #25384f;
+      font-weight: 900;
+    }
+    .shadow-card::after {
+      content: "Jun 12, 10:30 AM";
+      color: #748297;
+      font-size: 11px;
     }
     .flat-layers,
     .upload-grid,
@@ -1444,6 +1628,24 @@
       border-radius: 8px;
       background: #fff;
       box-shadow: var(--shadow-sm);
+    }
+    .flat-layers span::before {
+      content: "Panel";
+      display: block;
+      margin: 12px;
+      color: #68788c;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .flat-layers span::after {
+      content: "";
+      display: block;
+      width: 54%;
+      height: 5px;
+      margin: 10px 12px;
+      border-radius: 999px;
+      background: #b7c5d4;
+      box-shadow: 0 12px 0 #d2dbe5, 0 24px 0 #d2dbe5;
     }
     .overlap-stack {
       height: 132px;
@@ -1474,12 +1676,43 @@
     .upload-grid span {
       min-height: 78px;
     }
+    .upload-grid span::after {
+      content: "4.8";
+      display: inline-grid;
+      min-width: 26px;
+      height: 18px;
+      margin: 52px 8px 0;
+      place-items: center;
+      border-radius: 999px;
+      background: rgb(255 255 255 / 86%);
+      color: #6c3d20;
+      font-size: 10px;
+      font-weight: 900;
+    }
     .defaults .default-list span {
       min-height: 36px;
       padding: 10px 12px;
     }
     .accent-demo.good .mini-card {
       border-top: 4px solid #35a7da;
+    }
+    .outside .mini-card::before {
+      content: "Plan options";
+      color: #657589;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .outside.good .mini-card::before {
+      grid-column: 1 / -1;
+    }
+    .outside.good .mini-card span::before {
+      content: "5 GB";
+      display: block;
+      margin-top: 8px;
+      color: #2d4057;
+      font-size: 11px;
+      font-weight: 900;
+      text-align: center;
     }
 
     @media (max-width: 860px) {
@@ -1659,15 +1892,15 @@
         <article class="lesson-card"><header><h3>9. Balance icon weight</h3><p>Heavy symbols often need softer contrast or lighter strokes.</p></header><div class="lesson-pair"><div class="lesson-screen bad icon-weight"><div class="icon-row"><span class="icon-mark"></span><span>Charts</span></div></div><div class="lesson-screen good icon-weight"><div class="icon-row"><span class="icon-mark"></span><span>Charts</span></div></div></div></article>
         <article class="lesson-card"><header><h3>10. Button prominence</h3><p>Primary, secondary, and destructive depend on the current decision.</p></header><div class="lesson-pair"><div class="lesson-screen bad action-rank"><div class="actions"><span>Save</span><span>Cancel</span><span>Delete</span></div></div><div class="lesson-screen good action-rank"><div class="actions"><span>Save changes</span><span>Cancel</span><span>Delete account</span></div></div></div></article>
         <article class="lesson-card"><header><h3>11. Start too spacious</h3><p>Remove from a generous layout instead of adding to a cramped one.</p></header><div class="lesson-pair"><div class="lesson-screen bad space-demo"><div class="mini-card"><div class="mini-title">Set up account</div><div class="mini-line"></div><div class="mini-line"></div></div></div><div class="lesson-screen good space-demo"><div class="mini-card"><div class="mini-title">Set up account</div><div class="mini-line"></div><div class="mini-line"></div></div></div></div></article>
-        <article class="lesson-card"><header><h3>12. Spacing scale</h3><p>Use jumps large enough that decisions are visible.</p></header><div class="lesson-pair"><div class="lesson-screen bad scale"><div class="scale-demo"><span></span><span></span><span></span></div></div><div class="lesson-screen good scale"><div class="scale-demo"><span></span><span></span><span></span></div></div></div></article>
+        <article class="lesson-card"><header><h3>12. Spacing scale</h3><p>Use jumps large enough that decisions are visible.</p></header><div class="lesson-pair"><div class="lesson-screen bad scale"><div class="scale-demo"><div class="scale-row"><b>12</b><i></i><em>card pad</em></div><div class="scale-row"><b>14</b><i></i><em>field gap</em></div><div class="scale-row"><b>16</b><i></i><em>section gap</em></div></div></div><div class="lesson-screen good scale"><div class="scale-demo"><div class="scale-row"><b>8</b><i></i><em>tight</em></div><div class="scale-row"><b>16</b><i></i><em>normal</em></div><div class="scale-row"><b>32</b><i></i><em>loose</em></div></div></div></div></article>
         <article class="lesson-card"><header><h3>13. Do not fill the screen</h3><p>Narrow the task area even when the canvas is wide.</p></header><div class="lesson-pair"><div class="lesson-screen bad max-width"><div class="wide-page"><div class="mini-line"></div><div class="mini-line"></div><div class="mini-line"></div></div></div><div class="lesson-screen good max-width"><div class="wide-page"><div class="mini-line"></div><div class="mini-line"></div><div class="mini-line"></div></div></div></div></article>
         <article class="lesson-card"><header><h3>14. Grids are overrated</h3><p>Align to content relationships, not a visible cage.</p></header><div class="lesson-pair"><div class="lesson-screen bad grid-over"><div class="grid-boxes"><span></span><span></span><span></span><span></span></div></div><div class="lesson-screen good grid-over"><div class="grid-boxes"><span></span><span></span><span></span></div></div></div></article>
         <article class="lesson-card"><header><h3>15. Relative sizing</h3><p>Adapt elements, do not scale the whole design down.</p></header><div class="lesson-pair"><div class="lesson-screen bad relative"><div class="relative-card"><h4>Team communication optimized</h4><div class="mini-line"></div></div></div><div class="lesson-screen good relative"><div class="relative-card"><h4>Team communication optimized</h4><div class="mini-line"></div></div></div></div></article>
         <article class="lesson-card"><header><h3>16. Type scale</h3><p>Choose from a small set of useful interface sizes.</p></header><div class="lesson-pair"><div class="lesson-screen bad type-scale"><div class="type-sample"><b>$1,500</b><span>Delivery estimate</span></div></div><div class="lesson-screen good type-scale"><div class="type-sample"><b>$1,500</b><span>Delivery estimate</span></div></div></div></article>
         <article class="lesson-card"><header><h3>17. Practical fonts</h3><p>Use families with solid small-size behavior and enough weights.</p></header><div class="lesson-pair"><div class="lesson-screen bad font-demo"><div class="mini-title">Hello World</div><div class="mini-line"></div></div><div class="lesson-screen good font-demo"><div class="mini-title">Hello World</div><div class="mini-line"></div></div></div></article>
         <article class="lesson-card"><header><h3>18. Line length</h3><p>Keep reading text narrow even inside wide layouts.</p></header><div class="lesson-pair"><div class="lesson-screen bad measure"><p>When paragraphs stretch too far, every line becomes harder to track and the layout feels unfinished.</p></div><div class="lesson-screen good measure"><p>When paragraphs stay narrow, scanning feels deliberate and calm.</p></div></div></article>
-        <article class="lesson-card"><header><h3>19. Baseline alignment</h3><p>Mixed sizes should sit on the same baseline.</p></header><div class="lesson-pair"><div class="lesson-screen bad baseline"><div class="baseline-row"><strong>Typography</strong><span>details</span></div></div><div class="lesson-screen good baseline"><div class="baseline-row"><strong>Typography</strong><span>details</span></div></div></div></article>
-        <article class="lesson-card"><header><h3>20. Proportional line-height</h3><p>Large text needs tighter leading than small body copy.</p></header><div class="lesson-pair"><div class="lesson-screen bad line-height"><div class="lh-copy">A long heading and a short line of text stepping too far apart.</div></div><div class="lesson-screen good line-height"><div class="lh-copy">A long heading and a short line of text sitting with intent.</div></div></div></article>
+        <article class="lesson-card"><header><h3>19. Baseline alignment</h3><p>Mixed sizes should sit on the same baseline.</p></header><div class="lesson-pair"><div class="lesson-screen bad baseline"><div class="baseline-row"><strong>$49</strong><span>/mo per seat</span><button>Upgrade</button></div></div><div class="lesson-screen good baseline"><div class="baseline-row"><strong>$49</strong><span>/mo per seat</span><button>Upgrade</button></div></div></div></article>
+        <article class="lesson-card"><header><h3>20. Proportional line-height</h3><p>Large text needs tighter leading than small body copy.</p></header><div class="lesson-pair"><div class="lesson-screen bad line-height"><div class="lh-copy"><h4>Team communication optimized for deep work.</h4><p>Short product copy should sit close enough to feel related to the heading.</p></div></div><div class="lesson-screen good line-height"><div class="lh-copy"><h4>Team communication optimized for deep work.</h4><p>Short product copy should sit close enough to feel related to the heading.</p></div></div></div></article>
         <article class="lesson-card"><header><h3>21. Links need not be blue</h3><p>In dense UI, context and underline can carry the link affordance.</p></header><div class="lesson-pair"><div class="lesson-screen bad links"><div class="link-list"><span>Room setup</span><span>Checklist</span><span>Notes</span></div></div><div class="lesson-screen good links"><div class="link-list"><span>Room setup</span><span>Checklist</span><span>Notes</span></div></div></div></article>
         <article class="lesson-card"><header><h3>22. Readability alignment</h3><p>Left-align text blocks; reserve center alignment for short fragments.</p></header><div class="lesson-pair"><div class="lesson-screen bad align"><div class="readability"><span>Small support copy that wraps.</span><span>Another short block.</span></div></div><div class="lesson-screen good align"><div class="readability"><span>Small support copy that wraps.</span><span>Another short block.</span></div></div></div></article>
         <article class="lesson-card"><header><h3>23. Letterspacing</h3><p>Track uppercase labels, not lowercase body copy.</p></header><div class="lesson-pair"><div class="lesson-screen bad tracking"><div class="type-sample"><b>full stack developer</b><span>Resume role</span></div></div><div class="lesson-screen good tracking"><div class="type-sample"><b>full stack developer</b><span>Resume role</span></div></div></div></article>
