@@ -646,13 +646,13 @@
     }
     .lesson-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      grid-template-columns: 1fr;
+      gap: 18px;
     }
     .lesson-card {
       display: grid;
-      gap: 10px;
-      padding: 12px;
+      gap: 14px;
+      padding: 16px;
       border: 1px solid #e1e8f0;
       border-radius: 8px;
       background: #fbfcfe;
@@ -670,21 +670,21 @@
     .lesson-pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      gap: 14px;
     }
     .lesson-screen {
       position: relative;
       overflow: hidden;
-      min-height: 132px;
-      padding: 15px;
+      min-height: 224px;
+      padding: 22px;
       border: 1px solid #d8e1eb;
       border-radius: 7px;
       background: #eef3f8;
       box-shadow: inset 0 1px 0 rgb(255 255 255 / 72%);
     }
     .lesson-screen::before {
-      top: 7px;
-      left: 7px;
+      top: 10px;
+      left: 10px;
       width: 20px;
       height: 20px;
       font-size: 11px;
@@ -1098,10 +1098,397 @@
       box-shadow: var(--shadow-sm);
     }
 
+    /* Detail pass: make compact lessons inspectable rather than symbolic. */
+    .flight .mini-card {
+      max-width: 290px;
+      padding: 18px;
+    }
+    .flight .mini-card::before {
+      content: "From  SFO  to  AMS";
+      display: block;
+      margin-bottom: 12px;
+      color: #708096;
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .flight.good .mini-card::after {
+      content: "Depart May 8   1 passenger";
+      display: block;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid #e3ebf3;
+      color: #506176;
+      font-size: 11px;
+    }
+    .wire .mini-card {
+      max-width: 330px;
+      margin-top: 28px;
+      padding: 18px;
+    }
+    .wire .mini-card::before {
+      content: "$20/mo storage   1 TB storage   2 users";
+      display: block;
+      margin-bottom: 14px;
+      color: #718095;
+      font-size: 11px;
+    }
+    .wire.good .mini-card {
+      border-top: 3px solid #5668d9;
+      box-shadow: 0 10px 22px rgb(49 65 92 / 10%);
+    }
+    .personality .mini-card {
+      max-width: 300px;
+      margin-top: 30px;
+    }
+    .personality.bad .mini-card::after {
+      content: "Generic project management for all teams.";
+      display: block;
+      margin-top: 12px;
+      color: #748297;
+      font-size: 11px;
+    }
+    .personality.good .mini-card::after {
+      content: "Guided trips, secret paths, and weekly field notes.";
+      display: block;
+      margin-top: 12px;
+      color: rgb(255 255 255 / 78%);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+    .choice-row {
+      max-width: 330px;
+      margin-inline: auto;
+      padding: 22px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .choice-row::before {
+      content: "Button options";
+      flex: 0 0 100%;
+      color: #64758a;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .quote-box {
+      max-width: 310px;
+      margin-inline: auto;
+      font-size: 18px;
+      box-shadow: 0 14px 24px rgb(27 83 80 / 14%);
+    }
+    .quote-box::before {
+      content: "\201C";
+      display: block;
+      margin-bottom: -8px;
+      color: rgb(255 255 255 / 48%);
+      font-size: 34px;
+      line-height: 1;
+    }
+    .deemph .nav-mini {
+      max-width: 340px;
+      margin: 58px auto 0;
+      padding: 12px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .deemph .nav-mini::before {
+      content: "Acme";
+      margin-right: auto;
+      color: #26384f;
+      font-weight: 900;
+    }
+    .data-label {
+      max-width: 330px;
+      margin-inline: auto;
+    }
+    .data-label dl {
+      gap: 11px;
+    }
+    .label-last.good .data-label dd::after {
+      display: block;
+      margin-top: 2px;
+      color: #7f8da0;
+      font-size: 10px;
+      font-weight: 500;
+    }
+    .label-last.good .data-label div:first-child dd::after { content: "Primary contact"; }
+    .label-last.good .data-label div:last-child dd::after { content: "Renews Oct 12"; }
+    .semantic-ui {
+      max-width: 360px;
+      margin-inline: auto;
+    }
+    .semantic-ui::after {
+      content: "";
+      display: block;
+      height: 38px;
+      border-top: 1px solid #e5ebf2;
+      background:
+        linear-gradient(90deg, #aab7c5 0 80px, transparent 80px) 16px 17px / 100% 5px no-repeat,
+        linear-gradient(90deg, #d5dde6 0 130px, transparent 130px) 16px 27px / 100% 4px no-repeat;
+    }
+    .icon-row {
+      max-width: 280px;
+      margin-inline: auto;
+      padding: 18px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .actions {
+      max-width: 270px;
+      margin-inline: auto;
+      padding: 15px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .actions::before {
+      content: "Account settings";
+      color: #657589;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .space-demo .mini-card {
+      max-width: 300px;
+      margin-inline: auto;
+    }
+    .space-demo .mini-card::before {
+      content: "Step 2 of 4";
+      display: block;
+      margin-bottom: 12px;
+      color: #8290a2;
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+    .scale-demo {
+      max-width: 340px;
+      margin-inline: auto;
+      padding: 22px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .scale-demo::before {
+      content: "Spacing candidates";
+      color: #627286;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .wide-page {
+      min-height: 122px;
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .wide-page::before {
+      content: "Account preferences";
+      display: block;
+      margin-bottom: 14px;
+      color: #25384f;
+      font-weight: 800;
+    }
+    .grid-boxes {
+      max-width: 380px;
+      margin-inline: auto;
+      padding: 18px;
+      border-radius: 8px;
+    }
+    .grid-boxes span {
+      height: 58px;
+      background:
+        linear-gradient(90deg, #4d8ed5 0 36px, transparent 36px) 12px 12px / 100% 7px no-repeat,
+        linear-gradient(90deg, #c5d0dc 0 70%, transparent 70%) 12px 28px / 100% 5px no-repeat,
+        #fff;
+    }
+    .relative-card {
+      max-width: 280px;
+      padding: 20px;
+    }
+    .relative-card::after {
+      content: "Project chat, docs, tasks";
+      display: block;
+      margin-top: 12px;
+      color: #738196;
+      font-size: 11px;
+    }
+    .type-sample {
+      max-width: 300px;
+      margin-inline: auto;
+      padding: 18px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .type-sample::before {
+      content: "Brooklyn Leather Sofa";
+      display: block;
+      margin-bottom: 12px;
+      color: #5d6d80;
+      font-size: 11px;
+    }
+    .font-demo .mini-title {
+      max-width: 300px;
+      margin-inline: auto;
+      padding: 20px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .font-demo .mini-line {
+      max-width: 250px;
+      margin-inline: auto;
+    }
+    .measure p {
+      padding: 18px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .baseline-row {
+      max-width: 340px;
+      margin-inline: auto;
+      padding: 20px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .lh-copy {
+      max-width: 300px;
+      margin-inline: auto;
+      padding: 20px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .link-list {
+      max-width: 360px;
+      margin-inline: auto;
+      padding: 14px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .link-list span {
+      min-height: 62px;
+    }
+    .readability {
+      max-width: 360px;
+      margin-inline: auto;
+    }
+    .readability span {
+      min-height: 112px;
+      box-shadow: var(--shadow-sm);
+    }
+    .swatches,
+    .shade-stack,
+    .color-dot-row,
+    .chart-mini,
+    .light-card,
+    .shadow-card,
+    .flat-layers,
+    .overlap-stack,
+    .upload-grid,
+    .default-list,
+    .outside .mini-card {
+      max-width: 360px;
+      margin-inline: auto;
+    }
+    .swatches {
+      padding: 18px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .swatches::before,
+    .shade-stack::before {
+      content: "Palette";
+      grid-column: 1 / -1;
+      color: #657589;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .shade-stack {
+      padding: 18px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .color-dot-row {
+      padding: 18px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .chart-mini {
+      min-height: 112px;
+      box-shadow: var(--shadow-sm);
+    }
+    .chart-mini::before {
+      content: "Revenue trend";
+      display: block;
+      margin-bottom: 16px;
+      color: #657589;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .light-card,
+    .shadow-card {
+      max-width: 260px;
+    }
+    .flat-layers,
+    .upload-grid,
+    .default-list,
+    .outside .mini-card {
+      padding: 16px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .overlap-stack {
+      height: 132px;
+    }
+    .overlap-stack span {
+      width: 150px;
+      height: 86px;
+    }
+    .overlap-stack span:nth-child(2) {
+      left: 118px;
+      top: 38px;
+    }
+    .photo-choice .mini-card {
+      max-width: 300px;
+      min-height: 120px;
+      margin-inline: auto;
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .photo-choice .mini-card::before {
+      content: "Modern studio apartment";
+      display: block;
+      margin-bottom: 48px;
+      color: #fff;
+      font-weight: 800;
+      text-shadow: 0 1px 2px rgb(0 0 0 / 35%);
+    }
+    .upload-grid span {
+      min-height: 78px;
+    }
+    .defaults .default-list span {
+      min-height: 36px;
+      padding: 10px 12px;
+    }
+    .accent-demo.good .mini-card {
+      border-top: 4px solid #35a7da;
+    }
+
     @media (max-width: 860px) {
       .pair { grid-template-columns: 1fr; }
       .coverage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .lesson-grid { grid-template-columns: 1fr; }
+      .lesson-screen {
+        min-height: 206px;
+      }
       .shot { min-height: auto; }
       .tour-card, .feature { grid-template-columns: 1fr; }
       .tour-photo { min-height: 130px; }
@@ -1129,6 +1516,12 @@
       .lesson-grid,
       .lesson-pair {
         grid-template-columns: 1fr;
+      }
+      .overlap-stack span {
+        width: 128px;
+      }
+      .overlap-stack span:nth-child(2) {
+        left: 92px;
       }
       .rule {
         margin-top: 6px;
@@ -1241,7 +1634,7 @@
     <p class="intro">Code-native recreations of Wathan and Schoger's visual refactoring examples. The PDF pages and extracted images were used as temporary references; this file keeps the concrete UI moves in editable HTML/CSS without committing book screenshots.</p>
     <div class="coverage" aria-label="Coverage summary">
       <span>9 full-page recreations</span>
-      <span>36 compact lesson pairs</span>
+      <span>36 detailed lesson pairs</span>
       <span>All 8 book chapters represented</span>
       <span>Bad and good states are editable code</span>
     </div>
@@ -1249,8 +1642,8 @@
     <section class="matrix" aria-labelledby="matrix-title">
       <div class="matrix-head">
         <div>
-          <h2 id="matrix-title">Compact Visual Lesson Matrix</h2>
-          <p class="rule">Small recreations of the book's many paired examples, grouped by the actual chapter flow.</p>
+          <h2 id="matrix-title">Detailed Visual Lesson Matrix</h2>
+          <p class="rule">Inspectable recreations of the book's many paired examples, grouped by the actual chapter flow.</p>
         </div>
         <p class="rule">Use these as quick patterns before opening the larger panels below.</p>
       </div>
