@@ -70,11 +70,14 @@ workflow details should be treated as historical examples, not current recommend
 ## Adam Wathan and Steve Schoger, *Refactoring UI*
 
 Extraction: `/tmp/books/refactoring-ui.txt`; local PDF visual pages rendered to
-`/tmp/refactoring-ui-pages/*.png` for the example pass. Density: HIGH for visual
-UI refactoring. Primary fold target is `design-polish/references/refactoring-ui.md`
-plus the code-native gallery at `design-polish/examples/refactoring-ui-gallery.html`;
-color-scale mechanics also corroborate `web-design` (`oklch-skill`), and image/icon
-sizing corroborates `frontend-design`.
+`/tmp/refactoring-ui-all-pages/*.png` and images extracted to
+`/tmp/refactoring-ui-extracted-images/` for the example pass. Density: HIGH for
+visual UI refactoring. Primary fold target is
+`design-polish/references/refactoring-ui.md` plus the code-native gallery at
+`design-polish/examples/refactoring-ui-gallery.html`; color-scale mechanics also
+corroborate `web-design` (`oklch-skill`), and image/icon sizing corroborates
+`frontend-design`. The gallery now recreates 45 visual examples in editable
+HTML/CSS and should be preferred over committing book screenshots.
 
 | Chapter / section | Short summary | Routing |
 | --- | --- | --- |

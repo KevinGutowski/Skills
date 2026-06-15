@@ -48,6 +48,21 @@
       color: var(--muted);
       font-size: 15px;
     }
+    .coverage {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0 0 24px;
+    }
+    .coverage span {
+      padding: 10px 12px;
+      border: 1px solid #dfe7ef;
+      border-radius: 8px;
+      background: #fff;
+      color: #526176;
+      font-size: 12px;
+      font-weight: 700;
+    }
     .example {
       margin-top: 24px;
       padding: 22px;
@@ -614,8 +629,479 @@
     .border-card p { margin: 0; color: var(--muted); }
     .accent { height: 4px; width: 64px; border-radius: 4px; background: #34a3db; }
 
+    /* Compact matrix: one small recreation for the book's smaller paired examples. */
+    .matrix {
+      margin-top: 24px;
+      padding: 20px;
+      border: 1px solid #dbe4ee;
+      border-radius: 8px;
+      background: #fff;
+    }
+    .matrix-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .lesson-card {
+      display: grid;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid #e1e8f0;
+      border-radius: 8px;
+      background: #fbfcfe;
+    }
+    .lesson-card h3 {
+      margin: 0;
+      font-size: 13px;
+      letter-spacing: 0;
+    }
+    .lesson-card p {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .lesson-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .lesson-screen {
+      position: relative;
+      overflow: hidden;
+      min-height: 132px;
+      padding: 15px;
+      border: 1px solid #d8e1eb;
+      border-radius: 7px;
+      background: #eef3f8;
+      box-shadow: inset 0 1px 0 rgb(255 255 255 / 72%);
+    }
+    .lesson-screen::before {
+      top: 7px;
+      left: 7px;
+      width: 20px;
+      height: 20px;
+      font-size: 11px;
+    }
+    .lesson-screen.good::before {
+      width: 24px;
+      font-size: 9px;
+    }
+    .mini-card {
+      margin-top: 16px;
+      padding: 12px;
+      border: 1px solid #dce5ef;
+      border-radius: 6px;
+      background: #fff;
+    }
+    .mini-title { font-weight: 800; }
+    .mini-line {
+      height: 7px;
+      margin-top: 7px;
+      border-radius: 999px;
+      background: #c8d4e1;
+    }
+    .mini-line.short { width: 56%; }
+    .mini-line.med { width: 74%; }
+    .mini-btn {
+      display: inline-grid;
+      min-width: 58px;
+      height: 24px;
+      margin-top: 10px;
+      place-items: center;
+      border-radius: 5px;
+      background: #4361d8;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .flight {
+      background: #f5f9fc;
+    }
+    .flight .mini-card { width: 80%; margin-inline: auto; }
+    .bad.flight::after {
+      content: "";
+      position: absolute;
+      inset: 44px 18px auto;
+      height: 38px;
+      border: 1px dashed #9db2c4;
+      border-radius: 4px;
+    }
+    .good.flight {
+      background:
+        linear-gradient(135deg, transparent 0 56%, #d8edf8 57% 100%),
+        #f5f9fc;
+    }
+    .wire .mini-card {
+      border-color: #cdd7e2;
+      background: #fff;
+    }
+    .wire.bad .mini-title,
+    .wire.bad .mini-line,
+    .wire.bad .mini-btn { filter: grayscale(1); opacity: .55; }
+    .wire.good .mini-title { color: #172a3f; }
+    .personality.bad {
+      background: #f6f8fb;
+      color: #4d5d70;
+      font-family: Arial, sans-serif;
+    }
+    .personality.good {
+      background:
+        radial-gradient(circle at 86% 26%, #f4d35e 0 14px, transparent 15px),
+        linear-gradient(135deg, #342d79, #1b163f);
+      color: #fff;
+      font-family: Georgia, serif;
+    }
+    .personality.good .mini-card {
+      border: 0;
+      background: rgb(255 255 255 / 10%);
+      color: #fff;
+    }
+    .choice-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 32px;
+    }
+    .choice-row span {
+      flex: 1 1 40px;
+      min-width: 40px;
+      height: 22px;
+      border-radius: 999px;
+      background: #4577b8;
+    }
+    .choice-row .muted { background: #c6d2df; }
+    .choice.good .choice-row span:nth-child(n+4) { display: none; }
+    .quote-box {
+      margin-top: 22px;
+      padding: 20px 16px 14px;
+      border-radius: 7px;
+      background: #26726f;
+      color: #d9fffb;
+      text-align: center;
+    }
+    .quote-box small { color: #fff; }
+    .gray-on-color.bad .quote-box small { color: #a7c2c0; }
+    .gray-on-color.good .quote-box small { color: #eefcf9; }
+    .nav-mini {
+      display: flex;
+      gap: 10px;
+      margin-top: 38px;
+      font-size: 10px;
+    }
+    .nav-mini span { padding: 5px 7px; border-radius: 5px; background: #dbe4ee; color: #53657a; }
+    .deemph.bad .nav-mini span { color: #293a4f; background: #cad8e6; }
+    .deemph.good .nav-mini span:not(:nth-child(2)) { background: transparent; color: #7d8a99; }
+    .deemph.good .nav-mini span:nth-child(2) { color: #253951; background: #fff; box-shadow: var(--shadow-sm); }
+    .data-label {
+      margin-top: 25px;
+      padding: 12px;
+      border-radius: 7px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .data-label dl { margin: 0; display: grid; grid-template-columns: 1fr; gap: 7px; }
+    .data-label div { display: flex; justify-content: space-between; gap: 8px; }
+    .data-label dt { color: #8694a6; font-size: 9px; }
+    .data-label dd { margin: 0; font-weight: 800; }
+    .label-last.good .data-label dt { display: none; }
+    .label-last.good .data-label div { display: block; }
+    .semantic-ui {
+      margin-top: 22px;
+      border-radius: 7px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .semantic-bar { height: 28px; background: #244462; border-radius: 7px 7px 0 0; }
+    .semantic-ui h4 { margin: 0; padding: 18px 16px 6px; }
+    .semantic-ui p { margin: 0; padding: 0 16px 18px; color: #6a798c; }
+    .semantics.bad .semantic-ui h4 { font-size: 23px; }
+    .semantics.good .semantic-ui h4 { font-size: 14px; }
+    .semantics.good .semantic-bar { height: 40px; }
+    .icon-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 38px;
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .icon-mark {
+      width: 34px;
+      height: 34px;
+      border: 5px solid #566273;
+      border-radius: 8px;
+    }
+    .icon-weight.good .icon-mark { border-width: 2px; border-color: #96a3b2; }
+    .actions {
+      display: grid;
+      gap: 7px;
+      margin-top: 32px;
+    }
+    .actions span {
+      display: grid;
+      height: 26px;
+      place-items: center;
+      border-radius: 5px;
+      background: #e5ebf2;
+      color: #394b61;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .actions.bad span:last-child { background: #d9364f; color: #fff; }
+    .actions.good span:first-child { background: #425ed6; color: #fff; }
+    .actions.good span:last-child { background: transparent; color: #b22c3e; }
+    .space-demo .mini-card { margin-top: 38px; }
+    .space-demo.bad .mini-card { padding: 6px; }
+    .space-demo.good .mini-card { padding: 20px; }
+    .scale-demo {
+      display: grid;
+      gap: 6px;
+      margin-top: 30px;
+    }
+    .scale-demo span { height: 8px; border-radius: 999px; background: #4c83c4; }
+    .scale.bad .scale-demo span:nth-child(1) { width: 48%; }
+    .scale.bad .scale-demo span:nth-child(2) { width: 51%; }
+    .scale.bad .scale-demo span:nth-child(3) { width: 54%; }
+    .scale.good .scale-demo span:nth-child(1) { width: 35%; }
+    .scale.good .scale-demo span:nth-child(2) { width: 56%; }
+    .scale.good .scale-demo span:nth-child(3) { width: 88%; }
+    .wide-page {
+      margin-top: 22px;
+      padding: 12px;
+      border-radius: 6px;
+      background: #fff;
+    }
+    .wide-page .mini-line { width: 100%; }
+    .max-width.good .wide-page { width: 66%; margin-inline: auto; }
+    .grid-boxes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      margin-top: 28px;
+    }
+    .grid-boxes span {
+      height: 32px;
+      border-radius: 5px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .grid-over.bad .grid-boxes { background: repeating-linear-gradient(90deg, rgb(231 99 99 / 18%) 0 8px, transparent 8px 18px); }
+    .grid-over.good .grid-boxes { grid-template-columns: 1.2fr 1fr 1fr; }
+    .relative-card {
+      margin-top: 24px;
+      padding: 12px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .relative-card h4 { margin: 0; line-height: 1.08; }
+    .relative.bad .relative-card { transform: scale(.78); transform-origin: top center; }
+    .relative.good .relative-card { width: 76%; margin-inline: auto; }
+    .type-sample { margin-top: 24px; }
+    .type-sample b { display: block; }
+    .type-scale.bad .type-sample b { font-size: 17px; }
+    .type-scale.bad .type-sample span { font-size: 15px; }
+    .type-scale.good .type-sample b { font-size: 24px; }
+    .type-scale.good .type-sample span { font-size: 14px; color: #657386; }
+    .font-demo.bad { font-family: "Times New Roman", serif; }
+    .font-demo.good { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .font-demo .mini-title { margin-top: 28px; font-size: 23px; }
+    .measure p { margin-top: 26px; color: #33465b; }
+    .measure.bad p { max-width: none; font-size: 10px; }
+    .measure.good p { max-width: 150px; font-size: 12px; line-height: 1.55; }
+    .baseline-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 42px;
+    }
+    .baseline-row strong { font-size: 22px; }
+    .baseline.good .baseline-row { align-items: baseline; }
+    .lh-copy {
+      margin-top: 22px;
+      color: #34475d;
+    }
+    .line-height.bad .lh-copy { font-size: 10px; line-height: 2.35; }
+    .line-height.good .lh-copy { font-size: 10px; line-height: 1.55; }
+    .link-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-top: 28px;
+    }
+    .link-list span {
+      height: 46px;
+      border-radius: 5px;
+      background: #fff;
+      color: #2875d0;
+      font-size: 10px;
+      padding: 8px;
+    }
+    .links.good .link-list span { color: #27394f; }
+    .links.good .link-list span::after { content: ""; display: block; width: 30px; height: 2px; margin-top: 9px; background: #2875d0; }
+    .readability {
+      display: flex;
+      gap: 8px;
+      margin-top: 26px;
+      text-align: center;
+    }
+    .readability span { flex: 1; padding: 24px 6px 8px; border-radius: 5px; background: #fff; font-size: 9px; }
+    .align.bad .readability { text-align: center; }
+    .align.good .readability { text-align: left; }
+    .tracking .type-sample { text-transform: uppercase; }
+    .tracking.bad .type-sample b { letter-spacing: 0; }
+    .tracking.good .type-sample b { letter-spacing: .08em; }
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 5px;
+      margin-top: 28px;
+    }
+    .swatches span { height: 20px; border-radius: 4px; background: #3785d6; }
+    .palette.bad .swatches span:nth-child(n+2) { background: #408bd7; }
+    .palette.good .swatches span:nth-child(1) { background: #172a3f; }
+    .palette.good .swatches span:nth-child(2) { background: #2f6ca9; }
+    .palette.good .swatches span:nth-child(3) { background: #36a37d; }
+    .palette.good .swatches span:nth-child(4) { background: #e5a431; }
+    .palette.good .swatches span:nth-child(5) { background: #d94b62; }
+    .palette.good .swatches span:nth-child(6) { background: #e6edf5; }
+    .shade-stack {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 5px;
+      margin-top: 28px;
+    }
+    .shade-stack span { height: 28px; border-radius: 4px; background: #4e8fde; }
+    .shades.bad .shade-stack span:nth-child(n+2) { opacity: .82; }
+    .shades.good .shade-stack span:nth-child(1) { background: #102c54; }
+    .shades.good .shade-stack span:nth-child(2) { background: #1f5798; }
+    .shades.good .shade-stack span:nth-child(3) { background: #4e8fde; }
+    .shades.good .shade-stack span:nth-child(4) { background: #a9cff5; }
+    .shades.good .shade-stack span:nth-child(5) { background: #e9f4ff; }
+    .color-dot-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 7px;
+      height: 72px;
+      margin-top: 24px;
+    }
+    .color-dot-row span { width: 18px; height: 18px; border-radius: 50%; background: #2786e3; }
+    .saturation.bad .color-dot-row span:nth-child(n+3) { filter: grayscale(.45); }
+    .saturation.good .color-dot-row span:nth-child(2) { background: #25a7e3; }
+    .saturation.good .color-dot-row span:nth-child(3) { background: #28bf88; }
+    .saturation.good .color-dot-row span:nth-child(4) { background: #d8bb27; }
+    .saturation.good .color-dot-row span:nth-child(5) { background: #e96957; }
+    .greys .swatches span { background: #8c96a3; }
+    .greys.good .swatches span:nth-child(1) { background: #1d2b3a; }
+    .greys.good .swatches span:nth-child(2) { background: #3f5268; }
+    .greys.good .swatches span:nth-child(3) { background: #6f8093; }
+    .greys.good .swatches span:nth-child(4) { background: #9ba7b5; }
+    .greys.good .swatches span:nth-child(5) { background: #d1d8e0; }
+    .greys.good .swatches span:nth-child(6) { background: #edf3f8; }
+    .chart-mini {
+      margin-top: 24px;
+      padding: 12px;
+      border-radius: 6px;
+      background: #fff;
+    }
+    .chart-mini .mini-line { background: #3a8add; }
+    .color-only.bad .mini-line:nth-child(2) { background: #e54e5f; }
+    .color-only.good .mini-line:nth-child(2)::after { content: " down"; margin-left: 8px; color: #b62d3f; font-size: 10px; }
+    .light-card {
+      margin-top: 25px;
+      height: 76px;
+      border-radius: 8px;
+      background: #fff;
+    }
+    .light.bad .light-card { box-shadow: 0 -8px 16px rgb(0 0 0 / 15%); }
+    .light.good .light-card {
+      border-top: 1px solid #fff;
+      box-shadow: 0 12px 18px rgb(28 43 60 / 16%);
+    }
+    .shadow-card {
+      margin-top: 24px;
+      padding: 18px;
+      border-radius: 8px;
+      background: #fff;
+    }
+    .two-shadow.bad .shadow-card { box-shadow: 0 12px 18px rgb(28 43 60 / 14%); }
+    .two-shadow.good .shadow-card { box-shadow: 0 4px 6px rgb(28 43 60 / 15%), 0 18px 34px rgb(28 43 60 / 10%); }
+    .flat-layers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .flat-layers span { height: 64px; border-radius: 7px; background: #fff; }
+    .flat-depth.bad .flat-layers span { border: 1px solid #dde5ed; }
+    .flat-depth.good .flat-layers span:nth-child(1) { background: #e8f0f7; }
+    .flat-depth.good .flat-layers span:nth-child(2) { background: #fff; box-shadow: 4px 4px 0 #d8e4ee; }
+    .overlap-stack {
+      position: relative;
+      height: 96px;
+      margin-top: 22px;
+    }
+    .overlap-stack span {
+      position: absolute;
+      width: 92px;
+      height: 64px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, #a9c7db, #31526b);
+    }
+    .overlap-stack span:nth-child(2) { left: 52px; top: 26px; }
+    .overlap.good .overlap-stack span { box-shadow: 0 0 0 4px #eef3f8; }
+    .photo-choice .mini-card { margin-top: 24px; }
+    .photo-choice.bad .mini-card { background: linear-gradient(135deg, #4c5257, #c8c8c8); }
+    .photo-choice.good .mini-card { background: linear-gradient(135deg, #d7e8f3, #ffffff 50%, #6e977e); }
+    .upload-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      margin-top: 24px;
+    }
+    .upload-grid span { height: 44px; border-radius: 7px; background: linear-gradient(135deg, #e7a15e, #663f2c); }
+    .uploads.bad .upload-grid span:nth-child(2) { height: 72px; }
+    .uploads.good .upload-grid span { height: 44px; box-shadow: inset 0 0 0 2px rgb(255 255 255 / 45%); }
+    .default-list {
+      display: grid;
+      gap: 7px;
+      margin-top: 20px;
+    }
+    .default-list span { padding: 8px 10px; border-radius: 5px; background: #fff; font-size: 10px; }
+    .defaults.good .default-list span::before { content: "✓ "; color: #2f9c6e; font-weight: 900; }
+    .accent-demo .mini-card { border-left: 0; }
+    .accent-demo.good .mini-card { border-left: 4px solid #35a7da; }
+    .pattern-bg.good {
+      background:
+        radial-gradient(circle at 24% 24%, rgb(53 167 218 / 18%) 0 10px, transparent 11px),
+        linear-gradient(135deg, #f1f6fa, #e6eef6);
+    }
+    .pattern-bg.bad { background: #eef3f8; }
+    .outside .mini-card { display: grid; gap: 6px; }
+    .outside .mini-card span { height: 20px; border-radius: 4px; background: #e5ebf2; }
+    .outside.good .mini-card {
+      grid-template-columns: repeat(4, 1fr);
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    .outside.good .mini-card span {
+      height: 42px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+
     @media (max-width: 860px) {
       .pair { grid-template-columns: 1fr; }
+      .coverage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .lesson-grid { grid-template-columns: 1fr; }
       .shot { min-height: auto; }
       .tour-card, .feature { grid-template-columns: 1fr; }
       .tour-photo { min-height: 130px; }
@@ -632,6 +1118,17 @@
       }
       .example > header {
         display: block;
+      }
+      .matrix {
+        padding: 14px;
+      }
+      .matrix-head {
+        display: block;
+      }
+      .coverage,
+      .lesson-grid,
+      .lesson-pair {
+        grid-template-columns: 1fr;
       }
       .rule {
         margin-top: 6px;
@@ -741,7 +1238,61 @@
 <body>
   <main>
     <h1>Refactoring UI: HTML/CSS Example Gallery</h1>
-    <p class="intro">Code-native recreations of selected bad/good panels from Wathan and Schoger's visual refactoring examples. The goal is to preserve the concrete UI move in editable HTML/CSS without committing book screenshots.</p>
+    <p class="intro">Code-native recreations of Wathan and Schoger's visual refactoring examples. The PDF pages and extracted images were used as temporary references; this file keeps the concrete UI moves in editable HTML/CSS without committing book screenshots.</p>
+    <div class="coverage" aria-label="Coverage summary">
+      <span>9 full-page recreations</span>
+      <span>36 compact lesson pairs</span>
+      <span>All 8 book chapters represented</span>
+      <span>Bad and good states are editable code</span>
+    </div>
+
+    <section class="matrix" aria-labelledby="matrix-title">
+      <div class="matrix-head">
+        <div>
+          <h2 id="matrix-title">Compact Visual Lesson Matrix</h2>
+          <p class="rule">Small recreations of the book's many paired examples, grouped by the actual chapter flow.</p>
+        </div>
+        <p class="rule">Use these as quick patterns before opening the larger panels below.</p>
+      </div>
+      <div class="lesson-grid">
+        <article class="lesson-card"><header><h3>1. Start with a feature</h3><p>Design the useful booking slice, not a blank app shell.</p></header><div class="lesson-pair"><div class="lesson-screen bad flight"><div class="mini-card"><div class="mini-title">Dashboard</div><div class="mini-line"></div><div class="mini-line med"></div></div></div><div class="lesson-screen good flight"><div class="mini-card"><div class="mini-title">Find the best deals</div><div class="mini-line med"></div><div class="mini-line short"></div><span class="mini-btn">Search</span></div></div></div></article>
+        <article class="lesson-card"><header><h3>2. Detail comes later</h3><p>Refine grayscale first, then add color and detail.</p></header><div class="lesson-pair"><div class="lesson-screen bad wire"><div class="mini-card"><div class="mini-title">Choose storage</div><div class="mini-line"></div><div class="mini-line med"></div><span class="mini-btn">Pay</span></div></div><div class="lesson-screen good wire"><div class="mini-card"><div class="mini-title">Choose storage</div><div class="mini-line"></div><div class="mini-line med"></div><span class="mini-btn">Pay</span></div></div></div></article>
+        <article class="lesson-card"><header><h3>3. Choose a personality</h3><p>Fonts, color, radius, and copy should point the same way.</p></header><div class="lesson-pair"><div class="lesson-screen bad personality"><div class="mini-card"><div class="mini-title">Business tools</div><div class="mini-line"></div><span class="mini-btn">Start</span></div></div><div class="lesson-screen good personality"><div class="mini-card"><div class="mini-title">Wander Club</div><div class="mini-line"></div><span class="mini-btn">Explore</span></div></div></div></article>
+        <article class="lesson-card"><header><h3>4. Limit choices</h3><p>Pick from a system instead of endless near-equivalents.</p></header><div class="lesson-pair"><div class="lesson-screen bad choice"><div class="choice-row"><span></span><span></span><span></span><span></span><span></span><span></span></div></div><div class="lesson-screen good choice"><div class="choice-row"><span></span><span class="muted"></span><span class="muted"></span><span></span><span></span><span></span></div></div></div></article>
+        <article class="lesson-card"><header><h3>5. Grey on color</h3><p>Lower opacity, do not make text grey on colored surfaces.</p></header><div class="lesson-pair"><div class="lesson-screen bad gray-on-color"><div class="quote-box">Better every week<br><small>Tina Vanstone</small></div></div><div class="lesson-screen good gray-on-color"><div class="quote-box">Better every week<br><small>Tina Vanstone</small></div></div></div></article>
+        <article class="lesson-card"><header><h3>6. De-emphasize</h3><p>Make secondary navigation quieter instead of making active louder.</p></header><div class="lesson-pair"><div class="lesson-screen bad deemph"><div class="nav-mini"><span>Dashboard</span><span>Orders</span><span>Products</span></div></div><div class="lesson-screen good deemph"><div class="nav-mini"><span>Dashboard</span><span>Orders</span><span>Products</span></div></div></div></article>
+        <article class="lesson-card"><header><h3>7. Labels last</h3><p>Let clear values carry themselves.</p></header><div class="lesson-pair"><div class="lesson-screen bad label-last"><div class="data-label"><dl><div><dt>Email</dt><dd>alex@example.com</dd></div><div><dt>Plan</dt><dd>Pro</dd></div></dl></div></div><div class="lesson-screen good label-last"><div class="data-label"><dl><div><dt>Email</dt><dd>alex@example.com</dd></div><div><dt>Plan</dt><dd>Pro plan</dd></div></dl></div></div></div></article>
+        <article class="lesson-card"><header><h3>8. Visual hierarchy</h3><p>Do not let document headings dictate app emphasis.</p></header><div class="lesson-pair"><div class="lesson-screen bad semantics"><div class="semantic-ui"><div class="semantic-bar"></div><h4>Profile</h4><p>Edit account details.</p></div></div><div class="lesson-screen good semantics"><div class="semantic-ui"><div class="semantic-bar"></div><h4>Profile</h4><p>Edit account details.</p></div></div></div></article>
+        <article class="lesson-card"><header><h3>9. Balance icon weight</h3><p>Heavy symbols often need softer contrast or lighter strokes.</p></header><div class="lesson-pair"><div class="lesson-screen bad icon-weight"><div class="icon-row"><span class="icon-mark"></span><span>Charts</span></div></div><div class="lesson-screen good icon-weight"><div class="icon-row"><span class="icon-mark"></span><span>Charts</span></div></div></div></article>
+        <article class="lesson-card"><header><h3>10. Button prominence</h3><p>Primary, secondary, and destructive depend on the current decision.</p></header><div class="lesson-pair"><div class="lesson-screen bad action-rank"><div class="actions"><span>Save</span><span>Cancel</span><span>Delete</span></div></div><div class="lesson-screen good action-rank"><div class="actions"><span>Save changes</span><span>Cancel</span><span>Delete account</span></div></div></div></article>
+        <article class="lesson-card"><header><h3>11. Start too spacious</h3><p>Remove from a generous layout instead of adding to a cramped one.</p></header><div class="lesson-pair"><div class="lesson-screen bad space-demo"><div class="mini-card"><div class="mini-title">Set up account</div><div class="mini-line"></div><div class="mini-line"></div></div></div><div class="lesson-screen good space-demo"><div class="mini-card"><div class="mini-title">Set up account</div><div class="mini-line"></div><div class="mini-line"></div></div></div></div></article>
+        <article class="lesson-card"><header><h3>12. Spacing scale</h3><p>Use jumps large enough that decisions are visible.</p></header><div class="lesson-pair"><div class="lesson-screen bad scale"><div class="scale-demo"><span></span><span></span><span></span></div></div><div class="lesson-screen good scale"><div class="scale-demo"><span></span><span></span><span></span></div></div></div></article>
+        <article class="lesson-card"><header><h3>13. Do not fill the screen</h3><p>Narrow the task area even when the canvas is wide.</p></header><div class="lesson-pair"><div class="lesson-screen bad max-width"><div class="wide-page"><div class="mini-line"></div><div class="mini-line"></div><div class="mini-line"></div></div></div><div class="lesson-screen good max-width"><div class="wide-page"><div class="mini-line"></div><div class="mini-line"></div><div class="mini-line"></div></div></div></div></article>
+        <article class="lesson-card"><header><h3>14. Grids are overrated</h3><p>Align to content relationships, not a visible cage.</p></header><div class="lesson-pair"><div class="lesson-screen bad grid-over"><div class="grid-boxes"><span></span><span></span><span></span><span></span></div></div><div class="lesson-screen good grid-over"><div class="grid-boxes"><span></span><span></span><span></span></div></div></div></article>
+        <article class="lesson-card"><header><h3>15. Relative sizing</h3><p>Adapt elements, do not scale the whole design down.</p></header><div class="lesson-pair"><div class="lesson-screen bad relative"><div class="relative-card"><h4>Team communication optimized</h4><div class="mini-line"></div></div></div><div class="lesson-screen good relative"><div class="relative-card"><h4>Team communication optimized</h4><div class="mini-line"></div></div></div></div></article>
+        <article class="lesson-card"><header><h3>16. Type scale</h3><p>Choose from a small set of useful interface sizes.</p></header><div class="lesson-pair"><div class="lesson-screen bad type-scale"><div class="type-sample"><b>$1,500</b><span>Delivery estimate</span></div></div><div class="lesson-screen good type-scale"><div class="type-sample"><b>$1,500</b><span>Delivery estimate</span></div></div></div></article>
+        <article class="lesson-card"><header><h3>17. Practical fonts</h3><p>Use families with solid small-size behavior and enough weights.</p></header><div class="lesson-pair"><div class="lesson-screen bad font-demo"><div class="mini-title">Hello World</div><div class="mini-line"></div></div><div class="lesson-screen good font-demo"><div class="mini-title">Hello World</div><div class="mini-line"></div></div></div></article>
+        <article class="lesson-card"><header><h3>18. Line length</h3><p>Keep reading text narrow even inside wide layouts.</p></header><div class="lesson-pair"><div class="lesson-screen bad measure"><p>When paragraphs stretch too far, every line becomes harder to track and the layout feels unfinished.</p></div><div class="lesson-screen good measure"><p>When paragraphs stay narrow, scanning feels deliberate and calm.</p></div></div></article>
+        <article class="lesson-card"><header><h3>19. Baseline alignment</h3><p>Mixed sizes should sit on the same baseline.</p></header><div class="lesson-pair"><div class="lesson-screen bad baseline"><div class="baseline-row"><strong>Typography</strong><span>details</span></div></div><div class="lesson-screen good baseline"><div class="baseline-row"><strong>Typography</strong><span>details</span></div></div></div></article>
+        <article class="lesson-card"><header><h3>20. Proportional line-height</h3><p>Large text needs tighter leading than small body copy.</p></header><div class="lesson-pair"><div class="lesson-screen bad line-height"><div class="lh-copy">A long heading and a short line of text stepping too far apart.</div></div><div class="lesson-screen good line-height"><div class="lh-copy">A long heading and a short line of text sitting with intent.</div></div></div></article>
+        <article class="lesson-card"><header><h3>21. Links need not be blue</h3><p>In dense UI, context and underline can carry the link affordance.</p></header><div class="lesson-pair"><div class="lesson-screen bad links"><div class="link-list"><span>Room setup</span><span>Checklist</span><span>Notes</span></div></div><div class="lesson-screen good links"><div class="link-list"><span>Room setup</span><span>Checklist</span><span>Notes</span></div></div></div></article>
+        <article class="lesson-card"><header><h3>22. Readability alignment</h3><p>Left-align text blocks; reserve center alignment for short fragments.</p></header><div class="lesson-pair"><div class="lesson-screen bad align"><div class="readability"><span>Small support copy that wraps.</span><span>Another short block.</span></div></div><div class="lesson-screen good align"><div class="readability"><span>Small support copy that wraps.</span><span>Another short block.</span></div></div></div></article>
+        <article class="lesson-card"><header><h3>23. Letterspacing</h3><p>Track uppercase labels, not lowercase body copy.</p></header><div class="lesson-pair"><div class="lesson-screen bad tracking"><div class="type-sample"><b>full stack developer</b><span>Resume role</span></div></div><div class="lesson-screen good tracking"><div class="type-sample"><b>full stack developer</b><span>Resume role</span></div></div></div></article>
+        <article class="lesson-card"><header><h3>24. More colors</h3><p>Real systems need greys, primary, accent, and semantic ranges.</p></header><div class="lesson-pair"><div class="lesson-screen bad palette"><div class="swatches"><span></span><span></span><span></span><span></span><span></span><span></span></div></div><div class="lesson-screen good palette"><div class="swatches"><span></span><span></span><span></span><span></span><span></span><span></span></div></div></div></article>
+        <article class="lesson-card"><header><h3>25. Define shades first</h3><p>Choose real endpoints, then fill a usable scale.</p></header><div class="lesson-pair"><div class="lesson-screen bad shades"><div class="shade-stack"><span></span><span></span><span></span><span></span><span></span></div></div><div class="lesson-screen good shades"><div class="shade-stack"><span></span><span></span><span></span><span></span><span></span></div></div></div></article>
+        <article class="lesson-card"><header><h3>26. Keep saturation alive</h3><p>Adjust hue and saturation as lightness changes.</p></header><div class="lesson-pair"><div class="lesson-screen bad saturation"><div class="color-dot-row"><span></span><span></span><span></span><span></span><span></span></div></div><div class="lesson-screen good saturation"><div class="color-dot-row"><span></span><span></span><span></span><span></span><span></span></div></div></div></article>
+        <article class="lesson-card"><header><h3>27. Greys need temperature</h3><p>Use blue, cool, or warm greys deliberately.</p></header><div class="lesson-pair"><div class="lesson-screen bad greys"><div class="swatches"><span></span><span></span><span></span><span></span><span></span><span></span></div></div><div class="lesson-screen good greys"><div class="swatches"><span></span><span></span><span></span><span></span><span></span><span></span></div></div></div></article>
+        <article class="lesson-card"><header><h3>28. Not color alone</h3><p>Add text, icons, shape, or direction to color-coded states.</p></header><div class="lesson-pair"><div class="lesson-screen bad color-only"><div class="chart-mini"><div class="mini-line"></div><div class="mini-line"></div></div></div><div class="lesson-screen good color-only"><div class="chart-mini"><div class="mini-line"></div><div class="mini-line"></div></div></div></div></article>
+        <article class="lesson-card"><header><h3>29. Light source</h3><p>Raised objects get light on top and shadow below.</p></header><div class="lesson-pair"><div class="lesson-screen bad light"><div class="light-card"></div></div><div class="lesson-screen good light"><div class="light-card"></div></div></div></article>
+        <article class="lesson-card"><header><h3>30. Two-part shadows</h3><p>Combine tight ambient shadow with broad cast shadow.</p></header><div class="lesson-pair"><div class="lesson-screen bad two-shadow"><div class="shadow-card">Agile meeting</div></div><div class="lesson-screen good two-shadow"><div class="shadow-card">Agile meeting</div></div></div></article>
+        <article class="lesson-card"><header><h3>31. Flat depth</h3><p>Flat UIs still need layer separation.</p></header><div class="lesson-pair"><div class="lesson-screen bad flat-depth"><div class="flat-layers"><span></span><span></span></div></div><div class="lesson-screen good flat-depth"><div class="flat-layers"><span></span><span></span></div></div></div></article>
+        <article class="lesson-card"><header><h3>32. Overlap layers</h3><p>Use a background-colored gap so overlapping edges stay clean.</p></header><div class="lesson-pair"><div class="lesson-screen bad overlap"><div class="overlap-stack"><span></span><span></span></div></div><div class="lesson-screen good overlap"><div class="overlap-stack"><span></span><span></span></div></div></div></article>
+        <article class="lesson-card"><header><h3>33. Good photos</h3><p>Do not ask a weak image to carry a premium card.</p></header><div class="lesson-pair"><div class="lesson-screen bad photo-choice"><div class="mini-card"><div class="mini-line"></div><div class="mini-line short"></div></div></div><div class="lesson-screen good photo-choice"><div class="mini-card"><div class="mini-line"></div><div class="mini-line short"></div></div></div></div></article>
+        <article class="lesson-card"><header><h3>34. User uploads</h3><p>Crop to fixed boxes and prevent image bleed.</p></header><div class="lesson-pair"><div class="lesson-screen bad uploads"><div class="upload-grid"><span></span><span></span><span></span></div></div><div class="lesson-screen good uploads"><div class="upload-grid"><span></span><span></span><span></span></div></div></div></article>
+        <article class="lesson-card"><header><h3>35. Supercharge defaults</h3><p>Make lists, checks, and inputs look intentional.</p></header><div class="lesson-pair"><div class="lesson-screen bad defaults"><div class="default-list"><span>Invite teammate</span><span>Set billing</span><span>Choose plan</span></div></div><div class="lesson-screen good defaults"><div class="default-list"><span>Invite teammate</span><span>Set billing</span><span>Choose plan</span></div></div></div></article>
+        <article class="lesson-card"><header><h3>36. Finishing details</h3><p>Accent borders, backgrounds, and unusual shapes can replace more lines.</p></header><div class="lesson-pair"><div class="lesson-screen bad accent-demo pattern-bg outside"><div class="mini-card"><span></span><span></span><span></span><span></span></div></div><div class="lesson-screen good accent-demo pattern-bg outside"><div class="mini-card"><span></span><span></span><span></span><span></span></div></div></div></article>
+      </div>
+    </section>
 
     <section class="example">
       <header>
