@@ -69,12 +69,23 @@ workflow details should be treated as historical examples, not current recommend
 
 ## Adam Wathan and Steve Schoger, *Refactoring UI*
 
-Extraction: `/tmp/books/refactoring-ui.txt`. Prior screen treated the core advice as
-mostly model-known, but the SVG/icon sizing passage is useful corroboration.
+Extraction: `/tmp/books/refactoring-ui.txt`; local PDF visual pages rendered to
+`/tmp/refactoring-ui-pages/*.png` for the example pass. Density: HIGH for visual
+UI refactoring. Primary fold target is `design-polish/references/refactoring-ui.md`
+plus the code-native gallery at `design-polish/examples/refactoring-ui-gallery.html`;
+color-scale mechanics also corroborate `web-design` (`oklch-skill`), and image/icon
+sizing corroborates `frontend-design`.
 
 | Chapter / section | Short summary | Routing |
 | --- | --- | --- |
-| "Everything has an intended size" / "Don't scale up icons" | Vector icons do not blur when enlarged, but small icons drawn for 16-24px lack the detail and proportions for 3-4x display; keep the icon near its intended size inside a larger shape. | Folded to `frontend-design` SVG mental model. |
+| Starting from Scratch | Start from a real feature, defer details, design in cycles, choose personality, and limit choices before polishing. | `design-polish/references/refactoring-ui.md`; `design-prototyping` for build-real-early overlap. |
+| Hierarchy is Everything | De-emphasize secondary content, use weight/color instead of only size, avoid unnecessary labels, separate semantic/document hierarchy from visual hierarchy, and rank actions by importance. | `design-polish/references/refactoring-ui.md`; form/button hierarchy cross-check in `web-design` (`form-design`). |
+| Layout and Spacing | Start with too much whitespace, use a non-linear spacing/sizing scale, avoid over-relying on grids, reject proportional scaling, and make group spacing unambiguous. | `design-polish/references/refactoring-ui.md`; spacing scale also in `design-polish/SKILL.md`. |
+| Designing Text | Establish a type scale, choose practical fonts, constrain measure, baseline-align mixed text, tune line-height, color links deliberately, and letterspace only suitable text. | `design-polish/references/refactoring-ui.md`; deeper rules route to `web-design` (`web-typography`). |
+| Working with Color | Use perceptual color controls, build real palettes with greys/primary/accent shades, define shades up front, keep saturation alive, tint greys, and solve contrast without hijacking hierarchy. | `web-design` (`oklch-skill`, `web-accessibility`); summarized in `design-polish/references/refactoring-ui.md`. |
+| Creating Depth | Emulate overhead light, use elevation/shadow scales, combine cast + ambient shadows, create flat depth with color, and overlap layers/images intentionally. | `design-polish/surfaces.md`; summarized in `refactoring-ui.md`. |
+| Working with Images | Use good photos, control text contrast over images, respect intended size for icons/screenshots, and constrain user-uploaded content with fixed crops/inner rings. | `design-polish/references/refactoring-ui.md`; SVG/icon sizing folded to `frontend-design`. |
+| Finishing Touches | Supercharge defaults, add accent borders, decorate low-contrast backgrounds, prioritize empty states, use fewer borders, and break component assumptions carefully. | `design-polish/references/refactoring-ui.md`; empty-state copy route stays `user-onboarding`. |
 
 Verified quote: "Don't scale up icons".
 

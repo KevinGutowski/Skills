@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Refactoring UI Gallery</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #132235;
+      --muted: #617086;
+      --faint: #8b98a8;
+      --line: #d9e0e8;
+      --panel: #ffffff;
+      --soft: #f3f6f9;
+      --blue: #3f83cc;
+      --blue-dark: #2f6ca9;
+      --brand: #266d9f;
+      --green: #178a62;
+      --amber: #9a6715;
+      --red: #b72d3a;
+      --shadow-sm: 0 1px 3px rgb(19 34 53 / 18%);
+      --shadow-md: 0 4px 6px rgb(19 34 53 / 12%), 0 12px 22px rgb(19 34 53 / 8%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #f6f8fb;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    main {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 34px 0 64px;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: 28px;
+      letter-spacing: 0;
+    }
+    .intro {
+      max-width: 760px;
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .example {
+      margin-top: 24px;
+      padding: 22px;
+      background: var(--panel);
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      box-shadow: 0 1px 1px rgb(19 34 53 / 4%);
+    }
+    .example > header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    h2 {
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+    .rule {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .pair {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+    .shot {
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+      padding: 18px;
+      background: #eef2f6;
+      border: 1px solid #d7dfe8;
+    }
+    .shot::before {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 4;
+      display: grid;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .bad::before {
+      content: "x";
+      color: #9f1d2f;
+      background: #ffc2c8;
+    }
+    .good::before {
+      content: "ok";
+      width: 28px;
+      color: #12643f;
+      background: #a5e4bf;
+      font-size: 10px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    /* Example 1: hierarchy dashboard */
+    .dash {
+      background: #edf3f8;
+      padding: 0;
+    }
+    .dash-ui {
+      height: 100%;
+      min-height: 300px;
+      background: #eff4f8;
+    }
+    .dash-nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      height: 52px;
+      padding: 0 22px;
+      border-bottom: 1px solid #d8e0e8;
+      color: #5d6b7b;
+      font-size: 11px;
+    }
+    .mark {
+      width: 20px;
+      height: 20px;
+      margin-right: auto;
+      color: var(--brand);
+    }
+    .avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 38% 34%, #e6f5ff 0 18%, #1b86b8 19% 42%, #175276 43% 100%);
+    }
+    .dash-content { padding: 20px 24px; }
+    .dash-title {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      overflow: hidden;
+      border-radius: 6px;
+      box-shadow: var(--shadow-sm);
+    }
+    .metric {
+      padding: 18px 20px;
+      border-right: 1px solid rgb(255 255 255 / 18%);
+    }
+    .metric:last-child { border-right: 0; }
+    .metric .label {
+      margin-bottom: 5px;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .metric .value { font-size: 24px; }
+    .metric .delta { margin-top: 4px; font-size: 12px; }
+    .bad .metric-row {
+      background: #d8e5f0;
+      color: #4f6880;
+      box-shadow: none;
+    }
+    .bad .metric .value { font-size: 18px; }
+    .good .metric-row {
+      background: #4f84b3;
+      color: #fff;
+    }
+    .good .metric .label { color: #c9dff0; }
+    .good .metric .delta { color: #c5e9dc; }
+    .tabs {
+      display: flex;
+      gap: 18px;
+      margin: 20px 0 10px;
+      font-size: 11px;
+      color: #6b7888;
+    }
+    .tabs span:first-child {
+      padding: 3px 8px;
+      background: #dfe7ee;
+      border-radius: 999px;
+      color: #425064;
+      font-weight: 700;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 11px;
+      box-shadow: var(--shadow-sm);
+    }
+    th {
+      padding: 10px;
+      color: #738093;
+      text-align: left;
+      font-size: 9px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    td {
+      padding: 9px 10px;
+      border-top: 1px solid #edf1f5;
+    }
+    .gain { color: #0b8a62; }
+
+    /* Example 2: tour card */
+    .tour-stage {
+      display: grid;
+      place-items: center;
+      min-height: 292px;
+      background: #f0f3f7;
+    }
+    .tour-card {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      width: min(520px, 96%);
+      overflow: hidden;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 14px 30px rgb(37 55 73 / 14%);
+    }
+    .tour-photo {
+      min-height: 176px;
+      background:
+        linear-gradient(90deg, rgb(23 45 61 / 18%) 1px, transparent 1px) 0 0 / 28px 100%,
+        linear-gradient(#415f74, #9ab1be 36%, #5b3429 37% 64%, #2d5265 65%);
+    }
+    .tour-body { padding: 24px 24px 16px; }
+    .tour-title { margin: 0 0 6px; color: #15283b; font-size: 24px; font-weight: 800; }
+    .tour-copy { margin: 0; color: #456176; font-size: 15px; }
+    .tour-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 18px -24px -16px;
+      padding: 16px 24px;
+      background: #f4f8fb;
+    }
+    .price { color: #10263a; font-size: 18px; font-weight: 800; }
+    .review { color: #1d9c77; font-size: 13px; }
+    .button {
+      display: inline-flex;
+      min-width: 112px;
+      min-height: 42px;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 6px;
+      color: white;
+      background: #435ed4;
+      box-shadow: 0 6px 12px rgb(67 94 212 / 28%);
+      font-weight: 800;
+    }
+    .bad .tour-title { font-size: 29px; }
+    .bad .tour-copy { font-size: 12px; color: #526477; }
+    .bad .price { font-size: 13px; }
+    .bad .review { font-size: 11px; }
+    .good .tour-title { font-size: 21px; }
+    .good .tour-copy { font-size: 16px; color: #40596f; }
+    .good .price { font-size: 16px; }
+    .good .review { color: #2b8f7d; }
+
+    /* Example 3: form spacing */
+    .checkout {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      min-height: 322px;
+      background: #f3f3f3;
+      border: 1px solid #d9d9d9;
+    }
+    .rail { background: #fff; }
+    .form-panel { padding: 0 28px; }
+    .step-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0 14px;
+      color: #111;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .step {
+      display: inline-grid;
+      width: 26px;
+      height: 26px;
+      margin-right: 10px;
+      place-items: center;
+      border-radius: 999px;
+      color: #fff;
+      background: #0b7db5;
+    }
+    .helper { color: #0071a8; font-size: 12px; font-weight: 700; text-transform: none; }
+    .field label {
+      display: block;
+      color: #333;
+      font-size: 13px;
+    }
+    .input {
+      height: 36px;
+      margin-top: 8px;
+      border: 1px solid #d2d2d2;
+      border-radius: 5px;
+      background: #fff;
+      box-shadow: inset 0 1px 2px rgb(0 0 0 / 4%);
+    }
+    .bad .field { margin-bottom: 20px; }
+    .bad .input { margin-top: 20px; }
+    .good .field { margin-bottom: 26px; }
+    .good .input { margin-top: 8px; }
+
+    /* Example 4: color contrast */
+    .policy {
+      background: #fff;
+      padding: 30px 0 0;
+    }
+    .policy table {
+      box-shadow: none;
+      border: 1px solid #dfe5eb;
+      font-size: 13px;
+    }
+    .policy th {
+      background: #f3f6f9;
+      padding: 13px 18px;
+      font-size: 11px;
+    }
+    .policy td { padding: 14px 18px; }
+    .person { display: flex; align-items: center; gap: 10px; }
+    .face {
+      flex: 0 0 auto;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #1d3448, #e6c1ad 48%, #39536e 49%);
+    }
+    .role { display: block; color: var(--muted); font-size: 12px; }
+    .badge {
+      display: inline-flex;
+      min-width: 86px;
+      justify-content: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .bad .approved { color: #fff; background: #36c995; }
+    .bad .waiting { color: #fff; background: #f5bc43; }
+    .bad .declined { color: #fff; background: #f45d83; }
+    .good .approved { color: #0b6a43; background: #d9f4e7; }
+    .good .waiting { color: #7c4e0e; background: #fff1c7; }
+    .good .declined { color: #a52334; background: #ffe0e5; }
+
+    /* Example 5: elevation */
+    .editor {
+      min-height: 246px;
+      padding: 0;
+      background: #f0f3f6;
+    }
+    .editor-top {
+      height: 52px;
+      border-top: 3px solid #4096ef;
+      border-bottom: 1px solid #dfe5eb;
+      background: #fff;
+    }
+    .editor-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 24px;
+      height: 74px;
+      padding: 0 30px;
+      background: #fff;
+    }
+    .preview { color: #657383; font-weight: 700; }
+    .publish {
+      min-width: 112px;
+      min-height: 42px;
+      border-radius: 4px;
+      color: #fff;
+      background: #438fe7;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+    .good .publish { box-shadow: 0 1px 3px rgb(0 0 0 / 22%); }
+    .menu-shell {
+      position: relative;
+      min-height: 286px;
+      padding-top: 48px;
+      background: #eef3f7;
+    }
+    .fake-search {
+      position: absolute;
+      top: 16px;
+      left: 18px;
+      width: 170px;
+      height: 30px;
+      border-radius: 99px;
+      background: #e7edf2;
+      border: 1px solid #cfd8e2;
+    }
+    .menu {
+      width: 220px;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid #dfe5eb;
+      border-radius: 9px;
+      background: #fff;
+    }
+    .good .menu { box-shadow: 0 4px 6px rgb(0 0 0 / 10%); }
+    .menu-head { padding: 18px; border-bottom: 1px solid #e7edf3; }
+    .menu-name { font-weight: 800; }
+    .menu-user { color: var(--muted); font-size: 12px; }
+    .menu a {
+      display: block;
+      padding: 9px 18px;
+      color: #314255;
+      text-decoration: none;
+      font-size: 13px;
+    }
+    .menu a:nth-child(4), .menu a:nth-child(7) { border-top: 1px solid #edf1f5; }
+
+    /* Example 6: image contrast */
+    .hero-mini {
+      position: relative;
+      display: grid;
+      min-height: 286px;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 24% 65%, #cdb59b 0 13%, transparent 14%),
+        radial-gradient(circle at 74% 57%, #dbc0a6 0 12%, transparent 13%),
+        linear-gradient(90deg, #f3f5f4 0 24%, #31433f 25% 49%, #dfe5e6 50% 72%, #2c3c3a 73% 100%);
+    }
+    .hero-mini::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+    .good.hero-mini::after { background: rgb(0 0 0 / 55%); }
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 420px;
+      text-align: center;
+    }
+    .hero-copy h3 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      line-height: 1.04;
+      color: #fff;
+      text-shadow: none;
+    }
+    .hero-copy p {
+      margin: 0 0 18px;
+      color: #fff;
+      font-size: 15px;
+    }
+    .bad .hero-copy h3,
+    .bad .hero-copy p { color: #1b2734; }
+    .hero-cta {
+      display: inline-flex;
+      min-width: 116px;
+      min-height: 38px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      color: white;
+      background: #008bd9;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    /* Example 7: intended size */
+    .feature {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 24px;
+      align-items: center;
+      min-height: 296px;
+      padding: 28px;
+      background: #ecf2f6;
+    }
+    .feature h3 { margin: 0 0 10px; font-size: 23px; }
+    .feature p { max-width: 330px; color: #51677c; }
+    .tasks {
+      overflow: hidden;
+      border: 1px solid #d6e1ea;
+      border-radius: 7px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .taskbar {
+      height: 26px;
+      background: #4f83ad;
+    }
+    .taskline {
+      height: 34px;
+      border-top: 1px solid #edf1f5;
+      background:
+        linear-gradient(90deg, #2bb9d5 0 9px, transparent 10px) 16px 13px / 100% 10px no-repeat,
+        linear-gradient(90deg, #7891a9 0 46%, transparent 46%) 38px 14px / 72% 6px no-repeat;
+    }
+    .bad .feature {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .bad .tasks {
+      transform: scale(.62);
+      transform-origin: center;
+      opacity: .78;
+      filter: blur(.2px);
+    }
+    .good .tasks {
+      width: 86%;
+      justify-self: end;
+    }
+    .crop {
+      width: 190px;
+      height: 190px;
+      justify-self: end;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 1px solid #dce4ec;
+      background: #fff;
+    }
+    .crop .tasks {
+      width: 330px;
+      transform: translate(-60px, 24px) scale(1.1);
+    }
+
+    /* Example 8: empty states */
+    .app-empty {
+      min-height: 290px;
+      background: #fff;
+      border: 1px solid #e0e7ef;
+    }
+    .app-tabs {
+      display: flex;
+      gap: 12px;
+      padding: 14px 18px;
+      border-bottom: 1px solid #e5ebf1;
+      color: #8a96a5;
+      font-size: 12px;
+    }
+    .empty-body {
+      display: grid;
+      min-height: 228px;
+      place-items: center;
+      padding: 22px;
+      text-align: center;
+    }
+    .empty-ill {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 16px;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, transparent 56%, rgb(255 255 255 / 28%) 57%),
+        linear-gradient(135deg, #5eb5ff, #7258f1);
+      box-shadow: 0 12px 22px rgb(62 96 150 / 20%);
+    }
+    .empty-body h3 { margin: 0 0 8px; font-size: 21px; }
+    .empty-body p { max-width: 360px; margin: 0 0 18px; color: var(--muted); }
+    .bad .empty-ill, .bad .empty-body p, .bad .button { display: none; }
+
+    /* Example 9: fewer borders */
+    .border-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      min-height: 276px;
+      background: #f7f9fb;
+      align-items: center;
+    }
+    .border-card {
+      padding: 18px;
+      background: #fff;
+      border-radius: 8px;
+    }
+    .bad .border-card {
+      border: 1px solid #d9e0e8;
+    }
+    .bad .border-card * + * {
+      border-top: 1px solid #e1e7ee;
+      padding-top: 12px;
+    }
+    .good .border-card {
+      box-shadow: var(--shadow-md);
+    }
+    .good .border-card * + * {
+      margin-top: 16px;
+    }
+    .border-card h3 { margin: 0; font-size: 18px; }
+    .border-card p { margin: 0; color: var(--muted); }
+    .accent { height: 4px; width: 64px; border-radius: 4px; background: #34a3db; }
+
+    @media (max-width: 860px) {
+      .pair { grid-template-columns: 1fr; }
+      .shot { min-height: auto; }
+      .tour-card, .feature { grid-template-columns: 1fr; }
+      .tour-photo { min-height: 130px; }
+      .hero-copy h3 { font-size: 25px; }
+    }
+
+    @media (max-width: 520px) {
+      main {
+        width: min(100vw - 20px, 420px);
+        padding-top: 20px;
+      }
+      .example {
+        padding: 14px;
+      }
+      .example > header {
+        display: block;
+      }
+      .rule {
+        margin-top: 6px;
+      }
+      .shot {
+        padding: 12px;
+      }
+      .dash-nav {
+        gap: 8px;
+        height: auto;
+        min-height: 44px;
+        padding: 8px 10px;
+        font-size: 9px;
+      }
+      .mark {
+        width: 14px;
+        margin-right: 2px;
+      }
+      .avatar {
+        width: 20px;
+        height: 20px;
+      }
+      .dash-content {
+        padding: 14px 12px;
+      }
+      .dash-title {
+        font-size: 10px;
+      }
+      .metric {
+        padding: 12px 8px;
+      }
+      .metric .label {
+        font-size: 8px;
+      }
+      .metric .value,
+      .good .metric .value {
+        font-size: 14px;
+      }
+      .metric .delta {
+        font-size: 9px;
+      }
+      .tabs {
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 10px;
+      }
+      th,
+      td {
+        padding: 7px 6px;
+        font-size: 9px;
+      }
+      .tour-body {
+        padding: 18px;
+      }
+      .tour-footer {
+        display: block;
+        margin: 16px -18px -18px;
+        padding: 14px 18px;
+      }
+      .tour-footer .button {
+        margin-top: 12px;
+      }
+      .checkout {
+        grid-template-columns: 38px 1fr;
+      }
+      .form-panel {
+        padding: 0 14px;
+      }
+      .step-head {
+        display: block;
+      }
+      .helper {
+        display: block;
+        margin-top: 6px;
+      }
+      .policy table {
+        table-layout: fixed;
+        font-size: 11px;
+      }
+      .policy th,
+      .policy td {
+        padding-inline: 4px;
+      }
+      .policy .face {
+        display: none;
+      }
+      .policy .role {
+        font-size: 10px;
+      }
+      .badge {
+        min-width: 68px;
+        padding-inline: 7px;
+        font-size: 10px;
+      }
+      .editor-actions {
+        padding-inline: 16px;
+      }
+      .menu {
+        width: 190px;
+      }
+      .border-demo {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Refactoring UI: HTML/CSS Example Gallery</h1>
+    <p class="intro">Code-native recreations of selected bad/good panels from Wathan and Schoger's visual refactoring examples. The goal is to preserve the concrete UI move in editable HTML/CSS without committing book screenshots.</p>
+
+    <section class="example">
+      <header>
+        <h2>1. Hierarchy: make the important region win</h2>
+        <p class="rule">Same app shell, stronger metric block, quieter tabs and table.</p>
+      </header>
+      <div class="pair">
+        <div class="shot bad dash">
+          <div class="dash-ui">
+            <div class="dash-nav"><span class="mark">///</span><span>Dashboard</span><span>Quote</span><span>Buy/Sell</span><span>Orders</span><span>Transfers</span><span>Watchlists</span><span class="avatar"></span></div>
+            <div class="dash-content">
+              <div class="dash-title"><span>Overview</span><span>As of Dec 11, 8:00 AM</span></div>
+              <div class="metric-row">
+                <div class="metric"><div class="label">Total balance</div><div class="value">$16,412.92</div><div class="delta">+$648.83</div></div>
+                <div class="metric"><div class="label">Investments</div><div class="value">15,606.14</div><div class="delta">+$648.83</div></div>
+                <div class="metric"><div class="label">Cash</div><div class="value">$806.78</div></div>
+              </div>
+              <div class="tabs"><span>Holdings</span><span>Activity</span><span>Performance</span><span>Gain &amp; Loss</span></div>
+              <table><thead><tr><th>Name</th><th>Quantity</th><th>Price</th><th>Gain/Loss</th><th>Buy/Sell</th></tr></thead><tbody><tr><td>TDB900</td><td>140.143</td><td>$25.70</td><td class="gain">+$170.00</td><td>Buy</td></tr><tr><td>TDB902</td><td>65.218</td><td>$54.86</td><td class="gain">+$189.70</td><td>Sell</td></tr></tbody></table>
+            </div>
+          </div>
+        </div>
+        <div class="shot good dash">
+          <div class="dash-ui">
+            <div class="dash-nav"><span class="mark">///</span><span>Dashboard</span><span>Quote</span><span>Buy/Sell</span><span>Orders</span><span>Transfers</span><span>Watchlists</span><span class="avatar"></span></div>
+            <div class="dash-content">
+              <div class="dash-title"><span>Overview</span><span>As of Dec 11, 8:00 AM</span></div>
+              <div class="metric-row">
+                <div class="metric"><div class="label">Total balance</div><div class="value">$16,412.92</div><div class="delta">+$648.83</div></div>
+                <div class="metric"><div class="label">Investments</div><div class="value">15,606.14</div><div class="delta">+$648.83</div></div>
+                <div class="metric"><div class="label">Cash</div><div class="value">$806.78</div></div>
+              </div>
+              <div class="tabs"><span>Holdings</span><span>Activity</span><span>Performance</span><span>Gain &amp; Loss</span></div>
+              <table><thead><tr><th>Name</th><th>Quantity</th><th>Price</th><th>Gain/Loss</th><th>Buy/Sell</th></tr></thead><tbody><tr><td>TDB900</td><td>140.143</td><td>$25.70</td><td class="gain">+$170.00</td><td>Buy</td></tr><tr><td>TDB902</td><td>65.218</td><td>$54.86</td><td class="gain">+$189.70</td><td>Sell</td></tr></tbody></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="example">
+      <header>
+        <h2>2. Hierarchy: weight and color beat huge size</h2>
+        <p class="rule">Tour card based on the Amsterdam example: more readable support text, calmer title scale.</p>
+      </header>
+      <div class="pair">
+        <div class="shot bad tour-stage"><div class="tour-card"><div class="tour-photo"></div><div class="tour-body"><h3 class="tour-title">Amsterdam Walking Tour</h3><p class="tour-copy">Explore popular tourist destinations as well as hidden local favorites.</p><div class="tour-footer"><div><div class="price">$17 per person*</div><div class="review">***** 28 reviews</div></div><span class="button">Book now</span></div></div></div></div>
+        <div class="shot good tour-stage"><div class="tour-card"><div class="tour-photo"></div><div class="tour-body"><h3 class="tour-title">Amsterdam Walking Tour</h3><p class="tour-copy">Explore popular tourist destinations as well as hidden local favorites.</p><div class="tour-footer"><div><div class="price">$17 per person*</div><div class="review">***** 28 reviews</div></div><span class="button">Book now</span></div></div></div></div>
+      </div>
+    </section>
+
+    <section class="example">
+      <header>
+        <h2>3. Spacing: remove ambiguity inside groups</h2>
+        <p class="rule">Label-to-field spacing must be smaller than field-to-next-label spacing.</p>
+      </header>
+      <div class="pair">
+        <div class="shot bad"><div class="checkout"><div class="rail"></div><div class="form-panel"><div class="step-head"><div><span class="step">2</span>Billing address</div><span class="helper">Are you purchasing for someone else?</span></div><div class="field"><label>Full name</label><div class="input"></div></div><div class="field"><label>Street address</label><div class="input"></div></div><div class="field"><label>City</label><div class="input"></div></div><div class="field"><label>Province/Territory</label><div class="input"></div></div></div></div></div>
+        <div class="shot good"><div class="checkout"><div class="rail"></div><div class="form-panel"><div class="step-head"><div><span class="step">2</span>Billing address</div><span class="helper">Are you purchasing for someone else?</span></div><div class="field"><label>Full name</label><div class="input"></div></div><div class="field"><label>Street address</label><div class="input"></div></div><div class="field"><label>City</label><div class="input"></div></div><div class="field"><label>Province/Territory</label><div class="input"></div></div></div></div></div>
+      </div>
+    </section>
+
+    <section class="example">
+      <header>
+        <h2>4. Color: flip contrast for quiet accessibility</h2>
+        <p class="rule">Dark badge backgrounds pass contrast but steal hierarchy; tinted backgrounds keep status readable.</p>
+      </header>
+      <div class="pair">
+        <div class="shot bad policy"><table><thead><tr><th>Name</th><th>Status</th><th>Policy</th></tr></thead><tbody><tr><td><span class="person"><span class="face"></span><span>Molly Sanders<span class="role">VP of Sales</span></span></span></td><td><span class="badge approved">Approved</span></td><td>$20,000<br><span class="role">All-inclusive</span></td></tr><tr><td><span class="person"><span class="face"></span><span>Michael Roberts<span class="role">Advisory Board</span></span></span></td><td><span class="badge waiting">Awaiting Approval</span></td><td>$5,000<br><span class="role">Basic Policy</span></td></tr><tr><td><span class="person"><span class="face"></span><span>Devin Childs<span class="role">Marketing Manager</span></span></span></td><td><span class="badge declined">Declined</span></td><td>$5,000<br><span class="role">Basic Policy</span></td></tr></tbody></table></div>
+        <div class="shot good policy"><table><thead><tr><th>Name</th><th>Status</th><th>Policy</th></tr></thead><tbody><tr><td><span class="person"><span class="face"></span><span>Molly Sanders<span class="role">VP of Sales</span></span></span></td><td><span class="badge approved">Approved</span></td><td>$20,000<br><span class="role">All-inclusive</span></td></tr><tr><td><span class="person"><span class="face"></span><span>Michael Roberts<span class="role">Advisory Board</span></span></span></td><td><span class="badge waiting">Awaiting Approval</span></td><td>$5,000<br><span class="role">Basic Policy</span></td></tr><tr><td><span class="person"><span class="face"></span><span>Devin Childs<span class="role">Marketing Manager</span></span></span></td><td><span class="badge declined">Declined</span></td><td>$5,000<br><span class="role">Basic Policy</span></td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="example">
+      <header>
+        <h2>5. Depth: assign shadows by z-axis</h2>
+        <p class="rule">A button needs a small shadow; a dropdown needs a medium shadow.</p>
+      </header>
+      <div class="pair">
+        <div class="shot bad editor"><div class="editor-top"></div><div class="editor-actions"><span class="preview">Preview</span><span class="publish">Publish</span></div><div class="menu-shell"><div class="fake-search"></div><div class="menu"><div class="menu-head"><div class="menu-name">James Chaparro</div><div class="menu-user">@jameschaparro</div></div><a>Do not disturb mode</a><a>Set a status</a><a>Notification preferences</a><a>Profile &amp; account</a><a>Help &amp; feedback</a><a>Sign out</a></div></div></div>
+        <div class="shot good editor"><div class="editor-top"></div><div class="editor-actions"><span class="preview">Preview</span><span class="publish">Publish</span></div><div class="menu-shell"><div class="fake-search"></div><div class="menu"><div class="menu-head"><div class="menu-name">James Chaparro</div><div class="menu-user">@jameschaparro</div></div><a>Do not disturb mode</a><a>Set a status</a><a>Notification preferences</a><a>Profile &amp; account</a><a>Help &amp; feedback</a><a>Sign out</a></div></div></div>
+      </div>
+    </section>
+
+    <section class="example">
+      <header>
+        <h2>6. Images: control contrast before placing text</h2>
+        <p class="rule">The problem is the background dynamics, not the headline color.</p>
+      </header>
+      <div class="pair">
+        <div class="shot bad hero-mini"><div class="hero-copy"><h3>Meeting Room Scheduling Made Easy</h3><p>A hassle-free solution to booking meeting rooms</p><span class="hero-cta">Book a Demo</span></div></div>
+        <div class="shot good hero-mini"><div class="hero-copy"><h3>Meeting Room Scheduling Made Easy</h3><p>A hassle-free solution to booking meeting rooms</p><span class="hero-cta">Book a Demo</span></div></div>
+      </div>
+    </section>
+
+    <section class="example">
+      <header>
+        <h2>7. Images: everything has an intended size</h2>
+        <p class="rule">Do not shrink a whole app screenshot until its details become noise; use a smaller layout or crop.</p>
+      </header>
+      <div class="pair">
+        <div class="shot bad"><div class="feature"><div><h3>Take control of your day</h3><p>Get an overview of tasks and priorities at a glance.</p></div><div class="tasks"><div class="taskbar"></div><div class="taskline"></div><div class="taskline"></div><div class="taskline"></div><div class="taskline"></div></div></div></div>
+        <div class="shot good"><div class="feature"><div><h3>Take control of your day</h3><p>Get an overview of tasks and priorities at a glance.</p><p>Use a focused crop when space is tight.</p></div><div class="crop"><div class="tasks"><div class="taskbar"></div><div class="taskline"></div><div class="taskline"></div><div class="taskline"></div><div class="taskline"></div></div></div></div></div>
+      </div>
+    </section>
+
+    <section class="example">
+      <header>
+        <h2>8. Empty states: first interaction, not afterthought</h2>
+        <p class="rule">Hide dead controls, add a visual anchor, and make the next action obvious.</p>
+      </header>
+      <div class="pair">
+        <div class="shot bad app-empty"><div class="app-tabs"><span>All</span><span>Open</span><span>Closed</span><span>Filters</span><span>Sort</span></div><div class="empty-body"><div><div class="empty-ill"></div><h3>No projects yet</h3><p>Create your first project to start tracking work.</p><span class="button">Create project</span></div></div></div>
+        <div class="shot good app-empty"><div class="empty-body"><div><div class="empty-ill"></div><h3>Create your first project</h3><p>Projects collect tasks, files, and decisions in one place so your team can start with shared context.</p><span class="button">Create project</span></div></div></div>
+      </div>
+    </section>
+
+    <section class="example">
+      <header>
+        <h2>9. Finishing touches: use fewer borders</h2>
+        <p class="rule">Separation can come from shadows, background contrast, spacing, and a small accent.</p>
+      </header>
+      <div class="pair">
+        <div class="shot bad border-demo"><div class="border-card"><h3>Quarterly review</h3><p>Revenue, retention, and open risks.</p><p>Updated today</p></div><div class="border-card"><h3>Launch plan</h3><p>Milestones, blockers, and owner notes.</p><p>Updated yesterday</p></div></div>
+        <div class="shot good border-demo"><div class="border-card"><div class="accent"></div><h3>Quarterly review</h3><p>Revenue, retention, and open risks.</p><p>Updated today</p></div><div class="border-card"><div class="accent"></div><h3>Launch plan</h3><p>Milestones, blockers, and owner notes.</p><p>Updated yesterday</p></div></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

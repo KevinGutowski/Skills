@@ -23,6 +23,7 @@ This skill is the *how* of the **Craft** principle. For the strategic layer — 
 | [Surfaces](surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, hit areas |
 | [Animations](animations.md) | Interruptible animations, enter/exit transitions, icon animations, scale on press |
 | [Performance](performance.md) | Transition specificity, `will-change` usage, perceived performance (spinner choice) |
+| [Refactoring UI](references/refactoring-ui.md) | Visual refactor passes: hierarchy, spacing, type, color, depth, images, empty states; example gallery in `examples/refactoring-ui-gallery.html` |
 
 ## Core Principles
 
@@ -191,6 +192,7 @@ Rows should cite the specific file and the specific property that changed when i
 - [surfaces.md](surfaces.md) — Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines
 - [animations.md](animations.md) — Interruptible animations, enter/exit transitions, icon animations, scale on press
 - [performance.md](performance.md) — Transition specificity, `will-change` usage, perceived performance (spinner choice assigns blame)
+- [references/refactoring-ui.md](references/refactoring-ui.md) — Wathan/Schoger's visual refactor method, with a code-native bad/good gallery at [examples/refactoring-ui-gallery.html](examples/refactoring-ui-gallery.html)
 - [references/sources.md](references/sources.md) — bibliography (Briggs/PixelJanitor tweet IDs, CodePens, video IDs)
 
 ### 21. Eased Gradients
