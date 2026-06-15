@@ -3,8 +3,8 @@
 *Scope:* Wathan/Schoger-style visual refactors for web/product UI. Use this when a
 screen is structurally correct but feels amateur, flat, noisy, cramped, or hard to
 scan. Code-native examples: [examples/refactoring-ui-gallery.html](../examples/refactoring-ui-gallery.html).
-The gallery covers 32 recreated examples: 23 supplemental bad/good lesson pairs
-plus 9 larger panels for the highest-signal full-page examples. The examples were
+The gallery covers 45 recreated examples: 36 detailed bad/good lesson pairs plus
+9 larger panels for the highest-signal full-page examples. The examples were
 rebuilt in HTML/CSS from local PDF renders and extracted images; do not commit
 the source book screenshots.
 

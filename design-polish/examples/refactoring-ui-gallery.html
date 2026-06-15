@@ -1715,6 +1715,352 @@
       text-align: center;
     }
 
+    /* Review pass: concrete replacements for examples that were too abstract. */
+    .vh-app,
+    .btn-demo,
+    .responsive-demo,
+    .product-scale,
+    .font-specimen,
+    .article-measure,
+    .link-news,
+    .align-features,
+    .tracking-card,
+    .status-panel,
+    .flat-app {
+      width: min(430px, 92%);
+      margin: 30px auto 0;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .vh-app { overflow: hidden; }
+    .vh-bar {
+      display: flex;
+      gap: 14px;
+      height: 42px;
+      align-items: center;
+      padding: 0 18px;
+      background: #2f4968;
+      color: rgb(255 255 255 / 74%);
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .vh-body { padding: 22px; }
+    .vh-body h4 { margin: 0 0 6px; }
+    .vh-body p { margin: 0; color: #66768a; }
+    .vh-form {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid #e2e9f1;
+    }
+    .vh-form b { display: block; margin-bottom: 8px; }
+    .vh-form span {
+      display: block;
+      width: 52%;
+      height: 6px;
+      margin-top: 6px;
+      border-radius: 999px;
+      background: #b8c5d3;
+    }
+    .semantics.bad .vh-body h4 { font-size: 34px; line-height: 1; }
+    .semantics.bad .vh-form b { color: #7a8796; font-size: 12px; }
+    .semantics.good .vh-body h4 { font-size: 15px; color: #526176; }
+    .semantics.good .vh-form b { color: #1b2d44; font-size: 22px; }
+    .semantics.good .vh-form {
+      margin-top: 12px;
+      padding: 18px;
+      border: 0;
+      border-radius: 7px;
+      background: #eef4f9;
+    }
+
+    .btn-demo {
+      display: grid;
+      gap: 10px;
+      padding: 20px;
+    }
+    .btn-demo b { color: #26384f; }
+    .btn-demo button {
+      min-height: 38px;
+      border: 0;
+      border-radius: 6px;
+      font-weight: 900;
+    }
+    .action-rank.bad .btn-demo button {
+      color: #3d4c60;
+      background: #e3e9f0;
+    }
+    .action-rank.good .btn-demo button:first-of-type {
+      color: #fff;
+      background: #3f64d8;
+      box-shadow: 0 8px 16px rgb(63 100 216 / 22%);
+    }
+    .action-rank.good .btn-demo button:nth-of-type(2) {
+      color: #405064;
+      background: #eef2f6;
+    }
+    .action-rank.good .btn-demo button:last-of-type {
+      justify-self: start;
+      min-height: 28px;
+      color: #b93243;
+      background: transparent;
+    }
+    .btn-note {
+      color: #758397;
+      font-size: 11px;
+    }
+
+    .responsive-demo {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+    }
+    .device-card {
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .device-card h4 { margin: 0 0 8px; }
+    .device-card p { margin: 0; color: #69798d; }
+    .relative.bad .device-card {
+      width: 360px;
+      padding: 22px;
+      transform: scale(.62);
+      transform-origin: top left;
+    }
+    .relative.bad .responsive-demo {
+      height: 140px;
+      overflow: hidden;
+    }
+    .relative.good .device-card {
+      width: min(300px, 100%);
+      padding: 20px;
+    }
+    .relative.good .device-card h4 { font-size: 20px; line-height: 1.12; }
+    .relative.good .device-card p { font-size: 14px; line-height: 1.45; }
+
+    .product-scale {
+      padding: 20px;
+    }
+    .product-scale .eyebrow {
+      color: #738196;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .product-scale .price {
+      margin: 10px 0 3px;
+      color: #18283d;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+    }
+    .product-scale .meta { color: #657589; }
+    .type-scale.bad .product-scale .eyebrow { font-size: 18px; color: #6d7b8d; }
+    .type-scale.bad .product-scale .price { font-size: 22px; }
+    .type-scale.bad .product-scale .meta { font-size: 21px; color: #25384f; }
+    .type-scale.good .product-scale .eyebrow { font-size: 13px; }
+    .type-scale.good .product-scale .price { font-size: 36px; font-weight: 900; }
+    .type-scale.good .product-scale .meta { font-size: 14px; }
+
+    .font-specimen {
+      padding: 20px;
+    }
+    .font-specimen .font-row {
+      display: flex;
+      gap: 8px;
+      color: #718095;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .font-specimen h4 { margin: 22px 0 8px; }
+    .font-specimen p { margin: 0; color: #68788c; }
+    .font-demo.bad .font-specimen {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    .font-demo.bad .font-specimen h4 {
+      font-size: 28px;
+      letter-spacing: -.02em;
+    }
+    .font-demo.bad .font-specimen p {
+      font-size: 12px;
+      line-height: 1.25;
+    }
+    .font-demo.good .font-specimen h4 {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+    .font-demo.good .font-specimen p {
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .font-specimen code {
+      display: inline-block;
+      margin-top: 14px;
+      color: #32465d;
+      background: #eef3f8;
+      padding: 5px 7px;
+      border-radius: 5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px;
+    }
+
+    .article-measure {
+      padding: 22px;
+    }
+    .article-measure h4 { margin: 0 0 8px; }
+    .article-measure p {
+      margin: 0;
+      color: #42566d;
+      line-height: 1.55;
+    }
+    .measure.bad .article-measure {
+      width: min(620px, 96%);
+    }
+    .measure.bad .article-measure p {
+      max-width: none;
+      font-size: 13px;
+    }
+    .measure.good .article-measure {
+      width: min(360px, 90%);
+    }
+    .measure.good .article-measure p {
+      font-size: 13px;
+    }
+
+    .link-news {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 16px;
+    }
+    .link-card {
+      min-height: 110px;
+      padding: 12px;
+      border-radius: 7px;
+      background: #f7f9fb;
+    }
+    .link-card b { display: block; margin-bottom: 8px; }
+    .link-card span { color: #748297; font-size: 11px; }
+    .links.bad .link-card b,
+    .links.bad .link-card span { color: #2f7dd3; }
+    .links.good .link-card b { color: #25384f; }
+    .links.good .link-card span { color: #66768a; }
+    .links.good .link-card b::after {
+      content: "";
+      display: block;
+      width: 34px;
+      height: 2px;
+      margin-top: 8px;
+      background: #2f7dd3;
+    }
+
+    .align-features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 16px;
+    }
+    .feature-tile {
+      min-height: 128px;
+      padding: 18px;
+      border-radius: 7px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .feature-tile b { display: block; margin-bottom: 8px; }
+    .feature-tile span { color: #69798d; font-size: 12px; line-height: 1.4; }
+    .align.bad .feature-tile { text-align: center; }
+    .align.good .feature-tile { text-align: left; }
+
+    .tracking-card {
+      padding: 20px;
+    }
+    .tracking-card .kicker {
+      color: #6d7b8d;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .tracking-card h4 {
+      margin: 12px 0 6px;
+      font-size: 24px;
+    }
+    .tracking-card p { margin: 0; color: #657589; }
+    .tracking.bad .tracking-card h4 {
+      letter-spacing: .12em;
+      font-size: 20px;
+      text-transform: none;
+    }
+    .tracking.bad .tracking-card .kicker { letter-spacing: 0; }
+    .tracking.good .tracking-card .kicker { letter-spacing: .12em; }
+    .tracking.good .tracking-card h4 { letter-spacing: 0; }
+
+    .status-panel {
+      padding: 18px;
+    }
+    .status-row {
+      display: grid;
+      grid-template-columns: 1fr 90px;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #e6edf4;
+    }
+    .status-row:last-child { border-bottom: 0; }
+    .status-row b { color: #25384f; }
+    .status-row span {
+      justify-self: end;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .color-only.bad .up { background: #d9f4e7; color: transparent; }
+    .color-only.bad .down { background: #ffe0e5; color: transparent; }
+    .color-only.good .up { color: #0b6a43; background: #d9f4e7; }
+    .color-only.good .down { color: #a52334; background: #ffe0e5; }
+
+    .flat-app {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0;
+      overflow: hidden;
+      padding: 0;
+    }
+    .flat-side {
+      padding: 18px 14px;
+      background: #fff;
+    }
+    .flat-main {
+      padding: 18px;
+      background: #fff;
+    }
+    .flat-side b,
+    .flat-main b { display: block; margin-bottom: 12px; }
+    .flat-side span,
+    .flat-main span {
+      display: block;
+      width: 70%;
+      height: 6px;
+      margin-top: 7px;
+      border-radius: 999px;
+      background: #bdcad8;
+    }
+    .flat-depth.bad .flat-app {
+      border: 1px solid #dbe3ec;
+    }
+    .flat-depth.bad .flat-side {
+      border-right: 1px solid #dbe3ec;
+    }
+    .flat-depth.good .flat-side {
+      background: #e8f0f7;
+      box-shadow: inset -1px 0 0 #d9e4ee;
+    }
+    .flat-depth.good .flat-main {
+      background: #fff;
+      box-shadow: 8px 0 0 #d8e4ee;
+    }
+
     @media (max-width: 860px) {
       .pair { grid-template-columns: 1fr; }
       .coverage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1755,6 +2101,21 @@
       }
       .overlap-stack span:nth-child(2) {
         left: 92px;
+      }
+      .relative.bad .device-card {
+        width: 100%;
+        transform: scale(.72);
+      }
+      .relative.bad .responsive-demo {
+        height: 126px;
+      }
+      .link-news,
+      .align-features {
+        grid-template-columns: 1fr;
+      }
+      .link-card,
+      .feature-tile {
+        min-height: auto;
       }
       .rule {
         margin-top: 6px;
@@ -1867,8 +2228,8 @@
     <p class="intro">Code-native recreations of Wathan and Schoger's visual refactoring examples. The PDF pages and extracted images were used as temporary references; this file keeps the concrete UI moves in editable HTML/CSS without committing book screenshots.</p>
     <div class="coverage" aria-label="Coverage summary">
       <span>9 full-page recreations</span>
-      <span>23 supplemental lesson pairs</span>
-      <span>Only clear examples kept</span>
+      <span>36 detailed lesson pairs</span>
+      <span>All 8 book chapters represented</span>
       <span>Bad and good states are editable code</span>
     </div>
 
@@ -1876,9 +2237,9 @@
       <div class="matrix-head">
         <div>
           <h2 id="matrix-title">Detailed Visual Lesson Matrix</h2>
-          <p class="rule">Supplemental recreations kept only where the visual contrast is clear without the book beside it.</p>
+          <p class="rule">Inspectable recreations of the book's many paired examples, grouped by the actual chapter flow.</p>
         </div>
-        <p class="rule">The larger panels below carry the most faithful full UI examples.</p>
+        <p class="rule">Use these as quick patterns before opening the larger panels below.</p>
       </div>
       <div class="lesson-grid">
         <article class="lesson-card"><header><h3>1. Start with a feature</h3><p>Design the useful booking slice, not a blank app shell.</p></header><div class="lesson-pair"><div class="lesson-screen bad flight"><div class="mini-card"><div class="mini-title">Dashboard</div><div class="mini-line"></div><div class="mini-line med"></div></div></div><div class="lesson-screen good flight"><div class="mini-card"><div class="mini-title">Find the best deals</div><div class="mini-line med"></div><div class="mini-line short"></div><span class="mini-btn">Search</span></div></div></div></article>
@@ -1888,17 +2249,30 @@
         <article class="lesson-card"><header><h3>5. Grey on color</h3><p>Lower opacity, do not make text grey on colored surfaces.</p></header><div class="lesson-pair"><div class="lesson-screen bad gray-on-color"><div class="quote-box">Better every week<br><small>Tina Vanstone</small></div></div><div class="lesson-screen good gray-on-color"><div class="quote-box">Better every week<br><small>Tina Vanstone</small></div></div></div></article>
         <article class="lesson-card"><header><h3>6. De-emphasize</h3><p>Make secondary navigation quieter instead of making active louder.</p></header><div class="lesson-pair"><div class="lesson-screen bad deemph"><div class="nav-mini"><span>Dashboard</span><span>Orders</span><span>Products</span></div></div><div class="lesson-screen good deemph"><div class="nav-mini"><span>Dashboard</span><span>Orders</span><span>Products</span></div></div></div></article>
         <article class="lesson-card"><header><h3>7. Labels last</h3><p>Let clear values carry themselves.</p></header><div class="lesson-pair"><div class="lesson-screen bad label-last"><div class="data-label"><dl><div><dt>Email</dt><dd>alex@example.com</dd></div><div><dt>Plan</dt><dd>Pro</dd></div></dl></div></div><div class="lesson-screen good label-last"><div class="data-label"><dl><div><dt>Email</dt><dd>alex@example.com</dd></div><div><dt>Plan</dt><dd>Pro plan</dd></div></dl></div></div></div></article>
+        <article class="lesson-card"><header><h3>8. Visual hierarchy</h3><p>Do not let document headings dictate app emphasis.</p></header><div class="lesson-pair"><div class="lesson-screen bad semantics"><div class="vh-app"><div class="vh-bar"><span>Account</span><span>Billing</span><span>Security</span></div><div class="vh-body"><h4>Profile</h4><p>Edit account details.</p><div class="vh-form"><b>Personal information</b><span></span><span></span></div></div></div></div><div class="lesson-screen good semantics"><div class="vh-app"><div class="vh-bar"><span>Account</span><span>Billing</span><span>Security</span></div><div class="vh-body"><h4>Profile</h4><p>Edit account details.</p><div class="vh-form"><b>Personal information</b><span></span><span></span></div></div></div></div></div></article>
         <article class="lesson-card"><header><h3>9. Balance icon weight</h3><p>Heavy symbols often need softer contrast or lighter strokes.</p></header><div class="lesson-pair"><div class="lesson-screen bad icon-weight"><div class="icon-row"><span class="icon-mark"></span><span>Charts</span></div></div><div class="lesson-screen good icon-weight"><div class="icon-row"><span class="icon-mark"></span><span>Charts</span></div></div></div></article>
+        <article class="lesson-card"><header><h3>10. Button prominence</h3><p>Primary, secondary, and destructive depend on the current decision.</p></header><div class="lesson-pair"><div class="lesson-screen bad action-rank"><div class="btn-demo"><b>Account settings</b><button>Save</button><button>Cancel</button><button>Delete</button><span class="btn-note">Everything has the same weight, including danger.</span></div></div><div class="lesson-screen good action-rank"><div class="btn-demo"><b>Account settings</b><button>Save changes</button><button>Cancel</button><button>Delete account</button><span class="btn-note">The page action wins; danger waits for confirmation.</span></div></div></div></article>
         <article class="lesson-card"><header><h3>11. Start too spacious</h3><p>Remove from a generous layout instead of adding to a cramped one.</p></header><div class="lesson-pair"><div class="lesson-screen bad space-demo"><div class="mini-card"><div class="mini-title">Set up account</div><div class="mini-line"></div><div class="mini-line"></div></div></div><div class="lesson-screen good space-demo"><div class="mini-card"><div class="mini-title">Set up account</div><div class="mini-line"></div><div class="mini-line"></div></div></div></div></article>
         <article class="lesson-card"><header><h3>12. Spacing scale</h3><p>Use jumps large enough that decisions are visible.</p></header><div class="lesson-pair"><div class="lesson-screen bad scale"><div class="scale-demo"><div class="scale-row"><b>12</b><i></i><em>card pad</em></div><div class="scale-row"><b>14</b><i></i><em>field gap</em></div><div class="scale-row"><b>16</b><i></i><em>section gap</em></div></div></div><div class="lesson-screen good scale"><div class="scale-demo"><div class="scale-row"><b>8</b><i></i><em>tight</em></div><div class="scale-row"><b>16</b><i></i><em>normal</em></div><div class="scale-row"><b>32</b><i></i><em>loose</em></div></div></div></div></article>
         <article class="lesson-card"><header><h3>13. Do not fill the screen</h3><p>Narrow the task area even when the canvas is wide.</p></header><div class="lesson-pair"><div class="lesson-screen bad max-width"><div class="wide-page"><div class="mini-line"></div><div class="mini-line"></div><div class="mini-line"></div></div></div><div class="lesson-screen good max-width"><div class="wide-page"><div class="mini-line"></div><div class="mini-line"></div><div class="mini-line"></div></div></div></div></article>
         <article class="lesson-card"><header><h3>14. Grids are overrated</h3><p>Align to content relationships, not a visible cage.</p></header><div class="lesson-pair"><div class="lesson-screen bad grid-over"><div class="grid-boxes"><span></span><span></span><span></span><span></span></div></div><div class="lesson-screen good grid-over"><div class="grid-boxes"><span></span><span></span><span></span></div></div></div></article>
+        <article class="lesson-card"><header><h3>15. Relative sizing</h3><p>Adapt elements, do not scale the whole design down.</p></header><div class="lesson-pair"><div class="lesson-screen bad relative"><div class="responsive-demo"><div class="device-card"><h4>Team communication optimized for deep work.</h4><p>Chat, docs, tasks, and decisions in one shared workspace.</p></div></div></div><div class="lesson-screen good relative"><div class="responsive-demo"><div class="device-card"><h4>Team communication optimized for deep work.</h4><p>Chat, docs, tasks, and decisions in one shared workspace.</p></div></div></div></div></article>
+        <article class="lesson-card"><header><h3>16. Type scale</h3><p>Choose from a small set of useful interface sizes.</p></header><div class="lesson-pair"><div class="lesson-screen bad type-scale"><div class="product-scale"><div class="eyebrow">Brooklyn Leather Sofa</div><div class="price">$1,500</div><div class="meta">Delivery estimate</div></div></div><div class="lesson-screen good type-scale"><div class="product-scale"><div class="eyebrow">Brooklyn Leather Sofa</div><div class="price">$1,500</div><div class="meta">Delivery estimate</div></div></div></div></article>
+        <article class="lesson-card"><header><h3>17. Practical fonts</h3><p>Use families with solid small-size behavior and enough weights.</p></header><div class="lesson-pair"><div class="lesson-screen bad font-demo"><div class="font-specimen"><div class="font-row"><span>Regular</span><span>Bold</span><span>Italic</span></div><h4>Hello World</h4><p>Default serif chosen without small-size testing.</p><code>O0 I1 rn m</code></div></div><div class="lesson-screen good font-demo"><div class="font-specimen"><div class="font-row"><span>Regular</span><span>Bold</span><span>Italic</span></div><h4>Hello World</h4><p>Open apertures, readable x-height, useful weights.</p><code>O0 I1 rn m</code></div></div></div></article>
+        <article class="lesson-card"><header><h3>18. Line length</h3><p>Keep reading text narrow even inside wide layouts.</p></header><div class="lesson-pair"><div class="lesson-screen bad measure"><div class="article-measure"><h4>Release notes</h4><p>When paragraphs stretch too far across a wide layout, every return sweep becomes longer and the reader has to work harder to find the next line.</p></div></div><div class="lesson-screen good measure"><div class="article-measure"><h4>Release notes</h4><p>When paragraphs stay narrow, the reader can scan each line and return to the next one without losing their place.</p></div></div></div></article>
+        <article class="lesson-card"><header><h3>19. Baseline alignment</h3><p>Mixed sizes should sit on the same baseline.</p></header><div class="lesson-pair"><div class="lesson-screen bad baseline"><div class="baseline-row"><strong>$49</strong><span>/mo per seat</span><button>Upgrade</button></div></div><div class="lesson-screen good baseline"><div class="baseline-row"><strong>$49</strong><span>/mo per seat</span><button>Upgrade</button></div></div></div></article>
+        <article class="lesson-card"><header><h3>20. Proportional line-height</h3><p>Large text needs tighter leading than small body copy.</p></header><div class="lesson-pair"><div class="lesson-screen bad line-height"><div class="lh-copy"><h4>Team communication optimized for deep work.</h4><p>Short product copy should sit close enough to feel related to the heading.</p></div></div><div class="lesson-screen good line-height"><div class="lh-copy"><h4>Team communication optimized for deep work.</h4><p>Short product copy should sit close enough to feel related to the heading.</p></div></div></div></article>
+        <article class="lesson-card"><header><h3>21. Links need not be blue</h3><p>In dense UI, context and underline can carry the link affordance.</p></header><div class="lesson-pair"><div class="lesson-screen bad links"><div class="link-news"><div class="link-card"><b>Room setup</b><span>Checklist</span></div><div class="link-card"><b>Equipment</b><span>Inventory</span></div><div class="link-card"><b>Catering</b><span>Notes</span></div></div></div><div class="lesson-screen good links"><div class="link-news"><div class="link-card"><b>Room setup</b><span>Checklist</span></div><div class="link-card"><b>Equipment</b><span>Inventory</span></div><div class="link-card"><b>Catering</b><span>Notes</span></div></div></div></div></article>
+        <article class="lesson-card"><header><h3>22. Readability alignment</h3><p>Left-align text blocks; reserve center alignment for short fragments.</p></header><div class="lesson-pair"><div class="lesson-screen bad align"><div class="align-features"><div class="feature-tile"><b>Automated billing</b><span>Invoices and receipts stay organized for every customer.</span></div><div class="feature-tile"><b>Priority support</b><span>Reach a human quickly when something needs attention.</span></div></div></div><div class="lesson-screen good align"><div class="align-features"><div class="feature-tile"><b>Automated billing</b><span>Invoices and receipts stay organized for every customer.</span></div><div class="feature-tile"><b>Priority support</b><span>Reach a human quickly when something needs attention.</span></div></div></div></div></article>
+        <article class="lesson-card"><header><h3>23. Letterspacing</h3><p>Track uppercase labels, not lowercase body copy.</p></header><div class="lesson-pair"><div class="lesson-screen bad tracking"><div class="tracking-card"><div class="kicker">Resume role</div><h4>Team communication made easy</h4><p>Lowercase display text is tracked out and harder to read.</p></div></div><div class="lesson-screen good tracking"><div class="tracking-card"><div class="kicker">Resume role</div><h4>Team communication made easy</h4><p>The label can be tracked; the heading stays natural.</p></div></div></div></article>
         <article class="lesson-card"><header><h3>24. More colors</h3><p>Real systems need greys, primary, accent, and semantic ranges.</p></header><div class="lesson-pair"><div class="lesson-screen bad palette"><div class="swatches"><span></span><span></span><span></span><span></span><span></span><span></span></div></div><div class="lesson-screen good palette"><div class="swatches"><span></span><span></span><span></span><span></span><span></span><span></span></div></div></div></article>
         <article class="lesson-card"><header><h3>25. Define shades first</h3><p>Choose real endpoints, then fill a usable scale.</p></header><div class="lesson-pair"><div class="lesson-screen bad shades"><div class="shade-stack"><span></span><span></span><span></span><span></span><span></span></div></div><div class="lesson-screen good shades"><div class="shade-stack"><span></span><span></span><span></span><span></span><span></span></div></div></div></article>
         <article class="lesson-card"><header><h3>26. Keep saturation alive</h3><p>Adjust hue and saturation as lightness changes.</p></header><div class="lesson-pair"><div class="lesson-screen bad saturation"><div class="color-dot-row"><span></span><span></span><span></span><span></span><span></span></div></div><div class="lesson-screen good saturation"><div class="color-dot-row"><span></span><span></span><span></span><span></span><span></span></div></div></div></article>
         <article class="lesson-card"><header><h3>27. Greys need temperature</h3><p>Use blue, cool, or warm greys deliberately.</p></header><div class="lesson-pair"><div class="lesson-screen bad greys"><div class="swatches"><span></span><span></span><span></span><span></span><span></span><span></span></div></div><div class="lesson-screen good greys"><div class="swatches"><span></span><span></span><span></span><span></span><span></span><span></span></div></div></div></article>
+        <article class="lesson-card"><header><h3>28. Not color alone</h3><p>Add text, icons, shape, or direction to color-coded states.</p></header><div class="lesson-pair"><div class="lesson-screen bad color-only"><div class="status-panel"><div class="status-row"><b>Revenue</b><span class="up">Up</span></div><div class="status-row"><b>Refunds</b><span class="down">Down</span></div></div></div><div class="lesson-screen good color-only"><div class="status-panel"><div class="status-row"><b>Revenue</b><span class="up">↑ Up</span></div><div class="status-row"><b>Refunds</b><span class="down">↓ Down</span></div></div></div></div></article>
         <article class="lesson-card"><header><h3>29. Light source</h3><p>Raised objects get light on top and shadow below.</p></header><div class="lesson-pair"><div class="lesson-screen bad light"><div class="light-card"></div></div><div class="lesson-screen good light"><div class="light-card"></div></div></div></article>
         <article class="lesson-card"><header><h3>30. Two-part shadows</h3><p>Combine tight ambient shadow with broad cast shadow.</p></header><div class="lesson-pair"><div class="lesson-screen bad two-shadow"><div class="shadow-card">Agile meeting</div></div><div class="lesson-screen good two-shadow"><div class="shadow-card">Agile meeting</div></div></div></article>
+        <article class="lesson-card"><header><h3>31. Flat depth</h3><p>Flat UIs still need layer separation.</p></header><div class="lesson-pair"><div class="lesson-screen bad flat-depth"><div class="flat-app"><div class="flat-side"><b>Inbox</b><span></span><span></span></div><div class="flat-main"><b>Message</b><span></span><span></span></div></div></div><div class="lesson-screen good flat-depth"><div class="flat-app"><div class="flat-side"><b>Inbox</b><span></span><span></span></div><div class="flat-main"><b>Message</b><span></span><span></span></div></div></div></div></article>
         <article class="lesson-card"><header><h3>32. Overlap layers</h3><p>Use a background-colored gap so overlapping edges stay clean.</p></header><div class="lesson-pair"><div class="lesson-screen bad overlap"><div class="overlap-stack"><span></span><span></span></div></div><div class="lesson-screen good overlap"><div class="overlap-stack"><span></span><span></span></div></div></div></article>
         <article class="lesson-card"><header><h3>33. Good photos</h3><p>Do not ask a weak image to carry a premium card.</p></header><div class="lesson-pair"><div class="lesson-screen bad photo-choice"><div class="mini-card"><div class="mini-line"></div><div class="mini-line short"></div></div></div><div class="lesson-screen good photo-choice"><div class="mini-card"><div class="mini-line"></div><div class="mini-line short"></div></div></div></div></article>
         <article class="lesson-card"><header><h3>34. User uploads</h3><p>Crop to fixed boxes and prevent image bleed.</p></header><div class="lesson-pair"><div class="lesson-screen bad uploads"><div class="upload-grid"><span></span><span></span><span></span></div></div><div class="lesson-screen good uploads"><div class="upload-grid"><span></span><span></span><span></span></div></div></div></article>
