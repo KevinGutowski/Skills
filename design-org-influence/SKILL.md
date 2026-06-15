@@ -1,6 +1,6 @@
 ---
 name: design-org-influence
-description: "Win org buy-in for design via business-case framing. Use when pitches stall, PMs push back, or at review/promo time. Session mechanics and pitch presentation craft → design-prototyping. Triggers: stakeholder buy-in, design pitch rejected, PM pushback, business case for design, opportunity cost, promotion, performance review, self-review, wins doc, order taker, seat at the table."
+description: "Win org buy-in for design via business-case framing. Use when pitches stall, PMs push back, manager relationships need repair, or at review/promo time. Product decision quality → product-decision-making; session mechanics/pitch craft → design-prototyping. Triggers: stakeholder buy-in, design pitch rejected, PM pushback, business case, opportunity cost, managing up, promotion, performance review, wins doc, order taker, seat at the table."
 ---
 
 # Design Org Influence
@@ -88,6 +88,26 @@ Full quotes and receipts: [references/influence-field-notes.md](references/influ
 - **Value–Cost–Risk over RICE.** Humans weigh value, cost, and risk in every real decision (RICE, never). Cost includes *organizational* cost (legal, marketing, complexity); risk includes morale, exposure, timing. Mind the sub-MVP cliff: cut cost too far and "value just plummets."
 - **Data practice.** Ask for the analytics tool yourself and look for weird outliers from the human angle: "Everything we're measuring is someone's doing something differently." Receipts: DoorDash's order-status page at 3x homepage views → live order tracking; Airbnb's five-step checkout → single page, improved conversion pre-IPO.
 
+## Managing your manager
+
+Julie Zhuo's 2024 Looking Glass note belongs here, not in `people-management`: the task is influencing up and repairing the manager-report contract from the report side.
+
+- **Drop the executioner/white-knight model.** Fear says the manager is waiting to punish mistakes; pining says the manager should defend and promote you. Both make the manager the main character in your career. Recenter on your own agency.
+- **Define the relationship you want.** Before judging the manager, write what a great manager-report relationship would look like, then describe that aspiration in a 1:1 and ask whether they agree.
+- **Make the ask specific.** "More support" is too vague. Ask for concrete help: more context on a decision, sharper feedback on a project, clearer promotion expectations, earlier visibility into priorities.
+- **Align on both jobs.** Ask: "How do you think about your role? What makes you feel you're doing a great job?" Then ask the mirror for yourself: "What would make you feel I'm doing a great job?" Trust improves when both success definitions are explicit.
+- **Run a monthly feedback loop.** Tell them what is helping, ask for more of what you need, and ask them for feedback. If strong repeated feedback is ignored, escalate to the manager's manager; if the chain loses trust, leave rather than normalizing mediocre management.
+
+## Influence modes, politics, and culture change
+
+Zhuo's Looking Glass essays add three operating moves to the stakeholder playbook:
+
+- **Know what they care about in <50 words.** If you cannot answer "What does X care about?" and "Can my proposal genuinely help with that?", you are not ready to pitch. Ask first; then route your proposal through their goal.
+- **Keep a bet ledger.** Track what you pushed for, where you disagreed, what got overruled, what later happened, and what you learned. Good accounting sharpens product judgment and builds promotion evidence without relying on memory.
+- **Advisor vs solver mode.** Use advisor mode when the goal is to change someone's decision frame: words, stories, principles, alternatives. Use solver mode when the goal is to make a specific decision obvious: prototypes, experiments, narrowed pathways. As a report influencing a manager, default to solver mode; reduce decision burden.
+- **Reframe "politics" as assumptions.** In competent organizations, most politics is not villainy; it is hidden shared goals, different assumptions, and bad translation. Start conflict by asking which position is most likely to help the company win and what unique knowledge each side has.
+- **Change culture by changing beliefs.** Identify the current belief behind the behavior, why reasonable people adopted it, where it fails, and the replacement belief that serves the same goal better. Then repeat the new story until someone else says it.
+
 ## Build-trap diagnosis (Perri / Bungay)
 
 When the org keeps asking for more plans, controls, or features instead of better outcomes, name the build trap (Perri): success measured by outputs rather than outcomes — "we are rewarding shipped inventory instead of solved customer/business problems." **Three gaps** (Stephen Bungay, via Perri), each with a signature wrong fix: the **Knowledge Gap** patched with more detailed reporting, the **Alignment Gap** with more detailed instruction, the **Effects Gap** with more controls — the corrective is strategic intent: leadership sets goals and boundaries, teams decide how, evidence closes the loop. Reward learning over shipping, and remember "the unconstrained team is the most frightened and scared to act" (Jabe Bloom) — autonomy without strategy is paralysis. Full detail + Perri's six leadership-room diagnostic questions: [references/influence-field-notes.md](references/influence-field-notes.md).
@@ -128,12 +148,17 @@ For the only UX/design person on a team, or an org too immature for formal proce
 - [ ] Pushback handled as ask-why → reframe-to-goal → propose-a-test, using the conflict script?
 - [ ] Roles negotiated with the PM, with a quarterly retro — not assumed?
 - [ ] Wins doc current (one SBI entry/week), invisible work included?
+- [ ] Manager relationship aligned explicitly: what success looks like for them, for you, and for the relationship?
+- [ ] Bet ledger current: what you pushed for, lost, won, and later learned?
+- [ ] Influence mode chosen deliberately: advisor for frames, solver for proof?
+- [ ] Conflict reframed around shared goal + different assumptions?
 - [ ] Timing window chosen or urgency manufactured?
 - [ ] If solo/early UX: listening tour done, informal supporters named, and the ask framed as scope rather than permission?
 
 ## Relationship to other skills
 
 - **`people-management`** — running your own team of direct reports (1:1s, feedback, careers, hiring/firing process, team comms); this skill is influence up/sideways and your own promotion.
+- **`product-decision-making`** — whether the proposal is well-framed: user problem, data, success measure, optimization vs new behavior, and owner-by-outcome. This skill translates that judgment into buy-in and org movement.
 - **`user-research`** — runs the studies whose findings power your business case; its research-as-leadership tactics feed this skill's credibility ladder.
 
 - **`design-prototyping`** — owns session mechanics and pitch presentation craft (how to structure a review, fidelity, demos); this skill owns the business case and political context around the pitch.

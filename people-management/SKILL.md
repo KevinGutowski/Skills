@@ -9,6 +9,7 @@ description: "Run a team of direct reports — 1:1s and trust, feedback, career 
 - Kim Scott, *Radical Candor* (2017)
 - Julie Zhuo, *The Making of a Manager* (2019)
 - Lara Hogan, *Resilient Management* (A Book Apart, 2019)
+- Julie Zhuo, selected Looking Glass essays (2020-2024) for remote management and user-guide updates
 
 Task shape: managing **down** — your direct reports. The frameworks themselves (Radical Candor 2×2, BICEPS as an acronym, Tuckman stages, give-away-your-Legos) are assumed known; this skill encodes the named *procedures*. Influence **up and sideways** (business cases, PM partnership, your own promotion) → `design-org-influence`.
 
@@ -51,6 +52,8 @@ Mark Rabkin (via Zhuo): "strive for all your one-on-one meetings to feel a littl
 
 Mechanics (Scott + Zhuo): the report sets the agenda; it's not a status channel; show up — never cancel. Failure signals from 1:1s: frequent cancellations, update-only content, good news only, no criticism of you, chronic no-agenda.
 
+**User guides for working together** (Zhuo, 2020): when trust or communication keeps misfiring, write and exchange "how to work with me" guides. Include how you view success, how you communicate, what may annoy people, what gains/loses your trust, strengths, growth areas, expectations for reports, and how you give/receive feedback. Specificity and vulnerability matter; generic values do not.
+
 ## Diagnosing reactions: BICEPS as a lens
 
 When someone reacts "irrationally" to news, diagnose which core need is threatened: Belonging, Improvement/Progress, Choice, Equality/Fairness, Predictability, Significance (Paloma Medina, via Hogan). Hogan's desk-move example: a "just logistics" desk move can threaten *every single one* of the six. Key correction: "we project our own core needs onto someone else" — so ask, don't assume; share the list with the team and ask which comes up most for each person.
@@ -76,6 +79,7 @@ Zhuo's intersection rule: "spend your time and energy on the intersection of 1) 
 - [ ] Can you pass the extended-vacation and rehire tests? Would five random people repeat your vision identically?
 - [ ] First-1:1 question set answered and pinned for every report (grumpy, feedback medium, four ingredients, treat-yourself)?
 - [ ] Each 1:1 a little awkward — or are you trading in pleasantries and status updates?
+- [ ] Working guides exchanged for yourself/reports where communication style or trust has been unclear?
 - [ ] Reaction you don't understand → which BICEPS need is threatened (theirs, not yours)?
 - [ ] Career conversations (3×45min) done for each report this year? → [growth-and-careers.md](references/growth-and-careers.md)
 - [ ] Feedback solicited before given; ≥50% positive; delivered direct, no sandwich? → [feedback-and-guidance.md](references/feedback-and-guidance.md)
