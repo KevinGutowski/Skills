@@ -1,6 +1,15 @@
 # Sources
 
-Bibliography for material cited by name-tag in SKILL.md, surfaces.md, and animations.md. Other inline-cited sources (Stammy, Refactoring UI, Practical UI, MDS, Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
+Bibliography for material cited by name-tag in SKILL.md, surfaces.md, animations.md,
+and reference files. Other inline-cited sources (Stammy, Practical UI, MDS,
+Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
+
+## Adam Wathan and Steve Schoger
+
+- *Refactoring UI* (PDF v10, local Apple Books file). Visual refactor method folded
+  to [refactoring-ui.md](refactoring-ui.md); local page renders used only as
+  references for [../examples/refactoring-ui-gallery.html](../examples/refactoring-ui-gallery.html),
+  not committed.
 
 ## Derek Briggs (PixelJanitor)
 
