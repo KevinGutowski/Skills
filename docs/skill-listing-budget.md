@@ -18,7 +18,9 @@ Low-fire-rate clusters are single skills whose members live as reference files
   touch-interaction-design, widget-design, sf-symbols, sound-design).
 
 This took the listing from 99 skills (~41k chars, ~2x budget, ~20 hot
-descriptions silently evicted) to 68 skills. Hot design/book skills stay flat
+descriptions silently evicted) to 68 skills. The 2026-06-15 pruning pass kept
+the hub model and trimmed the longest router descriptions instead of adding
+new consolidation. Hot design/book skills stay flat
 with full descriptions — their boundary clauses do real routing work.
 
 ## History

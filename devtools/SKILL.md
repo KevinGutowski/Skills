@@ -1,6 +1,6 @@
 ---
 name: devtools
-description: "Building products for developers — devtool interface design (five UI zones, panel layout, CLI output/UX, command palette, devtool onboarding, agent experience/AX), developer go-to-market (devtool landing page anatomy + copy, hero/CTA, conversion killers, TTFV/retention/NRR PMF compass, free-to-paid), open-source strategy (README, GitHub stars/promotion loop, maintainer burnout, monetization/open core). Read this skill's body, then read the named reference file. Building the UI itself → frontend-design; pricing client/creative work → client-work."
+description: "Build products for developers: devtool interface design, CLI/panel UX, command palettes, agent experience, devtool onboarding, landing pages/copy/PMF, and OSS strategy. Use for developer-facing product design or GTM. Building the UI itself → frontend-design; client pricing → client-work. Read one named reference."
 ---
 
 # Developer Tools

@@ -1,6 +1,6 @@
 ---
 name: working-with-ai
-description: "You and your team working WITH AI — coding agents on real repos (AGENTS.md/CLAUDE.md rules, constrained generation, reviewing AI code, vibe-coding security, multi-agent); directing/fixing AI-generated UI (layout bugs in primitive vocab, prompt-vs-edit, judge loop); org adoption (decision archives, MCP, internal agents). Read this skill's body, then read the named reference file. Designing AI INTO the product → ai-experience-design; users reshaping it → malleable-software. Triggers: CLAUDE.md, AGENTS.md, vibe coding, AI drift, AI slop, fix this layout, AI generated UI, AI adoption, team skills."
+description: "Teams working with AI as a tool: coding agents on real repos, AI-generated UI repair, and org enablement. Use for AGENTS.md/CLAUDE.md rules, vibe-coding security, multi-agent workflows, layout diagnosis, judge loops, MCP/context archives, or internal agents. AI inside product → ai-experience-design; user-resculptable software → malleable-software."
 ---
 
 # Working with AI

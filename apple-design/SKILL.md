@@ -1,6 +1,6 @@
 ---
 name: apple-design
-description: "Router for Apple platform design — tab bars, push vs modal, sheets, menus, iPad windowing; search placement, scope bars, search tokens; Dynamic Type, SF Pro, text styles; contrast, colorblind, Reduce Motion, a11y settings; Liquid Glass, lensing, glassEffect, iOS 26; brand identity, custom vs standard components, tint; app icon, Icon Composer, layered/tinted/dark icons; App Intents, App Shortcuts, Siri invocation phrases; HIG, Human Interface Guidelines, what does Apple say about, component spec; in-app charts, Swift Charts, Audio Graphs. Read this skill's body, then read the named reference file. Implementation/platform craft → swiftui; web counterparts → web-design."
+description: "Router for Apple platform design: navigation, search, typography, visual accessibility, Liquid Glass/iOS 26, brand identity, app icons, App Intents/Shortcuts, HIG lookup, and chart experience. Use for HIG/current-spec questions or Apple design decisions. Implementation/platform craft → swiftui; web counterparts → web-design. Read one named reference."
 ---
 
 # Apple Platform Design

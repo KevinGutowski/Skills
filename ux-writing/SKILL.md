@@ -1,6 +1,6 @@
 ---
 name: ux-writing
-description: "Router for UX writing — this skill owns the words users read in the UI: voice and tone, microcopy, copy review, empty state copy, dial up tone; error messages, error copy, validation messages, failure-state copy, something went wrong, retry prompts; settings IA, settings pages, row titles, helper descriptions, option labels; what should we call this, name this feature, rename, label copy, plan names. Read this skill's body, then read the named reference file. Long-form prose → write-clear-prose; onboarding flows/empty-state strategy → user-onboarding."
+description: "Router for UX writing: product voice, microcopy, error/validation messages, settings IA, option labels, feature names, plan names, and button labels. Use when the words appear in the UI. Long-form prose → write-clear-prose; onboarding flow/empty-state strategy → user-onboarding. Read one named reference. Triggers: error copy, rename, label, voice tone, settings copy."
 ---
 
 # UX Writing

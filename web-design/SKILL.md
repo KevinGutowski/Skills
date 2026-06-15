@@ -1,6 +1,6 @@
 ---
 name: web-design
-description: "Router for web design — line-height, measure, font pairing, web fonts, FOUT; WCAG, screen readers, ARIA, a11y audits; easing, cubic-bezier, springs, prefers-reduced-motion; Core Web Vitals, LCP, INP, perceived performance; form layout, radio vs dropdown, destructive actions; OKLCH, palettes, contrast, gamut, Tailwind; 9:16 vertical-video safe zones. Read this skill's body, then read the named reference file. Building distinctive UI → frontend-design; polish/feel → design-polish; Motion/framer-motion library work → motion; Apple platforms → apple-design."
+description: "Router for web design: typography, accessibility, animation values, performance, forms, OKLCH/color, Tailwind, and 9:16 social-video safe zones. Use for web/CSS craft decisions. Building distinctive UI → frontend-design; polish/feel → design-polish; Motion library work → motion; Apple platforms → apple-design. Read one named reference."
 ---
 
 # Web Design
