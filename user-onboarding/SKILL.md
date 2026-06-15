@@ -36,6 +36,13 @@ Know which transition you're designing for. Different stages need different appr
 - **First Use → Recurring Use**: Momentum, setup quests, lifecycle emails, social accountability
 - **Recurring Use → Purchase**: The value should already be self-evident by now
 
+Before changing screens, audit the whole adoption chain. Start from a thriving
+user and retrace every required or seemingly necessary touchpoint: acquisition
+promise/search result, landing page, pricing, signup form, confirmation email,
+first app screen, and getting-started state. Document what each step promises,
+asks, and hands off to the next. A page, email, or ad outside the app is still
+onboarding; broken scent there cannot be repaired with coachmarks later.
+
 ## By Context
 
 | Context | When to Use | Reference |

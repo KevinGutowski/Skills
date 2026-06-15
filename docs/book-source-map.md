@@ -24,6 +24,8 @@ Rules:
 | Roadmaps / release cycles / cleanup | Perri, Gothelf/Seiden, Klein product trio; MailChimp, *The UX Reader*, "Release Cycles and Roadmaps" and "Iteration and the Feature/Refinement Balance"; Linear quality series | Product trio owns measurement-led strategy; MailChimp adds a craft/org practice for annual cleanup releases and feedback-fed refinement. |
 | Research impact / synthesis | Product trio; Buley; MailChimp, *The UX Reader*, research section | MailChimp adds distribution channels and parallel-cycle research cadence; Buley owns solo-UX influence mechanics. |
 | User research methods | Erika Hall, *Just Enough Research*; Steve Portigal, *Interviewing Users*; Tomer Sharon, *Validating Product Ideas*; product-trio validation sources; Buley | Hall owns scoping/rigor/bias and research politics; Portigal owns interview craft and field impact; Sharon owns lean method selection and participant sourcing; product trio owns assumption/metric validation. |
+| Onboarding / first-run behavior | Samuel Hulick, *The Elements of User Onboarding*; Klein, *Build Better Products* ch. 8; Lidwell et al., *Universal Principles of Design* "Entry Point"; product/onboarding field notes | Hulick is the primary method: adoption-chain audit, sell the user's improvement, quick win/base camp, safe landing, blank states, setup quests, and lifecycle emails. Klein adds behavior/core-loop design; Universal Principles adds entry-point mechanics. |
+| Human-centered design / service prototyping | IDEO.org, *The Field Guide to Human-Centered Design*; Buley; Hall; Sharon; Apple prototyping sessions | IDEO is a compact method catalog for field inspiration, participatory synthesis, rough prototypes, live prototypes, pilots, and implementation planning. Current homes are `user-research` and `design-prototyping`; use as a future cross-check before adding field/service-design material. |
 | Client work / pricing | Mike Monteiro, *You're My Favorite Client*; Dan Mall, *Pricing Design*; Chris Do/Futur + Jonathan Stark corpus | Current home is `client-work`: Monteiro owns engagement mechanics and client feedback; Mall adds the third pricing school and value-trait options; Do/Stark remain competing schools for one-price/attention-tier defaults. |
 | Emotional design / product personality | Aarron Walter, *Designing for Emotion*; Metts/Welfle, *Writing Is Designing*; MailChimp, *The UX Reader*; Apple UX writing sessions | Walter owns the design-persona method, surface-specific tone tapering, delight-layer constraints, trust repair, and risk-managed experiments. Already folded across `ux-writing` (including error messages), `user-research`, `design-principles`, and `web-animation-design`; check before adding more personality/delight advice. |
 | Practical UI mechanics | Adham Dannaway, *Practical UI*; Wathan/Schoger, *Refactoring UI* | `Practical UI` already owns `web-design` form/buttons mechanics, color roles/state layers in `oklch-skill`, and contrast tactics in `web-accessibility`. Broad layout/type/copy advice is mostly model-known or covered by stronger dedicated skills; check the chapter map before adding duplicate polish notes. |
@@ -67,12 +69,26 @@ workflow details should be treated as historical examples, not current recommend
 
 ## Adam Wathan and Steve Schoger, *Refactoring UI*
 
-Extraction: `/tmp/books/refactoring-ui.txt`. Prior screen treated the core advice as
-mostly model-known, but the SVG/icon sizing passage is useful corroboration.
+Extraction: `/tmp/books/refactoring-ui.txt`; local PDF visual pages rendered to
+`/tmp/refactoring-ui-all-pages/*.png` and images extracted to
+`/tmp/refactoring-ui-extracted-images/` for the example pass. Density: HIGH for
+visual UI refactoring. Primary fold target is
+`design-polish/references/refactoring-ui.md` plus the code-native gallery at
+`design-polish/examples/refactoring-ui-gallery.html`; color-scale mechanics also
+corroborate `web-design` (`oklch-skill`), and image/icon sizing corroborates
+`frontend-design`. The gallery now recreates 45 visual examples in editable
+HTML/CSS and should be preferred over committing book screenshots.
 
 | Chapter / section | Short summary | Routing |
 | --- | --- | --- |
-| "Everything has an intended size" / "Don't scale up icons" | Vector icons do not blur when enlarged, but small icons drawn for 16-24px lack the detail and proportions for 3-4x display; keep the icon near its intended size inside a larger shape. | Folded to `frontend-design` SVG mental model. |
+| Starting from Scratch | Start from a real feature, defer details, design in cycles, choose personality, and limit choices before polishing. | `design-polish/references/refactoring-ui.md`; `design-prototyping` for build-real-early overlap. |
+| Hierarchy is Everything | De-emphasize secondary content, use weight/color instead of only size, avoid unnecessary labels, separate semantic/document hierarchy from visual hierarchy, and rank actions by importance. | `design-polish/references/refactoring-ui.md`; form/button hierarchy cross-check in `web-design` (`form-design`). |
+| Layout and Spacing | Start with too much whitespace, use a non-linear spacing/sizing scale, avoid over-relying on grids, reject proportional scaling, and make group spacing unambiguous. | `design-polish/references/refactoring-ui.md`; spacing scale also in `design-polish/SKILL.md`. |
+| Designing Text | Establish a type scale, choose practical fonts, constrain measure, baseline-align mixed text, tune line-height, color links deliberately, and letterspace only suitable text. | `design-polish/references/refactoring-ui.md`; deeper rules route to `web-design` (`web-typography`). |
+| Working with Color | Use perceptual color controls, build real palettes with greys/primary/accent shades, define shades up front, keep saturation alive, tint greys, and solve contrast without hijacking hierarchy. | `web-design` (`oklch-skill`, `web-accessibility`); summarized in `design-polish/references/refactoring-ui.md`. |
+| Creating Depth | Emulate overhead light, use elevation/shadow scales, combine cast + ambient shadows, create flat depth with color, and overlap layers/images intentionally. | `design-polish/surfaces.md`; summarized in `refactoring-ui.md`. |
+| Working with Images | Use good photos, control text contrast over images, respect intended size for icons/screenshots, and constrain user-uploaded content with fixed crops/inner rings. | `design-polish/references/refactoring-ui.md`; SVG/icon sizing folded to `frontend-design`. |
+| Finishing Touches | Supercharge defaults, add accent borders, decorate low-contrast backgrounds, prioritize empty states, use fewer borders, and break component assumptions carefully. | `design-polish/references/refactoring-ui.md`; empty-state copy route stays `user-onboarding`. |
 
 Verified quote: "Don't scale up icons".
 
@@ -722,6 +738,112 @@ only. No direct quotes added here.
 | 7. Which Design Generates Better Results? | Uses A/B testing where traffic and decision stakes justify it. | `user-research` metrics/method selection. |
 | 8. How Do People Find Stuff? | Uses tree testing, first-click testing, and lostness metrics for findability. | `user-research`; parked IA skill candidate if paired with stronger IA sources. |
 | 9. How to Find Participants for Research? | Treats recruiting as the research bottleneck and covers participant sourcing. | `user-research/references/study-logistics.md`. |
+
+## Samuel Hulick, *The Elements of User Onboarding*
+
+Extraction: `/tmp/books/elements-of-user-onboarding.txt` from local Apple Books PDF
+via `pdftotext -layout`. Density: HIGH, but primary material already lives in
+`user-onboarding`; this recheck added only two small folds: adoption-chain audit
+before UI changes, and an education/nurture path when timing is wrong.
+
+### TOC / Chapter Map
+
+| Section / chapter | Short summary | Routing |
+| --- | --- | --- |
+| Section 1, Crossing the onboarding chasm | Frames onboarding as the bridge from stranger to thriving user across marketing and product boundaries. | `user-onboarding/SKILL.md`; adoption-chain audit backfilled 2026-06-13. |
+| 1. Retracing Your Steps to Success | Starts from a successful user and works backward through every step that got them there. | `user-onboarding/SKILL.md` customer journey. |
+| 2. Making Better People | Defines onboarding around the user's improvement rather than product feature exposure. | `user-onboarding/SKILL.md` core philosophy. |
+| Section 2, Helping users envision their improvement | Pre-signup persuasion: dream, attention, switching pain, emotion, rational support, and reduced friction. | `user-onboarding/references/selling-the-dream.md`. |
+| 3. Selling the Dream | Lead with the better version of the user, not the product object. | `selling-the-dream.md`. |
+| 4. From "I'm listening..." to "I get it!" | Create the aha moment before signup by connecting the offer to the user's real life. | `selling-the-dream.md`. |
+| 5. The Painful Joy of Switching | Name current workarounds and lower migration, learning, and habit-change costs. | `selling-the-dream.md`. |
+| 6. The Emotional Tie That Binds | Use emotional resonance and product personality to make the change feel worth it. | `selling-the-dream.md`; Walter cross-check for personality. |
+| 7. Providing Rational Ammunition | Give social proof, parity/difference claims, and decision evidence users can justify. | `selling-the-dream.md`. |
+| 8. Clearing the Runway for Takeoff | Remove or defer signup friction and disconnects before asking for commitment. | `user-onboarding/SKILL.md`; form/copy adjacency. |
+| Section 3, Helping users achieve their improvement | First-run and habit formation: quick win, safe landing, tailored starts, momentum, and recurring use. | `user-onboarding` references. |
+| 9. Picking Out the Quick Win | Choose a first success that demonstrates core value, fits one sitting, and avoids dependency on others. | `first-impressions.md`; `empty-states.md`. |
+| 10. Planning the First-Run Experience | Shape the path to base camp around the user's first meaningful result. | `first-impressions.md`. |
+| 11. Designing for a Safe Landing | Help users land after signup with context, orientation, and a next useful action. | `first-impressions.md`; `empty-states.md`. |
+| 12. Tailoring the First Impressions | Use the user's arrival context and intent to adapt the first-run path. | `first-impressions.md`. |
+| 13. Driving to Victory | Use setup quests, progress, encouragement, and lifecycle messaging to keep momentum. | `driving-momentum.md`. |
+| 14. Creating "Regulars" | Continue onboarding into recurring use and advanced adoption rather than stopping at signup. | `driving-momentum.md`. |
+
+## IDEO.org, *The Field Guide to Human-Centered Design*
+
+Extraction: `/tmp/books/ideo-field-guide-human-centered-design.txt` from local PDF
+via `pdftotext -layout`. Density: MED-HIGH as a method catalog, but no new skill
+or body fold in this pass: `user-research` and `design-prototyping` already cover
+the durable rules. Use this map as a future cross-check for service design, field
+methods, co-design, and live/pilot prototypes.
+
+### TOC / Section Map
+
+| Section / method cluster | Short summary | Routing |
+| --- | --- | --- |
+| Mindsets | Human-centered design stance: learn from people, make tangible artifacts, iterate, and keep impact practical. | `design-principles`; `design-prototyping` only when shaping practice. |
+| Inspiration | Frame the challenge, plan research, recruit across context, interview, group/expert interview, immerse, observe, and seek analogous inspiration. | `user-research` method selection, logistics, interviewing craft. |
+| Participatory field methods | Card sort, peers observing peers, immersion, analogous inspiration, collage, guided tour, draw it, resource flow, and related activities. | `user-research`; future field-method expansions. |
+| Ideation synthesis | Download learnings, share stories, find themes, create insight statements, and turn insights into How Might We questions. | `user-research/references/synthesis-and-impact.md`; `design-prototyping` for artifact decisions. |
+| Ideation generation | Brainstorm, bundle ideas, get visual, mash-ups, design principles, concept creation, and co-creation session methods. | `design-prototyping`; `design-org-influence` if the problem is facilitation buy-in. |
+| Prototyping | Determine what to prototype, storyboard, role play, rapid prototype, get feedback, and iterate. | `design-prototyping`; existing one-question-per-artifact and cheap-fidelity rules remain stronger. |
+| Implementation | Live prototype, roadmap, resource assessment, partnerships, staffing, funding, pilot, define success, monitor, and evaluate. | `design-prototyping` for live/pilot tests; `design-org-influence` or product strategy only if implementation planning is the task. |
+
+## UserTesting, *A Complete Guide to User Testing Your Next Project*
+
+Extraction: `/tmp/books/usertesting-complete-guide.txt` from local PDF via
+`pdftotext -layout`. Density: LOW-MED and vendor/tool-adjacent. No fold: it
+corroborates existing `user-research` guidance on focused objectives, task writing,
+question wording, piloting a study, error sources, and result analysis.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| Define your objective | Keep the study objective clear and singular before writing tasks. | `user-research/references/study-logistics.md`. |
+| Identify what you need to measure | Pair tasks with metric or response types that answer the objective. | `user-research`; product-trio metrics cross-check. |
+| Create your tasks | Use broad-to-specific flow, concise tasks, and realistic participant actions. | `user-research`; no new fold. |
+| Write great questions / question types | Avoid jargon and leading wording; choose open response, ratings, multiple choice, or verbal response deliberately. | `user-research/references/interviewing-craft.md`. |
+| Test out your test | Pilot the study with one participant before launch. | Already present in `user-research` checklist. |
+| Beware of errors / analyze results | Watch researcher and respondent errors, then analyze against hypotheses and questions. | `user-research` rigor and synthesis. |
+
+## UXPin, *The Guide to Usability Testing*
+
+Extraction: `/tmp/books/uxpin-usability-testing.txt` from local PDF via
+`pdftotext -layout`. Density: MED as a broad taxonomy, but no body fold. It
+mostly corroborates `user-research` and the parked IA candidate with testing
+types, participant planning, card sorting, tree testing, first-click tests, field
+and diary studies, desirability testing, concept testing, and mobile testing.
+
+### TOC / Chapter Map
+
+| Chapter | Short summary | Routing |
+| --- | --- | --- |
+| 1. Introduction | Frames usability testing as behavioral verification, not opinions about a design. | `user-research`. |
+| 2. Usability Testing Goals | Defines objectives, metrics, and benchmark questions. | `user-research`; product-trio metrics. |
+| 3. Choosing Your Test and Participants | Maps test types, target audience, recruiting, and test-plan structure. | `user-research/references/method-selection.md`; `study-logistics.md`. |
+| 4. Scripted Tests | Moderated/unmoderated tradeoffs, tree testing, benchmark testing, and hallway testing. | `user-research`; IA source-map cross-check. |
+| 5. Decontextualized Tests & Heuristic Reviews | Card sorting, interviews, and heuristic evaluation. | `user-research`; parked IA candidate. |
+| 6. Natural & Near-Natural Tests | A/B, first-click, diary/field, eye tracking, and beta testing. | `user-research`; product validation. |
+| 7. Hybrid Tests | Desirability, concept, and participatory testing. | `user-research`; `design-prototyping` for concept artifacts. |
+| 8. Website & Mobile Usability Testing | Web/mobile-specific setup, device constraints, and platform coverage. | `user-research`; platform skills only for current technical specs. |
+
+## Marcin Treder, *UX Design for Startups*
+
+Extraction: `/tmp/books/ux-design-for-startups.txt` from local PDF via
+`pdftotext -layout`. Density: LOW-MED; broad startup UX primer with dated tooling
+and mostly covered advice. No fold in this pass. Useful as corroboration for
+startup-context research, lightweight wireframes/prototypes, and behavior metrics.
+
+### TOC / Chapter Map
+
+| Section | Short summary | Routing |
+| --- | --- | --- |
+| The Age of User Experience Design | Defines UX as product/business practice around user behavior and startup risk. | Source-map only; product skills already stronger. |
+| Get to Know Your Users | Getting out of the building, guerrilla research/testing, and communicating findings. | `user-research`; Buley/Hall/Sharon are stronger. |
+| Efficient Design Techniques | Analog sketching, wireframes, mockups, prototypes, and iteration. | `design-prototyping`; no new fold. |
+| Growth and Design Hacking | Measurement, economic and behavioral metrics, repeated optimization, and conversations. | Product-trio validation metrics; source-map only. |
+| Get It Optimised | Optimization through technically working flows and behavioral metrics. | `user-research`; product strategy cross-check. |
+| Tools, Tools, Tools | 2013-era tooling survey. | Skip as perishable. |
 
 ## Lisa Maria Martin, *Everyday Information Architecture*
 

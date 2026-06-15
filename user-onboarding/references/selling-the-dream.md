@@ -39,6 +39,14 @@ Users are already solving this problem somehow — even if it's with spreadsheet
 - "Stop copy-pasting between three spreadsheets. See everything in one view."
 - "You've been manually tracking invoices. Let them track themselves."
 
+## When the Timing Is Wrong
+
+If motivation is real but urgency is not, do not force a trial or signup. Offer an
+education, checklist, guide, or nurture path that gives value now and keeps the
+relationship warm until the triggering moment arrives. The right CTA may be
+"get the guide" before it is "start trial." Later selling is easier when the
+relationship has already helped them.
+
 ## The Rider/Elephant/Path Framework
 
 From "Switch" by the Heath brothers. Address all three in your copy:
