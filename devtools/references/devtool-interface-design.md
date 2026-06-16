@@ -38,6 +38,8 @@ Motion policy for docs (Lochie Axon, Family — animations.dev interview): "docs
 
 "Developer tool users don't need the typical onboarding process, period" — no feature walkthroughs. The goal is the **a-ha moment**: grasping the tool's data model and how to be productive. Four steps: (1) ruthlessly cut setup — "if it's optional, it's postponable"; (2) show what to do next — "never leave users stranded in a blank workspace"; (3) **offer domain-specific test data** that teaches best practices; (4) wizards/tutorials that end in a *real working project* — "for developer tools, everything should be skippable. But that doesn't mean that everything should be skipped." (Consumer-grade onboarding → `user-onboarding`; this is its explicit inverse.)
 
+**Copy-to-agent as onboarding** (Jaytel Taste repo/app, 2026): for agent-era devtools, a secondary CTA can copy a ready-made instruction blob for the user's coding agent. Taste's CTA does three jobs in three sentences: orient to the repo ("read the README"), give exact setup commands, then force the only human checkpoint ("which API keys do you have?"). This is better than sending users to GitHub to infer package scripts. Keep the blob short, concrete, and load-bearing; include accepted env var names and the first success command.
+
 **The exploded view** (Andy Allen, Config 2024): for deep data disclosure, borrow the game-inventory pattern — "pause the action, then dive in and explore in minute detail." A dedicated full-attention inspection mode beats cramming detail into the live view.
 
 ## Pro-tool lessons from Config (Figma UI3 redesign 2024; Replit; Perplexity)
@@ -78,6 +80,7 @@ A practitioner's market read on the integration surface (Kris Puckett, Dive Club
 - [ ] Five zones pass their do/don't lists; property controls consistent; nothing truncated?
 - [ ] CLI: right progress pattern, clean final logs, pipe/`NO_COLOR` safe, past-tense done states?
 - [ ] Onboarding: skippable everything, test data, a real project at the end, never a blank workspace?
+- [ ] Agent-facing install/use path: exact prompt or commands a coding agent can run, with the human-only decision named?
 - [ ] Agents: discoverable with specifics, usable from docs + a prompt, defended with progressive trust?
 
 > **Staleness note:** tool examples (Figma, VS Code, Linear, Xcode) and the AX post's retrieval statistics/vendor landscape date fast — the frameworks (contexts, control-flow rule, zones, progress patterns, a-ha steps, trust tiers) are the durable layer.

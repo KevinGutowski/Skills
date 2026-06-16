@@ -39,6 +39,18 @@ This is the operating guide for maintaining this repository as a large skill dat
 8. **Validate.** Run `python3 scripts/validate_skills.py`, `git diff --check`, and targeted greps for renamed skills or moved references.
 9. **Probe routing when needed.** Description changes, new skills, and consolidations require routing probes, including controls that must not route to the edited skill.
 
+## High-Touch Source Mining Protocol
+
+Use this when a user points at a tweet, repo, website, video, course, app, or external skill and asks to "research", "mine", "fold in", or "learn from" it. Do this before deciding the edit shape.
+
+1. **Build a source manifest first.** List every direct post/page, quoted post, reply parent, linked site, downloadable artifact, repo README, docs, generated examples, tests, app UI, scripts, media, and images. For each: local path or URL, how fetched, whether read, and density verdict.
+2. **Follow both obvious and implementation links.** Marketing pages explain intent; repos show actual behavior. Read prompts, tests, config defaults, generated artifacts, app copy, agent instructions, and failure-handling code. Tests are often the clearest statement of "what must never regress."
+3. **Extract lessons before touching skills.** For each candidate lesson, write: source evidence, reusable rule, owning skill, neighboring skill boundary, and skip/park reason if not folded.
+4. **Fold by use, not by source.** A single repo may teach generation (`frontend-design`), repair (`working-with-ai`), evaluation (`design-prototyping`), agent-facing docs (`devtools`), and skill authoring (`creating-skills`). Do not dump all findings into one new reference just because the source is about skills.
+5. **Keep a ledger artifact.** If the source has more than one branch or artifact, add a `docs/<source>-source-mining-YYYY-MM.md` file or a detailed `docs/mining-ledger.md` entry with source coverage and fold map. The point is to make missed branches visible.
+6. **Prefer larger folds when the source earns them.** Small surgical edits are fine for one lesson; a dense source should change multiple owning skills, relationship notes, checklists, or ops docs. Being concise is not the same as being timid.
+7. **Validate coverage explicitly.** Before finalizing, answer: What did I read? What did I skip? Which existing skills changed? Which useful findings were parked and why?
+
 ## Evaluation Gates
 
 Use the lightest gate that matches the change:
