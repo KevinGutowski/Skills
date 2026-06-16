@@ -85,7 +85,7 @@ The best product teams do not treat data as reporting service. They build a deci
 - Data team time spent mostly on new business-driving insights, not routine query/report requests.
 - Roadmaps built from those insights.
 
-When this is missing, route to `user-research` for the human evidence, `ai-enablement` for decision/context legibility, or `shape-up` for process structure.
+When this is missing, route to `user-research` for the human evidence, `working-with-ai` (ai-enablement) for decision/context legibility, or `shape-up` for process structure.
 
 ## Growth as blockage removal
 
@@ -108,7 +108,7 @@ Zhuo's David Fischer interview is useful for founders and product leaders becaus
 - Read the organization behind the buyer: incentives, risk tolerance, procurement, decision power, and internal politics.
 - Ask whether a good quarter was truly earned. Sustainable revenue comes from real customer value, not extraction.
 
-Route go-to-market pages to `developer-tool-gtm` or `building-in-public`; keep this skill on the decision-quality and customer-truth layer.
+Route go-to-market pages to `devtools` (developer-tool-gtm) or `building-in-public`; keep this skill on the decision-quality and customer-truth layer.
 
 ## AI and data trust
 
@@ -167,6 +167,6 @@ Ask these in order:
 - **`user-research`** — methods for learning whether the problem is real and why it happens.
 - **`design-org-influence`** — translating the product decision into stakeholder buy-in, business-case framing, and managing up.
 - **`design-principles`** — high-level critique of whether the product is well-designed; this skill decides what problem and evidence the product work is anchored to.
-- **`ai-enablement` / `agentic-coding`** — org and coding-agent mechanics. Zhuo's AI-era note here is only the management analogy: purpose, model/person fit, and verification still matter.
+- **`working-with-ai`** (ai-enablement / agentic-coding) — org and coding-agent mechanics. Zhuo's AI-era note here is only the management analogy: purpose, model/person fit, and verification still matter.
 
 > **Staleness note:** sources span 2015-2026. Current AI-org predictions, social-platform details, and Sundial examples will age fastest; the product-review questions, data-informed values, optimization/new-behavior split, and outcome-before-title ownership rule are the durable layer.

@@ -10,7 +10,7 @@ The user provides frontend requirements: a component, page, application, or inte
 
 ## Theme Note
 
-This skill represents a **bold/distinctive aesthetic theme** — deliberately different from the restrained "invisible polish" theme of `design-polish` (emil-kowalski reference) and `design-polish`. These themes shouldn't be mixed: a single project should pick one direction and commit.
+This skill represents a **bold/distinctive aesthetic theme** — deliberately different from the restrained "invisible polish" themes of `design-polish` (including its emil-kowalski reference) and `web-design` (web-animation-design). These themes shouldn't be mixed: a single project should pick one direction and commit.
 
 For motion-specific work, `web-design` (web-animation-design) is the default theme — defer to its values when both are loaded. When this skill triggers alongside the restraint-focused skills, surface the choice as a menu rather than blending — "bold/distinctive vs restrained/invisible" is a real design decision, not noise.
 
