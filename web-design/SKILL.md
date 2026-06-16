@@ -5,7 +5,7 @@ description: "Router for web design: typography, accessibility, animation values
 
 # Web Design
 
-Read exactly one reference file below; each carries the full distillation for its area (deeper worked examples, sources, and code live in a same-named subdirectory next to it).
+For a focused question, read the single reference file that matches it — each carries the full distillation for its area (deeper worked examples, sources, and code live in a same-named subdirectory next to it). For a **build** that legitimately spans areas — a page typically needs typography *and* color *and* animation at once — read each relevant reference together; the one-file rule optimizes Q&A lookups, not builds.
 
 - **Typography** — measure, line-height, type scales, font choosing/pairing, OpenType features, web-font loading (FOUT/`font-display`): [references/web-typography.md](references/web-typography.md)
 - **Accessibility** — semantic HTML first, keyboard/focus management, ARIA, contrast, screen readers, a11y audits and testing: [references/web-accessibility.md](references/web-accessibility.md)
