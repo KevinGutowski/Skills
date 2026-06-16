@@ -13,6 +13,8 @@ The specific values in this skill (scale magnitudes, stagger delays, shadow reci
 
 For motion-specific work, `web-design` (web-animation-design) is the default theme — defer to its values when both are loaded. When the user is mixing skills and a genuine choice surfaces, briefly present the options as a menu rather than picking silently.
 
+This skill carries one *coherent* value-set; [references/emil-kowalski.md](references/emil-kowalski.md) is a second, complete theme (Emil Kowalski / animations.dev) leaning harder on taste, restraint, and component-level polish. Treat the two as alternate themes — pick one per project, never average. Reach for the Emil reference when the task is "make this *feel* right" / taste-training rather than applying a specific numeric recipe.
+
 This skill is the *how* of the **Craft** principle. For the strategic layer — whether a feature should exist, what to cut, and how to weigh craft against the other design principles — use `design-principles`. For applying this polish to *custom iOS components* (Liquid Glass, concentric edges, branded controls that must still feel native), use `apple-design` (ios-brand-identity). For the before/during/after feedback model behind press states and hit areas (Apple's "Life of a Button"), see `swiftui` (touch-interaction-design).
 
 ## Quick Reference
@@ -24,6 +26,7 @@ This skill is the *how* of the **Craft** principle. For the strategic layer — 
 | [Animations](animations.md) | Interruptible animations, enter/exit transitions, icon animations, scale on press |
 | [Performance](performance.md) | Transition specificity, `will-change` usage, perceived performance (spinner choice) |
 | [Refactoring UI](references/refactoring-ui.md) | Visual refactor passes: hierarchy, spacing, type, color, depth, images, empty states; example gallery in `examples/refactoring-ui-gallery.html` |
+| [Emil Kowalski — Design Engineering](references/emil-kowalski.md) | Alternate craft theme (animations.dev): training taste, component polish, animation decisions, the invisible details that make software feel right; deeper cuts in `references/emil-kowalski/` (css-techniques, interaction-and-performance, taste-and-craft) |
 
 ## Core Principles
 
@@ -35,7 +38,14 @@ Outer radius = inner radius + padding. Mismatched radii on nested elements is th
 
 ### 2. Optical Over Geometric Alignment
 
-When geometric centering looks off, align optically. Buttons with icons, play triangles, and asymmetric icons all need manual adjustment.
+When geometric centering looks off, align optically — trust the eye over the math. This is the single most common cause of "feels off." Concrete moves:
+
+- **Play/triangle icons:** a geometrically centered triangle reads as shifted left because its visual mass sits left of its bounding box. Nudge right by ~6–8% of the icon's width (in a 24px control, ~1–2px) so the centroid, not the box, is centered.
+- **Icon + text buttons:** trim the padding on the icon side — give the icon ~2–4px less leading padding than the trailing text padding, so the *content* looks centered rather than the box.
+- **Single glyphs in a circle** (a chevron in a round button, an arrow): optically center the glyph's ink, not its layout box; most need a 1–2px shove toward the direction opposite their visual weight.
+- **Quote marks, bullets, badges:** hang punctuation and leading marks into the margin so the body text edge stays flush.
+
+Rule of thumb: if it's symmetric, geometric centering is fine; if it has directional mass (triangles, arrows, most logos), expect a 1–2px optical correction and tune by eye at the real render size.
 
 ### 3. Shadows Over Borders
 
@@ -63,7 +73,11 @@ For custom switches and pill indicators, consider a sequenced middle state: stre
 
 ### 8. Font Smoothing
 
-Apply `-webkit-font-smoothing: antialiased` to the root layout on macOS for crisper text.
+`-webkit-font-smoothing: antialiased` thins glyph strokes on macOS/WebKit. It is **not** a safe global default — applying it to the root makes body text lighter and can hurt legibility, especially dark-on-light at small sizes. Scope it deliberately:
+
+- Reach for `antialiased` only on *light text over a dark/saturated background* (where default subpixel rendering looks heavy/fuzzy), or large display type where the lighter weight is the intended look.
+- Leave normal dark-on-light body copy at the browser default (`auto` / `subpixel-antialiased`) — it's rendered to be read.
+- It only affects WebKit/Blink on macOS; don't rely on it cross-platform.
 
 ### 9. Tabular Numbers
 
@@ -193,6 +207,7 @@ Rows should cite the specific file and the specific property that changed when i
 - [animations.md](animations.md) — Interruptible animations, enter/exit transitions, icon animations, scale on press
 - [performance.md](performance.md) — Transition specificity, `will-change` usage, perceived performance (spinner choice assigns blame)
 - [references/refactoring-ui.md](references/refactoring-ui.md) — Wathan/Schoger's visual refactor method, with a code-native bad/good gallery at [examples/refactoring-ui-gallery.html](examples/refactoring-ui-gallery.html)
+- [references/emil-kowalski.md](references/emil-kowalski.md) — Emil Kowalski's Design Engineering theme (taste-training, component polish, animation decisions); deeper material in `references/emil-kowalski/` → css-techniques.md, interaction-and-performance.md, taste-and-craft.md
 - [references/sources.md](references/sources.md) — bibliography (Briggs/PixelJanitor tweet IDs, CodePens, video IDs)
 
 ### 21. Eased Gradients
