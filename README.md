@@ -8,6 +8,27 @@ Top-level entries are one of three things: a **platform** you target (`rails`, `
 
 Operational maintenance rules for growing the library live in [docs/skill-library-ops.md](docs/skill-library-ops.md): source intake, source maps, folding, external skill screening, routing probes, and validation gates.
 
+## Installing From This Repo
+
+This repo stores skills at the repository root, not under OpenAI's default `skills/.curated` path. When using Codex's `skill-installer`, pass explicit root-level paths:
+
+```bash
+python /root/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
+  --repo KevinGutowski/Skills \
+  --path design-polish devtools working-with-ai
+```
+
+Common bundles:
+
+| Task | Install |
+|---|---|
+| UI polish / frontend cleanup | `design-polish frontend-design web-design` |
+| Admin or developer-tool UI | `devtools design-polish data-viz` |
+| AI-generated UI repair | `working-with-ai design-prototyping design-polish frontend-design` |
+| Skill authoring / source conversion | `creating-skills research-cataloging x-post-reader` |
+
+After installing, restart Codex for automatic skill routing. In the same session, read the installed `SKILL.md` files directly.
+
 ## Which skill do I want?
 
 ### Design strategy & critique
@@ -75,7 +96,7 @@ Alongside it: `motion` (the Motion AI Kit umbrella — encapsulates best-practic
 `design-systems` (tokens, theming, governance/federation, adoption metrics, DS-as-AI-context — from 9 Config talks) · `devtools` — one consolidated skill; its body routes to reference files: devtool-interface-design (dev-tool UI: contexts, control flow, zones, CLI UX, devtool onboarding, agent experience), developer-tool-gtm (landing pages, copy, conversion, PMF Compass), oss-strategy (OSS popularity, READMEs, maintainer survival, monetization) · `building-in-public` (audience-led indie growth: rough-beats-polished content, prototype-stage validation, company-of-one economics). Boundary: `devtools` (devtool-interface-design) makes the tool worth adopting; `devtools` (developer-tool-gtm) gets it adopted; `working-with-ai` (agentic-coding) is agents working *on your code* while devtool AX is agents as *customers of your tool*.
 
 ### Tooling & meta
-`creating-skills` (authoring skills + conversion playbooks for books/docs and living repos with PR history — its references/). Airtable MCP, NocoDB, and transcription-chunking integrations live in `research-cataloging`'s references.
+`creating-skills` (authoring skills + conversion playbooks for books/docs, living repos with PR history, and visual/reference corpora — its references/). Airtable MCP, NocoDB, and transcription-chunking integrations live in `research-cataloging`'s references.
 
 ## Routing rules (overlap boundaries)
 

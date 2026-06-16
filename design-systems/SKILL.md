@@ -83,6 +83,7 @@ A design system is a **product with customers**, not a library: "treat it like a
 - **Build bricks** (Ryo Lu): "AI is really good at composing parts… we need to build really good bricks" — suck shipped patterns into the system so agents compose instead of reinvent. The DS team's emerging job is de-slop: agents lose exactly the details a mock encoded ("you want this easing curve to be exactly this value… the AI won't know what that is").
 - **Designers write the first draft of the prompt** when product UX is determined by AI behavior (Mounter); keep the *why* attached to the *what* — rationale scattered across docs/Slack/Jira kills adoption. (RAG-bot patterns, model comparison, fan-out exploration → field-notes.)
 - **The Atlassian playbook** (Healey & Hall — the most complete field implementation; full specifics → field-notes). Rules: hand-code the chrome, let AI modify a working **template** ("very, very good at just changing the code that already exists" — nav errors ~50% → ~0); **config-object constants** kill recurring hallucinations (old logos); **recipes** (code blob + instructions) for add-ons; **AI legibility is a naming criterion** — "why do we call it a lozenge… or our prop appearance versus variant" (Hall); **curate, don't dump** (~2–3k lines, 20–30 components, the 80% mark — full dumps hallucinate more); **generate docs from the monorepo** so context can't drift; plan for the **remit explosion** — "anyone in the organization can essentially ship." Enablement mechanics → `working-with-ai` (ai-enablement).
+- **Separate DS context from taste context** (Jaytel Taste, 2026): a DS context pack should expose tokens, component APIs, recipes, names, and allowed composition paths. A visual-taste corpus should expose transferable aesthetic constraints. Do not mix them into one dump. Agents compose better when the design-system substrate and the expressive taste layer are separate, explicit inputs.
 - **Peak library?** (Haney): "because everyone's building with them, the AI trains on them more" — established stacks have AI-gravity; weigh that when choosing a DS's underlying stack.
 
 ## Counter-positions: consistency without commodification
@@ -103,6 +104,7 @@ A design system is a **product with customers**, not a library: "treat it like a
 - [ ] Adoption measured (breadth + depth, ~80% target), reported on a cadence, and rewarded in reviews?
 - [ ] Deprecation pathway designed (visual mode, tested migrations, code-synced releases)?
 - [ ] DS wired into AI tooling as context (Code Connect / token exports), with designers owning first-draft prompts?
+- [ ] AI context split into substrate (tokens/components/recipes) and expressive taste rules instead of one vague inspiration dump?
 
 ## Relationship to other skills
 
@@ -112,6 +114,7 @@ A design system is a **product with customers**, not a library: "treat it like a
 - **`apple-design` (apple-typography)** — type mechanics (grade, optical sizes, metrics) that a DS's type layer must encode.
 - **`devtools` (devtool-interface-design)** — the DS team's tooling (dashboards, linters, theming editors) is an internal devtool; its onboarding/AX rules apply.
 - **`working-with-ai` (agentic-coding)** / **`design-prototyping`** — DS-as-AI-context is the constrained-generation stance applied to UI; prototype-with-the-system before codifying ownership.
+- **`creating-skills` (converting-visual-references-to-skills)** — use when the source is a visual taste corpus; this skill owns actual token/component/spec systems. Do not substitute taste rules for DS context when components, tokens, or governance already exist.
 - **`working-with-ai` (ai-enablement)** — rollout, pilots, and training for the AI-context layer.
 - **`design-principles`** — Craft/Simplicity judge individual components; this skill governs the system that mass-produces them.
 

@@ -12,6 +12,7 @@ The core claim: agentic coding "lives on constrained generation; **the quality o
 2. **Project skills / AGENTS.md rules** encode the decisions conventions don't cover: "Once an architectural decision lives in a skill, the AI applies it consistently everywhere, every time." Install them **before scaffolding the first feature** — retrofitting rules onto generated architecture is the expensive order.
 3. **Fast mechanical feedback** so the agent faces its own mistakes immediately: strict linters, the most strictly-typed options available, tests. The sooner generation fails loudly, the less time it spends "working on flawed implementation."
 4. **The frontier needs you.** Drift concentrates where training data runs out — new libraries, in-house abstractions, post-cutoff idioms ("AI reaches for outdated idioms because that's what it was trained on"). Write skills *at the frontier* and feed current docs into context.
+5. **Repo entrypoints should answer the first agent question** (Jaytel Taste repo, 2026): an `AGENTS.md` that starts with exact local setup, repo map, hosted-vs-local boundary, guardrails, and checks lets a fresh agent become useful without spelunking. Taste's guide distinguishes the private local pipeline from the hosted demo, names the generated artifact path, and says which credentials belong in which surface. Put this before philosophy.
 
 ## Distilling taste into rules (the style.md process)
 
@@ -30,6 +31,8 @@ To turn "an expert cleans up my vibe code" into a reusable asset:
 - Anchor on value, not volume: "An engineer's goal isn't to write code, it's to bring business value" — choosing what *not* to build, cutting the right 5% of a feature, and knowing **when not to use AI at all** (mature unfamiliar codebases, rare stacks, small scoped tasks where the rule-writing loop costs more than it saves). Expect ~30–40% gains under good conditions — greenfield, popular stack, patternized tasks — and possibly negative gains outside them.
 
 **Sandbox the agent itself** (Ruby on Whales, 2026): run agents *inside* the dev container with project-only volume mounts and per-project credentials — "a way to prevent unrestricted access to the host system by development software." The container boundary, not the agent's permission prompts, is the guarantee; permissive flags become safe inside it (setup in `rails` (rails-docker-dev)).
+
+**Do not make agents rediscover install shape** (Taste + external-agent trace, 2026): if the repo does not follow a tool's default layout, document the exact install/list command in the README/AGENTS hot zone. A capable agent recovered from `skills/.curated` being absent by querying the GitHub tree, but that was wasted search. Agent-facing repos should expose "first command", "where artifacts land", and "what to read next" explicitly.
 
 ## The Cursor school (Ryo Lu & Jin Park, 2025)
 
@@ -102,6 +105,7 @@ Field practices from people running agents daily. Extended notes + context: [age
 
 - [ ] Opinionated stack, popular technologies, default configs; strict typing + linting wired before generation?
 - [ ] Project rules (AGENTS.md / skills) in place before the first scaffold; frontier areas covered explicitly?
+- [ ] README/AGENTS hot zone gives a fresh agent exact setup/install commands, repo map, artifact paths, guardrails, and checks?
 - [ ] Distilled rules verified for hallucinations and validated by expert review on fresh work?
 - [ ] Bugs that reveal pattern problems answered with gating abstractions, then encoded as rules?
 - [ ] Human review on everything; auth architecture designed before generation; the four security holes checked?

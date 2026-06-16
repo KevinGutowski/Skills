@@ -1,11 +1,11 @@
 ---
 name: creating-skills
-description: "Create Claude skills following best practices — structure, naming, descriptions, progressive disclosure, testing — plus converting sources into skills. Use for authoring or improving skills, or encoding a book, guide, codebase, or PR history into skills. Triggers: create a skill, skill description, SKILL.md, convert this book/repo to a skill."
+description: "Create Claude skills following best practices: structure, naming, descriptions, progressive disclosure, testing, and converting sources into skills. Use for authoring or improving skills, or encoding a book, guide, codebase, PR history, or visual reference corpus into skills. Triggers: create a skill, SKILL.md, taste.md, convert this book/repo/images to a skill."
 ---
 
 ## Official Documentation
 
-**Conversion playbooks (read the matching reference):** [references/converting-books-to-skills.md](references/converting-books-to-skills.md) (books/guides/docs → skills) · [references/converting-codebases-to-skills.md](references/converting-codebases-to-skills.md) (OSS repos + PR history → skills) · [references/skill-creator.md](references/skill-creator.md) (Anthropic's bundled guide + init/package scripts).
+**Conversion playbooks (read the matching reference):** [references/converting-books-to-skills.md](references/converting-books-to-skills.md) (books/guides/docs -> skills) · [references/converting-codebases-to-skills.md](references/converting-codebases-to-skills.md) (OSS repos + PR history -> skills) · [references/converting-visual-references-to-skills.md](references/converting-visual-references-to-skills.md) (image/reference corpora -> visual-taste skills) · [references/skill-creator.md](references/skill-creator.md) (Anthropic's bundled guide + init/package scripts).
 
 - [Skills Overview](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) — How skills work, architecture, structure
 - [Quickstart](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/quickstart) — Create your first skill
