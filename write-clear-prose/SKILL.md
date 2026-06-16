@@ -1,6 +1,6 @@
 ---
 name: write-clear-prose
-description: "Drafts, revises, critiques, and coaches nonfiction prose for clarity, simplicity, structure, rhythm, voice, and audience — Zinsser-school craft. Use for essays, articles, business or technical writing, emails, speeches, opinion pieces, or developmental/line/copy editing. Triggers: clear writing, simplify prose, edit my essay, line edit, copyedit, clutter, rewrite."
+description: "Drafts, revises, critiques, and coaches nonfiction prose for clarity, simplicity, structure, rhythm, voice, and audience — Zinsser-school craft. Use for essays, articles, business or technical writing, emails, speeches, opinion pieces, or developmental/line/copy editing. Triggers: clear writing, simplify prose, edit my essay, line edit, copyedit, clutter, rewrite, write it like <creator/author>, match this voice."
 ---
 
 # Write Clear Prose
@@ -26,6 +26,7 @@ Before editing, identify:
 - **Form**: Memo, essay, op-ed, profile, landing copy, email, speech, technical note, memoir, or other.
 - **State**: Drafting from scratch, developmental edit, line edit, copyedit, title/lead/ending work, or coaching.
 - **Tolerance**: Preserve the user's voice unless they ask for a stronger transformation.
+- **Reference voice**: If the user names a target author, creator, channel, or sample to write "like," capture that voice from real material before drafting (see *Matching a reference voice*).
 
 For memos, updates, and proposals, add Zhuo's reader-empathy pass:
 - Which reader group is this for, and what is the cost of their attention?
@@ -76,6 +77,15 @@ For genre-specific advice, load [references/form-playbooks.md](references/form-p
 
 For scoring, edit levels, and repeatable feedback formats, load [references/editing-rubric.md](references/editing-rubric.md).
 
+## Matching a reference voice
+
+When the user asks for prose "like" a named author, creator, channel, or pasted sample, do not infer the voice from a description, a summary, or your impression of the person. Get real text first.
+
+1. **Obtain genuine samples.** Read the actual words: the article, the post, or — for audio/video creators — a real transcript, not a platform page summary. Auto-generated webpage summaries and captions frequently paraphrase; treat them as unreliable. For YouTube/Instagram/TikTok, fetch the transcript directly (caption files, or transcribe the audio) rather than trusting a fetched page's gloss.
+2. **Characterize, don't caricature.** From the samples, name the concrete moves: opener type, sentence length and rhythm, person (first/second/third), use of fragments, where opinion or aside appears, how it closes. Distinguish a creator's *structure* (often reusable) from their *register* (often too casual for the target medium).
+3. **Confirm the register, then iterate.** A spoken creator voice usually needs lifting for written prose; ask or state how far to professionalize. Expect to dial it across drafts.
+4. **Verify any facts the samples assert.** Creators misremember. Check names, dates, and specifics against authoritative sources before importing them.
+
 ## Output Patterns
 
 When revising user prose, usually return:
@@ -114,6 +124,7 @@ Cut any sentence that exists mainly to sound like writing.
 - Do not over-polish private, vulnerable, or memoiristic writing until its meaning is settled.
 - Do not treat grammar rules as absolute when idiom, voice, rhythm, or audience calls for a deliberate exception.
 - Do not hide uncertainty. Make the writer's confidence match the evidence.
+- Do not invent a named reference voice from a description or a summary. Read real samples (or a real transcript) before imitating it, and borrow its structure without copying protected expression.
 
 ## Genre Notes
 
