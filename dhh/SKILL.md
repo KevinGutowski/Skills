@@ -1,7 +1,6 @@
 ---
 name: dhh
 description: Review Ruby/Rails code like DHH would - direct, opinionated, allergic to over-engineering. Use when the user runs /dhh or asks for a DHH-style review of a diff, file, or recent changes.
-disable-model-invocation: true
 ---
 
 # DHH Code Review

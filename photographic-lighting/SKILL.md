@@ -1,6 +1,6 @@
 ---
 name: photographic-lighting
-description: "Plan and troubleshoot photographic lighting for portraits, product/still-life, and field shoots using hard/soft light, direction, fill, bounce, and family-of-angles tests. Use when lighting a photo or diagnosing glare/shadows/reflections. Image compression -> research-cataloging; graphics internals -> graphics-fundamentals. Triggers: photo lighting, glare, softbox, fill flash."
+description: "Plan and troubleshoot photographic lighting for portraits, product/still-life, and field shoots using hard/soft light, direction, fill, bounce, and family-of-angles tests. Use when lighting a photo or diagnosing glare/shadows/reflections. Use research-cataloging for image compression; graphics-fundamentals for graphics internals. Triggers: photo lighting, glare, softbox, fill flash."
 ---
 
 # Photographic Lighting

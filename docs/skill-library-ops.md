@@ -36,7 +36,7 @@ This is the operating guide for maintaining this repository as a large skill dat
 5. **Verify quotes in batch.** Use `scripts/verify_quotes.py`. A MISS means fix the wording by rereading the source or drop the quote.
 6. **Patch close to the owning skill.** Keep edits in the reference file that owns the task. Update the parent `SKILL.md` only when routing changes.
 7. **Update docs.** Add source-map entries for processed books and a ledger note for folds, skips, parked candidates, conflicts, and rechecks.
-8. **Validate.** Run `python3 scripts/validate_skills.py`, `git diff --check`, and targeted greps for renamed skills or moved references.
+8. **Validate.** Run `python3 scripts/validate_all.py`, `git diff --check`, and targeted greps for renamed skills or moved references.
 9. **Probe routing when needed.** Description changes, new skills, and consolidations require routing probes, including controls that must not route to the edited skill.
 
 ## High-Touch Source Mining Protocol
@@ -103,7 +103,7 @@ The source map is the anti-duplication tool.
 ## Standard Commands
 
 ```bash
-python3 scripts/validate_skills.py
+python3 scripts/validate_all.py
 git diff --check
 rg -n "old-skill-name|dangling-reference" .
 python3 scripts/verify_quotes.py SOURCE... <<'EOF'

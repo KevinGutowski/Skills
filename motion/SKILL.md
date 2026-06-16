@@ -1,12 +1,13 @@
 ---
 name: motion
 description: "Animation skill for Motion (prev Framer Motion) and CSS animation. Provides best practices (vanilla JS, React, Vue, Base UI, Radix), docs search, CSS spring generation, MotionScore perf audit. Use for animations (motion/react, motion-v), CSS linear() springs, jank audits, or spring/easing visuals. Triggers: Motion, framer-motion, animate UI, CSS spring, linear(), MotionScore."
-argument-hint: "[subcommand or question, e.g. 'audit src/Modal.tsx', 'spring bounce 0.3', 'see easeOut', 'how do I animate a list']"
 ---
 
 # Motion
 
 Improve the animation capabilities of the agent.
+
+Argument examples: `audit src/Modal.tsx`, `spring bounce 0.3`, `see easeOut`, `how do I animate a list`.
 
 -   [Animation best practices](best-practices/index.md): "Animate this button", "Fade this layer in", "Animate this Vue component". This includes platform-specific best practices for vanilla JS, React, Vue, Base UI and Radix. Contains advice for both Motion and CSS animation.
 -   [Documentation and examples search](codex/index.md): "What options does X have", "How does X work", "Use X (specific Motion API) to do Y", "Show me an example of X", "Make a X (i.e. carousel, ticker, modal etc)"

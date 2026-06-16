@@ -121,7 +121,7 @@ Alongside it: `motion` (the Motion AI Kit umbrella — encapsulates best-practic
 ## Validation
 
 ```
-python3 scripts/validate_skills.py
+python3 scripts/validate_all.py
 ```
 
-Checks every `*/SKILL.md` for: strict-YAML frontmatter, required `name`/`description`, description ≤1024 chars, body ≤500 lines, and resolvable local references. Runs in CI on every push.
+Runs the repo validator plus strict skill-creator-compatible frontmatter checks. It verifies every `*/SKILL.md` for strict-YAML frontmatter, required `name`/`description`, description ≤1024 chars, body ≤500 lines, resolvable local references, allowed frontmatter keys, and descriptions that avoid angle brackets. Runs in CI on every push.

@@ -1,6 +1,6 @@
 ---
 name: data-viz
-description: "Design, choose, and critique data visualizations. Use when picking chart types (line, bar, dot, scatter, histogram, heatmap, map), reviewing fit/integrity, polishing editorial or interactive charts, or applying Tufte principles: graphical integrity, data-ink, chartjunk, small multiples. In-app chart UX/accessibility -> apple-design. Triggers: chart type, dashboard design, data visualization, chartjunk, data-ink, small multiples, D3 tooltip."
+description: "Design, choose, and critique data visualizations. Use when picking chart types (line, bar, dot, scatter, histogram, heatmap, map), reviewing fit/integrity, polishing editorial or interactive charts, or applying Tufte principles: graphical integrity, data-ink, chartjunk, small multiples. Use apple-design for in-app chart UX/accessibility. Triggers: chart type, dashboard design, data visualization, chartjunk, data-ink, small multiples, D3 tooltip."
 ---
 
 # Data Visualization
