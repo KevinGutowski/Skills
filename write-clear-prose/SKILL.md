@@ -1,6 +1,6 @@
 ---
 name: write-clear-prose
-description: "Drafts, revises, critiques, and coaches nonfiction prose for clarity, simplicity, structure, rhythm, voice, and audience — Zinsser-school craft. Use for essays, articles, business or technical writing, emails, speeches, opinion pieces, or developmental/line/copy editing. Triggers: clear writing, simplify prose, edit my essay, line edit, copyedit, clutter, rewrite, write it like <creator/author>, match this voice."
+description: "Drafts, revises, critiques, and coaches nonfiction prose for clarity, simplicity, structure, rhythm, voice, and audience — Zinsser-school craft. Use for essays, articles, business or technical writing, emails, speeches, opinion pieces, or developmental/line/copy editing. Triggers: clear writing, simplify prose, edit my essay, line edit, copyedit, clutter, rewrite, write it like a named creator, match this voice."
 ---
 
 # Write Clear Prose

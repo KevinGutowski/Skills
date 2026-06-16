@@ -76,11 +76,11 @@ Before editing:
 Before committing:
 
 ```bash
-python3 scripts/validate_skills.py
+python3 scripts/validate_all.py
 git diff --check
 ```
 
-Run targeted validation too when a skill changed:
+Run targeted validation too when diagnosing one skill:
 
 ```bash
 python3 /root/.codex/skills/.system/skill-creator/scripts/quick_validate.py path/to/skill

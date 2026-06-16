@@ -14,4 +14,4 @@ jobs:
         with:
           python-version: "3.x"
       - run: pip install pyyaml
-      - run: python3 scripts/validate_skills.py
+      - run: python3 scripts/validate_all.py
