@@ -27,7 +27,7 @@ Common bundles:
 | AI-generated UI repair | `working-with-ai design-prototyping design-polish frontend-design` |
 | Skill authoring / source conversion | `creating-skills research-cataloging x-post-reader` |
 
-After installing, restart Codex for automatic skill routing. In the same session, read the installed `SKILL.md` files directly.
+After installing, restart Codex for automatic skill routing. In the same session, read the installed `SKILL.md` files directly. Fuller agent guidance: [docs/agent-quickstart.md](docs/agent-quickstart.md).
 
 ## Which skill do I want?
 

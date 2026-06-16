@@ -61,6 +61,16 @@ Use the lightest gate that matches the change:
 - **New skill:** source bar check, README row, routing probes, validator, and a grep audit for missing relationship links.
 - **Consolidation or rename:** before/after probes, corpus-wide edge remap, independent grep audit with zero dangling live names, and rollback if routing worsens.
 
+## Agent-Facing Repo Instructions
+
+Keep the repo's first-contact path explicit. A real agent trace showed `skill-installer` failing because it assumed `skills/.curated`; the agent recovered only after manually inspecting the GitHub tree.
+
+- Root `AGENTS.md` should answer the first operational questions: where skills live, what to read first, how to install, and how to validate.
+- `README.md` should include a short install command with explicit root-level `--path` values.
+- Longer troubleshooting belongs in `docs/agent-quickstart.md`, not in every skill body.
+- When the install shape changes, update all three surfaces in the same PR: `AGENTS.md`, `README.md`, and `docs/agent-quickstart.md`.
+- Prefer examples that match real bundles an agent would install for a task; do not present the whole library as a default install.
+
 ## External Skill Intake
 
 Treat external skill repositories as source material, not installable truth.
