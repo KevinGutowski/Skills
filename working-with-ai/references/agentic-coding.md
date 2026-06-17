@@ -2,7 +2,7 @@
 
 *Scope: Run coding agents well on real projects — constrained generation, the non-delegable human review role, guardrail abstractions, vibe-coding security. Use when setting up a repo for AI-assisted development, writing AGENTS.md/CLAUDE.md rules, reviewing AI code, or running multi-agent workflows. Triggers: agentic coding, vibe coding, AI drift, worktrees, designer PRs.*
 
-**Sources:** [agentic-coding/sources.md](agentic-coding/sources.md) — 4 Evil Martians posts + Cursor-school interviews + Dive Club 2025–26 episodes. Extended notes, full quotes + video IDs in [agentic-coding/ai-era-field-notes.md](agentic-coding/ai-era-field-notes.md).
+**Sources:** [agentic-coding/sources.md](agentic-coding/sources.md) — Evil Martians posts + Cursor-school interviews + Dive Club episodes + Ona Background Agents Summit 2026. Extended notes, full quotes + video IDs in [agentic-coding/ai-era-field-notes.md](agentic-coding/ai-era-field-notes.md).
 
 The core claim: agentic coding "lives on constrained generation; **the quality of those constraints determines the quality of the output**." Three things let a two-person team ship a production MVP in four weeks: an opinionated stack's default constraints, project decisions encoded as reusable rules, and "a senior engineer [who] realizes the vision and catches what the AI misses." The slogan: **"AI needs a prompter, not just a prompt."**
 
@@ -13,6 +13,7 @@ The core claim: agentic coding "lives on constrained generation; **the quality o
 3. **Fast mechanical feedback** so the agent faces its own mistakes immediately: strict linters, the most strictly-typed options available, tests. The sooner generation fails loudly, the less time it spends "working on flawed implementation."
 4. **The frontier needs you.** Drift concentrates where training data runs out — new libraries, in-house abstractions, post-cutoff idioms ("AI reaches for outdated idioms because that's what it was trained on"). Write skills *at the frontier* and feed current docs into context.
 5. **Repo entrypoints should answer the first agent question** (Jaytel Taste repo, 2026): an `AGENTS.md` that starts with exact local setup, repo map, hosted-vs-local boundary, guardrails, and checks lets a fresh agent become useful without spelunking. Taste's guide distinguishes the private local pipeline from the hosted demo, names the generated artifact path, and says which credentials belong in which surface. Put this before philosophy.
+6. **Context gets its own lifecycle** (Ona Background Agents Summit, 2026): lint, test, version, register, and observe context the way you would production code. The useful metrics are not "prompt length"; watch retries, hops, stale lookups, failed plans, and where the agent logs show missing context.
 
 ## Distilling taste into rules (the style.md process)
 
@@ -34,6 +35,20 @@ To turn "an expert cleans up my vibe code" into a reusable asset:
 
 **Do not make agents rediscover install shape** (Taste + external-agent trace, 2026): if the repo does not follow a tool's default layout, document the exact install/list command in the README/AGENTS hot zone. A capable agent recovered from `skills/.curated` being absent by querying the GitHub tree, but that was wasted search. Agent-facing repos should expose "first command", "where artifacts land", and "what to read next" explicitly.
 
+## Background agents and software factories (Ona Summit, 2026)
+
+The summit's shared finding: local coding agents improve one workstation but do not automatically improve the organization. Human attention, tool approval, review, merge, and recontextualization become the cap. A background-agent setup moves the work into cloud/ephemeral environments and adds the substrate: coding harness, automatic tool provisioning, secure sandbox, context registry, governance, observability, and fleet coordination.
+
+**Build the harness before chasing autonomy.** Application engineering starts to become harness engineering: decide which triggers can start work (Slack, Jira/Linear, GitHub, schedules), how environments boot, which tools/credentials are provisioned, where context comes from, how outputs are reviewed, and which audit trail explains what happened. Stripe's Minions talk (`W42t-CoXyuE`) emphasized dev boxes, code intelligence, blueprints, and shifting verification left before one-shot agents can work on a large codebase.
+
+**Review becomes triage, not heroic reading.** When agents produce more PRs than humans can read, the system needs deterministic gates and routing: auto-approve only where the standard is machine-checkable; escalate ambiguous, risky, high-blast-radius, or taste-heavy work. Cloudflare's objective AI review gate and the summit keynotes both frame this as the new bottleneck after code generation.
+
+**Verification is the architecture.** The dark-factory pattern (`e7AvdrxsbaU`) is: requirements -> planner/decomposer -> DAG -> isolated agent sandboxes/worktrees -> deterministic tests -> plan/code adversaries -> rework loop -> merge manager. Back pressure is the product: when a plan, test, merge, or review gate fails, the failure context feeds the next attempt instead of becoming a blind retry.
+
+**Isolation has two layers.** Runtime isolation (container, microVM, EC2/Fargate, VPC boundary) reduces blast radius; version-control isolation (worktrees, Jujutsu workspaces, stable change IDs) makes parallel work mergeable and auditable. Agents should be stateless enough to crash, clean up, and resume through stored state.
+
+**Start with factories that fail visibly.** Software-factory.dev (`a4pEznCiWNo`) showed large PR/test volume, but the durable lesson was spec quality, visual review, bug triage, monitoring, feedback loops, and self-improvement. Close one small SDLC loop before scaling the fleet.
+
 ## The Cursor school (Ryo Lu & Jin Park, 2025)
 
 - **The plan-mode/spec pattern:** vague idea → agent researches the codebase and asks clarifying questions → an editable markdown spec (≈ a PRD: "that's where a lot of the product decisions get made") → review, edit, then build — optionally handing the build to a different model. "The spec is dead" is backwards — better models make specs *more* valuable: they'll be "really good at implementing exact… specifications," but "without a lot of specifications, the model will only make you something mediocre, like something really generic."
@@ -48,6 +63,7 @@ To turn "an expert cleans up my vibe code" into a reusable asset:
 2. **Auth:** generic prompts "produce a system that looks correct but is unsafe" — define roles, permissions, ownership, and *enforcement on every endpoint* before generating; never trust client-side role checks or hidden-in-UI controls; human review of the auth architecture always.
 3. **Dependencies:** agents reach for "add this library" as the quickest path — keep the tree minimal, review every addition (and its popularity), enforce a minimum release age, watch vulnerability alerts.
 4. **Inputs/uploads:** "assume anything 'client-side validated' is untrusted" — server-side schema validation, parameterized queries; uploads get a format allowlist, size limits, and **content-based type verification** (an "image" can be an SVG with a script).
+5. **Runtime guardrails outside the prompt:** prompt rules are advisory; autonomous agents adapt around them. Use kernel/container boundaries, tracked policy profiles, signed/trusted inputs, audit logs, rollback, scoped credentials, and explicit capability elevation for background runs (Ona runtime-security talks `pg0t9jf5DY4`, `XKFKwyFhk8A`).
 
 ## Designer in the repo
 
@@ -117,6 +133,8 @@ Field practices from people running agents daily. Extended notes + context: [age
 - [ ] Bugs that reveal pattern problems answered with gating abstractions, then encoded as rules?
 - [ ] Human review on everything; auth architecture designed before generation; the four security holes checked?
 - [ ] Delegation matched to the gradient (greenfield/patternized → agent; mature/rare/architectural → human)?
+- [ ] Background runs have isolated runtime + isolated version-control state, deterministic verification gates, visible rework loops, and escalation criteria?
+- [ ] Context is tested/observed/versioned, with missing-context failures feeding the next rule or skill update?
 
 > **Staleness note:** 2025–26 posts; tool names (Claude Code, Bolt.new, specific gems/scanners) and productivity percentages will date fast. The method — constraint stack, distillation loop, orchestrator role, security categories — is the durable layer. Reference open-sourced skill repos: https://github.com/palkan/skills/tree/master/layered-rails · https://github.com/inertia-rails/skills
 

@@ -1,6 +1,16 @@
 # Dev-Data Visualization & Agent Experience (AX)
 
-*Sources: "Beyond bars and lines" (Lozhkin & Turner, 2024) · "3 rules for getting AI agents to find, use — and not exploit — your devtool" (Nazarova & Turner, 2026).*
+*Sources: "Beyond bars and lines" (Lozhkin & Turner, 2024) · "3 rules for getting AI agents to find, use — and not exploit — your devtool" (Nazarova & Turner, 2026) · Ona Background Agents Summit 2026.*
+
+## Background-agent session UX
+
+Background agents turn devtool UX into operations UX: the user is no longer staring at one terminal; they are supervising durable cloud sessions, queues, review gates, rework, and handoffs.
+
+- **Make the session a durable object.** Harvey Spectre (`2pod6GeckXc`) treats a cloud agent run like a shared workspace: repo, memory, logs, Slack thread, generated diff, and scheduled repeat work live together. Design the session so a teammate can join late without asking the original prompter to reconstruct context.
+- **Progress messages need citations and relevance, not chatter.** incident.io's AI SRE (`uG0Jz6kLWV0`) shows the shape: summarize what the agent checked, link/cite the logs or traces, say whether the finding matters to the incident, and expose the handoff to local IDE/PR work. A "still working" pulse is not enough.
+- **Human and agent summaries are different products.** Slack summaries that help a human decide may be too lossy for another agent. A/B test phrasing, remove slop, and keep structured fields for downstream agents while keeping the human view concise.
+- **Expose the DAG/list/rework state.** Dark-factory and software-factory talks (`e7AvdrxsbaU`, `a4pEznCiWNo`) make the to-do list operational: requirement -> plan -> tasks -> dependencies -> running agent -> verification -> rework/escalation -> merge. Show blockers, max rework count, failed gate, owner, and next action.
+- **Design the handoff as a first-class path.** The agent may start in Slack, continue in a cloud session, open a PR, and hand context to a local coding agent or IDE. Preserve the same issue/request/spec across surfaces; do not make the human paste context between tools.
 
 ## The dev-tool data → chart mapping
 

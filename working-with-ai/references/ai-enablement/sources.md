@@ -13,3 +13,4 @@ Dive Club podcast (2025–26 episodes):
 Plus:
 
 - *Derek Briggs (PixelJanitor; ex-PlanetScale/Campsite/Clerk/Notion, now Shopify) — X post 2064822864952676852 (Jun 10 2026): the Tailwind vs CSS Modules AI-token experiment*
+- *Ona Background Agents Summit 2026 playlist (`PL3TSF5whlprXNdegxuGPSoa13wqx-dcAw`): Cloudflare adoption/system-map talk (`MbLdrAZFQRs`), genomics/cloud-ops rollout (`GXDtw0EmoX0`), Harvey collaborative sessions (`2pod6GeckXc`), incident.io AI SRE handoffs (`uG0Jz6kLWV0`), Uber pain-first rollout (`o7G5EHDqQ1g`), Monzo regulated controls (`ptVO89qaxY4`), and wrap synthesis (`yuVFSvJf8tk`). Source coverage and fold map: `docs/ona-background-agents-summit-2026.md`.*

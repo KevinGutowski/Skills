@@ -10,3 +10,4 @@
 - *"3 rules for getting AI agents to find, use — and not exploit — your devtool" (Nazarova & Turner, 2026). https://evilmartians.com/chronicles/3-rules-for-getting-ai-agents-to-find-use-and-not-exploit-your-devtool*
 - *Ryo Lu (Head of Design, Cursor) — 2025 interviews: Dive Club (youtube.com/watch?v=dsZqOPVQTNg), Dialectic (8ncYSGbfeyY), Async Z (PQhcHrCyU8M) — the AI-era devtool section below.*
 - *Steve Ruiz (tldraw) — Dive Club podcast (3SvL0r-Lhh8); Brian Lovin (Notion) — Dive Club (dvEwb1Ajkwo).*
+- *Ona Background Agents Summit 2026 playlist (`PL3TSF5whlprXNdegxuGPSoa13wqx-dcAw`): Harvey Spectre (`2pod6GeckXc`) and incident.io AI SRE (`uG0Jz6kLWV0`) for Slack-thread/cloud-session agent UX; Dark Factories (`e7AvdrxsbaU`) and software-factory.dev (`a4pEznCiWNo`) for queue/DAG/rework/review surfaces. Source coverage and fold map: `docs/ona-background-agents-summit-2026.md`.*
