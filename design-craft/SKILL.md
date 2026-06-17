@@ -7,7 +7,7 @@ description: "The craft skill for raising design quality and making interfaces f
 
 The craft skill: how to raise design quality and make interfaces feel right. It holds two altitudes in one place — a **quality methodology** (this body) for evaluating work and deciding how far to push it, and the **execution values** (references) for the concrete recipes once you know what to build. Decide *how good* and *how far* here; drop into the references when it's time to make the pixels right.
 
-*Sources: the methodology draws on Josh Puckett's Interface Craft (interfacecraft.dev); the execution-values references draw on Emil Kowalski (animations.dev), Adam Wathan & Steve Schoger (Refactoring UI), Christian Briggs (PixelJanitor), and Matt D. Smith (Shift Nudge). Quote sparingly, always attribute, and send readers to the originals.*
+*Sources: the methodology draws on Josh Puckett's Interface Craft (interfacecraft.dev); the execution-values references draw on Emil Kowalski (animations.dev), Adam Wathan & Steve Schoger (Refactoring UI), Christian Briggs (PixelJanitor), Matt D. Smith (Shift Nudge), and Linear's product-craft write-ups. Quote sparingly, always attribute, and send readers to the originals.*
 
 A methodology for consistently producing work above the bar. The articles form one loop: **notice → explore wide → pick → push deep → evaluate against your facets → care past good-enough** — with live tuning and separation of concerns as the working mechanics.
 
@@ -24,6 +24,7 @@ When the question shifts from *"is this good / how far do I push"* to *"what exa
 | [performance](references/performance.md) | Transition specificity, `will-change`, perceived performance (spinner choice) |
 | [emil-kowalski](references/emil-kowalski.md) | Alternate craft theme (animations.dev): taste-training, component polish, animation decisions |
 | [refactoring-ui](references/refactoring-ui.md) | Visual refactor passes (hierarchy, spacing, type, color, depth); code-native gallery in `examples/` |
+| [linear-product-craft](references/linear-product-craft.md) | Linear's product-craft operating model: redesign debt, scope control, stress tests, feature flags, internal tools, quality rituals, dense-app chrome |
 
 Theme discipline applies across these: pick one coherent value-set and don't average (see polish-principles' Theme Note). For motion *values*, `web-design` (web-animation-design) is the default theme. The methodology below is *how to evaluate*; the table above is *how to execute*.
 
@@ -100,6 +101,16 @@ Daily-driver apps (iOS, Linear, Figma, Instagram…) set an **invisible bar**; b
 ## Recreate everything (`/library/recreate-everything`)
 
 Anything that makes you ask "how did they do that?" — recreate it immediately, while the curiosity spark lasts (e.g. reverse-engineering a macOS-style genie effect in three rough prompts). Stop when the itch is scratched: rough is fine, the question was *how does this work*, not *ship it*. Bias toward doing; share what you make.
+
+## Linear product craft
+
+Linear's public redesign and quality write-ups form a named school for dense professional software: pay design debt in deliberate sweeps, protect the main work surface from chrome, test the design across real view types and platform environments, and make quality a weekly habit instead of a pre-launch phase. When the task is a serious app refresh, a settings/productivity surface, or a feature-flagged UI migration, read [references/linear-product-craft.md](references/linear-product-craft.md).
+
+Key moves:
+- **Redesign for product evolution, not novelty.** The trigger is accumulated design debt or a broadened product vision; scope the reset around the surfaces that need rebalancing, not every tempting navigation or IA problem.
+- **Stress-test before implementation.** Crash the direction against environment, appearance, and hierarchy: browser/native shells, light/dark/custom themes, every dense view type, long labels, side panels, headers, tabs, and empty/error/loading states.
+- **Make comparison cheap.** Ship behind a feature flag, add a local toggle, and build internal tooling so designers, engineers, and dogfooders can flip old/new instantly and tune tokens in the real product.
+- **Train noticing.** A small weekly quality ritual works because each person sees different defects; small fixes compound and teach the team to prevent the next paper cut.
 
 ## Practical Demonstrations — the refinement vocabulary (`/library?collection=practical-demonstration`)
 

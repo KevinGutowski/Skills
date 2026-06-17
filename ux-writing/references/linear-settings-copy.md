@@ -26,6 +26,7 @@ Before writing copy, read the reference file when the task involves:
    - Use a card for 1-4 closely related rows.
    - Use a section when a group needs a meaningful heading or visual pause.
    - Use a subpage when the setting has lists/tables, multiple entity types, enablement plus configuration, or more than roughly 5 rows.
+   - Use the settings home/index as an education surface when users naturally arrive there to discover what the product can do.
 
 3. Write each setting row as:
    - Title: 2-5 words, noun phrase or concise verb phrase.
@@ -38,6 +39,7 @@ Before writing copy, read the reference file when the task involves:
    - Avoid explaining the UI itself.
    - Say what changes, where it applies, and when it applies.
    - Use `your` for personal settings and `workspace` / `team` for shared settings.
+   - Treat preferences as comfort, not apology: some choices are not failures to pick a default; they help people make the product feel at home.
 
 5. Validate the page.
    - Is the sidebar placement based on ownership/scope?
@@ -45,6 +47,7 @@ Before writing copy, read the reference file when the task involves:
    - Are row titles scannable without descriptions?
    - Are descriptions shorter than the row title plus control combined?
    - Do option labels read as states, not instructions?
+   - Would a curious user learn what is customizable by scanning this page without feeling marketed to?
 
 ## Output Shape
 
@@ -60,4 +63,3 @@ When asked for settings copy, provide:
 
 - **[`naming-features-and-labels`](naming-features-and-labels.md)** decides *what to call* a feature, setting, value, or option, and how to defend that choice against clarity/fit/tone criteria. **This skill** decides *where a setting lives* in the IA and writes the full row (title + helper + control). They compose: choose the word with [`naming-features-and-labels`](naming-features-and-labels.md) first — especially for a new feature name, a value label, or dropdown option labels — then place and surround it here.
 - **[`ui-voice-and-tone`](ui-voice-and-tone.md)** sets the overall product voice this settings copy should sound like; keep the quiet, operational register here consistent with that voice.
-

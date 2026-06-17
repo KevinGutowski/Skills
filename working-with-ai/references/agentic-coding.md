@@ -91,6 +91,13 @@ Field practices from people running agents daily. Extended notes + context: [age
 - Pair/shadow on real work instead of writing workflow docs: "it's actually really hard to explain your workflow to someone."
 - Designer PR-size law (Madrick): "a hundred-line PR" — never "a 500-line PR that you didn't even review yourself." Review shifts upstream to plan mode — share the plan MD before code exists, or expect: "The fundamental premise of how you built this is wrong. Like why am I looking at a code diff right now?" Engineers bring features "up to 80 to 90%"; designers own the last mile — "own the outcome."
 
+**Linear's shared-context loop (2026):**
+- **Issue context is the prompt substrate.** The original request, customer signal, product decisions, related work, discussion, codebase knowledge, and observability links should sit beside the agent session. The agent should not require a human to restate all context in a separate coding tool.
+- **Agent sessions belong to the organization.** Anyone on the team can follow, contribute context, redirect, request changes, or take over. This prevents private one-person agent work from becoming invisible process debt.
+- **Review returns to the same context.** Code review should sit next to the issue and discussion that caused the change so reviewers can trace from report to implementation to diff without reconstructing the thread.
+- **Automate the start, not the approval.** Triage can tag an agent the moment a problem arrives; the agent can investigate, propose, code, and open a PR; a human still decides whether the fix merges.
+- **Skills compound workflows.** Repeated agent moves should become reusable skills/automations with permissions, not ad hoc prompts living in one person's chat history.
+
 **Field report — what top orgs actually do (2026 tranche; full quotes + video IDs in the reference file):**
 - AI usage is "mandated in performance reviews for designers"; orgs build "designer copies of their repos" as playgrounds. The local-agent edge is **starting-place economics**: "that starting place that you get is your real app" — nothing to recreate, unlike scratch generators. Handoff survives: "these are still specs. They are specs with a lot more information inside of them." PR-to-prod is a *job boundary* ("do you want to start wearing a pager?"); stay honest about speed ("Was that actually faster than the old way? Not sure. Not sure."); local dev regresses sharing — budget for internal preview platforms (Steven Haney).
 - The review doctrine's demand side (Polly D'Arcy): the "slop drop," and "product and design flooding our poor engineers with PRs… half of them are garbage."

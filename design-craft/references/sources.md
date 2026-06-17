@@ -30,3 +30,13 @@ Video:
 
 - *Shape FM* ep. 3, "Motion and animation with intent" (with James McDonald, 2025) — YouTube sHVKuJuseYo. Cited as (Briggs, Shape FM ep. 3): top-light model, half-pixel strokes, sub-pixel radius.
 - *Dive Club* S4, "Creating a design culture of craft" (Jan 2024, Clerk era) — YouTube z4hP80tzBL4. Cited as (Briggs, Dive Club S4): formula-izing plugin shadows.
+
+## Linear product-craft articles
+
+- *A design reset (part I)* — Karri Saarinen, 2024. https://linear.app/now/a-design-reset
+- *How we redesigned the Linear UI (part II)* — Karri Saarinen, Yann-Edern Gillet, Andreas Eldh, Romain Cascino, 2024. https://linear.app/now/how-we-redesigned-the-linear-ui
+- *A calmer interface for a product in motion* — Charlie Aufmann and Maxime Heckel, 2026. https://linear.app/now/behind-the-latest-design-refresh
+- *Why is quality so rare?* — Karri Saarinen, 2025. https://linear.app/now/why-is-quality-so-rare
+- *Quality Wednesdays: How we trained our team to see what doesn't work* — Tuomas Artman, 2025. https://linear.app/now/quality-wednesdays
+- *A Linear spin on Liquid Glass* — Robb Bohnke, 2025. https://linear.app/now/linear-liquid-glass
+- *Invisible details - Building contextual menus* — Andreas Eldh, 2020. https://linear.app/now/invisible-details
