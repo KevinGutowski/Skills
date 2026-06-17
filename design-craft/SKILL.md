@@ -104,12 +104,14 @@ Anything that makes you ask "how did they do that?" — recreate it immediately,
 
 ## Linear product craft
 
-Linear's public redesign and quality write-ups form a named school for dense professional software: pay design debt in deliberate sweeps, protect the main work surface from chrome, test the design across real view types and platform environments, and make quality a weekly habit instead of a pre-launch phase. When the task is a serious app refresh, a settings/productivity surface, or a feature-flagged UI migration, read [references/linear-product-craft.md](references/linear-product-craft.md).
+Linear's public redesign and quality write-ups form a named school for dense professional software: pay design debt in deliberate sweeps, protect the main work surface from chrome, test design across real view types and platform environments, and turn quality into operating mechanics: triage, dogfood loops, unshipping, named decision rights, and shared feel language. When the task is a serious app refresh, a settings/productivity surface, a feature-flagged UI migration, or a repeatable quality program, read [references/linear-product-craft.md](references/linear-product-craft.md).
 
 Key moves:
 - **Redesign for product evolution, not novelty.** The trigger is accumulated design debt or a broadened product vision; scope the reset around the surfaces that need rebalancing, not every tempting navigation or IA problem.
 - **Stress-test before implementation.** Crash the direction against environment, appearance, and hierarchy: browser/native shells, light/dark/custom themes, every dense view type, long labels, side panels, headers, tabs, and empty/error/loading states.
 - **Make comparison cheap.** Ship behind a feature flag, add a local toggle, and build internal tooling so designers, engineers, and dogfooders can flip old/new instantly and tune tokens in the real product.
+- **Triage quality by felt risk.** Fix repeated-use jank, trust leaks, wrong-problem signals, and stability promises before optional delight; use scope deletion and named deciders to keep craft decisions fast.
+- **Dogfood with permission to unship.** Turn prototypes on internally, compare old/new cheaply, and remove features that feel wrong without treating removal as failure.
 - **Train noticing.** A small weekly quality ritual works because each person sees different defects; small fixes compound and teach the team to prevent the next paper cut.
 
 ## Practical Demonstrations — the refinement vocabulary (`/library?collection=practical-demonstration`)

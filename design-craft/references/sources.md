@@ -41,6 +41,20 @@ Video:
 - *A Linear spin on Liquid Glass* — Robb Bohnke, 2025. https://linear.app/now/linear-liquid-glass
 - *Invisible details - Building contextual menus* — Andreas Eldh, 2020. https://linear.app/now/invisible-details
 
+## Linear Conversations on Quality
+
+Transcript access: YouTube `en` captions fetched with `yt-dlp --skip-download --write-auto-subs --write-subs --sub-langs en --sub-format vtt` on 2026-06-17 and normalized locally under `/tmp/linear-quality-captions`. `yt-dlp` reported them as `en` subtitles rather than clearly labeling them auto-generated; treat caption wording as transcript evidence and avoid long verbatim quotes.
+
+- Episode 01: Dick Costolo (01 Advisors) — YouTube `4H02CfUT8sY`, 23:21.
+- Episode 02: Karri Saarinen (Linear) — YouTube `R1bwdtQL5uU`, 15:24.
+- Episode 03: Jeff Weinstein (Stripe) — YouTube `MJAmliXAGLg`, 24:10.
+- Episode 04: Henry Modisett (Perplexity) — YouTube `T8NWvs99qFY`, 22:03.
+- Episode 05: Adena Nadler (The Browser Company) — YouTube `2Q7nROEZp-c`, 18:34.
+- Episode 06: Tara Feener (The Browser Company) — YouTube `j-gjKi-yfmU`, 18:25.
+- Episode 07: Basheer Tome (Fellow) — YouTube `6DmkIHEHBlw`, 16:50.
+- Episode 08: Kevin Twohy — YouTube `KkmdK6al0dE`, 22:13.
+- Episode 09: Ethan Eismann — YouTube `BIS78fq1zs8`, 17:30.
+
 ## Kevin Kold / @kvnkld
 
 - X Article 2064972712729292800, "The 10 rules to ship truly polished UI with Claude" (2026-06-16). Folded for magnetic snap zones, state-driven microinteractions, tokenized easing, numeric AI prompting, and the `0.98` restrained press-scale alternate.
