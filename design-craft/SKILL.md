@@ -1,6 +1,6 @@
 ---
 name: design-craft
-description: "The craft skill for raising design quality and making interfaces feel right: a quality methodology (noticing, conceptual range vs depth, facets of quality, live tuning, less-but-better, uncommon care) plus the concrete execution values it routes to (shadows, spacing scales, concentric radii, optical alignment, motion, type). Use to critique or raise quality, decide wider vs deeper, build taste, or polish UI detail. Whether-to-build/strategy → design-principles. Triggers: raise the bar, feels off, make it polished, conceptual range, facets of quality, optical alignment, shadows, stagger animations, tabular numbers, design taste."
+description: "Raise design quality and interface feel through craft methodology (noticing, range vs depth, facets, live tuning, less-but-better, uncommon care), execution values (shadows, spacing, radii, alignment, motion, type), and Linear-style quality rituals/triage. Use to critique or polish UI, build taste, decide wider vs deeper, or make quality practice repeatable. Strategy → design-principles; shaping/bets → shape-up. Triggers: feels off, make it polished, quality ritual, dogfood, unship."
 ---
 
 # Design Craft
@@ -24,7 +24,7 @@ When the question shifts from *"is this good / how far do I push"* to *"what exa
 | [performance](references/performance.md) | Transition specificity, `will-change`, perceived performance (spinner choice) |
 | [emil-kowalski](references/emil-kowalski.md) | Alternate craft theme (animations.dev): taste-training, component polish, animation decisions |
 | [refactoring-ui](references/refactoring-ui.md) | Visual refactor passes (hierarchy, spacing, type, color, depth); code-native gallery in `examples/` |
-| [linear-product-craft](references/linear-product-craft.md) | Linear's product-craft operating model: redesign debt, scope control, stress tests, feature flags, internal tools, quality rituals, dense-app chrome |
+| [linear-product-craft](references/linear-product-craft.md) | Linear's product-craft operating model: redesign debt, scope control, stress tests, feature flags, internal tools, quality rituals, triage, dogfood/unshipping, taste calibration |
 
 Theme discipline applies across these: pick one coherent value-set and don't average (see polish-principles' Theme Note). For motion *values*, `web-design` (web-animation-design) is the default theme. The methodology below is *how to evaluate*; the table above is *how to execute*.
 
@@ -195,6 +195,6 @@ Tranche 2 (Polly D'Arcy, Wealthsimple — vdYBohOQYm0; Katarina Batina, Shop app
 - **`design-prototyping`** — shares DNA on multiple directions ("no hole-in-ones") and agent-built tuning panels (WWDC26-227); route *presenting/feedback-session* questions there, *how-far-to-push and quality-evaluation* questions here. Separation of concerns = its "choose the fidelity tier" rule generalized to one-question-per-artifact.
 - **Execution-value references** (`references/polish-principles.md`, `references/emil-kowalski.md`, and the typography/surfaces/animations/performance files) — the polish-execution layer *inside this skill*; when depth iteration reaches micro-detail (shadows, easing, optical alignment), their values take over (theme discipline applies). These were formerly the standalone `design-polish` skill.
 - **`working-with-ai` (agentic-coding)** — separation of concerns is the design-side version of its constrained-generation stance: one intention per prompt, review non-delegable.
-- **`shape-up`** — facets/stack-ranking complement betting and appetite at the project-planning level.
+- **`shape-up`** — owns product-shaping systems, appetite, bets, scope cuts, and the Linear operating-school comparison; this skill owns interface quality practice: craft depth, live tuning, dense-app refreshes, quality rituals, and felt-risk triage.
 
 > **Source note:** the methodology is distilled from and extended beyond Josh Puckett's Interface Craft (interfacecraft.dev) — quote sparingly, attribute, and send readers to the source. Unmined collections for future passes: Means & Methods (8 technique articles: layout/alignment, visual style errors, color/blending, typographic errors, interpolation/map-range, compositing, wave functions, masks), Collaborating with AI (8 entries incl. DialKit and agent skills), Practical Demonstration, Interface Kit, Reference Desk.
