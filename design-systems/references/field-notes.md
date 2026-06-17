@@ -132,6 +132,13 @@ Moved to [sources.md](sources.md).
 - **Systemize the boring surfaces.** The slat pattern began on high-traffic dashboards, then generalized to Segments, Conversations, and Exports. The payoff was speed plus quality: "Adapting our slat system to the Exports dashboard took me all of 45 minutes," including mobile.
 - **Parallelize foundation and interior.** One group refined the slat pattern while others worked forms, page structure, and navigation; the shared system let them work independently from "a common place."
 
+## Linear theme tooling and redesign substrate
+
+- **Minimal inputs, generated aliases.** Linear's redesign moved theme creation toward three knobs: base color, accent color, and contrast. The system then generated aliases for surfaces, text, icons, controls, elevated layers, and translucent parts. This keeps theme variation coherent because teams adjust relationships, not dozens of independent swatches.
+- **Contrast as a product token.** Contrast is not only an accessibility audit after the fact; it is an input that can generate higher-contrast themes and make light/dark modes more legible without forking the palette.
+- **Live product as the color editor.** During the 2026 refresh, Linear used an internal dev-toolbar color picker exposing hue, chroma, lightness, contrast, and individual design tokens. People could experiment in the actual app, share recipes, copy token JSON, and import it into Figma. This inverts the usual laggy loop of Figma mock → PR → preview → review.
+- **Chrome chroma budget.** The refresh limited how much Linear's blue influenced chrome calculations so the product felt more neutral and timeless. Treat brand color in dense tools as a scarce resource: too much tint makes the workbench feel saturated and competes with content.
+
 ## Soleio: UFI, Canon, and the Dropbox illustration strip-out
 
 Soleio Cuervo (early Facebook design, Dropbox Head of Design); quotes are verbatim auto-caption text, garble fixed in [brackets]; video IDs in [sources.md](sources.md).

@@ -10,6 +10,8 @@ description: "Apply Apple's eight design principles — purpose, agency, respons
 
 Design is **making something with intention** — focusing on what's most important to people so you build something they'll truly value. Every feature you add asks the user for their **time, attention, and trust** — valuable things you can't waste. So choosing what to build is often a matter of deciding what *not* to include.
 
+Linear's AI-era design essays add a useful correction: output is not design, and code is not design by itself. Design is the search for fit between form and context — the human needs, technical constraints, habits, edge cases, and organizational forces that make the problem what it is. Use tools, code, and AI to explore and execute, but do not mistake a plausible artifact for a solved problem.
+
 These eight principles guide that choice. **There's no formula.** Leaning into one principle can feel like compromising another; that tension is the work. Use these to reason and critique, then apply judgment — name the trade-off and decide deliberately.
 
 ## How to use this skill
@@ -22,6 +24,8 @@ These eight principles guide that choice. **There's no formula.** Leaning into o
 
 ### 1. Purpose — build with intention
 Before a sketch or a line of code, ask whether what you're making has a reason to exist. Every feature spends the user's time, attention, and trust. **Deciding what to build is mostly deciding what to leave out.** Watch for: features added because they're possible, not because they're valuable — craft on a self-serving premise only sharpens the wrong thing (Soleio's Share Bar case → practitioner-notes).
+
+Linear's problem-framing rule: write the problem as you understand it, name the stakeholders, and repeat the problem before presenting solutions. If the room reacts to the problem statement, stop there; disagreement on solutions often means people are solving different problems.
 
 ### 2. Agency — put people in control
 People are far more engaged when they control their own experience. **Offer choices**; don't force a pre-determined path. Let people dive in and explore at their own pace; the interface should never stand between a person and what they're trying to do.
@@ -76,6 +80,8 @@ Hard to define, instantly recognized. Delightful interfaces are satisfying, enri
 ## Practitioner rules & counter-positions (Config 2024–25 talks)
 
 The sharpest operating rules: Linear's **zero-bug policy, fixed within seven days** and **MVPs are internal-only** ("once something goes live for everyone, it hits the standards"; quality = **Belief × Care × Craft**, decided by "intuition & customers over data"); Perplexity's kill-test — "**If we deleted it, would anybody care?**"; and Stripe's Weinstein — "the vast majority of failure modes are attempting to polish something that shouldn't have existed in the first place." Counter-positions to hold in tension with Simplicity: deliberate friction (protect *rewarding* work), the ornament thesis (minimalism done well is maximal hidden care), scarcity as respect ("Wordle only wants three minutes of your day"), and the testing tension — conversion surfaces answer to tests ("almost nothing works"), durable objects to the 20-year test. Full notes (Linear quality series, Golden-Era diagnostic, all counter-positions): [references/practitioner-notes.md](references/practitioner-notes.md).
+
+Linear redesign principle: a product that ships constantly periodically needs a holistic reset because users do not experience modules in isolation. Incremental product growth can create global design debt even when every individual feature decision was reasonable. The reset is warranted only when it rebalances the product around where the company is going.
 
 **Writing your own team principles** (Jon Yablonski, *Laws of UX*, ch. 12): operationalize a principle as a three-part chain — "a clear framework… that consists of a goal (design principle) and an observation (law)" which then "establishes guidelines (rules)". Example chain: principle "clarity over abundance of choice" → law (Hick's) → testable rule like "limit choices to no more than 3 items at a time". His quality tests for the principles themselves: good ones "aren't truisms," solve real questions, are opinionated, and are memorable. A principle nobody could disagree with constrains nothing.
 

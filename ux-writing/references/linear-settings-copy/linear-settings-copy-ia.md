@@ -44,6 +44,19 @@ Placement rule:
 
 ## Page Archetypes
 
+### Settings Home As Onboarding
+
+Linear's "Settings are not a design failure" essay frames settings as a place users visit to make the product feel comfortable and to discover what can be customized. A settings index can therefore do light onboarding for experienced users: show major capability areas, tutorials, tips, integrations, and customization paths without turning the page into marketing.
+
+Use this pattern when:
+
+- Users naturally explore settings after setup.
+- The product has team/workspace capabilities that are hard to discover in the main flow.
+- Customization is a legitimate expression of workflow, taste, or comfort.
+- The page can teach what is adjustable without replacing the default experience.
+
+Do not use settings to hide required setup or repair a bad default. Distinguish defaults the product must get right from preferences where the designer should not impose one answer.
+
 ### Preferences
 
 Use for small personal choices. Group into compact sections, each with bordered cards of rows. Rows usually pair a short label with a short description and a right-side dropdown, toggle, or button.
@@ -337,4 +350,3 @@ Do not add a section heading if the card is self-explanatory and the heading mer
 - Empty states say what is absent and pair with the natural creation action.
 - Destructive/security actions are explicit but not dramatic.
 - The page can be scanned by reading only headings and row titles.
-

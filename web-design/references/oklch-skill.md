@@ -98,6 +98,19 @@ Each passes WCAG AA for `--ink` on `--bg` and `--ink-muted` on `--bg`. For dark 
 
 The architecture layer above the scales: what each color is *for*. From Adham Dannaway, *Practical UI* (2nd ed., 2024) and Wathan & Schoger, *Refactoring UI*. Both books state mechanics in HSB/HSL — translated to OKLCH here.
 
+### Product-theme generator pattern (Linear)
+
+For app-wide themes, prefer a small set of human-facing knobs over hand-authoring every token. Linear's public redesign notes describe an LCH-based system driven by base color, accent color, and contrast, then generating aliases for background, foreground, panels, dialogs, text, icons, and controls.
+
+Use this pattern when users or teams can customize the product:
+
+- **Base color** sets the neutral family and surface temperature.
+- **Accent color** carries selection, focus, primary action, or brand emphasis; do not let it tint all chrome by default.
+- **Contrast** controls the lightness distance between surfaces, text, icons, and borders; expose high-contrast variants through this axis rather than a separate hard-coded theme.
+- **Elevation** is a lightness/chroma relationship between background, foreground, panels, dialogs, and modals, not a list of unrelated colors.
+
+Build an internal editor that tweaks L/C/H and token aliases in the running product. When values land, export token JSON back to the design system. The live product is the fastest place to feel whether a palette is crisp, muddy, too saturated, or too low contrast.
+
 ### The six-role palette (Practical UI)
 
 "Create a small set of predefined colours called a colour palette. Define simple rules that govern how each colour is used." Six roles, all variations of the brand hue — in OKLCH: hold H constant, walk L up while easing C down (PUI saturates the darkest step heavily; in OKLCH just keep C% of max):

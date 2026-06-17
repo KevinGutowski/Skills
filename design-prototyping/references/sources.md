@@ -23,6 +23,7 @@ This skill aggregates three Apple design-process sessions (one continuous toast-
 - *Soleio Cuervo — SPC fireside with Steve Ruiz, tldraw (hNUEaFmPAwc) — Soleio is the interviewer; only his own lines used (ship-first school / ivory tower). Ruiz's content is attributed to Ruiz, never Soleio.*
 - *Soleio Cuervo — First Round Design+Startup, "Dropbox's Head of Design on the Dawn of Personalized Products" (2014, https://review.firstround.com/dropboxs-head-of-design-on-the-dawn-of-personalized-products/) — personalized sandbox prototypes.*
 - *Paul Stamatiou — "Craft" essay (https://paulstamatiou.com/craft/); auto-layout thread (https://x.com/Stammy/status/1488310850008104960); Claude Design mock test (https://x.com/Stammy/status/2045186427491930523).*
+- *Linear redesign process — "A design reset" and "How we redesigned the Linear UI" (2024), plus "A calmer interface for a product in motion" (2026). https://linear.app/now/a-design-reset · https://linear.app/now/how-we-redesigned-the-linear-ui · https://linear.app/now/behind-the-latest-design-refresh*
 - *Carlos Montoya (Principal Designer @ Dropbox) — independent-judge pattern, X 2026 (https://x.com/losmontoya_/status/2064774612739887532).*
 - *Config 2024–25 talks: Cheechee Lin (Instagram), Duolingo, Figma UI3, Jeremy Hindle (Severance), Wojtek Dziedzic, Jae Park, Basheer Tome (Fellow), Femke van Schoonhoven (Uber Eats).*
 - *Kevin Twohy + Browser Company — Linear quality series; Adena Nadler research mechanics.*

@@ -33,6 +33,7 @@ A design system is a **product with customers**, not a library: "treat it like a
 - Scope rules that held (Zalando): theme everything **except major layout, motion, and new features**; theme display type only; tactical colors (error/success) identical everywhere. Governance: "one page, one theme"; "prioritize coherence — no theme steals the spotlight." Outcomes (engagement doubled, 40+ brands, 120+ components) → field-notes.
 - Theming is the political answer to "we need our own design system" (Coinbase Themes — same architecture, distinct skins).
 - **Color math** (Evil Martians): OKLCH makes color *programmable* — rotate hue at fixed L/C for cohesive accessible families; hover/pressed = arithmetic on L; dark theme = mirror lightness, keep chroma/hue. Change the brand color, everything recomputes (→ `web-design` (oklch-skill)). Baldwin's **Leonardo** (leonardocolor.io) generates palettes *from target contrast ratios* — contrast-first beats hand-checking pairs.
+- **Linear's theme-generator pattern:** define a few intent inputs (base color, accent color, contrast), generate aliases for surfaces/text/icons/controls in LCH/OKLCH, and expose contrast as a user/system axis. For redesign work, tune tokens inside the live product with an internal color tool, then sync landed JSON values back to Figma so the system follows reality.
 
 ## Component API design
 
