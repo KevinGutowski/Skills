@@ -2,7 +2,7 @@
 
 *Scope: Make AI context legible, distributed, and adopted across a design/product org — decision archives wired to MCP, internal agents, team skills. Use when rolling out AI tooling to a team or sharing agent context beyond one person. Repo agent rules → agentic-coding; DS-as-AI-context → design-systems. Triggers: AI enablement, AI adoption, internal agents, team skills, builder week.*
 
-**Sources:** [ai-enablement/sources.md](ai-enablement/sources.md) — 7 Dive Club episodes (2025–26).
+**Sources:** [ai-enablement/sources.md](ai-enablement/sources.md) — Dive Club episodes + Ona Background Agents Summit 2026.
 
 The task shape: an individual's AI workflow works; the org's doesn't. This skill covers making organizational context *legible* to agents, making one person's context *visible* to teammates, and making adoption actually happen — because "if you build it they do not come" (Louis Healey, Dive Club podcast, CqMZTg7L-wE).
 
@@ -49,6 +49,16 @@ DS-specific mechanics (icon hallucination fixes, navigation templates, prompt-re
 - **Stack choices carry measurable agent-cost consequences** (Briggs, Jun 2026 experiment — two branches, same 10 style prompts, read/edit/write-only harness): "Tailwind used substantially fewer AI coding tokens than CSS Modules because agents could usually edit styles directly in component class strings instead of reading and modifying separate stylesheet files." GPT 5.5: avg 46,163 vs 102,310 tokens (54.9% fewer; 3 vs 15 tool reads); Opus 4.8: 90,447 vs 147,765 (38.8% fewer). The durable lesson is colocation beats indirection for agent-editable styling — audit where your stack forces agents to read-then-edit across files, and budget stack decisions with agent token spend in view.
 - **Infrastructure is a staffed investment, not a side effect:** designer playgrounds (forked repos stripped of env-var/lint/build friction) and internal sharing platforms — one company built an "FTP-like" drag-and-drop platform that auto-deploys previews of vibe-coded work. "100% companies are building tooling around these flows but somebody has to build that" — and maintain it (Haney, Y0n6F9VlLVc).
 
+## Background-agent rollout (Ona Summit, 2026)
+
+The summit pattern: do not announce a giant workflow replacement. Earn trust by removing a pain people already feel, then widen the permission boundary.
+
+- **Go where the pain lives.** Uber's Minion rollout (`o7G5EHDqQ1g`) started with toil/migration work on top of years of remote-dev and CI platform investment; the visible win was taking known developer pain away, not proving novelty. Genomics/cloud-ops (`GXDtw0EmoX0`) similarly started with operational work, daily Slack reports, incident reports, and reviewed knowledge updates before broader dev work.
+- **Make the system of record useful to humans and agents.** Cloudflare (`MbLdrAZFQRs`) tied AI Gateway, Access/identity, Backstage, Agents.md, and review gates together. Backstage/system-map quality improved because agent workflows made the data operationally valuable, not because someone begged people to document.
+- **Controlled access beats blanket restriction.** Monzo (`ptVO89qaxY4`) frames regulated adoption as owning the interface to AI tools: golden paths, static analysis, code mods, monorepo consistency, service patterns, and scoped controls. "Regulated" means prove blast-radius and auditability, not ban experimentation.
+- **Trust comes from objective gates.** A subjective AI reviewer creates comment noise; a machine-readable standard that matches human review norms can become a trusted gate. Use deterministic checks, policy-backed review categories, and risk routing before asking developers to believe agent output.
+- **Session visibility is adoption infrastructure.** Harvey and incident.io show agents working in Slack threads, durable cloud sessions, PRs, IDE handoffs, and scheduled runs. Let people see the agent's progress, citations, memory, and handoff points; private laptop runs do not teach the team.
+
 ## Checklist
 
 - [ ] Are decisions captured somewhere queryable (transcripts, decision docs) — and is an agent wired to it (MCP)?
@@ -57,6 +67,8 @@ DS-specific mechanics (icon hallucination fixes, navigation templates, prompt-re
 - [ ] Do agents run in public channels so prompting is visible and copyable?
 - [ ] Does the enablement plan have all four layers: baseline content (101s/tours), protected time (builder week/pilot team), targeted nudges (bots, not broadcasts), and leaders demoing?
 - [ ] Is spend/time explicitly unblocked, and is playground/sharing infrastructure staffed for maintenance?
+- [ ] First background-agent workflow targets existing toil, has limited blast radius, and reports enough progress for teammates to trust it?
+- [ ] Regulated/enterprise rollout owns the interface, identity, policy, audit, and escalation path instead of relying on individual tool discipline?
 
 > **Staleness note:** 2025–26 tooling era; fast-moving. Tool and agent names (Claude Code, Glass, Cody, Replit, specific harnesses) and specifics like the performance-review mandates will date quickly. The durable layer: decision legibility → agent access; company-specific context as the moat; visibility/promotion of personal context; enablement as multi-format programs plus social proof; adoption as a funded, staffed product.
 
