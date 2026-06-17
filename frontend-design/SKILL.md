@@ -10,7 +10,7 @@ The user provides frontend requirements: a component, page, application, or inte
 
 ## Theme Note
 
-This skill represents a **bold/distinctive aesthetic theme** — deliberately different from the restrained "invisible polish" theme of `design-polish` (emil-kowalski reference) and `design-polish`. These themes shouldn't be mixed: a single project should pick one direction and commit.
+This skill represents a **bold/distinctive aesthetic theme** — deliberately different from the restrained "invisible polish" themes of `design-craft` (including its emil-kowalski reference) and `web-design` (web-animation-design). These themes shouldn't be mixed: a single project should pick one direction and commit.
 
 For motion-specific work, `web-design` (web-animation-design) is the default theme — defer to its values when both are loaded. When this skill triggers alongside the restraint-focused skills, surface the choice as a menu rather than blending — "bold/distinctive vs restrained/invisible" is a real design decision, not noise.
 
@@ -64,7 +64,9 @@ For hand-tuning the custom vectors this skill calls for. (Dan Hollick, *Making S
 
 ## Demonstration over decoration
 
-The hero visual must *truthfully demonstrate* the product's core mechanic, not decorate around it: if you draw a calendar, align events to its real time axis; if you show data, make the numbers internally consistent. A blind A/B eval (2026-06-11) found a distinctive page lost to a plainer one solely because its hero artifact was fake under inspection — "polish is surface-level in exactly the place that matters most." Distinctiveness never excuses a dishonest artifact. Also: no perpetual motion (marquees/loops that never rest), and prefer system/self-hosted fonts over CDN dependencies in self-contained artifacts.
+The hero visual must *truthfully demonstrate* the product's core mechanic, not decorate around it: if you draw a calendar, align events to its real time axis; if you show data, make the numbers internally consistent. A blind A/B eval (2026-06-11) found a distinctive page lost to a plainer one solely because its hero artifact was fake under inspection — "polish is surface-level in exactly the place that matters most." Distinctiveness never excuses a dishonest artifact. Also: no perpetual motion (marquees/loops that never rest).
+
+**Font sourcing — resolving "distinctive type" vs "self-contained":** these two rules collide for a single-file artifact (a distinctive typeface is not a system font, but a self-contained file has no CDN). Pick by what the artifact must be, in this priority order: (1) **self-hosted/embedded** a distinctive licensed/open font (`@font-face` with a base64 or bundled woff2) — best of both, use when you control the build; (2) if the brief *permits* a network dependency, a **Google Fonts / foundry `<link>`** to a distinctive family beats a system font — distinctiveness wins over the CDN aversion when offline isn't a hard requirement; (3) only when the artifact must be **both** strictly single-file **and** zero-network, fall back to a characterful system stack (e.g. `ui-serif, Georgia` or a platform display face) — the floor, never the default. The "never system fonts" rule sets the ceiling; this ranking says how low you're allowed to go and when.
 
 Production layouts must also survive real text: "English, a very compact language, contains words that can expand up to 300% when translated into a less compact language such as Italian" — and user font-size overrides (Amazon's header gracefully drops lower-priority links as text grows). Never size containers to ideal-length English. (Yablonski, *Laws of UX*, ch. 5.)
 

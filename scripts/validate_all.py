@@ -132,7 +132,11 @@ def main() -> int:
         print("\nquick_validate.py not found; ran built-in compatibility checks")
     print(f"{len(dirs)} tracked skills checked for strict frontmatter compatibility")
 
-    return 1 if repo_result.returncode or strict_errors else 0
+    # Cross-reference integrity: reference files cited as skills, unknown skill names.
+    print()
+    xref_result = subprocess.run([sys.executable, "scripts/check_xrefs.py"])
+
+    return 1 if repo_result.returncode or strict_errors or xref_result.returncode else 0
 
 
 if __name__ == "__main__":

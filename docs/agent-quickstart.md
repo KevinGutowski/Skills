@@ -6,7 +6,7 @@ Use this when an AI agent, Codex session, or installer needs to work with this r
 
 This repo does not use the default curated-skill layout:
 
-- Skills live as root-level directories such as `design-polish/`, `devtools/`, `working-with-ai/`, and `creating-skills/`.
+- Skills live as root-level directories such as `design-craft/`, `devtools/`, `working-with-ai/`, and `creating-skills/`.
 - There is no `skills/.curated` directory.
 - A generic `skill-installer` list command may fail if it assumes that default path.
 - The correct install path is explicit: `--path <root-level-skill-dir>`.
@@ -24,7 +24,7 @@ Install a focused bundle from GitHub:
 ```bash
 python /root/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
   --repo KevinGutowski/Skills \
-  --path design-polish devtools working-with-ai
+  --path design-craft devtools working-with-ai
 ```
 
 If using a fresh Codex session, installed skills normally route after restart. In the current session, read the installed `SKILL.md` files directly.
@@ -33,9 +33,9 @@ If using a fresh Codex session, installed skills normally route after restart. I
 
 | Task | Install |
 |---|---|
-| UI polish / frontend cleanup | `design-polish frontend-design web-design` |
-| Admin or developer-tool UI | `devtools design-polish data-viz` |
-| AI-generated UI repair | `working-with-ai design-prototyping design-polish frontend-design` |
+| UI polish / frontend cleanup | `design-craft frontend-design web-design` |
+| Admin or developer-tool UI | `devtools design-craft data-viz` |
+| AI-generated UI repair | `working-with-ai design-prototyping design-craft frontend-design` |
 | Skill authoring / source conversion | `creating-skills research-cataloging x-post-reader` |
 | Rails work | `rails dhh` |
 | Apple platform design | `apple-design swiftui` |

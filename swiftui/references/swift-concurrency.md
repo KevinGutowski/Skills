@@ -84,4 +84,4 @@ First Swift *language*-level skill — sits beneath the SwiftUI trio:
 - **[swiftui-identity.md](swiftui-identity.md)** — its dependency graph is the destination of the "coalesce before crossing isolation" rule; debug body-re-run storms there, throttle the firehose here.
 - **[swiftui-lazy-stacks.md](swiftui-lazy-stacks.md)** / **[swiftui-layout.md](swiftui-layout.md)** / **[swiftui-animation.md](swiftui-animation.md)** — UI-framework layers; this skill governs the async/data layer feeding them.
 - **`working-with-ai` (agentic-coding)** — "only semantically meaningful conformances" and "no unstructured tasks in mainline flow" make good project-rules entries for AI-assisted Swift codebases.
-- **`optimizing-rails`** shares the measure-first creed for a different stack; don't cross-apply specifics.
+- **`rails` (optimizing-rails)** shares the measure-first creed for a different stack; don't cross-apply specifics.

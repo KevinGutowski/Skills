@@ -80,7 +80,7 @@ theme leads for future skill edits),
   skillListingBudgetFraction. If a new skill joins a hubbed cluster (rails, research/
   cataloging), update the hub body AND the overlay snippet in that doc.
 - Members-only/purchased sources → skill is gitignored, generalizable lessons distilled
-  into public skills with citation (precedents: interface-craft-principles,
+  into public skills with citation (precedents: design-craft,
   graphics-fundamentals).
 
 ## Immediate queue (in order)

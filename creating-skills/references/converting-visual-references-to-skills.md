@@ -285,7 +285,7 @@ marketing page:
   to prove the skill actually improves output.
 - **`frontend-design`** owns building the actual UI. Use the generated visual skill
   alongside it when a specific taste must override generic "good frontend" defaults.
-- **`interface-craft-principles`** owns taste-building and noticing craft. Use it
+- **`design-craft`** owns taste-building and noticing craft. Use it
   when the user wants to improve their eye, then convert the chosen references here
   if they need a reusable agent skill.
 - **`research-cataloging`** owns exhaustive source coverage before conversion. Use

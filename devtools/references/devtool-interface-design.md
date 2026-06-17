@@ -87,7 +87,7 @@ A practitioner's market read on the integration surface (Kris Puckett, Dive Club
 
 ## Relationship to other skills
 
-- **`design-polish`** / **`design-polish` (emil-kowalski reference)** — generic web-UI *polish* (shadows, micro-interactions, feel); this skill owns dev-tool *structure* (control flow, density, zones). Structure here, then polish there.
+- **`design-craft`** (incl. its `emil-kowalski` reference) — generic web-UI *polish* (shadows, micro-interactions, feel); this skill owns dev-tool *structure* (control flow, density, zones). Structure here, then polish there.
 - **`frontend-design`** — builds the UI; this skill shapes what a dev tool's UI should be.
 - **`user-onboarding`** — consumer onboarding (sell the better user); devtool onboarding here is its explicit counter-model. **`feature-discoverability`** agrees on "never a blank workspace."
 - **`data-viz` (chart selection / Tufte critique)** — general chart choice and integrity; only the dev-data mapping lives here.

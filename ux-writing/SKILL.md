@@ -5,7 +5,7 @@ description: "Router for UX writing: product voice, microcopy, error/validation 
 
 # UX Writing
 
-Read exactly one reference file below; each carries the full distillation for its area (deeper worked examples and sources live in a same-named subdirectory next to it).
+For a focused question, read the single reference file that matches it — each carries the full distillation for its area (deeper worked examples and sources live in a same-named subdirectory next to it). When a task spans areas (e.g. writing copy for a whole flow needs voice *and* naming *and* error states), follow the routing chain below and read each as needed; the one-file rule optimizes Q&A lookups, not multi-surface work.
 
 - **Voice, tone & microcopy** — defining a product's voice, dialing tone per moment, writing or reviewing general UI microcopy, empty state copy, PACE, localization-ready writing: [references/ui-voice-and-tone.md](references/ui-voice-and-tone.md)
 - **Error messages** — writing or reviewing any failure-state copy: error toasts, dialogs, form validation, 404/500 pages, retry prompts, payment/auth failures, incident communication: [references/error-messages.md](references/error-messages.md)

@@ -1,11 +1,11 @@
 ---
 name: web-design
-description: "Router for web design: typography, accessibility, animation values, performance, forms, OKLCH/color, Tailwind, and 9:16 social-video safe zones. Use for web/CSS craft decisions. Building distinctive UI → frontend-design; polish/feel → design-polish; Motion library work → motion; Apple platforms → apple-design. Read one named reference."
+description: "Router for web design: typography, accessibility, animation values, performance, forms, OKLCH/color, Tailwind, and 9:16 social-video safe zones. Use for web/CSS craft decisions. Building distinctive UI → frontend-design; polish/feel → design-craft; Motion library work → motion; Apple platforms → apple-design. Read one named reference."
 ---
 
 # Web Design
 
-Read exactly one reference file below; each carries the full distillation for its area (deeper worked examples, sources, and code live in a same-named subdirectory next to it).
+For a focused question, read the single reference file that matches it — each carries the full distillation for its area (deeper worked examples, sources, and code live in a same-named subdirectory next to it). For a **build** that legitimately spans areas — a page typically needs typography *and* color *and* animation at once — read each relevant reference together; the one-file rule optimizes Q&A lookups, not builds.
 
 - **Typography** — measure, line-height, type scales, font choosing/pairing, OpenType features, web-font loading (FOUT/`font-display`): [references/web-typography.md](references/web-typography.md)
 - **Accessibility** — semantic HTML first, keyboard/focus management, ARIA, contrast, screen readers, a11y audits and testing: [references/web-accessibility.md](references/web-accessibility.md)
@@ -19,6 +19,6 @@ Read exactly one reference file below; each carries the full distillation for it
 
 **Boundary splits to respect:**
 - **Building distinctive UI → `frontend-design`** — generating creative, production-grade components and pages lives there; this skill carries the craft rules they should obey.
-- **Polish and feel → `design-polish`** — design-engineering micro-detail (optical alignment, shadows, "feels off") lives there.
+- **Polish and feel → `design-craft`** — design-engineering micro-detail (optical alignment, shadows, "feels off") lives there.
 - **Motion/framer-motion library work → `motion`** — `motion/react`, CSS `linear()` spring generation, and MotionScore perf audits live there; motion *design values* default here (web-animation-design).
 - **Apple platforms → `apple-design`** — typography, accessibility, forms, and brand conventions on iOS/macOS; never cross-apply web conventions there.

@@ -276,6 +276,35 @@ function IconButton({ isActive, ActiveIcon, InactiveIcon }) {
 
 The non-absolute icon (InactiveIcon) defines the layout size. The absolute icon (ActiveIcon) overlays it without affecting flow.
 
+### Plain HTML + Vanilla CSS (no Tailwind, no Motion)
+
+The same recipe with zero dependencies — same values (scale `0.25`→`1`, opacity `0`→`1`, blur `4px`→`0`, `300ms`, `cubic-bezier(0.2, 0, 0, 1)`). Toggle `.is-active` on the button:
+
+```html
+<button class="icon-btn">
+  <span class="icon icon--active">✓</span>
+  <span class="icon icon--inactive">+</span>
+</button>
+```
+
+```css
+.icon-btn { position: relative; display: inline-grid; place-items: center; }
+.icon {
+  grid-area: 1 / 1;                 /* stack both in the same cell — inactive sizes the box */
+  transition: opacity 300ms cubic-bezier(0.2, 0, 0, 1),
+              transform 300ms cubic-bezier(0.2, 0, 0, 1),
+              filter 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+.icon--active   { opacity: 0; transform: scale(0.25); filter: blur(4px); }
+.icon--inactive { opacity: 1; transform: scale(1);    filter: blur(0); }
+.icon-btn.is-active .icon--active   { opacity: 1; transform: scale(1);    filter: blur(0); }
+.icon-btn.is-active .icon--inactive { opacity: 0; transform: scale(0.25); filter: blur(4px); }
+
+@media (prefers-reduced-motion: reduce) { .icon { transition-duration: 1ms; } }
+```
+
+`display: grid` + `grid-area: 1 / 1` replaces the absolute-positioning trick — both icons occupy one cell, the visible one sizes the button, no `position: absolute` bookkeeping.
+
 ### Choosing Between Motion and CSS
 
 | | Motion (Framer Motion) | CSS transitions (both icons in DOM) |
@@ -304,7 +333,7 @@ The non-absolute icon (InactiveIcon) defines the layout size. The absolute icon 
 
 ## Sequenced Toggle Motion
 
-For custom switches, segmented controls, and pill indicators, avoid treating state change as a single linear slide when the object can morph in a way that explains the transition. Briggs' Campsite switch (thread in [references/sources.md](references/sources.md)) used a middle-state swap:
+For custom switches, segmented controls, and pill indicators, avoid treating state change as a single linear slide when the object can morph in a way that explains the transition. Briggs' Campsite switch (thread in [references/sources.md](sources.md)) used a middle-state swap:
 
 1. Idle state.
 2. Thumb stretches to full width.

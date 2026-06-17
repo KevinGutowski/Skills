@@ -189,7 +189,7 @@ Apply the variable and add `transition-[box-shadow]` for a smooth hover:
 
 ### Gradient Border for Free (Briggs)
 
-On elements that already cast a shadow, the 1px shadow-ring beats a CSS border for a second reason: "use a 1px slightly transparent box shadow as a border instead of a traditional css border on elements with shadows to get a gradient border on the element for free. The box shadow blends with the element's shadow as it gets darker towards the bottom." (Briggs; thread + CodePen in [references/sources.md](references/sources.md))
+On elements that already cast a shadow, the 1px shadow-ring beats a CSS border for a second reason: "use a 1px slightly transparent box shadow as a border instead of a traditional css border on elements with shadows to get a gradient border on the element for free. The box shadow blends with the element's shadow as it gets darker towards the bottom." (Briggs; thread + CodePen in [references/sources.md](sources.md))
 
 Two gotchas — box shadows paint *outside* the box:
 
@@ -245,7 +245,7 @@ Production values from his "Contrast borders" CodePen (sources.md):
 
 ## Natural Shadow Stacks
 
-When a surface needs richer elevation than a single shadow, build a stack with internally consistent geometry. Briggs' production recipe (CodePen in [references/sources.md](references/sources.md)):
+When a surface needs richer elevation than a single shadow, build a stack with internally consistent geometry. Briggs' production recipe (CodePen in [references/sources.md](sources.md)):
 
 - A 0-offset 1px ring layer anchors the stack (shadow-as-border, see above).
 - Y offsets follow a geometric progression (1/3/6/12/24); each layer's `blur` equals its `y` offset; negative spread equals half the `y` offset.
@@ -275,7 +275,7 @@ Tune the alpha to the product, but keep the relationship stable. On low-contrast
 
 Dark mode surfaces often need light, not more darkness. Add tiny inner highlights and local reflections to sharpen edges and imply material.
 
-Briggs' dark-container rule: "Dark mode outline borders that are darker than the background create an even nicer edge contrast. Kick up the contrast and elevation a bit to add some highlight detail and falloff shadows. Using the trick of sharing the same alpha for all makes them easier to code too." (Briggs; sources in [references/sources.md](references/sources.md))
+Briggs' dark-container rule: "Dark mode outline borders that are darker than the background create an even nicer edge contrast. Kick up the contrast and elevation a bit to add some highlight detail and falloff shadows. Using the trick of sharing the same alpha for all makes them easier to code too." (Briggs; sources in [references/sources.md](sources.md))
 
 The lighting model is top-light: white highlight on the top edge, accent/reflected color on the underside — light hits the top, environmental reflection comes from below (Briggs, Shape FM ep. 3). Two more material rules from the same conversation:
 

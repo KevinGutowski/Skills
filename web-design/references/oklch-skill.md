@@ -71,6 +71,29 @@ Field techniques from Matt D. Smith (Shift Nudge) — stated in HSB, but they ma
 
 *Source: MDS YouTube — Uno5dpotRgo · ZRBq8UYLa-0 · jSLfQ0sJDCw.*
 
+## Calm/muted brand starter palettes (gamut-safe)
+
+Drop-in low-chroma sets for restrained, "calm" brands — single warm/cool hue family for paper+ink, plus **one** reserved accent that carries meaning (selection, "done", primary CTA). All chroma ≤ 0.10, so every value renders in sRGB at these lightnesses (rule of thumb: C ≤ ~0.10 at mid L is universally sRGB-safe; only push higher for an accent and verify). Walk **L** for elevation, hold **C** roughly constant, keep **H** fixed within the neutral family.
+
+```css
+/* 1 — Warm paper (clay/sand), accent = sage "done" */
+--bg:        oklch(0.98 0.008 80);   --surface:  oklch(0.96 0.012 80);
+--line:      oklch(0.90 0.015 80);   --ink-muted: oklch(0.55 0.02 70);
+--ink:       oklch(0.28 0.02 60);    --accent:   oklch(0.62 0.07 150);
+
+/* 2 — Cool slate, accent = quiet blue */
+--bg:        oklch(0.985 0.004 250); --surface:  oklch(0.97 0.006 250);
+--line:      oklch(0.91 0.01 250);   --ink-muted: oklch(0.55 0.02 250);
+--ink:       oklch(0.27 0.02 255);   --accent:   oklch(0.60 0.10 250);
+
+/* 3 — Muted sage neutral, accent = warm terracotta */
+--bg:        oklch(0.98 0.008 150);  --surface:  oklch(0.96 0.012 150);
+--line:      oklch(0.90 0.015 150);  --ink-muted: oklch(0.52 0.02 155);
+--ink:       oklch(0.26 0.02 155);   --accent:   oklch(0.64 0.10 40);
+```
+
+Each passes WCAG AA for `--ink` on `--bg` and `--ink-muted` on `--bg`. For dark mode, mirror lightness (`--bg` ≈ 0.18–0.22, `--ink` ≈ 0.92) at the same hue and *lower* accent chroma ~20%. Always flatten any opacity tints before contrast-testing (see Status-tag recipe above).
+
 ## Palette Roles & State Layers
 
 The architecture layer above the scales: what each color is *for*. From Adham Dannaway, *Practical UI* (2nd ed., 2024) and Wathan & Schoger, *Refactoring UI*. Both books state mechanics in HSB/HSL — translated to OKLCH here.
@@ -104,7 +127,7 @@ Test text/strokes against **Fill**, not the page background — Fill is the wors
 | Stroke weak | 12% | 10% |
 | Fill | 6% | 4% |
 
-Light mode starts at 90% because "It's safest to avoid pure black against white for text, as it can cause eye strain and fatigue." (Scope: that rule is about *text on white* — OLED true-black backgrounds and pure-black image outlines in `design-polish` are different contexts; don't blend into "never #000".) Test contrast against the *brightest* background (Overlay); flatten alpha to the rendered color before measuring (see Working Methods). Same trick works per-color: brand/semantic hues at 100/80/20/5% for Text/Stroke strong/Stroke weak/Fill.
+Light mode starts at 90% because "It's safest to avoid pure black against white for text, as it can cause eye strain and fatigue." (Scope: that rule is about *text on white* — OLED true-black backgrounds and pure-black image outlines in `design-craft` are different contexts; don't blend into "never #000".) Test contrast against the *brightest* background (Overlay); flatten alpha to the rendered color before measuring (see Working Methods). Same trick works per-color: brand/semantic hues at 100/80/20/5% for Text/Stroke strong/Stroke weak/Fill.
 
 **State layers:** "layer a transparent overlay on top of interactive elements on hover and press" — **hover = the Fill variation, press = Stroke weak**. One overlay pair handles states for every component on every background.
 

@@ -163,7 +163,7 @@ For the only UX/design person on a team, or an org too immature for formal proce
 
 - **`design-prototyping`** — owns session mechanics and pitch presentation craft (how to structure a review, fidelity, demos); this skill owns the business case and political context around the pitch.
 - **`building-in-public`** — influence with an external audience; this skill is influence inside the org.
-- **`interface-craft-principles`** — defines the quality bar; this skill gets the org to fund it.
+- **`design-craft`** — defines the quality bar; this skill gets the org to fund it.
 - **`design-systems`** — DS governance/adoption mechanics; this skill supplies the four-lens business case for DS investment.
 - **`write-clear-prose`** — the writing layer for briefs, self-reviews, and pitch docs.
 

@@ -121,7 +121,7 @@ Durable: everything above. Decayed specifics:
 - **`apple-design` (apple-typography)** — Apple platforms (SF, Dynamic Type, text styles). Never cross-apply: web rules here, platform rules there.
 - **`graphics-fundamentals`** — the rendering-mechanism *why* (rasterization, hinting, font internals, half-leading) lives there.
 - **`frontend-design`** — interface-level aesthetics and page generation; this skill is the text-setting discipline inside it.
-- **`design-polish`** / **`design-polish` (emil-kowalski reference)** — the polish-tip layer (tabular-nums, font smoothing, text-wrap); this is the deeper reference behind those tips.
+- **`design-craft`** (incl. its `emil-kowalski` reference) — the polish-tip layer (tabular-nums, font smoothing, text-wrap); this is the deeper reference behind those tips.
 - **[`web-performance`](web-performance.md)** — budgets and load-lifecycle there; font-loading strategy here.
 - **`data-viz`** — data-ink doctrine for tables and charts.
 - **[`web-accessibility`](web-accessibility.md)** — the broader web accessibility practice (semantic structure, keyboard, contrast nuance like SSS shimmer); type-specific sizing and contrast stay here.
