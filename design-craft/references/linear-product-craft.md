@@ -8,6 +8,9 @@
 - Dense App Chrome
 - Color And Theme Craft
 - Quality Rituals
+- Quality Triage
+- Dogfood And Unshipping Loops
+- Taste Calibration
 - Interaction Details
 - Checklist
 
@@ -24,6 +27,7 @@ Primary Linear sources:
 - https://linear.app/now/design-is-more-than-code
 - https://linear.app/now/linear-liquid-glass
 - https://linear.app/now/invisible-details
+- Linear *Conversations on Quality* episodes 01-09, YouTube captions fetched with `yt-dlp` on 2026-06-17; see `references/sources.md`.
 
 Companion folds live in `design-principles`, `design-prototyping`, `design-systems`, `web-design` (oklch-skill), `ai-experience-design`, and `ux-writing` (linear-settings-copy). This file owns the reusable product-craft operating model.
 
@@ -52,6 +56,7 @@ Operating rules:
 5. **Document behavior once the direction hardens.** Define sidebar, tabs, app headers, view headers, state transitions, and removability rules.
 6. **Ship behind a flag.** Start with internal dogfood, then private beta, then staged rollout, then GA. Keep old/new comparison one click away during refinement.
 7. **Keep feedback in the work graph.** Linear connected Slack discussion and project updates back to Linear so testing context did not scatter across tools.
+8. **Match artifact fidelity to the question.** Kevin Twohy's quality interview splits the work into "make the right thing" and "make the thing right": early design may need words, low-fi sketches, and engineering questions about the rough data model; sometimes it needs a future-perfect prototype that skips production detail so the team can feel the destination. Do not spend pixel-perfect effort while the real uncertainty is concept, data shape, update frequency, or operational pipeline.
 
 ## Dense App Chrome
 
@@ -89,6 +94,35 @@ How to adapt it:
 
 The deeper effect is preventative: after enough reps, engineers and designers begin seeing common pitfalls before they ship.
 
+## Quality Triage
+
+The quality-series delta is not "raise the bar"; it is how to decide which quality work earns immediate attention.
+
+- **Separate wrong product from rough execution.** Jeff Weinstein's cancel-the-day test asks whether the problem is urgent enough before polishing the solution. If nobody would scream during an outage, or the problem is not big enough for the audience, more finish is strategy theater. Fix problem choice before craft depth.
+- **Use the repeated-use test for jank.** A tiny interaction cost becomes must-fix when it repeats all day, sits in the primary workflow, or makes the product feel untrustworthy. A delight detail can wait; a repeated hesitation, broken expectation, or trust leak cannot.
+- **Let scope pay for quality.** Dick Costolo's two-week reframe is a deletion exercise: remove review paths, launch rings, fidelity, audience breadth, or feature branches until the quality-critical thing can ship at the intended bar.
+- **Do not punish fast wrongness.** Costolo's leadership rule is to correct mistakes quickly, not prevent all mistakes. If people get blamed for the wrong call, they ask permission next time and decision speed collapses.
+- **Protect both switch and stay.** Adena Nadler frames commodity software as needing interesting features to make people switch and stability to make them stay. Triage cannot choose novelty or reliability permanently; each release must know which side is carrying the product promise.
+
+## Dogfood And Unshipping Loops
+
+Internal use changes the quality signal when the builders live inside the product.
+
+- **Turn prototypes on for the company.** Tara Feener describes Browser Company's loop as product ideas -> product updates -> dogfood, with prototypes enabled internally before member rollout. The point is not a survey; it is the team feeling the interaction in daily work.
+- **Make unshipping a normal outcome.** If internal use shows that a feature feels wrong, remove it quickly. Treat that as quality practice, not failure. The artifact taught the team something; keeping it because it was built is the failure.
+- **Look for the private shame.** When a user asks for a literal feature, Feener's rule is to assume you do not yet know the problem. Interrogate the need beneath the request, especially when the request names a workaround for an embarrassing or hard-to-admit pain.
+- **Keep old/new comparison cheap.** The redesign article's feature-flag practice and the interview dogfood loop reinforce the same mechanism: fast taste decisions need live comparison, not memory of last week's mock.
+
+## Taste Calibration
+
+Shared judgment is trained through decision rights, language, and who is allowed to notice.
+
+- **Name the decider before debate.** Henry Modisett's craft-speed mechanism is concrete ownership: everyone can reason holistically, but each major product or technical decision needs a named owner. Without that, taste becomes consensus and decisions slow down.
+- **Circle back on the last 80/20.** Perplexity's rolling 80/20 is not permission to leave rough edges forever; it is a weekly revisit loop. If a cut corner is still on the main path after learning more, it returns to the quality queue.
+- **Train engineers in craft language.** Ethan Eismann's Slack practice: engineers should be able to tell well-crafted from less-crafted experience and independently improve it, then refine with design. Craft cannot live only in designer comments because engineers are the people who make the final interaction real.
+- **Make communication part of craft.** Basheer Tome's Fellow lesson is that clear priority and "who's on first" recovery paths create the focus needed for craft. Leave room in the plan for wrong turns; when something goes wrong, the quality question is who owns diagnosis, decision, and communication.
+- **Keep a shared feel vocabulary.** Pull phrases from usage, not brand adjectives: "surprisingly great" means the solution exceeded the problem; "feels wrong" is a dogfood unship signal; "works the way you work" tests workflow fit; "well-crafted" vs "less-crafted" gives engineers critique language; "switch" vs "stay" separates novelty from reliability. Shared words make critique faster without flattening taste into consensus.
+
 ## Interaction Details
 
 Linear's contextual-menu safe-area post is the archetype: a tiny invisible detail can remove repeated friction for high-frequency users.
@@ -112,3 +146,6 @@ Rules:
 - [ ] Are borders/separators explaining relationships rather than decorating?
 - [ ] Does the color system expose contrast as a controllable axis?
 - [ ] Is quality practiced as a recurring habit, not a launch-phase cleanup?
+- [ ] Is there a named decider for each craft-sensitive decision?
+- [ ] Have repeated-use jank and trust leaks been separated from optional delight?
+- [ ] Can the team dogfood, compare, and unship without treating removal as failure?
