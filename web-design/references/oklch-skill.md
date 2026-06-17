@@ -127,7 +127,7 @@ Test text/strokes against **Fill**, not the page background — Fill is the wors
 | Stroke weak | 12% | 10% |
 | Fill | 6% | 4% |
 
-Light mode starts at 90% because "It's safest to avoid pure black against white for text, as it can cause eye strain and fatigue." (Scope: that rule is about *text on white* — OLED true-black backgrounds and pure-black image outlines in `design-polish` are different contexts; don't blend into "never #000".) Test contrast against the *brightest* background (Overlay); flatten alpha to the rendered color before measuring (see Working Methods). Same trick works per-color: brand/semantic hues at 100/80/20/5% for Text/Stroke strong/Stroke weak/Fill.
+Light mode starts at 90% because "It's safest to avoid pure black against white for text, as it can cause eye strain and fatigue." (Scope: that rule is about *text on white* — OLED true-black backgrounds and pure-black image outlines in `design-craft` are different contexts; don't blend into "never #000".) Test contrast against the *brightest* background (Overlay); flatten alpha to the rendered color before measuring (see Working Methods). Same trick works per-color: brand/semantic hues at 100/80/20/5% for Text/Stroke strong/Stroke weak/Fill.
 
 **State layers:** "layer a transparent overlay on top of interactive elements on hover and press" — **hover = the Fill variation, press = Stroke weak**. One overlay pair handles states for every component on every background.
 

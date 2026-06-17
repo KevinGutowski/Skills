@@ -333,7 +333,7 @@ The same recipe with zero dependencies — same values (scale `0.25`→`1`, opac
 
 ## Sequenced Toggle Motion
 
-For custom switches, segmented controls, and pill indicators, avoid treating state change as a single linear slide when the object can morph in a way that explains the transition. Briggs' Campsite switch (thread in [references/sources.md](references/sources.md)) used a middle-state swap:
+For custom switches, segmented controls, and pill indicators, avoid treating state change as a single linear slide when the object can morph in a way that explains the transition. Briggs' Campsite switch (thread in [references/sources.md](sources.md)) used a middle-state swap:
 
 1. Idle state.
 2. Thumb stretches to full width.

@@ -73,22 +73,22 @@ Extraction: `/tmp/books/refactoring-ui.txt`; local PDF visual pages rendered to
 `/tmp/refactoring-ui-all-pages/*.png` and images extracted to
 `/tmp/refactoring-ui-extracted-images/` for the example pass. Density: HIGH for
 visual UI refactoring. Primary fold target is
-`design-polish/references/refactoring-ui.md` plus the code-native gallery at
-`design-polish/examples/refactoring-ui-gallery.html`; color-scale mechanics also
+`design-craft/references/refactoring-ui.md` plus the code-native gallery at
+`design-craft/examples/refactoring-ui-gallery.html`; color-scale mechanics also
 corroborate `web-design` (`oklch-skill`), and image/icon sizing corroborates
 `frontend-design`. The gallery now recreates 45 visual examples in editable
 HTML/CSS and should be preferred over committing book screenshots.
 
 | Chapter / section | Short summary | Routing |
 | --- | --- | --- |
-| Starting from Scratch | Start from a real feature, defer details, design in cycles, choose personality, and limit choices before polishing. | `design-polish/references/refactoring-ui.md`; `design-prototyping` for build-real-early overlap. |
-| Hierarchy is Everything | De-emphasize secondary content, use weight/color instead of only size, avoid unnecessary labels, separate semantic/document hierarchy from visual hierarchy, and rank actions by importance. | `design-polish/references/refactoring-ui.md`; form/button hierarchy cross-check in `web-design` (`form-design`). |
-| Layout and Spacing | Start with too much whitespace, use a non-linear spacing/sizing scale, avoid over-relying on grids, reject proportional scaling, and make group spacing unambiguous. | `design-polish/references/refactoring-ui.md`; spacing scale also in `design-polish/SKILL.md`. |
-| Designing Text | Establish a type scale, choose practical fonts, constrain measure, baseline-align mixed text, tune line-height, color links deliberately, and letterspace only suitable text. | `design-polish/references/refactoring-ui.md`; deeper rules route to `web-design` (`web-typography`). |
-| Working with Color | Use perceptual color controls, build real palettes with greys/primary/accent shades, define shades up front, keep saturation alive, tint greys, and solve contrast without hijacking hierarchy. | `web-design` (`oklch-skill`, `web-accessibility`); summarized in `design-polish/references/refactoring-ui.md`. |
-| Creating Depth | Emulate overhead light, use elevation/shadow scales, combine cast + ambient shadows, create flat depth with color, and overlap layers/images intentionally. | `design-polish/surfaces.md`; summarized in `refactoring-ui.md`. |
-| Working with Images | Use good photos, control text contrast over images, respect intended size for icons/screenshots, and constrain user-uploaded content with fixed crops/inner rings. | `design-polish/references/refactoring-ui.md`; SVG/icon sizing folded to `frontend-design`. |
-| Finishing Touches | Supercharge defaults, add accent borders, decorate low-contrast backgrounds, prioritize empty states, use fewer borders, and break component assumptions carefully. | `design-polish/references/refactoring-ui.md`; empty-state copy route stays `user-onboarding`. |
+| Starting from Scratch | Start from a real feature, defer details, design in cycles, choose personality, and limit choices before polishing. | `design-craft/references/refactoring-ui.md`; `design-prototyping` for build-real-early overlap. |
+| Hierarchy is Everything | De-emphasize secondary content, use weight/color instead of only size, avoid unnecessary labels, separate semantic/document hierarchy from visual hierarchy, and rank actions by importance. | `design-craft/references/refactoring-ui.md`; form/button hierarchy cross-check in `web-design` (`form-design`). |
+| Layout and Spacing | Start with too much whitespace, use a non-linear spacing/sizing scale, avoid over-relying on grids, reject proportional scaling, and make group spacing unambiguous. | `design-craft/references/refactoring-ui.md`; spacing scale also in `design-craft/references/polish-principles.md`. |
+| Designing Text | Establish a type scale, choose practical fonts, constrain measure, baseline-align mixed text, tune line-height, color links deliberately, and letterspace only suitable text. | `design-craft/references/refactoring-ui.md`; deeper rules route to `web-design` (`web-typography`). |
+| Working with Color | Use perceptual color controls, build real palettes with greys/primary/accent shades, define shades up front, keep saturation alive, tint greys, and solve contrast without hijacking hierarchy. | `web-design` (`oklch-skill`, `web-accessibility`); summarized in `design-craft/references/refactoring-ui.md`. |
+| Creating Depth | Emulate overhead light, use elevation/shadow scales, combine cast + ambient shadows, create flat depth with color, and overlap layers/images intentionally. | `design-craft/references/surfaces.md`; summarized in `refactoring-ui.md`. |
+| Working with Images | Use good photos, control text contrast over images, respect intended size for icons/screenshots, and constrain user-uploaded content with fixed crops/inner rings. | `design-craft/references/refactoring-ui.md`; SVG/icon sizing folded to `frontend-design`. |
+| Finishing Touches | Supercharge defaults, add accent borders, decorate low-contrast backgrounds, prioritize empty states, use fewer borders, and break component assumptions carefully. | `design-craft/references/refactoring-ui.md`; empty-state copy route stays `user-onboarding`. |
 
 Verified quote: "Don't scale up icons".
 
@@ -107,7 +107,7 @@ mostly covered by stronger existing homes. No direct quotes added in this map pa
 | 1. Fundamentals | Familiar patterns, design systems, accessibility, consistency, interaction states, and cost-aware 80/20 prioritization. | Source-map only; already covered by `design-principles`, `design-systems`, and `web-accessibility`. |
 | 2. Less is More | Remove unnecessary information/styles, use progressive disclosure, keep important content visible, design smallest-screen-first, reduce or group choices. | Mostly model-known; `design-principles` only if a future pass needs corroboration. |
 | 3. Colour | Contrast, color-not-alone, status colors, black-and-white-first workflow, six-role palette, transparent foreground palette, state layers, systematic color naming. | Folded to `web-design` (`oklch-skill`) palette roles/state layers and `web-accessibility` contrast nuance. |
-| 4. Layout and Spacing | Group related elements, visual hierarchy, squint test, depth, box model, 8pt spacing options, relationship-based spacing, 12-column grids, text alignment, robust layout. | Mostly covered by `design-polish` and `frontend-design`; no extra fold unless a concrete UI-review checklist needs corroboration. |
+| 4. Layout and Spacing | Group related elements, visual hierarchy, squint test, depth, box model, 8pt spacing options, relationship-based spacing, 12-column grids, text alignment, robust layout. | Mostly covered by `design-craft` and `frontend-design`; no extra fold unless a concrete UI-review checklist needs corroboration. |
 | 5. Typography | Single sans default, optional heading face, regular/bold weights, type scale, long-body sizing, line-height, measure, left alignment, photo text, avoid light grey/pure black. | `web-design` (`web-typography`) owns stronger Rutter/Santa Maria/Latin depth; source-map corroboration only. |
 | 6. Copywriting | Concision, sentence case, simple language, front-loading, chunking, descriptive headings, specific link/error/button text. | Mostly covered by `ux-writing`; form/button crumbs folded in `web-design` (`form-design`). |
 | 7. Buttons | Three button weights, one primary action, avoid disabled buttons, left-align/order web buttons, verb+noun button text, 48pt targets, icon/text balance, destructive friction ladder. | Folded to `web-design` (`form-design`) with Apple-platform conflict scoped. |
@@ -173,7 +173,7 @@ in this map pass.
 | Combining typefaces | Anchor-first pairing process, evaluate combinations, and make contrast clear or absent. | Folded to `web-typography/choosing-and-pairing.md`. |
 | Rhythm in web typography | Paragraph spacing, heading margins, baseline/rhythm grids, and vertical flow. | Folded to `web-typography.md` rhythm section. |
 | Modular scale and meaningful typography | Type scales for font sizes, reconciling scale with leading/rhythm, and optical tiebreakers. | Folded to `web-typography.md` scales/hierarchy. |
-| Page composition | Grid/layout composition around the text block. | Corroborates `design-polish`/`frontend-design`; no direct fold beyond `web-typography`. |
+| Page composition | Grid/layout composition around the text block. | Corroborates `design-craft`/`frontend-design`; no direct fold beyond `web-typography`. |
 | Responsive web typography | Breakpoint/fluid type treatment for measure, line-height, and reading context. | Folded to `web-typography.md` with modern `clamp()` staleness note. |
 | Micro Typography | Ligatures, small caps, numerals, punctuation, drop caps, and detail characters. | Folded to `web-typography/opentype-and-micro.md`. |
 
@@ -404,7 +404,7 @@ trust, or playful failure handling. No direct quotes were added in this map pass
 | Chapter | Short summary | Routing |
 | --- | --- | --- |
 | 1. Emotional Design | Pleasure sits above functional, reliable, and usable foundations; emotion deepens memory, trust, and attachment but cannot substitute for utility. Wufoo and Betabrand are used as personality-heavy examples. | Already covered by `design-principles` hierarchy/delight constraints and `ux-writing` voice/tone. |
-| 2. Designing for Humans | Human-perception hooks include baby-face bias, contrast, proportion, Hick's Law, and the aesthetic-usability effect. | Mostly skipped as covered by `design-principles`, `design-polish`, and Universal Principles material. |
+| 2. Designing for Humans | Human-perception hooks include baby-face bias, contrast, proportion, Hick's Law, and the aesthetic-usability effect. | Mostly skipped as covered by `design-principles`, `design-craft`, and Universal Principles material. |
 | 3. Personality | The design persona artifact specifies traits, avoid-traits, voice, visual lexicon, copy examples, engagement methods, and where personality should appear or recede. | Already folded to `ux-writing/references/ui-voice-and-tone.md`; cross-check for brand/personality work. |
 | 4. Emotional Engagement | Surprise, anticipation, exclusivity/status, priming, and variable rewards can deepen engagement, but delight must not carry critical feedback or interrupt workflows. | Already folded across `ux-writing`, `design-principles`, and `web-animation-design`; useful as a guardrail source. |
 | 5. Overcoming Obstacles | Addresses skepticism, laziness, and apathy through trust signals, task momentum, content usefulness, and emotional-response research prompts. | Already folded to `user-research` and design-principles trust/obstacle framing. |
@@ -883,8 +883,8 @@ quotes added here.
 | 3. Hick's Law | Choice complexity increases decision time; includes card sorting as a way to organize choices around user mental models. | Parked IA corroboration; `design-principles`. |
 | 4. Miller's Law | Corrects the common "seven nav items" misuse; chunking organizes information but does not license arbitrary menu limits. | Parked IA corroboration; `design-principles`. |
 | 5. Postel's Law | Be forgiving in input and precise in output. | `web-design` forms and `ux-writing` error-message adjacency. |
-| 6. Peak-End Rule | People remember intense moments and endings disproportionately. | `user-onboarding`, `ux-writing`, or `design-polish` only when a concrete flow needs memory shaping. |
-| 7. Aesthetic-Usability Effect | Aesthetic interfaces are often perceived as more usable. | `design-polish`; already covered by stronger polish sources. |
+| 6. Peak-End Rule | People remember intense moments and endings disproportionately. | `user-onboarding`, `ux-writing`, or `design-craft` only when a concrete flow needs memory shaping. |
+| 7. Aesthetic-Usability Effect | Aesthetic interfaces are often perceived as more usable. | `design-craft`; already covered by stronger polish sources. |
 | 8. von Restorff Effect | Distinct items stand out; useful for emphasis but dangerous when overused. | `design-principles`; `data-viz`/UI emphasis cross-check. |
 | 9. Tesler's Law | Complexity can be moved but not eliminated; decide whether the system or user bears it. | `design-principles`; possible `web-design` flow simplification. |
 | 10. Doherty Threshold | Responsiveness keeps attention and productivity. | `design-principles`; future web-performance candidate if broader sources land. |

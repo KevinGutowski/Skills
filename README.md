@@ -15,16 +15,16 @@ This repo stores skills at the repository root, not under OpenAI's default `skil
 ```bash
 python /root/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
   --repo KevinGutowski/Skills \
-  --path design-polish devtools working-with-ai
+  --path design-craft devtools working-with-ai
 ```
 
 Common bundles:
 
 | Task | Install |
 |---|---|
-| UI polish / frontend cleanup | `design-polish frontend-design web-design` |
-| Admin or developer-tool UI | `devtools design-polish data-viz` |
-| AI-generated UI repair | `working-with-ai design-prototyping design-polish frontend-design` |
+| UI polish / frontend cleanup | `design-craft frontend-design web-design` |
+| Admin or developer-tool UI | `devtools design-craft data-viz` |
+| AI-generated UI repair | `working-with-ai design-prototyping design-craft frontend-design` |
 | Skill authoring / source conversion | `creating-skills research-cataloging x-post-reader` |
 
 After installing, restart Codex for automatic skill routing. In the same session, read the installed `SKILL.md` files directly. Fuller agent guidance: [docs/agent-quickstart.md](docs/agent-quickstart.md).
@@ -36,7 +36,7 @@ After installing, restart Codex for automatic skill routing. In the same session
 |---|---|
 | `design-principles` | Whether/why decisions, design critique, trade-offs (purpose, agency, craft, delight…) — the strategic layer the rest sit under |
 | `design-prototyping` | Validating ideas before building: fake-it → SwiftUI-as-design-tool → coding agents (incl. Cursor's design-in-code endpoint); presenting design work |
-| `interface-craft-principles` | *(local-only, gitignored — members-only source)* Quality practice (Josh Puckett): noticing, range→depth, facets of quality, live tuning, uncommon care. Its core heuristics are also folded into `design-principles` and `design-prototyping` |
+| `design-craft` | The craft skill (merged: the former `design-polish` is now its execution layer). Body = quality methodology (Josh Puckett): noticing, range→depth, facets of quality, live tuning, uncommon care. References = concrete execution values (shadows, spacing scales, concentric radii, optical alignment, motion, type) plus the Emil Kowalski theme and Refactoring UI. Use for "feels off" / "make it polished" / "how far do I push this" |
 | `logo-design` | Brand marks, badges, identity systems — the Peters method (brand nouns → 50 sketches → B/W presentation); app icons → `apple-design` (app-icon-design) |
 | `feature-discoverability` | First launches, tips/TipKit, features users can't find |
 | `user-onboarding` | First-run flows, empty states, onboarding copy (Hulick method) |
@@ -72,7 +72,7 @@ System-surface and interaction *craft* — sf-symbols (symbol usage, rendering m
 ### Motion & frontend (web)
 `web-design` — one consolidated skill; its body routes to reference files: web-typography (CSS/web type practice: measure/leading/scales, choosing & pairing, OpenType craft, font loading — from Rutter, Santa Maria, Latin; Apple platforms → `apple-design` (apple-typography)), web-accessibility (web-scoped a11y practice: AT discipline, semantic-HTML-first priority order, focus mechanics, accessible writing, testing program, org policies — Kalbag + Metts/Welfle; Apple platforms → `apple-design` (apple-visual-accessibility)), web-animation-design (the default theme for web motion values), web-performance (load + interaction speed: fluid-UI frame budgets, Core Web Vitals, perf culture), form-design (web form structure, field types, buttons, validation flows — the Dannaway method; form copy → the words chain; Apple forms → `apple-design` (apple-navigation-design)), oklch-skill (color), social-video-safe-zones (9:16 vertical-video safe zones).
 
-Alongside it: `motion` (the Motion AI Kit umbrella — encapsulates best-practices, docs search, CSS spring generation, performance audit, transition visualisation as sub-capabilities) · `design-polish` (UI polish craft; Emil Kowalski school in its references) · `frontend-design` (building distinctive web UI) · `creative-coding` (procedural/generative visual systems: canvas/p5/Processing sketches, particles, steering agents, automata, fractals, noise, evolutionary variation) · `photographic-lighting` (shoot lighting: portraits, products, glare, flash/fill/bounce) · `graphics-fundamentals` *(local-only, gitignored — purchased source)*: the mechanism layer beneath all of these (screens, color spaces, rasterization, blurs, compression) — route "how/why does X actually work" questions there.
+Alongside it: `motion` (the Motion AI Kit umbrella — encapsulates best-practices, docs search, CSS spring generation, performance audit, transition visualisation as sub-capabilities) · `design-craft` (the craft skill — quality methodology + execution values incl. the Emil Kowalski theme and Refactoring UI; listed in Design strategy above) · `frontend-design` (building distinctive web UI) · `creative-coding` (procedural/generative visual systems: canvas/p5/Processing sketches, particles, steering agents, automata, fractals, noise, evolutionary variation) · `photographic-lighting` (shoot lighting: portraits, products, glare, flash/fill/bounce) · `graphics-fundamentals` (purchased source — Dan Hollick's *Making Software*; adapted): the mechanism layer beneath all of these (screens, color spaces, rasterization, blurs, compression) — route "how/why does X actually work" questions there.
 
 ### Writing & content
 `write-clear-prose` · `ux-writing` — one consolidated skill; its body routes to reference files: ui-voice-and-tone (product voice + microcopy), error-messages (failure-state copy), linear-settings-copy (settings IA/copy), naming-features-and-labels (what to call a feature, label, plan, button).
@@ -105,7 +105,7 @@ Alongside it: `motion` (the Motion AI Kit umbrella — encapsulates best-practic
 - **Generative visuals:** procedural sketches, particles, agents, noise, automata, fractals, and evolutionary visual systems → `creative-coding`; production UI layout/SVG hygiene/accessibility → `frontend-design`/`web-design`; end-user-resculptable tools → `malleable-software`.
 - **Typography split:** web/CSS → `web-design` (web-typography); Apple platforms → `apple-design` (apple-typography); rendering internals (why fonts look different) → `graphics-fundamentals`. Never cross-apply platform conventions.
 - **AI chain:** design the AI feature → `ai-experience-design`; fix AI-generated UI → `working-with-ai` (ai-ui-direction); agents on your repo → `working-with-ai` (agentic-coding); org rollout/context sharing → `working-with-ai` (ai-enablement); users reshaping the product → `malleable-software`.
-- **Overlapping polish themes** (`design-polish` and its Emil Kowalski reference, `web-design` (web-animation-design)) are *themes*: pick one theme's values and apply them consistently; when a genuine choice surfaces, present a menu rather than silently mixing aesthetics.
+- **Overlapping polish themes** (`design-craft` and its Emil Kowalski reference, `web-design` (web-animation-design)) are *themes*: pick one theme's values and apply them consistently; when a genuine choice surfaces, present a menu rather than silently mixing aesthetics.
 - **Words:** name the thing in `ux-writing` (naming-features-and-labels) → set the voice in `ux-writing` (ui-voice-and-tone) → failure copy in `ux-writing` (error-messages) → settings rows in `ux-writing` (linear-settings-copy).
 - **Charts:** type + integrity critique in `data-viz` → in-app experience in `apple-design` (chart-experience-design).
 - **Apple specifics vs current truth:** talk-derived skills carry reasoning and craft; the `apple-design` (hig) skill fetches the canonical current spec. When they disagree, the live HIG wins (skills carry ⚠️ supersession notes where this has already happened).
@@ -125,3 +125,5 @@ python3 scripts/validate_all.py
 ```
 
 Runs the repo validator plus strict skill-creator-compatible frontmatter checks. It verifies every `*/SKILL.md` for strict-YAML frontmatter, required `name`/`description`, description ≤1024 chars, body ≤500 lines, resolvable local references, allowed frontmatter keys, and descriptions that avoid angle brackets. Runs in CI on every push.
+
+It also runs the **cross-reference guard** (`scripts/check_xrefs.py`), which catches the routing-fabric bug a 2026-06 manual audit found by hand: a reference *file* cited in prose as if it were a top-level skill (e.g. `` `oklch-skill` `` instead of `` `web-design` (oklch-skill) ``), or a `` `cluster (member)` `` whose cluster isn't a real skill. Reference names are distinctive, so false positives stay near zero; descriptive prose that names the owning skill on the same line is exempt. Run it alone with `python3 scripts/check_xrefs.py` (add `--strict` to also fail on advisory warnings).

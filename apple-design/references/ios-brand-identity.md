@@ -79,7 +79,7 @@ See `ios-brand-identity/examples.md` for the full app-by-app breakdown (Gentler 
 ## Relationship to other skills
 
 - **`design-principles`** is the parent — this is *Familiarity* (honor platform patterns) balanced against brand expression, plus *Craft* and *Delight*. The talk even closes on the same note: "people remember how a product makes them feel… satisfying, enriching, a joy to use." Use `design-principles` to weigh brand vs. convention; use this skill for the iOS specifics.
-- **`design-polish`** / **`design-polish` (emil-kowalski reference)** — the component-level craft this relies on (concentric radii, optical detail, polish). Route "make this custom component feel right" there.
+- **`design-craft`** (incl. its `emil-kowalski` reference) — the component-level craft this relies on (concentric radii, optical detail, polish). Route "make this custom component feel right" there.
 - **`web-design` (web-animation-design)** / **`motion`** cover web/JS motion; on iOS the brand-through-motion ideas here are realized with SwiftUI — implement with `swiftui` (swiftui-animation) (transitions, effects, shaders) and `swiftui` (swiftui-lazy-stacks) (scroll). Don't cross-apply CSS specifics.
 - **`ux-writing` (naming-features-and-labels)** / **`ux-writing` (ui-voice-and-tone)** — the wording and voice side of brand in the content layer: name the individual thing with the former, define and write the app's voice with the latter.
 - **[apple-search-design.md](apple-search-design.md)** — sibling Apple-platform skill; it notes a branded search field must keep the magnifying glass and native field elements. Use together when search is part of a branded UI.

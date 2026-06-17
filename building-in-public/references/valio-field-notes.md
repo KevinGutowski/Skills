@@ -89,7 +89,7 @@ Deltas only (the rest overlaps the skill's existing content):
 
 ## GMUNK (Bradley Munkowitz)
 
-Career items (his craft/process notes live in `interface-craft-principles`):
+Career items (his craft/process notes live in `design-craft`):
 
 - **The personal-project engine**: "I never wait for someone to hire me to make work… There's never a moment where I am not doing a personal project on the side." The side project is the portfolio, the skill lab, and the pitch all at once.
 - **Client detachment**: "you put your heart into it but it's not yours and it never will be yours… you need to take a very… detached" stance — "you give 100%. We're professionals of course, but it's not yours." Save ownership-energy for the personal work.

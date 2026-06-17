@@ -13,7 +13,7 @@ Install with explicit root-level paths:
 ```bash
 python /root/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
   --repo KevinGutowski/Skills \
-  --path design-polish devtools working-with-ai
+  --path design-craft devtools working-with-ai
 ```
 
 If a listing command fails, inspect the repo tree instead of stopping:

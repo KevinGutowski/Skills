@@ -73,4 +73,4 @@ The honest trade-off: "if you move really rapidly that's sometimes hard to align
 
 Soleio names the school explicitly (SPC fireside, to Steve Ruiz): "you and I are of a common school of like designers who ship… you have to kind of confront reality head on rather than in the safety of the ivory tower."
 
-Scope note — this is a *school*, not a settled average: hold it by name against the craft-school positions already in this corpus (Stamatiou's SLC bar, Puckett's depth spectrum in `design-principles`/`interface-craft-principles`). Soleio's own boundary is that speed is for colliding with reality sooner, and dogfood — not taste-talk — is the evidence layer.
+Scope note — this is a *school*, not a settled average: hold it by name against the craft-school positions already in this corpus (Stamatiou's SLC bar, Puckett's depth spectrum in `design-principles`/`design-craft`). Soleio's own boundary is that speed is for colliding with reality sooner, and dogfood — not taste-talk — is the evidence layer.

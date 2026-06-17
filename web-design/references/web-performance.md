@@ -20,7 +20,7 @@ The frame: **"Performance is a feature. If it doesn't feel good, it's not workin
 
 The car analogy: **TTFB** = key in the ignition → **First Contentful Paint** = dashboard lights → **First Meaningful Paint** = engine running, still in park → **Time to Interactive** = shifts into drive — **"the most critical performance metric for both UX and engineering."** A page that looks ready but can't respond is the worst breach of trust.
 
-- Map to **Core Web Vitals**: LCP (loading), **INP** (responsiveness — superseded FID in 2024; the field version of *Instant*), CLS (layout stability — doctrine in `design-polish` §17: preload over skeletons, content lands exactly where its placeholder was).
+- Map to **Core Web Vitals**: LCP (loading), **INP** (responsiveness — superseded FID in 2024; the field version of *Instant*), CLS (layout stability — doctrine in `design-craft` (polish-principles) §17: preload over skeletons, content lands exactly where its placeholder was).
 - **Thresholds as a scale**: ~100 ms = lightning; **7 s = the failure point**. Shopify POS dashboard scoring: 1.0 is rarely achievable ("we're competing with our customers' Wi-Fi"); **0.8–0.97 = OK; ~0.5 = go deep**. Treat performance "at the same level as weekly active users." Outcome: checkout time cut by more than half.
 - **Bind every principle to a metric** or it's a poster: "Don't make me wait" → app-ready-on-load ("even a 500 ms delay feels like an eternity" mid-transaction); "Smooth like butter" → FPS; "Make it snappy" → responsiveness (catches looks-interactive-but-isn't).
 - **Problem-framing cards**: a one-sheet pairing the performance scorecard + product-quality scorecard + satisfaction metrics, reviewed in critiques and quarterly retros — "minimum viable structure" for a shared language; "true craft begins with understanding the problem."
@@ -41,7 +41,7 @@ The car analogy: **TTFB** = key in the ignition → **First Contentful Paint** =
 ## Process & culture
 
 - **Fluid-UI regressions block the PR.** "You cannot merge your PR if you're introducing something that makes anything less instant, less smooth, less coordinated." In-progress features hide behind flags until compliant; audit the whole app periodically anyway.
-- **Debug frame-by-frame**: record the screen, scrub frame by frame — "invaluable… you can catch a bug you never see in real time" (an avatar blank for three frames). Same method as the craft-side recording habit in `design-polish` (emil-kowalski reference); here it's the *acceptance test*. Count frames against the 6-frame budget.
+- **Debug frame-by-frame**: record the screen, scrub frame by frame — "invaluable… you can catch a bug you never see in real time" (an avatar blank for three frames). Same method as the craft-side recording habit in `design-craft` (emil-kowalski); here it's the *acceptance test*. Count frames against the 6-frame budget.
 - **Isolate to verify**: "something can't be fast in the app if it's not fast in isolation" (Storybook etc.) — then test in situ for interference.
 - **Someone must own app-wide performance** — frame.io's *interface architecture* team: accountable for performance-as-a-feature, embeds with teams at deadlines (so corner-cutting isn't the rational move), and hunts **step-function improvements** that speed everything without taxing feature teams (their app-router migration bought one-frame cached navigations).
 - Teach the team to "see in milliseconds" — most people can't at first; recordings and frame budgets are the training wheels.
@@ -61,7 +61,7 @@ The car analogy: **TTFB** = key in the ignition → **First Contentful Paint** =
 
 - **`motion`** (performance-audit capability) — ranks *animation* techniques by render-pipeline cost (S–F); this skill owns the app-level loading/interaction discipline around them. Audit an animation there; budget the interaction here.
 - **[`web-animation-design`](web-animation-design.md)** — perceived-speed and animation-performance rules (transform/opacity only, under-20px blurs) live there; this skill supplies the frame budgets and process that enforce them.
-- **`design-polish`** — §17 layout stability (anti-skeleton, no-shift loads) is the CLS doctrine; §18's modern CSS primitives are the prefer-CSS toolbox.
+- **`design-craft`** (polish-principles) — §17 layout stability (anti-skeleton, no-shift loads) is the CLS doctrine; §18's modern CSS primitives are the prefer-CSS toolbox.
 - **[`web-typography`](web-typography.md)** — font-loading strategy (WOFF2, subsetting, `font-display`, FOUT-over-FOIT, fallback matching) lives there; this skill owns the budgets it must fit.
 - **`rails` (optimizing-rails)** — the server side of TTFB and API latency; this skill takes over once bytes reach the browser. Same measure-first creed.
 - **`devtools` (devtool-interface-design)** — the speed usage-law and frequency rules for tools people live in.

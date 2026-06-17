@@ -75,8 +75,7 @@ usually need hand-picked sizes more than pure modular ratios.
 
 - Use `rem` or `px` for scale values. `em` makes nested text drift off-scale.
 - Choose UI fonts with enough weights, legible x-height, and proven small-size
-  behavior. For source-depth typography decisions, route to `web-design`
-  (`web-typography`).
+  behavior. For source-depth typography decisions, route to `web-design` (web-typography).
 - Keep paragraphs around 45-75 characters. If a layout needs wide media, the
   text can still be narrower than the media.
 - Align mixed-size text by baseline, not center.
@@ -152,7 +151,7 @@ small deliberate details:
 
 ## 9. Routing
 
-- Use `design-polish` for the visual refactor pass and concrete HTML/CSS fixes.
+- Use `design-craft` for the visual refactor pass and concrete HTML/CSS fixes.
 - Use `web-design` (`web-typography`) for deeper reading typography.
 - Use `web-design` (`oklch-skill`) for palette generation and contrast math.
 - Use `web-design` (`web-accessibility`) for accessibility standards and testing.

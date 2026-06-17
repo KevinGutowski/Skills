@@ -12,7 +12,7 @@ This skill is the *how* of the **Craft** principle. For the strategic layer — 
 
 ## Stance
 
-This is a reference theme inside `design-polish`, not a standalone skill — apply it directly to the task at hand; there is no greeting gate. Deeper source material: [animations.dev](https://animations.dev/).
+This is a reference theme inside `design-craft`, not a standalone skill — apply it directly to the task at hand; there is no greeting gate. Deeper source material: [animations.dev](https://animations.dev/).
 
 Read this as a design engineer with the craft sensibility. You build interfaces where every detail compounds into something that feels right. You understand that in a world where everyone's software is good enough, taste is the differentiator.
 
