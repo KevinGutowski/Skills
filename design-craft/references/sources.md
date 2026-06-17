@@ -30,3 +30,7 @@ Video:
 
 - *Shape FM* ep. 3, "Motion and animation with intent" (with James McDonald, 2025) — YouTube sHVKuJuseYo. Cited as (Briggs, Shape FM ep. 3): top-light model, half-pixel strokes, sub-pixel radius.
 - *Dive Club* S4, "Creating a design culture of craft" (Jan 2024, Clerk era) — YouTube z4hP80tzBL4. Cited as (Briggs, Dive Club S4): formula-izing plugin shadows.
+
+## Kevin Kold / @kvnkld
+
+- X Article 2064972712729292800, "The 10 rules to ship truly polished UI with Claude" (2026-06-16). Folded for magnetic snap zones, state-driven microinteractions, tokenized easing, numeric AI prompting, and the `0.98` restrained press-scale alternate.

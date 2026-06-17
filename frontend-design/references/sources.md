@@ -8,3 +8,5 @@ Derek Briggs (PixelJanitor; ex-PlanetScale/Campsite/Clerk/Notion, now Design+Cod
 - Div/CSS-only progressive blur (Clerk changelog nav overlay; video only, no public code) — X 1715106187958481023 (Oct 2023)
 - Figma-review feasibility heuristics (font-family consolidation, Chrome `corner-shape` superellipse) — Shape FM ep. 8 "Figma design review", YouTube HQHZbKdPJP0
 - Global flexbox min-size reset — X 2059675006322585647 (May 2026)
+
+Kevin Kold / @kvnkld — X Article 2064972712729292800, "The 10 rules to ship truly polished UI with Claude" (2026-06-16). Folded for numeric polish prompts, token-first constraints, and state-driven UI generation.
