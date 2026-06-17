@@ -6,6 +6,8 @@
 - Exit Animations
 - Contextual Icon Animations
 - Sequenced Toggle Motion
+- Magnetic Snap Points
+- State-Driven Microinteractions
 - Scale on Press
 - Skip Animation on Page Load
 
@@ -372,11 +374,35 @@ Related sequencing moves (Briggs; sources.md):
 
 Use this only for controls with enough physical space for the middle state. For tiny toggles or frequently repeated rows, a standard translate transition is usually clearer and cheaper.
 
+## Magnetic Snap Points
+
+For sliders, scrubbers, ranges, and draggable controls with meaningful values, snapping can provide the "haptic" feeling the web lacks. Use it only where the snap value matters: month boundaries, presets, marks, detents, chapters, or validated thresholds.
+
+The satisfying version has two zones (Kevin Kold, 2026):
+
+1. **Pull-in zone** — a smaller radius around the snap point where the handle magnetizes into place.
+2. **Release zone** — a larger radius before it breaks free, so the user must intentionally pull away once caught.
+
+Add a tiny visual acknowledgement when it catches: pulse the label, brighten the mark, or briefly emphasize the value. Keep drags precise outside the snap zones; global snapping makes the control feel sticky and untrustworthy.
+
+## State-Driven Microinteractions
+
+A polished component is a state system, not a static picture. Before signing off, list and exercise the states the live build actually needs: idle, hover, pressed, loading/working, disabled, success/error, empty/overflow, reduced-motion, and any domain-specific state such as "snap caught" or "drag released."
+
+Microinteraction patterns that often replace hard cuts:
+
+- **Numbers:** roll, cross-fade, or at least use `tabular-nums`; never let changing digits shift layout.
+- **Working state:** for short, controlled waits, a calm shimmer/sweep over the label can feel more integrated than a spinner. Use a system spinner for slow/uncontrolled waits where blame assignment matters (see [performance.md](performance.md)).
+- **Icon state swaps:** cross-fade + scale + blur as in Contextual Icon Animations; don't unmount and pop.
+- **Play/pause or start/stop:** animate the change between symbols so causality reads as one object changing, not two icons replacing each other.
+
 ## Scale on Press
 
 A subtle scale-down on click gives buttons tactile feedback. Always use `scale(0.96)`. Never use a value smaller than `0.95` — anything below feels exaggerated. Use CSS transitions for interruptibility — if the user releases mid-press, it should smoothly return.
 
 Not every button needs this. Add a `static` prop to your button component that disables the scale effect when the motion would be distracting.
+
+Theme note: Kevin Kold's Claude-polish article uses `0.98` as a lighter press value. That is a valid restrained alternate, but this reference's house value remains `0.96`; pick one press scale per project and keep it consistent.
 
 ### CSS Example
 

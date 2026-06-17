@@ -110,6 +110,7 @@ Derek Briggs is stricter than the curve tables above: never ship the default CSS
 
 - **Front-load the velocity peak**: "do not want it to evenly ease into a center point of a top speed and then ease out" — peak early so the ease-out feels natural; a late peak only reads right when the element is "coming up against something" (an edge or container).
 - **Tooling**: motion.dev for nearly everything; CSS `linear()` for tiny things only.
+- **House curves beat vague adjectives** (Kevin Kold, 2026): define a small named easing set as tokens and reuse it everywhere. Example values from his article: `--ease-smooth: cubic-bezier(0.22, 1, 0.36, 1)` for most transitions, `--ease-spring: cubic-bezier(0.35, 1.55, 0.65, 1)` only for tiny pop/overshoot moments, and a symmetric curve for moves that truly need in/out balance. The lesson is tokenized consistency more than those exact numbers; do not mix them into another motion theme unless you adopt the set as a whole.
 
 ### Paired Elements Rule
 
@@ -338,6 +339,10 @@ function Component() {
   );
 }
 ```
+
+### Motion Specification for AI Builds
+
+When directing an agent, provide the motion spec as a variable block plus usage rules. "Make it smooth" invites defaults; "entrance = opacity 0->1, translateY 6px->0, blur 2px->0, 280-320ms on the smooth curve" is buildable. Include reduced-motion behavior in the same prompt: movement and scale collapse; opacity/color/blur can remain when they carry meaning.
 
 ### Touch Device Considerations
 

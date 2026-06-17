@@ -98,6 +98,8 @@ Add a subtle `1px` outline with low opacity to images for consistent depth. The 
 
 A subtle `scale(0.96)` on click gives buttons tactile feedback. Always use `0.96`. Never use a value smaller than `0.95` — anything below feels exaggerated. Add a `static` prop to disable it when motion would be distracting.
 
+If another loaded theme specifies a lighter value such as `0.98`, treat it as a theme choice rather than a value to average. One product should not mix multiple press depths without a reason.
+
 ### 13. Skip Animation on Page Load
 
 Use `initial={false}` on `AnimatePresence` to prevent enter animations on first render. Verify it doesn't break intentional entrance animations.
