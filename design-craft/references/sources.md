@@ -40,3 +40,7 @@ Video:
 - *Quality Wednesdays: How we trained our team to see what doesn't work* — Tuomas Artman, 2025. https://linear.app/now/quality-wednesdays
 - *A Linear spin on Liquid Glass* — Robb Bohnke, 2025. https://linear.app/now/linear-liquid-glass
 - *Invisible details - Building contextual menus* — Andreas Eldh, 2020. https://linear.app/now/invisible-details
+
+## Kevin Kold / @kvnkld
+
+- X Article 2064972712729292800, "The 10 rules to ship truly polished UI with Claude" (2026-06-16). Folded for magnetic snap zones, state-driven microinteractions, tokenized easing, numeric AI prompting, and the `0.98` restrained press-scale alternate.

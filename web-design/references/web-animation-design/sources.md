@@ -12,3 +12,4 @@ Named voices folded into the body:
 - *Ryo Lu (Cursor) — YC-website roast, 2025 (motion only when earned)*
 - *Andy Madrick + Ridd — Dive Club podcast (YouTube IfPK0LwbX_0; the overcooking hazard)*
 - *Karl Koch (DuckDuckGo) — Dive Club podcast (YouTube 7_VEb9iDW2c; anti-spring-default, physical semantics)*
+- *Kevin Kold / @kvnkld — X Article 2064972712729292800, "The 10 rules to ship truly polished UI with Claude" (2026-06-16): tokenized house easing, numeric AI motion specs, reduced-motion reminder.*
