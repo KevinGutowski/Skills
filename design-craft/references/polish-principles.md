@@ -2,6 +2,14 @@
 
 The concrete, numeric craft values behind `design-craft`. Where the skill body is *how to evaluate and raise quality* (noticing, depth, facets), this reference is *how to make the pixels right*: the recipes for radii, shadows, spacing, motion, and type. Apply when building or reviewing UI code.
 
+## Contents
+
+- **Theme Note** — one coherent value-set; pick one theme, don't average
+- **Quick Reference** — routing table to the deeper execution references
+- **Core Principles (1–22)** — radii, shadows, optical alignment, motion (interruptible/stagger/exit/icon/press), font smoothing, tabular nums, text wrapping, image outlines, hit areas, layout stability, modern CSS, squint test, eased gradients, spacing-scale construction
+- **Common Mistakes / Review Output Format / Review Checklist** — how to run a polish pass
+- **Rendering physics worth knowing · MDS field rules** — the why beneath the values, and live-session heuristics
+
 ## Theme Note
 
 The specific values here (scale magnitudes, stagger delays, shadow recipes, radii) are tuned to work as a coherent set — like a color scheme, they look best when committed to as a whole. If another loaded skill carries different numbers, pick one system's values and apply them consistently rather than averaging across them.
