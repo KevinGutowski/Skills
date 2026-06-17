@@ -2,6 +2,16 @@
 
 *Scope: Emil Kowalski's philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great. An alternate THEME to the main skill's values — pick one theme per project, never average.*
 
+## Contents
+
+- **Core Philosophy** — taste is trained; unseen details compound; beauty is leverage
+- **The Animation Decision Framework** — should it animate at all → purpose → easing → speed → perceived performance
+- **Spring Animations** — when to use, mouse interactions, config, interruptibility
+- **Component Building Principles** — responsive buttons, never animate from scale(0), origin-aware popovers
+- **CSS Transform Mastery / Gesture & Drag / Performance Rules / Accessibility** — clip-path, drag feel, perf budgets, reduced-motion + touch hover
+- **The Sonner Principles** — cohesion, opacity+height, next-day review, asymmetric enter/exit
+- **Stagger Animations · Debugging Animations · Review Checklist**
+
 ## Theme Note
 
 The specific values in this skill (timings, scales, stagger delays, opacities) form a coherent design language — like a color scheme, they hang together as a set. If another design skill is also loaded with different numbers, pick one skill's values and apply them consistently rather than averaging across skills.
