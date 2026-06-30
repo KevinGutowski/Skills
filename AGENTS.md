@@ -7,6 +7,7 @@ Start here:
 1. Read `README.md` for the human index and routing boundaries.
 2. Read `docs/agent-quickstart.md` before installing, auditing, or modifying this repo.
 3. Read `docs/skill-library-ops.md` before folding new sources or changing skill taxonomy.
+4. For agent-standard, product-design, or evidence-to-skill overhauls, read `docs/vercel-product-design-overhaul-2026-06.md` before editing.
 
 Install with explicit root-level paths:
 
@@ -25,6 +26,9 @@ find . -maxdepth 2 -name SKILL.md | sort
 Validation before committing:
 
 ```bash
-python3 scripts/validate_skills.py
+python3 scripts/validate_all.py
+python3 scripts/check_xrefs.py
+python3 scripts/check_vercel_overhaul.py
+python3 scripts/check_vercel_routing_probes.py
 git diff --check
 ```

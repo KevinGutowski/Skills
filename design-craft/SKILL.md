@@ -1,13 +1,13 @@
 ---
 name: design-craft
-description: "The craft skill for raising design quality and making interfaces feel right: a quality methodology (noticing, conceptual range vs depth, facets of quality, live tuning, less-but-better, uncommon care) plus the concrete execution values it routes to (shadows, spacing scales, concentric radii, optical alignment, motion, type). Use to critique or raise quality, decide wider vs deeper, build taste, or polish UI detail. Whether-to-build/strategy → design-principles. Triggers: raise the bar, feels off, make it polished, conceptual range, facets of quality, optical alignment, shadows, stagger animations, tabular numbers, design taste."
+description: "Raise design quality and interface feel through craft methodology, execution values (shadows, spacing, radii, alignment, motion, type), and Linear-style quality rituals/triage. Use to critique or polish UI, build taste, decide wider vs deeper, or make quality practice repeatable. Strategy → design-principles; shaping/bets → shape-up. Triggers: feels off, make it polished, quality ritual, dogfood, unship."
 ---
 
 # Design Craft
 
 The craft skill: how to raise design quality and make interfaces feel right. It holds two altitudes in one place — a **quality methodology** (this body) for evaluating work and deciding how far to push it, and the **execution values** (references) for the concrete recipes once you know what to build. Decide *how good* and *how far* here; drop into the references when it's time to make the pixels right.
 
-*Sources: the methodology draws on Josh Puckett's Interface Craft (interfacecraft.dev); the execution-values references draw on Emil Kowalski (animations.dev), Adam Wathan & Steve Schoger (Refactoring UI), Christian Briggs (PixelJanitor), Matt D. Smith (Shift Nudge), and Linear's product-craft write-ups. Quote sparingly, always attribute, and send readers to the originals.*
+*Sources/gaps: [references/sources.md](references/sources.md) maps the craft corpus; [references/coverage-gaps.md](references/coverage-gaps.md) tracks candidate exemplars/checks. Quote sparingly, always attribute, and send readers to the originals.*
 
 A methodology for consistently producing work above the bar. The articles form one loop: **notice → explore wide → pick → push deep → evaluate against your facets → care past good-enough** — with live tuning and separation of concerns as the working mechanics.
 
@@ -113,6 +113,7 @@ Key moves:
 - **Triage quality by felt risk.** Fix repeated-use jank, trust leaks, wrong-problem signals, and stability promises before optional delight; use scope deletion and named deciders to keep craft decisions fast.
 - **Dogfood with permission to unship.** Turn prototypes on internally, compare old/new cheaply, and remove features that feel wrong without treating removal as failure.
 - **Train noticing.** A small weekly quality ritual works because each person sees different defects; small fixes compound and teach the team to prevent the next paper cut.
+- **Promote evidence, not vibes.** When a quality ritual repeatedly catches the same issue, write the concrete decision, source surface, consequence, exception, and before/after example before making it reusable agent guidance. If code can detect it reliably, move it toward a check; if not, keep it as routed judgment.
 
 ## Practical Demonstrations — the refinement vocabulary (`/library?collection=practical-demonstration`)
 

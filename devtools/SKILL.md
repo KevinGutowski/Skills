@@ -10,6 +10,7 @@ Read exactly one reference file below; each carries the full distillation for it
 - **Devtool interface design** — workbenches not funnels: the five UI zones, control-flow rule, panel layout, CLI progress/output and clean-log rules, command palettes, devtool onboarding to the a-ha moment, agent experience (AX): [references/devtool-interface-design.md](references/devtool-interface-design.md)
 - **Developer go-to-market** — earning adoption and revenue for a *commercial* devtool: landing-page anatomy and hero/CTA choices, the five conversion killers, devtool copywriting, the PMF Compass (TTFV/retention/NRR), free-to-paid: [references/developer-tool-gtm.md](references/developer-tool-gtm.md)
 - **Open source strategy** — making an OSS project adopted, sustainable, profitable: Sitnik's popularity formula, progressive-JPEG README, the promotion loop, maintainer burnout survival, monetization/open core: [references/oss-strategy.md](references/oss-strategy.md)
+- **Sources and gaps** — provenance map and parked candidate standards: [references/sources.md](references/sources.md), [references/coverage-gaps.md](references/coverage-gaps.md)
 
 **GTM ↔ OSS split:** marketing a *commercial* devtool (landing pages, conversion, PMF) → developer-tool-gtm; promoting an *open-source* project (README, stars, promotion loop, monetizing OSS) → oss-strategy. The two reference each other directly — "open source users are users, too" is the bridge; follow the link inside whichever you start in when the question straddles both.
 

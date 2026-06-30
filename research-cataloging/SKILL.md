@@ -1,9 +1,11 @@
 ---
 name: research-cataloging
-description: "Router for research, archiving, and cataloging: provenance bundles, OCR/transcription of scanned docs and audio/video, exhaustive source sweeps, translation promotion, catalog reconciliation, NocoDB/Airtable ops, archival image compression. Use before conversion skills to cover a whole site/course/source set, or whenever you need a transcript. Read one named reference. Triggers: research bundle, Wayback, OCR, coverage ledger, transcript, captions, YouTube, podcast, yt-dlp, Whisper, NocoDB, Airtable, compress image."
+description: "Router for research, archiving, and cataloging: provenance bundles, OCR/transcription, exhaustive source sweeps, translation promotion, catalog reconciliation, NocoDB/Airtable ops, and archival image compression. Use before conversion skills to cover a whole site/course/source set, or whenever you need a transcript. Read one reference. Triggers: Wayback, OCR, coverage ledger, captions, yt-dlp, Whisper."
 ---
 
 # Research & Cataloging (router)
+
+**Sources/gaps:** [references/sources.md](references/sources.md) maps the research/cataloging references; [references/coverage-gaps.md](references/coverage-gaps.md) parks source completeness, transcript, database, and handoff standards.
 
 Read exactly one reference file below; each holds the full discipline for its area.
 
@@ -14,6 +16,7 @@ Read exactly one reference file below; each holds the full discipline for its ar
 - [references/nocodb-catalog-management.md](references/nocodb-catalog-management.md) — NocoDB operations: bases/tables/fields, records, linked-record relations, attachments, gallery views, CSV sync.
 - [references/image-archival.md](references/image-archival.md) — shrinking oversized images (PNG/TIFF/PSD) to visually identical smaller files: WebP/JPEG/AVIF re-encode, verify lossless, never overwrite originals. (Applies outside research contexts too — any "huge image, compress it" request.)
 - [references/openai-transcription-chunking.md](references/openai-transcription-chunking.md) — transcribing audio/video into auditable transcript evidence: caption-first preflight with `yt-dlp` (YouTube, Instagram, Reels, TikTok, Vimeo, podcasts), then OpenAI/Whisper ASR when captions are missing, with chunking, hallucination audits, and per-chunk retries. Use whenever you need the actual words from a recording — including studying a creator's voice — rather than a webpage's paraphrase.
+- [references/coverage-gaps.md](references/coverage-gaps.md) — parked candidate standards for pagination completeness, transcript evidence, database write posture, source-to-skill handoff packets, and scanned-corpus sidecars.
 
 Chains: research → reconciliation → NocoDB sync is the common pipeline; [references/archival-research.md](references/archival-research.md) is the entry reference and its Related-references block routes onward.
 

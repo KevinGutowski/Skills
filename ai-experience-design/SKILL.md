@@ -6,7 +6,10 @@ description: "Design AI/ML-powered experiences — confidence as actions, attrib
 # AI Experience Design
 
 **Sources:** [references/sources.md](references/sources.md) — 2 WWDC sessions + CapWords article + Ryo Lu + Dive Club.
+Park weak AI-product standards in [coverage-gaps.md](references/coverage-gaps.md) until they have stable evidence, scope, and accepted examples.
 With ML, you design **how the product works, not just how it looks** — "machine learning decisions are all design decisions." The 2019 interface patterns remain the vocabulary; 2025 adds the generative model layer (prompting, guardrails, eval). Also see `design-principles`' *Responsibility* section, which already demands anticipating model harm.
+
+Boundary for agent-standard work: product AI and agent surfaces live here when users experience the AI inside the product. Repository agents, CLAUDE/AGENTS rules, skill packaging, evidence-intake loops, and design-system context packs route to `working-with-ai`, `creating-skills`, and `design-systems`.
 
 ## The four design surfaces (2019)
 

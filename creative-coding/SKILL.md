@@ -5,7 +5,7 @@ description: "Build procedural/generative visual systems: canvas/p5/Processing s
 
 # Creative Coding
 
-**Sources:** [references/sources.md](references/sources.md) — Shiffman, *The Nature of Code* (2012) + Gross/Bohnacker/Laub/Lazzeroni, *Generative Design* (p5.js edition). API examples are era-tagged: Processing and p5.js details date; verify current canvas/p5/Three/WebGL APIs before prescribing exact syntax.
+**Sources/gaps:** [references/sources.md](references/sources.md) — Shiffman, *The Nature of Code* (2012) + Gross/Bohnacker/Laub/Lazzeroni, *Generative Design* (p5.js edition); unresolved API/fixture candidates in [references/coverage-gaps.md](references/coverage-gaps.md). API examples are era-tagged: Processing and p5.js details date; verify current canvas/p5/Three/WebGL APIs before prescribing exact syntax.
 
 Use this skill for code-first visual systems whose output comes from rules, parameters, simulation, or data. The operating question is Shiffman's: "How do we define the rules that govern the behavior of our objects?"
 

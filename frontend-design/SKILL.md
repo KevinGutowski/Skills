@@ -6,6 +6,8 @@ license: Complete terms in LICENSE.txt
 
 This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.
 
+**Sources/gaps:** [references/sources.md](references/sources.md) maps the visual-generation corpus; [references/coverage-gaps.md](references/coverage-gaps.md) tracks generation fixtures, asset rules, and anti-slop checks that need evidence.
+
 The user provides frontend requirements: a component, page, application, or interface to build. They may include context about the purpose, audience, or technical constraints.
 
 ## Theme Note

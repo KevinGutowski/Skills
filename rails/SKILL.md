@@ -5,6 +5,8 @@ description: "Router for Ruby/Rails work: four schools, webhooks, migrations, mu
 
 # Rails (router)
 
+**Sources/gaps:** [references/sources.md](references/sources.md) maps which Rails references already have provenance; [references/coverage-gaps.md](references/coverage-gaps.md) lists places where rules should stay project-local until source-backed.
+
 Pick the school first — **vanilla 37signals ([references/dhh-style.md](references/dhh-style.md)) is the DEFAULT**; escalate only on named pains — then the topic file. Read exactly one reference file; its full body loads on demand.
 
 **Schools:** [references/dhh-style.md](references/dhh-style.md) (vanilla default — fat models, concerns, Hotwire, Solid suite; owns database-per-tenant architecture) · [references/layered-rails.md](references/layered-rails.md) (Evil Martians extraction — named layers, Action Policy, gem map) · [references/rails-event-sourcing.md](references/rails-event-sourcing.md) (Arkency — DDD, events, aggregates; carries the full four-school router) · [references/ruby-refactoring.md](references/ruby-refactoring.md) (thoughtbot smell→refactoring catalog). Route by project; never blend schools in one codebase.

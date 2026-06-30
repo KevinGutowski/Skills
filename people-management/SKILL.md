@@ -5,6 +5,8 @@ description: "Run a team of direct reports — 1:1s and trust, feedback, career 
 
 # People Management
 
+**Sources/gaps:** [references/coverage-gaps.md](references/coverage-gaps.md) tracks candidates that need current/legal/org-specific review before promotion.
+
 **Sources** (quotes verified against the texts):
 - Kim Scott, *Radical Candor* (2017)
 - Julie Zhuo, *The Making of a Manager* (2019)

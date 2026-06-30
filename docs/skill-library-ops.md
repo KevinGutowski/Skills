@@ -61,6 +61,20 @@ Use the lightest gate that matches the change:
 - **New skill:** source bar check, README row, routing probes, validator, and a grep audit for missing relationship links.
 - **Consolidation or rename:** before/after probes, corpus-wide edge remap, independent grep audit with zero dangling live names, and rollback if routing worsens.
 
+## Agent-Standard Governance
+
+Use the Vercel product-design pattern when a source teaches how agents should repeatedly make or review product/design decisions. See `docs/vercel-product-design-overhaul-2026-06.md` for the current overhaul ledger.
+
+- Start with repeated decisions, not broad adjectives. A rule like "destructive actions use Verb + Noun" is usable; "copy should be clear" is not.
+- Separate the entry point from the evidence. `SKILL.md` resolves mode, scope, boundaries, and reference routing; references hold source-grounded method; examples and exemplars show repeatable decisions; coverage gaps keep weak evidence from becoming fake certainty.
+- Give reusable rules stable names when they may be cited by reviews, evals, or scripts. Include scope, rule, why, exceptions, and source.
+- Prefer deterministic checks only when code or text can identify the failure reliably, avoid likely false positives, and suggest a concrete fix. Otherwise keep the rule in agent guidance.
+- Run `python3 scripts/check_vercel_overhaul.py` after agent-standard edits to verify the audit matrix, description cap, required artifacts, and source/gap scaffolding.
+- Run `python3 scripts/check_vercel_routing_probes.py` after routing-probe edits to verify the probe fixture and generated packet.
+- Test retrieval separately from application. A routing miss and a bad rule application are different failures.
+- Keep collection separate from judgment. Raw evidence intake should gather links, files, comments, examples, and nearby context; a separate review step decides whether each candidate becomes guidance, exemplar, lint/eval, coverage gap, or no change.
+- Require human acceptance before promoting a candidate into a reusable standard. Record scope, rationale, evidence, exceptions, and an approver.
+
 ## Agent-Facing Repo Instructions
 
 Keep the repo's first-contact path explicit. A real agent trace showed `skill-installer` failing because it assumed `skills/.curated`; the agent recovered only after manually inspecting the GitHub tree.
@@ -104,6 +118,9 @@ The source map is the anti-duplication tool.
 
 ```bash
 python3 scripts/validate_all.py
+python3 scripts/check_xrefs.py
+python3 scripts/check_vercel_overhaul.py
+python3 scripts/check_vercel_routing_probes.py
 git diff --check
 rg -n "old-skill-name|dangling-reference" .
 python3 scripts/verify_quotes.py SOURCE... <<'EOF'
