@@ -5,7 +5,7 @@ description: "Grow an audience-led indie product as a designer/maker — build i
 
 # Building in Public
 
-**Sources:** [references/sources.md](references/sources.md) — 6 Config talks + Valio Con + Show Your Work! + Dive Club.
+**Sources/gaps:** [references/sources.md](references/sources.md) — 6 Config talks + Valio Con + Show Your Work! + Dive Club; platform/audience candidates in [references/coverage-gaps.md](references/coverage-gaps.md).
 
 The task: you're a designer/maker launching your own thing — build the audience *while* building the product, validate before you ship, and make it pay as a team of one. (Devtool landing pages/PMF → `devtools` (developer-tool-gtm); OSS promotion → `devtools` (oss-strategy); onboarding flows → `user-onboarding`.)
 

@@ -6,7 +6,10 @@ description: "Prototype and present design work across three tiers — fake-it (
 # Design Prototyping & Presenting
 
 **Sources:** [references/sources.md](references/sources.md) — 6 WWDC sessions + 2 ADA articles + Config, Dive Club, and field sources.
+Park weak eval/prototype standards in [coverage-gaps.md](references/coverage-gaps.md) until they have stable evidence, fixtures, and accepted examples.
 The trap is *idea → build → disappointment*. "The more prototypes we can put between your idea and your application, the better the result." The mantra: **"Make fake apps, show people, and learn from their feedback. And do that over and over again until the experience of your app feels great."** Prototype to *test* ideas (build the right thing) and to *get new* ideas.
+
+When a prototype becomes an eval fixture for an agent or skill, keep the fixture hermetic and separate retrieval from application: expected skill loaded, references used, before/after artifact, rubric, hidden holdout expectation, and human preference reason. Route packaging mechanics to `creating-skills`; use this skill for the prototype question and evidence loop.
 
 ## Choose the tier first
 

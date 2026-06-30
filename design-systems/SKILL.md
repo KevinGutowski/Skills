@@ -5,7 +5,7 @@ description: "Build, govern, and scale a design system — token architecture, t
 
 # Design Systems
 
-**Sources:** [references/sources.md](references/sources.md) — 9 Figma Config talks ('24–25) + Dive Club + books; worked examples in [references/field-notes.md](references/field-notes.md).
+**Sources:** [references/sources.md](references/sources.md) — 9 Figma Config talks ('24–25) + Dive Club + books; worked examples in [references/field-notes.md](references/field-notes.md); unresolved promotion candidates in [references/coverage-gaps.md](references/coverage-gaps.md).
 A design system is a **product with customers**, not a library: "treat it like a product team — clear OKRs, roadmap, customers — or it won't succeed" (Rahimi). The deeper frame (Henry Modisett, Linear): a DS is *quality infrastructure* — "if you make it so hard to make a bad button, you're going to have less bad buttons." Sell it honestly: "a design system is not the most efficient way to build things… it must have clear business impact and ROI" — the pitch that works is per-stakeholder incentive alignment: "components for free, performance for free, dark mode for free" (Coinbase), accessibility and i18n free.
 
 ## Opinions are the product
@@ -80,6 +80,7 @@ A design system is a **product with customers**, not a library: "treat it like a
 ## The design system as AI context
 
 - "The best time to invest in design systems — LLMs are really good at understanding the structure of a design system" (Weekes). Default prompt-to-app output converges on the same generic look; **your DS fed as context (Code Connect, token JSON, component specs) is how generated UI keeps your identity.**
+- **Use the DS as the mechanical substrate, not the whole agent standard** (Vercel product-design pattern): expose tokens, component APIs, recipes, allowed composition paths, lintable rules, and canonical product names. Put product judgment, exceptions, and surface-specific examples in routed skills/references; put missing standards in coverage gaps rather than inventing them from one component.
 - **Primitives once, extrapolated forever** (Lovin): "if you spend the time really really really sweating the details on a good set of primitives once, AI's so good at not only reusing, but also extrapolating" — hand-sweat the primitive set, let agents do the long tail. The converse is Ouriach's **landfill warning**: generation without a system "will just pile up like a landfill… somebody's going to have to fix it."
 - **Build bricks** (Ryo Lu): "AI is really good at composing parts… we need to build really good bricks" — suck shipped patterns into the system so agents compose instead of reinvent. The DS team's emerging job is de-slop: agents lose exactly the details a mock encoded ("you want this easing curve to be exactly this value… the AI won't know what that is").
 - **Make the polish layer token-addressable** (Kevin Kold, 2026): if an agent can only see colors and spacing, it will invent the rest. Export durations, easing curves, spring presets, radii, shadow stacks, press scales, snap thresholds, and state treatments with stable names; mirror those names 1:1 in Figma variables/styles and code. Then prompts can say "use only these tokens, no one-off values" instead of asking for "premium" polish.

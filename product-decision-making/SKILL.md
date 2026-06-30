@@ -6,8 +6,11 @@ description: "Make product decisions with data, design judgment, and user-proble
 # Product Decision Making
 
 **Sources:** [references/sources.md](references/sources.md) — Julie Zhuo's personal site, The Looking Glass/Substack archive, Medium archive, and selected product/AI interviews and talks. Deeper source notes: [field-notes.md](references/field-notes.md).
+Park weak candidate standards in [coverage-gaps.md](references/coverage-gaps.md) until they have stable evidence and accepted examples.
 
 This skill owns the product-judgment layer: deciding what to build, what evidence matters, and how to turn diagnosis into action. Process systems route to `shape-up`; research methods route to `user-research`; stakeholder buy-in routes to `design-org-influence`; AI feature UX routes to `ai-experience-design`.
+
+When a product decision should become reusable agent guidance, keep it in candidate form until the evidence is stable: audience, problem, decision, rationale, source, exceptions, and what would falsify it. Route skill packaging or lint/eval mechanics to `creating-skills`; keep the product judgment here.
 
 ## The three product-review questions
 

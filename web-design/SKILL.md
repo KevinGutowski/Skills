@@ -5,6 +5,8 @@ description: "Router for web design: typography, accessibility, animation values
 
 # Web Design
 
+**Sources/gaps:** [references/sources.md](references/sources.md) maps the web craft corpus; [references/coverage-gaps.md](references/coverage-gaps.md) tracks browser/API/platform drift and rules that need mechanical checks.
+
 For a focused question, read the single reference file that matches it — each carries the full distillation for its area (deeper worked examples, sources, and code live in a same-named subdirectory next to it). For a **build** that legitimately spans areas — a page typically needs typography *and* color *and* animation at once — read each relevant reference together; the one-file rule optimizes Q&A lookups, not builds.
 
 - **Typography** — measure, line-height, type scales, font choosing/pairing, OpenType features, web-font loading (FOUT/`font-display`): [references/web-typography.md](references/web-typography.md)

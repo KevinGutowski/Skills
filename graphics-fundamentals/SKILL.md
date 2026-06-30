@@ -5,6 +5,8 @@ description: "Explain the technical fundamentals beneath design software — how
 
 # Graphics Fundamentals
 
+**Sources/gaps:** [references/sources.md](references/sources.md) maps the technical source corpus; [references/coverage-gaps.md](references/coverage-gaps.md) tracks areas where specs, tools, or legal/a11y standards should be verified.
+
 Distilled from Dan Hollick, *Making Software* (makingsoftware.com) — 13 chapters of purchased content, adapted and extended for this library. Quote sparingly and always attribute: Dan Hollick, *Making Software*, makingsoftware.com/chapters/\<slug\>. Send readers to the source for the full treatment.
 
 This is a **hub/reference skill**: explainer knowledge, not task workflows. It fires as a backstop when a design or engineering task needs the why-mechanism underneath the tool.

@@ -5,7 +5,7 @@ description: "Win org buy-in for design via business-case framing. Use when pitc
 
 # Design Org Influence
 
-**Sources:** [references/sources.md](references/sources.md) — Femke corpus + Dive Club interviews + Nabors/Heath/Buley books.
+**Sources/gaps:** [references/sources.md](references/sources.md) — Femke corpus + Dive Club interviews + Nabors/Heath/Buley books; unresolved promotion candidates in [references/coverage-gaps.md](references/coverage-gaps.md).
 ## Core reframe: it's the framing, not the design
 
 **"It's not your design they don't trust, it's how you're framing the value."** Rejection is rarely about craft, leadership, or politics — it's solution-first thinking: falling in love with a solution before understanding the business problem, presenting features instead of outcomes. The designers who consistently get ideas approved "think business first and design second."

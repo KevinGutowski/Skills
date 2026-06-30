@@ -5,7 +5,7 @@ description: "Plan and troubleshoot photographic lighting for portraits, product
 
 # Photographic Lighting
 
-Sources: [references/sources.md](references/sources.md) — Hunter/Biver/Fuqua's *Light: Science & Magic* for lighting physics and surface diagnosis; Tony Northrup for field, flash, and portrait practice.
+Sources/gaps: [references/sources.md](references/sources.md) — Hunter/Biver/Fuqua's *Light: Science & Magic* for lighting physics and surface diagnosis; Tony Northrup for field, flash, and portrait practice. Unresolved setup examples live in [references/coverage-gaps.md](references/coverage-gaps.md).
 
 Use this skill when the user needs to make a photograph work by changing light: portraits, products, shiny objects, glass, black-on-black, white-on-white, room flash, outdoor sun, glare, catchlights, or shadow shape. Do not use it for image file compression (`research-cataloging` (image-archival)) or graphics/rendering internals (`graphics-fundamentals`).
 

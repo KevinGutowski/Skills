@@ -5,7 +5,7 @@ description: "Create brand marks, badges, and identity systems via the Peters me
 
 # Logo Design (the Peters Method)
 
-**Sources** — Primary method: Allan Peters, *Logos that Last: How to Create Iconic Visual Branding* (Rockport, 2023). Corroborator: Gal Shir, *60 Tips for Logo Design* (2025; OCR'd image PDF, distill-only). Like `user-onboarding` (Hulick method), this is **one practitioner's complete working method** with a second practitioner's checklist folded in where it sharpens the process. Worked client cases live in [references/worked-cases.md](references/worked-cases.md).
+**Sources/gaps** — [references/sources.md](references/sources.md) maps the Peters/Shir corpus; unresolved client/example candidates live in [references/coverage-gaps.md](references/coverage-gaps.md). Worked client cases live in [references/worked-cases.md](references/worked-cases.md).
 
 A logo here is a **containerless system** — mark, logotype, badge, patterns, icons — that must work on a water tower, a favicon, and an embroidered hat. (An app icon is a single artwork in an OS-owned container — a different task shape; see Relationships.)
 

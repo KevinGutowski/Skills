@@ -5,7 +5,7 @@ description: "Apply Apple's eight design principles — purpose, agency, respons
 
 # Principles of Great Design
 
-**Sources:** [references/sources.md](references/sources.md) — 4 WWDC sessions + Ryo Lu + MDS interviews.
+**Sources/gaps:** [references/sources.md](references/sources.md) — 4 WWDC sessions + Ryo Lu + MDS interviews; unresolved promotion candidates in [references/coverage-gaps.md](references/coverage-gaps.md).
 *As of June 2026 the HIG carries a reintroduced, canonical **Design principles** page (fetch via the `apple-design` (hig) skill, slug `design-principles`) — this skill is the reasoning companion; check that page when exact current wording matters.*
 
 Design is **making something with intention** — focusing on what's most important to people so you build something they'll truly value. Every feature you add asks the user for their **time, attention, and trust** — valuable things you can't waste. So choosing what to build is often a matter of deciding what *not* to include.

@@ -5,7 +5,7 @@ description: "Designs courses, workshops, training, tutorials, and job aids that
 
 # Learning Experience Design
 
-**Source** — Julie Dirksen, *Design For How People Learn* (New Riders), a single deep method for designing learning experiences. Density verdict: HIGH for this corpus because no existing skill owns general training/curriculum design; create rather than fold. Supplemental: Lidwell/Holden/Butler, *Universal Principles of Design* (2003), for advance organizers.
+**Sources/gaps** — [references/sources.md](references/sources.md) maps the Dirksen/UPD corpus; unresolved training artifacts and measurement candidates live in [references/coverage-gaps.md](references/coverage-gaps.md).
 
 ## Start With The Gap
 
