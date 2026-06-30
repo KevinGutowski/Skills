@@ -5,6 +5,8 @@ description: "Run and price client design work: qualification, kickoff, feedback
 
 # Client Work
 
+**Sources/gaps:** [references/sources.md](references/sources.md) maps the client-engagement and pricing corpus; [references/coverage-gaps.md](references/coverage-gaps.md) tracks legal/contract and exemplar candidates.
+
 Read exactly one reference file below; each carries the full distillation for its area (deeper worked examples, sources, and scripts live in a same-named subdirectory next to it).
 
 - **Engagement mechanics** — qualifying clients before scoping, kickoff, sign-off gates, the feedback system (honesty preamble, like-ban, one voice), health signals and anti-patterns, mistakes and come-to-Jesus meetings, firing or being fired, testing with clients: [references/client-engagements.md](references/client-engagements.md)

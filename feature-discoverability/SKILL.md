@@ -5,7 +5,7 @@ description: "Make app features discoverable — first launches that lead with c
 
 # Feature Discoverability
 
-**Sources:** [references/sources.md](references/sources.md) — 3 WWDC sessions + Ryo Lu.
+**Sources/gaps:** [references/sources.md](references/sources.md) — 3 WWDC sessions + Ryo Lu; unresolved TipKit/current-feature-teaching gaps in [references/coverage-gaps.md](references/coverage-gaps.md).
 
 "Your app doesn't get a second chance at a first impression" — and onboarding tutorials don't work ("I always skip through these onboarding screens"). Discoverable means people "can look at a screen and, before they touch anything, know what they can do, and how." **Learning by doing beats reading instructions.**
 

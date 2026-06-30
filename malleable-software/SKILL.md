@@ -5,7 +5,7 @@ description: "Design software users can reshape — expose structure instead of 
 
 # Malleable Software
 
-**Sources:** [references/sources.md](references/sources.md) — Litt: Dive Club interview + nightmare-bicycle post + Ink & Switch essay. ⚠️ Dive Club quotes come from the auto-transcript with garbles corrected: "humanity collaboration" = human-AI collaboration, "non-extual" = non-textual, "SAS" = SaaS, "Incan/Incin Switch" = Ink & Switch, "Andy Desessa" = Andrea diSessa.
+**Sources/gaps:** [references/sources.md](references/sources.md) — Litt: Dive Club interview + nightmare-bicycle post + Ink & Switch essay; unresolved product/AI examples in [references/coverage-gaps.md](references/coverage-gaps.md). ⚠️ Dive Club quotes come from the auto-transcript with garbles corrected: "humanity collaboration" = human-AI collaboration, "non-extual" = non-textual, "SAS" = SaaS, "Incan/Incin Switch" = Ink & Switch, "Andy Desessa" = Andrea diSessa.
 
 The worldview: "The original promise of personal computing was a new kind of clay—a malleable material that users could reshape at will. Instead, we got appliances: built far away, sealed, unchangeable" (Ink & Switch). Goal: "a software ecosystem where anyone can adapt their tools to their needs with minimal friction." Use this skill as a value system when deciding how much of a product users may reshape, and how.
 

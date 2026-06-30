@@ -10,5 +10,6 @@ Read the reference that matches the task:
 - **Choosing a chart** (which type fits the data and question; building dashboards, reports, decks, frontend visuals): [references/chart-selection.md](references/chart-selection.md)
 - **Critiquing or redesigning** (graphical integrity, data-ink ratio, chartjunk, small multiples, dense displays, visual encodings): [references/tufte.md](references/tufte.md)
 - **Editorial and interactive chart craft** (NYT/Upshot-style chart pages, dashboard polish, direct labels, annotations, hover hit testing, tooltip behavior, mobile prepublish checks): [references/editorial-interaction.md](references/editorial-interaction.md)
+- **Sources and gaps** — provenance map and parked candidate standards: [references/sources.md](references/sources.md), [references/coverage-gaps.md](references/coverage-gaps.md)
 
 Typical flow: select the type first (chart-selection), refine integrity/density with the critique principles (tufte), then use editorial-interaction when the chart must ship as a polished page, dashboard, or interactive artifact. For the *in-app experience* around a chart — platters, progressive disclosure, Swift Charts, Audio Graphs, accessibility labels — use `apple-design` (chart-experience-design) instead.

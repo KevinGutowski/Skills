@@ -5,7 +5,7 @@ description: "Design notifications worth receiving — when a notification earns
 
 # Notification Design
 
-**Sources:** [references/sources.md](references/sources.md) — 2 WWDC sessions.
+**Sources/gaps:** [references/sources.md](references/sources.md) — 2 WWDC sessions; current-platform and rule-ID candidates in [references/coverage-gaps.md](references/coverage-gaps.md).
 
 Attention is precious; interrupting people is a privilege — and users can silence or kill a bad channel in two taps. The only sustainable strategy: **fewer, more meaningful, well-organized notifications.** "The best notifications are for connecting people and delivering meaningful information."
 

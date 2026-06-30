@@ -5,7 +5,7 @@ description: "Design and ship a physical product — position the form factor fi
 
 # Hardware Product Design
 
-**Sources:** [references/sources.md](references/sources.md) — 5 Config talks + Fellow/Linear. ⚠️ Humane's process lessons stand, but the Ai Pin failed in market — treat its strategy claims skeptically.
+**Sources/gaps:** [references/sources.md](references/sources.md) — 5 Config talks + Fellow/Linear; unresolved supplier/manufacturing candidates in [references/coverage-gaps.md](references/coverage-gaps.md). ⚠️ Humane's process lessons stand, but the Ai Pin failed in market — treat its strategy claims skeptically.
 
 The task shape: you're making a *thing* — atoms, maybe with software inside. The costs invert vs software (iteration is slow and physical, mistakes ship permanently, inventory is capital), so the discipline inverts too: validate before tooling, parallelize hardware and software, and treat manufacturing as part of the design.
 

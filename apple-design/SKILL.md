@@ -5,6 +5,8 @@ description: "Router for Apple platform design: navigation, search, typography, 
 
 # Apple Platform Design
 
+**Sources/gaps:** [references/sources.md](references/sources.md) maps the local Apple source corpus; [references/coverage-gaps.md](references/coverage-gaps.md) lists platform areas that need live HIG/doc verification before becoming reusable rules.
+
 Read exactly one reference file below; each carries the full distillation for its area (deeper worked examples, sources, and code live in a same-named subdirectory next to it).
 
 - **Navigation & layout** — structuring tabs vs sidebar, push vs modal, sheet/menu rules, destructive confirmations, iPad-native layout and iPadOS 26 windowing, the pointer: [references/apple-navigation-design.md](references/apple-navigation-design.md)

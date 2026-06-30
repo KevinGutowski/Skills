@@ -1,9 +1,11 @@
 ---
 name: swiftui
-description: "SwiftUI implementation and Apple-platform craft — view identity/state resets, layout containers, lazy stacks/scroll performance, springs/transitions/shaders, Swift 6 concurrency, touch gestures and hit targets, widgets, SF Symbols, app sounds. Read this skill's body, then read the named reference file. Triggers: SwiftUI, @State resets, LazyVStack, scroll stutter, spring animation, Metal shader, Sendable, actor, gesture, hit target, WidgetKit, SF Symbol, haptics."
+description: "SwiftUI implementation and Apple-platform craft — view identity/state resets, layout containers, lazy stacks/scroll performance, springs/transitions/shaders, Swift 6 concurrency, gestures/hit targets, widgets, SF Symbols, app sounds. Read the body, then one named reference. Triggers: SwiftUI, @State resets, LazyVStack, scroll stutter, spring animation, Metal shader, Sendable, actor, WidgetKit, haptics."
 ---
 
 # SwiftUI & Apple-Platform Craft
+
+**Sources/gaps:** [references/sources.md](references/sources.md) maps the local WWDC/source coverage; [references/coverage-gaps.md](references/coverage-gaps.md) keeps API-freshness and missing-reference risks out of the router body.
 
 Read exactly one reference file below; each carries the full distillation for its area (deeper code/source files live in a same-named subdirectory next to it).
 

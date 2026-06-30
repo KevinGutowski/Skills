@@ -5,6 +5,8 @@ description: "Drafts, revises, critiques, and coaches nonfiction prose for clari
 
 # Write Clear Prose
 
+**Sources/gaps:** [references/sources.md](references/sources.md) maps the prose craft corpus; [references/coverage-gaps.md](references/coverage-gaps.md) keeps voice-matching, fact-checking, and genre-template candidates visible without overfitting the skill body.
+
 ## Core Stance
 
 Treat writing as thinking made visible. Help the writer discover what they mean, then make the prose easy to follow, alive in the ear, and respectful of the reader's time.

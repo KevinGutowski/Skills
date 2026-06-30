@@ -54,6 +54,10 @@ onboarding; broken scent there cannot be repaired with coachmarks later.
 
 Read the appropriate reference based on context.
 
+When onboarding decisions become reusable agent guidance, preserve the surface and evidence: stage in the journey, current user state, desired quick win, step added/removed, source example, and known exceptions. If a first-run or empty-state pattern lacks evidence, park it as a coverage gap instead of inventing a universal rule from one product.
+
+For provenance and parked candidate rules, see [sources.md](references/sources.md) and [coverage-gaps.md](references/coverage-gaps.md).
+
 ## Universal Rules
 
 1. **Talk about them, not you.** "You can slay from far away!" beats "This thing is totally the best."

@@ -7,6 +7,8 @@ description: "Scope and bet on product work with Basecamp's Shape Up — appetit
 
 Product development methodology from Basecamp built around fixed-time, variable-scope cycles.
 
+**Sources/gaps:** [references/sources.md](references/sources.md) maps Basecamp, Linear, Evil Martians, and metrics-led source schools; [references/coverage-gaps.md](references/coverage-gaps.md) keeps school conflicts and weak process claims visible.
+
 ## Core Principle
 
 **Fixed time, variable scope.** Don't ask "How long will this take?" Ask "How much time is this worth?" The appetite constrains the solution, not the other way around.
