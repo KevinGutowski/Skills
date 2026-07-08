@@ -11,18 +11,19 @@
    has_many :sprites, -> { order(:position, :id) }, dependent: :destroy
    ```
 
-   Then `pokemon.sprites.first` means "first display-positioned sprite," not "whatever row the database returned first." Keep a tiny model method only when it hides a real domain rule beyond ordering, such as "attached image only."
-3. Do not reach for `acts_as_list` just to display records in position order. Add list-management machinery when the app needs insert/move/rebalance behavior, scoped lists, or concurrent reorder semantics.
-4. Avoid `default_scope` for association-specific ordering. Use an association scope when only one parent relationship wants the order; use a named model scope when many callers deliberately opt into the order. Reserve `default_scope` for a truly universal model rule.
-5. Prefer named role associations over predicate methods that re-query or filter in Ruby:
+   Then `pokemon.sprites.first` means "first display-positioned sprite," not "whatever row the database returned first." Keep a tiny model method only when it hides a real domain rule beyond ordering.
+3. Do not hide child records that exist but need repair. If a missing attachment, blank field, or invalid state is bad data that admins should notice, display the ordered association and render an explicit placeholder or warning. Use filters like `sprites_with_images` only when absent data is intentionally invisible.
+4. Do not reach for `acts_as_list` just to display records in position order. Add list-management machinery when the app needs insert/move/rebalance behavior, scoped lists, or concurrent reorder semantics.
+5. Avoid `default_scope` for association-specific ordering. Use an association scope when only one parent relationship wants the order; use a named model scope when many callers deliberately opt into the order. Reserve `default_scope` for a truly universal model rule.
+6. Prefer named role associations over predicate methods that re-query or filter in Ruby:
 
    ```ruby
    has_many :published_comments, -> { where(published: true) }, class_name: "Comment"
    has_one :primary_address, -> { order(primary: :desc, id: :asc) }, class_name: "Address"
    ```
 
-6. Pair association intent with lifecycle options at the declaration point: `dependent:` for ownership, `touch:` when child changes invalidate parent caches, `counter_cache:` when counts are hot, and `inverse_of:` when custom names or foreign keys prevent Rails from inferring the inverse.
-7. Use association-backed queries for absence/presence instead of manual IDs or Ruby filtering: `where.missing(:closure)`, `joins(:closure)`, `left_outer_joins`, and named associations keep the query in Rails vocabulary.
+7. Pair association intent with lifecycle options at the declaration point: `dependent:` for ownership, `touch:` when child changes invalidate parent caches, `counter_cache:` when counts are hot, and `inverse_of:` when custom names or foreign keys prevent Rails from inferring the inverse.
+8. Use association-backed queries for absence/presence instead of manual IDs or Ruby filtering: `where.missing(:closure)`, `joins(:closure)`, `left_outer_joins`, and named associations keep the query in Rails vocabulary.
 
 ## Common Patterns
 
@@ -38,21 +39,25 @@ end
 
 Tie-break with `:id` or another stable column so equal or nil positions do not produce flicker. If nil positions are meaningful, make that choice explicit in the order.
 
-### Domain Methods After Associations
+### Surface Bad Child Data
 
-Associations should carry storage relationship rules; model methods should carry domain meaning.
+Associations should carry storage relationship rules. When the child row exists, do not add a helper that makes invalid display data disappear:
 
 ```ruby
 class Pokemon < ApplicationRecord
   has_many :sprites, -> { order(:position, :id) }, dependent: :destroy
-
-  def display_sprite
-    sprites.detect { |sprite| sprite.image.attached? }
-  end
 end
 ```
 
-The method earns its place because it filters for a usable display image. A method that only returns `sprites.first` usually means the association should be ordered instead.
+Render `pokemon.sprites.first` directly. If that sprite has no attached image, show an explicit `NO IMAGE` placeholder, validation warning, admin repair affordance, or cache/API flag instead of falling through to a later valid sprite. A helper like this is an anti-pattern when missing images are bad data:
+
+```ruby
+def sprites_with_images
+  sprites.select { |sprite| sprite.image.attached? }
+end
+```
+
+The review question is: "Does this scope/helper hide records that exist but need attention?" If yes, keep ordering on the association and surface the defect in the UI, API, cache payload, validation, or repair workflow. Filtering is fine only when absence is acceptable and intentionally invisible.
 
 ### Scoped Associations vs Model Scopes
 
@@ -74,6 +79,7 @@ It is fine to compose them when the scope name already exists and the associatio
 
 - Does any code sort, select, or call `.first` on an association because the association itself lacks the obvious scope?
 - Does a `position`, `rank`, `sort_order`, or `display_order` column have a matching ordered association?
+- Does this scope/helper hide records that exist but need attention?
 - Is a wrapper method hiding domain meaning, or just papering over an underspecified association?
 - Would `has_one` with a scope or named `has_many` read better than ad hoc finder methods?
 - Are ownership and cache invalidation visible on the association declaration?
