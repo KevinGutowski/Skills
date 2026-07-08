@@ -9,6 +9,7 @@ Use this file to preserve SwiftUI/API uncertainty instead of overfitting the rou
 - **Performance fixtures:** Scroll/lazy-stack and animation guidance would benefit from small reproducible fixtures that show the failure and the fix.
 - **Concurrency migration examples:** The skill needs accepted examples for Sendable/actor isolation fixes that avoid both over-annotating and papering over warnings.
 - **Widget interactivity examples:** Add concrete examples only after checking current WidgetKit docs and the target OS.
+- **Parked: dimillian per-component cookbook depth.** Ricouard's skill repo carries ~30 component-level references (TabView, NavigationStack routing, Form, focus, searchable, async media, overlays/toasts, deep links, previews, async-state, theming, input toolbars, loading placeholders, …) beyond the cross-cutting rules folded in 2026-07. That per-component depth stays external — consult https://github.com/dimillian/skills directly when a specific component recipe is needed; fold individual recipes only on repeated local demand.
 
 ## Candidate promotion form
 

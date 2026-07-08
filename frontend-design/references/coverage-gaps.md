@@ -6,7 +6,7 @@ Use this file for frontend-generation guidance that needs screenshots, assets, o
 
 - **Generated UI fixtures:** Add before/after examples only with code, screenshots, viewport checks, and accepted rationale.
 - **Asset sourcing:** Visual-asset rules should distinguish generated images, sourced images, local assets, and code-native visuals with license/provenance where needed.
-- **Anti-slop checks:** Candidate checks include one-note palettes, purple-gradient defaults, text overlap, missing imagery, generic layout, and non-demonstrative hero artifacts.
+- **Anti-slop checks:** Candidate checks include one-note palettes, purple-gradient defaults, text overlap, missing imagery, generic layout, and non-demonstrative hero artifacts. The numeric bands now in SKILL.md ("Checkable slop tells", Bakaus/Leon, dated 2026) drift with training data — re-verify against current model output before tightening or relaxing them, ideally with detector runs or screenshots as evidence.
 - **Theme selection:** Add examples where the right move was bold/distinctive vs restrained/platform-native rather than blending both.
 - **Accessibility/performance:** This skill builds; `web-design` and `design-craft` own many tactical checks. Promote only rules that reliably improve generated frontend outcomes.
 

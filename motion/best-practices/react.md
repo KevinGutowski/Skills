@@ -34,6 +34,17 @@ Two current syntaxes:
 
 **Deprecated** (never use): `useTransform(value, (latestValue) => newValue)`
 
+## AnimatePresence
+
+-   Conditional motion elements need an `AnimatePresence` wrapper and an `exit` prop, or exits won't animate. Dynamic lists inside it need stable unique keys (item IDs, never indexes).
+-   `mode="wait"` runs exit then enter **serially**, nearly doubling perceived duration. Halve per-phase durations (~0.15s each) so the full swap stays ≤300ms.
+-   For lists, use `mode="popLayout"`: exiting items pop out of layout flow instead of competing for space with entering ones (the default/`"sync"` modes let them fight).
+-   Nested `AnimatePresence` needs the `propagate` prop on **both** levels — otherwise children vanish instantly when the parent exits. Keep parent and child exit durations coordinated.
+-   With `usePresence`, always call `safeToRemove` after async work completes (`cleanup().then(safeToRemove)`); a missed call leaks the element in the tree forever.
+-   Gate interactivity on `useIsPresent` — exiting elements must not remain clickable (`disabled={!isPresent}`). Call the hook from a *child* of `AnimatePresence`, not the component that renders it.
+
+(Pitfalls distilled from Raphael Salaja's mastering-animate-presence audit skill: https://github.com/raphaelsalaja/skill)
+
 ## Radix Integration
 
 When integrating with Radix:

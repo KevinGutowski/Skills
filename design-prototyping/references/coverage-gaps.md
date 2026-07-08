@@ -9,6 +9,7 @@ Use this file to park prototype and eval patterns that need stronger evidence be
 - **Agent-generated prototype scoring.** The independent-judge section gives the stance, but needs example rubrics for visual fidelity, interaction feel, state coverage, and product correctness.
 - **Human preference log.** The Jaytel-style skill-lab loop needs a lightweight preference-history form that records what a human preferred and why without leaking the intended answer to future judges.
 - **Client/stakeholder review fixtures.** The presentation sections are strong, but the skill needs examples of review packets for synchronous stakeholder critique versus fresh-user concept feedback.
+- **Cross-session design memory.** Design Lab (0xdesign, https://github.com/0xdesign/design-plugin) ends each run by writing a `DESIGN_MEMORY.md` — brand adjectives, density preference, dark-mode requirement, typography/color decisions, interaction conventions (forms, modal-vs-drawer, feedback style), accessibility rules, and repo primitives — then reads it at the start of the next run to prefill defaults and skip redundant interview questions. Promising for any recurring agent-design collaboration, but needs evidence that persisted memory doesn't lock in early taste or go stale against a redesigned token set; parked until there are accepted examples of a memory file improving (or correctly being overridden in) a later session.
 
 ## Promotion Form
 

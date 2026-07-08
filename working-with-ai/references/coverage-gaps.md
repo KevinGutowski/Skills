@@ -9,6 +9,7 @@ Use this file for AI-tooling guidance that changes too quickly or needs stronger
 - **Fresh-agent validation:** Independent judge/subagent validation should be used only when authorized and isolated from leaked context.
 - **Repo instruction exemplars:** Add accepted AGENTS.md/CLAUDE.md examples only when the rules improved real agent behavior.
 - **AI UI repair fixtures:** Add reproducible before/after UI repair cases with screenshots or code, not only prompt advice.
+- **Model-tell drift:** Per-model visual-defect catalogs (e.g. Impeccable's "Codex-specific defects", 2026) decay as models retrain; re-verify against current model output before enforcing them in repair passes.
 
 ## Candidate promotion form
 

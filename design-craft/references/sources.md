@@ -58,3 +58,13 @@ Transcript access: YouTube `en` captions fetched with `yt-dlp --skip-download --
 ## Kevin Kold / @kvnkld
 
 - X Article 2064972712729292800, "The 10 rules to ship truly polished UI with Claude" (2026-06-16). Folded for magnetic snap zones, state-driven microinteractions, tokenized easing, numeric AI prompting, and the `0.98` restrained press-scale alternate.
+
+## ui-skills.com fold (2026-07)
+
+Skills discovered via ui-skills.com; each folded 2026-07-07.
+
+- **Million (millionco), *Budge*** — https://github.com/millionco/skills. Live-tuning refinements (token-scale snapping, coupled-parameter slides) → SKILL.md § Live tuning.
+- **Damilola Jay, *interface-design*** — https://github.com/Dammyjay93/interface-design. Dark-mode elevation arithmetic (+7/+9/+12%) and sidebar/input/dropdown placement rules → surfaces.md § Elevation Systems; swap test → SKILL.md § Checklist.
+- **Paul Bakaus, *Impeccable*** (polish.md) — https://github.com/pbakaus/impeccable. Drift root-cause taxonomy (missing token / one-off / conceptual misalignment) and detector-is-not-proof → linear-product-craft.md § Quality Rituals.
+- **Zeke Sikelianos, *swiss-design-skill*** — https://github.com/zeke/swiss-design-skill. `color-scheme: light dark` gotcha and opacity-based text hierarchy surviving theme swaps → surfaces.md § Elevation Systems (dark-mode subsection).
+- **Raphael Salaja, *skill*** (mastering-animate-presence, morphing-icons) — https://github.com/raphaelsalaja/skill. AnimatePresence pitfalls → `motion` skill, best-practices/react.md; popLayout rationale and fixed-slot icon-morph geometry → animations.md.

@@ -72,7 +72,7 @@ When you don't know what better looks like:
 
 ## Live tuning (`/library/live-tuning`)
 
-Expose key parameters (duration, easing, spacing, shadows, blur, position, scale) as real-time controls so you *feel* differences instantly instead of edit-save-refresh guessing. Builds intuition faster and surfaces combinations you'd never reach one change at a time (e.g. a "generate N random-parameter iterations in a grid" toggle for generative graphics). Josh ships **DialKit** (`/library/dial-kit`), a React/Motion tuning-panel library; the underlying move is just "ask the agent for a control panel."
+Expose key parameters (duration, easing, spacing, shadows, blur, position, scale) as real-time controls so you *feel* differences instantly instead of edit-save-refresh guessing. Builds intuition faster and surfaces combinations you'd never reach one change at a time (e.g. a "generate N random-parameter iterations in a grid" toggle for generative graphics). Josh ships **DialKit** (`/library/dial-kit`), a React/Motion tuning-panel library; the underlying move is just "ask the agent for a control panel." Two refinements from Million's Budge skill (github.com/millionco/skills): make controls snap through the project's design-token scale — show the token name alongside the value ("`16px · md`") and persist `var(--spacing-md)`, not a raw px literal, with typed digits as the deliberate escape hatch to arbitrary values; and tune coupled parameters together, because visual properties change in correlated groups — a font-size control should expose line-height and letter-spacing beside it, a padding-top control its sibling paddings.
 
 ## Separation of concerns (`/library/separation-of-concerns`)
 
@@ -189,6 +189,7 @@ Tranche 2 (Polly D'Arcy, Wealthsimple — vdYBohOQYm0; Katarina Batina, Shop app
 - [ ] Are this project's facets defined, scored, and driving the critique language?
 - [ ] What can be removed? What overlooked corner deserves uncommon care?
 - [ ] Does it clear the industry bar — and did you start from platform defaults before innovating?
+- [ ] Swap test: replace your typeface with the usual one, your layout with a standard template — "would anything feel different? Where swapping wouldn't matter is where you defaulted." (Damilola Jay, interface-design — github.com/Dammyjay93/interface-design)
 
 ## Relationship to other skills
 

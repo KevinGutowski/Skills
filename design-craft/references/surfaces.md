@@ -324,7 +324,15 @@ People look slightly downward at screens — simulate an overhead light:
 
 ### Dark-mode elevation is colour, not shadow (PUI)
 
-"Shadows can be difficult to see in dark interfaces, so you mostly need to rely on colour to indicate depth." Use "3 background colours to indicate elevation": **Base** (darkest, main background), **Raised**, **Overlay** — three small lightness steps (PUI uses HSB brightness 10/15/20). Keep foregrounds consistently prominent across all three with a transparent foreground palette — see `web-design` (oklch-skill) → Palette Roles & State Layers.
+"Shadows can be difficult to see in dark interfaces, so you mostly need to rely on colour to indicate depth." Use "3 background colours to indicate elevation": **Base** (darkest, main background), **Raised**, **Overlay** — three small lightness steps (PUI uses HSB brightness 10/15/20). Keep foregrounds consistently prominent across all three with a transparent foreground palette — see `web-design` (oklch-skill) → Palette Roles & State Layers. The same transparency move keeps *text* hierarchy stable across theme swaps: opacity steps on one base token (`text-stone-900/70`, `/40`, `/20`) carry into dark mode unchanged when only the base flips (Zeke Sikelianos, swiss-design-skill — github.com/zeke/swiss-design-skill).
+
+Damilola Jay's interface-design skill (github.com/Dammyjay93/interface-design) supplies the step arithmetic and the placement rules that follow from it. Each elevation jump is "only a few percentage points of lightness — e.g. dark mode base → +7% → +9% → +12%": barely visible in isolation, but stacked, the hierarchy emerges — "whisper-quiet shifts you feel rather than see." Defaults derived from that system:
+
+- **Sidebars share the canvas background**, not a different color — a different color "fragments the space into 'sidebar world' and 'content world'"; a subtle border is enough.
+- **Inputs go slightly *darker* than their surroundings**, not lighter: "inputs are inset — they receive content," and the darker fill signals "type here" without heavy borders.
+- **Dropdowns/popovers sit exactly one level above their parent surface**, "or they blend in and layering is lost."
+
+One prerequisite for any dark surface system: declare `color-scheme: light dark` on `<html>` (or via `<meta name="color-scheme">`, which is parsed before CSS and prevents the flash). Without it, scrollbars, native form controls, and the pre-CSS canvas render light against the dark page — "Tailwind only restyles your code. The browser still renders scrollbars, native form controls, and the canvas before CSS loads using its own defaults." (Zeke Sikelianos, swiss-design-skill)
 
 ### Shadow value-systems menu
 

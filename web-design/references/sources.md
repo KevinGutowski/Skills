@@ -10,6 +10,7 @@ This is a top-level provenance map for the web-design router.
 - `web-performance.md` covers Core Web Vitals, perceived performance, budgets, main-thread/offload decisions, and frame health.
 - `form-design.md` covers field choice, layout, button weights, destructive friction, and form usability.
 - `oklch-skill.md` covers OKLCH, palette generation, contrast, gamut/P3, and Tailwind theming.
+- `web-sound.md` covers UI audio feedback on the web: appropriateness defaults, accessibility gating, HTMLAudio/AudioContext playback, and Web Audio synthesis recipes (Raphael Salaja's skill library; philosophy layer lives in `swiftui` (sound-design)).
 - `social-video-safe-zones.md` covers 9:16 platform chrome safe zones for social video.
 
 ## Promotion rule

@@ -37,9 +37,25 @@ Inputs (properties, bindings, environment, state, observed objects) form a **dep
 - **Debugging re-render storms** (same lab): besides `Self._printChanges()` there's `_logChanges` (which "uses OS logging"); a random background color makes body re-evaluation visible (great during resize); when output says `self` changed, the whole view value changed — "crawl up to the" parent to find why. The underscore is "a signal to not ship this" — the string generation has real overhead. The SwiftUI instrument's graph is often simpler than print-spelunking.
 - **Inert modifiers over branches:** a modifier whose body contains `if expired { content.opacity(0.3) } else { content }` silently creates two identities. Fold the condition into the value — `.opacity(isExpired ? 0.3 : 1)`; `opacity(1)` is *inert* (no render effect, cheap, pruned). Same trick: `transformEnvironment` for conditional environment writes.
 
+## State ownership — decide the location first, then the wrapper
+
+Practitioner decision table (Thomas Ricouard — @dimillian, Ice Cubes — swiftui-ui-patterns skill, https://github.com/dimillian/skills; third-party guidance, not Apple). The operational rule: **choose where the state should live first, then pick the narrowest wrapper that matches that ownership** — and don't introduce a reference-type model when plain value state is enough (a needless `@Observable` class trades away value semantics and widens the dependency graph for nothing).
+
+| Scenario | Use |
+|---|---|
+| Local UI state owned by one view | `@State` |
+| Child mutates parent-owned value state | `@Binding` |
+| Root-owned reference model (iOS 17+) | `@State` holding an `@Observable` type |
+| Child reads/mutates an injected `@Observable` model (iOS 17+) | plain stored property, passed explicitly |
+| Shared app service or configuration | `@Environment(Type.self)` |
+| iOS 16-and-earlier fallback (`ObservableObject`) | `@StateObject` at the root, `@ObservedObject` when injected, `@EnvironmentObject` only for truly app-shared state |
+
+This is the wrapper-selection layer on top of this file's lifetime model: whichever wrapper you pick, its storage is allocated and destroyed with the view's *identity* (see Lifetime above).
+
 ## Checklist
 
 - [ ] Branches only where there are truly *different* views; states-of-one-view expressed as modifier values?
+- [ ] Ownership location decided before the wrapper; no reference model where value state suffices; iOS 16 targets mapped to `@StateObject`/`@ObservedObject`?
 - [ ] No AnyView where ViewBuilder/generics work?
 - [ ] Identifiers stable (survive edits) and unique (no name collisions); never indices or fresh UUIDs?
 - [ ] State that must outlive an identity lifted to a model or parent binding?
