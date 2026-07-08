@@ -42,6 +42,7 @@ A fluid interface is one where "the tool feels like an extension of your mind" �
 - **Detect gestures in parallel, cancel losers** — show feedback immediately, withdraw it if another gesture wins; avoid end-only recognizers.
 - **Teach by showing:** clip content at edges to invite scrolling; float interactive elements on their own plane; align a static animation with its gesture (Safari's tab-close X slides the tab left). Play is the tutorial: "you feel like you're discovering the interface."
 - **Prototype interactively** — "the interactive demo… is really worth a million static designs" (the how lives in `design-prototyping`).
+- **Scroll-driven reveals: one progress value** (Thomas Ricouard — @dimillian, Ice Cubes; practitioner guidance, not Apple): when a surface reveals secondary content by scrolling or swiping it away (media detail → actions page), build it as a *paged vertical ScrollView* and derive **one normalized `progress` (0…1) from the real scroll offset** — measure the reveal distance with `onGeometryChange` rather than hard-coding the divisor — then drive *every* visual change (offset, opacity, blur, scale, toolbar state, affordance flip) from that single value. Don't store derived booleans (`isExpanded`, `isSnapped`), and don't build a **parallel gesture state machine unless scroll alone genuinely can't express the interaction** — duplicated sources of truth are exactly what makes these surfaces glitch when interrupted mid-flight, breaking the interruptibility rules above. If a control appears to travel from the primary surface into the secondary one, render *one* overlay interpolated by `progress` between two anchors, not two visible copies (duplicate hit targets). *API era: `onScrollGeometryChange`/`onGeometryChange` are iOS 18-era — verify against current docs.*
 
 (Spring tuning — damping/response, momentum-rewarding overshoot — lives in [swiftui-animation.md](swiftui-animation.md)'s spring section, sourced from this same talk.)
 
@@ -62,6 +63,7 @@ A fluid interface is one where "the tool feels like an extension of your mind" �
 - [ ] Did you actually try the variants on a device, in context?
 - [ ] Gestures: hysteresis ~10pt, axis locked at threshold, 1:1 tracking from the grab point, momentum transferred on release?
 - [ ] Everything interruptible mid-animation; boundaries rubberbanded; snap targets chosen by projected intent?
+- [ ] Scroll-reveals driven by one normalized progress from real offset — no derived booleans, no parallel gesture machine scroll could replace?
 
 See `touch-interaction-design/fluid-interfaces.md` for the full Fluid Interfaces distillation (principles, dynamic motion, gesture design, the projection code).
 

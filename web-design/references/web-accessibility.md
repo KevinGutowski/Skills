@@ -2,9 +2,23 @@
 
 *Scope: Accessible-web practice — semantic HTML first, keyboard/focus, contrast, testing. Use for building or auditing accessible sites. Apple → apple-design; type → web-typography; error copy → ux-writing; disabled-participant research → user-research. Triggers: web accessibility, WCAG, a11y audit, screen reader, keyboard navigation, ARIA, alt text, focus management.*
 
-**Sources:** [references/sources.md](web-accessibility/sources.md) — Kalbag's Accessibility for Everyone + Writing Is Designing ch. 5 + Practical UI/Refactoring UI.
+**Sources:** [references/sources.md](web-accessibility/sources.md) — Kalbag's Accessibility for Everyone + Writing Is Designing ch. 5 + Practical UI/Refactoring UI; audit/CI discipline from AccessLint (claude-marketplace), Julien Thibeaut (ibelick, ui-skills fixing-accessibility, MIT), and rams.ai.
 
 The durable practice layer for accessible websites. Standards-era warning up front: Kalbag wrote against **WCAG 2.0**; current is **WCAG 2.2** (2.x success criteria are additive, so her criteria still hold) and EAA enforcement began June 2025 — **verify every standards, tooling, or legal specific against current WAI/MDN docs** (see Staleness appendix). Extended passages: [references/source-extracts.md](web-accessibility/source-extracts.md).
+
+## Contents
+
+- 1 Framing: universal, not bolted-on
+- 2 Assistive-technology discipline
+- 3 Priority order
+- 4 Keyboard & focus mechanics
+- 5/5b Contrast nuance; metrics & compliance tactics
+- 6 Forms & errors
+- 7 Writing accessibly
+- 8 Rich media
+- 9 The testing program (walkthrough order, code-review greps, CI/audit discipline)
+- 10 Org layer
+- Checklist · Staleness appendix · Relationship to other skills
 
 ## 1. Framing: universal, not bolted-on
 
@@ -63,7 +77,9 @@ The durable practice layer for accessible websites. Standards-era warning up fro
 
 - Format conversion is the developer's job: "that's not a user error—**that's the site developers' fault**. Formatting the content of an input field should not be a burden placed on the user; **the burden should be on the developers to convert user input into the necessary format**." Strip spaces from card numbers; accept any phone/date shape; validate asynchronously to reassure as people type.
 - **"(required)" in the label, not an asterisk** — the asterisk is a convention only seasoned form-fillers know; the word works "for sighted or screen reader users… or for first-time web users." (Pair every input with a `label for=`/`id` — structural, not just visual.)
-- **Dynamic alerts via `aria-live`**: `polite` for most updates (announced at the next graceful interval), `assertive` only for errors/alerts relevant to the user's current action — it's obtrusive.
+- **Dynamic alerts via `aria-live`**: `polite` for most updates (announced at the next graceful interval), `assertive` only for errors/alerts relevant to the user's current action — it's obtrusive. And "toasts must not be the only way to convey critical information" (ibelick, fixing-accessibility): an announcement is transient by design — persist the error or confirmation somewhere the user can re-find it.
+- **Disabled submit buttons must explain why** (ibelick): a dead button with no stated reason strands keyboard and screen-reader users in particular — prefer enabled-submit-with-validation, or pair the disabled state with visible, announced text naming what's missing.
+- **Never block paste** in inputs: paste-blocking (passwords, confirmation fields) punishes password-manager users and people with motor impairments — the same burden-on-the-developer principle as format conversion above.
 - The error copy itself (tone, blame, what-now) → `ux-writing` (error-messages).
 
 ## 7. Writing accessibly (Writing Is Designing, ch. 5)
@@ -84,9 +100,12 @@ The durable practice layer for accessible websites. Standards-era warning up fro
 
 ## 9. The testing program (layered, in order)
 
-1. **Heuristic walkthroughs** — earliest and cheapest: heuristic evaluations against WCAG/your policy; cognitive walkthroughs of real tasks, optionally emulating an AT setup.
-2. **Code review** — catches structure problems users never see directly.
-3. **Automated tests in CI** — run near production-readiness, but wired into the build: at Twitter, "if a developer's code breaks the accessibility of the product, the automated test will fail and the developer is unable to deploy" — and every failure was a teaching moment (Todd Kloots). Automated checks can't verify most experience-level criteria — necessary, never sufficient.
+1. **Heuristic walkthroughs** — earliest and cheapest: heuristic evaluations against WCAG/your policy; cognitive walkthroughs of real tasks, optionally emulating an AT setup. Walk in impact order (ibelick, fixing-accessibility): **accessible names → keyboard access → focus/dialogs → semantics → forms/errors → announcements → contrast/states → media** — a time-boxed pass still catches what actually locks people out. When fixing, prefer minimal targeted changes over refactors, and don't add ARIA where native semantics already solve it (§3).
+2. **Code review** — catches structure problems users never see directly. A grep-able smell inventory to seed it (rams.ai): `outline: none`/`outline-none` without a visible focus replacement (2.4.7); `div`/`span` with `onClick` but no `role`/`tabIndex`/`onKeyDown` (2.1.1); `<a>` without `href` doing button work (2.1.1); positive `tabIndex` (2.4.3); `role="button"` without `tabindex="0"` (4.1.2).
+3. **Automated tests in CI** — run near production-readiness, but wired into the build: at Twitter, "if a developer's code breaks the accessibility of the product, the automated test will fail and the developer is unable to deploy" — and every failure was a teaching moment (Todd Kloots). Automated checks can't verify most experience-level criteria — necessary, never sufficient. Three disciplines for acting on automated output (AccessLint):
+   - **Diff-granularity gating**: report **new / fixed / pre-existing** violations separately, so legacy debt doesn't drown what a change just introduced — gate merges on *new*, burn down pre-existing on its own track. (This is how the failing-build pattern stays livable in an old codebase.)
+   - **Fixability taxonomy**: *mechanical* fixes (missing attribute, `aria-describedby` wiring, dimensions) are safe to apply verbatim from the tool's directive; *contextual/visual* fixes get a rule-ID'd TODO instead — "never invent content." Alt text and announcement quality are never mechanical.
+   - **Report discipline**: group findings by rule ID + component family — "don't list 30 instances of the same issue 30 times"; many violations of one rule are usually a single root-cause fix. Past ~50 violations, stop and reassess scope: "a 200-violation report isn't actionable."
 4. **Device/browser/AT matrix** — Anne Gibson's method: "**a testing matrix with a list of outputs along the top and inputs along the side**," filling each cell. Test screen reader output and keyboard input **together and separately**. Justify every device/AT choice from research, not what was lying around.
 5. **Usability tests with disabled participants** — the closest to truth. Recruit people **skilled with their own AT** (else you test their comfort, not your product), never project insiders; include disabled participants in every round, not a special one. Full method, recruiting, facilitation → `user-research`.
 
@@ -109,7 +128,7 @@ Then keep testing after launch (feedback channel, regression suite) — "Accessi
 - [ ] Forms: labels say "(required)", inputs forgive formats, errors use `aria-live`?
 - [ ] Copy: chronological, device-agnostic verbs, critical info before the action?
 - [ ] Media: transcript published as HTML; captions human-checked?
-- [ ] CI fails on accessibility regressions; AT matrix maintained?
+- [ ] CI fails on accessibility regressions — gated on *new* violations, not legacy debt; AT matrix maintained?
 - [ ] Tested with disabled participants using their own AT?
 - [ ] Policy testable + hierarchical; a PM owns it; no a11y line item?
 

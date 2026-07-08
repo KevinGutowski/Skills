@@ -4,6 +4,25 @@
 
 A comprehensive guide for creating animations that feel right, based on Emil Kowalski's "Animations on the Web" course.
 
+## Contents
+
+- Theme Note
+- Initial Response
+- Review Format (Required)
+- Quick Start
+- The Easing Blueprint
+- Timing and Duration / The Frequency
+- Why Animation Works (Perception)
+- Animation's Purpose: Five Patterns
+- When to Animate
+- Spring Animations
+- Performance (render pipeline, measurement, scroll, layers, View Transitions)
+- Accessibility
+- Practical Tips
+- Easing Decision Flowchart
+- Communicating Motion to Engineers
+- Reference Files
+
 ## Theme Note
 
 The specific values in this skill (durations, easings, scale magnitudes, stagger delays) are tuned to work as a coherent set — like a color scheme, they look best when committed to as a whole. If another design skill or theme (e.g. `design-craft`, or its Emil Kowalski reference) is also loaded with different numbers, pick one theme's values and apply them consistently rather than averaging.
@@ -104,6 +123,8 @@ Linear feels robotic and unnatural for interactive elements.
 
 **Avoid for UI animations.** Makes interfaces feel sluggish because the slow start delays visual feedback.
 
+**Known divergent tradition — accelerate-on-exit.** The Disney/Material lineage (Material's accelerate easing; restated in Salaja's 12-principles-of-animation) uses ease-in for exits: departing elements speed up as they leave. This corpus's theme keeps ease-out for exits too — users don't watch departures, and the fast start reads as responsiveness. Don't blend the two on one product; if a project already uses accelerate-on-exit consistently, follow the project rather than converting exits piecemeal.
+
 ### Physical-reference easing (Briggs school)
 
 Derek Briggs is stricter than the curve tables above: never ship the default CSS keyword easings — "they're not accurate," robotic at start and end (Briggs, Shape FM ep. 3). His method: derive a motion's character from a physical analogue — a fan settling back on its ball bearing, the body lurch of a stopping car, sliding a phone across a table. Compatible with the named cubic-beziers above; Briggs adds:
@@ -125,6 +146,8 @@ Elements that animate together must use the same easing and duration. Modal + ov
   transition: opacity 200ms ease-out;
 }
 ```
+
+On a native `<dialog>` or popover, style the `::backdrop` pseudo-element instead of shipping a sibling overlay div (Salaja, pseudo-elements) — one element, no wrapper markup, and the pairing rule enforces itself.
 
 ## Timing and Duration
 
@@ -154,6 +177,8 @@ Determine how often users will see the animation:
 - **Rare/first-time** → Can be more special
 
 **Example:** Raycast never animates because users open it hundreds of times a day.
+
+**Context/right-click menus are the concrete instance** (Salaja, 12 Principles of Animation): "Context menus should not animate on entrance (exit only)" — they're summoned constantly and the user's intent is already past the menu, so open instantly and animate only the exit. Same logic as Raycast, applied per-surface.
 
 ## Why Animation Works (Perception)
 
@@ -250,17 +275,33 @@ Springs feel more natural because they don't have fixed durations—they simulat
 
 Springs maintain velocity when interrupted—CSS animations restart from zero. This makes springs ideal for gestures users might change mid-motion.
 
+The rule generalizes beyond springs: every animation should be interruptible, and motion must "never prevent user input during animations" (wshobson, interaction-design) — an animation is feedback, never a gate. If acting mid-animation breaks the UI, fix the animation, not the user.
+
 ## Performance
 
 ### The Golden Rule
 
 Only animate `transform` and `opacity`. These skip layout and paint stages, running entirely on the GPU.
 
+The rendering-steps glossary behind the rule (ibelick, fixing-motion-performance) — know which step a property triggers:
+
+- **composite**: `transform`, `opacity` — cheapest; the default for motion
+- **paint**: color, borders, gradients, masks, images, filters — animate "only on small, isolated surfaces", never on large containers
+- **layout**: size, position, flow, grid, flex — never animate continuously on large or meaningful surfaces
+
+When a technique proves too expensive, "prefer downgrading technique over removing motion entirely" (ibelick): a continuous blur becomes a one-shot, a layout animation becomes a FLIP transform, a paint effect shrinks its surface — drop to a cheaper rendering step before you drop the motion.
+
 **Avoid animating:**
 
 - `padding`, `margin`, `height`, `width` (trigger layout)
-- `blur` filters above 20px (expensive, especially Safari)
-- CSS variables in deep component trees
+- `blur` filters above 20px (expensive, especially Safari) — and *animated* blur is stricter still (ibelick): keep it ≤8px, short and one-shot, "never animate blur continuously" or on large surfaces; prefer opacity/translate first
+- CSS variables in deep component trees — never animate CSS variables as the carrier for transform/opacity/position (the variable route forfeits compositor handling), and never animate *inherited* CSS variables (every descendant recomputes); scope animated variables locally (ibelick)
+
+### Measurement and scroll (ibelick, fixing-motion-performance)
+
+- **Batch reads before writes.** Never interleave layout reads (`getBoundingClientRect`, `offsetHeight`) and style writes in the same frame — that's layout thrashing. Measure once, then animate via transform/opacity; for layout-like effects use FLIP: measure first, apply the final layout, transform back to the start, release.
+- **Don't drive animation from scroll events or `scrollY`** — polling scroll position keeps the work on the main thread and janks under load. Prefer CSS Scroll/View Timelines where available (`animation-timeline: view()`), and IntersectionObserver for visibility triggers.
+- **Pause looping animations when off-screen** (IntersectionObserver again) — an invisible loop is pure wasted frames; relatedly, no `requestAnimationFrame` loop without a stop condition.
 
 ### Optimization Techniques
 
@@ -270,6 +311,8 @@ Only animate `transform` and `opacity`. These skip layout and paint stages, runn
   will-change: transform;
 }
 ```
+
+Layer promotion is never automatic — "compositor motion requires layer promotion, never assume it" (ibelick). Use `will-change` temporarily and surgically: set it just before animating, remove it after, and avoid many or large promoted layers (each costs memory); validate with DevTools layer tooling when performance matters.
 
 **React-specific:**
 
@@ -293,6 +336,25 @@ Only animate `transform` and `opacity`. These skip layout and paint stages, runn
 - JS animations (Framer Motion, React Spring) use `requestAnimationFrame`
 - CSS better for simple, predetermined animations
 - JS better for dynamic, interruptible animations
+
+**Tool boundary** (ibelick): fix performance problems *within* the existing animation system — never partially migrate APIs or mix animation systems within one component, and never run multiple systems that each measure or mutate layout; two systems fighting over layout is itself a jank source.
+
+### View Transitions (page-level shared elements)
+
+Prefer the native View Transitions API for navigation-level and shared-element page transitions (Salaja, pseudo-elements); JS-library transitions such as Motion `layoutId` remain the right tool for interaction-heavy UI, and avoid view transitions anywhere interruption or cancellation is required — they run to completion (ibelick). Lifecycle rules whose violations fail silently:
+
+- `view-transition-name` must be unique on the page during the transition — assign `card-${id}` at interaction time, never a static name on a repeated class.
+- Clear the source element's name and assign the target's *inside* `startViewTransition`; a stale name doesn't break this transition — it silently breaks the **next** one.
+
+```ts
+sourceImg.style.viewTransitionName = "card";
+document.startViewTransition(() => {
+  sourceImg.style.viewTransitionName = "";
+  targetImg.style.viewTransitionName = "card";
+});
+```
+
+Treat size changes inside a view transition as potentially layout-triggering; style `::view-transition-group(name)` to replace the default crossfade with this skill's durations and curves.
 
 ## Accessibility
 
@@ -369,7 +431,7 @@ Quick reference for common scenarios. See [PRACTICAL-TIPS.md](web-animation-desi
 | Hover causes flicker            | Animate child element, not parent               |
 | Popover scales from wrong point | Set `transform-origin` to trigger location      |
 | Sequential tooltips feel slow   | Skip delay/animation after first tooltip        |
-| Small buttons hard to tap       | Use 44px minimum hit area (pseudo-element)      |
+| Small buttons hard to tap       | 44px min hit area via `::before` + negative `inset` — no wrapper markup |
 | Something still feels off       | Add subtle blur (under 20px) to mask it         |
 | Hover triggers on mobile        | Use `@media (hover: hover) and (pointer: fine)` |
 
@@ -395,6 +457,6 @@ Designers specifying motion "should just use black and white shapes," get the mo
 - [PRACTICAL-TIPS.md](web-animation-design/PRACTICAL-TIPS.md) - Detailed implementations for common animation scenarios
 - [references/animation-at-work.md](web-animation-design/animation-at-work.md) - Fuller verified quotes from Nabors
 
-**Sources**: Emil Kowalski's animations.dev course (primary values and techniques); Rachel Nabors, *Animation at Work* (A Book Apart, 2017) for the perception grounding, pattern taxonomy, and ch. 3/5 craft rules; Derek Briggs (PixelJanitor) via Shape FM for the physical-reference easing school and speed rules. Staleness: the 2017 book's perceptual/taxonomic layer is durable; its tooling and browser-feature mentions are dated. Full bibliography (video IDs, URLs, dates): [references/sources.md](web-animation-design/sources.md).
+**Sources**: Emil Kowalski's animations.dev course (primary values and techniques); Rachel Nabors, *Animation at Work* (A Book Apart, 2017) for the perception grounding, pattern taxonomy, and ch. 3/5 craft rules; Derek Briggs (PixelJanitor) via Shape FM for the physical-reference easing school and speed rules; Julien Thibeaut (ibelick), ui-skills fixing-motion-performance (MIT) for the render-pipeline audit rules; Raphael Salaja's skill library for View Transitions lifecycle, pseudo-element mechanics, and the context-menu instance. Staleness: the 2017 book's perceptual/taxonomic layer is durable; its tooling and browser-feature mentions are dated. Full bibliography (video IDs, URLs, dates): [references/sources.md](web-animation-design/sources.md).
 
 ---

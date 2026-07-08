@@ -1,6 +1,6 @@
 ---
 name: web-design
-description: "Router for web design: typography, accessibility, animation values, performance, forms, OKLCH/color, Tailwind, and 9:16 social-video safe zones. Use for web/CSS craft decisions. Building distinctive UI → frontend-design; polish/feel → design-craft; Motion library work → motion; Apple platforms → apple-design. Read one named reference."
+description: "Router for web design: typography, accessibility, animation values, performance, forms, OKLCH/color, Tailwind, UI sound feedback, and 9:16 social-video safe zones. Use for web/CSS craft decisions. Building distinctive UI → frontend-design; polish/feel → design-craft; Motion library work → motion; Apple platforms → apple-design. Read one named reference."
 ---
 
 # Web Design
@@ -15,6 +15,7 @@ For a focused question, read the single reference file that matches it — each 
 - **Performance** — Core Web Vitals (LCP, INP), perceived performance, defer/anticipate/offload triage, budgets, dropped frames: [references/web-performance.md](references/web-performance.md)
 - **Forms** — the Dannaway method: single column, field-type selection (radio vs dropdown, checkbox vs toggle), 3 button weights, destructive-action friction: [references/form-design.md](references/form-design.md)
 - **Color (OKLCH)** — hex/rgb/hsl→oklch conversion, palette generation, contrast checks, gamut/P3 handling, Tailwind v4 theming: [references/oklch-skill.md](references/oklch-skill.md)
+- **Sound** — UI audio feedback: when sound earns its place, HTMLAudio/AudioContext mechanics, Web Audio synthesis recipes for clicks/confirmations; sound *philosophy* routes to `swiftui` (sound-design): [references/web-sound.md](references/web-sound.md)
 - **Social-video safe zones** — keeping text/logos/faces/CTAs clear of platform chrome in 9:16 vertical video (Reels/Stories/TikTok/Shorts); social-video composition lives here as nearest family: [references/social-video-safe-zones.md](references/social-video-safe-zones.md)
 
 **Default motion theme:** web-animation-design is the corpus's default theme for web motion values. When skills or themes overlap on easing/duration/spring choices, route to its reference and apply its values as a coherent set rather than averaging; if the user is mixing themes and a genuine choice surfaces, present the options as a menu rather than picking silently.

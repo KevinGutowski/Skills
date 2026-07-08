@@ -94,6 +94,8 @@ How to adapt it:
 
 The deeper effect is preventative: after enough reps, engineers and designers begin seeing common pitfalls before they ship.
 
+When ritual or refresh work surfaces design-system deviations, name the root cause before fixing. Paul Bakaus's Impeccable polish pass (github.com/pbakaus/impeccable) classifies every deviation as a **missing token** (the value should exist in the system but doesn't), a **one-off implementation** (a shared component exists but wasn't used), or a **conceptual misalignment** (the feature's flow, IA, or hierarchy doesn't match neighboring features) — and the fix differs by class: patch the value, swap to the shared component, or rework the flow. "Fixing the symptom without naming the cause is how drift compounds," and "polish without alignment is decoration on top of drift." Treat automated drift detectors as defect evidence only: "a clean script result is never proof that the design is strong" — gather browser evidence and inspect the real interaction path.
+
 ## Quality Triage
 
 The quality-series delta is not "raise the bar"; it is how to decide which quality work earns immediate attention.

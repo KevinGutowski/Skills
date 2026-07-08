@@ -5,7 +5,7 @@ This source map keeps AI-tool guidance separated by task shape.
 ## Local references
 
 - `agentic-coding.md` covers coding agents on real repos, instruction stacks, worktrees, multi-agent topologies, review duties, and security holes.
-- `ai-ui-direction.md` covers diagnosing and repairing AI-generated UI with primitive layout vocabulary and judge loops.
+- `ai-ui-direction.md` covers diagnosing and repairing AI-generated UI with primitive layout vocabulary, de-slop passes, and judge loops.
 - `ai-enablement.md` covers organization-level rollout, MCP/context archives, internal agents, and promoting personal context into team assets.
 
 ## Promotion rule

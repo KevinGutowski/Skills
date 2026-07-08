@@ -10,6 +10,10 @@ This is a top-level provenance map for the SwiftUI skill. It points to the sourc
 - `sound-design.md` has `sound-design/sources.md` for app sound and haptic pairing guidance.
 - `touch-interaction-design.md` has `touch-interaction-design/sources.md` for gesture and input-feel design.
 
+## Third-party practitioner sources
+
+- Thomas Ricouard (@dimillian, author of Ice Cubes) — SwiftUI cookbook skills, https://github.com/dimillian/skills (discovered via ui-skills.com). Folded 2026-07: state-ownership decision table (`swiftui-identity.md`), sheet/modal-routing doctrine and anti-patterns (`swiftui-layout.md`), matched-transition decision rule (`swiftui-animation.md`), scroll-reveal progress pattern (`touch-interaction-design.md`), HapticManager shape (`sound-design.md`). Not Apple guidance — attributed inline and API-era-tagged at each fold point; treat as practitioner default, not doctrine.
+
 ## References needing source refresh before rule promotion
 
 - `swiftui-identity.md`

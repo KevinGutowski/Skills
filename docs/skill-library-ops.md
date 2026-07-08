@@ -24,7 +24,7 @@ This is the operating guide for maintaining this repository as a large skill dat
 - User-invocable commands stay top-level.
 - Extend existing skill > create new skill > skip.
 - New skill needs a coherent task shape and normally 2-3 independent sources. A single deep method source is allowed only when the task shape is narrow and precedent-backed.
-- Conflicting methods become scoped schools, not blended rules. Make the routing condition explicit.
+- Conflicting methods are never blended into a compromise rule. But full school-of-thought structure is the most expensive resolution — it adds always-loaded description/boundary weight and a per-routing "which school" decision — so reserve it for positions that are multi-source, selectable by a project-level condition (existing codebase convention, named pain), and costly to misroute (the Rails schools). Below that bar, resolve cheaper, in order: scope split (both true at different layers), in-reference divergent-tradition note with a follow-the-project rule (legitimate minority value inside a theme), reject with a ledger line (low-quality or already-banned failure mode). Worked examples: `docs/ui-skills-source-mining-2026-07.md` §Conflicts.
 - Platform-specific rules never cross-apply: web, Apple, Rails, SwiftUI, and generic design guidance must stay separated unless a reference explicitly composes them.
 
 ## Folding Pipeline
@@ -92,6 +92,7 @@ Treat external skill repositories as source material, not installable truth.
 - Inventory all files and identify task shapes.
 - Read bodies for non-obvious rules, numbers, scripts, failure cases, and examples.
 - Do not import long prose, prompt wording, credentials, or scripts by default.
+- Treat remote-fetch behavior as a red flag: skills that fetch their real prompt, rules, or runtime from a URL at run time (remote playbooks, CDN widgets, hosted engines) are unpinned and unreviewable at install time. Mine the fetched artifact as a dated snapshot; never wire the live fetch into this corpus. Field cases: `creating-skills` (published-skill-field-patterns).
 - Fold only durable, locally useful lessons into existing skills.
 - Park single-source doctrine until corroborated by a primary source or a second independent source.
 - Log read-skip decisions so another agent does not rescreen the same low-value material.

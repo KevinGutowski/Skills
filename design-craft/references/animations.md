@@ -236,6 +236,8 @@ function IconButton({ isActive, icon: Icon }) {
 }
 ```
 
+Why `mode="popLayout"`: it takes the exiting element out of layout flow, so it never competes for space with the entering one — with the default mode both occupy the layout at once and the swap jitters. The same reasoning makes `popLayout` the rule for animated list exits, not just icon swaps (Raphael Salaja, mastering-animate-presence — github.com/raphaelsalaja/skill; more AnimatePresence pitfalls in the `motion` skill).
+
 ### CSS Transition Approach (No Motion)
 
 If the project doesn't use Motion (Framer Motion), keep both icons in the DOM and cross-fade them with CSS transitions. Because neither icon unmounts, both enter and exit animate smoothly.
@@ -395,6 +397,7 @@ Microinteraction patterns that often replace hard cuts:
 - **Working state:** for short, controlled waits, a calm shimmer/sweep over the label can feel more integrated than a spinner. Use a system spinner for slow/uncontrolled waits where blame assignment matters (see [performance.md](performance.md)).
 - **Icon state swaps:** cross-fade + scale + blur as in Contextual Icon Animations; don't unmount and pop.
 - **Play/pause or start/stop:** animate the change between symbols so causality reads as one object changing, not two icons replacing each other.
+- **Any-to-any icon morph sets:** morphs stay interpolation-safe when every icon shares fixed-slot geometry — e.g. exactly three SVG lines per icon, with unused slots collapsed to zero-length points at the viewbox center at opacity 0 — so any icon can tween into any other. Animate rotation only between semantic variants that share a group (plus↔cross, the four arrow directions); between unrelated icons, snap rotation instantly and morph the lines only. Full component recipe (line tables, spring rotation, reduced-motion gating): Raphael Salaja's morphing-icons skill — github.com/raphaelsalaja/skill.
 
 ## Scale on Press
 
