@@ -10,7 +10,7 @@ This is a top-level provenance map for the Rails router. The detailed references
 - `layered-rails.md` has `layered-rails/sources.md` for Evil Martians-style layering.
 - `rails-event-sourcing.md` has `rails-event-sourcing/sources.md` for DDD/event-sourcing routing.
 - `rails-testing.md` has `rails-testing/sources.md` for factory/TestProf/flakiness guidance.
-- `rails-fixtures-testing.md` has `rails-fixtures-testing/sources.md` for fixtures-school Minitest coverage guidance.
+- `rails-fixtures-testing.md` has `rails-fixtures-testing/sources.md` for fixtures-school Minitest coverage-ownership guidance.
 - `rails-realtime.md` has `rails-realtime/sources.md` for websocket and streaming scale.
 - `optimizing-rails.md` has `optimizing-rails/sources.md` for profiling/performance guidance.
 - `rails-upgrades.md` has `rails-upgrades/sources.md` for dual-boot and upgrade methodology.
