@@ -5,6 +5,8 @@ This is a top-level provenance map for the Rails router. The detailed references
 ## Source-backed references
 
 - `dhh-style.md` has `dhh-style/sources.md` for 37signals/DHH-style Rails.
+- `rails-guides.md` maps Rails skill topics to the official Rails Guides index and versioned framework documentation.
+- `active-record-associations.md` is sourced to the Rails Guides for association scope blocks and query ordering behavior.
 - `layered-rails.md` has `layered-rails/sources.md` for Evil Martians-style layering.
 - `rails-event-sourcing.md` has `rails-event-sourcing/sources.md` for DDD/event-sourcing routing.
 - `rails-testing.md` has `rails-testing/sources.md` for factory/TestProf/flakiness guidance.

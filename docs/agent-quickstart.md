@@ -42,6 +42,8 @@ If using a fresh Codex session, installed skills normally route after restart. I
 
 Keep bundles small. Install the few skills that match the task, then follow their `SKILL.md` routing to references.
 
+For framework work, start with the framework/platform skill router, not a remembered style summary or a deep reference. Example: Rails work starts with `rails/SKILL.md`; that router decides whether to read DHH style, Active Record associations, migrations, testing, performance, or official Rails Guides lookup. Only after the framework mechanism is grounded should project-specific rules or helper methods decide the final shape.
+
 ## If Installer Listing Fails
 
 Failure shape seen in the wild:

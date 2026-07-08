@@ -9,11 +9,12 @@ The core claim: agentic coding "lives on constrained generation; **the quality o
 ## The constraint stack
 
 1. **Framework conventions** absorb most drift for free — "Rails gives you architectural constraints by default"; opinionated, predictable stacks make generated code more reliable. Prefer popular technologies and *defaults* (a custom config is something the agent must fight; "your job is to pave the way for LLM, not let it stray away").
-2. **Project skills / AGENTS.md rules** encode the decisions conventions don't cover: "Once an architectural decision lives in a skill, the AI applies it consistently everywhere, every time." Install them **before scaffolding the first feature** — retrofitting rules onto generated architecture is the expensive order.
-3. **Fast mechanical feedback** so the agent faces its own mistakes immediately: strict linters, the most strictly-typed options available, tests. The sooner generation fails loudly, the less time it spends "working on flawed implementation."
-4. **The frontier needs you.** Drift concentrates where training data runs out — new libraries, in-house abstractions, post-cutoff idioms ("AI reaches for outdated idioms because that's what it was trained on"). Write skills *at the frontier* and feed current docs into context.
-5. **Repo entrypoints should answer the first agent question** (Jaytel Taste repo, 2026): an `AGENTS.md` that starts with exact local setup, repo map, hosted-vs-local boundary, guardrails, and checks lets a fresh agent become useful without spelunking. Taste's guide distinguishes the private local pipeline from the hosted demo, names the generated artifact path, and says which credentials belong in which surface. Put this before philosophy.
-6. **Context gets its own lifecycle** (Ona Background Agents Summit, 2026): lint, test, version, register, and observe context the way you would production code. The useful metrics are not "prompt length"; watch retries, hops, stale lookups, failed plans, and where the agent logs show missing context.
+2. **Use the framework skill router before local taste.** When a task names a platform or framework, first load that platform skill's `SKILL.md` and follow its reference routing; do not jump directly to a style summary, local helper, or remembered pattern. Example: Rails model behavior starts at `rails`, then the router may send you to `rails` (dhh-style), `rails` (active-record-associations), migrations, testing, or performance. The general rule is framework mechanism first, local doctrine second, app-specific abstraction last.
+3. **Project skills / AGENTS.md rules** encode the decisions conventions don't cover: "Once an architectural decision lives in a skill, the AI applies it consistently everywhere, every time." Install them **before scaffolding the first feature** — retrofitting rules onto generated architecture is the expensive order.
+4. **Fast mechanical feedback** so the agent faces its own mistakes immediately: strict linters, the most strictly-typed options available, tests. The sooner generation fails loudly, the less time it spends "working on flawed implementation."
+5. **The frontier needs you.** Drift concentrates where training data runs out — new libraries, in-house abstractions, post-cutoff idioms ("AI reaches for outdated idioms because that's what it was trained on"). Write skills *at the frontier* and feed current docs into context.
+6. **Repo entrypoints should answer the first agent question** (Jaytel Taste repo, 2026): an `AGENTS.md` that starts with exact local setup, repo map, hosted-vs-local boundary, guardrails, and checks lets a fresh agent become useful without spelunking. Taste's guide distinguishes the private local pipeline from the hosted demo, names the generated artifact path, and says which credentials belong in which surface. Put this before philosophy.
+7. **Context gets its own lifecycle** (Ona Background Agents Summit, 2026): lint, test, version, register, and observe context the way you would production code. The useful metrics are not "prompt length"; watch retries, hops, stale lookups, failed plans, and where the agent logs show missing context.
 
 ## Distilling taste into rules (the style.md process)
 
@@ -127,6 +128,7 @@ Field practices from people running agents daily. Extended notes + context: [age
 ## Checklist
 
 - [ ] Opinionated stack, popular technologies, default configs; strict typing + linting wired before generation?
+- [ ] Framework/platform task routed through the owning skill router before applying style summaries or app-specific abstractions?
 - [ ] Project rules (AGENTS.md / skills) in place before the first scaffold; frontier areas covered explicitly?
 - [ ] README/AGENTS hot zone gives a fresh agent exact setup/install commands, repo map, artifact paths, guardrails, and checks?
 - [ ] Distilled rules verified for hallucinations and validated by expert review on fresh work?
