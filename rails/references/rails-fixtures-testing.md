@@ -1,25 +1,41 @@
 # Rails Testing — Fixtures School
 
-*Scope: Test Rails the fixtures school's way (Minitest + fixtures, 37signals practice) — coverage budget, fixture craft (label refs, ERB timestamps, deterministic UUIDv7s), Turbo/broadcast assertions by layer, multi-tenant test wiring, negative-space authorization tests. Use when writing or reviewing tests on a vanilla/37signals-style codebase. For factory/RSpec suites or test-suite speed/flakiness work use rails-testing — different school; route by the project's existing choice.*
+*Scope: Test Rails the fixtures school's way (Minitest + fixtures, 37signals practice) — tight behavior coverage at the owning layer, fixture craft (label refs, ERB timestamps, deterministic UUIDv7s), Turbo/broadcast assertions by layer, multi-tenant test wiring, negative-space authorization tests. Use when writing or reviewing tests on a vanilla/37signals-style codebase. For factory/RSpec suites or test-suite speed/flakiness work use rails-testing — different school; route by the project's existing choice.*
 
-> Vendored from [marckohlbrugge/37signals-skills](https://github.com/marckohlbrugge/37signals-skills) @ c58e7d5 (skill text MIT; Fizzy code excerpts under the [O'Saasy license](https://osaasy.dev)). LLM-extracted from 265 Fizzy PRs + Campfire — verify unusual claims against the upstream guide's per-PR links.
+> Vendored from [marckohlbrugge/37signals-skills](https://github.com/marckohlbrugge/37signals-skills) @ c58e7d5 (skill text MIT; Fizzy code excerpts under the [O'Saasy license](https://osaasy.dev)). LLM-extracted from 265 Fizzy PRs + Campfire — verify unusual claims against the upstream guide's per-PR links. Assertion names, targeted test-runner usage, and cache-invalidation mechanics checked against the official Rails Guides (see [sources.md](rails-fixtures-testing/sources.md)).
 
 Use for test-writing and test-review tasks. Patterns from Campfire and Fizzy test suites.
 
 ## Defaults
 
 - Minitest + fixtures. No RSpec, no FactoryBot.
-- Test behavior, not implementation details.
+- Test behavior, not implementation details. Spend coverage once, at the layer that owns the behavior — don't restate the same assertion through every model/service/controller/cache boundary.
+- Prefer assertions that name the behavior (`assert_difference`, `assert_changes`, `assert_response`, `assert_enqueued_with`) over generic truthiness. One behavior contract per test; multiple assertions are fine when they describe that one contract and make the failure precise.
 - Keep tests deterministic and fast; `parallelize(workers: :number_of_processors)`.
 - Tests ship in the same commit/PR as the feature — not before, not later. Security fixes always include a regression test.
 - Never add production complexity for testability (no test-induced design damage).
 
-## Coverage Budget (where 37signals actually spends)
+## Coverage Ownership (spend once, at the owning layer)
 
-- **Heavy:** model tests (domain invariants, concerns) and controller/integration tests (full request cycle, auth, formats).
-- **Light:** a few system tests for the critical happy paths (one smoke test can cover signup→use); job tests only for jobs with real logic.
-- **None:** view tests, JS/Stimulus unit tests, exhaustive channel tests. UI behavior is covered indirectly by system tests.
-- Don't duplicate the same behavior assertion at multiple layers.
+**How much (where 37signals spends):** *heavy* on model tests (domain invariants, concerns) and controller/integration tests (full request cycle, auth, formats); *light* on system tests (a few critical happy paths — one smoke test can cover signup→use) and job tests (only jobs with real logic); *none* on view tests, JS/Stimulus unit tests, or exhaustive channel tests (UI behavior is covered indirectly by system tests).
+
+**Where (who owns the behavior):** before writing a broad test plan, ask which layer owns each behavior and assert it there once. A layer earns its own test only for the contract it owns — not to restate a lower layer's under a new fixture name.
+
+| Layer | Owns |
+|---|---|
+| Model | Domain invariants, validations, scopes, association + ordering behavior |
+| Controller/integration | Request contract, auth, params, redirects/status, response shape, format handling |
+| Service/cache | Derived payload shape, cache key/version compatibility, invalidation + rebuild behavior |
+| Job | Orchestration or side effects not already proven by model/import/request tests |
+| System | One or two critical user-visible flows where browser, Hotwire, or realtime wiring matters |
+
+**Derived/cached display data — one high-signal contract test, not a ladder of shallow duplicates.** When a derived payload (cached or not) owns both *selection* and *freshness*, one test proves the whole contract:
+
+1. Build or populate the derived payload.
+2. Change the record that should invalidate or supersede it.
+3. Assert the rebuilt payload reflects the new behavior.
+
+This covers the selection rule, the freshness dependency, and the rebuilt shape at once — without adding a test-only seam to the production API.
 
 ## Fixtures
 
@@ -48,7 +64,10 @@ Use for test-writing and test-review tasks. Patterns from Campfire and Fizzy tes
 
 - Adding production complexity only for testability.
 - Over-mocking internal app code.
-- Duplicate tests for the same behavior at multiple layers.
+- Duplicate tests for the same behavior at multiple layers — e.g. several tests proving "the first positioned record wins" under different fixture labels, or a service/cache test that only repeats a model ordering assertion.
+- Production response or cache payload shape changed to make a test easier.
+- A failure message that says only "expected truthy" instead of naming the broken contract.
+- Tests that mainly verify Rails mechanics instead of app behavior.
 - Slow suites caused by unnecessary setup in each test (that's what fixtures are for).
 - Unit tests for one-line job classes or trivial delegations.
 - Hand-rolled HTML strings where production renderers/helpers would stay in sync automatically.
