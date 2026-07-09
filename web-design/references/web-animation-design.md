@@ -250,6 +250,8 @@ Springs feel more natural because they don't have fixed durations—they simulat
 
 Springs maintain velocity when interrupted—CSS animations restart from zero. This makes springs ideal for gestures users might change mid-motion.
 
+These gesture-physics rules — interruptibility, 1:1 tracking, velocity handoff on release, momentum projection, rubber-banding — are the web translation of Apple's *Designing Fluid Interfaces* (WWDC 2018). The native articulation, the projection math, and the drag→spring velocity-handoff formula live in `swiftui` (touch-interaction-design). The *principles* port across platforms; the CSS/spring *values* in this file don't cross back to iOS. For the broader component-craft version (press scale, origin-aware popovers), see `design-craft` (emil-kowalski).
+
 ## Performance
 
 ### The Golden Rule

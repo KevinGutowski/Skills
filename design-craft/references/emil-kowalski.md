@@ -196,6 +196,8 @@ Keep bounce subtle (0.1-0.3) when used. Avoid bounce in most UI contexts. Use it
 
 Springs maintain velocity when interrupted — CSS animations and keyframes restart from zero. This makes springs ideal for gestures users might change mid-motion. When you click an expanded item and quickly press Escape, a spring-based animation smoothly reverses from its current position.
 
+The Apple lineage of these gesture-physics rules — interruptibility, momentum projection, velocity handoff, rubber-banding — lives in `swiftui` (touch-interaction-design) (its *Designing Fluid Interfaces* distillation); this reference and `web-design` (web-animation-design) are the web-craft translation. Principles translate across platforms; keep each skill's numbers as one coherent theme rather than averaging.
+
 ## Component Building Principles
 
 ### Buttons must feel responsive

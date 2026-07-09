@@ -23,4 +23,4 @@ For a focused question, read the single reference file that matches it — each 
 - **Building distinctive UI → `frontend-design`** — generating creative, production-grade components and pages lives there; this skill carries the craft rules they should obey.
 - **Polish and feel → `design-craft`** — design-engineering micro-detail (optical alignment, shadows, "feels off") lives there.
 - **Motion/framer-motion library work → `motion`** — `motion/react`, CSS `linear()` spring generation, and MotionScore perf audits live there; motion *design values* default here (web-animation-design).
-- **Apple platforms → `apple-design`** — typography, accessibility, forms, and brand conventions on iOS/macOS; never cross-apply web conventions there.
+- **Apple platforms → `apple-design`** — typography, accessibility, forms, and brand *conventions* on iOS/macOS; never cross-apply web conventions there (or those platform specs here). But Apple's interaction *principles* do translate: the fluid-interface gesture physics behind the springs/interruptibility above come from `swiftui` (touch-interaction-design), and the eight design values from `design-principles`.
