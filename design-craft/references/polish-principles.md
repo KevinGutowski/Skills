@@ -9,6 +9,7 @@ The concrete, numeric craft values behind `design-craft`. Where the skill body i
 - **Core Principles (1–22)** — radii, shadows, optical alignment, motion (interruptible/stagger/exit/icon/press), font smoothing, tabular nums, text wrapping, image outlines, hit areas, layout stability, modern CSS, squint test, eased gradients, spacing-scale construction
 - **Common Mistakes / Review Output Format / Review Checklist** — how to run a polish pass
 - **Rendering physics worth knowing · MDS field rules** — the why beneath the values, and live-session heuristics
+- **Reference Files** — links to the deeper execution references
 
 ## Theme Note
 
@@ -143,6 +144,20 @@ Let the browser do the boring stuff "so we can focus on the really important stu
 
 Visual emphasis backfires past a threshold: banner blindness means highly differentiated content gets filtered as advertising — "it's good to be aware of when visually differentiating content could inadvertently lead to it being mistaken for an ad" (Jon Yablonski, *Laws of UX*, ch. 8, von Restorff). If a promoted card uses gradient-on-color treatment unlike anything around it, users may skip it entirely; emphasize within the page's own visual language.
 
+### 21. Eased Gradients
+
+Two-stop linear gradients leave a visible edge where they start and stop — especially fade-to-transparent scrims and significant color changes. Add intermediate stops sampled from an easing curve so the transition starts and ends gently. For color-to-color gradients also interpolate in a better space (`in oklab`) to avoid muddy midpoints — but only eased stops fix the hard edges. For dark mode, make a dedicated dark-mode hero asset rather than overlaying a gradient on the light-mode one.
+
+### 22. Spacing Scale Construction
+
+(Wathan & Schoger, *Refactoring UI*; Adham Dannaway, *Practical UI* 2nd ed.)
+
+- **The 25% rule** (RUI): spacing perception is relative — 12px→16px "is an increase of 33%!" while 500px→520px is 4%. So "make sure no two values in your scale are ever closer than about 25%": packed at the small end, spreading at the large end.
+- **Pick by process of elimination** (RUI): "start by taking a guess… Then try the values on either side (12px and 24px) for comparison." Both outer options obviously wrong → the middle wins; if an outer one looks best, re-run with it as the middle.
+- **A concrete default** (PUI): t-shirt sizes on an 8pt grid — XS 8 / S 16 / M 24 / L 32 / XL 48 / XXL 80 (4pt increments for dense UI). Like a type scale, options "should grow by larger amounts as they get bigger."
+- **Assign by relatedness, growing outward** (PUI): "Space elements based on how closely related they are" — interfaces are rectangles within rectangles; apply XS to the innermost rectangles and "gradually increase the spacing between rectangles as you move outwards" (XXL between page sections).
+- **Theme note:** these numbers are one coherent set satisfying the 25% rule. If another loaded skill carries a different scale, pick one system whole — never mix values from two scales. Elevation systems and light-source shadow recipes from the same books: [surfaces.md](surfaces.md) → Elevation Systems.
+
 ## Common Mistakes
 
 | Mistake | Fix |
@@ -152,7 +167,7 @@ Visual emphasis backfires past a threshold: banner blindness means highly differ
 | Hard borders between sections | Use layered `box-shadow` with transparency |
 | Jarring enter/exit animations | Split, stagger, and keep exits subtle |
 | Numbers cause layout shift | Apply `tabular-nums` |
-| Heavy text on macOS | Apply `antialiased` to root |
+| Heavy text on macOS | Scope `antialiased` to light-on-dark or display type (Principle 8) — not the root |
 | Animation plays on page load | Add `initial={false}` to `AnimatePresence` |
 | `transition: all` on elements | Specify exact properties |
 | First-frame animation stutter | Add `will-change: transform` (sparingly) |
@@ -195,7 +210,7 @@ Rows should cite the specific file and the specific property that changed when i
 - [ ] Enter animations are split and staggered
 - [ ] Exit animations are subtle
 - [ ] Dynamic numbers use tabular-nums
-- [ ] Font smoothing is applied
+- [ ] Font smoothing scoped deliberately (light-on-dark / display type only — never unconditionally on the root; Principle 8)
 - [ ] Headings use text-wrap: balance
 - [ ] Images have subtle outlines
 - [ ] Buttons use scale on press where appropriate
@@ -204,30 +219,6 @@ Rows should cite the specific file and the specific property that changed when i
 - [ ] `will-change` only on transform/opacity/filter, never `all`
 - [ ] Interactive elements have at least 40×40px hit area
 - [ ] Gradients (scrims, fades, large color changes) use eased stops, not two-stop linear
-
-## Reference Files
-
-- [typography.md](typography.md) — Text wrapping, font smoothing, tabular numbers
-- [surfaces.md](surfaces.md) — Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines
-- [animations.md](animations.md) — Interruptible animations, enter/exit transitions, icon animations, scale on press
-- [performance.md](performance.md) — Transition specificity, `will-change` usage, perceived performance (spinner choice assigns blame)
-- [refactoring-ui.md](refactoring-ui.md) — Wathan/Schoger's visual refactor method, with a code-native bad/good gallery at [../examples/refactoring-ui-gallery.html](../examples/refactoring-ui-gallery.html)
-- [emil-kowalski.md](emil-kowalski.md) — Emil Kowalski's Design Engineering theme (taste-training, component polish, animation decisions); deeper material in `emil-kowalski/` → css-techniques.md, interaction-and-performance.md, taste-and-craft.md
-- [sources.md](sources.md) — bibliography (Briggs/PixelJanitor tweet IDs, CodePens, video IDs)
-
-### 21. Eased Gradients
-
-Two-stop linear gradients leave a visible edge where they start and stop — especially fade-to-transparent scrims and significant color changes. Add intermediate stops sampled from an easing curve so the transition starts and ends gently. For color-to-color gradients also interpolate in a better space (`in oklab`) to avoid muddy midpoints — but only eased stops fix the hard edges. For dark mode, make a dedicated dark-mode hero asset rather than overlaying a gradient on the light-mode one.
-
-### 22. Spacing Scale Construction
-
-(Wathan & Schoger, *Refactoring UI*; Adham Dannaway, *Practical UI* 2nd ed.)
-
-- **The 25% rule** (RUI): spacing perception is relative — 12px→16px "is an increase of 33%!" while 500px→520px is 4%. So "make sure no two values in your scale are ever closer than about 25%": packed at the small end, spreading at the large end.
-- **Pick by process of elimination** (RUI): "start by taking a guess… Then try the values on either side (12px and 24px) for comparison." Both outer options obviously wrong → the middle wins; if an outer one looks best, re-run with it as the middle.
-- **A concrete default** (PUI): t-shirt sizes on an 8pt grid — XS 8 / S 16 / M 24 / L 32 / XL 48 / XXL 80 (4pt increments for dense UI). Like a type scale, options "should grow by larger amounts as they get bigger."
-- **Assign by relatedness, growing outward** (PUI): "Space elements based on how closely related they are" — interfaces are rectangles within rectangles; apply XS to the innermost rectangles and "gradually increase the spacing between rectangles as you move outwards" (XXL between page sections).
-- **Theme note:** these numbers are one coherent set satisfying the 25% rule. If another loaded skill carries a different scale, pick one system whole — never mix values from two scales. Elevation systems and light-source shadow recipes from the same books: [surfaces.md](surfaces.md) → Elevation Systems.
 
 ## Rendering physics worth knowing
 
@@ -250,3 +241,13 @@ Two-stop linear gradients leave a visible edge where they start and stop — esp
 - **Shape scarcity.** Reserve a shape for the primary action: "the only thing that's a rectangle on this screen is the add to cart button… the shapes allow us to kind of subconsciously know what to choose." The primary CTA gets a unique color *and* a unique shape — "an unmistakable undeniable clickability."
 - **Baseline-align adjacent text rows.** When different text sizes sit side by side, "anytime you align Baseline it's just going to be so much tighter."
 - **Button padding ratios.** Horizontal padding ≈ double vertical — "16 and 8 or 20 and 10" is the starting point. Kill default layout gaps ("I always change this to zero"). And verify concentric radii in outline mode (⌘Y in Figma) — measure inner radius + gap on the actual paths instead of eyeballing (the formula is Principle 1).
+
+## Reference Files
+
+- [typography.md](typography.md) — Text wrapping, font smoothing, tabular numbers
+- [surfaces.md](surfaces.md) — Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines
+- [animations.md](animations.md) — Interruptible animations, enter/exit transitions, icon animations, scale on press
+- [performance.md](performance.md) — Transition specificity, `will-change` usage, perceived performance (spinner choice assigns blame)
+- [refactoring-ui.md](refactoring-ui.md) — Wathan/Schoger's visual refactor method, with a code-native bad/good gallery at [../examples/refactoring-ui-gallery.html](../examples/refactoring-ui-gallery.html)
+- [emil-kowalski.md](emil-kowalski.md) — Emil Kowalski's Design Engineering theme (taste-training, component polish, animation decisions); deeper material in `emil-kowalski/` → css-techniques.md, interaction-and-performance.md, taste-and-craft.md
+- [sources.md](sources.md) — bibliography (Briggs/PixelJanitor tweet IDs, CodePens, video IDs)

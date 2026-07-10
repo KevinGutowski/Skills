@@ -4,6 +4,19 @@
 
 Form structure, field selection, buttons, validation, and destructive-action friction from Adham Dannaway, *Practical UI*, 2nd ed. (2024) — a single-source method skill: attribute guidance to Dannaway. Fuller rationale, the nine button failure modes, and validation tradeoffs live in [references/practical-ui-details.md](form-design/practical-ui-details.md).
 
+## Contents
+
+- Platform scope — read first
+- 1. Form architecture
+- 2. Field-type selection
+- 3. Validation
+- 4. Buttons
+- 5. Destructive-action friction ladder
+- 6. Copy crumbs that ride along
+- Checklist
+- Relationship to other skills
+- Staleness
+
 ## Platform scope — read first
 
 Dannaway's conventions are **web-scoped**. Two known conflicts with Apple platforms — never cross-apply:

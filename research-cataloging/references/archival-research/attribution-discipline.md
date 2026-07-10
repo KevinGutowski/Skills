@@ -1,6 +1,6 @@
 # Attribution discipline — worked workflows and failure modes
 
-Full detail behind the "Canonical inventory first — never invent attributions" section in `SKILL.md`. Everything below is the canonical wording.
+Full detail behind the "Canonical inventory first — never invent attributions" section in the parent reference, [archival-research.md](../archival-research.md) (in `research-cataloging`). Everything below is the canonical wording.
 
 ## The wrong workflow (which I keep falling into)
 
@@ -37,7 +37,7 @@ The discipline is: a missing entry is an `unidentified` row in a gap file, never
 
 ## Attribution failure modes
 
-- **Inventing proper names to fill attribution gaps.** When visual labeling produces a piece that doesn't match anything in the canonical inventory, the temptation is to invent a plausible-sounding artist name (Japanese kanji are easy to combine into plausible-but-fake names). Don't. Grep the canonical inventory first; if not found, mark "unidentified" — never write a kanji name without a verifiable source. See "Canonical inventory first" in `SKILL.md`.
+- **Inventing proper names to fill attribution gaps.** When visual labeling produces a piece that doesn't match anything in the canonical inventory, the temptation is to invent a plausible-sounding artist name (Japanese kanji are easy to combine into plausible-but-fake names). Don't. Grep the canonical inventory first; if not found, mark "unidentified" — never write a kanji name without a verifiable source. See "Canonical inventory first" in [archival-research.md](../archival-research.md).
 - **Recursive self-confirmation.** Writing "Pass 2 confirms Pass 1" / "Pass 3 confirms Pass 2" without grounding each pass in the canonical source. Errors compound across passes. Every pass must re-check against the authoritative source, not against the previous pass's output.
 - **"Visual style match = attribution".** Similar surface texture across two pieces tells you "probably same artist" — it does NOT tell you who that artist is. Style-matching is for *grouping*, not for *naming*. Name only from canonical source.
 - **One reference photo treated as the artist's whole style.** Artists use different surface treatments for different pieces. Comparing a visitor photo against ONE canonical reference and concluding "doesn't match artist X" is wrong. Check multiple reference photos per artist before ruling them out.

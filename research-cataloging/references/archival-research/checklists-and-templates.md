@@ -12,7 +12,7 @@
 - What not to capture — full list
 
 
-Exhaustive checklists and worked templates referenced from `SKILL.md`.
+Exhaustive checklists and worked templates referenced from the parent reference, [archival-research.md](../archival-research.md) (in `research-cataloging`).
 
 ## Widening questions to ask about every subject
 

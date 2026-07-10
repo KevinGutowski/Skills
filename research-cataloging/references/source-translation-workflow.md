@@ -4,6 +4,16 @@
 
 Use this when research sources cross languages or when a transcript/excerpt must become reliable English research material. The goal is to keep source evidence, cleanup, translation, and publication/database use as separate layers.
 
+## Contents
+
+- Core rule
+- The four layers
+- Transcript workflow
+- Article and excerpt workflow
+- Status vocabulary
+- Promotion guardrails
+- Relationship to catalog reconciliation
+
 ## Core rule
 
 Never treat generated captions, ASR, machine translation, or a cleaned transcript as the finished source. Preserve each layer and promote only source-backed text.

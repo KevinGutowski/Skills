@@ -7,6 +7,19 @@ video. Anything important must stay inside the **safe area** or it gets covered 
 usernames, captions, the right-side action rail (like / comment / share / save /
 more), the audio ticker, and CTAs.
 
+> **Staleness note (Kevin's rule):** platform chrome drifts fast — apps redesign their overlays without notice, so the per-platform px insets below are a point-in-time snapshot. Verify current safe areas (or eyeball against the live app's overlay) before final production video guidance. The rule-of-thumb percentages and the design-to-the-tightest-target principle are the durable layer.
+
+## Contents
+
+- Rule of thumb
+- Safe insets per platform (1080×1920, 9:16)
+- Practical guidance
+- Generated-video text zones
+- Export
+- Remotion helper
+- Checklist before exporting a social video
+- Sources
+
 ## Rule of thumb
 Keep critical content (text, logos, faces, CTAs) within the **central ~70–80%** of
 the frame. Reserve roughly the top **~14%**, the bottom **~25–35%**, and the right

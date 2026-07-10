@@ -4,6 +4,20 @@
 
 OKLCH is a perceptually uniform color space where the numbers actually mean what you think they mean. Most color problems in CSS — broken palettes, failing contrast, hue drift — come from using color spaces that don't match how we see. OKLCH fixes the model so the tools work. To explore interactively, visit [oklch.fyi](https://oklch.fyi).
 
+## Contents
+
+- Quick Reference
+- Why OKLCH
+- Why it works (theory backstop)
+- OKLCH Syntax
+- Key Thresholds
+- Working Methods (MDS)
+- Calm/muted brand starter palettes (gamut-safe)
+- Palette Roles & State Layers
+- Review Output Format
+- Common Mistakes
+- Reference Files
+
 ## Quick Reference
 
 | Category | When to use | Reference |

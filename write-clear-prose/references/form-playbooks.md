@@ -2,7 +2,7 @@
 
 Use this reference when the user is writing in a specific nonfiction form or when a draft needs deeper structural advice.
 
-## Table of Contents
+## Contents
 
 - Universal Nonfiction Commitments
 - Essay and Personal Essay

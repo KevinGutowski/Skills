@@ -73,6 +73,8 @@ This covers the selection rule, the freshness dependency, and the rebuilt shape 
 - Hand-rolled HTML strings where production renderers/helpers would stay in sync automatically.
 - Time-dependent assertions without `travel_to`.
 
+> **Staleness note:** vendored 2026 from Rails 8-era Fizzy/Campfire (Minitest `parallelize`, Turbo-stream assertion helpers, `Current` tenancy wiring) — assertion helpers and tenancy wiring are version- and app-sensitive; verify against your Rails/turbo-rails versions. The coverage-ownership discipline, fixture craft, and red flags are the durable layer.
+
 ## Related skills
 
 - [dhh-style.md](dhh-style.md) — the school doctrine this testing practice belongs to.

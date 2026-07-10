@@ -45,17 +45,19 @@ First classify the initiative. The decision posture changes.
 
 For optimization, curiosity and cadence matter more than conviction. For new behavior, lack of confidence is a signal that the team has not done enough homework. Probe: Do we know the target customer, their day-to-day, when the problem appears, and their next-best alternative? Can we explain why this solution should work even if the first version misses?
 
-## Data-informed values
+## Data-informed values and operations
 
 Use these five values when a team claims to be data-informed:
 
 - **Purpose before numbers:** choose metrics because they represent human value, not because they are measurable.
 - **Verifiable goals:** replace vague aspirations with observable outcomes and a baseline.
-- **Everyone knows the numbers:** do not outsource metric fluency to analysts. Regular metric review is operational hygiene, not a panic ritual.
+- **Everyone knows the numbers:** do not outsource metric fluency to analysts. Look at core metrics every day or week, not only when something is broken — regular review is operational hygiene, not a panic ritual, and the prize is an up-to-date model of the business's actionable levers.
 - **Test beliefs actively:** seek disconfirming evidence; do not use dashboards only to support intuition.
 - **Accept probabilities:** imperfect evidence can still improve decision quality. Demanding certainty is often a way to avoid learning.
 
-Cadence rule: look at core metrics every day or week, not only when something is broken. The prize is an up-to-date model of the business's actionable levers.
+**The operating system behind the values.** The best product teams do not treat data as a reporting service; they build a decision system: rock-solid instrumentation and logging from the start; desired outcomes mapped to clear output metrics; hypotheses generated from both user conversations and segmented data; high-velocity experiments that test which hypotheses hold; data team time spent mostly on new business-driving insights, not routine query/report requests; and roadmaps built from those insights. When this is missing, route to `user-research` for the human evidence, `working-with-ai` (ai-enablement) for decision/context legibility, or `shape-up` for process structure.
+
+**AI-assisted analysis raises the trust bar, not lowers it.** AI lowers the cost of producing analysis; it raises the value of deciding which analysis deserves belief. Require: canonical metric definitions and authoritative tables; a machine-readable log of business, instrumentation, pricing, campaign, and policy changes; analyst playbooks (what to check first, which segments matter, which questions are usually noise); institutional memory of prior investigations, conclusions, evidence, and what was ruled out; and accuracy measurement over time, with regressions inspected instead of buried under more context. The trust gap is usually context, not raw model intelligence.
 
 ## Strategy is an assumption chain
 
@@ -75,20 +77,6 @@ When a team asks whether to ship something mediocre or delay for quality, ask th
 - Treat recurring quality/time debates as evidence of bad prioritization, weak estimation, or execution trouble earlier in the process.
 
 Do fewer things better, but make them the most important things.
-
-## Operationalized product teams
-
-The best product teams do not treat data as reporting service. They build a decision system:
-
-- Rock-solid instrumentation and logging from the start.
-- Desired outcomes mapped to clear output metrics.
-- Weekly metric reviews or reports.
-- Hypotheses generated from both user conversations and segmented data.
-- High-velocity experiments that test which hypotheses hold.
-- Data team time spent mostly on new business-driving insights, not routine query/report requests.
-- Roadmaps built from those insights.
-
-When this is missing, route to `user-research` for the human evidence, `working-with-ai` (ai-enablement) for decision/context legibility, or `shape-up` for process structure.
 
 ## Growth as blockage removal
 
@@ -112,18 +100,6 @@ Zhuo's David Fischer interview is useful for founders and product leaders becaus
 - Ask whether a good quarter was truly earned. Sustainable revenue comes from real customer value, not extraction.
 
 Route go-to-market pages to `devtools` (developer-tool-gtm) or `building-in-public`; keep this skill on the decision-quality and customer-truth layer.
-
-## AI and data trust
-
-AI lowers the cost of producing analysis; it raises the value of deciding which analysis deserves belief. For AI-assisted data work, require:
-
-- Canonical metric definitions and authoritative tables.
-- A machine-readable log of business, instrumentation, pricing, campaign, and policy changes.
-- Analyst playbooks: what to check first, which segments matter, which questions are usually noise.
-- Institutional memory: prior investigations, conclusions, evidence, and what was ruled out.
-- Accuracy measurement over time, with regressions inspected instead of buried under more context.
-
-The trust gap is usually context, not raw model intelligence.
 
 ## Choose the owner by outcome, not title
 

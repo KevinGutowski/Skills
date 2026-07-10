@@ -68,18 +68,18 @@ Craft is the attention to detail that signals you care. People feel a cheap, rus
 - **Iteration:** quality takes time; make every last piece function beautifully.
 - **Maintenance / longevity:** great design keeps evolving. When new features or hardware arrive, explore whether they fit your experience. Evolving with them makes people feel supported.
 
-The 2018 "Qualities of Great Design" interviews sharpen Craft three ways: **quality is earned, never claimed** ("being cool doesn't involve saying you're cool… quality has to be earned"); **the durability test** — will this feel dated in 1/5/10 years?; and **great design recedes** ("you're not at all aware of an interface which has been well designed"). Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
+The 2018 "Qualities of Great Design" interviews sharpen Craft three ways: **quality is earned, never claimed** ("quality has to be earned"), **the durability test** (will this feel dated in 1/5/10 years?), and **great design recedes**. Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
 
-Practitioner corroboration, distilled — **Stamatiou** ("ship, then iterate" is a trap — "it ends up being more *shiterate*"; ditch MVP for **SLC — Simple, Lovable, Complete**, cut as a vertical slice; target feeling: "someone has already thought of you"), **Puckett** (care lives in the skippable places; the **depth spectrum** — most work ships at 1–3 of 10 because it's easy to stop pushing; the industry bar is the floor, not the goal), and **MDS** (craft is "spending an obscene amount of time on the details," checked against a user goal; the Adidas/Crayola/Rolex calibration question; a senior gut gets you ~70%). Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
+Practitioner corroboration, distilled: **Stamatiou** — ditch MVP for **SLC (Simple, Lovable, Complete)**, cut as a vertical slice; **Puckett** — care lives in the skippable places, and most work ships at 1–3 on the depth spectrum; **MDS** — the Adidas/Crayola/Rolex calibration question, and a senior gut gets you ~70%. Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
 
-**Soleio's shipping counterweight** (Dive Club): teams don't die from lack of craft; they "flailed around in irrelevance because they just refuse to ship"; designers "hide behind craft." Fix the janky ("the soup tastes funny"); defer sheen.
+**Soleio's shipping counterweight** (Dive Club): teams don't die from lack of craft — they "flailed around in irrelevance because they just refuse to ship." Fix the janky first; defer sheen. Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
 
 ### 8. Delight — create an emotional connection
 Hard to define, instantly recognized. Delightful interfaces are satisfying, enriching, and feel **human**. You don't manufacture delight with confetti or flourishes bolted on at the end. You **identify the emotion** you want people to feel — relaxed, confident, excited — and find ways to reinforce it throughout. Delight is the *sum* of the consideration you put in: the natural result of getting the other seven principles right.
 
 ## Practitioner rules & counter-positions (Config 2024–25 talks)
 
-The sharpest operating rules: Linear's **zero-bug policy, fixed within seven days** and **MVPs are internal-only** ("once something goes live for everyone, it hits the standards"; quality = **Belief × Care × Craft**, decided by "intuition & customers over data"); Perplexity's kill-test — "**If we deleted it, would anybody care?**"; and Stripe's Weinstein — "the vast majority of failure modes are attempting to polish something that shouldn't have existed in the first place." Counter-positions to hold in tension with Simplicity: deliberate friction (protect *rewarding* work), the ornament thesis (minimalism done well is maximal hidden care), scarcity as respect ("Wordle only wants three minutes of your day"), and the testing tension — conversion surfaces answer to tests ("almost nothing works"), durable objects to the 20-year test. Full notes (Linear quality series, Golden-Era diagnostic, all counter-positions): [references/practitioner-notes.md](references/practitioner-notes.md).
+The sharpest operating rules: Linear's **zero-bug policy (fixed within seven days)** and **MVPs are internal-only**; Perplexity's kill-test — "**If we deleted it, would anybody care?**"; and Stripe's Weinstein — most failure modes are polishing something that shouldn't have existed in the first place. Counter-positions to hold in tension with Simplicity: deliberate friction (protect *rewarding* work), the ornament thesis (minimalism done well is maximal hidden care), scarcity as respect (Wordle), and the testing tension (conversion surfaces answer to tests; durable objects to the 20-year test). Full notes (Linear quality series, Golden-Era diagnostic, all counter-positions): [references/practitioner-notes.md](references/practitioner-notes.md).
 
 Linear redesign principle: a product that ships constantly periodically needs a holistic reset because users do not experience modules in isolation. Incremental product growth can create global design debt even when every individual feature decision was reasonable. The reset is warranted only when it rebalances the product around where the company is going.
 
@@ -87,7 +87,7 @@ Linear redesign principle: a product that ships constantly periodically needs a 
 
 ## System thinking (Ryo Lu)
 
-Simplicity and Purpose operationalized at the product-architecture level: **merge concepts, don't add them** ("instead of five discrete little things, you just make the circle big" — collapsing Cursor's five AI entry points into one agent was "probably the biggest reason we took off"); **complexity first, simplicity second** ("true simplicity emerges only after you've grasped the full complexity first. you can't abstract away what you don't fully comprehend"); and **design the three states** — zero, one, and end — for everything. Closing bar: "this is the work. not making things pretty. making things true." Full interview + essay notes: [references/practitioner-notes.md](references/practitioner-notes.md).
+Simplicity and Purpose operationalized at the product-architecture level: **merge concepts, don't add them** (collapsing Cursor's five AI entry points into one agent); **complexity first, simplicity second** — "true simplicity emerges only after you've grasped the full complexity first"; and **design the three states** — zero, one, and end — for everything. Full interview + essay notes: [references/practitioner-notes.md](references/practitioner-notes.md).
 
 ## The classic principles (2017) — the cognitive layer
 
@@ -124,13 +124,7 @@ Walk a design through these — each maps to a principle:
 - [ ] **Craft:** fonts, color (light/dark), icons, animation feedback, layout robustness — does any detail feel rushed?
 - [ ] **Delight:** what emotion is intended, and where is it reinforced? Does it feel human?
 
-**Observation prompts for critique sessions** (Josh Puckett's "noticing" practice — first reactions are shallow; stay with the thing longer and write down *why*, never just "feels clean"):
-- Moments of hesitation — what caused it: uncertainty about consequences, lack of trust?
-- Expectation gaps — where did the mental model break, and what was assumed?
-- Emotional shifts — the exact moment of annoyance or a smile, and its trigger.
-- What's missing, and what's being assumed — what does the interface hide vs. surface, and why those choices?
-- Looks: cheap or crafted? colors cooperating or fighting? one clear hierarchy or everything competing?
-- Feels: fast or sluggish? responds as expected or a subtle disconnect?
+**Observation prompts for critique sessions:** use the per-observation checklist (moments of hesitation, expectation gaps, emotional shifts, what's missing/assumed, looks, feels) from `design-craft`'s Noticing section — stay with the thing past the first reaction and write down *why*, never just "feels clean."
 
 **Running the critique** (mechanics from Josh Puckett's critique methodology):
 - **Sequence:** context first (what is this, and what's the emotional stakes of the task — a divorce-filing app demands different care than a podcast player) → honest first impressions → then separate lenses one at a time: visual design, interface design, consistency/conventions, user context. Don't merge the lenses — a beautiful interface can be unusable and vice versa; judge each on its own terms before synthesizing.
@@ -138,7 +132,7 @@ Walk a design through these — each maps to a principle:
 - **Severity ladder:** *structural* (wrong mental model, IA, missing function — changes what it *is*) > *behavioral* (flow, feedback, expectation-setting — changes how it *feels*) > *visual* (color, type, shadows — changes how it *looks*). Order findings accordingly.
 - **Voice:** decisive, no hedging, no praise-sandwich padding; every problem paired with a direction and a why. End with the 3–5 highest-impact changes, ranked.
 
-**Project-specific facets:** generic virtues don't settle "is this actually good *for this product*?" Define ~5 externally *perceived* attributes you want users to feel (e.g. crafted, playful, authentic, substantial, inventive), score each 1–5, and critique in facet language ("not inventive enough — if we're at a 4, this is going backwards"). The lowest-scoring, highest-ranked facet is the next release's plan; if the top-ranked facet scores lowest, don't ship.
+**Project-specific facets:** generic virtues don't settle "is this actually good *for this product*?" — define, score (1–5), and stack-rank ~5 project-specific perceived attributes per `design-craft`'s Facets of quality section, and critique in facet language.
 
 ## Relationship to other skills
 

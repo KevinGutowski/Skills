@@ -4,6 +4,17 @@
 
 **Sources:** [apple-typography/sources.md](apple-typography/sources.md) — 3 Apple WWDC sessions + MDS + Hollick's font internals.
 
+## Contents
+
+- The San Francisco family — who does what
+- The mechanics you usually shouldn't touch
+- Build hierarchy with text styles
+- Dynamic Type — the rules
+- Checklist
+- Type mechanics beyond the Apple stack (Elliot Jay Stocks, Config 2025)
+- Picking a custom font (WWDC 2017, Sander)
+- Relationship to other skills
+
 Great UI typography is about the *dynamic behavior* of text — optical sizes, tracking, and leading are legibility mechanics, not aesthetic trivia. The system fonts handle them automatically; your job is to use **text styles** and system APIs so you inherit that engineering, and to keep it working when type scales up. (For SF Symbols — which are typographic objects too — see `swiftui` (sf-symbols).)
 
 **The HIG legibility floor:** minimum text sizes 11pt (iOS/iPadOS), 10pt (macOS), 23pt (tvOS), 12pt (watchOS) — defaults 17/13/29/16 — and "avoid Ultralight, Thin, and Light font weights" in UI text.
@@ -62,6 +73,19 @@ People choose from 7 default sizes + 5 accessibility sizes; supporting them is n
 
 > **Staleness note (Kevin's rule):** code above verified against current docs as of mid-2026. The UIKit size-category observation shown in the 2024 talk uses `UIContentSizeCategory.didChangeNotification`; on iOS 17+ prefer `registerForTraitChanges`. Web equivalents: `system-ui`, `ui-rounded`, `ui-serif`, `ui-monospace`. Re-verify API names against developer.apple.com/documentation when applying.
 
+## Checklist
+
+- [ ] Text styles (not fixed fonts) everywhere; UIKit labels have `adjustsFontForContentSizeCategory` + `numberOfLines = 0`?
+- [ ] Custom fonts wired through `UIFontMetrics` / `Font.custom(relativeTo:)` with role-matched styles?
+- [ ] Layout constants `@ScaledMetric`; layout direction flips at `.isAccessibilitySize`?
+- [ ] No truncated or clipped text at the largest accessibility sizes (audited)?
+- [ ] Decorative images don't scale; content images and inline symbols do?
+- [ ] Custom bar controls adopt the Large Content Viewer?
+- [ ] System tracking/leading/kerning left alone unless exceptional (and then size-specific)?
+- [ ] Width styles chosen for hierarchy with legibility first; fallback plan for non-Latin scripts?
+
+See `apple-typography/code-patterns.md` for all 23 verbatim code samples from the talks, organized by rule.
+
 ## Type mechanics beyond the Apple stack (Elliot Jay Stocks, Config 2025)
 
 - **Grade vs weight**: "whereas weight is designed to serve as a differentiator, **grade exists to unify**" — and grade changes don't change character widths, so no reflow. Modern use: keeping type optically consistent across **light/dark mode** (dark backgrounds make light text bloom; drop a grade). SF has grades; Roboto Flex exposes a GRAD axis.
@@ -90,19 +114,6 @@ When SF isn't the answer, answer two questions before opening the font menu: **w
 - **Point size ≠ apparent size.** Glyphs are drawn inside a font body; "at the same point size, two fonts can appear to have different scales because of their design." When pairing, set candidates side by side at one point size and prefer the closest apparent-scale match — otherwise you'll tweak point sizes at every pairing site. (Same x-height physics as Stocks's "no shared font size" point above.)
 - **Pairing strategy:** start with two typefaces, add only if truly needed. Easiest win: one family, contrast by weight. If pairing styles, make the stylistic difference (structure *and* contrast) strong enough to be obvious. A "strong display typeface and using the system font" for text is a legitimate pattern — your style on top, SF as the workhorse. "The key element is typographic contrast" — via size, weight, or style; books run low display/text contrast (long reading), news layouts run high (grab attention, then read with ease).
 - Style perception is learned association (geometric sans ≈ "fresh" yet ~100 years old; book faces feel "literary" from exposure) — learn the layers, old and new, rather than trusting first impressions.
-
-## Checklist
-
-- [ ] Text styles (not fixed fonts) everywhere; UIKit labels have `adjustsFontForContentSizeCategory` + `numberOfLines = 0`?
-- [ ] Custom fonts wired through `UIFontMetrics` / `Font.custom(relativeTo:)` with role-matched styles?
-- [ ] Layout constants `@ScaledMetric`; layout direction flips at `.isAccessibilitySize`?
-- [ ] No truncated or clipped text at the largest accessibility sizes (audited)?
-- [ ] Decorative images don't scale; content images and inline symbols do?
-- [ ] Custom bar controls adopt the Large Content Viewer?
-- [ ] System tracking/leading/kerning left alone unless exceptional (and then size-specific)?
-- [ ] Width styles chosen for hierarchy with legibility first; fallback plan for non-Latin scripts?
-
-See `apple-typography/code-patterns.md` for all 23 verbatim code samples from the talks, organized by rule.
 
 ## Relationship to other skills
 

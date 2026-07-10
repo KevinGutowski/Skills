@@ -1,5 +1,13 @@
 # Capturing Mindset, Not Just Process
 
+## Contents
+
+- The Difference
+- Identifying Core Mindsets
+- Creating Mindset Reference Files
+- Weaving Mindset into SKILL.md
+- Common Mistakes
+
 ## The Difference
 
 Books teach **ideology**, not just procedures. The mindset is what makes the techniques work.

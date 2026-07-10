@@ -2,6 +2,14 @@
 
 Rachel Nabors, *Animation at Work* (A Book Apart, 2017). All quotes verified against the source text. Chapter numbers per the book's table of contents: 1. Human Perception and Animation · 2. Patterns and Purpose · 3. Anatomy of a Web Animation · 4. Communicating Animation · 5. Best Practices and Other Educated Guesses.
 
+## Contents
+
+- Chapter 1 — Human Perception and Animation
+- Chapter 2 — Patterns and Purpose
+- Chapter 3 — Anatomy of a Web Animation
+- Chapter 5 — Best Practices and Other Educated Guesses
+- Conclusion — staleness caveat (hers)
+
 ## Chapter 1 — Human Perception and Animation
 
 **Where/What systems:**

@@ -79,6 +79,8 @@ Long-running or risky data backfills live in `script/migrations/*.rb`, run manua
 - Adding a unique index without first deduping existing data.
 - `validates uniqueness` with no backing unique index.
 
+> **Staleness note:** vendored 2026 from Rails 8-era Fizzy/Campfire (multi-database Solid suite, SQLite + MySQL). Multi-db `migrations_paths`/per-config `schema_dump` and SQLite `default_transaction_mode` are version-sensitive — verify against your project's Rails version. Per [sources.md](sources.md) this file still needs a top-level source refresh before promoting new global rules. The staged-rollout playbooks, script-backfill discipline, and red flags are the durable layer.
+
 ## Related skills
 
 - [dhh-style.md](dhh-style.md) — the vanilla-school doctrine these patterns assume (incl. database-per-tenant tenancy via Active Record Tenanted).

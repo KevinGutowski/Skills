@@ -1,6 +1,6 @@
 # Sources
 
-Screened source map for Julie Zhuo product-decision material. Use these as provenance, not as a quote bank.
+Screened source map for Julie Zhuo product-decision material. Use these as provenance, not as a quote bank. This file holds URLs and screening verdicts; `field-notes.md` holds the per-essay content distillations (kept separate because it carries substance beyond this index).
 
 Sweep note: a fuller pass on 2026-06-12 captured 104 public nodes into `/workspace/.sc/julie-zhuo-sweep`: personal site, 78 Substack archive entries, 20 Medium RSS entries, and personal-site linked talks/articles. 103 captured; one Medium mirror of "The Art and Excellence of Sales" returned a generic 403, but the same content was captured from Substack. Medium month archive pages did not expose static links.
 

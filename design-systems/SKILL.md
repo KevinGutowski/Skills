@@ -1,12 +1,14 @@
 ---
 name: design-systems
-description: "Build, govern, and scale a design system — token architecture, theming/multi-brand, governance, adoption as a measured product, DS-as-AI-context. Use for creating or auditing a design system, token taxonomies, planning governance or adoption, or wiring a DS into AI codegen. Triggers: design system, design tokens, semantic tokens, theming, token naming, governance, Code Connect."
+description: "Build, govern, and scale a design system — token architecture, theming/multi-brand, governance, adoption as a measured product, DS-as-AI-context. Use for creating or auditing a design system, token taxonomies, planning governance or adoption, or wiring a DS into AI codegen. Apple platform system → apple-design; org AI rollout → working-with-ai. Triggers: design system, design tokens, semantic tokens, theming, token naming, Code Connect."
 ---
 
 # Design Systems
 
 **Sources:** [references/sources.md](references/sources.md) — 9 Figma Config talks ('24–25) + Dive Club + books; worked examples in [references/field-notes.md](references/field-notes.md); unresolved promotion candidates in [references/coverage-gaps.md](references/coverage-gaps.md).
 A design system is a **product with customers**, not a library: "treat it like a product team — clear OKRs, roadmap, customers — or it won't succeed" (Rahimi). The deeper frame (Henry Modisett, Linear): a DS is *quality infrastructure* — "if you make it so hard to make a bad button, you're going to have less bad buttons." Sell it honestly: "a design system is not the most efficient way to build things… it must have clear business impact and ROI" — the pitch that works is per-stakeholder incentive alignment: "components for free, performance for free, dark mode for free" (Coinbase), accessibility and i18n free.
+
+These rules have a dial, not a switch — before applying them at full depth, see the Counter-positions section below (consistency-vs-commodification, create-then-lint, how deep the system needs to go).
 
 ## Opinions are the product
 

@@ -4,6 +4,24 @@
 
 A comprehensive guide for creating animations that feel right, based on Emil Kowalski's "Animations on the Web" course.
 
+## Contents
+
+- Theme Note
+- Quick Start
+- Review Format (Required)
+- The Easing Blueprint
+- Timing and Duration / Duration Guidelines
+- Why Animation Works (Perception)
+- Animation's Purpose: Five Patterns (Nabors, ch. 2)
+- When to Animate
+- Spring Animations
+- Performance
+- Accessibility
+- Practical Tips
+- Easing Decision Flowchart
+- Communicating Motion to Engineers (Briggs)
+- Reference Files
+
 ## Theme Note
 
 The specific values in this skill (durations, easings, scale magnitudes, stagger delays) are tuned to work as a coherent set — like a color scheme, they look best when committed to as a whole. If another design skill or theme (e.g. `design-craft`, or its Emil Kowalski reference) is also loaded with different numbers, pick one theme's values and apply them consistently rather than averaging.
@@ -12,13 +30,14 @@ The specific values in this skill (durations, easings, scale magnitudes, stagger
 
 These values and techniques are for **web/CSS/JS** motion. On **iOS/SwiftUI**, animations/transitions/effects are covered by `swiftui` (swiftui-animation), scroll-driven motion by `swiftui` (swiftui-lazy-stacks), and brand-through-motion by `apple-design` (ios-brand-identity) — don't cross-apply CSS specifics there.
 
-## Initial Response
+## Quick Start
 
-When this skill is first invoked without a specific question, respond only with:
+Every animation decision starts with these questions:
 
-> I'm ready to help you with animations based on Emil Kowalski's animations.dev course.
-
-Do not provide any other information until the user asks a question.
+1. **Is this element entering or exiting?** → Use `ease-out`
+2. **Is an on-screen element moving?** → Use `ease-in-out`
+3. **Is this a hover/color transition?** → Use `ease`
+4. **Will users see this 100+ times daily?** → Don't animate it
 
 ## Review Format (Required)
 
@@ -41,15 +60,6 @@ After: 200ms
 ```
 
 Correct format: A single markdown table with | Before | After | columns, one row per issue.
-
-## Quick Start
-
-Every animation decision starts with these questions:
-
-1. **Is this element entering or exiting?** → Use `ease-out`
-2. **Is an on-screen element moving?** → Use `ease-in-out`
-3. **Is this a hover/color transition?** → Use `ease`
-4. **Will users see this 100+ times daily?** → Don't animate it
 
 ## The Easing Blueprint
 

@@ -4,6 +4,20 @@
 
 Use this for the mechanical ASR layer before `research-cataloging` (source-translation-workflow). The goal is to create auditable transcript evidence, not a final translation or summary.
 
+## Contents
+
+- Core rule
+- Caption-first preflight
+- Audio normalization
+- Chunking
+- OpenAI transcription call
+- Official OpenAI references
+- Raw output preservation
+- Audit scans
+- Targeted retry protocol
+- Assembly
+- Handoff
+
 ## Core rule
 
 Transcription output is evidence, not authority. Preserve raw platform captions, audio chunks, OpenAI JSON, failed retries, and audit notes so bad ranges can be repaired without retranscribing the whole recording.
@@ -72,7 +86,7 @@ Prompt guidance:
 
 - Ask for accurate transcription, not summary.
 - Tell the model to mark `[unclear]` instead of repeating phrases.
-- Include known speaker names, Pokemon names, venue names, and craft terms.
+- Include known proper names — speakers, venues, domain terms (in the origin project: Pokémon and craft terms). Substitute your project's names.
 - Do not ask the transcription pass to translate; translation belongs to `research-cataloging` (source-translation-workflow).
 
 ## Official OpenAI references
@@ -111,9 +125,10 @@ After the first pass, scan raw JSON and assembled transcripts:
 rg --pcre2 -n '(.)(?:\1){20,}|(.{25,})\2|hallucinat(?:ed|ion)?|\[unclear\]' "$out_dir"
 ```
 
-Also scan for project-specific name and term drift:
+Also scan for project-specific name and term drift. The names below are an example from the origin project (a Pokémon craft-exhibition corpus) — substitute your own proper names plus their likely ASR misspellings:
 
 ```sh
+# EXAMPLE terms — replace with your project's names and plausible drift variants
 rg -n 'Teramasa|Therumasa|Debra Goldberg|Ipporo|Ipodo|Raiden|radon|Garados|Gerados|Gyrados|```' "$out_dir"
 ```
 
@@ -158,7 +173,7 @@ Assemble two files:
 
 Use retry JSON instead of the bad original chunk when retry files exist. Keep the working transcript source-language faithful: Japanese remains Japanese and English remains English.
 
-For this project, `research/transcripts/scripts/assemble_transcript_dir.js` demonstrates the pattern: it detects `openai_chunk_###*_retry.json`, inserts an audit note, and assembles retries in place of the original chunk.
+In the origin project, an assembly script (`research/transcripts/scripts/assemble_transcript_dir.js` — lives in that project's repo, not here) demonstrated the pattern: detect `openai_chunk_###*_retry.json`, insert an audit note, and assemble retries in place of the original chunk. Write your own equivalent per project; the naming convention above is what makes it trivial.
 
 ## Handoff
 

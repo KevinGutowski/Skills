@@ -2,7 +2,7 @@
 
 Use this reference when the user asks for a deep critique, a scored review, multiple edit levels, or an explanation of what changed.
 
-## Table of Contents
+## Contents
 
 - Edit Levels
 - Scoring Rubric

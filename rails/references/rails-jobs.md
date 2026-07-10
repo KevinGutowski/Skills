@@ -69,6 +69,8 @@ def notify_recipients_later   # enqueues NotifyRecipientsJob (often private, cal
 - Cron-style reset jobs when reset-on-use logic is simpler and safer.
 - Background jobs triggering spurious Turbo broadcasts (wrap in `suppressing_turbo_broadcasts`).
 
+> **Staleness note:** vendored 2026 from Rails 8-era Fizzy/Campfire (Solid Queue). Version-sensitive APIs: `enqueue_after_transaction_commit` is Rails 7.2+, `perform_all_later` is 7.1+, `ActiveJob::Continuable` is a recent addition, and `limits_concurrency` is Solid Queue-specific — verify against your Rails and queue-backend versions. Per [sources.md](sources.md) this file still needs a top-level source refresh before promoting new global rules. The naming convention, idempotency discipline, and error taxonomy are the durable layer.
+
 ## Related skills
 
 - [dhh-style.md](dhh-style.md) — school doctrine (Solid suite over Redis).

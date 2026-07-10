@@ -6,6 +6,23 @@
 
 Use this skill when setting, sizing, pairing, or loading type for the web. References: [rutter-guidelines.md](web-typography/rutter-guidelines.md) (full guideline index), [choosing-and-pairing.md](web-typography/choosing-and-pairing.md) (selection/pairing methods), [opentype-and-micro.md](web-typography/opentype-and-micro.md) (OpenType recipes + character craft).
 
+## Contents
+
+- 1. Stance
+- 2. The body-text triad (size × measure × line-height)
+- 3. Reading-distance sizing
+- 4. Scales & hierarchy
+- 5. Rhythm & vertical space
+- 6. Alignment & justification
+- 7. Tracking (letterspacing)
+- 8. Display craft
+- 9. Choosing & pairing (the judgment layer)
+- 10. Web fonts & loading
+- 11. Tables
+- 12. Staleness appendix — what changed since 2014/2017
+- Checklist
+- Relationship to other skills
+
 ## 1. Stance
 
 - **"Choosing a typeface is not typography"** (Rutter, 'How to use this book') — Rutter deliberately puts font choice *last*. The craft is in the setting; "even very ordinary faces can be crafted into an engaging, absorbing typographic experience."

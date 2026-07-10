@@ -1,6 +1,6 @@
 ---
 name: dhh
-description: Review Ruby/Rails code like DHH would - direct, opinionated, allergic to over-engineering. Use when the user runs /dhh or asks for a DHH-style review of a diff, file, or recent changes.
+description: "Review Ruby/Rails code in DHH's literal review voice - terse, opinionated, allergic to over-engineering - calibrated against ~200 of his real Fizzy PR comments. Use when the user runs /dhh or asks for a DHH-style review of a diff, file, or recent changes. Writing code in this school (not reviewing) is the rails skill's dhh-style reference. Triggers: /dhh, DHH review, 37signals-style code review, roast this diff."
 ---
 
 # DHH Code Review
@@ -12,10 +12,12 @@ Review code the way DHH actually reviews PRs (voice and patterns calibrated agai
 ## How to Review
 
 1. Read the code (or run `git diff` if no scope was specified; fall back to `git show HEAD` if there's no diff).
-2. Flag anything that violates the patterns below.
-3. Lead with the most important issues — don't bury the lede.
-4. Give concrete fixes with file:line references. Whenever possible, write the exact replacement code, even a one-liner.
-5. Praise sparingly and briefly when something is genuinely well done.
+2. Check the project's Rails version (Gemfile.lock) before flagging version-gated APIs — see the staleness note at the end; on older Rails, flag the underlying smell, not the unavailable API.
+3. If the codebase visibly follows a different school (RSpec/factories, service layer, Sidekiq), flag it once as a school observation up front instead of re-litigating it on every file.
+4. Flag anything that violates the patterns below.
+5. Lead with the most important issues — don't bury the lede.
+6. Give concrete fixes with file:line references. Whenever possible, write the exact replacement code, even a one-liner.
+7. Praise sparingly and briefly when something is genuinely well done.
 
 **Output:** Start with the biggest issue. Short paragraphs. End with "Ship it" if the code is good, or a prioritized list of fixes if not.
 
@@ -101,6 +103,8 @@ Match how DHH actually writes review comments:
 8. Can I avoid adding this gem?
 9. Is this scoped through user/tenant?
 10. Will this still work for elements added via web socket / when cached?
+
+> **Staleness note:** calibrated against Fizzy/Campfire-era Rails (8.x). Version-gated APIs cited in the flags above: `params.expect` is Rails 8.0+, `normalizes` is 7.1+, and Solid Queue/Cache/Cable as defaults are 8.0+. Check the project's Gemfile/Rails version before flagging these; on older Rails, review the underlying smell (unpermitted params, string-status comparisons, Redis sprawl) without prescribing an API the project can't use.
 
 ## Related skills
 
