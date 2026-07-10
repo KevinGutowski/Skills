@@ -2,6 +2,12 @@
 
 Transition specificity, GPU compositing hints, and perceived performance.
 
+## Contents
+
+- Transition Only What Changes
+- Use `will-change` Sparingly
+- Perceived Performance: Spinner Choice Assigns Blame
+
 ## Transition Only What Changes
 
 Never use `transition: all` or Tailwind's `transition` shorthand (which maps to `transition-property: all`). Always specify the exact properties that change.

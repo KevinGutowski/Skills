@@ -8,6 +8,19 @@ Naming is as fundamental to a product as layout, interaction, and visual design.
 
 This skill covers naming anything user-facing: features, settings, labels, values, buttons, plans, tabs, menu items, modes, and product names. Apply it when generating names, choosing between candidates, or reviewing a name someone proposes.
 
+## Contents
+
+- The three criteria
+- The clarity ↔ brand dial
+- The naming workflow
+- Iterate by elimination
+- Four registers that all work
+- Category labels (Martin)
+- CTA and button grammar (MDS)
+- Evaluation checklist
+- Three things to carry
+- Relationship to other skills
+
 ## The three criteria
 
 Judge every candidate against three questions. A name doesn't have to satisfy all three — but it's great when it does, and you should know which one you're trading away and why.

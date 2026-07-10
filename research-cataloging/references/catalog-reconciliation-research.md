@@ -6,6 +6,16 @@ Use this after or alongside [archival-research.md](archival-research.md). The ar
 
 When the source material is multilingual, use [source-translation-workflow.md](source-translation-workflow.md) first. That reference preserves raw text, working transcripts, manual translations, and excerpt statuses; this one then links those translated excerpts into the catalog.
 
+## Contents
+
+- Core stance
+- Working loop
+- Evidence ladder
+- Image promotion rules
+- Probing discipline
+- Catalog outputs to maintain
+- Final response pattern
+
 ## Core stance
 
 Research is not done when a page is saved. It is done when the finding has been reconciled into the project's structured truth:

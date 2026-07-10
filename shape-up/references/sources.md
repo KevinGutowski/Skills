@@ -12,6 +12,7 @@ This source map keeps the process schools explicit. Do not merge them into one g
 - Linear sources cover craft-first, no-handoff/no-PM, taste-led work, remote/project operating model, and quality bar.
 - Perri, Klein, and Lean UX sources cover metrics-led strategy, outcome-based roadmaps, assumption validation, and learning loops.
 - Nan Yu / Linear, Duolingo, and related product-process talks cover org shape, portfolio bets, and scope/quality relationships.
+- `field-notes.md` holds the verbatim quote banks behind the compressed team-shape, decisiveness, and killing-products sections in `SKILL.md`.
 
 ## Promotion rule
 

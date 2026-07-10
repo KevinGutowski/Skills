@@ -26,4 +26,5 @@ Use this as provenance for the `user-onboarding` skill and references. It is not
 - `first-impressions.md`: post-signup first screen, limbo screens, coachmarks, welcome messages, quick wins.
 - `selling-the-dream.md`: pre-signup copy, switching costs, aha moment, social proof.
 - `driving-momentum.md`: setup quests, progress, encouragement, lifecycle emails, return behavior.
+- `field-notes.md`: verbatim quote texture behind Universal Rules 8–15 (Config 2024/2025, Dive Club, Cursor field notes).
 - `coverage-gaps.md`: candidate onboarding standards that need more evidence or accepted examples before promotion.

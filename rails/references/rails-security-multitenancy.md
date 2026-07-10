@@ -116,6 +116,8 @@ For webhooks, push endpoints, unfurling — any user-influenced URL:
 - Secrets permanently visible in admin UIs.
 - Auth endpoints without rate limiting.
 
+> **Staleness note:** vendored 2026 from Rails 8-era Fizzy/Campfire. The built-in `rate_limit` macro is Rails 8.0+ (use rack-attack or equivalent on earlier versions); CSP, `Sec-Fetch-Site`, and ActiveStorage specifics should be verified against your Rails version. Per [sources.md](sources.md) this file still needs a top-level source refresh before promoting new global rules. The tenancy architecture, scoped-lookup discipline, and SSRF baseline are the durable layer.
+
 ## Related skills
 
 - [dhh-style.md](dhh-style.md) — school doctrine; its multi-tenancy section covers the database-per-tenant architecture this skill's path-based patterns sit beside.

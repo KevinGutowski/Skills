@@ -44,7 +44,7 @@ from pathlib import Path
 from nocodb_helper import NocoDBClient
 
 client = NocoDBClient.from_env()
-tables = client.table_ids("pufzozuzh8qz686")
+tables = client.table_ids("pufzozuzh8qz686")  # example base ID from the origin project — use your own base's ID
 sources = tables["Sources"]
 images = tables["Images"]
 
@@ -66,8 +66,8 @@ client.upload_attachment(images, image_row["Id"], "File", Path("/abs/path/image.
 Token lookup:
 
 - Prefer `NOCODB_API_TOKEN`.
-- If absent, the helper tries loading it from `~/.zshrc`.
-- Default base URL is `http://127.0.0.1:3010`.
+- If absent, the helper tries loading it from `~/.zshrc` (an origin-project convenience — on other machines set the env var instead).
+- Default base URL is `http://127.0.0.1:3010` (the origin project's local container — override with `NOCODB_BASE_URL`).
 - Some tokens cannot list all bases; if `/api/v2/meta/bases` is forbidden, take the base ID from the URL and call `table_ids(base_id)` or run the helper with `--base-id`.
 
 ## Common Patterns

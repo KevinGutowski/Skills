@@ -1,7 +1,6 @@
 ---
 name: frontend-design
-description: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.
-license: Complete terms in LICENSE.txt
+description: "Build distinctive, production-grade web UI — components, pages, apps — with a bold committed aesthetic, avoiding generic AI slop. Use when generating or building frontend interfaces. Craft rules/motion values → web-design (web-animation-design); restrained polish → design-craft; repairing AI-generated UI → working-with-ai (ai-ui-direction); generative visuals → creative-coding. Triggers: landing page, hero, component, distinctive UI."
 ---
 
 This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.
@@ -17,6 +16,14 @@ This skill represents a **bold/distinctive aesthetic theme** — deliberately di
 For motion-specific work, `web-design` (web-animation-design) is the default theme — defer to its values when both are loaded. When this skill triggers alongside the restraint-focused skills, surface the choice as a menu rather than blending — "bold/distinctive vs restrained/invisible" is a real design decision, not noise.
 
 When AI generated the UI and the task is directing or repairing it (layout diagnosis, prompt-vs-edit decisions), use `working-with-ai` (ai-ui-direction) — this skill owns generation itself.
+
+## Hard rules
+
+NEVER use generic AI-generated aesthetics like overused font families (Inter, Roboto, Arial, system fonts), cliched color schemes (particularly purple gradients on white backgrounds), predictable layouts and component patterns, and cookie-cutter design that lacks context-specific character.
+
+Interpret creatively and make unexpected choices that feel genuinely designed for the context. No design should be the same. Vary between light and dark themes, different fonts, different aesthetics. NEVER converge on common choices (Space Grotesk, for example) across generations.
+
+Practitioner-named slop tells and their fixes live in the De-slop substrate section below.
 
 ## Design Thinking
 
@@ -99,10 +106,6 @@ Bibliographic detail (course link, post/episode IDs): [references/sources.md](re
 - **Imagery is a multiplier**: "great images are going to make your designs 10 times better than subpar images" — Nike would sell fewer shoes with bad photos; source or create deliberately.
 - **Image-seam tricks**: faux fade-out — duplicate the image area, sample "the color that's like the darkest in that," then lay "a gradient that is the same color" (100%→0) over the seam to "create like a faux Fade Out into that section." White-band fix: raise the image's highlights and "set the blend mode to multiply and that'll get rid of that White Band."
 - **Vision-first AI prompting**: "they will produce slop if you're trying to oneshot a website, which is a sloppy prompt"; "You're not going to swing a hammer and accidentally build your dream home" — your dream home comes from your vision (bedrooms, stories, site). Bring a concrete end goal, then iterate with curiosity — the tool produces whatever you direct it to.
-
-NEVER use generic AI-generated aesthetics like overused font families (Inter, Roboto, Arial, system fonts), cliched color schemes (particularly purple gradients on white backgrounds), predictable layouts and component patterns, and cookie-cutter design that lacks context-specific character.
-
-Interpret creatively and make unexpected choices that feel genuinely designed for the context. No design should be the same. Vary between light and dark themes, different fonts, different aesthetics. NEVER converge on common choices (Space Grotesk, for example) across generations.
 
 **IMPORTANT**: Match implementation complexity to the aesthetic vision. Maximalist designs need elaborate code with extensive animations and effects. Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details. Elegance comes from executing the vision well.
 

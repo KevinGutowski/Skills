@@ -1,13 +1,13 @@
 ---
 name: feature-discoverability
-description: "Make app features discoverable — first launches that lead with content, the five discoverability principles, and TipKit. Use when designing a first-run experience, deciding what's visible vs hidden, adding gesture hints, or fixing features users never find. Triggers: discoverability, first launch, TipKit, hidden feature, hint at gesture, defer signup, users can't find."
+description: "Make app features discoverable — first launches that lead with content, the five discoverability principles, and TipKit. Use when designing a first-run experience, deciding what's visible vs hidden, adding gesture hints, or fixing features users never find. Apple/in-app focus: principles travel; TipKit/tab specifics don't. Triggers: discoverability, first launch, TipKit, hidden feature, hint at gesture, defer signup, users can't find."
 ---
 
 # Feature Discoverability
 
 **Sources/gaps:** [references/sources.md](references/sources.md) — 3 WWDC sessions + Ryo Lu; unresolved TipKit/current-feature-teaching gaps in [references/coverage-gaps.md](references/coverage-gaps.md).
 
-"Your app doesn't get a second chance at a first impression" — and onboarding tutorials don't work ("I always skip through these onboarding screens"). Discoverable means people "can look at a screen and, before they touch anything, know what they can do, and how." **Learning by doing beats reading instructions.**
+"Your app doesn't get a second chance at a first impression" — and onboarding tutorials don't work ("I always skip through these onboarding screens"). Discoverable means people "can look at a screen and, before they touch anything, know what they can do, and how." **Learning by doing beats reading instructions.** Scope: the sources and mechanics are Apple/in-app (tab bars, TipKit, haptics); the five principles travel to other platforms, but the platform-specific teaching patterns don't — see [references/coverage-gaps.md](references/coverage-gaps.md).
 
 ## First launch: remove every barrier (2017)
 
@@ -37,11 +37,10 @@ Tips are **education, not promotion**: teach a new feature, surface a hidden one
 
 ## Designing in layers (Ryo Lu)
 
-Discoverability over a product's lifetime, not just first launch — software should grow with the user through layers that "reveal themselves exactly when you need them" (tweet). In the Alan Kay open-the-hood lineage: "the goal isn't to hide complexity — it's to sequence its reveal."
-- **The hard part is transitions.** Outgrowing the defaults "shouldn't feel like hitting a wall. it should feel like discovering a secret door that was always there" (tweet).
-- **Layered, not additive.** Secondary capabilities must stay "layers of the core concepts… not kind of linearly like additive" thrown "all at you at once" — each layer reuses the concepts the user already holds.
-- **Migration ethic.** Move defaults as the world moves, but bring existing users "onto better ways to do things… without feeling like they're behind" — "carry them over instead of like teleporting them to the new world." Nudges and defaults are the most powerful levers; always leave a way out.
-- **Design re-entry for churned users.** Lu himself tried Cursor and churned three times before the agent hooked him — people who bounced "kind of lost their trust" "and then they never" return on their own; the comeback path ("to come back cuz it's good now") is a discoverability surface too.
+Discoverability over a product's lifetime, not just first launch: don't hide complexity — sequence its reveal. Three testable rules:
+- **Layer, don't add.** Every advanced capability must be a deeper layer of a concept the user already holds, reachable from a surface they already visit — never a parallel feature thrown at everyone at once. Test: can a user who has outgrown the defaults reach the next layer without learning a new concept? Outgrowing the defaults "shouldn't feel like hitting a wall. it should feel like discovering a secret door that was always there" (tweet).
+- **Migrate by carrying, not teleporting.** When defaults move to a better way, nudge existing users onto it with a visible path back — never strand them feeling behind. Test: does an existing user land in the new default with their old workflow still reachable?
+- **Design re-entry for churned users.** People who bounced lost trust and don't return on their own (Lu himself churned off Cursor three times before the agent hooked him); a changed product needs an explicit comeback surface that shows what's better now. Test: does someone returning after six months get shown what changed, or dropped into an unfamiliar default?
 
 ## Checklist
 
@@ -50,6 +49,7 @@ Discoverability over a product's lifetime, not just first launch — software sh
 - [ ] Every gesture has a visible alternative; transitions hint at the gestures they mirror?
 - [ ] Content organized by motivation; personalization controls labeled with consequences and easy to reach?
 - [ ] Tips educational, eligibility-gated, frequency-capped, invalidated on action?
+- [ ] Advanced capabilities layered on existing concepts; migrations carry users over with a way back; a re-entry path exists for returners?
 
 See `references/examples.md` for the worked examples (Jetsetter, Strava, Toasty, the TipKit eligibility code).
 

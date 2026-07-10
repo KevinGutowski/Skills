@@ -4,6 +4,14 @@ Core books (synthesized throughout SKILL.md and the other reference files):
 
 - *Erika Hall, "Just Enough Research" (2nd ed., A Book Apart, 2019)* · *Steve Portigal, "Interviewing Users" (Rosenfeld Media, 2013)* · *Tomer Sharon, "Validating Product Ideas" (Rosenfeld Media, 2016)* · *Cindy Alvarez, "Build Better Products" (Rosenfeld Media, 2016)* · *Melissa Perri, "Escaping the Build Trap" (O'Reilly, 2018)* · *Gothelf/Seiden, "Lean UX" (1st ed., 2013)* · *Laura Kalbag, "Accessibility for Everyone" (A Book Apart, 2017)* · *Metts & Welfle, "Writing Is Designing" (Rosenfeld, 2020)* · *MailChimp, "The UX Reader" (2014)*.
 
+Section map (where each supporting source lands in SKILL.md):
+
+- Alvarez, Perri, and Gothelf/Seiden — assumption validation, metrics hygiene, and lightweight learning artifacts (§2.13–14, §5 no-neutral validation, and `validation-and-metrics.md`).
+- Kalbag — disabled-participant recruiting (§3).
+- Metts & Welfle — content-testing methods (§4).
+- MailChimp, *The UX Reader* — research dissemination (`synthesis-and-impact.md`).
+- Goldin, D'Arcy, and Soleio Cuervo — empathy transfer, dogfooding, and PMF-as-surprise (§5); verbatim quotes in `field-notes.md`.
+
 Interview/podcast field notes (§5):
 
 - *Ron Goldin — Dive Club podcast (UkQpgslyR3A) — the empathy-transfer note.*

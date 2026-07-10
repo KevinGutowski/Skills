@@ -15,7 +15,7 @@
 - Hi-res URL surgery — cost/reward and the retroactive re-fetch pass
 
 
-Detailed mechanics referenced from `SKILL.md`. The discipline (provenance, auto vs. curated, read-it-yourself, never-invent-attributions) lives in `SKILL.md`; this file holds the how-to.
+Detailed mechanics referenced from the parent reference, [archival-research.md](../archival-research.md) (in `research-cataloging`). The discipline (provenance, auto vs. curated, read-it-yourself, never-invent-attributions) lives there; this file holds the how-to.
 
 ## Section-extraction pattern (for fan-wiki articles)
 
@@ -129,7 +129,7 @@ python3 download.py <subject-slug> --url <page-url> [--label <name>] [--no-image
 
 It should: fetch the page, save to `pages/<label>.html`, parse `<img>`/`<source srcset>`/`<meta og:image>` for images **AND** `<a href="*.pdf|.doc|.docx|.zip|.xlsx|.ppt|.pptx|.epub">` for documents, download images to `images/` and documents to `pdfs/`, append a TSV row per asset to `capture_log.tsv`, and append a section to `README.md`. **The script captures, the README curates** — keep them separate so the curated section survives re-runs.
 
-**Document extraction is mandatory, not optional.** Museums use PDFs for: official work lists, press releases, exhibition flyers (front-back AND inside-spread), application forms, ticket flowcharts, access maps, education guides, audio-tour transcripts. Skipping these silently halves the value of a museum-site capture. See the "READ the page yourself" section in `SKILL.md` — even with document extraction in the script, manual page-read is still required to catch references the script's regex can't predict (e.g., links to assets on subdomains, links phrased as button text, archive-index pages).
+**Document extraction is mandatory, not optional.** Museums use PDFs for: official work lists, press releases, exhibition flyers (front-back AND inside-spread), application forms, ticket flowcharts, access maps, education guides, audio-tour transcripts. Skipping these silently halves the value of a museum-site capture. See the "READ the page yourself" section in [archival-research.md](../archival-research.md) — even with document extraction in the script, manual page-read is still required to catch references the script's regex can't predict (e.g., links to assets on subdomains, links phrased as button text, archive-index pages).
 
 The captured pages directory often picks up site chrome (logos, social icons, header SVGs). Filter these from the capture_log.tsv (using a chrome-pattern matcher with PXK-keyword allowlist), so the log only records subject-relevant assets — the chrome files can stay on disk but shouldn't pollute the provenance index.
 

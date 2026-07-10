@@ -11,7 +11,7 @@ description: "Teams working with AI as a tool: coding agents on real repos, AI-g
 
 Read exactly one reference file below; each carries the full distillation for its area (sources and extended notes live in a same-named subdirectory next to it).
 
-- **Agentic coding** — running coding agents on real projects: the constraint stack, AGENTS.md/CLAUDE.md rules, distilling taste into rules, the non-delegable human review role, vibe-coding security holes, worktrees/multi-agent topologies, designer-in-the-repo: [references/agentic-coding.md](references/agentic-coding.md)
+- **Agentic coding** — running coding agents on real projects: the constraint stack, AGENTS.md/CLAUDE.md rules, distilling taste into rules, the non-delegable human review role, vibe-coding security holes, worktrees/multi-agent topologies, designer-in-the-repo: [references/agentic-coding.md](references/agentic-coding.md) (extended practitioner quotes: [references/agentic-coding/ai-era-field-notes.md](references/agentic-coding/ai-era-field-notes.md))
 - **AI UI direction** — an AI produced UI and you have to make it right: diagnosing layout bugs in primitive vocabulary (fixed/fill/hug, padding vs gap, nesting), the named-failure catalog, prompt-vs-edit, the independent-judge loop: [references/ai-ui-direction.md](references/ai-ui-direction.md)
 - **AI enablement** — making one person's AI workflow an org capability: decision archives wired to MCP, company-specific internal agents, promoting personal context to team skills, enablement programs and adoption mechanics: [references/ai-enablement.md](references/ai-enablement.md)
 

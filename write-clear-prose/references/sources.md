@@ -10,9 +10,10 @@ This source map records the prose craft authorities named in `SKILL.md` and the 
 
 ## Local references
 
-- `revision-moves.md` holds detailed revision checklists and sentence-level moves.
+- `revision-moves.md` holds detailed revision checklists, sentence-level moves, and an illustrative before/after bank (original examples, not from the sources).
 - `form-playbooks.md` holds genre-specific playbooks.
 - `editing-rubric.md` holds scoring, edit levels, and feedback formats.
+- `../agents/openai.yaml` is a Codex/OpenAI skill-interface manifest (display name + default prompt) kept from the exported layout; it is packaging metadata, not a content reference.
 
 ## Promotion rule
 

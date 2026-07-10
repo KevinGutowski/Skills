@@ -7,7 +7,7 @@ description: "Router for research, archiving, and cataloging: provenance bundles
 
 **Sources/gaps:** [references/sources.md](references/sources.md) maps the research/cataloging references; [references/coverage-gaps.md](references/coverage-gaps.md) parks source completeness, transcript, database, and handoff standards.
 
-Read exactly one reference file below; each holds the full discipline for its area.
+Read exactly one reference file below; each holds the full discipline for its area (deeper worked procedures, helper scripts, and agent manifests live in a same-named subdirectory next to it).
 
 - [references/archival-research.md](references/archival-research.md) — per-subject research bundles: web source trails with snapshots + attributed imagery, OCR/transcription of scanned PDFs into layered corpora, venue/exhibition/artwork dossiers.
 - [references/source-sweep.md](references/source-sweep.md) — exhaustive coverage of bounded sources: inventory every node, coverage ledger, open every page, never judge from titles.

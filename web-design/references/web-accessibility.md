@@ -6,6 +6,22 @@
 
 The durable practice layer for accessible websites. Standards-era warning up front: Kalbag wrote against **WCAG 2.0**; current is **WCAG 2.2** (2.x success criteria are additive, so her criteria still hold) and EAA enforcement began June 2025 — **verify every standards, tooling, or legal specific against current WAI/MDN docs** (see Staleness appendix). Extended passages: [references/source-extracts.md](web-accessibility/source-extracts.md).
 
+## Contents
+
+- 1. Framing: universal, not bolted-on
+- 2. Assistive-technology discipline
+- 3. Priority order (the lesson, not the mechanics)
+- 4. Keyboard & focus mechanics
+- 5. Contrast nuance (+ 5b. Contrast metrics & compliance tactics)
+- 6. Forms & errors
+- 7. Writing accessibly (Writing Is Designing, ch. 5)
+- 8. Rich media
+- 9. The testing program (layered, in order)
+- 10. Org layer
+- Checklist
+- Staleness appendix
+- Relationship to other skills
+
 ## 1. Framing: universal, not bolted-on
 
 - Ron Mace (architect, wheelchair user): "Universal design is the design of products and environments to be **usable by all people, to the greatest extent possible, without the need for adaptation or specialized design**." Accessible design adds the wheelchair ramp on the far side of the building; universal design builds combined ramp-stairs no one has to go out of their way to choose.

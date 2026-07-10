@@ -27,7 +27,7 @@ MotionScore ranks animations based on their render pipeline cost using a tier gr
 | **D** | Main (layout+paint) | High — layout recalc + paint + composite each frame           | `width`, `height`, `margin`, `top`/`left`, `scrollTop` polling          |
 | **F** | Main (thrash)       | Catastrophic — forced synchronous layout per read/write cycle | Interleaved DOM reads/writes, CSS variable inheritance bombs on `:root` |
 
-[resources/tier-reference.md] provides a detailed breakdown of exactly which kinds of values and patterns fall into which tier. Always read this file first.
+[resources/tier-reference.md](resources/tier-reference.md) provides a detailed breakdown of exactly which kinds of values and patterns fall into which tier. Always read this file first.
 
 ## Step 1: Audit
 
@@ -75,7 +75,7 @@ Search the codebase for animation patterns. Cast a wide net:
 -   `requestAnimationFrame` callbacks that modify style
 -   `scrollTop`, `scrollLeft`, `getBoundingClientRect()` in animation loops
 
-**Library imports — read `tier-reference.md` and `references/property-tiers.json` for patterns:**
+**Library imports — read `resources/tier-reference.md` and `resources/property-tiers.json` for patterns:**
 
 -   Motion: `animate`, `motion.`, `useAnimate`, `useSpring`, `layout`, `layoutId`, `whileInView`, `scroll()`
 -   GSAP: `gsap.to`, `gsap.from`, `gsap.timeline`, `ScrollTrigger`
@@ -89,18 +89,18 @@ Search the codebase for animation patterns. Cast a wide net:
 For every animation found:
 
 1. Identify ALL values being animated
-2. Look up each value's tier in `references/property-tiers.json`
+2. Look up each value's tier in `resources/property-tiers.json`
 3. **Worst-tier wins** — if an animation touches `opacity` (S) and `width` (D), the animation is D-tier.
 4. Factor in the animation method:
     - CSS transitions/animations or WAAPI with compositor props → S-tier
     - JS-driven (rAF, GSAP) with compositor props → A-tier
     - Motion `layout`/`layoutId` → B-tier
     - CSS variable animations → always C-tier minimum, even for compositor values
-5. Read `tier-reference.md` for edge cases and caveats.
+5. Read `resources/tier-reference.md` for edge cases and caveats.
 
 ### 4. Detect anti-patterns
 
-Scan for these specific problems (see `tier-reference.md` for detection details):
+Scan for these specific problems (see `resources/tier-reference.md` for detection details):
 
 | Anti-Pattern                                                 | Severity | Tier |
 | ------------------------------------------------------------ | -------- | ---- |

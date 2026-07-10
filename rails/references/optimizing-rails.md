@@ -253,12 +253,13 @@ Details: [backgrounding.md](optimizing-rails/backgrounding.md)
 ```ruby
 # config/puma.rb
 workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
+threads_count = ENV.fetch("RAILS_MAX_THREADS") { 3 }
 threads threads_count, threads_count
 preload_app!
 
 # Workers = TOTAL_RAM / (RAM_PER_PROCESS * 1.2)
-# Threads = 5 (default, rarely benefits from more in MRI)
+# Threads = 3 (the Rails 7.2+ default; see the GVL section above —
+#   raise only when measured I/O-wait is 75%+, lower for CPU-heavy work)
 # Run at least 3 workers per server for routing efficiency
 ```
 

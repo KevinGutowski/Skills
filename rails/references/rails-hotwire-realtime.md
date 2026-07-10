@@ -111,6 +111,8 @@ Rule of thumb: Turbo Streams for anything that changes the DOM; bare ActionCable
 - Custom ActionCable channels for things `turbo_stream_from` already does.
 - Morph refreshes destroying in-progress user input (missing `data-turbo-permanent`).
 
+> **Staleness note:** vendored 2026 from Rails 8-era Fizzy/Campfire. `broadcasts_refreshes`, morph refreshes, and `turbo_refreshes_with` require Turbo 8 / turbo-rails 2.0+ (2024) — verify the project's Turbo/Stimulus versions before applying. Per [sources.md](sources.md) this file still needs a top-level source refresh before promoting new global rules. The architecture split (streams-only vs cable-augmented), broadcast scoping rules, and red flags are the durable layer.
+
 ## Related skills
 
 - [rails-realtime.md](rails-realtime.md) — the websocket layer at *scale* (connection avalanches, delivery guarantees, AnyCable). This skill is app-level Turbo/Stimulus patterns; that one is infrastructure reliability.

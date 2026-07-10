@@ -2,6 +2,19 @@
 
 *Scope: Shrink oversized images (PNG/TIFF/PSD exports) to visually identical smaller files — diagnose why they're huge, re-encode (WebP/JPEG/AVIF) or re-optimize PNG, verify lossless, never overwrite originals. Use when an image or folder is 'huge' or needs compressing for archive. Triggers: huge image, compress image, shrink PNG, PNG to WebP, visually lossless.*
 
+## Contents
+
+- When to use
+- The one idea: diagnose before you compress
+- Step 1 — Inspect
+- Step 2 — Decide (two questions for the user)
+- Step 3 — Encode
+- Step 4 — Verify (don't just assert "visually identical")
+- Step 5 — Preserve originals
+- Batch a folder
+- Why formats compress the way they do
+- Gotchas
+
 ## When to use
 
 The user has large source images (key visuals, renders, scans, exported artboards — often 50–300 MB PNG/TIFF) and wants to keep them around at much smaller size without an obvious quality hit. The instinct "just save the original" is right until the originals are absurdly big; then a *light, verified* compression pass is the win.

@@ -1,9 +1,9 @@
 ---
 name: x-post-reader
-description: "Reads public X (Twitter) posts without auth — single tweets, a user's timeline, top ~100 tweets, or topical tweets. Use when the user pastes an x.com/twitter.com status URL or asks for a user's tweets. For authenticated X API operations (mentions, followers, search), use x-api instead (needs X_BEARER_TOKEN). Triggers: tweet URL, x.com, what has @handle posted, top tweets."
+description: "Reads public X (Twitter) posts without auth — single tweets, a user's timeline, top ~100 tweets, or topical tweets. Use when the user pastes an x.com/twitter.com status URL or asks for a user's tweets. For authenticated X API operations (mentions, followers, search), use the x-api skill, if installed (needs X_BEARER_TOKEN). Triggers: tweet URL, x.com, what has @handle posted, top tweets."
 ---
 
-# X Post Reader: Fetch a public tweet via VxTwitter
+# X Post Reader: single posts, recent timeline, top tweets, and topical search — no auth
 
 ## When to use
 
@@ -26,6 +26,8 @@ curl -sS "https://api.vxtwitter.com/{handle}/status/{tweet_id}"
 ```
 
 No auth header. No bearer token. Works for any public post.
+
+If VxTwitter errors or times out, swap the host to `api.fxtwitter.com` (same path shape, slightly different field names) before giving up.
 
 ### Example
 

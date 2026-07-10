@@ -6,6 +6,17 @@
 >
 > **Sibling:** If the source is a living codebase with PR-review history (the reasoning lives in review threads, not prose), use `converting-codebases-to-skills` — this skill is for books, docs, and guides.
 
+## Contents
+
+- Quick Start: Book → Skills
+- Should I Create One Skill or Multiple?
+- SKILL.md Structure
+- Reference File Structure
+- Writing Effective Descriptions
+- Preserving the Book's Voice
+- Capturing Mindset, Not Just Process
+- Checklist Before Shipping
+
 ## Quick Start: Book → Skills
 
 1. **Analyze** — Map the book's structure (parts, chapters, concepts)
@@ -43,6 +54,8 @@ Keep SKILL.md under **500 lines**. It's the quick reference that Claude loads fi
 
 Details: [reference-file.md](converting-books-to-skills/reference-file.md)
 ```
+
+(The `reference-file.md` link above is a template placeholder, not a real file — substitute your skill's own reference filename.)
 
 **Key rules:**
 - Follow the book's chapter order

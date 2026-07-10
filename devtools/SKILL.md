@@ -1,13 +1,13 @@
 ---
 name: devtools
-description: "Build products for developers: devtool interface design, CLI/panel UX, command palettes, agent experience, devtool onboarding, landing pages/copy/PMF, and OSS strategy. Use for developer-facing product design or GTM. Building the UI itself → frontend-design; client pricing → client-work. Read one named reference."
+description: "Build products for developers: devtool interface design, CLI/panel UX, agent experience, devtool onboarding, landing pages/copy/PMF, and OSS strategy. Use for developer-facing product design or GTM. Building the UI itself → frontend-design; client pricing → client-work. Read one named reference. Triggers: command palette, CLI UX, agent experience, devtool landing page, README, maintainer burnout."
 ---
 
 # Developer Tools
 
 Read exactly one reference file below; each carries the full distillation for its area (sources and extras live in a same-named subdirectory next to it).
 
-- **Devtool interface design** — workbenches not funnels: the five UI zones, control-flow rule, panel layout, CLI progress/output and clean-log rules, command palettes, devtool onboarding to the a-ha moment, agent experience (AX): [references/devtool-interface-design.md](references/devtool-interface-design.md)
+- **Devtool interface design** — workbenches not funnels: the five UI zones, control-flow rule, panel layout, CLI progress/output and clean-log rules, command palettes, devtool onboarding to the a-ha moment, agent experience (AX): [references/devtool-interface-design.md](references/devtool-interface-design.md) (AX and dev-data-viz depth: [references/devtool-interface-design/data-viz-and-agents.md](references/devtool-interface-design/data-viz-and-agents.md))
 - **Developer go-to-market** — earning adoption and revenue for a *commercial* devtool: landing-page anatomy and hero/CTA choices, the five conversion killers, devtool copywriting, the PMF Compass (TTFV/retention/NRR), free-to-paid: [references/developer-tool-gtm.md](references/developer-tool-gtm.md)
 - **Open source strategy** — making an OSS project adopted, sustainable, profitable: Sitnik's popularity formula, progressive-JPEG README, the promotion loop, maintainer burnout survival, monetization/open core: [references/oss-strategy.md](references/oss-strategy.md)
 - **Sources and gaps** — provenance map and parked candidate standards: [references/sources.md](references/sources.md), [references/coverage-gaps.md](references/coverage-gaps.md)

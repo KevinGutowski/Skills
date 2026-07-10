@@ -4,6 +4,22 @@
 
 Principles for writing error and failure-state copy that respects users in their hardest moments. Apply when writing or reviewing any in-app text shown when something doesn't work as expected. Layers: Wix UX rules (the words), Metts & Welfle's *Writing Is Designing* ch. 4 (Rosenfeld, 2020 — the Avoid → Explain → Resolve frame, stress cases, testing, the business case), Apple's alert doctrine, Walter's *Designing for Emotion* ch. 6 (A Book Apart, 2011 — incident communication), and Lidwell/Holden/Butler's *Universal Principles of Design* (2003 — slip/mistake prevention).
 
+## Contents
+
+- Avoid → Explain → Resolve (the organizing frame)
+- Non-negotiables (check every message against these)
+- Core Philosophy
+- The Four Anti-Patterns
+- The Five Essentials
+- Before/After Examples
+- Voice & Tone Calibration
+- Incident communication (outages, breaches, big mistakes)
+- Test the error copy
+- Apple's alert doctrine (complementary layer)
+- Review Checklist
+- When to Push Back on Engineering
+- Relationship to Other Skills
+
 ## Avoid → Explain → Resolve (the organizing frame)
 
 Metts & Welfle: "The best error message is no error message at all." Three principles in order — one involves no writing:
@@ -12,7 +28,7 @@ Metts & Welfle: "The best error message is no error message at all." Three princ
 2. **Explain** — "Tell your users what's going on and what went wrong" (→ Essentials 1–2 below).
 3. **Resolve** — "Provide a solution to the problem that the user is facing" (→ Essentials 4–5 and the Non-negotiables' recovery actions).
 
-A/E/R organizes the work; the Non-negotiables above stay binding on mechanics, and Apple's "not afterthoughts for preventable problems" doctrine below is the same Avoid step.
+A/E/R organizes the work; the Non-negotiables below stay binding on mechanics, and Apple's "not afterthoughts for preventable problems" doctrine further down is the same Avoid step.
 
 **Classify the error before writing it.** Lidwell/Holden/Butler's *Universal Principles of Design* warns that "most accidents are actually due to design errors rather than errors of human operation." If it is a **slip** (right intent, wrong action), prevent it with clearer feedback, status, constraints, safer control placement, and confirmations for destructive actions. If it is a **mistake** (wrong plan or interpretation), reduce noise, improve situational awareness, expose the right indicators in one eyespan, and provide checklists or decision aids. Copy starts after this prevention pass.
 

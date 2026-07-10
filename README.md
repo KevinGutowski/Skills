@@ -42,7 +42,7 @@ After installing, restart Codex for automatic skill routing. In the same session
 | `user-onboarding` | First-run flows, empty states, onboarding copy (Hulick method) |
 | `learning-experience-design` | Courses, workshops, internal training, tutorials, job aids — gap diagnosis, practice, feedback, motivation, transfer (Dirksen method) |
 | `photographic-lighting` | Lighting photos: portraits, products/still life, field shoots, glare/reflections, softbox/fill/bounce, metal/glass/black-on-black/white-on-white |
-| `shape-up` | Product scoping/betting (Basecamp method) + the competing Linear school (design as reference, no handoff/PMs, taste over data) and routing between them |
+| `shape-up` | Product scoping/betting — four schools and routing between them: Basecamp Shape Up (appetite, betting, scope hammering), Linear craft (design as reference, no handoff/PMs, taste over data), Evil Martians sprints, metrics-led strategy (Perri/Klein/Lean UX) |
 | `product-decision-making` | Product judgment before the bet: problem clarity, data-informed decisions, metrics-vs-design, optimization vs new behavior, proposal reviews (Julie Zhuo) |
 | `hardware-product-design` | Physical products: form-factor positioning, mockups/rigs/jigs, input selection, manufacturing/supplier reality |
 | `design-org-influence` | Designer influence in the org: business cases, stakeholder objections, PM partnership, promotion/reviews |
@@ -113,7 +113,7 @@ Alongside it: `motion` (the Motion AI Kit umbrella — encapsulates best-practic
 ## Conventions
 
 - **Frontmatter:** `name` + single-line `description` (quoted — descriptions contain `:` characters), ≤1024 chars, written as *what + when + sources + trigger keywords*. Descriptions are the always-loaded routing surface; bodies load on demand.
-- **Progressive disclosure:** SKILL.md stays under 500 lines and under the ~5k-token body budget; deep material lives in `references/`. Keep the body to routing rules, durable operating moves, and one load-bearing quote per point; move quote banks, examples, and source texture to references even when the validator is clean.
+- **Progressive disclosure:** SKILL.md stays under 500 lines and under the ~5k-token body budget; deep material lives in `references/`. Keep the body to routing rules, durable operating moves, and one load-bearing quote per point; move quote banks, examples, and source texture to references even when the validator is clean. A reference may push deep material one more hop into a same-named subdirectory, provided the parent reference links every file, the SKILL.md bullet names the members, and SKILL.md declares the pattern (see docs/skill-library-ops.md).
 - **Decision rules go high in the file.** Consumers paginate (a real agent trace read only lines 1–220 and missed a tail section) — put the core framework and decision rules before checklists and appendices; when extending a skill, merge into the relevant section rather than appending at the end.
 - **Source fidelity:** WWDC-derived skills cite sessions with URLs; code samples are Apple's verbatim, year-tagged.
 - **Staleness policy:** principles are stable; API/platform specifics are dated and carry staleness notes ("verify against current docs"). ⚠️ markers flag where newer guidance supersedes a talk. The HIG what's-new page (https://developer.apple.com/design/whats-new/) drives periodic audits.

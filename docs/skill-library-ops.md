@@ -13,7 +13,8 @@ This is the operating guide for maintaining this repository as a large skill dat
 
 1. **Description layer, always loaded.** Each skill description is the routing contract. Keep it around 350-450 chars unless a cluster truly needs more. Include what it does, when to use it, critical boundaries, and trigger terms.
 2. **`SKILL.md`, loaded on trigger.** Keep this as the router plus the highest-value operating rules. Put source identity, workflow, decision boundaries, and reference selection here. Do not bury the decisive rule after appendices.
-3. **Reference files, loaded on demand.** Use one-level links from `SKILL.md`. Reference files hold methods, examples, quote banks, source-specific texture, and variants. Files over 100 lines need a `## Contents` block.
+3. **Reference files, loaded on demand.** Use one-level links from `SKILL.md`. Reference files hold methods, examples, quote banks, source-specific texture, and variants. Files over 100 lines need a `## Contents` block (enforced by `scripts/check_reference_hygiene.py`).
+   - **Sanctioned second hop:** a reference may push deep material into a same-named subdirectory (`references/<name>/…`). Three conditions keep it discoverable: every subdirectory file is linked from its parent reference, the parent skill's `SKILL.md` bullet names the members (so a router-only read still reveals they exist), and `SKILL.md` declares the pattern in prose. Substantive content deeper than that, or subdirectory files reachable only via another reference, are out of bounds.
 4. **Source maps and ledgers, not skill context.** TOCs, chapter summaries, extraction notes, parked candidates, and cross-reference leads live in `docs/book-source-map.md` and `docs/mining-ledger.md`. They guide future folding; they should not be copied into skill bodies.
 5. **Scripts and assets.** Use scripts for repeatable fragile operations: extraction, quote verification, validation, packaging, or deterministic transforms. Prefer executing scripts over loading large code into context.
 
@@ -119,8 +120,10 @@ The source map is the anti-duplication tool.
 ```bash
 python3 scripts/validate_all.py
 python3 scripts/check_xrefs.py
+python3 scripts/check_reference_hygiene.py
 python3 scripts/check_vercel_overhaul.py
 python3 scripts/check_vercel_routing_probes.py
+python3 scripts/check_skill_smoke_tests.py
 git diff --check
 rg -n "old-skill-name|dangling-reference" .
 python3 scripts/verify_quotes.py SOURCE... <<'EOF'

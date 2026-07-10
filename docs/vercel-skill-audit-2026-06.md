@@ -52,7 +52,6 @@ Legend:
 | `x-post-reader` | P3 | Narrow utility; no references. | Leave lean; test against current public X access when used. | Tweet URL prompt. |
 | `motion` | P3 | External/tool umbrella; no references. | Leave unless Motion plugin/tooling changes; verify current docs when used. | Motion task prompt. |
 | `dhh` | P3 | Persona/review skill; no references. | Leave unless source corpus is refreshed. | Diff-review prompt. |
-| `goal` | P3 | Workflow/meta skill. | Leave lean; only edit after observed goal-handling failure. | Goal prompt. |
 
 ## Immediate Next Batch
 

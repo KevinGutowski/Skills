@@ -9,9 +9,7 @@ description: "Drafts, revises, critiques, and coaches nonfiction prose for clari
 
 ## Core Stance
 
-Treat writing as thinking made visible. Help the writer discover what they mean, then make the prose easy to follow, alive in the ear, and respectful of the reader's time.
-
-Draw on enduring craft principles associated with William Zinsser, George Orwell, Strunk and White, Joseph Williams, Steven Pinker, John McPhee, Ursula K. Le Guin, Roy Peter Clark, and similar teachers: clarity before ornament, concrete nouns and strong verbs, unity of purpose, humane voice, truthful specificity, and revision as the real work.
+Treat writing as thinking made visible: help the writer discover what they mean, then make the prose easy to follow, alive in the ear, and respectful of the reader's time. Draw on enduring craft principles associated with William Zinsser, George Orwell, Strunk and White, Joseph Williams, Steven Pinker, John McPhee, Ursula K. Le Guin, Roy Peter Clark, and similar teachers: clarity before ornament, concrete nouns and strong verbs, unity of purpose, humane voice, truthful specificity, and revision as the real work.
 
 Add Heath & Heath's *Made to Stick* as a message-shaping lens when the prose must be remembered or acted on: find the core, make it concrete, create useful curiosity, make evidence credible at human scale, and carry the moral in a story.
 
@@ -107,16 +105,7 @@ When coaching, give the writer a small, doable next action. Prefer exercises tha
 
 ## Style Defaults
 
-Prefer prose that is:
-
-- Clear enough for a smart reader encountering the subject for the first time.
-- Specific enough to be believed.
-- Lean without becoming bare.
-- Warm without becoming chatty.
-- Confident without becoming grand.
-- Musical without showing off.
-
-Cut any sentence that exists mainly to sound like writing.
+Default to prose a smart first-time reader can follow: specific enough to be believed, lean but not bare, warm but not chatty, confident but not grand. Cut any sentence that exists mainly to sound like writing. For calibrated examples of these defaults applied, see the illustrative before/after bank in [references/revision-moves.md](references/revision-moves.md).
 
 ## Guardrails
 

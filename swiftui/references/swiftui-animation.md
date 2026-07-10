@@ -4,6 +4,24 @@
 
 **Sources:** [swiftui-animation/sources.md](swiftui-animation/sources.md) — 5 Apple WWDC sessions.
 
+## Contents
+
+- Zoom transition (iOS 18+)
+- One animation system across frameworks
+- The animation architecture (2023)
+- Designing springs (Fluid Interfaces 2018 + Animate with springs 2023)
+- Gesture-driven springs — velocity for free
+- Scroll-driven effects
+- Color: MeshGradient
+- Custom view transitions
+- Text transitions: TextRenderer (iOS 18+)
+- Metal shaders — per-pixel effects
+- Composing effects — the pipeline mindset (2026)
+- Group-lab clarifications (WWDC26 Group Lab, 7g-Xg5xiH4o)
+- Taste rules (both talks)
+- Checklist
+- Relationship to other skills
+
 Great experiences are the aggregate of many small details, and motion is a big one. This skill covers the SwiftUI animation/effects toolchain — from the zoom transition and SwiftUI↔UIKit animation bridging up the ladder to scroll effects, mesh gradients, custom transitions, per-glyph text animation, and per-pixel Metal shaders. Engineering sibling of [swiftui-lazy-stacks.md](swiftui-lazy-stacks.md); the *web* counterpart values live in `web-design` (web-animation-design) — don't cross-apply.
 
 ## Zoom transition (iOS 18+)

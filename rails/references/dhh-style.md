@@ -48,12 +48,15 @@ def search; end
 
 # ✅ New controllers for new behavior
 class Messages::ArchivesController < ApplicationController
-  def create   # archives
-  def destroy  # unarchives
+  def create  # archives
+  end
+
+  def destroy # unarchives
+  end
 end
 ```
 
-Details: [references/controllers.md](dhh-style/controllers.md)
+Details: [dhh-style/controllers.md](dhh-style/controllers.md)
 
 ### Models: State as Records
 
@@ -70,7 +73,7 @@ end
 # Query: Card.joins(:closure) or Card.where.missing(:closure)
 ```
 
-Details: [references/models.md](dhh-style/models.md)
+Details: [dhh-style/models.md](dhh-style/models.md)
 
 ### Delegated Types (Advanced Pattern)
 
@@ -88,7 +91,7 @@ end
 # Benefit: One controller for all types, efficient copying, mixed pagination
 ```
 
-Details: [references/delegated-types.md](dhh-style/delegated-types.md)
+Details: [dhh-style/delegated-types.md](dhh-style/delegated-types.md)
 
 ### Current Attributes
 
@@ -127,15 +130,15 @@ end
 
 | Topic | File |
 |-------|------|
-| Controllers, REST mapping, Turbo responses, concerns | [references/controllers.md](dhh-style/controllers.md) |
-| Models, concerns, state records, callbacks, scopes | [references/models.md](dhh-style/models.md) |
-| Delegated types pattern (Basecamp/HEY architecture) | [references/delegated-types.md](dhh-style/delegated-types.md) |
-| Turbo, Stimulus, CSS architecture, view patterns | [references/frontend.md](dhh-style/frontend.md) |
-| Routing, auth, jobs, caching, multi-tenancy | [references/architecture.md](dhh-style/architecture.md) |
-| Gem choices and what to avoid | [references/gems.md](dhh-style/gems.md) |
-| Comprehensive code patterns and examples | [references/patterns.md](dhh-style/patterns.md) |
-| Links to source material and further reading | [references/resources.md](dhh-style/resources.md) |
-| Maintenance source map and confidence rubric | [references/sources.md](dhh-style/sources.md) |
+| Controllers, REST mapping, Turbo responses, concerns | [dhh-style/controllers.md](dhh-style/controllers.md) |
+| Models, concerns, state records, callbacks, scopes | [dhh-style/models.md](dhh-style/models.md) |
+| Delegated types pattern (Basecamp/HEY architecture) | [dhh-style/delegated-types.md](dhh-style/delegated-types.md) |
+| Turbo, Stimulus, CSS architecture, view patterns | [dhh-style/frontend.md](dhh-style/frontend.md) |
+| Routing, auth, jobs, caching, multi-tenancy | [dhh-style/architecture.md](dhh-style/architecture.md) |
+| Gem choices and what to avoid | [dhh-style/gems.md](dhh-style/gems.md) |
+| Comprehensive code patterns and examples | [dhh-style/patterns.md](dhh-style/patterns.md) |
+| Links to source material and further reading | [dhh-style/resources.md](dhh-style/resources.md) |
+| Maintenance source map and confidence rubric | [dhh-style/sources.md](dhh-style/sources.md) |
 
 ## Naming Conventions
 

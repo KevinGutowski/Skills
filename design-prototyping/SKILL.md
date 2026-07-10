@@ -7,9 +7,7 @@ description: "Prototype and present design work across three tiers — fake-it (
 
 **Sources:** [references/sources.md](references/sources.md) — 6 WWDC sessions + 2 ADA articles + Config, Dive Club, and field sources.
 Park weak eval/prototype standards in [coverage-gaps.md](references/coverage-gaps.md) until they have stable evidence, fixtures, and accepted examples.
-The trap is *idea → build → disappointment*. "The more prototypes we can put between your idea and your application, the better the result." The mantra: **"Make fake apps, show people, and learn from their feedback. And do that over and over again until the experience of your app feels great."** Prototype to *test* ideas (build the right thing) and to *get new* ideas.
-
-When a prototype becomes an eval fixture for an agent or skill, keep the fixture hermetic and separate retrieval from application: expected skill loaded, references used, before/after artifact, rubric, hidden holdout expectation, and human preference reason. Route packaging mechanics to `creating-skills`; use this skill for the prototype question and evidence loop.
+The trap is *idea → build → disappointment*. "The more prototypes we can put between your idea and your application, the better the result." The mantra: **"Make fake apps, show people, and learn from their feedback. And do that over and over again until the experience of your app feels great."** Prototype to *test* ideas (build the right thing) and to *get new* ideas. (Using prototypes as eval fixtures for agents/skills: see the eval-fixtures section after the core loop.)
 
 ## Choose the tier first
 
@@ -52,7 +50,6 @@ Coding agents + previews "supercharge the prototyping of key screens and moments
 2. **Agent as fake user (lived-in content):** have the agent "play the role of somebody using your app" — but *you* think through edge cases (empty states, unbounded growth); keep sample content plausible and in its own reusable file. Realistic content surfaces missing blank-slate UI and layout breaks.
 3. **Agent-built tuning panels (key moments):** the parameterized mini-tool, generated on demand — "ask for the animation to be broken into phases… a shared vocabulary"; panel side by side with the UI. "Make a tuning panel, shorten the feedback loop, and get to what feels optimal." Converging field versions (Kyle Santos's effect studios, Kris Puckett's copy-values-back round-trip, MDS's tool-making reflex, Josh Puckett's live tuning + **iterations grid**): [references/agents-field-notes.md](references/agents-field-notes.md).
 4. **Independent judge in a fresh context (evaluation):** don't let the generating agent grade its own output — it's anchored on its own choices. Spawn a *separate* judge with its own context window, loaded only with explicit criteria ("create an independent judge with its own context window to evaluate your output" — Carlos Montoya, Dropbox, X 2026; used "to raise the pixel craft of frontier models"). Loadout from this corpus: `design-principles` facets + critique mechanics, `design-craft` checklists, `design-craft` depth spectrum — score against those, not vibes. Same model is fine, same context is not. Full notes incl. the MDS/Shift Nudge MCP: [references/agents-field-notes.md](references/agents-field-notes.md).
-5. **Skill-lab loop for design rules** (Jaytel Taste repo, 2026): when evaluating a generated design skill, keep the current skill as a baseline candidate, generate bounded mutation hypotheses, render each candidate against the same prompt in self-contained HTML, collect a human preference vote plus reason, then update the skill from the preference history. The baseline-as-control matters: otherwise every round looks like progress because it is merely different.
 
 Amplifiers and cautions (full notes: [references/agents-field-notes.md](references/agents-field-notes.md)):
 - **Prototype with the full dataset and in the target production stack** (Evil Martians) so handoff is copy-paste — "my technical knowledge, multiplied by AI"; AI removes friction, not judgment.
@@ -60,8 +57,6 @@ Amplifiers and cautions (full notes: [references/agents-field-notes.md](referenc
 - **The Cursor school endpoint** (Ryo Lu; Jin Park/Notion; Catherine/Ramp): designers ship code instead of mocks — "Mocks and renders show possibilities. Prototypes show reality." And **"the difference between slop and soulful products is iteration and taste. Most people stop at the first output, rather than using it to begin."**
 - **Shared lightweight prototyping environments:** keep a **baby-cursor** — never ideate in the gigantic slow codebase (Ryo Lu); Notion's 80/20 shared playground, fidelity per-question (Brian Lovin); Ramp's three-tier fidelity ladder (vibes stack → real-component sandbox → real repo); Stripe's Protodash prototypes inside the surrounding product — "no product is like ever felt by your user in isolation" (Katie Dill).
 - **Visual prompting:** the screenshot or sketch *is* the prompt (Steve Ruiz, Make Real — iterate by drawing arrows on the output; paste a reference image); storyboard-as-prompt, but don't dial fidelity in Figma — "Figma's a lie. It's not your actual code base" (Josh Puckett).
-- **Compare skill effects, not single outputs** (Jaytel Taste demo): run the same prompt through base model, broad design skill, and the specific taste skill before trusting a new design skill. The dashboard/chat comparisons exposed a useful difference: a broad frontend skill can make output more stylish while the reference-derived skill makes it more *specifically constrained*. Judge whether the skill moves the output toward the intended corpus, not merely whether the screen looks better.
-- **Keep eval artifacts hermetic** (Jaytel Skill Lab): generated candidates should render in an iframe without external scripts, fonts, images, or stylesheets when the test is about the skill, not network luck or asset taste. This makes side-by-side preference less noisy and easier to replay.
 - **MDS workflow:** 85%-in-Figma, finish in code — hover states designed *only* in code ("it's all about how it feels"); components only when they pay — too many too early constrains creativity.
 - **Jigs** (Geoffrey Litt): disposable one-project tools an agent makes economical. **Start from anywhere** (Luis Ouriach): "the canvas is very important for ideation… but the browser is where we commit" — "not faster, but further."
 - **Prototype → production seam:** render the idea, don't ship it (Katarina Batina — "Just render the whole idea and then use that as the thing you talk to engineering with"; not shippable ≠ failure). Editable stakeholder prototypes, hedged variants, the playground-to-production one-shot (Andy Madrick). The two-system tax (→ `working-with-ai` (agentic-coding)): past concept validation, prototype in the real repo.
@@ -89,6 +84,14 @@ Budget the loop so insights land: "always leave adequate time after gathering ne
 **Test social mechanics in the graph, not in isolation** (Soleio, Design MBA + PBS): the Like button sat in "product purgatory" on the fear it "would cannibalize commenting" — "our intuition was just dead wrong." The unblocking experiment: "we chose two pairs of networks where there was high friend density," ship vs. control countries — likes *increased* commenting ("a social lubricant"). Pick test cells where network effects can appear; measure the downstream behavior the feature might suppress or unlock. More: [references/soleio-field-notes.md](references/soleio-field-notes.md).
 
 From the prototyping team's 2022 Q&A ([references/methods.md](references/methods.md)): **no hole-in-ones** ("If we're not getting feedback on something, we're just not showing it to the right people"); **keep multiple directions alive**; **phrase feedback as the experience, not taste**; and the trap — "we sometimes get caught up in trying for a perfectly polished prototype" — always remember the question the prototype exists to answer.
+
+## Prototypes as eval fixtures (skill-lab loop)
+
+When a prototype becomes an eval fixture for an agent or skill, keep the fixture hermetic and separate retrieval from application: expected skill loaded, references used, before/after artifact, rubric, hidden holdout expectation, and human preference reason. Route packaging mechanics to `creating-skills`; use this skill for the prototype question and evidence loop.
+
+- **Skill-lab loop for design rules** (Jaytel Taste repo, 2026): when evaluating a generated design skill, keep the current skill as a baseline candidate, generate bounded mutation hypotheses, render each candidate against the same prompt in self-contained HTML, collect a human preference vote plus reason, then update the skill from the preference history. The baseline-as-control matters: otherwise every round looks like progress because it is merely different.
+- **Compare skill effects, not single outputs** (Jaytel Taste demo): run the same prompt through base model, broad design skill, and the specific taste skill before trusting a new design skill. The dashboard/chat comparisons exposed a useful difference: a broad frontend skill can make output more stylish while the reference-derived skill makes it more *specifically constrained*. Judge whether the skill moves the output toward the intended corpus, not merely whether the screen looks better.
+- **Keep eval artifacts hermetic** (Jaytel Skill Lab): generated candidates should render in an iframe without external scripts, fonts, images, or stylesheets when the test is about the skill, not network luck or asset taste. This makes side-by-side preference less noisy and easier to replay.
 
 ## Influencing via prototypes (Config 2024–25; full case studies: [references/pitch-and-influence.md](references/pitch-and-influence.md))
 
@@ -126,13 +129,13 @@ Four-part structure: context → concepts → rationale → **always a recommend
 - [ ] Faking everything except the one thing under test; testing on-device, in context?
 - [ ] Right tier: fake-it for concept questions, SwiftUI feel-prototype for interaction/data/demo questions?
 - [ ] Agent output diffed against the mock — typography, colors, radii, spacing, missing states, gradient scale?
-- [ ] If testing a new visual/design skill, compared base vs broad-skill vs specific-skill output under the same prompt?
-- [ ] If iterating a skill, kept the old skill as a baseline candidate and recorded the human preference reason?
 - [ ] Tested with real (ugly, edge-case) data and in real environments — found where it breaks?
 - [ ] Feedback sessions use the question sets; no defending or debating?
 - [ ] Solo/low-support context: meeting made participatory, not a big reveal or async prototype drop?
 - [ ] Open questions logged; ideas triaged (keep / recombine / kill) before the next loop?
 - [ ] Presentation: objectives + problem statements up front, story over slides, dialogue over monologue?
+- [ ] (Eval fixtures) If testing a new visual/design skill, compared base vs broad-skill vs specific-skill output under the same prompt?
+- [ ] (Eval fixtures) If iterating a skill, kept the old skill as a baseline candidate and recorded the human preference reason?
 
 References: [methods.md](references/methods.md) — Toast Modern walkthrough, Keynote techniques, quotables; [agents-field-notes.md](references/agents-field-notes.md) — all agents-tier field quotes; [pitch-and-influence.md](references/pitch-and-influence.md) — pitch case studies.
 
@@ -145,7 +148,7 @@ References: [methods.md](references/methods.md) — Toast Modern walkthrough, Ke
 - **`design-principles`** — supplies what to evaluate *against*; this skill supplies the loop that produces evidence.
 - **`hardware-product-design`** — the physical tier: non-functional mockups, cabled rigs, test jigs, foam core at true viewing distance.
 - **`feature-discoverability`** / **`swiftui` (sound-design)** — both close with "prototype and test"; this is the how.
-- **`figma:figma-use`** / **`paper-desktop:design-to-code`** — modern tooling for the same make-fast, tool-agnostic ethic ("subvert your tools").
+- **`figma:figma-use`** / **`paper-desktop:design-to-code`** — external plugin skills (not in this repo; use if installed): modern tooling for the same make-fast, tool-agnostic ethic ("subvert your tools").
 - **`swiftui` (swiftui-layout)** / **`swiftui` (swiftui-animation)** — the building blocks for the real-code tier; this skill says *why and when* to prototype in SwiftUI, those say *how*.
-- **`design-craft`** — the quality-practice loop; its prototyping moves (breakable toy, live tuning, iterations grid) are folded in above. Route "is it good enough" to `design-principles`' depth-spectrum heuristic.
+- **`design-craft`** — the quality-practice loop; its prototyping moves (breakable toy, live tuning, iterations grid) are folded in above. Route "is it good enough" / how-far-to-push to its depth-spectrum heuristic there.
 - **`working-with-ai` (agentic-coding)** — when prototyping graduates to production engineering with agents (designer shipping production code, encoding decisions as rules); owns the **two-system tax** case study.

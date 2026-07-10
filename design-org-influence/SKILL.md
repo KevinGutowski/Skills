@@ -1,6 +1,6 @@
 ---
 name: design-org-influence
-description: "Win org buy-in for design via business-case framing. Use when pitches stall, PMs push back, manager relationships need repair, or at review/promo time. Product decision quality → product-decision-making; session mechanics/pitch craft → design-prototyping. Triggers: stakeholder buy-in, design pitch rejected, PM pushback, business case, opportunity cost, managing up, promotion, performance review, wins doc, order taker, seat at the table."
+description: "Win org buy-in for design via business-case framing. Use when pitches stall, PMs push back, manager relationships need repair, or at review/promo time. Your own reports → people-management; product decision quality → product-decision-making; pitch craft → design-prototyping. Triggers: stakeholder buy-in, design pitch rejected, PM pushback, business case, managing up, promotion, performance review, wins doc, order taker, seat at the table."
 ---
 
 # Design Org Influence
@@ -75,18 +75,17 @@ Full anti-patterns, SBI detail, and the review-logging workflow: [references/pro
 
 ## Career as a business case (Ryan Scott, Dive Club LOkdM6frkak)
 
-Full quotes and receipts: [references/influence-field-notes.md](references/influence-field-notes.md).
+The load-bearing gap: "There are skills that designers are getting hired for right now which are like visual design skills, high craft, but what they're getting promoted for is providing more value to the business" — treat the gap as the career strategy. The rules, one line each; full quotes and receipts: [references/influence-field-notes.md](references/influence-field-notes.md).
 
-- **Hired vs promoted.** "There are skills that designers are getting hired for right now which are like visual design skills, high craft, but what they're getting promoted for is providing more value to the business." Treat the gap as the career strategy.
-- **Sell to budget-holders, not design managers.** Design managers often "don't have budget control" — they pitch you to a product leader; the buyer's frame is fair: "you are an investment that they are making… and that is not wrong."
-- **Overfiltering, not competition.** Today's market: "It's not a competition problem. It's a do you meet this specific puzzle piece problem" — companies overfilter on finite detail.
-- **Metric-direction language.** Don't label portfolio work "a redesign of booking for Airbnb" and pray. "Use their language and say this work drove this metric in this direction."
-- **Business value beyond metrics.** Many projects exist to neutralize a competitor (DoorDash's food photography after Uber Eats shipped with it day one), or improve velocity, quality, bug rates, culture, brand, positioning. No numbers? "Did the company launch it? Then it's probably producing value." "You tell the best story you can with the evidence you have at hand."
-- **"Shock and awe" results slides:** mention so many kinds of value (metrics + how the team learned to operate + efficiency + positioning) "that it really kind of takes the pressure off all the numbers being exactly right."
-- **Role-convergence game theory.** Via Andy Budd: designers and C-suite are chess players, PMs poker players — speak chess to executives. "We're all having to renegotiate everything" — renegotiate role lines out loud rather than guarding turf.
-- **No-fidelity + idea sequencing.** PMs excel at *no* fidelity — "It's just the idea. What do you think about this?" Float ideas casually, recruit "yes and… how might we type people" first, then bring it to larger and larger groups. Never skip levels: his straight-to-CEO move "ended up pissing off a lot of people… Do not make that mistake."
-- **Value–Cost–Risk over RICE.** Humans weigh value, cost, and risk in every real decision (RICE, never). Cost includes *organizational* cost (legal, marketing, complexity); risk includes morale, exposure, timing. Mind the sub-MVP cliff: cut cost too far and "value just plummets."
-- **Data practice.** Ask for the analytics tool yourself and look for weird outliers from the human angle: "Everything we're measuring is someone's doing something differently." Receipts: DoorDash's order-status page at 3x homepage views → live order tracking; Airbnb's five-step checkout → single page, improved conversion pre-IPO.
+- **Sell to budget-holders, not design managers** — design managers rarely control budget; the buyer treats you as an investment, and that frame is fair.
+- **Rejection is overfiltering, not competition** — companies filter on one specific puzzle-piece detail.
+- **Metric-direction language** — describe work as driving a named metric in a direction, never as "a redesign."
+- **Business value beyond metrics** — competitor neutralization, velocity, quality, culture, brand, positioning; if the company launched it, it's probably producing value.
+- **"Shock and awe" results slides** — cite many kinds of value so no single number carries the pitch.
+- **Role-convergence game theory** — designers and C-suite are chess players, PMs poker players; speak chess to executives and renegotiate role lines out loud.
+- **No-fidelity + idea sequencing** — float the bare idea with allies first, widen gradually, never skip levels.
+- **Value–Cost–Risk over RICE** — cost includes organizational cost, risk includes morale/exposure/timing; mind the sub-MVP cliff.
+- **Data practice** — ask for the analytics tool yourself; chase weird outliers from the human angle.
 
 ## Managing your manager
 
@@ -116,17 +115,17 @@ When the org keeps asking for more plans, controls, or features instead of bette
 
 Hiring for capability gaps, the underdog binary, Core+3 flattening, five-lines-of-process, the three archetypes, designers-shipping-PRs, kill-mediocre-even-shipped, and the panel's CEO-in-the-tool diagnostic (Modisett, Worboys, Dill, Choy/Shipper/Zipper): [references/team-building.md](references/team-building.md).
 
-Smaller Dive Club deltas (full quotes: [references/influence-field-notes.md](references/influence-field-notes.md)):
-- **Ask for the ball** (Soleio via Julie Zhuo, 2026): when a project has too many stakeholders, synthesize the input, choose a direction, explain why, and accept accountability for the outcome. Consensus-seeking can turn design to mush; leadership is sometimes saying "trust this direction, and hold me accountable if it is wrong."
-- **CEO strategy diagnostic** (Soleio): before judging the design team, ask leadership, "If I joined your team for a month, what would I work on?" If the answer is vague, the team's "not strategic" problem may actually be missing company strategy and intended outcome.
-- **Strategy as sandbox** (Soleio, Dive Club): Facebook's 2009 pillars (double revenue · grow the network · "increase reads and writs across the network" [writes]) — "instead of them prescribing what must to be done we have a strategy that almost acts as like a Sandbox." Demand the same of leadership: competitive strategy, plan to win, resources, success measure — "problem selection is all the more important than problem solving as a designer." Freeze thought experiment + full quotes → [references/influence-field-notes.md](references/influence-field-notes.md).
-- **Will this matter in a year?** (Soleio, Design MBA): triage asks: "will this particular decision or this matter have any consequence a year from now and if the answer is no then that's often like a pretty good sign that it can be lower priority than other matters that are consequential" — reserve weight for the hard-to-unwind class, "like a hiring decision right or launching the name of a product."
-- **Write before pixels** (Luis Ouriach, Pn2G7JhxNKc): "Writing down before you commit to a pixel is the best way to get buy-in for an idea." Plus his blurred-role contract ("bare minimum plus") and the widening enterprise/startup tool gap.
-- **Titles** (Brian Lovin, dvEwb1Ajkwo): titles "are going away" — be the person who moves between disciplines; 2 undistracted hours/day is now "a meaningful competitive advantage."
-- **Ship governance** (Megan Choy, hKeDfupbA4U): "just because everyone can ship doesn't mean not everything should ship" — build systems that scale.
-- **Pre-agreed regression tolerance for big bets** (Katarina Batina, 0YjO7wShTkQ): redesigns vs. years-optimized incumbents "almost always lose" at first — negotiate the acceptable baseline reset *before* the work; treat the data team's flinch as the deal working, not a stop signal.
-- **Data narratives are contestable** (Batina): "the reading of it is never objective" — when a metric is read against your work, contest the reading, not the number.
-- **UI engineers report to design** (Briggs, Dive Club): "your design quality and your design capabilities of your team is only as good as the UI Engineers that are implementing it" — staff them as translators between design and product engineering. Pairing pattern + his anti-deadline stance (his position, not house consensus) → [references/influence-field-notes.md](references/influence-field-notes.md).
+Smaller Dive Club deltas, one line each (full quotes: [references/influence-field-notes.md](references/influence-field-notes.md)):
+- **Ask for the ball** (Soleio via Julie Zhuo, 2026) — with too many stakeholders, synthesize the input, choose a direction, explain why, and accept accountability; consensus-seeking turns design to mush.
+- **CEO strategy diagnostic** (Soleio) — before judging the design team, ask leadership "If I joined your team for a month, what would I work on?"; a vague answer means the real gap is company strategy, not design.
+- **Strategy as sandbox** (Soleio, Dive Club) — demand strategy that acts as a sandbox: competitive strategy, plan to win, resources, success measure; problem selection over problem solving.
+- **Will this matter in a year?** (Soleio, Design MBA) — triage by one-year consequence; reserve weight for the hard-to-unwind class (hires, product names).
+- **Write before pixels** (Luis Ouriach, Pn2G7JhxNKc) — writing before committing to a pixel is the best way to get buy-in.
+- **Titles are going away** (Brian Lovin, dvEwb1Ajkwo) — be the person who moves between disciplines; 2 undistracted hours/day is a competitive advantage.
+- **Ship governance** (Megan Choy, hKeDfupbA4U) — everyone *can* ship ≠ everything *should* ship; build systems that scale.
+- **Pre-agreed regression tolerance for big bets** (Katarina Batina, 0YjO7wShTkQ) — redesigns lose to years-optimized incumbents at first; negotiate the acceptable baseline reset *before* the work.
+- **Data narratives are contestable** (Batina) — when a metric is read against your work, contest the reading, not the number.
+- **UI engineers report to design** (Briggs, Dive Club) — staff them as translators; team design quality is capped by its UI engineers. Pairing pattern + his anti-deadline stance (his position, not house consensus) → [references/influence-field-notes.md](references/influence-field-notes.md).
 
 ## Team-of-one influence (Buley)
 

@@ -6,6 +6,19 @@
 
 Writing is a design discipline, not decoration — when words work seamlessly with the design, you barely notice them, yet they carry every part of the experience. Every app already has a personality whether or not you chose it. This skill **defines the voice, adapts the tone per moment, and writes the microcopy** that expresses both. It owns overall voice/tone and general in-product copy; it routes naming, failure copy, and long-form prose to the skills below.
 
+## Contents
+
+- Voice vs. tone — the spine
+- Define your voice
+- Document the voice — and know where it recedes
+- Dial the tone for the moment
+- Write the screen — PACE
+- Simplify — four small edits with big impact (2025)
+- Localization-ready writing (2017 global-audience layer)
+- Keep it useful (the guardrail both talks share)
+- Checklist
+- Relationship to other skills
+
 ## Voice vs. tone — the spine
 
 - **Voice** = the expression of your brand and values through words — the things that *don't* change. (Apple's own working set: clarity, simplicity, friendliness, helpfulness.)

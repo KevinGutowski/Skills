@@ -6,6 +6,19 @@
 
 The worldview: dev tools are **workbenches, not funnels**. "There is no 'happy path' for a dev tool… what seems to be a tiny edge case might actually be the main case for a particular user." Users live in the tool for hours daily and paths jump between panels with no final conversion action — so optimize for density, control-flow legibility, friction-per-repetition, and time-to-a-ha, not guided journeys.
 
+## Contents
+
+- The three contexts
+- The control-flow rule
+- The five zones (do/don't anatomy)
+- CLI progress & output
+- Onboarding to the a-ha moment
+- Pro-tool lessons from Config
+- Visualizing dev data & designing for agents (AX)
+- Tools as decision-making machines
+- AI-era devtool design
+- Checklist · Staleness note · Relationship to other skills
+
 ## The three contexts
 
 - **Immediate** (current granular action): pack the whole small task into one panel; reduce per-action friction — "if there are more than 3 options, use a dropdown menu; for 3 or fewer, opt for a group of radio buttons or a toggle switch"; sliders bound to text inputs; avoid dialogs; panel footers for secondary actions/status.
@@ -52,7 +65,12 @@ Motion policy for docs (Lochie Axon, Family — animations.dev interview): "docs
 
 ## Visualizing dev data & designing for agents
 
-The dev-tool data→chart mapping (heatmaps for activity density, force-directed graphs for dependencies, treemaps/sunbursts for hierarchy+size, Sankey for pipelines/flows, bullet charts for metric-vs-target, box plots for latency distributions) plus the **agent experience (AX)** rules — agents as discoverers (baked-in training data vs live retrieval; "specificity wins": "'P95 latency of 62ms' gets recommended. 'Fast and reliable' gets listed but not chosen"), as users (invert the funnel to **use → create → claim**; the test: "can an external agent ship a feature with your tool using only your docs and a prompt?"), as threats (four progressive-trust tiers, tiered structured errors, rate-limit by identity), and as durable background sessions (Slack thread, queue, DAG, citations, PR/IDE handoff) — live in [devtool-interface-design/data-viz-and-agents.md](devtool-interface-design/data-viz-and-agents.md).
+The load-bearing **agent experience (AX)** rules (full treatment plus the dev-tool data→chart mapping — heatmaps for activity density, force-directed graphs for dependencies, treemaps/sunbursts for hierarchy+size, Sankey for pipelines/flows, bullet charts for metric-vs-target, box plots for latency distributions — in [devtool-interface-design/data-viz-and-agents.md](devtool-interface-design/data-viz-and-agents.md)):
+
+- **Agents as discoverers — specificity wins.** Agents recommend from baked-in training data or live retrieval; concrete claims get chosen: "'P95 latency of 62ms' gets recommended. 'Fast and reliable' gets listed but not chosen."
+- **Agents as users — the external-agent test.** Invert the funnel to **use → create → claim**; the bar: "can an external agent ship a feature with your tool using only your docs and a prompt?"
+- **Agents as threats — progressive trust.** Four progressive-trust tiers, tiered structured errors, rate-limit by identity.
+- **Agents as durable background sessions.** Slack thread, queue, DAG, citations, PR/IDE handoff — the session is a shared object teammates can join late.
 
 A practitioner's market read on the integration surface (Kris Puckett, Dive Club podcast, nPyxVMd1LIA): "MCP is dead is like, that's hype" — but "we're going to see a lot more companies leaning more and towards better semantic APIs and CLIs than they will an MCP." Invest in the agent-legible API/CLI first; MCP is a wrapper, not the moat (cf. Lovin's company-level CLI below).
 
