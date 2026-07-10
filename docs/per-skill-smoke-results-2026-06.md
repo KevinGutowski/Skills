@@ -7,14 +7,14 @@ Packet builder: `python3 scripts/build_skill_smoke_packet.py`
 
 Command: `python3 -B scripts/check_skill_smoke_tests.py`
 
-Result: pass. The fixture has 39 contiguous probes, exactly one expected first-skill prompt per local skill, no duplicate expected first skills, prompts are under 240 characters, and the generated smoke packet includes every probe.
+Result: pass. The fixture has 38 contiguous probes, exactly one expected first-skill prompt per local skill, no duplicate expected first skills, prompts are under 240 characters, and the generated smoke packet includes every probe.
 
 ## 2026-06-29 Fresh Descriptions-Only Judge
 
 Judge: Wegener (`019f15da-c92e-79f1-8f52-6f3e1db99bdc`)
 Setup: `fork_context=false`; the judge was instructed to run `python3 scripts/build_skill_smoke_packet.py` and use only that generated packet, not skill bodies, references, docs, git diffs, or external sources.
 
-Result: pass, 39/39 first-skill choices matched the expected smoke-test skill.
+Result: pass, 38/38 first-skill choices matched the expected smoke-test skill.
 
 | Probe | Expected first skill | Judge first skill | Second skill if needed | Result | Rationale |
 | --- | --- | --- | --- | --- | --- |

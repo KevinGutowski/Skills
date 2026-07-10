@@ -125,7 +125,7 @@ Hall sits above the dial: whichever school, scope to the riskiest assumptions an
 - **design-org-influence** — selling research and its findings to stakeholders, business-case framing; this skill's research-as-leadership notes hand off there.
 - **user-onboarding** — apply evaluative findings about first-run/empty states there.
 - **shape-up** — research feeds shaping/betting; pitch-shaped problem definitions consume this skill's discovery output.
-- **building-in-public / developer-tool-gtm** — audience validation, landing pages, and PMF measurement for products; fake-doors/landing-page caveats here inform both.
+- **`building-in-public` / `devtools` (developer-tool-gtm)** — audience validation, landing pages, and PMF measurement for products; fake-doors/landing-page caveats here inform both.
 
 ## Staleness
 

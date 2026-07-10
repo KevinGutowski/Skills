@@ -78,10 +78,45 @@ def main() -> int:
                 errors.append(f"packet missing {probe_id}")
 
     results_text = RESULTS.read_text(errors="replace")
-    if re.search(r"Result: pass, 39/39", results_text):
-        table_rows = [line for line in results_text.splitlines() if line.startswith("| S")]
-        if len(table_rows) != len(skills):
-            errors.append(f"result table has {len(table_rows)} rows, expected {len(skills)}")
+    result_match = re.search(r"Result: pass, (\d+)/(\d+)", results_text)
+    if not result_match:
+        errors.append("results must record a `Result: pass, N/N` summary")
+    else:
+        passed, total = map(int, result_match.groups())
+        if passed != len(skills) or total != len(skills):
+            errors.append(
+                f"result summary is {passed}/{total}, expected {len(skills)}/{len(skills)}"
+            )
+
+    fixture_match = re.search(r"fixture has (\d+) contiguous probes", results_text)
+    if not fixture_match:
+        errors.append("results must record the deterministic fixture probe count")
+    elif int(fixture_match.group(1)) != len(skills):
+        errors.append(
+            f"recorded fixture has {fixture_match.group(1)} probes, expected {len(skills)}"
+        )
+
+    table_rows = [line for line in results_text.splitlines() if line.startswith("| S")]
+    if len(table_rows) != len(skills):
+        errors.append(f"result table has {len(table_rows)} rows, expected {len(skills)}")
+    else:
+        for (probe_id, expected_skill, _prompt), line in zip(rows, table_rows):
+            cells = [cell.strip().strip("`") for cell in line.strip("|").split("|")]
+            if len(cells) < 5:
+                errors.append(f"malformed result row: {line}")
+                continue
+            if cells[0] != probe_id:
+                errors.append(f"result row ID is {cells[0]}, expected {probe_id}")
+            if cells[1] != expected_skill:
+                errors.append(
+                    f"{probe_id}: recorded expected skill is {cells[1]}, expected {expected_skill}"
+                )
+            if cells[2] != expected_skill:
+                errors.append(
+                    f"{probe_id}: judge chose {cells[2]}, expected {expected_skill}"
+                )
+            if cells[4].lower() != "pass":
+                errors.append(f"{probe_id}: result is {cells[4]}, expected Pass")
 
     if errors:
         for error in errors:

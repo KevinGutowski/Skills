@@ -1,7 +1,6 @@
 ---
 name: route-planning
-description: >
-    Optimize and verify multi-stop driving routes (delivery, errands, ride-along visits). Use when user has a list of addresses and wants the best order, or wants to diagnose why an existing route has backtracks, U-turns, or detours. Triggers on: multi-stop route, delivery route, TSP, route optimization, OSRM, Apple Maps multi-stop, Google Maps directions, waypoint order.
+description: "Optimize and verify multi-stop driving routes for delivery, errands, or visits. Use when a user has addresses and wants the best order, or needs to diagnose backtracks, U-turns, or detours. Single A→B and real-time traffic routing are out of scope. Triggers: multi-stop route, delivery route, TSP, route optimization, OSRM, Apple Maps multi-stop, Google Maps directions, waypoint order."
 ---
 
 ## When to use
@@ -88,7 +87,7 @@ Uses repeated `waypoint=` params. Silently fails to render routes with ~15+ wayp
 ```
 https://www.google.com/maps/dir/A/B/C/D
 ```
-Slash-separated, URL-encoded addresses. No waypoint cap that I've hit.
+Slash-separated, URL-encoded addresses. Practical waypoint and URL-length limits vary by client and can change; verify the generated link in the target app and split into legs if it truncates or fails.
 
 **Per-stop labels are not supported** in any of these. Recipient names go in a separate checklist (e.g., Apple Note alongside the map link). Don't waste time trying to inject labels into URLs.
 

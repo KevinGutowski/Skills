@@ -54,4 +54,4 @@ See `references/examples.md` for the worked examples (Duolingo's pause, the Podc
 - **`feature-discoverability`** — shares the permission ethic: ask in context, value first.
 - **`swiftui` (widget-design)** / **`apple-design` (app-intents-design)** — Live Activities now own continuous glanceable state; route persistent-status use cases there.
 - **`apple-design` (hig)** — the current-spec tiebreaker: this skill's sources are 2017–2018 sessions plus patches, so fetch the live HIG `managing-notifications` and `notifications` pages via that playbook before citing letter-of-the-law behavior or implementing.
-- **`design-principles`** — *Responsibility* (attention as a resource) and *Utility*; use it to weigh whether a moment earns an interruption.
+- **`design-principles`** — *Responsibility* (attention as a resource) and *Purpose*; use it to weigh whether a moment earns an interruption.
