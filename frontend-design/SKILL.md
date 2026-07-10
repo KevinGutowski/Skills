@@ -19,7 +19,7 @@ When AI generated the UI and the task is directing or repairing it (layout diagn
 
 ## Hard rules
 
-NEVER use generic AI-generated aesthetics like overused font families (Inter, Roboto, Arial, system fonts), cliched color schemes (particularly purple gradients on white backgrounds), predictable layouts and component patterns, and cookie-cutter design that lacks context-specific character.
+NEVER use generic AI-generated aesthetics by default: overused font families (Inter, Roboto, Arial), cliched color schemes (particularly purple gradients on white backgrounds), predictable layouts and component patterns, or cookie-cutter design that lacks context-specific character. System fonts remain the explicit zero-network fallback described under **Font sourcing** below; choosing that fallback deliberately is different from accepting an unexamined default.
 
 Interpret creatively and make unexpected choices that feel genuinely designed for the context. No design should be the same. Vary between light and dark themes, different fonts, different aesthetics. NEVER converge on common choices (Space Grotesk, for example) across generations.
 

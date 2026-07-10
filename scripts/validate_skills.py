@@ -4,7 +4,8 @@
 Checks:
   1. Frontmatter parses as strict YAML (--- delimited block at top of file)
   2. `name` and `description` keys present; name matches the directory name
-  3. description <= 1024 chars (official limit); warn > 700 (house conciseness target)
+  3. description uses the house single-line quoted form, is <= 1024 chars;
+     warn > 700 (house conciseness target)
   4. SKILL.md body <= 500 lines (progressive-disclosure guidance)
   5. Relative links / referenced files in SKILL.md resolve on disk
 
@@ -50,6 +51,16 @@ for path in sorted(glob.glob("*/SKILL.md")):
     if "description" not in meta or not str(meta.get("description", "")).strip():
         problems.append(f"{path}: missing `description`")
         continue
+    description_lines = [
+        line for line in m.group(1).splitlines() if line.startswith("description:")
+    ]
+    if (
+        len(description_lines) != 1
+        or not re.fullmatch(r'description: "(?:[^"\\]|\\.)*"', description_lines[0])
+    ):
+        problems.append(
+            f"{path}: description must be a double-quoted single-line YAML value"
+        )
     if meta["name"] != skill_dir:
         warnings.append(f"{path}: name `{meta['name']}` != directory `{skill_dir}`")
 
