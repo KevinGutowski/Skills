@@ -1,6 +1,6 @@
 ---
 name: working-with-ai
-description: "Teams working with AI as a tool: coding agents on real repos, AI-generated UI repair, and org enablement. Use for AGENTS.md/CLAUDE.md rules, vibe-coding security, multi-agent workflows, layout diagnosis, judge loops, MCP/context archives, or internal agents. AI inside product → ai-experience-design; user-resculptable software → malleable-software."
+description: "Teams working with AI as a tool: coding agents on real repos, AI-generated UI repair, and org enablement. Use for AGENTS.md/CLAUDE.md rules, vibe-coding security, multi-agent workflows, planning big work as agent-sized decision tickets, layout diagnosis, judge loops, MCP/context archives, or internal agents. AI inside product → ai-experience-design; user-resculptable software → malleable-software."
 ---
 
 # Working with AI
