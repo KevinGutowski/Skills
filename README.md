@@ -35,7 +35,7 @@ After installing, restart Codex for automatic skill routing. In the same session
 | Skill | Use it for |
 |---|---|
 | `design-principles` | Whether/why decisions, design critique, trade-offs (purpose, agency, craft, delight…) — the strategic layer the rest sit under |
-| `design-prototyping` | Validating ideas before building: fake-it → SwiftUI-as-design-tool → coding agents (incl. Cursor's design-in-code endpoint); presenting design work |
+| `design-prototyping` | Validating ideas before building: fake-it → SwiftUI-as-design-tool → coding agents (incl. Cursor's design-in-code endpoint); converging on a look via in-app variant rounds; presenting design work |
 | `design-craft` | The craft skill (merged: former `design-polish`). Body = quality methodology: noticing, range -> depth, facets, live tuning, uncommon care. References = execution values plus Linear product craft: quality rituals, triage, dogfood/unshipping, taste calibration. Use for "feels off", "make it polished", "how far do I push this", or "make this quality practice repeatable" |
 | `logo-design` | Brand marks, badges, identity systems — the Peters method (brand nouns → 50 sketches → B/W presentation); app icons → `apple-design` (app-icon-design) |
 | `feature-discoverability` | First launches, tips/TipKit, features users can't find |
