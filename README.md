@@ -26,6 +26,7 @@ Common bundles:
 | Admin or developer-tool UI | `devtools design-craft data-viz` |
 | AI-generated UI repair | `working-with-ai design-prototyping design-craft frontend-design` |
 | Skill authoring / source conversion | `creating-skills research-cataloging x-post-reader` |
+| Personal direction / sustainable goals | `personal-growth` |
 
 After installing, restart Codex for automatic skill routing. In the same session, read the installed `SKILL.md` files directly. Fuller agent guidance: [docs/agent-quickstart.md](docs/agent-quickstart.md).
 
@@ -51,6 +52,12 @@ After installing, restart Codex for automatic skill routing. In the same session
 | `user-research` | Research planning & methods: question→method map, interviewing craft, validation, synthesis (Hall/Portigal/Sharon) |
 
 **Boundary (the working-designer chain):** evidence → `user-research` · product judgment → `product-decision-making` · internal buy-in/career → `design-org-influence` · external client relationship → `client-work` (client-engagements) · money → `client-work` (pricing-creative-work) · the pitch/demo artifact itself → `design-prototyping` · training/curriculum/job aids → `learning-experience-design`.
+
+### Personal direction
+
+| Skill | Use it for |
+|---|---|
+| `personal-growth` | Your own life/work direction, fit, goals, sustainable practice, recovery, and persist/pivot/stop decisions — personal operating profile → possible futures → small experiment → evidence review. Reflective coaching, not therapy. Managing reports → `people-management`; promotion/stakeholder influence → `design-org-influence`; teaching others → `learning-experience-design`. |
 
 ### Apple platform design (HIG-grounded)
 `apple-design` — one consolidated skill; its body routes to reference files: hig (**lookup router**: topic map + fetch method for the canonical HIG; current letter-of-the-law specs; staleness tiebreaker), classic-hig-principles (2014 iOS/OS X doctrine: deference, clarity, depth, aesthetic integrity, user control, Mac modality/keyboard/help), apple-navigation-design (tabs, push, modality, menus, iPad layout/windowing, pointer), apple-search-design (search placement, suggestions, scope bars/tokens, no-results), apple-typography (SF family, Dynamic Type, text styles), apple-visual-accessibility (accessibility settings, contrast, inclusive design), liquid-glass-design-system (the current design language: the glass material, system anatomy, migration playbook), ios-brand-identity (expressing brand without breaking native feel), app-icon-design (icon craft + the layered Liquid Glass icon system / Icon Composer), app-intents-design (App Intents/App Shortcuts across Siri, Spotlight, widgets, controls), chart-experience-design (in-app charts and the experience around them — Swift Charts/Audio Graphs; general viz stays in `data-viz`).
@@ -107,6 +114,7 @@ Alongside it: `motion` (the Motion AI Kit umbrella — encapsulates best-practic
 - **AI chain:** design the AI feature → `ai-experience-design`; fix AI-generated UI → `working-with-ai` (ai-ui-direction); agents on your repo → `working-with-ai` (agentic-coding); org rollout/context sharing → `working-with-ai` (ai-enablement); users reshaping the product → `malleable-software`.
 - **Overlapping polish themes** (`design-craft` and its Emil Kowalski reference, `web-design` (web-animation-design)) are *themes*: pick one theme's values and apply them consistently; when a genuine choice surfaces, present a menu rather than silently mixing aesthetics. Linear product craft inside `design-craft` is an operating model for quality programs and dense-app refreshes, not a visual theme.
 - **Words:** name the thing in `ux-writing` (naming-features-and-labels) → set the voice in `ux-writing` (ui-voice-and-tone) → failure copy in `ux-writing` (error-messages) → settings rows in `ux-writing` (linear-settings-copy).
+- **Personal direction vs workplace systems:** your own direction, fit, goals, recovery, and course correction → `personal-growth`; managing a direct report's growth → `people-management`; your promotion, manager relationship, or stakeholder buy-in → `design-org-influence`; teaching a group → `learning-experience-design`. Crisis support and clinical care are outside the skill library.
 - **Charts:** type + integrity critique in `data-viz` → in-app experience in `apple-design` (chart-experience-design).
 - **Apple specifics vs current truth:** talk-derived skills carry reasoning and craft; the `apple-design` (hig) skill fetches the canonical current spec. When they disagree, the live HIG wins (skills carry ⚠️ supersession notes where this has already happened).
 

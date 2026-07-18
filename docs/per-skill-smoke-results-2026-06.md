@@ -7,14 +7,14 @@ Packet builder: `python3 scripts/build_skill_smoke_packet.py`
 
 Command: `python3 -B scripts/check_skill_smoke_tests.py`
 
-Result: pass. The fixture has 39 contiguous probes, exactly one expected first-skill prompt per local skill, no duplicate expected first skills, prompts are under 240 characters, and the generated smoke packet includes every probe.
+Result: pass. The fixture had 38 contiguous probes at the time, exactly one expected first-skill prompt per local skill, no duplicate expected first skills, prompts under 240 characters, and every probe present in the generated packet.
 
 ## 2026-06-29 Fresh Descriptions-Only Judge
 
 Judge: Wegener (`019f15da-c92e-79f1-8f52-6f3e1db99bdc`)
 Setup: `fork_context=false`; the judge was instructed to run `python3 scripts/build_skill_smoke_packet.py` and use only that generated packet, not skill bodies, references, docs, git diffs, or external sources.
 
-Result: pass, 39/39 first-skill choices matched the expected smoke-test skill.
+Result: pass, 38/38 first-skill choices matched the expected smoke-test skill.
 
 | Probe | Expected first skill | Judge first skill | Second skill if needed | Result | Rationale |
 | --- | --- | --- | --- | --- | --- |
@@ -62,3 +62,7 @@ Ambiguous-but-acceptable probes:
 - S14: `dhh` is clearly first because the prompt asks for a DHH-style review; `rails` is a plausible helper because the diff is Rails-specific.
 - S21: `malleable-software` is first for reshapable product surfaces; `ai-experience-design` is a plausible helper for AI-assisted change behavior.
 - S32: `user-onboarding` is first for the empty dashboard and first-run path; `ux-writing` is a plausible helper for welcome copy.
+
+## 2026-07-18 Personal-growth addition
+
+Added S25 for `personal-growth` and renumbered the remaining rows, bringing the deterministic fixture to 39 prompts for 39 local skills. `python3 -B scripts/check_skill_smoke_tests.py` passes. A fresh descriptions-only judge has not yet evaluated the new row; the positive, nearest-neighbor, and safety controls are recorded in `docs/personal-growth-source-mining-2026-07.md` for that follow-up.
