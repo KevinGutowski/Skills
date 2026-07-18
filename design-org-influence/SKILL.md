@@ -157,6 +157,7 @@ For the only UX/design person on a team, or an org too immature for formal proce
 ## Relationship to other skills
 
 - **`people-management`** — running your own team of direct reports (1:1s, feedback, careers, hiring/firing process, team comms); this skill is influence up/sideways and your own promotion.
+- **`personal-growth`** — broader reflection on the user's own life/work fit, goals, recovery, and whether to persist or change direction; this skill owns promotion, managing a manager, and stakeholder influence inside the current organization.
 - **`product-decision-making`** — whether the proposal is well-framed: user problem, data, success measure, optimization vs new behavior, and owner-by-outcome. This skill translates that judgment into buy-in and org movement.
 - **`user-research`** — runs the studies whose findings power your business case; its research-as-leadership tactics feed this skill's credibility ladder.
 

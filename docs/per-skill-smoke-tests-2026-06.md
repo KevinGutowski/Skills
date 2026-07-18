@@ -33,17 +33,18 @@ Checker: `python3 -B scripts/check_skill_smoke_tests.py`
 | S22 | `motion` | Add a Motion spring animation to this React component, compare easing options, and check for jank with MotionScore. | Motion/Framer Motion tooling. |
 | S23 | `notification-design` | Design a push notification strategy and permission flow that avoids fatigue, handles grouping, and works well on Apple Watch. | Notification strategy. |
 | S24 | `people-management` | I am a new manager with an underperforming direct report; plan the next 1:1, feedback conversation, and career-growth follow-up. | Direct-report management. |
-| S25 | `photographic-lighting` | Plan a product photo lighting setup for a glossy object, avoiding glare and unwanted reflections with family-of-angles tests. | Photo lighting. |
-| S26 | `product-decision-making` | Decide whether this should be a setting, a smarter default, an onboarding step, or a feature we do not build, using metrics and product judgment. | Product decision tradeoff. |
-| S27 | `rails` | Fix a Rails app with a slow Turbo page, N+1 queries, a risky migration, and Sidekiq jobs that fail in production. | Rails/Ruby router. |
-| S28 | `research-cataloging` | Do an exhaustive source sweep for an old course: Wayback captures, OCR, captions, provenance ledger, and transcript readiness before conversion. | Research/archive router. |
-| S29 | `route-planning` | Optimize the order for a multi-stop delivery route and explain why the current waypoint order backtracks. | Route optimization. |
-| S30 | `shape-up` | Shape this product idea into a six-week pitch with appetite, fat-marker scope, risks, and betting-table framing. | Shape Up process. |
-| S31 | `swiftui` | Debug a SwiftUI view with @State resets, LazyVStack scroll stutter, gesture hit-target issues, and a spring transition. | SwiftUI implementation craft. |
-| S32 | `user-onboarding` | Design the empty dashboard, first-run setup path, and welcome copy for a new user who has no imported data yet. | First-run and empty state. |
-| S33 | `user-research` | Write a research plan, screener, and field guide to decide whether interviews or a usability test will answer our product question. | Research planning. |
-| S34 | `ux-writing` | Rewrite the validation error, settings labels, button text, and plan-name microcopy so the UI is clearer and less scary. | UI words and microcopy. |
-| S35 | `web-design` | Tune CSS typography, forms, accessibility states, OKLCH colors, and animation values for a responsive web page. | Web/CSS craft decisions. |
-| S36 | `working-with-ai` | Write AGENTS.md rules and a multi-agent review loop for coding agents working in our repo without leaking secrets or inventing standards. | Teams using AI/coding agents. |
-| S37 | `write-clear-prose` | Line edit this essay for clarity, rhythm, structure, and plain language while preserving the author's voice. | Long-form prose. |
-| S38 | `x-post-reader` | Read this public x.com status URL and summarize the tweet plus the author's recent related posts. | Public X post reader. |
+| S25 | `personal-growth` | I feel stuck in a stable career; help me identify what kind of work and life fit me, then choose one small experiment without impulsively quitting. | Own direction, fit, and sustainable experiment. |
+| S26 | `photographic-lighting` | Plan a product photo lighting setup for a glossy object, avoiding glare and unwanted reflections with family-of-angles tests. | Photo lighting. |
+| S27 | `product-decision-making` | Decide whether this should be a setting, a smarter default, an onboarding step, or a feature we do not build, using metrics and product judgment. | Product decision tradeoff. |
+| S28 | `rails` | Fix a Rails app with a slow Turbo page, N+1 queries, a risky migration, and Sidekiq jobs that fail in production. | Rails/Ruby router. |
+| S29 | `research-cataloging` | Do an exhaustive source sweep for an old course: Wayback captures, OCR, captions, provenance ledger, and transcript readiness before conversion. | Research/archive router. |
+| S30 | `route-planning` | Optimize the order for a multi-stop delivery route and explain why the current waypoint order backtracks. | Route optimization. |
+| S31 | `shape-up` | Shape this product idea into a six-week pitch with appetite, fat-marker scope, risks, and betting-table framing. | Shape Up process. |
+| S32 | `swiftui` | Debug a SwiftUI view with @State resets, LazyVStack scroll stutter, gesture hit-target issues, and a spring transition. | SwiftUI implementation craft. |
+| S33 | `user-onboarding` | Design the empty dashboard, first-run setup path, and welcome copy for a new user who has no imported data yet. | First-run and empty state. |
+| S34 | `user-research` | Write a research plan, screener, and field guide to decide whether interviews or a usability test will answer our product question. | Research planning. |
+| S35 | `ux-writing` | Rewrite the validation error, settings labels, button text, and plan-name microcopy so the UI is clearer and less scary. | UI words and microcopy. |
+| S36 | `web-design` | Tune CSS typography, forms, accessibility states, OKLCH colors, and animation values for a responsive web page. | Web/CSS craft decisions. |
+| S37 | `working-with-ai` | Write AGENTS.md rules and a multi-agent review loop for coding agents working in our repo without leaking secrets or inventing standards. | Teams using AI/coding agents. |
+| S38 | `write-clear-prose` | Line edit this essay for clarity, rhythm, structure, and plain language while preserving the author's voice. | Long-form prose. |
+| S39 | `x-post-reader` | Read this public x.com status URL and summarize the tweet plus the author's recent related posts. | Public X post reader. |

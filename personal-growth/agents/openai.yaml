@@ -1,0 +1,4 @@
+interface:
+  display_name: "Personal Growth"
+  short_description: "Turn uncertainty into sustainable next steps"
+  default_prompt: "Use $personal-growth to help me clarify what fits, design a small experiment, and review it without shame."
