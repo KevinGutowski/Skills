@@ -11,6 +11,7 @@ Use this reference when the user wants deep editing, writing coaching, a full re
 - Voice
 - Sentence Music
 - Diction
+- AI-Default Pass
 - Evidence and Specificity
 - Paragraph Work
 - Revision Tactics
@@ -143,6 +144,28 @@ Prefer:
 Do not ban large words. Ban lazy large words.
 
 Use metaphor sparingly. A metaphor should clarify an idea or create felt recognition. If it asks the reader to admire the writer, cut it.
+
+## AI-Default Pass
+
+When prose "sounds like AI," diagnose the system failure instead of banning individual tokens. Most generic assistant prose shares a few visible habits:
+
+- Stock openings that announce the category before saying anything specific.
+- Smooth but weightless abstractions: impact, unlock, elevate, transform, seamless, robust, leverage.
+- Symmetrical list cadence where every paragraph has the same length and pressure.
+- Passive or actorless claims that hide who chose, built, shipped, failed, or changed something.
+- Safe conclusions that summarize rather than land on a consequence, decision, image, or question.
+- Punctuation choices used as a house tic instead of a rhythm choice.
+
+Fix it with the ordinary prose craft stack:
+
+1. Write the real claim in one plain sentence.
+2. Replace template phrases with the specific actor, action, object, number, or scene.
+3. Cut any word that exists mainly to make the sentence sound polished.
+4. Use active voice when ownership matters; keep passive voice when the actor is unknown or irrelevant.
+5. Swap jargon for everyday language unless the reader needs the technical term.
+6. Break any local style rule when the alternative sounds false, stiff, or less clear.
+
+Ban lists are allowed only as local evidence: if the same writer repeatedly deletes a phrase from accepted drafts, promote that phrase to a house-style warning with the reason attached.
 
 ## Evidence and Specificity
 
