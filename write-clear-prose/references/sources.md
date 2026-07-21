@@ -7,6 +7,7 @@ This source map records the prose craft authorities named in `SKILL.md` and the 
 - William Zinsser, George Orwell, Strunk and White, Joseph Williams, Steven Pinker, John McPhee, Ursula K. Le Guin, Roy Peter Clark, and adjacent craft teachers supply the durable defaults: clarity, concrete language, structure, rhythm, humane voice, and revision.
 - Chip Heath and Dan Heath, *Made to Stick*, supplies the sticky-message lens for memorable and action-oriented prose.
 - Julie Zhuo's Looking Glass writing essays supply the workplace-writing lens: think, feel, connect, and reader-empathy passes.
+- Vox (@Voxyz_ai), X post, July 19, 2026, supplies the AI-assistant calibration warning: "don't sound like AI" needs a writing system, not one-off bans on words or punctuation. It routes back to Orwell-style clarity rather than introducing a separate style doctrine.
 
 ## Local references
 
