@@ -4,7 +4,23 @@
 
 **Sources:** [agentic-coding/sources.md](agentic-coding/sources.md) — Evil Martians posts + Cursor-school interviews + Dive Club episodes + Ona Background Agents Summit 2026. Extended notes, full quotes + video IDs in [agentic-coding/ai-era-field-notes.md](agentic-coding/ai-era-field-notes.md).
 
-The core claim: agentic coding "lives on constrained generation; **the quality of those constraints determines the quality of the output**." Three things let a two-person team ship a production MVP in four weeks: an opinionated stack's default constraints, project decisions encoded as reusable rules, and "a senior engineer [who] realizes the vision and catches what the AI misses." The slogan: **"AI needs a prompter, not just a prompt."**
+**Mode: shape, build, or harden the agent workflow—not the product feature.** Preserve the user's project rules and approval boundaries. Do not modify code when the request is only for workflow guidance or review.
+
+## Fast path: five decisions
+
+1. **Authority:** load repository instructions, user constraints, and the owning framework skill before local taste or remembered patterns.
+2. **Delegation:** give agents bounded, verifiable work; retain rare architecture, destructive actions, security judgment, and final acceptance for humans.
+3. **Context:** encode repeated project decisions in the smallest persistent rule surface that will be loaded at the decision point.
+4. **Isolation:** give parallel/background work isolated runtime and version-control state, scoped credentials, explicit stop conditions, and a visible rework path.
+5. **Evidence:** require tests, static checks, diffs, and direct inspection proportionate to risk; a successful agent run is not proof of correctness.
+
+**Authority labels:** current platform/framework documentation and repository instructions outrank local conventions; accepted project rules outrank practitioner heuristics; examples and productivity anecdotes are evidence, not mandates. Exact tool names and performance claims in this reference are dated.
+
+**Expected output:** **workflow decision → encoded constraints → delegation plan → verification record → unresolved risks.** For implementation requests, include the actual changes and checks. For review requests, remain read-only unless implementation is explicitly requested.
+
+The load-bearing example: for a Rails change, start at `rails`, select the project's existing school and task reference, then encode only the missing project-specific decision in `AGENTS.md` or a skill. Do not paste a generic style guide ahead of framework mechanics.
+
+The core claim: agentic coding lives on constrained generation; the quality of those constraints determines the quality of the output. An opinionated stack, persistent project decisions, and expert review work as a system; none substitutes for the others.
 
 ## Contents
 

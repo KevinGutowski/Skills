@@ -18,3 +18,4 @@ jobs:
       - run: python3 scripts/check_vercel_overhaul.py
       - run: python3 scripts/check_vercel_routing_probes.py
       - run: python3 scripts/check_skill_smoke_tests.py
+      - run: python3 scripts/check_application_fixtures.py
