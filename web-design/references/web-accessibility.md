@@ -48,6 +48,9 @@ The durable practice layer for accessible websites. Standards-era warning up fro
 - **Keyboard focus ≠ visual focus.** Kalbag's era-bug: following a skip link scrolled the view but left keyboard focus on the nav, making skip links "utterly useless… they're not actually skipping at all." The durable fix (Scott Vinkle): **`tabindex="-1"` on the skip-link target** — removed from the tab order, but able to receive programmatic focus. Same pattern for moving focus into dialogs, error summaries, and SPA route changes.
 - **Never reorder the tab index** with positive `tabindex` values: Tab honors it, cursor/virtual navigation ignores it — "altering the tab index is generally not advisable." Fix the source order instead. `tabindex="0"` only for genuinely interactive custom elements.
 - **Never remove focus styles** ("Just go put them back now") — replace browser defaults with branded focus *and* hover styles if you must, but keyboard users navigate by them.
+- **Native controls carry behavior; ARIA does not.** WAI's Authoring Practices Guide notes that browsers provide keyboard behavior for native HTML controls, while custom ARIA widgets must implement it. Start with the native element. If a composite widget is genuinely necessary, follow its APG pattern: Tab enters/leaves the composite; arrow keys move within it; keep one item in the tab sequence and manage the active descendant or roving `tabindex` deliberately.
+- **Current focus floor:** WCAG 2.2 AA requires visible focus and that author-created content does not entirely obscure the focused component. Focus Appearance's simplest strong treatment—an indicator with area equivalent to a 2 CSS px perimeter and 3:1 change contrast—is AAA, not the AA baseline. Treat it as a robust design target, not a false AA compliance claim.
+- **Current pointer-target floor:** WCAG 2.2 AA Target Size (Minimum) is `24×24 CSS px`, with defined spacing, inline, equivalent-control, and user-agent exceptions. Larger product targets may be preferable, but `40` or `44` px is a design-system/platform target, not the WCAG 2.2 AA minimum.
 
 ## 5. Contrast nuance
 
@@ -121,6 +124,8 @@ Then keep testing after launch (feedback channel, regression suite) — "Accessi
 - [ ] Semantic HTML doing the work; ARIA only where HTML can't?
 - [ ] Skip link present and **visible**; target has `tabindex="-1"`?
 - [ ] Whole flow works keyboard-only; focus styles visible; no positive `tabindex`?
+- [ ] Custom composite widgets follow the relevant APG keyboard pattern; focused controls stay visible beneath sticky/fixed content?
+- [ ] Pointer targets meet WCAG 2.2's 24×24 CSS px minimum or a documented exception; any larger local target is labeled as a product rule?
 - [ ] Contrast passes current WCAG — but not glare-level; survives grayscale?
 - [ ] Forms: labels say "(required)", inputs forgive formats, errors use `aria-live`?
 - [ ] Copy: chronological, device-agnostic verbs, critical info before the action?
@@ -137,6 +142,7 @@ Durable: everything above. Decayed:
 - **Motion**: her era predates `prefers-reduced-motion` — use it (plus `prefers-contrast`, `forced-colors`); ignore any pre-media-query workaround patterns.
 - **Tooling churn**: Tenon API is gone (axe-core, Lighthouse, Pa11y are today's CI equivalents — the failing-build *pattern* is the durable part). Window-Eyes discontinued; "NVDU" is the book's typo for **NVDA**. IE/Opera Mini/Flash-based caption editors: dead. Today's AT matrix: NVDA + JAWS + Narrator (Windows), VoiceOver (macOS/iOS), TalkBack (Android).
 - **`<dialog>` is real now** — native modal focus management shipped in all engines; don't hand-roll focus traps where it serves.
+- **WCAG 2.2 additions matter** — check Focus Not Obscured (2.4.11) and Target Size Minimum (2.5.8); do not mislabel the AAA Focus Appearance criterion (2.4.13) as AA.
 - The Safari/Chrome skip-link focus bug is largely fixed, but `tabindex="-1"` on targets remains correct practice.
 - Screen readers + browsers update monthly; re-verify any specific keystroke, support claim, or quirk before citing it.
 

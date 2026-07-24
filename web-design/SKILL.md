@@ -1,6 +1,6 @@
 ---
 name: web-design
-description: "Router for web design: typography, accessibility, animation values, performance, forms, OKLCH/color, Tailwind, and 9:16 social-video safe zones. Use for web/CSS craft decisions. Building distinctive UI → frontend-design; polish/feel → design-craft; Motion library work → motion; Apple platforms → apple-design. Read one named reference."
+description: "Router for web design: layout/responsiveness, typography, accessibility, animation, performance, forms, OKLCH/color, Tailwind, and social-video safe zones. Use for web/CSS craft decisions. Building distinctive UI → frontend-design; polish/feel → design-craft; Motion library work → motion; Apple platforms → apple-design. Read one named reference."
 ---
 
 # Web Design
@@ -10,6 +10,7 @@ description: "Router for web design: typography, accessibility, animation values
 For a focused question, read the single reference file that matches it — each carries the full distillation for its area (deeper worked examples, sources, and code live in a same-named subdirectory next to it). For a **build** that legitimately spans areas — a page typically needs typography *and* color *and* animation at once — read each relevant reference together; the one-file rule optimizes Q&A lookups, not builds.
 
 - **Typography** — measure, line-height, type scales, font choosing/pairing, OpenType features, web-font loading (FOUT/`font-display`): [references/web-typography.md](references/web-typography.md); deep dives: rutter-guidelines (full guideline index), choosing-and-pairing, opentype-and-micro
+- **Layout** — grouping, shared edges, logical properties/RTL, content-driven breakpoints, container queries, reflow/zoom, safe areas, and discoverable overflow: [references/web-layout-design.md](references/web-layout-design.md)
 - **Accessibility** — semantic HTML first, keyboard/focus management, ARIA, contrast, screen readers, a11y audits and testing: [references/web-accessibility.md](references/web-accessibility.md); deep dive: source-extracts (verified passages)
 - **Animation** — easing, cubic-bezier, durations, springs, stagger, microinteractions, `prefers-reduced-motion`: [references/web-animation-design.md](references/web-animation-design.md); deep dives: PRACTICAL-TIPS (scenario implementations), animation-at-work (Nabors quotes)
 - **Performance** — Core Web Vitals (LCP, INP), perceived performance, defer/anticipate/offload triage, budgets, dropped frames: [references/web-performance.md](references/web-performance.md)

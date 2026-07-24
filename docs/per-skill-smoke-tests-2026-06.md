@@ -48,3 +48,4 @@ Checker: `python3 -B scripts/check_skill_smoke_tests.py`
 | S37 | `working-with-ai` | Write AGENTS.md rules and a multi-agent review loop for coding agents working in our repo without leaking secrets or inventing standards. | Teams using AI/coding agents. |
 | S38 | `write-clear-prose` | Line edit this essay for clarity, rhythm, structure, and plain language while preserving the author's voice. | Long-form prose. |
 | S39 | `x-post-reader` | Read this public x.com status URL and summarize the tweet plus the author's recent related posts. | Public X post reader. |
+| S40 | `interface-review` | Run a full, read-only audit of this checkout flow across accessibility, layout, copy, typography, color, performance, and polish, with evidence and one verdict. | Holistic interface review, not a build or one-domain critique. |
