@@ -162,4 +162,3 @@ A partially visible next item can hint that a horizontal list continues, but the
 - W3C WAI, Carousels Tutorial: https://www.w3.org/WAI/tutorials/carousels/
 
 Verify browser support and current WCAG text before treating an exact API or conformance detail as current. The structural principles are durable; syntax and standards details can move.
-

@@ -8,4 +8,3 @@
 - Primary delta used here: `better-interface`'s orchestration model—scope and mode resolution, domain ownership, evidence requirements, shared severity, root-cause consolidation, rejected candidates, verification, read-only review behavior, and a single verdict.
 
 The local skill adapts that pattern to this repository's existing domain owners. It does not import the external skill's specialist rules wholesale.
-

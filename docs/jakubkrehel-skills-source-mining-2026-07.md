@@ -1,6 +1,6 @@
 # Jakub Krehel skills source mining — 2026-07
 
-Source: https://github.com/jakubkrehel/skills  
+Source: https://github.com/jakubkrehel/skills
 Revision: `f2d1354f9966fd4d03f9c2beb69591ecec22af54`
 
 ## Manifest and coverage

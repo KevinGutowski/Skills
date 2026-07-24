@@ -6,4 +6,3 @@
 - The best order for domain passes has not been compared experimentally; accessibility-first is the current safety-oriented default.
 - Layout-specific numeric rules from the source remain parked until corroborated by primary guidance or independent sources.
 - Native Apple and mixed web/native review fixtures still need explicit examples.
-
