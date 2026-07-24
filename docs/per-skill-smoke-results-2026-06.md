@@ -66,3 +66,7 @@ Ambiguous-but-acceptable probes:
 ## 2026-07-18 Personal-growth addition
 
 Added S25 for `personal-growth` and renumbered the remaining rows, bringing the deterministic fixture to 39 prompts for 39 local skills. `python3 -B scripts/check_skill_smoke_tests.py` passes. A fresh descriptions-only judge has not yet evaluated the new row; the positive, nearest-neighbor, and safety controls are recorded in `docs/personal-growth-source-mining-2026-07.md` for that follow-up.
+
+## 2026-07-24 Interface-review addition
+
+Added S40 for `interface-review`, bringing the deterministic fixture to 40 prompts for 40 local skills. A fresh descriptions-only judge has not yet evaluated the new row; `interface-review/references/coverage-gaps.md` records that follow-up.

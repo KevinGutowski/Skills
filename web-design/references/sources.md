@@ -5,6 +5,7 @@ This is a top-level provenance map for the web-design router.
 ## Reference map
 
 - `web-typography.md` covers typography, font loading, scale, line length, OpenType, and related web type craft.
+- `web-layout-design.md` covers grouping, alignment, logical properties/RTL, container queries, reflow, safe areas, and discoverable overflow. Platform mechanics are grounded in current MDN/W3C guidance; interface heuristics are attributed to Jakub Krehel's external skill collection.
 - `web-accessibility.md` covers semantic HTML, keyboard/focus, ARIA, contrast, screen readers, and audit/testing practices.
 - `web-animation-design.md` covers web motion values, easing, durations, springs, stagger, microinteractions, and reduced-motion handling.
 - `web-performance.md` covers Core Web Vitals, perceived performance, budgets, main-thread/offload decisions, and frame health.
