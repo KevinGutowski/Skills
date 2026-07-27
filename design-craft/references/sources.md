@@ -11,6 +11,10 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
   references for [../examples/refactoring-ui-gallery.html](../examples/refactoring-ui-gallery.html),
   not committed.
 
+## Anton Sten
+
+- *Products People Actually Want* (2025 ebook, local attachment `ppaw-ebook.zip`) — corroborates problem-first craft, off-screen touchpoint care, whole-journey UX, visual design as clarity rather than decoration, and the function/reliability/usability/pleasure hierarchy.
+
 ## Derek Briggs (PixelJanitor)
 
 Ex-PlanetScale/Campsite/Clerk/Notion; Design+Code at Shopify. Course: *UI Engineering 101 for Designers* (Maven, with Mariana Castilho) — https://maven.com/pixeljanitor/uiengineering-101-for-designers

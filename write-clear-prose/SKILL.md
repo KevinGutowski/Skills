@@ -15,6 +15,8 @@ Add Heath & Heath's *Made to Stick* as a message-shaping lens when the prose mus
 
 Add Julie Zhuo's Looking Glass writing lens for workplace writing: distinguish whether the draft is meant to **think**, **feel**, or **connect**, then judge quality by that job. Writing to connect requires reader empathy before sentence polish.
 
+Add Anton Sten's designer-writing lens when prose is being used to shape a product, pitch, or concept: writing can expose what is known, what is assumed, what the user should feel, and whether the idea has a coherent story before the artifact gets polished. Judge early writing by the clarity it creates, not by publishable style.
+
 For AI-assisted drafts, treat "don't sound like AI" as a missing writing system, not as a token-ban problem. Do not fix generic prose by chasing one-off banned words or punctuation marks. Run the craft system instead: cut prefabricated phrases, prefer plain words, name the actor when it matters, replace jargon with everyday language, and keep any exception that makes the sentence more truthful, idiomatic, or alive.
 
 Do not imitate any author at a fingerprint level. Use the principles, not the protected expression. Avoid long quotations from books unless the user explicitly asks and the excerpt is brief.
@@ -36,6 +38,14 @@ For memos, updates, and proposals, add Zhuo's reader-empathy pass:
 - What exact reader outcome do you want: decision, behavior change, reassurance, awareness, or feedback?
 - What is the minimum context needed to get that outcome?
 - Would a chart, screenshot, video, numbered list, `DECISION:` block, or `ACTION:` block carry the point better than paragraphs?
+
+For design/product concept writing, add Sten's pre-visual pass:
+
+- What do we know?
+- What are we assuming?
+- What user scenario makes the problem concrete?
+- What feeling should the experience create at the key moments?
+- Which story frame fits: familiar-pattern, before/after, or question/answer?
 
 If the piece is missing, ask for it. If the task is clear enough, proceed without extra questions.
 

@@ -61,6 +61,7 @@ People use your design in ways as unique as they are. Support the real contexts 
 - **Concise:** plain language, no jargon, no redundancy; reduce the number of steps. Respect people's time.
 - **Clear:** the design communicates what it does. Build clarity with **hierarchy** — order, spacing, contrast — so the most important thing is the most obvious thing. Clear interfaces answer: *What do I pay attention to? What can I interact with? How do I interact?* Distill complex data (a graphic may beat a table; summarize so people focus on what they care about).
 - **Sometimes simple means adding.** A video scrubber that shows position and time remaining adds information that helps people make informed decisions. You've arrived at simplicity when you have *exactly enough.*
+- **Options are not value by themselves** (Sten). More customization can make first use worse even when every option is legitimate. Group choices, reveal power gradually, and protect the core task from option sprawl. The test is whether the person can achieve the main goal faster and with more confidence, not whether every capability is visible at once.
 
 ### 7. Craft — execute the details flawlessly
 Craft is the attention to detail that signals you care. People feel a cheap, rushed product instantly — janky scrolling, a button that lags, misaligned icons, a layout that breaks on rotation — and they question the quality of everything else. Crafted work inspires confidence. The ingredients:
@@ -72,10 +73,14 @@ The 2018 "Qualities of Great Design" interviews sharpen Craft three ways: **qual
 
 Practitioner corroboration, distilled: **Stamatiou** — ditch MVP for **SLC (Simple, Lovable, Complete)**, cut as a vertical slice; **Puckett** — care lives in the skippable places, and most work ships at 1–3 on the depth spectrum; **MDS** — the Adidas/Crayola/Rolex calibration question, and a senior gut gets you ~70%. Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
 
+Sten's hierarchy is a useful sequence check: functional → reliable → usable → pleasurable. Beauty matters, but polishing a product that does not work, cannot be trusted, or cannot be understood is misordered craft.
+
 **Soleio's shipping counterweight** (Dive Club): teams don't die from lack of craft — they "flailed around in irrelevance because they just refuse to ship." Fix the janky first; defer sheen. Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
 
 ### 8. Delight — create an emotional connection
 Hard to define, instantly recognized. Delightful interfaces are satisfying, enriching, and feel **human**. You don't manufacture delight with confetti or flourishes bolted on at the end. You **identify the emotion** you want people to feel — relaxed, confident, excited — and find ways to reinforce it throughout. Delight is the *sum* of the consideration you put in: the natural result of getting the other seven principles right.
+
+Sten's relationship lens: delight is often the product making the value exchange feel generous. People remember how a product made them feel in high-stakes moments more than they remember individual interface details. Ask whether the experience leaves them feeling capable, confident, and understood — especially when stressed, distracted, tired, or recovering from a problem. Emotional design can mean restraint: the most human move in an anxious flow is often clear language, simple navigation, predictable feedback, and no decorative celebration.
 
 ## Practitioner rules & counter-positions (Config 2024–25 talks)
 

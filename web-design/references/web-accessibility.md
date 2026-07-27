@@ -28,6 +28,8 @@ The durable practice layer for accessible websites. Standards-era warning up fro
 - The web translation: a text-resize button is accessible design — "yet another element crowding a page layout, and people have to go out of their way to find it" (Kalbag's NYT example). The universal move is **making all the body text bigger** (her counter-example: New Republic's 20px default, "instantly more inviting"). Build the inclusive default, not the bolt-on.
 - The culture goal: "My one wish for the web is that **people consider accessibility in the same way they think about web performance**" — mentioned in every blog post about a new technique, not a separate workstream.
 - **Context and environment are impairments too**: bright sunlight, one-handed phone use, slow connections. And don't infer context from device — BBDO found **64% of users browse the web on mobile while at home** on their sofas and Wi-Fi; "on the go" is a fiction.
+- **Design for anyone, not an abstract everyone** (Sten): treat permanent, temporary, and situational limits as one continuum. Captions help deaf users and anyone watching without audio; contrast helps low-vision users and anyone in bright light; large targets help motor impairments and one-handed distracted use. Start with concrete human situations, not a mythical average user.
+- **Run the situational quick checks:** one-handed/thumb-only use; bright and dark environment; no audio; tired or stressed reading; first-time use; distracted task completion. For interactions, ask whether the next action and its result are obvious without full attention.
 - The analytics caveat: "**There are no user agent strings for these assistive technologies**, leaving us with no idea of how many people are accessing the web with assistive hardware or software." You cannot measure your way out — build for the unknown and test widely.
 
 ## 2. Assistive-technology discipline
@@ -121,6 +123,7 @@ Then keep testing after launch (feedback channel, regression suite) — "Accessi
 ## Checklist
 
 - [ ] Inclusive default chosen over bolt-on control (bigger text, simpler layout)?
+- [ ] Situational checks run: one hand, no audio, bright/dark environment, stress/hurry, first-time use?
 - [ ] Semantic HTML doing the work; ARIA only where HTML can't?
 - [ ] Skip link present and **visible**; target has `tabindex="-1"`?
 - [ ] Whole flow works keyboard-only; focus styles visible; no positive `tabindex`?

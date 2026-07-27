@@ -407,3 +407,29 @@ Follow-up to the 2026-07-16 sweep after a self-audit flagged that the folds were
 ## 2026-07-18 — Personal-growth corpus
 
 Archived and screened Ludwin's Streamer University class, Meg Lewis's public Full Time You program plus two Adobe talks and a public article, five selected The Futur talks/interviews, and seven research/institutional sources spanning self-determination, WOOP, behavior design, life design, self-compassion, recovery, and deliberate-practice limits. Density HIGH and task shape coherent; created top-level `personal-growth`. Core method: provisional personal operating profile → multiple futures → small revealing experiment → behavior design/practice/recovery → compassionate trajectory review → persist/modify/pause/stop. Explicitly excluded paid Full Time You material, duplicated clips, therapy-adjacent advice, overwork rhetoric, four-circle ikigai, and unverified pop psychology. Source coverage, fold map, boundaries, and probes: `docs/personal-growth-source-mining-2026-07.md`.
+
+## 2026-07-26 — Anton Sten, *Products People Actually Want*
+
+Ticket attachment `/workspace/.prompt/initial/ppaw-ebook.zip` contained EPUB and PDF.
+Extracted the EPUB to `/workspace/ppaw_epub` and normalized chapter XHTML into
+`/workspace/ppaw_fulltext.txt` (about 20k words). `pdftotext`/`pdfinfo` were not
+installed, so PDF extraction was skipped after confirming the EPUB contained the full
+chapter text. Density HIGH, but no new top-level skill: the book is a broad product
+design practice source whose durable lessons route into existing task skills.
+
+Folded into:
+
+- `product-decision-making`: user/business/technical fit, whole-journey product judgment, UX strategy shape, problem-before-redesign field notes.
+- `user-research`: TEDW follow-up operator, stakeholder/user interview question bank, AI note-taking caveat.
+- `design-systems`: meaningful systems frame, parallel product/system build, constraints, adoption over perfection, quality-audit gap.
+- `design-org-influence`: business-language translation, knowns-vs-assumptions story prep, fidelity choice as influence lever, pitch reference section.
+- `design-craft`: problem-first craft target selection and off-screen touchpoint care.
+- `ux-writing` and `write-clear-prose`: writing-before-pixels and concept prewriting passes.
+- `user-onboarding`: explain setup asks before extracting user effort; design first-use flows for anxious/distracted contexts.
+- `people-management`: design management as craft shift, staying close enough to execution, energy management.
+- `design-principles`: option-sprawl caution and functional/reliable/usable/pleasurable sequence.
+- Follow-up fold after review: added value-exchange/product-relationship guidance to `product-decision-making` and `design-principles`; situational "design for anyone" checks to `web-design` (web-accessibility); and emotional recovery/completion/empty-state moments to `ux-writing` (error-messages) and `user-onboarding` (empty-states).
+
+Parked/skipped: emotional relationship/value-exchange chapter as corroboration only;
+named current tools such as Granola, Visual Electric, Stark, Lovable, Replit, v0, and
+Cursor treated as perishable category examples; no long quotes imported.

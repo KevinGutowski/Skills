@@ -891,6 +891,40 @@ quotes added here.
 | 11. With Power Comes Responsibility | Psychological principles can manipulate; designers must use them ethically. | `design-principles` ethics. |
 | 12. Applying Psychological Principles in Design | Team workflow for identifying, applying, circulating, and advocating psychological principles. | Source-map only; useful for design-principles facilitation. |
 
+## Anton Sten, *Products People Actually Want*
+
+Extraction: `/workspace/ppaw_fulltext.txt` from the XHTML inside
+`/workspace/.prompt/initial/ppaw-ebook.zip` (`Products People Actually Want.epub`);
+PDF fallback was unavailable because `pdftotext`/`pdfinfo` are not installed. Density:
+HIGH as a broad product-design practice source. Folded by task into existing skills;
+no new top-level skill because the repo already has stronger owning clusters for
+product judgment, research, design systems, influence, onboarding, people management,
+UX writing, design principles, design craft, and prose.
+
+### TOC / Chapter Map
+
+| Section | Short summary | Routing |
+| --- | --- | --- |
+| 1. What product design actually means | Defines product design as user experience + business strategy + technical feasibility; distinguishes product design from decoration. | Folded to `product-decision-making` three-way fit; source in `design-principles`. |
+| 2. Why everyone makes design decisions | UX is shaped by the whole team; internal dogfooding with doctors, developers, operations, and others catches different issues. | Folded to `product-decision-making` whole-journey frame; existing `design-craft`/Linear dogfood rules stronger for rituals. |
+| 3. Product design as a problem solver | Warns against portfolio-style redesigns that do not solve real user problems; asks whether the product, medium, adoption cost, or existing comfort is the real issue. | Folded to `design-craft` problem-first craft and `product-decision-making` field notes. |
+| 4. Beyond the screen | Audits the full journey: discovery, exploration, purchase, fulfillment, support, cross-device, emails, invoices, returns, and human service. | Folded to `product-decision-making` whole-journey product judgment; `design-craft` off-screen care. |
+| 5. The reality of product design work | Product-designer work varies by project: visual design, optimization/analysis, product/feature development, user research/testing; design lead work shifts toward why-setting and stakeholder explanation. | Folded to `product-decision-making` field notes and `people-management` design-lead addendum. |
+| 6. Being the only designer | Solo/startup designers span product, marketing, and sales; prioritize by conviction and company/user evidence; talk to actual users before Figma. | Folded lightly to `people-management`; solo influence already covered by Buley in `design-org-influence`. |
+| 7. Leading without losing your craft | Management is a craft shift, not a promotion; leaders need enough current practice to teach, review, and unblock; design leadership should match personal energy patterns. | Folded to `people-management`. |
+| 8. User research and stakeholder interviews | Research serves both users and business; stakeholder interviews reveal constraints and success definitions; TEDW follow-ups keep answers open and concrete. | Folded to `user-research` body and `study-logistics.md`. |
+| 9. Creating a UX strategy | UX strategy asks where we are now, where we want to be, and how we get there; goals/principles beat feature lists; includes speed, accessibility, primary-action clarity, and familiarity. | Folded to `product-decision-making` strategy section. |
+| 10. The product design process | Four interdependent areas: research, functionality/usability, visual design, prototyping/iteration; warns against ignoring users and overloading first-time users with options. | Folded to `design-principles`, `user-research`, and `user-onboarding`; AI tool mentions treated as category examples. |
+| 11. Design principles | Product principles should be unique, definitive decision tools; 4-7 principles can resolve debates about banners, tooltips, dark patterns, cancellation, complaints, and account deletion. | Cross-check only; `design-principles` already has stronger primary structure, but source added. |
+| 12. Creating meaningful design systems | Efficiency/consistency/scale have value only when they speed meaningful outcomes, standardize quality, and reproduce patterns worth keeping; build systems in parallel with products; adoption beats perfection. | Folded to `design-systems`. |
+| 13. Why designers need to write | Writing helps designers explain decisions, imagine scenarios, and focus on the problem rather than graphics. | Folded to `ux-writing` and `write-clear-prose`. |
+| 14. Using writing to think through problems | Write practical goals, emotional goals, knowns/unknowns, user scenarios, and flow goals before committing to visuals. | Folded to `ux-writing` prewriting and `write-clear-prose` Sten pass. |
+| 15. How to sell design | Use knowns vs assumptions, storytelling structures, concept-design fidelity choices, and audience reading to turn presentations into collaborative exploration. | Folded to `design-org-influence/references/pitching.md`. |
+| 16. Why designers need to speak business | Translate design concerns into business language: debt, overhead, KPIs, recurring revenue, conversion, support cost, and risk. | Folded to `design-org-influence`. |
+| 17. Building emotional relationships with users | Product relationships depend on value exchange, trust, habit, and emotional payoff; products can be abandoned or tolerated for reasons beyond feature fit. | Folded to `product-decision-making` value exchange and `design-principles` Delight. |
+| 18. Designing for anyone | Inclusive design for broad audiences, real-life chaos, accessibility, and majority-without-erasing-edge decisions. | Folded to `web-design` (web-accessibility) situational checks, `user-onboarding` real-life chaos, and `design-principles`. |
+| 19. Going beyond good enough | Encourages pushing beyond adequate work through care, iteration, and details that create memorable products. | Folded to `design-craft`, `ux-writing` (error-messages), and `user-onboarding` (empty-states); stronger depth framework remains Puckett/Linear. |
+
 ## Processed Books Needing Map Backfill
 
 These books have been screened/folded in `docs/mining-ledger.md` but do not yet have

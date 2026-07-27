@@ -10,6 +10,7 @@ Use this as provenance for the `ux-writing` router and its references. It is not
 - Apple WWDC 2017 session 819, "Designing for a Global Audience" — localization-ready writing. Session is no longer available from Apple's main video pages; kept via WWDC Index/archive notes.
 - Michael J. Metts and Andy Welfle, *Writing Is Designing* (Rosenfeld Media, 2020) — voice, tone, inclusive language, error-message structure, and content-as-design framing.
 - Aarron Walter, *Designing for Emotion* (A Book Apart, 2011) — design persona, delight layer, and incident communication.
+- Anton Sten, *Products People Actually Want* (2025 ebook, local attachment) — writing before pixels, words as a design-thinking tool, problem/feeling/scenario prewriting prompts, and business/design storytelling. Folded lightly here; long-form craft routes to `write-clear-prose`, stakeholder selling to `design-org-influence`.
 
 ## Error Messages And Failure States
 
