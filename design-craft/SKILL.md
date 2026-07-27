@@ -56,6 +56,8 @@ Ways to push past the obvious:
 
 Also a **hedge against your own taste**: taste is limited by what you've seen; going straight to depth on a familiar idea robs you of directions you'd never otherwise try. (Reference case: the *Maintenance: Of Everything* cover — ~15 structurally distinct directions before choosing.) And concept outranks execution (Craig Henry, Valio Con): colors, linework, and lighting "ended up not being really the special sauce" — the concept is; execution facets polish it, never substitute for it.
 
+Sten's problem-solver warning belongs here: redesigning an already-working surface is often visual exercise, not product progress. Before pushing craft depth, ask whether this is the surface where better craft changes the user's outcome. A prettier boarding pass, dashboard, or feature tour may be the wrong target if the real pain lives in fulfillment, support, recovery, or a broken underlying process.
+
 ## Conceptual depth (`/library/conceptual-depth`)
 
 "The difference between fine work and great work is rarely the initial idea. It's how far that idea gets pushed." Imagine a **1–10 spectrum**: 1 = exists/technically works, 10 = nothing could be improved. **Most work ships at 1–3** — not because more wasn't possible, but because it's easy to stop.
@@ -98,6 +100,8 @@ Rams' discipline: fight the urge to add features/scope/flourish. Do as little as
 ## Uncommon care (`/library/uncommon-care`)
 
 "How much did the creator care?" shows up most in **the places you could have skipped**: edge cases, error states, invoices, refunds — "the effort no one would have blamed you for not making" (the Porsche 928 clutch pedal; logo-shaped screw heads; 100 personalized member notes). With AI making *passable* trivial, the bar for good-enough collapses — leverage buys you time to pour into what can't be generated. Self-prompts: Where are you stopping at good enough? What's the skeleton in the closet everyone knows is broken? Where are you holding back because leaning in feels uncomfortable?
+
+Sten's whole-journey variant: the care test includes off-screen business surfaces. Confirmation emails, invoices, PDFs, OCR/print needs, delivery/fulfillment status, returns, cancellation, and support scripts are all part of the felt product. The main screen can be crafted and the experience can still feel careless if these touchpoints break the promise.
 
 ## Industry standards (`/library/industry-standards`)
 
@@ -152,11 +156,13 @@ The methodology above is corroborated by field practitioners outside the IC corp
 
 - [ ] Did you stay with your observations past the first reaction, and write down *why*?
 - [ ] Did you explore structurally different concepts (not variants) before committing?
+- [ ] Are you polishing the surface where the real user/business problem lives?
 - [ ] Where is this on the 1–10 depth spectrum — and what would one more level look like?
 - [ ] Are the key parameters live-tunable rather than guess-edit-refresh?
 - [ ] What single question is this artifact answering, and is the fidelity matched to it?
 - [ ] Are this project's facets defined, scored, and driving the critique language?
 - [ ] What can be removed? What overlooked corner deserves uncommon care?
+- [ ] Did off-screen touchpoints receive care: emails, invoices, support, recovery, cancellation, fulfillment?
 - [ ] Does it clear the industry bar — and did you start from platform defaults before innovating?
 
 ## Relationship to other skills

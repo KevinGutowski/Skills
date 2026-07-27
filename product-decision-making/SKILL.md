@@ -22,6 +22,40 @@ Use Zhuo's product-review frame before arguing about solutions:
 
 If any answer is weak, do not open the solution debate yet. Go to `user-research` for evidence gathering or `design-org-influence` if the problem is stakeholder alignment.
 
+## Product design is a three-way fit
+
+Sten's *Products People Actually Want* is useful as a product-designer's bridge source: product design is not pixel work with a broader title, and not business strategy wearing a UI costume. Before evaluating a product proposal, check the fit between three systems:
+
+- **User reality:** the person's actual situation, emotion, current workaround, constraints, and next-best medium. The right answer may be a smaller interface, a different channel, or no screen at all.
+- **Business reality:** the revenue, retention, support, operational, trust, or strategic problem the company must solve. A user-preferred feature can still be the wrong bet if it does not move the business problem.
+- **Technical reality:** implementation cost, maintenance, reliability, data availability, accessibility, and the operational burden after launch.
+
+Decision move: write the proposed product change as **what / how / why**. What should it do? How should it feel and behave? Why should this exist for users and the business now? If the team can only answer "what," the decision is under-shaped.
+
+## Whole-journey product judgment
+
+A user experience is not bounded by the mockup. Treat every surrounding touchpoint as product surface: acquisition promise, landing page, pricing, signup, emails, invoices, notifications, delivery/fulfillment, support, cancellation, returns, mobile cross-device paths, and any human service behind the screen.
+
+Use this when a feature looks good in isolation but product metrics or trust still suffer:
+
+- **Follow the real journey.** Start where customers start, then complete the whole task with production-like constraints.
+- **Check handoffs.** Does each touchpoint preserve the promise, context, language, and trust built by the previous one?
+- **Look for business-side breakage.** A polished checkout followed by unclear confirmation, hard returns, or rude support is still a product-design failure.
+- **Ask whether the right medium is being used.** Do not force one channel to carry every message; match message, timing, and user state.
+
+## Value exchange and product relationship
+
+For retention, trust, and subscription decisions, audit the relationship as an exchange. Users give time, attention, learning effort, data, privacy, money, trust, and emotional investment. They expect useful outcomes, effortlessness, respect, reliability, progress, and confidence in return.
+
+Decision move: ask four questions before adding friction, monetization, data capture, or setup:
+
+- What value does this product actually deliver now?
+- What are we asking users to give up in return?
+- Where might the exchange feel unfair, extractive, or confusing?
+- Where could the product feel generous without adding feature bloat?
+
+This keeps retention work from collapsing into activity metrics. A product can complete the task and still damage the relationship if the exchange feels lopsided.
+
 ## Diagnose with data, treat with design
 
 Zhuo's durable rule is: **diagnose with data; treat with design.** Data and design are not rivals; both are trying to understand the truth of a phenomenon. Keep their jobs separate:
@@ -68,6 +102,14 @@ Zhuo's "chains of assumptions" frame is the bridge between first principles and 
 - **Find the weakest link.** The decision rarely hinges on the whole chain; it hinges on the assumption most likely to be false or most costly if false.
 - **Use disagreement to locate assumptions.** When reasonable people prefer different options, ask what would have to be true for each option to be best.
 
+Sten's UX-strategy shape is the practical companion to the assumption chain:
+
+- **Where are we now?** Customers, competitors, industry trends, performance trends, employees, operations, and organizational constraints.
+- **Where do we want to be?** Goals, objectives, positioning, vision, mission, and the few UX outcomes that matter most.
+- **How do we get there?** Concrete road map: team roles, missing skills, ways of working, platform constraints, and the product decisions that must change.
+
+Prefer goals/principles over feature lists in a strategy doc. "Optimize for speed" or "serve the majority without excluding the edge" guides many decisions; a backlog item only guides one.
+
 ## Quality vs time
 
 When a team asks whether to ship something mediocre or delay for quality, ask the upstream question: **if we knew this would take this long to make high-quality, would we still have chosen to build it?**
@@ -86,6 +128,7 @@ For growth work, borrow the Brian Hale / Zhuo contrast:
 - Do not maximize experiment count; maximize learning rate. A test only matters when it targets a real user confusion, fear, cost, or friction.
 - Do not celebrate a win and move on; ask why it worked unusually well and where the same underlying blockage appears elsewhere.
 - Watch relationship metrics, not only activity metrics. Power users hide the fact that new or occasional users are getting lost.
+- Read relationship metrics as value-exchange signals, not only sentiment. NPS, retention, support burden, refunds, and repeat use are proxies for whether the product still feels fair and valuable over time.
 
 Excellent growth teams ask: **Where is the user stuck, and why?**
 
@@ -129,6 +172,9 @@ Trust intuition most when it comes from deep study in the same domain. Distrust 
 Ask these in order:
 
 - [ ] What user/customer problem is this solving, in a recent concrete situation?
+- [ ] What business problem is this solving, in the language the business uses?
+- [ ] What technical or operational reality constrains the solution?
+- [ ] Are we improving the whole journey or only the visible screen?
 - [ ] Is this optimization or new behavior?
 - [ ] What data diagnoses the problem? What can the data not say?
 - [ ] What qualitative evidence explains the why?

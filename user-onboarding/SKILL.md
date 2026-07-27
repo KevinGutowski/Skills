@@ -98,6 +98,10 @@ When deciding what to build or cut from an onboarding flow:
 
 "When a new user comes to your product, give them a task." Empty welcomes and feature tours are weaker than a constrained job with a visible finish. For habit products, use Amy Jo Kim's sequence via Klein: core loop first, then onboarding, then discovery, then mastery. If there is no strong loop, "you're building a leaky bucket." Build the thing someone will do every day before decorating the path into it.
 
+**Explain the ask before the user pays the cost** (Sten). If onboarding needs integrations, profile data, permissions, or setup work, show the value unlocked by that step in the user's words before asking for it. Reduce initial commitment where possible: make non-essential integrations skippable, defer setup until after the quick win, and keep the first path to value short enough that the product proves itself before the form grows.
+
+**Design for real-life chaos.** Sten's healthcare example generalizes: new users may be tired, distracted, anxious, one-handed, under time pressure, or unsure whether they belong. Pattern fidelity and plain language matter most in these utilitarian first-use flows; save novelty for the product's signature moments after trust is established.
+
 **Dark-pattern boundary:** a dark pattern is any interface element that benefits the company at the expense of what a reasonable, fully informed user would agree to. If the onboarding goal depends on hiding cost, commitment, consent, or cancellation, route to `ux-writing` (error-messages) / `web-design` (form-design) ethics rather than conversion optimization.
 
 ## Quick Copy Formulas
@@ -121,6 +125,13 @@ When deciding what to build or cut from an onboarding flow:
 [User outcome this enables — in their words]
 [Briefest possible explanation of how]
 [CTA to try it]
+```
+
+**Setup-step rationale pattern:**
+```
+[Why this helps you right now].
+[What we will do with the information/access].
+[Skip/edit reassurance if available]
 ```
 
 ## Related skills

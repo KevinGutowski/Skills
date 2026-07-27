@@ -6,6 +6,7 @@ Figma Config talks, 2024–25:
 
 Plus:
 
+- *Anton Sten, "Products People Actually Want" (2025 ebook, local attachment)* — meaningful design-system frame: efficiency/consistency/scale have value only when they accelerate meaningful outcomes, standardize quality, and reproduce patterns worth keeping; systems should be built in parallel with the product, constrained early, living, and adoption-focused.
 - *Ryo Lu (Cursor) — Dive Club + Dialectic interviews, 2025 (the "bricks"/de-slop additions)*
 - *MDS (Matt D. Smith, Shift Nudge) — https://www.youtube.com/watch?v=4p5LzrAYN30 · https://www.youtube.com/watch?v=PFi9WfNUlps (the dial + handoff sections)*
 - *Dive Club podcast interviews, 2025–26: Brian Lovin (Notion, dvEwb1Ajkwo), Luis Ouriach (Figma, Pn2G7JhxNKc), Cam Worboys (Cash App, KH9GBasDTI8), Louis Healey & Kyler Hall (Atlassian, CqMZTg7L-wE — the flagship of the DS-as-AI-context section), Steven Haney (Y0n6F9VlLVc)*

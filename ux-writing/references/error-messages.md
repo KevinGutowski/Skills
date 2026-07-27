@@ -155,6 +155,19 @@ Tone scales with stakes. Use this rough mapping:
 
 **Never** use exclamation points, emoji, or "Oops!" for high-stakes errors. They read as dismissive.
 
+## Emotional recovery moments
+
+Sten's "beyond good enough" lens turns failure copy into a product-relationship moment. In errors, waiting, completion, and empty states, users are deciding whether the product makes them feel capable or foolish, reassured or abandoned.
+
+For failure states, add these checks to Avoid → Explain → Resolve:
+
+- **Capability:** does the message help the user recover without feeling stupid?
+- **Reassurance:** does it say what happened, what is safe, and what to do next?
+- **Respect for effort:** if the action was difficult or important, does the product acknowledge what was completed or preserved?
+- **Useful waiting:** if recovery takes time, does the UI explain what is happening instead of showing a generic spinner?
+
+Do not add delight as jokes or decorations in high-stakes failures. The delight is graceful recovery.
+
 ## Incident communication (outages, breaches, big mistakes)
 
 Walter's sequencing rule — **facts before fun**: "you must explain what happened swiftly, honestly, and clearly. Give people the facts of the event, communicate that you're doing your best to resolve things, then update users regularly, even if not much has changed." Only after the honest explanation may you redirect attention — Flickr's storage-failure coloring contest (print the outage page, win a Pro account) turned downtime into goodwill, but it *followed* the facts, never replaced them.
@@ -196,6 +209,7 @@ When reviewing error copy, walk through this:
 - Does it give a concrete next step?
 - Does it offer a way out (support link, retry, alternative)?
 - Does the tone match the stakes? (no cute language for serious failures)
+- Does the message preserve the user's sense of capability and progress?
 - If it's generic, can engineering make it specific instead?
 
 ## When to Push Back on Engineering

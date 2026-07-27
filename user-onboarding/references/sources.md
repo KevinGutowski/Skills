@@ -19,6 +19,7 @@ Use this as provenance for the `user-onboarding` skill and references. It is not
 - Ryo Lu, Cursor field notes — free play before signup and constrained demos.
 - Rafa Conde, Dive Club — conversion cost of delight and targeted onboarding.
 - Brandon Jacoby, Dive Club — pattern fidelity for utilitarian signup/setup flows.
+- Anton Sten, *Products People Actually Want* (2025 ebook, local attachment) — onboarding/integration explanation, reducing initial commitment, designing for anxious/distracted contexts, and business-case storytelling around onboarding drop-off.
 
 ## Reference Map
 

@@ -30,6 +30,7 @@ Full scripts, worked numbers, and timing windows: [references/pitching.md](refer
 - **The animation-adoption case** (Nabors, *Animation at Work*, ch. 4): skip the science debate, "talk benefits"; show, don't tell — the animated version next to the static comp. And be a **gardener, not gatekeeper**: the lone evangelist is a bus-factor risk — build allied experts. Full quotes: [references/pitching.md](references/pitching.md).
 - **Translate your message into each audience's motivations** (Lara Hogan, *Resilient Management*, ch. 4): "translate your message into something that's much more digestible and easy for that audience to care about" — one elevator pitch per audience, repeated often (her web-perf case: [references/pitching.md](references/pitching.md)).
 - **Before/after**: "I redesigned our mobile app because the current design looks outdated" → "Mobile app engagement dropped 23% this quarter… projected to increase screen time by 40%… here's the six-week rollout plan." Same design, completely different reception.
+- **Business translation, not design translation** (Sten): if stakeholders keep choosing the "modern-looking" option over the researched one, stop explaining whitespace, systems, and flows. Translate the decision into the language they already use: revenue, recurring revenue, signups, support cost, retention, operational overhead, debt, risk, and strategic position. "Design inconsistency" may land as **design debt**; "poor content" may land as **content overhead**.
 
 ## Sticky framing (Heath & Heath)
 
@@ -121,6 +122,8 @@ Smaller Dive Club deltas, one line each (full quotes: [references/influence-fiel
 - **Strategy as sandbox** (Soleio, Dive Club) — demand strategy that acts as a sandbox: competitive strategy, plan to win, resources, success measure; problem selection over problem solving.
 - **Will this matter in a year?** (Soleio, Design MBA) — triage by one-year consequence; reserve weight for the hard-to-unwind class (hires, product names).
 - **Write before pixels** (Luis Ouriach, Pn2G7JhxNKc) — writing before committing to a pixel is the best way to get buy-in.
+- **Use writing to separate knowns from assumptions** (Sten): before selling a concept, write what is known, what is assumed, and what remains unknown. Then build the story from the pattern in that list. It lowers defensiveness because the pitch is not pretending exploration is certainty.
+- **Pick the artifact for the conversation you need** (Sten): page briefs focus sections/actions/goals; wireframes invite hierarchy and structure discussion; visual designs communicate balance and feeling; concept designs share a plausible dream. A polished artifact can trap stakeholders in tiny comments; a wireframe can make them think bigger. Fidelity is an influence tool, not only a process stage.
 - **Titles are going away** (Brian Lovin, dvEwb1Ajkwo) — be the person who moves between disciplines; 2 undistracted hours/day is a competitive advantage.
 - **Ship governance** (Megan Choy, hKeDfupbA4U) — everyone *can* ship ≠ everything *should* ship; build systems that scale.
 - **Pre-agreed regression tolerance for big bets** (Katarina Batina, 0YjO7wShTkQ) — redesigns lose to years-optimized incumbents at first; negotiate the acceptable baseline reset *before* the work.

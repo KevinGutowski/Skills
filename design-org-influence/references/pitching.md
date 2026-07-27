@@ -88,6 +88,17 @@ From -dtCf1DAAKc. Four parts: **problem context → your insight → design solu
 
 "You're not changing your design process. You're changing how you talk about the outcomes." Quantify where you can, "be directional when you can't."
 
+## Sten: concept storytelling and business language
+
+Anton Sten's *Products People Actually Want* adds a working-designer version of the same influence pattern:
+
+- **Start from knowns and assumptions.** Write what you know about the product, audience, inventory, constraints, and behavior. Then write what you assume but cannot yet prove. Do not edit or solutionize too early; the repeated topics become the story.
+- **Choose a story structure deliberately.** Use a familiar pattern ("We all know X; what if Y?"), before/after ("Today users must X; here is the new path"), or question/answer ("What if users could X without Y?").
+- **Use surprise sparingly.** Give enough newness to make the audience imagine the future, without adding so many variables that the story loses focus.
+- **Keep concept designs collaborative.** A concept is not a sign-off artifact; it is enough page brief, wireframe, or visual direction to make the dream shareable.
+- **Read the audience's fidelity tolerance.** Some stakeholders need wireframes to stay strategic; others cannot evaluate until the concept looks real. Pick the artifact that creates the right conversation, not the artifact that matches a textbook stage.
+- **Speak business without surrendering design.** Replace internal design language with the stakeholder's goal language: debt, overhead, speed, support burden, conversion, churn, trust, risk, recurring revenue, or brand position. The point is translation, not capitulation.
+
 ## The four lenses for craft and design-system asks
 
 Context (-dtCf1DAAKc): a design lead ("Alex") couldn't get buy-in for design-system investment — "We need to make our UI more polished" — and his CTO kept answering "that's an opportunity cost." Translation: every engineer-hour on UI read as an hour not spent shipping revenue features. Reframe through four lenses:

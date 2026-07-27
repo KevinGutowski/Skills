@@ -6,6 +6,8 @@
 
 Writing is a design discipline, not decoration — when words work seamlessly with the design, you barely notice them, yet they carry every part of the experience. Every app already has a personality whether or not you chose it. This skill **defines the voice, adapts the tone per moment, and writes the microcopy** that expresses both. It owns overall voice/tone and general in-product copy; it routes naming, failure copy, and long-form prose to the skills below.
 
+Sten adds the designer-process reason: writing is also a way to think before UI hardens. If you cannot explain a feature's problem, desired feeling, user scenario, and decision rationale in plain words and a rough sketch, the interface is probably hiding unresolved complexity behind visuals.
+
 ## Contents
 
 - Voice vs. tone — the spine
@@ -80,6 +82,18 @@ The 2022 framework is the screen-level craft that carries the voice:
 
 *Defer:* sentence-level prose mechanics (rhythm, paragraphing, cutting clutter in long copy) → `write-clear-prose`.
 
+## Write before pixels when the product is unclear
+
+Use this short Sten-inspired prewriting pass before opening Figma for a new flow, navigation system, or concept:
+
+- One sentence per feature: what problem does this solve?
+- Known vs assumed: what do we know about users, and what are we guessing?
+- Key moments: how should people feel at the anxious, uncertain, celebratory, or high-commitment points?
+- Navigation goals: what should be easy to find, fun to explore, and easy to recover from?
+- User scenario: "A person opens this because..." and "They leave able to..."
+
+This is not documentation theater. It is a cheap coherence test. If the brain dump cannot become a coherent narrative, users will likely struggle to understand the product too.
+
 ## Simplify — four small edits with big impact (2025)
 
 "UX writing is all about economy of language." Fast passes over existing copy:
@@ -121,6 +135,7 @@ From Andy Welfle's "Writing is designing" (Config 2025):
 ## Checklist
 
 - [ ] Voice defined as ~3–4 attributes, consistent across screens?
+- [ ] For unclear flows, did you write the problem, assumptions, key feelings, and scenario before polishing screens?
 - [ ] Tone dialed to the moment — and **no dial fully off**?
 - [ ] Each screen has one clear purpose; everything else cut or moved?
 - [ ] Buttons specific and understandable on their own (no Yes/No, no Confirm/Cancel)?

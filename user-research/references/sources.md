@@ -3,6 +3,7 @@
 Core books (synthesized throughout SKILL.md and the other reference files):
 
 - *Erika Hall, "Just Enough Research" (2nd ed., A Book Apart, 2019)* · *Steve Portigal, "Interviewing Users" (Rosenfeld Media, 2013)* · *Tomer Sharon, "Validating Product Ideas" (Rosenfeld Media, 2016)* · *Cindy Alvarez, "Build Better Products" (Rosenfeld Media, 2016)* · *Melissa Perri, "Escaping the Build Trap" (O'Reilly, 2018)* · *Gothelf/Seiden, "Lean UX" (1st ed., 2013)* · *Laura Kalbag, "Accessibility for Everyone" (A Book Apart, 2017)* · *Metts & Welfle, "Writing Is Designing" (Rosenfeld, 2020)* · *MailChimp, "The UX Reader" (2014)*.
+- *Anton Sten, "Products People Actually Want" (2025 ebook, local attachment)* — stakeholder/user interview prompts, TEDW follow-up habit, business/user balance, AI note-taking caveat, and whole-journey product research. Folded as a corroborating field-practice source.
 
 Section map (where each supporting source lands in SKILL.md):
 

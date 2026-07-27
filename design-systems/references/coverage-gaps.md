@@ -9,6 +9,7 @@ Use this file for design-system standards that are plausible but not yet support
 - **Product judgment boundary:** The DS can expose allowed substrate; it should not decide product-specific UX, copy, onboarding, or AI behavior unless those rules live in the owning skill.
 - **AI-legible naming evidence:** Add examples where renaming tokens/props helped or hurt agent output before promoting naming rules beyond the existing source-backed guidance.
 - **Governance fixtures:** Contribution, deprecation, and adoption dashboards need concrete templates if this skill starts generating DS governance artifacts repeatedly.
+- **System quality audit examples:** Sten's warning that systems can speed, standardize, and scale poor work needs accepted examples before becoming a deterministic preflight beyond the current guidance.
 
 ## Candidate promotion form
 
