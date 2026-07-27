@@ -18,6 +18,15 @@ Links to source material, documentation, and further reading for mastering DHH's
 
 ## Primary Source Code
 
+### Official Rails Reference Apps
+
+Rails maintains a hand-picked library of exemplary open-source Rails apps worth
+reading end to end: https://rubyonrails.org/docs/reference-apps
+
+- **Campfire**: compact server-rendered Hotwire and Action Cable chat app
+- **Writebook**: book publishing app with Active Storage, Action Text, and auth
+- **Fizzy**: 37signals Kanban app with Hotwire, Stimulus, and RESTful controllers
+
 ### Campfire (Once)
 The main codebase this style guide is derived from.
 

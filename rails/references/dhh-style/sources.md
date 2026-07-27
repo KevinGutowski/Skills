@@ -10,7 +10,10 @@ Use this map when updating the DHH/Rails style guidance.
 - 37signals Dev: https://dev.37signals.com/
 - DHH gists: https://gist.github.com/dhh
 - Rails World DHH keynotes: https://www.rubyevents.org/speakers/david-heinemeier-hansson
+- Official Rails reference apps: https://rubyonrails.org/docs/reference-apps
 - Campfire source: https://github.com/basecamp/once-campfire
+- Writebook source: https://github.com/basecamp/writebook
+- Fizzy source: https://github.com/basecamp/fizzy
 
 ## Durable Code Sources
 
