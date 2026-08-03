@@ -43,6 +43,7 @@ def notify_recipients_later   # enqueues NotifyRecipientsJob (often private, cal
 - Recurring tasks invoke plain model class methods (`command: "MagicLink.cleanup"`), not dedicated job classes.
 - Retention sweeps use `delete_all` on scopes (`stale.delete_all`) — skip callbacks on stale rows.
 - Schedule cleanup for finished queue jobs, expired tokens, old delivery records.
+- Update dynamic Solid Queue recurring tasks by unscheduling and scheduling again; in-place `SolidQueue::RecurringTask` record changes are not seen until scheduler restart.
 - Prefer reset-on-use over cron resets: check-and-reset inside the domain method (`spend` calls `reset_if_due`), not a scheduled job.
 - Trim recurring schedules in beta/staging environments to essentials.
 
