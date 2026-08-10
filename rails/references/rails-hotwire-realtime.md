@@ -78,6 +78,7 @@ Rule of thumb: Turbo Streams for anything that changes the DOM; bare ActionCable
 ## ActionCable / Connection Safety
 
 - Authenticate in `Connection#connect` with the same identity resolution as HTTP; scope channel subscriptions through ownership (`current_user.rooms.find_by(id: params[:room_id])`).
+- For private/revocable Turbo streams, signed stream names are not authorization; use a custom channel that re-checks membership on subscribe, and reject those guarded names from the stock `Turbo::StreamsChannel`.
 - Disconnect deactivated/banned users remotely: `ActionCable.server.remote_connections.where(current_user: user).disconnect`.
 - Presence: reference-count connections with a TTL (`connections` counter + `connected_at`, 60s freshness scope) to survive multi-tab and reconnects; debounce visibility changes (~5s) to avoid flicker.
 - Under path-based tenancy, emit the cable URL from `request.script_name` via a custom meta tag helper.

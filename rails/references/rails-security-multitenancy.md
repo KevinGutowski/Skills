@@ -50,6 +50,7 @@ Params choose *which* record within an already-authorized set — never establis
 ```
 
 - Even single-tenant code scopes through associations; wrong IDs 404 naturally.
+- Scope by subtype/state when controllers have different powers; a controller with relaxed rules for one subtype must not inherit a generic lookup that can load sibling types.
 - Public sharing uses opaque tokens (`has_secure_token :key` on a `Publication` record), never internal IDs.
 - ActiveStorage: attach blobs to accounts, and authorize blob/representation controllers through the domain (`blob → attachment → record.accessible_to?(user)`); published content gets an explicit `publicly_accessible?` path.
 - ActiveStorage variants for user uploads: expose model helpers that return a processed variant only when the blob is `variable?`; controllers render a stock/initials fallback instead of processing unsupported formats.
