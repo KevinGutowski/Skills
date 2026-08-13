@@ -35,6 +35,10 @@ Video:
 - *Shape FM* ep. 3, "Motion and animation with intent" (with James McDonald, 2025) — YouTube sHVKuJuseYo. Cited as (Briggs, Shape FM ep. 3): top-light model, half-pixel strokes, sub-pixel radius.
 - *Dive Club* S4, "Creating a design culture of craft" (Jan 2024, Clerk era) — YouTube z4hP80tzBL4. Cited as (Briggs, Dive Club S4): formula-izing plugin shadows.
 
+## Marek Minor (Minor Adventures)
+
+- *"The making of Cursor's icons"* (minoradventures.co/blog/the-making-of-cursors-icons, Jul 2026) — icon-craft depth notes in [field-notes.md](field-notes.md): exploration volume (156 hamburger attempts), 0.25px felt differences, eye-decides/number-records, true-size device review, below-noticing corrections. The icon-system method itself is folded to `design-systems` (icon-systems).
+
 ## Linear product-craft articles
 
 - *A design reset (part I)* — Karri Saarinen, 2024. https://linear.app/now/a-design-reset
