@@ -7,6 +7,7 @@ Long-form field material distilled into one-line rules in `SKILL.md`'s methodolo
 - Field rituals (Matt D. Smith / Shift Nudge)
 - Valio field notes (Valio Con 2012–14 — GMUNK, Craig Henry; Jaytel pipeline)
 - Dive Club deltas (Josh Puckett; Katie Dill; tranche 2 — D'Arcy, Batina, Jacoby)
+- Icon-craft depth notes (Marek Minor — Cursor's icons, 2026)
 
 ## Field rituals (Matt D. Smith / Shift Nudge — YouTube jSLfQ0sJDCw, wXAa2HNNjM4; "Good Enough UI" interview 4p5LzrAYN30)
 
@@ -50,3 +51,15 @@ Tranche 2 (Polly D'Arcy, Wealthsimple — vdYBohOQYm0; Katarina Batina, Shop app
 - **The "shoplifting" ritual** (Batina): "this funny thing we do called shoplifting… these two to four weeks where design just goes ham on every surface horizontally" — roughly annual, a small group asking what would make the whole product feel a step better. Institutionalized horizontal noticing: depth pushes usually run vertical on one feature; this sweeps the seams between them.
 - **Taste = calibrated rule-breaking** (Jacoby): "the tastemakers know when to break the rules and when to push beyond the boundaries of what exists today and when to quiet and to go with the flow. And I think that is actually the like core ability that AI doesn't allow for right now" — knowing that balance is the unautomated layer of craft.
 - **Between-the-prompts discovery** (Jacoby): "when you're in between the prompts essentially, being able to like discover… it's not just A or B, but it's some weird C thing that you didn't think of originally that like you stumbled upon as like a happy accident." Ridd's corollary: "you almost always have to cross over the this is probably good enough line in order to get to the some weird C thing." The depth spectrum restated for AI workflows — the discovery levels live past good-enough, in the gaps the prompts don't reach.
+
+## Icon-craft depth notes (Marek Minor — "The making of Cursor's icons", minoradventures.co, Jul 2026)
+
+One year, 600+ icons, every exploration and final variant drawn by hand — a worked case of the depth spectrum and uncommon care at system scale. Full icon-system method (sizes, keylines, governance, migration, pipeline) lives in `design-systems` (icon-systems); what belongs here is the craft practice:
+
+- **Generate-more, at volume:** "Going through 156 explorations of a hamburger icon to find the perfect one." Explorations live in a dedicated private file — "each icon or concept gets tens or hundreds of attempts… every concept has its own section and its own row of attempts."
+- **The last levels are felt, not reasoned:** "Some of the versions I compared while making these calls differ by 0.25px. At 16px, rendered sometimes at 12, that difference shouldn't matter, but the versions just don't feel the same. I kept tinkering with the smallest, tiniest details, version after version after version, until one of them felt just right."
+- **The eye decides; the number records:** on finding the 1.25px stroke weight — "You follow your eye on decisions like this. At some point the number is a record of a decision the eye already made."
+- **Judge at true size, outside the tool:** "I mirror the Overviews prototype to my phone, because a phone shows the icon at its absolute size, with no zooming. You need to look at the set somewhere other than the file it was drawn in, on a device where 16px is actually 16px."
+- **Uncommon care, below noticing:** optical corrections (junction notches, stroke thinning, per-role dot sizing) "work below the level of noticing, the same way a typeface's ink traps do at 10pt… And honestly, some of it is just the standard. It's the inside of the machine: nobody opens it, and it should still be tidy."
+- **Kill explorations that solve no problem:** a sharp-details variant he liked was dropped because "it didn't solve a problem anyone had, so the set stayed traditionally rounded." Depth serves the concept, not the designer's amusement.
+- **The invisibility standard:** "You shouldn't notice them, but somewhere below noticing, you should always know – no, feel – they're Cursor's." And the closing claim for hand judgment in an AI product: "An icon set of this kind is mostly decisions… for those hundreds of small decisions, they hired a person to draw each one by hand."

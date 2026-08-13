@@ -15,6 +15,8 @@ Plus:
 - *Rachel Nabors, "Animation at Work" (A Book Apart, 2017) — chs. 3–4: timing scales as tokens, microanimation vocabularies (the motion-as-a-DS-layer section)*
 - *MailChimp, "The UX Reader" (2014) — pattern-library evolution and slat-system reuse*
 
+- *Marek Minor (Minor Adventures) — "The making of Cursor's icons" (https://www.minoradventures.co/blog/the-making-of-cursors-icons, Jul 2026)* — the icon-systems reference ([icon-systems.md](icon-systems.md)) and the "Icons are a system asset" section: optical sizes, keylines, optical corrections, consistency infrastructure, one-concept-one-icon governance, codepoint-stable migration, `ship it` pipeline. Single deep practitioner source (site's only blog post as of Aug 2026); quotes verified verbatim against the article text. Craft-depth texture routed to `design-craft` (field-notes).
+
 Worked examples, outcome numbers, and playbook specifics live in [field-notes.md](field-notes.md).
 - *Figma blog — "Meet the design pioneers taking on the venture world" (Combine: Soleio Cuervo & Adam Michela, 2017, https://www.figma.com/blog/meet-the-design-pioneers-taking-on-the-venture-world/) — keep-the-system-alive note.*
 - *Soleio Cuervo — Design MBA podcast (hZ3Z2frAWvM, 2023 — cited as "Soleio, Design MBA"; UFI/Like-button story, thumbs-up icon decision); Bryce Roberts, "Cults & Culture w/ Soleio" (video vdaGXRvzIq4, 2025 — cited as "Soleio, Cults & Culture"; Canon library name, Dropbox illustration strip-out) — Soleio section in field-notes.md. Quotes verbatim caption text; garble: "face Booky"=Facebooky.*

@@ -76,6 +76,7 @@ Sequencing and deadline rules (field corroborations — [references/field-notes.
 - **Sequence the push** (Polly D'Arcy): function → reliability → performance → excellence — polishing on unstable foundations "can sort of be a waste."
 - **Under deadline** (MDS): ship the version you know works while pushing the better idea in parallel — depth without betting the deliverable.
 - **In AI workflows** (Jacoby/Ridd): the discovery levels live *past* good-enough, between the prompts — cross the good-enough line deliberately to find the "weird C thing" neither prompt contained.
+- **Depth at system scale** (Marek Minor, Cursor's icons): 156 explorations of a single hamburger icon; final calls between versions differing by 0.25px — "version after version after version, until one of them felt just right." And judge at true size: mirror the work to a device "where 16px is actually 16px," outside the file it was drawn in.
 
 ## Live tuning (`/library/live-tuning`)
 
@@ -102,6 +103,8 @@ Rams' discipline: fight the urge to add features/scope/flourish. Do as little as
 "How much did the creator care?" shows up most in **the places you could have skipped**: edge cases, error states, invoices, refunds — "the effort no one would have blamed you for not making" (the Porsche 928 clutch pedal; logo-shaped screw heads; 100 personalized member notes). With AI making *passable* trivial, the bar for good-enough collapses — leverage buys you time to pour into what can't be generated. Self-prompts: Where are you stopping at good enough? What's the skeleton in the closet everyone knows is broken? Where are you holding back because leaning in feels uncomfortable?
 
 Sten's whole-journey variant: the care test includes off-screen business surfaces. Confirmation emails, invoices, PDFs, OCR/print needs, delivery/fulfillment status, returns, cancellation, and support scripts are all part of the felt product. The main screen can be crafted and the experience can still feel careless if these touchpoints break the promise.
+
+Minor's below-noticing variant: corrections nobody can point at (optical breaks, stroke thinning in his Cursor icon set) are still the standard — "It's the inside of the machine: nobody opens it, and it should still be tidy." ([references/field-notes.md](references/field-notes.md))
 
 ## Industry standards (`/library/industry-standards`)
 
