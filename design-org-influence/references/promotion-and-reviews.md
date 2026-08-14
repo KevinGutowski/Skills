@@ -11,6 +11,7 @@ Source: fRdUMGzMNLo (five anti-patterns), Up07knsch7I (self-reflections, SBI, th
 - [The SBI framework](#the-sbi-framework)
 - [Her Claude-skill review logger (reusable architecture)](#her-claude-skill-review-logger-reusable-architecture)
 - [The credibility ladder](#the-credibility-ladder)
+- [What the decider is actually weighing](#what-the-decider-is-actually-weighing)
 - [Portfolio: the external mirror](#portfolio-the-external-mirror)
 
 ## The five seniority anti-patterns
@@ -98,6 +99,16 @@ Reusable pattern: setup-interview-as-state → artifact-to-structured-entry conv
 ## The credibility ladder
 
 Miranda Slater's progression for earning strategic inclusion (full version in [pitching.md](pitching.md)): master the business language → find small wins and turn them into proposals → build credibility gradually with explorations tied to impact → then ask for the seat: "I know planning's coming up. Can I be included…?" Promotion follows the same physics as pitch approval: "you have to prove your value before they'll even consider including you in strategic conversations."
+
+## What the decider is actually weighing
+
+Useful counterpart to the wins doc: one published company manual (*The 37signals Manager Playbook*, basecamp.com/managers) spells out the two gates a manager must clear to promote you. Aim your evidence at both.
+
+- **Performance gate:** exceeding expectations in *all* categories of your current level and already meeting most competencies of the next one, sustained "usually 6-12 months," with work samples proving each claim. Recent brilliance doesn't qualify; a durable record does.
+- **Business gate:** would another person at that level improve how the team operates, could a cheaper change (reassignment, borrowing capacity) get the same benefit, and what's the downside of doing nothing? A promotion case with no operational argument stalls even when the performance case is airtight — so hand your manager the ownership you'd take on, not just the work you've done.
+- **Why the timeline stays vague:** in that model managers "refrain from promising anything on any sort of timeline" because promotion isn't a checklist. Read a non-committal manager as policy, not evasion — and ask instead for the specific gaps and the level-to-level diff.
+
+The manager-side procedure (rubric fluffing, the pitch contents, promotion as a structural decision) → `people-management` (growth-and-careers).
 
 ## Portfolio: the external mirror
 

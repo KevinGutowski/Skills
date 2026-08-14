@@ -1,6 +1,6 @@
 ---
 name: people-management
-description: "Run a team of direct reports — 1:1s with reports, trust, feedback, career growth, hiring/firing, team comms. Use when new to managing, handling an underperformer, running career conversations or skip-levels. Influence up/sideways, your own promotion, and 1:1s with your own manager → design-org-influence. Triggers: new manager, 1:1 with a report, direct report, radical candor, BICEPS, career conversation, fire someone, delegation."
+description: "Run a team of direct reports — 1:1s, feedback, performance reviews, career growth, promotion decisions, hiring/firing, team comms. Use when new to managing, handling an underperformer, or writing a review. Your own promotion, influence up/sideways, 1:1s with your manager → design-org-influence. Triggers: new manager, direct report, performance review, promote my report, radical candor, BICEPS, career conversation, fire someone, escalate to HR."
 ---
 
 # People Management
@@ -12,10 +12,11 @@ description: "Run a team of direct reports — 1:1s with reports, trust, feedbac
 - Julie Zhuo, *The Making of a Manager* (2019)
 - Lara Hogan, *Resilient Management* (A Book Apart, 2019)
 - Julie Zhuo, selected Looking Glass essays (2020-2024) for remote management and user-guide updates
+- *The 37signals Manager Playbook* (basecamp.com/managers, read 2026-08) — a working company manual: the operating cadence, escalation boundaries, and conversation scripts the books leave out
 
 Task shape: managing **down** — your direct reports. The frameworks themselves (Radical Candor 2×2, BICEPS as an acronym, Tuckman stages, give-away-your-Legos) are assumed known; this skill encodes the named *procedures*. Influence **up and sideways** (business cases, PM partnership, your own promotion) → `design-org-influence`.
 
-**References:** [feedback-and-guidance.md](references/feedback-and-guidance.md) · [growth-and-careers.md](references/growth-and-careers.md) · [hiring-and-firing.md](references/hiring-and-firing.md) · [meetings-and-comms.md](references/meetings-and-comms.md) · [sources.md](references/sources.md) (incl. Soleio Cuervo + Steve Ruiz interview material in hiring-and-firing.md)
+**References:** [feedback-and-guidance.md](references/feedback-and-guidance.md) · [growth-and-careers.md](references/growth-and-careers.md) · [hiring-and-firing.md](references/hiring-and-firing.md) · [meetings-and-comms.md](references/meetings-and-comms.md) · [performance-cadence.md](references/performance-cadence.md) · [authority-and-escalation.md](references/authority-and-escalation.md) · [sources.md](references/sources.md) (incl. Soleio Cuervo + Steve Ruiz interview material in hiring-and-firing.md)
 
 ## How the job is graded
 
@@ -27,6 +28,17 @@ Three bench tests:
 - **Vision repeat-test** (Zhuo): "I'll know they did a good job describing their vision if I randomly ask five people who've heard it to repeat it to me and they all say the exact same thing."
 
 Design-lead addendum (Sten): management is a craft shift, not a better version of individual contribution. The role adds why-setting, stakeholder translation, calendar load, and people outcomes; it removes much of the protected maker time that made the IC role satisfying. Before treating management as the default promotion, ask whether the person has gone deep enough in the craft to teach it back and whether they want the relational work enough to trade away execution time.
+
+## The operating cadence (37signals playbook)
+
+The books teach judgment; this is the calendar and the guardrails that make judgment land on time. Full mechanics → [performance-cadence.md](references/performance-cadence.md).
+
+- **One vocabulary, everywhere: SEC.** Skills · Engagement · Coachability, per role and level, reused for leveling, reviews, coaching, and articulating underperformance — so the words in a 1:1 match the words on the review form. "Engagement can be coached, but not taught; it's inherent." A quick HIGH/MID/LOW scan landing on **two lows in any combination** is an escalation, however high the third.
+- **Fixed calendar in year one** — 3-month, 6-month, and a 12-month review that is also an explicit *retain* decision. The bar is enthusiasm, not adequacy: "isn't just passable performance, it's hell yeah!" Then annual, with the level-progression expectation stated up front.
+- **Cycle reviews between the formal points.** At the end of each project cycle, look back against the same standards, tell the person you're doing it, and tell them what you concluded — good or bad. Grace has a limit: "a cycle or two to allow someone to show development is great; six months is not."
+- **Evidence, not recollection.** Reviews link the actual artifacts; peer input comes from 2–3 designed questions, summarized and anonymized, never passed on verbatim.
+- **Know where your authority ends** → [authority-and-escalation.md](references/authority-and-escalation.md). Leave, complaints, and pay are routed, not improvised: on harassment/discrimination/retaliation or any regulator mention, stop the conversation — "I need to bring People Ops into this before we go any further." Escalate a severe performance lapse to HR *before* you tell the report how they'll fix it, and hand off performance management before it eats your own core work.
+- **Why the cadence is not overhead:** "When we manage well, the business compounds. When we don't manage, the business degrades. Subtly at first, then all at once." Steady state stays light — you hired people who manage themselves; the weight belongs in year one and in any lag.
 
 ## First 90 days: know your transition archetype
 
@@ -54,7 +66,7 @@ Mark Rabkin (via Zhuo): "strive for all your one-on-one meetings to feel a littl
 
 **Introduce yourself too**: Hogan's manager Mad Lib ("I'm a ___ leader who values ___… You'll see this when I ___…") and her coaching question "What are you optimizing for?" — naming what you optimize for (e.g., growing emerging leaders → open questions, not directives) sets expectations for what reports can lean on you for.
 
-Mechanics (Scott + Zhuo): the report sets the agenda; it's not a status channel; show up — never cancel. Failure signals from 1:1s: frequent cancellations, update-only content, good news only, no criticism of you, chronic no-agenda.
+Mechanics (Scott + Zhuo): the report sets the agenda; it's not a status channel; show up — never cancel. Failure signals from 1:1s: frequent cancellations, update-only content, good news only, no criticism of you, chronic no-agenda. Cadence (weekly through ramp → ~monthly in steady state), shared-agenda mechanics, the judgment-building question, and what to document → [meetings-and-comms.md](references/meetings-and-comms.md).
 
 **User guides for working together** (Zhuo, 2020): when trust or communication keeps misfiring, write and exchange "how to work with me" guides. Include how you view success, how you communicate, what may annoy people, what gains/loses your trust, strengths, growth areas, expectations for reports, and how you give/receive feedback. Specificity and vulnerability matter; generic values do not.
 
@@ -91,7 +103,9 @@ Energy management is part of the job design. If leadership drains your attention
 - [ ] Reaction you don't understand → which BICEPS need is threatened (theirs, not yours)?
 - [ ] Career conversations (3×45min) done for each report this year? → [growth-and-careers.md](references/growth-and-careers.md)
 - [ ] Feedback solicited before given; ≥50% positive; delivered direct, no sandwich? → [feedback-and-guidance.md](references/feedback-and-guidance.md)
-- [ ] Underperformer: expectations stated *explicitly*, early — or are you saving it for the review?
+- [ ] Underperformer: expectations stated *explicitly*, early — or are you saving it for the review? HR looped in *before* you present the correction plan? → [hiring-and-firing.md](references/hiring-and-firing.md)
+- [ ] New hire: is there a dated retain decision on the calendar, and would you say "hell yeah" today? Cycle-boundary look-backs happening between formal reviews? → [performance-cadence.md](references/performance-cadence.md)
+- [ ] This situation involves leave, a complaint, pay, or a regulator — do you know what you decide vs route, and have you stopped talking? → [authority-and-escalation.md](references/authority-and-escalation.md)
 - [ ] Delegating at the intersection rule, with at least one messy-project gift in flight?
 - [ ] Voltron staffed; skip-levels and comms plans run by protocol? → [meetings-and-comms.md](references/meetings-and-comms.md)
 

@@ -16,6 +16,7 @@ Looking Glass additions: Zhuo, "Managing Remotely" (2020) and "A User Guide To W
 - Remote management and user guides (Zhuo)
 - Confidentiality and disagree-and-commit
 - Culture and incentives (Zhuo)
+- 1:1 cadence, agenda, and what to write down (37signals)
 
 ## Zhuo's five-outcome meeting taxonomy
 
@@ -98,5 +99,16 @@ FAQ data points: whole-team loss of faith is rare (three times in Scott's years 
 
 - "an organization's culture is best understood not from reading what's written on its corporate website but from seeing what it's willing to give up for its values." Full-ownership cultures *pay* in tolerated chaos and challenged decisions — the Facebook intern who took down the site wasn't fired; his manager apologized for the setup and the team ran a blameless postmortem.
 - **Incentive traps**: simple incentive rules promise much and leave collateral damage — lines-of-code rewards → bloated copy-paste; pay-by-the-word → padding; "nothing matters more than your personal quota" → undercutting colleagues; six-month feature-count bonuses → low-impact features over the year-long most-requested one. Usually better: a frank discussion of what we value and *why*, then let people apply it. Watch what your team celebrates and where it draws lines — that's the actual incentive structure.
+
+## 1:1 cadence, agenda, and what to write down (37signals)
+
+Trust mechanics and the first-1:1 question set live in SKILL.md; this is the scheduling and content layer.
+
+- **Cadence scales with ramp, not seniority alone.** Weekly 30–60 minutes for a new hire's first few months; then step down to a rhythm that suits both of you — "Once a month is a pretty typical 1:1 cadence for a report who's well onboarded and performing as expected." Junior people usually need more than someone hired in at senior level; a report in recovery needs more than either → [hiring-and-firing.md](hiring-and-firing.md).
+- **Prepare, but don't formalize.** No rigid agenda; jot talking points beforehand and *invite the report to add to them* — e.g. both of you adding bullets in the comments on the recurring calendar event. That single habit is what stops the meeting from becoming manager-driven.
+- **Not a status meeting.** Status belongs in async check-ins; the 1:1 is for the in-depth version — dig into one support case or PR that went unusually well or badly, and talk about whether career progression is on track.
+- **Build judgment on purpose.** The highest-leverage recurring question: "What's a [design/technical] choice you made this week that we can talk through?" Judgment is the hardest rubric category to teach, and reviewing decisions regularly — plus narrating your *own* decision process, the mental steps included — is how it transfers. Same intent as coaching mode selection → [growth-and-careers.md](growth-and-careers.md).
+- **Growth questions periodically**, not only at review time: "Are there areas you would like to develop further? What can I do to help you get there?" and "What part of your job are you enjoying the most? What's energizing you?"
+- **Write down agreements, not transcripts.** Copious notes aren't needed; takeaways you'll want later are. Anything that amounts to a commitment — goal steps, action items, improvement expectations — gets documented *and shared with the report*, so there's one shared record instead of two divergent memories.
 
 1:1 mechanics and trust → SKILL.md. Soliciting criticism systems (orange box, fix-it weeks) → [feedback-and-guidance.md](feedback-and-guidance.md).

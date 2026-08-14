@@ -1,6 +1,6 @@
 # Feedback and Guidance
 
-Sources: Kim Scott, *Radical Candor* (2017); Julie Zhuo, *The Making of a Manager* (2019); Lara Hogan, *Resilient Management* (2019). Quotes verified.
+Sources: Kim Scott, *Radical Candor* (2017); Julie Zhuo, *The Making of a Manager* (2019); Lara Hogan, *Resilient Management* (2019); *The 37signals Manager Playbook* (basecamp.com/managers, 2026). Quotes verified.
 
 ## Contents
 
@@ -13,6 +13,7 @@ Sources: Kim Scott, *Radical Candor* (2017); Julie Zhuo, *The Making of a Manage
 - SBI — situation, behavior, impact
 - The abrasive trap
 - Systems that keep candor alive (gauge stickers, orange box, fix-it weeks)
+- Three surfaces: approach, tactics, engagement (37signals)
 
 ## Solicit before you give (Scott's protocol)
 
@@ -76,5 +77,31 @@ Four rules for the recipient told "you're abrasive": (1) never stop challenging 
 - **Gauge stickers**: print the 2×2, leave praise- and criticism-colored stickers by your desk, ask the team to place them on your recent interactions per quadrant — daily exposure plus a running read on where you actually land.
 - **Orange box** (Michael Dearing, eBay): a slotted box in a high-traffic area; he answered the contents off the cuff at all-hands, respectfully, every time — and over time "the orange box emptied out" because people just challenged him directly.
 - **Management fix-it weeks** (Google): a public bug tracker for *management* problems (slow expense approvals, badly-timed reviews), voted on, deduplicated, then a week where managers cancel regular work and fix the top ones. Proof that criticism gets acted on, at the org level.
+
+## Three surfaces: approach, tactics, engagement (37signals)
+
+A triage question before you open your mouth: *which surface is this?* Each has a different bar for intervening.
+
+**Vocabulary first.** The playbook separates three things most managers blur: *positive* feedback reinforces a successful behavior; *constructive* feedback uses observation plus your expertise to steer toward improvement — "Critical, yes, but also helpful"; *negative* feedback is "sharing your thoughts about your report's behavior in a disparaging way. Don't do this!" A healthy culture runs constructive + positive + continuous, at every level and in both directions.
+
+**1. Approach (how they run the work).** The default is hands off. On a team of self-directed people, "Encourage your report to find their own way and devise their own strategy once they've been assigned a project. Avoid giving unnecessary feedback when their approach is solid and just different than the one you would take. When you start to monitor their preferred strategy for tackling projects or problems, you veer into micromanagement territory."
+
+The bar for stepping in is *harm*, not divergence: the approach is damaging productivity, work quality, team process, or morale. Then intervene immediately and concretely — work going off track, taking too long, or being mismanaged is a same-week conversation, not a review-time note.
+
+- ❌ "Something's not right."
+- ✅ "By this point, I expected [specific progress or deliverable]. What needs to change to get this back on track by [deadline]?"
+
+**2. Tactics (the daily execution — PRs, to-dos, support cases).** Name what you see and what needs to change; stay open to a conversation about how. Don't dump a backlog of critique at once — "Giving too much critique at once can demotivate." Independent corroboration of Zhuo here: "Avoid the 'compliment sandwich'. Sandwiching constructive feedback in between positive feedback is usually inauthentic so use it sparingly, if ever." And always carry a suggestion — explain what went wrong, *why*, and how to correct next time.
+
+- ❌ "Your tone in this case is all wrong."
+- ✅ "I saw this card come across my timeline. I'd have liked to see more investigation on your part before asking for help, and there should be more documentation to come out of cases like this. Here are some examples…"
+
+**3. Engagement (how they show up).** Attitude problems, conflict, or withdrawal need the same clarity plus more care:
+
+- **Behavior, not person.** "People say you've been hard to work with lately" is personal. "Your tone in PR feedback is unusually blunt lately [share examples]. Is something going on?" is workable.
+- **Specifics, not impressions.** Not "You seem uninterested in your work lately" but "I noticed you haven't spoken up in our team call for the past few weeks, and your check-ins aren't as detailed as they usually are. Is something wrong?"
+- **Don't become a therapist.** Trust means people tell you what's going on; empathy is right, but "ultimately seek to redirect the conversation to their presence at work," and route personal problems you're not equipped for → [authority-and-escalation.md](authority-and-escalation.md).
+
+Rehearsing a hard message with AI (and the ban on letting it write your script) → [performance-cadence.md](performance-cadence.md). Formal review write-ups and peer-feedback questions live there too.
 
 Related: skip-level meetings (the manager-of-managers version of soliciting criticism) → [meetings-and-comms.md](meetings-and-comms.md). Growth-frame feedback and career talk → [growth-and-careers.md](growth-and-careers.md).
