@@ -28,7 +28,7 @@ Useful concept prompts include brutal minimalism, controlled maximalism, retro-f
 - Path commands are operations: uppercase coordinates are absolute and lowercase coordinates are relative.
 - Prepare animated assets before coding: name layers, keep groups consistent, remove excess anchors, and prefer one coordinated SVG when fragmented coordinate systems would make animation brittle.
 - Vector assets still have intended optical sizes. Do not enlarge a small, chunky glyph merely because it remains sharp.
-- For web icons, SVG is generally more flexible than icon fonts when sizing, color, and accessible treatment need independent control.
+- For web icons, SVG is generally more flexible than icon fonts when sizing, color, and accessible treatment need independent control. Scoped exception: replacing a font-based set in a large codebase that references glyphs by codepoint — there, a codepoint-stable icon font makes the swap automatic; designing/governing a full product icon set routes to `design-systems` (icon-systems).
 
 | Command | Letter | Effect |
 | --- | --- | --- |
