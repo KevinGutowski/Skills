@@ -1,6 +1,6 @@
 # Growth and Careers
 
-Sources: Kim Scott, *Radical Candor* (2017) — including Russ Laraway's Career Conversations; Lara Hogan, *Resilient Management* (2019). Quotes verified.
+Sources: Kim Scott, *Radical Candor* (2017) — including Russ Laraway's Career Conversations; Lara Hogan, *Resilient Management* (2019); *The 37signals Manager Playbook* (basecamp.com/managers, 2026). Quotes verified.
 
 ## Contents
 
@@ -10,6 +10,9 @@ Sources: Kim Scott, *Radical Candor* (2017) — including Russ Laraway's Career 
 - The annual growth-management pass (20-minute boxes)
 - Hogan's four hats: mentor, coach, sponsor, feedback
 - Structural clarity: RACI, responsibility Venn, VMSO/team charter
+- Directive, non-directive, situational coaching (37signals)
+- Deciding a promotion: performance test + business test (37signals)
+- Recognition mechanics (37signals)
 
 ## Laraway's Career Conversations (3 × 45 minutes)
 
@@ -65,5 +68,61 @@ Growth needs scaffolding people can climb without falling:
 - **RACI as delegation safety net**: on a stretch project, name your report **Responsible** and yourself **Consulted + Accountable** — they own decisions and day-to-day; they won't be penalized if it fails; you stay out of the way. Also use RACI to kill design-by-committee (most people are Informed, not Consulted), and deputize a sponsee as Accountable for a visible leadership shot.
 - **Responsibility Venn diagram** (Hogan at Meetup): when peer leads' elbows bump daily, draw a circle per role (PM / EM / tech lead, or any trio), map every needs-doing item into a circle or an overlap. Surfaces work nobody owns, double-claimed work, and misalignments (a PM thought scoping was shared with the eng lead; the eng lead thought it was solely their responsibility). Revisit every ~6 months.
 - **VMSO / team charter** (Jeff Weiner via Hogan): Vision (north star) → Mission (the team's role toward it) → Strategy (what this team is *uniquely* set up to do) → Objectives (measurable benchmarks). Hogan's Prod Infra org had tools and objectives but no vision/mission — so it couldn't defend prioritization, hiring, or its own existence against feature teams hungry for engineers. The published "team charter" wiki fixed all three. Pair with Zhuo's repeat-test (would five random people recite the same vision?) — see SKILL.md.
+
+## Directive, non-directive, situational coaching (37signals)
+
+The operational split inside Hogan's *coaching* hat — which mode, and when. "The best coaches are also experienced players": credibility comes from having played, but the skill is choosing the level of involvement per person and per situation.
+
+**Directive (playing) — telling them what to do.** Legitimate in exactly three cases: the report lacks the skills or knowledge to reach the conclusion; the work is genuinely urgent and there's no time to coach a decision; or there is only one correct course of action, where interactive coaching is theatre. The costs are real and cumulative — it doesn't stimulate engagement, it assumes you know things they don't (not always safe), and "if you're telling people what to do instead of teaching them how to think and problem solve, you're forced to act in that authority capacity every time your report needs help."
+
+**Non-directive (facilitating) — the hard one.** Enter with no end result in mind: open questions, active listening, your own opinions withheld, "seeking to systematically draw out your report so they can access their own creativity and insights." You do not need to know the topic. Techniques:
+
+- **Reflective listening** — no interrupting, no composing your reply while they talk, visible signals that you're listening, no judging how they answer.
+- **Open questions, not yes/no** — "why", "how", "what if": "Why did you decide to do that?" "What if you tried another approach?" (Contrast with Hogan, who avoids *why* as judgy and prefers *what* — a live disagreement between two coaching schools; pick per relationship and watch how it lands, don't blend them into mush.)
+- **Constructively challenge** — "could you do more?" to push past the first answer.
+- **Make them clarify** — have them synthesize their own position, or summarize what you heard and have them repeat it back, so they can see their conclusion and how they got there.
+
+The hardest part is the role change: "You're not showing up to non-directive coaching conversations to problem solve." Their different approach is an asset, not an error to be corrected.
+
+**Situational** = moving between the two deliberately as the moment demands. That's the actual target skill.
+
+**Why bother, when you know the answer nine times out of ten:** telling doesn't build capacity. "when we teach our reports how to solve problems versus what step to take next, we are developing a teammate with long term, broadly applicable potential" — and a team that can decide without you is the only escape from being the bottleneck.
+
+**Practice where it's cheap.** Non-directive coaching is unnatural and most people are bad at it cold. Practice on manager peers with a real dilemma of theirs, and use low-stakes moments in normal 1:1s rather than debuting the technique in a crisis.
+
+## Deciding a promotion: performance test + business test (37signals)
+
+*(Your own promotion → `design-org-influence`. This is the decider's side.)* Two independent gates; strong performance alone is not sufficient.
+
+**Gate 1 — individual performance**, assessed against a written progression framework:
+
+- Exceeding expectations in **all** categories of the current level, and meeting expectations in **most** next-level competency areas ("They don't need to exceed the promotion level in all categories").
+- **Work samples that prove it** — for each claim, point at the artifact. (Example from the source: a senior programmer is expected to devise new patterns and conventions in existing and greenfield code; show where they did.)
+- **Sustained, not spiky:** "Usually 6-12 months is enough time" of reliable above-level performance.
+- Then three judgment checks the rubric can't make for you: *instinct* (do they take initiative, retain ownership, follow through — "If they were suddenly without your oversight, would the quality of their work be acceptable?"), *confidence* (would you want to defend this decision — are you "hell yeah" about it?), and *objectivity* — the standing failure mode is bending the rubric: "Avoid trying to interpret the language in the rubric to fit a level-up, or fluffing up your report's work to meet the mark because you want them to succeed. It's a nice impulse! But ultimately unhelpful to team dynamics and cohesion."
+
+**Gate 2 — business need.** Promotions are structural decisions, not just rewards — and where there are no merit raises or incentive pay, promotion becomes the primary reward mechanism, which makes it *more* tempting to use it as recognition alone. Three questions:
+
+- Will another person at that level/title improve how the team operates — or are we over-leveling relative to the work that exists?
+- Why is promotion the right instrument? Could reassigning projects or borrowing from another team get the same benefit?
+- What happens if we don't? Is there a real downside to as-is?
+
+"If you can't reasonably project your promotion case resulting in positive changes to outcomes, ownership, and capability, pause and reassess." When the answer is *they deserve recognition*, the honest move is recognition (below) or a rock-star reward pattern, not a title they'll have to grow into.
+
+**The pitch.** Once you're confident, write it for HR/leadership: exceeds-current with work samples · meets-most-next with work samples · a narrative assessment of work, skill, engagement, attitude, coachability · the business case.
+
+**Talk about it constantly; promise nothing.** Be specific and generous about what advancement would require and where the gaps are — but "refrain from promising anything on any sort of timeline… we don't use checklists or schedules for promotions and raises." A checklist implied is a commitment made.
+
+AI's one useful role here — "find the diff" between level definitions so you assess the gap rather than recent memory, with limits → [performance-cadence.md](performance-cadence.md).
+
+## Recognition mechanics (37signals)
+
+Recognition is the cheapest retention lever and the most commonly skipped; 37signals surfaced its own gap through an engagement survey where "the recognition I receive is commensurate with the work I do" and "the work I do is valued and appreciated" scored "markedly lower than other surveyed areas". If you have survey data, look at those two items specifically.
+
+- **Recognize what advances the goal, not what you personally enjoy.** "you might appreciate on a personal level that your report is friendly. But examine what about their attitude reinforces or advances your team's goals, and focus your recognition there." Values-blind praise "rings a little hollow" — and, per the culture rule, whatever you praise becomes what the team optimizes for → [performance-cadence.md](performance-cadence.md).
+- **Name your team's values explicitly**, in addition to the company's, and recognize against them. A company-wide value set won't cover what actually matters on your team.
+- **The three-part template** for when you don't know what to say: (1) say thank you or great job — "'Thank you, Andrea' is powerful in its directness"; (2) name specifically what they achieved; (3) say how you felt about it and the positive impact it had.
+- **Channels, public and private:** peer-appreciation slots at team gatherings, a team-lead talk that credits individuals by name, a kudos channel, your own written check-ins and cycle recaps (attribute the work *and* explain its impact), and quick private notes — "sometimes a quick private note is just as valuable." Ask each report which they prefer; Hogan's first-1:1 question set already captures that.
+- **Don't recognize on a schedule for its own sake** — "Don't sign up just for the sake of it." Manufactured recognition reads as manufactured. Instead, build a team-specific ritual people actually want and let the content be real.
 
 Hiring philosophy and team-composition signals → `design-org-influence/references/team-building.md`. Promotion fairness mechanics (committees, calibration) → [hiring-and-firing.md](hiring-and-firing.md).

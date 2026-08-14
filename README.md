@@ -48,7 +48,7 @@ After installing, restart Codex for automatic skill routing. In the same session
 | `product-decision-making` | Product judgment before the bet: problem clarity, data-informed decisions, metrics-vs-design, optimization vs new behavior, proposal reviews (Julie Zhuo) |
 | `hardware-product-design` | Physical products: form-factor positioning, mockups/rigs/jigs, input selection, manufacturing/supplier reality |
 | `design-org-influence` | Designer influence in the org: business cases, stakeholder objections, PM partnership, promotion/reviews |
-| `people-management` | Running a team of direct reports: 1:1s, feedback, career conversations, hiring/firing, team comms (Scott + Zhuo + Hogan); influence up/sideways → `design-org-influence` |
+| `people-management` | Running a team of direct reports: 1:1s, feedback, performance reviews and the review calendar, career conversations, promotion decisions, hiring/firing, escalation boundaries (leave/complaints/pay), team comms (Scott + Zhuo + Hogan + the 37signals Manager Playbook); influence up/sideways → `design-org-influence` |
 | `client-work` | Client services — one consolidated skill; its body routes to reference files: client-engagements (running client projects: qualification, kickoff, the feedback system, health signals, failure/firing — Monteiro), pricing-creative-work (client-services pricing & negotiation: value-based pricing — Do/Stark/Mall three schools, objection scripts, terms) |
 | `user-research` | Research planning & methods: question→method map, interviewing craft, validation, synthesis (Hall/Portigal/Sharon) |
 
