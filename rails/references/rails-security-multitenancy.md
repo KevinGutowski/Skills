@@ -14,6 +14,7 @@ Use for security-sensitive Rails work and tenant-boundary reviews. Patterns from
 - Authentication Hardening
 - SSRF Defense Baseline
 - CSRF and Caching
+- User HTML and Rich Text
 - Authorization Defaults
 - Abuse Response
 - Inbound Webhooks (receiving)
@@ -54,6 +55,7 @@ Params choose *which* record within an already-authorized set — never establis
 - Public sharing uses opaque tokens (`has_secure_token :key` on a `Publication` record), never internal IDs.
 - ActiveStorage: attach blobs to accounts, and authorize blob/representation controllers through the domain (`blob → attachment → record.accessible_to?(user)`); published content gets an explicit `publicly_accessible?` path.
 - ActiveStorage variants for user uploads: expose model helpers that return a processed variant only when the blob is `variable?`; controllers render a stock/initials fallback instead of processing unsupported formats.
+- ActiveStorage media uploads: if ffmpeg/ffprobe touch user-supplied video/audio, restrict accepted codecs, formats, and protocols with `config.active_storage.video_preview_input_arguments` and `config.active_storage.ffprobe_arguments`; check codec names against the deployed ffmpeg build.
 - Revoking access cleans up derived data (mentions, notifications, watches) via a scoped async job — don't leave dangling cross-boundary state.
 
 ## Authentication Hardening
@@ -90,6 +92,12 @@ For webhooks, push endpoints, unfurling — any user-influenced URL:
 - Set a CSP with a hard floor (`object_src :none`, `base_uri :none`, `frame_ancestors :self`); use report-only + `report_uri` to validate before enforcing.
 - Private apps: send `X-Robots-Tag: none`.
 
+## User HTML and Rich Text
+
+- Sanitize attributes on allowed tags, not just tags. Strip event-handler attributes and unsafe URI schemes; treat CSP as defense in depth rather than the primary sanitizer.
+- Keep sanitizer config isolated when multiple consumers share a process/page: avoid process-wide mutable sanitizer state, use dedicated instances or per-call config, and test that host-app and editor sanitizers cannot weaken each other.
+- When presentation filters change rendered output, bump the fragment-cache key/digest explicitly; helper-only sanitizer changes can otherwise leave unsafe cached HTML.
+
 ## Authorization Defaults
 
 - Predicate methods on models (`card.editable_by?(user)`, `user.can_administer_board?(board)`); controllers check and `head :forbidden`.
@@ -114,6 +122,8 @@ For webhooks, push endpoints, unfurling — any user-influenced URL:
 - A global `User` looked up by session without account scoping (identity/user conflation).
 - Webhook or fetch requests to unvalidated destinations; redirects followed without re-validation.
 - ActiveStorage URLs that bypass domain authorization.
+- Allowed HTML tags without attribute and URI sanitization.
+- Shared mutable sanitizer configuration across rich-text editors or host apps.
 - Security controls hidden in ad-hoc conditionals across controllers.
 - Secrets permanently visible in admin UIs.
 - Auth endpoints without rate limiting.
