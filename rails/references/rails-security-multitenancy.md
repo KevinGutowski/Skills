@@ -52,6 +52,7 @@ Params choose *which* record within an already-authorized set — never establis
 
 - Even single-tenant code scopes through associations; wrong IDs 404 naturally.
 - Scope by subtype/state when controllers have different powers; a controller with relaxed rules for one subtype must not inherit a generic lookup that can load sibling types.
+- Treat relation writes like relation reads: call `account.users.update!(id, attrs)`/`destroy(id)` through the authorized association, not `User.update(id, attrs)`. On Rails versions before scoped `Relation#update`, use `find_by!` on the relation and update the returned record.
 - Public sharing uses opaque tokens (`has_secure_token :key` on a `Publication` record), never internal IDs.
 - ActiveStorage: attach blobs to accounts, and authorize blob/representation controllers through the domain (`blob → attachment → record.accessible_to?(user)`); published content gets an explicit `publicly_accessible?` path.
 - ActiveStorage variants for user uploads: expose model helpers that return a processed variant only when the blob is `variable?`; controllers render a stock/initials fallback instead of processing unsupported formats.
@@ -79,6 +80,8 @@ rate_limit to: 10, within: 15.minutes, only: :create,
 For webhooks, push endpoints, unfurling — any user-influenced URL:
 
 - Resolve DNS and validate the destination IP before the request; block loopback/private/link-local/IPv4-mapped-IPv6 ranges (link-local = cloud metadata).
+- Validate every address a host resolves to, not just the first answer; include IPv4-in-IPv6 forms such as SIIT and local-use NAT64 in the blocked/internal policy.
+- Distinguish DNS lookup failures from resolved-but-blocked destinations in logs and errors. A transient miss is not the same event as an SSRF violation.
 - Pin the request to the validated IP (`Net::HTTP.new(host, port, ipaddr: resolved_ip)`) to beat DNS rebinding.
 - Validate at creation time and again at execution time.
 - Re-resolve and re-validate on every redirect hop — redirect chains are the classic bypass.
@@ -119,6 +122,7 @@ For webhooks, push endpoints, unfurling — any user-influenced URL:
 
 - Tenant-unscoped broadcast channels or stream names.
 - Tenant data inferred from request params without ownership checks.
+- Relation-scoped reads followed by class-level writes (`User.update(params[:id], ...)`) in tenant or ownership flows.
 - A global `User` looked up by session without account scoping (identity/user conflation).
 - Webhook or fetch requests to unvalidated destinations; redirects followed without re-validation.
 - ActiveStorage URLs that bypass domain authorization.
