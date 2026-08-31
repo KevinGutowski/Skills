@@ -13,6 +13,7 @@ Use for background job design and review. Patterns from Campfire (Resque, 4 thin
 - Fail loudly on real errors; avoid silent rescue patterns.
 - Set `ActiveJob::Base.enqueue_after_transaction_commit = true` in app defaults — fixes job-before-data races at the root.
 - Prefer Solid Queue (database-backed) over Redis-backed queues for new apps; co-locate with Puma (`SOLID_QUEUE_IN_PUMA`) in small deployments.
+- For Solid Queue on MySQL/MariaDB, run the queue database at `READ COMMITTED`; InnoDB `REPEATABLE READ` gap locks can deadlock enqueueing against job claiming/dispatch under load.
 
 ## Naming Convention
 
@@ -50,6 +51,7 @@ def notify_recipients_later   # enqueues NotifyRecipientsJob (often private, cal
 ## Error Handling Policy
 
 - Retry transient failures with `retry_on ..., wait: :polynomially_longer` (timeouts, DNS, `Net::SMTPServerBusy`).
+- Do not expect `retry_on`/`rescue_from` to catch Solid Queue process-death failures (`ProcessPrunedError`, `ProcessExitError`, `ProcessMissingError`); they are recorded after the worker process is gone. Retry from failed executions externally via Mission Control or a `fail_many_claimed.solid_queue` subscriber after confirming the jobs are idempotent.
 - Don't retry permanent failures: rescue, classify by error class/message, log at `:info` severity (it's expected — bad address, full mailbox), and move on. Keep job queue resources for work that can succeed.
 - Distinguish "destination failed" (record outcome, complete the job) from "our code raised" (mark errored, re-raise for retry) — see rails-webhooks.
 - Package error taxonomies as concerns and include them into framework jobs (`ActionMailer::MailDeliveryJob.include SmtpDeliveryErrorHandling`).
