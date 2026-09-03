@@ -1,6 +1,19 @@
 # The Complete Rails Performance Checklist
 
-68 items from "The Complete Guide to Rails Performance" by Nate Berkopec.
+68 items from "The Complete Guide to Rails Performance" by Nate Berkopec, plus a perceived-speed section (items 69–80) derived from the performance.dev breakdowns — see [perceived-speed.md](perceived-speed.md).
+
+## Contents
+
+- Measurement & Monitoring
+- Frontend
+- HTTP Caching
+- ActiveRecord & Database
+- Background Jobs
+- Rails Application Caching
+- Server Configuration
+- Database
+- Runtime & Allocator
+- Perceived Speed (performance.dev equivalents)
 
 ## Measurement & Monitoring
 
@@ -96,3 +109,20 @@
 66. **Consider JRuby** for CPU-heavy, highly parallel workloads.
 67. **Try jemalloc.** Low risk, possible 10-30% memory savings. No code changes required.
 68. **Test SSL configuration.** Use Qualys SSL Labs. Check: session resumption, OCSP stapling, HSTS, forward secrecy.
+
+## Perceived Speed (performance.dev equivalents, added 2026-09)
+
+Each item carries a stable name (`ps-…`) so `/dhh` reviews, `interface-review` findings, and application fixtures can cite it without paraphrasing. Scope: Rails 7.2+/Turbo 8 Hotwire apps. Why, exceptions, and sources for every item live in [perceived-speed.md](perceived-speed.md); the school is vanilla 37signals unless the project has chosen otherwise.
+
+69. `ps-hover-url-equals-click-url` — **Hover URL equals click URL.** Turbo 8 prefetch is on by default; a cache-busting param or a differing `?page=` makes it miss every time.
+70. `ps-preload-next-destinations` — **`data-turbo-preload` the two or three pages everyone visits next.** Not every nav item.
+71. `ps-morph-with-stable-ids` — **Morph refreshes with stable `dom_id`s.** `turbo_refreshes_with method: :morph, scroll: :preserve`; `data-turbo-permanent` on client-owned state.
+72. `ps-no-lazy-frame-per-row` — **No lazy Turbo Frame inside a collection partial.** One expensive region may lazy-load; rows render inline.
+73. `ps-list-images-proxy-or-public` — **List images use Active Storage proxy or public URLs.** Redirect mode is a second request per image.
+74. `ps-flags-in-erb-markup-omitted` — **Flags evaluated in ERB with Flipper preload/memoize on.** Unreleased markup is omitted, not hidden with CSS; only JS-relevant flags reach `<meta>`.
+75. `ps-theme-class-server-side` — **Theme class rendered server-side from a cookie.** Inline `localStorage` scripts only for CDN-cached HTML.
+76. `ps-modern-browsers-importmap-staging` — **`allow_browser versions: :modern` + importmap.** No transpile, no polyfills; `modulepreload` for the critical graph, `preload: false` + dynamic `import()` for heavy modules, `lazyLoadControllersFrom` for Stimulus.
+77. `ps-font-preload-single-url` — **Fonts: `preload_link_tag` on the fingerprinted path and the same URL in `@font-face`.** Or the system font stack.
+78. `ps-nothing-past-redirect-in-request` — **Nothing past the redirect runs in the request.** `deliver_later`/`perform_later`; prepay expensive checks while the user types.
+79. `ps-shortcut-and-palette-offline` — **Every frequent action has a visible shortcut** (Stimulus key filters) and the palette opens without waiting on the network.
+80. `ps-first-frame-rum-and-cohorts` — **A first-frame RUM number exists per route** (`performance.mark` + `sendBeacon`), and loading-strategy changes ship behind Flipper cohorts so percentiles can be compared.

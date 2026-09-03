@@ -151,6 +151,7 @@ Elements that animate together must use the same easing and duration. Modal + ov
 - UI animations should stay under 300ms
 - Larger elements animate slower than smaller ones
 - Exit animations can be ~20% faster than entrance
+- **Field corroboration (Linear's stylesheet, via performance.dev 2026):** tokens of `0.1s` quick / `0.25s` regular / `0.35s` slow, hover highlight fade-in `0s` and fade-out `0.15s` — popovers and panels "appear instantly when you summon them, then fade out over 150ms when you dismiss them," and list rows get no transitions at all. Defaulting below Material's 200 ms is one of the cheapest ways to make an app feel faster.
 - Match duration to distance - longer travel = longer duration
 - **Modulate by Cone of Vision** (Nabors, *Animation at Work*, ch. 3): "animations in the center of the user's Cone of Vision do better with shorter durations (closer to the 70-200 ms spectrum)"; animations "on the edge of the Cone of Vision benefit from additional time… in the 300-700 ms spectrum"
 - **Halve your durations** (Nabors, ch. 3): long exposure warps your sense of speed — "Whatever your pre-production duration is, halve it. Then halve it again!"

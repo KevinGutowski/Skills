@@ -32,3 +32,19 @@ These fixtures test application after routing. A response passes by making the e
   - proposes lean, decision-point AGENTS.md rules rather than a narrative prompt dump;
   - records tests/static checks/diff inspection and human acceptance, with unresolved risks;
   - makes no application-code edits.
+
+## A03 — Rails felt-speed diagnosis
+
+- **Entry point:** `rails` → `optimizing-rails` (perceived-speed)
+- **Mode:** diagnose
+- **Prompt:** Our Rails 8 + Hotwire app feels slow: a spinner on almost every click, list pages that pop in row by row, and the team keeps proposing a React rewrite with a local-first sync engine. Server p95 is under 250 ms and there are no obvious N+1s. Propose what to check and change first; do not edit application code.
+- **Rule that must be applied:** felt speed is a critical-path problem, not a server-latency problem — find the requests the user waits on and fold them into the first response, start them earlier, or move them off the request; stay on Hotwire and do not port the sync engine.
+- **Exception/boundary:** Inertia is allowed only for a named client-owned interaction-state pain (canvas, spreadsheet editing), not for "feels slow"; browser frame budgets and animation values belong to `web-design`, so the response may route them there but must not restate them as Rails rules.
+- **Likely failure mode:** recommending the React/sync-engine rewrite, adding a service worker precache by default, or answering only with server-side tuning (Puma threads, caching) when server p95 is already fine.
+- **Expected decisions:**
+  - checks that hover prefetch is hitting (hover URL byte-identical to click URL, no cache-busting params) and proposes `data-turbo-preload` for the few most-visited destinations;
+  - identifies the row-by-row pop-in as an HTTP N+1 (a lazy Turbo Frame or Active Storage redirect-mode URL per row) and moves it into the first response;
+  - proposes morph refreshes with stable `dom_id`s and `data-turbo-permanent` instead of full-body replaces;
+  - moves post-redirect work (mailers, API calls, broadcasts) to jobs and keeps optimistic inserts as server-rendered templates;
+  - declines the sync-engine rewrite and default service-worker precache with the stated reasons, and names Inertia only as a conditional escalation;
+  - asks for or proposes a first-frame RUM number per route so the change can be measured, and makes no application-code edits.
