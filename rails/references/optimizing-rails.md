@@ -1,6 +1,6 @@
 # Optimizing Rails (production performance)
 
-*Scope: Optimize Rails performance measurement-first — profiling, N+1 fixes, caching, Puma/GVL tuning, Sidekiq at scale, queue-time autoscaling (never CPU), YJIT/GC. Use when diagnosing slow requests/jobs, memory bloat, or queue backlog, choosing thread counts, or structuring a performance audit. Sources: Judoscale, Rails at Scale, Speedshop. Triggers: slow Rails, N+1, Puma threads, GVL, Sidekiq queues, queue latency, autoscaling, YJIT.*
+*Scope: Optimize Rails performance measurement-first — profiling, N+1 fixes, caching, Puma/GVL tuning, Sidekiq at scale, queue-time autoscaling (never CPU), YJIT/GC. Use when diagnosing slow requests/jobs, memory bloat, or queue backlog, choosing thread counts, or structuring a performance audit. Sources: Judoscale, Rails at Scale, Speedshop, performance.dev (Rails equivalents of the Linear/ChatGPT/Conductor/Wealthsimple breakdowns). Triggers: slow Rails, N+1, Puma threads, GVL, Sidekiq queues, queue latency, autoscaling, YJIT, feels slow, instant navigation, prefetch.*
 
 ## Contents
 
@@ -14,6 +14,7 @@
 - Backgrounding
 - Background jobs, scaling & the runtime (Judoscale / Shopify / Speedshop extensions)
 - Server & Infrastructure
+- Perceived Speed (the instant-feel playbook)
 - Quick Performance Checklist
 - Related skills
 
@@ -265,6 +266,29 @@ preload_app!
 
 Details: [server-infrastructure.md](optimizing-rails/server-infrastructure.md)
 
+## Perceived Speed (the instant-feel playbook)
+
+*Source: Dennis Brotzky's performance.dev breakdowns of Linear, ChatGPT, Conductor, and Wealthsimple (2026) — React apps, translated here into Rails/Hotwire equivalents and verified against the Turbo, importmap, Stimulus, and Rails docs.*
+
+Everything above makes the request fast; this layer makes the app *feel* instant. The one rule under all four essays: hide every network request the user would otherwise wait on — fold it into the first response, start it earlier, or move it off the critical path. Rails is already server-rendered, so the felt-speed failures are specific and checkable:
+
+| Felt-speed failure | Rails move |
+|---|---|
+| Spinner on every click | Turbo 8 prefetch-on-hover is on by default — keep hover URL == click URL; `data-turbo-preload` the 2–3 pages everyone visits next |
+| Navigation remounts everything | `turbo_refreshes_with method: :morph, scroll: :preserve`, stable `dom_id`s, `data-turbo-permanent` |
+| Row-level waterfalls | Fix N+1s; never a lazy `turbo_frame` per row; Active Storage proxy/public URLs instead of redirect mode |
+| Flags or theme fetched on boot | Evaluate flags in ERB (Flipper preload + memoize); render the theme class from a cookie server-side |
+| Slow boot | `allow_browser versions: :modern` + importmap (no transpile); `modulepreload` (default) for the critical graph, `preload: false` + dynamic `import()` for the rest; `lazyLoadControllersFrom` |
+| Fonts double-fetched | `preload_link_tag` on the fingerprinted path (adds font `crossorigin` automatically), same URL in `@font-face` — or the system font stack |
+| Submit waits on side effects | Optimistic `<template>` insert; `deliver_later`/`perform_later` everything past the redirect; prepay checks while the user types |
+| Whole list re-renders per update | Targeted `turbo_stream.replace dom_id(...)`; gate broadcasts on meaningful change |
+| Mouse-only paths | Stimulus key filters (`keydown.meta+k@window->palette#open`), visible `<kbd>` hints, palette that opens without the network |
+| No number for "felt" speed | `performance.mark` in `<head>` + a `sendBeacon` RUM endpoint; A/B loading strategies behind Flipper cohorts |
+
+**What not to port:** a browser-side sync engine, service-worker precache by default (Rails 8 ships the PWA files; leave caching off unless offline is a real product story), inlining the whole flag table.
+
+Details, the full technique → Rails equivalent map, and the constraints-first architecture picker: [perceived-speed.md](optimizing-rails/perceived-speed.md)
+
 ## Quick Performance Checklist
 
 ### Before Deploy
@@ -287,4 +311,5 @@ Full checklist (68 items): [checklist.md](optimizing-rails/checklist.md)
 - **[rails-testing.md](rails-testing.md)** — the test suite's performance is its own discipline (TestProf, factory cascades, CI parallelization); this skill owns the runtime request path.
 - **[rails-realtime.md](rails-realtime.md)** — persistent-connection capacity and delivery guarantees are a separate failure domain from request-path tuning.
 - **`working-with-ai` (agentic-coding)** — performance decisions worth repeating (N+1 strategy, caching patterns) are prime material to encode as project rules for coding agents.
+- **`web-design` (web-performance)** — the browser-side budgets (6-frame instant rule, defer/anticipate/offload) that the perceived-speed playbook serves; this skill owns the Rails mechanisms, that one owns the frame budgets and process.
 - **[rails-jobs.md](rails-jobs.md)** — job *design* (idempotency, naming, error taxonomy) lives there; this skill owns queue *throughput and performance*.

@@ -29,6 +29,7 @@ The car analogy: **TTFB** = key in the ignition → **First Contentful Paint** =
 ## Planning rules
 
 - **Instant-infinity**: "everything on the page that's a list, a customer someday is going to try to make it infinite." You don't have to *build* for millions — you must have a *plan*: anywhere from a hard limit (make overflow an impossible state) to dedicating your best engineers to a virtualized surface. No plan = the future jank is already scheduled.
+- **Architecture follows the constraint, then stops moving** (Brotzky, performance.dev 2026): "Apps like Linear get away with CSR because their users log in once and live inside the app all day"; an anonymous first visit on an unknown device (ChatGPT) demands a streamed server-rendered shell with nothing between the visitor and the first input; a network-dependent product ships no service worker because "a stale service worker is one of the few bugs that can outlive the fix you deploy for it." Decide from who arrives and what they wait for, not from framework fashion. Rails-side equivalents: `rails` (optimizing-rails, perceived-speed).
 - **Optimize the right work** — jank is usually two things competing for one thread; triage every expensive task:
   - **Defer** — can it wait? (`requestIdleCallback`; don't load the right-click menu's data on page load)
   - **Anticipate** — can it move earlier? (prefetch routes/data so the click is instant)

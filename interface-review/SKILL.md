@@ -42,6 +42,7 @@ Read and apply only the references needed for the requested surface:
 6. `web-design` (oklch-skill) — color usage, contrast, palettes, gamut, and theming.
 7. `web-design` (web-performance and web-animation-design) — responsiveness, loading, motion values, and reduced motion.
 8. `design-craft` — spacing, radii, shadows, alignment, state polish, and interface feel.
+9. `rails` (optimizing-rails, perceived-speed) — only when the interface under review is a Rails/Hotwire app: spinners on navigation, row-by-row pop-in, prefetch/morph/optimistic-update mechanics, and the `ps-…` checklist names. Browser budgets still go to item 7.
 
 For AI-generated UI, also read `working-with-ai` (ai-ui-direction). For an Apple-platform interface, replace web-specific rules with `apple-design` and `swiftui`; do not cross-apply web conventions.
 

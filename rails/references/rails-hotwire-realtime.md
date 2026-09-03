@@ -17,6 +17,7 @@ Use for Turbo/Stimulus/ActionCable architecture and reviews. Patterns from Campf
 - ActionCable / Connection Safety
 - Caching + Realtime
 - Web Push (when applicable)
+- Instant-feel additions (performance.dev equivalents)
 - Testing
 - Red Flags
 - Related skills
@@ -93,6 +94,17 @@ Rule of thumb: Turbo Streams for anything that changes the DOM; bare ActionCable
 - Push only to disconnected users, excluding the actor; respect per-user involvement levels (everything vs mentions-only).
 - Deliver via a thread pool with persistent HTTP connections, resolving all AR data before posting to threads; invalidate expired subscriptions async.
 - Clean up the push subscription client-side on logout.
+
+## Instant-feel additions (performance.dev equivalents)
+
+*Library additions (2026-09), not from the vendored Fizzy/Campfire corpus; verified against the Turbo handbook and Stimulus reference. Full playbook and the technique → Rails map: [optimizing-rails/perceived-speed.md](optimizing-rails/perceived-speed.md).*
+
+- Turbo 8 prefetches links on hover by default (100 ms delay). Keep the hovered `href` byte-identical to the clicked one or the prefetch never hits; `data-turbo-prefetch="false"` on expensive or side-effectful GETs.
+- `data-turbo-preload` on the two or three destinations everyone visits next, so the first visit renders from cache.
+- Cached previews are "render first, verify later": `turbo_exempts_page_from_preview` where a stale preview misleads (forms with changed drafts/tokens); `turbo:before-cache` cleanup for transient UI.
+- Virtualize lists only after measuring a DOM-size problem; the default is pagination plus the capped infinite feed above, because virtualization costs find-in-page and native screen-reader traversal. Chat-shaped unbounded streams are the exception.
+- Keyboard-first: Stimulus key filters (`keydown.meta+k@window->palette#open`, `keydown.esc->palette#close`, single-letter filters for the most frequent actions) with visible `<kbd>` hints; the palette must open without a network request.
+- Optimistic templates revert the way Linear's observables do: the stream response `remove`s/`replace`s the temporary id on rejection.
 
 ## Testing
 

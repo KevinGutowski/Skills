@@ -20,8 +20,12 @@ REQUIRED_FIELDS = (
     "Likely failure mode",
     "Expected decisions",
 )
-EXPECTED_IDS = ("A01", "A02")
-EXPECTED_ENTRY_POINTS = ("`frontend-design`", "`working-with-ai` → `agentic-coding`")
+EXPECTED_IDS = ("A01", "A02", "A03")
+EXPECTED_ENTRY_POINTS = (
+    "`frontend-design`",
+    "`working-with-ai` → `agentic-coding`",
+    "`rails` → `optimizing-rails` (perceived-speed)",
+)
 
 
 def main() -> int:
