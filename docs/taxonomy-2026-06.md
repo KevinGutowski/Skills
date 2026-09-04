@@ -17,7 +17,7 @@ The organizing principle (Kevin: "the details is in the abstractions" / "skill o
 
 | Cluster | Members |
 |---|---|
-| `web-design` (new) | web-typography, web-accessibility, web-animation-design (stays the DEFAULT motion theme — stated at router level), web-performance, form-design, oklch-skill, social-video-safe-zones* |
+| `web-design` (new) | web-typography, web-accessibility, web-layout-design, apple-installed-web-apps, web-animation-design (stays the DEFAULT motion theme — stated at router level), web-performance, form-design, oklch-skill, social-video-safe-zones* |
 | `ux-writing` (new) | ui-voice-and-tone, error-messages, linear-settings-copy, naming-features-and-labels |
 | `working-with-ai` (new) | agentic-coding, ai-ui-direction, ai-enablement |
 | `devtools` (new) | devtool-interface-design, developer-tool-gtm, oss-strategy |

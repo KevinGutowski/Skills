@@ -44,7 +44,7 @@ Read and apply only the references needed for the requested surface:
 8. `design-craft` — spacing, radii, shadows, alignment, state polish, and interface feel.
 9. `rails` (optimizing-rails, perceived-speed) — only when the interface under review is a Rails/Hotwire app: spinners on navigation, row-by-row pop-in, prefetch/morph/optimistic-update mechanics, and the `ps-…` checklist names. Browser budgets still go to item 7.
 
-For AI-generated UI, also read `working-with-ai` (ai-ui-direction). For an Apple-platform interface, replace web-specific rules with `apple-design` and `swiftui`; do not cross-apply web conventions.
+For AI-generated UI, also read `working-with-ai` (ai-ui-direction). For a native Apple-platform interface, replace web-specific rules with `apple-design` and `swiftui`; do not cross-apply web conventions. A website installed to the iOS/iPadOS Home Screen or macOS Dock remains web work and adds `web-design` (apple-installed-web-apps).
 
 Assign an issue to the owner of its underlying rule and mention secondary effects in the rationale. Report one root cause once, even when it appears in several files or affects several domains.
 
