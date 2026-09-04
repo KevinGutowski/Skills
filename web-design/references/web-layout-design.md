@@ -110,6 +110,8 @@ The external source's `30–40%` translation expansion is a useful test stimulus
 
 CSS environment variables let layouts account for user-agent-defined regions such as display cutouts and virtual keyboards.
 
+For websites installed to the iOS/iPadOS Home Screen or macOS Dock, read [apple-installed-web-apps.md](apple-installed-web-apps.md) too. It owns `viewport-fit`, standalone-mode, Apple metadata, launch assets, and version-specific Safari behavior; this section remains the cross-browser layout baseline.
+
 ```css
 .action-bar {
   padding-inline:

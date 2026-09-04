@@ -5,6 +5,7 @@ Use this file for web-design claims that need current docs, project evidence, or
 ## Candidate gaps
 
 - **Browser/API drift:** Core Web Vitals thresholds, CSS features, browser support, Tailwind syntax, and media-query behavior need current verification before exact advice.
+- **Installed Apple web apps:** Re-test Safari point-release behavior for status-bar color sampling, safe-area timing, viewport units, fixed overlays, iPad window controls, icon candidate selection, cookie handoff, and startup-image caching. Joe Bell's device observations are valuable leads but not browser contracts; Safari 26's official SVG-icon support conflicts with the source's PNG-only wording.
 - **Layout fixtures:** Add accepted examples for container-vs-viewport query selection, RTL mirroring, safe-area/virtual-keyboard behavior, pseudo-localization, and carousel alternatives. Keep numeric spacing/peek/translation heuristics advisory until project evidence or another source supports them.
 - **A11y test fixtures:** Add examples only when they include keyboard path, focus order, labels, screen-reader expectations, and contrast evidence.
 - **Motion checks:** Motion values are judgment-heavy; mechanical checks should focus on reduced-motion support, duration outliers, and main-thread performance.

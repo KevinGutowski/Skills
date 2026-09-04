@@ -1,6 +1,6 @@
 ---
 name: web-design
-description: "Router for web design: layout/responsiveness, typography, accessibility, animation, performance, forms, OKLCH/color, Tailwind, and social-video safe zones. Use for web/CSS craft decisions. Building distinctive UI → frontend-design; polish/feel → design-craft; Motion library work → motion; Apple platforms → apple-design. Read one named reference."
+description: "Router for web design: layout/responsiveness, typography, accessibility, animation, performance, forms, color, and installed Apple web apps. Use for web/CSS craft, including Home Screen and Add to Dock behavior. Building distinctive UI → frontend-design; native Apple design → apple-design; polish/feel → design-craft. Read one named reference."
 ---
 
 # Web Design
@@ -11,6 +11,7 @@ For a focused question, read the single reference file that matches it — each 
 
 - **Typography** — measure, line-height, type scales, font choosing/pairing, OpenType features, web-font loading (FOUT/`font-display`): [references/web-typography.md](references/web-typography.md); deep dives: rutter-guidelines (full guideline index), choosing-and-pairing, opentype-and-micro
 - **Layout** — grouping, shared edges, logical properties/RTL, content-driven breakpoints, container queries, reflow/zoom, safe areas, and discoverable overflow: [references/web-layout-design.md](references/web-layout-design.md)
+- **Installed Apple web apps** — iOS/iPadOS Home Screen and macOS Add to Dock: manifest + Apple metadata, standalone detection/navigation, zero-safe insets, icons/startup images, install hints, storage handoff, and real-device checks: [references/apple-installed-web-apps.md](references/apple-installed-web-apps.md)
 - **Accessibility** — semantic HTML first, keyboard/focus management, ARIA, contrast, screen readers, a11y audits and testing: [references/web-accessibility.md](references/web-accessibility.md); deep dive: source-extracts (verified passages)
 - **Animation** — easing, cubic-bezier, durations, springs, stagger, microinteractions, `prefers-reduced-motion`: [references/web-animation-design.md](references/web-animation-design.md); deep dives: PRACTICAL-TIPS (scenario implementations), animation-at-work (Nabors quotes)
 - **Performance** — Core Web Vitals (LCP, INP), perceived performance, defer/anticipate/offload triage, budgets, dropped frames: [references/web-performance.md](references/web-performance.md)
@@ -24,4 +25,4 @@ For a focused question, read the single reference file that matches it — each 
 - **Building distinctive UI → `frontend-design`** — generating creative, production-grade components and pages lives there; this skill carries the craft rules they should obey.
 - **Polish and feel → `design-craft`** — design-engineering micro-detail (optical alignment, shadows, "feels off") lives there.
 - **Motion/framer-motion library work → `motion`** — `motion/react`, CSS `linear()` spring generation, and MotionScore perf audits live there; motion *design values* default here (web-animation-design).
-- **Apple platforms → `apple-design`** — typography, accessibility, forms, and brand *conventions* on iOS/macOS; never cross-apply web conventions there (or those platform specs here). But Apple's interaction *principles* do translate: the fluid-interface gesture physics behind the springs/interruptibility above come from `swiftui` (touch-interaction-design), and the eight design values from `design-principles`.
+- **Native Apple interfaces → `apple-design`** — typography, accessibility, forms, and brand *conventions* in native iOS/macOS apps belong there. A website added to the iOS/iPadOS Home Screen or macOS Dock remains web work and routes to apple-installed-web-apps here. Apple's interaction *principles* still translate: the fluid-interface gesture physics behind the springs/interruptibility above come from `swiftui` (touch-interaction-design), and the eight design values from `design-principles`.
