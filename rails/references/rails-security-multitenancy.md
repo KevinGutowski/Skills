@@ -28,6 +28,7 @@ Use for security-sensitive Rails work and tenant-boundary reviews. Patterns from
 - Scope realtime broadcasts and stream names by tenant/account.
 - Rate-limit auth and abuse-prone endpoints.
 - Treat user-provided URLs as untrusted input.
+- Treat deployment port exposure as an explicit security choice; never rely on an implicit Docker/Kamal bind host for internal accessories.
 - Fail closed (`head :forbidden`) when access cannot be proven.
 
 ## Tenancy Architecture (path-based, Fizzy-style)
@@ -66,7 +67,9 @@ Params choose *which* record within an already-authorized set — never establis
 - Magic links / codes: single-use (consume destroys the row), short-lived, compared with `secure_compare`, bound to the email via a verified pending-auth cookie.
 - Anti-enumeration: unknown email gets the same fake flow/UX as a real one.
 - API tokens: HTTP-method-scoped permissions (read-only tokens can't POST); show generated secrets once via a short-lived message verifier (~10s), then never again.
+- Secrets in URL paths or response headers need explicit log redaction; `config.filter_parameters` covers params, not arbitrary route segments or formatted log lines.
 - Bot/automation auth as an explicit mode: skip CSRF only for bot-key auth, deny bots everywhere by default (`deny_bots` + `allow_bot_access only:`).
+- On sign-out or session revocation, disconnect the user's live Action Cable connections after the durable auth state is removed, so sockets re-handshake instead of keeping handshake-time authorization.
 - Rate limit with Rails built-ins, with responses matching endpoint semantics:
 
 ```ruby

@@ -33,7 +33,7 @@ Governance first: **quarantine with zero tolerance** — tag `:flaky`, exclude o
 The taxonomy (full remedies in `rails-testing/flaky-taxonomy.md`):
 1. **Global state** — globals, class vars, gem-held state, `Rails.cache`, ENV/config/locale leaks. "Global variables are particularly insidious because they're invisible… yet quietly accumulate state between runs."
 2. **Time** — freeze time in `around` blocks; a global failsafe unfreeze after each test.
-3. **Database** — `before(:all)` writes escape transactions; stale in-memory objects after rollback; implicit ordering (use `contain_exactly` or explicit `.order`); never assert specific IDs (sequences don't reset).
+3. **Database** — `before(:all)` writes escape transactions; stale in-memory objects after rollback; implicit ordering (use `contain_exactly` or explicit `.order`; on Rails versions that support it, enable `config.active_record.shuffle_unordered_selects = true` in test); never assert specific IDs (sequences don't reset).
 4. **External systems** — `WebMock.disable_net_connect!(allow_localhost: true)` as the baseline; VCR matching on uri+method+body with scheduled cassette re-records; Redis/search/queues don't roll back — clear them; stub feature flags.
 5. **Test design** — over-random data, timing assumptions; "faster tests are less flaky tests."
 

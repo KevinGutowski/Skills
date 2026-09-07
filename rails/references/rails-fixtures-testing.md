@@ -11,6 +11,7 @@ Use for test-writing and test-review tasks. Patterns from Campfire and Fizzy tes
 - Minitest + fixtures. No RSpec, no FactoryBot.
 - Test behavior, not implementation details.
 - Keep tests deterministic and fast; `parallelize(workers: :number_of_processors)`.
+- In Rails versions that support it, enable `config.active_record.shuffle_unordered_selects = true` in test to expose accidental dependence on database row order; add explicit `.order(...)` or unordered assertions where it fails.
 - Tests ship in the same commit/PR as the feature — not before, not later. Security fixes always include a regression test.
 - Never add production complexity for testability (no test-induced design damage).
 
