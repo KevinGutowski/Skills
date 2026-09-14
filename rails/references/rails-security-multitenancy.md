@@ -103,6 +103,8 @@ For webhooks, push endpoints, unfurling — any user-influenced URL:
 ## User HTML and Rich Text
 
 - Sanitize attributes on allowed tags, not just tags. Strip event-handler attributes and unsafe URI schemes; treat CSP as defense in depth rather than the primary sanitizer.
+- For Action Text attachments rendered through custom partials, validate URL-bearing attributes on the attachable before rendering, not only in the partial: require absolute `http`/`https` URLs with a real host, reject same-origin/self links where sessions would ride along, and render titles/descriptions as text.
+- Treat rich-text editor clipboard JSON as attacker-controlled input. Bind attachment tag names and other structural HTML decisions to editor/server configuration, not serialized node data.
 - Keep sanitizer config isolated when multiple consumers share a process/page: avoid process-wide mutable sanitizer state, use dedicated instances or per-call config, and test that host-app and editor sanitizers cannot weaken each other.
 - When presentation filters change rendered output, bump the fragment-cache key/digest explicitly; helper-only sanitizer changes can otherwise leave unsafe cached HTML.
 

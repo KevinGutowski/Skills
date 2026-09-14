@@ -35,6 +35,11 @@ live syntax highlighting, and voice notes on top of Meta's Lexical toolkit. Trea
 it as an emerging Action Text direction rather than a blanket replacement until
 it lands as a stable Rails default.
 
+For rich-text attachments, keep visible captions and accessibility descriptions
+separate. Pass explicit `alt` text through Action Text attachments when the image
+conveys content; do not infer alt text from filenames, and do not force screen
+reader descriptions to appear as visible captions.
+
 ## Stimulus Controllers
 
 52 controllers in Fizzy, split 62% reusable, 38% domain-specific.
