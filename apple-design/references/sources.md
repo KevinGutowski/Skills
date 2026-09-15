@@ -4,7 +4,7 @@ This is a top-level provenance map for the Apple platform design skill. It does 
 
 ## Canonical live sources
 
-- `hig.md` points to Apple's living Human Interface Guidelines and the JSON fetch playbook. Use it for current component specs, platform-considerations tables, and staleness tie-breakers.
+- `hig.md` points to Apple's living Human Interface Guidelines and the Markdown fetch playbook (append `.md` to the DocC data path; the same suffix works on `developer.apple.com/documentation/…` for API reference). Use it for current component specs, platform-considerations tables, per-page change logs, and staleness tie-breakers.
 - Apple's design "What's New" page is the audit entrypoint after WWDC or point releases. If it names a covered topic, re-check that reference before promoting a rule.
 
 ## Local distilled sources
