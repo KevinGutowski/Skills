@@ -1,38 +1,71 @@
 # Human Interface Guidelines (lookup)
 
-*Scope: Look up Apple's Human Interface Guidelines — the canonical reference for Apple platform conventions and component specs. A *lookup* skill (topic map + JSON-endpoint fetch; HTML fetches empty), not copied content. Use when a question needs Apple's authoritative guidance or exact specs. Triggers: HIG, Human Interface Guidelines, what does Apple say about, component spec, alerts.*
+*Scope: Look up Apple's Human Interface Guidelines — the canonical reference for Apple platform conventions and component specs. A *lookup* skill (topic map + Markdown-endpoint fetch; the public HTML fetches empty), not copied content. Use when a question needs Apple's authoritative guidance or exact specs. Triggers: HIG, Human Interface Guidelines, what does Apple say about, component spec, alerts.*
 
 *Canonical source: https://developer.apple.com/design/human-interface-guidelines — Apple's living design reference. This skill points at it; it never copies it (the HIG changes with every OS release, so copies rot).*
 
+## Contents
+
+- How to fetch a page — the Markdown endpoint, its two traps, link rewriting
+- Apple Developer documentation — the same suffix for API reference and Technology Overviews
+- Checking for HIG updates
+- Topic map (slugs)
+- When to use this vs. the talk-derived skills
+- Relationship to other skills
+
 ## How to fetch a page
 
-HIG pages are JS-rendered — `WebFetch`/`curl` on the HTML returns an empty shell. **Use the JSON endpoint:**
+The public `/design/…` page is JS-rendered — `WebFetch`/`curl` on it returns an empty shell. **Append a Markdown suffix to the DocC data path instead:**
 
 ```
-https://developer.apple.com/tutorials/data/design/human-interface-guidelines/<slug>.json
+https://developer.apple.com/tutorials/data/design/human-interface-guidelines/<slug>.md
 ```
 
-Extract the prose with:
+That returns `text/markdown` with the whole article: every bolded guideline, the Platform considerations sections, the Related and Developer-documentation links, and the page's dated change-log table. `WebFetch` and plain `curl` both work — no JSON endpoint, no extraction script.
 
-```python
-import json, urllib.request
-d = json.load(urllib.request.urlopen(
-    "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.json"))
-txts = []
-def walk(o):
-    if isinstance(o, dict):
-        if o.get("type") == "text": txts.append(o.get("text",""))
-        if o.get("type") == "codeListing": txts.append("\n".join(o.get("code",[])))
-        for v in o.values(): walk(v)
-    elif isinstance(o, list):
-        for v in o: walk(v)
-walk(d.get("primaryContentSections"))
-print(" ".join(txts))
+```bash
+curl -sSL https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.md
 ```
 
-Headings/anchors live in `d["primaryContentSections"]` as `heading` nodes; platform-specific guidance is inline under "Platform considerations." Each page's `references` dict links related pages — follow it to navigate.
+**Two traps:**
+
+1. **The suffix does not work on the public URL.** `https://developer.apple.com/design/human-interface-guidelines/buttons.md` is a 404 — it only works under `/tutorials/data/`.
+2. **Links inside the returned Markdown are DocC-relative.** Rewrite before following:
+
+```text
+[Toggles](/design/Human-Interface-Guidelines/toggles)
+  -> https://developer.apple.com/tutorials/data/design/human-interface-guidelines/toggles.md
+
+<doc://com.apple.HIG/design/Human-Interface-Guidelines/offering-help>
+  -> https://developer.apple.com/tutorials/data/design/human-interface-guidelines/offering-help.md
+
+<doc://com.apple.documentation/documentation/SwiftUI/Button>
+  -> https://developer.apple.com/documentation/SwiftUI/Button.md
+
+![alt](images/com.apple.HIG/....png)
+  -> not fetchable from any host; the alt text is descriptive prose, use that
+```
+
+Verified 2026-09-15: all 153 slugs in the topic map below return `200 text/markdown`. Fallback if a page ever lacks one — swap the suffix for `.json` at the same path (DocC JSON; prose lives under `primaryContentSections`, linked pages under `references`).
+
+## Apple Developer documentation (same suffix, no `/tutorials/data/` prefix)
+
+API reference and Technology Overviews take the suffix directly on their public URL — this is how you follow the "Developer documentation" links at the bottom of a HIG page, and how you verify a current API name or deployment target:
+
+```
+https://developer.apple.com/documentation/swiftui.md                                       # framework overview
+https://developer.apple.com/documentation/SwiftUI/View.md                                  # symbol
+https://developer.apple.com/documentation/swiftui/view/frame(width:height:alignment:).md   # member, selector and all
+https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass.md     # Technology Overview
+```
+
+Symbol pages open with an HTML comment carrying an `availability` block (`"iOS: 13.0.0 -"`, `"visionOS: 1.0.0 -"`, …) — that block is the deployment-target check to run before naming an API in final guidance.
+
+Still plain HTML, not Markdown: WWDC video pages (`/videos/play/…`) and hub pages such as `/design/whats-new/`. Fetch those normally.
 
 ## Checking for HIG updates
+
+Every page's Markdown ends with a **Change log** table of dated revisions. That is the cheapest staleness check for one topic: fetch the page, read the top row's date, compare it against the skill claiming to cover it.
 
 **https://developer.apple.com/design/whats-new/** — dated changelog of HIG additions and updates (new pages, changed guidance, new design resources). Unlike HIG pages, this one is plain HTML — fetch it directly (WebFetch/curl both work). Check it when auditing skills for staleness or after a WWDC: a "what's new" entry naming a topic an existing skill covers is a signal to re-verify that skill against the linked page.
 

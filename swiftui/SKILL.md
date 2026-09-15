@@ -7,6 +7,8 @@ description: "SwiftUI implementation and Apple-platform craft — view identity/
 
 **Sources/gaps:** [references/sources.md](references/sources.md) maps the local WWDC/source coverage; [references/coverage-gaps.md](references/coverage-gaps.md) keeps API-freshness and missing-reference risks out of the router body.
 
+**Verify before naming an API:** Apple serves its developer docs as Markdown — append `.md` to the page URL (`https://developer.apple.com/documentation/SwiftUI/View.md`, `.../documentation/swiftui/view/frame(width:height:alignment:).md`, `https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass.md`). The leading comment block carries an `availability` list — check it against the project's deployment target before putting an API name in final guidance. Full playbook, including the HIG's different `/tutorials/data/` path: `apple-design` (hig).
+
 Read exactly one reference file below; each carries the full distillation for its area (deeper code/source files live in a same-named subdirectory next to it).
 
 **SwiftUI core:** [references/swiftui-identity.md](references/swiftui-identity.md) (the identity/lifetime/dependencies mental model — debug @State resets, view lifetime, structural identity here) · [references/swiftui-layout.md](references/swiftui-layout.md) (containers, custom Layout protocol, navigation structure) · [references/swiftui-lazy-stacks.md](references/swiftui-lazy-stacks.md) (LazyVStack/HStack, scroll performance, stutter with large lists) · [references/swiftui-animation.md](references/swiftui-animation.md) (springs, transitions, keyframes, Metal shaders).
