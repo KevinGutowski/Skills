@@ -132,6 +132,14 @@ When numbers update dynamically (counters, prices, timers, table columns), use t
 | Animated number transitions | Version numbers (v2.1.0) |
 | Scoreboards, dashboards | |
 
+### Proportional in prose, tabular in slots
+
+"Use proportional figures when numbers sit inside a sentence." They read as words. Tabular figures are for values that change (clocks, counters, scores, prices, live metrics) and for numeric columns, where equal-width digits build a vertical grid — pair with right alignment so different lengths anchor to one edge (Gustavo Fior, *Craft*, craft.gustavofior.com/tabular-numbers). The instinct to switch a timer to monospace is usually wrong: "A mono font changes the whole voice of the interface. Often, you just need to use tabular figures."
+
+### Verify the font has `tnum`
+
+`tabular-nums` only works if the font ships tabular figures. If the class makes no visible difference, drop the font file into [Wakamai Fondue](https://wakamaifondue.com) and check that `tnum` is listed; if it isn't, pick a different weight/cut or font rather than faking widths with mono. Inter changes the *look* of some numerals under `tnum`, not just their widths — check the result, don't assume it.
+
 ### Caveat
 
 Some fonts (like Inter) change the visual appearance of numerals with this property — specifically, the digit `1` becomes wider and centered. This is expected behavior and usually desirable for alignment, but verify it looks right in your specific font.

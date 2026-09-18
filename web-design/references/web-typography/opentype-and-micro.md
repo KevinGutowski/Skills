@@ -15,6 +15,7 @@ CSS recipes and character craft, almost entirely from Rutter, *Web Typography* (
 9. Micro-typography characters: dashes, quotes, primes, spaces, ellipsis, accents, math
 10. Hanging punctuation
 11. UTF-8 over entities
+12. Optical sizing (`opsz`) and `font-optical-sizing`
 
 ## 1. The cardinal rule
 
@@ -45,7 +46,7 @@ body { font-variant-numeric: oldstyle-nums; }   /* legacy tag: "onum" */
 - **Lining in headings** and anywhere readers scan/compare numbers (lists, tables, data): `font-variant-numeric: lining-nums;` (`lnum`). Old-style numerals "replicate the patterns of words in running text" — which is exactly wrong for data.
 - **Tabular lining in tables of numbers**: `font-variant-numeric: lining-nums tabular-nums;` (`lnum`+`tnum`) so columns align; pair with right-alignment and decimal alignment.
 - **Proportional** when you need it back: `proportional-nums` (`pnum`).
-- (Modern UI corollary, same mechanism: `tabular-nums` on any dynamically updating number — see `design-craft`.)
+- (Modern UI corollary, same mechanism: `tabular-nums` on any dynamically updating number — see `design-craft`.) As with small caps below, the font must actually carry `tnum`; if `tabular-nums` changes nothing, check the file in Wakamai Fondue (wakamaifondue.com) before blaming the CSS.
 
 ## 3. Small caps
 
@@ -149,6 +150,23 @@ blockquote p { hanging-punctuation: first last; }   /* still Safari-only */
 
 Generated content keeps the marks out of the HTML (and out of text selection). Same idea visually centres display text whose first line starts with punctuation; trailing marks can take a negative-margin `::after`. (Rutter, 'Hang punctuation' and 'Visually centre text or hang punctuation'.)
 
+When the opening mark is already in the text (a pull quote, a testimonial), the lighter fallback is a negative `text-indent` sized to that one glyph — Gustavo Fior's *Craft* uses `-0.42em` for Inter's curly double quote (`indent-[-0.42em]` in Tailwind). The reason it matters: "A quote that starts with a quotation mark looks indented, because the mark is mostly whitespace." Measure the em value per typeface; it is not a constant.
+
+```css
+blockquote { hanging-punctuation: first; }
+@supports not (hanging-punctuation: first) {
+  blockquote { text-indent: -0.42em; }   /* tune per font + opening glyph */
+}
+```
+
 ## 11. UTF-8 over entities
 
 "Use UTF-8 in preference to entities" — declare `<meta charset="utf-8">` and type the real characters (— – ‘ ’ “ ” … ° ′ ″ −) directly; entities are a fallback for invisible/ambiguous characters (`&nbsp;`, `&thinsp;`, `&#8239;`) where a literal would be unreadable in source.
+
+## 12. Optical sizing (`opsz`) and `font-optical-sizing`
+
+Post-2017 addition (the three books predate it). Some variable fonts ship an optical-size axis that redraws letters for the size they are set at: sturdier strokes and looser spacing at text sizes, finer strokes and tighter fit at display sizes — "Strokes that are sturdy at 14px look clumsy at 40px" (Gustavo Fior, *Craft*, craft.gustavofior.com/optical-alignment). Inter's `opsz` axis (rsms.me/inter/#features) and Apple's SF Pro Text→Display cut are the same idea; Apple's mechanics live in `apple-design` (apple-typography).
+
+- Browsers apply the axis automatically: "Browsers turn this on automatically through `font-optical-sizing: auto`, so you usually get the right design for free." Leave it at `auto`; don't set `font-optical-sizing: none` or pin `font-variation-settings: "opsz" N` unless you are deliberately forcing a display cut at a text size (a rare typographic choice, not a default).
+- The axis only helps if the font file carries it — a static or subset build that dropped `opsz` silently loses it. When subsetting (§ font loading in the parent), keep the axis.
+- Pinning `font-variation-settings` reintroduces the low-level self-override problem from §1: any later `font-variation-settings` declaration discards the pinned `opsz` unless repeated.

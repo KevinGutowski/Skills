@@ -95,6 +95,8 @@ Before writing any animation code, answer these questions in order:
 
 Raycast has no open/close animation. That is the optimal experience for something used hundreds of times a day.
 
+Corroboration (Gustavo Fior, *Craft*, craft.gustavofior.com/hover-restraint): "The more often something happens, the less animation it can afford." "The line to draw is by frequency and intent, not by input device. A modal that opens once a session can animate. A panel you flip forty times a day should not." For a shortcut-toggled sidebar, "a 250ms slide is like a speeding ticket." Same lineage: macOS app switcher appears instantly (Rauno Freiberg, rauno.me/craft/interaction-design).
+
 ### 2. What is the purpose?
 
 Every animation must have a clear answer to "why does this animate?"

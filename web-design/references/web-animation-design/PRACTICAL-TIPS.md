@@ -226,6 +226,10 @@ Don't guess-edit-refresh animation values — expose them as real-time controls 
 
 From the course's judgement exercises: a hover **scale beyond 1–2% is almost always too much** (the "inflated card" failure) — prefer `scale(1.01)`–`scale(1.02)` for cards, and keep hover transitions at **100–150ms** (200ms+ reads as sluggish for something triggered constantly). Buttons benefit most from having **both** a hover state and a press state (`:active` scale ~0.97) — the pair is what makes them feel responsive.
 
+**Sweep-through highlights get no transition at all.** Scope the 100–150ms figure to a single hovered control (a button's color, a card's lift). For nav items, menu rows, list rows, and anything the pointer crosses several times per second, Gustavo Fior's *Craft* (craft.gustavofior.com/hover-restraint) is the sharper rule: "Instant is the correct default for hover." Hover fires more than any other interaction; when each of ten crossed items fades in, "the interface is always a few frames behind the pointer, and it reads as slow even when nothing is." Both rules follow the same principle — "The more often something happens, the less animation it can afford."
+
+**Tooltips are the one hover case that wants a delay** — around 400–700ms before the *first* tooltip, so it doesn't pop while passing through; then neighbors open at once with no delay and no animation, because the user has already asked for labels (the skip-delay mechanics: `design-craft` emil-kowalski/css-techniques → Tooltips).
+
 ### Fix Hover Flicker
 
 When hover animation changes element position, the cursor may leave the element, causing flicker.

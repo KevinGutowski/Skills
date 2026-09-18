@@ -114,7 +114,7 @@ Full methods in [choosing-and-pairing.md](web-typography/choosing-and-pairing.md
 Durable: everything above. Decayed specifics:
 - `clamp()` replaced the `calc()`+media-query ladders for fluid type; `min()`/`max()`/container queries extend it.
 - `text-wrap: balance` (headings) and `text-wrap: pretty` (paragraph orphans) replace `&nbsp;` widow hacks.
-- **Variable fonts went mainstream** (the books barely mention them): weight/width/optical-size axes in one file.
+- **Variable fonts went mainstream** (the books barely mention them): weight/width/optical-size axes in one file. The optical-size axis is applied automatically via `font-optical-sizing: auto`; keep it on and keep `opsz` when subsetting — [opentype-and-micro §12](web-typography/opentype-and-micro.md).
 - Typekit → **Adobe Fonts** (Latin's and JSM's "TypeKit" references); Google Fonts now serves WOFF2 + variable.
 - Subpixel anti-aliasing retired (macOS 10.14+); Rutter's subpixel-rendering cautions are now mostly historical — see `graphics-fundamentals` for the rendering mechanics.
 - `font-display` is universal (it was behind flags when Rutter wrote); JS font-event loaders are rarely needed.

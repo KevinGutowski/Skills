@@ -10,9 +10,11 @@
 - Eased Gradients
 - Backdrop Blur × mix-blend-mode (Chrome Gotcha)
 - Image Outlines
+- Noise / Grain Overlay
+- Document Canvas Background
 - Minimum Hit Area
 
-Border radius, optical alignment, shadows, eased gradients, backdrop blur, and image outlines.
+Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, and the document canvas.
 
 ## Concentric Border Radius
 
@@ -68,11 +70,35 @@ This rule is most useful when nested surfaces are close together. If padding is 
 
 Mismatched border radii on nested elements is one of the most common things that makes interfaces feel off. Always calculate concentrically.
 
+### Inset, not just padding — and the zero floor
+
+The inset is the distance between the two *edges*, which is the parent's padding **plus its border**: "If the parent has a border, include its width too." (Gustavo Fior, *Craft*, craft.gustavofior.com/nested-border-radius.) Design systems usually fix the outer radius first, so run the formula backwards — `inner = outer − inset` — and clamp it: "The inner radius cannot go below zero." When the inset exceeds the outer radius, the inner corner is square.
+
+```css
+.card { --r: 16px; --inset: calc(var(--pad) + var(--border-w)); border-radius: var(--r); }
+.card > .media { border-radius: max(0px, calc(var(--r) - var(--inset))); }
+```
+
+Fior's worked values: card 16px outer / 8px inset → 8px media; menu 12px outer / 4px inset → 8px highlighted item. Tune by eye rather than by formula when the inset changes around the component, the inner element does not reach the corner, or the two surfaces use different corner shapes (e.g. squircle outside, circular inside).
+
 ## Optical Alignment
 
 When geometric centering looks off, align optically instead.
 
 > "Junior designer: This is not aligned. Senior designer: It's optically aligned." — Stammy, https://x.com/stammy/status/1276602518693445637
+
+Optical alignment "means nudging things until they look right, then keeping the nudge" (Gustavo Fior, *Craft*, craft.gustavofior.com/optical-alignment). The nudge is per icon: "The amounts are tiny and specific to each icon, so this is a per icon decision, not a global rule." Don't turn one icon's 1px offset into a token applied to the whole set.
+
+### Finding the Nudge: The Blur Test
+
+To *measure* an optical offset instead of guessing, blur the icon: add a heavy `filter: blur()` to it in the inspector (or squint), and the glyph collapses into a soft blob of ink. The blob sits at the icon's visual weight, not its bounding box, so if it lands off the center of the button, the nudge you need is the distance back. "Sharp edges hide this, because your eye reads the outline and trusts it. Blur removes the outline and leaves only the weight." (Fior)
+
+```css
+/* Temporary diagnostic — never ship */
+.icon-under-test { filter: blur(6px); }
+```
+
+Then encode the result as the smallest stable unit (`translate-x-px`, `transform: translateX(1px)`, or a viewBox fix in the SVG) and keep it.
 
 ### Buttons with Text + Icon
 
@@ -129,6 +155,10 @@ Some icons have uneven visual weight. The best fix is adjusting the SVG directly
   <StarIcon />
 </span>
 ```
+
+### Shape Weight
+
+Different silhouettes carry different visual weight at the same box size: "when a circle or triangle is drawn inside the same box as a square, it appears smaller to the eye" (Fior). When an icon set or avatar/badge system mixes silhouettes, let circles and triangles overshoot the square's box slightly so they read as equal mass — the same reason icon keylines draw the circle larger than the square (`design-systems` (icon-systems) holds the per-size keyline method). Equal geometric size is the wrong target; equal perceived mass is.
 
 ### Chrome 13px Baseline Gotcha
 
@@ -446,7 +476,58 @@ img {
 
 Use `outline-black/10` and `outline-white/10` specifically — not `outline-slate-*`, `outline-zinc-*`, `outline-neutral-*`, or any tinted scale.
 
-**Why outline instead of border?** `outline` doesn't affect layout (no added width/height), and `outline-offset: -1px` keeps it inset so images stay their intended size.
+**Why outline instead of border?** `outline` doesn't affect layout (no added width/height), and `outline-offset: -1px` keeps it inset so images stay their intended size. Paint the line *over* the outermost pixels, not around them — an inset `box-shadow` is the equivalent when you need it to follow rounded corners in older engines.
+
+### How strong
+
+Ten percent is the default; the working band is roughly 5–20%. "Below about 5% the line disappears against the pale sky. Above about 20% it starts to look like a frame, and the eye reads it as a design element instead of a fix." (Fior, *Craft*, craft.gustavofior.com/image-outlines.) The test for the right value: "The line is too faint to read as a border. What you notice instead is that every image suddenly has a shape." Tune light and dark separately if one mode needs more.
+
+**Avatars are where this matters most.** Small, round, and often mostly white (an initial on a light background, a pale logo, a photo against a wall): "Without an edge they float on the surface." Apply the same inset outline to every avatar, not only to content images.
+
+## Noise / Grain Overlay
+
+"Grain hides banding and adds texture" (Fior, *Craft*, craft.gustavofior.com/noise): a layer of random light/dark pixels over a flat or gradient surface breaks up color steps and de-sterilizes vector-flat UI (same instinct as Hampton's anti-sterile blur in [polish-principles.md](polish-principles.md) §19; rendering mechanics in Hollick's blurs-and-noise chapter cited there).
+
+**Recipe.** One SVG filter anywhere in the page, referenced from an empty overlay element inside a positioned, isolated container:
+
+```html
+<svg class="absolute size-0" aria-hidden="true">
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
+    <feColorMatrix type="saturate" values="0" />
+  </filter>
+</svg>
+```
+
+```css
+.surface { position: relative; isolation: isolate; overflow: hidden; }
+.surface::after {
+  content: ""; position: absolute; inset: 0;
+  filter: url(#grain);
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+```
+
+- `baseFrequency` sets grain size: low values give big soft blobs, high values (~0.8) the tight speckle of film grain. `saturate 0` keeps the grain neutral so it doesn't tint the surface.
+- **`isolation: isolate` on the container is not optional.** "Without it, `mix-blend-mode` blends the grain with everything behind the card, including the page background, and the effect changes depending on where the card sits."
+- Start at `opacity: 0.08` with `overlay`; grain should be felt as texture, never seen as dots.
+
+**Performance rule.** `feTurbulence` is generated per pixel and re-rendered on every repaint — fine on a card, a frame-rate killer on a full-screen hero that scrolls or animates on a phone. "Use the live filter on small surfaces and in demos where you want to tweak the grain. Use a tiled image anywhere the overlay is large or the page is expected to move." The tile needs no asset: put the same filter in an SVG data URI, set `background-size: 200px 200px; background-repeat: repeat`, and the browser rasterizes it once. 200px is small enough to be cheap and large enough that the repeat hides under the blend; if seams show, export the tile as a 2× PNG instead. The trade: `baseFrequency` is baked into the tile, so tune it with the live filter first.
+
+## Document Canvas Background
+
+Pull past the top of a dark page in Safari and a white strip appears: the app is dark, but the **document canvas** (the surface the browser paints behind the page) is still white. "A wrapper only paints its own box. When it moves during overscroll, the canvas shows through." (Fior, *Craft*, craft.gustavofior.com/html-background.)
+
+```css
+html { background-color: var(--background); }   /* same token the app surface uses */
+```
+
+- Set it on `html`, not only `body` or an app wrapper. Browsers do propagate `body`'s background to the canvas when `html` is transparent, but painting the root directly states the intent and does not depend on that fallback.
+- The root background must follow the active theme, or the flash returns in one mode. Use the same token for root and app so a theme switch changes both.
+- Keep `<meta name="theme-color">` in sync so browser chrome matches (per-theme `media` variants; standalone/installed-web-app specifics in `web-design` (apple-installed-web-apps)).
+- `overscroll-behavior: none` removes the bounce and scroll chaining, but use it sparingly — "The bounce is a familiar part of the platform." Fixing the canvas color is the fix; killing the bounce is a separate decision.
 
 ## Minimum Hit Area
 
