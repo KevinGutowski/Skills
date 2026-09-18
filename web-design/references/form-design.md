@@ -48,6 +48,10 @@ Dannaway's conventions are **web-scoped**. Two known conflicts with Apple platfo
 
 **Positive-phrasing test for checkboxes:** "replace the selected checkbox with the word 'yes'." "Yes, don't allow automatic updates" fails → rephrase as "Allow automatic updates."
 
+**Input mechanics that ride along** (Krehel, Interfaces Cheat Sheet):
+- **Every input gets a visible `<label>`**, and its `type` and `inputmode` match what people should enter — `type="email"` / `inputmode="numeric"` bring up the right keyboard on touch devices, which a placeholder-only field with `type="text"` never does.
+- **Never block paste.** "People paste in things like passwords and one-time codes." Paste-blocking on confirmation and OTP fields punishes password managers and the users who follow security advice.
+
 ## 3. Validation
 
 Three approaches — pick deliberately, mix per question type (full tradeoffs in [references/practical-ui-details.md](form-design/practical-ui-details.md)):
@@ -71,7 +75,7 @@ Error message *copy* itself → `ux-writing` (error-messages).
 **The 9 failure modes** (his nine "problematic" button examples, condensed — full list in references): ① secondary fill <3:1 against background; ② light-grey secondary reads as disabled (+ low text/border contrast); ③ primary/secondary identical styles differing only by color; ④ similar styles + low text contrast; ⑤ identical styles <3:1 apart; ⑥ tertiary border <3:1; ⑦ tertiary distinguished by color alone — looks like plain text; ⑧ inconsistent shapes ("Elements that function the same should look the same"); ⑨ ambiguous hierarchy — primary and secondary with similar visual weight.
 
 **Disabled-button avoidance playbook.** Disabled buttons strand users (no feedback why), are low-contrast, and aren't keyboard-focusable. In order of preference:
-1. **Enable + validate:** "Instead of disabling the submit button, enable it and display error messages on submit."
+1. **Enable + validate:** "Instead of disabling the submit button, enable it and display error messages on submit." Keep it enabled until the request starts, then wire the error chain: `aria-invalid="true"` on failing fields, each message linked by `aria-describedby`, focus moved to the first invalid field — mechanics in [web-accessibility.md](web-accessibility.md) §6.
 2. **Remove unavailable actions** and say why they're unavailable.
 3. **Lock icon** on a regular full-contrast button (great for premium features) + message on press or nearby.
 4. If you must disable: message near the button explaining why and how to proceed, tooltip, and keep it keyboard-accessible.
@@ -105,7 +109,8 @@ Corroborated by Wathan & Schoger, *Refactoring UI*: a destructive action that is
 - [ ] Optional fields replaced by opt-in checkboxes where possible
 - [ ] Field types: radio ≤~10 / autocomplete / stepper / checkbox-vs-toggle by effect timing
 - [ ] Checkbox labels pass the "yes" test
-- [ ] Validation approach chosen deliberately; errors above fields; icon + color
+- [ ] Every input has a visible label with matching `type`/`inputmode`; paste never blocked
+- [ ] Validation approach chosen deliberately; errors above fields; icon + color; on submit `aria-invalid` + `aria-describedby` + focus to first invalid field
 - [ ] One primary button; shape ≥3:1, text ≥4.5:1, ≥48×48pt, ≥8pt apart
 - [ ] No disabled buttons — enabled+validate, removed, or locked instead
 - [ ] Destructive friction matches severity; red only at confirmation

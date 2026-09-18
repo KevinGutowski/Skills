@@ -49,6 +49,16 @@ Design-engineering concept site (craft.gustavofior.com, Jul 2026; every page has
 
 Companion installable skill `skills/craft-design-engineering` mirrors the live pages verbatim; not imported. Ledger: `docs/mining-ledger.md` 2026-09-18.
 
+## Jakub Krehel — *Interfaces* Cheat Sheet
+
+Interface Cheat Sheet on Krehel's design-engineering magazine site (https://interfaces.dev/cheat-sheet; announced with live examples for every item at https://x.com/jakubkrehel/status/2100605819238621632, Sep 17 2026). 61 one-line rules in seven sections; the page has no `.md` mirror (the markdown is embedded in the page payload; `interfaces.dev/index.md` is the site index). The UI and Animation sections restate the "Details that make interfaces feel better" material already encoded as polish-principles Core Principles 1–22; only the deltas were folded.
+
+- Exit-only animation for frequently opened menus → [animations.md](animations.md) Exit-Only for Frequent Menus, [polish-principles.md](polish-principles.md) §6.
+- Disable all transitions during a light/dark switch → [animations.md](animations.md) No Transitions on Theme Switch, polish-principles §13.
+- 1–2px jitter (esp. Safari iOS) as the `will-change: transform` trigger → [performance.md](performance.md) When to Skip, polish-principles §15.
+- `pointer-events: none` on decorative layers → polish-principles §16 + Common Mistakes.
+- Color, typography, accessibility, layout, and writing rules → `web-design` (oklch-skill Token discipline; web-typography → opentype-and-micro §13; web-accessibility §4/§6; form-design §2/§4; web-layout-design safe areas) and `ux-writing` (ui-voice-and-tone). Ledger: `docs/mining-ledger.md` 2026-09-18.
+
 ## Marek Minor (Minor Adventures)
 
 - *"The making of Cursor's icons"* (minoradventures.co/blog/the-making-of-cursors-icons, Jul 2026) — icon-craft depth notes in [field-notes.md](field-notes.md): exploration volume (156 hamburger attempts), 0.25px felt differences, eye-decides/number-records, true-size device review, below-noticing corrections. The icon-system method itself is folded to `design-systems` (icon-systems).

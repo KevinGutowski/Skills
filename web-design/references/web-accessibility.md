@@ -49,10 +49,11 @@ The durable practice layer for accessible websites. Standards-era warning up fro
 - **Make skip links visible.** "Screen reader users rarely use skip links because screen readers have more sophisticated navigation to skip to content." Hiding them for everyone-but-screen-readers "**excludes the people who may benefit the most** from skip links — sighted people using keyboard navigation." Best option: "**make the skip links visible to all users so that all users benefit**."
 - **Keyboard focus ≠ visual focus.** Kalbag's era-bug: following a skip link scrolled the view but left keyboard focus on the nav, making skip links "utterly useless… they're not actually skipping at all." The durable fix (Scott Vinkle): **`tabindex="-1"` on the skip-link target** — removed from the tab order, but able to receive programmatic focus. Same pattern for moving focus into dialogs, error summaries, and SPA route changes.
 - **Never reorder the tab index** with positive `tabindex` values: Tab honors it, cursor/virtual navigation ignores it — "altering the tab index is generally not advisable." Fix the source order instead. `tabindex="0"` only for genuinely interactive custom elements.
-- **Never remove focus styles** ("Just go put them back now") — replace browser defaults with branded focus *and* hover styles if you must, but keyboard users navigate by them.
+- **Never remove focus styles** ("Just go put them back now") — replace browser defaults with branded focus *and* hover styles if you must, but keyboard users navigate by them. Style **`:focus-visible`, not `:focus`** (Krehel, Interfaces Cheat Sheet): the ring then appears for keyboard focus and stays out of the way on mouse clicks. `outline: none` without a replacement is never acceptable.
+- **Icon-only controls and hidden-but-focusable traps.** Give a button that only has an icon a descriptive `aria-label`. Never put `aria-hidden="true"` on anything that can receive focus — the keyboard lands on a stop the screen reader can't name (Krehel).
 - **Native controls carry behavior; ARIA does not.** WAI's Authoring Practices Guide notes that browsers provide keyboard behavior for native HTML controls, while custom ARIA widgets must implement it. Start with the native element. If a composite widget is genuinely necessary, follow its APG pattern: Tab enters/leaves the composite; arrow keys move within it; keep one item in the tab sequence and manage the active descendant or roving `tabindex` deliberately.
 - **Current focus floor:** WCAG 2.2 AA requires visible focus and that author-created content does not entirely obscure the focused component. Focus Appearance's simplest strong treatment—an indicator with area equivalent to a 2 CSS px perimeter and 3:1 change contrast—is AAA, not the AA baseline. Treat it as a robust design target, not a false AA compliance claim.
-- **Current pointer-target floor:** WCAG 2.2 AA Target Size (Minimum) is `24×24 CSS px`, with defined spacing, inline, equivalent-control, and user-agent exceptions. Larger product targets may be preferable, but `40` or `44` px is a design-system/platform target, not the WCAG 2.2 AA minimum.
+- **Current pointer-target floor:** WCAG 2.2 AA Target Size (Minimum) is `24×24 CSS px`, with defined spacing, inline, equivalent-control, and user-agent exceptions. Larger product targets may be preferable, but `40` or `44` px is a design-system/platform target, not the WCAG 2.2 AA minimum. Krehel's product rule, labeled as such: aim for `44×44` on touch screens and `40×40` on desktop where possible, and **hit areas must never overlap** — an enlarged target that steals its neighbor's clicks is worse than a small one.
 
 ## 5. Contrast nuance
 
@@ -84,7 +85,8 @@ The durable practice layer for accessible websites. Standards-era warning up fro
 
 - Format conversion is the developer's job: "that's not a user error—**that's the site developers' fault**. Formatting the content of an input field should not be a burden placed on the user; **the burden should be on the developers to convert user input into the necessary format**." Strip spaces from card numbers; accept any phone/date shape; validate asynchronously to reassure as people type.
 - **"(required)" in the label, not an asterisk** — the asterisk is a convention only seasoned form-fillers know; the word works "for sighted or screen reader users… or for first-time web users." (Pair every input with a `label for=`/`id` — structural, not just visual.)
-- **Dynamic alerts via `aria-live`**: `polite` for most updates (announced at the next graceful interval), `assertive` only for errors/alerts relevant to the user's current action — it's obtrusive.
+- **Dynamic alerts via `aria-live`**: `polite` for most updates (announced at the next graceful interval), `assertive` only for errors/alerts relevant to the user's current action — it's obtrusive. The role shorthands map the same way: `role="status"` announces routine updates ("Copied", "Saved"); save `role="alert"` for urgent errors (Krehel).
+- **The submit-error chain** (Krehel, corroborating Dannaway's enable-and-validate rule in `form-design`): keep the submit button enabled until the request actually starts; check for errors on submit; mark each failing field `aria-invalid="true"`; connect its message with `aria-describedby`; then **move focus to the first invalid field**. Without the focus move, a keyboard or screen-reader user submits into silence.
 - The error copy itself (tone, blame, what-now) → `ux-writing` (error-messages).
 
 ## 7. Writing accessibly (Writing Is Designing, ch. 5)
@@ -126,11 +128,13 @@ Then keep testing after launch (feedback channel, regression suite) — "Accessi
 - [ ] Situational checks run: one hand, no audio, bright/dark environment, stress/hurry, first-time use?
 - [ ] Semantic HTML doing the work; ARIA only where HTML can't?
 - [ ] Skip link present and **visible**; target has `tabindex="-1"`?
-- [ ] Whole flow works keyboard-only; focus styles visible; no positive `tabindex`?
+- [ ] Whole flow works keyboard-only; focus styles visible via `:focus-visible`; no positive `tabindex`?
+- [ ] Icon-only buttons carry an `aria-label`; nothing focusable is `aria-hidden`?
 - [ ] Custom composite widgets follow the relevant APG keyboard pattern; focused controls stay visible beneath sticky/fixed content?
 - [ ] Pointer targets meet WCAG 2.2's 24×24 CSS px minimum or a documented exception; any larger local target is labeled as a product rule?
 - [ ] Contrast passes current WCAG — but not glare-level; survives grayscale?
 - [ ] Forms: labels say "(required)", inputs forgive formats, errors use `aria-live`?
+- [ ] On submit: button stayed enabled, `aria-invalid` + `aria-describedby` set, focus moved to the first invalid field; `role="status"` vs `role="alert"` chosen deliberately?
 - [ ] Copy: chronological, device-agnostic verbs, critical info before the action?
 - [ ] Media: transcript published as HTML; captions human-checked?
 - [ ] CI fails on accessibility regressions; AT matrix maintained?

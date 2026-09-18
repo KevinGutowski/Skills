@@ -11,6 +11,7 @@ Use this as provenance for the `ux-writing` router and its references. It is not
 - Michael J. Metts and Andy Welfle, *Writing Is Designing* (Rosenfeld Media, 2020) — voice, tone, inclusive language, error-message structure, and content-as-design framing.
 - Aarron Walter, *Designing for Emotion* (A Book Apart, 2011) — design persona, delight layer, and incident communication.
 - Anton Sten, *Products People Actually Want* (2025 ebook, local attachment) — writing before pixels, words as a design-thinking tool, problem/feeling/scenario prewriting prompts, and business/design storytelling. Folded lightly here; long-form craft routes to `write-clear-prose`, stakeholder selling to `design-org-influence`.
+- Jakub Krehel, *Interfaces* Cheat Sheet, Writing section (https://interfaces.dev/cheat-sheet, Sep 2026) — three microcopy defaults folded into `ui-voice-and-tone.md`: one advance label per flow, toggles labeled by their on state, address the reader as "you". Button-verb, confirmation-label, sentence-case, empty-state, and link-text rules were already covered here and in `web-design` (form-design).
 
 ## Error Messages And Failure States
 

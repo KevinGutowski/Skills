@@ -125,6 +125,19 @@ Use this pattern when users or teams can customize the product:
 
 Build an internal editor that tweaks L/C/H and token aliases in the running product. When values land, export token JSON back to the design system. The live product is the fastest place to feel whether a palette is crisp, muddy, too saturated, or too low contrast.
 
+### Token discipline (Krehel, Interfaces Cheat Sheet)
+
+Eight one-line rules from Jakub Krehel's cheat sheet (interfaces.dev/cheat-sheet, Sep 2026) that decide whether a palette survives contact with a codebase. Governance and federation of tokens across teams is `design-systems`; these are the per-project defaults.
+
+- **Every step in a scale has a named use** — page background, component hover, border, solid fill, body text. "Don't add steps that nothing uses." A twelve-step gray where seven steps are orphans is a twelve-step invitation to inconsistency; generate the scale, then prune to the roles the product actually assigns (the six-role table below is one such assignment).
+- **Components consume semantic tokens, never primitives.** `--color-text-secondary`, not `--blue-500`: "The primitive is the raw value, the token is how the value is used." A component that references a primitive can't be re-themed without editing the component.
+- **Name tokens by purpose, not appearance or location.** `--color-accent-solid` still makes sense when the accent turns violet; `--color-blue-button` lies, and `--color-sidebar-gray` breaks the moment a second surface reuses it.
+- **Reserve `accent` for the brand color** so `primary` never means both the brand and the main body text. Text hierarchy is `--color-text-primary` / `--color-text-secondary`; the brand fill is `--color-accent-solid`. Linear's generator (above) makes the same split: base color and accent color are separate inputs.
+- **Measure contrast against the background directly behind the element** — the card or surface, not the page canvas. Text that passes 4.8:1 on the elevated surface can fail at 1.3:1 if the checker was pointed at the page behind it. APCA/WCAG mechanics → [accessibility-contrast.md](oklch-skill/accessibility-contrast.md).
+- **Dark mode is its own palette, not an inversion.** Two schools, recorded rather than blended: the Common Mistakes row below (reverse the L mapping of the light palette) is a *derivation starting point*; Krehel's rule is that what ships must be tuned as a separate palette — dark surfaces need lower chroma, compressed lightness steps, and elevation expressed as lighter-not-shadowed. Derive, then re-tune every step by eye on real screens; never ship the raw flip.
+- **Choose one way to switch themes** — `prefers-color-scheme` *or* a `.dark` class/data attribute — and route every token through it. Mixing both (surfaces on the class, text on the media query) produces the half-switched state where a user's manual toggle disagrees with their OS setting.
+- **Set the gradient interpolation space deliberately.** `linear-gradient(in oklab, …)` for even perceived brightness across the ramp; `in oklch` when the midpoint should stay vivid (hue-interpolated, so watch for hue detours on far-apart stops); `in srgb` only when muted, grayed midtones are the intent. The muddy-middle failure this prevents is also listed in `design-craft` (polish-principles → Common Mistakes).
+
 ### The six-role palette (Practical UI)
 
 "Create a small set of predefined colours called a colour palette. Define simple rules that govern how each colour is used." Six roles, all variations of the brand hue — in OKLCH: hold H constant, walk L up while easing C down (PUI saturates the darkest step heavily; in OKLCH just keep C% of max):
@@ -191,7 +204,11 @@ This keeps feedback scannable and diff-friendly. Each row is a self-contained ch
 | High chroma without gamut check | Clamp to max chroma for the L/H in sRGB |
 | Same absolute C across different hues | Use same C% (percentage of max) for consistent vividness |
 | P3 color without sRGB fallback | Add `@media (color-gamut: p3)` pattern |
-| Dark mode with hand-picked colors | Derive from light palette by reversing L mapping |
+| Dark mode with hand-picked colors | Derive a starting point from the light palette by reversing the L mapping, then tune it as its own palette (Token discipline) — never ship the raw inversion |
+| Contrast checked against the page canvas, not the surface behind the text | Re-measure against the element's immediate background |
+| Theme switched by both `prefers-color-scheme` and a `.dark` class | Pick one mechanism; route all tokens through it |
+| Component references `--blue-500` directly | Alias through a purpose-named semantic token (`--color-accent-solid`) |
+| Gradient goes gray in the middle | Set the interpolation space: `in oklab` for even brightness, `in oklch` for a vivid midpoint |
 | Hex in Tailwind v4 `@theme` | Convert to oklch values |
 | Alpha with comma syntax | Use slash: `oklch(L C H / alpha)` |
 

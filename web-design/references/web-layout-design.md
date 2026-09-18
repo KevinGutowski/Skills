@@ -126,6 +126,7 @@ For websites installed to the iOS/iPadOS Home Screen or macOS Dock, read [apple-
 - Keep text and controls inside layout margins and safe areas.
 - Keep primary actions in stable, reachable chrome when a pane or keyboard can clip scrolling content.
 - Verify sticky/fixed chrome does not obscure keyboard focus; current WCAG 2.2 requires a focused component not be entirely hidden by author-created content.
+- Give headings and other anchor targets `scroll-margin-top` (at least the sticky header's height plus breathing room) so a followed in-page link leaves space above the heading instead of pinning it to the viewport edge or under fixed chrome (Krehel, Interfaces Cheat Sheet).
 
 Do not cargo-cult a fixed mobile inset. Use the project's spacing tokens and actual safe-area behavior.
 
