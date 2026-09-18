@@ -93,6 +93,8 @@ This particularly helps when an element is changing `scale`, `rotation`, or movi
 
 Modern browsers are already good at optimizing on their own. Only add `will-change` when you notice first-frame stutter — Safari in particular benefits from it. Don't add it preemptively to every animated element; each extra compositing layer costs memory.
 
+The second legitimate trigger is **positional jitter**: if an element randomly shifts by 1–2px while it animates, add `will-change: transform` to that element. Krehel (Interfaces Cheat Sheet) flags this as "especially useful in Safari on iOS," where the un-promoted element is rasterized at slightly different subpixel offsets between frames. Treat the jitter as the diagnostic; don't add the hint to elements that animate cleanly.
+
 ## Perceived Performance: Spinner Choice Assigns Blame
 
 A branded/custom loading indicator makes users attribute the wait to *your product*; the platform's system spinner makes them attribute it to *the device or OS*. Field datum from Facebook (~2014, relayed by Paul Stamatiou, ex-Twitter design — https://x.com/Stammy/status/1940938534212260012):

@@ -76,7 +76,7 @@ Apple's four qualities sit in gentle tension (more friendliness costs some simpl
 The 2022 framework is the screen-level craft that carries the voice:
 
 - **Purpose** — name the single most important thing on the screen; use information hierarchy; **know what to leave out**; give every screen (and the whole flow) a purpose.
-- **Anticipate** — treat the app as a conversation; develop voice first, vary tone; keep a list of common terms; always answer *"what comes next?"*
+- **Anticipate** — treat the app as a conversation; develop voice first, vary tone; keep a list of common terms; always answer *"what comes next?"* — and use **one label to advance through a whole flow** ("Continue" *or* "Next", never a Continue/Next/Proceed mix across steps; Krehel).
 - **Context** — write for where/how the person is (driving, at an airport, mid-task); use alerts only for a real confirm/choice; make button labels specific and self-explanatory (not Yes/No, not Confirm/Cancel); write useful empty states.
 - **Empathy** — write for everyone in plain language; avoid idioms/humor that won't translate; respect localization (length, vertical space, RTL); make VoiceOver/accessibility text carry *intention and context*, not just appearance, and avoid unnecessary gender.
 
@@ -131,6 +131,7 @@ From Andy Welfle's "Writing is designing" (Config 2025):
 - **The button-copy question set** — "what should this button say?" is never answerable alone: where did the user enter from? what happens immediately after? is a button even the right component? what's the inverse action? will it truncate in Norwegian? does it match voice and tone?
 - **Voice run amok kills usability**: Caviar's "Eat a salad cuz sure" — brand personality applied where a person just needs to order food. The triad to balance: *usable* (helps do), *useful* (does what's wanted), *responsible* (serves stress cases — "content designers are the connective tissue").
 - **Research the language itself**: harvest users' own words from interviews for terms and actions; run card sorts for taxonomy and mental models; usability-test for language gaps. Vocabulary should come from users, not the org chart (cautionary tale: a transit kiosk's "Accept an e-cash upgrade" meaning "add $20").
+- **Three microcopy defaults from Krehel's Interfaces Cheat Sheet** (web-scoped, consistent with the Apple guidance above): **label toggles by what happens when they're on** ("Send read receipts", never "Disable read receipts" — a negated label makes the on state mean off); **address the reader as "you"**, never "the user"; **describe where a link goes** ("Read the docs", not "Click here"). Button verb grammar → `naming-features-and-labels` (CTA and button grammar); capitalization consistency → `web-design` (form-design) for web, `apple-design` (hig) on Apple platforms.
 
 ## Checklist
 
@@ -142,7 +143,8 @@ From Andy Welfle's "Writing is designing" (Config 2025):
 - [ ] Alerts reserved for a real choice; destructive action clearly marked?
 - [ ] Empty states educate or guide (not just decorate)?
 - [ ] Personality density decided per surface (marketing → admin → product taper), and voice receding in urgent flows?
-- [ ] One term per action everywhere (no Delete/Erase splits)?
+- [ ] One term per action everywhere (no Delete/Erase splits); one advance label per flow (Continue *or* Next)?
+- [ ] Toggles labeled by their on state; reader addressed as "you"; links say where they go?
 - [ ] Plain language; no untranslatable idioms; localization-safe?
 - [ ] Accessibility text conveys intention + context; no unnecessary gender?
 - [ ] Read aloud — sounds conversational and like *us*?

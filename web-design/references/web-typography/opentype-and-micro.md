@@ -16,6 +16,7 @@ CSS recipes and character craft, almost entirely from Rutter, *Web Typography* (
 10. Hanging punctuation
 11. UTF-8 over entities
 12. Optical sizing (`opsz`) and `font-optical-sizing`
+13. Casing, underlines, wrapping, and truncation (web mechanics)
 
 ## 1. The cardinal rule
 
@@ -170,3 +171,12 @@ Post-2017 addition (the three books predate it). Some variable fonts ship an opt
 - Browsers apply the axis automatically: "Browsers turn this on automatically through `font-optical-sizing: auto`, so you usually get the right design for free." Leave it at `auto`; don't set `font-optical-sizing: none` or pin `font-variation-settings: "opsz" N` unless you are deliberately forcing a display cut at a text size (a rare typographic choice, not a default).
 - The axis only helps if the font file carries it — a static or subset build that dropped `opsz` silently loses it. When subsetting (§ font loading in the parent), keep the axis.
 - Pinning `font-variation-settings` reintroduces the low-level self-override problem from §1: any later `font-variation-settings` declaration discards the pinned `opsz` unless repeated.
+
+## 13. Casing, underlines, wrapping, and truncation (web mechanics)
+
+Post-2017 additions, from Jakub Krehel's *Interfaces* Cheat Sheet (interfaces.dev/cheat-sheet, Sep 2026). Each is a one-line rule with a CSS mechanism; none has a book-era equivalent.
+
+- **Write text with normal capitalization; let `text-transform` do display casing.** Source strings stay sentence case, so the same string can render `uppercase` in an eyebrow label and normally in a tooltip, screen readers don't spell out shouted acronyms, and a later design change is one CSS line rather than a copy migration. The consistency rule for *which* case to use lives in [`form-design`](../form-design.md) (sentence case on the web) and `ux-writing`.
+- **Underlines that clear descenders.** `text-underline-position: from-font` places the line where the type designer intended; `text-decoration-skip-ink: auto` (the modern default, but set it explicitly where a reset has removed it) breaks the line around the tails of g, y, p, q. The book-era workaround — a `box-shadow` or `border-bottom` faked underline — is now unnecessary for links in running text.
+- **Keep long words, links, and IDs inside their container** with `overflow-wrap: break-word` (or `anywhere` when even a single unbreakable token must never overflow), and pin labels, badges, and timestamps with `white-space: nowrap` so a wrapped "Last synced 2 min ago" doesn't become two lines in a table cell. This complements the parent's §11 table rule (no widths, scroll, `nowrap` where wrapping destroys readability).
+- **When you shorten text with an ellipsis, keep the full text reachable** — a tooltip on hover/focus, an expanded row, or a "More" disclosure. `text-overflow: ellipsis` alone hides information with no way back; on touch there is no hover, so the expansion path must work by tap or focus too. The ellipsis character rule (one …, never three dots) is §9 above.

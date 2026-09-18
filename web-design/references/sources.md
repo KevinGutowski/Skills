@@ -13,6 +13,7 @@ This is a top-level provenance map for the web-design router.
 - `web-performance.md` covers Core Web Vitals, perceived performance, budgets, main-thread/offload decisions, and frame health.
 - `form-design.md` covers field choice, layout, button weights, destructive friction, and form usability.
 - `oklch-skill.md` covers OKLCH, palette generation, contrast, gamut/P3, and Tailwind theming.
+- Jakub Krehel, *Interfaces* Cheat Sheet (https://interfaces.dev/cheat-sheet, Sep 2026; post https://x.com/jakubkrehel/status/2100605819238621632) — one-line web rules folded as deltas only: token discipline and gradient interpolation in `oklch-skill.md`; casing/underline/wrapping/truncation mechanics in `web-typography/opentype-and-micro.md` §13; `:focus-visible`, icon-only labels, `role="status"`/`role="alert"`, and the submit-error ARIA chain in `web-accessibility.md`; label/`inputmode`/never-block-paste in `form-design.md`; `scroll-margin-top` in `web-layout-design.md`. Product target sizes (44/40) are labeled as Krehel's product rule, not WCAG. Ledger: `docs/mining-ledger.md` 2026-09-18.
 - `social-video-safe-zones.md` covers 9:16 platform chrome safe zones for social video.
 
 ## Promotion rule

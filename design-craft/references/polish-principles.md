@@ -70,6 +70,8 @@ Don't animate a single container. Break content into semantic chunks and stagger
 
 Use a small fixed `translateY` instead of full height. Exits should be softer than enters — asymmetry can be in the *properties*, not just speed: movement (`translateX/Y`) on enter, dissolve (blur + opacity, no movement) on exit. See [animations.md](animations.md) → Asymmetric Properties.
 
+The limit case: for **menus people open often** (context menus, command palettes, account switchers), skip the enter animation entirely and animate only the close (Krehel). The open must feel instant because it's on the critical path; the close is where a little motion confirms the dismissal. See [animations.md](animations.md) → Exit-Only for Frequent Menus.
+
 ### 7. Contextual Icon Animations
 
 Animate icons with `opacity`, `scale`, and `blur` instead of toggling visibility. Use exactly these values: scale from `0.25` to `1`, opacity from `0` to `1`, blur from `4px` to `0px`. If the project has `motion` or `framer-motion` in `package.json`, use `transition: { type: "spring", duration: 0.3, bounce: 0 }` — bounce must always be `0`. If no motion library is installed, keep both icons in the DOM (one absolute-positioned) and cross-fade with CSS transitions using `cubic-bezier(0.2, 0, 0, 1)` — this gives both enter and exit animations without any dependency.
@@ -106,17 +108,21 @@ If another loaded theme specifies a lighter value such as `0.98`, treat it as a 
 
 Use `initial={false}` on `AnimatePresence` to prevent enter animations on first render. Verify it doesn't break intentional entrance animations.
 
+Same family of bug: **disable all transitions while switching between light and dark mode** (Krehel). Otherwise every element with a `transition` on color/background tweens at its own duration and the theme change smears across the screen. Recipe in [animations.md](animations.md) → No Transitions on Theme Switch.
+
 ### 14. Never Use `transition: all`
 
 Always specify exact properties: `transition-property: scale, opacity`. Tailwind's `transition-transform` covers `transform, translate, scale, rotate`.
 
 ### 15. Use `will-change` Sparingly
 
-Only for `transform`, `opacity`, `filter` — properties the GPU can composite. Never use `will-change: all`. Only add when you notice first-frame stutter.
+Only for `transform`, `opacity`, `filter` — properties the GPU can composite. Never use `will-change: all`. Only add when you notice first-frame stutter, or when an element randomly shifts by 1–2px mid-animation (especially Safari on iOS) — the jitter is the trigger, not a hunch. See [performance.md](performance.md) → When to Skip.
 
 ### 16. Minimum Hit Area
 
 Interactive elements need at least 40×40px hit area. Extend with a pseudo-element if the visible element is smaller. Never let hit areas of two elements overlap.
+
+The inverse rule: **decorative layers get `pointer-events: none`** — glows, gradient washes, grain overlays, and blurred halos that sit above a control will otherwise swallow the click meant for it (Krehel, Interfaces Cheat Sheet). The grain recipe in [surfaces.md](surfaces.md) already does this; apply it to every purely visual layer.
 
 ### 17. Layout Stability Over Skeletons
 
@@ -173,6 +179,10 @@ Two-stop linear gradients leave a visible edge where they start and stop — esp
 | `transition: all` on elements | Specify exact properties |
 | First-frame animation stutter | Add `will-change: transform` (sparingly) |
 | Tiny hit areas on small controls | Extend with pseudo-element to 40×40px |
+| Clicks on a control land on its glow/gradient/grain layer instead | `pointer-events: none` on every purely decorative layer so events fall through to the control beneath |
+| Frequently opened menu animates in every time | Skip the enter animation; animate only the close (exit-only) |
+| Colors tween at different speeds when toggling dark mode | Disable all transitions for the duration of the theme switch |
+| Element jitters 1–2px while animating (Safari iOS) | `will-change: transform` on that element |
 | White strip on overscroll of a dark page (Safari) | Paint the canvas: `html { background-color: var(--background) }`, same token as the app, per theme |
 | Grain overlay tanks scroll FPS on a hero | Live `feTurbulence` only on small surfaces; tile a 200px SVG data-URI for large or moving ones |
 | Grain looks different depending on where the card sits | Add `isolation: isolate` to the grain's container so `mix-blend-mode` only sees the surface |
