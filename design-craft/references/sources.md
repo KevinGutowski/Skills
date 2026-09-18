@@ -35,6 +35,20 @@ Video:
 - *Shape FM* ep. 3, "Motion and animation with intent" (with James McDonald, 2025) — YouTube sHVKuJuseYo. Cited as (Briggs, Shape FM ep. 3): top-light model, half-pixel strokes, sub-pixel radius.
 - *Dive Club* S4, "Creating a design culture of craft" (Jan 2024, Clerk era) — YouTube z4hP80tzBL4. Cited as (Briggs, Dive Club S4): formula-izing plugin shadows.
 
+## Gustavo Fior — *Craft*
+
+Design-engineering concept site (craft.gustavofior.com, Jul 2026; every page has a Markdown mirror at `/<slug>.md`; source `gustavo-fior/craft` `content/**/*.mdx`). Seven pages were live as of 2026-09-18; the ~30 others are "Soon" placeholders. All seven read and folded; quotes verified against the mirrors.
+
+- *Optical Alignment* — blur test for measuring an optical nudge, per-icon (not global) offsets, shape-weight compensation → [surfaces.md](surfaces.md) Optical Alignment, [polish-principles.md](polish-principles.md) §2; `font-optical-sizing` and the `text-indent` hanging-punctuation fallback → `web-design` (web-typography → opentype-and-micro).
+- *Tabular Numbers* — proportional in prose vs tabular in slots, don't reach for monospace, verify `tnum` with Wakamai Fondue → [typography.md](typography.md), polish-principles §9.
+- *Noise* — `feTurbulence` grain recipe, `isolation: isolate` rule, live-filter vs tiled data-URI performance rule → [surfaces.md](surfaces.md) Noise / Grain Overlay, polish-principles §19 + Common Mistakes.
+- *Image Outlines* — 5–20% strength band, avatars first, paint over not around → [surfaces.md](surfaces.md) Image Outlines, polish-principles §11.
+- *Nested Border Radius* — inset = padding + border, reverse formula with `max(0, …)` clamp, when to tune by eye → [surfaces.md](surfaces.md) Concentric Border Radius.
+- *HTML Background* — paint the document canvas on `html`, theme-token sync, `theme-color`, overscroll caution → [surfaces.md](surfaces.md) Document Canvas Background, Common Mistakes.
+- *Hover Restraint* — instant hover for sweep-through highlights, frequency-and-intent not input device, tooltip first-delay then instant neighbors → [emil-kowalski.md](emil-kowalski.md) decision framework (corroboration); `web-design` (web-animation-design → PRACTICAL-TIPS, Hover States).
+
+Companion installable skill `skills/craft-design-engineering` mirrors the live pages verbatim; not imported. Ledger: `docs/mining-ledger.md` 2026-09-18.
+
 ## Marek Minor (Minor Adventures)
 
 - *"The making of Cursor's icons"* (minoradventures.co/blog/the-making-of-cursors-icons, Jul 2026) — icon-craft depth notes in [field-notes.md](field-notes.md): exploration volume (156 hamburger attempts), 0.25px felt differences, eye-decides/number-records, true-size device review, below-noticing corrections. The icon-system method itself is folded to `design-systems` (icon-systems).

@@ -26,7 +26,7 @@ These values are the *how* of the **Craft** principle. For the strategic layer �
 | Category | When to Use |
 | --- | --- |
 | [Typography](typography.md) | Text wrapping, font smoothing, tabular numbers |
-| [Surfaces](surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, hit areas |
+| [Surfaces](surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain overlays, document canvas background, hit areas |
 | [Animations](animations.md) | Interruptible animations, enter/exit transitions, icon animations, scale on press |
 | [Performance](performance.md) | Transition specificity, `will-change` usage, perceived performance (spinner choice) |
 | [Refactoring UI](refactoring-ui.md) | Visual refactor passes: hierarchy, spacing, type, color, depth, images, empty states; example gallery in `../examples/refactoring-ui-gallery.html` |
@@ -48,8 +48,9 @@ When geometric centering looks off, align optically — trust the eye over the m
 - **Icon + text buttons:** trim the padding on the icon side — give the icon ~2–4px less leading padding than the trailing text padding, so the *content* looks centered rather than the box.
 - **Single glyphs in a circle** (a chevron in a round button, an arrow): optically center the glyph's ink, not its layout box; most need a 1–2px shove toward the direction opposite their visual weight.
 - **Quote marks, bullets, badges:** hang punctuation and leading marks into the margin so the body text edge stays flush.
+- **Mixed silhouettes:** a circle or triangle drawn in the same box as a square reads smaller; let round/pointed shapes overshoot the box slightly so perceived mass, not geometric size, matches.
 
-Rule of thumb: if it's symmetric, geometric centering is fine; if it has directional mass (triangles, arrows, most logos), expect a 1–2px optical correction and tune by eye at the real render size.
+Rule of thumb: if it's symmetric, geometric centering is fine; if it has directional mass (triangles, arrows, most logos), expect a 1–2px optical correction and tune by eye at the real render size. To *measure* rather than guess, use the blur test (Gustavo Fior, *Craft*): blur the icon heavily in the inspector, see where the blob of ink lands relative to the container's center, and nudge by the distance back — then keep that nudge per icon, never as a global offset. Recipes and the diagnostic snippet: [surfaces.md](surfaces.md) → Optical Alignment.
 
 ### 3. Shadows Over Borders
 
@@ -85,7 +86,7 @@ For custom switches and pill indicators, consider a sequenced middle state: stre
 
 ### 9. Tabular Numbers
 
-Use `font-variant-numeric: tabular-nums` for any dynamically updating numbers to prevent layout shift.
+Use `font-variant-numeric: tabular-nums` for any dynamically updating numbers to prevent layout shift. Don't reach for a monospace font to get steady digits — "A mono font changes the whole voice of the interface. Often, you just need to use tabular figures." (Gustavo Fior, *Craft*.) Verify the font actually carries `tnum` before relying on it ([typography.md](typography.md) → Tabular Numbers).
 
 ### 10. Text Wrapping
 
@@ -93,7 +94,7 @@ Use `text-wrap: balance` on headings. Use `text-wrap: pretty` for body text to a
 
 ### 11. Image Outlines
 
-Add a subtle `1px` outline with low opacity to images for consistent depth. The color must be pure black in light mode (`rgba(0, 0, 0, 0.1)`) and pure white in dark mode (`rgba(255, 255, 255, 0.1)`) — never a near-black like slate, zinc, or any tinted neutral. A tinted outline picks up the surface color underneath it and reads as dirt on the image edge.
+Add a subtle `1px` outline with low opacity to images for consistent depth. The color must be pure black in light mode (`rgba(0, 0, 0, 0.1)`) and pure white in dark mode (`rgba(255, 255, 255, 0.1)`) — never a near-black like slate, zinc, or any tinted neutral. A tinted outline picks up the surface color underneath it and reads as dirt on the image edge. Working band ~5–20% (below, it vanishes; above, it reads as a frame); apply to avatars first, they float without it ([surfaces.md](surfaces.md) → Image Outlines).
 
 ### 12. Scale on Press
 
@@ -138,7 +139,7 @@ Let the browser do the boring stuff "so we can focus on the really important stu
 ### 19. The Squint Test & Anti-Sterile Texture
 
 - **Squint test** (Henry Modisett, Perplexity): "squint at the screen and still flow through the product… the best products have almost a gravitational pull to them. You can't really use them the wrong way."
-- **Anti-sterile texture** (Inga Hampton, Raycast): "Blur is a superpower. Nothing in the real world is perfectly sharp" — even ~0.3px of blur de-sterilizes vector art; grain "ties everything together and helps with color banding"; in raster-painting, "blend modes do most of the work" (lighten, color dodge, plus-darker).
+- **Anti-sterile texture** (Inga Hampton, Raycast): "Blur is a superpower. Nothing in the real world is perfectly sharp" — even ~0.3px of blur de-sterilizes vector art; grain "ties everything together and helps with color banding"; in raster-painting, "blend modes do most of the work" (lighten, color dodge, plus-darker). The grain recipe (`feTurbulence` overlay at ~8% `overlay`, isolated container, tiled data-URI for large/moving surfaces): [surfaces.md](surfaces.md) → Noise / Grain Overlay.
 
 ### 20. Emphasis Can Read as an Ad
 
@@ -172,6 +173,9 @@ Two-stop linear gradients leave a visible edge where they start and stop — esp
 | `transition: all` on elements | Specify exact properties |
 | First-frame animation stutter | Add `will-change: transform` (sparingly) |
 | Tiny hit areas on small controls | Extend with pseudo-element to 40×40px |
+| White strip on overscroll of a dark page (Safari) | Paint the canvas: `html { background-color: var(--background) }`, same token as the app, per theme |
+| Grain overlay tanks scroll FPS on a hero | Live `feTurbulence` only on small surfaces; tile a 200px SVG data-URI for large or moving ones |
+| Grain looks different depending on where the card sits | Add `isolation: isolate` to the grain's container so `mix-blend-mode` only sees the surface |
 | Visible band/edge where a gradient ends | Use eased gradient stops; `in oklab` for muddy color midpoints |
 | Backdrop blur silently stops rendering (Chrome) | Wrap the page's `mix-blend-mode` element in a div with `backdrop-filter: opacity(1)` |
 | Custom branded loader on slow, uncontrollable waits | Use the system spinner — custom loaders make users blame *you* for the wait |
