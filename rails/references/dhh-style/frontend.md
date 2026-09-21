@@ -40,6 +40,15 @@ separate. Pass explicit `alt` text through Action Text attachments when the imag
 conveys content; do not infer alt text from filenames, and do not force screen
 reader descriptions to appear as visible captions.
 
+Treat rich-text toolbars and their menus as real composite widgets. Keep arrow
+navigation inside the active toolbar or menu, make Escape return focus
+predictably, expose disabled controls with `aria-disabled`, use
+`menuitemradio`/`menuitemcheckbox` with `aria-checked` for selectable options,
+and label color swatches by both color and purpose. Hide decorative icons from
+the accessibility tree so controls are announced once by name.
+
+Source: https://github.com/basecamp/lexxy/pull/1173
+
 ## Stimulus Controllers
 
 52 controllers in Fizzy, split 62% reusable, 38% domain-specific.

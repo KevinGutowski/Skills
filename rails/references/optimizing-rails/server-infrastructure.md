@@ -71,6 +71,16 @@ preload_app!  # in config/puma.rb
 
 Always enable preloading. It reduces total memory usage across workers.
 
+### Schema Cache Loading
+
+If schema-cache deserialization is a meaningful part of boot time for a large
+app, try a `.json` `schema_cache_path` on Rails versions that support it, then
+benchmark boot in the real application. A merged Rails benchmark on a 944-table
+app measured about 10 ms to load JSON versus 219 ms for YAML; use that as a
+reason to measure, not as a universal multiplier.
+
+Source: https://github.com/rails/rails/pull/58769
+
 ## Container Sizing
 
 Target 70-80% utilization of both CPU and memory.
