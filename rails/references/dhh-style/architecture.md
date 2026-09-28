@@ -9,6 +9,7 @@
 - [Current Attributes](#current-attributes)
 - [Caching](#caching)
 - [Configuration](#configuration)
+- [Command-Line Interface](#command-line-interface)
 - [Testing](#testing)
 - [Event Tracking](#event-tracking)
 
@@ -264,6 +265,21 @@ config.content_security_policy do |policy|
   policy.script_src :self, *ENV.fetch("CSP_SCRIPT_SRC", "").split(",")
 end
 ```
+
+## Command-Line Interface
+
+For applications that should participate in agent-driven workflows, expose
+important user actions through a scriptable CLI. This lets users bring their
+own agents instead of requiring an app-specific chatbot or browser automation
+for every integration.
+
+Keep the CLI as an application boundary rather than a second implementation of
+the domain: preserve authentication and tenant scoping, invoke the same domain
+operations as the web application, and offer machine-readable output where it
+helps composition.
+
+Source: https://www.youtube.com/watch?v=vDjW_dRyKXY&t=2715s (official Rails
+World 2026 keynote captions)
 
 ## Testing
 
