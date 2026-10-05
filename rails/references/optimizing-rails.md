@@ -231,6 +231,8 @@ Details: [backgrounding.md](optimizing-rails/backgrounding.md)
 
 **Runtime tuning (Shopify):** enable YJIT — ~15% production gains measured (2023) via the durable method: A/B two Ruby builds on equal-traffic production clusters over 24h, compare percentiles. GC tuning via the Autotuner protocol: three production groups (untuned control / stable / experimental), one suggestion at a time for days-to-a-week, promote winners — they cut p99.9 GC time 87%. Caveats: fewer major GCs can worsen tails; **GC/JIT tunings rot across Ruby versions — re-run experiments after upgrades**.
 
+**Deployment warm-up (37signals):** `preload_app!` loads code, but it does not exercise first-use work such as YJIT compilation, template compilation, lazy routes, or schema access. When deploys produce a measured cold-request queue, use `Rack::Builder#warmup` before workers fork: precompile templates, exercise representative signed-in requests (including lazy Turbo Frames), and touch remaining schema within a strict time budget. Rank candidates by `(cold duration - warm duration) × post-deploy request count`, then audit and close/reset inherited database, HTTP, socket, and thread-pool resources before fork.
+
 **The audit shape (Speedshop's AO3 deliverable):** organize by business outcome, not technical category; two headline metrics (active DB connections, controller p95 service time); cost/benefit score per recommendation; **fix observability gaps first** (infra monitoring, APM/RUM, DB monitoring). Heuristics from it: "old processes are fast processes" (don't aggressively kill workers); fragment caching that multiplies cache round-trips isn't free — "if the entire readings section was a single fragment keyed per-user, you could turn 30 cache ops into 1."
 
 ## Server & Infrastructure
@@ -253,12 +255,12 @@ Details: [backgrounding.md](optimizing-rails/backgrounding.md)
 ```ruby
 # config/puma.rb
 workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
+threads_count = ENV.fetch("RAILS_MAX_THREADS") { 3 }
 threads threads_count, threads_count
 preload_app!
 
 # Workers = TOTAL_RAM / (RAM_PER_PROCESS * 1.2)
-# Threads = 5 (default, rarely benefits from more in MRI)
+# Start with 3 threads, then benchmark throughput and tail latency
 # Run at least 3 workers per server for routing efficiency
 ```
 

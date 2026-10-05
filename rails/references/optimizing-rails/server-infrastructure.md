@@ -17,7 +17,7 @@
 ```ruby
 # config/puma.rb
 workers ENV.fetch("WEB_CONCURRENCY") { 3 }
-threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
+threads_count = ENV.fetch("RAILS_MAX_THREADS") { 3 }
 threads threads_count, threads_count
 
 preload_app!
@@ -46,13 +46,13 @@ The most important setting. Each worker is a forked process that can handle requ
 
 ### Thread Count
 
-In MRI Ruby, threads only parallelize I/O waits (database queries, HTTP calls). For most apps, 10-25% of time is parallelizable.
+In MRI Ruby, threads only parallelize I/O waits (database queries, HTTP calls). The useful count depends on the application's I/O share, request mix, and latency target.
 
-**Recommendation:** Set threads to 5 and forget about it. Settings above 5 rarely help in MRI.
+**Recommendation:** Start with Rails' three-thread default, then benchmark the real workload. CPU/GVL-heavy apps can favor single-threaded workers; I/O-heavy apps can benefit from more threads. Compare throughput, p95/p99 latency, database-pool pressure, and proportional set size (PSS), not RSS alone for forked workers.
 
 ```ruby
 # Puma
-threads 5, 5
+threads 3, 3
 
 # Passenger
 passenger_concurrency_model thread;
@@ -70,6 +70,17 @@ preload_app!  # in config/puma.rb
 ```
 
 Always enable preloading. It reduces total memory usage across workers.
+
+### Master Warm-up Before Fork
+
+`preload_app!` loads application code, but it does not perform first-use work such as YJIT compilation, Action View template compilation, lazy route rendering, schema access, or application memoization. If deploy telemetry shows a cold-request queue, use `Rack::Builder#warmup` in `config.ru` to exercise this work in the master before workers fork.
+
+- Precompile templates, then issue representative signed-in requests with `Rack::MockRequest`, including lazy Turbo Frames. Synthetic public pages often miss the expensive paths.
+- Rank endpoints by `(cold duration - warm duration) × expected post-deploy request count`, and enforce a warm-up time budget.
+- Audit the master's open file descriptors after warm-up. Close or reset inherited database connections, HTTP sockets, thread pools, and other unsafe resources before fork.
+- Re-measure queue depth, p95/p99 latency, deploy memory, and startup time. Treat the warm-up list as measured production configuration, not an ever-growing catalog.
+
+Source: https://dev.37signals.com/warming-up-the-puma-master-before-it-forks/
 
 ### Schema Cache Loading
 

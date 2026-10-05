@@ -150,6 +150,14 @@ details can change without rewriting channels.
 Design channels around domain events and authorization. Let adapters, pub/sub,
 and server configuration handle delivery mechanics.
 
+With Solid Cable, size `message_retention` from the slowest subscriber polling
+interval plus reconnect margin, not from a generic long default. Steady-state
+rows are roughly broadcast rate multiplied by retention; for high-frequency
+streams, retention usually matters more than trimming batch size. Measure the
+expected row count and storage before production.
+
+Source: https://github.com/rails/solid_cable/pull/95
+
 ## Current Attributes
 
 Use `Current` for request-scoped state:

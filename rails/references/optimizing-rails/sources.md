@@ -10,6 +10,7 @@ Use this map when updating Rails performance guidance.
 - Puma: https://github.com/puma/puma
 - Rack: https://github.com/rack/rack
 - Rails performance-related docs and changelogs: https://guides.rubyonrails.org/
+- 37signals production engineering: https://dev.37signals.com/
 
 ## Discovery Sources
 
