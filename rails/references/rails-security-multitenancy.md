@@ -1,6 +1,6 @@
 # Rails Security + Multi-Tenancy
 
-*Scope: Secure multi-tenant Rails apps — tenant-scoped queries everywhere, SSRF defenses for user-supplied URLs, rate limiting, tenant-scoped realtime broadcasts, authorization boundaries. Use when implementing auth, tenant isolation, security-sensitive endpoints, or reviewing for cross-tenant leaks. Database-per-tenant architecture lives in dhh-style. Triggers: multi-tenant, tenant scoping, SSRF, rate limiting, cross-tenant leak, authorization boundary, current tenant.*
+*Scope: Secure multi-tenant Rails apps — tenant-scoped queries everywhere, SSRF defenses for user-supplied URLs, isolated processing for untrusted uploads, rate limiting, tenant-scoped realtime broadcasts, authorization boundaries. Use when implementing auth, tenant isolation, security-sensitive endpoints, upload processing, or reviewing for cross-tenant leaks. Database-per-tenant architecture lives in dhh-style. Triggers: multi-tenant, tenant scoping, SSRF, untrusted upload, Active Storage processing, rate limiting, cross-tenant leak, authorization boundary, current tenant.*
 
 > Vendored from [marckohlbrugge/37signals-skills](https://github.com/marckohlbrugge/37signals-skills) @ c58e7d5 (skill text MIT; Fizzy code excerpts under the [O'Saasy license](https://osaasy.dev)). LLM-extracted from 265 Fizzy PRs + Campfire — verify unusual claims against the upstream guide's per-PR links.
 
@@ -11,6 +11,7 @@ Use for security-sensitive Rails work and tenant-boundary reviews. Patterns from
 - Core Rules
 - Tenancy Architecture (path-based, Fizzy-style)
 - Scoped Lookups (defense in depth)
+- Untrusted File Processing
 - Authentication Hardening
 - SSRF Defense Baseline
 - CSRF and Caching
@@ -62,6 +63,16 @@ Params choose *which* record within an already-authorized set — never establis
 - ActiveStorage media uploads: if ffmpeg/ffprobe touch user-supplied video/audio, restrict accepted codecs, formats, and protocols with `config.active_storage.video_preview_input_arguments` and `config.active_storage.ffprobe_arguments`; check codec names against the deployed ffmpeg build.
 - Revoking access cleans up derived data (mentions, notifications, watches) via a scoped async job — don't leave dangling cross-boundary state.
 
+## Untrusted File Processing
+
+- Treat native media and document processors as a hostile-input execution boundary. Patch known CVEs first, but assume a future parser or delegated library can still be compromised.
+- Keep processors away from application secrets and lateral-movement paths: use an unprivileged sidecar with no network, no application environment or filesystem, a read-only/no-exec filesystem, and file-descriptor-only inputs and outputs.
+- Enforce both cell-wide and per-operation limits for wall time, memory, file size, open files, process count, concurrency, and queue depth. Run each request in a disposable worker process and reap it afterward.
+- Fail closed when the cell is missing or unhealthy. Monitor availability, failures, queue headroom, killed workers, and scratch space from the trusted app or supervisor, not from a possibly compromised worker.
+- After every required operation is routed through the cell, remove its parser packages from the application image. For Rails 8.2+, Hot Cell provides Active Storage transformer, analyzer, and previewer replacements; verify its current Rails requirement before adoption.
+
+Sources: https://dev.37signals.com/hot-cell-1-0/ · https://github.com/basecamp/hotcell · https://discuss.rubyonrails.org/t/cve-2026-66066-possible-arbitrary-file-read-and-remote-code-execution-in-active-storage-variant-processing/91432
+
 ## Authentication Hardening
 
 - Magic links / codes: single-use (consume destroys the row), short-lived, compared with `secure_compare`, bound to the email via a verified pending-auth cookie.
@@ -79,6 +90,9 @@ rate_limit to: 10, within: 15.minutes, only: :create,
 
 - Throttle session bookkeeping writes (update `last_active_at` at most hourly).
 - Filter sensitive params beyond passwords: message bodies, push endpoints, tokens.
+- Configure `filter_parameters` before any initializer can load Active Record. Active Record copies the list into `filter_attributes` when it loads, so a late logging initializer can leave model inspection unfiltered. Put the list in `config/application.rb` when initializer order is not guaranteed.
+
+Source: https://github.com/basecamp/fizzy/commit/48f56c0453e27e825dbc55369263e6beb3e60da5
 
 ## SSRF Defense Baseline
 
@@ -88,10 +102,13 @@ For webhooks, push endpoints, unfurling — any user-influenced URL:
 - Validate every address a host resolves to, not just the first answer; include IPv4-in-IPv6 forms such as SIIT and local-use NAT64 in the blocked/internal policy.
 - Distinguish DNS lookup failures from resolved-but-blocked destinations in logs and errors. A transient miss is not the same event as an SSRF violation.
 - Pin the request to the validated IP (`Net::HTTP.new(host, port, ipaddr: resolved_ip)`) to beat DNS rebinding.
+- Disable environment-proxy discovery on the pinned HTTP connection. With `http_proxy` or `https_proxy` enabled, the proxy can resolve the hostname again and route somewhere other than the checked IP; with `Net::HTTP`, pass an explicit `nil` proxy address and test with proxy variables set.
 - Validate at creation time and again at execution time.
 - Re-resolve and re-validate on every redirect hop — redirect chains are the classic bypass.
 - Cap response sizes (content-length pre-check + chunked read limit) to prevent memory DoS.
 - Layer allowlists on top where the destination set is known (web push: permitted vendor host suffixes AND public-IP resolution).
+
+Source: https://github.com/basecamp/fizzy/pull/3176
 
 ## CSRF and Caching
 
