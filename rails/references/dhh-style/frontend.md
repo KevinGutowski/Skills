@@ -44,8 +44,15 @@ exercise legacy attachment and embed forms rather than testing only new content.
 Use Playwright for real clipboard, keyboard, focus, and multi-browser behavior;
 reserve Rails system coverage for the persistence and rendering boundary.
 
+When adding links or otherwise transforming rendered rich text, parse the HTML
+and operate on text nodes outside existing links. Do not run regular expressions
+over serialized HTML or assign user text through `outerHTML`; both can move text
+across the markup boundary. Bump presentation-cache versions when rendering
+logic changes so previously cached HTML is not reused.
+
 Sources: https://dev.37signals.com/lexxy-1-0/ and
-https://github.com/basecamp/once-campfire/pull/224
+https://github.com/basecamp/once-campfire/pull/224 and
+https://github.com/basecamp/once-campfire/pull/364
 
 For rich-text attachments, keep visible captions and accessibility descriptions
 separate. Pass explicit `alt` text through Action Text attachments when the image

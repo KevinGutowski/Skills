@@ -9,6 +9,7 @@
 - [Current Attributes](#current-attributes)
 - [Caching](#caching)
 - [Configuration](#configuration)
+- [Security](#security)
 - [Command-Line Interface](#command-line-interface)
 - [Testing](#testing)
 - [Event Tracking](#event-tracking)
@@ -266,13 +267,24 @@ production:
 adapter = ENV.fetch("DATABASE_ADAPTER", "sqlite3")
 ```
 
-**CSP extensible via ENV:**
-```ruby
-config.content_security_policy do |policy|
-  policy.default_src :self
-  policy.script_src :self, *ENV.fetch("CSP_SCRIPT_SRC", "").split(",")
-end
-```
+## Security
+
+When user uploads share the application's origin, `script-src 'self'` is too
+broad: a response served from an upload URL with a JavaScript content type can
+become an allowed script. Restrict scripts to the actual asset directory (and
+the configured asset host's asset path), rather than trusting the whole origin.
+
+Allow fixed inline importmap scripts by content hash when cached HTML must stay
+reusable. Those hashes change at deploy time; a per-request nonce invalidates
+otherwise reusable full-page and fragment caches.
+
+Treat file delivery as part of the boundary too. At read time, serve anything
+outside a deliberate media/PDF/plain-text allowlist as
+`application/octet-stream`, so old signed URLs and misleading MIME types cannot
+turn an upload into executable script. Test cached responses, relative URL
+roots, asset-host variants, proxy headers, and JavaScript MIME aliases.
+
+Source: https://github.com/basecamp/once-campfire/pull/365
 
 ## Command-Line Interface
 

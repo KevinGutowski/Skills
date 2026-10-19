@@ -11,6 +11,7 @@ Use this map when updating Rails performance guidance.
 - Rack: https://github.com/rack/rack
 - Rails performance-related docs and changelogs: https://guides.rubyonrails.org/
 - 37signals production engineering: https://dev.37signals.com/
+- 37signals structured Docker log ingestion: https://dev.37signals.com/parsing-json-docker-logs-with-opentelemetry-collector/
 
 ## Discovery Sources
 

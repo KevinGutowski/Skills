@@ -258,6 +258,21 @@ config.logger = Logger.new(STDOUT)
 config.log_level = :warn
 ```
 
+Emit one structured JSON record per request to stdout, with fields such as
+controller, status, and duration. When Docker's `json-file` driver and an
+OpenTelemetry filelog receiver sit between Rails and the log store, process the
+records in this order: unwrap Docker's outer JSON, deliberately route or drop
+plain-text noise, recombine chunks from the same log file until the terminating
+newline, then parse the application's inner JSON.
+
+Do not infer completion from a closing brace: Docker can split between `}` and
+the newline. Test the collector config with that exact boundary and with records
+larger than its default recombination limit. Pass malformed records through for
+diagnosis and alert on parser errors; silently dropping them hides observability
+failures.
+
+Source: https://dev.37signals.com/parsing-json-docker-logs-with-opentelemetry-collector/
+
 ## The Easy Mode Stack
 
 The recommended default stack for most Rails applications:
