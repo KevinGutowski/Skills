@@ -50,9 +50,16 @@ over serialized HTML or assign user text through `outerHTML`; both can move text
 across the markup boundary. Bump presentation-cache versions when rendering
 logic changes so previously cached HTML is not reused.
 
+Extension allowlists need a non-overridable safety floor. Even when an extension
+may add tags or attributes, always reject event handlers, `srcdoc`, page-acting
+elements such as `base` and `meta`, and other attributes that fetch or apply
+markup. Client-side sanitization protects the editor; Action Text must sanitize
+again on server rendering with its own allowlist. Test both boundaries.
+
 Sources: https://dev.37signals.com/lexxy-1-0/ and
 https://github.com/basecamp/once-campfire/pull/224 and
-https://github.com/basecamp/once-campfire/pull/364
+https://github.com/basecamp/once-campfire/pull/364 and
+https://github.com/basecamp/lexxy/pull/1321
 
 For rich-text attachments, keep visible captions and accessibility descriptions
 separate. Pass explicit `alt` text through Action Text attachments when the image

@@ -273,6 +273,14 @@ failures.
 
 Source: https://dev.37signals.com/parsing-json-docker-logs-with-opentelemetry-collector/
 
+Treat presigned URL signatures as credentials. Filter them from redirect
+locations, structured request records, and Active Storage's own generated-URL
+events. Do not assume `filter_parameters` reaches every notification payload;
+verify each logging sink with a real presigned URL and assert that the logged URL
+keeps useful non-secret fields while replacing the signature.
+
+Source: https://github.com/basecamp/fizzy/pull/3243
+
 ## The Easy Mode Stack
 
 The recommended default stack for most Rails applications:

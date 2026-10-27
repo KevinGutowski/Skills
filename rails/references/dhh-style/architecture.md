@@ -102,6 +102,22 @@ module Authentication
 end
 ```
 
+Treat a password change as a revocation boundary, not just a credential update.
+Require the current password for an interactive change, delete every existing
+session, bind transfer/sign-in links to the password state, and issue the
+changing browser a new session rather than preserving its old token.
+
+Close authentication races too: when creating a session, verify inside the
+write transaction that the password digest is still the one that was checked,
+reading past the query cache. Revoke or explicitly reauthorize long-lived device
+capabilities such as push subscriptions. Disconnect live Action Cable clients
+after commit, and periodically revalidate each open connection's session so a
+connection that raced the disconnect cannot remain authorized indefinitely.
+
+Sources: https://github.com/basecamp/once-campfire/pull/371,
+https://github.com/basecamp/once-campfire/pull/375, and
+https://github.com/basecamp/once-campfire/pull/376
+
 ## Background Jobs
 
 Jobs are shallow wrappers calling model methods:
@@ -269,6 +285,15 @@ adapter = ENV.fetch("DATABASE_ADAPTER", "sqlite3")
 
 ## Security
 
+Use a JSON-only serializer for signed and encrypted Rails messages when legacy
+compatibility is no longer required. A Marshal fallback expands possession of
+`secret_key_base` into a deserialization/RCE risk. During an upgrade, subscribe
+to `message_serializer_fallback.active_support`; switch only after confirming
+that no live signed IDs, GlobalIDs, Active Storage keys, or other messages still
+arrive in the old format.
+
+Source: https://github.com/rails/rails/pull/59156
+
 When user uploads share the application's origin, `script-src 'self'` is too
 broad: a response served from an upload URL with a JavaScript content type can
 become an allowed script. Restrict scripts to the actual asset directory (and
@@ -285,6 +310,14 @@ turn an upload into executable script. Test cached responses, relative URL
 roots, asset-host variants, proxy headers, and JavaScript MIME aliases.
 
 Source: https://github.com/basecamp/once-campfire/pull/365
+
+Sign browser-facing direct-upload URLs with a separate write-only storage
+credential restricted to the exact upload operation. Keep server-side reads,
+listing, composition, and deletion on the primary credential, and fail boot or
+deployment when the restricted signer is missing rather than silently falling
+back to broader authority.
+
+Source: https://github.com/basecamp/fizzy/pull/3215
 
 ## Command-Line Interface
 

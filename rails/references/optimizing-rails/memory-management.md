@@ -193,7 +193,11 @@ ObjectSpace.each_object
 
 ## GC Tuning
 
-**In general, don't tune GC in Ruby 2.3+.** The defaults are good. Only tune if profiling shows GC is a specific bottleneck.
+**In general, don't tune GC in Ruby 2.3+.** The defaults are good. Only tune
+if profiling shows GC is a specific bottleneck. Treat GC environment overrides
+as runtime-version-specific: remove or re-baseline them on every Ruby upgrade,
+canary the defaults first, and compare RSS, GC time, and tail latency before
+restoring any tuning.
 
 Key `GC.stat` values to monitor:
 - `minor_gc_count` / `major_gc_count` — how often GC runs
@@ -208,4 +212,10 @@ after = GC.count
 puts "GC ran #{after - before} times"
 ```
 
-If you must tune, the most impactful variable is `RUBY_GC_HEAP_INIT_SLOTS` (pre-allocate heap space to reduce early GC churn). Reset all GC variables when upgrading Ruby versions.
+If you must tune, the most impactful variable is `RUBY_GC_HEAP_INIT_SLOTS`
+(pre-allocate heap space to reduce early GC churn). For job diagnostics, record
+process RSS and `GC.stat` totals plus deltas around each job. Under concurrent
+workers those deltas are process-wide, so use them to find suspicious job
+classes, then isolate and profile candidates before assigning causality.
+
+Source: https://github.com/basecamp/fizzy/pull/3238
