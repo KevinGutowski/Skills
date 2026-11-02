@@ -49,3 +49,4 @@ Checker: `python3 -B scripts/check_skill_smoke_tests.py`
 | S38 | `write-clear-prose` | Line edit this essay for clarity, rhythm, structure, and plain language while preserving the author's voice. | Long-form prose. |
 | S39 | `x-post-reader` | Read this public x.com status URL and summarize the tweet plus the author's recent related posts. | Public X post reader. |
 | S40 | `interface-review` | Run a full, read-only audit of this checkout flow across accessibility, layout, copy, typography, color, performance, and polish, with evidence and one verdict. | Holistic interface review, not a build or one-domain critique. |
+| S41 | `uikit` | Our UICollectionView chat screen jumps when older messages load and loses its bottom pin on new ones; fix the diffable updates and keep text selectable. | UIKit implementation; SwiftUI → `swiftui`, Apple design → `apple-design`. |

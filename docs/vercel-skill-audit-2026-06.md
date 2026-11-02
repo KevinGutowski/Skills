@@ -32,6 +32,7 @@ Legend:
 | `web-design` | P2 | Router to many web references. | Source map and coverage gaps added for browser/API drift, a11y fixtures, motion checks, forms, and social safe zones. | Web form/a11y/type probes. |
 | `apple-design` | P2 | Router to many Apple references. | Source map and coverage gaps added; current HIG remains the tie-breaker before promoting new Apple rules. | HIG lookup probe; SwiftUI engineering control. |
 | `swiftui` | P2 | Short router to many references. | Description trimmed; source map and coverage gaps added for API freshness and unsourced references. | SwiftUI layout/animation/concurrency probes. |
+| `uikit` | P2 | Router with core rules + seven routed references (added 2026-11). | Source map and coverage gaps added at creation; single external source flagged; SDK freshness gaps recorded. | UIKit list/scroll probe; SwiftUI and apple-design controls. |
 | `rails` | P2 | Short router to many references. | Source map and coverage gaps added; school routing remains explicit and project conventions gate new rules. | Rails school selection probes. |
 | `research-cataloging` | P2 | Short router, many references. | Description trimmed; source map and coverage gaps added for archive/source-sweep standards. | Source-sweep prompt; translation/OCR controls. |
 | `data-viz` | P2 | Short router. | Source map and coverage gaps added for chart integrity, editorial interaction, dashboards, and deterministic checks. | Chart-selection and critique probes. |
