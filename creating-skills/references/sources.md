@@ -13,6 +13,7 @@ This source map records where the skill-authoring guidance comes from.
 - `converting-books-to-skills.md`, `converting-codebases-to-skills.md`, and `converting-visual-references-to-skills.md` encode source-to-skill conversion methods from this corpus.
 - `docs/vercel-product-design-overhaul-2026-06.md` records the Vercel-derived standard: skill body + routed evidence + coverage gaps + deterministic checks + human review.
 - House rule 16 (register skills at work-creating surfaces): Matt Pocock's `/wayfinder` planning skill (https://github.com/mattpocock/skills, 2026) and Will Ness's fork routing `grilling-frontend-prototyping` from wayfinder's ticket types (https://github.com/will-ness-ai/skills), endorsed in https://x.com/mattpocockuk/status/2077743625639714850.
+- House rule 17 and `references/measuring-skill-effect.md`: Fernando Olivares, uikit-skill (MIT, Oct 2026) — upstream docs: experiment-plan, thinning-plan, v0.9-adversarial-review, uikit-chat-list-sources (https://github.com/notolivaresf/uikit-skill). Single-author benchmark of one UIKit chat task; treat numbers as one task's evidence, the method as general.
 
 ## Promotion rule
 

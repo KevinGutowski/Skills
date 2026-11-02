@@ -96,6 +96,7 @@ Treat external skill repositories as source material, not installable truth.
 - Fold only durable, locally useful lessons into existing skills.
 - Park single-source doctrine until corroborated by a primary source or a second independent source.
 - Log read-skip decisions so another agent does not rescreen the same low-value material.
+- **Apple first-party skills ship with Xcode (27+); leverage them when available.** Apple-platform skills here (`uikit`, `swiftui`, `apple-design`) tell agents to check for `xcrun` and use the exported skills at task time. For intake, export with `xcrun agent skills export` when Xcode is installed; otherwise use a public mirror of the export (e.g. https://github.com/mariusfanu/xcode-skills, Xcode 27.2 27B52, with per-beta rename history). Treat them as a first-party source that outranks third-party Apple-platform skills when they disagree, record the Xcode build you read, and fold lessons in this library's own words — the content is Apple-authored, so do not copy it wholesale. Re-check on each Xcode release: skills get renamed, split and replaced (27.1 replaced `uikit-app-modernization` with `app-resizability`).
 
 ## Book Source Maps
 
