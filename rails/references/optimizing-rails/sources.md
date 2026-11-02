@@ -10,6 +10,7 @@ Use this map when updating Rails performance guidance.
 - Puma: https://github.com/puma/puma
 - Rack: https://github.com/rack/rack
 - Rails performance-related docs and changelogs: https://guides.rubyonrails.org/
+- Rails connection-pool checkout-wait instrumentation: https://github.com/rails/rails/pull/59308
 - 37signals production engineering: https://dev.37signals.com/
 - 37signals structured Docker log ingestion: https://dev.37signals.com/parsing-json-docker-logs-with-opentelemetry-collector/
 

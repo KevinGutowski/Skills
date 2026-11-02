@@ -172,6 +172,19 @@ production:
 
 Example: 3 workers × 5 threads = 15 connections minimum across your app. Make sure your database supports this many concurrent connections.
 
+Treat that formula as a floor, not the whole budget. Background-job threads,
+asynchronous queries, and other processes that use the same database each need
+pool capacity too.
+
+On Rails versions that expose `checkout_wait.active_record`, export the event's
+duration and timeout/exception data. It fires only when a full pool makes a
+checkout block, so rising wait time reveals saturation before the first
+`ActiveRecord::ConnectionTimeoutError`. Use that signal to distinguish an
+undersized pool from long-held connections or slow queries before increasing
+the pool and consuming more database connections.
+
+Source: https://github.com/rails/rails/pull/59308
+
 ### Redis connections
 
 Similar math applies. Each Sidekiq thread needs a Redis connection.
