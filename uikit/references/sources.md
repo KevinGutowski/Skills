@@ -11,6 +11,10 @@ Provenance map for the `uikit` skill.
 
 - **Apple, `app-resizability` agent skill**, bundled with Xcode 27.1+ (read from the Xcode 27.2 27B52 export mirrored at https://github.com/mariusfanu/xcode-skills, revision `047c090`; export locally with `xcrun agent skills export`). SKILL.md plus its UIScreen, orientation, scene-lifecycle, safe-area and idiom task references. Summarized, not copied, in `uikit-ios27-sdk` (Resizing migration). Where it disagrees with the primary source (`UIRequiresFullScreen` on iOS 27), Apple wins. Apple technotes it cites: TN3208 (launch screen, `ITMS-90870`), TN3192 (`UIRequiresFullScreen`).
 
+## Apple first-party iPhone Duo sources (cross-check, 2026-11-05)
+
+- HIG "Designing for iPhone Duo" (Sept 9, 2026), Technology Overview "Preparing your app for iPhone Duo", tech talks 111461–111466, and the UIKit symbol pages for `UIArrangementViewController`, `UIViewReservedRegion` / `UIView.reservedRegions(kind:options:)`, `UIHingeInteraction`, `UIBarButtonItem.AxisBehavior`, `UIBarButtonItemVisibilityPriority`, `UIVerticalBarCompressionBehavior`, `UINavigationItem.additionalOverflowItems`. Used to verify and extend the iOS 27.1 section of `uikit-ios27-sdk`; full list in `apple-design` (iphone-duo-design) sources.
+
 ## Apple sources the primary source cites for the list recipe
 
 - WWDC18 225 "A Tour of UICollectionView" — custom layouts, `prepare()` caching, batch updates.

@@ -11,6 +11,8 @@ This is a top-level provenance map for the Apple platform design skill. It does 
 
 - `liquid-glass-design-system.md` is sourced from WWDC 2025 Liquid Glass sessions and related showcase sessions. Its subfolder carries the detailed source list and adoption case studies.
 - `apple-navigation-design.md`, `apple-search-design.md`, `apple-typography.md`, `apple-visual-accessibility.md`, `app-icon-design.md`, `app-intents-design.md`, and `chart-experience-design.md` each have a same-named `sources.md` in their subfolder.
+- `iphone-duo-design.md` is sourced from Apple's HIG "Designing for iPhone Duo" page, the "Preparing your app for iPhone Duo" overview and the six iPhone Duo tech talks (Sept–Oct 2026); see `iphone-duo-design/sources.md`.
+- `app-intents-design.md` gained a second-hop file, `app-intents-design/siri-ai-ios27.md`, sourced from six WWDC26 Siri/App Intents sessions (listed in `app-intents-design/sources.md`).
 - `classic-hig-principles.md` is a local historical reference. Use it for durable principles, not current component specs.
 - `ios-brand-identity.md` synthesizes local Apple/platform sources. Treat brand guidance as a decision layer and use `hig.md` or the relevant topic source for exact platform rules.
 

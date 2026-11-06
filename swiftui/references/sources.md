@@ -12,6 +12,8 @@ This is a top-level provenance map for the SwiftUI skill. It points to the sourc
 - `swiftui-lazy-stacks.md` cites its source inline: Apple WWDC 2026, session 321 ("Dive into lazy stacks and scrolling with SwiftUI"), plus named WWDC26 Group Lab / Power & Performance lab additions.
 - `swift-concurrency.md` cites its source inline: Apple WWDC 2026, Swift Group Lab (session 8001). Its own staleness note flags the in-flight evolution proposals to re-verify.
 
+- `swiftui-iphone-duo.md` cites its sources inline: Apple's iPhone Duo overview, the HIG page and tech talks 111461–111466 (full list in `apple-design` (iphone-duo-design) sources), with symbol names checked against developer.apple.com on 2026-11-05.
+
 ## References needing source refresh before rule promotion
 
 - `swiftui-identity.md` — single inline source (WWDC 2021, session 10022) plus 2026 lab additions; predates the Observation framework in places.
