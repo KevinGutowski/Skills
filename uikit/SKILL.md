@@ -40,7 +40,7 @@ Rules for UIKit code that is correct, fast and current on iOS 18 and later (note
 - [references/uikit-text-and-interaction.md](references/uikit-text-and-interaction.md) — Dynamic Type, labels, selectable text views, edit menus, links, text input, TextKit 1 vs 2; context/button/bar menus, swipe actions, drag and drop, pointer, keyboard shortcuts, gestures, haptics; accessibility; springs, property animators, transitions, Reduce Motion.
 - [references/uikit-dataflow-and-concurrency.md](references/uikit-dataflow-and-concurrency.md) — where state lives, Observation tracking and `updateProperties()`, explicit update paths; main actor, tasks and cancellation, streams, hang causes; Objective-C GCD/blocks/KVO and Swift interop annotations.
 - [references/uikit-deprecated-apis.md](references/uikit-deprecated-apis.md) — "don't write → write (since iOS N)" replacements by area; safe modernization.
-- [references/uikit-ios27-sdk.md](references/uikit-ios27-sdk.md) — moving to the iOS 27 SDK: required scene life cycle and launch screen, resizable iPhone apps, tabs/sidebars, bars, menus and drag, scene accessories, TextKit, iOS 27.1 foldables, Swift-only APIs and their Objective-C routes.
+- [references/uikit-ios27-sdk.md](references/uikit-ios27-sdk.md) — moving to the iOS 27 SDK: required scene life cycle and launch screen, resizable iPhone apps, tabs/sidebars, bars, menus and drag, scene accessories, TextKit, iOS 27.1 iPhone Duo (foldable) arrangements, reserved regions, hinge and vertical bars, Swift-only APIs and their Objective-C routes.
 
 ## Review checklist
 

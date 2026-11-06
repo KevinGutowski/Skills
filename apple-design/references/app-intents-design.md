@@ -2,7 +2,9 @@
 
 *Scope: Design App Intents and App Shortcuts across Siri, Spotlight, widgets, controls, and the Action button. Use when deciding which features to expose as intents, writing invocation phrases, structuring parameters, or choosing snippet vs Live Activity. Triggers: App Intents, App Shortcuts, invocation phrase, parameter summary, interactive snippet, Siri.*
 
-**Sources:** [app-intents-design/sources.md](app-intents-design/sources.md) — 3 Apple WWDC design sessions (2022–2025).
+**Sources:** [app-intents-design/sources.md](app-intents-design/sources.md) — 3 Apple WWDC design sessions (2022–2025) plus 6 WWDC26 Siri/App Intents sessions.
+
+**Building for the iOS 27 Siri (Siri AI)?** Read [app-intents-design/siri-ai-ios27.md](app-intents-design/siri-ai-ios27.md): app schemas and domains (Xcode enforces companion schemas), entity indexing vs queries, on-screen awareness annotations, automatic confirmation and `OwnershipProvidingEntity`, `LongRunningIntent`, stable cross-device IDs, and the `AppIntentsTesting` ladder.
 
 App Intents are units of your app's functionality the *system* can run — surfaced in Siri, Spotlight, widgets, controls, the Action button, Apple Pencil squeeze, and the Shortcuts app, available the moment the app is installed. The recurring design theme: **make it memorable, and make it readable as a sentence.**
 
@@ -39,6 +41,8 @@ App Intents are units of your app's functionality the *system* can run — surfa
 4. **Open-ended request** — for numbers/locations/strings; make the expected type obvious; prefer built-in types.
 5. **Intent confirmation** — *sparingly*, only for consequential actions (money, destructive, high-stakes). Buttons restate the action with a **verb — never "Confirm."**
 
+⚠️ *iOS 27:* for **schema intents, Siri confirms automatically** when an action has meaningful side effects and disambiguates multiple matches — don't add your own confirmation step there (see [app-intents-design/siri-ai-ios27.md](app-intents-design/siri-ai-ios27.md)). Lead with *no* custom response: Siri phrases results from your entity's display representation unless you add dialog or a snippet.
+
 ## Output: snippets and dialog
 
 - Snippets sit on a **semitranslucent material** — don't paint an opaque background; use vibrant label colors (Dark Mode handled).
@@ -54,7 +58,7 @@ Snippets now support **buttons and live-updating data**, appearing at the top of
 
 ## Opening the app (2024 update)
 
-Foregrounding is no longer a last resort — it's how people *see the result*. Two patterns: an intent that inherently opens a view (Clock → Stopwatch) conforms to **OpenIntent**; an intent that finishes with a UI change or results (Create Freeform Board → land on the board) gets the **"Open When Run" toggle (default on)**, which people can turn off when chaining intents in multi-step shortcuts.
+Foregrounding is no longer a last resort — it's how people *see the result*. Two patterns: an intent that inherently opens a view (Clock → Stopwatch) conforms to **OpenIntent**; an intent that finishes with a UI change or results (Create Freeform Board → land on the board) gets the **"Open When Run" toggle (default on)**, which people can turn off when chaining intents in multi-step shortcuts. ⚠️ *iOS 27:* schematized apps also need an open intent conforming to the **`system.open`** schema so Siri and Spotlight results land on the entity, not the main screen.
 
 ## Discoverability & ordering
 
@@ -72,6 +76,7 @@ Foregrounding is no longer a last resort — it's how people *see the result*. T
 - [ ] Snippet on system material; full dialog for voice-only; Live Activity where state is continuous?
 - [ ] Open-the-app behavior deliberate (OpenIntent vs. Open When Run)?
 - [ ] Siri Tip placed at the moment of value and dismissible?
+- [ ] iOS 27 Siri: schemas adopted where a domain fits, entities indexed or queryable, on-screen content annotated, `system.open` implemented, AppIntentsTesting coverage? (see `app-intents-design/siri-ai-ios27.md`)
 
 See `app-intents-design/patterns.md` for the worked examples (meditation app, Voice Memos phrasing, coffee-order disambiguation, flashlight toggle, Notes optional-folder).
 

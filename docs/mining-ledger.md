@@ -501,3 +501,13 @@ Fold map (extend only):
 Already covered, not re-folded: concentric radius, optical alignment, icon-side padding, layered shadows, image outlines, icon stroke weight, `transform-origin` from trigger, subtle/blurred exits, `transition: all`, press scale, icon-swap values, transitions vs keyframes, stagger, no page-load animation, instant hover, WOFF2, tabular nums, measure (Rutter's 45–75 stands beside Krehel's 60–75), `text-wrap`, font smoothing, smart punctuation, native elements, positive `tabindex`, alt text, 24px target floor, `@media (hover: hover)`, reduced motion, color-alone, skip link, 2× group spacing, button verbs, confirmation labels, sentence case, empty states.
 
 Skipped: the page's pricing/subscribe section and paywalled issues. Formatting note: the page's one-sentence rule + bolded decision phrase + Not recommended/Recommended live pair + "show margin/padding/values" overlay is already mirrored by the library's Before/After and Common Mistakes tables; no restructuring.
+
+## 2026-11-05 — Apple Developer iOS freshness pass (iPhone Duo, Siri AI / App Intents)
+
+Ticket-driven sweep of the Apple Developer YouTube videos and streams plus developer.apple.com. Full manifest: `docs/apple-developer-ios-source-mining-2026-11.md`.
+
+- New `apple-design` iphone-duo-design (+ sources), from the HIG page, the Technology Overview and tech talks 111461–111466.
+- New `swiftui` swiftui-iphone-duo, covering SwiftUI implementation and the AVFoundation/AVKit camera-direction changes.
+- `uikit` uikit-ios27-sdk: the iOS 27.1 section was verified and extended, and the Objective-C table corrected.
+- `apple-design` app-intents-design: new second-hop `siri-ai-ios27.md` from WWDC26 240/343/344/345/295/310, plus inline iOS 27 corrections.
+- Parked: the Group Lab livestreams (no transcripts), the macOS touch and Live Activities talks, security and App Store Connect talks, and the Sept "Meet with Apple" SwiftUI series.

@@ -91,7 +91,7 @@ Related plain-HTML hub pages: **/design/get-started/** (Apple's curated learning
 
 **Technologies:** airplay, always-on, app-clips, apple-pay, augmented-reality, carekit, carplay, game-center, generative-ai, healthkit, homekit, icloud, id-verifier, imessage-apps-and-stickers, in-app-purchase, live-photos, mac-catalyst, machine-learning, maps, nfc, photo-editing, researchkit, shareplay, shazamkit, sign-in-with-apple, siri, tap-to-pay-on-iphone, voiceover, wallet
 
-**Platforms:** designing-for-ios, designing-for-ipados, designing-for-macos, designing-for-watchos, designing-for-tvos
+**Platforms:** designing-for-ios, designing-for-iphone-duo (new Sept 2026; talk-derived companion: [iphone-duo-design.md](iphone-duo-design.md)), designing-for-ipados, designing-for-macos, designing-for-watchos, designing-for-tvos
 
 ## When to use this vs. the talk-derived skills
 

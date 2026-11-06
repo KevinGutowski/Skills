@@ -86,6 +86,16 @@ Keep the repo's first-contact path explicit. A real agent trace showed `skill-in
 - When the install shape changes, update all three surfaces in the same PR: `AGENTS.md`, `README.md`, and `docs/agent-quickstart.md`.
 - Prefer examples that match real bundles an agent would install for a task; do not present the whole library as a default install.
 
+## Encode vs Link Out
+
+When a source has live, agent-readable docs (Apple's HIG and developer docs serve Markdown, framework API references), split the work:
+
+- **Encode in the reference:** decisions and trade-offs (when to use X vs Y), traps and corrections (what an agent gets wrong even after reading the docs), synthesis across several sources, talk-only lessons (videos are hard for agents to fetch), and checklists.
+- **Link out:** signatures, parameters, enum cases, availability, exact spec values, and code beyond a few lines. These change each SDK point release and the docs are always current.
+- **Name APIs as search terms**, not documentation: enough that the agent knows what to look up and doesn't invent a name. Mark names seen only in a talk as "talk-named."
+- **End API-heavy references with a "Look it up" list** of the doc pages to fetch.
+- Test each line: *would an agent get this wrong without it, even after reading the doc?* If not, replace it with a name and a link.
+
 ## External Skill Intake
 
 Treat external skill repositories as source material, not installable truth.

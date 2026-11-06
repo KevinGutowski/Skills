@@ -1,6 +1,6 @@
 ---
 name: swiftui
-description: "SwiftUI implementation and Apple-platform craft — view identity/state resets, layout containers, lazy stacks/scroll performance, springs/transitions/shaders, Swift 6 concurrency, gestures/hit targets, widgets, SF Symbols, app sounds. Read the body, then one named reference. Triggers: SwiftUI, @State resets, LazyVStack, scroll stutter, spring animation, Metal shader, Sendable, actor, WidgetKit, haptics."
+description: "SwiftUI implementation and Apple-platform craft — view identity/state resets, layout containers, lazy stacks/scroll performance, springs/transitions/shaders, Swift 6 concurrency, gestures/hit targets, widgets, SF Symbols, app sounds, iPhone Duo. Read the body, then one named reference. Triggers: SwiftUI, @State resets, LazyVStack, scroll stutter, spring animation, Metal shader, Sendable, actor, WidgetKit, haptics."
 ---
 
 # SwiftUI & Apple-Platform Craft
@@ -17,6 +17,6 @@ Read exactly one reference file below; each carries the full distillation for it
 
 **Language layer:** [references/swift-concurrency.md](references/swift-concurrency.md) (structured concurrency, sendability, actors, Swift 6 migration, measure-first performance).
 
-**Platform craft:** [references/touch-interaction-design.md](references/touch-interaction-design.md) (gestures, hit targets, press feel on Apple platforms — web press-feel → `design-craft`) · [references/widget-design.md](references/widget-design.md) (WidgetKit design: glanceable content, families, interactivity) · [references/sf-symbols.md](references/sf-symbols.md) (choosing, customizing, animating SF Symbols) · [references/sound-design.md](references/sound-design.md) (app sound: when to play sounds, designing them, haptic pairing).
+**Platform craft:** [references/touch-interaction-design.md](references/touch-interaction-design.md) (gestures, hit targets, press feel on Apple platforms — web press-feel → `design-craft`) · [references/widget-design.md](references/widget-design.md) (WidgetKit design: glanceable content, families, interactivity) · [references/sf-symbols.md](references/sf-symbols.md) (choosing, customizing, animating SF Symbols) · [references/sound-design.md](references/sound-design.md) (app sound: when to play sounds, designing them, haptic pairing) · [references/swiftui-iphone-duo.md](references/swiftui-iphone-duo.md) (iPhone Duo / foldable: iOS 27.1 SDK opt-in, vertical toolbars and overflow, ArrangementView, reserved regions, hinge, CameraCaptureAccessory, camera direction coordinator).
 
 **Boundary splits to respect:** UIKit code (UICollectionView, diffable data, UIViewController, UIKit traits/menus) → `uikit` — don't bring SwiftUI into a UIKit codebase to fix a UIKit problem · animation on the web → `web-design` (web-animation-design) (the default when platform is unstated) · Apple *design* guidance (navigation, typography, a11y, Liquid Glass, HIG specs) stays with `apple-design` and `apple-design` (hig) — this skill owns *implementation and platform craft*, not design doctrine.
