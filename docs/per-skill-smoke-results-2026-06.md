@@ -70,3 +70,7 @@ Added S25 for `personal-growth` and renumbered the remaining rows, bringing the 
 ## 2026-07-24 Interface-review addition
 
 Added S40 for `interface-review`, bringing the deterministic fixture to 40 prompts for 40 local skills. A fresh descriptions-only judge has not yet evaluated the new row; `interface-review/references/coverage-gaps.md` records that follow-up.
+
+## 2026-11-07 Superconductor addition
+
+Added S42 for `superconductor`, bringing the deterministic fixture to 42 prompts for 42 local skills. A fresh descriptions-only judge has not yet evaluated the new row. Controls for that follow-up: "Open my Superconductor ticket in the browser and screenshot the diff" should still route to `superconductor` (API covers diffs); "Write AGENTS.md rules for coding agents in our repo" must stay with `working-with-ai`; "Design onboarding for a developer tool's API tokens page" must stay with `devtools`.
