@@ -7,6 +7,8 @@ Run: python3 -m unittest discover -s superconductor/scripts -p 'test_*.py'
 from __future__ import annotations
 
 import contextlib
+import http.server
+import threading
 import io
 import json
 import subprocess
@@ -276,6 +278,128 @@ class CreateTests(unittest.TestCase):
         self.assertEqual([m["id"] for m in json.loads(out)["matches"]], ["T1"])
         self.assertEqual(transport.calls[0]["method"], "GET")
         self.assertIn("sort=created", transport.calls[0]["url"])
+
+
+class HardeningTests(unittest.TestCase):
+    """Regression tests for credential leaks, truncated bodies, and mistyped fields."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.desc_path = Path(self.tmp.name) / "desc.md"
+        self.desc_path.write_text("Do the thing.")
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def create_argv(self, *extra):
+        return ["create-ticket", "P1", "--description-file", str(self.desc_path),
+                "--confirm-external-write", *extra]
+
+    def test_token_with_embedded_newline_is_rejected_without_leaking(self):
+        bad = "sc_SECRETPART\nInjected: SECRETTAIL"
+        run = lambda cmd, **kw: subprocess.CompletedProcess(cmd, 0, stdout=bad + "\n", stderr="")
+        with self.assertRaises(sc_credentials.CredentialError) as ctx:
+            sc_credentials.macos_keychain(run=run)
+        self.assertNotIn("SECRET", str(ctx.exception))
+
+        # Any provider is re-validated by the client before headers are built,
+        # and the real urllib transport is never reached.
+        def must_not_send(*args):
+            raise AssertionError("request was sent")
+        client = sc_api.Client(token_provider=lambda: bad, transport=must_not_send)
+        out, err = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            code = sc_api.run(["whoami"], client=client)
+        self.assertEqual(code, sc_api.EXIT_CREDENTIAL)
+        self.assertNotIn("SECRET", out.getvalue() + err.getvalue())
+
+    def test_transport_errors_never_quote_request_data(self):
+        headers = {"Authorization": "Bearer sc_SECRET\nX: y"}  # what urllib would reject
+        with self.assertRaises(sc_api.TransportError) as ctx:
+            sc_api.urllib_transport("GET", "https://www.superconductor.com/api/v1/user", headers, None, 1)
+        self.assertNotIn("SECRET", str(ctx.exception))
+
+    def test_mistyped_fields_fail_closed(self):
+        created = dict(CREATED, id=None, url=None)
+        transport = StubTransport((201, created))
+        code, out, err = run_cli(self.create_argv(), transport)
+        self.assertEqual((code, out), (sc_api.EXIT_AMBIGUOUS, ""))
+        self.assertIn("check-create", json.loads(err)["error"]["message"])
+        self.assertEqual(len(transport.calls), 1)
+
+        page = {"data": [dict(project("P1", "x"), name=42)], "next_cursor": None}
+        code, _, err = run_cli(["resolve-project", "x"], StubTransport((200, page)))
+        self.assertEqual(code, sc_api.EXIT_DRIFT)
+        self.assertIn("wrong type", json.loads(err)["error"]["message"])
+
+        code, _, _ = run_cli(["whoami"], StubTransport((200, dict(USER, name=None))))
+        self.assertEqual(code, 0)  # documented nullable field stays accepted
+
+    def test_launch_count_mismatch_is_ambiguous_but_reports_ticket(self):
+        for argv, launches in ((self.create_argv("--launch-default"), []),
+                               (self.create_argv(), [{"profile": "default"}])):
+            transport = StubTransport((201, dict(CREATED, implementation_launches=launches)))
+            code, out, err = run_cli(argv, transport)
+            self.assertEqual((code, out), (sc_api.EXIT_AMBIGUOUS, ""))
+            error = json.loads(err)["error"]
+            self.assertEqual(error["kind"], "ambiguous_launch")
+            self.assertEqual(error["ticket"]["url"], CREATED["url"])
+            self.assertEqual(len(transport.calls), 1)
+
+
+class _TruncatingHandler(http.server.BaseHTTPRequestHandler):
+    """Promises more body bytes than it sends, so the client sees IncompleteRead."""
+
+    status = 201
+    posts = 0
+
+    def do_POST(self):
+        type(self).posts += 1
+        self.rfile.read(int(self.headers.get("Content-Length", 0)))
+        self.send_response(self.status)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", "500")
+        self.end_headers()
+        self.wfile.write(b'{"id": "trunc')
+        self.wfile.flush()
+        self.close_connection = True
+
+    def log_message(self, *args):
+        pass
+
+
+class RealUrllibBoundaryTests(unittest.TestCase):
+    def setUp(self):
+        _TruncatingHandler.posts = 0
+        self.server = http.server.HTTPServer(("127.0.0.1", 0), _TruncatingHandler)
+        self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)
+        self.thread.start()
+        self.base = f"http://127.0.0.1:{self.server.server_port}"
+        self.tmp = tempfile.TemporaryDirectory()
+        self.desc_path = Path(self.tmp.name) / "desc.md"
+        self.desc_path.write_text("Do the thing.")
+
+    def tearDown(self):
+        self.server.shutdown()
+        self.server.server_close()
+        self.tmp.cleanup()
+
+    def local_transport(self, method, url, headers, body, timeout):
+        local = url.replace(sc_api.API_BASE, self.base)
+        return sc_api.urllib_transport(method, local, headers, body, 5)
+
+    def test_truncated_bodies_are_ambiguous_after_one_post(self):
+        for status in (201, 502):
+            _TruncatingHandler.status = status
+            _TruncatingHandler.posts = 0
+            code, out, err = run_cli(["create-ticket", "P1", "--description-file", str(self.desc_path),
+                                      "--confirm-external-write"], self.local_transport)
+            self.assertEqual((code, out), (sc_api.EXIT_AMBIGUOUS, ""), status)
+            self.assertEqual(_TruncatingHandler.posts, 1)
+            error = json.loads(err)["error"]
+            self.assertEqual(error["kind"], "ambiguous_create")
+            self.assertIn("check-create", error["message"])
+            self.assertNotIn(FAKE_TOKEN, err)
 
 
 class RedirectTests(unittest.TestCase):

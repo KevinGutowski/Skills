@@ -9,7 +9,7 @@ Kept locally (stable workflow and safety):
 - Credential storage and lookup rules (`scripts/sc_credentials.py`).
 - The one-POST, no-retry create rule and the ambiguous-outcome check.
 - Exact-name project resolution that refuses to guess.
-- The minimum `required` fields the helper reads, per response type (`REQUIRED` in `sc_api.py`), so drift fails loudly.
+- The fields the helper reads and their JSON types, nullable where the OpenAPI says so (`FIELDS`/`OPTIONAL_FIELDS` in `sc_api.py`), so missing or retyped fields fail loudly.
 
 Linked out (read live when needed): every other field, enum values, query parameters beyond the ones the helper exposes, limits, attachment upload, and any new endpoint.
 
@@ -22,7 +22,7 @@ curl -sS https://www.superconductor.com/docs/api/openapi.yaml -o /tmp/sc-openapi
 ```
 
 1. Compare the `paths` used in `sc_api.py` with the live `paths` (method, path, documented status codes).
-2. Compare each `REQUIRED` tuple with the live schema's `required` list. Remove fields the helper no longer reads; never add fields the live schema does not define.
+2. Compare each `FIELDS` entry with the live schema's `required` list and property types (including `null`). Remove fields the helper no longer reads; never add fields the live schema does not define.
 3. Re-check the docs' Troubleshooting section for 401/403/404/422 guidance and update `HINTS`.
 4. Update the "last verified" date in `SKILL.md`, this file, and `sc_api.py` together.
 5. Run the offline tests.
@@ -44,4 +44,4 @@ No live token or network is required; HTTP and Keychain access are stubbed:
 python3 -B -m unittest discover -s superconductor/scripts -p 'test_*.py'
 ```
 
-Coverage: missing credential fails before any request and without leaking data; reads return structured JSON; create sends the intended project/title/description and optional default launch exactly once; network ambiguity, 5xx, and unreadable 201 do not retry; schema drift, non-JSON, and redirects fail closed; ambiguous project names are refused.
+Coverage: missing or malformed credential (e.g. an embedded newline) fails before any request and without leaking data; reads return structured JSON; create sends the intended project/title/description and optional default launch exactly once; network ambiguity, 5xx, truncated bodies at the real urllib boundary (local test server), unreadable or mistyped 201, and a launch-count mismatch do not retry; missing or mistyped fields, non-JSON, and redirects fail closed; ambiguous project names are refused.

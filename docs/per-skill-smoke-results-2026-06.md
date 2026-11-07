@@ -73,4 +73,17 @@ Added S40 for `interface-review`, bringing the deterministic fixture to 40 promp
 
 ## 2026-11-07 Superconductor addition
 
-Added S42 for `superconductor`, bringing the deterministic fixture to 42 prompts for 42 local skills. A fresh descriptions-only judge has not yet evaluated the new row. Controls for that follow-up: "Open my Superconductor ticket in the browser and screenshot the diff" should still route to `superconductor` (API covers diffs); "Write AGENTS.md rules for coding agents in our repo" must stay with `working-with-ai`; "Design onboarding for a developer tool's API tokens page" must stay with `devtools`.
+Added S42 for `superconductor`, bringing the deterministic fixture to 42 prompts for 42 local skills. `python3 -B scripts/check_skill_smoke_tests.py` passes.
+
+Fresh descriptions-only judge (new subagent, no forked context) ran `python3 -B scripts/build_skill_smoke_packet.py` and used only that packet. Result: pass, 8/8 (4 target, 4 controls).
+
+| Probe | Expected first skill | Judge first skill | Second skill if needed | Result | Prompt summary |
+| --- | --- | --- | --- | --- | --- |
+| SC1 (S42) | `superconductor` | `superconductor` |  | Pass | Newest tickets/chats, implementation diff, file ticket with default launch. |
+| SC2 | `superconductor` | `superconductor` |  | Pass | superconductor.com implementation URL: status and PR. |
+| SC3 | `superconductor` | `superconductor` |  | Pass | Find a brainstorming chat and summarize the agreed plan. |
+| SC4 | `superconductor` | `superconductor` |  | Pass | "Open in the browser and screenshot the diff"; judge routed to the API skill and noted screenshots are uncovered. |
+| SC5 (control) | `working-with-ai` | `working-with-ai` |  | Pass | AGENTS.md rules and multi-agent review loop. |
+| SC6 (control) | `devtools` | `devtools` | `ux-writing` | Pass | Devtool onboarding and token settings page design. |
+| SC7 (control) | `x-post-reader` | `x-post-reader` |  | Pass | Public x.com status URL. |
+| SC8 (control) | none | none |  | Pass | Create a Linear issue; no installed skill should claim it. |

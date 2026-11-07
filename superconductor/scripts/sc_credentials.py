@@ -78,13 +78,24 @@ def macos_keychain(run: Callable[..., subprocess.CompletedProcess] = subprocess.
     token = result.stdout.strip()
     if not token:
         raise CredentialError(MACOS_SETUP)
-    if not token.startswith(TOKEN_PREFIX):
-        raise CredentialError(
-            f"The Keychain item '{KEYCHAIN_SERVICE}' does not look like a Superconductor "
-            f"token (expected prefix '{TOKEN_PREFIX}'). Replace it with step 2 below.\n\n"
-            + MACOS_SETUP
-        )
-    return token
+    return validate_token(token, f"The Keychain item '{KEYCHAIN_SERVICE}'", MACOS_SETUP)
+
+
+def validate_token(token: str, source: str, setup: str = "") -> str:
+    """Reject values that are not a single printable header-safe token.
+
+    Embedded newlines/control characters or spaces would otherwise make the
+    HTTP library raise an error that quotes the header value. Messages here
+    never include the value itself.
+    """
+    if not isinstance(token, str) or not token.startswith(TOKEN_PREFIX):
+        problem = f"does not look like a Superconductor token (expected prefix '{TOKEN_PREFIX}')"
+    elif not (token.isascii() and token.isprintable()) or any(ch.isspace() for ch in token):
+        problem = "contains whitespace or control characters"
+    else:
+        return token
+    message = f"{source} {problem}. Replace it with a freshly created token."
+    raise CredentialError(message + (f"\n\n{setup}" if setup else ""))
 
 
 ADAPTERS: dict[str, Callable[[], str]] = {
@@ -101,4 +112,5 @@ def get_token(platform: str | None = None) -> str:
             "Supported: macOS login Keychain. Add an adapter in sc_credentials.py "
             "rather than putting a token in files, env dumps, or command arguments."
         )
-    return adapter()
+    # Re-validate whatever an adapter returns so new adapters get the same guard.
+    return validate_token(adapter(), f"The {platform} credential")

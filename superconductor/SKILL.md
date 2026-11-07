@@ -70,7 +70,7 @@ Reads may run whenever the task needs them. Creating a ticket is an external wri
 
    `--title` is optional (Superconductor writes one if omitted). `--launch-default` starts one implementation with the user's default agent profile.
 3. Report the ticket `url`, `id`/`friendly_id`, and each `implementation_launches` entry. `launched: false` with a `launch_error` means the ticket exists but no agent started; tell the user to check agent credentials and launch from the ticket. Never report headers or credentials.
-4. Exit 5 means the outcome is **ambiguous** (timeout, network error, 5xx, undocumented status, unreadable 201). Do not retry. Run `check-create PROJECT --title "Title" --description-file /tmp/sc-ticket.md` (read-only; compares the newest tickets) and report what you find. Only consider another POST after confirming no match and getting the user's go-ahead.
+4. Exit 5 means the outcome is **ambiguous** (timeout, network error, truncated response, 5xx, undocumented status, unreadable or mistyped 201). Do not retry. Kind `ambiguous_launch` means the ticket exists (its URL is in the error) but the launch result doesn't match the request: report the URL and have the user check the ticket; never recreate it. Run `check-create PROJECT --title "Title" --description-file /tmp/sc-ticket.md` (read-only; compares the newest tickets) and report what you find. Only consider another POST after confirming no match and getting the user's go-ahead.
 
 ## Errors
 

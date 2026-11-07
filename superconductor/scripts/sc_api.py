@@ -31,7 +31,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from sc_credentials import CredentialError, get_token  # noqa: E402
+from sc_credentials import CredentialError, get_token, validate_token  # noqa: E402
 
 API_BASE = "https://www.superconductor.com/api/v1"
 DOCS_URL = "https://www.superconductor.com/docs/api"
@@ -44,23 +44,40 @@ EXIT_CREDENTIAL = 3
 EXIT_DRIFT = 4
 EXIT_AMBIGUOUS = 5
 
-# Fields this helper reads. Verified against OpenAPI `required` lists on 2026-11-06.
-REQUIRED: dict[str, tuple[str, ...]] = {
-    "User": ("id", "name", "email"),
-    "Project": ("id", "name", "url", "created_at", "workspace"),
-    "Workspace": ("id", "name"),
-    "Ticket": ("id", "friendly_id", "url", "title", "status", "description",
-               "created_at", "last_activity_at", "creator"),
-    "Chat": ("id", "url", "title", "status", "profile_name", "model",
-             "created_at", "last_activity_at", "creator"),
-    "Message": ("id", "created_at", "author", "text"),
-    "TicketImplementation": ("id", "friendly_id", "url", "status", "created_at",
-                             "creator", "pull_requests", "profile_name", "model", "ticket"),
-    "Diff": ("repositories",),
-    "RepositoryDiff": ("name", "merge_base", "diff", "error"),
-    "CreatedTicket": ("id", "friendly_id", "url", "title", "status",
-                      "implementation_launches"),
-    "ImplementationLaunch": ("profile",),
+# Fields this helper reads, with the JSON types it accepts. Verified against the
+# OpenAPI `required` lists and property types on 2026-11-06. Nullable fields are
+# nullable in the OpenAPI too; do not loosen a type without checking the live doc.
+STR, STR_OR_NULL, LIST, OBJ, OBJ_OR_NULL = "string", "string|null", "array", "object", "object|null"
+FIELDS: dict[str, dict[str, str]] = {
+    "User": {"id": STR, "name": STR_OR_NULL, "email": STR},
+    "Project": {"id": STR, "name": STR_OR_NULL, "url": STR, "created_at": STR, "workspace": OBJ},
+    "Workspace": {"id": STR, "name": STR},
+    "Ticket": {"id": STR, "friendly_id": STR, "url": STR, "title": STR_OR_NULL, "status": STR,
+               "description": STR_OR_NULL, "created_at": STR, "last_activity_at": STR,
+               "creator": OBJ_OR_NULL},
+    "Chat": {"id": STR, "url": STR, "title": STR_OR_NULL, "status": STR, "profile_name": STR_OR_NULL,
+             "model": STR_OR_NULL, "created_at": STR, "last_activity_at": STR, "creator": OBJ_OR_NULL},
+    "Message": {"id": STR, "created_at": STR, "author": OBJ, "text": STR_OR_NULL},
+    "TicketImplementation": {"id": STR, "friendly_id": STR, "url": STR, "status": STR,
+                             "created_at": STR, "creator": OBJ_OR_NULL, "pull_requests": LIST,
+                             "profile_name": STR_OR_NULL, "model": STR_OR_NULL, "ticket": OBJ},
+    "Diff": {"repositories": LIST},
+    "RepositoryDiff": {"name": STR, "merge_base": STR_OR_NULL, "diff": STR_OR_NULL, "error": STR_OR_NULL},
+    "CreatedTicket": {"id": STR, "friendly_id": STR, "url": STR, "title": STR_OR_NULL, "status": STR,
+                      "implementation_launches": LIST},
+    "ImplementationLaunch": {"profile": STR},
+}
+# Optional fields: type-checked only when present.
+OPTIONAL_FIELDS: dict[str, dict[str, str]] = {
+    "Ticket": {"implementations": LIST},
+    "ImplementationLaunch": {"launch_error": STR},
+}
+_TYPE_CHECKS: dict[str, Callable[[Any], bool]] = {
+    STR: lambda v: isinstance(v, str),
+    STR_OR_NULL: lambda v: v is None or isinstance(v, str),
+    LIST: lambda v: isinstance(v, list),
+    OBJ: lambda v: isinstance(v, dict),
+    OBJ_OR_NULL: lambda v: v is None or isinstance(v, dict),
 }
 
 HINTS = {
@@ -104,6 +121,19 @@ class TransportError(Exception):
     """Network-level failure: no HTTP status was received."""
 
 
+def _describe(exc: BaseException) -> str:
+    # Only network-level errors carry a safe, useful message. Anything else
+    # (e.g. ValueError from header validation) may quote request data, so it
+    # is reported by type name only.
+    if isinstance(exc, urllib.error.URLError):
+        reason = exc.reason
+        detail = str(reason) if isinstance(reason, (str, OSError)) else type(reason).__name__
+        return f"URLError: {detail}"
+    if isinstance(exc, OSError):
+        return f"{type(exc).__name__}: {exc}"
+    return type(exc).__name__
+
+
 class _NoRedirect(urllib.request.HTTPRedirectHandler):
     # Never follow redirects: they could forward the Authorization header to
     # another host or turn a POST into a GET. Surface them as statuses instead.
@@ -113,16 +143,29 @@ class _NoRedirect(urllib.request.HTTPRedirectHandler):
 
 def urllib_transport(method: str, url: str, headers: dict, body: bytes | None,
                      timeout: float) -> tuple[int, bytes]:
+    """Return (status, body). Raise TransportError when no complete response was received."""
     request = urllib.request.Request(url, data=body, method=method, headers=headers)
     opener = urllib.request.build_opener(_NoRedirect())
     try:
-        with opener.open(request, timeout=timeout) as response:
-            return response.status, response.read()
+        response = opener.open(request, timeout=timeout)
     except urllib.error.HTTPError as exc:
-        return exc.code, exc.read() or b""
-    except (urllib.error.URLError, TimeoutError, OSError) as exc:
-        reason = getattr(exc, "reason", exc)
-        raise TransportError(f"{type(exc).__name__}: {reason}") from None
+        # The status is known; an unreadable error body only loses the details.
+        try:
+            raw = exc.read() or b""
+        except Exception:  # noqa: BLE001 - any read failure, e.g. http.client.IncompleteRead
+            raw = b""
+        finally:
+            exc.close()
+        return exc.code, raw
+    except Exception as exc:  # noqa: BLE001 - never let raw library errors escape
+        raise TransportError(_describe(exc)) from None
+    status = response.status
+    try:
+        with response:
+            return status, response.read()
+    except Exception as exc:  # noqa: BLE001 - a truncated body is not a usable response
+        raise TransportError(f"status {status} received but the body was unreadable "
+                             f"({_describe(exc)})") from None
 
 
 def clean_id(value: str, label: str) -> str:
@@ -144,11 +187,17 @@ def check_shape(obj: Any, kind: str, where: str) -> None:
     if not isinstance(obj, dict):
         raise SchemaDrift("schema_drift", f"{where}: expected a {kind} object.",
                           docs=OPENAPI_URL, last_verified=LAST_VERIFIED)
-    missing = [key for key in REQUIRED[kind] if key not in obj]
-    if missing:
+    missing = [key for key in FIELDS[kind] if key not in obj]
+    wrong = [f"{key} (expected {expected}, got {type(obj[key]).__name__})"
+             for fields in (FIELDS[kind], OPTIONAL_FIELDS.get(kind, {}))
+             for key, expected in fields.items()
+             if key in obj and not _TYPE_CHECKS[expected](obj[key])]
+    if missing or wrong:
+        problems = "; ".join(filter(None, [f"missing {missing}" if missing else "",
+                                           f"wrong type {wrong}" if wrong else ""]))
         raise SchemaDrift(
             "schema_drift",
-            f"{where}: {kind} is missing {missing}. The API may have changed; re-read the "
+            f"{where}: {kind} has {problems}. The API may have changed; re-read the "
             "live OpenAPI before relying on this helper.",
             docs=OPENAPI_URL, last_verified=LAST_VERIFIED,
         )
@@ -187,7 +236,9 @@ class Client:
 
     def _headers(self, has_body: bool) -> dict:
         if self._token is None:
-            self._token = self._token_provider()
+            # Guard every provider: a newline or control character would make the
+            # HTTP library raise an error that quotes the Authorization header.
+            self._token = validate_token(self._token_provider(), "The credential")
         headers = {
             "Authorization": f"Bearer {self._token}",
             "Accept": "application/json",
@@ -375,8 +426,6 @@ class Client:
         try:
             check_shape(created, "CreatedTicket", f"POST {path}")
             launches = created["implementation_launches"]
-            if not isinstance(launches, list):
-                raise SchemaDrift("schema_drift", "`implementation_launches` is not a list.")
             for index, launch in enumerate(launches):
                 check_shape(launch, "ImplementationLaunch", f"POST {path} implementation_launches[{index}]")
         except SchemaDrift as exc:
@@ -386,9 +435,20 @@ class Client:
                 "run `check-create` to find the ticket.",
                 docs=OPENAPI_URL,
             ) from None
+        ticket_info = {k: created[k] for k in ("id", "friendly_id", "url", "title", "status")}
+        expected_launches = 1 if launch_default else 0
+        if len(launches) != expected_launches:
+            raise AmbiguousOutcome(
+                "ambiguous_launch",
+                f"The ticket was created, but the response lists {len(launches)} implementation "
+                f"launch(es) where {expected_launches} was requested, so the launch outcome is "
+                "unknown. Do NOT retry the create; check the ticket in Superconductor and re-read "
+                "the live docs.",
+                ticket=ticket_info, docs=DOCS_URL,
+            )
         return {
             "created": True,
-            "ticket": {k: created[k] for k in ("id", "friendly_id", "url", "title", "status")},
+            "ticket": ticket_info,
             "implementation_requested": launch_default,
             "implementation_launches": [
                 {"profile": launch["profile"],
