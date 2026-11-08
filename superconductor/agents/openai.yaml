@@ -1,0 +1,4 @@
+interface:
+  display_name: "Superconductor"
+  short_description: "Read and create Superconductor tickets via the API"
+  default_prompt: "Use $superconductor to list my Superconductor projects and summarize the newest tickets and chats in the one I name."

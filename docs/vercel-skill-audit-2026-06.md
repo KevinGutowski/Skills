@@ -53,6 +53,7 @@ Legend:
 | `learning-experience-design` | P2 | Source-derived body; no references. | Source map and coverage gaps added for artifacts, measurement, AI learning, org adoption, and accessibility. | Course/workshop prompt. |
 | `route-planning` | P3 | Narrow utility; no references. | Leave lean; deterministic behavior belongs in scripts/tools if added. | Route-order task. |
 | `x-post-reader` | P3 | Narrow utility; no references. | Leave lean; test against current public X access when used. | Tweet URL prompt. |
+| `superconductor` | P3 | API integration utility; helper script, offline tests, one maintenance reference. | Leave lean; live docs/OpenAPI are authoritative; re-verify dated endpoint notes when responses drift. | Superconductor tickets/chats prompt; offline helper tests. |
 | `motion` | P3 | External/tool umbrella; no references. | Leave unless Motion plugin/tooling changes; verify current docs when used. | Motion task prompt. |
 | `dhh` | P3 | Persona/review skill; no references. | Leave unless source corpus is refreshed. | Diff-review prompt. |
 

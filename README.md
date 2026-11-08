@@ -105,6 +105,9 @@ Alongside it: `motion` (the Motion AI Kit umbrella — encapsulates best-practic
 ### Research & cataloging
 `research-cataloging` — one consolidated skill; its body routes to reference files: source-sweep (exhaustive coverage of bounded sources), archival-research (research bundles, OCR/transcription corpora), catalog-reconciliation-research, source-translation-workflow, image-archival. Standalone utilities: `x-post-reader` · `route-planning`.
 
+### Integrations
+`superconductor` — read Superconductor projects, tickets, implementations (status, messages, diffs), and chats, and create text tickets through the official API with a per-device macOS Keychain token. The live API docs/OpenAPI win over the skill's dated notes; ticket creation sends one request and never auto-retries.
+
 ### Developer tools as products
 `design-systems` (tokens, theming, governance/federation, adoption metrics, DS-as-AI-context, product icon systems — from 9 Config talks + Minor's Cursor icon commission) · `devtools` — one consolidated skill; its body routes to reference files: devtool-interface-design (dev-tool UI: contexts, control flow, zones, CLI UX, devtool onboarding, agent experience), developer-tool-gtm (landing pages, copy, conversion, PMF Compass), oss-strategy (OSS popularity, READMEs, maintainer survival, monetization) · `building-in-public` (audience-led indie growth: rough-beats-polished content, prototype-stage validation, company-of-one economics). Boundary: `devtools` (devtool-interface-design) makes the tool worth adopting; `devtools` (developer-tool-gtm) gets it adopted; `working-with-ai` (agentic-coding) is agents working *on your code* while devtool AX is agents as *customers of your tool*.
 
