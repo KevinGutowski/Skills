@@ -1,6 +1,6 @@
 # Rails Security + Multi-Tenancy
 
-*Scope: Secure multi-tenant Rails apps — tenant-scoped queries everywhere, SSRF defenses for user-supplied URLs, rate limiting, tenant-scoped realtime broadcasts, authorization boundaries. Use when implementing auth, tenant isolation, security-sensitive endpoints, or reviewing for cross-tenant leaks. Database-per-tenant architecture lives in dhh-style. Triggers: multi-tenant, tenant scoping, SSRF, rate limiting, cross-tenant leak, authorization boundary, current tenant.*
+*Scope: Secure multi-tenant Rails apps — tenant-scoped queries everywhere, SSRF defenses for user-supplied URLs, isolated processing for untrusted uploads, rate limiting, tenant-scoped realtime broadcasts, authorization boundaries. Use when implementing auth, tenant isolation, security-sensitive endpoints, upload processing, or reviewing for cross-tenant leaks. Database-per-tenant architecture lives in dhh-style. Triggers: multi-tenant, tenant scoping, SSRF, untrusted upload, Active Storage processing, rate limiting, cross-tenant leak, authorization boundary, current tenant.*
 
 > Vendored from [marckohlbrugge/37signals-skills](https://github.com/marckohlbrugge/37signals-skills) @ c58e7d5 (skill text MIT; Fizzy code excerpts under the [O'Saasy license](https://osaasy.dev)). LLM-extracted from 265 Fizzy PRs + Campfire — verify unusual claims against the upstream guide's per-PR links.
 
@@ -11,9 +11,11 @@ Use for security-sensitive Rails work and tenant-boundary reviews. Patterns from
 - Core Rules
 - Tenancy Architecture (path-based, Fizzy-style)
 - Scoped Lookups (defense in depth)
+- Untrusted File Processing
 - Authentication Hardening
 - SSRF Defense Baseline
 - CSRF and Caching
+- User HTML and Rich Text
 - Authorization Defaults
 - Abuse Response
 - Inbound Webhooks (receiving)
@@ -27,6 +29,7 @@ Use for security-sensitive Rails work and tenant-boundary reviews. Patterns from
 - Scope realtime broadcasts and stream names by tenant/account.
 - Rate-limit auth and abuse-prone endpoints.
 - Treat user-provided URLs as untrusted input.
+- Treat deployment port exposure as an explicit security choice; never rely on an implicit Docker/Kamal bind host for internal accessories.
 - Fail closed (`head :forbidden`) when access cannot be proven.
 
 ## Tenancy Architecture (path-based, Fizzy-style)
@@ -50,16 +53,42 @@ Params choose *which* record within an already-authorized set — never establis
 ```
 
 - Even single-tenant code scopes through associations; wrong IDs 404 naturally.
+- Scope by subtype/state when controllers have different powers; a controller with relaxed rules for one subtype must not inherit a generic lookup that can load sibling types.
+- Treat relation writes like relation reads: call `account.users.update!(id, attrs)`/`destroy(id)` through the authorized association, not `User.update(id, attrs)`. On Rails versions before scoped `Relation#update`, use `find_by!` on the relation and update the returned record.
 - Public sharing uses opaque tokens (`has_secure_token :key` on a `Publication` record), never internal IDs.
 - ActiveStorage: attach blobs to accounts, and authorize blob/representation controllers through the domain (`blob → attachment → record.accessible_to?(user)`); published content gets an explicit `publicly_accessible?` path.
+- ActiveStorage direct-upload write endpoints do not inherit `ApplicationController` auth. If the app does not use direct uploads, disable or gate `DirectUploadsController#create` and disk-service `PUT`; if it does, require a valid session/account before creating blob rows or issuing disk URLs.
+- Make the storage service enforce a direct upload's declared byte size, integrity digest, and content type in the signed request. Application validation before issuing the URL is not a quota or security boundary; verify the stored object's actual metadata and size before attaching or processing it.
+- ActiveStorage variants for user uploads: expose model helpers that return a processed variant only when the blob is `variable?`; controllers render a stock/initials fallback instead of processing unsupported formats.
+- For ActiveStorage/libvips variant CVEs, patch first, then establish the actual deployed exposure window and sweep durable evidence: object-store blobs, `active_storage_blobs`, and `active_storage_variant_records`. Treat unattached-blob cleanup, object lifecycle rules, variant tracking, and log retention as explicit limits in the write-up; a clean scan is evidence, not proof.
+- ActiveStorage media uploads: if ffmpeg/ffprobe touch user-supplied video/audio, restrict accepted codecs, formats, and protocols with `config.active_storage.video_preview_input_arguments` and `config.active_storage.ffprobe_arguments`; check codec names against the deployed ffmpeg build.
 - Revoking access cleans up derived data (mentions, notifications, watches) via a scoped async job — don't leave dangling cross-boundary state.
+
+## Untrusted File Processing
+
+- Treat native media and document processors as a hostile-input execution boundary. Patch known CVEs first, but assume a future parser or delegated library can still be compromised.
+- Do not let an uploaded filename extension or declared MIME type select a native decoder by itself. Preserve an extension for processing only when it agrees with independently mapped content type, and perform any content sniffing inside the isolated processor boundary.
+- Keep processors away from application secrets and lateral-movement paths: use an unprivileged sidecar with no network, no application environment or filesystem, a read-only/no-exec filesystem, and file-descriptor-only inputs and outputs.
+- Enforce both cell-wide and per-operation limits for wall time, memory, file size, open files, process count, concurrency, and queue depth. Run each request in a disposable worker process and reap it afterward.
+- Fail closed when the cell is missing or unhealthy. Monitor availability, failures, queue headroom, killed workers, and scratch space from the trusted app or supervisor, not from a possibly compromised worker.
+- After every required operation is routed through the cell, remove its parser packages from the application image. For Rails 8.2+, Hot Cell provides Active Storage transformer, analyzer, and previewer replacements; verify its current Rails requirement before adoption.
+
+Sources: https://dev.37signals.com/hot-cell-1-0/ · https://github.com/basecamp/hotcell · https://github.com/rails/rails/security/advisories/GHSA-f3w6-w445-fwh9 · https://github.com/rails/rails/security/advisories/GHSA-v924-7rp8-4mxh · https://github.com/rails/rails/security/advisories/GHSA-hfr4-8rjc-97m2
 
 ## Authentication Hardening
 
 - Magic links / codes: single-use (consume destroys the row), short-lived, compared with `secure_compare`, bound to the email via a verified pending-auth cookie.
 - Anti-enumeration: unknown email gets the same fake flow/UX as a real one.
 - API tokens: HTTP-method-scoped permissions (read-only tokens can't POST); show generated secrets once via a short-lived message verifier (~10s), then never again.
+- Secrets in URL paths or response headers need explicit log redaction; `config.filter_parameters` covers params, not arbitrary route segments or formatted log lines.
+- Behind a trusted edge, accept the client IP from one proxy-controlled source and strip conflicting `Forwarded` or `X-Forwarded-For` values before `ActionDispatch::RemoteIp` runs. Configure trusted proxies explicitly; a forwarding chain supplied by a public client is attacker-controlled input.
+- Verify every session store emits the configured `SameSite` attribute; pass `same_site:` explicitly for custom or cache-backed stores rather than assuming `CookieStore` behavior carries over.
+- Configure shared caches never to store responses carrying `Set-Cookie`, including Active Storage proxy responses during cookie rotations or serializer migrations.
 - Bot/automation auth as an explicit mode: skip CSRF only for bot-key auth, deny bots everywhere by default (`deny_bots` + `allow_bot_access only:`).
+- On sign-out or session revocation, disconnect the user's live Action Cable connections after the durable auth state is removed, so sockets re-handshake instead of keeping handshake-time authorization.
+
+Sources: https://github.com/rails/rails/security/advisories/GHSA-2gff-2mmg-m73p · https://github.com/basecamp/fizzy/commit/3f63bf86600e664af6970b1d4d475d5378659ed0 · https://github.com/rails/rails/security/advisories/GHSA-gmj8-hvj3-49mw · https://github.com/rails/rails/security/advisories/GHSA-x6mj-8jx9-qhqv
+
 - Rate limit with Rails built-ins, with responses matching endpoint semantics:
 
 ```ruby
@@ -69,17 +98,25 @@ rate_limit to: 10, within: 15.minutes, only: :create,
 
 - Throttle session bookkeeping writes (update `last_active_at` at most hourly).
 - Filter sensitive params beyond passwords: message bodies, push endpoints, tokens.
+- Configure `filter_parameters` before any initializer can load Active Record. Active Record copies the list into `filter_attributes` when it loads, so a late logging initializer can leave model inspection unfiltered. Put the list in `config/application.rb` when initializer order is not guaranteed.
+
+Source: https://github.com/basecamp/fizzy/commit/48f56c0453e27e825dbc55369263e6beb3e60da5
 
 ## SSRF Defense Baseline
 
 For webhooks, push endpoints, unfurling — any user-influenced URL:
 
 - Resolve DNS and validate the destination IP before the request; block loopback/private/link-local/IPv4-mapped-IPv6 ranges (link-local = cloud metadata).
+- Validate every address a host resolves to, not just the first answer; include IPv4-in-IPv6 forms such as SIIT and local-use NAT64 in the blocked/internal policy.
+- Distinguish DNS lookup failures from resolved-but-blocked destinations in logs and errors. A transient miss is not the same event as an SSRF violation.
 - Pin the request to the validated IP (`Net::HTTP.new(host, port, ipaddr: resolved_ip)`) to beat DNS rebinding.
+- Disable environment-proxy discovery on the pinned HTTP connection. With `http_proxy` or `https_proxy` enabled, the proxy can resolve the hostname again and route somewhere other than the checked IP; with `Net::HTTP`, pass an explicit `nil` proxy address and test with proxy variables set.
 - Validate at creation time and again at execution time.
 - Re-resolve and re-validate on every redirect hop — redirect chains are the classic bypass.
 - Cap response sizes (content-length pre-check + chunked read limit) to prevent memory DoS.
 - Layer allowlists on top where the destination set is known (web push: permitted vendor host suffixes AND public-IP resolution).
+
+Source: https://github.com/basecamp/fizzy/pull/3176
 
 ## CSRF and Caching
 
@@ -87,6 +124,14 @@ For webhooks, push endpoints, unfurling — any user-influenced URL:
 - Add `Sec-Fetch-Site` verification (`same-origin`/`same-site`) on top of origin checks; roll out in report-only mode first, and append `Sec-Fetch-Site` to the `Vary` header.
 - Set a CSP with a hard floor (`object_src :none`, `base_uri :none`, `frame_ancestors :self`); use report-only + `report_uri` to validate before enforcing.
 - Private apps: send `X-Robots-Tag: none`.
+
+## User HTML and Rich Text
+
+- Sanitize attributes on allowed tags, not just tags. Strip event-handler attributes and unsafe URI schemes; treat CSP as defense in depth rather than the primary sanitizer.
+- For Action Text attachments rendered through custom partials, validate URL-bearing attributes on the attachable before rendering, not only in the partial: require absolute `http`/`https` URLs with a real host, reject same-origin/self links where sessions would ride along, and render titles/descriptions as text.
+- Treat rich-text editor clipboard JSON as attacker-controlled input. Bind attachment tag names and other structural HTML decisions to editor/server configuration, not serialized node data.
+- Keep sanitizer config isolated when multiple consumers share a process/page: avoid process-wide mutable sanitizer state, use dedicated instances or per-call config, and test that host-app and editor sanitizers cannot weaken each other.
+- When presentation filters change rendered output, bump the fragment-cache key/digest explicitly; helper-only sanitizer changes can otherwise leave unsafe cached HTML.
 
 ## Authorization Defaults
 
@@ -109,9 +154,12 @@ For webhooks, push endpoints, unfurling — any user-influenced URL:
 
 - Tenant-unscoped broadcast channels or stream names.
 - Tenant data inferred from request params without ownership checks.
+- Relation-scoped reads followed by class-level writes (`User.update(params[:id], ...)`) in tenant or ownership flows.
 - A global `User` looked up by session without account scoping (identity/user conflation).
 - Webhook or fetch requests to unvalidated destinations; redirects followed without re-validation.
 - ActiveStorage URLs that bypass domain authorization.
+- Allowed HTML tags without attribute and URI sanitization.
+- Shared mutable sanitizer configuration across rich-text editors or host apps.
 - Security controls hidden in ad-hoc conditionals across controllers.
 - Secrets permanently visible in admin UIs.
 - Auth endpoints without rate limiting.

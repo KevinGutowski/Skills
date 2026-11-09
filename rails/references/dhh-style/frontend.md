@@ -4,6 +4,7 @@
 
 - [Turbo Patterns](#turbo-patterns)
 - [Action Text / Rich Text](#action-text--rich-text)
+- [HTML+ERB Templates](#htmlerb-templates)
 - [Stimulus Controllers](#stimulus-controllers)
 - [CSS Architecture](#css-architecture)
 - [View Patterns](#view-patterns)
@@ -30,10 +31,64 @@ render turbo_stream: turbo_stream.morph(@card)
 
 ## Action Text / Rich Text
 
-Lexxy is the 37signals/Basecamp direction for richer editing: tables, markdown,
-live syntax highlighting, and voice notes on top of Meta's Lexical toolkit. Treat
-it as an emerging Action Text direction rather than a blanket replacement until
-it lands as a stable Rails default.
+Lexxy 1.0 is the stable 37signals/Basecamp direction for richer editing: tables,
+markdown, live syntax highlighting, and extensible features on top of Meta's
+Lexical toolkit. It already powers Basecamp, Fizzy, and Campfire, and is planned
+as the next Rails default. For new applications or standard Action Text setups,
+prefer Lexxy; Rails 8.2 can opt in with `config.action_text.editor = :lexxy`.
+
+When replacing Trix, test existing content through the complete
+save-render-re-edit round trip. Keep canonical Action Text attachment markup
+compatible, update sanitizer allowlists for Lexxy's additional elements, and
+exercise legacy attachment and embed forms rather than testing only new content.
+Use Playwright for real clipboard, keyboard, focus, and multi-browser behavior;
+reserve Rails system coverage for the persistence and rendering boundary.
+
+When adding links or otherwise transforming rendered rich text, parse the HTML
+and operate on text nodes outside existing links. Do not run regular expressions
+over serialized HTML or assign user text through `outerHTML`; both can move text
+across the markup boundary. Bump presentation-cache versions when rendering
+logic changes so previously cached HTML is not reused.
+
+Extension allowlists need a non-overridable safety floor. Even when an extension
+may add tags or attributes, always reject event handlers, `srcdoc`, page-acting
+elements such as `base` and `meta`, and other attributes that fetch or apply
+markup. Client-side sanitization protects the editor; Action Text must sanitize
+again on server rendering with its own allowlist. Test both boundaries.
+
+Sources: https://dev.37signals.com/lexxy-1-0/ and
+https://github.com/basecamp/once-campfire/pull/224 and
+https://github.com/basecamp/once-campfire/pull/364 and
+https://github.com/basecamp/lexxy/pull/1321
+
+For rich-text attachments, keep visible captions and accessibility descriptions
+separate. Pass explicit `alt` text through Action Text attachments when the image
+conveys content; do not infer alt text from filenames, and do not force screen
+reader descriptions to appear as visible captions.
+
+Treat rich-text toolbars and their menus as real composite widgets. Keep arrow
+navigation inside the active toolbar or menu, make Escape return focus
+predictably, expose disabled controls with `aria-disabled`, use
+`menuitemradio`/`menuitemcheckbox` with `aria-checked` for selectable options,
+and label color swatches by both color and purpose. Hide decorative icons from
+the accessibility tree so controls are announced once by name.
+
+Source: https://github.com/basecamp/lexxy/pull/1173
+
+## HTML+ERB Templates
+
+Rails 8.2 defaults HTML+ERB templates to Herb, which parses HTML and ERB as one
+syntax tree and reports structural errors such as unclosed tags at compile time.
+Before adopting the 8.2 framework defaults, run `bin/rails herb:check`; it
+compiles every HTML+ERB template through Herb, reports failing paths, and exits
+non-zero so CI can gate the migration.
+
+Fix the reported templates before switching. If a staged upgrade needs more
+time, temporarily keep `config.action_view.erb_implementation = :erubi` rather
+than discovering incompatibilities only when request paths render them.
+
+Sources: https://github.com/rails/rails/pull/58721 and
+https://github.com/rails/rails/pull/58770
 
 ## Stimulus Controllers
 

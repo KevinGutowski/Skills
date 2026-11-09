@@ -101,7 +101,7 @@
 61. **Index foreign keys, polymorphic associations, and frequently queried columns.**
 62. **EXPLAIN ANALYZE your worst queries.** Take top 5 from your performance monitor.
 63. **Ensure autovacuum is running.** Run `VACUUM FULL` during maintenance.
-64. **Verify connection pool math.** `Workers × Threads` connections needed at minimum.
+64. **Verify and observe connection pool capacity.** `Workers × Threads` is only a floor; include jobs, async queries, and other pool users, then monitor `checkout_wait.active_record` where available.
 65. **Consider disabling durability in test environments** for faster test suites.
 
 ## Runtime & Allocator

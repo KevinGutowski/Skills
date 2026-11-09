@@ -12,6 +12,7 @@ Use for test-writing and test-review tasks. Patterns from Campfire and Fizzy tes
 - Test behavior, not implementation details. Spend coverage once, at the layer that owns the behavior — don't restate the same assertion through every model/service/controller/cache boundary.
 - Prefer assertions that name the behavior (`assert_difference`, `assert_changes`, `assert_response`, `assert_enqueued_with`) over generic truthiness. One behavior contract per test; multiple assertions are fine when they describe that one contract and make the failure precise.
 - Keep tests deterministic and fast; `parallelize(workers: :number_of_processors)`.
+- In Rails versions that support it, enable `config.active_record.shuffle_unordered_selects = true` in test to expose accidental dependence on database row order; add explicit `.order(...)` or unordered assertions where it fails.
 - Tests ship in the same commit/PR as the feature — not before, not later. Security fixes always include a regression test.
 - Never add production complexity for testability (no test-induced design damage).
 

@@ -17,7 +17,7 @@
 ```ruby
 # config/puma.rb
 workers ENV.fetch("WEB_CONCURRENCY") { 3 }
-threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
+threads_count = ENV.fetch("RAILS_MAX_THREADS") { 3 }
 threads threads_count, threads_count
 
 preload_app!
@@ -46,13 +46,13 @@ The most important setting. Each worker is a forked process that can handle requ
 
 ### Thread Count
 
-In MRI Ruby, threads only parallelize I/O waits (database queries, HTTP calls). For most apps, 10-25% of time is parallelizable.
+In MRI Ruby, threads only parallelize I/O waits (database queries, HTTP calls). The useful count depends on the application's I/O share, request mix, and latency target.
 
-**Recommendation:** Set threads to 5 and forget about it. Settings above 5 rarely help in MRI.
+**Recommendation:** Start with Rails' three-thread default, then benchmark the real workload. CPU/GVL-heavy apps can favor single-threaded workers; I/O-heavy apps can benefit from more threads. Compare throughput, p95/p99 latency, database-pool pressure, and proportional set size (PSS), not RSS alone for forked workers.
 
 ```ruby
 # Puma
-threads 5, 5
+threads 3, 3
 
 # Passenger
 passenger_concurrency_model thread;
@@ -70,6 +70,27 @@ preload_app!  # in config/puma.rb
 ```
 
 Always enable preloading. It reduces total memory usage across workers.
+
+### Master Warm-up Before Fork
+
+`preload_app!` loads application code, but it does not perform first-use work such as YJIT compilation, Action View template compilation, lazy route rendering, schema access, or application memoization. If deploy telemetry shows a cold-request queue, use `Rack::Builder#warmup` in `config.ru` to exercise this work in the master before workers fork.
+
+- Precompile templates, then issue representative signed-in requests with `Rack::MockRequest`, including lazy Turbo Frames. Synthetic public pages often miss the expensive paths.
+- Rank endpoints by `(cold duration - warm duration) × expected post-deploy request count`, and enforce a warm-up time budget.
+- Audit the master's open file descriptors after warm-up. Close or reset inherited database connections, HTTP sockets, thread pools, and other unsafe resources before fork.
+- Re-measure queue depth, p95/p99 latency, deploy memory, and startup time. Treat the warm-up list as measured production configuration, not an ever-growing catalog.
+
+Source: https://dev.37signals.com/warming-up-the-puma-master-before-it-forks/
+
+### Schema Cache Loading
+
+If schema-cache deserialization is a meaningful part of boot time for a large
+app, try a `.json` `schema_cache_path` on Rails versions that support it, then
+benchmark boot in the real application. A merged Rails benchmark on a 944-table
+app measured about 10 ms to load JSON versus 219 ms for YAML; use that as a
+reason to measure, not as a universal multiplier.
+
+Source: https://github.com/rails/rails/pull/58769
 
 ## Container Sizing
 
@@ -150,6 +171,19 @@ production:
 **Total connections needed:** `Workers × Threads per worker`
 
 Example: 3 workers × 5 threads = 15 connections minimum across your app. Make sure your database supports this many concurrent connections.
+
+Treat that formula as a floor, not the whole budget. Background-job threads,
+asynchronous queries, and other processes that use the same database each need
+pool capacity too.
+
+On Rails versions that expose `checkout_wait.active_record`, export the event's
+duration and timeout/exception data. It fires only when a full pool makes a
+checkout block, so rising wait time reveals saturation before the first
+`ActiveRecord::ConnectionTimeoutError`. Use that signal to distinguish an
+undersized pool from long-held connections or slow queries before increasing
+the pool and consuming more database connections.
+
+Source: https://github.com/rails/rails/pull/59308
 
 ### Redis connections
 
@@ -236,6 +270,29 @@ config.logger = Logger.new(STDOUT)
 # Consider reducing log level (INFO logs on every request)
 config.log_level = :warn
 ```
+
+Emit one structured JSON record per request to stdout, with fields such as
+controller, status, and duration. When Docker's `json-file` driver and an
+OpenTelemetry filelog receiver sit between Rails and the log store, process the
+records in this order: unwrap Docker's outer JSON, deliberately route or drop
+plain-text noise, recombine chunks from the same log file until the terminating
+newline, then parse the application's inner JSON.
+
+Do not infer completion from a closing brace: Docker can split between `}` and
+the newline. Test the collector config with that exact boundary and with records
+larger than its default recombination limit. Pass malformed records through for
+diagnosis and alert on parser errors; silently dropping them hides observability
+failures.
+
+Source: https://dev.37signals.com/parsing-json-docker-logs-with-opentelemetry-collector/
+
+Treat presigned URL signatures as credentials. Filter them from redirect
+locations, structured request records, and Active Storage's own generated-URL
+events. Do not assume `filter_parameters` reaches every notification payload;
+verify each logging sink with a real presigned URL and assert that the logged URL
+keeps useful non-secret fields while replacing the signature.
+
+Source: https://github.com/basecamp/fizzy/pull/3243
 
 ## The Easy Mode Stack
 
