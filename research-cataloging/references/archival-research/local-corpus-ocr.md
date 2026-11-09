@@ -1,6 +1,6 @@
 # Local-source corpora — OCR layer specs, geometry, cadence
 
-Full detail for the "Local-source corpora: OCR → clean → translate" mode summarized in `SKILL.md`. Everything below is the canonical wording.
+Full detail for the "Local-source corpora: OCR → clean → translate" mode summarized in the parent reference, [archival-research.md](../archival-research.md) (in `research-cataloging`). Everything below is the canonical wording.
 
 ## The three layers
 

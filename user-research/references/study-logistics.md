@@ -10,6 +10,23 @@ Hall's organizational-research version: interview leaders, managers, subject-mat
 
 Portigal's stakeholder-alignment move when factions disagree ("group therapy"): go around the circle on feelings about the field guide — excited about, nervous about, uncertain about — until everyone is heard.
 
+Sten's product-design version keeps stakeholder and user interviews on the same craft footing: the fundamentals are listening, open prompts, and follow-ups; the perspective changes. User interviews reveal needs, emotions, workarounds, and current behavior. Stakeholder interviews reveal business goals, technical constraints, support burden, market forces, and the definition of success. Good product research needs both, because the design must serve users and the business.
+
+Useful Sten question bank:
+
+- User workflow: "Walk me through your typical day/workflow."
+- Friction: "What's the most frustrating part of [current process]?"
+- Current workaround: "How do you currently solve this problem?"
+- Emotion: "How do you feel when [specific situation]?"
+- Failed recovery: "What happened the last time you were unable to find an answer?"
+- Business goals: "What are the short- and long-term business goals?"
+- Success definition: "What would a successful outcome of this project look like to you?"
+- Constraint/opportunity: "What do you currently have too little of: sales, profit, customers, time, trust, or something else?"
+- Product message: "What is the single most important message your audience should remember?"
+- Wrap-up: "What do I need to know that you don't think other members of your team have said?"
+
+Follow-up operator: **TEDW** — Tell me about, Explain, Describe, Walk me through. Keep "tell me more," "can you give an example?", and "why is that, do you think?" ready. If someone starts solutioning, stay curious and ask them to explain how it would work before evaluating it.
+
 ## One-page plan (Sharon's template)
 
 1. **Background** — what led here
@@ -56,6 +73,8 @@ Hall's ethics floor (after Michael Quinn Patton): explain purpose plainly; descr
 ## Equipment
 
 Hall's field bag: dedicated/shared laptop(s); data storage and transfer (cards, drives, adapters — assume no network); field recorder; webcam; small notebooks and good pens; sign-making and paper-prototyping materials; checklists ("Why rely on memory when you don't have to?"). Analysis room: 3×5 cards, sticky notes, pads, whiteboards, markers for the right surfaces, a big shared screen. File hygiene: shared drive immediately, naming convention ("Study-Subject Name-Year-Month-Day"), backup drive in the field. "It's too easy to become addicted to cheap, bad data" — prefer familiar tools over magic services.
+
+AI note-taking caveat (Sten): transcription and structured summaries are useful because they free the interviewer to listen, but the human work is still noticing brief emotional turns, follow-up opportunities, contradictions, and the participant's own language. Treat AI notes as a recall/index layer; revisit recordings/notes a few days later and look across interviews before declaring themes.
 
 ## Hall's team roles (verified — her full list is eight)
 

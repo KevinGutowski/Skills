@@ -39,8 +39,21 @@ If using a fresh Codex session, installed skills normally route after restart. I
 | Skill authoring / source conversion | `creating-skills research-cataloging x-post-reader` |
 | Rails work | `rails dhh` |
 | Apple platform design | `apple-design swiftui` |
+| UIKit app work | `uikit apple-design` |
 
 Keep bundles small. Install the few skills that match the task, then follow their `SKILL.md` routing to references.
+
+For framework work, start with the framework/platform skill router, not a remembered style summary or a deep reference. Example: Rails work starts with `rails/SKILL.md`; that router decides whether to read DHH style, Active Record associations, migrations, testing, performance (server tuning vs the perceived-speed playbook), or official Rails Guides lookup. Only after the framework mechanism is grounded should project-specific rules or helper methods decide the final shape.
+
+## Apple-Platform Work: Leverage Xcode's Skills
+
+Xcode 27+ ships Apple-authored agent skills (SwiftUI, UIKit resizability, App Intents, testing, Instruments, device interaction, security). When the machine has Xcode, use them alongside this library:
+
+```bash
+command -v xcrun && xcrun agent skills export   # see `xcrun agent skills --help` for options
+```
+
+Read the exported skills that match the task before acting; where they disagree with this library, Apple's skill wins. Without `xcrun` (Linux, CI), read the unofficial export mirror https://github.com/mariusfanu/xcode-skills. The `uikit`, `swiftui`, and `apple-design` routers repeat this check.
 
 ## If Installer Listing Fails
 

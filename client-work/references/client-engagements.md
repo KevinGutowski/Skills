@@ -4,6 +4,17 @@
 
 **Source** — Mike Monteiro, *You're My Favorite Client* (A Book Apart, 2014). Written *to clients* about how to buy and participate in design; read it from both chairs. Foreword by Austin Kleon ("for client services to succeed, both the craftsperson and the client must take responsibility for their roles"). The designer-side companion is Monteiro's *Design Is a Job* (A Book Apart, 2012) — a future corpus candidate. All quotes below are from the 2014 book unless tagged otherwise. Full bibliography incl. podcast video IDs → [sources.md](client-engagements/sources.md).
 
+## Contents
+
+- Qualification gates (before any work starts)
+- The engagement spine (kickoff, sign-off, check-ins, deadlines)
+- The feedback system
+- Health signals & anti-patterns
+- Failure & endings
+- Testing with clients (compact)
+- Field delta — entertain the room, don't educate it
+- Reference map · Checklist · Relationship to other skills · Credits · Staleness note
+
 ## 1. Qualification gates (before any work starts)
 
 Refuse or fix these before scoping. Each gate failed is a project that fails later, with your name on it.

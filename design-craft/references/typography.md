@@ -70,10 +70,27 @@ p, li, figcaption, blockquote {
 
 ## Font Smoothing (macOS)
 
-On macOS, text renders heavier than intended by default. Apply antialiased smoothing to the root layout so all text renders crisper and thinner.
+On macOS, text renders heavier than intended by default. `-webkit-font-smoothing: antialiased` thins glyph strokes — but it is **not** a safe global default. **Default rule ([polish-principles.md](polish-principles.md) → Principle 8): scope it deliberately.** Apply it only where the lighter rendering is the intended look:
+
+- *Light text over a dark/saturated background*, where default subpixel rendering looks heavy or fuzzy.
+- *Large display type*, where the thinner weight is a deliberate choice.
+- Leave normal dark-on-light body copy at the browser default (`auto` / `subpixel-antialiased`) — it's rendered to be read.
 
 ```css
-/* CSS */
+/* Default — scoped to the surfaces that want it */
+.hero-dark,
+.display-heading {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+```
+
+### Divergence note — the root-application school
+
+Some codebases (and the source this section originally distilled) apply smoothing once at the root so *all* text renders crisper/thinner and headings/body never diverge:
+
+```css
+/* Root-application school — a deliberate theme choice, not the default */
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -81,28 +98,13 @@ html {
 ```
 
 ```tsx
-// Tailwind — apply to root layout
+// Tailwind equivalent
 <html className="antialiased">
 ```
 
-### Good vs. Bad
+Treat this as a theme decision made once and consciously: it trades body-copy legibility (lighter dark-on-light text at small sizes) for uniformity. Adopt it only when the product's type was designed for the lighter rendering — check Principle 8's conditions first. Whichever school you pick, be consistent: per-element smoothing sprinkled inconsistently (a smoothed heading over unsmoothed body of the same color/size) is worse than either.
 
-```css
-/* Good — applied once at the root */
-html {
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Bad — applied per-element, inconsistent */
-.heading {
-  -webkit-font-smoothing: antialiased;
-}
-.body {
-  /* no smoothing → heavier than heading */
-}
-```
-
-**Note:** This only affects macOS rendering. Other platforms ignore these properties, so it's safe to apply universally.
+**Note:** This only affects macOS WebKit/Blink rendering. Other platforms ignore these properties.
 
 ## Tabular Numbers
 
@@ -129,6 +131,14 @@ When numbers update dynamically (counters, prices, timers, table columns), use t
 | Table columns with numbers | Phone numbers, zip codes |
 | Animated number transitions | Version numbers (v2.1.0) |
 | Scoreboards, dashboards | |
+
+### Proportional in prose, tabular in slots
+
+"Use proportional figures when numbers sit inside a sentence." They read as words. Tabular figures are for values that change (clocks, counters, scores, prices, live metrics) and for numeric columns, where equal-width digits build a vertical grid — pair with right alignment so different lengths anchor to one edge (Gustavo Fior, *Craft*, craft.gustavofior.com/tabular-numbers). The instinct to switch a timer to monospace is usually wrong: "A mono font changes the whole voice of the interface. Often, you just need to use tabular figures."
+
+### Verify the font has `tnum`
+
+`tabular-nums` only works if the font ships tabular figures. If the class makes no visible difference, drop the font file into [Wakamai Fondue](https://wakamaifondue.com) and check that `tnum` is listed; if it isn't, pick a different weight/cut or font rather than faking widths with mono. Inter changes the *look* of some numerals under `tnum`, not just their widths — check the result, don't assume it.
 
 ### Caveat
 

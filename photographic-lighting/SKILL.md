@@ -56,7 +56,7 @@ For shiny subjects, lighting is reflection management. The light, camera, and su
 Use this loop:
 
 1. Decide whether the direct reflection should appear bright, dark, controlled, or absent.
-2. Find the family of angles: the zone where a light reflects from the subject into the camera.
+2. Find the family of angles: the zone where a light reflects from the subject into the camera. **The mirror test** (Hunter/Biver/Fuqua's technique, paraphrased): lay a small mirror flat against the subject's surface (or where the subject will sit) and look through the camera — any position from which the mirror shows you a light source is inside the family of angles for that part of the surface. Slide the mirror across the surface to map the whole zone; sweeping a small light around the subject while watching through the viewfinder answers the same question in reverse.
 3. Put the light inside that zone to make a mirror-like surface bright; keep it outside to make it dark.
 4. Enlarge the source if the bright reflection needs to cover more surface.
 5. Use flags/cards/backgrounds to decide what the object reflects, not only what hits it.

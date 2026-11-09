@@ -1,5 +1,14 @@
 # Preserving the Book's Voice
 
+## Contents
+
+- Why Voice Matters
+- The Teaching Pattern
+- Applying This in Skills
+- Preserving Quotes
+- Capturing Subjective Experience
+- Voice Consistency
+
 ## Why Voice Matters
 
 Good books have a distinctive voice. They mix ideas with stories, principles with examples. This teaching style is what makes concepts memorable and applicable.

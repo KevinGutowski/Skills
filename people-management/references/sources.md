@@ -8,5 +8,6 @@ Books (primary; quotes verified against the texts):
 
 Interviews (auto-captioned YouTube; quotes verbatim caption text, garble fixed in [brackets]):
 
+- *Anton Sten, "Products People Actually Want" (2025 ebook, local attachment)* — design-lead transition, management as craft shift, staying close to execution, energy management, and solo/startup designer realities. Folded as design-management corroboration only; direct-report mechanics remain sourced to Scott/Zhuo/Hogan.
 - *Soleio Cuervo — Dive Club episode ffoMwdLGcFo (cited as "Soleio, Dive Club"; who-made-that outreach, long game, time-to-proficiency/slope); Design MBA podcast (hZ3Z2frAWvM, 2023 — cited as "Soleio, Design MBA"; recruiting-as-most-leveraged, CEO closes). Garble: "leverag"=leveraged.*
 - *Steve Ruiz (tldraw) — SPC fireside moderated by Soleio Cuervo (hNUEaFmPAwc — cited as "Ruiz, SPC fireside"). Ruiz is the interviewee: attribute the hire-one-profile material to Ruiz, not Soleio.*

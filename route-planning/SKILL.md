@@ -14,6 +14,16 @@ User hands you a list of addresses with a starting point and asks for an optimiz
 
 ### 1. Geocode + matrix
 
+First turn addresses into coordinates. Nominatim's public endpoint works without a key — send a real `User-Agent` (anonymous UAs get blocked) and keep to ~1 request/second as a courtesy; or ask the user for coordinates if they have them:
+
+```bash
+curl -sS -A "route-planner/1.0 (contact: you@example.com)" \
+  "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=ADDRESS"
+# -> [{"lat": "...", "lon": "...", "display_name": "..."}]
+```
+
+Sanity-check each hit's `display_name` against the input address — geocoders silently match the wrong city/suburb.
+
 ```python
 # Build coordinate string for OSRM
 coords = ";".join(f"{lon},{lat}" for _, lat, lon, _ in stops)
@@ -37,9 +47,9 @@ url = (f"https://router.project-osrm.org/trip/v1/driving/{coords}"
 
 For tighter optima, use OR-Tools with `GUIDED_LOCAL_SEARCH` + 60s budget. If OR-Tools and your local search converge to the same answer, that's a strong global-optimum signal.
 
-### 3. Apply tiebreakers (already in `feedback_route_tiebreakers.md`)
+### 3. Apply tiebreakers
 
-Among tied-optimal orderings: prefer no drive-bys → no U-turns → right-side parks. The optimizer doesn't add these heuristics on its own.
+Among tied-optimal orderings: prefer no drive-bys → no U-turns → curb-side parks (right side in right-hand-traffic countries; flip for left-hand traffic). The optimizer doesn't add these heuristics on its own.
 
 ### 4. Verify visually
 
@@ -109,3 +119,5 @@ For a finished route, give the user:
 3. **Map links** (Apple Maps + Google Maps; split into legs if needed)
 4. **A name-keyed checklist** alongside the map links (since URLs can't carry names)
 5. **Honest caveats** about what's structural vs. fixable, if backtracks are visible
+
+> **Staleness note:** external-service specifics here decay. The OSRM demo server (`router.project-osrm.org`) has unpublished rate limits and no SLA — expect throttling on big matrices and fall back to a local OSRM or another router. Nominatim's usage policy may change; re-check it for batch sizes. The Apple Maps multi-stop web flow is beta: the `aria-label === 'Route Details'` selector and waypoint caps can rot silently — if the button isn't found, re-derive the selector from the live DOM rather than assuming no route rendered.

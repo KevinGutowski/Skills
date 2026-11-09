@@ -31,6 +31,17 @@ These sound adversarial. They point fingers at the user for an absence that was 
 3. Clear CTA: [Button to take the action that fills this state]
 ```
 
+## Emotional job of an empty state
+
+Sten's "good enough" chapter adds a useful review lens: an empty state is not only blank-space management; it is often a user's first emotional proof of whether the product understands them. A strong empty state should leave the user feeling oriented, capable, and one step closer to value.
+
+Check four moments:
+
+- **New/blank:** show what will appear and why it matters.
+- **Waiting:** explain what is happening or when the next thing will arrive; avoid dead spinners.
+- **Completion:** confirm the specific accomplishment, not just "success."
+- **Recovery:** if something failed, switch to `ux-writing` (error-messages) and prioritize reassurance over welcome copy.
+
 ## Examples
 
 **Bad empty state:**

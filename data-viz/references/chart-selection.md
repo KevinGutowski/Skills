@@ -59,7 +59,7 @@ Use this skill to choose the chart that best answers the reader's question witho
 
 ## Reference
 
-For a fuller matrix with rationale, caveats, and source notes, read [references/chart-decision-matrix.md](chart-selection/chart-decision-matrix.md).
+For a fuller matrix with rationale, caveats, and source notes, read [chart-selection/chart-decision-matrix.md](chart-selection/chart-decision-matrix.md).
 
 ## Related skills
 

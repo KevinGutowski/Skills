@@ -19,6 +19,7 @@ Use this as provenance for the `user-onboarding` skill and references. It is not
 - Ryo Lu, Cursor field notes — free play before signup and constrained demos.
 - Rafa Conde, Dive Club — conversion cost of delight and targeted onboarding.
 - Brandon Jacoby, Dive Club — pattern fidelity for utilitarian signup/setup flows.
+- Anton Sten, *Products People Actually Want* (2025 ebook, local attachment) — onboarding/integration explanation, reducing initial commitment, designing for anxious/distracted contexts, and business-case storytelling around onboarding drop-off.
 
 ## Reference Map
 
@@ -26,4 +27,5 @@ Use this as provenance for the `user-onboarding` skill and references. It is not
 - `first-impressions.md`: post-signup first screen, limbo screens, coachmarks, welcome messages, quick wins.
 - `selling-the-dream.md`: pre-signup copy, switching costs, aha moment, social proof.
 - `driving-momentum.md`: setup quests, progress, encouragement, lifecycle emails, return behavior.
+- `field-notes.md`: verbatim quote texture behind Universal Rules 8–15 (Config 2024/2025, Dive Club, Cursor field notes).
 - `coverage-gaps.md`: candidate onboarding standards that need more evidence or accepted examples before promotion.

@@ -9,6 +9,7 @@ Use this file for prose guidance that needs real samples, accepted edits, or fac
 - **Genre templates:** Add templates only after repeated user requests show a stable form, such as executive updates, op-eds, speeches, or technical explainers.
 - **Boundary with `ux-writing`:** Product UI copy, settings, error states, and labels belong in `ux-writing`; this skill owns prose pieces.
 - **Before/after exemplars:** Add anonymized examples only when the accepted rewrite and rationale are both available.
+- **House-style ban promotion:** Add banned words or phrase warnings only from repeated accepted edits, and preserve the reason for each warning. A naked list of disliked tokens is not enough evidence.
 
 ## Candidate promotion form
 

@@ -10,6 +10,7 @@
 - State-Driven Microinteractions
 - Scale on Press
 - Skip Animation on Page Load
+- No Transitions on Theme Switch
 
 
 Interruptible animations, enter/exit transitions, and contextual icon animations.
@@ -132,6 +133,24 @@ function PageHeader() {
 ## Exit Animations
 
 Exit animations should be softer and less attention-grabbing than enter animations. The user's focus is moving to the next thing — don't fight for attention.
+
+### Exit-Only for Frequent Menus
+
+For menus people open many times a session — context menus, command palettes, account or workspace switchers, autocomplete popovers — skip the opening animation and animate only the close (Krehel, Interfaces Cheat Sheet). The open sits on the critical path of an action the user has already decided on; any enter transition is a delay they pay every time. The close is off the critical path, so a short fade-out confirms the dismissal without costing anything.
+
+```css
+/* Frequent menu: appears instantly, exits softly */
+.menu[data-state="open"] {
+  opacity: 1;
+  transition: none;
+}
+.menu[data-state="closed"] {
+  opacity: 0;
+  transition: opacity 120ms ease-out;
+}
+```
+
+The test is frequency, not component type: a first-run onboarding sheet can afford an entrance; the right-click menu a power user opens forty times an hour cannot. This is the same frequency-and-intent rule that governs hover restraint in [emil-kowalski.md](emil-kowalski.md); it extends the "instant or very fast" bar for frequent interactions to the open state itself.
 
 ### Subtle Exit (Recommended)
 
@@ -497,3 +516,29 @@ Don't use `initial={false}` when the component relies on its `initial` prop to s
 ```
 
 Verify the component still looks right on a full page refresh before applying this.
+
+## No Transitions on Theme Switch
+
+Disable all transitions while switching between light and dark mode (Krehel, Interfaces Cheat Sheet). Every element that transitions `color`, `background-color`, `border-color`, or `box-shadow` for hover states will otherwise tween the theme change at its own duration — text at 150ms, cards at 300ms, the canvas at whatever the root has — and the switch reads as a smear rather than a flip.
+
+```css
+/* Applied to <html> for the duration of the switch, then removed */
+.theme-switching,
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition: none !important;
+}
+```
+
+```ts
+// Toggle the class around the theme change; force a style flush before removing it
+document.documentElement.classList.add("theme-switching");
+setTheme(next);
+void document.documentElement.offsetHeight; // reflow so the transition-less styles commit
+requestAnimationFrame(() => {
+  document.documentElement.classList.remove("theme-switching");
+});
+```
+
+If the product wants a deliberate cross-fade between themes, animate a single overlay or the `::view-transition` pseudo-elements instead of letting hundreds of per-element hover transitions run at once. The color-token side of theme switching (one mechanism, separate dark palette) lives in `web-design` (oklch-skill → Token discipline).

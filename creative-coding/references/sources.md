@@ -2,9 +2,8 @@
 
 ## Daniel Shiffman, *The Nature of Code* (2012)
 
-Local Apple Books EPUB:
-`~/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents/The Nature of Code.epub`.
-Extracted to `/tmp/books/nature-of-code.txt` with the local EPUB extractor.
+Daniel Shiffman, *The Nature of Code: Simulating Natural Systems with Processing*,
+self-published, 2012 (natureofcode.com).
 Density: HIGH for simulation primitives and creative-code decision rules; era note:
 Processing APIs and library names are historical examples, not current API advice.
 
@@ -28,9 +27,9 @@ Verified quotes:
 
 ## Benedikt Gross, Hartmut Bohnacker, Julia Laub, and Claudius Lazzeroni, *Generative Design: Visualize, Program, and Create with JavaScript in p5.js*
 
-Local Apple Books PDF:
-`~/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents/Generative Design_ Visualize Program and Create with JavaScript in P5js PDFDrive .pdf`.
-Extracted to `/tmp/books/generative-design-p5js.txt` via `pdftotext`.
+Benedikt Gross, Hartmut Bohnacker, Julia Laub, and Claudius Lazzeroni,
+*Generative Design: Visualize, Program, and Create with JavaScript in p5.js*,
+Princeton Architectural Press, 2018 (p5.js edition).
 Density: MED-HIGH as a pattern catalog; era note: p5.js code targets p5.js 0.5.11.
 
 Used for:

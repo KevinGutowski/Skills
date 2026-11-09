@@ -87,6 +87,7 @@ Motivation to learn is not the same as motivation to do. Required training often
 - **`user-onboarding`** — product first-run journeys, empty states, signup flow, and quick wins. Use this skill when the work is a course, workshop, curriculum, training program, or job aid.
 - **`feature-discoverability`** — in-app feature teaching, tips, gestures, first-launch cues. Use this skill when the teaching object is broader than the app surface or requires practice/feedback outside the UI.
 - **`people-management`** — manager/report relationships and feedback delivery. Use this skill for designing manager training, coaching curricula, or practice systems.
+- **`personal-growth`** — self-directed reflection, goals, sustainable practice, recovery, and course correction. Use this skill when designing a course, workshop, curriculum, or job aid for other learners.
 - **`working-with-ai` (ai-enablement)** — rolling AI tooling out across an org: shared context, internal agents, social proof, and adoption programs. Use this skill to design the learning mechanics inside that rollout.
 - **`user-research`** — study methods for learning about learners; this skill translates those findings into practice, feedback, and performance support.
 - **`design-prototyping`** — prototype and test the learning artifact there when it is a product/session artifact; diagnose the learning design here.

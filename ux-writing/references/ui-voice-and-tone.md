@@ -6,6 +6,21 @@
 
 Writing is a design discipline, not decoration — when words work seamlessly with the design, you barely notice them, yet they carry every part of the experience. Every app already has a personality whether or not you chose it. This skill **defines the voice, adapts the tone per moment, and writes the microcopy** that expresses both. It owns overall voice/tone and general in-product copy; it routes naming, failure copy, and long-form prose to the skills below.
 
+Sten adds the designer-process reason: writing is also a way to think before UI hardens. If you cannot explain a feature's problem, desired feeling, user scenario, and decision rationale in plain words and a rough sketch, the interface is probably hiding unresolved complexity behind visuals.
+
+## Contents
+
+- Voice vs. tone — the spine
+- Define your voice
+- Document the voice — and know where it recedes
+- Dial the tone for the moment
+- Write the screen — PACE
+- Simplify — four small edits with big impact (2025)
+- Localization-ready writing (2017 global-audience layer)
+- Keep it useful (the guardrail both talks share)
+- Checklist
+- Relationship to other skills
+
 ## Voice vs. tone — the spine
 
 - **Voice** = the expression of your brand and values through words — the things that *don't* change. (Apple's own working set: clarity, simplicity, friendliness, helpfulness.)
@@ -61,11 +76,23 @@ Apple's four qualities sit in gentle tension (more friendliness costs some simpl
 The 2022 framework is the screen-level craft that carries the voice:
 
 - **Purpose** — name the single most important thing on the screen; use information hierarchy; **know what to leave out**; give every screen (and the whole flow) a purpose.
-- **Anticipate** — treat the app as a conversation; develop voice first, vary tone; keep a list of common terms; always answer *"what comes next?"*
+- **Anticipate** — treat the app as a conversation; develop voice first, vary tone; keep a list of common terms; always answer *"what comes next?"* — and use **one label to advance through a whole flow** ("Continue" *or* "Next", never a Continue/Next/Proceed mix across steps; Krehel).
 - **Context** — write for where/how the person is (driving, at an airport, mid-task); use alerts only for a real confirm/choice; make button labels specific and self-explanatory (not Yes/No, not Confirm/Cancel); write useful empty states.
 - **Empathy** — write for everyone in plain language; avoid idioms/humor that won't translate; respect localization (length, vertical space, RTL); make VoiceOver/accessibility text carry *intention and context*, not just appearance, and avoid unnecessary gender.
 
 *Defer:* sentence-level prose mechanics (rhythm, paragraphing, cutting clutter in long copy) → `write-clear-prose`.
+
+## Write before pixels when the product is unclear
+
+Use this short Sten-inspired prewriting pass before opening Figma for a new flow, navigation system, or concept:
+
+- One sentence per feature: what problem does this solve?
+- Known vs assumed: what do we know about users, and what are we guessing?
+- Key moments: how should people feel at the anxious, uncertain, celebratory, or high-commitment points?
+- Navigation goals: what should be easy to find, fun to explore, and easy to recover from?
+- User scenario: "A person opens this because..." and "They leave able to..."
+
+This is not documentation theater. It is a cheap coherence test. If the brain dump cannot become a coherent narrative, users will likely struggle to understand the product too.
 
 ## Simplify — four small edits with big impact (2025)
 
@@ -104,17 +131,20 @@ From Andy Welfle's "Writing is designing" (Config 2025):
 - **The button-copy question set** — "what should this button say?" is never answerable alone: where did the user enter from? what happens immediately after? is a button even the right component? what's the inverse action? will it truncate in Norwegian? does it match voice and tone?
 - **Voice run amok kills usability**: Caviar's "Eat a salad cuz sure" — brand personality applied where a person just needs to order food. The triad to balance: *usable* (helps do), *useful* (does what's wanted), *responsible* (serves stress cases — "content designers are the connective tissue").
 - **Research the language itself**: harvest users' own words from interviews for terms and actions; run card sorts for taxonomy and mental models; usability-test for language gaps. Vocabulary should come from users, not the org chart (cautionary tale: a transit kiosk's "Accept an e-cash upgrade" meaning "add $20").
+- **Three microcopy defaults from Krehel's Interfaces Cheat Sheet** (web-scoped, consistent with the Apple guidance above): **label toggles by what happens when they're on** ("Send read receipts", never "Disable read receipts" — a negated label makes the on state mean off); **address the reader as "you"**, never "the user"; **describe where a link goes** ("Read the docs", not "Click here"). Button verb grammar → `naming-features-and-labels` (CTA and button grammar); capitalization consistency → `web-design` (form-design) for web, `apple-design` (hig) on Apple platforms.
 
 ## Checklist
 
 - [ ] Voice defined as ~3–4 attributes, consistent across screens?
+- [ ] For unclear flows, did you write the problem, assumptions, key feelings, and scenario before polishing screens?
 - [ ] Tone dialed to the moment — and **no dial fully off**?
 - [ ] Each screen has one clear purpose; everything else cut or moved?
 - [ ] Buttons specific and understandable on their own (no Yes/No, no Confirm/Cancel)?
 - [ ] Alerts reserved for a real choice; destructive action clearly marked?
 - [ ] Empty states educate or guide (not just decorate)?
 - [ ] Personality density decided per surface (marketing → admin → product taper), and voice receding in urgent flows?
-- [ ] One term per action everywhere (no Delete/Erase splits)?
+- [ ] One term per action everywhere (no Delete/Erase splits); one advance label per flow (Continue *or* Next)?
+- [ ] Toggles labeled by their on state; reader addressed as "you"; links say where they go?
 - [ ] Plain language; no untranslatable idioms; localization-safe?
 - [ ] Accessibility text conveys intention + context; no unnecessary gender?
 - [ ] Read aloud — sounds conversational and like *us*?

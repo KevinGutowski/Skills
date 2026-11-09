@@ -12,6 +12,7 @@ Depth material behind `../SKILL.md`. All quotes verified against the named sourc
 - Interview material not in SKILL.md (origin story, document-centric computing, chat as power-user interface, canvases and Spellburst, the education-startup do-over, coding like a surgeon, learning vs. cheating)
 - Reference trail (books, projects, people)
 - A note on "the gulf of customization"
+- Practitioner notes (2025–26): designers building their own tools — full quotes
 
 ## Source trail
 
@@ -77,3 +78,16 @@ The essay: "AI code generation alone does not address all the barriers to mallea
 ## A note on "the gulf of customization"
 
 This phrase is sometimes used informally for the essay's core gap, but the essay itself never uses the word "gulf." Its own language is the **cliff/chasm**: "Going from installing plugins to *making* one is a chasm that's hard to cross," answered by the **gentle slope** pattern. Cite the chasm + gentle slope wording when precision matters.
+
+## Practitioner notes (2025–26): designers building their own tools — full quotes
+
+Sources (Dive Club, auto-captioned): Ryan [Moshi] (head of design, Column — onQY0PrUulw; surname uncertain in captions), Tommy Geoco (OYNoy468kS8), Marvin Schwaibold (Molly Studio → Shopify — KpJs7mZYErg), Kris Puckett (nPyxVMd1LIA).
+
+- **Tools-of-one** (Ryan): "I get to make it for my exact user needs and not consider like what anyone else needs" — the per-person fit malleability promises, achieved today by building rather than reshaping.
+- **Tooling-gravity as a moat** (Ryan): "we tend to gravitate towards the things that our tooling makes easy" — effects awkward in Photoshop but trivial in his own tool become a signature: "it's like kind of making a moat to your brand." Your tools shape your output; owning them shapes it distinctively.
+- **Build the tool, not the output** (Ryan): "I don't want it to jump to the end result. I think where AI is really successful is helping you along the way to build a tool or learn the software." Ridd's conversion: "how can I prompt AI to create a tool that I can then use to arrive at the output. And I could have 100xed my iteration speed by thinking about it that way."
+- **Deceptively simple** (Ryan, on his first tool): "these tools are deceptively simple to make… Getting a tool to, you know, just run locally and produce an image was very straightforward" — and "the actual like hard part that I don't know how to do myself — it nailed it."
+- **Generative-design precedent** (Gross et al., p5.js): the designer stops hand-drawing each output and asks, "How do I abstract?" into rules, repetition, controlled randomness, and parameters. Key guardrail: "True randomness rarely produces compositionally interesting results" — randomness works when "limited and applied in measured doses."
+- **The numbers** (Geoco): 59% of designers in his survey data "have built their own like tool for their workflow"; Ramp reported "1,500 vibe coded tools" internally — "how much of that is throwaway? Well, most of it" — and the keepers spread organically: "it's useful, someone tries it, and then it starts to spread like, oh, so and so built a thing for this."
+- **The platform view** (Schwaibold): "that whole paradigm of throwaway software and contextual software versus large-tech software, which we're experiencing right now. And we're just entering a world where you'll be able to build tools for your specific workflow." Shopify's direction: "we're looking at more of a malleable interface that morphs and shapes itself around contextual needs of the merchants."
+- **The two-hour personal app** (Puckett): a personal health app — Apple Watch metrics synced over a local network to a Mac mini, daily AI review of his HRV and energy — "in terms of like the permissionless building, like I'm able to in 2 hours build this."

@@ -4,6 +4,17 @@
 
 **Sources:** [apple-visual-accessibility/sources.md](apple-visual-accessibility/sources.md) — 4 WWDC sessions + MDS contrast videos + Hollick.
 
+## Contents
+
+- The inclusion gap (2025 framing)
+- Color & shapes
+- The 5-band contrast system (MDS)
+- Text readability
+- Display accommodations
+- Lab rulings: testing & triage (WWDC26 Group Lab, 1juOcrja4bo)
+- Audit checklist
+- Relationship to other skills
+
 Vision is a continuum — full sight, low vision, no sight, color blindness, light sensitivity, motion sensitivity ("one in three people has some form of motion sensitivity"). iOS exposes settings for each; your job is to **observe and respect every one**. Three pillars: color & shapes, text readability, display accommodations. The meta-rule: **turn these settings on yourself and audit your own app.**
 
 ## The inclusion gap (2025 framing)

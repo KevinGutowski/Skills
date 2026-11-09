@@ -2,6 +2,12 @@
 
 Transition specificity, GPU compositing hints, and perceived performance.
 
+## Contents
+
+- Transition Only What Changes
+- Use `will-change` Sparingly
+- Perceived Performance: Spinner Choice Assigns Blame
+
 ## Transition Only What Changes
 
 Never use `transition: all` or Tailwind's `transition` shorthand (which maps to `transition-property: all`). Always specify the exact properties that change.
@@ -86,6 +92,8 @@ This particularly helps when an element is changing `scale`, `rotation`, or movi
 ### When to Skip
 
 Modern browsers are already good at optimizing on their own. Only add `will-change` when you notice first-frame stutter — Safari in particular benefits from it. Don't add it preemptively to every animated element; each extra compositing layer costs memory.
+
+The second legitimate trigger is **positional jitter**: if an element randomly shifts by 1–2px while it animates, add `will-change: transform` to that element. Krehel (Interfaces Cheat Sheet) flags this as "especially useful in Safari on iOS," where the un-promoted element is rasterized at slightly different subpixel offsets between frames. Treat the jitter as the diagnostic; don't add the hint to elements that animate cleanly.
 
 ## Perceived Performance: Spinner Choice Assigns Blame
 

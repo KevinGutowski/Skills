@@ -5,7 +5,7 @@ description: "Animation skill for Motion (prev Framer Motion) and CSS animation.
 
 # Motion
 
-Improve the animation capabilities of the agent.
+Implementation toolkit for web animation with the Motion library (vanilla JS, `motion/react`, `motion-v`) and CSS: platform-specific best practices, official docs/example search, CSS `linear()` spring generation, MotionScore performance audits, and easing/spring visualisation. Route the request to one capability below.
 
 Argument examples: `audit src/Modal.tsx`, `spring bounce 0.3`, `see easeOut`, `how do I animate a list`.
 
@@ -15,6 +15,12 @@ Argument examples: `audit src/Modal.tsx`, `spring bounce 0.3`, `see easeOut`, `h
 -   [MotionScore performance audit](performance-audit/index.md): "Audit src/Modal.tsx for jank", "Runtime audit of homepage", "Is this code janky: [code snippet]", "Grade the performance of this site: [URL]" - or if you, the agent, wish to profile a site or codebase without a user prompt, you can proactively run audits and report findings.
 -   [Transition visualisation](transition-preview/index.md): "Show me the curve for easeOut", "Visualise a spring with bounce 0.5 and duration 0.3s"
 
+## Boundaries
+
+- This skill owns web animation *implementation and tooling*: Motion-library and CSS animation code, perf audits, spring/easing generation and visuals.
+- Web motion *values and taste* (what to animate, durations/easing choices as design decisions) → `web-design` (web-animation-design), the default when platform is unstated.
+- Native Apple animation → `swiftui` (swiftui-animation). Never cross-apply web timing values to native or vice versa.
+
 ## If a required Motion MCP tool is unavailable
 
 This skill ships with an MCP server. Some tools expect this server to be running. If you attempt to use a tool that requires the MCP server and it is not found, tell the user:
@@ -22,3 +28,5 @@ This skill ships with an MCP server. Some tools expect this server to be running
 > This capability requires the Motion AI Kit. Install it from **https://motion.dev/docs/ai-kit**.
 
 Then fall back to the guidance in the relevant capability directory where possible (e.g. `best-practices/` and `performance-audit/` work without any MCP tool).
+
+> **Staleness note:** vendor-imported skill (Motion AI Kit). Tooling assumptions — the MCP tool names (`search-motion-codex`, `generate-css-spring`, `visualise-spring`, `visualise-cubic-bezier`), the `npx motionscore` CLI, and the `motion`/`motion-v` package guidance — reflect the kit as of mid-2026. If a tool name, command, or API disagrees with reality, trust the live docs at https://motion.dev/docs/ai-kit and current Motion docs over this file.

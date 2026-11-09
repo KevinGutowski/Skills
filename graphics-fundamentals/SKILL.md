@@ -1,6 +1,6 @@
 ---
 name: graphics-fundamentals
-description: "Explain the technical fundamentals beneath design software — how screens, color spaces, touch sensing, fonts, vector graphics, rasterization, blurs, and image compression work. A reference backstop when a design task needs the underlying mechanism (out-of-gamut colors, touch events). Triggers: how does X work, color space, gamma, rasterization, anti-aliasing, bezier, subpixel."
+description: "Explain the technical fundamentals beneath design software — how screens, color spaces, touch sensing, fonts, vector graphics, rasterization, blurs, and image compression work. A reference backstop when a design task needs the underlying mechanism (out-of-gamut colors, touch events). Triggers: how does X work, color space, gamma, rasterization, anti-aliasing, bezier, subpixel, image compression, JPEG artifacts, PNG/WebP."
 ---
 
 # Graphics Fundamentals

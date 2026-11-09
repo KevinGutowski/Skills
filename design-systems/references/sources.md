@@ -6,6 +6,7 @@ Figma Config talks, 2024–25:
 
 Plus:
 
+- *Anton Sten, "Products People Actually Want" (2025 ebook, local attachment)* — meaningful design-system frame: efficiency/consistency/scale have value only when they accelerate meaningful outcomes, standardize quality, and reproduce patterns worth keeping; systems should be built in parallel with the product, constrained early, living, and adoption-focused.
 - *Ryo Lu (Cursor) — Dive Club + Dialectic interviews, 2025 (the "bricks"/de-slop additions)*
 - *MDS (Matt D. Smith, Shift Nudge) — https://www.youtube.com/watch?v=4p5LzrAYN30 · https://www.youtube.com/watch?v=PFi9WfNUlps (the dial + handoff sections)*
 - *Dive Club podcast interviews, 2025–26: Brian Lovin (Notion, dvEwb1Ajkwo), Luis Ouriach (Figma, Pn2G7JhxNKc), Cam Worboys (Cash App, KH9GBasDTI8), Louis Healey & Kyler Hall (Atlassian, CqMZTg7L-wE — the flagship of the DS-as-AI-context section), Steven Haney (Y0n6F9VlLVc)*
@@ -13,6 +14,8 @@ Plus:
 - *Apple WWDC 2017 session 809 — "Communication Between Designers and Engineers" (lost session, via WWDC Index archive)*
 - *Rachel Nabors, "Animation at Work" (A Book Apart, 2017) — chs. 3–4: timing scales as tokens, microanimation vocabularies (the motion-as-a-DS-layer section)*
 - *MailChimp, "The UX Reader" (2014) — pattern-library evolution and slat-system reuse*
+
+- *Marek Minor (Minor Adventures) — "The making of Cursor's icons" (https://www.minoradventures.co/blog/the-making-of-cursors-icons, Jul 2026)* — the icon-systems reference ([icon-systems.md](icon-systems.md)) and the "Icons are a system asset" section: optical sizes, keylines, optical corrections, consistency infrastructure, one-concept-one-icon governance, codepoint-stable migration, `ship it` pipeline. Single deep practitioner source (site's only blog post as of Aug 2026); quotes verified verbatim against the article text. Craft-depth texture routed to `design-craft` (field-notes).
 
 Worked examples, outcome numbers, and playbook specifics live in [field-notes.md](field-notes.md).
 - *Figma blog — "Meet the design pioneers taking on the venture world" (Combine: Soleio Cuervo & Adam Michela, 2017, https://www.figma.com/blog/meet-the-design-pioneers-taking-on-the-venture-world/) — keep-the-system-alive note.*

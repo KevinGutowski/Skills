@@ -1,5 +1,15 @@
 # Writing Effective Skill Descriptions
 
+## Contents
+
+- Why Descriptions Matter
+- The Description Formula
+- Good vs. Bad Descriptions
+- Trigger Words
+- Description Length
+- Common Mistakes
+- Testing Your Description
+
 ## Why Descriptions Matter
 
 The description is the most critical piece of metadata. It's what Claude uses to decide **when to load the skill**.

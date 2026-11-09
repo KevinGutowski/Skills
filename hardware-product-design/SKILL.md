@@ -1,6 +1,6 @@
 ---
 name: hardware-product-design
-description: "Design and ship a physical product — position the form factor first, prototype physical things, choose input methods, survive manufacturing reality. Use when designing hardware or a connected device, planning physical prototyping, or working with manufacturers. Triggers: hardware product, industrial design, form factor, tolerances, yield, enclosure, wearable."
+description: "Design and ship a physical product — position the form factor first, prototype physical things, choose input methods, survive manufacturing reality. Use when designing hardware or a connected device, planning physical prototyping, or working with manufacturers. GTM/audience for the physical product → building-in-public. Triggers: hardware product, industrial design, form factor, tolerances, yield, enclosure, wearable."
 ---
 
 # Hardware Product Design
@@ -35,15 +35,10 @@ The task shape: you're making a *thing* — atoms, maybe with software inside. T
 
 ## Display & input physics (briefing layer)
 
-When the product has a screen or touch surface, brief from this layer before spec'ing. (Dan Hollick, *Making Software* — makingsoftware.com/chapters/how-a-screen-works and /chapters/touch-screens; quotes verbatim.)
+When the product has a screen or touch surface, two spec-shaping facts (Dan Hollick, *Making Software* — makingsoftware.com/chapters/how-a-screen-works; quotes verbatim); everything deeper — panel types (TN/IPS/VA), Tandem OLED/MicroLED, resistive vs capacitive touch internals, touch-history trivia — is lookup material: route to `graphics-fundamentals` (pixels-and-color, input).
 
 - **The master tradeoff is transmissive vs self-emissive.** LCD (transmissive): sub-pixels filter a backlight — weakness is "light bleeding from the backlight resulting in poorer contrast and narrower viewing angles," strengths are brightness, cost, lifespan. OLED (self-emissive): each sub-pixel emits its own light — "their weakness is usually brightness and lifespan, as they can burn-in over time, but they are energy efficient, responsive, and able to produce pure black by turning off individual pixels." Pick by duty cycle: static bright UI for years → LCD; contrast/thin/flexible/power → OLED.
-- **LCD panel types in one line each:** TN — fastest response, cheapest, worst angles and color; IPS — widest angles, best color, costliest, moderate contrast; VA — highest contrast (~2500:1–6000:1+), slowest response, mid-range cost.
-- **Current frontier:** Tandem OLED ("two OLED panels glued together" — brighter, longer-lived at lower voltage per layer; Apple's latest iPad) and MicroLED (inorganic micro-LEDs, no burn-in, very bright, but placed individually so still ruinously expensive below billboard sizes).
 - **The framebuffer/refresh contract:** "The display controller reads from the framebuffer at the refresh rate of the display and so it's up to the system to make sure that the framebuffer is updated in time." Your SoC/GPU budget must close this loop at the panel's refresh rate — choose panel and silicon together.
-- **Resistive touch:** two ITO-coated layers held apart by spacers; touch closes the circuit. "This is why you have to actively apply pressure when you interact with them, to make sure that the two layers touch and the circuit completes." Position read as a voltage gradient, axis by axis; cheap, works with gloves/styluses, but spongy and effectively no multi-touch. (ITO — Indium Tin Oxide — is the transparent conductor both technologies depend on.)
-- **Capacitive touch:** perpendicular electrode rows/columns; driving columns are energized "one at a time in sequence multiple times per second," and a finger disturbing the electrostatic field changes mutual capacitance at row/column intersections — which is what makes precise multi-touch possible. Touch centers come from a weighted average over tens of intersections; hysteresis thresholds suppress hover flicker.
-- **History check for positioning decks:** the first capacitive-touch phone honor "belongs to the LG Prada," not the iPhone — capacitive was also invented *before* resistive, "another case of the superior technology being invented too early."
 
 ## Manufacturing reality
 

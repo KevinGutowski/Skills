@@ -23,6 +23,16 @@ The companion to "The Life of a Button": where 804 designs a single control's fe
 - Timed animations are call-and-response and take control from the user; fluid interfaces run **continuous dynamic behaviors** — always moving, always retargetable. The canonical curve is the braking car: unbroken, no direction changes, an **imperceptible stop**.
 - **Springs, described humanely:** drop mass/stiffness/damping for two designer-facing properties — **damping ratio** (100% = no overshoot → 0% = oscillates) and **response** (how fast it seeks the target). "We actually like to avoid using duration" — the spring is always ready to retarget.
 - **Bounce must be earned:** start at 100% damping ("you don't need to use springy springs"). **Reward momentum with overshoot** — Music opens Now Playing at 100% damping from a tap, but dismisses with **80%** when you fling it. **Bounce can teach:** the lock-screen Flashlight responds to a plain tap with a bounce that says "press harder to activate."
+- **Concrete starting values.** The talk gives the Music 100%→80% example but not a table; these are the practical damping/response defaults for the common interactions, as distilled in Emil Kowalski's web port of the same principles. Start here, then tune by feel. (Damping is the *ratio* — 1.0 = critically damped, no overshoot; ~0.8 = a little bounce. Response is settle speed in seconds, **not** a fixed duration.)
+
+  | Interaction | Damping | Response |
+  | --- | --- | --- |
+  | Move / reposition (e.g. PiP) | `1.0` | `0.4` |
+  | Rotation | `0.8` | `0.4` |
+  | Drawer / sheet | `0.8` | `0.3` |
+
+- **Velocity handoff — the drag→spring seam.** Hand the release velocity to the spring so the animation *continues* at the finger's exact speed; without it there's a visible seam between dragging and animating. Spring APIs that want *relative* velocity need it normalized by the remaining distance: `relativeVelocity = gestureVelocity / (target − current)` (element at `y=50`, target `y=150`, finger at 50 pt/s → initial spring velocity `50/100 = 0.5`). SwiftUI's `.interpolatingSpring(initialVelocity:)` and Motion's `velocity` option take this seam directly; absolute-velocity APIs take the raw points/sec.
+- **Blend velocity on reversal — don't hard-cut.** When a gesture reverses, retarget the *same* running spring so it carries its current velocity through; swapping in a fresh animation at the reversal creates a velocity discontinuity — a "brick wall." iOS does this natively with **additive animations**; on the web, pick a spring library that re-targets from the live velocity. (Same reason CSS transitions/`@keyframes` can't be grabbed mid-flight — they restart from zero rather than from the presentation value.)
 - **Project momentum — design for intent.** The FaceTime PiP doesn't snap to the nearest corner by *position*; it computes the **projected landing point** of the flick (the familiar scroll deceleration) and springs to the corner nearest *that*. "Ensure that motion is aligned with the intent of where people actually want to go. And then, take them there."
 
 ```swift
@@ -59,3 +69,12 @@ y.target = nearestCornerPosition.y
 - Visual conventions are portable: clip content at the screen edge to invite scrolling; paging dots; grabber handles; **elevate interactive elements to their own plane** (a switch knob floats to read as draggable); **show, don't tell** — Safari's tab-close X animates the tab leftward, teaching swipe-to-close. Explicit instruction only for one *repeated* gesture, never an intermittent one.
 - **Play is how fluid interfaces teach themselves:** "you don't feel like you need to learn the interface, you feel like you're discovering the interface." Lean into the "natural fiddle factor"; hand prototypes to people and watch.
 - **Process:** interaction and visual design are inseparable — "you shouldn't be able to even tell when one ends and another begins." **"The interactive demo… is really worth a million static designs"** — literally how the iPhone X interface was built.
+
+## Translating to the web
+
+These are interaction *principles*, not platform specs — they carry across platforms intact, which is why they read almost verbatim in good web motion work (Pointer Events + `setPointerCapture` for 1:1 tracking, `requestAnimationFrame` for the display clock, a spring library for interruptible retargeting). What does **not** cross-apply is the platform-specific numbers and API detail. Web homes for the same principles:
+
+- **`web-design` (web-animation-design)** — spring/easing values, interruptibility, and reduced-motion for web motion (the default web motion theme).
+- **`design-craft` (emil-kowalski)** — the component-craft translation: press `scale(0.97)`, never `scale(0)`, origin-aware popovers, momentum-based dismissal.
+
+Emil Kowalski's public `apple-design` skill is a fuller single-file web port of this same WWDC 2018 lineage — useful as a cross-check, but treat its numbers as one coherent theme, not canonical talk specs.

@@ -1,5 +1,11 @@
 # Workflow Overview: Book to Skills
 
+## Contents
+
+- The Full Process
+- Time Estimates
+- Example: Shape Up Conversion
+
 ## The Full Process
 
 Converting a book into skills happens in five phases:

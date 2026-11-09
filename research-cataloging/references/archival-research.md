@@ -2,6 +2,32 @@
 
 *Scope: Build per-subject research bundles and offline reference archives, with provenance and verification — web source trails with saved snapshots and attributed imagery, or OCR/transcription of scanned PDFs into a layered corpus. Use when collecting venue/exhibition/artwork dossiers, gathering imagery + sources, or transcribing scanned documents. Triggers: research bundle, source trail, Wayback Machine, museum research, OCR, scanned PDF.*
 
+## Contents
+
+- Reference files
+- When to use
+- Local-source corpora: OCR → clean → translate
+- Stance: be an exhaustive, breadth-first research partner
+- Present data in a variety of structured ways
+- Cross-reference matrices belong at the index
+- Spread the work across the whole subject domain
+- Mental model
+- Bundle layout
+- Primary vs. secondary sources
+- Source trail — the canonical chain
+- Filename conventions
+- After every capture: READ the page yourself, don't trust the script
+- Capture mechanics
+- Per-image provenance logging — non-negotiable
+- Cadence — pilot then batch
+- Working with the user's drops
+- What not to capture
+- License & attribution
+- Canonical inventory first — never invent attributions
+- Common failure modes
+- Related references
+- Update this reference
+
 ## Reference files
 
 Detailed worked procedures live in `archival-research/` — load them when you reach the relevant step:

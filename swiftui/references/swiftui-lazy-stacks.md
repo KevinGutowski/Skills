@@ -4,6 +4,15 @@
 
 *Source: Apple WWDC 2026, session 321 — "Dive into lazy stacks and scrolling with SwiftUI" (Rens, UI Frameworks Engineer). https://developer.apple.com/videos/play/wwdc2026/321*
 
+## Contents
+
+- Mental model
+- Rules (and why)
+- Composition
+- Programmatic scrolling
+- Review checklist
+- Relationship to other skills
+
 `LazyVStack` / `LazyHStack` only evaluate and render the views needed to fill the visible rect. That efficiency comes with a **correctness cost you must design around**: everything off-screen is *estimated*. Most lazy-stack bugs come from treating estimated values as exact, or from making the stack's job ambiguous. This skill is the mental model plus the rules that follow from it.
 
 ## Mental model

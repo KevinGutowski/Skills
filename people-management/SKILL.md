@@ -1,6 +1,6 @@
 ---
 name: people-management
-description: "Run a team of direct reports — 1:1s and trust, feedback, career growth, hiring/firing, team comms. Use when new to managing, handling an underperformer, running career conversations or skip-levels. Influence up/sideways + your own promotion → design-org-influence. Triggers: new manager, 1:1, direct report, radical candor, BICEPS, career conversation, fire someone, delegation."
+description: "Run a team of direct reports — 1:1s with reports, trust, feedback, career growth, hiring/firing, team comms. Use when new to managing, handling an underperformer, running career conversations or skip-levels. Influence up/sideways, your own promotion, and 1:1s with your own manager → design-org-influence. Triggers: new manager, 1:1 with a report, direct report, radical candor, BICEPS, career conversation, fire someone, delegation."
 ---
 
 # People Management
@@ -25,6 +25,8 @@ Three bench tests:
 - **Extended-vacation test** (Zhuo): if you disappeared for a few months, how much would *your* manager need to step in? "Not much" = great bench; "a lot" = your next layer needs shoring up. You being non-essential to daily operations is the *sign of* good leadership, not a threat to your value.
 - **Rehire test** (Zhuo), for a struggling leader on your team: "Assume the role was open. Would you rather rehire your current leader or take a gamble on someone else?"
 - **Vision repeat-test** (Zhuo): "I'll know they did a good job describing their vision if I randomly ask five people who've heard it to repeat it to me and they all say the exact same thing."
+
+Design-lead addendum (Sten): management is a craft shift, not a better version of individual contribution. The role adds why-setting, stakeholder translation, calendar load, and people outcomes; it removes much of the protected maker time that made the IC role satisfying. Before treating management as the default promotion, ask whether the person has gone deep enough in the craft to teach it back and whether they want the relational work enough to trade away execution time.
 
 ## First 90 days: know your transition archetype
 
@@ -76,6 +78,10 @@ Zhuo's intersection rule: "spend your time and energy on the intersection of 1) 
 - **Hogan's messy-project gift**: "the best gift you can give your teammates is a messy, hard-to-measure, unscoped project" — it builds problem-solving, support networks, and leadership faster than clean work. Pair it with a safety net: name how/when you'll support ("DM me on Slack if you've spent more than one day stumped"), say out loud that it's a stretch on purpose, and set a RACI where they're Responsible and you're Consulted + Accountable so failure isn't career-ending.
 - "If you delegated everything you did today to someone else, do you think there'd be no more problems left for you to solve?" — giving pieces away is how you find the bigger ones.
 
+For design managers, stay close enough to "open the file" (Sten). You do not need to be the strongest maker on the team, but you need current contact with the tools, constraints, and edge cases your reports face. Hands-on credibility lets you teach execution, not only strategy. Letting the craft drift too far turns reviews into abstractions that junior designers cannot use.
+
+Energy management is part of the job design. If leadership drains your attention through meetings, reserve recovery and deep-work blocks deliberately; a manager who never processes cannot listen well, coach well, or make clear decisions.
+
 ## Checklist
 
 - [ ] Can you pass the extended-vacation and rehire tests? Would five random people repeat your vision identically?
@@ -93,6 +99,7 @@ Zhuo's intersection rule: "spend your time and energy on the intersection of 1) 
 
 - **`design-org-influence`** — the other direction: influence up/sideways (business cases, PM partnership) and your *own* promotion/reviews. Hiring *philosophy and signals* (spike hiring, AI-fluency interviews, team archetypes) live in its `references/team-building.md`; this skill owns hiring *process* mechanics and firing. Note the deliberate tension: as an IC influencing up, "always have a pitch for your complaints" (Steiner); as a manager receiving ideas, Scott/Laraway invert it — demand-a-recommendation kills innovation; nurture fragile ideas, and deciders get facts, not recommendations. Same person, two roles, opposite defaults — see [meetings-and-comms.md](references/meetings-and-comms.md).
 - **`learning-experience-design`** — designing manager training, coaching curricula, practice/feedback loops, and job aids; this skill owns the manager's actual relationship with reports.
+- **`personal-growth`** — the user's own life/work direction, goals, sustainable practice, recovery, and course correction; this skill owns growth, feedback, and performance support for direct reports.
 - **`user-research`** / **`design-prototyping`** — what your team does; this skill is how you run the team doing it.
 - **`write-clear-prose`** — the writing layer for feedback emails, comms plans, and recap emails.
 

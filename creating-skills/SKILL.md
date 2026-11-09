@@ -23,7 +23,7 @@ The context window is shared. Only add what Claude doesn't already know.
 - "Can I assume Claude knows this?"
 - "Does this paragraph justify its token cost?"
 
-Details: [conciseness.md](conciseness.md)
+Details: [references/conciseness.md](references/conciseness.md)
 
 ### 2. Set Appropriate Degrees of Freedom
 
@@ -33,7 +33,7 @@ Details: [conciseness.md](conciseness.md)
 | **Medium** (pseudocode) | Preferred pattern exists | Report generation template |
 | **Low** (exact scripts) | Operations are fragile | Database migrations |
 
-Details: [degrees-of-freedom.md](degrees-of-freedom.md)
+Details: [references/degrees-of-freedom.md](references/degrees-of-freedom.md)
 
 ### 3. Test with All Models
 
@@ -56,11 +56,13 @@ description: What it does + when to use it (max 1024 chars)
 [Body content - under 500 lines]
 ```
 
-Details: [skill-structure.md](skill-structure.md)
+Details: [references/skill-structure.md](references/skill-structure.md)
 
 ## Naming Convention
 
-Use **gerund form** (verb + -ing):
+> ⚠️ **House divergence — this corpus uses noun phrases, not gerunds** (House Style rule 4 below): "hardware-product-design", not "designing-hardware". The gerund form below is the official suggestion; both are sanctioned, but match the corpus you're in.
+
+Official suggestion: **gerund form** (verb + -ing):
 
 | Good | Avoid |
 |------|-------|
@@ -72,7 +74,7 @@ Use **gerund form** (verb + -ing):
 
 **Always write in third person.** The description is injected into the system prompt.
 
-**Template:**
+**Template** (official minimal shape — in this corpus, use the fuller House Style rule 1 shape: what + when + boundary clause + triggers, ~350–450 chars):
 ```
 [What it does]. Use when [trigger context].
 ```
@@ -82,7 +84,7 @@ Use **gerund form** (verb + -ing):
 description: Extract text and tables from PDF files, fill forms, merge documents. Use when working with PDF files or when the user mentions PDFs, forms, or document extraction.
 ```
 
-Details: [writing-descriptions.md](writing-descriptions.md)
+Details: [references/description-writing.md](references/description-writing.md)
 
 ## Progressive Disclosure
 
@@ -99,7 +101,7 @@ skill-name/
 
 **Key insight:** Scripts' outputs consume tokens, not their contents.
 
-Details: [progressive-disclosure.md](progressive-disclosure.md)
+Details: [references/progressive-disclosure.md](references/progressive-disclosure.md)
 
 ## House Style (this corpus — 2026-06 audit)
 
@@ -107,8 +109,8 @@ Rules layered on top of the official guidance, derived from a ~40-skill corpus w
 
 1. **Descriptions: ~350–450 chars, never the 1024 cap.** The cap is an API limit, not a budget; all descriptions preload into every session (~40 × 450 ≈ 4.5k tokens here). Shape: `What it does (verb-led). Use when <3–5 situations>. <Boundary clause>. Based on <credit>. Triggers: <6–8 query-like terms>.` The validator warns >700.
 2. **Boundary clauses are sacred.** Dense corpora have near-neighbors (8 Rails skills, 5 SwiftUI skills, 6 motion/polish skills). Clauses like "DEFAULT school; escalate on named pains" or "Distinct from X's perf audit" exist because of real routing misses — compress, never drop. The official one-liner examples assume no neighbors; the *shape* generalizes, the length doesn't.
-3. **The routing eval is the gate.** ~/.claude/skill-evals/routing-eval.md: 44 prompts → fresh agent routes by descriptions only. Run after any description change, new skill, or consolidation. Add 1–2 probes (plus a control that must NOT route to the new skill) with every new skill. This is the docs' "build evaluations first" applied to discovery.
-4. **Naming: noun phrases by task shape, never by industry** (house divergence from the gerund suggestion below — both are sanctioned; consistency within the corpus is what matters). "hardware-product-design", not "designing-hardware" or "fintech-skills".
+3. **The routing eval is the gate.** After any description change, new skill, or consolidation, run routing probes: give a fresh agent the descriptions only and a set of realistic prompts, and check each routes to the intended skill. Add 1–2 probes (plus a control that must NOT route to the new skill) with every new skill. In this repo, the probe method and fixtures live in `docs/` (see the routing-probes sections of `docs/skill-library-ops.md`; `scripts/check_vercel_routing_probes.py` verifies the recorded probe packet). This is the docs' "build evaluations first" applied to discovery.
+4. **Naming: noun phrases by task shape, never by industry** (house divergence from the official gerund suggestion above — both are sanctioned; consistency within the corpus is what matters). "hardware-product-design", not "designing-hardware" or "fintech-skills".
 5. **Body budget: <5k tokens** (Agent Skills spec recommendation), 500-line hard max. On compaction only the **first 5,000 tokens** of an invoked skill are re-attached (25k shared across skills) — front-load the load-bearing rules; push long quotes, walkthroughs, and per-source detail to `references/`. Reference files >100 lines get a `## Contents` block (partial reads see full scope).
 6. **Knowledge-skill anatomy** (talk/article-derived skills): Sources block with titles+speakers → task-shape framing sentence → principle sections with verified, cited quotes (short by default; larger chunks are fine when the passage itself is the load-bearing artifact — always attribute: speaker, work, video ID/URL) → Checklist → "Relationship to other skills" (bidirectional) → staleness note separating durable doctrine from fast-decaying specifics.
 7. **Gotchas are the highest-signal content** (Anthropic's internal finding). Populate from observed failures, not anticipation — the corpus analog is the verified-quote + failure-driven-rule discipline (e.g. source-sweep was born from a real sampling failure).
@@ -120,6 +122,8 @@ Rules layered on top of the official guidance, derived from a ~40-skill corpus w
 13. **Taxonomy & graph rules** (docs/taxonomy-2026-06.md): top-level = a platform, an activity, or a cross-domain tool; topics nest as reference files under their platform/activity cluster. Nesting never severs access — every inbound edge from another skill becomes an explicit `cluster` (member reference) cross-ref. Any consolidation requires: corpus-wide edge remap, an independent grep audit (zero dangling member names), and before/after routing probes that gate the change (revert if AFTER < BEFORE). Absorbed members keep a `*Scope:*` line; cluster descriptions pool member trigger vocabulary (≤700 chars); user-invocable commands stay top-level.
 14. **Write tight from the start** (compaction-pilot finding, 2026-06: bodies compress only ~10% after the fact without content cuts — so author lean instead): clipped fragments over full sentences for example lists; arrow chains for procedures (audit → inventory → group); quote-intro framing cut to "Speaker, context:"; no connective glosses ("this is the hinge..."); cross-ref bullets = distinction + routing rule only. Never compress quotes, rules, or distinct examples — density lives in the framing, not the content.
 15. **Agent-standard architecture** (Vercel product-design pattern, 2026): when a skill teaches agents repeated product/design judgment, split the system into trigger/routing, source-grounded guidance, exemplars, coverage gaps, deterministic checks, and a human update loop. Start from repeated review decisions; write scope, rationale, evidence, exceptions, bad/good example, and approver before promoting a candidate into a reusable rule. Use lint/scripts only when the failure is mechanically identifiable and has a concrete fix; keep judgment in prose. Test retrieval separately from application.
+16. **Register skills where work is *created*, not only where it's requested** (Pocock/Ness wayfinder pattern, 2026): description-matching at request time is one routing surface; a planning skill that charts work into tickets is another. Its ticket-type definitions and plan notes can name the skill that resolves each ticket — Will Ness wired his new frontend-prototyping skill into Pocock's `/wayfinder` planner with one routing sentence, so every future plan containing novel frontend work generates a ticket that invokes it ("this is a very powerful pattern for planning work"). When authoring a skill meant to fire at a specific workflow moment, add a routing clause to the orchestrator/planner skill that creates that moment's work — the workflow-mechanics side lives in `working-with-ai` (agentic-coding).
+17. **Measure application, not just routing** (Olivares uikit-skill benchmark, 2026): run the skill against a no-skill control on a real task and score behaviours → agent cost (turns, builds, tokens) → model gap → runtime. Transcripts showed SKILL.md read once at turn 1-2 and references opened 0-2 times, so code-changing rules belong in the body; cut rules the no-skill controls already follow, surfaces the task lacks, and process lines no transcript followed; say "these rules say how to build, not a list to test". Method, isolation gotchas and hygiene: [references/measuring-skill-effect.md](references/measuring-skill-effect.md).
 
 ## Checklist Before Shipping
 
@@ -140,4 +144,4 @@ Rules layered on top of the official guidance, derived from a ~40-skill corpus w
 - [ ] Tested with Haiku, Sonnet, and Opus
 - [ ] Tested with real usage scenarios
 
-Details: [checklist.md](checklist.md)
+Details: [references/authoring-checklist.md](references/authoring-checklist.md)

@@ -6,12 +6,30 @@
 
 The durable practice layer for accessible websites. Standards-era warning up front: Kalbag wrote against **WCAG 2.0**; current is **WCAG 2.2** (2.x success criteria are additive, so her criteria still hold) and EAA enforcement began June 2025 — **verify every standards, tooling, or legal specific against current WAI/MDN docs** (see Staleness appendix). Extended passages: [references/source-extracts.md](web-accessibility/source-extracts.md).
 
+## Contents
+
+- 1. Framing: universal, not bolted-on
+- 2. Assistive-technology discipline
+- 3. Priority order (the lesson, not the mechanics)
+- 4. Keyboard & focus mechanics
+- 5. Contrast nuance (+ 5b. Contrast metrics & compliance tactics)
+- 6. Forms & errors
+- 7. Writing accessibly (Writing Is Designing, ch. 5)
+- 8. Rich media
+- 9. The testing program (layered, in order)
+- 10. Org layer
+- Checklist
+- Staleness appendix
+- Relationship to other skills
+
 ## 1. Framing: universal, not bolted-on
 
 - Ron Mace (architect, wheelchair user): "Universal design is the design of products and environments to be **usable by all people, to the greatest extent possible, without the need for adaptation or specialized design**." Accessible design adds the wheelchair ramp on the far side of the building; universal design builds combined ramp-stairs no one has to go out of their way to choose.
 - The web translation: a text-resize button is accessible design — "yet another element crowding a page layout, and people have to go out of their way to find it" (Kalbag's NYT example). The universal move is **making all the body text bigger** (her counter-example: New Republic's 20px default, "instantly more inviting"). Build the inclusive default, not the bolt-on.
 - The culture goal: "My one wish for the web is that **people consider accessibility in the same way they think about web performance**" — mentioned in every blog post about a new technique, not a separate workstream.
 - **Context and environment are impairments too**: bright sunlight, one-handed phone use, slow connections. And don't infer context from device — BBDO found **64% of users browse the web on mobile while at home** on their sofas and Wi-Fi; "on the go" is a fiction.
+- **Design for anyone, not an abstract everyone** (Sten): treat permanent, temporary, and situational limits as one continuum. Captions help deaf users and anyone watching without audio; contrast helps low-vision users and anyone in bright light; large targets help motor impairments and one-handed distracted use. Start with concrete human situations, not a mythical average user.
+- **Run the situational quick checks:** one-handed/thumb-only use; bright and dark environment; no audio; tired or stressed reading; first-time use; distracted task completion. For interactions, ask whether the next action and its result are obvious without full attention.
 - The analytics caveat: "**There are no user agent strings for these assistive technologies**, leaving us with no idea of how many people are accessing the web with assistive hardware or software." You cannot measure your way out — build for the unknown and test widely.
 
 ## 2. Assistive-technology discipline
@@ -31,7 +49,11 @@ The durable practice layer for accessible websites. Standards-era warning up fro
 - **Make skip links visible.** "Screen reader users rarely use skip links because screen readers have more sophisticated navigation to skip to content." Hiding them for everyone-but-screen-readers "**excludes the people who may benefit the most** from skip links — sighted people using keyboard navigation." Best option: "**make the skip links visible to all users so that all users benefit**."
 - **Keyboard focus ≠ visual focus.** Kalbag's era-bug: following a skip link scrolled the view but left keyboard focus on the nav, making skip links "utterly useless… they're not actually skipping at all." The durable fix (Scott Vinkle): **`tabindex="-1"` on the skip-link target** — removed from the tab order, but able to receive programmatic focus. Same pattern for moving focus into dialogs, error summaries, and SPA route changes.
 - **Never reorder the tab index** with positive `tabindex` values: Tab honors it, cursor/virtual navigation ignores it — "altering the tab index is generally not advisable." Fix the source order instead. `tabindex="0"` only for genuinely interactive custom elements.
-- **Never remove focus styles** ("Just go put them back now") — replace browser defaults with branded focus *and* hover styles if you must, but keyboard users navigate by them.
+- **Never remove focus styles** ("Just go put them back now") — replace browser defaults with branded focus *and* hover styles if you must, but keyboard users navigate by them. Style **`:focus-visible`, not `:focus`** (Krehel, Interfaces Cheat Sheet): the ring then appears for keyboard focus and stays out of the way on mouse clicks. `outline: none` without a replacement is never acceptable.
+- **Icon-only controls and hidden-but-focusable traps.** Give a button that only has an icon a descriptive `aria-label`. Never put `aria-hidden="true"` on anything that can receive focus — the keyboard lands on a stop the screen reader can't name (Krehel).
+- **Native controls carry behavior; ARIA does not.** WAI's Authoring Practices Guide notes that browsers provide keyboard behavior for native HTML controls, while custom ARIA widgets must implement it. Start with the native element. If a composite widget is genuinely necessary, follow its APG pattern: Tab enters/leaves the composite; arrow keys move within it; keep one item in the tab sequence and manage the active descendant or roving `tabindex` deliberately.
+- **Current focus floor:** WCAG 2.2 AA requires visible focus and that author-created content does not entirely obscure the focused component. Focus Appearance's simplest strong treatment—an indicator with area equivalent to a 2 CSS px perimeter and 3:1 change contrast—is AAA, not the AA baseline. Treat it as a robust design target, not a false AA compliance claim.
+- **Current pointer-target floor:** WCAG 2.2 AA Target Size (Minimum) is `24×24 CSS px`, with defined spacing, inline, equivalent-control, and user-agent exceptions. Larger product targets may be preferable, but `40` or `44` px is a design-system/platform target, not the WCAG 2.2 AA minimum. Krehel's product rule, labeled as such: aim for `44×44` on touch screens and `40×40` on desktop where possible, and **hit areas must never overlap** — an enlarged target that steals its neighbor's clicks is worse than a small one.
 
 ## 5. Contrast nuance
 
@@ -63,7 +85,8 @@ The durable practice layer for accessible websites. Standards-era warning up fro
 
 - Format conversion is the developer's job: "that's not a user error—**that's the site developers' fault**. Formatting the content of an input field should not be a burden placed on the user; **the burden should be on the developers to convert user input into the necessary format**." Strip spaces from card numbers; accept any phone/date shape; validate asynchronously to reassure as people type.
 - **"(required)" in the label, not an asterisk** — the asterisk is a convention only seasoned form-fillers know; the word works "for sighted or screen reader users… or for first-time web users." (Pair every input with a `label for=`/`id` — structural, not just visual.)
-- **Dynamic alerts via `aria-live`**: `polite` for most updates (announced at the next graceful interval), `assertive` only for errors/alerts relevant to the user's current action — it's obtrusive.
+- **Dynamic alerts via `aria-live`**: `polite` for most updates (announced at the next graceful interval), `assertive` only for errors/alerts relevant to the user's current action — it's obtrusive. The role shorthands map the same way: `role="status"` announces routine updates ("Copied", "Saved"); save `role="alert"` for urgent errors (Krehel).
+- **The submit-error chain** (Krehel, corroborating Dannaway's enable-and-validate rule in `form-design`): keep the submit button enabled until the request actually starts; check for errors on submit; mark each failing field `aria-invalid="true"`; connect its message with `aria-describedby`; then **move focus to the first invalid field**. Without the focus move, a keyboard or screen-reader user submits into silence.
 - The error copy itself (tone, blame, what-now) → `ux-writing` (error-messages).
 
 ## 7. Writing accessibly (Writing Is Designing, ch. 5)
@@ -102,11 +125,16 @@ Then keep testing after launch (feedback channel, regression suite) — "Accessi
 ## Checklist
 
 - [ ] Inclusive default chosen over bolt-on control (bigger text, simpler layout)?
+- [ ] Situational checks run: one hand, no audio, bright/dark environment, stress/hurry, first-time use?
 - [ ] Semantic HTML doing the work; ARIA only where HTML can't?
 - [ ] Skip link present and **visible**; target has `tabindex="-1"`?
-- [ ] Whole flow works keyboard-only; focus styles visible; no positive `tabindex`?
+- [ ] Whole flow works keyboard-only; focus styles visible via `:focus-visible`; no positive `tabindex`?
+- [ ] Icon-only buttons carry an `aria-label`; nothing focusable is `aria-hidden`?
+- [ ] Custom composite widgets follow the relevant APG keyboard pattern; focused controls stay visible beneath sticky/fixed content?
+- [ ] Pointer targets meet WCAG 2.2's 24×24 CSS px minimum or a documented exception; any larger local target is labeled as a product rule?
 - [ ] Contrast passes current WCAG — but not glare-level; survives grayscale?
 - [ ] Forms: labels say "(required)", inputs forgive formats, errors use `aria-live`?
+- [ ] On submit: button stayed enabled, `aria-invalid` + `aria-describedby` set, focus moved to the first invalid field; `role="status"` vs `role="alert"` chosen deliberately?
 - [ ] Copy: chronological, device-agnostic verbs, critical info before the action?
 - [ ] Media: transcript published as HTML; captions human-checked?
 - [ ] CI fails on accessibility regressions; AT matrix maintained?
@@ -121,6 +149,7 @@ Durable: everything above. Decayed:
 - **Motion**: her era predates `prefers-reduced-motion` — use it (plus `prefers-contrast`, `forced-colors`); ignore any pre-media-query workaround patterns.
 - **Tooling churn**: Tenon API is gone (axe-core, Lighthouse, Pa11y are today's CI equivalents — the failing-build *pattern* is the durable part). Window-Eyes discontinued; "NVDU" is the book's typo for **NVDA**. IE/Opera Mini/Flash-based caption editors: dead. Today's AT matrix: NVDA + JAWS + Narrator (Windows), VoiceOver (macOS/iOS), TalkBack (Android).
 - **`<dialog>` is real now** — native modal focus management shipped in all engines; don't hand-roll focus traps where it serves.
+- **WCAG 2.2 additions matter** — check Focus Not Obscured (2.4.11) and Target Size Minimum (2.5.8); do not mislabel the AAA Focus Appearance criterion (2.4.13) as AA.
 - The Safari/Chrome skip-link focus bug is largely fixed, but `tabindex="-1"` on targets remains correct practice.
 - Screen readers + browsers update monthly; re-verify any specific keystroke, support claim, or quirk before citing it.
 

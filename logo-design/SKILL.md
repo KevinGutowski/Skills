@@ -113,6 +113,16 @@ Order of attack: functional pain points first (ask the client what breaks in rep
 - [ ] Badge (if any) earns its place; hierarchy name > mark > tagline > balance words?
 - [ ] Redesign keeps equity — was-working / wasn't-working audit done?
 
+## When the executor is an agent
+
+The method assumes a human designer with a client in the room. Mapping for AI-agent execution (the process and thresholds are unchanged — only the media differ):
+
+- **Sketch round** = a batch of low-fi directions: one-line concept descriptions and/or rough SVG outlines, one idea each. Quantity still beats polish — keep the 50-idea bar, time-box each, and don't refine at this stage.
+- **Vectorize the best 15** = clean SVG constructions from simple geometry; render each at small sizes, black-on-white *and* white-on-black, before showing anything.
+- **Presentation / silent ballot** = present ~15 candidates unranked, each with its referenced nouns listed; ask the user to pick their top three *before* revealing yours.
+- **Hat / favicon / embroidery tests** = small-size render checks: rasterize at 16×16 and thumbnail sizes and inspect for the §5 failure modes (thin lines, tight negative space), fixing in the §5 order.
+- **Noun intake and narrowing still happen *with* the user** — never skip to sketching from a self-generated noun list; the narrowing meeting becomes a message exchange, but the client-approval gate stays.
+
 ## Relationship to other skills
 
 - **`apple-design` (app-icon-design)** — shared core (metaphor selection, simplicity, small-size testing: Peters' thin-lines/negative-space diagnosis = the squint/blur test family). Different task shape: an icon is a single artwork inside an OS-owned container and rendering system; a logo is a containerless multi-format system. Route icon work there.

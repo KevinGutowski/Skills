@@ -2,7 +2,7 @@
 
 Use this reference when the user wants deep editing, writing coaching, a full rewrite, or a craft diagnosis. It synthesizes practical principles associated with acclaimed writing books, especially William Zinsser's focus on clear nonfiction, rewriting, simplicity, unity, audience, voice, and enjoyment.
 
-## Table of Contents
+## Contents
 
 - Diagnostic Ladder
 - Clarity and Clutter
@@ -11,9 +11,11 @@ Use this reference when the user wants deep editing, writing coaching, a full re
 - Voice
 - Sentence Music
 - Diction
+- AI-Default Pass
 - Evidence and Specificity
 - Paragraph Work
 - Revision Tactics
+- Before and After (Illustrative)
 - Common Edits by Form
 - Coaching Exercises
 
@@ -143,6 +145,28 @@ Do not ban large words. Ban lazy large words.
 
 Use metaphor sparingly. A metaphor should clarify an idea or create felt recognition. If it asks the reader to admire the writer, cut it.
 
+## AI-Default Pass
+
+When prose "sounds like AI," diagnose the system failure instead of banning individual tokens. Most generic assistant prose shares a few visible habits:
+
+- Stock openings that announce the category before saying anything specific.
+- Smooth but weightless abstractions: impact, unlock, elevate, transform, seamless, robust, leverage.
+- Symmetrical list cadence where every paragraph has the same length and pressure.
+- Passive or actorless claims that hide who chose, built, shipped, failed, or changed something.
+- Safe conclusions that summarize rather than land on a consequence, decision, image, or question.
+- Punctuation choices used as a house tic instead of a rhythm choice.
+
+Fix it with the ordinary prose craft stack:
+
+1. Write the real claim in one plain sentence.
+2. Replace template phrases with the specific actor, action, object, number, or scene.
+3. Cut any word that exists mainly to make the sentence sound polished.
+4. Use active voice when ownership matters; keep passive voice when the actor is unknown or irrelevant.
+5. Swap jargon for everyday language unless the reader needs the technical term.
+6. Break any local style rule when the alternative sounds false, stiff, or less clear.
+
+Ban lists are allowed only as local evidence: if the same writer repeatedly deletes a phrase from accepted drafts, promote that phrase to a house-style warning with the reason attached.
+
 ## Evidence and Specificity
 
 Ask:
@@ -187,6 +211,42 @@ Use these tactics during a deep edit:
 - **Read-aloud pass**: Fix stumbles, unintended repetition, weak endings, and monotone cadence.
 - **Last-line test**: Try ending earlier than the draft currently ends.
 - **Title promise test**: Make sure the title and opening promise the same piece the body delivers.
+
+## Before and After (Illustrative)
+
+These are illustrative examples written for this skill, not from the sources. Use them to calibrate what each pass does; do not attribute them to any author.
+
+**Clutter pass**
+
+> Before: It is important to note that, in today's fast-paced business environment, the utilization of clear communication practices can potentially serve to facilitate better outcomes for teams.
+>
+> After: Clear communication helps teams work better.
+
+The edit cuts throat-clearing ("It is important to note"), stock context ("in today's fast-paced business environment"), inflators ("utilization," "facilitate"), and reflex hedges ("can potentially serve to").
+
+**Structure pass**
+
+> Before: We tested the new checkout flow last month. Some background: the old flow had five steps. Users complained about it in surveys. We had discussed redesigning it in Q1. The test showed a 12 percent drop in abandonment.
+>
+> After: Last month's test of the new checkout flow cut abandonment by 12 percent. The old five-step flow had drawn complaints in surveys, which is why we redesigned it.
+
+The edit moves the strongest material (the result) to the front and folds the background into one subordinate sentence, instead of making the reader wade through history to reach the point.
+
+**Lead**
+
+> Before: Communication is one of the most important skills in the modern workplace. Many experts agree that writing well matters. In this post, I want to share some thoughts about status updates.
+>
+> After: Half the status updates I read this year could have been one sentence. Here is the sentence, and how to find yours.
+
+The edit replaces generic context and an announcement of intent with a specific, mildly provocative claim that creates pressure to keep reading.
+
+**Ending**
+
+> Before: In conclusion, there are many factors to consider when writing status updates, and each team should decide what works best for their own unique situation and needs.
+>
+> After: Next Monday, before you hit send, delete everything but the one sentence your manager would repeat in her own update. That sentence is the report.
+
+The edit removes the summary formula and the all-purpose hedge, and lands on a concrete action with a final sentence that feels finished rather than stopped.
 
 ## Common Edits by Form
 

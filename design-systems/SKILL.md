@@ -1,12 +1,14 @@
 ---
 name: design-systems
-description: "Build, govern, and scale a design system — token architecture, theming/multi-brand, governance, adoption as a measured product, DS-as-AI-context. Use for creating or auditing a design system, token taxonomies, planning governance or adoption, or wiring a DS into AI codegen. Triggers: design system, design tokens, semantic tokens, theming, token naming, governance, Code Connect."
+description: "Build, govern, and scale a design system — tokens, theming/multi-brand, governance, adoption as a measured product, DS-as-AI-context, icon systems. Use for creating or auditing a design system or icon set, token taxonomies, adoption planning, or wiring a DS into AI codegen. Apple platform → apple-design; brand marks → logo-design; org AI rollout → working-with-ai. Triggers: design system, design tokens, theming, Code Connect, icon set, icon font."
 ---
 
 # Design Systems
 
-**Sources:** [references/sources.md](references/sources.md) — 9 Figma Config talks ('24–25) + Dive Club + books; worked examples in [references/field-notes.md](references/field-notes.md); unresolved promotion candidates in [references/coverage-gaps.md](references/coverage-gaps.md).
+**Sources:** [references/sources.md](references/sources.md) — 9 Figma Config talks ('24–25) + Dive Club + books; worked examples in [references/field-notes.md](references/field-notes.md); interface icon-set method in [references/icon-systems.md](references/icon-systems.md); unresolved promotion candidates in [references/coverage-gaps.md](references/coverage-gaps.md).
 A design system is a **product with customers**, not a library: "treat it like a product team — clear OKRs, roadmap, customers — or it won't succeed" (Rahimi). The deeper frame (Henry Modisett, Linear): a DS is *quality infrastructure* — "if you make it so hard to make a bad button, you're going to have less bad buttons." Sell it honestly: "a design system is not the most efficient way to build things… it must have clear business impact and ROI" — the pitch that works is per-stakeholder incentive alignment: "components for free, performance for free, dark mode for free" (Coinbase), accessibility and i18n free.
+
+These rules have a dial, not a switch — before applying them at full depth, see the Counter-positions section below (consistency-vs-commodification, create-then-lint, how deep the system needs to go).
 
 ## Opinions are the product
 
@@ -14,6 +16,9 @@ A design system is a **product with customers**, not a library: "treat it like a
 - But opinions are *listened into existence*: "**if people are breaking the system, it's time the system changed**" (panel). Figma's team absorbed a dev's prop exploit as a considered "custom" variant rather than punishing (Albaugh/Bergman).
 - Rules must be **actionable and enforceable or they're vibes**: Intuit's unmeasurable "20% may be uniquely styled" rule died; Uber's ~80% target works because dashboards measure it per screen.
 - **Build, then constrain**: theming workshops deadlocked on abstract constraints; a live theming editor gave designers something real — "opinions should be rooted in a vision" (Baldwin). Zalando built token system and theme #1 *in parallel*, wrote governance after. Don't speculate: "product teams move faster than design system teams — address future needs when they're real" (Albaugh/Bergman). Component-level form: use it a few places, "allow the API [to] create itself based on the usage," then document (Briggs). Hitting limits is growth (the "midlarge" t-shirt size).
+- **Meaningful systems require good substrate, not just more substrate** (Sten): efficiency only helps if it speeds meaningful outcomes; consistency only helps if it standardizes a good quality bar; scale only helps if the pattern is worth reproducing. A design system can accelerate bad work, make poor choices consistent, or scale patterns the product should have retired. Audit what the system is amplifying before selling speed.
+- **Build with the product, not before or after it** (Sten): designing the system fully upfront freezes guesses; extracting it after the product forces wasteful rebuilds. The useful middle is a parallel process: let real product problems reveal components, then systemize the parts with repeated value.
+- **Constraints create room to work.** Define requirements early enough to narrow the problem: atomic/composition model, token taxonomy, desktop/mobile sharing, variants/states, theme modes, accessibility and localization requirements. The goal is not bureaucracy; it is a smaller, clearer creative field.
 
 ## Token architecture
 
@@ -43,6 +48,14 @@ A design system is a **product with customers**, not a library: "treat it like a
 - Spec the invisible: i18n/long-string behavior, focus-visible, tab order, ARIA, reflow — "code-only concerns designers skip" (Albaugh/Bergman).
 - **Prework before redesign** (MailChimp): harvest repeated UI into reusable patterns before the visual direction lands; they used CSS size as a proxy and "managed to cut about 120k" before launch. Keep the pattern library as both shortcut and regression test page; deeper slat-system notes → field-notes.
 
+## Icons are a system asset
+
+A product's interface icon set is a governed sub-system with its own optical sizing, drawing rules, audit infrastructure, and publish pipeline — full method in [references/icon-systems.md](references/icon-systems.md) (Marek Minor's Cursor commission: 600+ hand-drawn icons, two optical sizes, codepoint-stable migration, one-command shipping). The durable rules at this altitude:
+
+- **"Sets drift when nobody owns them"** (Minor): inherited libraries (Codicons, Material, …) drift in style *and* miss product-specific vocabulary — "at some point a product needs its own vocabulary." Audit both axes before deciding a redraw.
+- **One concept, one icon**: a concepts table pins each product concept to its icon so "What's the icon for [X]?" keeps having exactly one answer — "Without it, a set slowly develops two icons for the same idea, and at that point it stops being a system." Tag-based search covers the concepts people can't name.
+- **Migrate by keeping the addressing scheme stable** — remap every old glyph to its replacement at the same codepoint/name, retire the rest "deliberately rather than lost" (deprecation-is-a-feature, applied to glyphs) — and keep the set alive with a one-command publish pipeline: "A set that can't grow decays."
+
 ## Design–code parity & handoff
 
 - "**Pixel-perfect code is often not the right code. The perfect code is aligned to design intent, not pixels**" — non-parallel abstractions are fine; design and code "approach the same destination from different origins" (Albaugh/Bergman).
@@ -60,6 +73,7 @@ A design system is a **product with customers**, not a library: "treat it like a
 - New apps may break the rules — they're exploring the system's next version (Microsoft Loop). Respect the platform over the brand: "designing for Android: 80% Android, 20% Microsoft."
 - **Deprecation is a feature**: visual deprecation mode, migrations tested simplest → real files, merges synced with code releases. "Almost everything you make in the system… will run its course" (PJ Onori). The DS moves slower than product — no riff-publishing.
 - **Words are a system layer** (Metts & Welfle, *Writing Is Designing*, ch. 8): document functional patterns by *purpose*, not exact wording — "The purpose determines everything else that follows: the structure of the pattern, its content, its presentation" (Kholmatova, via WID). Make content first-class in the system's IA — Shopify's Polaris puts **Content** in the main nav beside Design and Components, a deliberate move ("how we organize information affects how organizations operate"). For style mechanics, adopt an existing style guide rather than writing your own — homegrown guides are "very time-consuming" and steal time from strategic work; pick one and stick to it.
+- **Adoption beats perfection** (Sten): a simple system everyone uses beats a perfect library no one reaches for. Treat non-use as product feedback: no need, weak incentive, poor awareness, unclear docs, overfit API, or low trust.
 - **Drop the label** (Ouriach): "taking the label of design system off what we're doing… brings you out of the silo and to the center of an organization's change" — from "what is a component" to "the company's system of approaching acceleration."
 
 ## Adoption is a measured product
@@ -106,6 +120,7 @@ A design system is a **product with customers**, not a library: "treat it like a
 - [ ] Federation rules written: who owns, who extends, when extensions graduate to core, who may break rules?
 - [ ] Adoption measured (breadth + depth, ~80% target), reported on a cadence, and rewarded in reviews?
 - [ ] Deprecation pathway designed (visual mode, tested migrations, code-synced releases)?
+- [ ] Icon set owned as a system: one-concept-one-icon table, tracked recurring elements, stable codepoints/names on migration, publish pipeline?
 - [ ] DS wired into AI tooling as context (Code Connect / token exports), including motion/shadow/state tokens, with designers owning first-draft prompts?
 - [ ] AI context split into substrate (tokens/components/recipes) and expressive taste rules instead of one vague inspiration dump?
 
@@ -113,6 +128,7 @@ A design system is a **product with customers**, not a library: "treat it like a
 
 - **`apple-design` (liquid-glass-design-system)** — consuming Apple's *platform* design system; this skill is about *owning* one. The panel's "respect the platform: 80% Android, 20% Microsoft" is the bridge rule.
 - **`apple-design` (ios-brand-identity)** — where brand may live inside a platform's system; this skill governs the brand's own token/theming machinery.
+- **`logo-design` / `apple-design` (app-icon-design) / `swiftui` (sf-symbols)** — brand marks, app icons, and Apple system-symbol usage respectively; this skill's icon-systems reference owns the product's *interface* icon set. Icon-craft depth methodology (exploration volume, below-noticing corrections) → `design-craft`.
 - **`web-design` (oklch-skill)** — the color math behind programmable tokens (hover = L+0.1, dark = mirror L).
 - **`apple-design` (apple-typography)** — type mechanics (grade, optical sizes, metrics) that a DS's type layer must encode.
 - **`devtools` (devtool-interface-design)** — the DS team's tooling (dashboards, linters, theming editors) is an internal devtool; its onboarding/AX rules apply.

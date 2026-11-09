@@ -1,5 +1,15 @@
 # Writing Reference Files: The Deep Dives
 
+## Contents
+
+- Purpose
+- When Claude Loads Reference Files
+- The Reference File Template
+- What to Include
+- What to Avoid
+- File Naming
+- Length Guidelines
+
 ## Purpose
 
 Reference files hold the full narrative that doesn't fit in SKILL.md. Claude loads these on demand when the user needs more depth.
@@ -134,7 +144,7 @@ known tasks. The uncertainty is gone.
 ```markdown
 For more on this, see [advanced.md](advanced.md).
 ```
-(And advanced.md says "For details, see [details.md](details.md)")
+(And advanced.md says "For details, see `details.md`")
 
 ✅ **Good:**
 All reference files link directly from SKILL.md. No chains.

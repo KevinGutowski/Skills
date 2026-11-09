@@ -1,5 +1,13 @@
 # Bundling Strategy: How to Group Chapters into Skills
 
+## Contents
+
+- The Core Principle
+- Decision Framework
+- Common Patterns
+- How Many Skills?
+- Anti-Patterns
+
 ## The Core Principle
 
 Don't create one skill per chapter. This fragments the knowledge and forces users to know which skill to trigger.

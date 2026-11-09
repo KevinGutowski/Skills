@@ -1,6 +1,6 @@
 ---
 name: notification-design
-description: "Design notifications worth receiving — when a notification earns the interruption, timing and frequency, grouping, and the self-contained package incl. Apple Watch. Use for notification strategy, permission flows, threading, or fatigue. Triggers: notification design, push strategy, notification fatigue, deliver quietly, provisional authorization, when to notify."
+description: "Design notifications worth receiving on Apple platforms (iOS/watchOS) — when a notification earns the interruption, timing and frequency, grouping, and the self-contained package incl. Apple Watch. Use for notification strategy, permission flows, threading, or fatigue; web push/email/Slack channels are out of scope. Triggers: notification design, push strategy, notification fatigue, deliver quietly, provisional authorization, when to notify."
 ---
 
 # Notification Design
@@ -8,6 +8,8 @@ description: "Design notifications worth receiving — when a notification earns
 **Sources/gaps:** [references/sources.md](references/sources.md) — 2 WWDC sessions; current-platform and rule-ID candidates in [references/coverage-gaps.md](references/coverage-gaps.md).
 
 Attention is precious; interrupting people is a privilege — and users can silence or kill a bad channel in two taps. The only sustainable strategy: **fewer, more meaningful, well-organized notifications.** "The best notifications are for connecting people and delivering meaningful information."
+
+**Scope boundary:** this skill is Apple-platform (iOS/watchOS) notification strategy and anatomy. Web push, email, SMS, and Slack/Discord channels are out of scope until channel-specific evidence lands (tracked in [references/coverage-gaps.md](references/coverage-gaps.md)) — the restraint principles may rhyme, but don't apply the iOS mechanics (provisional delivery, threading, Short/Long Look) to them.
 
 ## When is a notification worth sending?
 
@@ -51,4 +53,5 @@ See `references/examples.md` for the worked examples (Duolingo's pause, the Podc
 - **`swiftui` (sound-design)** — the notification sound criteria (distinguishable, short, neutral when content varies) pair with this skill's restraint rules.
 - **`feature-discoverability`** — shares the permission ethic: ask in context, value first.
 - **`swiftui` (widget-design)** / **`apple-design` (app-intents-design)** — Live Activities now own continuous glanceable state; route persistent-status use cases there.
+- **`apple-design` (hig)** — the current-spec tiebreaker: this skill's sources are 2017–2018 sessions plus patches, so fetch the live HIG `managing-notifications` and `notifications` pages via that playbook before citing letter-of-the-law behavior or implementing.
 - **`design-principles`** — *Responsibility* (attention as a resource) and *Utility*; use it to weigh whether a moment earns an interruption.

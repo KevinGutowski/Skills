@@ -2,6 +2,16 @@
 
 *Scope: Set up, authenticate, verify, and troubleshoot Airtable's remote MCP server in Codex; list bases, inspect schemas, update records.*
 
+## Contents
+
+- Core Facts
+- Setup
+- Verification
+- Stale Thread Behavior
+- Debug Checklist
+- Airtable Tool Use
+- Security
+
 ## Core Facts
 
 - Airtable MCP endpoint: `https://mcp.airtable.com/mcp`
@@ -105,3 +115,5 @@ Never log or save:
 - client secrets
 
 It is fine to save non-secret endpoint URLs, command shapes, base IDs, table IDs, field IDs, and record IDs when useful.
+
+> **Staleness note:** this file is Codex-Desktop/macOS-specific (the `/Applications/Codex.app/...` bundled-binary path) and MCP CLI syntax churns quickly. Before relying on the command shapes here, verify against `codex mcp --help` and Airtable's current MCP docs (`https://support.airtable.com/docs/using-the-airtable-mcp-server`); on other harnesses, translate the setup/auth/verify sequence rather than the literal commands. The durable layer is the discipline: verify auth with a real authenticated call (not `ping`), and suspect cached unauthenticated connections in stale threads.

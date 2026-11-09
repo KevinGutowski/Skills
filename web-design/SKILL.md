@@ -1,6 +1,6 @@
 ---
 name: web-design
-description: "Router for web design: typography, accessibility, animation values, performance, forms, OKLCH/color, Tailwind, and 9:16 social-video safe zones. Use for web/CSS craft decisions. Building distinctive UI → frontend-design; polish/feel → design-craft; Motion library work → motion; Apple platforms → apple-design. Read one named reference."
+description: "Router for web design: layout/responsiveness, typography, accessibility, animation, performance, forms, color, and installed Apple web apps. Use for web/CSS craft, including Home Screen and Add to Dock behavior. Building distinctive UI → frontend-design; native Apple design → apple-design; polish/feel → design-craft. Read one named reference."
 ---
 
 # Web Design
@@ -9,12 +9,14 @@ description: "Router for web design: typography, accessibility, animation values
 
 For a focused question, read the single reference file that matches it — each carries the full distillation for its area (deeper worked examples, sources, and code live in a same-named subdirectory next to it). For a **build** that legitimately spans areas — a page typically needs typography *and* color *and* animation at once — read each relevant reference together; the one-file rule optimizes Q&A lookups, not builds.
 
-- **Typography** — measure, line-height, type scales, font choosing/pairing, OpenType features, web-font loading (FOUT/`font-display`): [references/web-typography.md](references/web-typography.md)
-- **Accessibility** — semantic HTML first, keyboard/focus management, ARIA, contrast, screen readers, a11y audits and testing: [references/web-accessibility.md](references/web-accessibility.md)
-- **Animation** — easing, cubic-bezier, durations, springs, stagger, microinteractions, `prefers-reduced-motion`: [references/web-animation-design.md](references/web-animation-design.md)
+- **Typography** — measure, line-height, type scales, font choosing/pairing, OpenType features, web-font loading (FOUT/`font-display`): [references/web-typography.md](references/web-typography.md); deep dives: rutter-guidelines (full guideline index), choosing-and-pairing, opentype-and-micro
+- **Layout** — grouping, shared edges, logical properties/RTL, content-driven breakpoints, container queries, reflow/zoom, safe areas, and discoverable overflow: [references/web-layout-design.md](references/web-layout-design.md)
+- **Installed Apple web apps** — iOS/iPadOS Home Screen and macOS Add to Dock: manifest + Apple metadata, standalone detection/navigation, zero-safe insets, icons/startup images, install hints, storage handoff, and real-device checks: [references/apple-installed-web-apps.md](references/apple-installed-web-apps.md)
+- **Accessibility** — semantic HTML first, keyboard/focus management, ARIA, contrast, screen readers, a11y audits and testing: [references/web-accessibility.md](references/web-accessibility.md); deep dive: source-extracts (verified passages)
+- **Animation** — easing, cubic-bezier, durations, springs, stagger, microinteractions, `prefers-reduced-motion`: [references/web-animation-design.md](references/web-animation-design.md); deep dives: PRACTICAL-TIPS (scenario implementations), animation-at-work (Nabors quotes)
 - **Performance** — Core Web Vitals (LCP, INP), perceived performance, defer/anticipate/offload triage, budgets, dropped frames: [references/web-performance.md](references/web-performance.md)
-- **Forms** — the Dannaway method: single column, field-type selection (radio vs dropdown, checkbox vs toggle), 3 button weights, destructive-action friction: [references/form-design.md](references/form-design.md)
-- **Color (OKLCH)** — hex/rgb/hsl→oklch conversion, palette generation, contrast checks, gamut/P3 handling, Tailwind v4 theming: [references/oklch-skill.md](references/oklch-skill.md)
+- **Forms** — the Dannaway method: single column, field-type selection (radio vs dropdown, checkbox vs toggle), 3 button weights, destructive-action friction: [references/form-design.md](references/form-design.md); deep dive: practical-ui-details (9 button failure modes, validation tradeoffs)
+- **Color (OKLCH)** — hex/rgb/hsl→oklch conversion, palette generation, contrast checks, gamut/P3 handling, Tailwind v4 theming: [references/oklch-skill.md](references/oklch-skill.md); deep dives: color-conversion, palette-generation, accessibility-contrast, gamut-and-tailwind, color-theory
 - **Social-video safe zones** — keeping text/logos/faces/CTAs clear of platform chrome in 9:16 vertical video (Reels/Stories/TikTok/Shorts); social-video composition lives here as nearest family: [references/social-video-safe-zones.md](references/social-video-safe-zones.md)
 
 **Default motion theme:** web-animation-design is the corpus's default theme for web motion values. When skills or themes overlap on easing/duration/spring choices, route to its reference and apply its values as a coherent set rather than averaging; if the user is mixing themes and a genuine choice surfaces, present the options as a menu rather than picking silently.
@@ -23,4 +25,4 @@ For a focused question, read the single reference file that matches it — each 
 - **Building distinctive UI → `frontend-design`** — generating creative, production-grade components and pages lives there; this skill carries the craft rules they should obey.
 - **Polish and feel → `design-craft`** — design-engineering micro-detail (optical alignment, shadows, "feels off") lives there.
 - **Motion/framer-motion library work → `motion`** — `motion/react`, CSS `linear()` spring generation, and MotionScore perf audits live there; motion *design values* default here (web-animation-design).
-- **Apple platforms → `apple-design`** — typography, accessibility, forms, and brand conventions on iOS/macOS; never cross-apply web conventions there.
+- **Native Apple interfaces → `apple-design`** — typography, accessibility, forms, and brand *conventions* in native iOS/macOS apps belong there. A website added to the iOS/iPadOS Home Screen or macOS Dock remains web work and routes to apple-installed-web-apps here. Apple's interaction *principles* still translate: the fluid-interface gesture physics behind the springs/interruptibility above come from `swiftui` (touch-interaction-design), and the eight design values from `design-principles`.

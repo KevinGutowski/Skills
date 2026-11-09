@@ -1,5 +1,14 @@
 # Writing SKILL.md: The Quick Reference
 
+## Contents
+
+- Purpose
+- Constraints
+- The Section Template
+- Decision Framework Formats
+- Ordering Sections
+- Common Mistakes
+
 ## Purpose
 
 SKILL.md is the first thing Claude reads when the skill triggers. It should provide:

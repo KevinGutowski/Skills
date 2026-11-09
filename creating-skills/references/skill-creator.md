@@ -2,6 +2,18 @@
 
 *Scope: Anthropic's bundled guide for creating effective skills; includes init/package scripts.*
 
+> **Vendored upstream mirror.** This file mirrors Anthropic's bundled skill-creator guide. Where it diverges from this corpus's conventions (naming, description shape, layout), the House Style rules in this skill's `SKILL.md` override.
+
+## Contents
+
+- About Skills
+- Core Principles
+- Quick start
+- Advanced features
+- Creating documents
+- Editing documents
+- Skill Creation Process
+
 This skill provides guidance for creating effective skills.
 
 ## About Skills

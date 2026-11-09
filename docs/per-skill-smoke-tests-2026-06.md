@@ -25,15 +25,15 @@ Checker: `python3 -B scripts/check_skill_smoke_tests.py`
 | S14 | `dhh` | Do a DHH-style review of this Rails diff and call out over-engineering, unnecessary abstraction, and framework misuse. | Named persona review. |
 | S15 | `feature-discoverability` | Users never find a hidden gesture in our app; decide whether to use TipKit, visible affordances, first-launch hints, or a different IA. | Feature discovery and hints. |
 | S16 | `frontend-design` | Build a distinctive production-grade web app screen that avoids generic AI aesthetics and has polished visual direction. | Frontend generation. |
-| S17 | `goal` | /goal Keep this thread focused on shipping the settings refactor, and warn me if I drift into unrelated redesign work. | Goal command and drift guard. |
-| S18 | `graphics-fundamentals` | Explain why a blurred gradient looks banded on one display but smooth on another, covering color spaces, rasterization, and compression. | Mechanism backstop. |
-| S19 | `hardware-product-design` | Design a wearable hardware enclosure, choose the primary input method, plan prototypes, and identify manufacturing tolerance risks. | Physical product design. |
-| S20 | `learning-experience-design` | Design a workshop and job aid that help support reps adopt a new escalation process, with practice, feedback, and transfer checks. | Training and behavior change. |
-| S21 | `logo-design` | Create a logo concept for a small coffee brand using brand nouns, many sketch directions, and a black-and-white presentation. | Logo/identity method. |
-| S22 | `malleable-software` | Design a product surface that users can reshape for their own workflow, including editable structure, plugins, and AI-assisted changes. | End-user-resculptable software. |
-| S23 | `motion` | Add a Motion spring animation to this React component, compare easing options, and check for jank with MotionScore. | Motion/Framer Motion tooling. |
-| S24 | `notification-design` | Design a push notification strategy and permission flow that avoids fatigue, handles grouping, and works well on Apple Watch. | Notification strategy. |
-| S25 | `people-management` | I am a new manager with an underperforming direct report; plan the next 1:1, feedback conversation, and career-growth follow-up. | Direct-report management. |
+| S17 | `graphics-fundamentals` | Explain why a blurred gradient looks banded on one display but smooth on another, covering color spaces, rasterization, and compression. | Mechanism backstop. |
+| S18 | `hardware-product-design` | Design a wearable hardware enclosure, choose the primary input method, plan prototypes, and identify manufacturing tolerance risks. | Physical product design. |
+| S19 | `learning-experience-design` | Design a workshop and job aid that help support reps adopt a new escalation process, with practice, feedback, and transfer checks. | Training and behavior change. |
+| S20 | `logo-design` | Create a logo concept for a small coffee brand using brand nouns, many sketch directions, and a black-and-white presentation. | Logo/identity method. |
+| S21 | `malleable-software` | Design a product surface that users can reshape for their own workflow, including editable structure, plugins, and AI-assisted changes. | End-user-resculptable software. |
+| S22 | `motion` | Add a Motion spring animation to this React component, compare easing options, and check for jank with MotionScore. | Motion/Framer Motion tooling. |
+| S23 | `notification-design` | Design a push notification strategy and permission flow that avoids fatigue, handles grouping, and works well on Apple Watch. | Notification strategy. |
+| S24 | `people-management` | I am a new manager with an underperforming direct report; plan the next 1:1, feedback conversation, and career-growth follow-up. | Direct-report management. |
+| S25 | `personal-growth` | I feel stuck in a stable career; help me identify what kind of work and life fit me, then choose one small experiment without impulsively quitting. | Own direction, fit, and sustainable experiment. |
 | S26 | `photographic-lighting` | Plan a product photo lighting setup for a glossy object, avoiding glare and unwanted reflections with family-of-angles tests. | Photo lighting. |
 | S27 | `product-decision-making` | Decide whether this should be a setting, a smarter default, an onboarding step, or a feature we do not build, using metrics and product judgment. | Product decision tradeoff. |
 | S28 | `rails` | Fix a Rails app with a slow Turbo page, N+1 queries, a risky migration, and Sidekiq jobs that fail in production. | Rails/Ruby router. |
@@ -48,3 +48,6 @@ Checker: `python3 -B scripts/check_skill_smoke_tests.py`
 | S37 | `working-with-ai` | Write AGENTS.md rules and a multi-agent review loop for coding agents working in our repo without leaking secrets or inventing standards. | Teams using AI/coding agents. |
 | S38 | `write-clear-prose` | Line edit this essay for clarity, rhythm, structure, and plain language while preserving the author's voice. | Long-form prose. |
 | S39 | `x-post-reader` | Read this public x.com status URL and summarize the tweet plus the author's recent related posts. | Public X post reader. |
+| S40 | `interface-review` | Run a full, read-only audit of this checkout flow across accessibility, layout, copy, typography, color, performance, and polish, with evidence and one verdict. | Holistic interface review, not a build or one-domain critique. |
+| S41 | `uikit` | Our UICollectionView chat screen jumps when older messages load and loses its bottom pin on new ones; fix the diffable updates and keep text selectable. | UIKit implementation; SwiftUI → `swiftui`, Apple design → `apple-design`. |
+| S42 | `superconductor` | List my Superconductor project's newest tickets and chats, read an implementation's diff, then file a ticket with the default agent launched. | Superconductor API integration, not browser automation or generic agentic coding. |

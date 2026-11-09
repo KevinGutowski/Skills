@@ -147,6 +147,8 @@ The **Accessible Perceptual Contrast Algorithm** (Andrew Somers, Myndex Research
 ### Where things stand
 WCAG 2 remains the legal standard in most jurisdictions; laws, procurement, and audit tooling are built on it, so the switch is policy as much as math. WCAG 3 is a working draft. **Bridge PCA** is a transitional method: APCA's perceptual math inside WCAG 2's conformance structure, as a drop-in replacement.
 
+> **Staleness note:** the WCAG-2-is-legal / WCAG-3-is-draft / APCA-status claims above reflect mid-2026. Standards status moves — verify against w3.org/WAI and the current APCA documentation before citing compliance guidance, and route compliance decisions to the owning task skill (see [coverage-gaps.md](coverage-gaps.md)).
+
 ## Blending modes
 
 ### Origins

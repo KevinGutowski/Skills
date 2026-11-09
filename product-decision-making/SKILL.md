@@ -22,6 +22,40 @@ Use Zhuo's product-review frame before arguing about solutions:
 
 If any answer is weak, do not open the solution debate yet. Go to `user-research` for evidence gathering or `design-org-influence` if the problem is stakeholder alignment.
 
+## Product design is a three-way fit
+
+Sten's *Products People Actually Want* is useful as a product-designer's bridge source: product design is not pixel work with a broader title, and not business strategy wearing a UI costume. Before evaluating a product proposal, check the fit between three systems:
+
+- **User reality:** the person's actual situation, emotion, current workaround, constraints, and next-best medium. The right answer may be a smaller interface, a different channel, or no screen at all.
+- **Business reality:** the revenue, retention, support, operational, trust, or strategic problem the company must solve. A user-preferred feature can still be the wrong bet if it does not move the business problem.
+- **Technical reality:** implementation cost, maintenance, reliability, data availability, accessibility, and the operational burden after launch.
+
+Decision move: write the proposed product change as **what / how / why**. What should it do? How should it feel and behave? Why should this exist for users and the business now? If the team can only answer "what," the decision is under-shaped.
+
+## Whole-journey product judgment
+
+A user experience is not bounded by the mockup. Treat every surrounding touchpoint as product surface: acquisition promise, landing page, pricing, signup, emails, invoices, notifications, delivery/fulfillment, support, cancellation, returns, mobile cross-device paths, and any human service behind the screen.
+
+Use this when a feature looks good in isolation but product metrics or trust still suffer:
+
+- **Follow the real journey.** Start where customers start, then complete the whole task with production-like constraints.
+- **Check handoffs.** Does each touchpoint preserve the promise, context, language, and trust built by the previous one?
+- **Look for business-side breakage.** A polished checkout followed by unclear confirmation, hard returns, or rude support is still a product-design failure.
+- **Ask whether the right medium is being used.** Do not force one channel to carry every message; match message, timing, and user state.
+
+## Value exchange and product relationship
+
+For retention, trust, and subscription decisions, audit the relationship as an exchange. Users give time, attention, learning effort, data, privacy, money, trust, and emotional investment. They expect useful outcomes, effortlessness, respect, reliability, progress, and confidence in return.
+
+Decision move: ask four questions before adding friction, monetization, data capture, or setup:
+
+- What value does this product actually deliver now?
+- What are we asking users to give up in return?
+- Where might the exchange feel unfair, extractive, or confusing?
+- Where could the product feel generous without adding feature bloat?
+
+This keeps retention work from collapsing into activity metrics. A product can complete the task and still damage the relationship if the exchange feels lopsided.
+
 ## Diagnose with data, treat with design
 
 Zhuo's durable rule is: **diagnose with data; treat with design.** Data and design are not rivals; both are trying to understand the truth of a phenomenon. Keep their jobs separate:
@@ -45,17 +79,19 @@ First classify the initiative. The decision posture changes.
 
 For optimization, curiosity and cadence matter more than conviction. For new behavior, lack of confidence is a signal that the team has not done enough homework. Probe: Do we know the target customer, their day-to-day, when the problem appears, and their next-best alternative? Can we explain why this solution should work even if the first version misses?
 
-## Data-informed values
+## Data-informed values and operations
 
 Use these five values when a team claims to be data-informed:
 
 - **Purpose before numbers:** choose metrics because they represent human value, not because they are measurable.
 - **Verifiable goals:** replace vague aspirations with observable outcomes and a baseline.
-- **Everyone knows the numbers:** do not outsource metric fluency to analysts. Regular metric review is operational hygiene, not a panic ritual.
+- **Everyone knows the numbers:** do not outsource metric fluency to analysts. Look at core metrics every day or week, not only when something is broken — regular review is operational hygiene, not a panic ritual, and the prize is an up-to-date model of the business's actionable levers.
 - **Test beliefs actively:** seek disconfirming evidence; do not use dashboards only to support intuition.
 - **Accept probabilities:** imperfect evidence can still improve decision quality. Demanding certainty is often a way to avoid learning.
 
-Cadence rule: look at core metrics every day or week, not only when something is broken. The prize is an up-to-date model of the business's actionable levers.
+**The operating system behind the values.** The best product teams do not treat data as a reporting service; they build a decision system: rock-solid instrumentation and logging from the start; desired outcomes mapped to clear output metrics; hypotheses generated from both user conversations and segmented data; high-velocity experiments that test which hypotheses hold; data team time spent mostly on new business-driving insights, not routine query/report requests; and roadmaps built from those insights. When this is missing, route to `user-research` for the human evidence, `working-with-ai` (ai-enablement) for decision/context legibility, or `shape-up` for process structure.
+
+**AI-assisted analysis raises the trust bar, not lowers it.** AI lowers the cost of producing analysis; it raises the value of deciding which analysis deserves belief. Require: canonical metric definitions and authoritative tables; a machine-readable log of business, instrumentation, pricing, campaign, and policy changes; analyst playbooks (what to check first, which segments matter, which questions are usually noise); institutional memory of prior investigations, conclusions, evidence, and what was ruled out; and accuracy measurement over time, with regressions inspected instead of buried under more context. The trust gap is usually context, not raw model intelligence.
 
 ## Strategy is an assumption chain
 
@@ -65,6 +101,14 @@ Zhuo's "chains of assumptions" frame is the bridge between first principles and 
 - **Write the links.** For a proposed task, list why doing it well should make the project succeed, why that project matters to the selected customers, why those customers matter now, and why the time horizon is right.
 - **Find the weakest link.** The decision rarely hinges on the whole chain; it hinges on the assumption most likely to be false or most costly if false.
 - **Use disagreement to locate assumptions.** When reasonable people prefer different options, ask what would have to be true for each option to be best.
+
+Sten's UX-strategy shape is the practical companion to the assumption chain:
+
+- **Where are we now?** Customers, competitors, industry trends, performance trends, employees, operations, and organizational constraints.
+- **Where do we want to be?** Goals, objectives, positioning, vision, mission, and the few UX outcomes that matter most.
+- **How do we get there?** Concrete road map: team roles, missing skills, ways of working, platform constraints, and the product decisions that must change.
+
+Prefer goals/principles over feature lists in a strategy doc. "Optimize for speed" or "serve the majority without excluding the edge" guides many decisions; a backlog item only guides one.
 
 ## Quality vs time
 
@@ -76,20 +120,6 @@ When a team asks whether to ship something mediocre or delay for quality, ask th
 
 Do fewer things better, but make them the most important things.
 
-## Operationalized product teams
-
-The best product teams do not treat data as reporting service. They build a decision system:
-
-- Rock-solid instrumentation and logging from the start.
-- Desired outcomes mapped to clear output metrics.
-- Weekly metric reviews or reports.
-- Hypotheses generated from both user conversations and segmented data.
-- High-velocity experiments that test which hypotheses hold.
-- Data team time spent mostly on new business-driving insights, not routine query/report requests.
-- Roadmaps built from those insights.
-
-When this is missing, route to `user-research` for the human evidence, `working-with-ai` (ai-enablement) for decision/context legibility, or `shape-up` for process structure.
-
 ## Growth as blockage removal
 
 For growth work, borrow the Brian Hale / Zhuo contrast:
@@ -98,6 +128,7 @@ For growth work, borrow the Brian Hale / Zhuo contrast:
 - Do not maximize experiment count; maximize learning rate. A test only matters when it targets a real user confusion, fear, cost, or friction.
 - Do not celebrate a win and move on; ask why it worked unusually well and where the same underlying blockage appears elsewhere.
 - Watch relationship metrics, not only activity metrics. Power users hide the fact that new or occasional users are getting lost.
+- Read relationship metrics as value-exchange signals, not only sentiment. NPS, retention, support burden, refunds, and repeat use are proxies for whether the product still feels fair and valuable over time.
 
 Excellent growth teams ask: **Where is the user stuck, and why?**
 
@@ -112,18 +143,6 @@ Zhuo's David Fischer interview is useful for founders and product leaders becaus
 - Ask whether a good quarter was truly earned. Sustainable revenue comes from real customer value, not extraction.
 
 Route go-to-market pages to `devtools` (developer-tool-gtm) or `building-in-public`; keep this skill on the decision-quality and customer-truth layer.
-
-## AI and data trust
-
-AI lowers the cost of producing analysis; it raises the value of deciding which analysis deserves belief. For AI-assisted data work, require:
-
-- Canonical metric definitions and authoritative tables.
-- A machine-readable log of business, instrumentation, pricing, campaign, and policy changes.
-- Analyst playbooks: what to check first, which segments matter, which questions are usually noise.
-- Institutional memory: prior investigations, conclusions, evidence, and what was ruled out.
-- Accuracy measurement over time, with regressions inspected instead of buried under more context.
-
-The trust gap is usually context, not raw model intelligence.
 
 ## Choose the owner by outcome, not title
 
@@ -153,6 +172,9 @@ Trust intuition most when it comes from deep study in the same domain. Distrust 
 Ask these in order:
 
 - [ ] What user/customer problem is this solving, in a recent concrete situation?
+- [ ] What business problem is this solving, in the language the business uses?
+- [ ] What technical or operational reality constrains the solution?
+- [ ] Are we improving the whole journey or only the visible screen?
 - [ ] Is this optimization or new behavior?
 - [ ] What data diagnoses the problem? What can the data not say?
 - [ ] What qualitative evidence explains the why?

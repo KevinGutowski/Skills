@@ -4,6 +4,22 @@
 
 Principles for writing error and failure-state copy that respects users in their hardest moments. Apply when writing or reviewing any in-app text shown when something doesn't work as expected. Layers: Wix UX rules (the words), Metts & Welfle's *Writing Is Designing* ch. 4 (Rosenfeld, 2020 — the Avoid → Explain → Resolve frame, stress cases, testing, the business case), Apple's alert doctrine, Walter's *Designing for Emotion* ch. 6 (A Book Apart, 2011 — incident communication), and Lidwell/Holden/Butler's *Universal Principles of Design* (2003 — slip/mistake prevention).
 
+## Contents
+
+- Avoid → Explain → Resolve (the organizing frame)
+- Non-negotiables (check every message against these)
+- Core Philosophy
+- The Four Anti-Patterns
+- The Five Essentials
+- Before/After Examples
+- Voice & Tone Calibration
+- Incident communication (outages, breaches, big mistakes)
+- Test the error copy
+- Apple's alert doctrine (complementary layer)
+- Review Checklist
+- When to Push Back on Engineering
+- Relationship to Other Skills
+
 ## Avoid → Explain → Resolve (the organizing frame)
 
 Metts & Welfle: "The best error message is no error message at all." Three principles in order — one involves no writing:
@@ -12,7 +28,7 @@ Metts & Welfle: "The best error message is no error message at all." Three princ
 2. **Explain** — "Tell your users what's going on and what went wrong" (→ Essentials 1–2 below).
 3. **Resolve** — "Provide a solution to the problem that the user is facing" (→ Essentials 4–5 and the Non-negotiables' recovery actions).
 
-A/E/R organizes the work; the Non-negotiables above stay binding on mechanics, and Apple's "not afterthoughts for preventable problems" doctrine below is the same Avoid step.
+A/E/R organizes the work; the Non-negotiables below stay binding on mechanics, and Apple's "not afterthoughts for preventable problems" doctrine further down is the same Avoid step.
 
 **Classify the error before writing it.** Lidwell/Holden/Butler's *Universal Principles of Design* warns that "most accidents are actually due to design errors rather than errors of human operation." If it is a **slip** (right intent, wrong action), prevent it with clearer feedback, status, constraints, safer control placement, and confirmations for destructive actions. If it is a **mistake** (wrong plan or interpretation), reduce noise, improve situational awareness, expose the right indicators in one eyespan, and provide checklists or decision aids. Copy starts after this prevention pass.
 
@@ -139,6 +155,19 @@ Tone scales with stakes. Use this rough mapping:
 
 **Never** use exclamation points, emoji, or "Oops!" for high-stakes errors. They read as dismissive.
 
+## Emotional recovery moments
+
+Sten's "beyond good enough" lens turns failure copy into a product-relationship moment. In errors, waiting, completion, and empty states, users are deciding whether the product makes them feel capable or foolish, reassured or abandoned.
+
+For failure states, add these checks to Avoid → Explain → Resolve:
+
+- **Capability:** does the message help the user recover without feeling stupid?
+- **Reassurance:** does it say what happened, what is safe, and what to do next?
+- **Respect for effort:** if the action was difficult or important, does the product acknowledge what was completed or preserved?
+- **Useful waiting:** if recovery takes time, does the UI explain what is happening instead of showing a generic spinner?
+
+Do not add delight as jokes or decorations in high-stakes failures. The delight is graceful recovery.
+
 ## Incident communication (outages, breaches, big mistakes)
 
 Walter's sequencing rule — **facts before fun**: "you must explain what happened swiftly, honestly, and clearly. Give people the facts of the event, communicate that you're doing your best to resolve things, then update users regularly, even if not much has changed." Only after the honest explanation may you redirect attention — Flickr's storage-failure coloring contest (print the outage page, win a Pro account) turned downtime into goodwill, but it *followed* the facts, never replaced them.
@@ -180,6 +209,7 @@ When reviewing error copy, walk through this:
 - Does it give a concrete next step?
 - Does it offer a way out (support link, retry, alternative)?
 - Does the tone match the stakes? (no cute language for serious failures)
+- Does the message preserve the user's sense of capability and progress?
 - If it's generic, can engineering make it specific instead?
 
 ## When to Push Back on Engineering

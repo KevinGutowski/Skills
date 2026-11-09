@@ -136,7 +136,21 @@ def main() -> int:
     print()
     xref_result = subprocess.run([sys.executable, "scripts/check_xrefs.py"])
 
-    return 1 if repo_result.returncode or strict_errors or xref_result.returncode else 0
+    # Reference hygiene: Contents blocks, broken links inside references,
+    # dangling prose file pointers, conversion residue.
+    print()
+    hygiene_result = subprocess.run(
+        [sys.executable, "scripts/check_reference_hygiene.py", "--errors-only"]
+    )
+
+    return (
+        1
+        if repo_result.returncode
+        or strict_errors
+        or xref_result.returncode
+        or hygiene_result.returncode
+        else 0
+    )
 
 
 if __name__ == "__main__":

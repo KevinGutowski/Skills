@@ -13,3 +13,4 @@ Named voices folded into the body:
 - *Andy Madrick + Ridd — Dive Club podcast (YouTube IfPK0LwbX_0; the overcooking hazard)*
 - *Karl Koch (DuckDuckGo) — Dive Club podcast (YouTube 7_VEb9iDW2c; anti-spring-default, physical semantics)*
 - *Kevin Kold / @kvnkld — X Article 2064972712729292800, "The 10 rules to ship truly polished UI with Claude" (2026-06-16): tokenized house easing, numeric AI motion specs, reduced-motion reminder.*
+- *Gustavo Fior — Craft, "Hover Restraint" (craft.gustavofior.com/hover-restraint, 2026-07-15; Markdown mirror at `/hover-restraint.md`): instant hover for sweep-through highlights, frequency-and-intent not input device, tooltip first-delay then instant neighbors — scoped alongside the course's 100–150ms single-control figure in [PRACTICAL-TIPS.md](PRACTICAL-TIPS.md) Hover States.*

@@ -4,6 +4,24 @@
 
 A comprehensive guide for creating animations that feel right, based on Emil Kowalski's "Animations on the Web" course.
 
+## Contents
+
+- Theme Note
+- Quick Start
+- Review Format (Required)
+- The Easing Blueprint
+- Timing and Duration / Duration Guidelines
+- Why Animation Works (Perception)
+- Animation's Purpose: Five Patterns (Nabors, ch. 2)
+- When to Animate
+- Spring Animations
+- Performance
+- Accessibility
+- Practical Tips
+- Easing Decision Flowchart
+- Communicating Motion to Engineers (Briggs)
+- Reference Files
+
 ## Theme Note
 
 The specific values in this skill (durations, easings, scale magnitudes, stagger delays) are tuned to work as a coherent set — like a color scheme, they look best when committed to as a whole. If another design skill or theme (e.g. `design-craft`, or its Emil Kowalski reference) is also loaded with different numbers, pick one theme's values and apply them consistently rather than averaging.
@@ -12,13 +30,14 @@ The specific values in this skill (durations, easings, scale magnitudes, stagger
 
 These values and techniques are for **web/CSS/JS** motion. On **iOS/SwiftUI**, animations/transitions/effects are covered by `swiftui` (swiftui-animation), scroll-driven motion by `swiftui` (swiftui-lazy-stacks), and brand-through-motion by `apple-design` (ios-brand-identity) — don't cross-apply CSS specifics there.
 
-## Initial Response
+## Quick Start
 
-When this skill is first invoked without a specific question, respond only with:
+Every animation decision starts with these questions:
 
-> I'm ready to help you with animations based on Emil Kowalski's animations.dev course.
-
-Do not provide any other information until the user asks a question.
+1. **Is this element entering or exiting?** → Use `ease-out`
+2. **Is an on-screen element moving?** → Use `ease-in-out`
+3. **Is this a hover/color transition?** → Use `ease`
+4. **Will users see this 100+ times daily?** → Don't animate it
 
 ## Review Format (Required)
 
@@ -41,15 +60,6 @@ After: 200ms
 ```
 
 Correct format: A single markdown table with | Before | After | columns, one row per issue.
-
-## Quick Start
-
-Every animation decision starts with these questions:
-
-1. **Is this element entering or exiting?** → Use `ease-out`
-2. **Is an on-screen element moving?** → Use `ease-in-out`
-3. **Is this a hover/color transition?** → Use `ease`
-4. **Will users see this 100+ times daily?** → Don't animate it
 
 ## The Easing Blueprint
 
@@ -141,6 +151,7 @@ Elements that animate together must use the same easing and duration. Modal + ov
 - UI animations should stay under 300ms
 - Larger elements animate slower than smaller ones
 - Exit animations can be ~20% faster than entrance
+- **Field corroboration (Linear's stylesheet, via performance.dev 2026):** tokens of `0.1s` quick / `0.25s` regular / `0.35s` slow, hover highlight fade-in `0s` and fade-out `0.15s` — popovers and panels "appear instantly when you summon them, then fade out over 150ms when you dismiss them," and list rows get no transitions at all. Defaulting below Material's 200 ms is one of the cheapest ways to make an app feel faster.
 - Match duration to distance - longer travel = longer duration
 - **Modulate by Cone of Vision** (Nabors, *Animation at Work*, ch. 3): "animations in the center of the user's Cone of Vision do better with shorter durations (closer to the 70-200 ms spectrum)"; animations "on the edge of the Cone of Vision benefit from additional time… in the 300-700 ms spectrum"
 - **Halve your durations** (Nabors, ch. 3): long exposure warps your sense of speed — "Whatever your pre-production duration is, halve it. Then halve it again!"
@@ -249,6 +260,8 @@ Springs feel more natural because they don't have fixed durations—they simulat
 ### Interruptibility
 
 Springs maintain velocity when interrupted—CSS animations restart from zero. This makes springs ideal for gestures users might change mid-motion.
+
+These gesture-physics rules — interruptibility, 1:1 tracking, velocity handoff on release, momentum projection, rubber-banding — are the web translation of Apple's *Designing Fluid Interfaces* (WWDC 2018). The native articulation, the projection math, and the drag→spring velocity-handoff formula live in `swiftui` (touch-interaction-design). The *principles* port across platforms; the CSS/spring *values* in this file don't cross back to iOS. For the broader component-craft version (press scale, origin-aware popovers), see `design-craft` (emil-kowalski).
 
 ## Performance
 

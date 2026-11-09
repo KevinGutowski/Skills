@@ -8,6 +8,17 @@
 
 Quotes are transcribed from the talks / quoted from the books. Use these to reason by analogy when defining a voice, dialing tone, or reviewing screen copy.
 
+## Contents
+
+- 1. The voice-definition exercise, worked
+- 2. Welcome-screen evolution (before → better → best)
+- 3. Tone dials in action (Apple voice: clarity · simplicity · friendliness · helpfulness)
+- 4. PACE before/afters (Writing for interfaces)
+- 5. This-but-not-that, both sources in full
+- 6. The four-tone drafting drill (Writing Is Designing ch. 7)
+- 7. Tone-profile worksheet (Writing Is Designing ch. 7)
+- Cross-cutting takeaways
+
 ---
 
 ## 1. The voice-definition exercise, worked

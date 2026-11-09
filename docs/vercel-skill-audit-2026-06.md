@@ -19,6 +19,7 @@ Legend:
 | `design-systems` | P0 | Dense source-derived body plus references/sources. | Pilot updated; DS-as-AI-context boundary and coverage gaps added for context packs, lint checks, and product-judgment split. | Validator plus prompt that asks for DS context pack for agents. |
 | `design-craft` | P0 | Long quality-method body, many references, examples present. | Pilot updated; description trimmed; coverage gaps added for before/after exemplars, mechanical checks, theme conflicts, quality rituals, and AI-generated UI boundary. | Validator; design-craft vs frontend-design routing probes. |
 | `frontend-design` | P1 | Distinctive generation skill; extra frontmatter license; sources exist. | Coverage gaps added for generated UI fixtures, asset sourcing, anti-slop checks, theme selection, and tactical-skill boundaries. | Existing validator plus generated-UI prompt and product-standard control. |
+| `interface-review` | P2 | New narrow orchestration skill adapted from an external skill collection. | Routes holistic review through existing domain owners; source map and coverage gaps record unverified caps, numeric layout rules, and missing exemplars. | Holistic-review smoke prompt; nearest-neighbor controls for focused craft and build requests. |
 | `ai-experience-design` | P1 | AI product UX skill with sources and patterns. | Boundary note and coverage gaps added. Next: re-check agent-era sources for examples. | Routing probes for AI feature UX vs agents working in repo. |
 | `ux-writing` | P1 | Router body with multiple references. | Source map and coverage gaps added. Next: inspect references for destructive-action, error, settings rule candidates. | Copy rewrite prompt; control prompt for prose essay -> `write-clear-prose`. |
 | `user-onboarding` | P1 | Source-derived body and references. | Source map and coverage gaps added. Next: inspect first-run and empty-state references for exemplar candidates. | First-run/empty-state probes. |
@@ -31,6 +32,7 @@ Legend:
 | `web-design` | P2 | Router to many web references. | Source map and coverage gaps added for browser/API drift, a11y fixtures, motion checks, forms, and social safe zones. | Web form/a11y/type probes. |
 | `apple-design` | P2 | Router to many Apple references. | Source map and coverage gaps added; current HIG remains the tie-breaker before promoting new Apple rules. | HIG lookup probe; SwiftUI engineering control. |
 | `swiftui` | P2 | Short router to many references. | Description trimmed; source map and coverage gaps added for API freshness and unsourced references. | SwiftUI layout/animation/concurrency probes. |
+| `uikit` | P2 | Router with core rules + seven routed references (added 2026-11). | Source map and coverage gaps added at creation; single external source flagged; SDK freshness gaps recorded. | UIKit list/scroll probe; SwiftUI and apple-design controls. |
 | `rails` | P2 | Short router to many references. | Source map and coverage gaps added; school routing remains explicit and project conventions gate new rules. | Rails school selection probes. |
 | `research-cataloging` | P2 | Short router, many references. | Description trimmed; source map and coverage gaps added for archive/source-sweep standards. | Source-sweep prompt; translation/OCR controls. |
 | `data-viz` | P2 | Short router. | Source map and coverage gaps added for chart integrity, editorial interaction, dashboards, and deterministic checks. | Chart-selection and critique probes. |
@@ -44,15 +46,16 @@ Legend:
 | `logo-design` | P2 | Source-derived body; no sources file. | Source map and coverage gaps added for AI originality checks, client decks, industry constraints, and trademark/a11y boundaries. | Logo prompt vs app-icon control. |
 | `notification-design` | P2 | Source-derived body and sources. | Coverage gaps added for current Apple APIs, rule IDs, frequency metrics, non-Apple channels, and copy boundary. | Notification prompt. |
 | `people-management` | P2 | Source-derived body and sources. | Coverage gaps added for HR/legal boundaries, remote norms, training artifacts, AI tools, and influence split. | Management prompt. |
+| `personal-growth` | P2 | Source-derived reflective-coaching skill with methods, prompts, and sources. | Source map and coverage gaps added; next validate clinical boundaries, structural constraints, diverse cases, and fresh-agent application. | Direction/goal probes; controls for report management, org influence, learning design, product planning, and crisis support. |
 | `photographic-lighting` | P2 | Source-derived body and sources. | Coverage gaps added for repeatable setup examples, modern gear, color workflow, product-shot fixtures, and safety. | Lighting prompt. |
 | `building-in-public` | P2 | Source-derived body and sources. | Coverage gaps added for platform mechanics, launch exemplars, audience metrics, ethics/privacy, and devtools boundary. | Launch/content prompt. |
 | `client-work` | P2 | Router to references; no top-level sources file. | Source map and coverage gaps added for legal review, pricing exemplars, scripts, qualification, and product-pricing split. | Client pricing/kickoff probes. |
 | `learning-experience-design` | P2 | Source-derived body; no references. | Source map and coverage gaps added for artifacts, measurement, AI learning, org adoption, and accessibility. | Course/workshop prompt. |
 | `route-planning` | P3 | Narrow utility; no references. | Leave lean; deterministic behavior belongs in scripts/tools if added. | Route-order task. |
 | `x-post-reader` | P3 | Narrow utility; no references. | Leave lean; test against current public X access when used. | Tweet URL prompt. |
+| `superconductor` | P3 | API integration utility; helper script, offline tests, one maintenance reference. | Leave lean; live docs/OpenAPI are authoritative; re-verify dated endpoint notes when responses drift. | Superconductor tickets/chats prompt; offline helper tests. |
 | `motion` | P3 | External/tool umbrella; no references. | Leave unless Motion plugin/tooling changes; verify current docs when used. | Motion task prompt. |
 | `dhh` | P3 | Persona/review skill; no references. | Leave unless source corpus is refreshed. | Diff-review prompt. |
-| `goal` | P3 | Workflow/meta skill. | Leave lean; only edit after observed goal-handling failure. | Goal prompt. |
 
 ## Immediate Next Batch
 

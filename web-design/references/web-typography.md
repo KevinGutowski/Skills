@@ -6,6 +6,23 @@
 
 Use this skill when setting, sizing, pairing, or loading type for the web. References: [rutter-guidelines.md](web-typography/rutter-guidelines.md) (full guideline index), [choosing-and-pairing.md](web-typography/choosing-and-pairing.md) (selection/pairing methods), [opentype-and-micro.md](web-typography/opentype-and-micro.md) (OpenType recipes + character craft).
 
+## Contents
+
+- 1. Stance
+- 2. The body-text triad (size × measure × line-height)
+- 3. Reading-distance sizing
+- 4. Scales & hierarchy
+- 5. Rhythm & vertical space
+- 6. Alignment & justification
+- 7. Tracking (letterspacing)
+- 8. Display craft
+- 9. Choosing & pairing (the judgment layer)
+- 10. Web fonts & loading
+- 11. Tables
+- 12. Staleness appendix — what changed since 2014/2017
+- Checklist
+- Relationship to other skills
+
 ## 1. Stance
 
 - **"Choosing a typeface is not typography"** (Rutter, 'How to use this book') — Rutter deliberately puts font choice *last*. The craft is in the setting; "even very ordinary faces can be crafted into an engaging, absorbing typographic experience."
@@ -97,7 +114,7 @@ Full methods in [choosing-and-pairing.md](web-typography/choosing-and-pairing.md
 Durable: everything above. Decayed specifics:
 - `clamp()` replaced the `calc()`+media-query ladders for fluid type; `min()`/`max()`/container queries extend it.
 - `text-wrap: balance` (headings) and `text-wrap: pretty` (paragraph orphans) replace `&nbsp;` widow hacks.
-- **Variable fonts went mainstream** (the books barely mention them): weight/width/optical-size axes in one file.
+- **Variable fonts went mainstream** (the books barely mention them): weight/width/optical-size axes in one file. The optical-size axis is applied automatically via `font-optical-sizing: auto`; keep it on and keep `opsz` when subsetting — [opentype-and-micro §12](web-typography/opentype-and-micro.md).
 - Typekit → **Adobe Fonts** (Latin's and JSM's "TypeKit" references); Google Fonts now serves WOFF2 + variable.
 - Subpixel anti-aliasing retired (macOS 10.14+); Rutter's subpixel-rendering cautions are now mostly historical — see `graphics-fundamentals` for the rendering mechanics.
 - `font-display` is universal (it was behind flags when Rutter wrote); JS font-event loaders are rarely needed.

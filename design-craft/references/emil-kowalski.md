@@ -36,9 +36,9 @@ When building UI, don't just make it work. Study why the best interfaces feel th
 
 **Train judgement deliberately** (the course's exercise method): compare two versions of the same interaction side by side, pick the better one, and **write down why before reading any expert breakdown**. Choosing A or B is easy — articulating the reason is what trains the instinct. This matters more in the AI era: "AI can write animation code. What it can't do is see"; it produces motion that works but feels mediocre, and if you can't tell the difference, you'll ship it.
 
-**Practitioner habits** (animations.dev interviews — Castilho, Axon, Brotzky), distilled: interrogate your reactions by *named attribute* (balance? composition? color?), not "it feels good"; **frame-by-frame recording review** with coarse-then-fine spring sweeps ("change it by a hundred, change it by 10, change it by one" — Fey's dock took ~200 recordings); and the bar — "If I noticed it, it's probably wrong." Full habits, taste drills, and review cadences: [references/taste-and-craft.md](emil-kowalski/taste-and-craft.md).
+**Practitioner habits** (animations.dev interviews — Castilho, Axon, Brotzky), distilled: interrogate your reactions by *named attribute* (balance? composition? color?), not "it feels good"; **frame-by-frame recording review** with coarse-then-fine spring sweeps ("change it by a hundred, change it by 10, change it by one" — Fey's dock took ~200 recordings); and the bar — "If I noticed it, it's probably wrong." Full habits, taste drills, and review cadences: [emil-kowalski/taste-and-craft.md](emil-kowalski/taste-and-craft.md).
 
-**Config-talk additions (2024–25)**, distilled: engineers own craft ("ultimately the only way you can achieve a high level of craft is when your engineers build it"); "Aesthetics without performance isn't design. It's simply decoration"; invisible craft is the modern acanthus leaf. Full notes (game feel, hidden ornament, Helena Zhang's research method): [references/taste-and-craft.md](emil-kowalski/taste-and-craft.md).
+**Config-talk additions (2024–25)**, distilled: engineers own craft ("ultimately the only way you can achieve a high level of craft is when your engineers build it"); "Aesthetics without performance isn't design. It's simply decoration"; invisible craft is the modern acanthus leaf. Full notes (game feel, hidden ornament, Helena Zhang's research method): [emil-kowalski/taste-and-craft.md](emil-kowalski/taste-and-craft.md).
 
 ### Unseen details compound
 
@@ -94,6 +94,8 @@ Before writing any animation code, answer these questions in order:
 **Never animate keyboard-initiated actions.** These actions are repeated hundreds of times daily. Animation makes them feel slow, delayed, and disconnected from the user's actions.
 
 Raycast has no open/close animation. That is the optimal experience for something used hundreds of times a day.
+
+Corroboration (Gustavo Fior, *Craft*, craft.gustavofior.com/hover-restraint): "The more often something happens, the less animation it can afford." "The line to draw is by frequency and intent, not by input device. A modal that opens once a session can animate. A panel you flip forty times a day should not." For a shortcut-toggled sidebar, "a 250ms slide is like a speeding ticket." Same lineage: macOS app switcher appears instantly (Rauno Freiberg, rauno.me/craft/interaction-design).
 
 ### 2. What is the purpose?
 
@@ -196,6 +198,8 @@ Keep bounce subtle (0.1-0.3) when used. Avoid bounce in most UI contexts. Use it
 
 Springs maintain velocity when interrupted — CSS animations and keyframes restart from zero. This makes springs ideal for gestures users might change mid-motion. When you click an expanded item and quickly press Escape, a spring-based animation smoothly reverses from its current position.
 
+The Apple lineage of these gesture-physics rules — interruptibility, momentum projection, velocity handoff, rubber-banding — lives in `swiftui` (touch-interaction-design) (its *Designing Fluid Interfaces* distillation); this reference and `web-design` (web-animation-design) are the web-craft translation. Principles translate across platforms; keep each skill's numbers as one coherent theme rather than averaging.
+
 ## Component Building Principles
 
 ### Buttons must feel responsive
@@ -290,7 +294,7 @@ See `emil-kowalski/interaction-and-performance.md` for the code and full reasoni
 - **CSS animations beat JS under load.** They run off the main thread. Use CSS for predetermined animations; JS for dynamic, interruptible ones.
 - **Use WAAPI for programmatic CSS animations.** JavaScript control with CSS performance — hardware-accelerated, interruptible, no library needed.
 
-**MDS field numbers** (Matt D. Smith), distilled: keep an FPS meter visible for canvas/WebGL ("If you're down in the 20s or 30s, you're doing something wrong"); icon-hover magnitudes — 1px translations, ~5° rotations, "150 milliseconds and ease out." Full numbers: [references/interaction-and-performance.md](emil-kowalski/interaction-and-performance.md).
+**MDS field numbers** (Matt D. Smith), distilled: keep an FPS meter visible for canvas/WebGL ("If you're down in the 20s or 30s, you're doing something wrong"); icon-hover magnitudes — 1px translations, ~5° rotations, "150 milliseconds and ease out." Full numbers: [emil-kowalski/interaction-and-performance.md](emil-kowalski/interaction-and-performance.md).
 
 ## Accessibility
 
@@ -378,7 +382,7 @@ Keep stagger delays short (30-80ms between items). Long delays make the interfac
 
 ## Debugging Animations
 
-Three moves: **slow-motion testing** (2-5x duration or DevTools playback — watch for overlapping states, abrupt easing, wrong transform-origin, out-of-sync properties), **frame-by-frame inspection** in the DevTools Animations panel, and **test touch interactions on real devices**. Full checklists and setup: [references/interaction-and-performance.md](emil-kowalski/interaction-and-performance.md).
+Three moves: **slow-motion testing** (2-5x duration or DevTools playback — watch for overlapping states, abrupt easing, wrong transform-origin, out-of-sync properties), **frame-by-frame inspection** in the DevTools Animations panel, and **test touch interactions on real devices**. Full checklists and setup: [emil-kowalski/interaction-and-performance.md](emil-kowalski/interaction-and-performance.md).
 
 ## Review Checklist
 

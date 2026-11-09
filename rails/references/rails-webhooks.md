@@ -66,6 +66,8 @@ Use for outbound/inbound webhook architecture and reliability. Modeled on Fizzy'
 - No tenant scoping in delivery creation/lookup.
 - No backpressure or queue isolation for high-volume events.
 
+> **Staleness note:** vendored 2026 from Rails 8-era Fizzy (`normalizes` is Rails 7.1+; `ActiveJob::Continuable` is a recent addition; Solid Queue queue config is 8.0-era) — verify these APIs against your Rails version. Per [sources.md](sources.md) this file still needs a top-level source refresh before promoting new global rules. The outbox model, failure classification, circuit breaker, and security baseline are the durable layer.
+
 ## Related skills
 
 - [dhh-style.md](dhh-style.md) — the vanilla-school doctrine these patterns assume.

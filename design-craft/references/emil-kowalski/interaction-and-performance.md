@@ -8,7 +8,7 @@
 - Debugging Animations
 
 
-Detailed walkthroughs and code for spring-driven interactions, gesture/drag handling, and rendering performance. Part of the this school skill — see `SKILL.md` for the core philosophy and decision rules.
+Detailed walkthroughs and code for spring-driven interactions, gesture/drag handling, and rendering performance. Part of the Emil Kowalski theme inside `design-craft` — see [../emil-kowalski.md](../emil-kowalski.md) for the core philosophy and decision rules.
 
 ## Spring-based mouse interactions
 
