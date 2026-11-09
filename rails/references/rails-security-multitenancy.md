@@ -58,6 +58,7 @@ Params choose *which* record within an already-authorized set — never establis
 - Public sharing uses opaque tokens (`has_secure_token :key` on a `Publication` record), never internal IDs.
 - ActiveStorage: attach blobs to accounts, and authorize blob/representation controllers through the domain (`blob → attachment → record.accessible_to?(user)`); published content gets an explicit `publicly_accessible?` path.
 - ActiveStorage direct-upload write endpoints do not inherit `ApplicationController` auth. If the app does not use direct uploads, disable or gate `DirectUploadsController#create` and disk-service `PUT`; if it does, require a valid session/account before creating blob rows or issuing disk URLs.
+- Make the storage service enforce a direct upload's declared byte size, integrity digest, and content type in the signed request. Application validation before issuing the URL is not a quota or security boundary; verify the stored object's actual metadata and size before attaching or processing it.
 - ActiveStorage variants for user uploads: expose model helpers that return a processed variant only when the blob is `variable?`; controllers render a stock/initials fallback instead of processing unsupported formats.
 - For ActiveStorage/libvips variant CVEs, patch first, then establish the actual deployed exposure window and sweep durable evidence: object-store blobs, `active_storage_blobs`, and `active_storage_variant_records`. Treat unattached-blob cleanup, object lifecycle rules, variant tracking, and log retention as explicit limits in the write-up; a clean scan is evidence, not proof.
 - ActiveStorage media uploads: if ffmpeg/ffprobe touch user-supplied video/audio, restrict accepted codecs, formats, and protocols with `config.active_storage.video_preview_input_arguments` and `config.active_storage.ffprobe_arguments`; check codec names against the deployed ffmpeg build.
@@ -66,12 +67,13 @@ Params choose *which* record within an already-authorized set — never establis
 ## Untrusted File Processing
 
 - Treat native media and document processors as a hostile-input execution boundary. Patch known CVEs first, but assume a future parser or delegated library can still be compromised.
+- Do not let an uploaded filename extension or declared MIME type select a native decoder by itself. Preserve an extension for processing only when it agrees with independently mapped content type, and perform any content sniffing inside the isolated processor boundary.
 - Keep processors away from application secrets and lateral-movement paths: use an unprivileged sidecar with no network, no application environment or filesystem, a read-only/no-exec filesystem, and file-descriptor-only inputs and outputs.
 - Enforce both cell-wide and per-operation limits for wall time, memory, file size, open files, process count, concurrency, and queue depth. Run each request in a disposable worker process and reap it afterward.
 - Fail closed when the cell is missing or unhealthy. Monitor availability, failures, queue headroom, killed workers, and scratch space from the trusted app or supervisor, not from a possibly compromised worker.
 - After every required operation is routed through the cell, remove its parser packages from the application image. For Rails 8.2+, Hot Cell provides Active Storage transformer, analyzer, and previewer replacements; verify its current Rails requirement before adoption.
 
-Sources: https://dev.37signals.com/hot-cell-1-0/ · https://github.com/basecamp/hotcell · https://discuss.rubyonrails.org/t/cve-2026-66066-possible-arbitrary-file-read-and-remote-code-execution-in-active-storage-variant-processing/91432
+Sources: https://dev.37signals.com/hot-cell-1-0/ · https://github.com/basecamp/hotcell · https://github.com/rails/rails/security/advisories/GHSA-f3w6-w445-fwh9 · https://github.com/rails/rails/security/advisories/GHSA-v924-7rp8-4mxh · https://github.com/rails/rails/security/advisories/GHSA-hfr4-8rjc-97m2
 
 ## Authentication Hardening
 
@@ -79,8 +81,14 @@ Sources: https://dev.37signals.com/hot-cell-1-0/ · https://github.com/basecamp/
 - Anti-enumeration: unknown email gets the same fake flow/UX as a real one.
 - API tokens: HTTP-method-scoped permissions (read-only tokens can't POST); show generated secrets once via a short-lived message verifier (~10s), then never again.
 - Secrets in URL paths or response headers need explicit log redaction; `config.filter_parameters` covers params, not arbitrary route segments or formatted log lines.
+- Behind a trusted edge, accept the client IP from one proxy-controlled source and strip conflicting `Forwarded` or `X-Forwarded-For` values before `ActionDispatch::RemoteIp` runs. Configure trusted proxies explicitly; a forwarding chain supplied by a public client is attacker-controlled input.
+- Verify every session store emits the configured `SameSite` attribute; pass `same_site:` explicitly for custom or cache-backed stores rather than assuming `CookieStore` behavior carries over.
+- Configure shared caches never to store responses carrying `Set-Cookie`, including Active Storage proxy responses during cookie rotations or serializer migrations.
 - Bot/automation auth as an explicit mode: skip CSRF only for bot-key auth, deny bots everywhere by default (`deny_bots` + `allow_bot_access only:`).
 - On sign-out or session revocation, disconnect the user's live Action Cable connections after the durable auth state is removed, so sockets re-handshake instead of keeping handshake-time authorization.
+
+Sources: https://github.com/rails/rails/security/advisories/GHSA-2gff-2mmg-m73p · https://github.com/basecamp/fizzy/commit/3f63bf86600e664af6970b1d4d475d5378659ed0 · https://github.com/rails/rails/security/advisories/GHSA-gmj8-hvj3-49mw · https://github.com/rails/rails/security/advisories/GHSA-x6mj-8jx9-qhqv
+
 - Rate limit with Rails built-ins, with responses matching endpoint semantics:
 
 ```ruby

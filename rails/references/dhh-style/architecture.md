@@ -319,6 +319,13 @@ back to broader authority.
 
 Source: https://github.com/basecamp/fizzy/pull/3215
 
+Bind each signed direct-upload request to the declared byte size, integrity
+digest, and content type at the storage layer. Client-side checks and the blob
+row's declared metadata do not constrain the bytes a hostile client actually
+uploads; verify the stored object before attaching or processing it.
+
+Sources: https://github.com/rails/rails/security/advisories/GHSA-hfr4-8rjc-97m2 · https://github.com/rails/rails/security/advisories/GHSA-3w93-6hmw-whh4
+
 ## Command-Line Interface
 
 For applications that should participate in agent-driven workflows, expose
