@@ -112,6 +112,17 @@ Designs that only work with perfect data are not production-ready.
 - **Leaks:** clean up listeners, subscriptions, timers, and in-flight requests on unmount.
 - **Test** with extreme data, pseudo-localization, throttled network, keyboard only, and a screen reader. Add a behavioral regression test for each confirmed gesture fix.
 
+**Content stress pass** (from Emil Kowalski's `break-ui` skill at `715c180`, MIT; paraphrased). A repeatable way to run the extreme-inputs bullet on one component or page:
+
+1. **Map every rendered value.** One row per field: where it comes from, its limit (schema, validation, or none), and whether it can be missing.
+2. **Find the real extremes.** Use the longest and shortest values the schema and production data allow, plus none, one, and many for every collection. Realistic beats random: a 300-character name the validation would reject proves nothing.
+3. **Change the data, not the template.** Render through the real component with fixtures, a story, or a seeded record. A "demo data / worst case" toggle on a preview page keeps the pass repeatable.
+4. **Spread the failures.** Put the longest title on one item, the missing image on another, the huge count on a third, so each failure is attributable.
+5. **Look at the real container width,** then 320px, the widest layout, 200% zoom, and a touch device.
+6. **Report, then stop.** One table (`# | Severity | Field | Worst-case value | What happens | Fix`) with severity **Broken** (information lost or action unreachable), **Ugly** (works, looks wrong), or **Fragile** (holds today, one edit from breaking). Then **Decisions for you** (truncate vs wrap choices that are the owner's call) and **What held up**, so the next pass does not re-test it.
+
+The CSS causes behind most findings, and the truncate/wrap/clamp rules, are in `web-design` (web-layout-design → Content-stress failure signatures).
+
 Owners: overflow, reflow, and RTL → `web-design` (web-layout-design); error copy → `ux-writing` (error-messages); form validation flows → `web-design` (form-design).
 
 ## Which move?

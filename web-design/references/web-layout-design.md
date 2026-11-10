@@ -11,6 +11,7 @@
 - Flow-relative layout and RTL
 - Adapt at the owning boundary
 - Reflow and content stress
+- Content-stress failure signatures
 - Safe areas and stable controls
 - Discoverable overflow and disclosure
 - Review sequence
@@ -112,11 +113,38 @@ Stress-test with:
 
 The external source's `30–40%` translation expansion is a useful test stimulus, not a safe sizing formula. Real expansion varies by source language, target language, string length, and context.
 
+## Content-stress failure signatures
+
+When a component is rendered with its worst realistic content (the method is in `design-craft`, refinement-moves → Harden), most breakage is one of a few CSS causes. Match what you see before changing the design. From Emil Kowalski's `break-ui` skill and UI cheat sheet at `715c180`; the CSS mechanics are standard.
+
+| What you see | Cause | Fix |
+| --- | --- | --- |
+| Avatar, icon, or badge squashed beside long text | A fixed-size flex child is allowed to shrink | `flex-shrink: 0` on the fixed-size item |
+| Long text pushes its row or card wider than the container | Flex and grid children default to `min-width: auto` | `min-width: 0` on the text's flex child; `minmax(0, 1fr)` for the grid track |
+| A URL, email, or ID overflows | No break opportunity in the string | `overflow-wrap: anywhere` |
+| Chips or actions wrap into a ragged second row | Row sized for typical content | Decide the wrap deliberately: `flex-wrap` with a row gap, or collapse into an overflow menu |
+| Icon or checkbox floats mid-block beside wrapped text | `align-items: center` on a row whose text can wrap | Align to the first line (`align-items: start` or `baseline`) |
+| CJK or Thai text overflows or breaks mid-word in odd places | Latin-only wrapping assumptions | Test real strings; do not force `word-break: break-all` globally |
+| Accents or descenders clipped | Tight `line-height` with `overflow: hidden` | Loosen the line box or drop the clip |
+| An empty box, stray divider, or label with no value | Wrapper renders when its content is missing | Render the wrapper conditionally; decide the empty state |
+| "1 items", "0 result" | Hand-built plurals | `Intl.PluralRules` or the framework's pluralization |
+| Columns of numbers jitter or misalign | Proportional figures, unformatted values | Tabular figures and `Intl.NumberFormat` |
+| Image stretches or jumps the layout | No reserved ratio | `aspect-ratio` with `object-fit`; a fallback for a missing image |
+| Text is cut off with no way to read it | Truncation without disclosure | See Discoverable overflow below |
+
+**Truncate, wrap, or clamp.** Decide per field, not per component:
+
+- **Wrap** names, titles, and identifiers a person must read in full.
+- **End-truncate** secondary text whose start carries the meaning.
+- **Middle-truncate** values that differ at the end (file names, hashes, addresses).
+- **Clamp** previews to a fixed number of lines, with a way to expand.
+- **Never truncate** numbers, dates, prices, or anything a decision depends on.
+
 ## Safe areas and stable controls
 
 CSS environment variables let layouts account for user-agent-defined regions such as display cutouts and virtual keyboards.
 
-For websites installed to the iOS/iPadOS Home Screen or macOS Dock, read [apple-installed-web-apps.md](apple-installed-web-apps.md) too. It owns `viewport-fit`, standalone-mode, Apple metadata, launch assets, and version-specific Safari behavior; this section remains the cross-browser layout baseline.
+For phone-browser behavior beyond padding (viewport units, `viewport-fit`, scroll chaining, the on-screen keyboard), read [mobile-browser-behavior.md](mobile-browser-behavior.md). For websites installed to the iOS/iPadOS Home Screen or macOS Dock, read [apple-installed-web-apps.md](apple-installed-web-apps.md) too. It owns `viewport-fit`, standalone-mode, Apple metadata, launch assets, and version-specific Safari behavior; this section remains the cross-browser layout baseline.
 
 ```css
 .action-bar {
@@ -162,6 +190,7 @@ A partially visible next item can hint that a horizontal list continues, but the
 
 ## Sources and staleness
 
+- Emil Kowalski, `break-ui` and the UI cheat sheet at `715c180`, MIT: the content-stress failure signatures and the truncate/wrap/clamp rules. https://github.com/emilkowalski/skills
 - Impeccable (Paul Bakaus), `harden` at `b3ced85`, Apache-2.0: the Arabic-script data-handling notes. https://github.com/pbakaus/impeccable
 - Jakub Krehel, `better-layout`, revision `f2d1354f9966fd4d03f9c2beb69591ecec22af54`: grouping, alignment, adaptivity, safe-area, and disclosure heuristics. https://github.com/jakubkrehel/skills
 - MDN, CSS logical properties and values: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values

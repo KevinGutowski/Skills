@@ -4,6 +4,20 @@ Bibliography for material cited by name-tag in SKILL.md, surfaces.md, animations
 and reference files. Other inline-cited sources (Stammy, Practical UI, MDS,
 Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 
+## Contents
+
+- Adam Wathan and Steve Schoger
+- Impeccable (Paul Bakaus)
+- Emil Kowalski — `skills` repository
+- Anton Sten
+- Derek Briggs (PixelJanitor)
+- Gustavo Fior — *Craft*
+- Jakub Krehel — *Interfaces* Cheat Sheet
+- Marek Minor (Minor Adventures)
+- Linear product-craft articles
+- Linear Conversations on Quality
+- Kevin Kold / @kvnkld
+
 ## Adam Wathan and Steve Schoger
 
 - *Refactoring UI* (PDF v10, local Apple Books file). Visual refactor method folded
@@ -14,6 +28,10 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 ## Impeccable (Paul Bakaus)
 
 - https://impeccable.style · https://github.com/pbakaus/impeccable (Apache-2.0), screened at commit `b3ced85` (2026-11-09). Command references `bolder`, `quieter`, `distill`, `delight`, `overdrive`, `polish`, `harden` were paraphrased and merged into [refinement-moves.md](refinement-moves.md). Ledger: `docs/impeccable-source-mining-2026-11.md`.
+
+## Emil Kowalski — `skills` repository
+
+- https://github.com/emilkowalski/skills (MIT), revision `715c1807e08c497cfd1dc4feb450a2a3300ef2a9` (2026-11-09); catalog at https://aiforui.dev/skills. The current `emil-design-eng` skill was diffed against [emil-kowalski.md](emil-kowalski.md) and its subfiles: the only substantive change is the Motion 14.2 hardware-acceleration boundary, applied to the summary bullet, the common-mistakes row, and [emil-kowalski/interaction-and-performance.md](emil-kowalski/interaction-and-performance.md). The Radix transform-origin variable was kept beside Base UI's. `break-ui` → the content stress pass in [refinement-moves.md](refinement-moves.md). Motion, gesture, and mobile-browser material went to `web-design`. Ledger: `docs/emil-kowalski-skills-source-mining-2026-11.md`.
 
 ## Anton Sten
 

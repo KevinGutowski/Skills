@@ -23,6 +23,15 @@ Matt Pocock's `/prototype` UI branch (github.com/mattpocock/skills, 2026) and Wi
 - **Quadrant fit:** Ness's standalone mocked-HTML app is the big+blank corner (nothing to mount into yet); Pocock's in-repo `?variant=` route is the small+existing corner. Same picker, different host.
 - **Capture, then clean up** (Pocock): the interesting feedback is "I want the header from B with the sidebar from C" — that's the actual design. Fold the winner into real code; commit the *full* variant set plus switcher to a throwaway branch as a primary source, with a context pointer from the issue — variants and switcher left in main "rot fast and confuse the next reader." Variants stay read-only (stub mutations); never promote prototype code directly to production.
 
+**A third source, and where it differs** (Emil Kowalski's `prototype` skill and its picker spec, github.com/emilkowalski/skills at `715c180`, MIT; paraphrased). It corroborates the 3-default / 5-max count, structural difference, a floating picker outside the design's own styling, arrow-key cycling that ignores focused inputs, and a URL param that survives reload. Its deltas:
+
+- **Name the axis before generating.** Each round diverges on one stated axis — layout, density, personality, motion, or interaction model — so the variants answer one question. Variant names describe the direction ("Dense table", "Card stream"), never "Option A."
+- **Every variant meets the craft bar.** Each one fully works with realistic content; a rough variant loses on finish, not on the idea, and the comparison is void.
+- **One at a time, full size.** No thumbnail grid: side-by-side miniatures compare silhouettes, not designs. Switching is instant, with no transition between variants.
+- **Picker details:** number keys 1–N jump to a variant and `R` re-mounts the current one, which is what makes motion variants comparable; shortcuts are ignored with modifier keys held; the picker moves to the top when a variant's own UI occupies the bottom center; it keeps fixed harness styling and never borrows project tokens.
+- **Hand off without a favourite.** A table of `# | Variant | Axis | When it's the right choice | Its cost`, and the choice left to the human. A follow-up round riffs around the picked direction and drops variants that have converged.
+- **Scoped conflicts — pick by situation, do not blend.** Kowalski mounts variants on an isolated prototype route or a single HTML file so exploration never touches production code; Pocock mounts them on the existing route so they are judged in context. Use the isolated surface for a new or self-contained component and for motion studies; use the in-context mount when the question is how the design sits in the real page. Kowalski deletes the prototype surface after promoting the winner; Pocock commits the full set to a throwaway branch first. Keep the branch when the rejected variants are worth citing later.
+
 Planner integration — registering this loop in a planning skill so its tickets name the skill to invoke — is the plans-route-to-skills pattern in `working-with-ai` (agentic-coding).
 
 ## Agent as fake user (pattern 2 closer)

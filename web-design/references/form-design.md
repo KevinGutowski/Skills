@@ -50,6 +50,7 @@ Dannaway's conventions are **web-scoped**. Two known conflicts with Apple platfo
 
 **Input mechanics that ride along** (Krehel, Interfaces Cheat Sheet):
 - **Every input gets a visible `<label>`**, and its `type` and `inputmode` match what people should enter — `type="email"` / `inputmode="numeric"` bring up the right keyboard on touch devices, which a placeholder-only field with `type="text"` never does.
+- **Phone keyboards and focus zoom:** iOS zooms the page when a focused field's text is under 16px, and `enterkeyhint` / `autocomplete` change what the keyboard offers. The mechanics and the fix are in [mobile-browser-behavior.md](mobile-browser-behavior.md).
 - **Never block paste.** "People paste in things like passwords and one-time codes." Paste-blocking on confirmation and OTP fields punishes password managers and the users who follow security advice.
 
 ## 3. Validation

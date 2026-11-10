@@ -20,6 +20,7 @@ A comprehensive guide for creating animations that feel right, based on Emil Kow
 - Practical Tips
 - Easing Decision Flowchart
 - Communicating Motion to Engineers (Briggs)
+- Close Terms That Get Confused
 - Reference Files
 
 ## Theme Note
@@ -261,7 +262,7 @@ Springs feel more natural because they don't have fixed durations—they simulat
 
 Springs maintain velocity when interrupted—CSS animations restart from zero. This makes springs ideal for gestures users might change mid-motion.
 
-These gesture-physics rules — interruptibility, 1:1 tracking, velocity handoff on release, momentum projection, rubber-banding — are the web translation of Apple's *Designing Fluid Interfaces* (WWDC 2018). The native articulation, the projection math, and the drag→spring velocity-handoff formula live in `swiftui` (touch-interaction-design). The *principles* port across platforms; the CSS/spring *values* in this file don't cross back to iOS. For the broader component-craft version (press scale, origin-aware popovers), see `design-craft` (emil-kowalski).
+These gesture-physics rules — interruptibility, 1:1 tracking, velocity handoff on release, momentum projection, rubber-banding — are the web translation of Apple's *Designing Fluid Interfaces* (WWDC 2018). The native articulation, the projection math, and the drag→spring velocity-handoff formula live in `swiftui` (touch-interaction-design). The *principles* port across platforms; the CSS/spring *values* in this file don't cross back to iOS. For the broader component-craft version (press scale, origin-aware popovers), see `design-craft` (emil-kowalski). The web build order for drags, sheets, and holds (two phases, release decisions, rubber-band and projection formulas) is in [gestures.md](web-animation-design/gestures.md).
 
 ## Performance
 
@@ -278,7 +279,8 @@ Only animate `transform` and `opacity`. These skip layout and paint stages, runn
 ### Optimization Techniques
 
 ```css
-/* Force GPU acceleration */
+/* Promote the layer up front. Add only after seeing a 1px shift or measured
+   dropped frames; browsers already promote transform/opacity animations. */
 .animated-element {
   will-change: transform;
 }
@@ -290,22 +292,26 @@ Only animate `transform` and `opacity`. These skip layout and paint stages, runn
 - Use refs to update styles directly instead of state
 - Re-renders on every frame = dropped frames
 
-**Framer Motion:**
+**Motion (formerly Framer Motion):**
 
 ```jsx
-// Hardware accelerated (transform as string)
+// Hardware accelerated in every version (transform as string)
 <motion.div animate={{ transform: "translateX(100px)" }} />
 
-// NOT hardware accelerated (more readable)
+// Hardware accelerated from motion 14.2.0; main thread before that
 <motion.div animate={{ x: 100 }} />
 ```
+
+The shorthand caveat is version-scoped: `motion` 14.2.0 (2026-10-13) added accelerated independent transforms, so check the installed version before rewriting shorthands. Layout animations (`layout`, `layoutId`) and values driven per frame by a motion value stay on the main thread in every version.
 
 ### CSS vs. JavaScript
 
 - CSS animations run off main thread (smoother under load)
-- JS animations (Framer Motion, React Spring) use `requestAnimationFrame`
+- JS animations driven by `requestAnimationFrame` (React Spring, GSAP, Motion layout animations) run on the main thread; a JS library that hands off to the Web Animations API can still be accelerated
 - CSS better for simple, predetermined animations
 - JS better for dynamic, interruptible animations
+
+When an animation already drops frames, work through [performance-diagnosis.md](web-animation-design/performance-diagnosis.md): symptom table, property tiers, and an ordered list of causes.
 
 ## Accessibility
 
@@ -403,11 +409,30 @@ Is the element entering or exiting the viewport?
 
 Designers specifying motion "should just use black and white shapes," get the movement dialed in, and "hand that over like as a video" — a blueprint for the engineer, never a full After Effects redesign of the screen (Briggs, Shape FM ep. 3). The motion study communicates timing and character only.
 
+## Close Terms That Get Confused
+
+Naming the effect precisely gets a better result from an engineer or an agent than describing it (see `working-with-ai`, ai-ui-direction). These pairs are the ones most often swapped:
+
+| Term | Means | Not the same as |
+| --- | --- | --- |
+| Crossfade | Two elements fade over each other in one spot | **Morph:** one shape becomes another |
+| Shared element transition | One element travels and transforms between two places (thumbnail → detail) | **Layout animation:** an element animates to its own new size or position after a layout change |
+| Clip-path reveal | Hard-edged shape uncovers content | **Mask reveal:** same idea with soft, fadeable edges |
+| Pop in | An entrance with a slight overshoot | **Bounce:** any spring that overshoots and settles |
+| Scroll reveal | Plays once when the element enters the viewport | **Scroll-driven:** progress is tied to scroll position and scrubs both ways |
+| Stagger | The same motion cascades across siblings with a delay | **Sequence:** different motions run one after another |
+| Direction-aware | Forward and back move opposite ways | A plain slide that always enters from one side |
+| Perceptual duration | When a spring looks finished | Its settle time, which runs longer |
+
 ## Reference Files
 
 - [PRACTICAL-TIPS.md](web-animation-design/PRACTICAL-TIPS.md) - Detailed implementations for common animation scenarios
-- [references/animation-at-work.md](web-animation-design/animation-at-work.md) - Fuller verified quotes from Nabors
+- [animation-at-work.md](web-animation-design/animation-at-work.md) - Fuller verified quotes from Nabors
+- [choreography.md](web-animation-design/choreography.md) - Several elements moving together: roles, relationships, stagger budgets, sequencing, interruption tests, the timeline handoff
+- [gestures.md](web-animation-design/gestures.md) - Drag, swipe, sheets, and holds: tracking vs release, dismissal thresholds, rubber-band and projection, touch checklist
+- [performance-diagnosis.md](web-animation-design/performance-diagnosis.md) - Dropped frames: symptom table, property tiers, drivers and threads, Motion version boundary, diagnosis order
+- [motion-audits.md](web-animation-design/motion-audits.md) - Review standards and verdict, sweep, find-missing gate, removal gate and hazards, executor-ready plans
 
-**Sources**: Emil Kowalski's animations.dev course (primary values and techniques); Rachel Nabors, *Animation at Work* (A Book Apart, 2017) for the perception grounding, pattern taxonomy, and ch. 3/5 craft rules; Derek Briggs (PixelJanitor) via Shape FM for the physical-reference easing school and speed rules. Staleness: the 2017 book's perceptual/taxonomic layer is durable; its tooling and browser-feature mentions are dated. Full bibliography (video IDs, URLs, dates): [references/sources.md](web-animation-design/sources.md).
+**Sources**: Emil Kowalski's animations.dev course (primary values and techniques); Rachel Nabors, *Animation at Work* (A Book Apart, 2017) for the perception grounding, pattern taxonomy, and ch. 3/5 craft rules; Derek Briggs (PixelJanitor) via Shape FM for the physical-reference easing school and speed rules; Emil Kowalski's public skills repo (`715c180`, MIT) for the four deep dives added 2026-11 and the Motion 14.2 correction. Staleness: the 2017 book's perceptual/taxonomic layer is durable; its tooling and browser-feature mentions are dated. Full bibliography (video IDs, URLs, dates): [references/sources.md](web-animation-design/sources.md).
 
 ---
