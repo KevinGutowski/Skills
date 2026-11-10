@@ -7,7 +7,7 @@ description: "Run a holistic, evidence-based review of a web interface across ac
 
 Review an interface as one system instead of returning disconnected specialist audits. This skill owns scope, orchestration, evidence, prioritization, and the final verdict. Domain rules remain with their local owners.
 
-**Sources/gaps:** [references/sources.md](references/sources.md) records the external orchestration pattern; [references/coverage-gaps.md](references/coverage-gaps.md) parks unverified rules and missing evals.
+**Sources/gaps:** [references/sources.md](references/sources.md) records the external orchestration and critique-scoring patterns; [references/coverage-gaps.md](references/coverage-gaps.md) parks unverified rules and missing evals.
 
 ## Resolve the review first
 
@@ -22,11 +22,15 @@ Choose the mode:
 
 Default to `full`. A cap is a ceiling, not a quota.
 
+Add **scored** to either mode when the user wants a rating, a persona or cognitive-load walk-through, or a baseline to re-run after fixes. It layers a design-specificity verdict, Nielsen 0–4 scores (with `n/a` renormalization), a cognitive-load count, persona red flags, and an optional five-dimension technical audit onto the same report: [references/critique-scoring.md](references/critique-scoring.md).
+
 Treat review requests as read-only. Edit code only when the user also asks to implement the findings.
 
 ## Recon before judgment
 
 Identify the framework, styling system, component library, tokens, supported viewports, and available preview/test commands. Follow project conventions. Do not recommend a second styling system or a new primitive when the established one can express the fix.
+
+**Judge before you scan.** Form your own design judgment, including whether the interface is authored for this product or could ship unchanged for an unrelated one, *before* reading detector, lint, or axe output, because deterministic findings anchor judgment. Then reconcile: agreements, what the tools caught that you missed, and false positives. When subagents are available, run the two passes in isolation. State in the report how they ran.
 
 Inspect rendered behavior when the claim depends on layout, appearance, animation, focus, scrolling, or interaction. Inspect source when the claim depends on semantics or implementation. Do not turn a missing runtime check into a finding; mark it not verified.
 
@@ -44,7 +48,7 @@ Read and apply only the references needed for the requested surface:
 8. `design-craft` — spacing, radii, shadows, alignment, state polish, and interface feel.
 9. `rails` (optimizing-rails, perceived-speed) — only when the interface under review is a Rails/Hotwire app: spinners on navigation, row-by-row pop-in, prefetch/morph/optimistic-update mechanics, and the `ps-…` checklist names. Browser budgets still go to item 7.
 
-For AI-generated UI, also read `working-with-ai` (ai-ui-direction). For a native Apple-platform interface, replace web-specific rules with `apple-design` and `swiftui`; do not cross-apply web conventions. A website installed to the iOS/iPadOS Home Screen or macOS Dock remains web work and adds `web-design` (apple-installed-web-apps).
+For AI-generated UI, also read `working-with-ai` (ai-ui-direction) and check the named tells in `frontend-design` (anti-slop-catalog). Respect the brief and the surface's mode (Persuade, Operate, Read, Experience): a tell the brief pinned or the world earned is not a finding. For a native Apple-platform interface, replace web-specific rules with `apple-design` and `swiftui`; do not cross-apply web conventions. A website installed to the iOS/iPadOS Home Screen or macOS Dock remains web work and adds `web-design` (apple-installed-web-apps).
 
 Assign an issue to the owner of its underlying rule and mention secondary effects in the rationale. Report one root cause once, even when it appears in several files or affects several domains.
 
@@ -82,6 +86,8 @@ State mode, exact scope, stack/conventions, and boundaries. Cover every applicab
 | --- | --- | --- |
 | Accessibility | Files, components, states, and checks | Finding count, `Clear`, or `Not reviewed` with reason |
 
+In `scored` mode, put the method line and the design-specificity verdict first, then the score tables, then findings.
+
 ### Findings
 
 Use one table ordered by severity, reach, and leverage:
@@ -106,3 +112,5 @@ End with exactly one:
 - `Block` — one or more high findings remain.
 - `Needs changes` — only medium or low findings remain.
 - `Approve` — no actionable findings remain and the claimed coverage was verified.
+
+In `scored` mode, after the verdict end with 2–4 targeted questions, each with concrete options tied to the findings (what to fix first, intended tone, scope, anything off-limits). Nothing follows the questions. With fewer than three priority findings, skip the questions and write `Questions skipped: <n> priority findings` instead.

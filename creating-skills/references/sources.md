@@ -18,3 +18,4 @@ This source map records where the skill-authoring guidance comes from.
 ## Promotion rule
 
 Promote new skill-authoring guidance only when it comes from official docs, a repeated local routing/eval failure, a verified source-conversion workflow, or an accepted corpus governance decision.
+- `measuring-skill-effect.md` (Generative skills section): Impeccable by Paul Bakaus (https://github.com/pbakaus/impeccable, Apache-2.0, screened at `b3ced85`, 2026-11-09). Sources are the maintainer CLAUDE file, `tests/skill-behavior/` conventions, and the research note https://impeccable.style/research. Ledger: `docs/impeccable-source-mining-2026-11.md`.
