@@ -17,6 +17,7 @@ Depth moved out of SKILL.md: full source list, worked examples, outcome numbers,
 - [Motion as a design-system layer (Nabors)](#motion-as-a-design-system-layer-rachel-nabors-animation-at-work-a-book-apart-2017)
 - [MailChimp pattern-library prework](#mailchimp-pattern-library-prework-the-ux-reader-2014)
 - [Soleio: UFI, Canon, and the Dropbox illustration strip-out](#soleio-ufi-canon-and-the-dropbox-illustration-strip-out)
+- [Impeccable: PRODUCT.md / DESIGN.md / surface brief](#impeccable-productmd--designmd--surface-brief)
 - [Misc details](#misc-details)
 
 ## Full source list
@@ -147,6 +148,15 @@ Soleio Cuervo (early Facebook design, Dropbox Head of Design); quotes are verbat
 - **Icon choices are brand decisions** (Soleio, Design MBA): thumbs-up beat heart/star "because of poke and because of the universality of the hand as a visual symbol it just felt very face Booky to use a hand" [Facebooky].
 - **Facebook's first UI library was named Canon** (Soleio, Cults & Culture): "we had our our first UI Library we called Canon" — naming the library is part of making the system an institution rather than a folder.
 - **The Dropbox illustration strip-out** (Soleio, Cults & Culture): "we had gone through a short work Sprint where we stripped out all the illustrations from Dropbox and it felt cold and utilitarian and… we sort of lost the soul of of the business." The reversal's rationale: "we are visual communicators we can convey really abstract Concepts visually in a manner that like no 10 or 12 or 15 words can really capture" (e.g. the laptop-on-fire support illustration) — and it led to "an official illustration team." Expression layers (illustration, motion, icons) are system content, not decoration; cf. the expression-team rule in SKILL.md's Team design section.
+
+## Impeccable: PRODUCT.md / DESIGN.md / surface brief
+
+Paul Bakaus, Impeccable (https://github.com/pbakaus/impeccable, Apache-2.0, screened at `b3ced85`, 2026-11-09), paraphrased:
+
+- **Split the agent-facing record by authority** **PRODUCT.md** holds product truth (audience, job, constraints, platform). **DESIGN.md** holds durable visual decisions as YAML tokens plus prose, in the portable section order of Google's design.md spec (https://github.com/google-labs-code/design.md): Overview, Colors, Typography, Layout, Elevation & Depth, Shapes, Components, Do's and Don'ts. A small **per-surface brief** holds one route's strategy (visitor mode, direction, open decisions). Tokens are normative and prose explains how to apply them. Values the spec's component sub-tokens cannot carry (shadows, motion, focus rings) go in a sidecar, not invented fields. Never overwrite an existing DESIGN.md silently: offer refresh, overwrite, or merge.
+- **Write the system record from the built world, not before it.** In Impeccable's account, a rulebook written before the build gets defended against reality and gives drift checks an unstable target. Document after the first build lands. A missing DESIGN.md does not mean there is no system: document the coherent identity already in code instead of inventing a new one.
+- **Make off-system values checkable.** Once the record exists, a font, color, radius, or font-size outside it is drift until shown to be intentional. Impeccable's detector flags these as `design-system-font/color/radius/font-size`. Treat each finding as a question: use the documented value, or add the value to the system on purpose. Named generation tells → `frontend-design` (anti-slop-catalog).
+- **Extract by intent, not resemblance.** Promote a pattern after about three uses *with the same intent*. Two buttons that look alike but serve different purposes stay separate, and visual similarity alone is no reason to merge behaviors. Premature abstraction is worse than duplication. Tokens need semantic meaning; a token for every value is noise.
 
 ## Misc details
 

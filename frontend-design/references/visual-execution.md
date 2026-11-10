@@ -19,7 +19,7 @@ This reference holds implementation texture for `frontend-design`. The parent sk
 - **Atmosphere:** use imagery, texture, gradients, borders, lighting, or grain only when they reinforce the concept.
 - **Motion:** concentrate motion in a small number of meaningful moments. Do not add perpetual marquees or loops merely to signal polish.
 
-Useful concept prompts include brutal minimalism, controlled maximalism, retro-futurism, organic/natural, luxury/refinement, playful/toy-like, editorial, brutalism, art deco, soft/pastel, and industrial/utilitarian. These are prompts for range, not styles to combine or defaults to repeat.
+Useful concept prompts include brutal minimalism, controlled maximalism, retro-futurism, organic/natural, luxury/refinement, playful/toy-like, editorial, brutalism, art deco, soft/pastel, and industrial/utilitarian. These are prompts for range, not styles to combine or defaults to repeat. Generic style lanes are weaker than candidates drawn from the audience's own world (its artifacts, publications, notation, places), and a model's favorite lane is its category default. Derive and assign directions with [surface-modes.md](surface-modes.md); check the result against the four saturated looks in [anti-slop-catalog.md](anti-slop-catalog.md).
 
 ## SVG mental model
 

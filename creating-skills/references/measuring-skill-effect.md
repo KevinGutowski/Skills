@@ -11,6 +11,7 @@
 - Read the transcripts, not just the scores
 - Thin by evidence
 - Wording that causes detours
+- Generative skills: when guidance makes output timid
 - Hygiene: don't teach to the test
 - Versioning and records
 
@@ -55,6 +56,18 @@ The skill went from 3,928 to 621 words (later 826 after targeted additions) with
 - **Say explicitly: "These rules say how to build it; they are not a list to test."** Agents otherwise write one test per rule and rerun the whole suite. Tell them to rerun only failing tests by name.
 - **Add a tolerance where the agent will compare floats or pixels.** A missing "small tolerance" clause made one model pick the wrong anchor row from a sub-point rounding remainder.
 - **Tuned rules need a hostile review.** An adversarial review of the benchmark-tuned version asked "what does this teach a normal app that is wrong?" and found four rules that improved the scorer's numbers but were wrong or unproven for typical apps (a fixed latency timer, an unconditional perf flag, an over-broad framework choice, a misdescribed API contract). Scope such rules or state their trade-off.
+
+## Generative skills: when guidance makes output timid
+
+*Second source: Impeccable (Paul Bakaus, Apache-2.0, https://github.com/pbakaus/impeccable at `b3ced85`, its maintainer CLAUDE file, and the research note https://impeccable.style/research, July 2026). That project's own evaluation was ~30 skill iterations and ~200 sampled concepts, judged by its design director plus a position-swapped pairwise screenshot judge. The method is general; the numbers belong to one project.*
+
+- **Count discouragements against encouragements.** A prompt with about five warnings per invitation to commit produced tentative designs. Ordering the guidance *commit to the concept, then refine for clarity* was the campaign's largest single quality gain. Audit a generative skill for its ratio of "avoid/never/don't" lines to commitment lines.
+- **Put cautionary checks at the review stage, not the generation stage.** The project keeps accessibility in its audit command, not its design-time instructions, because, in its maintainers' account, design-time reminders talked models into safe, underdesigned output. The check still runs; it just doesn't steer the first draft.
+- **Self-checks inside the build don't work.** A silent "imagine it without styling" check still shipped the template layout, and requiring a written self-verdict added work and *lowered* quality. Move structural checks to the finish and give them to a fresh reviewer with a written contract to judge against.
+- **Prompting cannot buy variety; a script can.** Sixteen creative framings converged on one concept, and models ranking their own shortlist picked option one 27/30 times. When a skill needs variety, have the model propose and a deterministic script assign (a low-freedom step; see [degrees-of-freedom.md](degrees-of-freedom.md)). Keep the seed so a bad draw can be replayed.
+- **Printed script output gets followed where an optional file read gets skipped.** The project moved per-mode rules from reference files into the text its CLI prints, because agents acted on the printed line. This matches the transcript finding above: references are opened 0–2 times.
+- **Retire a field with its reason.** Told only that a field is deprecated, models preserved it "just in case," so a retired axis kept steering output. State why it is gone and what replaces it.
+- **Behavior tests assert on the tool-call trace, not the prose.** Test that the skill made the agent read X before writing Y, across at least two model families, because the most useful failures show up as divergence between families. Drop below-tier models whose failures are model-floor rather than skill-text defects, or the suite stays red and nobody reads it. Re-run an activation test whenever the description changes.
 
 ## Hygiene: don't teach to the test
 

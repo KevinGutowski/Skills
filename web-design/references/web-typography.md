@@ -54,6 +54,7 @@ Latin's equilateral triangle (ch. 'Equilateral triangle of a perfect paragraph')
 - Hierarchy ≠ size: weight, style, caps, color, spacing, placement all differentiate. "Whatever you choose, just change one attribute at a time" (Rutter, 'Don't rely on size alone for differentiation').
 - **Latin's scale-vs-grid reconciliation** (ch. 'Modular scale and meaningful typography'): the scale governs *sizes*, the rhythm grid governs *leading*. When they conflict (a 37px heading wanting 60px grid leading), bend: pick a multiple/fraction of the base leading (45px = 1.5×) that lands in the heading range (45÷37 = 1.22 ✓). And the tiebreaker: "go with what looks optically right, not with what's mathematically correct."
 - Modernize: compute the scale with `clamp()`/`pow()` custom properties for fluid steps between breakpoints (post-book; see §12).
+- **Product UI is the exception to fluid scales** (Impeccable, 2026): app screens, dashboards, and settings want a *fixed* rem scale with a tighter ratio (~1.125–1.2), because they carry more type roles at a steady viewing distance. A fluid h1 that shrinks inside a sidebar looks worse, not better. One well-tuned sans often carries every role. Keep fluid display sizing for marketing and editorial surfaces. Mode definitions → `frontend-design` (surface-modes).
 
 ## 5. Rhythm & vertical space
 
@@ -70,7 +71,8 @@ Latin's equilateral triangle (ch. 'Equilateral triangle of a perfect paragraph')
 
 - **"Don't letterspace lowercase without good cause"** (Rutter) — lowercase spacing is the type designer's job.
 - **Do** letterspace strings of capitals and 3+ digit runs: `letter-spacing: 0.05em` (~5%). More for all-caps headings in light weights; if another letter fits in the gap, too much. Not initials (use narrow no-break spaces) or small caps (spacing built in).
-- **Gently tighten big/bold/wide**: −1% to −3% (`h1 { letter-spacing: -0.03em }`).
+- **Gently tighten big/bold/wide**: −1% to −3% (`h1 { letter-spacing: -0.03em }`). Treat −0.04em as a floor: past it, letters lose their own shapes (Impeccable's `extreme-negative-tracking` check).
+- **Retune light-on-dark text; don't just invert it.** Reversed text often looks *heavier* and blurs together (irradiation, antialiasing). That is why faces such as Signika ship a lighter "Negative" cut. Thin hairlines and small sizes can instead break up or drop out. Judge the actual face at the actual size and rendering: usually a little more line-height and tracking help, and the weight goes down a step for bold-looking faces or up for hairline faces that disappear. Impeccable's `typeset` suggests compensating on all three axes; the direction of the weight change depends on the face.
 - **Centring fix**: browsers add the tracking *after* the last letter, throwing off centered display text — offset with a negative right margin equal to the letter-spacing (Rutter, 'Eliminate erroneous spaces after last letters').
 - **"Turn off ligatures if increasing letterspacing"** (Rutter) — ligated pairs ignore the added space and turn into dark clumps.
 

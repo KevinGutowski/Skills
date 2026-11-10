@@ -29,3 +29,4 @@ Use this as provenance for the `user-onboarding` skill and references. It is not
 - `driving-momentum.md`: setup quests, progress, encouragement, lifecycle emails, return behavior.
 - `field-notes.md`: verbatim quote texture behind Universal Rules 8–15 (Config 2024/2025, Dive Club, Cursor field notes).
 - `coverage-gaps.md`: candidate onboarding standards that need more evidence or accepted examples before promotion.
+- Impeccable by Paul Bakaus (https://github.com/pbakaus/impeccable, Apache-2.0, screened at `b3ced85`, 2026-11-09): `onboard` and `clarify` supplied the five-cause empty-state table in `empty-states.md`. The rest of `onboard` (show don't tell, optional onboarding, time to value, tours, tooltips) is already covered more deeply by Hulick. Ledger: `docs/impeccable-source-mining-2026-11.md`.

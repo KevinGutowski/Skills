@@ -11,6 +11,10 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
   references for [../examples/refactoring-ui-gallery.html](../examples/refactoring-ui-gallery.html),
   not committed.
 
+## Impeccable (Paul Bakaus)
+
+- https://impeccable.style · https://github.com/pbakaus/impeccable (Apache-2.0), screened at commit `b3ced85` (2026-11-09). Command references `bolder`, `quieter`, `distill`, `delight`, `overdrive`, `polish`, `harden` were paraphrased and merged into [refinement-moves.md](refinement-moves.md). Ledger: `docs/impeccable-source-mining-2026-11.md`.
+
 ## Anton Sten
 
 - *Products People Actually Want* (2025 ebook, local attachment `ppaw-ebook.zip`) — corroborates problem-first craft, off-screen touchpoint care, whole-journey UX, visual design as clarity rather than decoration, and the function/reliability/usability/pleasure hierarchy.

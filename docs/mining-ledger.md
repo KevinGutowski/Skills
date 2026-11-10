@@ -511,3 +511,7 @@ Ticket-driven sweep of the Apple Developer YouTube videos and streams plus devel
 - `uikit` uikit-ios27-sdk: the iOS 27.1 section was verified and extended, and the Objective-C table corrected.
 - `apple-design` app-intents-design: new second-hop `siri-ai-ios27.md` from WWDC26 240/343/344/345/295/310, plus inline iOS 27 corrections.
 - Parked: the Group Lab livestreams (no transcripts), the macOS touch and Live Activities talks, security and App Store Connect talks, and the Sept "Meet with Apple" SwiftUI series.
+
+## 2026-11-09 — Impeccable (impeccable.style, pbakaus/impeccable)
+
+Ticket-driven intake of Paul Bakaus's Impeccable design skill (Apache-2.0, `b3ced85`) and its site (Designing, Docs, Slop, Research). Full manifest, fold map, conflicts, and parked items: `docs/impeccable-source-mining-2026-11.md`. Density HIGH for craft-floor, new-work/modes, critique, the refinement commands, the 62-rule detector registry, and the research note; LOW for clarify, onboard, adapt, optimize, and the native digests. No new skill. New references: `frontend-design` (surface-modes, anti-slop-catalog), `interface-review` (critique-scoring), `design-craft` (refinement-moves). Extended: `working-with-ai` (ai-ui-direction), `creating-skills` (measuring-skill-effect), `design-systems`, `design-prototyping`, `web-design` (web-typography, web-layout-design), `user-onboarding` (empty-states). No descriptions changed.

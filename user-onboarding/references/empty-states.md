@@ -2,6 +2,16 @@
 
 The most overlooked onboarding opportunity. Empty states are what users see when a content area has no data yet — dashboards with zero activity, friend lists with no friends, project lists with no projects. These are often the very first thing a user sees after signing up.
 
+## Contents
+
+- The Problem
+- Tone Rules
+- The Empty State Formula
+- Emotional job of an empty state
+- Examples
+- Anti-Patterns
+- Applying the Rider/Elephant/Path Framework
+
 ## The Problem
 
 Unhandled empty states show a lot of zeros and "you haven't done X yet" messages with weak direction on what to do about it. This is demoralizing — the user just signed up and they're already being shown what they lack.
@@ -41,6 +51,18 @@ Check four moments:
 - **Waiting:** explain what is happening or when the next thing will arrive; avoid dead spinners.
 - **Completion:** confirm the specific accomplishment, not just "success."
 - **Recovery:** if something failed, switch to `ux-writing` (error-messages) and prioritize reassurance over welcome copy.
+
+**Name the cause before writing the copy** (Impeccable, `onboard`/`clarify`, 2026). "Empty" covers five different states, and each needs its own next action:
+
+| Cause | Next action |
+| --- | --- |
+| First use (never used the feature) | Value plus a starter action or template |
+| User cleared it (deleted everything on purpose) | Light touch and an easy way to recreate; no re-onboarding |
+| No results (search or filter returned nothing) | Show the active query or filters, offer to clear them, suggest alternatives |
+| No permission | Why, and how to get access |
+| Failed to load | What happened and a retry → `ux-writing` (error-messages) |
+
+A single generic "Nothing here yet" for all five hides the one action each case needs.
 
 ## Examples
 

@@ -104,6 +104,12 @@ Stress-test with:
 - pseudo-localized strings rather than an assumed universal expansion percentage;
 - empty, one-item, dense, error, loading, and permission-limited states.
 
+**Arabic-script data handling** (Arabic, Persian, Urdu, Pashto, Kurdish; from Impeccable's `harden`. The `Intl` outputs below were checked in Node with ICU on 2026-11-09). Mirroring the layout is not enough:
+
+- Preserve the Zero-Width Non-Joiner (U+200C). Persian and Kurdish use it inside compound words, and a sanitizer that strips it changes meaning.
+- Store Persian ی/ک (U+06CC/U+06A9) and Arabic ي/ك (U+064A/U+0643) as typed, but treat them as equivalent for search and validation. Rejecting one form locks out users whose keyboard sends the other.
+- Format digits and dates with the locale: `Intl.NumberFormat('fa-IR')` gives ۱٬۲۳۴, and `Intl.DateTimeFormat('fa-IR')` uses the Solar Hijri calendar. Never hard-code Western digits or the Gregorian calendar.
+
 The external source's `30–40%` translation expansion is a useful test stimulus, not a safe sizing formula. Real expansion varies by source language, target language, string length, and context.
 
 ## Safe areas and stable controls
@@ -156,6 +162,7 @@ A partially visible next item can hint that a horizontal list continues, but the
 
 ## Sources and staleness
 
+- Impeccable (Paul Bakaus), `harden` at `b3ced85`, Apache-2.0: the Arabic-script data-handling notes. https://github.com/pbakaus/impeccable
 - Jakub Krehel, `better-layout`, revision `f2d1354f9966fd4d03f9c2beb69591ecec22af54`: grouping, alignment, adaptivity, safe-area, and disclosure heuristics. https://github.com/jakubkrehel/skills
 - MDN, CSS logical properties and values: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values
 - MDN, CSS container queries: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries

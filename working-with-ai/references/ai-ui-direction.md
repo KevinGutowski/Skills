@@ -29,6 +29,27 @@ The task shape: an AI produced UI and you have to make it *right* — which is a
 - **Jelly-bean-factory under-specification** (Andy Madrick, Dive Club podcast, IfPK0LwbX_0): vague style prompts yield "a million gradients and like a million tags… a jelly bean factory" — trim down, or pre-constrain with your design system (remixing legacy components through it: "we had all the pieces here").
 - The element-by-element diff checklist for mock-to-code output (type weights/sizes, exact colors, corner radii, spacing, completeness, gradient scale) lives in `design-prototyping`'s agents tier.
 
+## Name the tell, then pick the move
+
+Diagnosis has a second vocabulary beside layout primitives: **named generation tells** and **directional moves**. The two map onto each other.
+
+- **Name the tell.** Generated UI clusters on recognizable defaults: tracked kicker labels above every heading, side-stripe card borders, gradient text, purple or neon-on-dark palettes, reflex cream grounds, glow halos, icon tiles above headings, nested cards, identical card grids, bounce easing, fake "live" pulsing dots, buzzword copy, and aphoristic "Not X. Y." cadence. `frontend-design` (anti-slop-catalog) lists each tell with Impeccable's deterministic detector IDs (`npx impeccable detect`), so "it looks AI-made" becomes "`side-tab` ×6, `kicker-above-heading` ×4, `cream-palette`". The brief still wins: a tell the user pinned is not a defect.
+- **Pick the move, and name it.** "Make it pop" is not an instruction, but "bolder on the pricing cards, everything else stays" is. The verbs, each with its own playbook in `design-craft` (refinement-moves): *bolder* (amplify the system's own strongest moves, not more effects), *quieter* (restraint that is not generic gray-on-white), *distill*, *delight*, *polish* (classify drift, then triage), *harden*. Scope is sovereign: name the target and what must stay untouched.
+- **Know which outputs are refinement and which are redesign.** A refinement keeps identity, copy, and everything out of scope. If the concept itself is wrong, redesign through `frontend-design`; never polish a look you meant to discard.
+
+## Escape the model's defaults
+
+Impeccable's evaluation campaign ("The model can't roll its own dice", https://impeccable.style/research, July 2026) found that model variety is limited by *selection*, not imagination:
+
+- **Pep talks don't add range.** 30 of 35 responses to sixteen different creative framings proposed the same concept. Changing the prompt's adjectives changes the wording, not the idea.
+- **"Discard your first ideas" yields the second default.** Rejection moves the model one step along a predictable path.
+- **Let something else pick.** A model ranking its own varied shortlist picked option one 27 of 30 times. Have the agent propose a grounded shortlist, then let the user, a random draw, or a seeded script assign the direction.
+- **Commit first, then clarify.** Piling on cautionary rules ("don't be gaudy, keep it accessible, avoid X…") produced timid output. Ask for full commitment to the assigned concept, then a separate clarity pass.
+- **Skeleton, not clothes.** A borrowed style can sit on the same template grid. Check the structure with the styling mentally removed. If it is a split hero over a row of cards, the concept has not reached the layout.
+- **Review against a written promise, from fresh eyes.** Have the builder write a short direction contract (thesis, own-world palette and components, first viewport, primary action). An independent reviewer then compares the screenshots with each promise. Generic "make it better" reviews tended to make pages busier, not better.
+
+These are one project's results on its own briefs. Treat them as strong defaults for direction prompts, not laws.
+
 ## Direct the loop
 
 1. **Substrate first** (Ryo): generate onto a constrained base — shadcn/Radix-grade primitives and "a really robust like foundational set of tokens and components" — because AI "is really good at composing patterns that exist." Then theme by hand. (Full de-slop rules → `frontend-design`.)
@@ -43,7 +64,7 @@ The task shape: an AI produced UI and you have to make it *right* — which is a
 5. **Sketch beats words for spatial intent** (Ron Goldin, Dive Club podcast, UkQpgslyR3A): "when something is off in Claude, I could back and forth with it in words for like 10 minutes or I could go to Figma and sketch it out in 5 minutes" — dual-task between the agent building and a sketch surface. Same family as Madrick's labeled keyframe sketch above. And have the agent reflect rambles back (Marvin Schwaibold, Dive Club podcast, KpJs7mZYErg): "ask me clarifying questions if you're unsure of my prompt cuz I'll ramble or send a voice note" — then it spits "basically my idea back to me" for confirmation before building.
 6. **Evaluate agents by how they drive** (Tommy Geoco, Dive Club podcast, OYNoy468kS8): don't judge a model/tool on one-shot output — "you have to drive them for a little while. When you drive it with intent and you're just like… that's wrong fix, that's wrong fix, and you do that a few iterations, I think then you have a good feel." (Turning those corrections into standing rules → [agentic-coding.md](agentic-coding.md) / `creating-skills`.)
 7. **Build once, then discover missing states by touching it.** A static mock rarely names every state. After implementation, operate the component and add the states the live thing reveals: idle, hover, pressed, loading/working, disabled, success/error, empty/overflow, snap-caught, drag-release, and reduced-motion. If a number hard-cuts, make it roll or cross-fade; if a task is working, prefer a calm state treatment over a default spinner when the wait is short and controlled. The user feels the state system, not the screenshot.
-8. **Judge in a fresh context**: have an independent judge with its own context window evaluate the output against explicit criteria (the pattern, loadout, and rationale live in `design-prototyping`'s agents tier #4; criteria sources: `design-principles`, `design-craft`).
+8. **Judge in a fresh context**: have an independent judge with its own context window evaluate the output against explicit criteria. When a deterministic detector runs too, form the design judgment *before* reading its output, then reconcile the two (`interface-review` owns the two-pass critique) (the pattern, loadout, and rationale live in `design-prototyping`'s agents tier #4; criteria sources: `design-principles`, `design-craft`).
 9. **Fundamentals gate the polish stage** (MDS's skateboard maxim): "Have fun dropping into the bowl" — speed is real, but output you can't diagnose is output you can't finish.
 
 ## Checklist
@@ -55,6 +76,8 @@ The task shape: an AI produced UI and you have to make it *right* — which is a
 - [ ] Known Figma properties and component states were listed explicitly, and live use surfaced any missing states?
 - [ ] Taste/auditor rules traced to visible source evidence, not borrowed from a different reference corpus?
 - [ ] Value tweaks edited directly; prompts reserved for structure/behavior?
+- [ ] Generation tells named by catalog ID and each fix chosen as a named move (bolder/quieter/distill/polish/harden) with an explicit scope?
+- [ ] For a new direction, did something other than the generating model pick from its shortlist, and was the concept committed before the clarity pass?
 - [ ] Independent fresh-context judge run before calling it done?
 
 ## Relationship to other skills
@@ -65,5 +88,6 @@ The task shape: an AI produced UI and you have to make it *right* — which is a
 - **`creating-skills` (converting-visual-references-to-skills)** — turns a curated image corpus into reusable visual-taste criteria; this skill uses those criteria to steer, audit, and repair generated UI.
 - **`design-systems`** — the bricks/DS-as-AI-context doctrine that makes step 1 possible.
 - **`design-craft`** (incl. its `emil-kowalski` reference) — the polish criteria the judge enforces.
+- **`frontend-design`** (anti-slop-catalog, surface-modes) — the named tells with detector IDs, the craft floor, surface modes, and the direction contract; **`design-craft`** (refinement-moves) — the playbook behind each directional verb.
 
 > **Staleness note (Kevin's rule):** Tailwind/Figma specifics (4px base, auto-layout terms) are 2025–26-era tooling; the primitive-literacy thesis, failure-mode taxonomy, and direct-the-loop discipline are the durable layer.
