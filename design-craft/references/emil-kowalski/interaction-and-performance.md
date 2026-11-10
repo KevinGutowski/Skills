@@ -85,23 +85,25 @@ element.style.setProperty('--swipe-amount', `${distance}px`);
 element.style.transform = `translateY(${distance}px)`;
 ```
 
-### Framer Motion hardware acceleration caveat
+### Motion hardware acceleration caveat (version-scoped)
 
-Framer Motion's shorthand properties (`x`, `y`, `scale`) are NOT hardware-accelerated. They use `requestAnimationFrame` on the main thread. For hardware acceleration, use the full `transform` string:
+From `motion` 14.2.0 (2026-10-13), the shorthand properties (`x`, `y`, `scale`, `rotate`) on HTML elements are hardware-accelerated. Before 14.2 they run on `requestAnimationFrame` on the main thread, and the workaround is the full `transform` string. Check the installed version before rewriting either way:
 
 ```jsx
-// NOT hardware accelerated (convenient but drops frames under load)
+// motion 14.2+: hardware accelerated. Earlier: main thread, drops frames under load
 <motion.div animate={{ x: 100 }} />
 
-// Hardware accelerated (stays smooth even when main thread is busy)
+// Hardware accelerated in every version (stays smooth even when main thread is busy)
 <motion.div animate={{ transform: "translateX(100px)" }} />
 ```
+
+Still on the main thread in every version: layout animations (`layout`, `layoutId`), animations with `onUpdate` or `transformTemplate`, inertia (drag momentum), and values driven each frame by a motion value (drag, `useTransform`). Updated 2026-11 from the current upstream skill and Motion's changelog; the ordered diagnosis lives in `web-design` (web-animation-design → performance-diagnosis).
 
 This matters when the browser is simultaneously loading content, running scripts, or painting. At Vercel, the dashboard tab animation used Shared Layout Animations and dropped frames during page loads. Switching to CSS animations (off main thread) fixed it.
 
 ### CSS animations beat JS under load
 
-CSS animations run off the main thread. When the browser is busy loading a new page, Framer Motion animations (using `requestAnimationFrame`) drop frames. CSS animations remain smooth. Use CSS for predetermined animations; JS for dynamic, interruptible ones.
+CSS animations run off the main thread. When the browser is busy loading a new page, animations that run on `requestAnimationFrame` (including Motion layout animations) drop frames. CSS animations remain smooth. Use CSS for predetermined animations; JS for dynamic, interruptible ones.
 
 ### Use WAAPI for programmatic CSS animations
 

@@ -53,6 +53,10 @@ y.target = nearestCornerPosition.y
 ```
 *(2018, from the session slides; velocity in points/sec, deceleration per-ms — hence the /1000. The pattern survives directly in modern SwiftUI spring APIs.)*
 
+- **Deceleration constants, as numbers:** `UIScrollView.DecelerationRate.normal` is `0.998` and `.fast` is `0.99`; the smaller rate projects a shorter throw, which suits paging and small snap grids.
+- **At release, the velocity's sign decides.** A sheet dragged most of the way closed and then flicked back open should open. Use position only when the finger was nearly still. (Stated as a rule in Emil Kowalski's `apple-design` port; the talk shows it through the PiP and sheet examples.)
+- **A rubber-band curve, if you must hand-roll one:** `offset = (overshoot × dimension × c) / (dimension + c × |overshoot|)`, with `c ≈ 0.55`. The constant is a community measurement of `UIScrollView`, not an Apple-published value; prefer the system scroll view or sheet, which already do this.
+
 - **Stay in character:** scroll-drag and tap-status-bar-to-top use different mechanisms, but the page must feel like the same object; carry one motion character across the app.
 - **Go beyond motion:** combine dynamic behaviors with **sound and haptics** (see [../sound-design.md](../sound-design.md)).
 
@@ -77,4 +81,4 @@ These are interaction *principles*, not platform specs — they carry across pla
 - **`web-design` (web-animation-design)** — spring/easing values, interruptibility, and reduced-motion for web motion (the default web motion theme).
 - **`design-craft` (emil-kowalski)** — the component-craft translation: press `scale(0.97)`, never `scale(0)`, origin-aware popovers, momentum-based dismissal.
 
-Emil Kowalski's public `apple-design` skill is a fuller single-file web port of this same WWDC 2018 lineage — useful as a cross-check, but treat its numbers as one coherent theme, not canonical talk specs.
+Emil Kowalski's public `apple-design` skill is a fuller single-file web port of this same WWDC 2018 lineage — useful as a cross-check, but treat its numbers as one coherent theme, not canonical talk specs. Its web build order for drags and sheets is distilled in `web-design` (web-animation-design → gestures).

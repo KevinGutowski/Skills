@@ -290,7 +290,7 @@ See `emil-kowalski/interaction-and-performance.md` for the code and full reasoni
 
 - **Only animate `transform` and `opacity`.** They skip layout and paint, running on the GPU. Animating `padding`, `margin`, `height`, or `width` triggers all three rendering steps.
 - **CSS variables are inheritable.** Updating a variable on a parent recalculates styles for all children — set `transform` directly on the element instead.
-- **Framer Motion shorthands (`x`, `y`, `scale`) are NOT hardware-accelerated.** They run via `requestAnimationFrame` on the main thread. Use the full `transform` string when the animation must stay smooth under load.
+- **Motion shorthands (`x`, `y`, `scale`, `rotate`) are hardware-accelerated only from `motion` 14.2.** Before that they run via `requestAnimationFrame` on the main thread; on older versions use the full `transform` string when the animation must stay smooth under load. Layout animations stay on the main thread in every version.
 - **CSS animations beat JS under load.** They run off the main thread. Use CSS for predetermined animations; JS for dynamic, interruptible ones.
 - **Use WAAPI for programmatic CSS animations.** JavaScript control with CSS performance — hardware-accelerated, interruptible, no library needed.
 
@@ -398,6 +398,6 @@ When reviewing UI code, check for:
 | Duration > 300ms on UI element             | Reduce to 150-250ms                                              |
 | Hover animation without media query        | Add `@media (hover: hover) and (pointer: fine)`                  |
 | Keyframes on rapidly-triggered element     | Use CSS transitions for interruptibility                         |
-| Framer Motion `x`/`y` props under load     | Use `transform: "translateX()"` for hardware acceleration        |
+| Motion `x`/`y` props under load (pre-14.2) | Upgrade to `motion` 14.2+, or use `transform: "translateX()"`    |
 | Same enter/exit transition speed           | Make exit faster than enter (e.g., enter 2s, exit 200ms)         |
 | Elements all appear at once                | Add stagger delay (30-80ms between items)                        |

@@ -3,6 +3,7 @@
 Primary:
 
 - *Emil Kowalski, "Animations on the Web" course (animations.dev) — the skill's core values, easing tables, durations, spring guidance*
+- *Emil Kowalski, `skills` repository (https://github.com/emilkowalski/skills, revision `715c1807e08c497cfd1dc4feb450a2a3300ef2a9`, 2026-11-09, MIT; catalog at https://aiforui.dev/skills) — paraphrased deltas only: `choreograph` → [choreography.md](choreography.md); `gestures` (+ two formulas from `apple-design`) → [gestures.md](gestures.md); `animation-performance` and the performance cheat sheet → [performance-diagnosis.md](performance-diagnosis.md); `review-animations`, `improve-animations`, `find-animation-opportunities`, `remove-animations` → [motion-audits.md](motion-audits.md); `animation-vocabulary` → the close-terms table in the parent file. Intake ledger: `docs/emil-kowalski-skills-source-mining-2026-11.md`.*
 - *Rachel Nabors, "Animation at Work" (A Book Apart, 2017) — perception grounding, five-pattern taxonomy, ch. 3/5 craft rules; verified quotes in [animation-at-work.md](animation-at-work.md)*
 
 Named voices folded into the body:
@@ -14,3 +15,4 @@ Named voices folded into the body:
 - *Karl Koch (DuckDuckGo) — Dive Club podcast (YouTube 7_VEb9iDW2c; anti-spring-default, physical semantics)*
 - *Kevin Kold / @kvnkld — X Article 2064972712729292800, "The 10 rules to ship truly polished UI with Claude" (2026-06-16): tokenized house easing, numeric AI motion specs, reduced-motion reminder.*
 - *Gustavo Fior — Craft, "Hover Restraint" (craft.gustavofior.com/hover-restraint, 2026-07-15; Markdown mirror at `/hover-restraint.md`): instant hover for sweep-through highlights, frequency-and-intent not input device, tooltip first-delay then instant neighbors — scoped alongside the course's 100–150ms single-control figure in [PRACTICAL-TIPS.md](PRACTICAL-TIPS.md) Hover States.*
+- *Motion changelog (https://github.com/motiondivision/motion/blob/main/CHANGELOG.md), entry 14.2.0, 2026-10-13: "Hardware accelerated independent transforms" — the version boundary for the shorthand-transform caveat; checked 2026-11-10.*

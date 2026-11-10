@@ -35,6 +35,13 @@ Annotating one type with `@MainActor` tends to propagate through everything that
 
 **Mental model behind the 6.2 reversal:** nonisolated async functions now run on the *caller's* context, not the global pool — because the old default "pushes a lot more types toward being sendable, and that's not the natural way to express these ideas." Concurrency should be opt-in at explicit points; offloading to the pool is the annotated exception. Write code assuming that worldview.
 
+## Actors: an `await` ends the atomic section
+
+Two rules the Group Lab did not spell out, from Emil Kowalski's `write-swift` skill (github.com/emilkowalski/skills at `715c180`, MIT; paraphrased) and confirmed against the Swift Evolution proposals named below. Only these were folded; see the staleness note.
+
+- **Actors are reentrant.** While an actor method is suspended at an `await`, other calls can run on the same actor, so state read before the `await` may be stale after it. The classic bug is a cache: check for the key, `await` the load, write the result — two callers both miss and both load. Do the check-and-mutate in synchronous code on the actor, or store the in-flight `Task` under the key before the first `await` so the second caller awaits the same work. Re-check invariants after every suspension point (SE-0306, "Actor reentrancy").
+- **`@concurrent` is the explicit spelling for "run this off the caller's actor"** (SE-0461, implemented in Swift 6.2). It pairs with the caller's-context default described above: per the proposal, that default applies when the `NonisolatedNonsendingByDefault` upcoming feature is enabled (Xcode groups it under its Approachable Concurrency build setting; confirm in the current Xcode). With it on, an async function stays where it was called, and you mark the few functions that should leave with `@concurrent`. Reach for it in that order: stay on the main actor; make the function `async`; mark it `@concurrent` when a profile shows the work blocking the actor; introduce an `actor` only when there is shared mutable state to protect.
+
 ## High-frequency data → @Observable UI
 
 First ask what frequency the *UI* actually needs — if updates are slower than render cadence, there's no problem to solve. Otherwise:
@@ -72,11 +79,12 @@ First ask what frequency the *UI* actually needs — if updates are slower than 
 - [ ] Async cleanup shielded from cancellation (audit async defer blocks for awaits)?
 - [ ] Ephemeral types explicitly non-sendable rather than forced sendable? No `@unchecked Sendable` shortcuts?
 - [ ] MainActor adoption via module default or leaf-outward, with `nonisolated`/`let` trims?
+- [ ] Actor state re-checked after every `await`; check-and-mutate kept synchronous? Offloading marked `@concurrent`, not assumed?
 - [ ] High-frequency updates coalesced/debounced before crossing isolation?
 - [ ] Conformances semantically meaningful, not habitual?
 - [ ] Ownership/Span/unique-array changes justified by a profile and confined to the hot path?
 
-> **Staleness note (Kevin's rule):** distilled from a live Q&A (audio-transcribed) in the Swift 6.3/6.4 timeframe — feature names here (`~Sendable`, `@diagnose`, async `defer`, cancellation shields, unique array / `InlineArray`, `Iterable` protocols, the `Disconnected` pitch, Subprocess package, unified Swift Build) must be **verified against current swift.org/Apple docs before citing in code**; several were in-flight evolution proposals at recording time. The disciplines (structure, inversion, measure-first) are the durable content.
+> **Staleness note (Kevin's rule):** distilled from a live Q&A (audio-transcribed) in the Swift 6.3/6.4 timeframe — feature names here (`~Sendable`, `@diagnose`, async `defer`, cancellation shields, unique array / `InlineArray`, `Iterable` protocols, the `Disconnected` pitch, Subprocess package, unified Swift Build) must be **verified against current swift.org/Apple docs before citing in code**; several were in-flight evolution proposals at recording time. The disciplines (structure, inversion, measure-first) are the durable content. The actor-reentrancy and `@concurrent` section (added 2026-11) rests on SE-0306 and SE-0461, read 2026-11-10: https://github.com/swiftlang/swift-evolution/blob/main/proposals/0306-actors.md · https://github.com/swiftlang/swift-evolution/blob/main/proposals/0461-async-function-isolation.md. The rest of the external `write-swift` skill was not folded: it is single-source, and a read-through found errors (for example, it describes `private` as file-scoped), so its Swift 6.4 claims stay parked in `docs/emil-kowalski-skills-source-mining-2026-11.md`.
 
 ## Relationship to other skills
 
