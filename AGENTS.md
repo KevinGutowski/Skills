@@ -31,6 +31,7 @@ python3 scripts/check_xrefs.py
 python3 scripts/check_reference_hygiene.py
 python3 scripts/check_vercel_overhaul.py
 python3 scripts/check_vercel_routing_probes.py
+python3 scripts/check_routing_probe_fixtures.py
 python3 scripts/check_skill_smoke_tests.py
 python3 scripts/check_application_fixtures.py
 git diff --check

@@ -8,7 +8,7 @@ The frame: **"Performance is a feature. If it doesn't feel good, it's not workin
 
 ## The two numbers
 
-**60 fps and 16 ms.** 60fps is the frame rate of the web; one frame is ~16.7ms. Fluid-app teams "see in frames": thresholds are counted in frames, not vibes. (Their customers ship Oscar movies where one dropped frame is an incident — meet users where their quality bar already is.)
+**60 fps and 16 ms.** 60fps is the frame rate of the web; one frame is ~16.7ms — and on the 120Hz displays most current phones and many laptops ship, ~8ms; budget against the smaller number where animation is concerned. Fluid-app teams "see in frames": thresholds are counted in frames, not vibes. (Their customers ship Oscar movies where one dropped frame is an incident — meet users where their quality bar already is.)
 
 ## Fluid UI — the three principles (frame.io)
 
@@ -38,6 +38,7 @@ The car analogy: **TTFB** = key in the ignition → **First Contentful Paint** =
 - **The too-fast exception** (Yablonski, *Laws of UX*, ch. 10): the Doherty threshold — respond under 400 ms — is the default, but instant responses to work the user believes is *hard* can erode comprehension and trust. "Purposefully adding a delay to a process can actually increase its perceived value and instill a sense of trust, even when the process actually takes much less time." Facebook's Security Checkup animates a scan that finishes far sooner — the pacing makes the thoroughness legible. Reserve for trust-critical operations; never slow routine interactions.
 - **Page-load entrances must be CSS** (Heffernan): JS-library entrance animations wait on JavaScript — they visibly delay first paint. Save Motion/React Spring for post-hydration interactions.
 - Animating `box-shadow` is expensive; animate the opacity of a pre-rendered shadow layer. Avoid animating inherited CSS variables on ancestors (recalc storms across all children — the Vaul drag bug).
+- **An animation that janks only while the page is busy is a thread problem, not a property problem** (Kowalski): `requestAnimationFrame`-driven motion — including shared-layout animation — shares the main thread with navigation, fetching, and hydration; CSS transitions/keyframes and WAAPI can leave it. Move the indicator, page transition, or loading-adjacent motion to CSS. Per-animation diagnosis (cost tiers, driver/thread table, `will-change`, ordered checklist): [web-animation-design/animation-performance.md](web-animation-design/animation-performance.md).
 
 ## Process & culture
 
@@ -61,7 +62,7 @@ The car analogy: **TTFB** = key in the ignition → **First Contentful Paint** =
 ## Relationship to other skills
 
 - **`motion`** (performance-audit capability) — ranks *animation* techniques by render-pipeline cost (S–F); this skill owns the app-level loading/interaction discipline around them. Audit an animation there; budget the interaction here.
-- **[`web-animation-design`](web-animation-design.md)** — perceived-speed and animation-performance rules (transform/opacity only, under-20px blurs) live there; this skill supplies the frame budgets and process that enforce them.
+- **[`web-animation-design`](web-animation-design.md)** — perceived-speed and animation-performance rules (transform/opacity only, under-20px blurs) live there, with dropped-frame diagnosis in its [animation-performance](web-animation-design/animation-performance.md) sub-reference; this skill supplies the frame budgets and process that enforce them.
 - **`design-craft`** (polish-principles) — §17 layout stability (anti-skeleton, no-shift loads) is the CLS doctrine; §18's modern CSS primitives are the prefer-CSS toolbox.
 - **[`web-typography`](web-typography.md)** — font-loading strategy (WOFF2, subsetting, `font-display`, FOUT-over-FOIT, fallback matching) lives there; this skill owns the budgets it must fit.
 - **`rails` (optimizing-rails)** — the server side of TTFB and API latency; this skill takes over once bytes reach the browser. Same measure-first creed.
