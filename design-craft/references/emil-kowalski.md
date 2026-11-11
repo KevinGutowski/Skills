@@ -16,7 +16,9 @@
 
 The specific values in this skill (timings, scales, stagger delays, opacities) form a coherent design language — like a color scheme, they hang together as a set. If another design skill is also loaded with different numbers, pick one skill's values and apply them consistently rather than averaging across skills.
 
-For motion-specific work, `web-design` (web-animation-design) is the default theme — defer to its values when both are loaded. The two overlap heavily (both draw on Emil's course): **if you've already read web-animation-design for motion values, don't re-read this for them** — come here only for the broader UI craft, taste-training, and component-polish material that web-animation-design doesn't carry. When the user is mixing skills and a genuine choice surfaces, briefly present the options as a menu rather than picking silently.
+For motion-specific work, `web-design` (web-animation-design) is the default theme — defer to its values when both are loaded. The two overlap heavily (both draw on Emil's course): **if you've already read web-animation-design for motion values, don't re-read this for them** — come here only for the broader UI craft, taste-training, and component-polish material that web-animation-design doesn't carry. When the user is mixing skills and a genuine choice surfaces, briefly present the options as a menu rather than picking silently — that applies to choosing between themes; within this one, make the motion call and give the reason rather than offering alternatives.
+
+Three parts of Kowalski's 2026 open skills live with the web motion theme rather than here: multi-element timing in `web-design` (web-animation-design) → choreography, dropped-frame diagnosis → animation-performance, and effect naming → animation-vocabulary. The flag-on-sight list, fix-order hierarchy, and Block/Approve criteria for motion review are in `web-design` (web-animation-design) Review Method.
 
 This skill is the *how* of the **Craft** principle. For the strategic layer — whether a feature should exist, what to cut, and how to weigh craft against the other design principles — use `design-principles`.
 
@@ -109,7 +111,9 @@ Valid purposes:
 - **Feedback**: a button scales down on press, confirming the interface heard the user
 - **Preventing jarring changes**: elements appearing or disappearing without transition feel broken
 
-If the purpose is just "it looks cool" and the user will see it often, don't animate.
+- **Delight**: valid on its own only at the rare/first-time tier of the table above
+
+If the purpose is just "it looks cool" and the user will see it often, don't animate. Function check: data the user is reading (dashboard figures, charts) does not move for style.
 
 ### 3. What easing should it use?
 
@@ -290,7 +294,8 @@ See `emil-kowalski/interaction-and-performance.md` for the code and full reasoni
 
 - **Only animate `transform` and `opacity`.** They skip layout and paint, running on the GPU. Animating `padding`, `margin`, `height`, or `width` triggers all three rendering steps.
 - **CSS variables are inheritable.** Updating a variable on a parent recalculates styles for all children — set `transform` directly on the element instead.
-- **Framer Motion shorthands (`x`, `y`, `scale`) are NOT hardware-accelerated.** They run via `requestAnimationFrame` on the main thread. Use the full `transform` string when the animation must stay smooth under load.
+- **Motion shorthands (`x`, `y`, `scale`, `rotate`) are hardware-accelerated from Motion 14.2; before that they are not.** On older versions they run via `requestAnimationFrame` on the main thread — upgrade, or use the full `transform` string when the animation must stay smooth under load. Layout animations (`layout`, `layoutId`) are main-thread in every version. (Corrects this file's earlier unconditional "NOT hardware-accelerated".)
+- **`will-change` is not a default.** Add it only after seeing a 1px shift at the start/end of a transform, or for an expensive paint you have measured.
 - **CSS animations beat JS under load.** They run off the main thread. Use CSS for predetermined animations; JS for dynamic, interruptible ones.
 - **Use WAAPI for programmatic CSS animations.** JavaScript control with CSS performance — hardware-accelerated, interruptible, no library needed.
 
@@ -378,7 +383,7 @@ Pressing should be slow when it needs to be deliberate (hold-to-delete: 2s linea
 
 When multiple elements enter together, stagger their appearance. Each element animates in with a small delay after the previous one. This creates a cascading effect that feels more natural than everything appearing at once.
 
-Keep stagger delays short (30-80ms between items). Long delays make the interface feel slow. Stagger is decorative — never block interaction while stagger animations are playing. See `emil-kowalski/css-techniques.md` for the CSS pattern.
+Keep stagger delays short (30-80ms between items). Long delays make the interface feel slow. Stagger is decorative — never block interaction while stagger animations are playing. That 30–80ms figure is for product UI, with the whole group done in about 300ms; a once-per-visit marketing hero can take 100–150ms steps. Never stagger menus, command palettes, or other high-frequency lists, and don't give every item identical treatment — vary by importance. Full method: `web-design` (web-animation-design) → choreography. See `emil-kowalski/css-techniques.md` for the CSS pattern.
 
 ## Debugging Animations
 
@@ -398,6 +403,6 @@ When reviewing UI code, check for:
 | Duration > 300ms on UI element             | Reduce to 150-250ms                                              |
 | Hover animation without media query        | Add `@media (hover: hover) and (pointer: fine)`                  |
 | Keyframes on rapidly-triggered element     | Use CSS transitions for interruptibility                         |
-| Framer Motion `x`/`y` props under load     | Use `transform: "translateX()"` for hardware acceleration        |
+| Motion `x`/`y` props under load, Motion < 14.2 | Upgrade, or use `transform: "translateX()"`; 14.2+ shorthands are accelerated |
 | Same enter/exit transition speed           | Make exit faster than enter (e.g., enter 2s, exit 200ms)         |
-| Elements all appear at once                | Add stagger delay (30-80ms between items)                        |
+| Elements all appear at once (low-frequency surface) | Add stagger delay (30-80ms between items, ~300ms total); none on menus/palettes |

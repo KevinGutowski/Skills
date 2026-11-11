@@ -2,6 +2,22 @@
 
 *Sources: WWDC 2014-223 "Prototyping: Fake It Till You Make It"; WWDC 2017-818 "60-Second Prototyping"; WWDC 2018-811 "Presenting Design Work." The 2018 talk deliberately reuses 2014's toast motif — one curriculum.*
 
+## Contents
+
+- Toast Modern (2014) — the canonical fake app
+- The 60-second timer (2017)
+- Presenting (2018) — the texture behind the ten rules
+- Quotables trimmed from SKILL.md (2014/2017/2023, Stamatiou)
+- The complete question battery
+- Field note — keep exploration loose, structure later (Stamatiou)
+- Field notes — Make tier (spatial context, scaffolds, Figma's role)
+- Variant picker harness — the Kowalski delta (Make, pattern 5)
+- The animation documentation matrix (Rachel Nabors, *Animation at Work*, A Book Apart 2017, ch. 4 "Communicating Animation")
+- Field note — the caricature technique (Show)
+- Field notes — Polygon at scale (Vox Media team, Valio Con 2013 — Drew Wilson's conference)
+- The prototyping team's 2022 Q&A (Learn)
+- Team-of-one prototyping (Leah Buley, *The User Experience Team of One*, Rosenfeld 2013)
+
 ## Toast Modern (2014) — the canonical fake app
 
 An artisanal-toast discovery app demoed convincingly on stage: "Except it's not. None of this is real. It's just a prototype." Built by faking:
@@ -50,6 +66,23 @@ After: what's working? · what's not? · what other ideas does this give us?
 - **Prototype at true spatial context** (Jae Park, Config 2025): for anything viewed off-desk, fake it at real distance/angle — his foam-core Echo Show model with a 7-inch tablet, evaluated from 10 feet across a conference table ("it was two Kleenex boxes short"), beat a PRD spec'd at desk distance. Full physical-tier methods (mockups, rigs, jigs) → `hardware-product-design`.
 - **Scaffold, don't script, for collaborators** (PBJ article): hand a collaborator structure that frames the problem (10 acts of storyboards — "a scaffold") while leaving the craft decisions theirs. **Prototype the core loop before the app exists** (CapWords): they validated photo→cutout→LLM-naming by manually feeding VisionKit cutouts into ChatGPT — "we didn't even have an app yet."
 - **Figma diverges, code decides** (Mariana Castilho, poolside/Vercel): use the drawing tool only for fast divergent exploration and flow communication — "most of the times I don't even finish my designs in Figma… 99% of the times the final output in code looks nothing like my initial sketch." Component motion and interaction feel are *never* prototyped in Figma — always tuned in code where the real parameters live.
+
+## Variant picker harness — the Kowalski delta (Make, pattern 5)
+
+The converging variant loop (3–5 structurally different variants, floating switcher, arrow keys, URL-stable selection, judged in context) is documented in [agents-field-notes.md](agents-field-notes.md) from Pocock and Ness. Emil Kowalski's `prototype` skill (github.com/emilkowalski/skills, MIT, rev `715c180`, 2026-11) independently lands on the same shape, which corroborates it, and adds these mechanics:
+
+- **Name each variant and its axis before writing code.** Axes: layout, density, personality, motion, interaction model. Names describe the direction (Quiet, Editorial, Dense), never Option A/B/C. Two directions that differ only in accent color or copy are one direction; in his words, "three tints of the same idea waste the picker". If two converge during the build, cut one and say so: two distinct directions beat a padded three.
+- **Shared tokens are not convergence.** Every variant uses the project's colors, radii, type, and easing, so each looks shippable in this product tomorrow. The product's personality bounds how far the boldest one may go.
+- **One thing per run.** "The dashboard" narrows to its single highest-leverage piece; the rest become follow-up runs.
+- **Every variant fully works and meets the craft bar.** Real interactions, product-shaped copy, plausible names and numbers. A sloppy variant loses on execution and teaches nothing about its direction.
+- **One variant at a time, full size.** Side-by-side thumbnails distort spacing and scale. Give the piece its surroundings: a toast gets a page behind it, a card gets siblings, a button gets a form.
+- **The picker is harness chrome with a fixed look.** Keep it identical across projects (he specifies a dark translucent pill, system font, bottom-center) and never restyle it with project tokens, so it can't be mistaken for part of the design. Move it to the top only when a variant occupies bottom-center (toast stack, bottom sheet, dock).
+- **Switching is instant; switching re-mounts.** Flipping happens a hundred times a session, so the variant swap gets no transition. Re-mount the variant on every switch so entrance animations replay, and add a replay control (`R`) only when some variant has motion worth re-triggering. Number keys `1–N` jump directly; ignore keys while a text field is focused or a modifier is held.
+- **Flip through every variant yourself first.** Confirm each renders, each interaction responds, and the console is clean before handing off.
+- **Hand off with tradeoffs, no favorite.** A table of variant, axis, when it is the right choice, and its cost. If asked which you would pick, reason from the product's personality and how often the piece is used.
+- **Another round diverges around the pick.** Keep the harness and generate a fresh set near the direction the user gravitated to.
+
+**Scoped differences from Pocock.** Host: Pocock mounts variants on the *existing* route behind a URL parameter; Kowalski uses an isolated prototype route (or one standalone HTML file) and rebuilds realistic context inside it. Use the existing route when judging a piece inside a real screen, and the isolated surface for a self-contained component or when no project exists. Disposal: Pocock archives the full set on a throwaway branch; Kowalski deletes the prototype surface once the winner is integrated, unless asked to keep it. Both agree that nothing in production imports from the prototype surface and that the winner is re-integrated following project conventions. Archive when the losing variants carry design reasoning worth citing later; otherwise delete.
 
 ## The animation documentation matrix (Rachel Nabors, *Animation at Work*, A Book Apart 2017, ch. 4 "Communicating Animation")
 

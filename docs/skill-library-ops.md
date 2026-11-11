@@ -58,7 +58,7 @@ Use the lightest gate that matches the change:
 
 - **Reference-only fold:** validator, whitespace check, targeted grep for broken cross-refs.
 - **Parent `SKILL.md` body edit:** validator plus quick read of the first 120 lines to ensure routing still appears early.
-- **Description edit:** validator plus routing probes for target, nearest neighbor, and control.
+- **Description edit:** validator plus routing probes for target, nearest neighbor, and control. Keep the prompts in a fixture under `docs/` and register it in `scripts/check_routing_probe_fixtures.py`; its `--packet` flag prints a blind descriptions-only packet (no expected answers) for the fresh judge.
 - **New skill:** source bar check, README row, routing probes, validator, and a grep audit for missing relationship links.
 - **Consolidation or rename:** before/after probes, corpus-wide edge remap, independent grep audit with zero dangling live names, and rollback if routing worsens.
 
@@ -134,6 +134,7 @@ python3 scripts/check_xrefs.py
 python3 scripts/check_reference_hygiene.py
 python3 scripts/check_vercel_overhaul.py
 python3 scripts/check_vercel_routing_probes.py
+python3 scripts/check_routing_probe_fixtures.py
 python3 scripts/check_skill_smoke_tests.py
 python3 scripts/check_application_fixtures.py
 git diff --check

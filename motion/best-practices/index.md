@@ -35,6 +35,9 @@ animate(element, { scale: 2 })
 
 Prefer `transform` as these animations will run via WAAPI. Use independent transforms when:
 
+> **Library note (2026-11, not part of the upstream kit):** Motion 14.2.0 (2026-10-13) added hardware-accelerated independent transforms (`x`, `y`, `scaleX`, …) per its changelog. On 14.2+ the acceleration reason for preferring `transform` no longer applies to plain shorthand animations; the cases below still decide the choice, and on earlier versions this guidance stands as written. Check the installed version.
+
+
 -   Some transforms have different transition settings
 -   Some transforms need to be passed in as motion values
     Note: Passing `transform` in as a motion value will also disable WAAPI animations, so no need to prefer it if you would resort to this.
@@ -59,6 +62,8 @@ hover(() => {
 When animating with CSS `transition` or Motion independent transforms `x`, `y`, `scale` etc, set `will-change` on the animating properties so the browser promotes the element to its own compositor layer. Use it sparingly and remove it once the animation finishes.
 
 When animating with CSS `animation` or Motion via `transform`, this is unnecessary — the layer is promoted automatically by the browser.
+
+> **Library note (2026-11, not part of the upstream kit):** on Motion 14.2+ accelerated shorthands fall under the same "unnecessary" case. For hand-written CSS, `web-design` (web-animation-design)'s animation-performance member takes a stricter observe-first position (add `will-change` only after seeing a 1px shift or measuring drops); the two positions are recorded there as scoped schools.
 
 ### Design
 

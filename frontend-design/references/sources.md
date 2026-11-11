@@ -21,3 +21,5 @@ Impeccable (Paul Bakaus; https://impeccable.style, repo https://github.com/pbaka
 - Research note "The model can't roll its own dice" (https://impeccable.style/research, July 2026) — the variety and commit-first findings. Its numbers are the project's own evaluation, not independent replication.
 
 Full screening ledger: `docs/impeccable-source-mining-2026-11.md`.
+
+Emil Kowalski, open skills (https://aiforui.dev/skills, repo https://github.com/emilkowalski/skills, MIT), read at rev `715c180` (2026-11-10). `pick-ui-library` and `ask-sonner` were adapted into [ui-library-picks.md](ui-library-picks.md) as one practitioner's dated picks plus Sonner troubleshooting traps; API tables were left to the live docs. Sonner is the author's own library. Full screening ledger: `docs/emilkowalski-skills-source-mining-2026-11.md`.

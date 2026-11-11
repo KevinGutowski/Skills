@@ -9,6 +9,7 @@ Use this file for craft guidance that needs accepted examples, screenshots, or l
 - **Theme conflicts:** Record examples where bold/distinctive, restrained/invisible, and platform-native themes should not be blended.
 - **Quality rituals:** Add repeatable dogfood/unship/triage templates only after accepted team rituals exist.
 - **Refinement-move numbers:** quieter's 70–85% saturation and 10–20px travel, and distill's 3–4 sizes / 2–3 weights, are single-source heuristics from Impeccable. Treat them as starting points until a local before/after confirms them.
+- **Worst-case data:** [worst-case-data.md](worst-case-data.md) is single-source (Emil Kowalski's `break-ui`). Its severity labels (Broken / Ugly / Fragile) are local to that report; add an accepted before/after exemplar before promoting any catalog row to a check.
 - **AI-generated UI:** Route repair workflow to `working-with-ai`; this skill should own the craft bar and examples.
 
 ## Candidate promotion form

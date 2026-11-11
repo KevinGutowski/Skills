@@ -71,5 +71,5 @@ See `touch-interaction-design/fluid-interfaces.md` for the full Fluid Interfaces
 - **`design-craft`** (incl. its `emil-kowalski` reference) — the web design-engineering counterparts (hit areas, press scale, interruptibility); this skill is the Apple-talk articulation of *why* those tactics work, organized by phase.
 - **`ux-writing` (naming-features-and-labels)** — "Make Toast" vs. "Toast" is a naming call; judge the label's word there.
 - **`apple-design` (apple-navigation-design)** — what a button *does* structurally (push/modal/menu) lives there; how it *feels* to press lives here.
-- **[swiftui-animation.md](swiftui-animation.md)** / **`web-design` (web-animation-design)** — implementation of press feedback and gesture-driven springs per platform.
+- **[swiftui-animation.md](swiftui-animation.md)** / **`web-design` (web-animation-design)** — implementation of press feedback and gesture-driven springs per platform. Web drag/swipe/sheet mechanics are that reference's gestures member; mobile-browser touch fixes (stuck hover, tap delay, tap highlight) are `web-design` (mobile-web-native-feel).
 - **`design-principles`** — *Craft* (instant response) and *Forgiveness* (drag-out cancel is undo-before-commit).

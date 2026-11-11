@@ -9,11 +9,13 @@ A comprehensive guide for creating animations that feel right, based on Emil Kow
 - Theme Note
 - Quick Start
 - Review Format (Required)
+- Review Method: Flag Triggers, Fix Order, Verdict
 - The Easing Blueprint
 - Timing and Duration / Duration Guidelines
 - Why Animation Works (Perception)
 - Animation's Purpose: Five Patterns (Nabors, ch. 2)
 - When to Animate
+- Build Order and Tool Ladder
 - Spring Animations
 - Performance
 - Accessibility
@@ -26,7 +28,7 @@ A comprehensive guide for creating animations that feel right, based on Emil Kow
 
 The specific values in this skill (durations, easings, scale magnitudes, stagger delays) are tuned to work as a coherent set — like a color scheme, they look best when committed to as a whole. If another design skill or theme (e.g. `design-craft`, or its Emil Kowalski reference) is also loaded with different numbers, pick one theme's values and apply them consistently rather than averaging.
 
-**This skill is the default theme for motion-related work.** When motion questions arise and multiple skills could apply, prefer these values unless the user opts into another. If the user is mixing skills and a genuine choice surfaces, briefly present the options as a menu rather than picking silently.
+**This skill is the default theme for motion-related work.** When motion questions arise and multiple skills could apply, prefer these values unless the user opts into another. If the user is mixing skills and a genuine choice surfaces, briefly present the options as a menu rather than picking silently. That menu is for a choice *between themes* only. Inside one theme, make the call: do not hand the user three easings or two durations to pick from — choose, state the reason in a clause, and move on (Kowalski's skills are explicit that motion options are not a menu).
 
 These values and techniques are for **web/CSS/JS** motion. On **iOS/SwiftUI**, animations/transitions/effects are covered by `swiftui` (swiftui-animation), scroll-driven motion by `swiftui` (swiftui-lazy-stacks), and brand-through-motion by `apple-design` (ios-brand-identity) — don't cross-apply CSS specifics there.
 
@@ -38,6 +40,8 @@ Every animation decision starts with these questions:
 2. **Is an on-screen element moving?** → Use `ease-in-out`
 3. **Is this a hover/color transition?** → Use `ease`
 4. **Will users see this 100+ times daily?** → Don't animate it
+
+Naming an effect someone can only describe → [animation-vocabulary.md](web-animation-design/animation-vocabulary.md). More than one element moving on the same event → [choreography.md](web-animation-design/choreography.md). Dropped frames → [animation-performance.md](web-animation-design/animation-performance.md).
 
 ## Review Format (Required)
 
@@ -59,7 +63,45 @@ Before: 400ms duration
 After: 200ms
 ```
 
-Correct format: A single markdown table with | Before | After | columns, one row per issue.
+Correct format: A single markdown table with | Before | After | columns, one row per issue. Add a third **Why** column when the reader needs the reason (one clause per row), and cite `file:line`.
+
+## Review Method: Flag Triggers, Fix Order, Verdict
+
+Review posture: a transition that runs but feels sluggish, lands from the wrong origin, fires too often, or drops frames is a regression, not a pass. Approval is earned. (Method from Kowalski's `review-animations` skill; values are this file's.)
+
+**Flag on sight:**
+
+- `transition: all`
+- `scale(0)` entrances; `ease-in` on any UI interaction; a default keyword easing on a deliberate animation
+- Any animation on a keyboard shortcut, command-palette toggle, or other 100+/day action
+- UI duration over 300ms with no stated reason
+- `transform-origin: center` on a trigger-anchored popover, dropdown, or tooltip (modals are exempt — they are viewport-centered)
+- Keyframes on toasts, toggles, or anything triggered rapidly (they restart from zero; transitions retarget)
+- Animated layout properties; a parent CSS variable written per frame to drive child transforms
+- Movement with no `prefers-reduced-motion` handling; ungated `:hover` motion
+- Identical enter/exit timing on a press-and-release or hold interaction
+- A group entrance that staggers uniformly, or staggers at all on high-frequency UI (see [choreography.md](web-animation-design/choreography.md))
+
+**Fix order — prefer the earlier move:**
+
+1. Delete the animation (high-frequency, keyboard-triggered, or purposeless)
+2. Reduce it — shorter, smaller transform, fewer properties
+3. Fix the easing
+4. Fix origin and physicality (`transform-origin`; `scale(0)` → `scale(0.95)` + opacity)
+5. Make it interruptible — keyframes → transitions, or a spring for gesture-driven motion
+6. Move it to compositor properties (see [animation-performance.md](web-animation-design/animation-performance.md))
+7. Make timing asymmetric — slow the deliberate phase, snap the response
+8. Polish — blur to bridge a crossfade, a budgeted stagger, `@starting-style` entry
+9. Accessibility and cohesion — reduced-motion and hover gating, tune to the component's personality
+
+Most agent reviews start at step 8. Start at step 1.
+
+**Verdict after the table**, grouped by impact, empty tiers omitted: feel-breaking regressions → animations that should be removed or reduced → performance → interruptibility and timing → origin, physicality, cohesion → accessibility. Close with an explicit decision:
+
+- **Block** — any feel-breaking regression; animation on a keyboard or high-frequency action; `scale(0)` or `ease-in` on UI; a layout-property animation with an easy compositor swap.
+- **Approve** — none of the above, nothing that obviously should be deleted, durations and easing in bounds, interruptibility handled where needed, reduced motion respected.
+
+When feel cannot be judged from code, say so and name what to watch: play it at 2–5× duration or step it in the DevTools Animations panel, test gestures on a real phone, and look again the next day.
 
 ## The Easing Blueprint
 
@@ -160,9 +202,10 @@ Elements that animate together must use the same easing and duration. Modal + ov
 
 Determine how often users will see the animation:
 
-- **100+ times/day** → No animation (or drastically reduced)
-- **Occasional use** → Standard animation
-- **Rare/first-time** → Can be more special
+- **100+ times/day** (keyboard shortcuts, command palette, toggles) → No animation
+- **Tens of times/day** (hover effects, list navigation) → Remove, or reduce to near-imperceptible
+- **Occasional** (modals, drawers, toasts) → Standard animation
+- **Rare/first-time** (onboarding, success moments) → Can be more special; the only tier where delight alone is a valid purpose
 
 **Example:** Raycast never animates because users open it hundreds of times a day.
 
@@ -198,6 +241,9 @@ From Rachel Nabors, *Animation at Work* (A Book Apart, 2017); fuller quotes in [
 - Hover effects on frequently-used elements
 - Anything users interact with 100+ times daily
 - When speed matters more than smoothness
+- Data the user is trying to read — a dashboard's numbers and charts do not move for style
+
+**Purpose gate:** before writing any motion, name what it does — spatial consistency, state indication, feedback, explanation, preventing a jarring change, or (rare/first-time tier only) delight. No purpose from that list means no animation, and "none" is a complete answer to "animate this."
 
 **Marketing vs. Product:**
 
@@ -223,6 +269,28 @@ From Rachel Nabors, *Animation at Work* (A Book Apart, 2017); fuller quotes in [
 - **Consistency beats peak frame rate**: "A 30 FPS animation that consistently runs will appear smoother than a 60 FPS animation that dips from time to time." For fast long-distance moves, fade the object out mid-trajectory, back in at the destination.
 - **Anticipatory signaling**: hover can foreshadow motion — her menu bar "lifts up" on hover: "if you click me, expect me to slide further up."
 - **Waitstaff red flag** (reinforces the overcooking hazard above): a tester's "Oh, that's delightful!" "could be a red flag" — they *noticed* it, spending cognition on it.
+
+## Build Order and Tool Ladder
+
+Decide in this order; each step can end the work:
+
+1. **Should it animate at all?** Frequency tier and purpose gate above.
+2. **What does the codebase already do?** Reuse its motion tokens (duration and easing variables, a `MotionConfig`) and its installed library. Extend that vocabulary; never fork a second one. For a whole component with solved motion (toast, drawer, dialog), prefer a maintained library over hand-rolling — interruption, focus, and gesture edge cases are the expensive part.
+3. **Which tool?** Reach for the first that fits:
+
+| Need | Tool |
+| --- | --- |
+| A state change (hover, open/closed, toggle) | CSS transition — retargets cleanly when interrupted |
+| Entry on mount | Transition plus `@starting-style` (older browsers: a mounted data attribute) |
+| Loops, multi-step, or run-once sequences | CSS keyframe animation — restarts from zero when re-triggered, so not for rapid triggers |
+| Programmatic values with compositor performance | Web Animations API (`element.animate()`) |
+| Springs, gestures, shared layout, exit of unmounting components | Motion — only if the project already has it or the user asked |
+
+4. **Values** from the Easing and Duration sections.
+5. **Reduced-motion variant and hover gating ship in the same change**, not as a follow-up.
+6. **State what cannot be verified from code** — if no browser was run, say what to watch for.
+
+Tuned defaults that differ by component (all Kowalski theme): modal `scale(0.96)` + opacity with the backdrop on the same timing; drawer `translateY(100%)` on the iOS-style `cubic-bezier(0.32, 0.72, 0, 1)` at up to 500ms; toast on a 400ms `ease` transition with `@starting-style`; scroll reveals on marketing surfaces only, fired once; hold-to-confirm fill is `linear` because it visualizes elapsed time. Implementations: [PRACTICAL-TIPS.md](web-animation-design/PRACTICAL-TIPS.md), `design-craft` (emil-kowalski).
 
 ## Spring Animations
 
@@ -267,22 +335,23 @@ These gesture-physics rules — interruptibility, 1:1 tracking, velocity handoff
 
 ### The Golden Rule
 
-Only animate `transform` and `opacity`. These skip layout and paint stages, running entirely on the GPU.
+Animate `transform` and `opacity` by default. They skip layout and paint and can run on the compositor; any other property needs a reason.
 
 **Avoid animating:**
 
-- `padding`, `margin`, `height`, `width` (trigger layout)
+- `padding`, `margin`, `height`, `width`, `top`, `left` (trigger layout; one growing element can move its neighbors)
+- `box-shadow`, `border-radius` (no layout, but a repaint every frame — the tier reviewers miss)
 - `blur` filters above 20px (expensive, especially Safari)
-- CSS variables in deep component trees
+- CSS variables that descendants inherit, written per frame (style recalculation for every child)
+- Anything via `transition: all`
+
+Tolerated exception: accordion `height`, kept short and animated to a measured value.
+
+Frame budget: 16.7ms at 60Hz, about 8ms at 120Hz — design against the smaller.
 
 ### Optimization Techniques
 
-```css
-/* Force GPU acceleration */
-.animated-element {
-  will-change: transform;
-}
-```
+**`will-change` is a last step, not a default.** Elements animating `transform`/`opacity` are already promoted, so adding it usually does nothing but spend GPU memory. Add `will-change: transform` to the animating element only after you have seen a 1px shift at the start or end of the motion, or measured dropped frames on an expensive paint.
 
 **React-specific:**
 
@@ -290,22 +359,26 @@ Only animate `transform` and `opacity`. These skip layout and paint stages, runn
 - Use refs to update styles directly instead of state
 - Re-renders on every frame = dropped frames
 
-**Framer Motion:**
+**Motion (Framer Motion) — version-scoped:**
 
 ```jsx
-// Hardware accelerated (transform as string)
+// Accelerated in every version (transform as string)
 <motion.div animate={{ transform: "translateX(100px)" }} />
 
-// NOT hardware accelerated (more readable)
+// Motion 14.2+: accelerated. Earlier versions: main-thread rAF, drops frames under load
 <motion.div animate={{ x: 100 }} />
 ```
 
+An earlier revision of this file said the shorthands are never hardware accelerated; per Kowalski's 2026 skills that stopped being true at Motion 14.2. Check the installed version before flagging it. Layout animations (`layout`, `layoutId`), `onUpdate`, and drag-driven motion values stay on the main thread in every version.
+
 ### CSS vs. JavaScript
 
-- CSS animations run off main thread (smoother under load)
-- JS animations (Framer Motion, React Spring) use `requestAnimationFrame`
-- CSS better for simple, predetermined animations
-- JS better for dynamic, interruptible animations
+- CSS transitions/keyframes and the Web Animations API can run off the main thread (smooth while the page is busy)
+- `requestAnimationFrame`-driven animation always runs on the main thread — "JS" and "main thread" are not the same thing, since a library that hands off to WAAPI can be accelerated
+- CSS better for simple, predetermined animations and anything that plays during navigation, loading, or hydration
+- JS better for dynamic, interruptible, gesture-driven animations
+
+Symptom table, cost tiers, the inherited-variable trap, and the ordered diagnosis: [animation-performance.md](web-animation-design/animation-performance.md).
 
 ## Accessibility
 
@@ -329,7 +402,7 @@ Whenever you add an animation, also add a media query to disable it:
 
 ### Reduced Motion Guidelines
 
-- Every animated element needs its own `prefers-reduced-motion` media query
+- Every animated element needs its own `prefers-reduced-motion` media query, written in the same change as the animation
 - Show play buttons instead of autoplay videos
 - **Reduce does not mean none** (per the course's accessibility lesson, which is more nuanced than this skill's original "disable all" stance): disable *movement* — anything translating, scaling, or changing layout — but keep non-moving animations (`opacity`, `color`, `blur`) that convey meaning. A modal can still fade; it shouldn't slide or scale. For explanatory motion visuals, jump between keyframe states instead of animating — removing them entirely would reduce understandability.
 - **Why this matters** (Nabors, *Animation at Work*, ch. 5): "as many as 35% of Americans aged 40 years or older have experienced vestibular dysfunction"; WCAG advises "elements flash no more than twice per second"; fades "do not trigger vestibular disorders" — why reduce-motion-to-fades (not to nothing) works. Her 2017 mechanics predate `prefers-reduced-motion` — use the facts, not her plumbing.
@@ -368,7 +441,7 @@ When directing an agent, provide the motion spec as a variable block plus usage 
 }
 ```
 
-Touch devices trigger hover on tap, causing false positives.
+Touch devices trigger hover on tap, causing false positives. `:active` press feedback needs no such gate — a press is real on every device.
 
 ## Practical Tips
 
@@ -378,13 +451,15 @@ Quick reference for common scenarios. See [PRACTICAL-TIPS.md](web-animation-desi
 | ------------------------------- | ----------------------------------------------- |
 | Make buttons feel responsive    | Add `transform: scale(0.97)` on `:active`       |
 | Element appears from nowhere    | Start from `scale(0.95)`, not `scale(0)`        |
-| Shaky/jittery animations        | Add `will-change: transform`                    |
+| Element shifts 1px at start/end | Add `will-change: transform` (only once seen)   |
 | Hover causes flicker            | Animate child element, not parent               |
 | Popover scales from wrong point | Set `transform-origin` to trigger location      |
 | Sequential tooltips feel slow   | Skip delay/animation after first tooltip        |
 | Small buttons hard to tap       | Use 44px minimum hit area (pseudo-element)      |
 | Something still feels off       | Add subtle blur (under 20px) to mask it         |
 | Hover triggers on mobile        | Use `@media (hover: hover) and (pointer: fine)` |
+| Removed item leaves a dead gap  | Take it out of flow at once (`popLayout`)       |
+| List cascade feels slow         | 30–80ms steps, ~300ms total, or no stagger      |
 
 ## Easing Decision Flowchart
 
@@ -407,7 +482,12 @@ Designers specifying motion "should just use black and white shapes," get the mo
 
 - [PRACTICAL-TIPS.md](web-animation-design/PRACTICAL-TIPS.md) - Detailed implementations for common animation scenarios
 - [references/animation-at-work.md](web-animation-design/animation-at-work.md) - Fuller verified quotes from Nabors
+- [choreography.md](web-animation-design/choreography.md) - Several elements on one event: role casting, together/overlap/sequence, stagger budgets, exits, interruption, timeline deliverable
+- [animation-performance.md](web-animation-design/animation-performance.md) - Diagnosing dropped frames: symptom table, property cost tiers, driver/thread model, `will-change`, ordered diagnosis
+- [animation-vocabulary.md](web-animation-design/animation-vocabulary.md) - Reverse lookup from a described effect to its precise name
+- [motion-audit.md](web-animation-design/motion-audit.md) - Auditing an app's motion: find opportunities, remove unneeded animation, write handoff plans
+- [gestures.md](web-animation-design/gestures.md) - Drag/swipe/sheet gesture mechanics on the web
 
-**Sources**: Emil Kowalski's animations.dev course (primary values and techniques); Rachel Nabors, *Animation at Work* (A Book Apart, 2017) for the perception grounding, pattern taxonomy, and ch. 3/5 craft rules; Derek Briggs (PixelJanitor) via Shape FM for the physical-reference easing school and speed rules. Staleness: the 2017 book's perceptual/taxonomic layer is durable; its tooling and browser-feature mentions are dated. Full bibliography (video IDs, URLs, dates): [references/sources.md](web-animation-design/sources.md).
+**Sources**: Emil Kowalski's animations.dev course (primary values and techniques); Rachel Nabors, *Animation at Work* (A Book Apart, 2017) for the perception grounding, pattern taxonomy, and ch. 3/5 craft rules; Derek Briggs (PixelJanitor) via Shape FM for the physical-reference easing school and speed rules; Emil Kowalski's open skills repo (emilkowalski/skills, MIT, 2026-11) for the review method, build order, version-scoped performance rules, and the choreography / performance / vocabulary sub-references. Staleness: the 2017 book's perceptual/taxonomic layer is durable; its tooling and browser-feature mentions are dated. Full bibliography (video IDs, URLs, dates): [references/sources.md](web-animation-design/sources.md).
 
 ---

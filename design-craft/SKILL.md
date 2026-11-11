@@ -1,6 +1,6 @@
 ---
 name: design-craft
-description: "Raise design quality and interface feel through craft methodology (noticing, range vs depth, facets, live tuning), execution values (shadows, spacing, radii, alignment, motion, type), and Linear-style quality rituals/triage. Use to critique or polish UI, build taste, decide wider vs deeper, or make quality practice repeatable. Strategy → design-principles; shaping/bets → shape-up. Triggers: feels off, polished, quality ritual, dogfood, unship."
+description: "Raise design quality and feel via craft methodology (noticing, range vs depth, facets, live tuning), execution values (shadows, spacing, radii, alignment, motion, type), and Linear-style rituals/triage. Use to critique, polish, or stress-test UI, build taste, decide wider vs deeper, or make quality repeatable. Strategy → design-principles; shaping/bets → shape-up. Triggers: feels off, polished, worst-case data, quality ritual, dogfood, unship."
 ---
 
 # Design Craft
@@ -25,6 +25,7 @@ When the question shifts from *"is this good / how far do I push"* to *"what exa
 | [emil-kowalski](references/emil-kowalski.md) | Alternate craft theme (animations.dev): taste-training, component polish, animation decisions |
 | [refactoring-ui](references/refactoring-ui.md) | Visual refactor passes (hierarchy, spacing, type, color, depth); code-native gallery in `examples/` |
 | [linear-product-craft](references/linear-product-craft.md) | Linear's product-craft operating model: redesign debt, scope control, stress tests, feature flags, internal tools, quality rituals, triage, dogfood/unshipping, taste calibration |
+| [worst-case-data](references/worst-case-data.md) | Stress-test a component with realistic worst-case data: per-field catalog, demo/worst-case toggle, failure-signature → fix table, truncate/wrap/clamp, Broken/Ugly/Fragile report |
 | [refinement-moves](references/refinement-moves.md) | Directional verbs for an existing UI: bolder (amplify the system's own moves, skeleton test), quieter (restraint that isn't generic), distill, delight, overdrive (propose first), polish (drift classification + triage order), harden (real data, failures, interrupted gestures) |
 
 Theme discipline applies across these: pick one coherent value-set and don't average (see polish-principles' Theme Note). For motion *values*, `web-design` (web-animation-design) is the default theme. The methodology below is *how to evaluate*; the table above is *how to execute*.

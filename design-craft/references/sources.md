@@ -4,6 +4,20 @@ Bibliography for material cited by name-tag in SKILL.md, surfaces.md, animations
 and reference files. Other inline-cited sources (Stammy, Practical UI, MDS,
 Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 
+## Contents
+
+- Adam Wathan and Steve Schoger
+- Impeccable (Paul Bakaus)
+- Anton Sten
+- Derek Briggs (PixelJanitor)
+- Gustavo Fior — *Craft*
+- Jakub Krehel — *Interfaces* Cheat Sheet
+- Marek Minor (Minor Adventures)
+- Linear product-craft articles
+- Linear Conversations on Quality
+- Kevin Kold / @kvnkld
+- Emil Kowalski — open skills (aiforui.dev)
+
 ## Adam Wathan and Steve Schoger
 
 - *Refactoring UI* (PDF v10, local Apple Books file). Visual refactor method folded
@@ -94,3 +108,7 @@ Transcript access: YouTube `en` captions fetched with `yt-dlp --skip-download --
 ## Kevin Kold / @kvnkld
 
 - X Article 2064972712729292800, "The 10 rules to ship truly polished UI with Claude" (2026-06-16). Folded for magnetic snap zones, state-driven microinteractions, tokenized easing, numeric AI prompting, and the `0.98` restrained press-scale alternate.
+
+## Emil Kowalski — open skills (aiforui.dev)
+
+- https://aiforui.dev/skills · https://github.com/emilkowalski/skills (MIT), read at rev `715c1807e08c497cfd1dc4feb450a2a3300ef2a9` (2026-11-10). `break-ui` and its catalog were paraphrased into [worst-case-data.md](worst-case-data.md) with a pointer from the harden move in [refinement-moves.md](refinement-moves.md); `emil-design-eng` deltas (Motion 14.2 shorthand acceleration, `will-change` rule, delight and function checks, stagger scoping) were merged into [emil-kowalski.md](emil-kowalski.md); the materials section of `apple-design` was folded into [surfaces.md](surfaces.md). Full screening ledger: `docs/emilkowalski-skills-source-mining-2026-11.md`.
