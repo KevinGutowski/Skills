@@ -11,17 +11,19 @@ Help a person learn what fits, take a revealing next step, and revise without sh
 
 | Request shape | Start here |
 |---|---|
+| **Red flag first:** self-harm, abuse, immediate danger, or severe or acute symptoms | Pause coaching. Follow the safety line in [Boundaries](#boundaries); do not continue the routes below. |
 | “I feel stuck / I do not know what I want” | Build the personal operating profile, then generate possible futures. |
 | “I know what I want but cannot follow through” | Mental contrast, shrink the behavior, and add a prompt. |
 | “I keep practicing but am not improving” | Isolate the weak link, improve feedback, and check domain constraints. |
 | “I failed / burned out / lost confidence” | Recover first when needed, then run a compassionate evidence review. |
-| “Should I persist, pivot, or quit?” | Run the trajectory review after a meaningful trial. |
+| “Should I persist, pivot, or quit?” | Run the trajectory review (`references/methods.md`) after a meaningful trial. |
 
 Read [references/methods.md](references/methods.md) for the source-grounded method behind the relevant route. Read [references/prompts.md](references/prompts.md) when the user wants a worksheet, journaling sequence, or structured coaching session. Source provenance lives in [references/sources.md](references/sources.md); unresolved evidence and evaluation needs live in [references/coverage-gaps.md](references/coverage-gaps.md).
 
 ## Boundaries
 
-- **Reflective coaching, not therapy.** Do not diagnose, explain trauma, prescribe treatment, or treat this workflow as crisis support. When the user describes self-harm, abuse, severe symptoms, or immediate danger, follow the applicable safety guidance and recommend qualified help rather than continuing the exercise.
+- **Reflective coaching, not therapy.** Do not diagnose, name a condition as the cause of a thought or feeling ("that is depression talking"), explain trauma, prescribe treatment, or treat this workflow as crisis support. When the user describes self-harm, abuse, severe symptoms, or immediate danger, pause the exercise, acknowledge what they said, and point them to qualified help (emergency services or a crisis line for immediate danger, a clinician otherwise) rather than continuing.
+- **Small practice steps, not exposure protocols.** For ordinary avoidance (sending the email, speaking up in a meeting, sharing a draft), suggest small, self-chosen, low-stakes practice steps the person can stop at any time. Do not design graded or exposure-style protocols for anxiety disorders, phobias, trauma, or OCD; those belong with a clinician. Every later mention of practice steps is bound by this line.
 - **Do not make the person the only cause.** Check money, health, caregiving, discrimination, access, timing, job conditions, and other structural constraints before reframing the problem as mindset.
 - **Do not prescribe entrepreneurship or quitting.** A better-fitting job, an adjusted current role, stable work plus a creative outlet, a pause, or no change can all be good outcomes.
 - **Do not promise one true purpose.** Personal data narrows possibilities; it does not reveal destiny. Keep identity, purpose, and career hypotheses broad and revisable.
@@ -83,7 +85,7 @@ Use WOOP:
 - **Obstacle:** the internal response most likely to interfere—not every external barrier.
 - **Plan:** “If [obstacle or situation], then I will [specific response].”
 
-Examples: shadow someone for a day; make one representative artifact; adjust one responsibility for two weeks; publish a small test; take one class far enough to reach real practice; run three low-stakes repetitions of the feared behavior.
+Examples: shadow someone for a day; make one representative artifact; adjust one responsibility for two weeks; publish a small test; take one class far enough to reach real practice; run three low-stakes, self-chosen repetitions of an ordinary avoided task (see Boundaries: practice steps, not exposure protocols).
 
 ### 5. Design the behavior
 
@@ -129,14 +131,9 @@ Review:
 
 ### 9. Persist, modify, pause, or stop
 
-Apply the trajectory test from Mark Manson's conversation with Chris Do: after a meaningful, focused trial, is there learning, progress, useful feedback, or increasing momentum? Do not persist only to protect pride or past investment.
+After a meaningful, focused trial, judge the trajectory, not one mood or one result: is there learning, progress, useful feedback, or increasing momentum? Then choose persist, modify, pause, or stop. Do not persist only to protect pride or past investment; stopping one path does not invalidate what was gained.
 
-- **Persist:** signal is positive and the cost is sustainable.
-- **Modify:** signal is mixed but a specific constraint can be changed.
-- **Pause:** recovery, timing, money, or attention makes the test unreliable now.
-- **Stop:** repeated focused trials show no useful trajectory, the cost violates core constraints, or the person no longer wants the destination.
-
-Stopping one path does not invalidate the capabilities, relationships, or evidence gained.
+The signal table and the criteria for each of the four outcomes live in one place: "Trajectory review" in [references/methods.md](references/methods.md). Read it before giving a persist/quit answer.
 
 ## Default response shape
 

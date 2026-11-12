@@ -30,9 +30,11 @@ description: What it does and when to use it.
 | `name` | Max 64 chars, lowercase letters/numbers/hyphens only, no XML tags, no reserved words ("anthropic", "claude") |
 | `description` | Max 1024 chars, non-empty, no XML tags |
 
+These are the platform limits. This repository's tighter rules (noun-phrase names, ~350–450 character descriptions with a 450 hard cap, ≤ ~5k-token bodies) are in House Style in `SKILL.md` and the limits table in [authoring-checklist.md](authoring-checklist.md).
+
 ### Body Guidelines
 
-- Keep under **500 lines** for optimal performance
+- Keep under **500 lines** and ~5k tokens (Claude Code keeps only the first 5,000 tokens of an invoked skill after compaction)
 - If approaching limit, split into separate files
 - Use progressive disclosure patterns
 

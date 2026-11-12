@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: ai-sounding-draft
+expected_outcome: |
+  Treats the problem as missing substance, not banned words: says the draft never states what the update does, asks for or marks the missing specifics instead of inventing them, and shows a plain version built on concrete claims.

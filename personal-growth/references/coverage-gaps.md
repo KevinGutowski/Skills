@@ -19,7 +19,7 @@ Do not promote these candidates into stronger rules without added evidence or ac
 
 - Test the boundary between ordinary self-criticism/exhaustion and requests that need clinical, crisis, legal, or workplace-safety support.
 - Add reviewed examples for grief, chronic illness, neurodivergence, and disability without converting difference into a productivity problem.
-- Do not add exposure-style exercises without qualified clinical sourcing and a clear scope boundary.
+- Do not add exposure-style exercises or protocols without qualified clinical sourcing. The only practice-step guidance in scope is the small, self-chosen, low-stakes kind for ordinary avoidance, under the SKILL.md Boundaries line (“Small practice steps, not exposure protocols”); test that the boundary holds when a user describes anxiety disorders, phobias, trauma, or OCD.
 
 ## Evaluation gaps
 

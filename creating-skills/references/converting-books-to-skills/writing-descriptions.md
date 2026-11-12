@@ -1,4 +1,6 @@
-# Writing Effective Skill Descriptions
+# Writing Effective Skill Descriptions (book-specific examples)
+
+The rules for descriptions — shape, the ~350–450 character band and 450 hard cap, third person, boundary clauses, routing probes — live in the one guide, [../description-writing.md](../description-writing.md). This file keeps only the examples drawn from converting a book (Shape Up); the upstream two-part formula it uses is the core of the house shape, to which a house description adds a boundary clause and triggers.
 
 ## Contents
 
@@ -6,9 +8,7 @@
 - The Description Formula
 - Good vs. Bad Descriptions
 - Trigger Words
-- Description Length
-- Common Mistakes
-- Testing Your Description
+- Length, Mistakes, and Testing
 
 ## Why Descriptions Matter
 
@@ -74,47 +74,6 @@ Include words that users are likely to say when they need the skill.
 | Building work | "build", "ship", "progress", "scope", "done" |
 | Converting books | "skill", "book", "convert", "encode", "create skill" |
 
-## Description Length
+## Length, Mistakes, and Testing
 
-The description field has a **1024 character limit** but that doesn't mean you should use all of it.
-
-| Length | Use When |
-|--------|----------|
-| Short (50-100 chars) | Very specific, narrow skill |
-| Medium (100-200 chars) | Most skills |
-| Long (200-300 chars) | Broad skill with multiple triggers |
-
-## Common Mistakes
-
-### Being Too Vague
-
-❌ "Helps with planning"
-✅ "Plan sprints by estimating stories, balancing capacity, and identifying dependencies. Use when starting a new sprint."
-
-### Forgetting the "When"
-
-❌ "Writes effective commit messages"
-✅ "Writes effective commit messages following conventional commit format. Use when committing code or reviewing commit history."
-
-### Using First Person
-
-❌ "I can help you shape work..."
-✅ "Shapes product work by..."
-
-Descriptions are injected into the system prompt. First person creates inconsistent voice.
-
-### Being Too Narrow
-
-❌ "Helps with the Dot Grid Calendar case study from Shape Up"
-✅ "Shape product work by setting boundaries and finding elements."
-
-The narrow version only triggers on one specific topic.
-
-## Testing Your Description
-
-After writing a description, test it:
-
-1. **Say the trigger words** — Does the skill activate?
-2. **Describe the work** — "I'm trying to decide what to build next" → Does betting skill trigger?
-3. **Use synonyms** — "prioritize features" should still trigger betting skill
-4. **Check false positives** — Does it trigger when it shouldn't?
+See [../description-writing.md](../description-writing.md): Length (house band and caps), Common Mistakes (including the "too narrow" Dot Grid Calendar example moved from this file), and Testing: Routing Probes.

@@ -71,7 +71,7 @@ People choose from 7 default sizes + 5 accessibility sizes; supporting them is n
 6. **Bars that can't grow get the Large Content Viewer** (a tab bar that scaled would eat ~¼ of the screen): system bars are free; custom bars use `.accessibilityShowsLargeContentViewer { … }` (SwiftUI) or `UILargeContentViewerInteraction` + the `UILargeContentViewerItem` properties (UIKit).
 7. **Test:** Xcode Previews → Dynamic Type Variants; the debugger's Dynamic Type override; and run **accessibility audits** (also available in UI tests).
 
-> **Staleness note (Kevin's rule):** code above verified against current docs as of mid-2026. The UIKit size-category observation shown in the 2024 talk uses `UIContentSizeCategory.didChangeNotification`; on iOS 17+ prefer `registerForTraitChanges`. Web equivalents: `system-ui`, `ui-rounded`, `ui-serif`, `ui-monospace`. Re-verify API names against developer.apple.com/documentation when applying.
+> **Staleness note:** code above verified against current docs as of mid-2026. The UIKit size-category observation shown in the 2024 talk uses `UIContentSizeCategory.didChangeNotification`; on iOS 17+ prefer `registerForTraitChanges`. Web equivalents: `system-ui`, `ui-rounded`, `ui-serif`, `ui-monospace`. Re-verify API names against developer.apple.com/documentation when applying.
 
 ## Checklist
 

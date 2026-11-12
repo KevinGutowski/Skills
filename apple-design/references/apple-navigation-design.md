@@ -67,7 +67,7 @@ Three effects — **try Automatic first**:
 
 Rules: consistency within a group beats per-control theory; no gaps between adjacent hit regions (~12pt padding bezeled, ~24pt bezel-less); use precision to make existing features *faster* — **never add pointer-only features or change layout**; two-finger gestures are yours (three = system); secondary click = free context menu; never enable snapping without a custom pointer; no purely decorative pointer effects.
 
-> **Staleness note (Kevin's rule):** these are 2020–2022 sessions. The **navigation principles persist**, but Liquid Glass changed the visual treatment of tab bars, toolbars, and search placement — for the current material, grouping rules, and scroll edge effects defer to **[liquid-glass-design-system.md](liquid-glass-design-system.md)** (the primary source), plus [apple-search-design.md](apple-search-design.md) and [ios-brand-identity.md](ios-brand-identity.md); check the current HIG ([hig.md](hig.md)) before citing visual specifics.
+> **Staleness note:** these are 2020–2022 sessions. The **navigation principles persist**, but Liquid Glass changed the visual treatment of tab bars, toolbars, and search placement — for the current material, grouping rules, and scroll edge effects defer to **[liquid-glass-design-system.md](liquid-glass-design-system.md)** (the primary source), plus [apple-search-design.md](apple-search-design.md) and [ios-brand-identity.md](ios-brand-identity.md); check the current HIG ([hig.md](hig.md)) before citing visual specifics.
 
 ## Review checklist
 

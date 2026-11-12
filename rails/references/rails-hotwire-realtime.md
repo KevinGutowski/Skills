@@ -1,6 +1,6 @@
 # Rails Hotwire + Realtime
 
-*Scope: Build real-time Rails interfaces with Hotwire — Turbo Streams/Frames defaults, broadcast patterns, reconnect catch-up, Stimulus conventions, scroll/interaction contracts. Use when building or reviewing Turbo/Stimulus features or websocket-driven UI. For scale and reliability (connection avalanches, delivery guarantees, AnyCable) use rails-realtime — this skill is the building patterns, that one keeps them alive under load. Triggers: Turbo Streams, Turbo Frames, Stimulus, broadcast, morph, hotwire patterns.*
+*Scope: Build real-time Rails interfaces with Hotwire — Turbo Streams/Frames defaults, broadcast patterns, reconnect catch-up, Stimulus conventions, scroll/interaction contracts. Use when building or reviewing Turbo/Stimulus features or websocket-driven UI. For scale and reliability (connection avalanches, delivery guarantees, AnyCable) use rails-realtime — this reference is the building patterns, that one keeps them alive under load. Triggers: Turbo Streams, Turbo Frames, Stimulus, broadcast, morph, hotwire patterns.*
 
 > Vendored from [marckohlbrugge/37signals-skills](https://github.com/marckohlbrugge/37signals-skills) @ c58e7d5 (skill text MIT; Fizzy code excerpts under the [O'Saasy license](https://osaasy.dev)). LLM-extracted from 265 Fizzy PRs + Campfire — verify unusual claims against the upstream guide's per-PR links.
 
@@ -128,5 +128,5 @@ Rule of thumb: Turbo Streams for anything that changes the DOM; bare ActionCable
 
 ## Related skills
 
-- [rails-realtime.md](rails-realtime.md) — the websocket layer at *scale* (connection avalanches, delivery guarantees, AnyCable). This skill is app-level Turbo/Stimulus patterns; that one is infrastructure reliability.
+- [rails-realtime.md](rails-realtime.md) — the websocket layer at *scale* (connection avalanches, delivery guarantees, AnyCable). This reference is app-level Turbo/Stimulus patterns; that one is infrastructure reliability.
 - [dhh-style.md](dhh-style.md) — school doctrine (Hotwire over JSON APIs).

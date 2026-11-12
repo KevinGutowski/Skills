@@ -4,7 +4,7 @@ Use this file for feature-teaching guidance that needs current platform docs or 
 
 ## Candidate gaps
 
-- **Current TipKit API names:** Verify against the target SDK before writing implementation guidance.
+- **Current TipKit API names:** the example in [examples.md](examples.md) was rewritten to shipped names against the TipKit docs on 2026-11-12 but not compiled (no Xcode in the authoring environment); the talk's launch-argument testing override was not re-verified. Verify against the target SDK before writing implementation guidance.
 - **Non-Apple platforms:** The core discoverability principles travel, but platform-specific teaching patterns for web, Android, desktop, and CLI tools need their own examples.
 - **Re-entry flows:** The Ryo Lu re-entry idea needs accepted examples for churned users returning to changed products.
 - **Tip eligibility fixtures:** Add examples only when a product has event data, display caps, invalidation rules, and a clear "benefited user" definition.

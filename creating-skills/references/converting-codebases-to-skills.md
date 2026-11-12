@@ -2,7 +2,7 @@
 
 *Scope: Extract Claude skills from an open-source codebase and its pull-request history — mining PR descriptions, review threads, and iteration sequences for the reasoning behind the code.*
 
-> **Prerequisites:** For general skill authoring see `creating-skills`. For book/documentation sources see `converting-books-to-skills` — this skill is for *living repos with PR history*; the boundary is whether the source has a review process to mine.
+> **Prerequisites:** For general skill authoring see `creating-skills`. For book/documentation sources see `converting-books-to-skills` — this reference is for *living repos with PR history*; the boundary is whether the source has a review process to mine.
 
 ## Why PRs, Not Just Code
 

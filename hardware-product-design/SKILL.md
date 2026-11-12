@@ -7,6 +7,8 @@ description: "Design and ship a physical product — position the form factor fi
 
 **Sources/gaps:** [references/sources.md](references/sources.md) — 5 Config talks + Fellow/Linear; unresolved supplier/manufacturing candidates in [references/coverage-gaps.md](references/coverage-gaps.md). ⚠️ Humane's process lessons stand, but the Ai Pin failed in market — treat its strategy claims skeptically.
 
+**Depth:** read [references/build-stages-and-manufacturing.md](references/build-stages-and-manufacturing.md) when planning a program end to end — the source-backed prototype ladder and spec/sample discipline, plus a general-practice checklist (labelled as not from the sources) for EVT/DVT/PVT gates, DFM and tolerances, CMF, and certification.
+
 The task shape: you're making a *thing* — atoms, maybe with software inside. The costs invert vs software (iteration is slow and physical, mistakes ship permanently, inventory is capital), so the discipline inverts too: validate before tooling, parallelize hardware and software, and treat manufacturing as part of the design.
 
 ## Position the form factor first
@@ -57,7 +59,7 @@ When the product has a screen or touch surface, two spec-shaping facts (Dan Holl
 
 - **Watch-and-learn beats A/B for physical products** (Park): the F-150 Lightning's power-on-board patterns (working all day off the battery; "guardian angels" powering neighbors) came from field observation, not metrics.
 - **Customers are co-designers — ship full agency.** Augmental's wheelchair control came from customer requests; on late-night use: "better or for worse, doing the doom scroll… it should be an option, whether it's good or bad." Assistive design means the user gets the whole life, not the curated parts. And Ryan Hudson-Peralta's maxim: "what's good design for people with disabilities is good design for everyone."
-- **Design so marketing does "the least amount of lying"** (Tome): the story must carry "from the marketing page and the price point… down to how it feels when you buy it and use it" — claims feel good because the product was designed to make them true (the two-sided quality doctrine lives in `design-principles`).
+- **Design so marketing does "the least amount of lying"** (Tome): the story must carry "from the marketing page and the price point… down to how it feels when you buy it and use it" — claims feel good because the product was designed to make them true (Tome's two-sided quality test is one bullet in `design-principles`, references/practitioner-notes.md).
 - **"Design is not the pretty thing you do at the end"** (Ballard) — and his closing bar: "holding together high design and high technology and forcing them to cooperate instead of compete."
 
 ## Checklist
@@ -75,10 +77,10 @@ When the product has a screen or touch surface, two spec-shaping facts (Dan Holl
 ## Relationship to other skills
 
 - **`design-prototyping`** — the general prototyping tiers (fake-it / real code / agents); this skill adds the physical tier: mockups, rigs, jigs, foam core at true distance.
-- **`design-principles`** — Teenage Engineering/Kouthoofd's craft values and Tome's two-sided quality + least-lying doctrine live there; this skill is their shop-floor counterpart.
+- **`design-principles`** — one bullet in references/practitioner-notes.md holds Tome's least-lying rule and two-sided quality test, and one passage there holds Kouthoofd's (teenage engineering) stances: no group decisions, the 20-year test, design vs styling. That is all it has on hardware; this skill is the shop-floor counterpart.
 - **`building-in-public`** — Work Louder's audience/GTM mechanics (render-before-product, community pricing, defect-as-edition marketing) from the same talk.
-- **`ai-experience-design`** — input/output models when the device is AI-first (push vs pull, presenting a design space); Humane's and the panel's AI framings live there.
+- **`ai-experience-design`** — when the device is AI-first, one rule in its body covers Ballard's "expose the design space" and Jae Park's push-vs-pull input framing. Humane's material is not there; it is only in this skill.
 - **`swiftui` (touch-interaction-design)** / **`swiftui` (sound-design)** — the interaction-feel layers once the hardware exists.
-- **`shape-up`** — comms-enables-craft and appetite-setting for hardware's cliff deadlines.
+- **`shape-up`** — Tome's comms-enables-craft bullet, and general appetite-setting (not hardware-specific) for fixed deadlines.
 
-> **Staleness note (Kevin's rule):** auto-captioned 2024–25 talks; company specifics (Humane's fate, ICON's Vitruvius/CODEX, Augmental's roadmap) decay fast — the positioning map, rig/jig discipline, supplier rules, and yield/inventory economics are the durable layer.
+> **Staleness note:** auto-captioned 2024–25 talks; company specifics (Humane's fate, ICON's Vitruvius/CODEX, Augmental's roadmap) decay fast — the positioning map, rig/jig discipline, supplier rules, and yield/inventory economics are the durable layer.

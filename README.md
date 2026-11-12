@@ -130,7 +130,7 @@ Alongside it: `motion` (the Motion AI Kit umbrella — encapsulates best-practic
 
 ## Conventions
 
-- **Frontmatter:** `name` + single-line `description` (quoted — descriptions contain `:` characters), ≤1024 chars, written as *what + when + sources + trigger keywords*. Descriptions are the always-loaded routing surface; bodies load on demand.
+- **Frontmatter:** `name` + single-line `description` (quoted — descriptions contain `:` characters), ≤450 chars (house cap, enforced by `scripts/check_vercel_overhaul.py`; the platform allows 1024), written as *what + when + boundaries to neighbors + trigger keywords*. Descriptions are the always-loaded routing surface; bodies load on demand.
 - **Progressive disclosure:** SKILL.md stays under 500 lines and under the ~5k-token body budget; deep material lives in `references/`. Keep the body to routing rules, durable operating moves, and one load-bearing quote per point; move quote banks, examples, and source texture to references even when the validator is clean. A reference may push deep material one more hop into a same-named subdirectory, provided the parent reference links every file, the SKILL.md bullet names the members, and SKILL.md declares the pattern (see docs/skill-library-ops.md).
 - **Decision rules go high in the file.** Consumers paginate (a real agent trace read only lines 1–220 and missed a tail section) — put the core framework and decision rules before checklists and appendices; when extending a skill, merge into the relevant section rather than appending at the end.
 - **Source fidelity:** WWDC-derived skills cite sessions with URLs; code samples are Apple's verbatim, year-tagged.

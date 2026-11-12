@@ -147,7 +147,7 @@ For more on this, see [advanced.md](advanced.md).
 (And advanced.md says "For details, see `details.md`")
 
 ✅ **Good:**
-All reference files link directly from SKILL.md. No chains.
+All reference files link directly from SKILL.md. No chains. The one exception is the sanctioned `references/<name>/` second hop, whose members the SKILL.md router bullet names (House Style rule 18 in `creating-skills`).
 
 ### Duplicating SKILL.md
 

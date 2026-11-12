@@ -7,7 +7,6 @@ import argparse
 import json
 import mimetypes
 import os
-import subprocess
 from pathlib import Path
 from typing import Any
 
@@ -23,9 +22,13 @@ class NocoDBClient:
     @classmethod
     def from_env(cls) -> "NocoDBClient":
         base_url = os.environ.get("NOCODB_BASE_URL", "http://127.0.0.1:3010")
-        token = os.environ.get("NOCODB_API_TOKEN") or _token_from_zshrc()
+        token = os.environ.get("NOCODB_API_TOKEN", "").strip()
         if not token:
-            raise RuntimeError("Missing NOCODB_API_TOKEN")
+            raise RuntimeError(
+                "NOCODB_API_TOKEN is not set. Export it in the environment that runs this "
+                "helper (for example: export NOCODB_API_TOKEN=<token>); the helper does not "
+                "read shell profiles or other files for credentials."
+            )
         return cls(base_url, token)
 
     def request(self, method: str, path: str, **kwargs: Any) -> Any:
@@ -142,16 +145,6 @@ class NocoDBClient:
             raise RuntimeError(f"Attachment upload failed for {path}: {response.status_code} {response.text[:1000]}")
         uploaded = response.json()
         return self.patch_record(table_id, row_id, {field_title: uploaded})
-
-
-def _token_from_zshrc() -> str:
-    result = subprocess.run(
-        ["zsh", "-lc", "source ~/.zshrc >/dev/null 2>&1 || true; print -r -- $NOCODB_API_TOKEN"],
-        text=True,
-        capture_output=True,
-        check=False,
-    )
-    return result.stdout.strip()
 
 
 def _column_name(title: str) -> str:

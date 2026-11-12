@@ -8,7 +8,7 @@
 - WOOP and behavior design
 - Practice and feedback
 - Recovery and compassionate review
-- Trajectory decision
+- Trajectory review
 - Common failure modes
 
 ## Personal operating profile
@@ -69,7 +69,7 @@ If the action does not happen, inspect all three. Common repair order: make it e
 
 Ludwin's public class contributes a useful practice sequence: define observable goals; protect preparation; study three exemplars at mechanism level; isolate the weak link; keep most repetitions reliable while testing a smaller novel portion.
 
-Chris Do's strongest public example is graduated exposure: lower the first step, repeat, solicit specific feedback, prepare differently, and notice whether discomfort becomes more workable. Do not generalize this into clinical exposure advice.
+Chris Do's strongest public example is small-step practice on an ordinary avoided performance task: lower the first step, repeat, solicit specific feedback, prepare differently, and notice whether discomfort becomes more workable. The steps are self-chosen and low-stakes. This is not an exposure protocol and is not for anxiety disorders, phobias, trauma, or OCD; the scope line is in the SKILL.md Boundaries ("Small practice steps, not exposure protocols").
 
 Macnamara et al.'s meta-analysis is the guardrail: deliberate practice explains different amounts of performance variance in different domains. Never convert “practice matters” into “practice guarantees the outcome.”
 
@@ -85,20 +85,33 @@ Neff's self-compassion model combines:
 
 Use it to keep the review accurate enough to learn. Compassion does not mean declaring every choice good; it prevents a setback from becoming an identity sentence.
 
-## Trajectory decision
+## Trajectory review
 
-Mark Manson's conversation with Chris Do adds a practical persist/quit distinction: passion often develops after enough investment to experience skill and reward, but sustained focused effort should eventually produce some learning, progress, feedback, or acceleration.
+This is the canonical copy; SKILL.md step 9 and `prompts.md` point here.
 
-Review the trajectory, not one mood or one result:
+Mark Manson's conversation with Chris Do adds a practical persist/quit distinction: passion often develops after enough investment to experience skill and reward, but sustained focused effort should eventually produce some learning, progress, feedback, or acceleration. Apply the test after a meaningful, focused trial. Do not persist only to protect pride or past investment.
+
+Review the trajectory, not one mood or one result. Score with evidence, not intuition alone:
 
 | Signal | Question |
 |---|---|
-| Learning | Do we understand the work or ourselves better? |
+| Learning | Do we understand the work or ourselves better? What is known now that was not known before? |
 | Capability | Is a relevant part becoming easier or stronger? |
 | Feedback | Are informed people or the environment returning useful signal? |
-| Energy | Is the cost becoming more sustainable, or only accumulating? |
-| Fit | Do the real daily activities match the desired identity and life? |
+| Energy | What did the work cost before, during, and after? Is the cost becoming more sustainable, or only accumulating? |
+| Fit | Do the real daily activities, not only the status or outcome, match the desired identity and life? |
 | Momentum | Does another focused period plausibly move the person somewhere new? |
+
+Then choose:
+
+- **Persist:** signal is positive and the cost is sustainable. Keep the direction and cadence.
+- **Modify:** signal is mixed but a specific constraint can be changed. Change one constraint or method and retest.
+- **Pause:** recovery, timing, money, or attention makes the test unreliable now. Name what must recover or change before a fair test.
+- **Stop:** repeated focused trials show no useful trajectory, the cost violates core constraints, or the person no longer wants the destination. Preserve the learning and release the path.
+
+Stopping one path does not invalidate the capabilities, relationships, or evidence gained.
+
+The trajectory test is a practitioner heuristic, not a validated instrument (see `coverage-gaps.md`).
 
 ## Common failure modes
 

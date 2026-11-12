@@ -1,16 +1,16 @@
 # Server & Infrastructure
 
 ## Contents
-- Puma configuration
-- Process and thread counts
-- Copy-on-write and preloading
-- Container sizing
+- Puma Configuration
+- Container Sizing
 - CDNs
-- PostgreSQL tuning
-- Connection pooling
+- PostgreSQL Tuning
+- Connection Pooling
 - YJIT
-- SSL optimization
+- SSL Optimization
+- Slimming Rails
 - The Easy Mode Stack
+- Synthetic Monitoring
 
 ## Puma Configuration
 
@@ -146,7 +146,7 @@ EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'test@example.com';
 
 ### Vacuuming
 
-PostgreSQL's MVCC requires regular vacuuming. Autovacuum should be enabled (it is by default). During maintenance windows, run `VACUUM FULL`.
+PostgreSQL's MVCC requires regular vacuuming. Autovacuum should be enabled (it is by default). Reserve `VACUUM FULL` for severe bloat: it takes an exclusive lock and rewrites the whole table, so it is a deliberate, scheduled operation (or use `pg_repack`), never routine maintenance.
 
 ### Full-text search
 
@@ -165,12 +165,12 @@ Each thread needs a database connection. Set your pool size accordingly:
 ```yaml
 # config/database.yml
 production:
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 3 } %>
 ```
 
 **Total connections needed:** `Workers × Threads per worker`
 
-Example: 3 workers × 5 threads = 15 connections minimum across your app. Make sure your database supports this many concurrent connections.
+Example: 3 workers × 3 threads = 9 connections minimum across your app. Make sure your database supports this many concurrent connections.
 
 Treat that formula as a floor, not the whole budget. Background-job threads,
 asynchronous queries, and other processes that use the same database each need
@@ -267,9 +267,20 @@ Or just use `config.api_only = true` for API apps—Rails strips unnecessary mid
 # Don't log to disk in production
 config.logger = Logger.new(STDOUT)
 
-# Consider reducing log level (INFO logs on every request)
-config.log_level = :warn
+# Pick the level from what you emit (see below): :info when a structured
+# per-request record is your request log, :warn only when you keep nothing
+# per-request in the logs.
+config.log_level = :info
 ```
+
+The log level and the request record are one decision. Rails' default request
+logging writes several INFO lines per request; raising the level to `:warn`
+removes that volume, but it also drops any per-request record logged at INFO.
+So: if the logs are your request telemetry, stay at `:info`, replace the
+multi-line default output with the single structured record below, and cut
+volume by silencing the noisy default subscribers rather than by raising the
+level. Use `:warn` only when request telemetry comes from somewhere else (APM,
+proxy logs) and the application log is for warnings and errors alone.
 
 Emit one structured JSON record per request to stdout, with fields such as
 controller, status, and duration. When Docker's `json-file` driver and an

@@ -5,23 +5,23 @@ description: "Raise design quality and feel via craft methodology (noticing, ran
 
 # Design Craft
 
-The craft skill: how to raise design quality and make interfaces feel right. It holds two altitudes in one place — a **quality methodology** (this body) for evaluating work and deciding how far to push it, and the **execution values** (references) for the concrete recipes once you know what to build. Decide *how good* and *how far* here; drop into the references when it's time to make the pixels right.
+How to raise design quality and make interfaces feel right, at two altitudes: a **quality methodology** (this body) for evaluating work and deciding how far to push it, and **execution values** (references) for the concrete recipes. Decide *how good* and *how far* here; drop into the references to make the pixels right.
 
-*Sources/gaps: [references/sources.md](references/sources.md) maps the craft corpus; [references/coverage-gaps.md](references/coverage-gaps.md) tracks candidate exemplars/checks. Quote sparingly, always attribute, and send readers to the originals.*
+*Provenance: [references/sources.md](references/sources.md) maps the craft corpus (read before citing a source); [references/coverage-gaps.md](references/coverage-gaps.md) tracks candidate exemplars and checks (read before promoting a rule). Quote sparingly, always attribute.*
 
-A methodology for consistently producing work above the bar. The articles form one loop: **notice → explore wide → pick → push deep → evaluate against your facets → care past good-enough** — with live tuning and separation of concerns as the working mechanics. *(Slugs like `/library/noticing` in the section headers below are article paths on Josh Puckett's Interface Craft — interfacecraft.dev — the primary source; see the source note at the end.)*
+The methodology is one loop: **notice → explore wide → pick → push deep → evaluate against your facets → care past good-enough** — with live tuning and separation of concerns as the working mechanics. *(Header slugs like `/library/noticing` are article paths on Josh Puckett's Interface Craft, interfacecraft.dev — the primary source.)*
 
 ## Plain requests: "make it look better", "fix the jank"
 
-Most requests won't name a method. Don't start by changing values. First:
+Don't start by changing values. First:
 
-1. **Look at it running.** Use real size, both themes and real data. Write down concrete symptoms, never "it feels cheap" (see Noticing below).
+1. **Look at it running.** Use real size, both themes and real data. Write down concrete symptoms, never "it feels cheap".
 2. **Sort each symptom by kind.** Each kind has a different owner:
 
    | Symptom | Kind | Go to |
    | --- | --- | --- |
-   | Misaligned edges, siblings that don't match, uneven or cramped spacing, heavy borders, muddy hierarchy, too many strong things | visual inconsistency | [polish-principles](references/polish-principles.md) and the Polish move in [refinement-moves](references/refinement-moves.md); for dense app UI (dashboards, settings, tables, modals), the decision order in [tactile-design](references/tactile-design.md) |
-   | No press feedback; animation too slow, abrupt or bouncy; hover that sticks on touch; menus that blink in and out | interaction feel | [animations](references/animations.md) and [emil-kowalski](references/emil-kowalski.md); motion values from `web-design` (web-animation-design) |
+   | Misaligned edges, mismatched siblings, uneven or cramped spacing, heavy borders, muddy hierarchy | visual inconsistency | [polish-principles](references/polish-principles.md) and the Polish move in [refinement-moves](references/refinement-moves.md); for dense app UI (dashboards, settings, tables, modals), the decision order in [tactile-design](references/tactile-design.md) |
+   | No press feedback; animation too slow, abrupt or bouncy; sticky touch hover; menus that blink in and out | interaction feel | [animations](references/animations.md) and [emil-kowalski](references/emil-kowalski.md); motion values from `web-design` (web-animation-design) |
    | Content shifts on load; buttons move when a label or loading state changes | layout instability | polish-principles §17; `web-design` (web-performance) for CLS |
    | Breaks with a long name, a missing avatar, a count of 1, or a translated label | data fragility | [worst-case-data](references/worst-case-data.md) |
    | Web app feels like a website on a phone: stuck hover, tap flash, input zoom, wrong heights | mobile platform layer, not animation | `web-design` (mobile-web-native-feel) |
@@ -29,46 +29,48 @@ Most requests won't name a method. Don't start by changing values. First:
    | AI-generated UI that looks generic | generation tells | `working-with-ai` (ai-ui-direction) and `frontend-design` (anti-slop-catalog) |
 
 3. **Pick one theme.** If the product already has a look, match it (reuse before inventing). If it doesn't, use polish-principles by default, tactile-design for dense product UI, or emil-kowalski when the problem is mostly motion feel. Don't average themes.
-4. **Make the smallest changes first and apply them everywhere.** Then report what changed and where, in plain bullets.
+4. **Make the smallest changes first and apply them consistently within the scope the user named.** Widen to a system-wide pass only when asked. Then report what changed and where.
 
 ## Execution values — make the pixels right
 
-When the question shifts from *"is this good / how far do I push"* to *"what exact value,"* route to these references (formerly the standalone `design-polish` skill, now this skill's execution layer):
+When the question shifts from *"is this good / how far do I push"* to *"what exact value,"* route to these references:
 
 | Reference | For |
 | --- | --- |
-| [polish-principles](references/polish-principles.md) | Execution overview: concentric radii, shadows-over-borders, optical alignment, spacing scales (25% rule), split/stagger + press motion, tabular nums, scoped font smoothing |
+| [polish-principles](references/polish-principles.md) | Execution overview: concentric radii, shadows-over-borders, optical alignment, spacing scales, press motion, tabular nums, font smoothing |
 | [typography](references/typography.md) | Text wrapping, font smoothing, tabular numbers |
-| [surfaces](references/surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain overlays, document canvas background, hit areas |
+| [surfaces](references/surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, document canvas background, hit areas |
 | [animations](references/animations.md) | Interruptible animations, enter/exit transitions, icon animations (incl. vanilla-CSS recipe), scale on press |
 | [performance](references/performance.md) | Transition specificity, `will-change`, perceived performance (spinner choice) |
-| [emil-kowalski](references/emil-kowalski.md) | Alternate craft theme (animations.dev): taste-training, component polish, animation decisions |
-| [tactile-design](references/tactile-design.md) | Alternate theme (Kosta, kosta.fyi) for tactile, layered, quiet product UI: decision order, parent-relative fill/edge/drop, crisp light and dark elevation, one-primary hierarchy, never-ship list. Second hop in `references/tactile-design/`: tokens-and-surfaces, controls, layout-and-data, motion-values, phone |
-| [refactoring-ui](references/refactoring-ui.md) | Visual refactor passes (hierarchy, spacing, type, color, depth); code-native gallery in `examples/` |
-| [linear-product-craft](references/linear-product-craft.md) | Linear's product-craft operating model: redesign debt, scope control, stress tests, feature flags, internal tools, quality rituals, triage, dogfood/unshipping, taste calibration |
-| [worst-case-data](references/worst-case-data.md) | Stress-test a component with realistic worst-case data: per-field catalog, demo/worst-case toggle, failure-signature → fix table, truncate/wrap/clamp, Broken/Ugly/Fragile report |
-| [refinement-moves](references/refinement-moves.md) | Directional verbs for an existing UI: bolder (amplify the system's own moves, skeleton test), quieter (restraint that isn't generic), distill, delight, overdrive (propose first), polish (drift classification + triage order), harden (real data, failures, interrupted gestures) |
+| [emil-kowalski](references/emil-kowalski.md) | Alternate craft theme (animations.dev): taste-training, component polish, animation decisions. Second hop in `references/emil-kowalski/`: css-techniques (component, transform, clip-path, and stagger code), interaction-and-performance (springs, gesture/drag, performance rules, debugging), taste-and-craft (practitioner habits, Config-talk notes) |
+| [tactile-design](references/tactile-design.md) | Alternate theme (Kosta, kosta.fyi) for tactile, layered, quiet product UI: decision order, parent-relative surfaces, light/dark elevation, one-primary hierarchy, never-ship list. Second hop in `references/tactile-design/`: tokens-and-surfaces, controls, layout-and-data, motion-values, phone |
+| [refactoring-ui](references/refactoring-ui.md) | Visual refactor passes (hierarchy, spacing, type, color, depth); code-native gallery in `examples/refactoring-ui-gallery.html` |
+| [linear-product-craft](references/linear-product-craft.md) | Linear's operating model: redesign debt, scope control, stress tests, feature flags, quality rituals, triage, dogfood/unshipping, taste calibration |
+| [worst-case-data](references/worst-case-data.md) | Stress-test a component with worst-case data: per-field catalog, failure-signature → fix table, truncate/wrap/clamp, Broken/Ugly/Fragile report |
+| [refinement-moves](references/refinement-moves.md) | Directional verbs for an existing UI: bolder, quieter, distill, delight, overdrive (propose first), polish (drift classification + triage order), harden (real data, failures, interrupted gestures) |
+| [practical-demonstrations](references/practical-demonstrations.md) | Worked walkthrough move lists: visual-language audit, mobile architecture exercise, depth-spectrum exemplars (slider, gift card, library cards) |
+| [field-notes](references/field-notes.md) | Verbatim practitioner quotes behind the methodology rules (MDS, Valio, Dive Club, Minor, Sten) and the Jaytel reference-to-rule recipe |
 
-Theme discipline applies across these: pick one coherent value-set and don't average (see polish-principles' Theme Note). `emil-kowalski` and `tactile-design` are complete alternate themes; each keeps its deep files in a same-named subdirectory that only its parent reference links (one sanctioned second hop). For motion *values*, `web-design` (web-animation-design) is the default theme. The methodology below is *how to evaluate*; the table above is *how to execute*.
+Theme discipline: pick one coherent value-set and don't average (polish-principles' Theme Note). `emil-kowalski` and `tactile-design` are complete alternate themes; each keeps its deep files in a same-named subdirectory that only its parent reference links (one sanctioned second hop). For motion *values*, `web-design` (web-animation-design) is the default theme.
 
 ## Noticing (`/library/noticing`)
 
-The foundational skill: not "this feels nice/off" but recognizing *why*. First reactions are almost always shallow — the Agassiz sunfish lesson is to **stay with it longer** than feels reasonable; subtleties only emerge with sustained attention.
+The foundational skill: not "this feels nice/off" but recognizing *why*. First reactions are almost always shallow — the Agassiz sunfish lesson is to **stay with it longer** than feels reasonable.
 
 What to notice (use as an observation checklist):
-- **Moments of hesitation** — what caused it? uncertainty about consequences? lack of trust?
-- **Expectation gaps** — where did your mental model break? what did you assume, and why?
+- **Moments of hesitation** — what caused it?
+- **Expectation gaps** — where did your mental model break?
 - **Emotional shifts** — the exact moment you got annoyed (or smiled), and the trigger.
-- **What's missing** — what were you looking for? does it matter?
-- **What's being assumed** — what does the interface hide vs. surface, and why those choices?
-- **How it looks** — cheap or crafted? typography just right or slightly hard? colors cooperating or fighting? one clear hierarchy or everything competing?
-- **How it feels** — fast or sluggish? responds as expected or a subtle disconnect? durable or fragile?
+- **What's missing** — what were you looking for?
+- **What's being assumed** — what does the interface hide vs. surface?
+- **How it looks** — cheap or crafted? colors cooperating or fighting? one clear hierarchy or everything competing?
+- **How it feels** — fast or sluggish? durable or fragile?
 
-Practice: pick something you use daily, spend ten minutes only noticing, write down *specific* whys — never "it feels clean." Field rep (MDS): time-box one hour on a duplicated before/after copy at identical widths, and write the observations as a numbered list *before* touching pixels — noticing first, fixing second ([references/field-notes.md](references/field-notes.md)).
+Practice: spend ten minutes only noticing something you use daily and write down *specific* whys — never "it feels clean." Field rep (MDS): time-box one hour on a duplicated before/after copy and write the observations as a numbered list *before* touching pixels.
 
 ## Conceptual range (`/library/conceptual-range`)
 
-Your first idea silently commits you to an assumption (the photo-backup example: every "better selection UI" idea assumes users must select at all — the winning concept was *automatic backup, no interface*). Range means **structurally different concepts, not variants**: five numpad layouts are depth, not range; presets vs. slider vs. gamified are range.
+Your first idea silently commits you to an assumption (photo backup: every "better selection UI" idea assumes users must select at all — the winning concept was *automatic backup, no interface*). Range means **structurally different concepts, not variants**: five numpad layouts are depth, not range; presets vs. slider vs. gamified are range.
 
 Ways to push past the obvious:
 - **Remove (or add) a constraint** — what if it weren't a screen? happened automatically?
@@ -77,37 +79,37 @@ Ways to push past the obvious:
 - **Set an arbitrary quota** — force 5/12/20 ideas.
 - **Optimize for one facet at a time** — what would 10/10 *durable* look like? 10/10 *desirable*?
 
-Also a **hedge against your own taste**: taste is limited by what you've seen; going straight to depth on a familiar idea robs you of directions you'd never otherwise try. (Reference case: the *Maintenance: Of Everything* cover — ~15 structurally distinct directions before choosing.) And concept outranks execution (Craig Henry, Valio Con): colors, linework, and lighting "ended up not being really the special sauce" — the concept is; execution facets polish it, never substitute for it.
+Also a **hedge against your own taste**: taste is limited by what you've seen; going straight to depth on a familiar idea robs you of directions you'd never otherwise try. (The *Maintenance: Of Everything* cover: ~15 structurally distinct directions before choosing.) And concept outranks execution (Craig Henry): execution facets polish the concept, never substitute for it.
 
-Sten's problem-solver warning belongs here: redesigning an already-working surface is often visual exercise, not product progress. Before pushing craft depth, ask whether this is the surface where better craft changes the user's outcome. A prettier boarding pass, dashboard, or feature tour may be the wrong target if the real pain lives in fulfillment, support, recovery, or a broken underlying process.
+Sten's problem-solver warning: before pushing craft depth, ask whether this is the surface where better craft changes the user's outcome — redesigning an already-working surface is often visual exercise, not product progress ([references/field-notes.md](references/field-notes.md)).
 
 ## Conceptual depth (`/library/conceptual-depth`)
 
-"The difference between fine work and great work is rarely the initial idea. It's how far that idea gets pushed." Imagine a **1–10 spectrum**: 1 = exists/technically works, 10 = nothing could be improved. **Most work ships at 1–3** — not because more wasn't possible, but because it's easy to stop.
+"The difference between fine work and great work is rarely the initial idea. It's how far that idea gets pushed." Imagine a **1–10 spectrum**: 1 = exists/technically works, 10 = nothing could be improved. **Most work ships at 1–3** — because it's easy to stop.
 
-The journey changes character: early levels are *fixing* (gaps, edge cases, what's in front of you); later levels are *discovery* (no longer clear what better means — you push to find either the best version or the limit that says re-evaluate). Same cover case: 70+ iterations after choosing the direction.
+Early levels are *fixing* (gaps, edge cases); later levels are *discovery* (you push to find either the best version or the limit that says re-evaluate). Same cover case: 70+ iterations after choosing the direction.
 
 When you don't know what better looks like:
 - **Zoom in** — one element, world-class treatment.
 - **Remove something** — was it needed?
 - **Name what isn't working** — articulate it even without a fix (rubber-duck it).
-- **Reference the best** — world-class examples reveal gaps. GMUNK promotes this to project step zero: gather reference before you start, not only as a depth-rescue — and don't lock structure before the work talks back (his over-planned Tycho video post-mortem).
+- **Reference the best** — world-class examples reveal gaps. GMUNK: gather reference at project step zero, and don't lock structure before the work talks back.
 - **Generate more** — more output = more information to select from.
 - **Critique** — yourself, a teammate, a stranger; against your facets.
 
-Sequencing and deadline rules (field corroborations — [references/field-notes.md](references/field-notes.md)):
-- **Sequence the push** (Polly D'Arcy): function → reliability → performance → excellence — polishing on unstable foundations "can sort of be a waste."
-- **Under deadline** (MDS): ship the version you know works while pushing the better idea in parallel — depth without betting the deliverable.
-- **In AI workflows** (Jacoby/Ridd): the discovery levels live *past* good-enough, between the prompts — cross the good-enough line deliberately to find the "weird C thing" neither prompt contained.
-- **Depth at system scale** (Marek Minor, Cursor's icons): 156 explorations of a single hamburger icon; final calls between versions differing by 0.25px — "version after version after version, until one of them felt just right." And judge at true size: mirror the work to a device "where 16px is actually 16px," outside the file it was drawn in.
+Sequencing and deadline rules (field corroborations, quotes in [references/field-notes.md](references/field-notes.md)):
+- **Sequence the push** (Polly D'Arcy): function → reliability → performance → excellence.
+- **Under deadline** (MDS): ship the version you know works while pushing the better idea in parallel.
+- **In AI workflows** (Jacoby/Ridd): cross the good-enough line deliberately — the discovery levels live between the prompts.
+- **At system scale** (Marek Minor, Cursor's icons): 156 explorations of one icon, final calls at 0.25px — and judge at true size on a device, outside the file it was drawn in.
 
 ## Live tuning (`/library/live-tuning`)
 
-Expose key parameters (duration, easing, spacing, shadows, blur, position, scale) as real-time controls so you *feel* differences instantly instead of edit-save-refresh guessing. Builds intuition faster and surfaces combinations you'd never reach one change at a time (e.g. a "generate N random-parameter iterations in a grid" toggle for generative graphics). Josh ships **DialKit** (`/library/dial-kit`), a React/Motion tuning-panel library; the underlying move is just "ask the agent for a control panel." When several parameters would each demand a labeled slider, drive them all from one position on a Lissajous curve (Puckett) — one fidgetable control, huge expressive range.
+Expose key parameters (duration, easing, spacing, shadows, blur, position, scale) as real-time controls so you *feel* differences instantly instead of edit-save-refresh guessing. Builds intuition faster and surfaces combinations you'd never reach one change at a time (e.g. a grid of N random-parameter iterations). Josh ships **DialKit** (`/library/dial-kit`), a React/Motion tuning-panel library; the underlying move is just "ask the agent for a control panel." For many parameters, drive them all from one position on a Lissajous curve — one fidgetable control.
 
 ## Separation of concerns (`/library/separation-of-concerns`)
 
-Resist solving everything in one prompt/artifact. **Before diving in, name the one concern you're resolving or question you're answering** — then use the lightest tool that answers it (sometimes "dangerously close to a wireframe"; a rough "breakable toy" answered *is this direction worth pursuing?* for the IC homepage cards). Refine only once you know it's necessary. With collaborators, fidelity is set by *audience + decision at hand* — sketches sometimes, shippable fidelity other times. Intentionality, not roughness, is the point.
+Resist solving everything in one prompt/artifact. **Before diving in, name the one concern you're resolving or question you're answering** — then use the lightest tool that answers it (sometimes "dangerously close to a wireframe"; a rough "breakable toy" can answer *is this direction worth pursuing?*). Refine only once you know it's necessary. With collaborators, fidelity is set by *audience + decision at hand*. Intentionality, not roughness, is the point.
 
 ## Facets of quality (`/library/facets-of-quality`)
 
@@ -115,68 +117,41 @@ Generic virtues (useful, intuitive, reliable) don't answer "is this actually goo
 - **Score on a radar chart** (1–5; 1 = minimum you can live with, 5 = best imaginable) — the low spoke is your next release's plan.
 - **Stack-rank them** — if the top-ranked facet scores lowest, don't ship.
 - **Critique in facet language**: not "doesn't feel right, needs work" but "this isn't inventive enough — if we're at a 4, this is going backwards."
-- Re-score over time; it's a planning instrument, and a shared quality vocabulary for teams.
+- Re-score over time; it's a planning instrument and a shared team vocabulary.
 
 ## Less, but better (`/library/less-but-better`)
 
-Rams' discipline: fight the urge to add features/scope/flourish. Do as little as possible, executed to an extremely high bar (the IC pre-launch page: one page, two typefaces, three sizes, two neutrals, one button, one key interaction). Pairs with Bruce Lee: "hack away the unessential." Scope compression (Puckett): take only the essential scope "and just execute it to a bar that folks maybe have never seen before."
+Rams' discipline: fight the urge to add features/scope/flourish. Do as little as possible, executed to an extremely high bar (the IC pre-launch page: one page, two typefaces, three sizes, two neutrals, one button, one key interaction). Pairs with Bruce Lee: "hack away the unessential." Puckett's scope compression: take only the essential scope and execute it to an unseen bar.
 
 ## Uncommon care (`/library/uncommon-care`)
 
-"How much did the creator care?" shows up most in **the places you could have skipped**: edge cases, error states, invoices, refunds — "the effort no one would have blamed you for not making" (the Porsche 928 clutch pedal; logo-shaped screw heads; 100 personalized member notes). With AI making *passable* trivial, the bar for good-enough collapses — leverage buys you time to pour into what can't be generated. Self-prompts: Where are you stopping at good enough? What's the skeleton in the closet everyone knows is broken? Where are you holding back because leaning in feels uncomfortable?
+"How much did the creator care?" shows up most in **the places you could have skipped**: edge cases, error states, invoices, refunds — "the effort no one would have blamed you for not making" (the Porsche 928 clutch pedal; logo-shaped screw heads; 100 personalized member notes). With AI making *passable* trivial, spend the leverage on what can't be generated. Self-prompts: Where are you stopping at good enough? What's the skeleton in the closet everyone knows is broken? Where are you holding back because leaning in feels uncomfortable?
 
-Sten's whole-journey variant: the care test includes off-screen business surfaces. Confirmation emails, invoices, PDFs, OCR/print needs, delivery/fulfillment status, returns, cancellation, and support scripts are all part of the felt product. The main screen can be crafted and the experience can still feel careless if these touchpoints break the promise.
+Sten's whole-journey variant: the care test includes off-screen business surfaces — confirmation emails, invoices, PDFs, fulfillment status, returns, cancellation, support scripts. A crafted main screen still feels careless if these break the promise.
 
-Minor's below-noticing variant: corrections nobody can point at (optical breaks, stroke thinning in his Cursor icon set) are still the standard — "It's the inside of the machine: nobody opens it, and it should still be tidy." ([references/field-notes.md](references/field-notes.md))
+Minor's below-noticing variant: corrections nobody can point at are still the standard — "It's the inside of the machine: nobody opens it, and it should still be tidy."
 
 ## Industry standards (`/library/industry-standards`)
 
-Daily-driver apps (iOS, Linear, Figma, Instagram…) set an **invisible bar**; below it, people silently discount your work — portfolios, prototypes, MVP demos alike — and never tell you why. The bar is the **floor, not the goal**. Shortcut: **"start with how iOS would design it, then improve"** (web equivalent: default shadcn + Tailwind, then improve) — never from scratch. Exemplars: Family (iOS defaults respected, then innovated on every aspect) and Raycast (native-feeling, better-than-Spotlight). Your own bar drifts down without exposure (MDS) — recalibrate by regularly seeing fantastic work. And AI-generated imagery is never ship-ready (Katie Dill): hand-rework it, or users "would feel that something's off."
+Daily-driver apps (iOS, Linear, Figma, Instagram…) set an **invisible bar**; below it, people silently discount your work and never tell you why. The bar is the **floor, not the goal**. Shortcut: **"start with how iOS would design it, then improve"** (web equivalent: default shadcn + Tailwind, then improve) — never from scratch. Exemplars: Family (iOS defaults respected, then innovated on) and Raycast (native-feeling, better-than-Spotlight). Your own bar drifts down without exposure (MDS) — keep seeing fantastic work. And AI-generated imagery is never ship-ready (Katie Dill): hand-rework it.
 
 ## Recreate everything (`/library/recreate-everything`)
 
-Anything that makes you ask "how did they do that?" — recreate it immediately, while the curiosity spark lasts (e.g. reverse-engineering a macOS-style genie effect in three rough prompts). Stop when the itch is scratched: rough is fine, the question was *how does this work*, not *ship it*. Bias toward doing; share what you make.
+Anything that makes you ask "how did they do that?" — recreate it immediately, while the curiosity lasts (e.g. a macOS-style genie effect in three rough prompts). Stop when the itch is scratched: the question was *how does this work*, not *ship it*. Share what you make.
 
 ## Linear product craft
 
-Linear's public redesign and quality write-ups form a named school for dense professional software: pay design debt in deliberate sweeps, protect the main work surface from chrome, test design across real view types and platform environments, and turn quality into operating mechanics: triage, dogfood loops, unshipping, named decision rights, and shared feel language. When the task is a serious app refresh, a settings/productivity surface, a feature-flagged UI migration, or a repeatable quality program, read [references/linear-product-craft.md](references/linear-product-craft.md).
-
-Key moves:
-- **Redesign for product evolution, not novelty.** The trigger is accumulated design debt or a broadened product vision; scope the reset around the surfaces that need rebalancing, not every tempting navigation or IA problem.
-- **Stress-test before implementation.** Crash the direction against environment, appearance, and hierarchy: browser/native shells, light/dark/custom themes, every dense view type, long labels, side panels, headers, tabs, and empty/error/loading states.
-- **Make comparison cheap.** Ship behind a feature flag, add a local toggle, and build internal tooling so designers, engineers, and dogfooders can flip old/new instantly and tune tokens in the real product.
-- **Triage quality by felt risk.** Fix repeated-use jank, trust leaks, wrong-problem signals, and stability promises before optional delight; use scope deletion and named deciders to keep craft decisions fast.
-- **Dogfood with permission to unship.** Turn prototypes on internally, compare old/new cheaply, and remove features that feel wrong without treating removal as failure.
-- **Train noticing.** A small weekly quality ritual works because each person sees different defects; small fixes compound and teach the team to prevent the next paper cut.
-- **Sweep horizontally on a cadence.** Batina's "shoplifting" ritual: roughly annually, a small group spends 2–4 weeks going across every surface asking what would make the whole product feel a step better — depth pushes run vertical on one feature; this catches the seams between them.
-- **Promote evidence, not vibes.** When a quality ritual repeatedly catches the same issue, write the concrete decision, source surface, consequence, exception, and before/after example before making it reusable agent guidance. If code can detect it reliably, move it toward a check; if not, keep it as routed judgment.
+Linear's public redesign and quality write-ups form a named school for dense professional software: pay design debt in deliberate sweeps, protect the main work surface from chrome, stress-test a direction across real view types, themes, and platform shells before implementation, make old/new comparison cheap (feature flag, local toggle, internal tooling), triage quality by felt risk, and dogfood with permission to unship. For a serious app refresh, a settings/productivity surface, a feature-flagged UI migration, or a repeatable quality program, read [references/linear-product-craft.md](references/linear-product-craft.md) (key moves digest first).
 
 ## Practical Demonstrations — the refinement vocabulary (`/library?collection=practical-demonstration`)
 
-Eight worked walkthroughs applying the principles. The recurring critique/refinement moves:
+Eight worked walkthroughs; full move lists in [references/practical-demonstrations.md](references/practical-demonstrations.md) — read when auditing a visual language (implicit vertical rules, icon families, metadata tokens, dividers), restructuring a mobile app (default iOS first, guiding attributes before visuals), or looking for what "one more level" of depth looks like (The Ultimate Slider, v0 Gift Card, Library Cards' constrained customization).
 
-**Visual-language audit moves** (Refining Today / Presscut):
-- Count the **implicit vertical rules** — more than ~2 left-edge alignment lines reads as disorder; consolidate to one content edge.
-- **Unify icon families**: one stroke width, one fill style, one color treatment across the interface.
-- **Tokenize metadata**: style category labels/secondary data as visually distinct tokens so they never read as user content.
-- **Standardize one divider treatment** — or try removing dividers entirely and see if spacing carries it.
-- Merge sibling cards into one container ("they're effectively all siblings"); reserve the display font for the page title only — using it on every section header dilutes it; lighten strokes; fix three-line stat cards by inlining the supporting value.
-- **At summary altitude, progressively disclose**: don't stuff overview tables with every column — the row click is the details view. Replace cramped inline progress bars with **row-background fills** (same information, calmer).
+## Field notes and the reference-to-rule pipeline
 
-**Architecture exercise** (Redesigning a Mobile Web App, parts 1–3): start from "what would default iOS give us" (tab bar + table views) → *evaluate* the default against the product (chat/profile weren't peers → header + composer) → explore structures that keep grouping without tap-in friction (phase accordion auto-expanded to the current phase; completed phases collapsed behind a card stack) → sheets over pushes for short tasks (anchored, fluid, tight feedback loop). Define **guiding attributes first** (trustworthy/calming/confident), then derive every visual decision from them: system body font ("undesigned in a good way"), display serif chosen by attribute-fit (Source Serif: modern authority), **corner radius as the technical↔friendly dial**, sharp icons counterweighting soft shapes, warm neutrals + one hopeful accent, blur instead of strokes, and **language warming** ("Form Preparation" → "Your Paperwork"). One primary action per step; time estimates + "what you'll need" reduce anxiety.
+Field practitioners outside the IC corpus (MDS/Shift Nudge, Valio Con, Dive Club, Marek Minor, Sten) corroborate the methodology; their rules are distilled above, with verbatim quotes and unpromoted texture in [references/field-notes.md](references/field-notes.md).
 
-**Depth-spectrum exemplars**:
-- *The Ultimate Slider*: full-bleed track as its own container → subtle hover-only handle (scales in on x) → track brightens on presence → value **dodges** the handle → handle clamps at extremes → hover-only hash marks → **snap-to-deciles on click only** (generous targets; drags stay precise) softened by a spring → value becomes editable after an 800ms hold → **rubber-banding past bounds with a dead zone**. Each step "communicates we're thinking about your experience."
-- *v0 Gift Card*: layered pseudo-realism (two grain layers, halftone, holographic parallax, cursor-following specular, spotlight mask to constrain intensity), scratch-off via canvas-generated CSS mask with custom SVG brushes, an animated **gesture hint that exits on first hover**, and **round-robin sound variations fired every ~40 dragged pixels** so audio feels organic, not looped.
-- *Library Cards*: the **constrained-customization pattern** — never hand users a raw color picker ("room to make an ugly card"); curate the palette, then expose one perceptual **"brilliance" slider** that moves H/S/L together along always-good values. For multi-parameter generative controls, drive all parameters from one slider mapped along a **Lissajous curve projected in 3D** (huge expressive range from one fidgetable control; linear mapping fallback on mobile). Agency within a curated range.
-
-*(Interface Kit collection: Josh's visual editor — click any element, tweak style/typography/layout visually, "Copy as prompt" exports a diff for your coding agent; npm `interface-kit`, dev-only. Video walkthroughs. Reference Desk: curated classics — Bret Victor ×4, Eames Q&A, Wilson Miner "When We Build", Frank Chimero, Dive Club, First of Kind — future source list.)*
-
-## Field notes — full quotes
-
-The methodology above is corroborated by field practitioners outside the IC corpus — MDS/Shift Nudge rituals, Valio Con (GMUNK, Craig Henry), and Dive Club interviews (Josh Puckett, Katie Dill, Polly D'Arcy, Katarina Batina, Brandon Jacoby). Their rules are distilled into the sections above; the full verbatim quotes and remaining texture (fidgetability, labels-off mystery, tokens with functional value, audience-scoped liability, reps economics, the 10% skim test, taste as calibrated rule-breaking, the passion inventory) live in [references/field-notes.md](references/field-notes.md).
-
-**Reference-to-rule pipeline** (Jaytel Taste, 2026 — full recipe in [references/field-notes.md](references/field-notes.md)): to turn visual references into reusable taste rules, collect tight crops with repeated signals, ask independent vision models why each works *visually*, fuse the notes anonymously, then write imperative constraints plus anti-collapse guardrails — concrete output ("one accent hue") beats mood words ("premium"). Packaging into a skill → `creating-skills` (converting-visual-references-to-skills); applying as an AI UI auditor → `working-with-ai` (ai-ui-direction).
+**Reference-to-rule pipeline** (Jaytel Taste, 2026 — recipe in the field notes): turn tight reference crops into imperative constraints plus anti-collapse guardrails — "one accent hue" beats "premium". Packaging into a skill → `creating-skills` (converting-visual-references-to-skills); applying as an AI UI auditor → `working-with-ai` (ai-ui-direction).
 
 ## Checklist
 
@@ -193,10 +168,10 @@ The methodology above is corroborated by field practitioners outside the IC corp
 
 ## Relationship to other skills
 
-- **`design-principles`** — Apple's eight values judge *what's right to build*; this skill is the *working practice* for getting any chosen thing to quality. Craft/Simplicity there ↔ depth/less-but-better here.
-- **`design-prototyping`** — shares DNA on multiple directions ("no hole-in-ones") and agent-built tuning panels (WWDC26-227); route *presenting/feedback-session* questions there, *how-far-to-push and quality-evaluation* questions here. Separation of concerns = its "choose the fidelity tier" rule generalized to one-question-per-artifact.
-- **Execution-value references** (`references/polish-principles.md`, `references/emil-kowalski.md`, `references/tactile-design.md`, and the typography/surfaces/animations/performance files) — the polish-execution layer *inside this skill*; when depth iteration reaches micro-detail (shadows, easing, optical alignment), their values take over (theme discipline applies). These were formerly the standalone `design-polish` skill.
-- **`working-with-ai` (agentic-coding)** — separation of concerns is the design-side version of its constrained-generation stance: one intention per prompt, review non-delegable.
-- **`shape-up`** — owns product-shaping systems, appetite, bets, scope cuts, and the Linear operating-school comparison; this skill owns interface quality practice: craft depth, live tuning, dense-app refreshes, quality rituals, and felt-risk triage.
+- **`design-principles`** — Apple's eight values judge *what's right to build*; this skill is the *working practice* for getting any chosen thing to quality.
+- **`design-prototyping`** — shares DNA on multiple directions ("no hole-in-ones") and agent-built tuning panels (WWDC26-227); route *presenting/feedback-session* questions there, *how-far-to-push and quality-evaluation* questions here. Separation of concerns generalizes its "choose the fidelity tier" rule.
+- **Execution-value references** (the table above) — the polish-execution layer *inside this skill*; when depth iteration reaches micro-detail (shadows, easing, optical alignment), their values take over.
+- **`working-with-ai` (agentic-coding)** — separation of concerns is the design-side version of its stance: one intention per prompt, review non-delegable.
+- **`shape-up`** — owns product shaping (appetite, bets, scope cuts, the Linear operating-school comparison); this skill owns interface quality practice: craft depth, live tuning, dense-app refreshes, quality rituals, felt-risk triage.
 
-> **Source note:** the methodology is distilled from and extended beyond Josh Puckett's Interface Craft (interfacecraft.dev) — quote sparingly, attribute, and send readers to the source. Unmined collections for future passes: Means & Methods (8 technique articles: layout/alignment, visual style errors, color/blending, typographic errors, interpolation/map-range, compositing, wave functions, masks), Collaborating with AI (8 entries incl. DialKit and agent skills), Practical Demonstration, Interface Kit, Reference Desk.
+> **Source note:** the methodology is distilled from and extended beyond Josh Puckett's Interface Craft (interfacecraft.dev) — quote sparingly, attribute, and send readers to the source.

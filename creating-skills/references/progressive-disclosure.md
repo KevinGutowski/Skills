@@ -98,16 +98,18 @@ Details: [topic-a.md](topic-a.md)
 Details: [topic-b.md](topic-b.md)
 ```
 
-### One Level Deep
+### One Level Deep, Plus the Sanctioned Second Hop
 
-References should not reference other references.
+Every reference is linked from `SKILL.md`. A reference may push deep material into a same-named subdirectory when three conditions hold: the parent reference links every file, the `SKILL.md` router bullet names the members, and `SKILL.md` declares the pattern in prose (House Style rule 18). Upstream default: strictly one level.
 
 ```
 # Good
-SKILL.md → reference.md
+SKILL.md → references/topic.md
+SKILL.md → references/topic.md → references/topic/detail.md   (members named in SKILL.md)
 
 # Avoid
-SKILL.md → reference.md → deep-reference.md
+SKILL.md → references/topic.md → references/other/detail.md   (reachable only via another reference)
+SKILL.md → references/topic.md → references/topic/detail.md → deeper.md
 ```
 
 ### Make Intent Clear

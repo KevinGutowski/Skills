@@ -9,7 +9,7 @@ Source spine: Hyperagent public skill `nyt-data-viz` (alexmcdonnell-airtable/hyp
 1. **One claim, not a label.** The headline should say what the reader should notice. The subtitle names unit, timeframe, and denominator. The source line stays visible.
 2. **One hero accent.** Put the series or segment that matters in color; push comparison/context marks into gray. Use monotonic-luminance ramps for ordered data; use diverging color only when there is a meaningful center or zero.
 3. **Direct labels before legends.** Label endpoints, notable categories, and annotated inflections where the eye already is. Legends are a fallback when direct labeling would create collisions.
-4. **Chart-type discipline.** Line charts for time, bars from zero for magnitude, dot/lollipop when zero is not meaningful, small multiples once too many series compete. Avoid dual y-axes and pie/donut charts unless the task is truly rough part-to-whole recognition.
+4. **Chart-type discipline.** Line charts for time on editorial pages (in-app dashboards showing per-period counts or status use bars instead — see Product Dashboard Conventions), bars from zero for magnitude, dot/lollipop when zero is not meaningful, small multiples once too many series compete. Avoid dual y-axes and pie/donut charts unless the task is truly rough part-to-whole recognition.
 5. **Mobile first.** At 375px wide, the crucial reading must still be visible without hover, tap, or a legend hunt. Interaction can enrich, but it cannot carry the main point.
 
 ## Annotation Rules
@@ -61,6 +61,7 @@ const y = d3.scaleLinear().domain([0, maxValue]).nice().range([innerHeight, 0]);
 For in-app dashboard charts (usage, sessions, health), not editorial pages. Source: Kosta's tactile-design skill, one production dashboard; see `design-craft` (tactile-design → layout-and-data) for the full theme.
 
 - **Bars for counts per period and for status or health. Use a line only where the trend itself is the question** (latency, a balance over time), because a line invites optimising a trend the user can't act on.
+- **Scope against the "time → line" default.** This rule covers in-app product dashboards only, and only discrete per-period counts and status. It does not override the line default for editorial pages, reports, and decks (Editorial Frame rule 4, chart-selection), and on a dashboard a continuous measure whose trajectory is the question still gets a line. When a dashboard request doesn't say which it is, ask what the reader does with the chart: compare periods (bars) or read a trajectory (line).
 - **One natural period of the unit:** 24 hours, 7 days, 30 days or 12 months, not an arbitrary window.
 - **Quiet frame:** dotted gridlines over a hairline baseline, a right-hand axis scale in tabular or mono figures so the numbers line up (mono is for the chart axis only; the same theme keeps table columns in the sans with tabular figures, never a mono column), and small rounded bar tops. Add no hue unless it means status.
 - **Hover highlights one bar and dims the rest** (to about 35%), with its value on a small label. Bars fade in on a range change; they never sweep left to right or grow on load for style, and figures never animate. The latest bar may pulse to mean "now".

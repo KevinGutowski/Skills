@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: job-aid-over-memorization
+expected_outcome: |
+  Questions whether recall is really required, puts the knowledge into the environment with a job aid at the point of use, and reserves memorization practice for the codes that truly need recall.

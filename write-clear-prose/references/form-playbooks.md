@@ -11,6 +11,7 @@ Use this reference when the user is writing in a specific nonfiction form or whe
 - Travel and Place Writing
 - Science and Technical Explanation
 - Business Writing
+- Design and Product Concept Writing
 - Opinion and Criticism
 - Sports and Performance Writing
 - Humor
@@ -143,6 +144,20 @@ Watch for:
 - Passive voice that hides who must act.
 - Long context before the ask.
 - Polite vagueness where a decision is needed.
+
+## Design and Product Concept Writing
+
+Moved from the `SKILL.md` body. Source: Anton Sten, *Products People Actually Want*.
+
+Add Anton Sten's designer-writing lens when prose is being used to shape a product, pitch, or concept: writing can expose what is known, what is assumed, what the user should feel, and whether the idea has a coherent story before the artifact gets polished. Judge early writing by the clarity it creates, not by publishable style.
+
+For design/product concept writing, add Sten's pre-visual pass:
+
+- What do we know?
+- What are we assuming?
+- What user scenario makes the problem concrete?
+- What feeling should the experience create at the key moments?
+- Which story frame fits: familiar-pattern, before/after, or question/answer?
 
 ## Opinion and Criticism
 

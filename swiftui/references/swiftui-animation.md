@@ -22,6 +22,8 @@
 - Checklist
 - Relationship to other skills
 
+**Apple's skill vs this file:** almost all of this file — springs, gesture velocity hand-off, zoom and custom transitions, scroll effects, keyframes, `TextRenderer`, shaders — is not in Apple's Xcode-shipped skills, so it stays here. One topic is Apple's: declaring a custom `Animatable` type (the `@Animatable` macro, `@AnimatableIgnored`, and when to hand-write `animatableData` with `AnimatableValues` or `AnimatablePair`) → `swiftui-specialist` animations.md. Whether a change animates in place or cross-fades is an identity question → its modifiers.md and [swiftui-identity.md](swiftui-identity.md). Export and pin: `apple-design` (xcode-agent-skills).
+
 Great experiences are the aggregate of many small details, and motion is a big one. This skill covers the SwiftUI animation/effects toolchain — from the zoom transition and SwiftUI↔UIKit animation bridging up the ladder to scroll effects, mesh gradients, custom transitions, per-glyph text animation, and per-pixel Metal shaders. Engineering sibling of [swiftui-lazy-stacks.md](swiftui-lazy-stacks.md); the *web* counterpart values live in `web-design` (web-animation-design) — don't cross-apply.
 
 ## Zoom transition (iOS 18+)
@@ -44,8 +46,8 @@ The tapped cell morphs into the incoming view, and it's **continuously interacti
 ## The animation architecture (2023)
 
 Two orthogonal halves: **Animatable** (what data animates) and **Animation** (how it changes over time), connected by **Transaction** (per-update implicit context; "withAnimation is just a thin wrapper around withTransaction").
-- Animatable attributes hold a *model* value and a *presentation* value; built-in effects (`scaleEffect` etc.) animate **off the main thread without running your view code** — prefer them. A custom `Animatable` conformance makes `body` run **every frame** — only when built-ins can't express it (e.g. arc-path motion). `animatableData` is a `VectorArithmetic` vector (`AnimatablePair` to fuse); **animations animate the delta**, which is what makes interrupted animations combine *additively* (timing curves) or **merge/retarget with preserved velocity** (springs — implement `velocity` in a `CustomAnimation` so merges keep momentum).
-- **Scoping animations precisely** (escalating): `.animation(_, value:)` for leaf components → scoped `.animation(.smooth) { $0.shadow(…) }` to confine an animation to specific attributes without touching child content → custom `TransactionKey` + `.transaction(value:)` to carry your own context (e.g. interactive-vs-programmatic) down the hierarchy. Different attributes can get different animations (smooth shadow + bouncy scale).
+- Animatable attributes hold a *model* value and a *presentation* value; built-in effects (`scaleEffect` etc.) animate **off the main thread without running your view code** — prefer them. A custom `Animatable` conformance makes `body` run **every frame** — only when built-ins can't express it (e.g. arc-path motion). `animatableData` is a `VectorArithmetic` vector — let the `@Animatable` macro synthesize it from the stored properties (mark non-animating ones `@AnimatableIgnored`) and hand-write it only when the setter needs logic such as clamping, with `AnimatableValues` on a 26+ deployment target and `AnimatablePair` below (Apple: animations.md); **animations animate the delta**, which is what makes interrupted animations combine *additively* (timing curves) or **merge/retarget with preserved velocity** (springs — implement `velocity` in a `CustomAnimation` so merges keep momentum).
+- **Scoping animations precisely** (escalating): `.animation(_, value:)` for leaf components → scoped `.animation(.smooth) { $0.shadow(…) }` to confine an animation to specific attributes without touching child content → a custom transaction value (an `@Entry` property in an `extension Transaction`) + `.transaction(value:)` to carry your own context (e.g. interactive-vs-programmatic) down the hierarchy. Different attributes can get different animations (smooth shadow + bouncy scale).
 
 ## Designing springs (Fluid Interfaces 2018 + Animate with springs 2023)
 
@@ -114,7 +116,7 @@ Conform to `Transition`; `body(content:phase:)` mirrors `scrollTransition`. Use 
 - Experiment loudly, ship quietly: "turn the dials up to 100," then dial back.
 - Prefer the standard tool one rung down the ladder before climbing (combined transitions before custom; visualEffect before shaders).
 
-> **Staleness note (Kevin's rule):** 2024 (iOS 18) APIs. Known rename: beta `navigationTransitionStyle` → GA `navigationTransition(_:)`. Verify `UIGestureRecognizerRepresentable`, `TextRenderer`, `MeshGradient`, and shader entry points against current docs for your deployment target before shipping.
+> **Staleness note:** 2024 (iOS 18) APIs. Known rename: beta `navigationTransitionStyle` → GA `navigationTransition(_:)`. The `Animatable` and transaction-key wording was updated on 2026-11-12 to follow Apple's `swiftui-specialist` skill (Xcode 27.2, 27B52). Verify `UIGestureRecognizerRepresentable`, `TextRenderer`, `MeshGradient`, and shader entry points against current docs for your deployment target before shipping.
 
 ## Checklist
 
@@ -127,7 +129,7 @@ Conform to `Transition`; `body(content:phase:)` mirrors `scrollTransition`. Use 
 - [ ] TextRenderer: context copied per slice; linear transaction pacing; emphasis limited to key words?
 - [ ] Shaders gated with `isEnabled`; `maxSampleOffset` correct; debug UI used to tune?
 
-See `swiftui-animation/code-patterns.md` for all verbatim samples (zoom, bridging, gestures, carousel/parallax, mesh gradient, Twirl, the full TextRenderer, and the Ripple shader + modifier).
+See [swiftui-animation/code-patterns.md](swiftui-animation/code-patterns.md) for the session samples (zoom, bridging, gestures, carousel/parallax, mesh gradient, Twirl, the full TextRenderer, and the Ripple shader + modifier).
 
 ## Relationship to other skills
 

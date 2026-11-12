@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: ember-particles-state-loop
+expected_outcome: |
+  A particle system driven by rules: explicit position, velocity and acceleration with forces accumulated and cleared each frame, a particle lifecycle with removal, shaped randomness (noise or Gaussian) rather than only uniform random, and exposed parameters including a seed.

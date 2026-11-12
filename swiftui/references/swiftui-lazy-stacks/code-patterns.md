@@ -5,15 +5,17 @@
 - Rule 3 — scroll transitions must not push views out of frame
 - Rule 1 — relative visibility, not absolute offset
 - Rule 4 — view resolution & static subview counts
-- Rule 5 — prefetching: initialize early, don't rebuild in `onAppear`
+- Rule 5 — prefetching: rows ready on first body, prepared by the model
 - Rule 6 — scroll-surviving state belongs in a model/binding
 - Programmatic scrolling
 - Rule 7 — don't change layout after a subview appears
 
 
-*Source: Apple WWDC 2026, session 321 — "Dive into lazy stacks and scrolling with SwiftUI." Code samples below are transcribed verbatim from the session's **Code** tab (timestamps preserved for traceability); `/* ... */` marks code Apple elided. https://developer.apple.com/videos/play/wwdc2026/321*
+*Source: Apple WWDC 2026, session 321 — "Dive into lazy stacks and scrolling with SwiftUI." Code samples below were transcribed from the session's **Code** tab (timestamps preserved for traceability); `/* ... */` marks code Apple elided. https://developer.apple.com/videos/play/wwdc2026/321*
 
-Grouped by the rule in SKILL.md. Where a rule has a wrong/right pair, the ❌/✅ shows Apple's own before/after.
+**Modernised 2026-11-12 — no longer verbatim.** Reconciled with Apple's Xcode-shipped `swiftui-specialist` skill (Xcode 27.2, 27B52; pin in `apple-design` (xcode-agent-skills)), which outranks the session samples: every `@State` is now `private`, and the two Rule 5 ✅ samples that built a model or loader inside the row's initializer were replaced. Rewritten samples are marked **adapted, not compiled**; nothing in this file has been built.
+
+Grouped by the rule in [../swiftui-lazy-stacks.md](../swiftui-lazy-stacks.md). Where a rule has a wrong/right pair, the ❌/✅ shows the session's before/after unless marked adapted.
 
 ---
 
@@ -193,12 +195,12 @@ struct StepView: View {
 
 ---
 
-## Rule 5 — prefetching: initialize early, don't rebuild in `onAppear`
+## Rule 5 — prefetching: rows ready on first body, prepared by the model
 
 **15:28 — ✅ a *good* `onAppear`: infinite scroll** from a trailing `ProgressView`:
 ```swift
 struct Showcase: View {
-    @State var pager = ShowcasePager()
+    @State private var pager = ShowcasePager()
     var body: some View {
         ForEach(pager.pages) { page in PageView(page: page) }
         if !pager.atEnd {
@@ -214,7 +216,7 @@ struct Showcase: View {
 ```swift
 struct StepView: View {
     let id: Step.ID
-    @State var viewModel = StepViewModel()
+    @State private var viewModel = StepViewModel()
     var body: some View {
         VStack { if let content = viewModel.content { /* ... */ } }
             .onAppear { viewModel.configure(with: id) }
@@ -222,23 +224,12 @@ struct StepView: View {
 }
 ```
 
-**16:14 — ✅ initialize the view model in `init`** so it's ready before appearing:
-```swift
-struct StepView: View {
-    @State var viewModel: StepViewModel
-    init(id: Step.ID) {
-        _viewModel = State(initialValue: StepViewModel(id: id))
-    }
-    var body: some View { /* ... */ }
-}
-```
-
-**16:23 — ❌ load via `.task`** (starts only once placed):
+**16:23 — ❌ load size-defining content via `.task`** (starts only once the row is placed, so the row changes after prefetch measured it):
 ```swift
 struct StepView: View {
     let step: Step
-    @State var diagramLoader = DiagramLoader()
-    @State var diagram: Diagram?
+    @State private var diagramLoader = DiagramLoader()
+    @State private var diagram: Diagram?
     var body: some View {
         VStack { /* ... */ }
             .task { diagram = await diagramLoader.loadDiagram(id: step.id) }
@@ -246,21 +237,50 @@ struct StepView: View {
 }
 ```
 
-**16:40 — ✅ start loading in the initializer** so it rides prefetching:
+**❌ Replaced session samples (16:14, 16:40) — do not reintroduce.** The session fixed both cases by constructing the view model / loader in the row's `init` and assigning it with `_viewModel = State(initialValue: …)`, with the loader starting its fetch in its own initializer. A row's `init` runs every time the parent's body runs, so that allocates a model — and starts a load — over and over, keeping only the first. Apple's skill is explicit that a view initializer copies inputs and is not a setup hook.
+
+**✅ Adapted, not compiled — the model layer prepares each row once; the row's `init` copies one reference:**
 ```swift
-struct StepView: View {
-    let step: Step
-    @State var diagramLoader: DiagramLoader
-    init(step: Step) {
-        self.step = step
-        _diagramLoader = State(initialValue: DiagramLoader(id: step.id))
-    }
-    var body: some View { /* ... */ }
+@MainActor @Observable
+final class StepModel: Identifiable {
+    let id: Step.ID
+    var diagram: Diagram?            // nil until loaded; the row reserves its space
+    init(id: Step.ID) { self.id = id }
 }
 
-@Observable
-class DiagramLoader { /* ... */ }
+@MainActor @Observable
+final class StepStore {
+    private(set) var steps: [StepModel] = []    // created once and kept, never rebuilt in a body
+
+    func loadNextPage() async {
+        /* fetch the page, append one StepModel per step,
+           and start their diagram loads here — before any row exists */
+    }
+}
+
+struct ContentView: View {
+    @State private var store = StepStore()
+    var body: some View {
+        ScrollView {
+            LazyVStack {
+                ForEach(store.steps) { model in StepView(model: model) }
+            }
+        }
+        .task { await store.loadNextPage() }
+    }
+}
+
+struct StepView: View {
+    let model: StepModel             // nothing to set up: usable on the first body pass
+    var body: some View {
+        VStack {
+            DiagramSlot(diagram: model.diagram)   // fixed height; placeholder while nil
+            /* ... */
+        }
+    }
+}
 ```
+Why this shape: the store outlives the rows, so loading starts when the data arrives rather than when a row is placed (the prefetching point), and each row observes only its own model, so one diagram landing re-runs one row. `DiagramSlot` is a stand-in for any view that keeps the same size with or without its content (Rule 7). Row-side `.task(id:)` remains fine for work that does not change the row's size.
 
 ---
 
@@ -270,7 +290,7 @@ class DiagramLoader { /* ... */ }
 ```swift
 struct StepView: View {
     let step: Step
-    @State var isHighlighted = false
+    @State private var isHighlighted = false
     var body: some View { /* ... */ }
 }
 ```
@@ -278,7 +298,7 @@ struct StepView: View {
 **17:33 — ✅** lift it to the parent via `@Binding`:
 ```swift
 struct ContentView: View {
-    @State var highlighted: Set<Step.ID> = []
+    @State private var highlighted: Set<Step.ID> = []
     var body: some View { /* ... */ }
 }
 
@@ -296,7 +316,7 @@ struct StepView: View {
 **17:58 — scroll to an (even off-screen) target** with a `ScrollPosition` binding:
 ```swift
 struct ContentView: View {
-    @State var scrollPosition = ScrollPosition()
+    @State private var scrollPosition = ScrollPosition()
     var body: some View {
         ScrollView { /* ... */ }
             .scrollPosition($scrollPosition)
@@ -320,7 +340,7 @@ struct ContentView: View {
 ```swift
 struct StepView: View {
     let step: Step
-    @State var subtitleHeight: CGFloat?
+    @State private var subtitleHeight: CGFloat?
     var body: some View {
         VStack {
             StepDiagram(diagram: step.diagram)

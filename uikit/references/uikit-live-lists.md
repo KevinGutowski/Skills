@@ -94,11 +94,11 @@ func prepend(_ olderIDs: [ItemID]) async {
 
 ## Measured recipe: long lists that stream at both ends
 
-The source author benchmarked agents building a chat list (live stream, load older, jump, text size, rotation, selectable text) and kept only rules that moved a measured result or removed a recurring failure. These rules say how to build it; they are not a list of things to test. Draw icons with SF Symbols; do not download or import image assets.
+The source author benchmarked agents building a chat list (live stream, load older, jump, text size, rotation, selectable text) and kept only rules that moved a measured result or removed a recurring failure. These rules say how to build it; they are not a list of things to test. Rules 1-9 are the reusable recipe; the launch and build settings the benchmark also tuned are kept apart under "Benchmark-specific observations" and are not general rules.
 
 ### Text and menus
 
-1. **Edit menu: your actions first, then the system's.** From `textView(_:editMenuForTextIn:suggestedActions:)` return `UIMenu(children: [custom] + suggestedActions)`. Appended items land on the second menu page on iPhone; a menu without `suggestedActions` loses Copy. No long-press recognizer over the text; the row's context menu returns nil over the text. Copy is the system's item: if the menu lists it, it works.
+1. **Edit menu: your actions first, then the system's.** From `textView(_:editMenuForTextInRanges:suggestedActions:)` (iOS 26+; the benchmark used the single-range `textView(_:editMenuForTextIn:suggestedActions:)`, deprecated in iOS 27 — keep it too only while the deployment target is below iOS 26) return `UIMenu(children: [custom] + suggestedActions)`. Appended items land on the second menu page on iPhone; a menu without `suggestedActions` loses Copy. No long-press recognizer over the text; the row's context menu returns nil over the text. Copy is the system's item: if the menu lists it, it works.
 2. **Read-only row text is TextKit 1:** `UITextView(usingTextLayoutManager: false)`. A default TextKit 2 view redoes viewport layout and selection rects on every cell setup.
 
 ### The list
@@ -114,10 +114,13 @@ The source author benchmarked agents building a chat list (live stream, load old
 8. **A page loaded before the first visible row:** insert it without animation in `performBatchUpdates`, measuring only the new page. The layout's `targetContentOffset(forProposedContentOffset:)` returns the pinned end while pinned and otherwise keeps the first visible row where it was. It runs only inside batch updates, never after `reloadData` or a plain invalidation. Never add the inserted heights to the offset. The top row counts only once its visible content is below the top edge: ignore transparent margin and sub-point rounding remainders (small tolerance). Use the same test to capture the anchor and to read the top row after restoring, so a re-layout never names the row above.
 9. **Jump to an item:** replace the window with a small one around the target (about 10 rows before, 30 after; measuring is the jump's cost), `reloadData`, set the offset at once from the target's top computed from your height store (the numbers `prepare()` will use) rounded to the pixel, then one `layoutIfNeeded`. No animation. Do not read `layoutAttributesForItem(at:)` right after `reloadData`; the layout has not prepared and may return the old window's geometry.
 
-### Build and launch
+### Benchmark-specific observations (not general rules)
 
-10. Start making the data on a background queue in the app's first line, before `UIApplicationMain`, and build the screen while it runs (no placeholder controller swapped in later); check a guessed width against the real one.
-11. The app target's Release build strips: `DEPLOYMENT_POSTPROCESSING`, `STRIP_INSTALLED_PRODUCT`, `STRIP_STYLE = all`, `DEAD_CODE_STRIPPING`. App target only: `STRIP_STYLE = all` is wrong for a framework or extension that exports symbols.
+The source numbered these as rules 10-11 and added an asset instruction. They were tuned against the benchmark's scorer for one synthetic chat app (the recipe "was tuned against one scorer", see the caveats below); do not apply them to a real project by default, and never as review findings. Use one only when the project has the same measured problem, and measure before and after.
+
+- **Launch (source rule 10):** the benchmark app generated its data on a background queue from the app's first line, before `UIApplicationMain`, and built the screen while that ran (no placeholder controller swapped in later), checking a guessed width against the real one. This suited an app whose data is synthesized locally at launch; a real app's launch path (persistence, network, state restoration, scene life cycle) decides this instead.
+- **Release strip settings (source rule 11):** the benchmark's app target set `DEPLOYMENT_POSTPROCESSING`, `STRIP_INSTALLED_PRODUCT`, `STRIP_STYLE = all` and `DEAD_CODE_STRIPPING` (binary 1.34 to 0.84 MB). These are project build-setting decisions, not list-building rules: do not change a project's build settings unasked, and `STRIP_STYLE = all` is wrong for a framework or extension that exports symbols.
+- **Icons (source instruction):** the benchmark told agents to draw icons with SF Symbols and not to download or import image assets. That was an instruction for the benchmark task, not a UIKit rule. In a real project, use the project's existing assets and icon conventions; SF Symbols remain the default for standard glyphs (`swiftui` (sf-symbols)).
 
 Also measured (cut from the final recipe for length, still true): never flush layout (`layoutIfNeeded`, reading row frames) from `scrollViewDidScroll`, cell provisioning or invalidation callbacks; a flush there re-enters the collection view's own layout pass and asserts ("Avoid flushing layout before returning the view").
 
@@ -172,7 +175,7 @@ Frame budget is about 8 ms at 120 Hz, 16 ms at 60 Hz. Time goes to cell configur
 
 ## Objective-C notes
 
-- Selectors: `textView:editMenuForTextInRange:suggestedActions:` (iOS 16, works everywhere; the iOS 26 `...InRanges:` variant falls back to it with the union range), `targetContentOffsetForProposedContentOffset:`, `reconfigureItemsAtIndexPaths:`, `shouldInvalidateLayoutForBoundsChange:`, `viewWillTransitionToSize:withTransitionCoordinator:`.
+- Selectors: `textView:editMenuForTextInRanges:suggestedActions:` (iOS 26+); the single-range `textView:editMenuForTextInRange:suggestedActions:` (iOS 16) is deprecated in iOS 27 and is only the fallback UIKit calls with the union range, so keep it just for deployment targets below iOS 26; `targetContentOffsetForProposedContentOffset:`, `reconfigureItemsAtIndexPaths:`, `shouldInvalidateLayoutForBoundsChange:`, `viewWillTransitionToSize:withTransitionCoordinator:`.
 - TextKit 1 text view: `[UITextView textViewUsingTextLayoutManager:NO]`.
 - Capture `__weak typeof(self) weakSelf` in flush timers and batch-update completion blocks; the data change still goes inside the `performBatchUpdates:` block.
 

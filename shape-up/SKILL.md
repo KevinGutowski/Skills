@@ -23,6 +23,12 @@ Product development methodology from Basecamp built around fixed-time, variable-
 
 Read the appropriate phase reference based on user context.
 
+**Second hop:** each phase reference keeps its detailed techniques in a same-named subdirectory (`references/<phase>/…`), 23 files in all. Open one through its phase reference, which says when each applies:
+
+- `shaping/` (8): principles-of-shaping, set-appetite, fixed-time-variable-scope, breadboard-vs-fat-marker, identify-rabbit-holes, spot-grab-bags, write-pitch, evaluate-shaped-work
+- `betting/` (6): betting-table-decision, circuit-breaker-decision, cool-down-period, no-backlogs-philosophy, handle-bugs, project-modes
+- `building/` (9): team-ownership, hand-over-project, integrate-one-slice, map-project-scopes, show-project-progress, scope-hammering, compare-to-baseline, qa-approach, handle-feedback
+
 ## The Cycle Rhythm
 
 ```

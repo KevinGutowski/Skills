@@ -16,6 +16,7 @@
 - Field note — the caricature technique (Show)
 - Field notes — Polygon at scale (Vox Media team, Valio Con 2013 — Drew Wilson's conference)
 - The prototyping team's 2022 Q&A (Learn)
+- Concept car → crash test → flag (Linear)
 - Team-of-one prototyping (Leah Buley, *The User Experience Team of One*, Rosenfeld 2013)
 
 ## Toast Modern (2014) — the canonical fake app
@@ -23,12 +24,14 @@
 An artisanal-toast discovery app demoed convincingly on stage: "Except it's not. None of this is real. It's just a prototype." Built by faking:
 - Screens in **Keynote**: screenshot the Music app, block out areas with shapes, color-pick the real nav bar, reuse **three photos of toast for every screen**, invent the text ("toast with goat butter and trout... not a thing"), Special Characters palette as icons (★ for ratings), a text-box "+" as a button — "you've designed an icon in five seconds." Orange theme "because it's the toastiest color of the rainbow."
 - **Animation via Magic Move**: slides as keyframes; identical shapes on both slides prevent cross-fades; stagger list items horizontally so they animate at different speeds and "feel like distinct items"; duplicate the first slide as the third for the free reverse animation. Keynote runs on iPhone; taps advance — fake interactivity.
-- **Interaction by hacking**: a `Layer` convenience class over UIImageView; the "list" is one tall screenshot moved by touch deltas (constrain to y); the map is an oversized screenshot with pins "sprinkled in an artisanal way"; typing is a slideshow of keyboard images. "Don't engineer it, just hack it together as quick as you can."
+- **Interaction by hacking**: a `Layer` convenience class over UIImageView; the "list" is one tall screenshot moved by touch deltas (constrain to y); the map is an oversized screenshot with pins "sprinkled in an artisanal way"; typing is a slideshow of keyboard images (an image sequence fakes a keyboard). "Don't engineer it, just hack it together as quick as you can."
 - The payoff lesson: the grid-view concept was killed by **a drawing** — "would've taken a whole bunch of real code. For our prototype, we just made a quick drawing, which was enough to realize that this concept sucked."
 
 Marching orders by role: company devs — tell management prototyping saves time and money; solo devs — "draw, animate and hack before you go and build something"; designers — "don't just draw pictures, also make animated and interactive things"; managers — "make time for your designers and engineers to prototype."
 
 ## The 60-second timer (2017)
+
+The 60-second bar: a working-feeling Keynote timer "in less time than it took you to brush your teeth." Speed buys *breadth* — many parallel explorations across a diverse team.
 
 Keynote doc at iPhone size; shapes for the clock face and Start button; the **rotation-pivot trick** — copy the clock hand, paste an invisible mirrored twin below, group them so rotation pivots on the clock's center; rotate with **no easing** "to make it look just like a real clock." On-device tests in context: a coworker timing a pH test; David solving a Rubik's Cube (verdicts: Start button too small, wants a countdown, wants digital time). v2: bold red face, white hand, whole lower half as the tap region, a "Timer Done" slide. Parallel explorations followed — film-developing timer, steak timer, a tooth-brushing timer for a kid. Triage: "a few things won't work at all, and it is great when that happens. You've just learned something very valuable… and you're not going to be spending designing time or programming time building things that would not have worked out."
 
@@ -41,12 +44,25 @@ Keynote doc at iPhone size; shapes for the clock face and Start button; the **ro
 - Duarte structure applied: "Today, people are frustrated — cold, joyless toast. It's an epidemic. But imagine happy, flawless toast at the top of the button on your iPhone."
 - "If I had more time, I would have written a shorter letter."
 
+The ten rules in full — "Design is hard but design presentations are way harder" — present badly and the ideas die.
+
+1. **Know your objectives** — imagine success, work backwards; state goals and needed questions up front.
+2. **Embrace feedback** — "there is no failure, only feedback"; an unworkable offered solution usually wraps a valid *problem* — clarify it; never pretend to understand unclear feedback.
+3. **Seek advice** — sense-check the deck; full practice run; "do not deliver it blind."
+4. **Use your own voice** — genuine, opinionated ("you are the expert here"), never arrogant.
+5. **Respect your audience** — agenda, recap, their prior feedback visibly integrated, no working files.
+6. **Make it relatable** — first-person narrative, not users as "a distant third party"; a prototype demo beats a flow diagram.
+7. **Engage in dialogue** — design for the aha moment; "do not deliver a monologue."
+8. **Explain why** — "define each problem in a single sentence" and get agreement; evidence, never "because I like it."
+9. **Storytelling** — "people won't remember your slides. They'll remember how your story made them feel." Contrast today with the better future (Duarte).
+10. **Keep it simple** — "keep the main thing the main thing"; summarize.
+
 ## Quotables trimmed from SKILL.md (2014/2017/2023, Stamatiou)
 
 - On Magic Move vs code: "It's so much easier to pare down… when you don't have to throw away code." (2014)
 - On hacking interactions: "It doesn't have to be good code or reusable code." (2014)
 - On parallel exploration: a diverse team "will let you stumble upon things you never would have on your own." (2017)
-- The 2023 framing that supersedes "never real code": "common things should be easy and complex things should be possible" — SwiftUI "lowers the floor for simple tasks and raises the ceiling."
+- The 2023 framing that supersedes "never real code": "common things should be easy and complex things should be possible" — SwiftUI "lowers the floor for simple tasks and raises the ceiling" (non-engineer Maps designers).
 - The elevation bug texture: hilly San Francisco data hid a Y-axis bug that flat New York routes exposed — "as if you were hiking a mountain"; "I can get carried away designing for ideal scenarios… it's important to find out where my designs break." (2023)
 - On demos leading reviews: "No slide deck in the world can compare with one spectacular demo." (2023)
 - Stammy on mocks (Craft, 2022): "Figma is where initial hunches live; a starting point. Not final designs. It's not until I start building and really using it that I get more signal to understand what aspects of the design feel good." And: "never treat design as something you just handoff to engineers… Treat it more like a conversation between design and engineering."
@@ -108,6 +124,8 @@ The Polygon launch (Ted Irvine, Ryan Gantz, Brent Laverty, Georgia Cali, Warren 
 - **The production-dependency test:** SB Nation "had based a ton of design around knockout and there was no screen smart of knockout" (Hoefler's Knockout had no screen-optimized version) — "we had gone really far down the road" before discovering it, forcing a radical shift to Gotham Narrow. Verify every production dependency renders in the target medium *before* designing around it; "until the thing is actually on production and turned on and exist it's not done."
 - **Real content always:** "gut checking… every choice that we were making with… real content" their editors "were publishing on the verge… every choice along the way" — 20 type boards, three meetings with editorial stakeholders, zero lorem ipsum.
 
+Tier-1 digest of these field notes: prototype at true spatial context (Jae Park; physical tier → `hardware-product-design`); scaffold, don't script, for collaborators (PBJ); prototype the core loop before the app exists (CapWords); at publishing scale (Vox/Polygon): real content gut-checks everything, embed the front-end dev in exploration, plan polish as an end stage, the decoy mood board, verify production dependencies early.
+
 ## The prototyping team's 2022 Q&A (Learn)
 
 From the team's 2022 Q&A:
@@ -116,6 +134,10 @@ From the team's 2022 Q&A:
 - **Phrase feedback as the experience, not taste:** not "I don't like this color" but "I think blue instead of red would better communicate what the experience is about."
 - **Let the creators scope the feedback** (Metts & Welfle, *Writing Is Designing*, ch. 8): before someone presents, ask "What sort of feedback are you looking for?" — "It empowers them to control the conversation and avoids a feeling of vulnerability, like they've been thrown to the wolves." Same chapter's facilitation move: worksheets/canvases make "the thing… asking for information," shifting you from interrogator to facilitator.
 - **Refocus on what wins hearts:** with dozens of ideas competing, advance the two or three people loved; "no one true winner" is fine — the rest recycle into future work. And the recurring trap: "we sometimes get caught up in trying for a perfectly polished prototype" — always remember the question the prototype exists to answer.
+
+## Concept car → crash test → flag (Linear)
+
+- **Concept car → crash test → flag** (Linear): a bold concept makes the future easier to say yes to, but it earns implementation only after focused crash tests. Test the environment (native shells, browser, platform controls), appearance (light/dark/custom themes, contrast), and hierarchy (every major view type and state). Then ship behind a feature flag with old/new toggles so dogfood feedback compares reality, not memory.
 
 ## Team-of-one prototyping (Leah Buley, *The User Experience Team of One*, Rosenfeld 2013)
 

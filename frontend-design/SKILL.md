@@ -1,6 +1,6 @@
 ---
 name: frontend-design
-description: "Build distinctive, production-grade web UI — components, pages, apps — with a bold committed aesthetic, avoiding generic AI slop. Use when generating or building frontend interfaces. Craft rules/motion values → web-design (web-animation-design); restrained polish → design-craft; repairing AI-generated UI → working-with-ai (ai-ui-direction); generative visuals → creative-coding. Triggers: landing page, hero, component, distinctive UI."
+description: "Build distinctive, production-grade web UI — components, pages, apps — with a bold committed aesthetic, avoiding generic AI slop. Use when generating or building frontend interfaces. Craft rules/motion → web-design; restrained polish → design-craft; reviewing existing UI → interface-review; repairing AI-generated UI → working-with-ai (ai-ui-direction); generative visuals → creative-coding. Triggers: landing page, hero, component, distinctive UI."
 ---
 
 # Frontend Design
@@ -18,7 +18,7 @@ description: "Build distinctive, production-grade web UI — components, pages, 
 4. **Truth:** make the hero demonstrate the real product mechanism with internally consistent data. Demo data may be authored and labeled synthetic, but prices, customers, benchmarks, and capabilities are never invented.
 5. **Delivery:** implement the complete experience, then inspect it at real size and under responsive, interaction, content, and accessibility stress.
 
-**The brief wins.** Honor pinned aesthetics, eras, fonts, and palettes even when they match a known tell. Where the brief leaves the aesthetic open, reject unconsidered defaults. The named tells are kicker/eyebrow labels (a ban), side-stripe borders, gradient text, purple/neon palettes, reflex cream grounds, glow halos, icon tiles above headings, nested cards, identical card grids, and reflex display faces; the full catalog with detector IDs is in [references/anti-slop-catalog.md](references/anti-slop-catalog.md). Also self-check against the four saturated looks (cream + italic serif + terracotta, near-black + neon glow, hairline broadsheet + mono labels, default neobrutalism): if someone could guess your aesthetic from the category alone, rework it. A system font is acceptable when the artifact must be single-file and offline, and on Operate/Read surfaces generally. Otherwise prefer a distinctive licensed or open face that can actually ship.
+**The brief wins.** Honor pinned aesthetics, eras, fonts, and palettes even when they match a known tell. **Precedence:** an explicit user brief or brand guideline beats this skill's ban and tell list on the specific item it pins, marked bans included (a brand system that specifies eyebrow labels gets eyebrow labels). The pin covers that item only: every other ban and default still applies, and one pinned tell does not license its neighbours. "Pinned" means stated by the user or present in the supplied brand/design system, not inferred from the category. The craft floor and the quality failures (contrast, states, hidden content) are not taste and are not waived by a pin; if a pinned value breaks one, build it as pinned where possible and report the conflict. Where the brief leaves the aesthetic open, reject unconsidered defaults. The named tells are kicker/eyebrow labels (a ban), side-stripe borders, gradient text, purple/neon palettes, reflex cream grounds, glow halos, icon tiles above headings, nested cards, identical card grids, and reflex display faces; the full catalog with detector IDs is in [references/anti-slop-catalog.md](references/anti-slop-catalog.md). Also self-check against the four saturated looks (cream + italic serif + terracotta, near-black + neon glow, hairline broadsheet + mono labels, default neobrutalism): if someone could guess your aesthetic from the category alone, rework it. A system font is acceptable when the artifact must be single-file and offline, and on Operate/Read surfaces generally. Otherwise prefer a distinctive licensed or open face that can actually ship.
 
 ## Build contract
 
@@ -26,7 +26,7 @@ description: "Build distinctive, production-grade web UI — components, pages, 
 2. Build on accessible standard controls; theme their visual layer rather than recreating behavior.
 3. Implement working code with the requested states and interactions. Match implementation complexity to the concept: maximalism may require more machinery; refined minimalism requires restraint and precision.
 4. Keep decorative motion finite and purposeful. Use the owning `web-design` motion rules when exact values are needed.
-5. Commit first, then clarify. Rebuild every atom (nav, buttons, inputs) in the chosen vocabulary. Later passes sharpen clarity and never dilute the concept.
+5. Commit first, then clarify. On Persuade and Experience, rebuild every atom (nav, buttons, inputs) in the chosen vocabulary; on Operate and Read, keep the product's navigation and controls (step 0). Later passes sharpen clarity and never dilute the concept.
 6. Return **concept → implementation → verification**. Name the files changed and the checks actually run.
 
 ## Verification

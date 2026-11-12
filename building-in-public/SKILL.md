@@ -87,4 +87,4 @@ Hold against this skill's build-for-yourself leanings: building for yourself "so
 - **`design-prototyping`** — the prototype-stage validation mechanics (what to fake, how to demo); here they double as content.
 - **`shape-up`** — appetite/betting once the indie product grows a team.
 
-> **Staleness note (Kevin's rule):** auto-captioned 2024–25 talks plus a 2014 book; platform/algorithm specifics (TikTok duets, trend-jacking, newsletter vendors, social-network examples) decay fastest — the feedback-over-downloads, persona×cohort, owned-surface, and margin-over-revenue rules are the durable layer.
+> **Staleness note:** auto-captioned 2024–25 talks plus a 2014 book; platform/algorithm specifics (TikTok duets, trend-jacking, newsletter vendors, social-network examples) decay fastest — the feedback-over-downloads, persona×cohort, owned-surface, and margin-over-revenue rules are the durable layer.

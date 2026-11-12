@@ -58,8 +58,11 @@ Use the lightest gate that matches the change:
 
 - **Reference-only fold:** validator, whitespace check, targeted grep for broken cross-refs.
 - **Parent `SKILL.md` body edit:** validator plus quick read of the first 120 lines to ensure routing still appears early.
+- **Fold reconciliation:** before finishing any fold, grep the parent reference and its siblings for every number, API name, and rule the fold introduces, and reconcile older examples with the new rule in the same change. Fold into the existing text; do not fold beside it.
+- **Body budget:** `scripts/validate_skills.py` warns when a body passes ~5k tokens. Claude Code keeps only the first 5,000 tokens of an invoked skill after compaction, so treat the warning as a defect: a fold adds one line or table row to the body and puts the texture in a reference.
 - **Description edit:** validator plus routing probes for target, nearest neighbor, and control. Keep the prompts in a fixture under `docs/` and register it in `scripts/check_routing_probe_fixtures.py`; its `--packet` flag prints a blind descriptions-only packet (no expected answers) for the fresh judge.
 - **New skill:** source bar check, README row, routing probes, validator, and a grep audit for missing relationship links.
+- **Output quality:** routing probes test retrieval only. For skills made largely of judgment, keep at least three cases under `<skill>/evals/<case-name>/` (`prompt.md`, `case.yaml`, `graders/`), run each with and without the skill, and keep the skill only where it changes the result. `claude plugin eval` reads this layout (run it from the skill directory); the method and the 2026-11 baseline are in `docs/skill-evals-2026-11.md`.
 - **Consolidation or rename:** before/after probes, corpus-wide edge remap, independent grep audit with zero dangling live names, and rollback if routing worsens.
 
 ## Agent-Standard Governance
@@ -106,7 +109,7 @@ Treat external skill repositories as source material, not installable truth.
 - Fold only durable, locally useful lessons into existing skills.
 - Park single-source doctrine until corroborated by a primary source or a second independent source.
 - Log read-skip decisions so another agent does not rescreen the same low-value material.
-- **Apple first-party skills ship with Xcode (27+); leverage them when available.** Apple-platform skills here (`uikit`, `swiftui`, `apple-design`) tell agents to check for `xcrun` and use the exported skills at task time. For intake, export with `xcrun agent skills export` when Xcode is installed; otherwise use a public mirror of the export (e.g. https://github.com/mariusfanu/xcode-skills, Xcode 27.2 27B52, with per-beta rename history). Treat them as a first-party source that outranks third-party Apple-platform skills when they disagree, record the Xcode build you read, and fold lessons in this library's own words — the content is Apple-authored, so do not copy it wholesale. Re-check on each Xcode release: skills get renamed, split and replaced (27.1 replaced `uikit-app-modernization` with `app-resizability`).
+- **Apple first-party skills ship with Xcode (27+); leverage them when available.** Apple-platform skills here (`uikit`, `swiftui`, `apple-design`) tell agents to check for `xcrun` and use the exported skills at task time. For intake, export with `xcrun agent skills export` when Xcode is installed; otherwise use a public mirror of the export (e.g. https://github.com/mariusfanu/xcode-skills at commit `047c090` for Xcode 27.2 27B52, with per-beta rename history; the pinned build and task-time instructions live in `apple-design` (xcode-agent-skills)). Treat them as a first-party source that outranks third-party Apple-platform skills when they disagree, record the Xcode build you read, and fold lessons in this library's own words — the content is Apple-authored, so do not copy it wholesale. Re-check on each Xcode release: skills get renamed, split and replaced (27.1 replaced `uikit-app-modernization` with `app-resizability`).
 
 ## Book Source Maps
 
@@ -137,6 +140,7 @@ python3 scripts/check_vercel_routing_probes.py
 python3 scripts/check_routing_probe_fixtures.py
 python3 scripts/check_skill_smoke_tests.py
 python3 scripts/check_application_fixtures.py
+scripts/plugin_validate.sh   # optional: `claude plugin validate` on a skills-only copy; skips without the CLI
 git diff --check
 rg -n "old-skill-name|dangling-reference" .
 python3 scripts/verify_quotes.py SOURCE... <<'EOF'

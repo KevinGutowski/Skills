@@ -71,3 +71,18 @@ Per-principle diagnostic questions for reviewing a design, plus the talk's worke
 **Video play/pause + scrubber (Simplicity / add to simplify).** The play/pause control is simple and familiar. But on returning later, the user needs more context — so showing current position and time remaining *adds* information that makes the simple control more useful. Simplicity is "exactly enough," which sometimes means more, not less.
 
 **Cheap vs. crafted (Craft).** Real-world tells: a rickety door that won't close, a shirt that unravels in the wash. Software equivalents: a button you tap and then wait on, jittery scrolling, misaligned icons, a layout that breaks on rotation. These make people distrust the results the product gives. Crafted details do the opposite — they inspire confidence.
+
+---
+
+## Running the critique (Josh Puckett's critique methodology)
+
+- **Sequence:** context first (what is this, and what's the emotional stakes of the task — a divorce-filing app demands different care than a podcast player) → honest first impressions → then separate lenses one at a time: visual design, interface design, consistency/conventions, user context. Don't merge the lenses — a beautiful interface can be unusable and vice versa; judge each on its own terms before synthesizing.
+- **Issue format:** **[Issue name]** — specific factual observation → impact on the user → what it could be instead. Count things, name colors, quote text ("four background colors competing" beats "too many colors"). Frame interface-design gaps as *missed opportunities* ("we're missing a chance to reward progress").
+- **Severity ladder:** *structural* (wrong mental model, IA, missing function — changes what it *is*) > *behavioral* (flow, feedback, expectation-setting — changes how it *feels*) > *visual* (color, type, shadows — changes how it *looks*). Order findings accordingly.
+- **Voice:** decisive, no hedging, no praise-sandwich padding; every problem paired with a direction and a why. End with the 3–5 highest-impact changes, ranked.
+
+---
+
+## From idea to interface (2025) — the build sequence
+
+The principles operationalized into an order of work: **Structure** (write down everything the app does → imagine real usage → cut/rename/group; every screen answers *where am I / what can I do / where can I go*) → **Navigation** (tabs are for navigation, not actions; "each extra tab means one more decision"; toolbar carries the screen title + essential actions) → **Content** (don't mix types; progressive disclosure — hidden content "is not missing, it's just behind a tap"; group by time/progress/patterns; lists beat grids for scanning) → **Visual design** (squint-test the hierarchy; stress-test with long text and large type; semantic colors "named after their purpose, not their appearance"; accent color sparingly). "Design is never really finished, and there's no single right answer."

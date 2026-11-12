@@ -1,6 +1,6 @@
 ---
 name: superconductor
-description: "Read and create Superconductor work through the official API instead of browser automation: verify the token user, list projects (by workspace), tickets, and chats, read implementation status, messages, and diffs, read chats, and create a text ticket with optional default-agent launch. macOS Keychain per-device token. Triggers: Superconductor project, ticket, chat, implementation, superconductor.com URL."
+description: "Read and create Superconductor work through the official API instead of browser automation: verify the token user, list projects, tickets, and chats, read implementation status, messages, and diffs, and create a text ticket with optional default-agent launch. Use when given a superconductor.com URL or asked about Superconductor tickets or chats. macOS Keychain per-device token. Triggers: Superconductor project, ticket, chat, implementation."
 ---
 
 # Superconductor API
@@ -13,7 +13,7 @@ Use the official Superconductor REST API through `scripts/sc_api.py` (Python sta
 - Everything endpoint-specific in this skill and its helper was **last verified on 2026-11-06** and may be stale. Never vendor the full schema here.
 - Re-read the live docs/OpenAPI before using an endpoint the helper does not wrap, before any mutation you have not done this session, and whenever a response does not match expectations.
 - The helper fails closed (exit 4) on schema drift, non-JSON bodies, redirects, or undocumented statuses. Do not work around that by inventing fields or guessing; re-read the live docs, then fix the helper or tell the user.
-- The API cannot launch agents on existing tickets, send messages, or open PRs (as of 2026-11-06). Say so instead of improvising; those happen in the app.
+- The helper does not wrap sending messages. The live API has `POST /ticket_implementations/{id}/messages` and `POST /chats/{id}/messages` (seen 2026-11-12); re-read the live docs before calling them directly, as above. Launching agents on existing tickets and opening PRs had no endpoint on that date: check the live spec, and if it is still absent say so instead of improvising; those happen in the app.
 
 ## Credentials: one revocable token per device
 

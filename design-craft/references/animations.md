@@ -417,7 +417,9 @@ Microinteraction patterns that often replace hard cuts:
 
 ## Scale on Press
 
-A subtle scale-down on click gives buttons tactile feedback. Always use `scale(0.96)`. Never use a value smaller than `0.95` — anything below feels exaggerated. Use CSS transitions for interruptibility — if the user releases mid-press, it should smoothly return.
+A subtle scale-down on click gives buttons tactile feedback. Always use `scale(0.96)`. Never use a value smaller than `0.95` on a button — anything below feels exaggerated. Use CSS transitions for interruptibility — if the user releases mid-press, it should smoothly return.
+
+The `0.95` floor is scoped to label-bearing targets — buttons, pills, cards, rows — where a deeper squeeze visibly shrinks the text. Small icon-only targets are the one exception: the tactile theme's ladder ([tactile-design.md](tactile-design.md)) presses 44px round icons to about `.94` and 22px row icons to about `.92`, because the same ratio moves far fewer pixels on a small target. Never go below `0.95` on anything button-sized or larger.
 
 Not every button needs this. Add a `static` prop to your button component that disables the scale effect when the motion would be distracting.
 

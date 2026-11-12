@@ -41,7 +41,7 @@ Detailed worked procedures live in `archival-research/` — load them when you r
 
 User asks to gather information and imagery about a *finite set of subjects* (venues, artworks, artists, events, products, etc.) and wants the artifacts persisted to disk for later use — UI design, documentation, citation, or just personal archive. The output is a folder per subject containing source HTML, images, and a curated README that documents the trail.
 
-**The source can be local, not just the web.** This skill applies just as much when the artifacts already sit on disk — a folder of scanned magazine PDFs, document images, a photographed archive — and the job is to turn them into a durable, citable text corpus. The *acquisition* step differs (OCR a page vs. fetch a URL), but everything else is identical: preserve provenance, keep the auto layer separate from the curated layer, read the source yourself instead of trusting the tool, and never invent text to fill a gap. If you're about to write an ad-hoc OCR/transcription pipeline, you're doing archival work — operate from this skill. See "Local-source corpora" below.
+**The source can be local, not just the web.** This reference applies just as much when the artifacts already sit on disk — a folder of scanned magazine PDFs, document images, a photographed archive — and the job is to turn them into a durable, citable text corpus. The *acquisition* step differs (OCR a page vs. fetch a URL), but everything else is identical: preserve provenance, keep the auto layer separate from the curated layer, read the source yourself instead of trusting the tool, and never invent text to fill a gap. If you're about to write an ad-hoc OCR/transcription pipeline, you're doing archival work — operate from this reference. See "Local-source corpora" below.
 
 **Don't use for:**
 - Quick factual lookup (just WebFetch + summarize).
@@ -241,7 +241,7 @@ For each `images/` entry, log in `capture_log.tsv` and the README:
 - Visible attribution string (photo credit, "© Museum X", "Fair use", etc.)
 - Whether the source page made a copyright claim
 
-Don't render usage decisions in this skill — that's downstream. Just capture the metadata so the downstream user can decide.
+Don't render usage decisions in this reference — that's downstream. Just capture the metadata so the downstream user can decide.
 
 ## Canonical inventory first — never invent attributions
 

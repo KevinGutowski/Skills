@@ -11,7 +11,8 @@ The task shape: an AI produced UI and you have to make it *right* — which is a
 - Recognize the failure modes
 - Name the tell, then pick the move
 - Escape the model's defaults
-- Direct the loop
+- Direct the loop (generate and prompt · prompt vs edit · when words are the wrong tool · evaluate, apply review, and finish)
+- Borrow, codify, and merge techniques
 - Checklist
 - Relationship to other skills
 
@@ -61,16 +62,26 @@ These are one project's results on its own briefs. Treat them as strong defaults
 
 ## Direct the loop
 
+Ten numbered moves in working order, grouped by what they are for. The numbers run across the groups; the three borrow-and-codify techniques sit in their own unnumbered section after the loop because they are optional inputs to it, not steps in it.
+
+### Generate and prompt
+
 1. **Substrate first** (Ryo): generate onto a constrained base — shadcn/Radix-grade primitives and "a really robust like foundational set of tokens and components" — because AI "is really good at composing patterns that exist." Then theme by hand. (Full de-slop rules → `frontend-design`.)
 2. **Prompt surgically, in primitive vocabulary**, scoped to the right container level. Batch-generate options and cull ("five vastly different hover effects" → keep one, ask for five more in its direction).
    - **For polish, prompt buildable values, not adjectives** (Kevin Kold, X Article 2064972712729292800): "smooth/premium/polished" is not an instruction. Give the actual motion curve, duration, offset, blur, shadow stack, radius token, state list, and allowed variables. Start with the token block and say "use only these tokens, no one-off values." Then isolate each polish pass: "only tune the shadow stack," "only tune the entrance," "only tune pressed state." One variable at a time prevents the agent from compensating in unrelated places.
    - **Hand Figma properties over explicitly.** When using Figma/MCP context, do not assume the bridge preserves every relevant style. Point at the current selection and list the properties the agent must read: padding, gaps, token names, colors, radii, type sizes/weights, shadows, motion notes, and known variants. Treat the file as a hypothesis for the build, not the final state system.
+
+### Prompt vs edit
+
 3. **Prompt vs edit**: don't prompt "change P8 to P4" when you can edit the value directly (MDS's named anti-pattern) — prompting is for structure and behavior; direct edits are for values you can already see. Lovin's version: "Why are you spending money to nudge something in code? Just like go change the class" — with the **batch exception**: "I'm okay saying nudge this four pixels to the left if I can bundle that with like six other prompts" (one agent run amortizes many nudges; lone nudges get hand-edited). Third path (Kyle Santos, Dive Club podcast, HcLz3ikw-n0): a visual editor where you tweak values directly then "hit apply" to write them back through the agent — "keeping you out of the prompt loop." The end-state role: "AI pilots" — "there's still going to be the need for someone to understand what they're doing and what makes it good."
-   - **Rip techniques from reference URLs** (Santos): "I dropped in this URL and I said, 'This technique is awesome. I want it applied to our components. Go do that'" — then extrapolate the theory, not the snippet: "take the same theory but make it stronger. Maybe do like five layers."
-   - **Codify taste as an auditor** (Santos): curate ~15–20 CodePens/posts/tweets from designers you admire into a skill that runs as a "visual design interaction design auditor" subagent. Iterate by re-synthesizing, not stacking: zoom "back to the source material and think about what the general philosophy becomes" when adding a perspective. Caution: "don't don't create one skill that is every designer you've ever thought was cool." When the source is a visual reference corpus rather than posts/code examples, use `creating-skills` (converting-visual-references-to-skills) to extract the taste rules; this reference owns applying those rules as an auditor or repair loop.
-   - **Style-transfer merge** (Madrick): when a designer build and an engineer build diverge, don't reconcile by hand — "Can you keep all the functionality of the engineer's version and give it all the styling that I have here." For motion, prompt with a labeled keyframe sketch — "a picture's literally worth a thousand words" — labeling each state in the drawing.
+
+### When words are the wrong tool
+
 4. **Prompt the symptom outside your wheelhouse** (Ryan Moshi, Dive Club podcast, onQY0PrUulw): when you can't name the right mechanism, prescribing one is risky — telling it "just use transform scale or just like scale up the canvas size, that might have been bad direction. Instead, just telling it like here's what's happening. It's blurry. Can you make it sharp?" Two failed tries → "dig in and try to learn it myself." (Inside your wheelhouse, primitive vocabulary still wins — this is the fallback, not the default.)
-5. **Sketch beats words for spatial intent** (Ron Goldin, Dive Club podcast, UkQpgslyR3A): "when something is off in Claude, I could back and forth with it in words for like 10 minutes or I could go to Figma and sketch it out in 5 minutes" — dual-task between the agent building and a sketch surface. Same family as Madrick's labeled keyframe sketch above. And have the agent reflect rambles back (Marvin Schwaibold, Dive Club podcast, KpJs7mZYErg): "ask me clarifying questions if you're unsure of my prompt cuz I'll ramble or send a voice note" — then it spits "basically my idea back to me" for confirmation before building.
+5. **Sketch beats words for spatial intent** (Ron Goldin, Dive Club podcast, UkQpgslyR3A): "when something is off in Claude, I could back and forth with it in words for like 10 minutes or I could go to Figma and sketch it out in 5 minutes" — dual-task between the agent building and a sketch surface. Same family as Madrick's labeled keyframe sketch (under "Borrow, codify, and merge techniques"). And have the agent reflect rambles back (Marvin Schwaibold, Dive Club podcast, KpJs7mZYErg): "ask me clarifying questions if you're unsure of my prompt cuz I'll ramble or send a voice note" — then it spits "basically my idea back to me" for confirmation before building.
+
+### Evaluate, apply review, and finish
+
 6. **Evaluate agents by how they drive** (Tommy Geoco, Dive Club podcast, OYNoy468kS8): don't judge a model/tool on one-shot output — "you have to drive them for a little while. When you drive it with intent and you're just like… that's wrong fix, that's wrong fix, and you do that a few iterations, I think then you have a good feel." (Turning those corrections into standing rules → [agentic-coding.md](agentic-coding.md) / `creating-skills`.)
 7. **Build once, then discover missing states by touching it.** A static mock rarely names every state. After implementation, operate the component and add the states the live thing reveals: idle, hover, pressed, loading/working, disabled, success/error, empty/overflow, snap-caught, drag-release, and reduced-motion. If a number hard-cuts, make it roll or cross-fade; if a task is working, prefer a calm state treatment over a default spinner when the wait is short and controlled. The user feels the state system, not the screenshot.
 8. **Apply review notes the way the reviewer works** (Kosta, tactile-design, distilled from hundreds of pixel-level review notes). A designer's note is usually one element and one change, so:
@@ -83,6 +94,14 @@ These are one project's results on its own briefs. Treat them as strong defaults
    - report in plain bullets: what changed, where, and anything that conflicts with an earlier rule.
 9. **Judge in a fresh context**: have an independent judge with its own context window evaluate the output against explicit criteria. When a deterministic detector runs too, form the design judgment *before* reading its output, then reconcile the two (`interface-review` owns the two-pass critique) (the pattern, loadout, and rationale live in `design-prototyping`'s agents tier #4; criteria sources: `design-principles`, `design-craft`).
 10. **Fundamentals gate the polish stage** (MDS's skateboard maxim): "Have fun dropping into the bowl" — speed is real, but output you can't diagnose is output you can't finish.
+
+## Borrow, codify, and merge techniques
+
+Three ways to bring outside taste or a diverged build into the loop above. None is a prompt-vs-edit question; use them when a reference, a taste corpus, or a second build exists.
+
+- **Rip techniques from reference URLs** (Santos): "I dropped in this URL and I said, 'This technique is awesome. I want it applied to our components. Go do that'" — then extrapolate the theory, not the snippet: "take the same theory but make it stronger. Maybe do like five layers."
+- **Codify taste as an auditor** (Santos): curate ~15–20 CodePens/posts/tweets from designers you admire into a skill that runs as a "visual design interaction design auditor" subagent. Iterate by re-synthesizing, not stacking: zoom "back to the source material and think about what the general philosophy becomes" when adding a perspective. Caution: "don't don't create one skill that is every designer you've ever thought was cool." When the source is a visual reference corpus rather than posts/code examples, use `creating-skills` (converting-visual-references-to-skills) to extract the taste rules; this reference owns applying those rules as an auditor or repair loop.
+- **Style-transfer merge** (Madrick): when a designer build and an engineer build diverge, don't reconcile by hand — "Can you keep all the functionality of the engineer's version and give it all the styling that I have here." For motion, prompt with a labeled keyframe sketch — "a picture's literally worth a thousand words" — labeling each state in the drawing.
 
 ## Checklist
 
@@ -100,12 +119,12 @@ These are one project's results on its own briefs. Treat them as strong defaults
 
 ## Relationship to other skills
 
-- **`frontend-design`** — generates the UI well (de-slop substrate, distinctive aesthetics); this skill takes over when output needs direction and repair.
-- **`design-prototyping`** — the agents tier owns the broader prototyping workflow, the mock-diff checklist, and the judge pattern; this skill is its layout-diagnosis sharp end.
-- **[agentic-coding.md](agentic-coding.md)** — agent workflow mechanics (plan mode, prompt protocol, topology); this skill is UI-specific direction.
-- **`creating-skills` (converting-visual-references-to-skills)** — turns a curated image corpus into reusable visual-taste criteria; this skill uses those criteria to steer, audit, and repair generated UI.
+- **`frontend-design`** — generates the UI well (de-slop substrate, distinctive aesthetics); this reference takes over when output needs direction and repair.
+- **`design-prototyping`** — the agents tier owns the broader prototyping workflow, the mock-diff checklist, and the judge pattern; this reference is its layout-diagnosis sharp end.
+- **[agentic-coding.md](agentic-coding.md)** — agent workflow mechanics (plan mode, prompt protocol, topology); this reference is UI-specific direction.
+- **`creating-skills` (converting-visual-references-to-skills)** — turns a curated image corpus into reusable visual-taste criteria; this reference uses those criteria to steer, audit, and repair generated UI.
 - **`design-systems`** — the bricks/DS-as-AI-context doctrine that makes step 1 possible.
 - **`design-craft`** (incl. its `emil-kowalski` reference) — the polish criteria the judge enforces.
 - **`frontend-design`** (anti-slop-catalog, surface-modes) — the named tells with detector IDs, the craft floor, surface modes, and the direction contract; **`design-craft`** (refinement-moves) — the playbook behind each directional verb.
 
-> **Staleness note (Kevin's rule):** Tailwind/Figma specifics (4px base, auto-layout terms) are 2025–26-era tooling; the primitive-literacy thesis, failure-mode taxonomy, and direct-the-loop discipline are the durable layer.
+> **Staleness note:** Tailwind/Figma specifics (4px base, auto-layout terms) are 2025–26-era tooling; the primitive-literacy thesis, failure-mode taxonomy, and direct-the-loop discipline are the durable layer.
