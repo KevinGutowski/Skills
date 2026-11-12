@@ -124,7 +124,7 @@ Requirements and testing: `web-design` (web-accessibility).
 
 Vaul reproduces the iOS sheet with one CSS transition: `cubic-bezier(0.32, 0.72, 0, 1)` at 500ms. The curve is steep at the start, which is why half a second still feels immediate (the curve-buys-duration rule is in PRACTICAL-TIPS). Two scoping rules from it:
 
-- The 500ms timing fits a **full-width, edge-attached** sheet. A small floating drawer wants roughly 200ms with a standard ease-out; the long timing reads as sluggish on a small surface.
+- The 500ms timing fits a **full-width, edge-attached** sheet. A small floating drawer wants roughly 200ms on the theme's `--ease-out` curve; the long timing reads as sluggish on a small surface.
 - Height changes and content crossfades inside the sheet stay in the same timing family as the sheet itself, or the component stops reading as one object.
 
 ## Hold gestures

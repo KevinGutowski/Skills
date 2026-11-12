@@ -44,7 +44,7 @@ Use this skill to choose the chart that best answers the reader's question witho
 
 - **Single important number**: use a stat callout, not a chart.
 - **Exact lookup across many values**: use a table, optionally paired with a chart.
-- **Time trend**: use a line chart. Use a dashed segment for projections or incomplete periods.
+- **Time trend**: use a line chart when the trajectory is the question. Use a dashed segment for projections or incomplete periods. Exception: per-period counts or status on an in-app product dashboard use bars (editorial-interaction → Product Dashboard Conventions).
 - **Few ordered time points with focus on total volume**: use line or column; choose line if shape matters, columns if per-period totals matter.
 - **Category comparison with meaningful zero**: use bar/column; use horizontal bars for long labels.
 - **Category comparison where zero is not informative**: use a dot plot or lollipop.

@@ -2,3 +2,5 @@
 .venv/
 goal/
 skill-cleanup-backups/
+__pycache__/
+*.pyc

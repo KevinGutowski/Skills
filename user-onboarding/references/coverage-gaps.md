@@ -2,6 +2,8 @@
 
 Use this file to park onboarding patterns that are promising but not yet strong enough to become reusable agent rules.
 
+When onboarding decisions become reusable agent guidance, preserve the surface and evidence: stage in the journey, current user state, desired quick win, step added/removed, source example, and known exceptions. If a first-run or empty-state pattern lacks evidence, park it as a coverage gap instead of inventing a universal rule from one product.
+
 ## Candidate Gaps
 
 - **B2B admin and team-invite onboarding.** `driving-momentum.md` mentions internal champions and team adoption, but the skill lacks accepted examples for admin dashboards, invite sequencing, permission prompts, and team rollout states.

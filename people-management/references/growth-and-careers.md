@@ -10,6 +10,7 @@ Sources: Kim Scott, *Radical Candor* (2017) — including Russ Laraway's Career 
 - The annual growth-management pass (20-minute boxes)
 - Hogan's four hats: mentor, coach, sponsor, feedback
 - Structural clarity: RACI, responsibility Venn, VMSO/team charter
+- Design-lead transition (Sten)
 
 ## Laraway's Career Conversations (3 × 45 minutes)
 
@@ -67,3 +68,13 @@ Growth needs scaffolding people can climb without falling:
 - **VMSO / team charter** (Jeff Weiner via Hogan): Vision (north star) → Mission (the team's role toward it) → Strategy (what this team is *uniquely* set up to do) → Objectives (measurable benchmarks). Hogan's Prod Infra org had tools and objectives but no vision/mission — so it couldn't defend prioritization, hiring, or its own existence against feature teams hungry for engineers. The published "team charter" wiki fixed all three. Pair with Zhuo's repeat-test (would five random people recite the same vision?) — see SKILL.md.
 
 Hiring philosophy and team-composition signals → `design-org-influence/references/team-building.md`. Promotion fairness mechanics (committees, calibration) → [hiring-and-firing.md](hiring-and-firing.md).
+
+## Design-lead transition (Sten)
+
+Moved from the `SKILL.md` body, which keeps the three rules. Source: Anton Sten, *Products People Actually Want* (2025 ebook). Design-management corroboration only; direct-report mechanics remain sourced to Scott, Zhuo, and Hogan.
+
+Design-lead addendum (Sten): management is a craft shift, not a better version of individual contribution. The role adds why-setting, stakeholder translation, calendar load, and people outcomes; it removes much of the protected maker time that made the IC role satisfying. Before treating management as the default promotion, ask whether the person has gone deep enough in the craft to teach it back and whether they want the relational work enough to trade away execution time.
+
+For design managers, stay close enough to "open the file" (Sten). You do not need to be the strongest maker on the team, but you need current contact with the tools, constraints, and edge cases your reports face. Hands-on credibility lets you teach execution, not only strategy. Letting the craft drift too far turns reviews into abstractions that junior designers cannot use.
+
+Energy management is part of the job design. If leadership drains your attention through meetings, reserve recovery and deep-work blocks deliberately; a manager who never processes cannot listen well, coach well, or make clear decisions.

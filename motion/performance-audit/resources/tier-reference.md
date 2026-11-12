@@ -48,6 +48,7 @@ The property alone isn't enough — the animation method must also support compo
 -   **CSS `@keyframes` / `animation`** — S-tier
 -   **Web Animations API** (`element.animate()`) — S-tier
 -   **Motion `animate()` and `<motion.div />`** with compositor props — S-tier (uses WAAPI internally)
+-   **Motion independent transforms** (`x`, `y`, `scale`, `rotate`, …) — S-tier on Motion 14.2.0+ only; A-tier below (see the version note under A-Tier)
 -   **`scroll-timeline` / `view-timeline`** with compositor props — S-tier
 -   **Motion `scroll() and `useScroll` (also via`useTransform`)** with compositor targets — S-tier
 
@@ -123,6 +124,9 @@ JavaScript sets compositor values (`transform`, `opacity`) via the main thread. 
 -   GSAP `.to()` / `.from()` animating compositor properties
 -   Any JS library using rAF (not WAAPI) to drive compositor values
 -   react-spring, anime.js driving `transform`/`opacity`
+-   Motion independent transforms (`x`, `y`, `scale`, …) on Motion **below 14.2.0** or `framer-motion`
+
+> **Version note (library note, 2026-11, not part of the upstream kit):** Motion 14.2.0 (2026-10-13) added "Hardware accelerated independent transforms like `x`, `y`, `scaleX` etc." per its changelog. Below 14.2.0 the Motion row in Detection Patterns is A-tier as written. On 14.2.0+ grade the same code S-tier and do not flag it. With no version visible, report both grades and ask. Motion-value-driven or `style`-prop transforms stay A-tier on every version. The full table is in [../index.md](../index.md) under Scoring overview.
 
 ### Layer Promotion
 
@@ -153,7 +157,7 @@ function tick() {
     requestAnimationFrame(tick)
 }
 
-// A-tier - Motion
+// A-tier below Motion 14.2.0; S-tier on 14.2.0+
 animate(element, { x: 100 }) // Uses independent transform value instead of transform
 
 // A-tier — GSAP

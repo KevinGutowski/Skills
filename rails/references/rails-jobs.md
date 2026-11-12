@@ -1,6 +1,6 @@
 # Rails Jobs
 
-*Scope: Write reliable Rails background jobs — simple orchestration over workflow gems, idempotency keys, safe retries, failure isolation. Use when creating, refactoring, or debugging Active Job/queue-backed work. For queue performance (Sidekiq tuning, queue-time autoscaling) use optimizing-rails — this skill is job design, that one is throughput. Triggers: background job, Active Job, idempotency, retries, perform_later, job orchestration, dead jobs.*
+*Scope: Write reliable Rails background jobs — simple orchestration over workflow gems, idempotency keys, safe retries, failure isolation. Use when creating, refactoring, or debugging Active Job/queue-backed work. For queue performance (Sidekiq tuning, queue-time autoscaling) use optimizing-rails — this reference is job design, that one is throughput. Triggers: background job, Active Job, idempotency, retries, perform_later, job orchestration, dead jobs.*
 
 > Vendored from [marckohlbrugge/37signals-skills](https://github.com/marckohlbrugge/37signals-skills) @ c58e7d5 (skill text MIT; Fizzy code excerpts under the [O'Saasy license](https://osaasy.dev)). LLM-extracted from 265 Fizzy PRs + Campfire — verify unusual claims against the upstream guide's per-PR links.
 

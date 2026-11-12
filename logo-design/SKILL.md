@@ -5,7 +5,7 @@ description: "Create brand marks, badges, and identity systems via the Peters me
 
 # Logo Design (the Peters Method)
 
-**Sources/gaps** — [references/sources.md](references/sources.md) maps the Peters/Shir corpus; unresolved client/example candidates live in [references/coverage-gaps.md](references/coverage-gaps.md). Worked client cases live in [references/worked-cases.md](references/worked-cases.md).
+**Sources/gaps** — [references/sources.md](references/sources.md) maps the Peters/Shir corpus; unresolved client/example candidates live in [references/coverage-gaps.md](references/coverage-gaps.md). Worked client cases live in [references/worked-cases.md](references/worked-cases.md). Before vectorizing or running the 16×16 check as an agent, read [references/svg-exemplars.md](references/svg-exemplars.md): four hand-written SVG constructions (grid monogram, negative-space noun pair, wordmark with optical adjustments, a mark with its 16px variant) with the measurements that make each pass or fail.
 
 A logo here is a **containerless system** — mark, logotype, badge, patterns, icons — that must work on a water tower, a favicon, and an embroidered hat. (An app icon is a single artwork in an OS-owned container — a different task shape; see Relationships.)
 
@@ -118,7 +118,7 @@ Order of attack: functional pain points first (ask the client what breaks in rep
 The method assumes a human designer with a client in the room. Mapping for AI-agent execution (the process and thresholds are unchanged — only the media differ):
 
 - **Sketch round** = a batch of low-fi directions: one-line concept descriptions and/or rough SVG outlines, one idea each. Quantity still beats polish — keep the 50-idea bar, time-box each, and don't refine at this stage.
-- **Vectorize the best 15** = clean SVG constructions from simple geometry; render each at small sizes, black-on-white *and* white-on-black, before showing anything.
+- **Vectorize the best 15** = clean SVG constructions from simple geometry; render each at small sizes, black-on-white *and* white-on-black, before showing anything. Construction level and a worked small-size audit: [references/svg-exemplars.md](references/svg-exemplars.md).
 - **Presentation / silent ballot** = present ~15 candidates unranked, each with its referenced nouns listed; ask the user to pick their top three *before* revealing yours.
 - **Hat / favicon / embroidery tests** = small-size render checks: rasterize at 16×16 and thumbnail sizes and inspect for the §5 failure modes (thin lines, tight negative space), fixing in the §5 order.
 - **Noun intake and narrowing still happen *with* the user** — never skip to sketching from a self-generated noun list; the narrowing meeting becomes a message exchange, but the client-approval gate stays.
@@ -129,7 +129,7 @@ The method assumes a human designer with a client in the room. Mapping for AI-ag
 - **`ux-writing` (naming-features-and-labels)** — the noun-metaphor move (abstract value → concrete noun) is the visual twin of its candidate-generation exercises; its criteria judge the brand *name* this skill draws marks for.
 - **`client-work` (client-engagements)** — the presentation protocol and silent ballot here are logo-specific instances of its feedback system; qualification, kickoff, and failure handling for the engagement live there.
 - **`apple-design` (ios-brand-identity)** — once the identity exists, expressing it natively in an app (tint, type, components) is that skill's job.
-- **`client-work` (pricing-creative-work)** — the six-week scoped process is the thing being priced; pricing itself lives there.
+- **`client-work` (pricing-creative-work)** — the scoped identity process is the thing being priced; pricing itself lives there.
 
 ## Staleness note
 

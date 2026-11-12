@@ -27,6 +27,16 @@ MotionScore ranks animations based on their render pipeline cost using a tier gr
 | **D** | Main (layout+paint) | High — layout recalc + paint + composite each frame           | `width`, `height`, `margin`, `top`/`left`, `scrollTop` polling          |
 | **F** | Main (thrash)       | Catastrophic — forced synchronous layout per read/write cycle | Interleaved DOM reads/writes, CSS variable inheritance bombs on `:root` |
 
+> **Version gate (library note, 2026-11, not part of the upstream kit):** the Motion changelog lists "Hardware accelerated independent transforms like `x`, `y`, `scaleX` etc." under 14.2.0 (2026-10-13). Read the installed `motion` / `motion-v` version from `package.json` or the lockfile before grading Motion shorthand transforms:
+>
+> | Installed version | `x` / `y` / `scale` / `rotate` etc. via `animate()` or `<motion.div animate>` | "A → S: replace shorthands with `transform`" fix |
+> | --- | --- | --- |
+> | Below 14.2.0, or `framer-motion` | A-tier (driven per frame from the main thread) | Applies as written |
+> | 14.2.0 or later | S-tier by default; do not downgrade or flag | Does not apply — omit it |
+> | Unknown (snippet with no manifest) | Report as "A below 14.2, S on 14.2+" and ask for the version | Offer it only as conditional on the version |
+>
+> Still A-tier on any version: shorthands driven by motion values or the `style` prop (`useMotionValue`, `useTransform`, `useSpring` output), and anything driven by `requestAnimationFrame`. The changelog does not spell out every condition under which acceleration is kept (14.7.1, for one, demotes transforms to the CPU when a layout animation interrupts them), so a runtime trace outranks this table when the two disagree. All other rows of the tier tables are version-independent.
+
 [resources/tier-reference.md](resources/tier-reference.md) provides a detailed breakdown of exactly which kinds of values and patterns fall into which tier. Always read this file first.
 
 ## Step 1: Audit
@@ -94,6 +104,7 @@ For every animation found:
 4. Factor in the animation method:
     - CSS transitions/animations or WAAPI with compositor props → S-tier
     - JS-driven (rAF, GSAP) with compositor props → A-tier
+    - Motion shorthand transforms (`x`, `y`, `scale`, …) → A-tier below Motion 14.2.0, S-tier on 14.2.0+ (see the version gate under Scoring overview)
     - Motion `layout`/`layoutId` → B-tier
     - CSS variable animations → always C-tier minimum, even for compositor values
 5. Read `resources/tier-reference.md` for edge cases and caveats.
@@ -124,7 +135,7 @@ For every animation below S-tier, check if an upgrade is possible:
 -   **D → B**: Replace `width`/`top` etc with Motion `layout` prop
 -   **C → S** (low priority, large elements only): `background-color` transitions on large surfaces (cards, panels, sections, hero areas — not buttons or badges) can be replaced with two absolutely-positioned `::before`/`::after` pseudo-elements crossfaded via `opacity`. Only flag this if profiling shows the paint is a bottleneck.
 -   **C → C**: Ensure CSS variables are registered with `@property` and `inherits: false` where applicable. Doesn't prevent paint but will prevent style recalculation wildfire.
--   **A → S**: Replace Motion `x`/`y`/`scale` etc with `transform` to run animation via WAAPI. Only works when values aren't being animated independently, for instance:
+-   **A → S** (Motion below 14.2.0 only — on 14.2.0+ these shorthands are already accelerated, so do not suggest this): Replace Motion `x`/`y`/`scale` etc with `transform` to run animation via WAAPI. Only works when values aren't being animated independently, for instance:
 
 ```
 <motion.div initial={{ x: -100 }} animate={{ x: 0 }} whileHover={{ scale: 2 }} />
@@ -334,6 +345,7 @@ That said, if there's a GSAP animation that uses independent transforms for no r
 
 -   Uses WAAPI under the hood → compositor properties are genuine S-tier
 -   `animate()` with `transform`/`opacity`/`clipPath`/`filter` → S-tier
+-   `animate()` / `animate` prop with independent transforms (`x`, `y`, `scale`, …) → A-tier below 14.2.0, S-tier on 14.2.0+ (version gate under Scoring overview)
 -   `layout` / `layoutId` props → B-tier (FLIP technique, one-time layout read)
 -   `whileInView` → S-tier (depending on values being animated) + auto-deactivates off-screen (good practice)
 -   `scroll()` with compositor targets → S-tier (ScrollTimeline)

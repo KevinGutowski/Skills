@@ -17,13 +17,13 @@
 - Transaction & TransactionKey (10156)
 
 
-*Sources (samples transcribed verbatim from each session's Code tab; timestamps preserved):*
+*Sources (samples transcribed from each session's Code tab, timestamps preserved; verbatim except the two named in the staleness markers):*
 - *WWDC 2024, session 10145 — "Enhance your UI animations and transitions." https://developer.apple.com/videos/play/wwdc2024/10145/*
 - *WWDC 2024, session 10151 — "Create custom visual effects with SwiftUI." https://developer.apple.com/videos/play/wwdc2024/10151/*
 - *WWDC 2023, session 10156 — "Explore SwiftUI animation" (Kyle Macomber). https://developer.apple.com/videos/play/wwdc2023/10156/*
 - *WWDC 2023, session 10158 — "Animate with springs" (Jacob Xiao). https://developer.apple.com/videos/play/wwdc2023/10158/*
 
-**Staleness markers:** iOS 18-era APIs. The 10145 samples use beta-era `navigationTransitionStyle` — **GA name is `navigationTransition(_:)`**. Re-verify against current docs before shipping.
+**Staleness markers:** iOS 18-era APIs. The 10145 samples use beta-era `navigationTransitionStyle` — **GA name is `navigationTransition(_:)`**. Re-verify against current docs before shipping. **Modernised 2026-11-12** to follow Apple's `swiftui-specialist` skill (Xcode 27.2, 27B52), both adapted and not compiled: the custom `Animatable` modifier (10156) now uses the `@Animatable` macro, and the transaction key (10156) is declared with `@Entry`. The `TextRenderer` sample still hand-writes `animatableData` as the session did — `TextRenderer` has its own `animatableData` requirement and the macro was not checked against it.
 
 ---
 
@@ -584,13 +584,11 @@ content
 
 ## Custom Animatable (runs body every frame — last resort) (10156)
 
+Adapted, not compiled: the session conformed to `Animatable` by hand, forwarding `animatableData` to `angle.radians`. With no setter logic to add, the macro is the current form.
 ```swift
-struct RingOffset: ViewModifier, Animatable {
-    var angle: Angle
-    var animatableData: CGFloat {
-        get { CGFloat(angle.radians) }
-        set { angle = .radians(Double(newValue)) }
-    }
+@Animatable
+struct RingOffset: ViewModifier {
+    var angle: Angle            // animatable; mark other stored properties @AnimatableIgnored
     func body(content: Content) -> some View {
         content.offset(x: cos(angle.radians) * 120, y: sin(angle.radians) * 120)
     }
@@ -626,14 +624,9 @@ struct MyLinearAnimation: CustomAnimation {
 withTransaction(\.animation, .bouncy) { selected.toggle() }
 
 // Custom context flowing down the view tree
-private struct AvatarTappedKey: TransactionKey {
-    static let defaultValue = false
-}
+// (adapted, not compiled: the session wrote a TransactionKey struct plus a get/set property)
 extension Transaction {
-    var avatarTapped: Bool {
-        get { self[AvatarTappedKey.self] }
-        set { self[AvatarTappedKey.self] = newValue }
-    }
+    @Entry var avatarTapped = false
 }
 
 // Sender:

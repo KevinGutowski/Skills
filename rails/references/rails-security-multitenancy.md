@@ -14,6 +14,7 @@ Use for security-sensitive Rails work and tenant-boundary reviews. Patterns from
 - Untrusted File Processing
 - Authentication Hardening
 - SSRF Defense Baseline
+- Signed Messages, CSP, and Direct Uploads (lives in dhh-style)
 - CSRF and Caching
 - User HTML and Rich Text
 - Authorization Defaults
@@ -118,6 +119,15 @@ For webhooks, push endpoints, unfurling — any user-influenced URL:
 
 Source: https://github.com/basecamp/fizzy/pull/3176
 
+## Signed Messages, CSP, and Direct Uploads (lives in dhh-style)
+
+Four framework-level security rules sit in the Security section of [dhh-style/architecture.md](dhh-style/architecture.md#security) because they were folded with the 37signals architecture material. Read that section whenever the task touches any of them:
+
+- **Signed/encrypted message serializer** — JSON-only once legacy compatibility is gone; a Marshal fallback turns possession of `secret_key_base` into a deserialization/RCE risk.
+- **CSP when uploads share the app origin** — `script-src 'self'` is too broad; restrict scripts to the asset directory, hash fixed inline importmap scripts instead of per-request nonces, and serve non-allowlisted files as `application/octet-stream`.
+- **Direct-upload signing credential** — a separate write-only storage credential for browser-facing upload URLs; fail boot when it is missing.
+- **Direct-upload request binding** — bind byte size, digest, and content type at the storage layer (the same rule as the direct-upload bullet under Scoped Lookups).
+
 ## CSRF and Caching
 
 - Never HTTP-cache pages that render forms/CSRF tokens.
@@ -164,10 +174,10 @@ Source: https://github.com/basecamp/fizzy/pull/3176
 - Secrets permanently visible in admin UIs.
 - Auth endpoints without rate limiting.
 
-> **Staleness note:** vendored 2026 from Rails 8-era Fizzy/Campfire. The built-in `rate_limit` macro is Rails 8.0+ (use rack-attack or equivalent on earlier versions); CSP, `Sec-Fetch-Site`, and ActiveStorage specifics should be verified against your Rails version. Per [sources.md](sources.md) this file still needs a top-level source refresh before promoting new global rules. The tenancy architecture, scoped-lookup discipline, and SSRF baseline are the durable layer.
+> **Staleness note:** vendored 2026 from Rails 8-era Fizzy/Campfire. The built-in `rate_limit` macro is Rails 7.2+ (use rack-attack or equivalent on earlier versions); CSP, `Sec-Fetch-Site`, and ActiveStorage specifics should be verified against your Rails version. Per [sources.md](sources.md) this file still needs a top-level source refresh before promoting new global rules. The tenancy architecture, scoped-lookup discipline, and SSRF baseline are the durable layer.
 
 ## Related skills
 
-- [dhh-style.md](dhh-style.md) — school doctrine; its multi-tenancy section covers the database-per-tenant architecture this skill's path-based patterns sit beside.
+- [dhh-style.md](dhh-style.md) — school doctrine; its multi-tenancy section covers the database-per-tenant architecture this reference's path-based patterns sit beside.
 - [rails-webhooks.md](rails-webhooks.md) — applies this SSRF baseline to outbound deliveries.
 - [rails-realtime.md](rails-realtime.md) — scale/reliability of the cable layer itself.

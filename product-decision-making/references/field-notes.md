@@ -2,6 +2,16 @@
 
 Use when a product decision requires deeper source texture than `SKILL.md`.
 
+## Contents
+
+- Sweep coverage
+- Product and strategy
+- Growth and sales
+- AI, data, and product development
+- Influence, culture, and management
+- Writing
+- Sten checks in full
+
 ## Sweep coverage
 
 Fuller pass captured 104 public nodes into `/workspace/.sc/julie-zhuo-sweep` on 2026-06-12: Julie's personal site, 78 Substack archive posts, 20 Medium RSS entries, and 5 personal-site links. 103 captured; 1 Medium mirror was blocked with a generic 403, but the same "Art and Excellence of Sales" content was captured from Substack. Medium month archive pages did not expose static links, so RSS plus Julie's linked archive surfaces were used.
@@ -46,3 +56,51 @@ Fuller pass captured 104 public nodes into `/workspace/.sc/julie-zhuo-sweep` on 
 
 - **"Reader Empathy and Weird People"** — before a memo/update, ask who the readers are, lowest shared context, intended reader outcome, minimum context needed, and whether another format is clearer.
 - **"So you want to write better?"** — writing has three jobs: think, feel, connect. The quality bar depends on the job. Writing to connect is judged by the audience; writing to think is judged by clarity gained.
+
+## Sten checks in full
+
+Moved from the `SKILL.md` body, which now carries these as a three-row table and one strategy line. Source: Anton Sten, *Products People Actually Want*.
+
+### Product design is a three-way fit
+
+Sten's *Products People Actually Want* is useful as a product-designer's bridge source: product design is not pixel work with a broader title, and not business strategy wearing a UI costume. Before evaluating a product proposal, check the fit between three systems:
+
+- **User reality:** the person's actual situation, emotion, current workaround, constraints, and next-best medium. The right answer may be a smaller interface, a different channel, or no screen at all.
+- **Business reality:** the revenue, retention, support, operational, trust, or strategic problem the company must solve. A user-preferred feature can still be the wrong bet if it does not move the business problem.
+- **Technical reality:** implementation cost, maintenance, reliability, data availability, accessibility, and the operational burden after launch.
+
+Decision move: write the proposed product change as **what / how / why**. What should it do? How should it feel and behave? Why should this exist for users and the business now? If the team can only answer "what," the decision is under-shaped.
+
+### Whole-journey product judgment
+
+A user experience is not bounded by the mockup. Treat every surrounding touchpoint as product surface: acquisition promise, landing page, pricing, signup, emails, invoices, notifications, delivery/fulfillment, support, cancellation, returns, mobile cross-device paths, and any human service behind the screen.
+
+Use this when a feature looks good in isolation but product metrics or trust still suffer:
+
+- **Follow the real journey.** Start where customers start, then complete the whole task with production-like constraints.
+- **Check handoffs.** Does each touchpoint preserve the promise, context, language, and trust built by the previous one?
+- **Look for business-side breakage.** A polished checkout followed by unclear confirmation, hard returns, or rude support is still a product-design failure.
+- **Ask whether the right medium is being used.** Do not force one channel to carry every message; match message, timing, and user state.
+
+### Value exchange and product relationship
+
+For retention, trust, and subscription decisions, audit the relationship as an exchange. Users give time, attention, learning effort, data, privacy, money, trust, and emotional investment. They expect useful outcomes, effortlessness, respect, reliability, progress, and confidence in return.
+
+Decision move: ask four questions before adding friction, monetization, data capture, or setup:
+
+- What value does this product actually deliver now?
+- What are we asking users to give up in return?
+- Where might the exchange feel unfair, extractive, or confusing?
+- Where could the product feel generous without adding feature bloat?
+
+This keeps retention work from collapsing into activity metrics. A product can complete the task and still damage the relationship if the exchange feels lopsided.
+
+### UX-strategy shape
+
+Sten's UX-strategy shape is the practical companion to the assumption chain:
+
+- **Where are we now?** Customers, competitors, industry trends, performance trends, employees, operations, and organizational constraints.
+- **Where do we want to be?** Goals, objectives, positioning, vision, mission, and the few UX outcomes that matter most.
+- **How do we get there?** Concrete road map: team roles, missing skills, ways of working, platform constraints, and the product decisions that must change.
+
+Prefer goals/principles over feature lists in a strategy doc. "Optimize for speed" or "serve the majority without excluding the edge" guides many decisions; a backlog item only guides one.

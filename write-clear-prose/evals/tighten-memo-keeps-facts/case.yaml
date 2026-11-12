@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: tighten-memo-keeps-facts
+expected_outcome: |
+  A much shorter version that keeps every fact (new date October 14, old date September 23, vendor API three weeks late, decision needed on the reporting dashboard by end of day Friday), adds none, and puts the decision request where the reader cannot miss it.

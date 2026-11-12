@@ -12,6 +12,7 @@ description: "Run a team of direct reports — 1:1s with reports, trust, feedbac
 - Julie Zhuo, *The Making of a Manager* (2019)
 - Lara Hogan, *Resilient Management* (A Book Apart, 2019)
 - Julie Zhuo, selected Looking Glass essays (2020-2024) for remote management and user-guide updates
+- Anton Sten, *Products People Actually Want* (2025 ebook) for the design-manager rules only (corroborating source)
 
 Task shape: managing **down** — your direct reports. The frameworks themselves (Radical Candor 2×2, BICEPS as an acronym, Tuckman stages, give-away-your-Legos) are assumed known; this skill encodes the named *procedures*. Influence **up and sideways** (business cases, PM partnership, your own promotion) → `design-org-influence`.
 
@@ -26,7 +27,10 @@ Three bench tests:
 - **Rehire test** (Zhuo), for a struggling leader on your team: "Assume the role was open. Would you rather rehire your current leader or take a gamble on someone else?"
 - **Vision repeat-test** (Zhuo): "I'll know they did a good job describing their vision if I randomly ask five people who've heard it to repeat it to me and they all say the exact same thing."
 
-Design-lead addendum (Sten): management is a craft shift, not a better version of individual contribution. The role adds why-setting, stakeholder translation, calendar load, and people outcomes; it removes much of the protected maker time that made the IC role satisfying. Before treating management as the default promotion, ask whether the person has gone deep enough in the craft to teach it back and whether they want the relational work enough to trade away execution time.
+**Design-manager rules (Sten).** Detail in [growth-and-careers.md](references/growth-and-careers.md) ("Design-lead transition").
+- **Management is a craft shift, not a promotion by default.** Before moving someone into it, ask whether they have gone deep enough in the craft to teach it back, and whether they want the relational work enough to trade away execution time.
+- **Stay close enough to "open the file."** You need current contact with the tools, constraints, and edge cases your reports face, or reviews turn into abstractions junior designers cannot use.
+- **Design your energy.** If meetings drain your attention, reserve recovery and deep-work blocks deliberately.
 
 ## First 90 days: know your transition archetype
 
@@ -77,10 +81,6 @@ Zhuo's intersection rule: "spend your time and energy on the intersection of 1) 
 - Delegate *publicly* — "Elaine is our chief financial officer" empowers; a private ask doesn't.
 - **Hogan's messy-project gift**: "the best gift you can give your teammates is a messy, hard-to-measure, unscoped project" — it builds problem-solving, support networks, and leadership faster than clean work. Pair it with a safety net: name how/when you'll support ("DM me on Slack if you've spent more than one day stumped"), say out loud that it's a stretch on purpose, and set a RACI where they're Responsible and you're Consulted + Accountable so failure isn't career-ending.
 - "If you delegated everything you did today to someone else, do you think there'd be no more problems left for you to solve?" — giving pieces away is how you find the bigger ones.
-
-For design managers, stay close enough to "open the file" (Sten). You do not need to be the strongest maker on the team, but you need current contact with the tools, constraints, and edge cases your reports face. Hands-on credibility lets you teach execution, not only strategy. Letting the craft drift too far turns reviews into abstractions that junior designers cannot use.
-
-Energy management is part of the job design. If leadership drains your attention through meetings, reserve recovery and deep-work blocks deliberately; a manager who never processes cannot listen well, coach well, or make clear decisions.
 
 ## Checklist
 

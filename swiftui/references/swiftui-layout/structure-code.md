@@ -9,11 +9,11 @@
 - Data-driven navigation (WWDC 2022 · 10054, added by extension)
 
 
-*Sources (verbatim from each session's Code tab):*
+*Sources (from each session's Code tab; verbatim except where the staleness line says a sample was modernised):*
 - *WWDC 2022, 10058 — "SwiftUI on iPad: Organize your interface" (Raj Ramamurthy). https://developer.apple.com/videos/play/wwdc2022/10058/*
 - *WWDC 2022, 110343 — "SwiftUI on iPad: Add toolbars, titles, and more" (Harry Lee). https://developer.apple.com/videos/play/wwdc2022/110343/*
 
-**Staleness:** iOS 16-era, current as of 2026 except: `showsByDefault:` → `defaultCustomization(.hidden)` (iOS 17); `.navigationBarLeading/Trailing` → `.topBarLeading/Trailing`; one-param `onChange(of:)` deprecated (iOS 17); `@EnvironmentObject` → `@Observable`-era patterns.
+**Staleness:** iOS 16-era sessions. Modernised 2026-11-12 against Apple's `swiftui-specialist` skill (Xcode 27.2, 27B52), not compiled: the Table sample's `onChange(of:)` now uses the two-parameter closure (the session used the one-parameter form, deprecated in iOS 17), and the customizable-toolbar sample uses the `defaultCustomization(.hidden)` modifier (the session passed `showsByDefault: false`, now soft-deprecated). **Left in 2022 form:** the `ObservableObject` / `@EnvironmentObject` / `@StateObject` / `@Published` models — new code should use `@Observable` (Apple's dataflow.md), but converting these samples also changes the `$modelData` bindings and the save loop, so it is not a mechanical swap. Placements to avoid if you extend these: `.navigationBarLeading/Trailing` → `.topBarLeading/Trailing`.
 
 ---
 
@@ -50,8 +50,8 @@ struct PlacesTable: View {
                 NoiseLevelView(level: place.noiseLevel)
             }
         }
-        .onChange(of: sortOrder) {
-            modelData.sort(using: $0)   // Table never sorts your data itself
+        .onChange(of: sortOrder) { _, newOrder in
+            modelData.sort(using: newOrder)   // Table never sorts your data itself
         }
     }
 }
@@ -108,9 +108,10 @@ Table(modelData.places, selection: $selection, sortOrder: $sortOrder) { … }
             Label("Edits", systemImage: "wand.and.stars")
         }
     }
-    ToolbarItem(id: "share", placement: .secondaryAction, showsByDefault: false) {
-        ShareLink(item: place)   // iOS 17+: defaultCustomization(.hidden) instead of showsByDefault
+    ToolbarItem(id: "share", placement: .secondaryAction) {
+        ShareLink(item: place)
     }
+    .defaultCustomization(.hidden)   // replaces the soft-deprecated showsByDefault: false
 }
 .toolbarRole(.editor)
 ```
@@ -214,4 +215,4 @@ class NavigationModel: ObservableObject, Codable {
 // .task { if let data { navModel.jsonData = data }
 //         for await _ in navModel.objectWillChangeSequence { data = navModel.jsonData } }
 ```
-(2022-era `ObservableObject`; modern code uses `@Observable`. NavigationStack/SplitView/NavigationPath remain the current model.)
+(2022-era `ObservableObject`, kept as transcribed; new code uses an `@Observable` model — see the staleness line above. NavigationStack/SplitView/NavigationPath remain the current model.)

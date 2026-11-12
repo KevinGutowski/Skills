@@ -1,6 +1,6 @@
 # Sources
 
-This skill is intentionally compact and source-led.
+The skill is intentionally compact and source-led. `worked-examples.md` holds illustrative artifacts written for the skill; they apply the method below and are not drawn from either source.
 
 ## Primary method
 

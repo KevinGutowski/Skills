@@ -35,7 +35,8 @@ Only public descriptions and talks were used. Paid Full Time You lessons and wor
 
 - Short The Futur imposter-syndrome/self-acceptance cutdowns were not treated as independent sources.
 - The Futur's four-circle ikigai breakdown was excluded because the popular diagram's provenance was not established in the video.
-- Therapy-adjacent exposure claims, severe-overwork stories, unverified experiments, quote attributions, motivational acronyms, and “reality distortion” advice were not folded into guidance.
+- Therapy-adjacent exposure claims (the casual therapy/exposure suggestions in The Futur's “Conquering Your Internal Demons”) were not folded into guidance. What was folded is narrower: the small-step practice example in Chris Do's “Reinvent Yourself” (lower the first step of an ordinary avoided task, repeat, seek feedback). The scope line is in the SKILL.md Boundaries (“Small practice steps, not exposure protocols”).
+- Severe-overwork stories, unverified experiments, quote attributions, motivational acronyms, and “reality distortion” advice were not folded into guidance.
 - Practitioner outcome stories were used as examples of process, not evidence that the process guarantees similar results.
 
 > **Staleness note:** checked 2026-07-18. Re-verify public program structure, URLs, and current research reviews before making date-sensitive claims.

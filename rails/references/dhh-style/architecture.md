@@ -285,6 +285,8 @@ adapter = ENV.fetch("DATABASE_ADAPTER", "sqlite3")
 
 ## Security
 
+*Also indexed from [../rails-security-multitenancy.md](../rails-security-multitenancy.md), which owns tenant boundaries, auth hardening, SSRF, and upload processing; keep the two in sync when either changes.*
+
 Use a JSON-only serializer for signed and encrypted Rails messages when legacy
 compatibility is no longer required. A Marshal fallback expands possession of
 `secret_key_base` into a deserialization/RCE risk. During an upgrade, subscribe

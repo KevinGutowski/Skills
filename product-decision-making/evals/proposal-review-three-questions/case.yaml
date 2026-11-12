@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: proposal-review-three-questions
+expected_outcome: |
+  Reviews the problem before the solution: whose problem this solves, what evidence shows the problem is real, and how success would be known. Flags that competitor parity and excitement are not evidence and that 'summaries generated' is an activity proxy.

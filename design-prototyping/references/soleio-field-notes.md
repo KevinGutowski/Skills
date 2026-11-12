@@ -14,6 +14,8 @@ Primary-transcript material from Soleio Cuervo's interviews — two Dive Club ep
 - Capacity for speed (and its trust trade-off)
 - Software is malleable
 - The ship-first school, scoped
+- Personalize the sandbox
+- The reality-collision rule (Like button vs Carousel)
 
 ## The Like button — graph-level testing, full story
 
@@ -74,3 +76,11 @@ The honest trade-off: "if you move really rapidly that's sometimes hard to align
 Soleio names the school explicitly (SPC fireside, to Steve Ruiz): "you and I are of a common school of like designers who ship… you have to kind of confront reality head on rather than in the safety of the ivory tower."
 
 Scope note — this is a *school*, not a settled average: hold it by name against the craft-school positions already in this corpus (Stamatiou's SLC bar, Puckett's depth spectrum in `design-principles`/`design-craft`). Soleio's own boundary is that speed is for colliding with reality sooner, and dogfood — not taste-talk — is the evidence layer.
+
+## Personalize the sandbox
+
+**Personalize the sandbox when personalization is the point** (Soleio Cuervo, First Round, 2014): a generic screenshot cannot test a personalized experience. Pull in the stakeholder's/user's own graph data or realistic personal context so they feel what the product would actually know, infer, and change. The feedback quality jumps when the prototype is experienced through a personal lens.
+
+## The reality-collision rule (Like button vs Carousel)
+
+**Soleio's reality-collision rule** (Julie Zhuo interview, 2026; Design Buddies recap, 2025): the Like button was one of many shipped experiments, while Dropbox Carousel paid for hiding from users too long — full camera-roll access collided with storage-quota anxiety late. Treat speed as a way to collide with reality sooner, not a license to ship junk. If the scary assumption is "will people trust this?", prototype the trust moment first and get it in front of real users before polishing the rest.

@@ -41,4 +41,4 @@ This is the **frontend wing of the [layered-rails.md](layered-rails.md) school**
 - **[dhh-style.md](dhh-style.md)** — the competing school's frontend is Hotwire/no-build. Pick per project; never mix idioms in one codebase.
 - **`working-with-ai` (agentic-coding)** — "React is the lingua franca for AI coding tools"; Inertia is how that meets Rails without an API layer. Feed the inertia-rails/skills repo to agents.
 - **[rails-realtime.md](rails-realtime.md)** — delivery guarantees and avalanche safety for the Action Cable layer these patterns lean on.
-- **`frontend-design`** / **`web-design` (web-animation-design)** — what the React components should look and move like; this skill is the architecture they sit in.
+- **`frontend-design`** / **`web-design` (web-animation-design)** — what the React components should look and move like; this reference is the architecture they sit in.

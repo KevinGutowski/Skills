@@ -4,7 +4,7 @@
 
 **Sources:** [ai-enablement/sources.md](ai-enablement/sources.md) — Dive Club episodes + Ona Background Agents Summit 2026.
 
-The task shape: an individual's AI workflow works; the org's doesn't. This skill covers making organizational context *legible* to agents, making one person's context *visible* to teammates, and making adoption actually happen — because "if you build it they do not come" (Louis Healey, Dive Club podcast, CqMZTg7L-wE).
+The task shape: an individual's AI workflow works; the org's doesn't. This reference covers making organizational context *legible* to agents, making one person's context *visible* to teammates, and making adoption actually happen — because "if you build it they do not come" (Louis Healey, Dive Club podcast, CqMZTg7L-wE).
 
 ## Make internal decisions legible to agents
 
@@ -74,8 +74,8 @@ The summit pattern: do not announce a giant workflow replacement. Earn trust by 
 
 ## Relationship to other skills
 
-- **[agentic-coding.md](agentic-coding.md)** — repo-level agent rules (AGENTS.md/CLAUDE.md), individual workflows, and the NYC-panel org-adoption notes (public channels, Cody, skill libraries being personal); this skill is the org-wide enablement layer above the repo.
-- **`design-systems`** — DS-as-AI-context mechanics (system knowledge wired into codegen, hallucination fixes); this skill covers the *programs* that get people using it.
-- **`learning-experience-design`** — curriculum, practice, feedback, job aids, and behavior-change design for training programs. This skill owns the AI rollout system: shared context, tooling, social proof, protected time, and adoption nudges.
+- **[agentic-coding.md](agentic-coding.md)** — repo-level agent rules (AGENTS.md/CLAUDE.md), individual workflows, and the NYC-panel org-adoption notes (public channels, Cody, skill libraries being personal); this reference is the org-wide enablement layer above the repo.
+- **`design-systems`** — DS-as-AI-context mechanics (system knowledge wired into codegen, hallucination fixes); this reference covers the *programs* that get people using it.
+- **`learning-experience-design`** — curriculum, practice, feedback, job aids, and behavior-change design for training programs. This reference owns the AI rollout system: shared context, tooling, social proof, protected time, and adoption nudges.
 - **`design-org-influence`** — the business case and political capital for design initiatives; use it when the enablement budget or mandate itself needs selling.
-- **`creating-skills`** — the craft of writing the team-level skills this skill says someone must own.
+- **`creating-skills`** — the craft of writing the team-level skills this reference says someone must own.

@@ -5,7 +5,8 @@ Checks:
   1. Frontmatter parses as strict YAML (--- delimited block at top of file)
   2. `name` and `description` keys present; name matches the directory name
   3. description <= 1024 chars (official limit); warn > 700 (house conciseness target)
-  4. SKILL.md body <= 500 lines (progressive-disclosure guidance)
+  4. SKILL.md body <= 500 lines (progressive-disclosure guidance); warn when the
+     body is over the ~5k-token house budget (estimated as chars / 4)
   5. Relative links / referenced files in SKILL.md resolve on disk
 
 Exit code 0 = clean, 1 = problems found. Run from the repo root:
@@ -24,6 +25,9 @@ except ImportError:
 MAX_DESC = 1024
 TARGET_DESC = 700  # house style: concise descriptions; 1024 is the API hard cap, not a budget
 MAX_LINES = 500
+# House body budget (README Conventions). Claude Code also keeps only the first
+# ~5k tokens of an invoked skill after compaction, so anything past this can vanish.
+BODY_TOKEN_BUDGET = 5000
 
 problems = []
 warnings = []
@@ -63,6 +67,9 @@ for path in sorted(glob.glob("*/SKILL.md")):
     lines = text.count("\n") + 1
     if lines > MAX_LINES:
         problems.append(f"{path}: {lines} lines (max {MAX_LINES} — move detail to references/)")
+    body_tokens = len(text[m.end():]) // 4
+    if body_tokens > BODY_TOKEN_BUDGET:
+        warnings.append(f"{path}: body ~{body_tokens} tokens (house budget ~{BODY_TOKEN_BUDGET} — move quote banks and source texture to references/)")
 
     # 5. referenced local files exist (markdown links + bare references/ mentions).
     # Strip fenced/inline code first — teaching skills show example paths there.

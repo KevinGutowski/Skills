@@ -19,7 +19,10 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_FIXTURES = [ROOT / "docs" / "web-motion-routing-probes-2026-11.md"]
+DEFAULT_FIXTURES = [
+    ROOT / "docs" / "web-motion-routing-probes-2026-11.md",
+    ROOT / "docs" / "description-boundary-routing-probes-2026-11.md",
+]
 
 ROW_RE = re.compile(r"^\| ([A-Z]+)(\d+) \|")
 SKILL_RE = re.compile(r"`([^`]+)`")

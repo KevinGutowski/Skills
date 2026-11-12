@@ -1,7 +1,6 @@
 ---
 name: route-planning
-description: >
-    Optimize and verify multi-stop driving routes (delivery, errands, ride-along visits). Use when user has a list of addresses and wants the best order, or wants to diagnose why an existing route has backtracks, U-turns, or detours. Triggers on: multi-stop route, delivery route, TSP, route optimization, OSRM, Apple Maps multi-stop, Google Maps directions, waypoint order.
+description: "Optimize and verify multi-stop driving routes (delivery, errands, ride-along visits). Use when the user has a list of addresses and wants the best order, or wants to diagnose backtracks, U-turns, or detours in an existing route. Not for single A→B directions, live-traffic routing, or 100+ stops. Triggers: multi-stop route, delivery route, TSP, route optimization, OSRM, Apple Maps multi-stop, Google Maps directions, waypoint order."
 ---
 
 ## When to use
@@ -14,38 +13,84 @@ User hands you a list of addresses with a starting point and asks for an optimiz
 
 ### 1. Geocode + matrix
 
-First turn addresses into coordinates. Nominatim's public endpoint works without a key — send a real `User-Agent` (anonymous UAs get blocked) and keep to ~1 request/second as a courtesy; or ask the user for coordinates if they have them:
+**Input:** a list of address strings, start first. **Output of this step:** `stops`, a list of dicts `{"address", "lat", "lon", "display_name"}` in input order (floats for `lat`/`lon`), plus `D` and `M`, N×N matrices of driving seconds and meters indexed by position in `stops`. If the user already has coordinates, build `stops` directly and skip geocoding.
+
+Nominatim's public endpoint works without a key — send a real `User-Agent` with a real contact (anonymous or placeholder UAs get blocked with `403 Access denied`; replace the example contact below) and keep to ~1 request/second as a courtesy. The address must be URL-encoded; from the shell, let curl do it:
 
 ```bash
-curl -sS -A "route-planner/1.0 (contact: you@example.com)" \
-  "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=ADDRESS"
+curl -sS -G -A "route-planner/1.0 (contact: you@example.com)" \
+  "https://nominatim.openstreetmap.org/search" \
+  --data-urlencode "format=json" --data-urlencode "limit=1" \
+  --data-urlencode "q=1 Ferry Building, San Francisco, CA"
 # -> [{"lat": "...", "lon": "...", "display_name": "..."}]
+```
+
+The same in Python (standard library only; steps 1–2 form one runnable script):
+
+```python
+import json, time, urllib.parse, urllib.request
+
+UA = "route-planner/1.0 (contact: you@example.com)"  # replace with a real contact
+
+def get_json(url):
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.load(resp)
+
+def geocode(address):
+    """address string -> {"address", "lat", "lon", "display_name"}; raises LookupError on no hit."""
+    q = urllib.parse.urlencode({"format": "json", "limit": 1, "q": address})
+    hits = get_json(f"https://nominatim.openstreetmap.org/search?{q}")
+    if not hits:
+        raise LookupError(f"no geocoding result for {address!r}")
+    h = hits[0]
+    return {"address": address, "lat": float(h["lat"]), "lon": float(h["lon"]),
+            "display_name": h["display_name"]}
+
+# Input: addresses in any order, START FIRST.
+addresses = [
+    "1 Ferry Building, San Francisco, CA",
+    "City Hall, San Francisco, CA",
+    "Coit Tower, San Francisco, CA",
+]
+stops = []
+for a in addresses:
+    stops.append(geocode(a))
+    time.sleep(1)  # Nominatim courtesy limit: ~1 request/second
 ```
 
 Sanity-check each hit's `display_name` against the input address — geocoders silently match the wrong city/suburb.
 
 ```python
-# Build coordinate string for OSRM
-coords = ";".join(f"{lon},{lat}" for _, lat, lon, _ in stops)
-# Get full driving matrix (durations + distances)
-url = f"https://router.project-osrm.org/table/v1/driving/{coords}?annotations=duration,distance"
-# Returns N×N matrices D (seconds) and M (meters)
+# OSRM wants lon,lat (not lat,lon), semicolon-separated, in stop order.
+coords = ";".join(f"{s['lon']:.6f},{s['lat']:.6f}" for s in stops)
+
+table = get_json(f"https://router.project-osrm.org/table/v1/driving/{coords}"
+                 "?annotations=duration,distance")
+assert table["code"] == "Ok", table
+D = table["durations"]  # D[i][j] = driving seconds from stops[i] to stops[j]
+M = table["distances"]  # M[i][j] = driving meters  from stops[i] to stops[j]
 ```
 
-OSRM public endpoint is free, no key, has rate limits. Don't try haversine — Bay Area hills mean stops 200m apart can be 1+ mi by car.
+OSRM public endpoint is free, no key, has rate limits. Don't try haversine — in hilly or water-divided terrain, stops 200m apart can be 1+ mi by car.
 
 ### 2. Solve open TSP
 
-For 5–30 stops:
+For 5–30 stops, continuing the script (OSRM's `/trip` endpoint solves directly; `order` is a list of indices into `stops`, start first):
 
 ```python
-# OSRM /trip endpoint solves directly
-url = (f"https://router.project-osrm.org/trip/v1/driving/{coords}"
-       "?source=first&destination=any&roundtrip=false&overview=false")
-# Then refine with OR-Tools or 2-opt + or-opt on the duration matrix
+trip = get_json(f"https://router.project-osrm.org/trip/v1/driving/{coords}"
+                "?source=first&roundtrip=false&destination=any&overview=false")
+assert trip["code"] == "Ok", trip
+# waypoints[i] describes stops[i]; waypoint_index is its position in the solved trip.
+order = sorted(range(len(stops)), key=lambda i: trip["waypoints"][i]["waypoint_index"])
+total_s = sum(D[a][b] for a, b in zip(order, order[1:]))
+for pos, i in enumerate(order):
+    print(pos, stops[i]["address"], "|", stops[i]["display_name"])
+print(f"total {total_s / 60:.1f} min, {sum(M[a][b] for a, b in zip(order, order[1:])) / 1000:.1f} km")
 ```
 
-For tighter optima, use OR-Tools with `GUIDED_LOCAL_SEARCH` + 60s budget. If OR-Tools and your local search converge to the same answer, that's a strong global-optimum signal.
+Then refine `order` with OR-Tools or 2-opt + or-opt on the duration matrix `D`. For tighter optima, use OR-Tools with `GUIDED_LOCAL_SEARCH` + 60s budget. If OR-Tools and your local search converge to the same answer, that's a strong global-optimum signal.
 
 ### 3. Apply tiebreakers
 
@@ -76,6 +121,7 @@ Among tied-optimal orderings: prefer no drive-bys → no U-turns → curb-side p
 ```
 http://maps.apple.com/?saddr=A&daddr=B+to:C+to:D&dirflg=d
 ```
+`A`…`D` are URL-encoded addresses in all three formats below.
 Hard cap of ~15 waypoints in the `+to:` chain. For more stops, split into legs.
 
 **Apple Maps web (beta)** (`maps.apple.com`):
@@ -88,7 +134,7 @@ Uses repeated `waypoint=` params. Silently fails to render routes with ~15+ wayp
 ```
 https://www.google.com/maps/dir/A/B/C/D
 ```
-Slash-separated, URL-encoded addresses. No waypoint cap that I've hit.
+Slash-separated, URL-encoded addresses (`urllib.parse.quote(address, safe="")` per segment). No waypoint cap is documented here; if a long route fails to render, split into legs.
 
 **Per-stop labels are not supported** in any of these. Recipient names go in a separate checklist (e.g., Apple Note alongside the map link). Don't waste time trying to inject labels into URLs.
 

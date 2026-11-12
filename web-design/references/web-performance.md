@@ -69,4 +69,4 @@ The car analogy: **TTFB** = key in the ignition → **First Contentful Paint** =
 - **`devtools` (devtool-interface-design)** — the speed usage-law and frequency rules for tools people live in.
 - **`swiftui` (swiftui-lazy-stacks)** / **`swiftui` (swift-concurrency)** — the native-platform analogs (scroll perf; coalesce-before-isolation).
 
-> **Staleness note (Kevin's rule):** framework specifics (Next.js app router, React `useTransition`/`useOptimistic`/compiler, router-cache behavior) are 2024–25-era — verify against current docs. INP replaced FID as a Core Web Vital in March 2024. The frame budgets, fluid-UI principles, triage model, and process rules are the durable layer.
+> **Staleness note:** framework specifics (Next.js app router, React `useTransition`/`useOptimistic`/compiler, router-cache behavior) are 2024–25-era — verify against current docs. INP replaced FID as a Core Web Vital in March 2024. The frame budgets, fluid-UI principles, triage model, and process rules are the durable layer.

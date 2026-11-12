@@ -310,8 +310,8 @@ Full checklist (68 items): [checklist.md](optimizing-rails/checklist.md)
 ## Related skills
 
 - **[layered-rails.md](layered-rails.md)** — when tuning isn't enough, its "extraction without microservices" rules govern what to offload to Go/C/Rust tools (plug into Rails abstractions; never move business logic) and what stays in Ruby.
-- **[rails-testing.md](rails-testing.md)** — the test suite's performance is its own discipline (TestProf, factory cascades, CI parallelization); this skill owns the runtime request path.
+- **[rails-testing.md](rails-testing.md)** — the test suite's performance is its own discipline (TestProf, factory cascades, CI parallelization); this reference owns the runtime request path.
 - **[rails-realtime.md](rails-realtime.md)** — persistent-connection capacity and delivery guarantees are a separate failure domain from request-path tuning.
 - **`working-with-ai` (agentic-coding)** — performance decisions worth repeating (N+1 strategy, caching patterns) are prime material to encode as project rules for coding agents.
-- **`web-design` (web-performance)** — the browser-side budgets (6-frame instant rule, defer/anticipate/offload) that the perceived-speed playbook serves; this skill owns the Rails mechanisms, that one owns the frame budgets and process.
-- **[rails-jobs.md](rails-jobs.md)** — job *design* (idempotency, naming, error taxonomy) lives there; this skill owns queue *throughput and performance*.
+- **`web-design` (web-performance)** — the browser-side budgets (6-frame instant rule, defer/anticipate/offload) that the perceived-speed playbook serves; this reference owns the Rails mechanisms, that one owns the frame budgets and process.
+- **[rails-jobs.md](rails-jobs.md)** — job *design* (idempotency, naming, error taxonomy) lives there; this reference owns queue *throughput and performance*.

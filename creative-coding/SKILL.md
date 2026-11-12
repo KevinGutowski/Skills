@@ -7,6 +7,8 @@ description: "Build procedural/generative visual systems: canvas/p5/Processing s
 
 **Sources/gaps:** [references/sources.md](references/sources.md) — Shiffman, *The Nature of Code* (2012) + Gross/Bohnacker/Laub/Lazzeroni, *Generative Design* (p5.js edition); unresolved API/fixture candidates in [references/coverage-gaps.md](references/coverage-gaps.md). API examples are era-tagged: Processing and p5.js details date; verify current canvas/p5/Three/WebGL APIs before prescribing exact syntax.
 
+**Starting code:** read [references/current-api-scaffolds.md](references/current-api-scaffolds.md) before writing the first lines of a sketch in p5.js 2.x (async `setup()` loading, instance mode, 1.x→2.x traps), Canvas 2D (devicePixelRatio sizing, fixed-timestep `requestAnimationFrame` loop), or three.js (minimal WebGL 2 scene), and whenever output must be reproducible (seeded PRNG). It lists what was checked against live docs on 2026-11-12 and what still needs checking.
+
 Use this skill for code-first visual systems whose output comes from rules, parameters, simulation, or data. The operating question is Shiffman's: "How do we define the rules that govern the behavior of our objects?"
 
 ## Route the sketch
@@ -89,7 +91,7 @@ When adopting a library:
 - Avoid allocating throwaway vector objects inside large per-frame loops; reuse common targets where clarity allows.
 - Compare squared distances when only thresholds matter; avoid unnecessary square roots.
 - Cache expensive trig tables only when profiling or scale shows it matters.
-- Separate update from render so you can pause, step, seed, replay, or export frames deterministically.
+- Separate update from render so you can pause, step, seed, replay, or export frames deterministically (fixed-timestep loop and seeded generator in [references/current-api-scaffolds.md](references/current-api-scaffolds.md)).
 
 ## Relationship to Other Skills
 

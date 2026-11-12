@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: diagnoses-non-learning-gap
+expected_outcome: |
+  Treats the request as a possible motivation, environment, or process gap rather than a knowledge gap, investigates why agents skip the checklist, and proposes changes close to the work before (or instead of) a refresher course.

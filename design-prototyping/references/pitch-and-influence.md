@@ -30,3 +30,7 @@ Case studies and mechanics distilled in `SKILL.md`. Everything here is verbatim 
 - **Interpret feedback, don't transcribe it**: a visual comment may really be emotional or sequencing feedback — hear what's *expressed*. And tell domain experts when their input changed the design — they "feel unqualified" and clam up unless shown their reactions count.
 - **Signal filters**: be immune to "I love it but this one thing is a dealbreaker" and to "I think I would use it" — look for "a core set of people who truly love it… it would be very painful for them if it was taken away." Beware late negative feedback from non-customers steering you off when the treasure is nearly uncovered.
 - **Research mechanics** (Adena Nadler): a weekly "early birds" pre-release group; recruit *skeptics* by paying the doubtful friends of loyal users (screened to exclude early adopters) into an 8–10-week advisory board. Two humility cases: interviewees feared auto-archive — shipped anyway, beloved ("you can only get so far before you have a product"); and "a simpler learning experience is not the same as the better UX."
+
+## Sharing explorations (Femke van Schoonhoven, Uber Eats)
+
+Four-part structure: context → concepts → rationale → **always a recommendation**. Match fidelity to audience; show the **MVP next to the future vision** (pre-answers "why not X"); **name your concepts**; lay flows next to P0/P1/P2 requirements for async readers; keep a personal sandbox page. The business case *around* the pitch → `design-org-influence`.

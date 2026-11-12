@@ -138,11 +138,11 @@ Durable: everything above. Decayed specifics:
 ## Relationship to other skills
 
 - **`apple-design` (apple-typography)** — Apple platforms (SF, Dynamic Type, text styles). Never cross-apply: web rules here, platform rules there.
-- **`graphics-fundamentals`** — the rendering-mechanism *why* (rasterization, hinting, font internals, half-leading) lives there.
+- **`graphics-fundamentals`** — the rendering-mechanism *why* (rasterization, hinting, font internals) lives there.
 - **`frontend-design`** — interface-level aesthetics and page generation; this skill is the text-setting discipline inside it.
 - **`design-craft`** (incl. its `emil-kowalski` reference) — the polish-tip layer (tabular-nums, font smoothing, text-wrap); this is the deeper reference behind those tips.
 - **[`web-performance`](web-performance.md)** — budgets and load-lifecycle there; font-loading strategy here.
 - **`data-viz`** — data-ink doctrine for tables and charts.
 - **[`web-accessibility`](web-accessibility.md)** — the broader web accessibility practice (semantic structure, keyboard, contrast nuance like SSS shimmer); type-specific sizing and contrast stay here.
 
-> **Staleness note (Kevin's rule):** sources are 2014–2017; §12 separates the durable doctrine from decayed specifics. Verify CSS support claims against caniuse before relying on the hyphenation suite, `initial-letter`, or `hanging-punctuation`.
+> **Staleness note:** sources are 2014–2017; §12 separates the durable doctrine from decayed specifics. Verify CSS support claims against caniuse before relying on the hyphenation suite, `initial-letter`, or `hanging-punctuation`.

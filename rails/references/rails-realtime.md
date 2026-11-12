@@ -39,6 +39,6 @@ The architecture answer: **log-backed streams** — publications written to per-
 ## Relationship to other skills
 
 - **[layered-rails.md](layered-rails.md)** — same school; AnyCable is its real-time pick and its "extraction without microservices" example (a logic-less Action Cable swap).
-- **[inertia-rails.md](inertia-rails.md)** — its real-time patterns (`router.reload` escalation) ride on this skill's transport guarantees.
-- **[optimizing-rails.md](optimizing-rails.md)** — request-path performance; this skill owns the persistent-connection failure domain.
-- **`ai-experience-design`** — designs *what* streaming AI output should feel like; this skill makes the tokens actually arrive in order.
+- **[inertia-rails.md](inertia-rails.md)** — its real-time patterns (`router.reload` escalation) ride on this reference's transport guarantees.
+- **[optimizing-rails.md](optimizing-rails.md)** — request-path performance; this reference owns the persistent-connection failure domain.
+- **`ai-experience-design`** — designs *what* streaming AI output should feel like; this reference makes the tokens actually arrive in order.

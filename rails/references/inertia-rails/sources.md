@@ -1,6 +1,6 @@
 # Sources
 
-This skill aggregates Evil Martians' Inertia-on-Rails series (all by Svyatoslav Kryukov unless noted):
+This reference aggregates Evil Martians' Inertia-on-Rails series (all by Svyatoslav Kryukov unless noted):
 
 - *"Simplicity, vanished?! Solving the mystery with Inertia.js + Rails" (2025) — the cost model and pattern catalog. https://evilmartians.com/chronicles/simplicity-vanished-solving-the-mystery-with-inertia-js-and-rails*
 - *"Inertia.js in Rails: a new era of effortless integration" — setup mechanics. https://evilmartians.com/chronicles/inertiajs-in-rails-a-new-era-of-effortless-integration*

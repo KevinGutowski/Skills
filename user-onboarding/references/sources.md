@@ -10,7 +10,7 @@ Use this as provenance for the `user-onboarding` skill and references. It is not
 
 - Lidwell, Holden, and Butler, *Universal Principles of Design* — entry points, peak-end rule, progressive lures, and related psychology mechanics.
 - Chip Heath and Dan Heath, *Switch* — Rider / Elephant / Path framing used in pre-signup and empty-state copy.
-- Cindy Alvarez, *Build Better Products* — behavior-first onboarding, required/encouraged/eventual setup work, and quick-win framing.
+- Laura Klein, *Build Better Products* — behavior-first onboarding, required/encouraged/eventual setup work, quick-win framing, and the dark-pattern definition.
 - Metts and Welfle, *Writing Is Designing* — personal-data field explanation, inclusion, and content ethics.
 - Josh Wardle, Config 2024 — building on knowledge users already carry, invisible curation, and share artifacts.
 - Jude, Config 2025 — sequencing trust from low stakes to high, familiar analogs, and trust diagnosis.
@@ -27,6 +27,7 @@ Use this as provenance for the `user-onboarding` skill and references. It is not
 - `first-impressions.md`: post-signup first screen, limbo screens, coachmarks, welcome messages, quick wins.
 - `selling-the-dream.md`: pre-signup copy, switching costs, aha moment, social proof.
 - `driving-momentum.md`: setup quests, progress, encouragement, lifecycle emails, return behavior.
+- `honest-onboarding.md`: dark-pattern boundary; source-grounded rules plus a labelled general-practice checklist (consent, defaults, forced continuity, exit symmetry, confirmshaming).
 - `field-notes.md`: verbatim quote texture behind Universal Rules 8–15 (Config 2024/2025, Dive Club, Cursor field notes).
 - `coverage-gaps.md`: candidate onboarding standards that need more evidence or accepted examples before promotion.
 - Impeccable by Paul Bakaus (https://github.com/pbakaus/impeccable, Apache-2.0, screened at `b3ced85`, 2026-11-09): `onboard` and `clarify` supplied the five-cause empty-state table in `empty-states.md`. The rest of `onboard` (show don't tell, optional onboarding, time to value, tours, tooltips) is already covered more deeply by Hulick. Ledger: `docs/impeccable-source-mining-2026-11.md`.
