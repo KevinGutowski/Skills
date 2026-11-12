@@ -45,7 +45,7 @@ Read and apply only the references needed for the requested surface:
 5. `web-design` (web-typography) — measure, type scale, font use, wrapping, and numeric alignment.
 6. `web-design` (oklch-skill) — color usage, contrast, palettes, gamut, and theming.
 7. `web-design` (web-performance and web-animation-design) — responsiveness, loading, motion values, and reduced motion.
-8. `design-craft` — spacing, radii, shadows, alignment, state polish, and interface feel; its worst-case-data reference when the review should stress components with realistic extreme data.
+8. `design-craft` — spacing, radii, shadows, alignment, state polish, and interface feel; its worst-case-data reference when the review should stress components with realistic extreme data. If the product has committed to one of its named themes (polish-principles, emil-kowalski, tactile-design), review against that theme, including tactile-design's never-ship list. Don't report the theme's deliberate choices as violations of another theme; only flag the theme's choices if it doesn't fit the surface's mode.
 9. `rails` (optimizing-rails, perceived-speed) — only when the interface under review is a Rails/Hotwire app: spinners on navigation, row-by-row pop-in, prefetch/morph/optimistic-update mechanics, and the `ps-…` checklist names. Browser budgets still go to item 7.
 
 For a motion-only pass across an app (what should animate, what to remove, or a roadmap of motion fixes as handoff plans), use `web-design` (web-animation-design)'s motion-audit member instead of a full review. Inside a full review, use its gate and removal hazards for the motion slice and report on this skill's severity scale.

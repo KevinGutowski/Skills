@@ -353,6 +353,11 @@ Built-in CSS curves are usually too weak. Custom curves create more intentional 
 - Course reference: `/learn/easing-curves`
 - External: [easings.co](https://easings.co/)
 
+**Tailwind v4 traps** (Kosta, tactile-design; agents hit both repeatedly):
+
+- **The bare `ease-out` class is weak.** In v4 it resolves to `cubic-bezier(0, 0, .2, 1)` unless `--ease-out` is redefined in `@theme`. Write `ease-[var(--ease-out)]` against your own token, or redefine the theme variable once, so a custom strong curve can't silently fall back.
+- **`scale-*` and `active:scale-*` set the separate CSS `scale` property, not `transform`.** A `transition-[transform,background-color]` list then snaps the press instead of easing it. Name `scale` too: `transition-[transform,scale,background-color]`. The same applies to `rotate` and `translate` utilities.
+
 ## Visual Tricks
 
 ### Use Blur as a Fallback

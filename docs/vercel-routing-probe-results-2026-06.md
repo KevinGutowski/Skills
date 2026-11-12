@@ -58,3 +58,31 @@ This pass was not a formal fresh-context judge. The available subagent tool requ
 | V15 | `creating-skills` | Pass | Collection-level skill audit and missing tests match skill authoring/improvement. |
 
 Next formal step: rerun `python3 scripts/build_vercel_probe_packet.py` and repeat the fresh descriptions-only judge after future description or routing-probe changes.
+
+## 2026-11-12 design-craft plain-request triggers (V16–V18)
+
+Change: the `design-craft` description now names everyday requests ("make it look better", "fix the jank") and adds a "frame drops → motion" boundary; "quality ritual" and "unship" were dropped from the trigger list (the body still covers both). The body gained a plain-request router that sorts symptoms by kind before picking a theme.
+
+Judge: fresh general-purpose subagent with no repo context. It read only a *blind* packet (the descriptions plus the V1–V18 prompts, with the Expected column removed).
+
+| Probe | Expected | Judge first / second | Result |
+| --- | --- | --- | --- |
+| V5 | `design-craft` | `design-craft` | Pass (no regression) |
+| V16 | `design-craft` | `design-craft` | Pass |
+| V17 | `design-craft` | `design-craft` / `motion` | Pass; the judge flagged it as ambiguous with `motion`'s "jank audits" because the menus blink in. Second-skill motion is acceptable. |
+| V18 | `motion` | `motion` | Pass (control); the judge cited the new "frame drops → motion" boundary. |
+
+Other probes: V2–V8 and V10–V15 matched their first skill. V1 came back as the accepted pair in reverse order (`working-with-ai` then `creating-skills`). **V9 drifted:** it was judged `working-with-ai` + `ux-writing` against the expected `ux-writing` + `creating-skills`. This drift predates the change; none of those descriptions were edited. Recheck V9 at the next description pass. The judge also named V4, V11, V12 and V14 as genuinely ambiguous between neighbouring descriptions.
+
+Note: if a local `~/.claude/skill-evals/routing-eval.md` exists, `check_vercel_routing_probes.py` expects it to carry probes 130–132 mirroring V16–V18.
+
+### 2026-11-12 recheck after merging main (Emil Kowalski open-skills fold)
+
+Both branches edited the `design-craft` description, so the two were merged under the 450-character cap. The merged version keeps main's "stress-test", "worst-case data" and "quality ritual" alongside this branch's "make it look better", "fix the jank" and "frame drops → motion". It drops "decide wider vs deeper", "polished", "dogfood" and "unship"; the body still covers all four.
+
+A fresh judge read a blind packet: the descriptions plus W1–W18 from `docs/web-motion-routing-probes-2026-11.md` and V1–V18, with no expected answers.
+
+- **`design-craft` targets:** W10, W16, W17, V5, V16 and V17 all pass. V17's second skill was `web-design`.
+- **Frame-drop control:** V18 → `motion`, pass.
+- **W1–W9, W11–W17:** all pass. W18 came back as "none", which its notes accept.
+- **Drift in descriptions this change didn't touch:** V9 (as before) and V12 (`working-with-ai` first, `design-prototyping` second, against the expected `design-prototyping`). Recheck both at the next description pass.

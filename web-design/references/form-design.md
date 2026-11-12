@@ -51,6 +51,7 @@ Dannaway's conventions are **web-scoped**. Two known conflicts with Apple platfo
 **Input mechanics that ride along** (Krehel, Interfaces Cheat Sheet):
 - **Every input gets a visible `<label>`**, and its `type` and `inputmode` match what people should enter — `type="email"` / `inputmode="numeric"` bring up the right keyboard on touch devices, which a placeholder-only field with `type="text"` never does.
 - **Never block paste.** "People paste in things like passwords and one-time codes." Paste-blocking on confirmation and OTP fields punishes password managers and the users who follow security advice.
+- **16px field text on any touch screen, gated on pointer, not width** (Kosta, tactile-design). iOS zooms into a field set below 16px and stays zoomed. Gate the rule on `(pointer: coarse)`, not only a phone breakpoint, so an iPad's wider layout gets it too. Desktop fields can match the body size.
 
 ## 3. Validation
 
@@ -59,6 +60,14 @@ Three approaches — pick deliberately, mix per question type (full tradeoffs in
 1. **Validate on submit** — simplest to build; user works undistracted; but errors arrive all at once, context lost. List errors at the top as links to the invalid fields; error message *above* each invalid field (autofill/keyboard cover the space below); red border + shade **plus an icon** — never color alone.
 2. **Validate after leaving a field** (inline / "on blur") — immediate feedback with context; but interrupts flow, "doesn't work well for groups of inputs," more complex. Remove the error as soon as it's fixed.
 3. **Validate instantly as people type** (after a pause) — best for working toward an answer (password criteria, username availability); risk of "premature error messages."
+
+**Dense product-UI school (tactile-design).** `design-craft` (tactile-design) makes different calls, and they are scoped to dense app UI rather than blended with Dannaway's:
+- validate on blur and on submit, never per keystroke;
+- show the invalid state as a 1px red ring drawn with `box-shadow`, so nothing shifts;
+- put the message directly *under* the field, replacing its help text, with `role="alert"`;
+- keep Create disabled until its required field has content, then leave it enabled and surface errors on submit.
+
+Pick one school per product. Dannaway's errors-above and no-disabled-buttons rules come from long public forms, where autofill and keyboards cover the space below fields.
 
 Error message *copy* itself → `ux-writing` (error-messages).
 

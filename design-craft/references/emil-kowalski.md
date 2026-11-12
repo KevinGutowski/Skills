@@ -282,7 +282,7 @@ See `emil-kowalski/css-techniques.md` for the full walkthroughs and code. The es
 
 See `emil-kowalski/interaction-and-performance.md` for the code. The rules:
 
-- **Momentum-based dismissal.** Don't require dragging past a threshold; if velocity (`Math.abs(dragDistance) / elapsedTime`) exceeds ~0.11, dismiss regardless of distance. A quick flick should be enough.
+- **Momentum-based dismissal.** Don't require dragging past a threshold; if velocity (`Math.abs(dragDistance) / elapsedTime`) exceeds ~0.11, dismiss regardless of distance. A quick flick should be enough. A production-tuned variant (the tactile-design theme, [tactile-design/phone.md](tactile-design/phone.md)) keeps the 0.11 px/ms flick. It adds a short distance threshold, `min(64px, 15% of sheet height)`, plus 4px of tap slop so rows inside the sheet stay tappable.
 - **Damping at boundaries.** Past the natural boundary, the more they drag, the less it moves. Things in real life don't suddenly stop; they slow down first.
 - **Pointer capture for drag.** Capture all pointer events once dragging starts, so the drag survives the pointer leaving the element bounds.
 - **Multi-touch protection.** Ignore additional touch points after the initial drag begins, or switching fingers mid-drag makes the element jump.

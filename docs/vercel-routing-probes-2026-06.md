@@ -21,6 +21,9 @@ Purpose: test whether the Vercel-pattern overhaul loads the right skill before j
 | V13 | "Go through this source repo and its PR history and fold the lessons into my skills." | `creating-skills` | Conversion/source-mining route. |
 | V14 | "Make our app's generated UI use our tokens and component APIs instead of raw class names." | `design-systems` | Mechanical substrate and possible linting. |
 | V15 | "Audit every skill and tell me where trigger text, sources, examples, and tests are missing." | `creating-skills` | Collection-level audit. |
+| V16 | "Make this settings page look better." | `design-craft` | Plain polish request on existing UI; control against `frontend-design` (new build). |
+| V17 | "Fix the jank on our dashboard: buttons shift when data loads and the menus just blink in." | `design-craft` | Visual/interaction jank on existing UI, not frame drops. |
+| V18 | "Scrolling this list drops frames; audit the animation code for jank." | `motion` | Control: performance jank must not route to `design-craft`. |
 
 ## Scoring
 
