@@ -18,6 +18,7 @@ Depth moved out of SKILL.md: full source list, worked examples, outcome numbers,
 - [MailChimp pattern-library prework](#mailchimp-pattern-library-prework-the-ux-reader-2014)
 - [Soleio: UFI, Canon, and the Dropbox illustration strip-out](#soleio-ufi-canon-and-the-dropbox-illustration-strip-out)
 - [Impeccable: PRODUCT.md / DESIGN.md / surface brief](#impeccable-productmd--designmd--surface-brief)
+- [Tactile design: neutral roles and derived tokens](#tactile-design-neutral-roles-and-derived-tokens)
 - [Misc details](#misc-details)
 
 ## Full source list
@@ -157,6 +158,13 @@ Paul Bakaus, Impeccable (https://github.com/pbakaus/impeccable, Apache-2.0, scre
 - **Write the system record from the built world, not before it.** In Impeccable's account, a rulebook written before the build gets defended against reality and gives drift checks an unstable target. Document after the first build lands. A missing DESIGN.md does not mean there is no system: document the coherent identity already in code instead of inventing a new one.
 - **Make off-system values checkable.** Once the record exists, a font, color, radius, or font-size outside it is drift until shown to be intentional. Impeccable's detector flags these as `design-system-font/color/radius/font-size`. Treat each finding as a question: use the documented value, or add the value to the system on purpose. Named generation tells → `frontend-design` (anti-slop-catalog).
 - **Extract by intent, not resemblance.** Promote a pattern after about three uses *with the same intent*. Two buttons that look alike but serve different purposes stay separate, and visual similarity alone is no reason to merge behaviors. Premature abstraction is worse than duplication. Tokens need semantic meaning; a token for every value is noise.
+
+## Tactile design: neutral roles and derived tokens
+
+Source: Kosta, *Tactile design* (kosta4a/tactile-design, MIT, `30495a2`); ledger `docs/tactile-design-source-mining-2026-11.md`. Single-source; corroborated in part by Radix Colors' 12-step scale structure.
+
+- **Neutral roles, not hex** (Kosta, tactile-design). Write components against a 12-step neutral where each step has a job: 1–2 grounds, 3–5 fills, 6–8 lines, 9–10 faint text, 11 secondary text, 12 strong text and the primary fill. Any neutral can then be swapped in. After a remap, re-run the contrast gates (secondary text ≥4.5:1 on the well step, hairline step ≥~1.35:1 on white, focus step ≥3:1 everywhere), because stock scales often fail on the faint steps. Full gates and the step-shift rule: `design-craft` (tactile-design → tokens-and-surfaces).
+- **Derived CSS tokens resolve where they are declared.** `--shadow-button: 0 0 0 0.5px var(--ink-7)` set on `:root` won't follow a container that remaps `--ink-7`. Redeclare every token built from a working step on each surface or theme class. Alpha-based and `currentColor`-mixed values adapt by themselves.
 
 ## Misc details
 

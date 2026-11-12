@@ -515,3 +515,14 @@ Ticket-driven sweep of the Apple Developer YouTube videos and streams plus devel
 ## 2026-11-09 — Impeccable (impeccable.style, pbakaus/impeccable)
 
 Ticket-driven intake of Paul Bakaus's Impeccable design skill (Apache-2.0, `b3ced85`) and its site (Designing, Docs, Slop, Research). Full manifest, fold map, conflicts, and parked items: `docs/impeccable-source-mining-2026-11.md`. Density HIGH for craft-floor, new-work/modes, critique, the refinement commands, the 62-rule detector registry, and the research note; LOW for clarify, onboard, adapt, optimize, and the native digests. No new skill. New references: `frontend-design` (surface-modes, anti-slop-catalog), `interface-review` (critique-scoring), `design-craft` (refinement-moves). Extended: `working-with-ai` (ai-ui-direction), `creating-skills` (measuring-skill-effect), `design-systems`, `design-prototyping`, `web-design` (web-typography, web-layout-design), `user-onboarding` (empty-states). No descriptions changed.
+
+## 2026-11-11 — Kosta, *Tactile design* (kosta.fyi/skills/tactile-design, kosta4a/tactile-design)
+
+Ticket-driven intake of Kosta's tactile-design agent skill (MIT, `30495a2`) and its landing page. Full manifest, fold map, conflicts and parked items: `docs/tactile-design-source-mining-2026-11.md`.
+
+- **Density:** HIGH for SKILL.md, decisions, tokens, controls and surfaces; HIGH but overlapping with existing Emil Kowalski material for motion and mobile; MEDIUM for the landing page demos.
+- **New skills:** none.
+- **New in `design-craft`:** reference `tactile-design.md` (a third alternate theme) with second hop `tactile-design/` (tokens-and-surfaces, controls, layout-and-data, motion-values, phone).
+- **Extended:** `design-craft` (SKILL.md, polish-principles, surfaces, emil-kowalski, sources, coverage-gaps), `web-design` (form-design), `data-viz` (editorial-interaction), `design-systems` (field-notes, plus a pointer in SKILL.md), `web-design` (web-animation-design: Tailwind v4 traps), `working-with-ai` (ai-ui-direction: applying review notes), `interface-review` (review against a committed theme).
+- **Conflicts:** recorded as scoped schools (dark-mode lit edges, press scale, button colour, disabled buttons and error placement, type weight).
+- **Descriptions:** `design-craft` gained plain triggers on 2026-11-12, verified by blind routing probes V16–V18.

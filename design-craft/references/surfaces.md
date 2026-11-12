@@ -200,6 +200,8 @@ In dark mode, simplify to a single white ring — layered depth shadows aren't v
 --shadow-border-hover: 0 0 0 1px rgba(255, 255, 255, 0.13);
 ```
 
+**Alternate school: lighter fill, solid outline, black drop** (Kosta, [tactile-design.md](tactile-design.md)). A translucent white ring is one dark-mode answer. The tactile theme uses a different one: a raised thing is one or two neutral steps *lighter* than its parent, has one *solid* 0.5px outline about three steps above its fill, and keeps a tight black `0 1px 2px` drop. Without the drop, grey controls look printed on the surface. The fill, edge and drop are derived from the parent surface rather than fixed. Note that a CSS variable built from another variable resolves where it is declared, so redeclare such tokens on every surface class or the edge stops following its parent. Pick one dark-edge school per project.
+
 ### Usage with Hover Transition
 
 Apply the variable and add `transition-[box-shadow]` for a smooth hover:
@@ -336,6 +338,8 @@ The CSS below is illustrative (composed for this skill), not Briggs' shipped val
 ```
 
 Use these as optical details, not decorative chrome: a 1px top inset can be enough. Check at 100% zoom on the actual background; if the highlight is visible as a line before it is felt as crispness, lower the alpha.
+
+**Counter-school: no lit top edge.** The tactile theme ([tactile-design.md](tactile-design.md)) bans the top inset highlight in dark mode, along with any second line under the outline. Its reasoning: on a dark ground, a lit top line plus an edge reads as a gradient outline rather than as light. It also requires every dark drop to be darker than its parent, because a hue's light text colour used as a blurred shadow reads as a glow. This is a fork, not a correction. Briggs' top-light model suits material-rich, glossy components. The tactile rule suits quiet, dense product UI. Don't combine the two on one surface.
 
 ## Elevation Systems & Light-Source Shadows
 

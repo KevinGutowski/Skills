@@ -30,6 +30,7 @@ These rules have a dial, not a switch — before applying them at full depth, se
 - Remember the origin (Alaska): tokens were born from an accessibility failure — every engineer "invented a new blue" until one subscribed set existed.
 - **Motion is a token layer** (Nabors, *Animation at Work*, ch. 3): durations belong on a **timing scale** like a modular type scale — Salesforce's Lightning Design System tokenizes Fibonacci-style durations (100+300=400, 300+400=700) so overlapping animations line up. Amy Lee's orchestra metaphor: "if we agree that a quarter note is 400ms long, then we all can play together at a peppy tempo of 150 beats per minute."
 - **Name microanimations; pave the onomatopoeia cowpaths** (Nabors, ch. 4): codify "microanimations with descriptive names like 'pop,' 'fade,' and 'slide'" that compose into macroanimations ("alert"). Vocabularies start as room noises — "Can you make it more like *voooooosh* and less like *voosh*?" — so "adopt the words your company is using already." (Depth → field-notes.)
+- **Neutral roles and derived tokens** (Kosta, tactile-design): write components against a 12-step neutral's step *jobs*, rerun contrast gates after a remap, and redeclare CSS tokens built from other variables on every surface class, because they resolve where declared. Details: [field-notes](references/field-notes.md#tactile-design-neutral-roles-and-derived-tokens).
 
 ## Theming & multi-brand
 

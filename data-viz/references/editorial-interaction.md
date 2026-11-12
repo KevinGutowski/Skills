@@ -56,6 +56,17 @@ const y = d3.scaleLinear().domain([0, maxValue]).nice().range([innerHeight, 0]);
 
 5. **Interaction is not the explanation.** Hover states can reveal exact values and secondary context, but the main comparison, outlier, or trend must be legible before interaction.
 
+## Product Dashboard Conventions
+
+For in-app dashboard charts (usage, sessions, health), not editorial pages. Source: Kosta's tactile-design skill, one production dashboard; see `design-craft` (tactile-design → layout-and-data) for the full theme.
+
+- **Bars for counts per period and for status or health. Use a line only where the trend itself is the question** (latency, a balance over time), because a line invites optimising a trend the user can't act on.
+- **One natural period of the unit:** 24 hours, 7 days, 30 days or 12 months, not an arbitrary window.
+- **Quiet frame:** dotted gridlines over a hairline baseline, a right-hand axis scale in tabular or mono figures so the numbers line up (mono is for the chart axis only; the same theme keeps table columns in the sans with tabular figures, never a mono column), and small rounded bar tops. Add no hue unless it means status.
+- **Hover highlights one bar and dims the rest** (to about 35%), with its value on a small label. Bars fade in on a range change; they never sweep left to right or grow on load for style, and figures never animate. The latest bar may pulse to mean "now".
+- **In a table, status is a coloured dot with its label, not a badge.** A column of pills competes with the data.
+- **One strong figure** with a small label under it beats a grid of small stat tiles; fold secondary numbers into the card they belong to.
+
 ## Prepublish Pass
 
 - Headline makes a claim; subtitle states unit/timeframe/denominator.

@@ -6,6 +6,15 @@
 
 The task shape: an AI produced UI and you have to make it *right* — which is a directing job, not a generating job. The thesis (MDS): **layout-primitive literacy is the prompting skill.** If you can't name what's wrong in the layout system's own vocabulary, "sometimes not having the knowledge makes it where you don't even know what questions to ask" — you prompt into the ether and iterate blindly. The master frame (Brian Lovin, Dive Club podcast, dvEwb1Ajkwo): "we just need to make our intent legible to AI" — primitive vocabulary, named layers, reference URLs, and codified taste are all intent-legibility moves. Independent corroboration from the critique tradition (Katarina Batina, Dive Club podcast, 0YjO7wShTkQ): "our material language for building is now becoming words. We now have to give critique to our agents… The higher fidelity that designers can have in the language they use to make their work better, the better off they're going to be in an agentic era" — vague language ("this doesn't feel right") means "you're probably not going to one-shot something." Two lineages, same skill.
 
+## Contents
+- Speak in primitives
+- Recognize the failure modes
+- Name the tell, then pick the move
+- Escape the model's defaults
+- Direct the loop
+- Checklist
+- Relationship to other skills
+
 ## Speak in primitives
 
 - **The three sizing behaviors** — fixed width, fill container, hug contents — are the diagnostic vocabulary (identical in Figma auto layout and CSS): "like a jacket hugging a body… if your jacket was set to fixed and your shirt was set to hug." Fill is only meaningful inside a nested container; hug suits vertical content (it can scroll), fill suits horizontal. Width and height are set *independently* — half of "broken" AI layouts are one axis on the wrong behavior.
@@ -64,8 +73,16 @@ These are one project's results on its own briefs. Treat them as strong defaults
 5. **Sketch beats words for spatial intent** (Ron Goldin, Dive Club podcast, UkQpgslyR3A): "when something is off in Claude, I could back and forth with it in words for like 10 minutes or I could go to Figma and sketch it out in 5 minutes" — dual-task between the agent building and a sketch surface. Same family as Madrick's labeled keyframe sketch above. And have the agent reflect rambles back (Marvin Schwaibold, Dive Club podcast, KpJs7mZYErg): "ask me clarifying questions if you're unsure of my prompt cuz I'll ramble or send a voice note" — then it spits "basically my idea back to me" for confirmation before building.
 6. **Evaluate agents by how they drive** (Tommy Geoco, Dive Club podcast, OYNoy468kS8): don't judge a model/tool on one-shot output — "you have to drive them for a little while. When you drive it with intent and you're just like… that's wrong fix, that's wrong fix, and you do that a few iterations, I think then you have a good feel." (Turning those corrections into standing rules → [agentic-coding.md](agentic-coding.md) / `creating-skills`.)
 7. **Build once, then discover missing states by touching it.** A static mock rarely names every state. After implementation, operate the component and add the states the live thing reveals: idle, hover, pressed, loading/working, disabled, success/error, empty/overflow, snap-caught, drag-release, and reduced-motion. If a number hard-cuts, make it roll or cross-fade; if a task is working, prefer a calm state treatment over a default spinner when the wait is short and controlled. The user feels the state system, not the screenshot.
-8. **Judge in a fresh context**: have an independent judge with its own context window evaluate the output against explicit criteria. When a deterministic detector runs too, form the design judgment *before* reading its output, then reconcile the two (`interface-review` owns the two-pass critique) (the pattern, loadout, and rationale live in `design-prototyping`'s agents tier #4; criteria sources: `design-principles`, `design-craft`).
-9. **Fundamentals gate the polish stage** (MDS's skateboard maxim): "Have fun dropping into the bowl" — speed is real, but output you can't diagnose is output you can't finish.
+8. **Apply review notes the way the reviewer works** (Kosta, tactile-design, distilled from hundreds of pixel-level review notes). A designer's note is usually one element and one change, so:
+   - read it literally, and ask one short question only if it is ambiguous;
+   - find the neighbour and the existing recipe (role constants, a sibling component) and match it exactly before inventing a value;
+   - make the smallest change in the system's units (2px, one ink or token step, 5% of opacity or scale), and don't bundle unrequested changes;
+   - apply it to every instance of that pattern in the same change, because a decided rule is global;
+   - leave the other theme alone unless it is named, and never let a theme change alter sizes;
+   - preview empty, loading, error, shortest and longest data in both themes, at 4–8× zoom;
+   - report in plain bullets: what changed, where, and anything that conflicts with an earlier rule.
+9. **Judge in a fresh context**: have an independent judge with its own context window evaluate the output against explicit criteria. When a deterministic detector runs too, form the design judgment *before* reading its output, then reconcile the two (`interface-review` owns the two-pass critique) (the pattern, loadout, and rationale live in `design-prototyping`'s agents tier #4; criteria sources: `design-principles`, `design-craft`).
+10. **Fundamentals gate the polish stage** (MDS's skateboard maxim): "Have fun dropping into the bowl" — speed is real, but output you can't diagnose is output you can't finish.
 
 ## Checklist
 
@@ -76,6 +93,7 @@ These are one project's results on its own briefs. Treat them as strong defaults
 - [ ] Known Figma properties and component states were listed explicitly, and live use surfaced any missing states?
 - [ ] Taste/auditor rules traced to visible source evidence, not borrowed from a different reference corpus?
 - [ ] Value tweaks edited directly; prompts reserved for structure/behavior?
+- [ ] Review notes applied literally, matched to the existing recipe, in the smallest unit, to every instance, and reported with any rule conflicts?
 - [ ] Generation tells named by catalog ID and each fix chosen as a named move (bolder/quieter/distill/polish/harden) with an explicit scope?
 - [ ] For a new direction, did something other than the generating model pick from its shortlist, and was the concept committed before the clarity pass?
 - [ ] Independent fresh-context judge run before calling it done?

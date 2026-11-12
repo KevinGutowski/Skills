@@ -4,6 +4,19 @@ Bibliography for material cited by name-tag in SKILL.md, surfaces.md, animations
 and reference files. Other inline-cited sources (Stammy, Practical UI, MDS,
 Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 
+## Contents
+- Adam Wathan and Steve Schoger
+- Impeccable (Paul Bakaus)
+- Kosta — *Tactile design*
+- Anton Sten
+- Derek Briggs (PixelJanitor)
+- Gustavo Fior — *Craft*
+- Jakub Krehel — *Interfaces* Cheat Sheet
+- Marek Minor (Minor Adventures)
+- Linear product-craft articles
+- Linear Conversations on Quality
+- Kevin Kold / @kvnkld
+
 ## Adam Wathan and Steve Schoger
 
 - *Refactoring UI* (PDF v10, local Apple Books file). Visual refactor method folded
@@ -14,6 +27,10 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 ## Impeccable (Paul Bakaus)
 
 - https://impeccable.style · https://github.com/pbakaus/impeccable (Apache-2.0), screened at commit `b3ced85` (2026-11-09). Command references `bolder`, `quieter`, `distill`, `delight`, `overdrive`, `polish`, `harden` were paraphrased and merged into [refinement-moves.md](refinement-moves.md). Ledger: `docs/impeccable-source-mining-2026-11.md`.
+
+## Kosta — *Tactile design*
+
+- https://kosta.fyi/skills/tactile-design (landing page with before/after demos; `/md` export) · https://github.com/kosta4a/tactile-design (MIT), read at commit `30495a2` (2026-11-02). Its SKILL.md and all seven references (tokens, buttons-and-controls, surfaces-and-layering, layout-and-hierarchy, motion, mobile, decisions) were paraphrased into [tactile-design.md](tactile-design.md) and its second hop `tactile-design/`, with dark-mode counter-school notes in [surfaces.md](surfaces.md) and the Theme Note in [polish-principles.md](polish-principles.md). Credits inside the source: Emil Kowalski (motion, sheet drag), Radix Colors (12-step scales), Apple HIG (touch and sheet sizes). Ledger: `docs/tactile-design-source-mining-2026-11.md`.
 
 ## Anton Sten
 
