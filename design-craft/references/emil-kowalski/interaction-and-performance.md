@@ -87,15 +87,17 @@ element.style.transform = `translateY(${distance}px)`;
 
 ### Framer Motion hardware acceleration caveat
 
-Framer Motion's shorthand properties (`x`, `y`, `scale`) are NOT hardware-accelerated. They use `requestAnimationFrame` on the main thread. For hardware acceleration, use the full `transform` string:
+Version-scoped (updated from Kowalski's 2026 skills; this section previously said "NOT hardware-accelerated" without qualification). From Motion 14.2, the shorthand properties (`x`, `y`, `scale`, `rotate`) on HTML elements are hardware-accelerated. Before 14.2 they use `requestAnimationFrame` on the main thread; on those versions upgrade or use the full `transform` string:
 
 ```jsx
-// NOT hardware accelerated (convenient but drops frames under load)
+// Motion 14.2+: hardware accelerated. Earlier: main thread, drops frames under load
 <motion.div animate={{ x: 100 }} />
 
-// Hardware accelerated (stays smooth even when main thread is busy)
+// Hardware accelerated in every version (stays smooth even when main thread is busy)
 <motion.div animate={{ transform: "translateX(100px)" }} />
 ```
+
+Main-thread in every version: layout animations (`layout`, `layoutId`), anything using `onUpdate` or `transformTemplate`, inertia, and values driven per frame by a motion value (drag, `useTransform`). Check the installed version before flagging shorthands in review.
 
 This matters when the browser is simultaneously loading content, running scripts, or painting. At Vercel, the dashboard tab animation used Shared Layout Animations and dropped frames during page loads. Switching to CSS animations (off main thread) fixed it.
 

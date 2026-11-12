@@ -8,6 +8,7 @@
 - Dark Mode Edge Highlights
 - Elevation Systems & Light-Source Shadows
 - Eased Gradients
+- Translucent Materials on the Web
 - Backdrop Blur × mix-blend-mode (Chrome Gotcha)
 - Image Outlines
 - Noise / Grain Overlay
@@ -422,6 +423,18 @@ Don't fake a dark-mode variant by overlaying a gradient on a light-mode hero ass
 ```
 
 If a separate asset isn't available, use an eased overlay and verify the image still looks intentional rather than dimmed.
+
+## Translucent Materials on the Web
+
+Web port of Apple's material rules, for floating chrome built with `backdrop-filter` (toolbars, sticky headers, sheets). The native material system itself is `apple-design` (liquid-glass-design-system); these are the parts that survive translation to CSS (source: the `apple-design` skill in Emil Kowalski's open skills (https://github.com/emilkowalski/skills, MIT, rev `715c180`, indexed at https://aiforui.dev/skills)).
+
+- **Weight encodes hierarchy.** Heavier, darker materials separate structural regions (sidebars); lighter ones mark interactive elements. Never stack one light translucent surface on another: legibility collapses.
+- **Bigger surfaces read as thicker.** A sheet gets more blur and a deeper shadow than a chip. Shadow can be heavier over busy content and lighter over plain backgrounds.
+- **Scrim means modal.** A blocking task pairs the surface with a dimming scrim and pushes the background back. A parallel, non-blocking panel uses translucency and offset with no scrim. Stacked sheets dim and push back each parent in turn.
+- **Text over blur needs help.** Flat gray text washes out over changing content: raise contrast and weight slightly, and put color on a solid layer rather than the translucent one.
+- **Scroll-edge fade instead of a hard divider.** Where content passes under floating chrome, fade a small blur or gradient mask at the overlap instead of drawing a 1px border, and only where chrome actually overlaps content.
+- **Materialize, don't just fade.** Animate blur radius and scale together on enter and exit so the surface arrives as a material. Blur is paint-heavy; check the cost in `web-design` (web-animation-design)'s animation-performance member before animating it on large surfaces.
+- **Honor the preference queries.** Under `prefers-reduced-transparency: reduce`, raise the background opacity and drop the blur; under `prefers-contrast: more`, go near-solid with a defined border. See `web-design` (web-accessibility).
 
 ## Backdrop Blur × mix-blend-mode (Chrome Gotcha)
 

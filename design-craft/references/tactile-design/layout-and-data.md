@@ -53,6 +53,8 @@ Deep file for [../tactile-design.md](../tactile-design.md). Source: `kosta4a/tac
 
 ## Worst-case data and formatting
 
+These are the theme's display rules. For the stress-test method itself (per-field catalog, demo/worst-case toggle, failure signatures), use [../worst-case-data.md](../worst-case-data.md).
+
 - **Free text in cells, the rail, breadcrumbs and titles** stays on one line. It hugs up to about 32ch, then end-truncates with "…", with the full value in a tooltip and still selectable. Flex children holding text need `min-width: 0`.
 - **Card descriptions** clamp to 2 lines, and badges cap at about 24ch.
 - **Figures over 6 digits** use compact notation (`Intl.NumberFormat(locale, { notation: "compact" })`), with the full value in a tooltip.

@@ -75,3 +75,14 @@ Judge: fresh general-purpose subagent with no repo context. It read only a *blin
 Other probes: V2–V8 and V10–V15 matched their first skill. V1 came back as the accepted pair in reverse order (`working-with-ai` then `creating-skills`). **V9 drifted:** it was judged `working-with-ai` + `ux-writing` against the expected `ux-writing` + `creating-skills`. This drift predates the change; none of those descriptions were edited. Recheck V9 at the next description pass. The judge also named V4, V11, V12 and V14 as genuinely ambiguous between neighbouring descriptions.
 
 Note: if a local `~/.claude/skill-evals/routing-eval.md` exists, `check_vercel_routing_probes.py` expects it to carry probes 130–132 mirroring V16–V18.
+
+### 2026-11-12 recheck after merging main (Emil Kowalski open-skills fold)
+
+Both branches edited the `design-craft` description, so the two were merged under the 450-character cap. The merged version keeps main's "stress-test", "worst-case data" and "quality ritual" alongside this branch's "make it look better", "fix the jank" and "frame drops → motion". It drops "decide wider vs deeper", "polished", "dogfood" and "unship"; the body still covers all four.
+
+A fresh judge read a blind packet: the descriptions plus W1–W18 from `docs/web-motion-routing-probes-2026-11.md` and V1–V18, with no expected answers.
+
+- **`design-craft` targets:** W10, W16, W17, V5, V16 and V17 all pass. V17's second skill was `web-design`.
+- **Frame-drop control:** V18 → `motion`, pass.
+- **W1–W9, W11–W17:** all pass. W18 came back as "none", which its notes accept.
+- **Drift in descriptions this change didn't touch:** V9 (as before) and V12 (`working-with-ai` first, `design-prototyping` second, against the expected `design-prototyping`). Recheck both at the next description pass.

@@ -53,6 +53,9 @@ y.target = nearestCornerPosition.y
 ```
 *(2018, from the session slides; velocity in points/sec, deceleration per-ms — hence the /1000. The pattern survives directly in modern SwiftUI spring APIs.)*
 
+- **One spring per axis.** The sample drives `x` and `y` as separate springs on purpose: a single spring over the 2D distance desynchronises when the two axes carry different velocities.
+- **Commit or reverse on velocity direction.** A corollary of projecting intent, stated in Kowalski's port rather than the talk: at release, a sheet past the midpoint that is moving back should return, so let the sign of the velocity (or the projected endpoint) decide, never the raw position.
+
 - **Stay in character:** scroll-drag and tap-status-bar-to-top use different mechanisms, but the page must feel like the same object; carry one motion character across the app.
 - **Go beyond motion:** combine dynamic behaviors with **sound and haptics** (see [../sound-design.md](../sound-design.md)).
 
@@ -76,5 +79,6 @@ These are interaction *principles*, not platform specs — they carry across pla
 
 - **`web-design` (web-animation-design)** — spring/easing values, interruptibility, and reduced-motion for web motion (the default web motion theme).
 - **`design-craft` (emil-kowalski)** — the component-craft translation: press `scale(0.97)`, never `scale(0)`, origin-aware popovers, momentum-based dismissal.
+- **`web-design` (web-animation-design)** gestures member (`web-animation-design/gestures.md`) — the web build mechanics for drag/swipe/sheets: pointer capture, `touch-action`, JS projection and rubber-band functions, spring-vs-transition on release, a symptom table.
 
 Emil Kowalski's public `apple-design` skill is a fuller single-file web port of this same WWDC 2018 lineage — useful as a cross-check, but treat its numbers as one coherent theme, not canonical talk specs.

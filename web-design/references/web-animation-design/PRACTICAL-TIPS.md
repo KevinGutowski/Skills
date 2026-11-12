@@ -39,6 +39,8 @@ Elements may shift by 1px at the start/end of CSS transform animations due to GP
 
 This tells the browser to keep the element on the GPU throughout the animation.
 
+Add it only once you have seen the shift (or measured dropped frames on an expensive paint), and only on the animating element. Elements animating `transform`/`opacity` are usually promoted already, and each extra layer costs GPU memory — it is not a general smoothness switch. Full rule and diagnosis order: [animation-performance.md](animation-performance.md).
+
 ### Take Breaks
 
 Don't code and ship animations in one sitting. Step away, return with fresh eyes. The best animations are reviewed and refined over days, not hours.
@@ -181,6 +183,10 @@ Too fast is as bad as too slow — below a certain duration the eye can't track 
 - **One entrance per container.** Don't animate the parent *and* stagger its children — pick one level to own the motion.
 - **Exit direction should match entry direction** — a panel that slides in from the right leaves to the right.
 - **Navigation direction should match the mental model** — "Next" advances one way, "Back" reverses it (direction-aware step transitions).
+- **A removed element gives up its space immediately** — siblings close the gap while it fades, not after (`AnimatePresence mode="popLayout"`, or absolutely position it at its current offset before the exit).
+- **No stagger on menus, command palettes, or tab content** — anything opened many times a day arrives together.
+
+The full method for deciding these — cast roles, pick together/overlap/sequence per pair, stagger budgets (30–80ms steps and ~300ms total in product UI), interruption checks — is [choreography.md](choreography.md). Decide the choreography there; structure the code with the storyboard pattern below.
 
 ## Choreographing Multi-Step Animations
 
@@ -388,7 +394,9 @@ Blur bridges visual gaps between states, tricking the eye into seeing smoother t
 - **Bounce requires force**: the same sheet bounces when *dragged* shut (a drag has physical force, like throwing a ball) and doesn't bounce on a *press* — gate bounce on whether the user applied a gesture.
 - **Prefer translate percentages over px**: `translateY(100%)` moves an element by its own size, so Sonner/Vaul work at any content height — "percentages are less error prone."
 - **Pure rotation reads best with ease-in-out**; CSS *transitions* are interruptible while CSS *keyframe animations* are not — which is why enter animations whose end state can change mid-flight (toast stacking) use transitions.
-- Animating `box-shadow` is expensive — animate opacity of a pre-rendered shadow layer instead.
+- Animating `box-shadow` is expensive — animate opacity of a pre-rendered shadow layer instead (or `filter: drop-shadow()`; trade-off in [animation-performance.md](animation-performance.md)).
+- **Accordion `height` is the tolerated layout animation** — no transform equivalent exists. Keep it short and animate to a measured height, not `auto`.
+- **Scroll reveals are for marketing surfaces and fire once** — an element that re-animates every time it re-enters the viewport is noise.
 
 **Techniques**
 - **The clip-path duplicate-overlay**: duplicate an element, style the duplicate as the "after" state, and animate `clip-path: inset(...)` to reveal it — seamless tab highlights (no color-transition timing problems), theme-change reveals, comparison sliders, and image reveals with zero layout shift; hardware-accelerated.

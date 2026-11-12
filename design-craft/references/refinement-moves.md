@@ -104,7 +104,7 @@ Don't perfect one corner while the rest of the path stays below the same bar. Ma
 
 Designs that only work with perfect data are not production-ready.
 
-- **Extreme inputs:** very long and very short text, emoji, RTL, accents, huge numbers, 1,000+ items, nothing at all.
+- **Extreme inputs:** very long and very short text, emoji, RTL, accents, huge numbers, 1,000+ items, nothing at all. Use realistic or schema-backed values, never random strings, and inject them at the fixture boundary behind a dev-only demo/worst-case toggle. The per-field catalog, failure-signature table, and report format are in [worst-case-data.md](worst-case-data.md).
 - **Failures:** offline, slow, timeout. Each status code gets a deliberate state: 400 shows field errors, 401 re-authenticates, 403 explains the permission, 404 shows not-found, 429 explains the limit, 500 is generic with a support path. Keep the user's input on any error.
 - **Concurrency:** prevent double submission, handle races, use optimistic updates with rollback.
 - **Interrupted gestures** (custom sliders, drag surfaces): a second pointer never hijacks the drag, and `pointercancel`, `lostpointercapture`, release outside, and window `blur` all clear drag state, so the next tap works without a reload.

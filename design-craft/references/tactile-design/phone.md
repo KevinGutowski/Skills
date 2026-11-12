@@ -11,6 +11,8 @@ Deep file for [../tactile-design.md](../tactile-design.md). Source: `kosta4a/tac
 
 ## Phone: native feel
 
+The platform layer (symptom → cause → fix, hardware verification, the never-disable-zoom rule) is covered in more depth by `web-design` (mobile-web-native-feel). These are the theme's defaults on top of it.
+
 Apply these to every phone change without being asked:
 
 - **Hover:** only under `(hover: hover) and (pointer: fine)`, so hover states don't stick after a tap. On coarse pointers, show the same look on `:active`, wrapped in `:where()` so a control's own active style still wins.

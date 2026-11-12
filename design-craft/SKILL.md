@@ -1,6 +1,6 @@
 ---
 name: design-craft
-description: "Raise design quality and interface feel: craft methods (noticing, range vs depth, facets, live tuning), execution values (shadows, spacing, radii, alignment, motion, type), and Linear-style quality rituals/triage. Use to polish or critique existing UI, build taste, or make quality practice repeatable. Strategy → design-principles; shaping → shape-up; frame drops → motion. Triggers: make it look better, fix the jank, feels off, polished, dogfood."
+description: "Raise design quality and feel via craft methodology (noticing, range vs depth, facets, live tuning), execution values (shadows, spacing, radii, alignment, motion, type), and Linear-style rituals/triage. Use to polish, critique, or stress-test UI, build taste, or make quality repeatable. Strategy → design-principles; shaping → shape-up; frame drops → motion. Triggers: make it look better, fix the jank, feels off, worst-case data, quality ritual."
 ---
 
 # Design Craft
@@ -23,6 +23,8 @@ Most requests won't name a method. Don't start by changing values. First:
    | Misaligned edges, siblings that don't match, uneven or cramped spacing, heavy borders, muddy hierarchy, too many strong things | visual inconsistency | [polish-principles](references/polish-principles.md) and the Polish move in [refinement-moves](references/refinement-moves.md); for dense app UI (dashboards, settings, tables, modals), the decision order in [tactile-design](references/tactile-design.md) |
    | No press feedback; animation too slow, abrupt or bouncy; hover that sticks on touch; menus that blink in and out | interaction feel | [animations](references/animations.md) and [emil-kowalski](references/emil-kowalski.md); motion values from `web-design` (web-animation-design) |
    | Content shifts on load; buttons move when a label or loading state changes | layout instability | polish-principles §17; `web-design` (web-performance) for CLS |
+   | Breaks with a long name, a missing avatar, a count of 1, or a translated label | data fragility | [worst-case-data](references/worst-case-data.md) |
+   | Web app feels like a website on a phone: stuck hover, tap flash, input zoom, wrong heights | mobile platform layer, not animation | `web-design` (mobile-web-native-feel) |
    | Stutter, dropped frames, scroll jank | performance, not styling | the `motion` skill's MotionScore performance audit and `web-design` (web-performance) |
    | AI-generated UI that looks generic | generation tells | `working-with-ai` (ai-ui-direction) and `frontend-design` (anti-slop-catalog) |
 
@@ -44,6 +46,7 @@ When the question shifts from *"is this good / how far do I push"* to *"what exa
 | [tactile-design](references/tactile-design.md) | Alternate theme (Kosta, kosta.fyi) for tactile, layered, quiet product UI: decision order, parent-relative fill/edge/drop, crisp light and dark elevation, one-primary hierarchy, never-ship list. Second hop in `references/tactile-design/`: tokens-and-surfaces, controls, layout-and-data, motion-values, phone |
 | [refactoring-ui](references/refactoring-ui.md) | Visual refactor passes (hierarchy, spacing, type, color, depth); code-native gallery in `examples/` |
 | [linear-product-craft](references/linear-product-craft.md) | Linear's product-craft operating model: redesign debt, scope control, stress tests, feature flags, internal tools, quality rituals, triage, dogfood/unshipping, taste calibration |
+| [worst-case-data](references/worst-case-data.md) | Stress-test a component with realistic worst-case data: per-field catalog, demo/worst-case toggle, failure-signature → fix table, truncate/wrap/clamp, Broken/Ugly/Fragile report |
 | [refinement-moves](references/refinement-moves.md) | Directional verbs for an existing UI: bolder (amplify the system's own moves, skeleton test), quieter (restraint that isn't generic), distill, delight, overdrive (propose first), polish (drift classification + triage order), harden (real data, failures, interrupted gestures) |
 
 Theme discipline applies across these: pick one coherent value-set and don't average (see polish-principles' Theme Note). `emil-kowalski` and `tactile-design` are complete alternate themes; each keeps its deep files in a same-named subdirectory that only its parent reference links (one sanctioned second hop). For motion *values*, `web-design` (web-animation-design) is the default theme. The methodology below is *how to evaluate*; the table above is *how to execute*.
