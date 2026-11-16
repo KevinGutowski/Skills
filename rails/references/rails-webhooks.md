@@ -17,6 +17,7 @@ Use for outbound/inbound webhook architecture and reliability. Modeled on Fizzy'
 ## Failure Classification (the key distinction)
 
 - **Expected destination failures** (timeout, TLS, DNS, connection refused, HTTP 4xx/5xx): rescue, mark delivery `completed` with a symbolic error (`response: { error: :connection_timeout }`). The delivery ran; the destination failed. Do not retry the job.
+- Treat malformed or non-HTTP responses (`EOFError`, `Net::HTTPBadResponse`, invalid headers) as expected destination failures too, so they count toward delinquency instead of escaping the delivery record.
 - **Unexpected exceptions** (our bug): mark `errored!`, re-raise so ActiveJob retries.
 - This split keeps retry behavior, dashboards, and delinquency tracking honest.
 
@@ -29,6 +30,7 @@ Use for outbound/inbound webhook architecture and reliability. Modeled on Fizzy'
 ## Security Baseline
 
 - Treat webhook URLs as untrusted input; apply full SSRF protections (resolve + validate IP, block private ranges, pin IP, re-validate per redirect — see rails-security-multitenancy).
+- Allow only HTTP(S) on ports 80 and 443 unless the product explicitly needs more. A scheme check alone still lets an account scan public ports or send webhook payloads to SMTP, SSH, and other non-HTTP services. Validate on write and again at delivery for legacy rows.
 - Revalidate destination at send time, not just on create.
 - **Destination URL is immutable after create** — updates permit name/subscriptions only. Retargeting requires a new webhook (and new secret).
 - Sign payloads: HMAC signature header + timestamp header.

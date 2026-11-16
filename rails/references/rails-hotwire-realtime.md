@@ -35,6 +35,7 @@ Rule of thumb: Turbo Streams for anything that changes the DOM; bare ActionCable
 
 - Prefer server-rendered partial updates over heavy client-side state systems.
 - Set global morph refresh in the layout: `turbo_refreshes_with method: :morph, scroll: :preserve`.
+- With a Content Security Policy, keep the nonce stable for the lifetime of the Turbo document, such as a random value stored in the session. A fresh nonce per request is incompatible with Turbo navigation because the browser keeps enforcing the CSP from the initial document until a full reload.
 - Use Turbo Streams for targeted updates; one action can render a multi-target stream template that updates every affected region atomically (source column + destination + detail pane).
 - Lazy-load expensive sections with `turbo_frame_tag ..., src:, loading: :lazy` and give the frame endpoint its own `fresh_when` ETag. Extract frequently-changing fragments into their own frames so they don't bust the parent cache.
 - Use `data-turbo-permanent` for elements that must survive navigation/morph (footer trays, in-progress editors).

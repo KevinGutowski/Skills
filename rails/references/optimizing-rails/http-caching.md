@@ -44,6 +44,8 @@ Cache-Control: public, max-age=300
 Cache-Control: no-store
 ```
 
+Treat authentication as a shared-cache boundary. Even when the URL and content are nominally public, do not emit `public` cache headers for a response rendered with a signed-in user or session context. Test the signed-out response as publicly cacheable and the signed-in response as private.
+
 ## ETags and Revalidation
 
 When a cached resource expires, the browser sends a conditional request:
