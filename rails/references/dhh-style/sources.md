@@ -11,6 +11,7 @@ Use this map when updating the DHH/Rails style guidance.
 - DHH gists: https://gist.github.com/dhh
 - Rails World DHH keynotes: https://www.rubyevents.org/speakers/david-heinemeier-hansson
 - Official Rails reference apps: https://rubyonrails.org/docs/reference-apps
+- Official Rails Hotwire guide: https://guides.rubyonrails.org/using_hotwire_with_rails.html
 - Campfire source: https://github.com/basecamp/once-campfire
 - Writebook source: https://github.com/basecamp/writebook
 - Fizzy source: https://github.com/basecamp/fizzy
