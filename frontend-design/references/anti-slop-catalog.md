@@ -4,6 +4,7 @@
 
 - How to use this catalog
 - Craft floor: checks on the rendered result
+- Copy budget: start with none, add one line at a time
 - Page-scaffold tells
 - Surface and material tells
 - Type and copy tells
@@ -13,7 +14,7 @@
 - Saturated looks: the calibration check
 - Running a deterministic pass
 
-This reference serves `frontend-design` when building and `working-with-ai` (ai-ui-direction) and `interface-review` when diagnosing. It is adapted from Impeccable (Paul Bakaus, Apache-2.0; [sources.md](sources.md)). Impeccable's `craft-floor` and its 62-rule detector (`npx impeccable detect`) supply the evidence. Rule IDs in backticks are the detector's IDs, so a finding can be traced to a check.
+This reference serves `frontend-design` when building and `working-with-ai` (ai-ui-direction) and `interface-review` when diagnosing. It is adapted from Impeccable (Paul Bakaus, Apache-2.0; [sources.md](sources.md)), except the copy budget, which comes from Luke Wroblewski's November 2026 exhibit. Impeccable's `craft-floor` and its 62-rule detector (`npx impeccable detect`) supply the evidence. Rule IDs in backticks are the detector's IDs, so a finding can be traced to a check.
 
 ## How to use this catalog
 
@@ -34,8 +35,48 @@ Verify these on the render, all in one batched look rather than one screenshot p
 - **Motion:** one authored moment, not the same entrance on every section. Content stays visible by default, so a failed script cannot hide the page.
 - **States:** hover, focus, active, disabled, loading, error, empty, all with real content and working controls.
 - **Browser surfaces:** theme the parts you did not draw: text selection, caret, scrollbars, focus rings, underline offset, tabular numerals. Agents skip these most reliably, and doing them is the cheapest sign the page was built rather than assembled.
-- **Copy:** use the product's own language. Controls name their action, and errors name the problem and the recovery.
+- **Copy:** use the product's own language. Controls name their action, and errors name the problem and the recovery. Every supporting line passed the copy budget below; count them per surface.
 - **Coverage:** a visitor can find every requirement in the brief within seconds.
+
+## Copy budget: start with none, add one line at a time
+
+The most common generated-UI failure is not a visual tell. It is volume: a model explains every surface it builds. Luke Wroblewski's exhibit (X, 2026-11-17, "why designers still have jobs.") shows the same Share Workspace sheet twice, and his repair prompt for this class of output was "remove the 75% of this UI that's agent slop."
+
+| | Frontier AI | Human designer |
+| --- | --- | --- |
+| Supporting copy | 39 words in three blocks: an intro restating the title and explaining how links work, the link rule, a footer pointing to another app | 11 words in one caption: "Anyone with the link can join. Expires in 7 days." |
+| Actions | Three: "Send Invite Link" with an icon, "Copied" (a transient state left as the button's label), "Create Another Link" | Two: "Send Link", "Copy Link" |
+| Sheet | Tall enough to cover the conversation behind it | About half the height |
+
+The one line that survived is the only one stating something the controls cannot show (who can join, when it expires), and it got more exact ("7 days", not "next week"). Everything cut was true. That is why this failure survives self-review: check each line for whether it is needed, not whether it is accurate.
+
+**Rule `copy-budget` (default on every surface this skill builds):**
+
+1. **Build the first pass with no supporting copy.** Title, content, and controls only. No subtitle, intro paragraph, description under a heading, helper text, caption, footnote, tooltip, badge, or icon inside a labeled button, and no action the brief did not ask for.
+2. **Fix clarity in the labels first.** If the surface is unclear without a sentence, change the title, the button label, the order, or the grouping. A sentence is the last repair. Drop words the container already says: inside "Share Workspace", "Send Link" beats "Send Invite Link".
+3. **Then add a little.** Add one line at a time, and only a line that passes the admission test: it states something the user needs before acting that the title and controls cannot show. That means a consequence, a limit, a cost, an expiry, who can see or join, irreversibility, or a required format. Put it beside the control it qualifies and give it the exact value.
+4. **Hold the budget.** A small surface (sheet, dialog, popover, card, form section, empty state, settings group) gets at most one supporting line by default. A second line needs a named fact of its own, not a rewording of the first.
+5. **Run the cover test before finishing.** Hide each supporting line in turn. If a first-time user could still complete the task and predict the result, delete the line.
+
+**Cut on sight:**
+
+- a line that restates the title or the button ("Invite people to…" under "Share Workspace");
+- a line that explains how a standard control works ("They join by opening the link you send them");
+- a pointer to a feature that lives somewhere else ("To remove people…, use … on your Mac");
+- reassurance, welcome, and benefit sentences on a task surface;
+- a description under every card, row, tab, or section heading because the template had a slot for one;
+- a status shown as a permanent label ("Copied" belongs in a brief confirmation, then the label returns to "Copy Link");
+- secondary and tertiary actions added "in case" (see Distill in `design-craft` (refinement-moves)).
+
+**Exceptions:**
+
+- **The copy is the content.** Persuade and Read surfaces exist to be read. The budget applies to their chrome and to repeated slots (a subtitle under every section heading), not to the argument or the article.
+- **High-stakes moments keep their explanation.** Destructive actions, payments, permissions, legal consent, and errors need the consequence and the recovery stated. Failure copy → `ux-writing` (error-messages).
+- **Empty states and first-run** may teach in one or two lines, because there is no content to do it → `user-onboarding`.
+- **Accessible names are not supporting copy.** Never cut a label, `alt`, or `aria-label` to meet the budget. Icon-only buttons still need names.
+- **Supplied copy is not yours to cut.** A refinement preserves the user's copy. Propose the cuts and list them. The budget governs copy you author.
+
+Why models do this is our reading, not Wroblewski's: the model writes for the person who prompted it, so the brief's explanation leaks into the product, and each sentence looks harmless alone. Hence the budget is counted per surface rather than judged line by line. This rule rests on one exhibit plus the library's existing economy rules (`ux-writing` (ui-voice-and-tone): PACE "know what to leave out" and the Simplify pass). It is a default, and the brief still wins.
 
 ## Page-scaffold tells
 
@@ -86,6 +127,9 @@ Verify these on the render, all in one batched look rather than one screenshot p
 | "…is just theater" framing | `theater-slop-phrase` | Say plainly what the thing does or does not do. |
 | Em-dash saturation in body copy | `em-dash-overuse` | Advisory only. It fires on density, never on a single dash. |
 | Same literal text repeated 3+ times in one card or panel | `repeated-container-text` | Say it once, in the slot where it matters. |
+| Explanatory copy on every surface: intro paragraph under the title, description under each heading, helper line under each control, footer note | — | Rule `copy-budget` above: start with none, then admit one line per surface that states what the controls cannot. |
+| A sentence explaining how a standard control works, or pointing to a feature elsewhere | — | Delete it. Fix the label if the control is unclear. |
+| Leading icon on every labeled button | — | Text label alone. An icon earns its place where it is the only label or distinguishes siblings. |
 
 ## Motion tells
 

@@ -51,6 +51,7 @@ Simplicity removes what stands between users and their goal. Every element must 
 
 - **Find the essence:** the one primary goal, what is essential versus nice-to-have, what can be hidden, combined, or removed.
 - **Information architecture:** one primary action, few secondary actions, the rest tertiary or disclosed. Say each thing once.
+- **Copy:** go to zero, then add back. Remove every supporting line (intro, helper text, caption, footnote), fix unclear labels, then re-admit at most one line per surface that states what the controls cannot show: a consequence, limit, expiry, or audience. Trimming sentence by sentence keeps too much, because each line looks reasonable alone. Rule `copy-budget` in `frontend-design` (anti-slop-catalog). Copy the user wrote is proposed for removal, not removed.
 - **Visual:** 1–2 colors plus neutrals, one family, 3–4 sizes, 2–3 weights. Remove decoration that serves neither hierarchy nor function. Never nest cards, and drop cards that only do layout work.
 - **Layout:** a linear flow where possible, consistent alignment, generous space.
 - **Interaction:** fewer choices, smart defaults, inline edits instead of modal flows, fewer steps, one obvious next action.

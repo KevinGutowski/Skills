@@ -530,3 +530,15 @@ Ticket-driven intake of Kosta's tactile-design agent skill (MIT, `30495a2`) and 
 - **Extended:** `design-craft` (SKILL.md, polish-principles, surfaces, emil-kowalski, sources, coverage-gaps), `web-design` (form-design), `data-viz` (editorial-interaction), `design-systems` (field-notes, plus a pointer in SKILL.md), `web-design` (web-animation-design: Tailwind v4 traps), `working-with-ai` (ai-ui-direction: applying review notes), `interface-review` (review against a committed theme).
 - **Conflicts:** recorded as scoped schools (dark-mode lit edges, press scale, button colour, disabled buttons and error placement, type weight).
 - **Descriptions:** `design-craft` gained plain triggers on 2026-11-12, verified by blind routing probes V16–V18.
+
+## 2026-11-17 — Luke Wroblewski, "why designers still have jobs." (X 2122727731389685951)
+
+Ticket-driven fold: instruct agents that less is more, starting with no supporting copy and then adding a little.
+
+- **Manifest:** the post (text plus one image, read) and the post it quotes, X 2122490348337565697, "remove the 75% of this UI that's agent slop." (read). Fetched through `api.vxtwitter.com` and `api.fxtwitter.com`; the image was downloaded from `pbs.twimg.com` and read directly. Replies (46 and 6) were not read: the public JSON endpoints do not return them. lukew.com was not searched for a longer write-up.
+- **Density:** HIGH for one lesson, thin as evidence. The image compares one Share Workspace sheet: generated (39 supporting words in three blocks, three actions, a button icon, a stale "Copied" label) against a designer's (11 words in one caption, two actions). Counts are ours.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Owner:** `frontend-design` (anti-slop-catalog), new section "Copy budget" with rule `copy-budget`: zero supporting copy first, labels before sentences, one admitted line per small surface, the cover test, a cut list, and exceptions (copy-as-content surfaces, high-stakes moments, empty states, accessible names, user-supplied copy). Three rows added to the type and copy tells. `frontend-design/SKILL.md` gained build-contract step 4 and a verification bullet; surface-modes gained an Operate copy bullet.
+- **Extended:** `working-with-ai` (ai-ui-direction: the over-explained-surfaces failure mode, the subtract-then-re-admit prompt, a checklist line), `design-craft` (refinement-moves: Distill copy bullet), `ux-writing` (ui-voice-and-tone: "ask whether the line should exist" ahead of the Simplify edits, a checklist line), plus each skill's sources file.
+- **Synthesis flagged as ours:** the staged procedure, the one-line budget, the exceptions, and the reason models over-explain. Wroblewski supplied the exhibit and the 75% prompt only.
+- **Parked:** single source. Recorded in `frontend-design/references/coverage-gaps.md` with what would promote it: a with/without comparison on the same briefs, a second source, and a container word-count detector. No eval case was added.

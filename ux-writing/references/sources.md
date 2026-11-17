@@ -31,6 +31,10 @@ Use this as provenance for the `ux-writing` router and its references. It is not
 - Jon Yablonski, *Laws of UX*, chapter 4 — working-memory myth around visible navigation labels.
 - Allan Peters, *Logos that Last* — noun-metaphor technique used as a naming generation aid.
 
+## Copy volume
+
+- Luke Wroblewski / @LukeW, X 2122727731389685951 (2026-11-17), a Frontier AI vs Human Designer share-sheet comparison, quoting his X 2122490348337565697. Folded as the "ask whether the line should exist" step in `ui-voice-and-tone.md`; the rule itself is owned by `frontend-design` (anti-slop-catalog).
+
 ## Settings Copy
 
 - Linear settings surfaces audit, summarized in `linear-settings-copy/linear-settings-copy-ia.md` — sidebar IA, page archetypes, row anatomy, option labels, action labels, and settings-home education patterns.
