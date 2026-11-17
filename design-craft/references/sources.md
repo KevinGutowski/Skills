@@ -116,3 +116,7 @@ Transcript access: YouTube `en` captions fetched with `yt-dlp --skip-download --
 ## Emil Kowalski — open skills (aiforui.dev)
 
 - https://aiforui.dev/skills · https://github.com/emilkowalski/skills (MIT), read at rev `715c1807e08c497cfd1dc4feb450a2a3300ef2a9` (2026-11-10). `break-ui` and its catalog were paraphrased into [worst-case-data.md](worst-case-data.md) with a pointer from the harden move in [refinement-moves.md](refinement-moves.md); `emil-design-eng` deltas (Motion 14.2 shorthand acceleration, `will-change` rule, delight and function checks, stagger scoping) were merged into [emil-kowalski.md](emil-kowalski.md); the materials section of `apple-design` was folded into [surfaces.md](surfaces.md). Full screening ledger: `docs/emilkowalski-skills-source-mining-2026-11.md`.
+
+## Luke Wroblewski — copy volume in generated UI
+
+- X 2122727731389685951 (2026-11-17), quoting X 2122490348337565697. Folded as the Copy bullet under Distill in [refinement-moves.md](refinement-moves.md); the rule is owned by `frontend-design` (anti-slop-catalog).
