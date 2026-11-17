@@ -1,6 +1,6 @@
 # Sources
 
-This skill aggregates six Evil Martians Chronicles posts (largely Vladimir Dementyev's TestProf lineage; canonical playbook: https://test-prof.evilmartians.io/playbook):
+This reference aggregates six Evil Martians Chronicles posts (largely Vladimir Dementyev's TestProf lineage; canonical playbook: https://test-prof.evilmartians.io/playbook):
 
 - *"TestProf: a good doctor for slow Ruby tests" (Dementyev, 2017, rev. 2024). https://evilmartians.com/chronicles/testprof-a-good-doctor-for-slow-ruby-tests*
 - *"TestProf II: Factory therapy" (Dementyev, 2018, rev. 2024). https://evilmartians.com/chronicles/testprof-2-factory-therapy-for-your-ruby-tests-rspec-minitest*

@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: skill-needs-spaced-practice
+expected_outcome: |
+  Frames the goal as a concrete action in context, spends most of the day on realistic practice with feedback, is honest that one day will not produce proficiency, and adds practice spread over the following weeks.

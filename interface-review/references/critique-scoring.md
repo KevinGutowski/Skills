@@ -20,7 +20,7 @@ Load it when the user asks for a **scored** critique ("rate this", "how good is 
 ## Two isolated passes
 
 1. **Pass A, design judgment.** Read source and inspect the render. Form the specificity verdict, heuristic scores, cognitive-load count, and persona red flags **before** seeing any deterministic output.
-2. **Pass B, deterministic evidence.** Run detectors and automated checks: axe or Lighthouse, `npx impeccable detect --json`, the project's lints. Record counts, rule names, and locations.
+2. **Pass B, deterministic evidence.** Run detectors and automated checks: axe or Lighthouse, `npx impeccable detect --json`, the project's lints. Record counts, rule names, and locations. `npx impeccable detect` is a third-party package fetched and executed at run time: use it only if it is already a project dependency or the user has approved it. Otherwise write `Pass B: axe and project lints only; detector not run (third-party, not approved)` and do the anti-slop pass by hand from `frontend-design` (anti-slop-catalog).
 3. **Synthesize. Don't concatenate.** Say where A and B agree, what B caught that A missed, and which B findings are false positives in this world.
 
 Deterministic output anchors judgment even though it is mechanical, so keep it out of pass A. When subagents are available, run A and B as two isolated agents with no shared transcript. Otherwise run A to completion first. Either way, the report's first line states how the passes ran (for example `Method: isolated passes` or `Method: single context, A before B`). A skipped detector is a gap to name, not a silent omission. On native iOS/Android code, HTML/CSS detectors do not apply: write `Pass B: not applicable (native)` and never read an empty scan as clean.

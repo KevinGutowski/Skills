@@ -19,6 +19,8 @@
 
 Detailed reference guide for common animation scenarios. Use this as a checklist when implementing animations.
 
+Snippets use the theme tokens `--ease-out` and `--ease-in-out` defined in the Easing Blueprint of [../web-animation-design.md](../web-animation-design.md). Bare `ease` appears only on hover and colour/opacity transitions, per the keyword rule in that file's Quick Start.
+
 ## Recording & Debugging
 
 ### Record Your Animations
@@ -98,8 +100,8 @@ First tooltip: delay + animation. Subsequent tooltips (while one is open): insta
 ```css
 .tooltip {
   transition:
-    transform 125ms ease-out,
-    opacity 125ms ease-out;
+    transform 125ms var(--ease-out),
+    opacity 125ms var(--ease-out);
   transform-origin: var(--transform-origin);
 }
 
@@ -155,7 +157,7 @@ Popovers should scale from their trigger, not from center.
 
 A faster-spinning spinner makes apps feel faster even with identical load times. A 180ms select animation feels more responsive than 400ms.
 
-**Rule:** UI animations should stay under 300ms.
+**Rule:** UI animations should stay under 300ms. The exceptions are named, not open-ended: an edge-attached drawer on a steep curve (see "A steep curve buys a longer duration" below) and the toast default in the parent file.
 
 ### Don't Animate Keyboard Interactions
 
@@ -224,7 +226,7 @@ Don't guess-edit-refresh animation values — expose them as real-time controls 
 | duration | 0.3s | 0–2s | 0.1 |
 | stagger | 0.1s | 0–0.5s | 0.01 |
 
-**Pattern starting configs** (spring values as visualDuration/bounce): fade-in `0.4 / 0` · scale-up from 0.9 `0.3 / 0.2` · slide-in (20px offsetY + fade) `0.4 / 0.1` · hover card (scale ≤1.1, shadow lift) `0.2 / 0.1`. These respect the theme's speed rules — interaction feedback stays fast, entrances get slightly more room.
+**Pattern starting configs** (spring values as visualDuration/bounce): fade-in `0.4 / 0` · scale-up from 0.9 `0.3 / 0.2` · slide-in (20px offsetY + fade) `0.4 / 0.1` · hover card (scale 1.01–1.02, shadow lift) `0.2 / 0.1`. The panel's scale *range* above is deliberately wide for exploring; the shipped hover value stays inside the 1–2% cap in Hover States. These respect the theme's speed rules — interaction feedback stays fast, entrances get slightly more room.
 
 ## Hover States
 
@@ -262,7 +264,7 @@ When hover animation changes element position, the cursor may leave the element,
 }
 
 .box-inner {
-  transition: transform 200ms ease;
+  transition: transform 150ms ease; /* hover: 100–150ms */
 }
 ```
 
@@ -275,7 +277,7 @@ Touch devices don't have true hover. Accidental finger movement triggers unwante
 ```css
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 }
 ```
@@ -288,7 +290,7 @@ Touch devices don't have true hover. Accidental finger movement triggers unwante
 
 Small buttons are hard to tap. Use a pseudo-element to create larger hit areas without changing layout.
 
-**Minimum target:** 44px (Apple and WCAG recommendation)
+**Minimum target:** 44px (Apple's guideline and the WCAG 2.5.5 AAA target; the WCAG 2.2 AA floor is 24×24 CSS px — see web-accessibility)
 
 ```css
 @utility touch-hitbox {
@@ -322,13 +324,13 @@ Usage:
 
 ### Use ease-out for Enter/Exit
 
-Elements entering or exiting should use `ease-out`. The fast start creates responsiveness.
+Elements entering or exiting should use the ease-out family — as the custom `--ease-out` token, not the bare keyword. The fast start creates responsiveness.
 
 ```css
 .dropdown {
   transition:
-    transform 200ms ease-out,
-    opacity 200ms ease-out;
+    transform 200ms var(--ease-out),
+    opacity 200ms var(--ease-out);
 }
 ```
 
@@ -336,17 +338,17 @@ Elements entering or exiting should use `ease-out`. The fast start creates respo
 
 ### Use ease-in-out for On-Screen Movement
 
-Elements already visible that need to move should use `ease-in-out`. Mimics natural acceleration/deceleration like a car.
+Elements already visible that need to move should use the ease-in-out family (`--ease-in-out` token). Mimics natural acceleration/deceleration like a car.
 
 ```css
 .slider-handle {
-  transition: transform 250ms ease-in-out;
+  transition: transform 250ms var(--ease-in-out);
 }
 ```
 
 ### Use Custom Easing Curves
 
-Built-in CSS curves are usually too weak. Custom curves create more intentional motion.
+Built-in CSS curves are too weak for entrances, exits, and on-screen movement. Custom curves create more intentional motion. Plain `ease` remains fine for hover colour/opacity.
 
 **Resources:**
 
@@ -367,8 +369,8 @@ When easing and timing adjustments don't solve the problem, add subtle blur to m
 ```css
 .button-transition {
   transition:
-    transform 150ms ease-out,
-    filter 150ms ease-out;
+    transform 150ms var(--ease-out),
+    filter 150ms var(--ease-out);
 }
 
 .button-transition:active {
@@ -424,7 +426,7 @@ Blur bridges visual gaps between states, tricking the eye into seeing smoother t
 From Emil's interviews with Henry Heffernan (Vercel), Lochie Axon (Family), and Dennis Brotzky (Fey):
 
 **Durations & decision rules**
-- Hard ceiling: a transition should essentially never exceed **1 second**, even with an extreme curve. Click-feedback go-to is **200ms, often 150ms**.
+- Hard ceiling: a transition should essentially never exceed **1 second**, even with an extreme curve. Click-feedback go-to is **200ms, often 150ms** (the interviewees' figure; this theme's duration table keeps press and micro-interaction feedback at 100–150ms — use the table).
 - The delete-rule: "If you ever find yourself at 150 milliseconds… 'this is not fast enough', it is probably not worth animating at all."
 - **Page-load entrances must be CSS** — a JS animation library needs JavaScript loaded, so library-driven entrances delay first visuals. Save Motion/React Spring for post-hydration interactions.
 - Simple layout changes can usually be faked with transforms instead of reaching for a layout-animation engine.

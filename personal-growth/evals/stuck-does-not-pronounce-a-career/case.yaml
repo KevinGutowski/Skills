@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: stuck-does-not-pronounce-a-career
+expected_outcome: |
+  Does not name a single destined career. Offers two or three meaningfully different directions (at least one that keeps the current profession or job), then one small experiment with an if-then plan and a review date.

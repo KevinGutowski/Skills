@@ -1,6 +1,6 @@
 # Sources
 
-This skill aggregates four Evil Martians Chronicles posts:
+This reference aggregates four Evil Martians Chronicles posts:
 
 - *"2 Martians, greenfield to MVP in 4 weeks: agentic coding on Rails" (Stroganov, Nekhina, Turner; engineering voice Svyatoslav Kryukov & Vladimir Dementyev, 2026). https://evilmartians.com/chronicles/2-martians-greenfield-to-mvp-in-4-weeks-agentic-coding-on-rails*
 - *"Vibe coding in style.md" (Nazarova, Dementyev, Turner, 2025). https://evilmartians.com/chronicles/vibe-coding-in-style-dot-md*

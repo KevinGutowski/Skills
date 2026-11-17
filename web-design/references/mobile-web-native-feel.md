@@ -50,7 +50,7 @@
 
 **Viewport units.** `dvh` follows the browser chrome as it shows and hides: correct for an app shell, but it shifts layout mid-scroll on marketing content. `svh` is the smallest viewport and never overflows: correct for heroes. `lvh` equals legacy `vh` and is almost never wanted. Add a `100vh` fallback line only if the support matrix requires it. Installed standalone apps behave differently at cold launch; follow the installed-apps reference there rather than this rule.
 
-**Press feedback.** Removing the tap highlight removes the only feedback the browser provided, so the two changes ship together. Keep the press response short (about 100–160ms, ease-out, a small scale or background shift) and reuse the project's existing motion tokens; values come from [web-animation-design.md](web-animation-design.md).
+**Press feedback.** Removing the tap highlight removes the only feedback the browser provided, so the two changes ship together. Keep the press response short (about 100–150ms, the ease-out token, a small scale or background shift) and reuse the project's existing motion tokens; values come from [web-animation-design.md](web-animation-design.md).
 
 ```css
 .button:active { transform: scale(0.97); }

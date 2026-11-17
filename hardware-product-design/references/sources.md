@@ -1,6 +1,6 @@
 # Sources
 
-Figma Config talks + Linear's Conversations on Quality:
+Figma Config talks + Linear's Conversations on Quality. `build-stages-and-manufacturing.md` Part 1 draws on these; its Part 2 is a general-practice checklist with no source here.
 
 - *"Looking beyond screens" — Imran Chaudhri & George Kedenburg III, Humane (Config 2024). The mockup→rig→parallel-software pipeline. (Process lessons stand; the Ai Pin itself failed in market — treat its strategy claims skeptically.)*
 - *"Building a human future with robots" — Jason Ballard, CEO, ICON (3D-printed homes, Config 2024) — manufacturing strategy.*

@@ -1,6 +1,6 @@
 ---
 name: user-onboarding
-description: "Designs and writes user onboarding — empty states, first-run flows, signup-step cutting, setup wizards, lifecycle emails — selling the better user, not the product. Use when shaping what new users see first, writing onboarding or welcome copy, or handling blank screens. Triggers: onboarding, empty state, first run, welcome copy, setup wizard, lifecycle email."
+description: "Designs and writes user onboarding — empty states, first-run flows, signup-step cutting, setup wizards, lifecycle emails — selling the better user, not the product. Use when shaping what new users see first or writing welcome copy. In-app feature hints/TipKit → feature-discoverability; other UI copy → ux-writing; devtool onboarding → devtools. Triggers: onboarding, empty state, first run, welcome copy, setup wizard, lifecycle email, activation."
 ---
 
 # User Onboarding
@@ -51,10 +51,9 @@ onboarding; broken scent there cannot be repaired with coachmarks later.
 | **First Impressions** | Shaping the first-run experience, welcome screens, post-signup flow | [first-impressions.md](references/first-impressions.md) |
 | **Pre-Signup** | Landing pages, marketing, selling the dream before signup | [selling-the-dream.md](references/selling-the-dream.md) |
 | **Progress & Momentum** | Setup quests, progress bars, lifecycle emails, keeping users moving | [driving-momentum.md](references/driving-momentum.md) |
+| **Honest onboarding** | The goal depends on hiding cost, commitment, consent, or cancellation; trials, defaults, decline copy, exit paths | [honest-onboarding.md](references/honest-onboarding.md) |
 
 Read the appropriate reference based on context.
-
-When onboarding decisions become reusable agent guidance, preserve the surface and evidence: stage in the journey, current user state, desired quick win, step added/removed, source example, and known exceptions. If a first-run or empty-state pattern lacks evidence, park it as a coverage gap instead of inventing a universal rule from one product.
 
 For provenance and parked candidate rules, see [sources.md](references/sources.md) and [coverage-gaps.md](references/coverage-gaps.md).
 
@@ -91,18 +90,18 @@ When deciding what to build or cut from an onboarding flow:
 - **For any personal-data field, explain why you ask and what you'll do with the answer; make it optional and editable** (Metts & Welfle, *Writing Is Designing*, ch. 5 — Fitbit's sex question, which trans users can't answer without knowing whether it's demographic or biometric). Exclusion compounds at scale: "If you exclude even one-tenth of one percent, that means there are 755 million people" less able to use your product.
 - **The quick win must:** demonstrate core product value, be achievable in one sitting, not depend on other people, harness the user's current intent.
 
-**Design backward from the behavior** (Cindy Alvarez, *Build Better Products*, ch. 8). "Features don't matter. They don't matter at all. All that matters is customer behavior." Start with the recurring behavior the product needs, then classify onboarding work:
+**Design backward from the behavior** (Laura Klein, *Build Better Products*, ch. 8). "Features don't matter. They don't matter at all. All that matters is customer behavior." Start with the recurring behavior the product needs, then classify onboarding work:
 - **Required** — the minimum path to the user's first real value.
 - **Encouraged** — actions that make future success more likely but can wait.
 - **Eventual** — advanced setup, mastery, integrations, polish.
 
-"When a new user comes to your product, give them a task." Empty welcomes and feature tours are weaker than a constrained job with a visible finish. For habit products, use Amy Jo Kim's sequence via Klein: core loop first, then onboarding, then discovery, then mastery. If there is no strong loop, "you're building a leaky bucket." Build the thing someone will do every day before decorating the path into it.
+"When a new user comes to your product, give them a task." Empty welcomes and feature tours are weaker than a constrained job with a visible finish. For habit products, use Amy Jo Kim's sequence (quoted in Klein): core loop first, then onboarding, then discovery, then mastery. If there is no strong loop, "you're building a leaky bucket." Build the thing someone will do every day before decorating the path into it.
 
-**Explain the ask before the user pays the cost** (Sten). If onboarding needs integrations, profile data, permissions, or setup work, show the value unlocked by that step in the user's words before asking for it. Reduce initial commitment where possible: make non-essential integrations skippable, defer setup until after the quick win, and keep the first path to value short enough that the product proves itself before the form grows.
+**Explain the ask before the user pays the cost** (Sten). If onboarding needs integrations, profile data, permissions, or setup work, show the value unlocked by that step in the user's words before asking for it. Make non-essential integrations skippable, defer setup until after the quick win, and keep the first path to value short enough that the product proves itself before the form grows.
 
-**Design for real-life chaos.** Sten's healthcare example generalizes: new users may be tired, distracted, anxious, one-handed, under time pressure, or unsure whether they belong. Pattern fidelity and plain language matter most in these utilitarian first-use flows; save novelty for the product's signature moments after trust is established.
+**Design for real-life chaos** (Sten's healthcare example). New users may be tired, distracted, anxious, one-handed, under time pressure, or unsure whether they belong, so Universal Rule 15 (pattern fidelity) and plain language apply with most force in first-use flows.
 
-**Dark-pattern boundary:** a dark pattern is any interface element that benefits the company at the expense of what a reasonable, fully informed user would agree to. If the onboarding goal depends on hiding cost, commitment, consent, or cancellation, route to `ux-writing` (error-messages) / `web-design` (form-design) ethics rather than conversion optimization.
+**Dark-pattern boundary:** a dark pattern is any interface element that benefits the company at the expense of what a reasonable, fully informed user would agree to. If the onboarding goal depends on hiding cost, commitment, consent, or cancellation, stop optimizing conversion and read [honest-onboarding.md](references/honest-onboarding.md) (consent, honest defaults, forced continuity, exit symmetry, confirmshaming).
 
 ## Quick Copy Formulas
 

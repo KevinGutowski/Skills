@@ -4,6 +4,8 @@
 
 **Sources:** [swiftui-layout/sources.md](swiftui-layout/sources.md) — 5 WWDC SwiftUI sessions (2020–2022).
 
+**Apple's skill vs this file:** container choice, the `Layout` protocol, styles-over-wrappers and data-driven navigation are not in Apple's Xcode-shipped skills — this file is the source. Defer to Apple (export and pin: `apple-design` (xcode-agent-skills)) for: splitting a screen into `View` types and what `init` may do → `swiftui-specialist` structure.md; retired API spellings → its soft-deprecated-apis.md; 27-SDK toolbar additions → `swiftui-whats-new-27` toolbar.md; document apps (`DocumentGroup`, the `Document` protocol) → `building-document-based-swiftui-applications`.
+
 SwiftUI layout primitives are designed for **composition** — when one type isn't enough, combine it with a complementary one. This skill covers picking the right container, building custom ones with the `Layout` protocol, and the structure layer (split views, tables, toolbars) that the design rules in `apple-design` (apple-navigation-design) get implemented with.
 
 ## Choosing a container
@@ -43,10 +45,10 @@ WWDC26 Group Lab ruling (7g-Xg5xiH4o): don't build `MyCustomButton` wrapper view
 - **`Table`** — column builder (`TableColumn("Name", value: \.name) { … }`); sortable via `sortOrder: $sortOrder` + `KeyPathComparator` (Table doesn't sort your data — do it in `onChange`). In compact widths a Table shows **only its first column** — keep the Table (don't swap to List) to preserve scroll/selection; make column one the compact representation. iPad tables don't scroll horizontally — budget columns.
 - **Selection** = tags + state: tags auto-synthesize from identity; all tags in a container share one type; selection binding can be optional single, required (macOS sidebar), or `Set` for multi-select. iPadOS 16+: keyboard multi-select without edit mode, two-finger pan to select — but still offer an `EditButton` ("a good iPad app shines both with and without the keyboard").
 - **`.contextMenu(forSelectionType:)`** — one modifier, three cases: empty set (empty-area menu → create), one item, many items. Implements `apple-design` (apple-navigation-design)'s empty-area/selection menu patterns.
-- **Toolbars** — don't hand-roll a "More" ellipsis menu: put controls in a `ToolbarItemGroup` and the system overflows automatically. `.secondaryAction` placement for useful-but-not-primary (defaults into overflow); `.toolbarRole(.editor)` moves the title leading so secondary actions can render center. **Customizable toolbars:** `.toolbar(id:)` + stable `id` on every `ToolbarItem` (persisted); on iPadOS only secondary actions are customizable. `ControlGroup` (with a label) groups items that customize as a unit and can collapse to a menu. `ShareLink` for sharing (`Transferable`).
-- **Titles & documents** — `.navigationTitle(title) { actions }` adds a title menu ("like the File menu on macOS"); pass a **Binding** + `RenameButton()` for inline rename; `.navigationDocument(url)` adds a draggable document header + macOS proxy icon, even outside `DocumentGroup`.
+- **Toolbars** — don't hand-roll a "More" ellipsis menu: put controls in a `ToolbarItemGroup` and the system overflows automatically. `.secondaryAction` placement for useful-but-not-primary (defaults into overflow); `.toolbarRole(.editor)` moves the title leading so secondary actions can render center. **Customizable toolbars:** `.toolbar(id:)` + stable `id` on every `ToolbarItem` (persisted); on iPadOS only secondary actions are customizable. `ControlGroup` (with a label) groups items that customize as a unit and can collapse to a menu. `ShareLink` for sharing (`Transferable`). The 27 SDK adds per-item visibility priority, an explicit overflow menu, a pinned trailing item, minimize-on-scroll and `ForEach` in toolbar builders — read Apple's toolbar.md (above) rather than guessing the names.
+- **Titles & documents** — `.navigationTitle(title) { actions }` adds a title menu ("like the File menu on macOS"); pass a **Binding** + `RenameButton()` for inline rename; `.navigationDocument(url)` adds a draggable document header + macOS proxy icon, even outside `DocumentGroup`. A real document-based app (open/save/export, autosave, undo) is Apple's `building-document-based-swiftui-applications` skill, not this file.
 
-> **Staleness note (Kevin's rule):** APIs span iOS 14–16, verified-era 2026: all current, with these modernizations — `SidebarListStyle()` → `.listStyle(.sidebar)`; `showsByDefault:` → `defaultCustomization(.hidden)` (iOS 17); `.navigationBarLeading/Trailing` → `.topBarLeading/Trailing`; one-param `onChange(of:)` deprecated (iOS 17). Verify before shipping.
+> **Staleness note:** APIs span iOS 14–16. Spellings to use in new code (the second-hop samples were modernised to match on 2026-11-12): `.listStyle(.sidebar)` not `SidebarListStyle()`; `Section { … } header: { … }` not `Section(header:)`; `.defaultCustomization(.hidden)` not `showsByDefault:`; `.topBarLeading/Trailing` not `.navigationBarLeading/Trailing`; two-parameter `onChange(of:)`; `NavigationStack`/`NavigationSplitView` not `NavigationView`. The full list is Apple's soft-deprecated-apis.md. Verify before shipping.
 
 ## Checklist
 
@@ -58,7 +60,7 @@ WWDC26 Group Lab ruling (7g-Xg5xiH4o): don't build `MyCustomButton` wrapper view
 - [ ] No hand-rolled More menus; stable toolbar ids; secondary actions in `.secondaryAction`?
 - [ ] Document-like screens get title menus/rename/`navigationDocument`?
 
-See `swiftui-layout/layout-code.md` (containers + Layout protocol, verbatim) and `swiftui-layout/structure-code.md` (split view, Table, toolbars, titles, verbatim).
+See [swiftui-layout/layout-code.md](swiftui-layout/layout-code.md) (containers + Layout protocol) and [swiftui-layout/structure-code.md](swiftui-layout/structure-code.md) (split view, Table, toolbars, titles) — session samples, modernised where their staleness lines say so.
 
 ## Relationship to other skills
 

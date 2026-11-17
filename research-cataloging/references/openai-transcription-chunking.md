@@ -100,7 +100,7 @@ Check official docs when model names, limits, response fields, streaming behavio
 - [GPT-4o mini Transcribe model](https://platform.openai.com/docs/models/gpt-4o-mini-transcribe): lower-cost transcription option.
 - [GPT-4o Transcribe Diarize model](https://platform.openai.com/docs/models/gpt-4o-transcribe-diarize): speaker-label transcription option when diarization is needed.
 
-Treat these docs as authoritative for API details. This skill owns the archival workflow around those calls: chunking, retry discipline, raw-output preservation, and handoff to translation.
+Treat these docs as authoritative for API details. This reference owns the archival workflow around those calls: chunking, retry discipline, raw-output preservation, and handoff to translation.
 
 ## Raw output preservation
 

@@ -7,7 +7,7 @@ video. Anything important must stay inside the **safe area** or it gets covered 
 usernames, captions, the right-side action rail (like / comment / share / save /
 more), the audio ticker, and CTAs.
 
-> **Staleness note (Kevin's rule):** platform chrome drifts fast — apps redesign their overlays without notice, so the per-platform px insets below are a point-in-time snapshot. Verify current safe areas (or eyeball against the live app's overlay) before final production video guidance. The rule-of-thumb percentages and the design-to-the-tightest-target principle are the durable layer.
+> **Staleness note:** platform chrome drifts fast — apps redesign their overlays without notice, so the per-platform px insets below are a point-in-time snapshot. Verify current safe areas (or eyeball against the live app's overlay) before final production video guidance. The rule-of-thumb percentages and the design-to-the-tightest-target principle are the durable layer.
 
 ## Contents
 

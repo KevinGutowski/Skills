@@ -4,7 +4,7 @@ Use this file for lighting guidance that needs a concrete subject, environment, 
 
 ## Candidate gaps
 
-- **Repeatable setup examples:** Add diagrams or shot recipes only when subject, surface, light size, distance, direction, camera position, and result are recorded.
+- **Repeatable setup examples:** Add diagrams or shot recipes only when subject, surface, light size, distance, direction, camera position, and result are recorded. [worked-setups.md](worked-setups.md) holds four worked examples built from the skill's rules; none is a recorded shoot, so this gap stays open until accepted shoots with results replace or confirm them.
 - **Modern gear specifics:** Flash systems, LED panels, modifiers, phone computational photography, and camera menus need current model-specific verification.
 - **Color-management workflow:** Mixed lighting, gels, white balance, HDR, and post-processing need tool/camera context before exact advice.
 - **Product-shot fixtures:** Glass, metal, black-on-black, and white-on-white examples should include family-of-angles analysis and before/after images.

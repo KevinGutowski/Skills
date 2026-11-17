@@ -88,7 +88,7 @@ Rows read: don't write -> write (deprecated in). ObjC selectors follow the usual
 | Don't write | Write | Deprecated |
 |---|---|---|
 | `textView(_:shouldInteractWith:in:interaction:)` (URL, attachment) | `textView(_:primaryActionFor:defaultAction:)`, `textView(_:menuConfigurationFor:defaultMenu:)` | iOS 17 |
-| `textView(_:editMenuForTextIn:suggestedActions:)` only | also `textView(_:editMenuForTextInRanges:suggestedActions:)` for multi-range selection | iOS 26 |
+| `textView(_:editMenuForTextIn:suggestedActions:)` (single range, iOS 16) | `textView(_:editMenuForTextInRanges:suggestedActions:)` (iOS 26+, multi-range); keep the single-range method too only while the deployment target is below iOS 26 | iOS 27 |
 | `UIMenuController` | `UIEditMenuInteraction` or the text view edit-menu delegate | iOS 16 |
 | Reading `UITextView.layoutManager` on TextKit 2 | `textLayoutManager` (touching `layoutManager` falls back to TextKit 1) | outdated |
 | Keyboard notifications plus frame math | `view.keyboardLayoutGuide` | outdated |

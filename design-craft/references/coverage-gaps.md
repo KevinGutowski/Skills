@@ -12,6 +12,7 @@ Use this file for craft guidance that needs accepted examples, screenshots, or l
 - **Tactile-design values:** the tactile theme's numbers (the press ladder, the shadow alphas, the 13px base, sheet close at `min(64px, 15%)`) come from one production dashboard. Its sheet flick threshold corroborates Emil Kowalski's 0.11 px/ms. Treat the rest as one coherent theme to adopt whole, not as cross-theme facts. Its never-ship list could seed mechanical checks (a `transition: all` grep, `dark:` layout utilities, more than one primary per surface) once a repo exposes the tokens.
 - **Worst-case data:** [worst-case-data.md](worst-case-data.md) is single-source (Emil Kowalski's `break-ui`). Its severity labels (Broken / Ugly / Fragile) are local to that report; add an accepted before/after exemplar before promoting any catalog row to a check.
 - **AI-generated UI:** Route repair workflow to `working-with-ai`; this skill should own the craft bar and examples.
+- **Interface Craft collections not yet mined:** Means & Methods (8 technique articles: layout/alignment, visual style errors, color/blending, typographic errors, interpolation/map-range, compositing, wave functions, masks), Collaborating with AI (8 entries incl. DialKit and agent skills), Interface Kit, Reference Desk.
 
 ## Candidate promotion form
 

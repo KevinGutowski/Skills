@@ -2,6 +2,24 @@
 
 Long-form field notes distilled in `SKILL.md`'s agents tier. Everything here is verbatim from the skill's source notes.
 
+## Contents
+
+- Field amplifiers & the mock-to-code caution
+- Go wide — pushing past the obvious (pattern 1 extensions)
+- The converging variant loop (pattern 5) — Pocock /prototype & the grilling-frontend variant
+- Agent as fake user (pattern 2 closer)
+- Tuning panels — live-tuning extensions (pattern 3 extensions)
+- The independent judge — field notes
+- The endpoint of this tier — Cursor's design org
+- Field notes from inside that school
+- MDS workflow notes
+- Dive Club field notes (2025–26) — full quotes
+- Dive Club field notes, tranche 2 (2025–26) — full quotes
+- Pattern summaries 3–5 — named field versions
+- Comp-led vs code-led by surface mode (Impeccable)
+- Amplifier digest (Cursor school, shared environments, visual prompting, MDS, jigs, seam)
+- Skill-lab eval loop (Jaytel Taste, 2026)
+
 ## Field amplifiers & the mock-to-code caution
 
 Two field amplifiers (Evil Martians' "weeks → days" design-engineering case, 2025): **prototype with the full dataset, not sample points** ("working with the full dataset helped us make better design decisions early on… I even tested a few bold chart types I'd never bother coding manually"), and **prototype in the target production stack** so handoff is copy-paste — "the frontend engineer… started by copying the code from my prototype." The expert-led qualifier holds: "my technical knowledge, multiplied by AI" — AI removes friction, not judgment.
@@ -61,7 +79,7 @@ Field notes from inside that school (Ryo Lu; Jin Park/Notion; Catherine/Ramp —
 
 ## Dive Club field notes (2025–26) — full quotes
 
-All citations: (speaker, Dive Club podcast, YouTube ID). Distilled in `SKILL.md`'s "Dive Club field notes" block.
+All citations: (speaker, Dive Club podcast, YouTube ID). The distilled rules are in the `SKILL.md` body.
 
 - **Brian Lovin (Notion, dvEwb1Ajkwo) — playground mechanics.** The kit is deliberately 80/20: "we've tried to do like the 80/20 thing. Like get it pretty close. Like we have a sidebar that looks kind of like Notion sidebar, buttons and drop-downs that are kind of like Notion buttons." One shared codebase makes prototypes communal: "You can like go and poke around other people's stuff and like yoink cool interactions from other people's prototypes or just like duplicate theirs and riff on it." Fidelity is per-designer, per-question: Will Dawson "more or less recreated like a very simplified version of the Notion editor with slash commands and inline AI" because "the only way to really feel what it's going to be like to interact with AI while you're typing a page… is to actually be in an editor." The medium shift: "it just moves from, 'Hey, check out this Figma URL.' to, 'Hey, check out this deploy preview.'"
 - **Geoffrey Litt (zJf0UeCwQqE) — jigs.** "I call these tools jigs from woodworking. You know, you make like a tool just for the purpose of making one project" — affordable now only "cuz AI exists." His migration example: a long port script he couldn't trust became "can you make me a command center that will walk me through the process of doing this port myself but visualize the entire process."
@@ -74,7 +92,7 @@ All citations: (speaker, Dive Club podcast, YouTube ID). Distilled in `SKILL.md`
 
 ## Dive Club field notes, tranche 2 (2025–26) — full quotes
 
-All citations: (speaker, Dive Club podcast, YouTube ID). Distilled in `SKILL.md`'s tranche-2 block. Auto-caption transcripts; quotes verified loosely against them.
+All citations: (speaker, Dive Club podcast, YouTube ID). The distilled rules are in the `SKILL.md` body. Auto-caption transcripts; quotes verified loosely against them.
 
 - **Rafa Conde (3rnhlZj25iY) — make an ad.** The full move: "don't just design the feature and share mock-ups. Don't just make a prototype and do a screen recording… Make an ad, right? Sell this idea." Demo-video craft: length cap because "people are not going to sit down and like watch a 30-minute video on Slack. Under 10, ideally five" — soundtrack carries pacing, humor keeps people watching, B-roll sells context. The hand-held trick: a screen recording "has some emotional weight. But, if you record someone holding the phone and seeing the same content, it hits different. Mhm. It's more real." Toolkit as of 2025–26: ScreenFlow (edit), CleanShot (capture), Hand Mirror (camera), Keynote (titles/motion) — names perishable, the ad-not-recording stance durable. Medium choice is driven by data needs, not tool preference: "sometimes I'm like, 'Actually, I need like real data or I need other features of the app to work with this.' And sometimes it is just faster to like create a new branch of the main app and just pull from there."
 - **Katarina Batina (Shopify, 0YjO7wShTkQ) — render the idea.** Scope rule: "if you're going to prototype a full feature, don't go for the moonshot of end to ending this and shipping it to production. Just render the whole idea and then use that as the thing you talk to engineering with. And if they can use it, amazing." Failure reframe: "Ideally engineering can actually use the code to build the thing. The fact that you can't ship it to production doesn't mean that you've failed." The skill-set trap in the tool explosion: designers "start designing to their local skill set… do not let constraints of your own skill sets in this moment constrain what's possible. Because then I think we're just missing out on the good ideas." Heat-chasing over roadmap: "let's just like chase heat on this idea and see if it has legs" — the test artifact: "Can you tell a coherent story in a quick async video that we can pass around and see if people are excited about it?"
@@ -83,3 +101,30 @@ All citations: (speaker, Dive Club podcast, YouTube ID). Distilled in `SKILL.md`
 - **Kris Puckett (nPyxVMd1LIA) — parametric loop.** Working shaders with an agent: expose the parameters in the running UI, tune by feel, then "I can copy the parameter values and go back into Claude code and say, 'Okay, I've found like the tweak that I want now. Go ahead and update it.' And it will update it, then I can preview it." Independent corroboration of the WWDC agent-built tuning-panel pattern — same loop, different stack.
 - **Ron Goldin (UkQpgslyR3A) — prototypes win arguments.** "In every company I've ever worked… prototypes win arguments, right? Prototypes get people psyched. Like moving away from slide decks, moving away from PRDs, moving into something that people can actually feel and react to." The same-day counter-evidence story: "right after this meeting where I was told by like VP-pluses on the design side this can't be done, I was like hey check it out — I'm a non-engineer, but I just built the ability to create an SVG that can be colored to any color you want, can be transparent, can have all these brand colors" — vibe-coded brand extraction (find the site, grab the logo, "found an API that does that"), built in roughly the time the objection took. "Having a VP say no and then being like actually yes — it's possible."
 - **Ridd + Steven Haney (Y0n6F9VlLVc) — first diamond, disposable designs, markdown handoffs.** First-diamond rule (Ridd, Haney agreeing): "if I am operating in that first diamond there is no way that I'm going to start in [Claude] code. It doesn't make sense, at least for my practice" — divergence gets cheap media; agents enter when converging. Disposability: "designs being disposable is like a good thing. You know, my notes from today's conversation, I'm going to throw [them] in the trash" — and good tooling "will allow you to be disposable if you want to be disposable… [or] bring things back from production and work on top of them." The markdown-state-file handoff: designers "prompted 'can you make a markdown file that just lists all the permutations of my state of this dialogue as a handoff.' So they're like prompting a handoff tool" — then editing the markdown directly to change states: "at some point you start reinventing your own design tool in the prototype."
+
+## Pattern summaries 3–5 — named field versions
+
+- **Agent-built tuning panels (key moments):** the parameterized mini-tool, generated on demand — "ask for the animation to be broken into phases… a shared vocabulary"; panel side by side with the UI. "Make a tuning panel, shorten the feedback loop, and get to what feels optimal." Converging field versions (Kyle Santos's effect studios, Kris Puckett's copy-values-back round-trip, MDS's tool-making reflex, Josh Puckett's live tuning + **iterations grid**): [references/agents-field-notes.md](agents-field-notes.md).
+- **Independent judge in a fresh context (evaluation):** don't let the generating agent grade its own output — it's anchored on its own choices. Spawn a *separate* judge with its own context window, loaded only with explicit criteria ("create an independent judge with its own context window to evaluate your output" — Carlos Montoya, Dropbox, X 2026; used "to raise the pixel craft of frontier models"). Loadout from this corpus: `design-principles` critique mechanics, `design-craft` facets and checklists, `design-craft` depth spectrum — score against those, not vibes. Same model is fine, same context is not. Full notes incl. the MDS/Shift Nudge MCP: [references/agents-field-notes.md](agents-field-notes.md).
+- **Converge by walking the design tree (convergence):** after going wide, render 3–5 *structurally different* variants behind a floating live switcher *inside the app* — "a throwaway route on its own is a vacuum: every variant looks fine in isolation" (Pocock /prototype; Will Ness's grilling-frontend variant, 2026). Then rounds of pick-favorites-plus-verdict, each round re-prototyping the *current* question one level deeper: overall design → component groups → individual components — until the feature is designed in detail. Switcher mechanics, caps, capture rules: [references/agents-field-notes.md](agents-field-notes.md); picker-harness mechanics (named axes, re-mount on switch, fixed chrome, isolated vs in-route host): [references/methods.md](methods.md).
+
+## Comp-led vs code-led by surface mode (Impeccable)
+
+- **Comp-led vs code-led depends on the surface's mode** (Impeccable, Paul Bakaus, 2026). An image-generated comp pushes composition past what a coding model builds on its own, so it pays off for Persuade and Experience surfaces (landing pages, portfolios). For working screens and documents, Impeccable's blind ratings scored comps of the screen 2.0–2.9, while code-led builds of the same briefs scored 3–3.5 and were always complete. Default Operate and Read surfaces to code-led and let ambition live in a written direction contract. When a comp *is* approved, treat it as a measured spec: models systematically believe their HTML/CSS recreation of an image succeeded when it did not, so compare region by region (type character, material, ground color), not from one full-page thumbnail. Single-project evidence; mode definitions → `frontend-design` (surface-modes).
+
+## Amplifier digest (Cursor school, shared environments, visual prompting, MDS, jigs, seam)
+
+- **The Cursor school endpoint** (Ryo Lu; Jin Park/Notion; Catherine/Ramp): designers ship code instead of mocks — "Mocks and renders show possibilities. Prototypes show reality." And **"the difference between slop and soulful products is iteration and taste. Most people stop at the first output, rather than using it to begin."**
+- **Shared lightweight prototyping environments:** keep a **baby-cursor** — never ideate in the gigantic slow codebase (Ryo Lu); Notion's 80/20 shared playground, fidelity per-question (Brian Lovin); Ramp's three-tier fidelity ladder (vibes stack → real-component sandbox → real repo); Stripe's Protodash prototypes inside the surrounding product — "no product is like ever felt by your user in isolation" (Katie Dill).
+- **Visual prompting:** the screenshot or sketch *is* the prompt (Steve Ruiz, Make Real — iterate by drawing arrows on the output; paste a reference image); storyboard-as-prompt, but don't dial fidelity in Figma — "Figma's a lie. It's not your actual code base" (Josh Puckett).
+- **MDS workflow:** 85%-in-Figma, finish in code — hover states designed *only* in code ("it's all about how it feels"); components only when they pay — too many too early constrains creativity.
+- **Jigs** (Geoffrey Litt): disposable one-project tools an agent makes economical. **Start from anywhere** (Luis Ouriach): "the canvas is very important for ideation… but the browser is where we commit" — "not faster, but further."
+- **Prototype → production seam:** render the idea, don't ship it (Katarina Batina — "Just render the whole idea and then use that as the thing you talk to engineering with"; not shippable ≠ failure). Editable stakeholder prototypes, hedged variants, the playground-to-production one-shot (Andy Madrick). The two-system tax (→ `working-with-ai` (agentic-coding)): past concept validation, prototype in the real repo.
+
+## Skill-lab eval loop (Jaytel Taste, 2026)
+
+When a prototype becomes an eval fixture for an agent or skill, keep the fixture hermetic and separate retrieval from application: expected skill loaded, references used, before/after artifact, rubric, hidden holdout expectation, and human preference reason. Route packaging mechanics to `creating-skills`; use this skill for the prototype question and evidence loop.
+
+- **Skill-lab loop for design rules** (Jaytel Taste repo, 2026): when evaluating a generated design skill, keep the current skill as a baseline candidate, generate bounded mutation hypotheses, render each candidate against the same prompt in self-contained HTML, collect a human preference vote plus reason, then update the skill from the preference history. The baseline-as-control matters: otherwise every round looks like progress because it is merely different.
+- **Compare skill effects, not single outputs** (Jaytel Taste demo): run the same prompt through base model, broad design skill, and the specific taste skill before trusting a new design skill. The dashboard/chat comparisons exposed a useful difference: a broad frontend skill can make output more stylish while the reference-derived skill makes it more *specifically constrained*. Judge whether the skill moves the output toward the intended corpus, not merely whether the screen looks better.
+- **Keep eval artifacts hermetic** (Jaytel Skill Lab): generated candidates should render in an iframe without external scripts, fonts, images, or stylesheets when the test is about the skill, not network luck or asset taste. This makes side-by-side preference less noisy and easier to replay.

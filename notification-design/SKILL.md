@@ -35,7 +35,15 @@ iOS groups by app by default — usually leave it. Thread (`threadIdentifier`) o
 - **Quick actions** complete the task in place (Accept with availability shown, Like/Comment, play an episode, "Can I help you?" to the doorbell camera) — then the user gets back to what they were doing.
 - **Apple Watch:** notifications are "the primary way people interact with apps on Apple Watch," and alerts route to the most accessible device — design for both. Watch qualities: informative yet succinct, visually rich, actionable, quick — "we don't want to recreate the app experience." Tailor to the journey (the ticket QR going full-screen at the venue).
 
-> **Staleness note (Kevin's rule):** 2017–2018 sessions. The strategy and anatomy persist; the delivery system has since gained **interruption levels** (passive/active/time-sensitive/critical, iOS 15), **Focus**, scheduled summaries, and **Live Activities** (which absorb the "live-updating notification" use case — see `apple-design` (app-intents-design)/`swiftui` (widget-design)). Verify current UserNotifications APIs before implementation.
+## Urgency, Focus and Live Activities (current system)
+
+The sessions predate these; rules verified against the HIG and Apple docs on 2026-11-12. Detail, the level table and the Live Activity lifecycle: [references/delivery-system.md](references/delivery-system.md) — read it when assigning urgency or choosing between notifications and a Live Activity.
+
+- **Assign every notification type the lowest honest interruption level:** Passive (view at leisure) → Active (default) → Time Sensitive (about now or the next hour; breaks through Focus and the scheduled summary) → Critical (health/safety, entitlement-gated — never a business choice). Over-claiming gets Time Sensitive switched off for the whole app.
+- **Expect to be filtered.** Focus holds alerts and the scheduled summary batches Passive/Active ones; write those so they still make sense read late, and rank them by value with the relevance score instead of escalating or re-sending. Messaging apps adopt communication notifications so people can let specific senders through.
+- **A status that keeps changing is a Live Activity, not a stream of notifications:** a task with a defined start and end, updated over minutes to hours (delivery, ride, match). Never send a push and a Live Activity update for the same change; update only when content changes, alert only for the essential ones, mark stale data, and end it with final content and a deliberate dismissal time.
+
+> **Staleness note:** the strategy and anatomy sections above come from 2017–2018 sessions and persist; the section just above tracks a moving system — re-fetch the HIG `managing-notifications`, `notifications` and `live-activities` pages before quoting a number or implementing.
 
 ## Checklist
 
@@ -43,6 +51,8 @@ iOS groups by app by default — usually leave it. Thread (`threadIdentifier`) o
 - [ ] Unengaged users get fewer, not more; timing/frequency user-controllable; per-topic settings + registered deep link?
 - [ ] Quiet/provisional delivery for passive content; prompt (if ever) in context, never at first launch?
 - [ ] Threads only for meaningfully distinct streams?
+- [ ] Each type has the lowest honest interruption level; nothing marketing above Active; copy survives a Focus or summary delay?
+- [ ] Evolving status handled by one Live Activity (with stale state and planned end), not repeated pushes?
 - [ ] Complete-the-task-in-place: rich Long Look in your app's design language, useful quick actions, Watch-appropriate?
 
 See `references/examples.md` for the worked examples (Duolingo's pause, the Podcasts threading restraint, the Castro/Kuna/Mic Long Looks, Watch flows).
@@ -52,6 +62,7 @@ See `references/examples.md` for the worked examples (Duolingo's pause, the Podc
 - **`ux-writing` (ui-voice-and-tone)** — owns the notification *copy* (tone dialing per moment); this skill owns the *strategy and anatomy* (whether/when/what form).
 - **`swiftui` (sound-design)** — the notification sound criteria (distinguishable, short, neutral when content varies) pair with this skill's restraint rules.
 - **`feature-discoverability`** — shares the permission ethic: ask in context, value first.
-- **`swiftui` (widget-design)** / **`apple-design` (app-intents-design)** — Live Activities now own continuous glanceable state; route persistent-status use cases there.
+- **Live Activities** — the notification-vs-Live-Activity decision and lifecycle rules are in this skill's [references/delivery-system.md](references/delivery-system.md). Neighbours hold only adjacent pieces: `swiftui` (widget-design) the widget-extension side that Live Activity UI is built in, `apple-design` (app-intents-design) the snippet-vs-Live-Activity choice for intents; presentation specs come from the live HIG `live-activities` page.
+- **Notifications as automation triggers (iOS 27)** — one design note lives in `apple-design` (app-intents-design), second-hop file `app-intents-design/siri-ai-ios27.md`; this skill has no further automation guidance.
 - **`apple-design` (hig)** — the current-spec tiebreaker: this skill's sources are 2017–2018 sessions plus patches, so fetch the live HIG `managing-notifications` and `notifications` pages via that playbook before citing letter-of-the-law behavior or implementing.
 - **`design-principles`** — *Responsibility* (attention as a resource) and *Utility*; use it to weigh whether a moment earns an interruption.

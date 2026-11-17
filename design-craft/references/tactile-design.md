@@ -110,7 +110,7 @@ The deep files hold the numbers. These are the ones that change behaviour most:
 
 - **Hover:** colour only, about 150ms, on a fine pointer only. Each row fades its *own* fill in place, never one highlight that slides between rows.
 - **Selected vs hover:** hover is the local ground + 1 step and selected is + 2, so they never match. A chosen menu item is marked by its grey fill alone, with no tick and no reserved tick column.
-- **Press squeeze grows as the target shrinks:** about .99 for cards and rows, .97 for buttons, .94 for 44px round icons, .92 for 22px row icons. Do it in CSS so a fast second press retargets.
+- **Press squeeze grows as the target shrinks:** about .99 for cards and rows, .97 for buttons, .94 for 44px round icons, .92 for 22px row icons. Only those icon-only targets go below the .95 floor in [animations.md](animations.md); buttons, cards and rows never do. Do it in CSS so a fast second press retargets.
 - **Copy feedback is optimistic.** The icon becomes a tick on the click, before the clipboard promise resolves. If the write fails, revert at once. Never toast a copy.
 - **Loading stays in the button.** The label swaps in place to a spinner plus "Saving…". Both labels share one grid cell, so the width never jumps. Never show a wrong label while the real state is unknown.
 - **Springs stay inside their containers.** Overshoot grows with travel. A segmented pill crossing 100px at bounce .35 overshoots about 7px, past a 4px track inset. Use about .12 for toggle pills and .2 for a switch knob, and keep `overflow: hidden` only as a backstop.

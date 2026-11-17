@@ -12,6 +12,11 @@ Catches the defect classes a 2026-07 effectiveness audit found by hand:
    `feedback_route_tiebreakers.md` residue this audit removed.
 4. WARNING: standalone-skill conversion residue ("When this skill is first
    invoked") left inside reference files after consolidation.
+5. Second-hop discipline (docs/skill-library-ops.md, "Sanctioned second
+   hop") for every ``references/<name>/`` subdirectory:
+   ERROR when a subdirectory Markdown file is not mentioned by its parent
+   reference ``references/<name>.md``; WARNING when SKILL.md does not name
+   the member, so a router-only read cannot tell it exists.
 
 Fenced code blocks are ignored throughout so templates and examples do not
 trip the checks. Run alone or via scripts/validate_all.py. Exit code 1 on
@@ -53,6 +58,11 @@ def strip_fenced_code(text: str) -> str:
             continue
         out.append("" if in_fence else line)
     return "\n".join(out)
+
+
+def squash(text: str) -> str:
+    """Lowercase and drop separators so `PRACTICAL-TIPS` matches "practical tips"."""
+    return re.sub(r"[^a-z0-9]+", "", text.lower())
 
 
 def skill_markdown_files(skill_dir: Path) -> list[Path]:
@@ -117,6 +127,33 @@ def main() -> int:
             if path.name != "SKILL.md" and RESIDUE_RE.search(prose):
                 warnings.append(
                     f"{rel}: standalone-skill residue ('When this skill is first invoked')"
+                )
+
+    # 5. Second-hop members: linked from the parent reference, named in SKILL.md.
+    for skill_dir in skill_dirs():
+        refs = skill_dir / "references"
+        if not refs.is_dir():
+            continue
+        router = squash((skill_dir / "SKILL.md").read_text(encoding="utf-8"))
+        for sub in sorted(p for p in refs.iterdir() if p.is_dir()):
+            members = sorted(sub.rglob("*.md"))
+            if not members:
+                continue
+            parent = refs / f"{sub.name}.md"
+            parent_text = parent.read_text(encoding="utf-8") if parent.exists() else None
+            unnamed: list[str] = []
+            for member in members:
+                rel = member.relative_to(ROOT)
+                if parent_text is None:
+                    errors.append(f"{rel}: second-hop file with no parent reference {sub.name}.md")
+                elif member.name not in parent_text:
+                    errors.append(f"{rel}: second-hop file not linked from {parent.relative_to(ROOT)}")
+                if squash(member.stem) not in router:
+                    unnamed.append(member.stem)
+            if unnamed:
+                warnings.append(
+                    f"{skill_dir.name}/SKILL.md: second-hop members of references/{sub.name}/ "
+                    f"not named in the router: {', '.join(unnamed)}"
                 )
 
     for error in errors:

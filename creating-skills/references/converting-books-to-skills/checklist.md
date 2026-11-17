@@ -1,6 +1,6 @@
-# Checklist: Before Shipping Skills
+# Checklist: Book-to-Skills Conversion (book-specific items)
 
-Use this checklist to verify your book-to-skills conversion is complete.
+Run the one shipping checklist first: [../authoring-checklist.md](../authoring-checklist.md) (name, description, body budget, references, evaluation, validators). The items below are the additions specific to converting a book; they do not restate it.
 
 ---
 
@@ -15,12 +15,11 @@ Use this checklist to verify your book-to-skills conversion is complete.
 ## Bundling Phase
 
 - [ ] Grouped chapters into phase-based skills (not 1:1)
-- [ ] Chose skill names (use gerund form: `shaping-work`)
+- [ ] Chose skill names (noun phrase by task shape, per the shipping checklist)
 - [ ] Decided on file naming convention
 
 ## SKILL.md Quality
 
-- [ ] Under 500 lines
 - [ ] Sections follow book's chapter order
 - [ ] Each section has 1-2 sentence narrative
 - [ ] Each section has decision framework (table or list)
@@ -35,16 +34,6 @@ Use this checklist to verify your book-to-skills conversion is complete.
 - [ ] Multiple concrete examples from the book
 - [ ] Anti-patterns and common mistakes included
 - [ ] Subjective experience described where relevant
-- [ ] No nested references (one level deep only)
-- [ ] Consistent file naming (lowercase, hyphens)
-
-## Descriptions
-
-- [ ] Says what the skill does
-- [ ] Says when to use it
-- [ ] Includes key trigger words
-- [ ] Written in third person
-- [ ] Under 1024 characters
 
 ## Mindset Capture
 
@@ -76,10 +65,9 @@ Use this checklist to verify your book-to-skills conversion is complete.
 
 | Metric | Target |
 |--------|--------|
-| SKILL.md lines | < 500 |
 | Reference file lines | 50-250 each |
 | Total reference files | 5-15 per skill |
-| Description length | 100-300 characters |
+| Description length | see [../description-writing.md](../description-writing.md) |
 | Examples in SKILL.md | 1 per section |
 | Examples in reference files | 2-5 per file |
 

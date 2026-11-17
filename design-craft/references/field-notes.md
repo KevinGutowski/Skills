@@ -8,6 +8,7 @@ Long-form field material distilled into one-line rules in `SKILL.md`'s methodolo
 - Valio field notes (Valio Con 2012–14 — GMUNK, Craig Henry; Jaytel pipeline)
 - Dive Club deltas (Josh Puckett; Katie Dill; tranche 2 — D'Arcy, Batina, Jacoby)
 - Icon-craft depth notes (Marek Minor — Cursor's icons, 2026)
+- Sten — the right surface and whole-journey care
 
 ## Field rituals (Matt D. Smith / Shift Nudge — YouTube jSLfQ0sJDCw, wXAa2HNNjM4; "Good Enough UI" interview 4p5LzrAYN30)
 
@@ -63,3 +64,8 @@ One year, 600+ icons, every exploration and final variant drawn by hand — a wo
 - **Uncommon care, below noticing:** optical corrections (junction notches, stroke thinning, per-role dot sizing) "work below the level of noticing, the same way a typeface's ink traps do at 10pt… And honestly, some of it is just the standard. It's the inside of the machine: nobody opens it, and it should still be tidy."
 - **Kill explorations that solve no problem:** a sharp-details variant he liked was dropped because "it didn't solve a problem anyone had, so the set stayed traditionally rounded." Depth serves the concept, not the designer's amusement.
 - **The invisibility standard:** "You shouldn't notice them, but somewhere below noticing, you should always know – no, feel – they're Cursor's." And the closing claim for hand judgment in an AI product: "An icon set of this kind is mostly decisions… for those hundreds of small decisions, they hired a person to draw each one by hand."
+
+## Sten — the right surface and whole-journey care
+
+- **Problem-solver warning (conceptual range).** Sten's problem-solver warning belongs here: redesigning an already-working surface is often visual exercise, not product progress. Before pushing craft depth, ask whether this is the surface where better craft changes the user's outcome. A prettier boarding pass, dashboard, or feature tour may be the wrong target if the real pain lives in fulfillment, support, recovery, or a broken underlying process.
+- **Whole-journey variant (uncommon care).** Sten's whole-journey variant: the care test includes off-screen business surfaces. Confirmation emails, invoices, PDFs, OCR/print needs, delivery/fulfillment status, returns, cancellation, and support scripts are all part of the felt product. The main screen can be crafted and the experience can still feel careless if these touchpoints break the promise.

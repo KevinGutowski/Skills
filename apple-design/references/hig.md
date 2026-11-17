@@ -21,7 +21,7 @@ The public `/design/…` page is JS-rendered — `WebFetch`/`curl` on it returns
 https://developer.apple.com/tutorials/data/design/human-interface-guidelines/<slug>.md
 ```
 
-That returns `text/markdown` with the whole article: every bolded guideline, the Platform considerations sections, the Related and Developer-documentation links, and the page's dated change-log table. `WebFetch` and plain `curl` both work — no JSON endpoint, no extraction script.
+That returns `text/markdown` with the whole article: every bolded guideline, the Platform considerations sections, the Related and Developer-documentation links, and the page's dated change-log table. `WebFetch` and `curl -L` both work — no JSON endpoint, no extraction script.
 
 ```bash
 curl -sSL https://developer.apple.com/tutorials/data/design/human-interface-guidelines/buttons.md
@@ -29,7 +29,7 @@ curl -sSL https://developer.apple.com/tutorials/data/design/human-interface-guid
 
 **Two traps:**
 
-1. **The suffix does not work on the public URL.** `https://developer.apple.com/design/human-interface-guidelines/buttons.md` is a 404 — it only works under `/tutorials/data/`.
+1. **Follow redirects.** As of 2026-11-12 the `/tutorials/data/` form 301-redirects to the public URL plus `.md` (`https://developer.apple.com/design/human-interface-guidelines/buttons.md`), which returns `200 text/markdown`. Before that the public form was a 404 and only `/tutorials/data/` worked. Either form works if the fetcher follows redirects (`curl -L`); if one fails, try the other.
 2. **Links inside the returned Markdown are DocC-relative.** Rewrite before following:
 
 ```text
@@ -46,7 +46,7 @@ curl -sSL https://developer.apple.com/tutorials/data/design/human-interface-guid
   -> not fetchable from any host; the alt text is descriptive prose, use that
 ```
 
-Verified 2026-09-15: all 153 slugs in the topic map below return `200 text/markdown`. Fallback if a page ever lacks one — swap the suffix for `.json` at the same path (DocC JSON; prose lives under `primaryContentSections`, linked pages under `references`).
+Verified 2026-09-15: the 153 slugs then in the topic map below return `200 text/markdown` (two more platform slugs added and verified 2026-11-12). Fallback if a page ever lacks one — swap the suffix for `.json` at the same path (DocC JSON; prose lives under `primaryContentSections`, linked pages under `references`).
 
 ## Apple Developer documentation (same suffix, no `/tutorials/data/` prefix)
 
@@ -91,7 +91,7 @@ Related plain-HTML hub pages: **/design/get-started/** (Apple's curated learning
 
 **Technologies:** airplay, always-on, app-clips, apple-pay, augmented-reality, carekit, carplay, game-center, generative-ai, healthkit, homekit, icloud, id-verifier, imessage-apps-and-stickers, in-app-purchase, live-photos, mac-catalyst, machine-learning, maps, nfc, photo-editing, researchkit, shareplay, shazamkit, sign-in-with-apple, siri, tap-to-pay-on-iphone, voiceover, wallet
 
-**Platforms:** designing-for-ios, designing-for-iphone-duo (new Sept 2026; talk-derived companion: [iphone-duo-design.md](iphone-duo-design.md)), designing-for-ipados, designing-for-macos, designing-for-watchos, designing-for-tvos
+**Platforms:** designing-for-ios, designing-for-iphone-duo (new Sept 2026; talk-derived companion: [iphone-duo-design.md](iphone-duo-design.md)), designing-for-ipados, designing-for-macos, designing-for-watchos, designing-for-tvos, designing-for-visionos, designing-for-games (the last two added to this map 2026-11-12; both return `200 text/markdown` and are listed under the HIG's Getting started section alongside the other platform pages)
 
 ## When to use this vs. the talk-derived skills
 

@@ -7,6 +7,8 @@ description: "Plan and troubleshoot photographic lighting for portraits, product
 
 Sources/gaps: [references/sources.md](references/sources.md) — Hunter/Biver/Fuqua's *Light: Science & Magic* for lighting physics and surface diagnosis; Tony Northrup for field, flash, and portrait practice. Unresolved setup examples live in [references/coverage-gaps.md](references/coverage-gaps.md).
 
+The rules are in this body. The references add depth only: [surface-lighting.md](references/surface-lighting.md) for per-surface workflows and fixes, [portrait-and-field-lighting.md](references/portrait-and-field-lighting.md) for diagnosis tables and sequences, and [worked-setups.md](references/worked-setups.md) when the user wants a complete starting arrangement (four worked examples with positions, ratios, modifier, camera-setting rationale, and what to change if it fails).
+
 Use this skill when the user needs to make a photograph work by changing light: portraits, products, shiny objects, glass, black-on-black, white-on-white, room flash, outdoor sun, glare, catchlights, or shadow shape. Do not use it for image file compression (`research-cataloging` (image-archival)) or graphics/rendering internals (`graphics-fundamentals`).
 
 ## Start With The Lighting Diagnosis
@@ -67,7 +69,7 @@ Common routes:
 - Matte/textured surfaces: direct glare matters less; shadow direction and hardness matter more.
 - Polarizers: useful for many non-metallic polarized reflections; weaker as a complete fix for metal.
 
-More: [surface-lighting.md](references/surface-lighting.md).
+More: [surface-lighting.md](references/surface-lighting.md) for the metal and glass workflows; [worked-setups.md](references/worked-setups.md) setups 3 and 4 for complete arrangements.
 
 ## Portraits And Field Light
 
@@ -91,7 +93,7 @@ Indoor:
 - Bounce flash off a neutral ceiling/wall to turn a small flash into a larger source.
 - If bounce is unavailable outdoors/high ceiling/dark ceiling, use a modifier, reflector, or off-camera flash.
 
-More: [portrait-and-field-lighting.md](references/portrait-and-field-lighting.md).
+More: [portrait-and-field-lighting.md](references/portrait-and-field-lighting.md) for symptom-to-move diagnosis; [worked-setups.md](references/worked-setups.md) setups 1 and 2 for complete arrangements.
 
 ## Extremes
 

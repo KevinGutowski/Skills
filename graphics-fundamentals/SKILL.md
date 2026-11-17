@@ -47,6 +47,8 @@ This is a **hub/reference skill**: explainer knowledge, not task workflows. It f
 - **`hardware-product-design`** → display tech tradeoffs (LCD/OLED/MicroLED, burn-in, brightness), capacitive vs resistive touch, input sensing constraints. (pixels-and-color.md, input.md)
 - **`research-cataloging` (image-archival)** → compression mechanics behind format choices: why PNG bloats on photos, what JPEG quality really changes, WebP's hybrid design, lossless vs lossy. (effects-and-compression.md)
 - **`frontend-design`** → SVG internals: viewBox math, path syntax, fill-rule, filter pipeline and its performance cliffs. (fonts-and-vectors.md)
+- **`web-design` (web-typography)** → why web text renders as it does: rasterisation and grid-fitting, hinting, font-file internals, and why subpixel anti-aliasing was retired. Type-setting decisions (measure, scale, pairing, loading) stay there. (fonts-and-vectors.md)
+- **`photographic-lighting`** → what happens to the picture after the light is right: sensor and Bayer/demosaicing, resampling, color spaces and white points, and compression mechanics. Lighting, exposure, and shooting decisions stay there. (pixels-and-color.md, effects-and-compression.md)
 - **`apple-design` (apple-visual-accessibility)** → contrast mechanics: what the WCAG 2 formula computes and where it lies, APCA's Lc levels and dark-mode guidance. (pixels-and-color.md)
 
 When one of those skills owns the *task*, follow it; come here only for the underlying mechanism. Quote sparingly and always cite Dan Hollick, *Making Software*, with the chapter URL.

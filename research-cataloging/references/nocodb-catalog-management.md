@@ -4,7 +4,7 @@
 
 ## Core Workflow
 
-Use this skill when operating on a NocoDB research catalog. Prefer the NocoDB API over UI automation for data changes.
+Use this reference when operating on a NocoDB research catalog. Prefer the NocoDB API over UI automation for data changes.
 
 1. **Discover, do not guess.**
    - Find the base ID from the URL or `/api/v2/meta/bases`.
@@ -65,8 +65,7 @@ client.upload_attachment(images, image_row["Id"], "File", Path("/abs/path/image.
 
 Token lookup:
 
-- Prefer `NOCODB_API_TOKEN`.
-- If absent, the helper tries loading it from `~/.zshrc` (an origin-project convenience — on other machines set the env var instead).
+- The helper reads the token from the `NOCODB_API_TOKEN` environment variable only. If it is unset, `from_env()` raises `RuntimeError` naming the variable. It does not read `~/.zshrc` or any other file; export the variable in the shell or process that runs the helper.
 - Default base URL is `http://127.0.0.1:3010` (the origin project's local container — override with `NOCODB_BASE_URL`).
 - Some tokens cannot list all bases; if `/api/v2/meta/bases` is forbidden, take the base ID from the URL and call `table_ids(base_id)` or run the helper with `--base-id`.
 

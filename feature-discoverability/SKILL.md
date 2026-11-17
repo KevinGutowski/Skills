@@ -31,9 +31,9 @@ Field datum shipping these rules solo (Paul Stamatiou, "Stocketa," 2023 — http
 Tips are **education, not promotion**: teach a new feature, surface a hidden one, show a faster way — to "those who would benefit," without "getting in the way."
 - **Anatomy:** title = direct action phrase; message = short, instructional, actionable benefit. Not promos, not errors, not FYI announcements. Popover (points at an element) or inline (reflows layout, blocks nothing) — always next to what it describes.
 - **Eligibility:** parameter rules (logged in) + event rules (opened the view ≥3 times — let people explore organically first), date-filtered or value-grouped donations for precision.
-- **Frequency & exit:** one tip at a time; `DisplayFrequency` (daily/hourly/custom); `invalidate(.userPerformedAction)` the moment they do the thing; `maxDisplayCount` caps unactioned impressions; iCloud sync avoids teaching twice.
+- **Frequency & exit:** one tip at a time; an app-wide display frequency (`Tips.configure([.displayFrequency(.daily)])`); `invalidate(reason: .actionPerformed)` the moment they do the thing; `MaxDisplayCount` caps unactioned impressions; iCloud sync avoids teaching twice.
 
-> **Staleness note (Kevin's rule):** the 2023 talk uses beta-era API names (`TipsCenter`, `.popoverMiniTip`); the shipped SDK renamed these (`Tips.configure`, `.popoverTip(_:)`, etc.) — verify against current TipKit docs before writing code. The design rules are stable.
+> **Staleness note:** the 2023 talk uses beta-era API names (`TipsCenter`, `.popoverMiniTip`, `.userPerformedAction`) that do not compile; the shipped SDK renamed them (`Tips.configure`, `.popoverTip(_:)`, `.actionPerformed`). `references/examples.md` carries the example in shipped names (checked 2026-11-12) plus the rename map — still check the TipKit docs for the project's deployment target before writing code. The design rules are stable.
 
 ## Designing in layers (Ryo Lu)
 

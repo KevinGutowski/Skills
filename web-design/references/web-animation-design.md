@@ -41,6 +41,8 @@ Every animation decision starts with these questions:
 3. **Is this a hover/color transition?** → Use `ease`
 4. **Will users see this 100+ times daily?** → Don't animate it
 
+**Keyword vs custom curve (one rule for this file and its sub-references).** `ease-out` and `ease-in-out` above name the curve *family*. On a deliberate animation — an entrance, exit, or on-screen move of a modal, drawer, popover, dropdown, tooltip, or page element — ship the family's custom curve from the Easing Blueprint as a token (`--ease-out`, `--ease-in-out`), because the bare CSS keywords are too weak. The bare keyword is correct in three places only: `ease` on hover and colour/opacity transitions, `linear` on constant-rate motion and time visualisation, and the toast's tuned 400ms `ease` (Build Order). A review flags a bare keyword outside those cases and does not flag it inside them. `ease-in` is flagged everywhere on UI.
+
 Naming an effect someone can only describe → [animation-vocabulary.md](web-animation-design/animation-vocabulary.md). More than one element moving on the same event → [choreography.md](web-animation-design/choreography.md). Dropped frames → [animation-performance.md](web-animation-design/animation-performance.md).
 
 ## Review Format (Required)
@@ -50,7 +52,7 @@ When reviewing animations, you MUST use a markdown table. Do NOT use a list with
 | Before                            | After                                           |
 | --------------------------------- | ----------------------------------------------- |
 | `transform: scale(0)`             | `transform: scale(0.95)`                        |
-| `animation: fadeIn 400ms ease-in` | `animation: fadeIn 200ms ease-out`              |
+| `animation: fadeIn 400ms ease-in` | `animation: fadeIn 200ms var(--ease-out)`       |
 | No reduced motion support         | `@media (prefers-reduced-motion: reduce) {...}` |
 
 Wrong format (never do this):
@@ -72,7 +74,8 @@ Review posture: a transition that runs but feels sluggish, lands from the wrong 
 **Flag on sight:**
 
 - `transition: all`
-- `scale(0)` entrances; `ease-in` on any UI interaction; a default keyword easing on a deliberate animation
+- `scale(0)` entrances; `ease-in` on any UI interaction; a bare keyword easing (`ease-out`, `ease-in-out`, `ease`, `linear`) on an entrance, exit, or on-screen move — not on hover/colour/opacity (`ease`), constant-rate motion (`linear`), or the toast default (see the keyword rule in Quick Start)
+- Hover scale above 1.02 on a card or control
 - Any animation on a keyboard shortcut, command-palette toggle, or other 100+/day action
 - UI duration over 300ms with no stated reason
 - `transform-origin: center` on a trigger-anchored popover, dropdown, or tooltip (modals are exempt — they are viewport-centered)
@@ -110,6 +113,10 @@ When feel cannot be judged from code, say so and name what to watch: play it at 
 Use for **user-initiated interactions**: dropdowns, modals, tooltips, any element entering or exiting the screen.
 
 ```css
+/* Theme defaults used by every snippet in this cluster (Kowalski's tokens) */
+--ease-out: cubic-bezier(0.23, 1, 0.32, 1); /* = ease-out-quint */
+--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1); /* = ease-in-out-quart */
+
 /* Sorted weak to strong */
 --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -137,7 +144,7 @@ Use when **elements already on screen need to move or morph**. Mimics natural mo
 
 ### ease (For Hover Effects)
 
-Use for **hover states and color transitions**. The asymmetrical curve (faster start, slower end) feels elegant for gentle animations.
+Use for **hover states and color transitions**. The asymmetrical curve (faster start, slower end) feels elegant for gentle animations. This is the keyword the theme ships as-is; it is not the curve for entrances or movement.
 
 ```css
 transition: background-color 150ms ease;
@@ -158,7 +165,7 @@ Linear feels robotic and unnatural for interactive elements.
 
 ### Physical-reference easing (Briggs school)
 
-Derek Briggs is stricter than the curve tables above: never ship the default CSS keyword easings — "they're not accurate," robotic at start and end (Briggs, Shape FM ep. 3). His method: derive a motion's character from a physical analogue — a fan settling back on its ball bearing, the body lurch of a stopping car, sliding a phone across a table. Compatible with the named cubic-beziers above; Briggs adds:
+Derek Briggs is stricter than the keyword rule in Quick Start, which still allows `ease` on hover: never ship the default CSS keyword easings — "they're not accurate," robotic at start and end (Briggs, Shape FM ep. 3). His method: derive a motion's character from a physical analogue — a fan settling back on its ball bearing, the body lurch of a stopping car, sliding a phone across a table. Compatible with the named cubic-beziers above; Briggs adds:
 
 - **Front-load the velocity peak**: "do not want it to evenly ease into a center point of a top speed and then ease out" — peak early so the ease-out feels natural; a late peak only reads right when the element is "coming up against something" (an edge or container).
 - **Tooling**: motion.dev for nearly everything; CSS `linear()` for tiny things only.
@@ -171,10 +178,10 @@ Elements that animate together must use the same easing and duration. Modal + ov
 ```css
 /* Both use the same timing */
 .modal {
-  transition: transform 200ms ease-out;
+  transition: transform 200ms var(--ease-out);
 }
 .overlay {
-  transition: opacity 200ms ease-out;
+  transition: opacity 200ms var(--ease-out);
 }
 ```
 
@@ -190,7 +197,7 @@ Elements that animate together must use the same easing and duration. Modal + ov
 
 **Rules:**
 
-- UI animations should stay under 300ms
+- UI animations should stay under 300ms. The stated exceptions are the edge-attached drawer (up to 500ms on its steep curve) and the toast (400ms) in Build Order; anything else over 300ms needs a reason written down
 - Larger elements animate slower than smaller ones
 - Exit animations can be ~20% faster than entrance
 - **Field corroboration (Linear's stylesheet, via performance.dev 2026):** tokens of `0.1s` quick / `0.25s` regular / `0.35s` slow, hover highlight fade-in `0s` and fade-out `0.15s` — popovers and panels "appear instantly when you summon them, then fade out over 150ms when you dismiss them," and list rows get no transitions at all. Defaulting below Material's 200 ms is one of the cheapest ways to make an app feel faster.
@@ -386,16 +393,16 @@ Animations can cause motion sickness or distraction for some users.
 
 ### prefers-reduced-motion
 
-Whenever you add an animation, also add a media query to disable it:
+Whenever you add an animation, write its reduced-motion variant in the same change. Remove the movement; keep a fade that carries meaning (see the guidelines below):
 
 ```css
 .modal {
-  animation: fadeIn 200ms ease-out;
+  animation: slideUp 200ms var(--ease-out);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .modal {
-    animation: none;
+    animation: fadeIn 200ms var(--ease-out);
   }
 }
 ```
@@ -409,17 +416,18 @@ Whenever you add an animation, also add a media query to disable it:
 - App-wide safety net in Motion: `<MotionConfig reducedMotion="user">` (not the default — set it yourself); it limits animation to opacity/color when the preference is on.
 - Workflow: build the animation → test with DevTools' emulated `prefers-reduced-motion` → ship two variants.
 
-### Framer Motion Implementation
+### Motion (React) Implementation
 
 ```jsx
-import { useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "motion/react";
 
 function Component() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
     <motion.div
-      initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+      // Reduced motion drops the movement and keeps the fade
+      initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
       animate={{ opacity: 1, y: 0 }}
     />
   );
@@ -428,7 +436,7 @@ function Component() {
 
 ### Motion Specification for AI Builds
 
-When directing an agent, provide the motion spec as a variable block plus usage rules. "Make it smooth" invites defaults; "entrance = opacity 0->1, translateY 6px->0, blur 2px->0, 280-320ms on the smooth curve" is buildable. Include reduced-motion behavior in the same prompt: movement and scale collapse; opacity/color/blur can remain when they carry meaning.
+When directing an agent, provide the motion spec as a variable block plus usage rules. "Make it smooth" invites defaults; "entrance = opacity 0->1, translateY 6px->0, blur 2px->0, 280-320ms on the smooth curve" is buildable (the numbers show the level of specificity; take real values from the Duration Guidelines — product UI stays under 300ms). Include reduced-motion behavior in the same prompt: movement and scale collapse; opacity/color/blur can remain when they carry meaning.
 
 ### Touch Device Considerations
 
@@ -436,7 +444,7 @@ When directing an agent, provide the motion spec as a variable block plus usage 
 /* Disable hover animations on touch devices */
 @media (hover: hover) and (pointer: fine) {
   .element:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 }
 ```
@@ -455,24 +463,25 @@ Quick reference for common scenarios. See [PRACTICAL-TIPS.md](web-animation-desi
 | Hover causes flicker            | Animate child element, not parent               |
 | Popover scales from wrong point | Set `transform-origin` to trigger location      |
 | Sequential tooltips feel slow   | Skip delay/animation after first tooltip        |
-| Small buttons hard to tap       | Use 44px minimum hit area (pseudo-element)      |
+| Small buttons hard to tap       | 44px hit area via pseudo-element (theme target; WCAG 2.2 AA floor is 24×24 CSS px) |
 | Something still feels off       | Add subtle blur (under 20px) to mask it         |
 | Hover triggers on mobile        | Use `@media (hover: hover) and (pointer: fine)` |
+| Hover card feels inflated       | Cap hover scale at 1.01–1.02, 100–150ms         |
 | Removed item leaves a dead gap  | Take it out of flow at once (`popLayout`)       |
 | List cascade feels slow         | 30–80ms steps, ~300ms total, or no stagger      |
 
 ## Easing Decision Flowchart
 
 Is the element entering or exiting the viewport?
-├── Yes → ease-out
+├── Yes → ease-out (custom curve: `--ease-out`)
 └── No
 ├── Is it moving/morphing on screen?
-│ └── Yes → ease-in-out
+│ └── Yes → ease-in-out (custom curve: `--ease-in-out`)
 └── Is it a hover change?
-├── Yes → ease
+├── Yes → ease (bare keyword is fine)
 └── Is it constant motion?
 ├── Yes → linear
-└── Default → ease-out
+└── Default → ease-out (custom curve: `--ease-out`)
 
 ## Communicating Motion to Engineers (Briggs)
 

@@ -1,6 +1,6 @@
 # Validation and Metrics
 
-Sources: Cindy Alvarez, *Build Better Products* (Rosenfeld Media, 2016); Melissa Perri, *Escaping the Build Trap* (O'Reilly, 2018); Jeff Gothelf and Josh Seiden, *Lean UX* (1st ed., O'Reilly, 2013). Quotes verified against the extracted texts. Era note: the 2013 Lean UX tooling/fidelity economics are stale; the artifact-to-feedback mapping and weekly-contact discipline are durable.
+Sources: Laura Klein, *Build Better Products* (Rosenfeld Media, 2016); Melissa Perri, *Escaping the Build Trap* (O'Reilly, 2018); Jeff Gothelf and Josh Seiden, *Lean UX* (1st ed., O'Reilly, 2013). Quotes verified against the extracted texts. Era note: the 2013 Lean UX tooling/fidelity economics are stale; the artifact-to-feedback mapping and weekly-contact discipline are durable.
 
 ## Contents
 

@@ -60,21 +60,14 @@ Next decision: persist / modify / pause / stop
 
 ## Trajectory review
 
-Score with evidence, not intuition alone:
+Use the signal table (learning, capability, feedback, energy, fit, momentum) and the persist / modify / pause / stop criteria in "Trajectory review" in [methods.md](methods.md); they are not repeated here. As a worksheet:
 
-- Learning: what do I now know that I did not know before?
-- Capability: what became easier or stronger?
-- Feedback: what did informed people or the environment return?
-- Energy: what did the work cost before, during, and after?
-- Fit: do I want the real daily work, not only its status or outcome?
-- Momentum: would another focused trial likely move something?
-
-Then choose:
-
-- **Persist:** keep the direction and cadence.
-- **Modify:** change one constraint or method and retest.
-- **Pause:** name what must recover or change before a fair test.
-- **Stop:** preserve the learning and release the path.
+```text
+Trial reviewed (what, how long, how focused):
+Evidence for each signal:
+Decision: persist / modify / pause / stop
+What changes before the next review date:
+```
 
 ## Ideal-week check
 

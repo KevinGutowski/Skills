@@ -1,6 +1,6 @@
 # Sources
 
-This skill aggregates twelve Arkency posts (blog.arkency.com; the consultancy "called in to fix existing large Rails applications"; tooling: RailsEventStore + aggregate_root + the open-source `ecommerce` reference app):
+This reference aggregates twelve Arkency posts (blog.arkency.com; the consultancy "called in to fix existing large Rails applications"; tooling: RailsEventStore + aggregate_root + the open-source `ecommerce` reference app):
 
 - *"The Rails Way in 2026" (Krzywda, 2026) — the positioning piece. /the-rails-way-in-2026/*
 - *"Storing data as a sequence of events" (Reszke, 2026). /storing-data-as-a-sequence-of-events-ruby-conf-austria-lightning-talk-supplement/*

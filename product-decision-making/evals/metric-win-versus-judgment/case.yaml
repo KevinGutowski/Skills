@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: metric-win-versus-judgment
+expected_outcome: |
+  Separates what the data shows from what it cannot show, names the time-window and proxy risk, turns the designers' objection into a testable hypothesis, and proposes a concrete way to decide.

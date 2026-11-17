@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: friction-as-value-exchange
+expected_outcome: |
+  Audits the change as an exchange: what users are asked to give up, what they get, where it may feel unfair, and whether a less costly design solves the fraud problem. Defines how the team will know it worked, including a counter metric.

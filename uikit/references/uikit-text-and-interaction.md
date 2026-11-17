@@ -59,7 +59,7 @@ textView.delegate = self              // needed for the edit menu and link metho
 ## Edit menus
 
 - **Your actions first, then the system's:** return `UIMenu(children: [custom] + suggestedActions)`. Appended items land on the second page on iPhone. A menu that drops `suggestedActions` loses Copy. Return `nil` for the default menu.
-- iOS 26 SDK: implement `textView(_:editMenuForTextInRanges:suggestedActions:)`, which receives every selected range as `[NSValue]` (selections can be discontiguous). The single-range `textView(_:editMenuForTextIn:suggestedActions:)` is marked to be deprecated; UIKit calls it with the union of the ranges when the new method is missing. Keep both if you also build with older SDKs (they reject the new method as unknown).
+- Implement `textView(_:editMenuForTextInRanges:suggestedActions:)` (iOS 26+), which receives every selected range as `[NSValue]` (selections can be discontiguous). The single-range `textView(_:editMenuForTextIn:suggestedActions:)` (iOS 16) is deprecated in iOS 27 (Apple docs, checked 2026-11-12); while it exists, UIKit calls it with the union of the ranges when the delegate lacks the multi-range method. Keep both only while the deployment target is below iOS 26 (older systems call only the single-range method); drop the single-range one once the target reaches iOS 26.
 - `UIMenuController` is deprecated. Text views use the delegate methods above; custom views use `UIEditMenuInteraction` (iOS 16+).
 
 ```swift
@@ -143,7 +143,7 @@ Spring parameter doctrine (duration + bounce values) lives in `swiftui` (`swiftu
 
 ## Objective-C notes
 
-- Selectors: `textView:editMenuForTextInRanges:suggestedActions:` (ranges are `NSArray<NSValue *>`), `textView:primaryActionForTextItem:defaultAction:`, `textView:menuConfigurationForTextItem:defaultMenu:`.
+- Selectors: `textView:editMenuForTextInRanges:suggestedActions:` (iOS 26+; ranges are `NSArray<NSValue *>`; the single-range `textView:editMenuForTextInRange:suggestedActions:` is deprecated in iOS 27), `textView:primaryActionForTextItem:defaultAction:`, `textView:menuConfigurationForTextItem:defaultMenu:`.
 - Tagged ranges: `UITextItemTagAttributeName` (an `NSString` value); match `textItem.contentType == UITextItemContentTypeTag` and read `textItem.tagContent`.
 - Menu, swipe-provider, accessibility-block and custom-action handlers are stored blocks: capture `__weak typeof(self) weakSelf` and item IDs, never `self` or the cell. One-shot `animateWithDuration:` blocks may use strong `self`.
 - `fontWithName:size:` is `nullable`; keep a `?:` fallback. The property is `view.isAccessibilityElement`, not `view.accessibilityElement`.
@@ -155,7 +155,7 @@ Spring parameter doctrine (duration + bounce values) lives in `swiftui` (`swiftu
 
 1. Fonts from text styles with `adjustsFontForContentSizeCategory`; no fixed text heights; tested at the largest accessibility size.
 2. Selectable text in a non-editable text view with insets zeroed, delegate set, no long press or disabled interaction over it; read-only list rows use TextKit 1.
-3. Edit menu returns custom actions before `suggestedActions`; multi-range method implemented with the iOS 26 SDK; no `UIMenuController`.
+3. Edit menu returns custom actions before `suggestedActions`; built in the multi-range method (iOS 26+), with the deprecated single-range method kept only for deployment targets below iOS 26; no `UIMenuController`.
 4. Links handled by `primaryActionFor`/`menuConfigurationFor`, not `shouldInteractWith`.
 5. No accidental `layoutManager` access on TextKit 2 views.
 6. Menus capture identifiers; swipe actions mirrored in context menus and accessibility custom actions.

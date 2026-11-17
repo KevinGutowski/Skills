@@ -79,7 +79,7 @@ Error message *copy* itself → `ux-writing` (error-messages).
 - "The contrast ratio of the button shape must be at least 3:1"
 - "The button text contrast ratio must be at least 4.5:1"
 - Identical-style buttons need ≥3:1 contrast *between* them
-- Target "at least 48pt by 48pt" (aligns to the 8pt grid; above WCAG's 44pt) and "separate them by at least 8pt" (Dannaway personally uses 16pt)
+- Target "at least 48pt by 48pt" (aligns to the 8pt grid; above WCAG's 44px AAA target) and "separate them by at least 8pt" (Dannaway personally uses 16pt)
 
 **The 9 failure modes** (his nine "problematic" button examples, condensed — full list in references): ① secondary fill <3:1 against background; ② light-grey secondary reads as disabled (+ low text/border contrast); ③ primary/secondary identical styles differing only by color; ④ similar styles + low text contrast; ⑤ identical styles <3:1 apart; ⑥ tertiary border <3:1; ⑦ tertiary distinguished by color alone — looks like plain text; ⑧ inconsistent shapes ("Elements that function the same should look the same"); ⑨ ambiguous hierarchy — primary and secondary with similar visual weight.
 

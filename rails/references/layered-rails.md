@@ -51,7 +51,7 @@ When Ruby itself is the bottleneck: "Keep your cake recipe (business logic) in R
 ## Relationship to other skills
 
 - **[dhh-style.md](dhh-style.md)** — the competing school (see the divergence list above). Route by the project's existing idiom; never blend in one codebase.
-- **[optimizing-rails.md](optimizing-rails.md)** — measurement-first runtime tuning lives there; when tuning isn't enough, this skill's extraction rules govern *what* to extract and what must stay in Ruby.
+- **[optimizing-rails.md](optimizing-rails.md)** — measurement-first runtime tuning lives there; when tuning isn't enough, this reference's extraction rules govern *what* to extract and what must stay in Ruby.
 - **[inertia-rails.md](inertia-rails.md)** — this school's frontend wing for JS-component-heavy apps.
 - **[rails-realtime.md](rails-realtime.md)** — AnyCable and real-time reliability, the same lineage's real-time layer.
 - **[rails-testing.md](rails-testing.md)** — the test-suite discipline (TestProf lineage, same author).

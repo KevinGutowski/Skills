@@ -4,7 +4,7 @@ Use this file for learning-experience candidates that need learner evidence, art
 
 ## Candidate gaps
 
-- **Artifact templates:** Add curricula, workshop agendas, practice prompts, job aids, and assessment rubrics only when repeated tasks show stable forms.
+- **Artifact templates:** Add curricula, workshop agendas, practice prompts, job aids, and assessment rubrics only when repeated tasks show stable forms. `worked-examples.md` holds three illustrative examples (alignment table, spaced session plan, module rewrite); they are calibration aids, not accepted templates.
 - **Measurement:** Learning success thresholds need behavior, transfer context, baseline, and time horizon; completion rates alone are not enough.
 - **AI-enabled learning:** Tutors, simulators, personalization, and assessment automation need source/ethics checks before rules are promoted.
 - **Org adoption programs:** AI/tool/process rollouts often need `working-with-ai` plus this skill; keep enablement strategy and learning mechanics distinct.

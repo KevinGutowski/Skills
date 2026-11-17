@@ -4,7 +4,7 @@
 
 > **Prerequisite:** For general skill authoring (structure, naming, descriptions), see the `creating-skills` skill or the [official documentation](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices).
 >
-> **Sibling:** If the source is a living codebase with PR-review history (the reasoning lives in review threads, not prose), use `converting-codebases-to-skills` — this skill is for books, docs, and guides.
+> **Sibling:** If the source is a living codebase with PR-review history (the reasoning lives in review threads, not prose), use `converting-codebases-to-skills` — this reference is for books, docs, and guides.
 
 ## Contents
 
@@ -75,7 +75,7 @@ Reference files hold the full narrative. Claude loads these on demand.
 - The subjective experience ("how it feels")
 
 **Avoid:**
-- Nested references (keep one level deep)
+- References nested beyond the sanctioned `references/<name>/` second hop (see [authoring-checklist.md](authoring-checklist.md))
 - Duplicating SKILL.md content
 - Abstract explanations without examples
 
@@ -83,16 +83,7 @@ Details: [writing-reference-files.md](converting-books-to-skills/writing-referen
 
 ## Writing Effective Descriptions
 
-The description determines when Claude loads the skill.
-
-| Good | Bad |
-|------|-----|
-| "Shape product work by setting boundaries and writing pitches. Use during the shaping phase before betting." | "Helps with product work." |
-| Says what + when | Vague |
-
-**Template:** "[Action verb] [domain] by [key techniques]. Use when [trigger context]."
-
-Details: [writing-descriptions.md](converting-books-to-skills/writing-descriptions.md)
+The description determines when Claude loads the skill. Follow the one guide, [description-writing.md](description-writing.md) (house shape, ~350–450 characters, boundary clause, routing probes). Book-specific good/bad examples and trigger-word tables: [writing-descriptions.md](converting-books-to-skills/writing-descriptions.md).
 
 ## Preserving the Book's Voice
 
@@ -126,13 +117,4 @@ Details: [capturing-mindset.md](converting-books-to-skills/capturing-mindset.md)
 
 ## Checklist Before Shipping
 
-- [ ] Skill description says what AND when
-- [ ] SKILL.md under 500 lines
-- [ ] Sections follow book's chapter order
-- [ ] Each section has one grounding example
-- [ ] Each section links to a reference file
-- [ ] Reference files include narrative + examples
-- [ ] Core mindsets have dedicated files
-- [ ] No nested references (one level deep)
-
-Details: [checklist.md](converting-books-to-skills/checklist.md)
+Run the one shipping checklist, [authoring-checklist.md](authoring-checklist.md), then the book-specific additions (chapter order, grounding examples, mindset files, voice): [checklist.md](converting-books-to-skills/checklist.md).

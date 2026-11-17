@@ -132,7 +132,7 @@
         "windowMethods": ["getComputedStyle", "getMatchedCSSRules"]
     },
     "motionPropertyMap": {
-        "note": "Motion shorthand props and their CSS equivalents. All map to compositor properties but cannot be hardware accelerated (A-tier via rAF).",
+        "note": "Motion shorthand props and their CSS equivalents. All map to compositor properties. Below Motion 14.2.0 they cannot be hardware accelerated (A-tier via rAF); on 14.2.0+ they are hardware accelerated (S-tier) unless driven by motion values or the style prop.",
         "props": {
             "x": "translateX",
             "y": "translateY",

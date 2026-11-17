@@ -143,7 +143,7 @@ Use judgment where it compounds (understanding the motion surface, deciding what
 | # | Category | Hunt for |
 | --- | --- | --- |
 | 1 | Purpose and frequency | Motion on keyboard actions and constantly hit surfaces. The strongest fix is often deletion. |
-| 2 | Easing and duration | `ease-in` on UI; bare `ease` or `linear` on entrances; product UI over 300ms; delay plus animation on every tooltip in a group |
+| 2 | Easing and duration | `ease-in` on UI; a bare keyword (`ease`, `ease-out`, `ease-in-out`, `linear`) on entrances, exits, or on-screen movement — `ease` on hover/colour and `linear` on constant-rate motion are fine; product UI over 300ms; delay plus animation on every tooltip in a group |
 | 3 | Physicality and origin | `scale(0)`; pure-fade entrances with no transform; anchored surfaces scaling from center; pressables with no press feedback |
 | 4 | Interruptibility | Keyframes on toasts, toggles, and other rapidly retriggered UI; fixed-duration tweens on gestures; distance-only dismissal; hard stops at drag bounds; identical timing for a deliberate press and its release |
 | 5 | Performance | `transition: all`; animated layout properties; a parent CSS variable driving child transforms; rAF loops doing what CSS could; heavy transition-time blur |

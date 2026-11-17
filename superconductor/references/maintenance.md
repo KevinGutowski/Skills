@@ -33,7 +33,8 @@ Do not commit the downloaded OpenAPI document.
 
 - **Attachments.** The live API supports presigned uploads (presign → multipart upload → upload IDs in `ticket.attachments`). The helper does not wrap this; read the live "Attach files" section if a user needs it, and keep the one-POST rule for the final create.
 - **MCP server.** Not needed: the helper is a CLI any agent can call.
-- **Launching agents on existing tickets, sending messages, opening PRs.** Not in the API as of 2026-11-06.
+- **Sending messages.** The live API has `POST /ticket_implementations/{id}/messages` and `POST /chats/{id}/messages` (seen 2026-11-12); the helper does not wrap them yet.
+- **Launching agents on existing tickets, opening PRs.** Not in the API as of 2026-11-12.
 - **Non-macOS credential stores.** Add an adapter to `ADAPTERS` in `sc_credentials.py`, backed by the platform's secure store; keep the token out of argv, env dumps, and files.
 
 ## Offline tests

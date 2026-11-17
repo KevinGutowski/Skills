@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: exec-update-from-notes
+expected_outcome: |
+  An update shaped for the reader's decision: the yes/no request and its deadline lead, the supporting numbers are kept exact, and unrelated items are cut or clearly separated.

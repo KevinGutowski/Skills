@@ -7,6 +7,7 @@ Source: VTnT5zFjzfQ (impact framework; guests Filippos, Florian, Miranda Slater)
 - [The diagnosis: solution-first thinking](#the-diagnosis-solution-first-thinking)
 - [The impact framework (6 steps)](#the-impact-framework-6-steps)
 - [The strategic narrative framework — worked example](#the-strategic-narrative-framework--worked-example)
+- [Sten: concept storytelling and business language](#sten-concept-storytelling-and-business-language)
 - [The four lenses for craft and design-system asks](#the-four-lenses-for-craft-and-design-system-asks)
 - [No analytics? No research time? The workaround scripts](#no-analytics-no-research-time-the-workaround-scripts)
 - [Credibility moves for projections](#credibility-moves-for-projections)
@@ -19,7 +20,7 @@ Source: VTnT5zFjzfQ (impact framework; guests Filippos, Florian, Miranda Slater)
 
 ## The diagnosis: solution-first thinking
 
-What usually happens when ideas get shot down: "You fall in love with a solution before understanding the business problem. You present features instead of outcomes. You focus on what the design does, not what it achieves. You assume everyone sees the same problems that you see." Femke calls this solution-first thinking, "and it is killing your influence as a designer." The fix: "think business first and design second."
+What usually happens when ideas get shot down: "You fall in love with a solution before understanding the business problem. You present features instead of outcomes. You focus on what the design does, not what it achieves. You assume everyone sees the same problems that you see." Femke calls this solution-first thinking, "and it is killing your influence as a designer." The fix: "think business first and design second." The closing frame: "Your job isn't just to make things look good. It's to make the business better through design."
 
 ## The impact framework (6 steps)
 
@@ -98,6 +99,9 @@ Anton Sten's *Products People Actually Want* adds a working-designer version of 
 - **Keep concept designs collaborative.** A concept is not a sign-off artifact; it is enough page brief, wireframe, or visual direction to make the dream shareable.
 - **Read the audience's fidelity tolerance.** Some stakeholders need wireframes to stay strategic; others cannot evaluate until the concept looks real. Pick the artifact that creates the right conversation, not the artifact that matches a textbook stage.
 - **Speak business without surrendering design.** Replace internal design language with the stakeholder's goal language: debt, overhead, speed, support burden, conversion, churn, trust, risk, recurring revenue, or brand position. The point is translation, not capitulation.
+- **Business translation, not design translation.** If stakeholders keep choosing the "modern-looking" option over the researched one, stop explaining whitespace, systems, and flows. Translate the decision into the language they already use: revenue, recurring revenue, signups, support cost, retention, operational overhead, debt, risk, and strategic position. "Design inconsistency" may land as **design debt**; "poor content" may land as **content overhead**.
+- **Use writing to separate knowns from assumptions.** Before selling a concept, write what is known, what is assumed, and what remains unknown. Then build the story from the pattern in that list. It lowers defensiveness because the pitch is not pretending exploration is certainty.
+- **Pick the artifact for the conversation you need.** Page briefs focus sections/actions/goals; wireframes invite hierarchy and structure discussion; visual designs communicate balance and feeling; concept designs share a plausible dream. A polished artifact can trap stakeholders in tiny comments; a wireframe can make them think bigger. Fidelity is an influence tool, not only a process stage.
 
 ## The four lenses for craft and design-system asks
 

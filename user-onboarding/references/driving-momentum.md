@@ -50,7 +50,7 @@ Interpersonal motivators (faces, social proof) that drive engagement in marketin
 - Show successful users as examples of what new users could become ("here's one I prepared earlier!")
 - Include human help availability (faces of real team members, like a landing page)
 
-**Warning**: Don't use gamification as manipulation. People are more motivated to improve their real selves than to collect virtual badges. Using tricks to advance people through an irrelevant funnel isn't sustainable.
+**Warning**: Don't use gamification as manipulation. People are more motivated to improve their real selves than to collect virtual badges. Using tricks to advance people through an irrelevant funnel isn't sustainable. For the wider boundary (consent, trials, defaults, exit paths), see [honest-onboarding.md](honest-onboarding.md).
 
 ## Creating Regulars (Social Accountability)
 

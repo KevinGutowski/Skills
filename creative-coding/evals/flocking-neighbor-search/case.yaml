@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: flocking-neighbor-search
+expected_outcome: |
+  Identifies the quadratic neighbor search as the cause and replaces it with spatial partitioning, plus the cheaper per-frame habits (squared distances, no throwaway vector allocation).

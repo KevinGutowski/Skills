@@ -76,7 +76,7 @@ First ask what frequency the *UI* actually needs — if updates are slower than 
 - [ ] Conformances semantically meaningful, not habitual?
 - [ ] Ownership/Span/unique-array changes justified by a profile and confined to the hot path?
 
-> **Staleness note (Kevin's rule):** distilled from a live Q&A (audio-transcribed) in the Swift 6.3/6.4 timeframe — feature names here (`~Sendable`, `@diagnose`, async `defer`, cancellation shields, unique array / `InlineArray`, `Iterable` protocols, the `Disconnected` pitch, Subprocess package, unified Swift Build) must be **verified against current swift.org/Apple docs before citing in code**; several were in-flight evolution proposals at recording time. The disciplines (structure, inversion, measure-first) are the durable content.
+> **Staleness note:** distilled from a live Q&A (audio-transcribed) in the Swift 6.3/6.4 timeframe — feature names here (`~Sendable`, `@diagnose`, async `defer`, cancellation shields, unique array / `InlineArray`, `Iterable` protocols, the `Disconnected` pitch, Subprocess package, unified Swift Build) must be **verified against current swift.org/Apple docs before citing in code**; several were in-flight evolution proposals at recording time. The disciplines (structure, inversion, measure-first) are the durable content.
 
 ## Relationship to other skills
 

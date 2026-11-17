@@ -74,10 +74,10 @@ The flip: **desired future state → success metrics → value → price → sco
 
 ## Relationship to other skills
 
-- **developer-tool-gtm** — pricing/selling a *product* to developers (landing pages, conversion, PMF metrics). This skill is services: pricing a *client engagement*.
+- **developer-tool-gtm** — pricing/selling a *product* to developers (landing pages, conversion, PMF metrics). This reference is services: pricing a *client engagement*.
 - **building-in-public** — company-of-one indie-product economics and audience. Use it for what to charge for your own product; use this for what to charge a client.
 - **Engagement mechanics** — running the engagement after you've won it (kickoff, feedback, health signals, firing/being fired) → [client-engagements.md](client-engagements.md) (same skill); this reference prices and contracts the work, that one delivers it.
-- **design-org-influence / design-prototyping** — presenting work inside an org; this skill's journey-presentation pattern (value-conversation.md) is the client-facing cousin.
+- **design-org-influence / design-prototyping** — presenting work inside an org; this reference's journey-presentation pattern (value-conversation.md) is the client-facing cousin.
 
 ## Staleness note
 

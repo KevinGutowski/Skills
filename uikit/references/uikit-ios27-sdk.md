@@ -161,15 +161,18 @@ SDK behavior; remove the workaround after confirming on iOS 27.
 
 ## Swift-only APIs and the Objective-C route
 
-No Objective-C declaration exists for these; do not invent a selector. Keep a small Swift file exposing an `@objc` method, or use the route below.
+Only one item is still Swift-only; do not invent a selector for it.
 
 | API | Objective-C route |
 |---|---|
-| `UINavigationItem.navigationBarMinimization` | system default, or a Swift shim (`@objc func configureBarMinimizationForReading()`) |
-| `UIView.LayoutRegion.bar(onEdge:extent:)` | none |
 | Observation tracking in section providers | `-invalidateLayout` from your own change callback; reading `NSObject`/KVO properties registers nothing |
 
-**Correction (2026-11-05):** an earlier version of this table listed `UIArrangementViewController` configuration and `reservedRegions(kind:options:)` as Swift-only. Apple's documentation now shows Objective-C declarations for both: `-setViewController:forPlacement:animated:`, `-updateArrangement:` / `-updateArrangement:animated:`, `-stateForPlacement:`, `-viewControllerForPlacement:`, `-placementForViewController:`, the `UISplitArrangement` / `UIOverlayArrangement` classes (`+splitArrangement`, `+overlayArrangement`), and `-reservedRegionsOfKind:options:` returning `UIViewReservedRegion` (`UIViewReservedRegionQueryOptionsIncludeInactive`). Check the header for the exact split-axis configuration before writing it in Objective-C.
+**Correction (2026-11-12):** this table used to list `UINavigationItem.navigationBarMinimization` and `UIView.LayoutRegion.bar(onEdge:extent:)` as Swift-only. Both have Objective-C declarations in Apple's documentation, so no Swift shim is needed:
+
+- `navigationBarMinimization`: `@property (nonatomic, copy) UIBarMinimization *navigationBarMinimization` on `UINavigationItem` (iOS 27.0). In Objective-C `UIBarMinimization` is a class with `minimizationBehavior`, `restorationBehavior` and `safeAreaAdjustment` properties (a struct in Swift); the property is `copy`, so configure an instance and assign it. Take the enum constant spellings from the header.
+- Bar layout regions: `UIViewLayoutRegion` class methods `+layoutRegionForBarOnEdge:`, `+layoutRegionForBarOnEdge:extent:`, `+layoutRegionForBarOnDirectionalEdge:`, `+layoutRegionForBarOnDirectionalEdge:extent:`. The `extent:` forms are iOS 27.1 in the Swift docs; confirm the Objective-C availability in the header.
+
+**Earlier correction (2026-11-05):** an earlier version of this table also listed `UIArrangementViewController` configuration and `reservedRegions(kind:options:)` as Swift-only. Apple's documentation now shows Objective-C declarations for both: `-setViewController:forPlacement:animated:`, `-updateArrangement:` / `-updateArrangement:animated:`, `-stateForPlacement:`, `-viewControllerForPlacement:`, `-placementForViewController:`, the `UISplitArrangement` / `UIOverlayArrangement` classes (`+splitArrangement`, `+overlayArrangement`), and `-reservedRegionsOfKind:options:` returning `UIViewReservedRegion` (`UIViewReservedRegionQueryOptionsIncludeInactive`). Check the header for the exact split-axis configuration before writing it in Objective-C.
 
 Other Objective-C gotchas:
 

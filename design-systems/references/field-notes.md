@@ -16,9 +16,13 @@ Depth moved out of SKILL.md: full source list, worked examples, outcome numbers,
 - [Dive Club deltas — full quotes](#dive-club-deltas--full-quotes)
 - [Motion as a design-system layer (Nabors)](#motion-as-a-design-system-layer-rachel-nabors-animation-at-work-a-book-apart-2017)
 - [MailChimp pattern-library prework](#mailchimp-pattern-library-prework-the-ux-reader-2014)
+- [Linear theme tooling and redesign substrate](#linear-theme-tooling-and-redesign-substrate)
 - [Soleio: UFI, Canon, and the Dropbox illustration strip-out](#soleio-ufi-canon-and-the-dropbox-illustration-strip-out)
 - [Impeccable: PRODUCT.md / DESIGN.md / surface brief](#impeccable-productmd--designmd--surface-brief)
 - [Tactile design: neutral roles and derived tokens](#tactile-design-neutral-roles-and-derived-tokens)
+- [Sten: meaningful systems](#sten-meaningful-systems)
+- [AI-context inputs: polish tokens and taste separation](#ai-context-inputs-polish-tokens-and-taste-separation)
+- [Words and living standards](#words-and-living-standards)
 - [Misc details](#misc-details)
 
 ## Full source list
@@ -140,6 +144,7 @@ Moved to [sources.md](sources.md).
 - **Contrast as a product token.** Contrast is not only an accessibility audit after the fact; it is an input that can generate higher-contrast themes and make light/dark modes more legible without forking the palette.
 - **Live product as the color editor.** During the 2026 refresh, Linear used an internal dev-toolbar color picker exposing hue, chroma, lightness, contrast, and individual design tokens. People could experiment in the actual app, share recipes, copy token JSON, and import it into Figma. This inverts the usual laggy loop of Figma mock → PR → preview → review.
 - **Chrome chroma budget.** The refresh limited how much Linear's blue influenced chrome calculations so the product felt more neutral and timeless. Treat brand color in dense tools as a scarce resource: too much tint makes the workbench feel saturated and competes with content.
+- **The pattern in one line.** define a few intent inputs (base color, accent color, contrast), generate aliases for surfaces/text/icons/controls in LCH/OKLCH, and expose contrast as a user/system axis. For redesign work, tune tokens inside the live product with an internal color tool, then sync landed JSON values back to Figma so the system follows reality.
 
 ## Soleio: UFI, Canon, and the Dropbox illustration strip-out
 
@@ -166,6 +171,26 @@ Source: Kosta, *Tactile design* (kosta4a/tactile-design, MIT, `30495a2`); ledger
 - **Neutral roles, not hex** (Kosta, tactile-design). Write components against a 12-step neutral where each step has a job: 1–2 grounds, 3–5 fills, 6–8 lines, 9–10 faint text, 11 secondary text, 12 strong text and the primary fill. Any neutral can then be swapped in. After a remap, re-run the contrast gates (secondary text ≥4.5:1 on the well step, hairline step ≥~1.35:1 on white, focus step ≥3:1 everywhere), because stock scales often fail on the faint steps. Full gates and the step-shift rule: `design-craft` (tactile-design → tokens-and-surfaces).
 - **Derived CSS tokens resolve where they are declared.** `--shadow-button: 0 0 0 0.5px var(--ink-7)` set on `:root` won't follow a container that remaps `--ink-7`. Redeclare every token built from a working step on each surface or theme class. Alpha-based and `currentColor`-mixed values adapt by themselves.
 
+## Sten: meaningful systems
+
+Anton Sten, *Products People Actually Want* (2025) — the working-designer frame for when a system is worth its cost.
+
+- **Meaningful systems require good substrate, not just more substrate** (Sten): efficiency only helps if it speeds meaningful outcomes; consistency only helps if it standardizes a good quality bar; scale only helps if the pattern is worth reproducing. A design system can accelerate bad work, make poor choices consistent, or scale patterns the product should have retired. Audit what the system is amplifying before selling speed.
+- **Build with the product, not before or after it** (Sten): designing the system fully upfront freezes guesses; extracting it after the product forces wasteful rebuilds. The useful middle is a parallel process: let real product problems reveal components, then systemize the parts with repeated value.
+- **Constraints create room to work.** Define requirements early enough to narrow the problem: atomic/composition model, token taxonomy, desktop/mobile sharing, variants/states, theme modes, accessibility and localization requirements. The goal is not bureaucracy; it is a smaller, clearer creative field.
+- **Adoption beats perfection** (Sten): a simple system everyone uses beats a perfect library no one reaches for. Treat non-use as product feedback: no need, weak incentive, poor awareness, unclear docs, overfit API, or low trust.
+
+## AI-context inputs: polish tokens and taste separation
+
+- **Make the polish layer token-addressable** (Kevin Kold, 2026): if an agent can only see colors and spacing, it will invent the rest. Export durations, easing curves, spring presets, radii, shadow stacks, press scales, snap thresholds, and state treatments with stable names; mirror those names 1:1 in Figma variables/styles and code. Then prompts can say "use only these tokens, no one-off values" instead of asking for "premium" polish.
+- **Separate DS context from taste context** (Jaytel Taste, 2026): a DS context pack should expose tokens, component APIs, recipes, names, and allowed composition paths. A visual-taste corpus should expose transferable aesthetic constraints. Do not mix them into one dump. Agents compose better when the design-system substrate and the expressive taste layer are separate, explicit inputs.
+- **Use the DS as the mechanical substrate, not the whole agent standard** (Vercel product-design pattern): expose tokens, component APIs, recipes, allowed composition paths, lintable rules, and canonical product names. Put product judgment, exceptions, and surface-specific examples in routed skills/references; put missing standards in coverage gaps rather than inventing them from one component.
+
+## Words and living standards
+
+- **Words are a system layer** (Metts & Welfle, *Writing Is Designing*, ch. 8): document functional patterns by *purpose*, not exact wording — "The purpose determines everything else that follows: the structure of the pattern, its content, its presentation" (Kholmatova, via WID). Make content first-class in the system's IA — Shopify's Polaris puts **Content** in the main nav beside Design and Components, a deliberate move ("how we organize information affects how organizations operate"). For style mechanics, adopt an existing style guide rather than writing your own — homegrown guides are "very time-consuming" and steal time from strategic work; pick one and stick to it.
+- **Keep the system alive, not just written down** (Figma blog on Combine, 2017 — https://www.figma.com/blog/meet-the-design-pioneers-taking-on-the-venture-world/): Facebook's cross-product design standards existed, but the hard problem was keeping them from going stale as teams and platforms changed. A design system is not a historical artifact; it needs ownership, contribution paths, and review loops that update the standard at the same pace the product learns.
+
 ## Misc details
 
 - **Quality-infrastructure frame** (Henry Modisett, Linear quality series): "you can invest in systems that make it hard to make things bad… if you make it so hard to make a bad button, you're going to have less bad buttons."
@@ -180,3 +205,10 @@ Source: Kosta, *Tactile design* (kosta4a/tactile-design, MIT, `30495a2`); ledger
 - **Microsoft Loop**: new apps are allowed to break the rules — they're exploring the system's next version. Respect the platform over the brand: "designing for Android: 80% Android, 20% Microsoft."
 - **Fluent patience datum**: "took eight years — eight years of inconsistency." The Frankenstein phase is part of the journey.
 - **AI-context misc** (Config panel/Mounter): compare models on your actual use case before defaulting to the fancy one; use generation's non-determinism as exploration (same prompt 3×, fan out, then build the real component with system touch); DS knowledge bots need RAG with permission-awareness and clickable citations; wishlist patterns: AI compliance linting, context-aware approved copy, accessibility assessment.
+- **Hitting limits is growth** (the "midlarge" t-shirt size) — part of build-then-constrain (Baldwin).
+- **Adoption measurement and champions** (panel): Mandates never work; measure **breadth** (teams) and **depth** (% of shipped layers from DS); adoption data is product research — "it drives roadmaps." Run Coinbase's diagnostics (need? incentive? awareness? usable+documented?). **Put DS contribution in leveling charts and performance reviews**; attribute adoption to contributors. Arm both champion kinds — the enthusiastic (library analytics, branch proposals) and the influential (managers, long-tenured) — with reusable education.
+- **Listening an opinion into existence** (Albaugh/Bergman): Figma's team absorbed a dev's prop exploit as a considered "custom" variant rather than punishing it.
+- **Mirror token names programmatically**: generate the Figma script from the same source that emits your CSS custom properties, so codegen speaks real token names.
+- **Federated decision flow** (Rahimi): decisions are made *with* experts from each app; core "normalizes the decision, documents it, shares it."
+- **Parity framing** (Albaugh/Bergman): design and code "approach the same destination from different origins."
+- **Team design quotes** (panel): design engineers are "the superpower of the design system team"; the expression team exists because "a lot of brand-led decisions actually hurt the experience inside the app."

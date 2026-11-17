@@ -76,7 +76,7 @@ This refines the HIG's "index what's personally relevant": index everything feas
 ## Shortcuts and Use Model
 
 - The **Use Model** action takes app entities, so **expose the properties a model needs to reason** (a recipe's ingredients to judge spiciness). Thin entities produce bad choices.
-- Notifications can now trigger automations, filtered by words. Write them so they're distinct, use a specific verb, and include the actionable detail (see `notification-design`).
+- Notifications can now trigger automations, filtered by words. Write them so they're distinct, use a specific verb, and include the actionable detail. (This note is the library's only guidance on notification-triggered automations; `notification-design` covers notification strategy, urgency levels and anatomy, not automations.)
 
 ## Testing ladder
 

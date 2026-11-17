@@ -3,6 +3,7 @@
 ## Contents
 - Source Set
 - When To Use This Reference
+- Key Moves Digest
 - Linear's Redesign Doctrine
 - Concept To Ship Workflow
 - Dense App Chrome
@@ -34,6 +35,18 @@ Companion folds live in `design-principles`, `design-prototyping`, `design-syste
 ## When To Use This Reference
 
 Use it for dense professional software, app chrome, settings/productivity tools, redesigns, product-wide refreshes, and quality programs. Do not use it to make every interface look like Linear. Use the moves: restrained hierarchy, real-state testing, feature-flag comparison, theme tooling, and quality habits.
+
+## Key Moves Digest
+
+Key moves:
+- **Redesign for product evolution, not novelty.** The trigger is accumulated design debt or a broadened product vision; scope the reset around the surfaces that need rebalancing, not every tempting navigation or IA problem.
+- **Stress-test before implementation.** Crash the direction against environment, appearance, and hierarchy: browser/native shells, light/dark/custom themes, every dense view type, long labels, side panels, headers, tabs, and empty/error/loading states.
+- **Make comparison cheap.** Ship behind a feature flag, add a local toggle, and build internal tooling so designers, engineers, and dogfooders can flip old/new instantly and tune tokens in the real product.
+- **Triage quality by felt risk.** Fix repeated-use jank, trust leaks, wrong-problem signals, and stability promises before optional delight; use scope deletion and named deciders to keep craft decisions fast.
+- **Dogfood with permission to unship.** Turn prototypes on internally, compare old/new cheaply, and remove features that feel wrong without treating removal as failure.
+- **Train noticing.** A small weekly quality ritual works because each person sees different defects; small fixes compound and teach the team to prevent the next paper cut.
+- **Sweep horizontally on a cadence.** Batina's "shoplifting" ritual: roughly annually, a small group spends 2–4 weeks going across every surface asking what would make the whole product feel a step better — depth pushes run vertical on one feature; this catches the seams between them.
+- **Promote evidence, not vibes.** When a quality ritual repeatedly catches the same issue, write the concrete decision, source surface, consequence, exception, and before/after example before making it reusable agent guidance. If code can detect it reliably, move it toward a check; if not, keep it as routed judgment.
 
 ## Linear's Redesign Doctrine
 

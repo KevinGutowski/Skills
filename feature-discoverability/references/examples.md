@@ -20,29 +20,41 @@
 - **Gesture + visible pair:** swipe-down dismiss paired with a back button whose slide-down transition *teaches* the swipe; double-tap-to-like paired with a visible heart (double-tap means zoom elsewhere); peeking neighbor images hint horizontal swiping.
 - **Personalization controls:** heart read as "favorite," thumbs confused testers; the winner was the literal label "Suggest toast like this" (more/less) — labels state consequences. Implicit signals disclosed as "Because you added avocado toast." The recommendation edit lived inline ("Suggest Less" / "Stop Suggesting"), not in a More menu. When the designers disagreed, they prototyped and tested.
 
-## TipKit (2023) — the load-bearing code (beta names; see staleness note)
+## TipKit — the load-bearing code (shipped iOS 17+ names)
+
+The example is the 2023 talk's tip, rewritten with the shipped API names (checked against the TipKit docs on 2026-11-12; the talk itself used beta names that no longer compile — mapping below).
 
 ```swift
+import SwiftUI
+import TipKit
+
 struct FavoriteBackyardTip: Tip {
     var title: Text { Text("Save as a Favorite") }
-    var message: Text { Text("Your favorite backyards always appear at the top of the list.") }
-    var actions: [Action] { [Tip.Action(id: "learn-more", title: "Learn More")] }
+    var message: Text? { Text("Your favorite backyards always appear at the top of the list.") }
+    var actions: [Action] { Action(id: "learn-more", title: "Learn More") }
 
     @Parameter static var isLoggedIn: Bool = false
-    static let enteredBackyardDetailView = Event<DetailViewDonation>(id: "entered-backyard-detail-view")
+    static let enteredBackyardDetailView = Tips.Event(id: "entered-backyard-detail-view")
 
-    var rules: Predicate<RuleInput...> {
+    var rules: [Rule] {
         #Rule(Self.$isLoggedIn) { $0 == true }
-        #Rule(Self.enteredBackyardDetailView) { $0.count >= 3 }   // explore organically first
+        #Rule(Self.enteredBackyardDetailView) { $0.donations.count >= 3 }   // explore organically first
     }
-    var options: [Option] { [.maxDisplayCount(5)] }
+    var options: [any Option] { MaxDisplayCount(5) }
 }
-// Donate from the view:  .onAppear { FavoriteBackyardTip.enteredBackyardDetailView.donate() }
-// Invalidate on success: favoriteBackyardTip.invalidate(reason: .userPerformedAction)
-// Frequency:             TipsCenter.shared.configure { DisplayFrequency(.daily) }
-// Date-filtered rule:    $0.donations.filter { $0.date > Date.now.addingTimeInterval(-5*60*60*24) }.count >= 3
-// Testing:               TipsCenter.showAllTips() / launch arg com.apple.TipKit.ShowAllTips 1
+
+// Once, at app launch (frequency is app-wide):
+//                        try? Tips.configure([.displayFrequency(.daily)])
+// Show it:               TipView(tip) inline, or .popoverTip(tip) on the control it describes
+// Donate from the view:  .onAppear { FavoriteBackyardTip.enteredBackyardDetailView.sendDonation() }
+//                        (or `await ... .donate()` from an async context)
+// Invalidate on success: tip.invalidate(reason: .actionPerformed)
+// Date-filtered rule:    $0.donations.donatedWithin(.week).count >= 3
+// Testing:               Tips.showAllTipsForTesting()
 ```
-Shipped-SDK renames: `TipsCenter` → `Tips.configure`, `.popoverMiniTip` → `.popoverTip(_:)` — verify current docs.
+
+Beta → shipped renames (the talk's names fail to compile): `TipsCenter.shared.configure { DisplayFrequency(.daily) }` → `Tips.configure([.displayFrequency(.daily)])`; `.popoverMiniTip` → `.popoverTip(_:)`; `.userPerformedAction` → `.actionPerformed`; `rules: Predicate<RuleInput...>` → `rules: [Rule]`; `Event<…>(id:)` → `Tips.Event(id:)` with `$0.donations.count` in the rule; `[.maxDisplayCount(5)]` → `MaxDisplayCount(5)`; `TipsCenter.showAllTips()` → `Tips.showAllTipsForTesting()`. `message` is `Text?`. The talk's launch-argument override is not re-verified — verify against current docs before relying on it.
+
+Look it up (append `.md`): `https://developer.apple.com/documentation/tipkit`, `.../tipkit/tip`, `.../tipkit/tips/rule`, `.../tipkit/tips/event`, `.../tipkit/tips/configure(_:)`.
 
 Quotables: "You work on features that you know people will love, but first, they need to discover them." / "Great design requires trial and error. So, make things, show them to people, and learn from their feedback."

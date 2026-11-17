@@ -1,6 +1,6 @@
 ---
 name: motion
-description: "Animation skill for Motion (prev Framer Motion) and CSS animation. Provides best practices (vanilla JS, React, Vue, Base UI, Radix), docs search, CSS spring generation, MotionScore perf audit. Use for animations (motion/react, motion-v), CSS linear() springs, jank audits, or spring/easing visuals. Triggers: Motion, framer-motion, animate UI, CSS spring, linear(), MotionScore."
+description: "Implement animation with the Motion library (prev Framer Motion): best practices for vanilla JS, React, Vue, Base UI, Radix; docs search; CSS springs; MotionScore perf audit. Use when code uses or should use motion/react or motion-v, or for CSS linear() springs and jank audits. What to animate, timing, gestures, choreography → web-design; SwiftUI → swiftui. Triggers: Motion, framer-motion, motion/react, CSS spring, linear(), MotionScore."
 ---
 
 # Motion

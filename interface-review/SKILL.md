@@ -1,11 +1,13 @@
 ---
 name: interface-review
-description: "Run a holistic, evidence-based review of a web interface across accessibility, layout, writing, typography, color, performance, and polish. Use for whole-screen, flow, feature, or product UI audits; supports quick and full modes. Building rather than reviewing → frontend-design; one craft domain → web-design, ux-writing, or design-craft."
+description: "Run a holistic, evidence-based review of an existing UI (web by default; native Apple via apple-design/swiftui rules) across accessibility, layout, writing, type, color, performance, polish. Use for whole-screen, flow, or product audits; quick, full, and scored modes. Building → frontend-design; one craft domain → web-design, ux-writing, design-craft. Triggers: review this UI, UX audit, design review, critique this screen, rate this design."
 ---
 
 # Interface Review
 
 Review an interface as one system instead of returning disconnected specialist audits. This skill owns scope, orchestration, evidence, prioritization, and the final verdict. Domain rules remain with their local owners.
+
+**Worked report:** read [references/report-exemplar.md](references/report-exemplar.md) before writing your first report in a session, or whenever unsure how a section, the `Unverified` verdict, or the scored layout should look. It holds one complete `full` report, an `Unverified` close, and a `scored` variant.
 
 **Sources/gaps:** [references/sources.md](references/sources.md) records the external orchestration and critique-scoring patterns; [references/coverage-gaps.md](references/coverage-gaps.md) parks unverified rules and missing evals.
 
@@ -33,6 +35,8 @@ Identify the framework, styling system, component library, tokens, supported vie
 **Judge before you scan.** Form your own design judgment, including whether the interface is authored for this product or could ship unchanged for an unrelated one, *before* reading detector, lint, or axe output, because deterministic findings anchor judgment. Then reconcile: agreements, what the tools caught that you missed, and false positives. When subagents are available, run the two passes in isolation. State in the report how they ran.
 
 Inspect rendered behavior when the claim depends on layout, appearance, animation, focus, scrolling, or interaction. Inspect source when the claim depends on semantics or implementation. Do not turn a missing runtime check into a finding; mark it not verified.
+
+**Third-party scanners need vetting.** A detector such as `npx impeccable detect` is a third-party package that `npx` downloads and executes. Run it only when it is already a project dependency (check `package.json` and the lockfile) or the user has approved running it. Otherwise skip it, do the manual pass against `frontend-design` (anti-slop-catalog), and record `Detector: not run (not a project dependency; no approval)` under Verification. The same applies to any scanner the project does not already use.
 
 ## Route to the domain owners
 
@@ -97,7 +101,7 @@ Use one table ordered by severity, reach, and leverage:
 | # | Severity | Domain | Location | Before | After | Why |
 | --- | --- | --- | --- | --- | --- | --- |
 
-Each row is one root cause. If no findings remain, omit the table and state: `No actionable interface findings.`
+Each row is one root cause. If no findings remain, omit the table and state: `No actionable interface findings.` When coverage was not verified, write `No actionable interface findings in the inspected scope.` instead.
 
 ### Considered but rejected
 
@@ -114,5 +118,10 @@ End with exactly one:
 - `Block` — one or more high findings remain.
 - `Needs changes` — only medium or low findings remain.
 - `Approve` — no actionable findings remain and the claimed coverage was verified.
+- `Unverified` — no actionable findings in what was inspected, but coverage is not verified: an applicable domain is `Not reviewed`, or a check the result depends on is `Not verified` (no render, no keyboard walk, no reduced-motion or narrow-width check). This is not a pass.
+
+`Unverified` must report, on the verdict line or directly under it: (1) each unverified domain, state, or check and why it could not be run; (2) what was inspected instead (source only, one viewport, screenshots); (3) the exact command, access, or device that would settle each gap. Never shorten it to "approved", "clean", or "looks good" in a summary. Re-run the gaps to convert it to `Approve`.
+
+When findings exist and coverage is also unverified, the verdict is still `Block` or `Needs changes`; list the gaps under Verification so a later pass does not read the fix list as complete.
 
 In `scored` mode, after the verdict end with 2–4 targeted questions, each with concrete options tied to the findings (what to fix first, intended tone, scope, anything off-limits). Nothing follows the questions. With fewer than three priority findings, skip the questions and write `Questions skipped: <n> priority findings` instead.

@@ -18,6 +18,12 @@ Long-form practitioner material distilled in `SKILL.md`. Everything here is verb
 - Valio panel notes (Valio Con 2012–14)
 - Dive Club practitioner notes (Steve Ruiz; Karl Koch)
 - Dive Club tranche-2 notes (Polly D'Arcy; Rafa Conde)
+- Soleio Cuervo — shipping, premise, and software feel
+- Intentional Design — the five elements (WWDC 2018 session 802)
+- Linear — fit, problem framing, and the holistic reset
+- Sten — options, the quality hierarchy, and the relationship lens
+- Constrained customization (Josh Puckett)
+- Writing your own team principles (Jon Yablonski)
 
 ## The 2018 "Qualities of Great Design" sharpening of Craft
 
@@ -160,3 +166,23 @@ Intent is "less about a specific design vision… and more on a mindset" — "tu
 3. **Extreme focus** — the Rollaboard was designed for flight crews, "only 0.1% of 1% of the market," and that edge-case focus "allowed the real needs of a lot of people to come to the surface."
 4. **Personal connection** — Carrot Weather's voice channels people the developer knows; "edgy text would be less funny or perhaps not funny at all if the app didn't work" — personality rides on a working core.
 5. **Direct communication** — the Home-tab anti-pattern: a tab bar is "a high-level map of your app"; Home "is a copout. You're avoiding a decision by naming a tab Home"; "Indirect labels feel conventional and they feel safe but they mask utility." Metaphors must extend utility (Tinycards respects the card; Gorogoa extends it) — "Bending and extending metaphors doesn't work if the result doesn't extend the utility, or value, or delight of your app." (Cross-refs: `ux-writing` (naming-features-and-labels), `apple-design` (apple-navigation-design).)
+
+## Linear — fit, problem framing, and the holistic reset
+
+- **Output is not design.** Linear's AI-era design essays add a useful correction: output is not design, and code is not design by itself. Design is the search for fit between form and context — the human needs, technical constraints, habits, edge cases, and organizational forces that make the problem what it is. Use tools, code, and AI to explore and execute, but do not mistake a plausible artifact for a solved problem.
+- **Problem framing.** Linear's problem-framing rule: write the problem as you understand it, name the stakeholders, and repeat the problem before presenting solutions. If the room reacts to the problem statement, stop there; disagreement on solutions often means people are solving different problems.
+- **The holistic reset.** Linear redesign principle: a product that ships constantly periodically needs a holistic reset because users do not experience modules in isolation. Incremental product growth can create global design debt even when every individual feature decision was reasonable. The reset is warranted only when it rebalances the product around where the company is going.
+
+## Sten — options, the quality hierarchy, and the relationship lens
+
+- **Options are not value by themselves** (Sten). More customization can make first use worse even when every option is legitimate. Group choices, reveal power gradually, and protect the core task from option sprawl. The test is whether the person can achieve the main goal faster and with more confidence, not whether every capability is visible at once.
+- **Hierarchy.** Sten's hierarchy is a useful sequence check: functional → reliable → usable → pleasurable. Beauty matters, but polishing a product that does not work, cannot be trusted, or cannot be understood is misordered craft.
+- **Relationship lens.** Sten's relationship lens: delight is often the product making the value exchange feel generous. People remember how a product made them feel in high-stakes moments more than they remember individual interface details. Ask whether the experience leaves them feeling capable, confident, and understood — especially when stressed, distracted, tired, or recovering from a problem. Emotional design can mean restraint: the most human move in an anxious flow is often clear language, simple navigation, predictable feedback, and no decorative celebration.
+
+## Constrained customization (Josh Puckett)
+
+- **Constrain customization to always-good outcomes** (Josh Puckett): a raw color picker gives users "a lot of room to make an ugly card" — curate the option space, then expose one perceptual control (a single "brilliance" slider moving hue/saturation/lightness together) so every reachable state looks intentional. Agency within a curated range beats unlimited freedom.
+
+## Writing your own team principles (Jon Yablonski)
+
+**Writing your own team principles** (Jon Yablonski, *Laws of UX*, ch. 12): operationalize a principle as a three-part chain — "a clear framework… that consists of a goal (design principle) and an observation (law)" which then "establishes guidelines (rules)". Example chain: principle "clarity over abundance of choice" → law (Hick's) → testable rule like "limit choices to no more than 3 items at a time". His quality tests for the principles themselves: good ones "aren't truisms," solve real questions, are opinionated, and are memorable. A principle nobody could disagree with constrains nothing.

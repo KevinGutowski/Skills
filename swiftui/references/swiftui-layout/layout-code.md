@@ -6,11 +6,11 @@
 - The Layout protocol (10056)
 
 
-*Sources (verbatim from each session's Code tab):*
+*Sources (from each session's Code tab; verbatim except where the staleness line says a sample was modernised):*
 - *WWDC 2020, 10031 — "Stacks, Grids, and Outlines in SwiftUI." https://developer.apple.com/videos/play/wwdc2020/10031/*
 - *WWDC 2022, 10056 — "Compose custom layouts with SwiftUI." https://developer.apple.com/videos/play/wwdc2022/10056/*
 
-**Staleness:** iOS 14/16-era; `SidebarListStyle()` → `.listStyle(.sidebar)` in modern code; everything else current.
+**Staleness:** iOS 14/16-era sessions. Modernised 2026-11-12 against the soft-deprecation list in Apple's `swiftui-specialist` skill (Xcode 27.2, 27B52): the 8:47 sample now uses `.listStyle(.sidebar)` (the session wrote `SidebarListStyle()`) and the 9:52 sample uses the trailing `header:` builder (the session wrote `Section(header:)`). Everything else is as transcribed. Not compiled.
 
 ---
 
@@ -40,17 +40,19 @@ ScrollView {
 List(graphics, children: \.children) { graphic in
     GraphicRow(graphic)
 }
-.listStyle(SidebarListStyle())   // modern: .listStyle(.sidebar)
+.listStyle(.sidebar)
 ```
 
 **9:52 — Custom outline structure** (List → ForEach → Section → OutlineGroup)
 ```swift
 List {
     ForEach(canvases) { canvas in
-        Section(header: Text(canvas.name)) {
+        Section {
             OutlineGroup(canvas.graphics, children: \.children) { graphic in
                 GraphicRow(graphic)
             }
+        } header: {
+            Text(canvas.name)
         }
     }
 }

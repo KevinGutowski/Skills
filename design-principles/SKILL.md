@@ -1,34 +1,34 @@
 ---
 name: design-principles
-description: "Apply Apple's eight design principles — purpose, agency, responsibility, familiarity, flexibility, simplicity, craft, delight — to guide and critique design decisions. Use when making high-level design choices, evaluating whether a feature is well-designed, or reviewing a UI against principles. Triggers: is this good design, design principles, design critique, delight."
+description: "Apply Apple's design principles — purpose, agency, responsibility, familiarity, flexibility, simplicity, craft, delight — plus classic cognitive principles, to guide or critique design decisions. Use for high-level choices or judging whether a feature should work this way. Pixel polish → design-craft; whole-screen web audit → interface-review; HIG specs → apple-design. Triggers: is this good design, design principles, design critique, delight."
 ---
 
 # Principles of Great Design
 
-**Sources/gaps:** [references/sources.md](references/sources.md) — 4 WWDC sessions + Ryo Lu + MDS interviews; unresolved promotion candidates in [references/coverage-gaps.md](references/coverage-gaps.md).
+**References — read on demand:** [references/critique-guide.md](references/critique-guide.md) (per-principle diagnostic questions, worked examples, critique mechanics — when reviewing a design) · [references/practitioner-notes.md](references/practitioner-notes.md) (practitioner quotes, cases, and counter-positions behind the one-line rules here — when you need the evidence or the story) · [references/sources.md](references/sources.md) (provenance: 4 WWDC sessions + Ryo Lu + MDS interviews) · [references/coverage-gaps.md](references/coverage-gaps.md) (unresolved promotion candidates — before folding new material).
 *As of June 2026 the HIG carries a reintroduced, canonical **Design principles** page (fetch via the `apple-design` (hig) skill, slug `design-principles`) — this skill is the reasoning companion; check that page when exact current wording matters.*
 
-Design is **making something with intention** — focusing on what's most important to people so you build something they'll truly value. Every feature you add asks the user for their **time, attention, and trust** — valuable things you can't waste. So choosing what to build is often a matter of deciding what *not* to include.
+Design is **making something with intention** — focusing on what's most important to people. Every feature asks the user for their **time, attention, and trust**, so choosing what to build is often deciding what *not* to include.
 
-Linear's AI-era design essays add a useful correction: output is not design, and code is not design by itself. Design is the search for fit between form and context — the human needs, technical constraints, habits, edge cases, and organizational forces that make the problem what it is. Use tools, code, and AI to explore and execute, but do not mistake a plausible artifact for a solved problem.
+Output is not design, and code is not design by itself (Linear): design is the search for fit between form and context. Use tools, code, and AI to explore and execute, but do not mistake a plausible artifact for a solved problem.
 
-These eight principles guide that choice. **There's no formula.** Leaning into one principle can feel like compromising another; that tension is the work. Use these to reason and critique, then apply judgment — name the trade-off and decide deliberately.
+These eight principles guide that choice. **There's no formula.** Leaning into one principle can feel like compromising another; that tension is the work — name the trade-off and decide deliberately.
 
 ## How to use this skill
 
 - **Generative** (before building): start with Purpose — justify the thing's existence and cut what isn't essential — then pressure-test the design against the rest.
-- **Evaluative** (reviewing a design): walk the design through each principle and find where it breaks. The critique checklist below and `references/critique-guide.md` give per-principle diagnostic questions.
-- **Resolving conflicts:** when two principles pull apart (e.g. flexibility vs. simplicity), state the trade-off explicitly and choose based on what matters most for *this* feature and audience. Don't pretend there's one right answer.
+- **Evaluative** (reviewing a design): walk the design through each principle and find where it breaks. The critique checklist below and the critique guide give per-principle diagnostic questions.
+- **Resolving conflicts:** when two principles pull apart (e.g. flexibility vs. simplicity), state the trade-off explicitly and choose based on what matters most for *this* feature and audience.
 
 ## The eight principles
 
 ### 1. Purpose — build with intention
-Before a sketch or a line of code, ask whether what you're making has a reason to exist. Every feature spends the user's time, attention, and trust. **Deciding what to build is mostly deciding what to leave out.** Watch for: features added because they're possible, not because they're valuable — craft on a self-serving premise only sharpens the wrong thing (Soleio's Share Bar case → practitioner-notes).
+Before a sketch or a line of code, ask whether what you're making has a reason to exist. **Deciding what to build is mostly deciding what to leave out.** Watch for: features added because they're possible, not because they're valuable — craft on a self-serving premise only sharpens the wrong thing (Soleio's Share Bar case → practitioner-notes).
 
-Linear's problem-framing rule: write the problem as you understand it, name the stakeholders, and repeat the problem before presenting solutions. If the room reacts to the problem statement, stop there; disagreement on solutions often means people are solving different problems.
+Linear's problem-framing rule: write the problem, name the stakeholders, and repeat the problem before presenting solutions — if the room reacts to the problem statement, stop there.
 
 ### 2. Agency — put people in control
-People are far more engaged when they control their own experience. **Offer choices**; don't force a pre-determined path. Let people dive in and explore at their own pace; the interface should never stand between a person and what they're trying to do.
+People are far more engaged when they control their own experience. **Offer choices**; don't force a pre-determined path. The interface should never stand between a person and what they're trying to do.
 
 **Forgiveness** supports agency — it lets people explore without fear:
 - Make actions easy to **undo**. People accidentally send, change, and delete things constantly.
@@ -36,63 +36,59 @@ People are far more engaged when they control their own experience. **Offer choi
 - Use **interruptions sparingly** — only when someone is about to make a big mistake. Over-interrupting erodes the agency you're trying to protect.
 
 ### 3. Responsibility — act in people's best interest
-**Privacy is a human right.** Don't demand data up front — it's like a stranger insisting on your phone number before saying why. Responsible interfaces:
-- Wait for the **right moment** to ask (not a wall of permission prompts on launch, before the person knows what the app does).
+**Privacy is a human right.** Don't demand data up front. Responsible interfaces:
+- Wait for the **right moment** to ask (not a wall of permission prompts on launch).
 - Ask only for **what's necessary**.
 - Are **transparent** about what the data is for.
 
-**Safety** — protect anyone using *or affected by* the product. For every feature ask: *How could this be misused? Who would be harmed? How do I prevent it?* This is acute for **AI features**, which can generate something unexpected or inaccurate. (A recipe app that knows an allergy must anticipate the model suggesting a dangerous ingredient.) Add safeguards — previews, confirmations, disclaimers — and **remove a feature entirely if its risk to safety outweighs its value.**
+**Safety** — protect anyone using *or affected by* the product. For every feature ask: *How could this be misused? Who would be harmed? How do I prevent it?* This is acute for **AI features**, which can generate something unexpected or inaccurate (the recipe-app allergy case → critique guide). Add safeguards — previews, confirmations, disclaimers — and **remove a feature entirely if its risk to safety outweighs its value.**
 
 ### 4. Familiarity — build on what people know
 People arrive with a lifetime of real-world experience and conventions learned from other software. Lean on it.
-- **Metaphor:** draw on something real so people can predict behavior (trash can = delete, and recoverable). Keep it in the sweet spot — not so *literal* people don't recognize the in-app concept, not so *abstract* the idea doesn't land. Don't hijack a known symbol for a new meaning, and don't reinvent a common icon — you lose instant recognition.
-- **Consistency:** things that look the same should behave the same. Consistent **behavior** lets people anticipate outcomes; consistent **placement** (e.g. close a Mac window always in the top-left) means they don't have to think. Familiarity ≠ recycling one solution everywhere — know which patterns to use *when*.
+- **Metaphor:** draw on something real so people can predict behavior (trash can = delete, and recoverable). Keep it in the sweet spot — not too *literal*, not too *abstract*. Don't hijack a known symbol for a new meaning, and don't reinvent a common icon — you lose instant recognition.
+- **Consistency:** things that look the same should behave the same. Consistent **behavior** lets people anticipate outcomes; consistent **placement** means they don't have to think. Familiarity ≠ recycling one solution everywhere — know which patterns to use *when*.
 
 ### 5. Flexibility — adapt to people's actual lives
 People use your design in ways as unique as they are. Support the real contexts they're in:
-- **Context:** the same task changes by situation — music at home via speakers, on a run via AirPods + Watch, driving fully hands-free. Accommodate them.
-- **Device:** design to each device's strengths — iPhone wants quick touch interactions; Mac expects deep workflows and precise pointer control. Every device deserves a solution that uses what makes it unique.
-- **Ability:** get curious about your audience — age, language, pro vs. novice, accessibility needs. You won't solve for everyone on day one, but keep making it more inclusive.
-- **Personalization:** when no single layout fits everyone (e.g. controls), let people rearrange or hide elements to suit their workflow. Flexibility is an investment that proves you designed with *them* in mind.
-- **Constrain customization to always-good outcomes** (Josh Puckett): a raw color picker gives users "a lot of room to make an ugly card" — curate the option space, then expose one perceptual control (a single "brilliance" slider moving hue/saturation/lightness together) so every reachable state looks intentional. Agency within a curated range beats unlimited freedom.
+- **Context:** the same task changes by situation (music at home, on a run, driving hands-free). Accommodate each.
+- **Device:** design to each device's strengths — iPhone wants quick touch interactions; Mac expects deep workflows and precise pointer control.
+- **Ability:** get curious about your audience — age, language, pro vs. novice, accessibility needs — and keep making it more inclusive.
+- **Personalization:** when no single layout fits everyone, let people rearrange or hide elements.
+- **Constrain customization to always-good outcomes** (Josh Puckett): curate the option space, then expose one perceptual control so every reachable state looks intentional. Agency within a curated range beats unlimited freedom.
 
 ### 6. Simplicity — strip away the unnecessary so the purpose shines
-**Simple is not minimal.** Burying functionality in one place looks minimal but isn't simple. Simple designs are frictionless and intuitive — people find what they need without effort.
+**Simple is not minimal.** Burying functionality looks minimal but isn't simple — people should find what they need without effort.
 - **Concise:** plain language, no jargon, no redundancy; reduce the number of steps. Respect people's time.
 - **Clear:** the design communicates what it does. Build clarity with **hierarchy** — order, spacing, contrast — so the most important thing is the most obvious thing. Clear interfaces answer: *What do I pay attention to? What can I interact with? How do I interact?* Distill complex data (a graphic may beat a table; summarize so people focus on what they care about).
-- **Sometimes simple means adding.** A video scrubber that shows position and time remaining adds information that helps people make informed decisions. You've arrived at simplicity when you have *exactly enough.*
-- **Options are not value by themselves** (Sten). More customization can make first use worse even when every option is legitimate. Group choices, reveal power gradually, and protect the core task from option sprawl. The test is whether the person can achieve the main goal faster and with more confidence, not whether every capability is visible at once.
+- **Sometimes simple means adding.** A video scrubber showing position and time remaining helps people decide. You've arrived at simplicity when you have *exactly enough.*
+- **Options are not value by themselves** (Sten): group choices, reveal power gradually, and protect the core task from option sprawl. Test: can the person achieve the main goal faster and with more confidence?
 
 ### 7. Craft — execute the details flawlessly
-Craft is the attention to detail that signals you care. People feel a cheap, rushed product instantly — janky scrolling, a button that lags, misaligned icons, a layout that breaks on rotation — and they question the quality of everything else. Crafted work inspires confidence. The ingredients:
+Craft is the attention to detail that signals you care. People feel a cheap, rushed product instantly — janky scrolling, a lagging button, misaligned icons — and question the quality of everything else. The ingredients:
 - High-quality **materials**: beautiful fonts that hold up across devices; colors that adapt across light/dark; clear graphics and iconography; responsive animations that give immediate, natural feedback; reliable, secure SDKs underneath.
 - **Iteration:** quality takes time; make every last piece function beautifully.
-- **Maintenance / longevity:** great design keeps evolving. When new features or hardware arrive, explore whether they fit your experience. Evolving with them makes people feel supported.
+- **Maintenance / longevity:** great design keeps evolving. When new features or hardware arrive, explore whether they fit your experience.
 
-The 2018 "Qualities of Great Design" interviews sharpen Craft three ways: **quality is earned, never claimed** ("quality has to be earned"), **the durability test** (will this feel dated in 1/5/10 years?), and **great design recedes**. Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
+Sharpeners (full notes: [references/practitioner-notes.md](references/practitioner-notes.md)): the 2018 "Qualities of Great Design" interviews — **quality is earned, never claimed** ("quality has to be earned"), **the durability test** (will this feel dated in 1/5/10 years?), **great design recedes**; **Stamatiou** — ditch MVP for **SLC (Simple, Lovable, Complete)**, cut as a vertical slice; **Puckett** — care lives in the skippable places, and most work ships at 1–3 on the depth spectrum; **MDS** — the Adidas/Crayola/Rolex calibration question, and a senior gut gets you ~70%.
 
-Practitioner corroboration, distilled: **Stamatiou** — ditch MVP for **SLC (Simple, Lovable, Complete)**, cut as a vertical slice; **Puckett** — care lives in the skippable places, and most work ships at 1–3 on the depth spectrum; **MDS** — the Adidas/Crayola/Rolex calibration question, and a senior gut gets you ~70%. Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
+Sten's sequence check: functional → reliable → usable → pleasurable. Polishing a product that does not work, cannot be trusted, or cannot be understood is misordered craft.
 
-Sten's hierarchy is a useful sequence check: functional → reliable → usable → pleasurable. Beauty matters, but polishing a product that does not work, cannot be trusted, or cannot be understood is misordered craft.
-
-**Soleio's shipping counterweight** (Dive Club): teams don't die from lack of craft — they "flailed around in irrelevance because they just refuse to ship." Fix the janky first; defer sheen. Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
+**Soleio's shipping counterweight** (Dive Club): teams don't die from lack of craft — they "flailed around in irrelevance because they just refuse to ship." Fix the janky first; defer sheen.
 
 ### 8. Delight — create an emotional connection
-Hard to define, instantly recognized. Delightful interfaces are satisfying, enriching, and feel **human**. You don't manufacture delight with confetti or flourishes bolted on at the end. You **identify the emotion** you want people to feel — relaxed, confident, excited — and find ways to reinforce it throughout. Delight is the *sum* of the consideration you put in: the natural result of getting the other seven principles right.
+Hard to define, instantly recognized. Delightful interfaces are satisfying, enriching, and feel **human**. You don't manufacture delight with confetti bolted on at the end. You **identify the emotion** you want people to feel — relaxed, confident, excited — and find ways to reinforce it throughout. Delight is the *sum* of the consideration you put in: the natural result of getting the other seven principles right.
 
-Sten's relationship lens: delight is often the product making the value exchange feel generous. People remember how a product made them feel in high-stakes moments more than they remember individual interface details. Ask whether the experience leaves them feeling capable, confident, and understood — especially when stressed, distracted, tired, or recovering from a problem. Emotional design can mean restraint: the most human move in an anxious flow is often clear language, simple navigation, predictable feedback, and no decorative celebration.
+Sten's relationship lens: people remember how a product made them feel in high-stakes moments. Ask whether it leaves them feeling capable, confident, and understood when stressed or recovering from a problem — often that means restraint: clear language, predictable feedback, no decorative celebration.
 
 ## Practitioner rules & counter-positions (Config 2024–25 talks)
 
-The sharpest operating rules: Linear's **zero-bug policy (fixed within seven days)** and **MVPs are internal-only**; Perplexity's kill-test — "**If we deleted it, would anybody care?**"; and Stripe's Weinstein — most failure modes are polishing something that shouldn't have existed in the first place. Counter-positions to hold in tension with Simplicity: deliberate friction (protect *rewarding* work), the ornament thesis (minimalism done well is maximal hidden care), scarcity as respect (Wordle), and the testing tension (conversion surfaces answer to tests; durable objects to the 20-year test). Full notes (Linear quality series, Golden-Era diagnostic, all counter-positions): [references/practitioner-notes.md](references/practitioner-notes.md).
+The sharpest operating rules: Linear's **zero-bug policy (fixed within seven days)** and **MVPs are internal-only**; Perplexity's kill-test — "**If we deleted it, would anybody care?**"; and Stripe's Weinstein — most failure modes are polishing something that shouldn't have existed in the first place. Counter-positions to hold in tension with Simplicity: deliberate friction (protect *rewarding* work), the ornament thesis (minimalism done well is maximal hidden care), scarcity as respect (Wordle), and the testing tension (conversion surfaces answer to tests; durable objects to the 20-year test). Linear's redesign principle: a product that ships constantly periodically needs a holistic reset, warranted only when it rebalances the product around where the company is going. Full notes: [references/practitioner-notes.md](references/practitioner-notes.md).
 
-Linear redesign principle: a product that ships constantly periodically needs a holistic reset because users do not experience modules in isolation. Incremental product growth can create global design debt even when every individual feature decision was reasonable. The reset is warranted only when it rebalances the product around where the company is going.
-
-**Writing your own team principles** (Jon Yablonski, *Laws of UX*, ch. 12): operationalize a principle as a three-part chain — "a clear framework… that consists of a goal (design principle) and an observation (law)" which then "establishes guidelines (rules)". Example chain: principle "clarity over abundance of choice" → law (Hick's) → testable rule like "limit choices to no more than 3 items at a time". His quality tests for the principles themselves: good ones "aren't truisms," solve real questions, are opinionated, and are memorable. A principle nobody could disagree with constrains nothing.
+**Writing your own team principles** (Jon Yablonski, *Laws of UX*): chain principle (goal) → law (observation) → testable rule, e.g. "clarity over abundance of choice" → Hick's → "limit choices to no more than 3 items at a time". Good principles "aren't truisms" — one nobody could disagree with constrains nothing.
 
 ## System thinking (Ryo Lu)
 
-Simplicity and Purpose operationalized at the product-architecture level: **merge concepts, don't add them** (collapsing Cursor's five AI entry points into one agent); **complexity first, simplicity second** — "true simplicity emerges only after you've grasped the full complexity first"; and **design the three states** — zero, one, and end — for everything. Full interview + essay notes: [references/practitioner-notes.md](references/practitioner-notes.md).
+Simplicity and Purpose operationalized at the product-architecture level: **merge concepts, don't add them** (collapsing Cursor's five AI entry points into one agent); **complexity first, simplicity second** — "true simplicity emerges only after you've grasped the full complexity first"; and **design the three states** — zero, one, and end — for everything. Interview, essay, and maxim notes: [references/practitioner-notes.md](references/practitioner-notes.md).
 
 ## The classic principles (2017) — the cognitive layer
 
@@ -114,7 +110,7 @@ Principles conflict — "designing is so often about resolving those differences
 
 ## From idea to interface (2025) — the build sequence
 
-The principles operationalized into an order of work: **Structure** (write down everything the app does → imagine real usage → cut/rename/group; every screen answers *where am I / what can I do / where can I go*) → **Navigation** (tabs are for navigation, not actions; "each extra tab means one more decision"; toolbar carries the screen title + essential actions) → **Content** (don't mix types; progressive disclosure — hidden content "is not missing, it's just behind a tap"; group by time/progress/patterns; lists beat grids for scanning) → **Visual design** (squint-test the hierarchy; stress-test with long text and large type; semantic colors "named after their purpose, not their appearance"; accent color sparingly). "Design is never really finished, and there's no single right answer."
+An order of work: **Structure** (list everything the app does → imagine real usage → cut/rename/group) → **Navigation** (tabs are for navigation, not actions; "each extra tab means one more decision") → **Content** (don't mix types; progressive disclosure; lists beat grids for scanning) → **Visual design** (squint-test the hierarchy; stress-test with long text and large type; semantic colors; accent sparingly). Full sequence with quotes: [references/critique-guide.md](references/critique-guide.md).
 
 ## Design critique checklist
 
@@ -129,40 +125,29 @@ Walk a design through these — each maps to a principle:
 - [ ] **Craft:** fonts, color (light/dark), icons, animation feedback, layout robustness — does any detail feel rushed?
 - [ ] **Delight:** what emotion is intended, and where is it reinforced? Does it feel human?
 
-**Observation prompts for critique sessions:** use the per-observation checklist (moments of hesitation, expectation gaps, emotional shifts, what's missing/assumed, looks, feels) from `design-craft`'s Noticing section — stay with the thing past the first reaction and write down *why*, never just "feels clean."
+**Observation prompts:** use the per-observation checklist in `design-craft`'s Noticing section — stay past the first reaction and write down *why*, never just "feels clean."
 
-**Running the critique** (mechanics from Josh Puckett's critique methodology):
-- **Sequence:** context first (what is this, and what's the emotional stakes of the task — a divorce-filing app demands different care than a podcast player) → honest first impressions → then separate lenses one at a time: visual design, interface design, consistency/conventions, user context. Don't merge the lenses — a beautiful interface can be unusable and vice versa; judge each on its own terms before synthesizing.
-- **Issue format:** **[Issue name]** — specific factual observation → impact on the user → what it could be instead. Count things, name colors, quote text ("four background colors competing" beats "too many colors"). Frame interface-design gaps as *missed opportunities* ("we're missing a chance to reward progress").
-- **Severity ladder:** *structural* (wrong mental model, IA, missing function — changes what it *is*) > *behavioral* (flow, feedback, expectation-setting — changes how it *feels*) > *visual* (color, type, shadows — changes how it *looks*). Order findings accordingly.
-- **Voice:** decisive, no hedging, no praise-sandwich padding; every problem paired with a direction and a why. End with the 3–5 highest-impact changes, ranked.
+**Running the critique** (Josh Puckett's method; full mechanics in [references/critique-guide.md](references/critique-guide.md)): context and emotional stakes first → honest first impressions → separate lenses one at a time (visual, interface, consistency/conventions, user context). Write each issue as **[Issue name]** — specific factual observation → user impact → what it could be instead. Order findings structural > behavioral > visual. Be decisive, pair every problem with a direction and a why, and end with the 3–5 highest-impact changes, ranked.
 
 **Project-specific facets:** generic virtues don't settle "is this actually good *for this product*?" — define, score (1–5), and stack-rank ~5 project-specific perceived attributes per `design-craft`'s Facets of quality section, and critique in facet language.
 
 ## Relationship to other skills
 
-This is the **strategic / decision-and-critique layer**. It decides *whether and why*; the skills below decide *how*. Use this to choose and justify; defer to these for tactical depth:
+This is the **strategic / decision-and-critique layer**: it decides *whether and why*; the skills below decide *how*.
 
-- **`design-craft`** — the working practice for the *Craft* principle: the quality-practice loop (range→depth, live tuning, facets, uncommon care) in its body, and the pixel-level execution values (spacing, shadows, optical alignment, micro-interactions, component polish; incl. its `emil-kowalski` reference) in its references. Whether/why a feature should exist stays here; "is this good enough / make this detail feel right" goes there.
-- **`web-design` (web-animation-design)** (default for motion) and **`motion`** — *Craft*'s responsive feedback and much of *Delight* in motion form (easing, springs, transitions). Route animation specifics there.
-- **`frontend-design`** — generative building of distinctive, production-grade UI. This skill is the principles layer that should guide what it builds.
-- **`ux-writing` (naming-features-and-labels)** — *Familiarity* and *Simplicity* at the word level (clear labels, metaphor-true names, plain language).
-- **`ux-writing` (error-messages)** — *Forgiveness* and *Responsibility* in failure-state copy (recover, reassure, don't blame).
-- **`ux-writing` (ui-voice-and-tone)** — *Delight* and *Familiarity* at the level of the product's writing voice and microcopy. Set direction here; define and write the voice there.
+- **`design-craft`** — the working practice for *Craft*: the quality-practice loop (range→depth, live tuning, facets, uncommon care) plus pixel-level execution values in its references. Whether/why a feature should exist stays here; "is this good enough / make this detail feel right" goes there.
+- **`web-design` (web-animation-design)** (default for motion) and **`motion`** — *Craft*'s responsive feedback and much of *Delight* in motion form (easing, springs, transitions).
+- **`frontend-design`** — generative building of distinctive, production-grade UI. This skill guides what it builds.
+- **`ux-writing`** — (naming-features-and-labels) *Familiarity* and *Simplicity* at the word level; (error-messages) *Forgiveness* and *Responsibility* in failure-state copy; (ui-voice-and-tone) *Delight* and *Familiarity* in voice and microcopy.
 - **`ux-writing` (linear-settings-copy)** and **`user-onboarding`** — *Simplicity* and *Flexibility* in settings IA, personalization, and first-run; *Agency* in letting people choose their path.
-- **`apple-design` (apple-search-design)** and **`apple-design` (ios-brand-identity)** — these principles applied to specific Apple-platform domains (search patterns; expressing brand within iOS conventions). They lean heavily on *Familiarity*, *Simplicity*, *Flexibility*, *Craft*, and *Delight*; use them for the iOS specifics and this skill for the underlying trade-offs.
-- **`apple-design` (apple-typography)** and **`swiftui` (sf-symbols)** — *Craft* and *Flexibility* (Dynamic Type as accessibility) in Apple type and symbols; the mechanics layer beneath `apple-design` (ios-brand-identity).
-- **`apple-design` (apple-navigation-design)** — *Familiarity* applied to app structure (tabs, push, modality, iPad layout, pointer).
-- **`apple-design` (apple-visual-accessibility)** — *Flexibility* and *Responsibility* made concrete: the accessibility settings and how to honor them.
-- **`apple-design` (app-intents-design)** — *Simplicity* and *Agency* in exposing app functionality to Siri/Spotlight/system surfaces.
-- **`apple-design` (chart-experience-design)** — *Simplicity*'s "complex data better understood as a graphic," fully worked out for in-app charts.
+- **`apple-design` (apple-search-design)** and **`apple-design` (ios-brand-identity)** — these principles applied to search patterns and to expressing brand within iOS conventions; use them for the iOS specifics and this skill for the underlying trade-offs.
+- **`apple-design` (apple-typography)** and **`swiftui` (sf-symbols)** — *Craft* and *Flexibility* (Dynamic Type as accessibility) in Apple type and symbols.
+- **`apple-design`**, other parts — (apple-navigation-design) *Familiarity* in app structure; (apple-visual-accessibility) *Flexibility* and *Responsibility* as accessibility settings to honor; (app-intents-design) *Simplicity* and *Agency* on Siri/Spotlight/system surfaces; (chart-experience-design) *Simplicity*'s "complex data better understood as a graphic" for in-app charts.
 - **`swiftui` (sound-design)** / **`swiftui` (touch-interaction-design)** / **`swiftui` (widget-design)** — *Craft* and *Delight* in the auditory channel, the press of a control, and the home-screen surface respectively.
-- **`apple-design` (liquid-glass-design-system)** — *Familiarity* and *Craft* embodied in the current platform design language; the material and system rules everything Apple-visual now sits on.
+- **`apple-design` (liquid-glass-design-system)** — *Familiarity* and *Craft* embodied in the current platform design language.
 - **`feature-discoverability`** / **`notification-design`** / **`apple-design` (app-icon-design)** — *Agency*+*Familiarity* in finding features; *Responsibility* toward attention; the icon as concentrated *Simplicity*+*Delight*.
 - **`design-prototyping`** — the evidence loop these principles get tested through (make → show → learn; presenting design work).
 - **`ai-experience-design`** — *Responsibility*'s anticipate-model-harm mandate, fully worked out (data/metrics/outputs/inputs + generative safety).
-- **`apple-design` (hig)** — the canonical Human Interface Guidelines lookup (topic map + fetch method); when a question needs Apple's current letter-of-the-law on a specific component or pattern, fetch it there.
+- **`apple-design` (hig)** — the canonical Human Interface Guidelines lookup; fetch Apple's current letter-of-the-law on a specific component or pattern there.
 
-Per the user's preference on overlapping design skills: when a task is purely tactical (motion, polish, copy), apply that specific skill's values; use this skill to set direction and resolve trade-offs between principles.
-
-See `references/critique-guide.md` for per-principle diagnostic questions and the talk's worked examples.
+When a task is purely tactical (motion, polish, copy), apply that specific skill's values; use this skill to set direction and resolve trade-offs between principles.

@@ -39,3 +39,7 @@ with full descriptions — their boundary clauses do real routing work.
   the cluster SKILL.md body + vocabulary in its description if novel.
 - Re-check /doctor after corpus growth; prefer consolidation/demand reduction
   over raising skillListingBudgetFraction.
+
+## 2026-11-12 check
+
+After the November description edits the library is 42 skills and 17,552 description characters. `/doctor` and `/skill-doctor` were not run (they need a local Claude Code session); run both and record any shortened or dropped descriptions here.

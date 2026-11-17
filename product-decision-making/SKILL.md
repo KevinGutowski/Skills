@@ -1,6 +1,6 @@
 ---
 name: product-decision-making
-description: "Make product decisions with data, design judgment, and user-problem clarity. Use when deciding whether to build a feature, interpreting metrics, reviewing a product proposal, distinguishing optimization from new-behavior bets, or choosing who should own a solution. Based on Julie Zhuo's Looking Glass essays, talks, and product interviews. Triggers: product decision, data-informed, product intuition, metrics vs taste, new behavior, product review."
+description: "Make product decisions with data, design judgment, and user-problem clarity (Julie Zhuo school). Use when deciding whether to build a feature, interpreting metrics, reviewing a product proposal, or separating optimization from new-behavior bets. Scoping and betting → shape-up; winning buy-in → design-org-influence; research methods → user-research. Triggers: product decision, should we build this, data-informed, metrics vs taste, product review."
 ---
 
 # Product Decision Making
@@ -9,8 +9,6 @@ description: "Make product decisions with data, design judgment, and user-proble
 Park weak candidate standards in [coverage-gaps.md](references/coverage-gaps.md) until they have stable evidence and accepted examples.
 
 This skill owns the product-judgment layer: deciding what to build, what evidence matters, and how to turn diagnosis into action. Process systems route to `shape-up`; research methods route to `user-research`; stakeholder buy-in routes to `design-org-influence`; AI feature UX routes to `ai-experience-design`.
-
-When a product decision should become reusable agent guidance, keep it in candidate form until the evidence is stable: audience, problem, decision, rationale, source, exceptions, and what would falsify it. Route skill packaging or lint/eval mechanics to `creating-skills`; keep the product judgment here.
 
 ## The three product-review questions
 
@@ -21,40 +19,6 @@ Use Zhuo's product-review frame before arguing about solutions:
 3. **How will we know if we've solved it?** Define the outcome and time window before the work starts. If the metric is only a proxy, state the proxy risk.
 
 If any answer is weak, do not open the solution debate yet. Go to `user-research` for evidence gathering or `design-org-influence` if the problem is stakeholder alignment.
-
-## Product design is a three-way fit
-
-Sten's *Products People Actually Want* is useful as a product-designer's bridge source: product design is not pixel work with a broader title, and not business strategy wearing a UI costume. Before evaluating a product proposal, check the fit between three systems:
-
-- **User reality:** the person's actual situation, emotion, current workaround, constraints, and next-best medium. The right answer may be a smaller interface, a different channel, or no screen at all.
-- **Business reality:** the revenue, retention, support, operational, trust, or strategic problem the company must solve. A user-preferred feature can still be the wrong bet if it does not move the business problem.
-- **Technical reality:** implementation cost, maintenance, reliability, data availability, accessibility, and the operational burden after launch.
-
-Decision move: write the proposed product change as **what / how / why**. What should it do? How should it feel and behave? Why should this exist for users and the business now? If the team can only answer "what," the decision is under-shaped.
-
-## Whole-journey product judgment
-
-A user experience is not bounded by the mockup. Treat every surrounding touchpoint as product surface: acquisition promise, landing page, pricing, signup, emails, invoices, notifications, delivery/fulfillment, support, cancellation, returns, mobile cross-device paths, and any human service behind the screen.
-
-Use this when a feature looks good in isolation but product metrics or trust still suffer:
-
-- **Follow the real journey.** Start where customers start, then complete the whole task with production-like constraints.
-- **Check handoffs.** Does each touchpoint preserve the promise, context, language, and trust built by the previous one?
-- **Look for business-side breakage.** A polished checkout followed by unclear confirmation, hard returns, or rude support is still a product-design failure.
-- **Ask whether the right medium is being used.** Do not force one channel to carry every message; match message, timing, and user state.
-
-## Value exchange and product relationship
-
-For retention, trust, and subscription decisions, audit the relationship as an exchange. Users give time, attention, learning effort, data, privacy, money, trust, and emotional investment. They expect useful outcomes, effortlessness, respect, reliability, progress, and confidence in return.
-
-Decision move: ask four questions before adding friction, monetization, data capture, or setup:
-
-- What value does this product actually deliver now?
-- What are we asking users to give up in return?
-- Where might the exchange feel unfair, extractive, or confusing?
-- Where could the product feel generous without adding feature bloat?
-
-This keeps retention work from collapsing into activity metrics. A product can complete the task and still damage the relationship if the exchange feels lopsided.
 
 ## Diagnose with data, treat with design
 
@@ -102,13 +66,17 @@ Zhuo's "chains of assumptions" frame is the bridge between first principles and 
 - **Find the weakest link.** The decision rarely hinges on the whole chain; it hinges on the assumption most likely to be false or most costly if false.
 - **Use disagreement to locate assumptions.** When reasonable people prefer different options, ask what would have to be true for each option to be best.
 
-Sten's UX-strategy shape is the practical companion to the assumption chain:
+For a strategy doc, state the chain in three parts (Sten): **where are we now, where do we want to be, how do we get there.** Prefer goals and principles over feature lists: "Optimize for speed" guides many decisions; a backlog item guides one. Inputs for each part: [field-notes.md](references/field-notes.md).
 
-- **Where are we now?** Customers, competitors, industry trends, performance trends, employees, operations, and organizational constraints.
-- **Where do we want to be?** Goals, objectives, positioning, vision, mission, and the few UX outcomes that matter most.
-- **How do we get there?** Concrete road map: team roles, missing skills, ways of working, platform constraints, and the product decisions that must change.
+## Fit, journey, and exchange checks
 
-Prefer goals/principles over feature lists in a strategy doc. "Optimize for speed" or "serve the majority without excluding the edge" guides many decisions; a backlog item only guides one.
+Three checks from Sten's *Products People Actually Want*, applied after the questions above and before a proposal is approved. Full text and examples: [field-notes.md](references/field-notes.md) ("Sten checks in full").
+
+| Check | Rule | Decision move |
+|---|---|---|
+| **Three-way fit** | A proposal must fit user reality, business reality, and technical reality together. A user-preferred feature that does not move the business problem is still the wrong bet; the right answer may be a smaller interface, a different channel, or no screen at all. | Write the change as **what / how / why**. If the team can only answer "what," the decision is under-shaped. |
+| **Whole journey** | The experience is not bounded by the mockup. Acquisition promise, pricing, signup, emails, invoices, fulfillment, support, cancellation, and human service are product surface. | Follow the real journey from where customers start, under production-like constraints. Check that each handoff preserves promise, context, language, and trust. |
+| **Value exchange** | Users give time, attention, effort, data, money, and trust; they expect useful outcomes, respect, and reliability back. A product can complete the task and still damage the relationship if the exchange feels lopsided. | Before adding friction, monetization, data capture, or setup, ask what value is delivered now, what users give up, where the exchange feels unfair or confusing, and where the product could be generous without feature bloat. |
 
 ## Quality vs time
 
@@ -169,7 +137,7 @@ Trust intuition most when it comes from deep study in the same domain. Distrust 
 
 ## Reviewing a proposal
 
-Ask these in order:
+Ask these in order. For a full pass on a realistic proposal, with the output shape to return, read [worked-proposal-review.md](references/worked-proposal-review.md) before writing a review.
 
 - [ ] What user/customer problem is this solving, in a recent concrete situation?
 - [ ] What business problem is this solving, in the language the business uses?

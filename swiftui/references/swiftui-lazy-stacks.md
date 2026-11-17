@@ -13,6 +13,8 @@
 - Review checklist
 - Relationship to other skills
 
+**Apple's skill vs this file:** lazy-stack estimation, prefetching and scroll behaviour are not in Apple's Xcode-shipped skills, so this file is the source for them. Two neighbouring topics are Apple's: row identity and the one-root-per-row rule → `swiftui-specialist` foreach.md; what a view initializer may do and where models live → its structure.md and dataflow.md (Rule 5 below follows them). Export and pin: `apple-design` (xcode-agent-skills).
+
 `LazyVStack` / `LazyHStack` only evaluate and render the views needed to fill the visible rect. That efficiency comes with a **correctness cost you must design around**: everything off-screen is *estimated*. Most lazy-stack bugs come from treating estimated values as exact, or from making the stack's job ambiguous. This skill is the mental model plus the rules that follow from it.
 
 ## Mental model
@@ -61,12 +63,20 @@ init(detailLevel: DetailLevel) {
 
 If content is gated (e.g. an optional auth token unwrapped in the body), show a `ContentUnavailableView` *higher up* instead of rendering the lazy stack at all.
 
-The WWDC26 SwiftUI Group Lab (7g-Xg5xiH4o) added the `ForEach`-counting angle: an `if` (or `AnyView`) in a ForEach body means SwiftUI must "iterate through the whole for each" just to get the total element count it needs internally — filter the data up front, or wrap the dynamic content "in an h stack or zstack" so each element resolves to a constant count of one. There's also "a flag you can pass to debug" this (see the ForEach docs).
+The WWDC26 SwiftUI Group Lab (7g-Xg5xiH4o) added the `ForEach`-counting angle: an `if` (or `AnyView`) in a ForEach body means SwiftUI must "iterate through the whole for each" just to get the total element count it needs internally — filter the data up front, or wrap the dynamic content "in an h stack or zstack" so each element resolves to a constant count of one. The debug flag the lab mentioned is the launch argument `-LogForEachSlowPath YES`, which logs each offending `ForEach`. A `@ViewBuilder` helper is not that wrapper, and `Group` is not a container — the full row-structure rule is Apple's foreach.md (summary in [swiftui-identity.md](swiftui-identity.md)).
 
 The WWDC26 Power & Performance lab reinforced this from the energy side: "instead of having an if statement in your ForEach… do that before you even provide the list to SwiftUI" — pre-filter in the model. And **keep cell sizes constant where you can**: "if something in the middle changes size… cascading effect" — one resizing row relayouts everything after it, which costs CPU and battery, not just smoothness.
 
-### 5. Set up subviews in their initializer, not `onAppear` — respect prefetching
-Lazy stacks **prefetch**: they do part of a view's work (body eval, layout) before it scrolls on, split across frames, to avoid dropped frames (hitches). So `body` may run during prefetch and — if the scroll reverses — `onAppear` may never fire. Heavy setup in `onAppear` that changes a view's size/content *after* placement throws away prefetch work and can over-load views. Put the view in a reasonable state in `init`; use a cache/loader that starts work in its initializer to fetch *earlier* than `.task`/`onAppear` would. **Good** `onAppear` use: triggering the next page for infinite scroll from a trailing `ProgressView`.
+### 5. A row is ready the first time its body runs — prepare it in the model, not in `onAppear` or `init`
+Lazy stacks **prefetch**: they do part of a view's work (body eval, layout) before it scrolls on, split across frames, to avoid dropped frames (hitches). So `body` may run during prefetch and — if the scroll reverses — `onAppear` may never fire. Heavy setup in `onAppear` that changes a view's size/content *after* placement throws away prefetch work and can over-load views. The session's point stands: **the row must be in a sane state, at its final size, on its first body evaluation.**
+
+How to get there (reconciled with Apple's `swiftui-specialist` skill on 2026-11-12; the session's own samples built a model or loader inside the row's initializer with `State(initialValue:)` — don't copy that):
+
+- **A view initializer only copies inputs.** It runs every time the parent's body runs, which in a scrolling stack is constantly, so anything it allocates or starts is repeated and mostly discarded.
+- **Prepare upstream.** The model layer that already knows the data (the store or pager that fetched the page) creates each row's content, or a per-row `@Observable` model, once and keeps it. The row receives that value or reference; its first body can render real content or a placeholder *of the final size*. Work that should begin before the row is placed begins in that store when the data arrives — earlier than any row-side hook.
+- **Row-side async work goes in `.task(id:)`**, and only for content that will not change the row's size when it lands (Rule 7). `.task` starts once the row is placed, so it is the wrong trigger for anything that sizes the row.
+- **A model the view itself owns** is `@State private var model = Model()` with the default at the declaration. If it must be built from an input, its initializer may only store that input and the work still starts from the store or `.task`.
+- **Good** `onAppear` use: triggering the next page for infinite scroll from a trailing `ProgressView`.
 
 ### 6. Don't store scroll-surviving data in `@State`
 Off-screen views are kept briefly, then deleted along with their `@State`. Anything that must persist across scrolling (selection, highlight) belongs in a model object or an outer view via `@Binding` — not the leaf's `@State`.
@@ -83,6 +93,7 @@ A common offender: `onGeometryChange` → set a `@State` → use it in a later l
       Section { ForEach(photos) { PhotoView($0) } } header: { ShowcaseHeader() }
   }
   ```
+- **New in the 27 SDK, documented only in Apple's `swiftui-whats-new-27` skill:** swipe actions on rows of any scrollable container, not just `List` (swipe-actions.md), and drag-to-reorder for stacks, grids and custom layouts (reorderable.md). Read those before writing either; both need availability gating below the 27 releases.
 
 ## Programmatic scrolling
 
@@ -95,11 +106,11 @@ A common offender: `onGeometryChange` → set a `@State` → use it in a later l
 - [ ] Cross-axis size fixed where content varies?
 - [ ] Scroll transitions don't relocate views across the visibility boundary?
 - [ ] Leaf views resolve to a static subview count? Filtering done at the data layer?
-- [ ] Subviews initialized to a sane state before `onAppear`?
+- [ ] Rows sane and final-sized on first body, from model-prepared inputs — no setup in `onAppear`, no loading or allocation in `init`?
 - [ ] Scroll-surviving state in models/bindings, not leaf `@State`?
 - [ ] No post-appear layout changes (use a custom `Layout` if needed)?
 
-See `swiftui-lazy-stacks/code-patterns.md` for fuller before/after examples (view resolution, prefetching cache, infinite scroll, custom layout).
+See `swiftui-lazy-stacks/code-patterns.md` for fuller before/after examples (view resolution, prefetch-ready rows, infinite scroll, custom layout).
 
 ## Relationship to other skills
 

@@ -7,6 +7,8 @@ description: "Designs courses, workshops, training, tutorials, and job aids that
 
 **Sources/gaps** — [references/sources.md](references/sources.md) maps the Dirksen/UPD corpus; unresolved training artifacts and measurement candidates live in [references/coverage-gaps.md](references/coverage-gaps.md).
 
+**Worked examples** — read [references/worked-examples.md](references/worked-examples.md) before producing a course outline, session plan, or module rewrite: a gap diagnosis with a goal → assessment → practice alignment table, a session plan with a spacing schedule, and a before/after module rewrite. They are illustrative examples, not source material.
+
 ## Start With The Gap
 
 A learning request is usually misdiagnosed as a content request. Dirksen's frame: "The end of the journey isn't just knowing more, it's doing more." Before making slides, name the performance gap:
