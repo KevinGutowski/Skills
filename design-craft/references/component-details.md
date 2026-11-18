@@ -40,6 +40,8 @@ A menu's width is a content decision, not a token. The longest label sets it, an
 .menu-item {
   display: flex;
   align-items: center;
+  box-sizing: border-box;
+  width: 100%;             /* our addition: a native <button> row otherwise shrinks to its label */
   height: 32px;
   padding: 0 12px 0 8px;   /* 12 + the menu's 4 = 16px to the edge */
   gap: 8px;

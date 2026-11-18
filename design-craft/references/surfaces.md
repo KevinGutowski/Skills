@@ -600,6 +600,8 @@ The fix is to separate the hit box from the painted fill. Rows sit flush and own
 .menu-item {
   position: relative;
   isolation: isolate;      /* keeps the z-index: -1 fill inside the row */
+  box-sizing: border-box;
+  width: 100%;             /* a native <button> row otherwise shrinks to its label */
   height: 36px;            /* 32px fill + the 4px that used to be margin */
 }
 .menu-item::before {
