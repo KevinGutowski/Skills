@@ -1,6 +1,6 @@
 ---
 name: design-craft
-description: "Raise design quality and feel via craft methodology (noticing, range vs depth, facets, live tuning), execution values (shadows, spacing, radii, alignment, motion, type), and Linear-style rituals/triage. Use to polish, critique, or stress-test UI, build taste, or make quality repeatable. Strategy → design-principles; shaping → shape-up; frame drops → motion. Triggers: make it look better, fix the jank, feels off, worst-case data, quality ritual."
+description: "Raise design quality via craft methodology (noticing, range vs depth, facets, live tuning), execution values (shadows, spacing, radii, motion, type), and Linear rituals/triage. Use to polish, critique, or stress-test UI, build taste, or make quality repeatable. Strategy → design-principles; shaping → shape-up; frame drops → motion. Triggers: make it look better, fix the jank, feels off, worst-case data, quality ritual, blueprint illustration."
 ---
 
 # Design Craft
@@ -47,6 +47,7 @@ When the question shifts from *"is this good / how far do I push"* to *"what exa
 | [refactoring-ui](references/refactoring-ui.md) | Visual refactor passes (hierarchy, spacing, type, color, depth); code-native gallery in `examples/refactoring-ui-gallery.html` |
 | [linear-product-craft](references/linear-product-craft.md) | Linear's operating model: redesign debt, scope control, stress tests, feature flags, quality rituals, triage, dogfood/unshipping, taste calibration |
 | [component-details](references/component-details.md) | Measured answers per component: dropdown menu width (widest item + 16px, min/max), menu rows and keys, tooltip timing (400ms first, instant next, 100ms close), empty states (one style, page/card/inline sizes, keep the frame, one action or none, never while loading; seven-style gallery in `examples/empty-states-gallery.html`) |
+| [construction-drawings](references/construction-drawings.md) | Flat blueprint-style line illustration as editable SVG (Plotter method) for empty states, 404s, heroes and docs figures: one relationship per drawing, no pictograms, 560 × 440 canvas, role opacities and dashes, compact version for small placements, animating a drawing; example in `examples/construction-drawing-empty-state.html` |
 | [worst-case-data](references/worst-case-data.md) | Stress-test a component with worst-case data: per-field catalog, failure-signature → fix table, truncate/wrap/clamp, Broken/Ugly/Fragile report |
 | [refinement-moves](references/refinement-moves.md) | Directional verbs for an existing UI: bolder, quieter, distill, delight, overdrive (propose first), polish (drift classification + triage order), harden (real data, failures, interrupted gestures) |
 | [practical-demonstrations](references/practical-demonstrations.md) | Worked walkthrough move lists: visual-language audit, mobile architecture exercise, depth-spectrum exemplars (slider, gift card, library cards) |

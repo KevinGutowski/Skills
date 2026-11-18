@@ -8,6 +8,7 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 - Adam Wathan and Steve Schoger
 - Impeccable (Paul Bakaus)
 - Kosta — *Tactile design*
+- Pasquale Vitiello — *Plotter*
 - Anton Sten
 - Derek Briggs (PixelJanitor)
 - Gustavo Fior — *Craft*
@@ -32,6 +33,10 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 ## Kosta — *Tactile design*
 
 - https://kosta.fyi/skills/tactile-design (landing page with before/after demos; `/md` export) · https://github.com/kosta4a/tactile-design (MIT), read at commit `30495a2` (2026-11-02). Its SKILL.md and all seven references (tokens, buttons-and-controls, surfaces-and-layering, layout-and-hierarchy, motion, mobile, decisions) were paraphrased into [tactile-design.md](tactile-design.md) and its second hop `tactile-design/`, with dark-mode counter-school notes in [surfaces.md](surfaces.md) and the Theme Note in [polish-principles.md](polish-principles.md). Credits inside the source: Emil Kowalski (motion, sheet drag), Radix Colors (12-step scales), Apple HIG (touch and sheet sizes). Ledger: `docs/tactile-design-source-mining-2026-11.md`.
+
+## Pasquale Vitiello — *Plotter*
+
+- https://plotter.pasqualevitiello.com · https://github.com/pasqualevitiello/plotter (MIT), read at commit `01df092` (2026-11-15). The `skills/plotter` package (SKILL.md and its drawing, motion, direction, visual-grammar, drafting-standard, approved-references and motion-examples references, the catalogue index, `check.py`) plus the repo's cold-run eval briefs and site docs were paraphrased into [construction-drawings.md](construction-drawings.md), with a pointer from [component-details.md](component-details.md) (Empty states). Not vendored: the 109-drawing catalogue, scripts, role CSS and the bundled Cal Sans font; the reference says how to install the upstream package. The example in [../examples/construction-drawing-empty-state.html](../examples/construction-drawing-empty-state.html) is an original drawing. Ledger: `docs/mining-ledger.md` (2026-11-18).
 
 ## Anton Sten
 
