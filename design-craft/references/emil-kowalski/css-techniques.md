@@ -13,7 +13,7 @@ Detailed walkthroughs and code for the CSS-level component and animation techniq
 
 ### Tooltips: skip delay on subsequent hovers
 
-Tooltips should delay before appearing to prevent accidental activation. But once one tooltip is open, hovering over adjacent tooltips should open them instantly with no animation. This feels faster without defeating the purpose of the initial delay.
+Tooltips should delay before appearing to prevent accidental activation. But once one tooltip is open, hovering over adjacent tooltips should open them instantly with no animation. This feels faster without defeating the purpose of the initial delay. Delay values, the warm window, and closing: [component-details.md](../component-details.md) → Tooltips.
 
 ```css
 .tooltip {

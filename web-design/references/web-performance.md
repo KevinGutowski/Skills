@@ -86,7 +86,7 @@ A custom property inherits by default. Changing one on an element makes the brow
 
 **Verify in Safari** (a real one, not Chrome's device mode). Scroll the area a little, select the viewport element in the Elements panel, and compare `getComputedStyle($0).getPropertyValue("--scroll-area-overflow-y-start")` with the same call on `$0.firstElementChild`. The viewport should report the scrolled distance and the child `0px`. If the two match, the rules did not load: check that the stylesheet is included and clear the build cache.
 
-The same WebKit bug applies to any property you register with `inherits: false` and then pass down with `inherit`. Read such a property only on the element that owns it.
+The same WebKit bug applies to any property you register with `inherits: false` and then pass down with `inherit`. Read such a property only on the element that owns it. For an edge fade that needs no script at all (registered properties driven by a scroll timeline), see `design-craft` (surfaces, Scroll Fades).
 
 Source: Dmytro (@pqoqubbw), "4 css rules that make safari 35x faster" (X article, 2026-11-17) and its [agent prompt gist](https://gist.github.com/pqoqubbw/a5d168f571d0283269f2987a7de3728f). The general rule and the third table row are this library's reading, not his; the row's behavior was reproduced in Playwright WebKit against Base UI 1.9.0 during review (2026-11-18), frame timing in Safari was not.
 
