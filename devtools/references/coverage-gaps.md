@@ -5,6 +5,7 @@ Use this file to park developer-tool standards that need stronger evidence befor
 ## Candidate Gaps
 
 - **Agent-facing developer-tool surfaces.** `devtool-interface-design` includes agent experience, but needs more accepted examples for task handoff, context files, background-agent status, and safe interrupt/stop affordances.
+- **Vendor agent plugins.** The AX file carries one worked example (Interfere, 2026-11): a search/execute MCP server with a read-only endpoint, setup and investigation skills, and a CLI whose skills are generated from the API spec. It is a single vendor's design read from its repo, with no usage evidence. Promote the bullets to named rules after a second vendor plugin shows the same decisions or a local plugin is built this way. The two-tool MCP shape in particular is unproven against a tool-per-endpoint server.
 - **CLI output linting.** The interface reference gives CLI progress/output rules; a deterministic check could catch noisy logs, missing next steps, or unstable progress labels, but no script or fixture exists yet.
 - **Commercial vs OSS pricing boundary.** The GTM/OSS split is documented, but examples are needed for hybrid projects that are open source, have cloud hosting, and sell enterprise contracts.
 - **Dev-data visualization examples.** The data-to-chart mapping exists in `devtool-interface-design/data-viz-and-agents.md`; it needs before/after examples for logs, traces, dependency graphs, queues, and CI history.

@@ -542,3 +542,16 @@ Ticket-driven fold: instruct agents that less is more, starting with no supporti
 - **Extended:** `working-with-ai` (ai-ui-direction: the over-explained-surfaces failure mode, the subtract-then-re-admit prompt, a checklist line), `design-craft` (refinement-moves: Distill copy bullet), `ux-writing` (ui-voice-and-tone: "ask whether the line should exist" ahead of the Simplify edits, a checklist line), plus each skill's sources file.
 - **Synthesis flagged as ours:** the staged procedure, the one-line budget, the exceptions, and the reason models over-explain. Wroblewski supplied the exhibit and the 75% prompt only.
 - **Parked:** single source. Recorded in `frontend-design/references/coverage-gaps.md` with what would promote it: a with/without comparison on the same briefs, a second source, and a container word-count detector. No eval case was added.
+
+## 2026-11-18 — Interfere: Landmines lint rules and agent plugin (X 2122782710414336458)
+
+Ticket-driven fold: fold in Interfere's skills as needed. Full manifest and fold map: `docs/interfere-source-mining-2026-11.md`.
+
+- **Manifest:** Luke Shiels's announcement post (text read; attached video and replies not read), `interfere-inc/landmines` at `92084b1` (README, config, rule messages, allowlist logic), `interfere-inc/plugins` at `f3c066f` (both skills and READMEs), `interfere-inc/docs` AGENTS.md. Other org repos were scanned by filename and skipped.
+- **Density:** HIGH for Landmines, MEDIUM for the plugin, LOW for the docs AGENTS.md.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Extended:** `working-with-ai` (agentic-coding: new "Lint the evasions" section, constraint-stack item 4, the merge-without-human-read rule, a checklist line; router bullet; sources; coverage gaps) and `devtools` (devtool-interface-design: vendor agent plugin worked example in the AX file, AX summary bullet, a checklist line; sources; coverage gaps).
+- **Skipped:** vendoring the two Interfere skills (bound to their MCP server), the house-style lint rules, any fold into `rails` testing references (Vitest-specific), `superconductor` (rule already present).
+- **Parked:** both folds are single-vendor. Promotion conditions are in each skill's coverage-gaps file. `dmmulroy/anti-slop`, linked from the Landmines README, was not read.
+- **Second pass (same day):** read `dmmulroy/anti-slop` at `13909c9` and the rejected/allowed case lists in Landmines' `no-test-doubles.test.ts`. Added a type-silencing row, three design moves (chase aliases, define the allowed side, own the rules), and the comment-policy disagreement to the agentic-coding section. The section's core now has two independent sources.
+- **Third pass (same day, user asked for more from Interfere):** read the CLI, MCP, and AI Agents docs pages and the CLI's `skill_emitter.rs`. Extended the devtools AX worked example (read-only endpoint, machine CLI surface, spec-generated skills, limits with remedies) and constraint-stack item 6 in agentic-coding (vocabulary mapping in AGENTS.md).
