@@ -40,6 +40,7 @@
 | Page jitters vertically while swiping a carousel | Browser cannot tell which axis the element owns | `touch-action: pan-y pinch-zoom` on the horizontal track; or use native `scroll-snap` and drop the JS gesture |
 | Status bar / browser chrome colour wrong in one scheme | Single `theme-color` | One `theme-color` meta per `prefers-color-scheme`, matched to the page's top surface |
 | Bottom input or bar covered by the keyboard | Keyboard overlays the layout viewport by default | Android/Chromium: `interactive-widget=resizes-content` in the viewport meta. Safari: `visualViewport` (see the installed-apps reference's keyboard section) |
+| iOS 26 Safari: a modal backdrop leaves a strip uncovered beneath the browser chrome | Safari now shows page content under its chrome, and a `position: fixed` layer does not cover the whole visual viewport | Under `@supports (-webkit-touch-callout: none)`, make the backdrop `position: absolute` and set `body { position: relative }` so it covers after scrolling (Base UI's setup guidance, 2026-11; verify on a device and re-check after Safari point releases) |
 | Text inflates in landscape | iOS text autosizing | `-webkit-text-size-adjust: 100%` on `html` |
 | Wrong keyboard, autocorrect mangles a code | Field semantics missing | `type`/`inputmode`, `autocapitalize`, `autocorrect`, `enterkeyhint`; field-type choice → [form-design.md](form-design.md) |
 | Looks right in Chrome device mode, wrong on the phone | Emulation simulates size, not browser behaviour | Test on hardware (below) |
