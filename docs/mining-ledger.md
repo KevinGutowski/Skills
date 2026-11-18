@@ -542,3 +542,34 @@ Ticket-driven fold: instruct agents that less is more, starting with no supporti
 - **Extended:** `working-with-ai` (ai-ui-direction: the over-explained-surfaces failure mode, the subtract-then-re-admit prompt, a checklist line), `design-craft` (refinement-moves: Distill copy bullet), `ux-writing` (ui-voice-and-tone: "ask whether the line should exist" ahead of the Simplify edits, a checklist line), plus each skill's sources file.
 - **Synthesis flagged as ours:** the staged procedure, the one-line budget, the exceptions, and the reason models over-explain. Wroblewski supplied the exhibit and the 75% prompt only.
 - **Parked:** single source. Recorded in `frontend-design/references/coverage-gaps.md` with what would promote it: a with/without comparison on the same briefs, a second source, and a container word-count detector. No eval case was added.
+
+## 2026-11-18 — Pratik (@maybepratikk), menu hover dead zones (X 2122963896042713492)
+
+Ticket-driven question: where should small UI implementation details like this live?
+
+- **Manifest:** the post text (read, via `api.fxtwitter.com` and `cdn.syndication.twimg.com`) and its 12.4s video (the 1440×1080 MP4 from `video.twimg.com`, sampled with ffmpeg at 2 fps into a contact sheet plus two full-size crops, read). The video toggles one context menu between "Margin" (hatched bands labelled "4px dead zone", "Nothing hovered") and "Inset" ("No dead zone", "Copy link hovered"). Replies (4) were not read: the public JSON endpoints do not return them.
+- **Density:** HIGH for one lesson. Single source, but the claim is DOM hit-testing behaviour that anyone can reproduce, so it was folded as a rule and not parked.
+- **Placement answer:** a detail like this goes in the reference that owns its *mechanism*, as a subsection beside its nearest existing rule, with one-line pointers from the places an agent would be reading when the symptom or the component comes up. Here the mechanism is hit-area geometry, so the owner is `design-craft` (surfaces) → Minimum Hit Area, next to the collision rule it mirrors (never overlap, never gap). It is not a new skill, a new reference, or a SKILL.md body line.
+- **Owner:** `design-craft` (surfaces), new subsection "Contiguous Rows: No Dead Zones" with bad/good CSS, a Tailwind line, the padded-wrapper variant, focus-ring placement, a `background-clip` alternative, a check, and where a gap is correct.
+- **Pointers:** `design-craft` polish-principles (#16, common-mistakes row, checklist line), linear-product-craft (Interaction Details), tactile-design/controls (menu items and choice rows say "2px apart"; reconciled as a gap between fills, not hit boxes), and `web-design` (web-animation-design PRACTICAL-TIPS → Fix Hover Flicker, which covers a different cause).
+- **Synthesis flagged as ours:** the padding variant, the focus-ring note, the `background-clip` alternative, the DevTools check, and the exceptions. The source supplied the diagnosis and `::before { inset: 2px 0 }`.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+
+### Follow-up the same day — Kevin Dukkon (@keviduk), kevdu.co/reads
+
+A second snippet on the same ticket (X 2117975138541146303), then the author's site at the user's request.
+
+- **Manifest:**
+  - X post: text (read, via `api.fxtwitter.com`), 15.2s video (1440×1080 MP4, sampled with ffmpeg at 1.6 fps into a contact sheet, read), one still (read). Replies (8) not read.
+  - https://www.kevdu.co/reads/sizing-dropdown-menus (4 Nov 2026): fetched with curl, text extracted from the HTML, read in full. Interactive demos were not run; their captions were read.
+  - https://www.kevdu.co/reads/tooltip-delay (6 Nov 2026): same method, read in full.
+  - https://www.kevdu.co/reads index: read. *Spacing navigation* and *Designing interface icons* are "Coming soon".
+  - The articles' cited sources (APG, WCAG, NN/g, HIG, Fluent 2, Material, Primer, shadcn/ui, Radix, Base UI, MUI, React Aria, Microsoft Learn) were not re-read; the two comparison tables are recorded as Dukkon's readings.
+- **Density:** HIGH for both articles: each gives one measured default, its bounds, the reason, a comparison across design systems, and code.
+- **Owner:** new reference `design-craft` (component-details), organized by component: Dropdown menus (width, rows, keyboard, system table) and Tooltips (timing, when not to wait, closing, content, system table). The dropdown-width rule was first folded into `web-design` (web-layout-design) from the post alone; once the article supplied rows, keys and a second component, it moved here and web-layout-design keeps a one-paragraph pointer.
+- **Placement rule, refined:** a rule about one mechanism that applies to many components stays with the mechanism (the dead-zone rule stays in surfaces → Minimum Hit Area). A complete, measured answer for one component goes in component-details, which points to the mechanism rules it depends on.
+- **Registered in:** `design-craft/SKILL.md` reference table and the polish-principles quick-reference table. Pointers from surfaces (Contiguous Rows), worst-case-data (failure table), tactile-design controls and tokens-and-surfaces, emil-kowalski/css-techniques (Tooltips), and `web-design` (web-layout-design; web-animation-design PRACTICAL-TIPS).
+- **Conflicts, kept as scoped schools:** first-tooltip delay is 400ms here, 400–700ms in Emil Kowalski's notes (compatible), and zero for icon-only names in the tactile theme (theme wins inside that theme). Menu row height is 32px here and 36px in the tactile theme.
+- **Synthesis flagged as ours:** `min-width: 0` on the label, trailing columns, the trigger-width floor for selects, the viewport cap.
+- **New skills:** none. The `design-craft` description was not changed, so no routing probes were run.
+- **Recheck:** kevdu.co/reads for the two unpublished reads.

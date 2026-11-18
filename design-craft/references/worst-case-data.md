@@ -104,6 +104,7 @@ Each of these is visible in a screenshot, and the listed cause is nearly always 
 | Numbers jitter or columns misalign | Proportional figures | `font-variant-numeric: tabular-nums` |
 | `1284`, long float tails, `NaN`, `undefined` | Raw number rendered | `Intl.NumberFormat` with the user's locale; guard null |
 | Translated button label overflows | Fixed-width button | Width from content plus `min-width` |
+| Menu has dead space beside short labels, or clips long ones | Fixed-width menu | Width from the widest item, with `min-width` and `max-width` then truncate ([component-details.md](component-details.md) → Dropdown menus) |
 | Diacritics or tall scripts clipped | Tight `line-height` with `overflow: hidden` | Looser `line-height`, or no clipping on text boxes |
 | Broken-image icon in the avatar | No error fallback | Fall back to initials; `object-fit: cover` |
 | Truncated text with no way to read it | Ellipsis and nothing else | The full value in a detail view or expandable row, plus a tooltip that also opens on keyboard focus and touch (`title` alone reaches neither) |
