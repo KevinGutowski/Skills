@@ -61,7 +61,7 @@ init(detailLevel: DetailLevel) {
 }
 ```
 
-If content is gated (e.g. an optional auth token unwrapped in the body), show a `ContentUnavailableView` *higher up* instead of rendering the lazy stack at all.
+If content is gated (e.g. an optional auth token unwrapped in the body), show a `ContentUnavailableView` *higher up* instead of rendering the lazy stack at all. (Which built-in to use and what it says: `design-craft` (component-details → Empty states → On Apple platforms).)
 
 The WWDC26 SwiftUI Group Lab (7g-Xg5xiH4o) added the `ForEach`-counting angle: an `if` (or `AnyView`) in a ForEach body means SwiftUI must "iterate through the whole for each" just to get the total element count it needs internally — filter the data up front, or wrap the dynamic content "in an h stack or zstack" so each element resolves to a constant count of one. The debug flag the lab mentioned is the launch argument `-LogForEachSlowPath YES`, which logs each offending `ForEach`. A `@ViewBuilder` helper is not that wrapper, and `Group` is not a container — the full row-structure rule is Apple's foreach.md (summary in [swiftui-identity.md](swiftui-identity.md)).
 

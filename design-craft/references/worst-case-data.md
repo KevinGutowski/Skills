@@ -138,5 +138,5 @@ Close with where the toggle lives and which states it has. Keep the tone matter-
 
 - Reflow thresholds, logical properties, RTL mirroring, and Arabic-script data → `web-design` (web-layout-design). This file supplies the data and the diagnosis table; that one owns the layout rules.
 - Network failures, status-code states, double submission, and interrupted gestures → the Harden move in [refinement-moves.md](refinement-moves.md).
-- Empty-state content and first-run design → `user-onboarding`. Error wording → `ux-writing` (error-messages).
+- Empty-state component (style, sizes, frame, action, not while loading) → [component-details.md](component-details.md) → Empty states. Empty-state causes, copy and first-run design → `user-onboarding`. Error wording → `ux-writing` (error-messages).
 - Redesigning the component, or comparing alternative directions → `design-prototyping`.

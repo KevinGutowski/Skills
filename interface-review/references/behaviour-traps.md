@@ -100,7 +100,7 @@ Error timing (first on blur or submit, then live), error linkage (`aria-invalid`
 | --- | --- | --- |
 | `select-value-lost` | A select drops its value when the form errors or options reload | The value outlives errors and refetches |
 | `select-empty-value` | No way back to "none" in an optional field | A clear control or an explicit empty option |
-| `select-async` | "No results" flashes while the search runs | Loading wins over empty |
+| `select-async` | "No results" flashes while the search runs | Loading wins over empty; empty-state anatomy and copy → `design-craft` (component-details → Empty states) |
 | `toggle-switch-submit` | A switch that only applies on Save | A switch acts at once; otherwise it is a checkbox |
 | `toggle-indeterminate` | "Select all" with no mixed state | Three defined states |
 | `overlay-conditional-render` | The dialog is mounted only while open, so it cannot animate out or restore focus | Keep it mounted and pass `open` |

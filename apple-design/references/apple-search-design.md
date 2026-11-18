@@ -84,3 +84,4 @@ See `apple-search-design/patterns.md` for the full placement examples and decisi
 - **`swiftui` (swiftui-lazy-stacks)** — search results are usually a scrolling list; that skill governs the lazy-stack/scroll implementation beneath the results.
 - **`ux-writing` (naming-features-and-labels)** — for the placeholder text and scope/filter labels (clear, scope-signaling wording).
 - **`ux-writing` (error-messages)** — the no-results view is an empty state, not a failure; keep it neutral and helpful rather than error-toned.
+- **`design-craft` (component-details → Empty states → On Apple platforms)** and **`user-onboarding` (empty-states)**: the general empty-state rules behind the no-results view. Repeat the query, offer a wider scope or a way to clear filters, name a filter that is hiding results, and never show the view while results are still loading.

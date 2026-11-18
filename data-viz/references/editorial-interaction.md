@@ -66,6 +66,7 @@ For in-app dashboard charts (usage, sessions, health), not editorial pages. Sour
 - **Quiet frame:** dotted gridlines over a hairline baseline, a right-hand axis scale in tabular or mono figures so the numbers line up (mono is for the chart axis only; the same theme keeps table columns in the sans with tabular figures, never a mono column), and small rounded bar tops. Add no hue unless it means status.
 - **Hover highlights one bar and dims the rest** (to about 35%), with its value on a small label. Bars fade in on a range change; they never sweep left to right or grow on load for style, and figures never animate. The latest bar may pulse to mean "now".
 - **In a table, status is a coloured dot with its label, not a badge.** A column of pills competes with the data.
+- **Missing is not zero.** If nothing was measured, draw no line and show no number; leave gaps for missing points instead of joining across them. A line at zero claims a measurement of zero. A chart with no data at all keeps its axes and says so in the plot area ("No requests this week"). Source: Kevin Dukkon, *How to design empty states* (2026), citing Datawrapper and Grafana; the empty-state component is `design-craft` (component-details → Empty states).
 - **One strong figure** with a small label under it beats a grid of small stat tiles; fold secondary numbers into the card they belong to.
 
 ## Prepublish Pass

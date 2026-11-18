@@ -28,7 +28,7 @@ These values are the *how* of the **Craft** principle. For the strategic layer â
 | [Typography](typography.md) | Text wrapping, font smoothing, tabular numbers |
 | [Surfaces](surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain overlays, document canvas background, scroll fades, hit areas |
 | [Animations](animations.md) | Interruptible animations, enter/exit transitions, icon animations, scale on press |
-| [Component details](component-details.md) | Dropdown menu width, rows and keys; tooltip timing |
+| [Component details](component-details.md) | Dropdown menu width, rows and keys; tooltip timing; empty-state style, sizes, frame and action |
 | [Performance](performance.md) | Transition specificity, `will-change` usage, perceived performance (spinner choice) |
 | [Refactoring UI](refactoring-ui.md) | Visual refactor passes: hierarchy, spacing, type, color, depth, images, empty states; example gallery in `../examples/refactoring-ui-gallery.html` |
 | [Emil Kowalski â€” Design Engineering](emil-kowalski.md) | Alternate craft theme (animations.dev): training taste, component polish, animation decisions, the invisible details that make software feel right; deeper cuts in `emil-kowalski/` (css-techniques, interaction-and-performance, taste-and-craft) |
