@@ -19,3 +19,4 @@ This source map records where the skill-authoring guidance comes from.
 
 Promote new skill-authoring guidance only when it comes from official docs, a repeated local routing/eval failure, a verified source-conversion workflow, or an accepted corpus governance decision.
 - `measuring-skill-effect.md` (Generative skills section): Impeccable by Paul Bakaus (https://github.com/pbakaus/impeccable, Apache-2.0, screened at `b3ced85`, 2026-11-09). Sources are the maintainer CLAUDE file, `tests/skill-behavior/` conventions, and the research note https://impeccable.style/research. Ledger: `docs/impeccable-source-mining-2026-11.md`.
+- `measuring-skill-effect.md` (Suite hygiene for sibling skills): Arlan Marat, design.how (https://github.com/arla6ka/design.how, MIT, screened at `148b94c`, 2026-11-14) — its eval runner, trigger fixture, incident cases, and the shared glossary. Single source; ledger: `docs/design-how-source-mining-2026-11.md`.

@@ -530,3 +530,15 @@ Ticket-driven intake of Kosta's tactile-design agent skill (MIT, `30495a2`) and 
 - **Extended:** `design-craft` (SKILL.md, polish-principles, surfaces, emil-kowalski, sources, coverage-gaps), `web-design` (form-design), `data-viz` (editorial-interaction), `design-systems` (field-notes, plus a pointer in SKILL.md), `web-design` (web-animation-design: Tailwind v4 traps), `working-with-ai` (ai-ui-direction: applying review notes), `interface-review` (review against a committed theme).
 - **Conflicts:** recorded as scoped schools (dark-mode lit edges, press scale, button colour, disabled buttons and error placement, type weight).
 - **Descriptions:** `design-craft` gained plain triggers on 2026-11-12, verified by blind routing probes V16–V18.
+
+## 2026-11-14 — design.how skills (arla6ka/design.how, Arlan Marat)
+
+Ticket-driven intake of the seven skills under `skills/` (MIT, `148b94c`). Full manifest, fold map, conflicts and parked items: `docs/design-how-source-mining-2026-11.md`.
+
+- **Density:** HIGH for build-design-system, migrate-design-system, token-mapping, component-docs and the boss router; HIGH but overlapping for ui-review and the trap list; make-font is high but bound to unreviewed scripts.
+- **New skills:** `make-font` (cross-domain tool; twelve upstream scripts vendored after a security read, then changed in every file after five QA passes and a line-by-line hardening pass on 2026-11-18: it is a maintained fork, see `make-font/references/sources.md`). The design-system suite added no skill; its router became a table in `design-systems` SKILL.md.
+- **New references:** `design-systems` (system-from-shipped-ui, token-mapping, component-docs, migration); `interface-review` (behaviour-traps).
+- **Extended:** `design-systems` (SKILL.md, sources, coverage-gaps), `interface-review` (SKILL.md, sources, coverage-gaps), `working-with-ai` (agentic-coding: running many agents on one repo, correction pass), `creating-skills` (measuring-skill-effect: suite hygiene), `web-design` (web-typography → choosing-and-pairing: fitting an open-licence base).
+- **Descriptions:** `design-systems` changed and `make-font` is new; blind routing probes V19–V24 pass.
+- **Not read:** the ten design-system scripts, `systems/` (four design systems) and `vault/` (visual effects). None of those vendored.
+- **Parked:** the design-system scripts, `systems/` and `vault/` as future candidates, the no-persona reviewer panel, and the single-source numbers.

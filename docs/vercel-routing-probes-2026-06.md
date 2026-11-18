@@ -24,6 +24,12 @@ Purpose: test whether the Vercel-pattern overhaul loads the right skill before j
 | V16 | "Make this settings page look better." | `design-craft` | Plain polish request on existing UI; control against `frontend-design` (new build). |
 | V17 | "Fix the jank on our dashboard: buttons shift when data loads and the menus just blink in." | `design-craft` | Visual/interaction jank on existing UI, not frame drops. |
 | V18 | "Scrolling this list drops frames; audit the animation code for jank." | `motion` | Control: performance jank must not route to `design-craft`. |
+| V19 | "We hardcode colors everywhere and have five different buttons. Sort it out." | `design-systems` | Hands-on extraction from shipped UI; control against `design-craft` (polish) and `frontend-design` (new build). |
+| V20 | "Move every screen in the app onto our new component library and prove nothing broke." | `design-systems` | Migration run; control against `working-with-ai` (generic agent fleet). |
+| V21 | "Write the docs entry for our Select component from its code and where we actually use it." | `design-systems` | Component docs; control against `ux-writing` and `devtools`. |
+| V22 | "Check the checkout page before I ship. It feels laggy on my phone." | `interface-review` | Control: one named screen must not route to `design-systems`. |
+| V23 | "I love these three typefaces but can't license them for the app. Can you build us our own font that feels like them?" | `make-font` | New tool skill; control against `web-design` and `logo-design`. |
+| V24 | "Which two fonts should we pair for the marketing site, and how do I set the type scale?" | `web-design` | Control: choosing and setting existing fonts must not route to `make-font`. |
 
 ## Scoring
 
