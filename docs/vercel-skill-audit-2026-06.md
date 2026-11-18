@@ -54,6 +54,7 @@ Legend:
 | `route-planning` | P3 | Narrow utility; no references. | Leave lean; deterministic behavior belongs in scripts/tools if added. | Route-order task. |
 | `x-post-reader` | P3 | Narrow utility; no references. | Leave lean; test against current public X access when used. | Tweet URL prompt. |
 | `superconductor` | P3 | API integration utility; helper script, offline tests, one maintenance reference. | Leave lean; live docs/OpenAPI are authoritative; re-verify dated endpoint notes when responses drift. | Superconductor tickets/chats prompt; offline helper tests. |
+| `make-font` | P3 | Tool skill (added 2026-11): router plus two references, sources, coverage gaps, and twelve scripts forked from upstream (MIT; all changed, see sources) with unit tests. | Script review and end-to-end run recorded in sources; single external source and unreviewed geometry code flagged in coverage gaps. | Make-a-font probe; `web-design` font-choice and `logo-design` wordmark controls. |
 | `motion` | P3 | External/tool umbrella; no references. | Leave unless Motion plugin/tooling changes; verify current docs when used. | Motion task prompt. |
 | `dhh` | P3 | Persona/review skill; no references. | Leave unless source corpus is refreshed. | Diff-review prompt. |
 

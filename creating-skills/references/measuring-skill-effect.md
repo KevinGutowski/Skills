@@ -13,6 +13,7 @@
 - Wording that causes detours
 - Generative skills: when guidance makes output timid
 - Hygiene: don't teach to the test
+- Suite hygiene for sibling skills
 - Versioning and records
 
 ## Set up the arms
@@ -74,6 +75,16 @@ The skill went from 3,928 to 621 words (later 826 after targeted additions) with
 - The installed skill names no benchmark, build, round, harness, or measured number; every rule reads as plain guidance. The evidence trail (tags, numbers, run ids per rule) lives in a sources doc *outside* the installed folder.
 - Before each arm, grep the skill for the task's app name, prompt file name, harness labels, and the benchmark's specific counts.
 - A rule added because a benchmark build failed is allowed only if any app of that kind would want it, and the changelog names the run that prompted it.
+
+## Suite hygiene for sibling skills
+
+For a set of skills that hand off to each other (design.how's seven-skill suite, 2026):
+
+- **Trigger fixtures name the neighbor.** Per skill, keep prompts that should fire it and prompts that should not, and give each should-not prompt the skill it goes to instead, or "none". "None" cases matter: the suite should stay quiet on work it does not own.
+- **One glossary, linted.** Define each working word once, list the synonyms to avoid beside it, and have a lint fail when an avoided word creeps back into any skill. A scoped ban ("lead, when it means the coordinator") is beyond a word lint and stays with review.
+- **Incident cases tie a rule to its failure.** Each case records the prompt, the expected behavior, the fails-if condition, and the exact phrase in the skill that states the rule; the lint checks the phrase still exists. Be honest about what that proves: the rule is written down, not that an agent follows it. Behavior still needs the arms above.
+- **Give rules stable IDs** when findings, specs, and lint messages need to cite the same thing.
+- **A rule enters only after it cost a real run,** and each rule says when to apply it, why, where to stop, and what enforces it.
 
 ## Versioning and records
 

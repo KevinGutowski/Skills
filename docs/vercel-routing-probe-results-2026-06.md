@@ -86,3 +86,40 @@ A fresh judge read a blind packet: the descriptions plus W1–W18 from `docs/web
 - **Frame-drop control:** V18 → `motion`, pass.
 - **W1–W9, W11–W17:** all pass. W18 came back as "none", which its notes accept.
 - **Drift in descriptions this change didn't touch:** V9 (as before) and V12 (`working-with-ai` first, `design-prototyping` second, against the expected `design-prototyping`). Recheck both at the next description pass.
+
+## 2026-11-14 design-systems hands-on triggers (V19–V22)
+
+Change: the `design-systems` description now covers the hands-on work folded from design.how (extract a system from shipped UI, audit token use, document a component, migrate screens) and adds a "reviewing one screen → interface-review" boundary. It dropped "multi-brand", "token taxonomies", "adoption planning", the "org AI rollout → working-with-ai" boundary, and the "icon font" trigger to stay under the 450-character cap; the body still covers all of them. No other description changed.
+
+Judge: fresh general-purpose subagent with no repo context. It read only a blind packet: the descriptions plus the V1–V22 prompts, with the Expected and Notes columns removed.
+
+| Probe | Expected | Judge first / second | Result |
+| --- | --- | --- | --- |
+| V19 | `design-systems` | `design-systems` | Pass; cited the "hardcoded colors" trigger. |
+| V20 | `design-systems` | `design-systems` | Pass; `working-with-ai` did not take over. |
+| V21 | `design-systems` | `design-systems` | Pass; neither `ux-writing` nor `devtools` took over. |
+| V22 | `interface-review` | `interface-review` | Pass (control). The judge called it ambiguous with `web-design` because "laggy on my phone" reads as one performance domain. |
+| V3, V14 | `design-systems` | `design-systems` (V14 second: `working-with-ai`) | Pass (no regression). |
+| V4 | `design-systems` + `creating-skills` | `design-systems` / `working-with-ai` | First skill passes; the second came back as `working-with-ai`. |
+
+Other probes: V5–V8, V10–V13 and V15–V18 matched their first skill, so V12's earlier drift did not recur. V1 came back as the accepted pair in reverse order, as before. **V9 still drifts** (`working-with-ai` + `ux-writing` against the expected `ux-writing` + `creating-skills`); none of those descriptions were edited here.
+
+### 2026-11-14 recheck after adding `make-font` (V23–V24)
+
+Change: new top-level skill `make-font` with a new description. No other description changed since the run above.
+
+Judge: a second fresh general-purpose subagent, blind packet with the descriptions plus V1–V24 and no expected answers.
+
+| Probe | Expected | Judge first / second | Result |
+| --- | --- | --- | --- |
+| V23 | `make-font` | `make-font` | Pass; neither `web-design` nor `logo-design` took over. |
+| V24 | `web-design` | `web-design` | Pass (control); the judge cited the "choosing or pairing existing fonts → web-design" boundary. |
+| V19–V22 | as above | unchanged | Pass. |
+
+All other probes matched the run above, including the standing V9 drift and V4's `working-with-ai` second skill.
+
+### 2026-11-17 recheck after merging main (November audit, PR #52)
+
+Main rewrote 13 descriptions and slimmed several bodies. The `design-systems` description from this branch applied cleanly on top; its body kept main's slimmed text and gained a compact hands-on router, staying under the 5k-token budget.
+
+A third fresh judge read a blind packet built from the merged descriptions (V1–V24, no expected answers). V19–V24 all pass, with `web-design` as an accepted second skill on V22. V3, V14 and every other first-skill match is unchanged; V9 still drifts as before, and V4's second skill is still `working-with-ai`.

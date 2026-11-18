@@ -67,6 +67,16 @@ How to research: foundry/designer statements (intent, inspiration, intended use)
 - **Be careful with free fonts** — a roman takes a designer 1–2+ years (Balto: six). Common free-font failure modes: **incomplete character sets** (missing lowercase or punctuation), **less technical or aesthetic cohesion** ("the typeface feels uneven"), **a chance of being highly derivative of another font**. "Good fonts cost money because they take a lot of work to become good fonts."
 - **Narrow the field**: keep a personal list of regulars; mine colophons of things you admire (A Book Apart: FF Yoga + Titling Gothic).
 
+### When the answer is "a font like these, but ours"
+
+A fourth route beside licensing, free fonts, and commissioning: **fit an open-licence base to measured proportions** (design.how `make-font`, 2026; single source). The `make-font` skill runs it end to end; the rules below are for deciding whether to take that route.
+
+- **Match numbers, never outlines.** References (files or screenshots, often commercial) supply font-wide measurements only: x-height and cap height, stem and stroke thickness, contrast, class-mean widths, spacing rhythm. No per-glyph advance, kerning pair, or point comes from a reference, and the reference's name appears nowhere in the output. Refuse "clone", "trace", or "rebuild exactly".
+- **The base decides most of the look.** Fitting moves widths, weight, and spacing; it cannot change terminals, serif shape, stress angle, or a one- versus two-storey letter. Choose the base on what fitting cannot fix, prefer a variable font, and get a yes before building.
+- **Stretch has a ceiling:** past about 3% horizontal scaling a glyph reads as stretched (curves heavier than stems). Report the gap or pick a base with a width axis.
+- **Screenshots measure less than files.** Trust vertical proportions and stems at a cap height of 60 px or more; treat strokes under 3 px and serif tips as low confidence; widths need purpose-set sample lines, not ordinary text. Subpixel (colored) anti-aliasing breaks the reading.
+- **OFL obligations for a modified font:** the licence and the original copyright notice travel with it; a Reserved Font Name may not be reused; give it a new family name with no word from the base's name; drop the base's trademark record; it may be bundled or embedded but not sold on its own.
+
 ## 7. Skeleton / flesh / skin + the pairing matrix (Rutter, 'Learn how to describe typefaces')
 
 Describe any typeface in three layers:

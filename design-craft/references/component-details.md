@@ -260,7 +260,7 @@ No results means the person did something, so the empty state is about their inp
 
 Show the empty state only when the request returned zero items. "No projects yet" flashing for half a second before projects load is, in Dukkon's words, the most common empty-state bug. Until the request settles, show the loading treatment from [polish-principles.md](polish-principles.md) §17 (preload first; a skeleton that matches the final layout if you must). A failed request gets its own message with a retry ("Couldn't load projects" / "Try again"), never the empty state, so the person knows which one happened. Error wording → `ux-writing` (error-messages).
 
-In code (ours): render from an explicit status (`loading | error | empty | ready`), not from `items.length === 0`, which is also true before the first response.
+In code (ours): render from an explicit status (`loading | error | empty | ready`), not from `items.length === 0`, which is also true before the first response. In a review, this failure is trap `select-async` in `interface-review` (behaviour-traps).
 
 ### On Apple platforms
 
