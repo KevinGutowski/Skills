@@ -59,7 +59,7 @@ Video:
 
 ## Gustavo Fior — *Craft*
 
-Design-engineering concept site (craft.gustavofior.com, Jul 2026; every page has a Markdown mirror at `/<slug>.md`; source `gustavo-fior/craft` `content/**/*.mdx`). Seven pages were live as of 2026-09-18; the ~30 others are "Soon" placeholders. All seven read and folded; quotes verified against the mirrors.
+Design-engineering concept site (craft.gustavofior.com, Jul 2026; every page has a Markdown mirror at `/<slug>.md`; source `gustavo-fior/craft` `content/**/*.mdx`). Seven pages were live as of 2026-09-18 and four more by 2026-11-18 (all dated 2026-10-14; repo read at commit `586e23b`); the 23 others are "Soon" placeholders, which the author says are AI drafts in the repo, so they were not mined. All eleven read and folded; quotes verified against the mirrors and the `.mdx`.
 
 - *Optical Alignment* — blur test for measuring an optical nudge, per-icon (not global) offsets, shape-weight compensation → [surfaces.md](surfaces.md) Optical Alignment, [polish-principles.md](polish-principles.md) §2; `font-optical-sizing` and the `text-indent` hanging-punctuation fallback → `web-design` (web-typography → opentype-and-micro).
 - *Tabular Numbers* — proportional in prose vs tabular in slots, don't reach for monospace, verify `tnum` with Wakamai Fondue → [typography.md](typography.md), polish-principles §9.
@@ -68,8 +68,12 @@ Design-engineering concept site (craft.gustavofior.com, Jul 2026; every page has
 - *Nested Border Radius* — inset = padding + border, reverse formula with `max(0, …)` clamp, when to tune by eye → [surfaces.md](surfaces.md) Concentric Border Radius.
 - *HTML Background* — paint the document canvas on `html`, theme-token sync, `theme-color`, overscroll caution → [surfaces.md](surfaces.md) Document Canvas Background, Common Mistakes.
 - *Hover Restraint* — instant hover for sweep-through highlights, frequency-and-intent not input device, tooltip first-delay then instant neighbors → [emil-kowalski.md](emil-kowalski.md) decision framework (corroboration); `web-design` (web-animation-design → PRACTICAL-TIPS, Hover States).
+- *Button Press* — `0.97`–`0.98` as a second source for the restrained press alternate, 100–150ms, larger surfaces shrink less, disabled controls do not press, iOS tap-highlight and `:active` notes → [animations.md](animations.md) Scale on Press, polish-principles §12.
+- *Interruptibility* — recording vs destination, never gate input on an animation, transition vs spring, retargeting when siblings join → [animations.md](animations.md) Interruptible Animations, polish-principles §4 + Common Mistakes.
+- *Font Smoothing* — the case for the root-application school, dark mode as the trigger, thin-weight risk, `subpixel-antialiased` opt-out, Firefox 128, macOS-only review → [typography.md](typography.md) Font Smoothing, polish-principles §8. The scoped default stands; recorded as a school, not blended.
+- *Scroll Fades* — mask over overlay, fade only the edge that can scroll, scroll-driven `@property` recipe and its traps → [surfaces.md](surfaces.md) Scroll Fades, polish-principles Common Mistakes; pointer in `web-design` (web-layout-design).
 
-Companion installable skill `skills/craft-design-engineering` mirrors the live pages verbatim; not imported. Ledger: `docs/mining-ledger.md` 2026-09-18.
+Companion installable skill `skills/craft-design-engineering` mirrors the live pages verbatim; not imported. Ledger: `docs/mining-ledger.md` 2026-09-18 and 2026-11-18.
 
 ## Jakub Krehel — *Interfaces* Cheat Sheet
 

@@ -147,7 +147,8 @@ Hidden content needs a visible, operable path:
 - provide visible previous/next controls for carousels and make them keyboard operable;
 - communicate carousel changes to assistive technology;
 - stop auto-rotation when users interact and provide pause/stop control;
-- use scroll snap only as motion/position assistance, never as the sole discoverability cue.
+- use scroll snap only as motion/position assistance, never as the sole discoverability cue;
+- treat an edge fade the same way: it hints that a scroller continues, and should show only on the side with more content (mask recipe in `design-craft` (surfaces → Scroll Fades)). Hiding the scrollbar behind a fade is acceptable only for a short row that still scrolls by keyboard and touch.
 
 A partially visible next item can hint that a horizontal list continues, but the external source's `16–32px` peek is a visual heuristic, not an accessibility guarantee. Pair visual continuation with controls, semantics, and keyboard behavior. WAI notes that carousel content is intrinsically hard to discover; first ask whether a simpler list or grid is better.
 

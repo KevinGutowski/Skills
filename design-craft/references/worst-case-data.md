@@ -96,7 +96,7 @@ Each of these is visible in a screenshot, and the listed cause is nearly always 
 | Trailing action pushed off-screen | Middle content took all the space | `min-width: 0` on the middle, `flex-shrink: 0` on the action |
 | Badge wraps to two lines | Badge allowed to shrink | `white-space: nowrap; flex-shrink: 0`, then decide what yields instead |
 | Avatar adrift beside a three-line name | `align-items: center` on rows of varying height | Top-align once text can wrap |
-| Last row cut off mid-glyph | Fixed-height container, no scroll affordance | Visible scrollbar or fade mask; confirm the `overflow` is intended |
+| Last row cut off mid-glyph | Fixed-height container, no scroll affordance | Visible scrollbar or fade mask ([surfaces.md](surfaces.md) → Scroll Fades); confirm the `overflow` is intended |
 | Heading breaks mid-word | `word-break: break-all` | `overflow-wrap: anywhere`, which breaks only when it must |
 | Wrong initials (`J`, `CI`, `�`) | `.split(' ')[0][0]`-style code | Grapheme clusters via `Intl.Segmenter`, first + last word, icon fallback |
 | Orphaned dash or blank line for a missing field | Placeholder rendered for an optional value | Omit the line, or reserve its height on purpose |
