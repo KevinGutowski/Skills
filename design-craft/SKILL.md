@@ -39,7 +39,7 @@ When the question shifts from *"is this good / how far do I push"* to *"what exa
 | --- | --- |
 | [polish-principles](references/polish-principles.md) | Execution overview: concentric radii, shadows-over-borders, optical alignment, spacing scales, press motion, tabular nums, font smoothing |
 | [typography](references/typography.md) | Text wrapping, font smoothing, tabular numbers |
-| [surfaces](references/surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, document canvas background, hit areas |
+| [surfaces](references/surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, document canvas background, scroll fades, hit areas |
 | [animations](references/animations.md) | Interruptible animations, enter/exit transitions, icon animations (incl. vanilla-CSS recipe), scale on press |
 | [performance](references/performance.md) | Transition specificity, `will-change`, perceived performance (spinner choice) |
 | [emil-kowalski](references/emil-kowalski.md) | Alternate craft theme (animations.dev): taste-training, component polish, animation decisions. Second hop in `references/emil-kowalski/`: css-techniques (component, transform, clip-path, and stagger code), interaction-and-performance (springs, gesture/drag, performance rules, debugging), taste-and-craft (practitioner habits, Config-talk notes) |

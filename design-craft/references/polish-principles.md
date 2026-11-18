@@ -26,7 +26,7 @@ These values are the *how* of the **Craft** principle. For the strategic layer �
 | Category | When to Use |
 | --- | --- |
 | [Typography](typography.md) | Text wrapping, font smoothing, tabular numbers |
-| [Surfaces](surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain overlays, document canvas background, hit areas |
+| [Surfaces](surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain overlays, document canvas background, scroll fades, hit areas |
 | [Animations](animations.md) | Interruptible animations, enter/exit transitions, icon animations, scale on press |
 | [Performance](performance.md) | Transition specificity, `will-change` usage, perceived performance (spinner choice) |
 | [Refactoring UI](refactoring-ui.md) | Visual refactor passes: hierarchy, spacing, type, color, depth, images, empty states; example gallery in `../examples/refactoring-ui-gallery.html` |
@@ -60,7 +60,7 @@ For richer elevation, use Briggs' (PixelJanitor) natural shadow stack: a 0-offse
 
 ### 4. Interruptible Animations
 
-Use CSS transitions for interactive state changes — they can be interrupted mid-animation. Reserve keyframes for staged sequences that run once.
+Use CSS transitions for interactive state changes — they can be interrupted mid-animation. Reserve keyframes for staged sequences that run once. "Describe where things should end up, not the trip to get there." (Gustavo Fior, *Craft*.) And never gate input on an animation: no `isAnimating` guards, no `pointer-events: none` while things move. Test by toggling twice quickly ([animations.md](animations.md) → Interruptible Animations).
 
 ### 5. Split and Stagger Enter Animations
 
@@ -84,7 +84,8 @@ For custom switches and pill indicators, consider a sequenced middle state: stre
 
 - Reach for `antialiased` only on *light text over a dark/saturated background* (where default subpixel rendering looks heavy/fuzzy), or large display type where the lighter weight is the intended look.
 - Leave normal dark-on-light body copy at the browser default (`auto` / `subpixel-antialiased`) — it's rendered to be read.
-- It only affects WebKit/Blink on macOS; don't rely on it cross-platform.
+- It only acts on macOS (WebKit, Blink, and Firefox 128+ via the WebKit property); don't rely on it cross-platform, and don't judge it from a Windows or Linux screenshot.
+- Thin weights are the risk: at 300 and below, antialiased text on dark can come out too light. Check on a 1x display first. Once smoothing is global, `subpixel-antialiased` is the per-region opt-out ([typography.md](typography.md) → Font Smoothing).
 
 ### 9. Tabular Numbers
 
@@ -103,6 +104,8 @@ Add a subtle `1px` outline with low opacity to images for consistent depth. The 
 A subtle `scale(0.96)` on click gives buttons tactile feedback. Always use `0.96`. Never use a value smaller than `0.95` on a button — anything below feels exaggerated. Add a `static` prop to disable it when motion would be distracting. The floor covers label-bearing targets (buttons, pills, cards, rows); only small icon-only targets may go deeper, per the tactile ladder (`.94` at 44px, `.92` at 22px — [tactile-design.md](tactile-design.md)).
 
 If another loaded theme specifies a lighter value such as `0.98`, treat it as a theme choice rather than a value to average. One product should not mix multiple press depths without a reason.
+
+Whatever the value: keep the press at 100–150ms, shrink larger surfaces less than buttons, and never let a disabled control press ([animations.md](animations.md) → Tuning and Platform Details).
 
 ### 13. Skip Animation on Page Load
 
@@ -185,6 +188,10 @@ Two-stop linear gradients leave a visible edge where they start and stop — esp
 | Element jitters 1–2px while animating (Safari iOS) | `will-change: transform` on that element |
 | White strip on overscroll of a dark page (Safari) | Paint the canvas: `html { background-color: var(--background) }`, same token as the app, per theme |
 | Grain overlay tanks scroll FPS on a hero | Live `feTurbulence` only on small surfaces; tile a 200px SVG data-URI for large or moving ones |
+| Sheet or menu jumps to fully open before closing when toggled twice quickly | It runs on keyframes; move the toggle to a transition (or spring) so it turns around from where it is |
+| Taps vanish while something is animating | Remove the `isAnimating` guard or temporary `pointer-events: none`; input stays live during motion |
+| Last row of a scroll list looks half hidden at the very end | Static two-sided fade; fade only the edge that can still scroll ([surfaces.md](surfaces.md) → Scroll Fades) |
+| Disabled button still squeezes on press | Scope the press: `:active:not(:disabled)` |
 | Grain looks different depending on where the card sits | Add `isolation: isolate` to the grain's container so `mix-blend-mode` only sees the surface |
 | Visible band/edge where a gradient ends | Use eased gradient stops; `in oklab` for muddy color midpoints |
 | Backdrop blur silently stops rendering (Chrome) | Wrap the page's `mix-blend-mode` element in a div with `backdrop-filter: opacity(1)` |
@@ -227,7 +234,9 @@ Rows should cite the specific file and the specific property that changed when i
 - [ ] Font smoothing scoped deliberately (light-on-dark / display type only — never unconditionally on the root; Principle 8)
 - [ ] Headings use text-wrap: balance
 - [ ] Images have subtle outlines
-- [ ] Buttons use scale on press where appropriate
+- [ ] Buttons use scale on press where appropriate; disabled ones do not press
+- [ ] Toggles survive a fast double trigger: they reverse from where they are and never drop input
+- [ ] Scroll fades use a mask and fade only the edge with more content
 - [ ] AnimatePresence uses `initial={false}` for default-state elements
 - [ ] No `transition: all` — only specific properties
 - [ ] `will-change` only on transform/opacity/filter, never `all`
@@ -259,7 +268,7 @@ Rows should cite the specific file and the specific property that changed when i
 ## Reference Files
 
 - [typography.md](typography.md) — Text wrapping, font smoothing, tabular numbers
-- [surfaces.md](surfaces.md) — Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines
+- [surfaces.md](surfaces.md) — Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, document canvas, scroll fades
 - [animations.md](animations.md) — Interruptible animations, enter/exit transitions, icon animations, scale on press
 - [performance.md](performance.md) — Transition specificity, `will-change` usage, perceived performance (spinner choice assigns blame)
 - [refactoring-ui.md](refactoring-ui.md) — Wathan/Schoger's visual refactor method, with a code-native bad/good gallery at [../examples/refactoring-ui-gallery.html](../examples/refactoring-ui-gallery.html)
