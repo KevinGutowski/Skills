@@ -124,3 +124,11 @@ Transcript access: YouTube `en` captions fetched with `yt-dlp --skip-download --
 ## Luke Wroblewski — copy volume in generated UI
 
 - X 2122727731389685951 (2026-11-17), quoting X 2122490348337565697. Folded as the Copy bullet under Distill in [refinement-moves.md](refinement-moves.md); the rule is owned by `frontend-design` (anti-slop-catalog).
+
+## Pratik / @maybepratikk — menu hover dead zones
+
+- X 2122963896042713492 (2026-11-18), text plus a 12.4s video. Folded as "Contiguous Rows: No Dead Zones" under Minimum Hit Area in [surfaces.md](surfaces.md), with pointers from [polish-principles.md](polish-principles.md) (#16, common mistakes, checklist), [linear-product-craft.md](linear-product-craft.md) (Interaction Details), and the tactile-design menu and choice-row lines.
+
+## Kevin Dukkon / @keviduk — component reads
+
+- *Sizing dropdown menus* (https://www.kevdu.co/reads/sizing-dropdown-menus, 2026-11-04; X 2117975138541146303) and *Timing tooltips* (https://www.kevdu.co/reads/tooltip-delay, 2026-11-06), read 2026-11-18. Both folded into the new [component-details.md](component-details.md). Two further reads were "Coming soon" on that date.

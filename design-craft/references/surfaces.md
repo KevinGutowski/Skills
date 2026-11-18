@@ -14,9 +14,9 @@
 - Noise / Grain Overlay
 - Document Canvas Background
 - Scroll Fades
-- Minimum Hit Area
+- Minimum Hit Area (incl. contiguous rows: no dead zones in menus and lists)
 
-Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, the document canvas, and scroll fades.
+Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, the document canvas, scroll fades, and hit areas.
 
 ## Concentric Border Radius
 
@@ -630,3 +630,49 @@ Interactive elements should have a minimum hit area of 44×44px (WCAG) or at lea
 ### Collision Rule
 
 If the extended hit area overlaps another interactive element, shrink the pseudo-element — but make it as large as possible without colliding. Two interactive elements should never have overlapping hit areas.
+
+### Contiguous Rows: No Dead Zones
+
+The collision rule has a twin (the rest of a menu's build, width and rows, is in [component-details.md](component-details.md)): in a stack the pointer sweeps through, hit areas must not *gap* either. This covers menus, listboxes, select options, sidebar nav, command-palette results, and table rows. When rows are separated by `margin` or by a flex/grid `gap`, the pixels in between belong to the container, not to any row. Nothing is hovered there, so the highlight drops out and comes back on every row boundary (the "hover flicker" in a menu), and a click that lands in the gap does nothing.
+
+The fix is to separate the hit box from the painted fill. Rows sit flush and own the full pitch; only the highlight is inset, so the visual gap survives.
+
+```css
+/* Bad: 4px between rows that no row owns */
+.menu-item { height: 32px; margin-block: 2px; border-radius: 6px; }
+.menu-item:hover { background: var(--hover); }
+```
+
+```css
+/* Good: rows touch; the fill is inset by half the visual gap */
+.menu-item {
+  position: relative;
+  isolation: isolate;      /* keeps the z-index: -1 fill inside the row */
+  box-sizing: border-box;
+  width: 100%;             /* a native <button> row otherwise shrinks to its label */
+  height: 36px;            /* 32px fill + the 4px that used to be margin */
+}
+.menu-item::before {
+  content: "";
+  position: absolute;
+  inset: 2px 0;            /* half the gap, top and bottom */
+  z-index: -1;
+  border-radius: 6px;
+}
+.menu-item:hover::before,
+.menu-item[data-highlighted]::before { background: var(--hover); }
+```
+
+```tsx
+<button className="relative isolate h-9 w-full px-2 before:absolute before:inset-x-0 before:inset-y-0.5 before:-z-10 before:rounded-md hover:before:bg-hover">
+  Copy link
+</button>
+```
+
+- **The same bug hides behind padding.** A padded `<li>` wrapping a smaller `<a>` or `<button>` has the same dead pixels. The element that carries `:hover`, the click handler, and the highlight state must be the one that fills the row.
+- **The fill is drawn, the row is the target.** Radius, hover, selected, and keyboard-highlight fills all go on the pseudo-element. A focus ring drawn as `outline` on the row would follow the taller hit box, so draw it on the pseudo-element (or use the highlight fill for arrow-key lists).
+- **Shorter alternative** when the fill needs no layering: `border-block: 2px solid transparent; background-clip: padding-box` on the row. The corner radius then applies to the border box, so the visible fill's corners come out slightly tighter.
+- **Check it** by moving the pointer slowly down the stack: some row is highlighted at every pixel, and the highlight never blinks off between rows. In DevTools, the hovered element between two rows should be a row, not the list.
+- **Where a gap is right:** separate controls that should not be hit by accident (toolbar buttons, cards in a grid, a destructive action set apart). Dead space between those is protection. The rule is for one list of sibling options that reads as a single surface. Group separators and section labels are also fine as inert space.
+
+Source: Pratik (@maybepratikk), X 2122963896042713492, a 12s demo toggling one menu between Margin ("4px dead zone", "Nothing hovered") and Inset ("No dead zone"). The padding, focus-ring, alternative, and exception notes are ours.

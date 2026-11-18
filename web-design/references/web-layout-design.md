@@ -112,6 +112,8 @@ Stress-test with:
 
 The external source's `30–40%` translation expansion is a useful test stimulus, not a safe sizing formula. Real expansion varies by source language, target language, string length, and context.
 
+**Floating lists size from content too.** A dropdown menu's width comes from its widest item (`max-content`), with a `min-width` floor for short labels and a `max-width` ceiling that truncates, never from a fixed width. Values, CSS, and the row rules: `design-craft` (component-details) → Dropdown menus.
+
 ## Safe areas and stable controls
 
 CSS environment variables let layouts account for user-agent-defined regions such as display cutouts and virtual keyboards.

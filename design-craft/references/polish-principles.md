@@ -28,6 +28,7 @@ These values are the *how* of the **Craft** principle. For the strategic layer �
 | [Typography](typography.md) | Text wrapping, font smoothing, tabular numbers |
 | [Surfaces](surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain overlays, document canvas background, scroll fades, hit areas |
 | [Animations](animations.md) | Interruptible animations, enter/exit transitions, icon animations, scale on press |
+| [Component details](component-details.md) | Dropdown menu width, rows and keys; tooltip timing |
 | [Performance](performance.md) | Transition specificity, `will-change` usage, perceived performance (spinner choice) |
 | [Refactoring UI](refactoring-ui.md) | Visual refactor passes: hierarchy, spacing, type, color, depth, images, empty states; example gallery in `../examples/refactoring-ui-gallery.html` |
 | [Emil Kowalski — Design Engineering](emil-kowalski.md) | Alternate craft theme (animations.dev): training taste, component polish, animation decisions, the invisible details that make software feel right; deeper cuts in `emil-kowalski/` (css-techniques, interaction-and-performance, taste-and-craft) |
@@ -123,7 +124,7 @@ Only for `transform`, `opacity`, `filter` — properties the GPU can composite. 
 
 ### 16. Minimum Hit Area
 
-Interactive elements need at least 40×40px hit area. Extend with a pseudo-element if the visible element is smaller. Never let hit areas of two elements overlap.
+Interactive elements need at least 40×40px hit area. Extend with a pseudo-element if the visible element is smaller. Never let hit areas of two elements overlap. In menus and lists, never let them gap either: rows sit flush and only the hover fill is inset, so no pixel between rows is dead (see [surfaces.md](surfaces.md) → Contiguous Rows).
 
 The inverse rule: **decorative layers get `pointer-events: none`** — glows, gradient washes, grain overlays, and blurred halos that sit above a control will otherwise swallow the click meant for it (Krehel, Interfaces Cheat Sheet). The grain recipe in [surfaces.md](surfaces.md) already does this; apply it to every purely visual layer.
 
@@ -182,6 +183,7 @@ Two-stop linear gradients leave a visible edge where they start and stop — esp
 | `transition: all` on elements | Specify exact properties |
 | First-frame animation stutter | Add `will-change: transform` (sparingly) |
 | Tiny hit areas on small controls | Extend with pseudo-element to 40×40px |
+| Menu or list hover flickers between rows (margin or `gap` leaves dead pixels) | Rows flush at full height; inset only the fill with `::before { inset: 2px 0 }` |
 | Clicks on a control land on its glow/gradient/grain layer instead | `pointer-events: none` on every purely decorative layer so events fall through to the control beneath |
 | Frequently opened menu animates in every time | Skip the enter animation; animate only the close (exit-only) |
 | Colors tween at different speeds when toggling dark mode | Disable all transitions for the duration of the theme switch |
@@ -241,6 +243,7 @@ Rows should cite the specific file and the specific property that changed when i
 - [ ] No `transition: all` — only specific properties
 - [ ] `will-change` only on transform/opacity/filter, never `all`
 - [ ] Interactive elements have at least 40×40px hit area
+- [ ] Menu and list rows have no dead pixels between them (the gap is drawn inside the row, not made with margin)
 - [ ] Gradients (scrims, fades, large color changes) use eased stops, not two-stop linear
 
 ## Rendering physics worth knowing

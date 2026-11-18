@@ -144,6 +144,7 @@ Rules:
 
 - Prefer the natural shortest pointer path over a path imposed by the menu geometry.
 - Account for submenu forgiveness with safe areas, hover delays, or other mechanisms that preserve intent.
+- Leave no dead pixels between menu rows: a margin between items makes the highlight blink off on every crossing. Mechanics in [surfaces.md](surfaces.md) → Contiguous Rows.
 - Use contextual menus as discoverability surfaces for keyboard shortcuts: the mouse path executes the action, while the shortcut hint teaches the faster path.
 - Judge interaction details by repetition. A one-second cost matters if a manager repeats it hundreds of times per day.
 
