@@ -37,6 +37,7 @@ The task shape: an AI produced UI and you have to make it *right* — which is a
 - **Probe the vision model like a printer calibration sheet** (Louis Healey, Atlassian, Dive Club podcast, CqMZTg7L-wE): "I want to calibrate your computer vision model… add the image in and then create bounding boxes" — make it name what it sees before trusting screenshot-driven prompts. Finding: "the more complex the screenshot, the less it picked up — and actually it truncated and missed a bunch of elements" (low side-nav items; small icon tiles whose color "it didn't pick up at all" → hallucination). The user-facing rule: "upload a smaller screenshot or a zoomed-in screenshot… and update it piecemeal."
 - **Reference-corpus overfit** (Jaytel Taste): if an auditor or repair prompt uses a taste skill, check whether the rules came from the current corpus or from a famous example skill. A neutral dashboard skill should not ban serif/editorial/fashion treatments for a poster corpus; a luxury corpus should not import beige-commerce defaults unless the source images actually show them. Ask: "Which visible evidence supports this rule?"
 - **Jelly-bean-factory under-specification** (Andy Madrick, Dive Club podcast, IfPK0LwbX_0): vague style prompts yield "a million gradients and like a million tags… a jelly bean factory" — trim down, or pre-constrain with your design system (remixing legacy components through it: "we had all the pieces here").
+- **Over-explained surfaces** (Luke Wroblewski, X 2122727731389685951, 2026-11-17): the output works and looks tidy, but every surface carries an intro paragraph, a helper line, a footer note, an icon in each button, and one action nobody asked for. His exhibit sets a generated share sheet (39 words of supporting copy, three actions) beside a designer's (11 words, two actions). Each sentence is true, so asking the model "is this copy good?" keeps all of it. Count instead: supporting lines and actions per surface. The repair is under "Name the tell, then pick the move".
 - The element-by-element diff checklist for mock-to-code output (type weights/sizes, exact colors, corner radii, spacing, completeness, gradient scale) lives in `design-prototyping`'s agents tier.
 
 ## Name the tell, then pick the move
@@ -45,6 +46,13 @@ Diagnosis has a second vocabulary beside layout primitives: **named generation t
 
 - **Name the tell.** Generated UI clusters on recognizable defaults: tracked kicker labels above every heading, side-stripe card borders, gradient text, purple or neon-on-dark palettes, reflex cream grounds, glow halos, icon tiles above headings, nested cards, identical card grids, bounce easing, fake "live" pulsing dots, buzzword copy, and aphoristic "Not X. Y." cadence. `frontend-design` (anti-slop-catalog) lists each tell with Impeccable's deterministic detector IDs (`npx impeccable detect`), so "it looks AI-made" becomes "`side-tab` ×6, `kicker-above-heading` ×4, `cream-palette`". The brief still wins: a tell the user pinned is not a defect.
 - **Pick the move, and name it.** "Make it pop" is not an instruction, but "bolder on the pricing cards, everything else stays" is. The verbs, each with its own playbook in `design-craft` (refinement-moves): *bolder* (amplify the system's own strongest moves, not more effects), *quieter* (restraint that is not generic gray-on-white), *distill*, *delight*, *polish* (classify drift, then triage), *harden*. Scope is sovereign: name the target and what must stay untouched.
+- **For over-explained output, subtract to zero and re-admit.** Wroblewski's own prompt was "remove the 75% of this UI that's agent slop." That works when the agent can tell which 75%. A scoped version is more reliable than "simplify" or "make it cleaner", which tend to restyle the same content:
+  1. "On [surface], remove all supporting copy: descriptions, helper text, captions, footnotes, tooltips, and icons inside labeled buttons. Keep the title and the actions I asked for. Remove actions I did not ask for and list them."
+  2. "If anything is now unclear, fix the title or label, not by adding a sentence."
+  3. "Add back at most one line per surface, only if it states a consequence, limit, expiry, or who can see it. Use the exact value."
+  4. "List every line and action you removed, so I can restore any I need."
+
+  Prevent it at generation with the same order in the brief: "no supporting copy in the first pass; I will ask for additions." The full rule (`copy-budget`), cut list, and exceptions live in `frontend-design` (anti-slop-catalog). Copy the user supplied is out of scope unless they name it.
 - **Know which outputs are refinement and which are redesign.** A refinement keeps identity, copy, and everything out of scope. If the concept itself is wrong, redesign through `frontend-design`; never polish a look you meant to discard.
 
 ## Escape the model's defaults
@@ -114,6 +122,7 @@ Three ways to bring outside taste or a diverged build into the loop above. None 
 - [ ] Value tweaks edited directly; prompts reserved for structure/behavior?
 - [ ] Review notes applied literally, matched to the existing recipe, in the smallest unit, to every instance, and reported with any rule conflicts?
 - [ ] Generation tells named by catalog ID and each fix chosen as a named move (bolder/quieter/distill/polish/harden) with an explicit scope?
+- [ ] Supporting lines and actions counted per surface, and over-explained surfaces stripped to zero before one line was re-admitted?
 - [ ] For a new direction, did something other than the generating model pick from its shortlist, and was the concept committed before the clarity pass?
 - [ ] Independent fresh-context judge run before calling it done?
 

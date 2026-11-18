@@ -542,3 +542,96 @@ Ticket-driven intake of the seven skills under `skills/` (MIT, `148b94c`). Full 
 - **Descriptions:** `design-systems` changed and `make-font` is new; blind routing probes V19–V24 pass.
 - **Not read:** the ten design-system scripts, `systems/` (four design systems) and `vault/` (visual effects). None of those vendored.
 - **Parked:** the design-system scripts, `systems/` and `vault/` as future candidates, the no-persona reviewer panel, and the single-source numbers.
+
+## 2026-11-17 — Luke Wroblewski, "why designers still have jobs." (X 2122727731389685951)
+
+Ticket-driven fold: instruct agents that less is more, starting with no supporting copy and then adding a little.
+
+- **Manifest:** the post (text plus one image, read) and the post it quotes, X 2122490348337565697, "remove the 75% of this UI that's agent slop." (read). Fetched through `api.vxtwitter.com` and `api.fxtwitter.com`; the image was downloaded from `pbs.twimg.com` and read directly. Replies (46 and 6) were not read: the public JSON endpoints do not return them. lukew.com was not searched for a longer write-up.
+- **Density:** HIGH for one lesson, thin as evidence. The image compares one Share Workspace sheet: generated (39 supporting words in three blocks, three actions, a button icon, a stale "Copied" label) against a designer's (11 words in one caption, two actions). Counts are ours.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Owner:** `frontend-design` (anti-slop-catalog), new section "Copy budget" with rule `copy-budget`: zero supporting copy first, labels before sentences, one admitted line per small surface, the cover test, a cut list, and exceptions (copy-as-content surfaces, high-stakes moments, empty states, accessible names, user-supplied copy). Three rows added to the type and copy tells. `frontend-design/SKILL.md` gained build-contract step 4 and a verification bullet; surface-modes gained an Operate copy bullet.
+- **Extended:** `working-with-ai` (ai-ui-direction: the over-explained-surfaces failure mode, the subtract-then-re-admit prompt, a checklist line), `design-craft` (refinement-moves: Distill copy bullet), `ux-writing` (ui-voice-and-tone: "ask whether the line should exist" ahead of the Simplify edits, a checklist line), plus each skill's sources file.
+- **Synthesis flagged as ours:** the staged procedure, the one-line budget, the exceptions, and the reason models over-explain. Wroblewski supplied the exhibit and the 75% prompt only.
+- **Parked:** single source. Recorded in `frontend-design/references/coverage-gaps.md` with what would promote it: a with/without comparison on the same briefs, a second source, and a container word-count detector. No eval case was added.
+
+## 2026-11-18 — Interfere: Landmines lint rules and agent plugin (X 2122782710414336458)
+
+Ticket-driven fold: fold in Interfere's skills as needed. Full manifest and fold map: `docs/interfere-source-mining-2026-11.md`.
+
+- **Manifest:** Luke Shiels's announcement post (text read; attached video and replies not read), `interfere-inc/landmines` at `92084b1` (README, config, rule messages, allowlist logic), `interfere-inc/plugins` at `f3c066f` (both skills and READMEs), `interfere-inc/docs` AGENTS.md. Other org repos were scanned by filename and skipped.
+- **Density:** HIGH for Landmines, MEDIUM for the plugin, LOW for the docs AGENTS.md.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Extended:** `working-with-ai` (agentic-coding: new "Lint the evasions" section, constraint-stack item 4, the merge-without-human-read rule, a checklist line; router bullet; sources; coverage gaps) and `devtools` (devtool-interface-design: vendor agent plugin worked example in the AX file, AX summary bullet, a checklist line; sources; coverage gaps).
+- **Skipped:** vendoring the two Interfere skills (bound to their MCP server), the house-style lint rules, any fold into `rails` testing references (Vitest-specific), `superconductor` (rule already present).
+- **Parked:** both folds are single-vendor. Promotion conditions are in each skill's coverage-gaps file. `dmmulroy/anti-slop`, linked from the Landmines README, was not read.
+- **Second pass (same day):** read `dmmulroy/anti-slop` at `13909c9` and the rejected/allowed case lists in Landmines' `no-test-doubles.test.ts`. Added a type-silencing row, three design moves (chase aliases, define the allowed side, own the rules), and the comment-policy disagreement to the agentic-coding section. The section's core now has two independent sources.
+- **Third pass (same day, user asked for more from Interfere):** read the CLI, MCP, and AI Agents docs pages and the CLI's `skill_emitter.rs`. Extended the devtools AX worked example (read-only endpoint, machine CLI surface, spec-generated skills, limits with remedies) and constraint-stack item 6 in agentic-coding (vocabulary mapping in AGENTS.md).
+
+## 2026-11-18 — Pratik (@maybepratikk), menu hover dead zones (X 2122963896042713492)
+
+Ticket-driven question: where should small UI implementation details like this live?
+
+- **Manifest:** the post text (read, via `api.fxtwitter.com` and `cdn.syndication.twimg.com`) and its 12.4s video (the 1440×1080 MP4 from `video.twimg.com`, sampled with ffmpeg at 2 fps into a contact sheet plus two full-size crops, read). The video toggles one context menu between "Margin" (hatched bands labelled "4px dead zone", "Nothing hovered") and "Inset" ("No dead zone", "Copy link hovered"). Replies (4) were not read: the public JSON endpoints do not return them.
+- **Density:** HIGH for one lesson. Single source, but the claim is DOM hit-testing behaviour that anyone can reproduce, so it was folded as a rule and not parked.
+- **Placement answer:** a detail like this goes in the reference that owns its *mechanism*, as a subsection beside its nearest existing rule, with one-line pointers from the places an agent would be reading when the symptom or the component comes up. Here the mechanism is hit-area geometry, so the owner is `design-craft` (surfaces) → Minimum Hit Area, next to the collision rule it mirrors (never overlap, never gap). It is not a new skill, a new reference, or a SKILL.md body line.
+- **Owner:** `design-craft` (surfaces), new subsection "Contiguous Rows: No Dead Zones" with bad/good CSS, a Tailwind line, the padded-wrapper variant, focus-ring placement, a `background-clip` alternative, a check, and where a gap is correct.
+- **Pointers:** `design-craft` polish-principles (#16, common-mistakes row, checklist line), linear-product-craft (Interaction Details), tactile-design/controls (menu items and choice rows say "2px apart"; reconciled as a gap between fills, not hit boxes), and `web-design` (web-animation-design PRACTICAL-TIPS → Fix Hover Flicker, which covers a different cause).
+- **Synthesis flagged as ours:** the padding variant, the focus-ring note, the `background-clip` alternative, the DevTools check, and the exceptions. The source supplied the diagnosis and `::before { inset: 2px 0 }`.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+
+### Follow-up the same day — Kevin Dukkon (@keviduk), kevdu.co/reads
+
+A second snippet on the same ticket (X 2117975138541146303), then the author's site at the user's request.
+
+- **Manifest:**
+  - X post: text (read, via `api.fxtwitter.com`), 15.2s video (1440×1080 MP4, sampled with ffmpeg at 1.6 fps into a contact sheet, read), one still (read). Replies (8) not read.
+  - https://www.kevdu.co/reads/sizing-dropdown-menus (4 Nov 2026): fetched with curl, text extracted from the HTML, read in full. Interactive demos were not run; their captions were read.
+  - https://www.kevdu.co/reads/tooltip-delay (6 Nov 2026): same method, read in full.
+  - https://www.kevdu.co/reads index: read. *Spacing navigation* and *Designing interface icons* are "Coming soon".
+  - The articles' cited sources (APG, WCAG, NN/g, HIG, Fluent 2, Material, Primer, shadcn/ui, Radix, Base UI, MUI, React Aria, Microsoft Learn) were not re-read; the two comparison tables are recorded as Dukkon's readings.
+- **Density:** HIGH for both articles: each gives one measured default, its bounds, the reason, a comparison across design systems, and code.
+- **Owner:** new reference `design-craft` (component-details), organized by component: Dropdown menus (width, rows, keyboard, system table) and Tooltips (timing, when not to wait, closing, content, system table). The dropdown-width rule was first folded into `web-design` (web-layout-design) from the post alone; once the article supplied rows, keys and a second component, it moved here and web-layout-design keeps a one-paragraph pointer.
+- **Placement rule, refined:** a rule about one mechanism that applies to many components stays with the mechanism (the dead-zone rule stays in surfaces → Minimum Hit Area). A complete, measured answer for one component goes in component-details, which points to the mechanism rules it depends on.
+- **Registered in:** `design-craft/SKILL.md` reference table and the polish-principles quick-reference table. Pointers from surfaces (Contiguous Rows), worst-case-data (failure table), tactile-design controls and tokens-and-surfaces, emil-kowalski/css-techniques (Tooltips), and `web-design` (web-layout-design; web-animation-design PRACTICAL-TIPS).
+- **Conflicts, kept as scoped schools:** first-tooltip delay is 400ms here, 400–700ms in Emil Kowalski's notes (compatible), and zero for icon-only names in the tactile theme (theme wins inside that theme). Menu row height is 32px here and 36px in the tactile theme.
+- **Synthesis flagged as ours:** `min-width: 0` on the label, trailing columns, the trigger-width floor for selects, the viewport cap.
+- **New skills:** none. The `design-craft` description was not changed, so no routing probes were run.
+- **Recheck:** kevdu.co/reads for the two unpublished reads.
+
+## 2026-11-18 — Gustavo Fior, *Craft* (craft.gustavofior.com) — delta sweep, four new pages
+
+Ticket-driven: "maybe useful to add to our existing craft skill?" The site was already folded on 2026-09-18 (entry above), so this pass covers only what changed.
+
+- **Manifest:** site index `/` (read; 11 concept links live, 23 marked "Soon"), `/goats` and `/resources` (re-read, link lists only), repo `gustavo-fior/craft` cloned at `586e23b` (2026-10-14): `content/**/*.mdx` for the 11 live concepts read in full, the companion `skills/craft-design-engineering/SKILL.md` read, its four generated references not read separately because the build script generates them from the same `.mdx`. The 23 unreleased `.mdx` files were not mined: the index says "the articles in the repo that are not out yet are AI placeholders." The repo's own `AGENTS.md` / `CLAUDE.md` were not followed. Outbound links were not re-fetched, except shadcn/ui's scroll-fade page, which is client-rendered and yielded no text.
+- **Delta:** four pages published 2026-10-14: Button Press, Interruptibility, Font Smoothing, Scroll Fades. The seven earlier pages were spot-checked: six quotes the library already carries still verify against the current `.mdx`. All 24 new quotes verified with `verify_quotes.py`.
+- **Density:** MEDIUM. Interruptibility and Button Press mostly restate Krehel and Kowalski rules the library holds, with better mental models and a few failure cases. Scroll Fades is new to the library. Font Smoothing argues the opposite default from ours.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Fold map (extend only):**
+  - **Button Press** → `design-craft` animations, Scale on Press: second source for the `0.97`–`0.98` restrained alternate (house `0.96` unchanged), new Tuning and Platform Details subsection (invisible-feedback test, 100–150ms, larger surfaces shrink less, disabled does not press, iOS tap highlight and `:active` listener, reduced motion); the existing CSS and Tailwind examples now guard `:disabled`; polish-principles §12, one Common Mistakes row, checklist.
+  - **Interruptibility** → `design-craft` animations, Interruptible Animations: four subsections (A Recording vs. a Destination, Never Gate Input on an Animation, Transition or Spring, When Siblings Join); polish-principles §4, two Common Mistakes rows, checklist. Agrees with `web-design` gestures' release-behaviour table; cross-referenced, not duplicated.
+  - **Font Smoothing** → `design-craft` typography: attached to the existing root-application school note (dark mode as trigger, thin-weight risk at 300 and below, `subpixel-antialiased` opt-out, Firefox 128), plus a Platform scope and review subsection (macOS only; a Windows or Linux screenshot proves nothing); polish-principles §8.
+  - **Scroll Fades** → `design-craft` surfaces: NEW section (mask not overlay, fade only the scrollable edge, compact `@property` + scroll-timeline recipe with its traps, horizontal rows; the source's always-on `@supports not` fallback was deliberately not imported after QA showed it fading non-overflowing lists, so unsupported browsers get no fade); `design-craft/SKILL.md` and polish-principles routing rows; worst-case-data fix-table link; one bullet in `web-design` (web-layout-design → Discoverable overflow).
+- **Conflicts, kept as scoped schools:** (1) Fior applies `antialiased` on `body`; the library's default stays scoped to light-on-dark and display type. (2) Fior hides the scrollbar on horizontal chip rows; `web-design` requires overflow to stay operable, so the fold limits that to short rows that still scroll by keyboard and touch.
+- **Source defects noted, not imported:** in `interruptibility.mdx` and `font-smoothing.mdx` some CSS comments are mangled to `/_ … _/`; the scroll-fades page says a visible scrollbar can be saved by masking an inner wrapper, which would move the fade with the content.
+- **Verification:** the scroll-fade and press CSS were run in Chromium and Firefox during QA. Still unverified: the inner-wrapper scrollbar variant, the single-source iOS `:active` listener claim, and font smoothing on a Mac. These are in `design-craft/references/coverage-gaps.md`.
+- **Parked:** the 23 "Soon" concepts (OKLCH, shadows-not-borders, hit areas, clip-path, squircles, easings, stagger, exits, sound, charts and the five craft essays). Re-check the index; fold each when its page goes live.
+
+## 2026-11-18 — Dmytro, "4 css rules that make safari 35x faster" (X 2122725141285364024)
+
+Ticket-driven fold: keep the Base UI Scroll Area Safari workaround in the skills until it is fixed upstream.
+
+- **Manifest:** the X article 2122725135098814464 (text and six images read through `api.fxtwitter.com` and `pbs.twimg.com`; the embedded video was not watched), the linked agent prompt gist `pqoqubbw/a5d168f571d0283269f2987a7de3728f` (read), Base UI `ScrollAreaViewport.tsx` on `master` (read, confirms the `platform.engine.webkit` skip), the Base UI Scroll Area docs page (read). WebKit bug 325900: title and status read (NEW, "Explicit `inherit` of a non-inherited registered custom property resolves to a stale or sibling value"); comments not read. The four replies were not read.
+- **Density:** HIGH for one narrow workaround.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Owner:** `web-design` (web-performance), new section "Custom properties written per frame" holding the general rule and the dated Base UI workaround, plus a checklist line and a Contents block. The older Vaul line in Planning rules now points to it.
+- **Extended:** `web-design` (web-animation-design/animation-performance: one symptom row; sources; coverage gaps) and `frontend-design` (ui-library-picks: a Base UI trap pointer; sources).
+- **Synthesis flagged as ours:** the general per-frame rule (already supported locally by the Vaul bug and Motion's tier list) and the note that the registered property kills the docs' SSR `var()` fallback before hydration. The second follows from the gist's step 5 and the docs, and was not tested.
+- **Not done:** no Safari test here. The 106 ms and 3 ms figures are the author's.
+- **Removal:** conditions are in `web-design/references/coverage-gaps.md`. `motion/performance-audit` already teaches `inherits: false` and was left alone (vendored).
+- **Second pass (same day, user asked what else Base UI teaches):** read the Base UI docs at 1.9.0 through `llms.txt`: quick start, accessibility, community, six handbook pages, 37 component and 4 utility pages (prose and usage guidelines; demo code and API tables scanned by keyword), and release notes 1.0.0 to 1.9.0 for breaking changes. shadcn's changelog was checked for the Base UI default.
+  - **Folded:** `frontend-design` (ui-library-picks: the Scroll Area note became four "Base UI traps" tables covering setup, part choice, composition, and open/close animation; shadcn note corrected; `llms.txt` in Look it up; sources; coverage gaps), `motion` (best-practices/base-ui: one dated library note, vendored text untouched), `web-design` (web-accessibility §4: hover-revealed popups and loading-button focus, plus a checklist line; mobile-web-native-feel: iOS 26 backdrop row; sources; coverage gaps).
+  - **Conflict recorded:** the vendored Motion kit says any of `opacity`, `transform`, `filter`, `clipPath` keeps a Base UI popup mounted; Base UI's handbook says Motion animations are detected when they include `opacity`. The note follows Base UI.
+  - **Skipped (docs cover it, link out):** styling hooks, TypeScript namespaces, the forms API, per-component props, CSS variables and data attributes. Release notes held three breaking changes after 1.0 (Drawer and OTP Field leaving preview, `sanitizeValue` renamed `normalizeValue`); none earned a row.
+  - **Not done:** nothing was run in a project or on a device. The iOS 26 backdrop fix is Base UI's guidance only.
+- **Review corrections (same day):** retirement is now tied to the installed Base UI version registering the properties in WebKit, not to the WebKit bug closing; the `var()` fallback claim is limited to registrations with an initial value; the hydration row notes that Base UI's published mask is `none` before hydration either way; the tooltip `aria-label` rule is scoped to triggers without an accessible name (WCAG 2.5.3); the CSP row says `disableStyleElements` needs the scrollbar-hiding rules supplied externally; shadcn's Base UI default is dated July 2026. A review fixture in Playwright WebKit reproduced the workaround's behavior on Base UI 1.9.0; Safari frame timing and the iOS 26 backdrop remain unverified.

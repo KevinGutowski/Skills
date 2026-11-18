@@ -96,6 +96,8 @@ This is not documentation theater. It is a cheap coherence test. If the brain du
 
 ## Simplify — four small edits with big impact (2025)
 
+**First, ask whether the line should exist.** The four edits below shorten copy that has already earned its place. Before running them, start the surface with no supporting copy and admit one line at a time, only for what the title and controls cannot show (a consequence, limit, expiry, or who can see it). This matters most when an AI agent drafted the screen, because it will have explained every control. The rule (`copy-budget`), its cut list, and its exceptions live in `frontend-design` (anti-slop-catalog); source: Luke Wroblewski's 2026-11 share-sheet exhibit, 39 supporting words cut to 11.
+
 "UX writing is all about economy of language." Fast passes over existing copy:
 1. **Remove fillers** — adverbs like *easily/quickly/simply* (test: does each word add value?), interjections (*oops/hooray*), empty pleasantries (*we're sorry* in an alert "sounds insincere"), decorative punctuation. Keep a modifier only when it clarifies behavior ("feed your pets **automatically**").
 2. **Avoid repetition** — don't restate the headline in the body; combine. ("Uh oh. We're running late…" collapsed to **"Delivery delayed 10 minutes. Check the app for your driver's location."**)
@@ -139,6 +141,7 @@ From Andy Welfle's "Writing is designing" (Config 2025):
 - [ ] For unclear flows, did you write the problem, assumptions, key feelings, and scenario before polishing screens?
 - [ ] Tone dialed to the moment — and **no dial fully off**?
 - [ ] Each screen has one clear purpose; everything else cut or moved?
+- [ ] Supporting copy started at zero, with each surviving line stating something the controls cannot show?
 - [ ] Buttons specific and understandable on their own (no Yes/No, no Confirm/Cancel)?
 - [ ] Alerts reserved for a real choice; destructive action clearly marked?
 - [ ] Empty states educate or guide (not just decorate)?

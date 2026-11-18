@@ -59,7 +59,7 @@ Video:
 
 ## Gustavo Fior — *Craft*
 
-Design-engineering concept site (craft.gustavofior.com, Jul 2026; every page has a Markdown mirror at `/<slug>.md`; source `gustavo-fior/craft` `content/**/*.mdx`). Seven pages were live as of 2026-09-18; the ~30 others are "Soon" placeholders. All seven read and folded; quotes verified against the mirrors.
+Design-engineering concept site (craft.gustavofior.com, Jul 2026; every page has a Markdown mirror at `/<slug>.md`; source `gustavo-fior/craft` `content/**/*.mdx`). Seven pages were live as of 2026-09-18 and four more by 2026-11-18 (all dated 2026-10-14; repo read at commit `586e23b`); the 23 others are "Soon" placeholders, which the author says are AI drafts in the repo, so they were not mined. All eleven read and folded; quotes verified against the mirrors and the `.mdx`.
 
 - *Optical Alignment* — blur test for measuring an optical nudge, per-icon (not global) offsets, shape-weight compensation → [surfaces.md](surfaces.md) Optical Alignment, [polish-principles.md](polish-principles.md) §2; `font-optical-sizing` and the `text-indent` hanging-punctuation fallback → `web-design` (web-typography → opentype-and-micro).
 - *Tabular Numbers* — proportional in prose vs tabular in slots, don't reach for monospace, verify `tnum` with Wakamai Fondue → [typography.md](typography.md), polish-principles §9.
@@ -68,8 +68,12 @@ Design-engineering concept site (craft.gustavofior.com, Jul 2026; every page has
 - *Nested Border Radius* — inset = padding + border, reverse formula with `max(0, …)` clamp, when to tune by eye → [surfaces.md](surfaces.md) Concentric Border Radius.
 - *HTML Background* — paint the document canvas on `html`, theme-token sync, `theme-color`, overscroll caution → [surfaces.md](surfaces.md) Document Canvas Background, Common Mistakes.
 - *Hover Restraint* — instant hover for sweep-through highlights, frequency-and-intent not input device, tooltip first-delay then instant neighbors → [emil-kowalski.md](emil-kowalski.md) decision framework (corroboration); `web-design` (web-animation-design → PRACTICAL-TIPS, Hover States).
+- *Button Press* — `0.97`–`0.98` as a second source for the restrained press alternate, 100–150ms, larger surfaces shrink less, disabled controls do not press, iOS tap-highlight and `:active` notes → [animations.md](animations.md) Scale on Press, polish-principles §12.
+- *Interruptibility* — recording vs destination, never gate input on an animation, transition vs spring, retargeting when siblings join → [animations.md](animations.md) Interruptible Animations, polish-principles §4 + Common Mistakes.
+- *Font Smoothing* — the case for the root-application school, dark mode as the trigger, thin-weight risk, `subpixel-antialiased` opt-out, Firefox 128, macOS-only review → [typography.md](typography.md) Font Smoothing, polish-principles §8. The scoped default stands; recorded as a school, not blended.
+- *Scroll Fades* — mask over overlay, fade only the edge that can scroll, scroll-driven `@property` recipe and its traps → [surfaces.md](surfaces.md) Scroll Fades, polish-principles Common Mistakes; pointer in `web-design` (web-layout-design).
 
-Companion installable skill `skills/craft-design-engineering` mirrors the live pages verbatim; not imported. Ledger: `docs/mining-ledger.md` 2026-09-18.
+Companion installable skill `skills/craft-design-engineering` mirrors the live pages verbatim; not imported. Ledger: `docs/mining-ledger.md` 2026-09-18 and 2026-11-18.
 
 ## Jakub Krehel — *Interfaces* Cheat Sheet
 
@@ -116,3 +120,15 @@ Transcript access: YouTube `en` captions fetched with `yt-dlp --skip-download --
 ## Emil Kowalski — open skills (aiforui.dev)
 
 - https://aiforui.dev/skills · https://github.com/emilkowalski/skills (MIT), read at rev `715c1807e08c497cfd1dc4feb450a2a3300ef2a9` (2026-11-10). `break-ui` and its catalog were paraphrased into [worst-case-data.md](worst-case-data.md) with a pointer from the harden move in [refinement-moves.md](refinement-moves.md); `emil-design-eng` deltas (Motion 14.2 shorthand acceleration, `will-change` rule, delight and function checks, stagger scoping) were merged into [emil-kowalski.md](emil-kowalski.md); the materials section of `apple-design` was folded into [surfaces.md](surfaces.md). Full screening ledger: `docs/emilkowalski-skills-source-mining-2026-11.md`.
+
+## Luke Wroblewski — copy volume in generated UI
+
+- X 2122727731389685951 (2026-11-17), quoting X 2122490348337565697. Folded as the Copy bullet under Distill in [refinement-moves.md](refinement-moves.md); the rule is owned by `frontend-design` (anti-slop-catalog).
+
+## Pratik / @maybepratikk — menu hover dead zones
+
+- X 2122963896042713492 (2026-11-18), text plus a 12.4s video. Folded as "Contiguous Rows: No Dead Zones" under Minimum Hit Area in [surfaces.md](surfaces.md), with pointers from [polish-principles.md](polish-principles.md) (#16, common mistakes, checklist), [linear-product-craft.md](linear-product-craft.md) (Interaction Details), and the tactile-design menu and choice-row lines.
+
+## Kevin Dukkon / @keviduk — component reads
+
+- *Sizing dropdown menus* (https://www.kevdu.co/reads/sizing-dropdown-menus, 2026-11-04; X 2117975138541146303) and *Timing tooltips* (https://www.kevdu.co/reads/tooltip-delay, 2026-11-06), read 2026-11-18. Both folded into the new [component-details.md](component-details.md). Two further reads were "Coming soon" on that date.

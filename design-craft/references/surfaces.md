@@ -13,9 +13,10 @@
 - Image Outlines
 - Noise / Grain Overlay
 - Document Canvas Background
-- Minimum Hit Area
+- Scroll Fades
+- Minimum Hit Area (incl. contiguous rows: no dead zones in menus and lists)
 
-Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, and the document canvas.
+Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, the document canvas, scroll fades, and hit areas.
 
 ## Concentric Border Radius
 
@@ -546,6 +547,53 @@ html { background-color: var(--background); }   /* same token the app surface us
 - Keep `<meta name="theme-color">` in sync so browser chrome matches (per-theme `media` variants; standalone/installed-web-app specifics in `web-design` (apple-installed-web-apps)).
 - `overscroll-behavior: none` removes the bounce and scroll chaining, but use it sparingly — "The bounce is a familiar part of the platform." Fixing the canvas color is the fix; killing the bounce is a separate decision.
 
+## Scroll Fades
+
+"A scroll container with a hard edge looks like a list that ends." A scroll fade dissolves the rows at an edge into the background so the reader sees there is more (Fior, *Craft*, craft.gustavofior.com/scroll-fades; the page follows shadcn/ui's scroll-fade utility).
+
+**Use a mask, not an overlay.** `mask-image` with a linear gradient sets how visible each part of the element is. "Because it is a mask and not an overlay, it works over any background, including images and gradients, and it never blocks clicks." A gradient pseudo-element painted in the page color breaks over anything that is not that flat color, and needs `pointer-events: none`.
+
+**Only fade the side that can still scroll.** A static mask on both ends fades the first row at the top and the last row at the bottom. "At the bottom this is actively misleading. The final item looks half hidden, as if something is still below it." Drive the two fade sizes from the scroll position instead: two registered custom properties, moved by a scroll-driven animation.
+
+```css
+/* Registered so the lengths can animate. */
+@property --fade-start { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@property --fade-end   { syntax: "<length>"; inherits: false; initial-value: 0px; }
+
+@keyframes fade-start { from { --fade-start: 0px; }    to { --fade-start: 2.5rem; } }
+@keyframes fade-end   { from { --fade-end: 2.5rem; }   to { --fade-end: 0px; } }
+
+.scroll-fade-y {
+  --fade-direction: to bottom; /* `to right` for a horizontal row */
+  mask-image: linear-gradient(
+    var(--fade-direction),
+    transparent,
+    black var(--fade-start),
+    black calc(100% - var(--fade-end)),
+    transparent
+  );
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-fade-y {
+    animation: fade-start 1ms linear both, fade-end 1ms linear both;
+    animation-range: 0 3rem, calc(100% - 3rem) 100%;
+    animation-timeline: scroll(self y); /* `scroll(self x)` for a row */
+  }
+}
+```
+
+The start fade grows from `0` over the first `3rem` of scrolling; the end fade shrinks to `0` over the last `3rem`. Traps:
+
+- **Declare `animation-timeline` after the `animation` shorthand.** The shorthand resets the timeline, so the order above is load-bearing.
+- **Without `@property` the fade snaps.** An unregistered custom property cannot interpolate.
+- **Fall back to no fade, not a static one.** Without scroll timelines both properties stay at `0px` and the list keeps a plain hard edge and its scrollbar. The source instead adds an `@supports not (animation-timeline: scroll())` branch that sets both fades to `2.5rem` permanently. That reintroduces the misleading fade above, dims the first and last rows at rest, and fades lists that do not overflow at all, so it is left out here. If the hint must exist everywhere, set the two properties from a small scroll listener instead.
+- **The mask covers the scrollbar too.** A visible scrollbar fades out at both ends. Hide it, or keep it and accept that. The source also suggests moving the mask to an inner wrapper; that variant was not tested here.
+
+**Horizontal rows.** A chip or tab row that overflows fades at the edge that can still scroll, which also hints at the gesture. Fior hides the scrollbar there and names the cost: "we lose the indication of how much is left to scroll". That is a taste call scoped to short decorative rows. A fade is a hint, never the only way to reach content: the row must still scroll by keyboard and touch, and anything longer than a few chips needs the controls and semantics in `web-design` (web-layout-design → Discoverable overflow). Vertical lists keep their scrollbar.
+
+Related: where content passes under floating chrome, the scroll-edge fade in Translucent Materials above is the same idea applied to a toolbar edge.
+
 ## Minimum Hit Area
 
 Interactive elements should have a minimum hit area of 44×44px (WCAG) or at least 40×40px. If the visible element is smaller (e.g., a 20×20 checkbox), extend the hit area with a pseudo-element.
@@ -582,3 +630,49 @@ Interactive elements should have a minimum hit area of 44×44px (WCAG) or at lea
 ### Collision Rule
 
 If the extended hit area overlaps another interactive element, shrink the pseudo-element — but make it as large as possible without colliding. Two interactive elements should never have overlapping hit areas.
+
+### Contiguous Rows: No Dead Zones
+
+The collision rule has a twin (the rest of a menu's build, width and rows, is in [component-details.md](component-details.md)): in a stack the pointer sweeps through, hit areas must not *gap* either. This covers menus, listboxes, select options, sidebar nav, command-palette results, and table rows. When rows are separated by `margin` or by a flex/grid `gap`, the pixels in between belong to the container, not to any row. Nothing is hovered there, so the highlight drops out and comes back on every row boundary (the "hover flicker" in a menu), and a click that lands in the gap does nothing.
+
+The fix is to separate the hit box from the painted fill. Rows sit flush and own the full pitch; only the highlight is inset, so the visual gap survives.
+
+```css
+/* Bad: 4px between rows that no row owns */
+.menu-item { height: 32px; margin-block: 2px; border-radius: 6px; }
+.menu-item:hover { background: var(--hover); }
+```
+
+```css
+/* Good: rows touch; the fill is inset by half the visual gap */
+.menu-item {
+  position: relative;
+  isolation: isolate;      /* keeps the z-index: -1 fill inside the row */
+  box-sizing: border-box;
+  width: 100%;             /* a native <button> row otherwise shrinks to its label */
+  height: 36px;            /* 32px fill + the 4px that used to be margin */
+}
+.menu-item::before {
+  content: "";
+  position: absolute;
+  inset: 2px 0;            /* half the gap, top and bottom */
+  z-index: -1;
+  border-radius: 6px;
+}
+.menu-item:hover::before,
+.menu-item[data-highlighted]::before { background: var(--hover); }
+```
+
+```tsx
+<button className="relative isolate h-9 w-full px-2 before:absolute before:inset-x-0 before:inset-y-0.5 before:-z-10 before:rounded-md hover:before:bg-hover">
+  Copy link
+</button>
+```
+
+- **The same bug hides behind padding.** A padded `<li>` wrapping a smaller `<a>` or `<button>` has the same dead pixels. The element that carries `:hover`, the click handler, and the highlight state must be the one that fills the row.
+- **The fill is drawn, the row is the target.** Radius, hover, selected, and keyboard-highlight fills all go on the pseudo-element. A focus ring drawn as `outline` on the row would follow the taller hit box, so draw it on the pseudo-element (or use the highlight fill for arrow-key lists).
+- **Shorter alternative** when the fill needs no layering: `border-block: 2px solid transparent; background-clip: padding-box` on the row. The corner radius then applies to the border box, so the visible fill's corners come out slightly tighter.
+- **Check it** by moving the pointer slowly down the stack: some row is highlighted at every pixel, and the highlight never blinks off between rows. In DevTools, the hovered element between two rows should be a row, not the list.
+- **Where a gap is right:** separate controls that should not be hit by accident (toolbar buttons, cards in a grid, a destructive action set apart). Dead space between those is protection. The rule is for one list of sibling options that reads as a single surface. Group separators and section labels are also fine as inert space.
+
+Source: Pratik (@maybepratikk), X 2122963896042713492, a 12s demo toggling one menu between Margin ("4px dead zone", "Nothing hovered") and Inset ("No dead zone"). The padding, focus-ring, alternative, and exception notes are ours.

@@ -1,5 +1,13 @@
 # Sources and script provenance
 
+## Contents
+
+- Source
+- Scripts: a maintained fork, not a mirror (measuring; fitting and spacing; packaging and checking; specimen book; tests)
+- Security read, 2026-11-14
+- What was run, 2026-11-18
+- Known rough edges
+
 ## Source
 
 - design.how `make-font` by Arlan Marat — https://design.how · https://github.com/arla6ka/design.how/tree/148b94c/skills/make-font
