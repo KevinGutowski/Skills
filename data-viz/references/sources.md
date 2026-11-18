@@ -17,6 +17,7 @@ Use this as provenance for `data-viz`. It is not a quote bank.
 ## Editorial And Interactive Craft
 
 - Hyperagent public skill `nyt-data-viz` from `alexmcdonnell-airtable/hyperagent-public-skills` — practitioner source for NYT/Upshot-style production patterns and D3 failure cases. Treat as source material, not as scripts or house style to import wholesale.
+- Kevin Dukkon, *How to design empty states* (https://www.kevdu.co/reads/empty-states, 2026-11-18) — missing-is-not-zero rule under Product Dashboard Conventions. It cites Datawrapper Academy *Patchy data* and Grafana's No value option; not re-read.
 - Local distilled reference: `editorial-interaction.md`.
 
 ## Routing Notes

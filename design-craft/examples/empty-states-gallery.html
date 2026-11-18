@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Empty States Gallery</title>
+  <!--
+    Code-native recreation of the visual examples in Kevin Dukkon, "How to design empty states"
+    (https://www.kevdu.co/reads/empty-states, 18 Nov 2026). Original markup and drawings, built from
+    the anatomy and measurements recorded in ../references/component-details.md -> Empty states.
+    No screenshots or source code from the article are included. Open directly in a browser.
+  -->
+  <style>
+    :root {
+      color-scheme: light;
+      --text: #1a1a1a;
+      --muted: #6e6e6e;   /* 5.1:1 on white; the article's #8f8f8f is 3.4:1 */
+      --label: #707070;   /* column headers, axis labels: 4.9:1 */
+      --axis: #bdbdbd;    /* decorative glyphs and rules only, never text */
+      --line: rgb(0 0 0 / 7%);
+      --ring: rgb(0 0 0 / 9%);
+      --ghost: #ececec;
+      --field: #f4f4f4;
+      --surface: #ffffff;
+      --page: #f7f7f7;
+      --accent: #2f7bf5;  /* fills and strokes */
+      --link: #1d5fd0;    /* link text: 5.6:1 on white */
+      --accent-soft: rgb(47 123 245 / 14%);
+      --green: #3fbf68;
+      --ease-out: cubic-bezier(.23, 1, .32, 1);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--page); color: var(--text); font-size: 14px; line-height: 1.45; }
+    main { width: min(1180px, calc(100vw - 32px)); margin: 0 auto; padding: 34px 0 64px; }
+    h1 { margin: 0 0 6px; font-size: 26px; }
+    h2 { margin: 40px 0 4px; font-size: 18px; }
+    .intro, .lede { max-width: 760px; color: #555; margin: 0 0 18px; }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); }
+    .label { margin: 0 0 8px; font-size: 12px; font-weight: 600; color: #555; text-transform: uppercase; letter-spacing: .04em; }
+    .note { margin: 8px 0 0; font-size: 12px; color: #6b6b6b; }
+
+    /* ---------- Host surface: a panel with a frame that stays when empty ---------- */
+    .panel { background: var(--surface); border-radius: 14px; box-shadow: 0 0 0 1px var(--ring); overflow: hidden; }
+    .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+    .panel-title { font-weight: 500; }
+    .range { padding: 4px 10px; border-radius: 8px; box-shadow: 0 0 0 1px var(--ring); font-size: 13px; color: #404040; }
+    .cols { display: grid; grid-template-columns: 1fr 72px 72px; gap: 8px; padding: 8px 18px; border-bottom: 1px solid var(--line); color: var(--label); font-size: 12px; }
+    .body { min-height: 260px; display: grid; place-items: center; padding: 28px 18px; }
+
+    /* ---------- The one empty-state component ---------- */
+    .empty { width: 100%; }
+    .empty.sized { container-type: inline-size; }
+    .es { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .es-visual { display: flex; justify-content: center; margin-bottom: 20px; }
+    .es-title { margin: 0; font-size: 14px; font-weight: 500; }
+    .es-line { margin: 4px 0 0; max-width: 34ch; font-size: 13px; line-height: 19px; color: var(--muted); }
+    .es-action { display: inline-flex; align-items: center; margin-top: 16px; height: 28px; padding: 0 12px; border: 0; border-radius: 8px; background: var(--surface); box-shadow: 0 0 0 1px var(--ring), 0 1px 2px rgb(0 0 0 / 5%); font-size: 13px; font-weight: 500; color: var(--text); }
+    .es-link { margin-top: 10px; font-size: 13px; color: var(--link); text-decoration: underline dotted; text-underline-offset: 3px; }
+
+    /* Section 3 only: the container picks the size. Page (wide) shows visual + button; card (narrow)
+       drops the visual and swaps the button for a text link. Inline is a separate one-line rendering.
+       Scoped to .sized so the style comparison above never collapses at narrow viewports. */
+    .sized .es .es-link { display: none; }
+    @container (max-width: 240px) {
+      .sized .es .es-visual, .sized .es .es-action { display: none; }
+      .sized .es .es-link { display: inline; }
+    }
+
+    /* ---------- Style 1: Illustration (a drawn scene, ~196x124) ---------- */
+    .art-illustration svg { display: block; overflow: visible; }
+
+    /* ---------- Style 2: Spot (one object on a soft colour wash, ~168x116) ---------- */
+    .art-spot { position: relative; width: 168px; height: 116px; }
+    .art-spot .wash { position: absolute; inset: 14px 8px 0; border-radius: 50%; background: radial-gradient(closest-side, rgb(63 191 104 / 26%), rgb(63 191 104 / 6%) 60%, transparent); }
+    .art-spot .sheet { position: absolute; width: 54px; height: 66px; padding: 9px; border-radius: 6px; background: linear-gradient(#fff, #fbfbfb); box-shadow: 0 0 0 .5px rgb(0 0 0 / 14%), 0 10px 30px rgb(0 0 0 / 6%); transform-origin: left top; transition: rotate .3s var(--ease-out), translate .3s var(--ease-out); }
+    .art-spot .back { top: 30px; left: 44px; rotate: -8deg; opacity: .85; }
+    .art-spot .front { top: 24px; left: 74px; rotate: 4deg; display: flex; flex-direction: column; gap: 6px; }
+    .art-spot i { display: block; height: 3px; border-radius: 2px; background: rgb(0 0 0 / 8%); }
+    .art-spot .accent { width: 20px; background: var(--green); }
+    .art-spot .bars { margin-top: auto; display: flex; align-items: flex-end; gap: 4px; }
+    .art-spot .bars i { width: 3px; }
+    .es:hover .art-spot .back { rotate: -11deg; translate: -2px 0; }
+    .es:hover .art-spot .front { rotate: 6deg; translate: 0 -2px; }
+
+    /* ---------- Style 3: Icon tiles (a few icons hinting at what lands here, ~112x54) ---------- */
+    .art-tiles { position: relative; width: 112px; height: 54px; }
+    .art-tiles .tile { position: absolute; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / 8%); color: #a3a3a3; transition: rotate .26s var(--ease-out), translate .26s var(--ease-out); }
+    .art-tiles .l { top: 15px; left: 13px; rotate: -8deg; }
+    .art-tiles .r { top: 15px; left: 69px; rotate: 8deg; }
+    .art-tiles .c { top: 8px; left: 38px; width: 36px; height: 36px; border-radius: 10px; box-shadow: 0 0 0 1px rgb(0 0 0 / 12%), 0 6px 8px -4px rgb(0 0 0 / 8%); color: var(--accent); }
+    .es:hover .art-tiles .l { rotate: -12deg; translate: -7px 1px; }
+    .es:hover .art-tiles .r { rotate: 12deg; translate: 7px 1px; }
+    .es:hover .art-tiles .c { translate: 0 -2px; }
+
+    /* ---------- Style 4: Badge (one icon + a small state mark, ~176x68) ---------- */
+    .art-badge { position: relative; width: 176px; height: 68px; }
+    .art-badge .dots { position: absolute; inset: 0; background-image: radial-gradient(circle, #d4d4d4 1px, transparent 1.4px); background-size: 8px 8px; background-position: center; mask-image: radial-gradient(closest-side, rgb(0 0 0 / 60%), rgb(0 0 0 / 20%) 55%, transparent); }
+    .art-badge .tile { position: absolute; top: 14px; left: 68px; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; background: #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / 12%), 0 6px 8px -4px rgb(0 0 0 / 8%); color: #3f3f46; }
+    .art-badge .mark { position: absolute; top: -6px; right: -6px; display: grid; place-items: center; width: 16px; height: 16px; border-radius: 8px; background: linear-gradient(#5a9cff, var(--accent)); box-shadow: 0 0 0 1.5px #fff; color: #fff; }
+
+    /* ---------- Style 5: Preview (a faint copy of the row/card that will appear, ~132x50) ---------- */
+    .art-preview { position: relative; width: 132px; height: 50px; }
+    .art-preview .card { position: absolute; height: 34px; border-radius: 9px; background: #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / 7%), 0 2px 6px -2px rgb(0 0 0 / 6%); transition: translate .3s var(--ease-out); }
+    .art-preview .c3 { top: 0; left: 14px; width: 104px; opacity: .45; }
+    .art-preview .c2 { top: 8px; left: 7px; width: 118px; opacity: .75; }
+    .art-preview .c1 { top: 16px; left: 0; width: 132px; display: flex; align-items: center; gap: 8px; padding: 0 10px; color: var(--axis); }
+    .art-preview .bar { height: 4px; border-radius: 2px; background: var(--ghost); }
+    .art-preview .grow { flex: 1; }
+    .art-preview .bars { display: flex; align-items: flex-end; gap: 6px; height: 34px; padding: 0 0 8px; }
+    .art-preview .bars i { display: block; width: 6px; border-radius: 1.5px; background: var(--ghost); }
+    .es:hover .art-preview .c3 { translate: 0 -3px; }
+    .es:hover .art-preview .c2 { translate: 0 -1.5px; }
+
+    /* ---------- Style 6: Icon (one small grey icon, 20px) ---------- */
+    .art-icon { color: var(--axis); }
+
+    /* ---------- Entrance: one short, staggered rise; nothing loops ---------- */
+    @keyframes rise { from { opacity: 0; translate: 0 4px; } }
+    .es-visual > * { animation: rise .32s var(--ease-out) backwards; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+
+    /* ---------- Charts: missing vs zero ---------- */
+    /* HTML axes so labels stay 11px at any width (an SVG viewBox would scale them down) */
+    .chart { display: grid; grid-template-columns: auto 1fr; grid-template-rows: 180px auto; column-gap: 10px; margin: 18px; font-size: 11px; line-height: 1; color: var(--label); }
+    .chart .y { display: flex; flex-direction: column; justify-content: space-between; margin: -.5em 0; text-align: right; }
+    .chart .plot { position: relative; border-bottom: 1px solid #d9d9d9; }
+    .chart .grid-line { position: absolute; left: 0; right: 0; border-top: 1px dashed #e6e6e6; }
+    .chart .x { grid-column: 2; display: flex; justify-content: space-around; padding-top: 8px; }
+    .chart .zero { position: absolute; left: 3%; right: 3%; bottom: -1px; height: 2px; border-radius: 1px; background: var(--accent); }
+    .chart .pill { position: absolute; left: 50%; top: 50%; translate: -50% -50%; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px var(--ring), 0 2px 6px rgb(0 0 0 / 5%); font-size: 13px; font-weight: 500; color: #404040; white-space: nowrap; }
+
+    /* ---------- Inline row ---------- */
+    .row-empty { padding: 12px 18px; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line); }
+    .row-empty .es-link { margin: 0 0 0 4px; color: var(--link); text-decoration: underline dotted; text-underline-offset: 3px; margin-left: 4px; }
+    .search { display: flex; gap: 8px; padding: 10px 18px; border-bottom: 1px solid var(--line); }
+    .field { flex: 0 1 260px; align-self: center; padding: 6px 10px; border-radius: 8px; background: var(--field); font-size: 13px; }
+    .chip { white-space: nowrap; padding: 5px 10px; border-radius: 8px; box-shadow: 0 0 0 1px var(--ring); font-size: 13px; }
+    .chip span { color: var(--muted); }
+    .pair { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Empty States Gallery</h1>
+  <p class="intro">Editable recreations of the visual lessons in <code>references/component-details.md</code> → Empty states. Every card shows the same message so only the visual changes. Pick one style for the whole product; the later sections reuse a single style (Preview) on purpose. Buttons and links are static examples, not controls.</p>
+
+  <!-- SVG glyphs, drawn for this gallery -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="g-chart" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="15" height="12" rx="2.5"/><path d="M6.5 15.5 6 18M13.5 15.5 14 18M6.5 11.5v-1.5M10 11.5V6.5M13.5 11.5V9"/></symbol>
+    <symbol id="g-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></symbol>
+    <symbol id="g-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="g-pie" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 15.5A9 9 0 1 1 8.5 3.5"/><path d="M12.5 3v8.5H21A8.5 8.5 0 0 0 12.5 3Z"/></symbol>
+    <symbol id="g-bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v15a1 1 0 0 0 1 1h15M8.5 16.5v-3M13 16.5V6M17.5 16.5V9.5"/></symbol>
+    <symbol id="g-doc" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h5l3 3v9H4z"/><path d="M6 8h4M6 10.5h4"/></symbol>
+    <symbol id="g-lock" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7" width="9" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></symbol>
+    <symbol id="g-search" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></symbol>
+    <symbol id="g-tasks" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="m2.5 4.5 1.2 1.2L6 3.5M8 4.5h5.5M2.5 10.5h3.5M8 10.5h5.5"/></symbol>
+    <symbol id="g-up" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9.5v-7M3 5.5l3-3 3 3"/></symbol>
+  </svg>
+
+  <!-- ===================================================================== -->
+  <h2>1. Seven styles, one message</h2>
+  <p class="lede">Same title, line and action in each card. Only the picture above the words changes. None is wrong; the failure is a product that uses all seven. Shared anatomy: visual, 20px gap, 14px/500 title, one 13px muted line, one 28px secondary button.</p>
+  <div class="grid">
+
+    <figure style="margin:0">
+      <p class="label">Illustration · a drawn scene</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Analytics</span><span class="range">Last 7 days</span></div>
+        <div class="body"><div class="empty"><div class="es">
+          <div class="es-visual art-illustration">
+            <svg width="196" height="124" viewBox="0 0 196 124" aria-hidden="true">
+              <ellipse cx="98" cy="96" rx="80" ry="22" fill="rgb(0 0 0 / 4%)"/>
+              <path d="M98 30 178 66 98 102 18 66Z" fill="#fff" stroke="#d6d6d6"/>
+              <path d="M18 66v8l80 36 80-36v-8L98 102Z" fill="#f2f2f2" stroke="#d6d6d6"/>
+              <g stroke="#ececec"><path d="M58 48 138 84M78 39l80 36M38 57l80 36M138 48 58 84M118 39 38 75M158 57 78 93"/></g>
+              <g fill="none" stroke="#c8c8c8" stroke-dasharray="3 2.5">
+                <path d="M62 50v-14M74 50v-14"/><ellipse cx="68" cy="36" rx="6" ry="3"/><ellipse cx="68" cy="50" rx="6" ry="3"/>
+                <path d="M80 58v-22M92 58v-22"/><ellipse cx="86" cy="36" rx="6" ry="3"/><ellipse cx="86" cy="58" rx="6" ry="3"/>
+                <path d="M98 66v-16M110 66v-16"/><ellipse cx="104" cy="50" rx="6" ry="3"/><ellipse cx="104" cy="66" rx="6" ry="3"/>
+                <path d="M116 74v-30M128 74v-30"/><ellipse cx="122" cy="44" rx="6" ry="3"/><ellipse cx="122" cy="74" rx="6" ry="3"/>
+              </g>
+              <path d="M140 80l8-4 8 4-8 4z" fill="var(--accent-soft)" stroke="var(--accent)"/>
+            </svg>
+          </div>
+          <p class="es-title">No activity in this range</p>
+          <p class="es-line">Charts fill in once your team closes its first task this week.</p>
+          <span class="es-action">Show last 30 days</span>
+        </div></div></div>
+      </div>
+      <p class="note">Empty bars stand on the scene with one accent tile where "now" will be. Warm on a first visit; every new screen needs a new drawing. Use on a first-use full page only.</p>
+    </figure>
+
+    <figure style="margin:0">
+      <p class="label">Spot · one object on a soft wash</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Analytics</span><span class="range">Last 7 days</span></div>
+        <div class="body"><div class="empty"><div class="es">
+          <div class="es-visual"><div class="art-spot" aria-hidden="true">
+            <span class="wash"></span>
+            <span class="sheet back" style="display:flex;flex-direction:column;gap:6px"><i style="width:18px"></i><i style="width:28px;opacity:.6"></i></span>
+            <span class="sheet front"><i class="accent"></i><span class="bars"><i style="height:10px"></i><i style="height:16px"></i><i style="height:8px"></i><i style="height:20px"></i><i style="height:12px"></i><i style="height:4px;background:var(--green)"></i></span></span>
+          </div></div>
+          <p class="es-title">No activity in this range</p>
+          <p class="es-line">Charts fill in once your team closes its first task this week.</p>
+          <span class="es-action">Show last 30 days</span>
+        </div></div></div>
+      </div>
+      <p class="note">Two tilted sheets (-8°, +4°) over a radial colour wash; one accent colour only. Lighter than a scene, warmer than an icon.</p>
+    </figure>
+
+    <figure style="margin:0">
+      <p class="label">Icon tiles · hints at what lands here</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Analytics</span><span class="range">Last 7 days</span></div>
+        <div class="body"><div class="empty"><div class="es">
+          <div class="es-visual"><div class="art-tiles" aria-hidden="true">
+            <span class="tile l"><svg width="14" height="14"><use href="#g-trend"/></svg></span>
+            <span class="tile r"><svg width="14" height="14"><use href="#g-clock"/></svg></span>
+            <span class="tile c"><svg width="18" height="18"><use href="#g-pie"/></svg></span>
+          </div></div>
+          <p class="es-title">No activity in this range</p>
+          <p class="es-line">Charts fill in once your team closes its first task this week.</p>
+          <span class="es-action">Show last 30 days</span>
+        </div></div></div>
+      </div>
+      <p class="note">Three tiles: two 30px grey at ±8°, a 36px centre tile with the accent glyph. Hover fans them out a few pixels.</p>
+    </figure>
+
+    <figure style="margin:0">
+      <p class="label">Badge · one icon + a state mark</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Analytics</span><span class="range">Last 7 days</span></div>
+        <div class="body"><div class="empty"><div class="es">
+          <div class="es-visual"><div class="art-badge" aria-hidden="true">
+            <span class="dots"></span>
+            <span class="tile"><svg width="18" height="18"><use href="#g-bars"/></svg><span class="mark"><svg width="10" height="10"><use href="#g-up"/></svg></span></span>
+          </div></div>
+          <p class="es-title">No activity in this range</p>
+          <p class="es-line">Charts fill in once your team closes its first task this week.</p>
+          <span class="es-action">Show last 30 days</span>
+        </div></div></div>
+      </div>
+      <p class="note">A 40px tile on a dot field (8px grid, radial mask) with a 16px mark: count, check or arrow. Arrow shown; prefer it over a "0" count (see empty-states → zero counts).</p>
+    </figure>
+
+    <figure style="margin:0">
+      <p class="label">Preview · a faint copy of what will appear</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Analytics</span><span class="range">Last 7 days</span></div>
+        <div class="body"><div class="empty"><div class="es">
+          <div class="es-visual"><div class="art-preview" aria-hidden="true">
+            <span class="card c3"></span><span class="card c2"></span>
+            <span class="card c1"><span class="bars"><i style="height:6px"></i><i style="height:12px"></i><i style="height:8px"></i><i style="height:14px"></i><i style="height:10px"></i><i style="height:16px"></i><i style="height:12px"></i><i style="height:8px"></i><i style="height:14px"></i><i style="height:4px"></i></span></span>
+          </div></div>
+          <p class="es-title">No activity in this range</p>
+          <p class="es-line">Charts fill in once your team closes its first task this week.</p>
+          <span class="es-action">Show last 30 days</span>
+        </div></div></div>
+      </div>
+      <p class="note">Three stacked ghost cards (opacity .45 / .75 / 1) in the shape of the real row or card. A shape, never believable fake data.</p>
+    </figure>
+
+    <figure style="margin:0">
+      <p class="label">Icon · one small grey icon</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Analytics</span><span class="range">Last 7 days</span></div>
+        <div class="body"><div class="empty"><div class="es">
+          <div class="es-visual art-icon"><svg width="20" height="20" aria-hidden="true"><use href="#g-chart"/></svg></div>
+          <p class="es-title">No activity in this range</p>
+          <p class="es-line">Charts fill in once your team closes its first task this week.</p>
+          <span class="es-action">Show last 30 days</span>
+        </div></div></div>
+      </div>
+      <p class="note">20px, 1.25 stroke, the axis grey. Cheap, and turns generic fast when every screen gets a different stock icon.</p>
+    </figure>
+
+    <figure style="margin:0">
+      <p class="label">Text only · title, line, action</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Analytics</span><span class="range">Last 7 days</span></div>
+        <div class="body"><div class="empty"><div class="es">
+          <p class="es-title">No activity in this range</p>
+          <p class="es-line">Charts fill in once your team closes its first task this week.</p>
+          <span class="es-action">Show last 30 days</span>
+        </div></div></div>
+      </div>
+      <p class="note">Fits rows, tiles and menus. The fallback every style shrinks to at small sizes.</p>
+    </figure>
+  </div>
+
+  <!-- ===================================================================== -->
+  <h2>2. One style across causes</h2>
+  <p class="lede">Pick a style once and reuse it. Here Preview carries every cause; only the ghost row's glyph, the title and the action change. Done has no button; no access names a person instead of showing a disabled button.</p>
+  <div class="grid">
+    <figure style="margin:0"><p class="label">First use</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Invoices</span></div><div class="cols"><span>Customer</span><span>Amount</span><span>Due</span></div>
+        <div class="body"><div class="empty"><div class="es">
+          <div class="es-visual"><div class="art-preview" aria-hidden="true"><span class="card c3"></span><span class="card c2"></span><span class="card c1"><svg width="14" height="14"><use href="#g-doc"/></svg><span class="bar grow"></span><span class="bar" style="width:28px"></span></span></div></div>
+          <p class="es-title">No invoices yet</p><p class="es-line">Paid invoices show up here.</p><span class="es-action">Create invoice</span>
+        </div></div></div></div>
+    </figure>
+    <figure style="margin:0"><p class="label">All done</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Inbox</span></div>
+        <div class="body"><div class="empty"><div class="es">
+          <div class="es-visual"><div class="art-preview" aria-hidden="true"><span class="card c3"></span><span class="card c2"></span><span class="card c1"><span style="width:14px;height:14px;border-radius:50%;background:var(--ghost)"></span><span class="bar grow"></span></span></div></div>
+          <p class="es-title">You’re all caught up</p><p class="es-line">Mentions and replies show up here.</p>
+        </div></div></div></div>
+    </figure>
+    <figure style="margin:0"><p class="label">No access</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Billing</span></div>
+        <div class="body"><div class="empty"><div class="es">
+          <div class="es-visual"><div class="art-preview" aria-hidden="true"><span class="card c3"></span><span class="card c2"></span><span class="card c1"><svg width="14" height="14"><use href="#g-lock"/></svg><span class="bar grow"></span><span class="bar" style="width:28px"></span></span></div></div>
+          <p class="es-title">Only owners can see billing</p><p class="es-line">Sam Rivera can give you access.</p><span class="es-action">Request access</span>
+        </div></div></div></div>
+    </figure>
+    <figure style="margin:0"><p class="label">No results</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Files</span></div>
+        <div class="search"><span class="field">march invoice</span><span class="chip"><span>In</span> Logos ×</span></div>
+        <div class="cols"><span>Name</span><span>Size</span><span>Modified</span></div>
+        <div class="body"><div class="empty"><div class="es">
+          <div class="es-visual"><div class="art-preview" aria-hidden="true"><span class="card c3"></span><span class="card c2"></span><span class="card c1"><svg width="14" height="14"><use href="#g-search"/></svg><span class="bar grow"></span></span></div></div>
+          <p class="es-title">No results for “march invoice”</p><p class="es-line">Nothing in Logos matches.</p><span class="es-action">Search all files</span>
+        </div></div></div></div>
+    </figure>
+    <figure style="margin:0"><p class="label">Hidden by filter</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Tasks</span></div>
+        <div class="search"><span class="field" style="color:var(--muted)">Search tasks</span><span class="chip"><span>Status</span> Open ×</span></div>
+        <div class="cols"><span>Task</span><span>Assignee</span><span>Due</span></div>
+        <div class="body"><div class="empty"><div class="es">
+          <div class="es-visual"><div class="art-preview" aria-hidden="true"><span class="card c3"></span><span class="card c2"></span><span class="card c1"><svg width="14" height="14"><use href="#g-tasks"/></svg><span class="bar grow"></span><span class="bar" style="width:28px"></span></span></div></div>
+          <p class="es-title">No open tasks</p><p class="es-line">3 tasks are hidden by Status: Open.</p><span class="es-action">Clear filter</span>
+        </div></div></div></div>
+    </figure>
+  </div>
+
+  <!-- ===================================================================== -->
+  <h2>3. One component, three sizes</h2>
+  <p class="lede">Page: visual, title, line, button. Card: no visual, a text link. Inline: one line in the row. Page and Card are the same markup in a container-query wrapper (<code>.empty.sized</code>): under 240px wide it drops the visual and swaps the button for a link.</p>
+  <div class="grid">
+    <figure style="margin:0"><p class="label">Page</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Files</span></div><div class="cols"><span>Name</span><span>Size</span><span>Modified</span></div>
+        <div class="body"><div class="empty sized"><div class="es">
+          <div class="es-visual"><div class="art-spot" aria-hidden="true"><span class="wash"></span><span class="sheet back" style="display:flex;flex-direction:column;gap:6px"><i style="width:18px"></i><i style="width:28px"></i></span><span class="sheet front"><i class="accent"></i><i></i><i style="width:24px"></i><i></i></span><span style="position:absolute;top:18px;left:118px;display:grid;place-items:center;width:20px;height:20px;border-radius:10px;background:var(--green);color:#fff;box-shadow:0 0 0 2px #fff"><svg width="10" height="10"><use href="#g-up"/></svg></span></div></div>
+          <p class="es-title">No files yet</p><p class="es-line">Files you upload show up here.</p><span class="es-action">Upload files</span><span class="es-link">Upload files</span>
+        </div></div></div></div>
+    </figure>
+    <figure style="margin:0"><p class="label">Card (same markup, narrow container)</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Deploys</span><span class="range">Last 7 days</span></div>
+        <div class="body" style="min-height:180px"><div class="empty sized" style="max-width:220px"><div class="es">
+          <div class="es-visual"><div class="art-spot" aria-hidden="true"><span class="wash"></span><span class="sheet back" style="display:flex;flex-direction:column;gap:6px"><i style="width:18px"></i><i style="width:28px"></i></span><span class="sheet front"><i class="accent"></i><i></i><i style="width:24px"></i><i></i></span></div></div>
+          <p class="es-title">No deploys this week</p><p class="es-line">Each push to main shows up here.</p><span class="es-action">Connect a repository</span><span class="es-link">Connect a repository</span>
+        </div></div></div></div>
+    </figure>
+    <figure style="margin:0"><p class="label">Inline</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Tasks</span></div>
+        <div class="search"><span class="field">zoe</span></div>
+        <div class="cols"><span>Task</span><span>Assignee</span><span>Due</span></div>
+        <div class="row-empty">No tasks assigned to “zoe”.<span class="es-link">Clear search</span></div>
+      </div>
+    </figure>
+  </div>
+
+  <!-- ===================================================================== -->
+  <h2>4. Charts: missing is not zero</h2>
+  <p class="lede">Keep the axes. With nothing measured, draw no line and put a small label in the plot area. A line along zero claims a measured zero.</p>
+  <div class="pair">
+    <figure style="margin:0"><p class="label">Missing (correct when nothing was measured)</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Response time <span style="color:var(--label)">p75</span></span><span class="range">Last 7 days</span></div>
+        <div class="chart">
+          <div class="y" aria-hidden="true"><span>400 ms</span><span>200</span><span>0</span></div>
+          <div class="plot"><span class="grid-line" style="top:0"></span><span class="grid-line" style="top:50%"></span><span class="pill"><svg width="14" height="14" style="color:#777;flex:none"><use href="#g-chart"/></svg>No requests this week</span></div>
+          <div class="x" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+        </div></div>
+    </figure>
+    <figure style="margin:0"><p class="label">Zero (only when zero was measured)</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Response time <span style="color:var(--label)">p75</span></span><span class="range">Last 7 days</span></div>
+        <div class="chart">
+          <div class="y" aria-hidden="true"><span>400 ms</span><span>200</span><span>0</span></div>
+          <div class="plot"><span class="grid-line" style="top:0"></span><span class="grid-line" style="top:50%"></span><span class="zero"></span></div>
+          <div class="x" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+        </div></div>
+    </figure>
+  </div>
+
+  <!-- ===================================================================== -->
+  <h2>5. Before / after: same component, same frame</h2>
+  <p class="lede">The table frame and component stay put. The after version changes the copy, adds the product's one visual style and cuts two equal buttons to one.</p>
+  <div class="pair">
+    <figure style="margin:0"><p class="label">Before</p>
+      <div class="panel bad"><div class="panel-head"><span class="panel-title">Invoices</span></div><div class="cols"><span>Customer</span><span>Amount</span><span>Due</span></div>
+        <div class="body"><div class="empty"><div class="es">
+          <p class="es-title">No data found</p><p class="es-line">No results found for the selected time period.</p>
+          <div style="display:flex;gap:8px"><span class="es-action">Add invoice</span><span class="es-action">Learn more</span></div>
+        </div></div></div></div>
+      <p class="note">No reason, a title the line repeats, two equal buttons.</p>
+    </figure>
+    <figure style="margin:0"><p class="label">After</p>
+      <div class="panel"><div class="panel-head"><span class="panel-title">Invoices</span></div><div class="cols"><span>Customer</span><span>Amount</span><span>Due</span></div>
+        <div class="body"><div class="empty"><div class="es">
+          <div class="es-visual"><div class="art-preview" aria-hidden="true"><span class="card c3"></span><span class="card c2"></span><span class="card c1"><svg width="14" height="14"><use href="#g-doc"/></svg><span class="bar grow"></span><span class="bar" style="width:28px"></span></span></div></div>
+          <p class="es-title">No invoices yet</p><p class="es-line">Paid invoices show up here.</p><span class="es-action">Create invoice</span>
+        </div></div></div></div>
+      <p class="note">Names what is missing, says what makes it appear, one verb + noun action.</p>
+    </figure>
+  </div>
+</main>
+</body>
+</html>

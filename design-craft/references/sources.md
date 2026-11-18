@@ -132,3 +132,4 @@ Transcript access: YouTube `en` captions fetched with `yt-dlp --skip-download --
 ## Kevin Dukkon / @keviduk — component reads
 
 - *Sizing dropdown menus* (https://www.kevdu.co/reads/sizing-dropdown-menus, 2026-11-04; X 2117975138541146303) and *Timing tooltips* (https://www.kevdu.co/reads/tooltip-delay, 2026-11-06), read 2026-11-18. Both folded into the new [component-details.md](component-details.md). Two further reads were "Coming soon" on that date.
+- *How to design empty states* (https://www.kevdu.co/reads/empty-states, 2026-11-18), read the same day. Component rules folded into [component-details.md](component-details.md) → Empty states; causes and copy into `user-onboarding` (empty-states); missing-is-not-zero into `data-viz` (editorial-interaction).
