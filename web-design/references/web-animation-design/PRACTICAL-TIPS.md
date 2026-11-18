@@ -236,7 +236,7 @@ From the course's judgement exercises: a hover **scale beyond 1–2% is almost a
 
 **Sweep-through highlights get no transition at all.** Scope the 100–150ms figure to a single hovered control (a button's color, a card's lift). For nav items, menu rows, list rows, and anything the pointer crosses several times per second, Gustavo Fior's *Craft* (craft.gustavofior.com/hover-restraint) is the sharper rule: "Instant is the correct default for hover." Hover fires more than any other interaction; when each of ten crossed items fades in, "the interface is always a few frames behind the pointer, and it reads as slow even when nothing is." Both rules follow the same principle — "The more often something happens, the less animation it can afford."
 
-**Tooltips are the one hover case that wants a delay** — around 400–700ms before the *first* tooltip, so it doesn't pop while passing through; then neighbors open at once with no delay and no animation, because the user has already asked for labels (the skip-delay mechanics: `design-craft` emil-kowalski/css-techniques → Tooltips).
+**Tooltips are the one hover case that wants a delay** — around 400–700ms before the *first* tooltip, so it doesn't pop while passing through; then neighbors open at once with no delay and no animation, because the user has already asked for labels (the skip-delay mechanics: `design-craft` emil-kowalski/css-techniques → Tooltips; the full timing model — 400ms default, a 300ms warm window, a 100ms close, no wait on charts or keyboard focus: `design-craft` (component-details) → Tooltips).
 
 ### Fix Hover Flicker
 
@@ -269,6 +269,8 @@ When hover animation changes element position, the cursor may leave the element,
 ```
 
 The parent's hover area stays stable while the child moves.
+
+A different flicker, with no animation involved: a menu or list whose highlight blinks off between rows has margins or a `gap` that no row owns. That fix is geometric (flush rows, inset fill) and lives in `design-craft` (surfaces) → Contiguous Rows.
 
 ### Disable Hover on Touch Devices
 
