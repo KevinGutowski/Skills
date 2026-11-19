@@ -182,7 +182,7 @@ Dukkon names seven styles. They differ only in how much room the picture above t
 
 | Style | What it is | Trade-off |
 | --- | --- | --- |
-| Illustration | A drawn scene | Warm on a first visit; every new screen needs a new drawing |
+| Illustration | A drawn scene | Warm on a first visit; every new screen needs a new drawing. A flat line-drawing system that derives the small version from the full one: [construction-drawings.md](construction-drawings.md) |
 | Spot | One small object on a soft wash of colour | Lighter than a scene, warmer than an icon |
 | Icon tiles | A few small icons hinting at what will land here | |
 | Badge | One icon with a small state mark (count, check, arrow) | |
@@ -213,6 +213,8 @@ Anatomy measured from Dukkon's interactive demo (rendered 2026-11-18). An editab
 **Badge counts** (ours): the demo badge shows "0". Prefer the check or arrow mark wherever the zero-count rule in `user-onboarding` (empty-states → Don't show zero counts) applies.
 
 **Motion in the demo:** each visual enters once in about 0.3–0.46s on a strong ease-out (`cubic-bezier(.23, 1, .32, 1)`), with parts staggered 30–60ms (bars grow from the bottom, tiles fan out, sheets settle). Hover nudges the parts 1–7px or 3–4° and scales a glow about 5%. Nothing loops by default, and `prefers-reduced-motion` removes all of it. Timing vocabulary → `web-design` (web-animation-design).
+
+**If the style is a drawn illustration, draw the cause, not the feature's icon.** An enlarged magnifier or bell is still the Icon style. [construction-drawings.md](construction-drawings.md) (Plotter method) draws the structure with its missing position open, on a `560 × 440` canvas, then derives a compact version for anything under about 400px by removing text and cropping the same geometry. Its flat, shadowless look is a different theme from the isometric tray above; pick one.
 
 **Keep the visual small**, whatever the style. A large illustration pushes content down, needs a new drawing per screen, and gets loud when three dashboard panels are empty at once. Save illustrations for a full page on first use, which people see once. (This narrows Refactoring UI's "add a clear illustration/visual anchor" in [refactoring-ui.md](refactoring-ui.md) to that case.)
 
@@ -281,5 +283,6 @@ It agrees with this section and with `user-onboarding` (empty-states); the last 
 - Kevin Dukkon (@keviduk), *Sizing dropdown menus*, 4 Nov 2026. https://www.kevdu.co/reads/sizing-dropdown-menus and X 2117975138541146303 (text, a 15.2s video, one still). The article cites WAI-ARIA APG Menu Button, WCAG 2.2 SC 2.5.8, Nielsen Norman Group on drop-down menus, Apple's HIG on pull-down buttons, and the Fluent 2, Material, Primer and shadcn/ui docs; those were not re-read here.
 - Kevin Dukkon, *Timing tooltips*, 6 Nov 2026. https://www.kevdu.co/reads/tooltip-delay. It cites WCAG 2.2 SC 1.4.13, the APG Tooltip pattern, Nielsen Norman Group's timing guidelines, Microsoft's `TTM_SETDELAYTIME`, React Aria, Radix UI, Base UI and MUI; not re-read here.
 - Kevin Dukkon, *How to design empty states*, 18 Nov 2026. https://www.kevdu.co/reads/empty-states, read 2026-11-18 (text read; interactive demos rendered headless and inspected for anatomy, sizes, colour and motion). It cites NN/g *Designing Empty States in Complex Applications*, Primer Blankslate, PatternFly, SAP Fiori Illustrated Message, GitLab Pajamas, Atlassian, Carbon, Datawrapper Academy *Patchy data* and Grafana's No value option; not re-read here, so both tables are Dukkon's readings. Copy rules and the per-cause table from the same read are in `user-onboarding` (empty-states).
+- Pasquale Vitiello, *Plotter* (2026), https://plotter.pasqualevitiello.com — the drawn-illustration pointer in Empty states; full record in [construction-drawings.md](construction-drawings.md).
 - Lines marked "ours" are this library's additions, not Dukkon's.
 - Two more reads were listed as "Coming soon" on 2026-11-18 (*Spacing navigation*, *Designing interface icons*). Recheck https://www.kevdu.co/reads; navigation spacing would get a section here, and icon design routes to `design-systems` (icon-systems).

@@ -83,6 +83,8 @@ Check four moments:
 | No data in range (nothing measured in this period) | Say so; on a chart draw no line, not a zero line | "No requests this week" → none, or widen the range |
 | Failed to load | What happened and a retry → `ux-writing` (error-messages) | "Couldn't load projects" → Try again |
 
+If the product's empty states use a drawn illustration, each cause also suggests what to draw (the gap the missing thing leaves, not the feature's icon): `design-craft` (construction-drawings → In an empty state).
+
 Still loading is not a cause: show no empty state until the request returns empty (`design-craft` (component-details → Loading and failure are not empty)). A single generic "Nothing here yet" for all of these hides the one action each case needs.
 
 ## Examples

@@ -130,7 +130,7 @@ An idle animation that invites interaction (a hand that occasionally taps, an ic
 
 ## Reduced motion
 
-Collapse the choreography; do not merely shorten it. Under `prefers-reduced-motion: reduce`, drop the delays and the movement, keep opacity, and let the group appear together. Where the sequence *is* the explanation (a step-by-step illustration), jump between its frames instead of animating between them.
+Collapse the choreography; do not merely shorten it. Under `prefers-reduced-motion: reduce`, drop the delays and the movement, keep opacity, and let the group appear together. Where the sequence *is* the explanation (a step-by-step illustration), jump between its frames instead of animating between them. For a looping explanatory drawing, show one deliberately chosen still: `design-craft` (construction-drawings → Animating a drawing).
 
 ## Tool choice
 
