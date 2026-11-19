@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: server-component-waterfall
+expected_outcome: |
+  Identifies the five sequential awaits as a request waterfall, starts independent work concurrently while keeping the real dependency on the session, and streams or isolates slow sections so the shell is not held; does not reach for memoization.

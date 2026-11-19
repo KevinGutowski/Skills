@@ -41,8 +41,10 @@ The durable practice layer for accessible websites. Standards-era warning up fro
 ## 3. Priority order (the lesson, not the mechanics)
 
 1. **Semantic HTML first.** "**Well-structured HTML is the secret weapon of web accessibility.**" Browsers map correct markup to the OS accessibility layer for free — headings, landmarks, `button`, `label`, lists.
-2. **Keep structure and style separate.** Heading levels by document outline, never by font size; if it looks like a button, it is a `<button>`. Making `div`s/`span`s interactive "create[s] confusion for those using screen readers and keyboard navigation."
+2. **Keep structure and style separate.** Heading levels by document outline, never by font size; if it looks like a button, it is a `<button>`, and if it goes somewhere it is an `<a href>` — a click handler that calls the router loses Cmd/Ctrl-click, middle-click, and copy-link. Making `div`s/`span`s interactive "create[s] confusion for those using screen readers and keyboard navigation."
 3. **ARIA last.** "ARIA should never be used to replace well-structured HTML. **It should be your last resort.**" ARIA only touches the accessibility layer — no styles, no behaviors — and "won't make an unusable website more accessible." When unsure, follow W3C's Using ARIA in HTML (verify current edition).
+
+The same robustness argument covers view state (Vercel, Web Interface Guidelines): filters, the selected tab, pagination, and an expanded panel belong in the URL (query params), so reload, Back, and a shared link restore what the person was looking at. Component-only state for a view someone would bookmark is the defect; ephemeral state (a hover, an open tooltip) stays local.
 
 ## 4. Keyboard & focus mechanics
 

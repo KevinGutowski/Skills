@@ -29,7 +29,7 @@ Dannaway's conventions are **web-scoped**. Two known conflicts with Apple platfo
 - **Single column.** "Stack forms in a single column layout, as it decreases interaction cost by maintaining a consistent downward momentum." Less cognitive load, fewer missed fields (screen-magnifier users can miss a second column). Exception: short related fields (expiry date + CVC) side by side within the column's bounds.
 - **Labels stacked on top of inputs** — never to the left. Stacked closely, "your eyes can see both the label and input in a single focus." Stack checkboxes and radios vertically too.
 - **Hints ABOVE fields, not below.** Two reasons, and the rationale is the lesson: (1) it preserves downward momentum — "If a password needs to be at least 6 characters long, tell people before they fill out the password field, not after"; (2) "the space below form fields can be covered by autofill menus and on-screen keyboards."
-- **No placeholder-as-label.** It disappears on typing, makes fields look pre-filled, and its contrast is "almost always inaccessible." (Exception: single search fields with ≥4.5:1 placeholder contrast and an accessible label.)
+- **No placeholder-as-label.** It disappears on typing, makes fields look pre-filled, and its contrast is "almost always inaccessible." (Exception: single search fields with ≥4.5:1 placeholder contrast and an accessible label.) A placeholder that stays is an example value, not an instruction; Vercel's guidelines also end it with `…`, which is their house style and not adopted here.
 - **Mark BOTH required and optional fields.** Asterisk * or "(required)" for required; "(optional)" for optional. "All fields are required unless marked optional" instructions get skipped while scanning. Don't color asterisks red — "red commonly indicates an error." Skippable only for short familiar forms (login, single-field subscribe).
 - **Opt-ins over optional fields.** Replace an optional field with a checkbox that reveals a required field: `☐ Receive updates via text message` → on check, `Mobile number *`. "Those who aren't interested in receiving updates don't need to see the extra mobile number field."
 - **Minimize fields**; match field width to intended input (a 4-digit postcode gets a 4-character-wide field); group related fields under headings; break long forms into steps (a 30-question form → "6 steps of 5 related questions, rather than 30 steps").
@@ -50,6 +50,7 @@ Dannaway's conventions are **web-scoped**. Two known conflicts with Apple platfo
 
 **Input mechanics that ride along** (Krehel, Interfaces Cheat Sheet):
 - **Every input gets a visible `<label>`**, and its `type` and `inputmode` match what people should enter — `type="email"` / `inputmode="numeric"` bring up the right keyboard on touch devices, which a placeholder-only field with `type="text"` never does.
+- **Name the field for autofill** (Vercel, Web Interface Guidelines; WCAG 1.3.5 Identify Input Purpose for personal-data fields): a meaningful `name` and the specific `autocomplete` token (`email`, `given-name`, `street-address`, `cc-number`, `current-password` / `new-password`, `one-time-code`). House position where upstream advises `autocomplete="off"` on non-auth fields: keep `off` for fields where a suggestion would be wrong (a search-like or one-off value), never as a blanket default.
 - **Never block paste.** "People paste in things like passwords and one-time codes." Paste-blocking on confirmation and OTP fields punishes password managers and the users who follow security advice.
 - **16px field text on any touch screen, gated on pointer, not width** (Kosta, tactile-design). iOS zooms into a field set below 16px and stays zoomed. Gate the rule on `(pointer: coarse)`, not only a phone breakpoint, so an iPad's wider layout gets it too. Desktop fields can match the body size.
 
@@ -89,7 +90,7 @@ Error message *copy* itself → `ux-writing` (error-messages).
 3. **Lock icon** on a regular full-contrast button (great for premium features) + message on press or nearby.
 4. If you must disable: message near the button explaining why and how to proceed, tooltip, and keep it keyboard-accessible.
 
-**Multi-step forms:** keep the primary button left-aligned (web scope); put a tertiary "Back" at the **top left** — a prominent bottom back button gets mis-clicked and loses entered data.
+**Multi-step forms:** keep the primary button left-aligned (web scope); put a tertiary "Back" at the **top left** — a prominent bottom back button gets mis-clicked and loses entered data. For the same reason, guard a dirty form against leaving: a router guard or `beforeunload` prompt while there are unsaved changes (Vercel, Web Interface Guidelines), removed once the data is saved or drafted automatically.
 
 ## 5. Destructive-action friction ladder
 
@@ -118,7 +119,7 @@ Corroborated by Wathan & Schoger, *Refactoring UI*: a destructive action that is
 - [ ] Optional fields replaced by opt-in checkboxes where possible
 - [ ] Field types: radio ≤~10 / autocomplete / stepper / checkbox-vs-toggle by effect timing
 - [ ] Checkbox labels pass the "yes" test
-- [ ] Every input has a visible label with matching `type`/`inputmode`; paste never blocked
+- [ ] Every input has a visible label with matching `type`/`inputmode`, a `name`, and its `autocomplete` token; paste never blocked; unsaved changes guarded
 - [ ] Validation approach chosen deliberately; errors above fields; icon + color; on submit `aria-invalid` + `aria-describedby` + focus to first invalid field
 - [ ] One primary button; shape ≥3:1, text ≥4.5:1, ≥48×48pt, ≥8pt apart
 - [ ] No disabled buttons — enabled+validate, removed, or locked instead

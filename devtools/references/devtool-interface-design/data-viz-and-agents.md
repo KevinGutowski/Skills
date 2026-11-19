@@ -1,6 +1,6 @@
 # Dev-Data Visualization & Agent Experience (AX)
 
-*Sources: "Beyond bars and lines" (Lozhkin & Turner, 2024) · "3 rules for getting AI agents to find, use — and not exploit — your devtool" (Nazarova & Turner, 2026) · Ona Background Agents Summit 2026.*
+*Sources: "Beyond bars and lines" (Lozhkin & Turner, 2024) · "3 rules for getting AI agents to find, use — and not exploit — your devtool" (Nazarova & Turner, 2026) · Ona Background Agents Summit 2026 · Vercel Academy "Agent-Friendly APIs" companion skill (vercel-labs/academy-skills `8976d89`, read 2026-11-18; one vendor's course).*
 
 ## Background-agent session UX
 
@@ -36,12 +36,27 @@ Frame: "agent-led growth." Agents are now discoverers, users, and threats simult
 - Labels lock you out of categories: "If your comparison pages always pair your tool with one ecosystem, LLMs will never recommend you for another."
 - **Own your "vs" pages** — or the competitor's evaluation dimensions decide.
 - **Specificity wins:** "'P95 latency of 62ms' gets recommended. 'Fast and reliable' gets listed but not chosen."
-- Playbook by impact: comparison/topic landing pages → awesome-lists → genuine community answers → a README led by "a drop-in replacement for X that does Y 10x faster" + install + example + comparison table → `llms.txt` and `.md` docs (their value is in agent-followed links, not crawlers) → customer engineering blogs → RAG-friendly writing (defined terms, explicit claims, self-contained sections).
+- Playbook by impact: comparison/topic landing pages → awesome-lists → genuine community answers → a README led by "a drop-in replacement for X that does Y 10x faster" + install + example + comparison table → `llms.txt` and `.md` docs (their value is in agent-followed links, not crawlers — so link the index from pages agents already land on, keep it a lean index, and treat it as a supplement to the docs, not a discovery guarantee; `llms-full.txt` is a community convention outside the llmstxt.org proposal) → customer engineering blogs → RAG-friendly writing (defined terms, explicit claims, self-contained sections).
 - Audit: run the same 15–20 queries across LLMs and ask "list every source URL you consulted"; distinguish reach problems from positioning problems; "not crawled = not trained on."
 
 ### Rule 2 — Be usable by agents
 
 "An agent that recommends your tool but can't set it up without a human hasn't converted anyone." Invert traditional onboarding ("sign up → verify → configure → use") to **use → create → claim** — let an agent deploy/create anonymously, then a human claims the resource (that claim is your conversion event). The agent-usability stack: predictable REST + OpenAPI over clever SDK fluency ("token-budget-aware design"), MCP servers (self-describing), standalone CLIs, SDK context files, agent skills. **The acceptance test: "can an external agent ship a feature with your tool using only your docs and a prompt?"** And mind payments: "agent-first growth without an agent-first payment path is a party where nobody pays for drinks."
+
+**Docs an agent can act on** (Vercel Academy course; makes the acceptance test concrete). Three gates, in order; fix the earliest failure first:
+
+1. **Reachable** — the final response is a 200, not a 403 or a bot challenge. Check with an agent-style user agent, then confirm in deployment and firewall logs: a fetch from your laptop cannot prove production agents get through.
+2. **Readable** — the docs are in the raw response body with no client-side JavaScript, served as plain text or Markdown. A 200 without the content proves nothing.
+3. **Actionable** — an agent leans on what the page states and may paste example values straight into a request, so remove every place it would have to guess:
+   - Endpoint signature alone in a code block: exact method and path.
+   - Parameters as a table with stable columns (name, type, required, description), one per row.
+   - Request examples with real values that run unchanged; never `"string"` or `YOUR_VALUE`.
+   - Complete response bodies, every field; a truncated example teaches a truncated shape.
+   - Every error case with its status code, trigger and exact body; an undocumented error leaves the agent no recovery path.
+   - One schema section with formats and constraints, matching the actual types.
+   - At least two multi-endpoint workflows for real tasks: numbered steps, each with its path and why.
+
+The course presents the seven actionable patterns as design recommendations, not individually measured formats; prefer accurate, tested examples over any one layout. Its tutorial error body is a bare message string. For an API agents must recover from, keep the tiered structured errors under Rule 3 and add a stable machine code beside the message, as [cli-for-humans-and-agents.md](cli-for-humans-and-agents.md) does for CLI errors; never make callers parse prose. (Example values in CLI output follow a different, scoped rule; see that file's Scoped positions.)
 
 ### Rule 3 — Defend
 

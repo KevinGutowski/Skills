@@ -87,3 +87,13 @@ Fresh descriptions-only judge (new subagent, no forked context) ran `python3 -B 
 | SC6 (control) | `devtools` | `devtools` | `ux-writing` | Pass | Devtool onboarding and token settings page design. |
 | SC7 (control) | `x-post-reader` | `x-post-reader` |  | Pass | Public x.com status URL. |
 | SC8 (control) | none | none |  | Pass | Create a Linear issue; no installed skill should claim it. |
+
+## 2026-11-18 React and browser-verification additions
+
+Added S43 for `react` and S44 for `browser-verification`, bringing the deterministic fixture to 44 prompts for 44 local skills. `python3 -B scripts/check_skill_smoke_tests.py` passes.
+
+The two smoke rows were not judged on their own. A fresh descriptions-only judge ran the 18-probe fixture `docs/vercel-skills-routing-probes-2026-11.md`, whose R1 and R5 are near-identical to S44 and S43: 18/18, with all ten neighbor and control prompts staying with their existing owners. Table and the judge's reported ambiguities: `docs/vercel-skills-source-mining-2026-11.md` ("Routing probes").
+
+## 2026-11-18 Follow-up: full smoke run after two description edits
+
+After `write-clear-prose` and `design-systems` descriptions were edited, a fresh descriptions-only judge ran all 44 smoke prompts in one blind packet with the other probe sets. Result: pass, 44/44 first-skill matches, including S43 (`react`) and S44 (`browser-verification`), which had not been judged directly before. Other sets and the one pre-existing drift (V9): `docs/vercel-skills-source-mining-2026-11.md` ("Routing probes after the follow-up").

@@ -91,7 +91,8 @@ WCAG 2.2 Reflow requires vertically scrolling content to work at a width equival
 Build toward that outcome:
 
 - avoid fixed block sizes on text-bearing containers;
-- let rows wrap or recompose instead of clipping labels;
+- let rows wrap or recompose instead of clipping labels; a flex or grid child that holds text needs `min-width: 0` (`min-w-0`, or `minmax(0, 1fr)` in grid) before it can shrink, wrap, or truncate — the failure table is in `design-craft` (worst-case-data);
+- fix the element that overflows instead of putting `overflow-x: hidden` on a wrapper (upstream Vercel guidance suggests the wrapper; house position is the opposite): hiding clips focus rings and content and stops `position: sticky` descendants from sticking to the viewport. Where clipping is the intent, `overflow-x: clip` avoids creating a scroll container;
 - make actions size from content and padding, not ideal English copy;
 - preserve access to every action when zoom, text size, or content length grows;
 - allow essential two-dimensional content such as data tables to use a deliberate overflow treatment.
@@ -109,6 +110,8 @@ Stress-test with:
 - Preserve the Zero-Width Non-Joiner (U+200C). Persian and Kurdish use it inside compound words, and a sanitizer that strips it changes meaning.
 - Store Persian ی/ک (U+06CC/U+06A9) and Arabic ي/ك (U+064A/U+0643) as typed, but treat them as equivalent for search and validation. Rejecting one form locks out users whose keyboard sends the other.
 - Format digits and dates with the locale: `Intl.NumberFormat('fa-IR')` gives ۱٬۲۳۴, and `Intl.DateTimeFormat('fa-IR')` uses the Solar Hijri calendar. Never hard-code Western digits or the Gregorian calendar.
+
+Locale mechanics for every language (Vercel, Web Interface Guidelines; formatting failures and plural rules are in `design-craft` (worst-case-data)): build dates, numbers, and currency with `Intl.DateTimeFormat` / `Intl.NumberFormat` rather than hand-assembled strings; choose the language from `Accept-Language` or `navigator.languages`, never from IP geolocation; and mark brand names, code tokens, and identifiers `translate="no"` so browser auto-translation leaves them intact.
 
 The external source's `30–40%` translation expansion is a useful test stimulus, not a safe sizing formula. Real expansion varies by source language, target language, string length, and context.
 
@@ -162,6 +165,7 @@ A partially visible next item can hint that a horizontal list continues, but the
 
 ## Sources and staleness
 
+- Vercel, Web Interface Guidelines (command.md, read 2026-11-18): locale detection and `translate="no"`, the `min-width: 0` reminder, and the `overflow-x: hidden` advice recorded here as a house disagreement. https://github.com/vercel-labs/web-interface-guidelines
 - Impeccable (Paul Bakaus), `harden` at `b3ced85`, Apache-2.0: the Arabic-script data-handling notes. https://github.com/pbakaus/impeccable
 - Jakub Krehel, `better-layout`, revision `f2d1354f9966fd4d03f9c2beb69591ecec22af54`: grouping, alignment, adaptivity, safe-area, and disclosure heuristics. https://github.com/jakubkrehel/skills
 - MDN, CSS logical properties and values: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values

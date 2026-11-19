@@ -86,3 +86,7 @@ A fresh judge read a blind packet: the descriptions plus W1–W18 from `docs/web
 - **Frame-drop control:** V18 → `motion`, pass.
 - **W1–W9, W11–W17:** all pass. W18 came back as "none", which its notes accept.
 - **Drift in descriptions this change didn't touch:** V9 (as before) and V12 (`working-with-ai` first, `design-prototyping` second, against the expected `design-prototyping`). Recheck both at the next description pass.
+
+## 2026-11-18 recheck after the Vercel skills intake
+
+V1–V18 were re-judged blind in a 137-prompt packet after two unrelated description edits (`write-clear-prose`, `design-systems`). 17/18: V9 drifted the same way as before (`working-with-ai` first, `ux-writing` second); V12 matched its expected `design-prototyping` this time. V3, V4, and V14 still route to `design-systems` with its edited description.

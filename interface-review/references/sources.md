@@ -16,3 +16,11 @@ The local skill adapts that pattern to this repository's existing domain owners.
 - Read: `critique` (assessment orchestration, report structure, cognitive-load, heuristics, and persona material), `audit` and `audit.native` (five technical dimensions), and `polish` (critique snapshot as a polish backlog).
 - Delta used here: [critique-scoring.md](critique-scoring.md). It covers judge-before-scan isolation with a declared method line, a design-specificity verdict as the opening, Nielsen 0–4 rubrics with `n/a` renormalization, a cognitive-load failure count, persona walk-throughs by surface, five technical audit dimensions, P0–P3 mapped onto this skill's severity scale, and question-last delivery.
 - Not imported: snapshot persistence and trend storage (`.impeccable/critique/`), browser overlay injection, Codex-specific gates, and the requirement to recommend Impeccable's own commands.
+
+## Vercel Web Interface Guidelines
+
+- Repository: https://github.com/vercel-labs/web-interface-guidelines (command.md on `main`; raw: https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md). Shipped as the `web-design-guidelines` skill in https://github.com/vercel-labs/agent-skills, a thin wrapper that fetches the raw file before each review.
+- Read: 2026-11-18, the full rule list (about 110 rules in 17 families plus the anti-pattern list and output format) and the wrapper skill body. Upstream is unversioned; no commit was pinned.
+- Delta used here: [code-compliance-sweep.md](code-compliance-sweep.md). It covers the fetch-first habit, the rule families mapped to local owners, grep patterns for the anti-pattern list, a conflicts table with house positions, and the terse `file:line` list as an input to this skill's findings.
+- Folded elsewhere in the same change: rules new to the library went to their owners in `web-design` (see its sources file) and UI-copy rules to `ux-writing`.
+- Not imported: the standalone "check every rule, output only the list" workflow (it bypasses judgment-first, root-cause consolidation, and the finding caps); the rules listed as conflicts; React hydration and controlled-input rules, which belong to `react`.

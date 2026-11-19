@@ -1,6 +1,6 @@
 ---
 name: write-clear-prose
-description: "Drafts, revises, critiques, and coaches nonfiction prose for clarity, simplicity, structure, rhythm, voice, and audience — Zinsser-school craft. Use for essays, articles, business or technical writing, emails, speeches, or editing passes. Words inside a UI (labels, errors, buttons) → ux-writing. Triggers: clear writing, simplify prose, edit my essay, line edit, copyedit, clutter, rewrite, match this voice."
+description: "Drafts, revises, critiques, and coaches nonfiction prose for clarity, simplicity, structure, rhythm, voice, and audience — Zinsser-school craft. Use for essays, articles, documentation pages, business or technical writing, emails, speeches, or editing passes. Words inside a UI (labels, errors, buttons) → ux-writing. Triggers: clear writing, simplify prose, edit my essay, line edit, copyedit, clutter, rewrite, match this voice."
 ---
 
 # Write Clear Prose
@@ -83,6 +83,8 @@ For detailed checklists, load [references/revision-moves.md](references/revision
 For genre-specific advice, load [references/form-playbooks.md](references/form-playbooks.md).
 
 For scoring, edit levels, and repeatable feedback formats, load [references/editing-rubric.md](references/editing-rubric.md).
+
+For documentation pages and docs reviews (one content type per page, code-sample and placeholder rules, model-assisted drafting, a `file:line` flag list), load [references/technical-docs.md](references/technical-docs.md).
 
 ## Matching a reference voice
 
