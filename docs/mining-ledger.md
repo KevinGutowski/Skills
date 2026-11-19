@@ -542,3 +542,21 @@ Ticket-driven fold: instruct agents that less is more, starting with no supporti
 - **Extended:** `working-with-ai` (ai-ui-direction: the over-explained-surfaces failure mode, the subtract-then-re-admit prompt, a checklist line), `design-craft` (refinement-moves: Distill copy bullet), `ux-writing` (ui-voice-and-tone: "ask whether the line should exist" ahead of the Simplify edits, a checklist line), plus each skill's sources file.
 - **Synthesis flagged as ours:** the staged procedure, the one-line budget, the exceptions, and the reason models over-explain. Wroblewski supplied the exhibit and the 75% prompt only.
 - **Parked:** single source. Recorded in `frontend-design/references/coverage-gaps.md` with what would promote it: a with/without comparison on the same briefs, a second source, and a container word-count detector. No eval case was added.
+
+## 2026-11-18 — UI FX: libraries.dev (Jakub Antalik) plus effect-library and platform surveys
+
+Ticket-driven: a skill for coming up with extra-creative UI effects, from two X posts (border-beam; distortion waves). Full manifest, fold map, conflicts, parked items and probe results: `docs/ui-fx-source-mining-2026-11.md`.
+
+- **Density:** HIGH for the libraries.dev agent references and vendor skill (placement rules, traps) and for the distortion-waves video (staging); MEDIUM for the survey of other effect libraries; HIGH for platform support and accessibility facts.
+- **New skill:** `ui-fx` (SKILL.md plus references effect-ideation, libraries-dev, effect-libraries, platform-techniques, sources, coverage-gaps; five eval cases, run three times: latest 21/21 with the skill, 10/21 without).
+- **Extended (one-line pointers):** `frontend-design` (SKILL.md, ui-library-picks), `design-craft` (SKILL.md, refinement-moves), `web-design` (SKILL.md, web-animation-design, motion-audit), `creative-coding`, `swiftui` (SKILL.md, swiftui-animation), `ai-experience-design`, `interface-review`. No neighbor description changed.
+- **Posture:** revised the same day at the owner's request to be less cautious: say yes and push further, Explore and Finish modes, hard limits reduced to a short shipping floor.
+- **Conflicts:** anti-slop tells vs requested effects, settled by the catalog's pin rule (invoking `ui-fx` pins effects for the surface); vendor reduced-motion claim vs its own references.
+- **Synthesis flagged as ours:** the gate, moment inventory, seven families, five-beat names, the ladder.
+- **Added the same day:** glimm (glimm.dev, npm 0.4.1, `nomanjack/glimm-skill`) as reference `glimm`: sweep transitions for routes and in-app moments, the work/change model, live-DOM movement through HTML-in-Canvas. Second independent source for the staging anatomy.
+- **Also added the same day:** ittybitty (ittybitty.dev, `blakecyze/ittybitty-shaders`, MIT) as reference `ittybitty`: 74 copy-in WebGL2 shaders indexed by job and by moment, with usage, layers, shape clipping and device-reach cautions.
+- **Later the same day:** an intensity dial for subtle use (from a second border-beam post) and reference `reverse-engineering` for rebuilding effects seen on other sites (from a post listing five kit sites, which were inspected briefly and not folded as dependencies). Three independent reviews and a second pass corrected rule drift across files, about thirty vendor facts, and several accessibility statements; root causes and the ten canonical rules are in the source-mining doc.
+- **Pattern study:** the example components of Arc UI and Bencho (free MIT source read in full), and the public pages of HorizonX, uberdesigner and Grainient, were mined for techniques. New references `control-patterns` and `surface-recipes` carry about forty patterns and recipes with original code; no third-party code was copied, and paid-tier source was not read.
+- **holospot** (`dmitrykurash/holospot`, MIT, v0.1.0): physically based holographic foil, glitter and hologram materials for three.js, as reference `holospot`, with the transferable shader ideas pulled out.
+- **Routing:** X1–X19 19/19 on the latest blind judge; W and B fixtures and the 43-row smoke packet re-run clean.
+- **Parked:** React Native ports, on-device models, Pro content, a reduced-motion lint.

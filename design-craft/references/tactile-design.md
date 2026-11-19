@@ -133,7 +133,7 @@ Use this as a review checklist under this theme:
 - [ ] Actions placed below the data they act on (paging excepted), or a pager inside a table's card
 - [ ] Fake data, or layout that jumps when data or a label arrives
 - [ ] A tick on the chosen menu item, a toast for a copy, or a sliding row highlight
-- [ ] `transition: all`, ease-in on UI, scaling from 0, or animation on keyboard actions, drag or data figures
+- [ ] `transition: all`, ease-in on UI, scaling from 0, or animation on keyboard actions, drag or data figures (everyday motion; an effect the user asked for, or one chosen through `ui-fx` for an effects request, is exempt)
 - [ ] Hover-only information, sticky hover on touch, targets under 44pt, or fields under 16px on touch screens
 - [ ] Not checked at 4–8× in both themes
 

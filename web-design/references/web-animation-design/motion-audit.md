@@ -38,6 +38,8 @@ Documented decisions win. If a comment or design doc explains why an animation e
 
 Four questions, asked in this order. Record which one decided each candidate, because the report must show it.
 
+**Scope: the gate judges everyday interface motion.** An effect the user asked for, subtle or showy, or one chosen through `ui-fx` for an effects request, is pinned and skips all four gate questions (frequency, purpose, budget, function), even when it is keyboard-triggered, seen often, or longer than the product-UI budget. List it as "requested effect" and check it against the `ui-fx` shipping floor instead (honest about results and fired on click, a reduced-motion path, no rapid flashing, automatic motion that stops within five seconds or has a visible, keyboard-operable pause, stop or hide control, a visible still cue and a status announcement for any state it conveys, legible text, a fallback, focus not clipped or covered, holds frame rate). If it is frequent, the audit may suggest a shorter or smaller version; it does not issue a Reject, Delete or Reduce, and Remove mode leaves it untouched. If you cannot tell whether an effect was requested, ask or check the change description before treating it as a finding. The same holds in `interface-review`.
+
 1. **Frequency.** Use the tiers in `web-design` (web-animation-design), "The Frequency". For audit work, treat the top tier strictly:
 
    | Tier | Find | Remove |
@@ -100,7 +102,7 @@ Reduce means a smaller version of the same motion, never a different animation:
 | Slide or scale entrance on a frequent surface | Opacity only, about 150ms |
 | Product UI animation over 300ms | 200–250ms, same curve |
 | Stagger over 80ms per item or over 300ms total | 30ms per item, or fade the group as one |
-| Infinite loop (pulse, shimmer, glow) on a persistent element | Run once, or keep only the static end state |
+| Infinite loop (pulse, shimmer, glow) on a persistent element | Run once, or keep only the static end state. Kept on purpose through `ui-fx`: an indicator or beam on work the user started, which stops with it, or deliberate atmosphere that has a visible, keyboard-operable pause control or stops within five seconds, is not an audit finding. A requested loop that starts on its own, runs past five seconds and has no control is a floor finding (add the control or the stop), not a deletion |
 
 If the reduced version no longer carries its purpose, delete it. Scope note for hover: rows a cursor sweeps across (nav, menus, long lists) get no transition at all, per the Hover States section of [PRACTICAL-TIPS.md](PRACTICAL-TIPS.md); the 150ms reduction applies to a single hovered control.
 

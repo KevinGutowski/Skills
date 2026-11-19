@@ -98,4 +98,5 @@ When adopting a library:
 - **`frontend-design` / `web-design`** — owns production UI layout, SVG hygiene, web motion values, accessibility, and CSS polish. This skill owns procedural visual behavior and sketch systems.
 - **`malleable-software`** — owns end-user-resculptable products and designer-built tools. This skill can build the procedural engine inside such a tool; `malleable-software` decides the agency model.
 - **`motion` / `web-design` (web-animation-design)** — owns animation timing and transitions for interfaces. This skill owns simulation loops, agents, particles, and generative motion.
+- **`ui-fx`** — owns effects attached to a product UI moment (loading beams, transition waves, materials on a button) and the libraries for them. This skill owns the procedural engine when such an effect needs a custom particle or noise system.
 - **`data-viz`** — owns truthful charts and analytical graphics. Route data art here only when the visual grammar is generative/expressive rather than chart interpretation.

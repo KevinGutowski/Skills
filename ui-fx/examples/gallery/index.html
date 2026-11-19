@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ui-fx recipe gallery</title>
+<style>
+  /* ---------- base surface system: this is most of what makes an effect look expensive ---------- */
+  @property --beam-angle { syntax: "<angle>"; inherits: true; initial-value: 0deg; }
+  @property --h { syntax: "<number>"; inherits: true; initial-value: 150; }
+  :root {
+    color-scheme: dark;
+    --bg: #0c0c0d; --surface: #161617; --raised: #1c1c1e; --ink: #f4f4f5; --muted: #a0a0aa; --faint: #5d5d66;
+    --hair: rgb(255 255 255 / 0.08); --hair-strong: rgb(255 255 255 / 0.14);
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    /* surface: hairline ring + top highlight + two-distance shadow. Never a single flat border. */
+    --ring: inset 0 0 0 1px var(--hair), inset 0 1px 0 rgb(255 255 255 / 0.06);
+    --lift: 0 1px 1px rgb(0 0 0 / 0.5), 0 12px 32px -12px rgb(0 0 0 / 0.7);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.006em; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  main { max-width: 1240px; margin: 0 auto; padding: 48px 32px 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px; }
+  @media (max-width: 480px) { main { padding: 20px 12px 48px; gap: 12px; } .tile { padding: 52px 16px 20px; border-radius: 22px; } }
+  .tile { position: relative; min-height: 340px; border-radius: 28px; background: var(--surface); box-shadow: var(--ring);
+    display: grid; place-items: center; padding: 52px 28px 28px; overflow: hidden; }
+  .tile > h2 { position: absolute; left: 22px; top: 18px; margin: 0; font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: 0.01em; }   /* 4.5:1 on the tile */
+  .tile > * { max-width: 100%; }
+  @media (min-width: 720px) { .wide { grid-column: span 2; } }
+  .tile.wide > h2 { z-index: 2; color: #fff; padding: 3px 9px; margin: -3px -9px; border-radius: 999px; background: rgb(8 8 14 / 0.84); }   /* a label over imagery carries its own dark chip */
+  .replay { position: absolute; right: 16px; top: 12px; height: 28px; padding: 0 11px; border: 0; border-radius: 999px; background: rgb(255 255 255 / 0.06); box-shadow: inset 0 0 0 1px var(--hair); color: var(--muted); font-size: 12px; }
+  .replay:hover { color: var(--ink); } :focus-visible { outline: 2px solid #8ab4ff; outline-offset: 2px; }
+  button { font: inherit; color: inherit; }
+
+  /* ---------- 1. border beam: three soft layers revealed through an eased conic window ---------- */
+  .beam { position: relative; border-radius: 20px; isolation: isolate; }
+  .beam > .beam-body { position: relative; z-index: 1; border-radius: inherit; background: var(--raised); box-shadow: var(--ring), var(--lift); }
+  .beam::before, .beam > .beam-inner, .beam > .beam-bloom::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 600ms ease;
+    /* colour is parked: fixed hues around the box. Only the window moves, so it never looks like a spinning rainbow. */
+    background:
+      radial-gradient(60% 90% at 0% 0%, var(--b1, #ff6b8b), transparent 70%),
+      radial-gradient(60% 90% at 100% 0%, var(--b2, #ffb86b), transparent 70%),
+      radial-gradient(60% 90% at 100% 100%, var(--b3, #6bd6ff), transparent 70%),
+      radial-gradient(60% 90% at 0% 100%, var(--b4, #9d7bff), transparent 70%);
+    /* the window: a long eased ramp, never a hard edge */
+    --window: conic-gradient(from var(--beam-angle), transparent 0 52%, rgb(0 0 0 / 0.06) 57%, rgb(0 0 0 / 0.25) 62%, rgb(0 0 0 / 0.6) 66%,
+      #000 70%, rgb(0 0 0 / 0.6) 74%, rgb(0 0 0 / 0.25) 78%, rgb(0 0 0 / 0.06) 83%, transparent 88% 100%);
+  }
+  /* a. stroke: a 1px line exactly on the border */
+  .beam::before { z-index: 2; padding: 1px; mask: var(--window), linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: intersect, exclude; filter: saturate(1.3) brightness(1.5); }
+  /* b. inner glow: the same light bleeding a little way into the surface */
+  .beam > .beam-inner { z-index: 2; mask: var(--window), linear-gradient(#000, #000); mask-composite: intersect; filter: blur(14px) saturate(1.2);
+    opacity: 0; clip-path: inset(0 round 20px); mix-blend-mode: plus-lighter; }
+  /* c. bloom: wide, faint light outside the box. The blur is on a wrapper and the mask on its child: a mask is applied after
+     a filter on the same element, so blurring the masked layer itself can never spill past the mask's edge. */
+  .beam > .beam-bloom { position: absolute; z-index: 0; inset: -2px; border-radius: inherit; pointer-events: none; filter: blur(16px) saturate(1.3); }
+  .beam > .beam-bloom::before { padding: 10px; mask: var(--window), linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: intersect, exclude; }   /* a 10px ring of the same light */
+  .beam[data-active]::before { opacity: var(--stroke, 1); }
+  .beam[data-active] > .beam-inner { opacity: var(--inner, 0.42); }
+  .beam[data-active] > .beam-bloom::before { opacity: var(--bloom, 0.8); }
+  .beam[data-active] { animation: beam-turn var(--beam-seconds, 3.2s) linear infinite; }
+  @keyframes beam-turn { to { --beam-angle: 360deg; } }
+  .beam[data-level="whisper"] { --b1: #fff; --b2: #cfd3da; --b3: #fff; --b4: #cfd3da; --stroke: 0.6; --inner: 0.1; --bloom: 0.22; --beam-seconds: 5.5s; }
+  @media (prefers-reduced-motion: reduce) {
+    .beam[data-active] { animation: none; }
+    .beam::before, .beam > .beam-inner, .beam > .beam-bloom::before { --window: linear-gradient(#000 0 0); }   /* a still, even ring */
+    .beam[data-active]::before { opacity: 0.5; } .beam[data-active] > .beam-inner { opacity: 0.05; } .beam[data-active] > .beam-bloom::before { opacity: 0.2; }
+  }
+
+  .composer { width: 100%; padding: 14px 14px 12px; display: grid; gap: 18px; }
+  .composer .placeholder { color: var(--muted); }
+  .composer .row { display: flex; align-items: center; gap: 8px; }
+  .pill { height: 28px; padding: 0 10px; border-radius: 999px; background: rgb(255 255 255 / 0.05); box-shadow: inset 0 0 0 1px var(--hair); display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; }
+  .send { margin-left: auto; width: 30px; height: 30px; border-radius: 50%; border: 0; background: var(--ink); color: #111; display: grid; place-items: center; }
+  .status { display: inline-flex; align-items: center; gap: 8px; height: 28px; padding: 0 11px 0 9px; border-radius: 999px; background: rgb(255 255 255 / 0.04); box-shadow: inset 0 0 0 1px var(--hair); font-size: 13px; }
+  .stack { display: grid; gap: 12px; justify-items: start; width: min(340px, 100%); } .stack > .beam { width: 100%; }
+
+  /* ---------- 2. shimmer text: a soft band, wide falloff ---------- */
+  /* Still by default. It animates only while the element, or a parent, carries data-live: set that from the working state and remove it when the work ends. */
+  .shimmer { color: var(--muted); }
+  @supports (background-clip: text) or (-webkit-background-clip: text) {
+    .shimmer[data-live], [data-live] > .shimmer { background: linear-gradient(100deg, var(--muted) 30%, color-mix(in oklab, var(--ink) 70%, var(--muted)) 44%, var(--ink) 50%, color-mix(in oklab, var(--ink) 70%, var(--muted)) 56%, var(--muted) 70%) 100% 0 / 300% 100%;
+      -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer-sweep 2.2s linear infinite; }
+  }
+  @keyframes shimmer-sweep { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+  @media (prefers-reduced-motion: reduce) { .shimmer[data-live], [data-live] > .shimmer { animation: none; background: none; color: var(--muted); } }
+  .dots { display: grid; grid-template-columns: repeat(3, 3px); gap: 2px; }
+  .dots i { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); animation: dot 1.2s var(--ease-out) infinite; animation-delay: calc(var(--i) * 70ms); }
+  @keyframes dot { 0%, 60%, 100% { opacity: 0.25; transform: scale(0.8); } 30% { opacity: 1; transform: scale(1); } }
+  .status:not([data-live]) .dots i { animation: none; opacity: 0.7; }   /* still once the work ends */
+  @media (prefers-reduced-motion: reduce) { .dots i { animation: none; opacity: 0.7; } }
+
+  /* ---------- 3. edge light that faces the pointer ---------- */
+  .edge { position: relative; width: min(300px, 100%); padding: 22px; border-radius: 22px; background: var(--raised); box-shadow: var(--ring), var(--lift); }
+  .edge::before, .edge::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: var(--lit, 0); transition: opacity 300ms ease; }
+  .edge::before { padding: 1px; background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), rgb(255 255 255 / 0.85), rgb(255 255 255 / 0.25) 35%, transparent 65%);
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+  .edge::after { background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 0%), rgb(255 255 255 / 0.07), transparent 60%); }   /* faint wash on the face */
+  .edge h3 { margin: 0 0 4px; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; } .edge p { margin: 0; color: var(--muted); font-size: 13.5px; }
+
+  /* ---------- 4. the dark gradient card ---------- */
+  .widget { --h: 150; width: min(268px, 100%); aspect-ratio: 1; border-radius: 32px; position: relative; overflow: hidden; color: #fff; isolation: isolate;
+    background:
+      /* colour lives where no small text sits: behind the segmented control (which has its own dark track) and in the lower right */
+      radial-gradient(80% 62% at 96% -6%, oklch(0.62 0.17 var(--h) / 0.95), transparent 62%),
+      radial-gradient(72% 62% at 104% 104%, oklch(0.5 0.15 calc(var(--h) + 18) / 0.9), transparent 60%),
+      radial-gradient(60% 50% at 0% 0%, oklch(0.36 0.09 var(--h) / 0.7), transparent 70%),
+      radial-gradient(50% 45% at 50% 50%, rgb(0 0 0 / 0.55), transparent 75%),      /* dark centre behind the control */
+      oklch(0.2 0.03 var(--h));
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.22), inset 0 -24px 40px -24px rgb(0 0 0 / 0.5), var(--lift);
+    transition: --h 500ms var(--ease-out); }
+  .widget::after { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0.22; mix-blend-mode: overlay; background-image: var(--grain); }   /* grain kills banding */
+  .widget header { position: absolute; inset: 18px 18px auto; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: rgb(255 255 255 / 0.86); white-space: nowrap; }
+  .seg { display: flex; padding: 2px; border-radius: 999px; background: rgb(0 0 0 / 0.5); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08); }
+  .seg span { padding: 3px 9px; border-radius: 999px; font-size: 11.5px; } .seg span[data-on] { background: #fff; color: #111; }
+  .dial { position: absolute; inset: 8px 0 0; margin: auto; width: 160px; height: 160px; border-radius: 50%; display: grid; place-items: center; }
+  .dial::before { content: ""; position: absolute; inset: 0; border-radius: 50%;       /* ticks: one conic gradient, two brightnesses */
+    background: repeating-conic-gradient(from -135deg, rgb(255 255 255 / var(--tick, 0.28)) 0 0.9deg, transparent 0.9deg 4.5deg);
+    mask: radial-gradient(closest-side, transparent calc(100% - 13px), #000 calc(100% - 12px)), conic-gradient(from -135deg, #000 0 270deg, transparent 270deg);
+    mask-composite: intersect; }
+  .dial::after { content: ""; position: absolute; inset: 0; border-radius: 50%; --tick: 1;    /* the lit arc, longer ticks */
+    background: repeating-conic-gradient(from -135deg, #fff 0 0.9deg, transparent 0.9deg 4.5deg);
+    mask: radial-gradient(closest-side, transparent calc(100% - 18px), #000 calc(100% - 17px)), conic-gradient(from -135deg, #000 0 calc(var(--value, 0.62) * 270deg), transparent 0);
+    mask-composite: intersect; filter: drop-shadow(0 0 6px rgb(255 255 255 / 0.45)); }
+  .dial .core { width: 106px; height: 106px; border-radius: 50%; background: radial-gradient(circle at 50% 30%, rgb(255 255 255 / 0.08), transparent 60%), rgb(0 0 0 / 0.35);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), inset 0 1px 0 rgb(255 255 255 / 0.18), 0 10px 24px -8px rgb(0 0 0 / 0.6); display: grid; place-items: center; text-align: center; }
+  .dial small { display: block; font-size: 10.5px; color: rgb(255 255 255 / 0.72); margin-bottom: -2px; }
+  .dial b { font: 500 40px/1 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+  .dial b sup { font-size: 13px; vertical-align: top; position: relative; top: 4px; margin-left: 1px; color: rgb(255 255 255 / 0.7); letter-spacing: 0; }
+  .widget footer { position: absolute; inset: auto 18px 16px; display: flex; gap: 18px; font-size: 11px; color: rgb(255 255 255 / 0.78); }
+  .widget footer b { display: block; color: #fff; font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  /* ---------- 5. frosted panel over a blob-mesh gradient with grain ---------- */
+  .mesh { position: absolute; inset: 0; background: #0b0b12; overflow: hidden; }
+  .mesh i { position: absolute; width: 46%; aspect-ratio: 1; border-radius: 50%; filter: blur(56px); opacity: 0.9; }
+  .mesh i:nth-child(1) { background: #ff5c7a; left: -6%; top: -18%; } .mesh i:nth-child(2) { background: #ffb347; left: 34%; top: 38%; }
+  .mesh i:nth-child(3) { background: #5b7cff; right: -8%; top: -10%; } .mesh i:nth-child(4) { background: #20c9a6; left: 4%; bottom: -30%; } .mesh i:nth-child(5) { background: #a04bff; right: 6%; bottom: -26%; }
+  .mesh::after { content: ""; position: absolute; inset: 0; background-image: var(--grain); mix-blend-mode: soft-light; opacity: 0.55; }
+  .glass { position: relative; width: min(330px, 100%); padding: 20px; border-radius: 24px; color: #fff;
+    background: linear-gradient(180deg, rgb(22 22 34 / 0.58), rgb(14 14 24 / 0.66)); backdrop-filter: blur(18px) saturate(170%) brightness(0.85); -webkit-backdrop-filter: blur(18px) saturate(170%) brightness(0.85);   /* dark tint: white text keeps 4.5:1 over the brightest blob */
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.16), inset 0 1px 0 rgb(255 255 255 / 0.32), inset 0 -1px 0 rgb(0 0 0 / 0.2), 0 18px 40px -16px rgb(0 0 0 / 0.55); }
+  .glass h3 { margin: 0 0 4px; font-size: 16px; font-weight: 600; letter-spacing: -0.012em; } .glass p { margin: 0 0 16px; font-size: 13.5px; color: rgb(255 255 255 / 0.92); }
+  .glass .cta { display: inline-flex; align-items: center; height: 34px; padding: 0 14px; border-radius: 999px; background: #fff; color: #111; font-weight: 600; font-size: 13.5px; }   /* a picture of a button: this sample has no action */
+
+  /* ---------- 6. hold to confirm ---------- */
+  .hold { --danger: #ff5a4f; --danger-fill: #c8281c; position: relative; overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; height: 44px; padding: 0 20px; border: 0; border-radius: 14px;
+    background: color-mix(in oklab, var(--danger) 14%, var(--raised)); color: color-mix(in oklab, var(--danger) 80%, #fff); font-weight: 600; font-size: 14px;
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--danger) 35%, transparent), inset 0 1px 0 rgb(255 255 255 / 0.06); transition: transform 120ms var(--ease-out); }
+  .hold:active { transform: scale(0.98); }
+  .hold .fill { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; color: #fff;
+    background: linear-gradient(180deg, var(--danger-fill), color-mix(in oklab, var(--danger-fill) 88%, #000)); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.22);   /* white on this fill is above 4.5:1 */
+    clip-path: inset(0 100% 0 0); transition: clip-path 300ms var(--ease-out); }
+  .hold[data-holding] .fill { clip-path: inset(0 0 0 0); transition: clip-path 1200ms linear; }
+  .hold[data-armed] .fill { clip-path: inset(0 0 0 0); transition: none; }
+  @media (prefers-reduced-motion: reduce) { .hold .fill, .hold[data-holding] .fill { transition: none; clip-path: inset(0 100% 0 0); } .hold[data-armed] .fill { clip-path: inset(0 0 0 0); } .hold:active { transform: none; } }
+
+  /* ---------- 7. gliding indicator ---------- */
+  .tabs { position: relative; display: inline-flex; padding: 4px; border-radius: 14px; background: rgb(0 0 0 / 0.35); box-shadow: inset 0 0 0 1px var(--hair), inset 0 1px 2px rgb(0 0 0 / 0.5); isolation: isolate; }
+  .tabs button { position: relative; z-index: 1; height: 32px; padding: 0 14px; border: 0; border-radius: 10px; background: none; color: var(--muted); font-size: 13.5px; font-weight: 500; transition: color 160ms; }
+  .tabs button[aria-pressed="true"] { color: var(--ink); }
+  /* In forced colours the pill's gradient and shadow are removed. Selection and focus need different cues, or focusing the selected option shows nothing new. */
+  @media (forced-colors: active) {
+    .tabs .pill-bg { display: none; }
+    .tabs button[aria-pressed="true"] { text-decoration: underline 2px; text-underline-offset: 5px; }   /* selection: an underline */
+    .tabs button:focus-visible { outline: 2px solid Highlight; outline-offset: 2px; }                       /* focus: an outline, on any option */
+  }
+  .tabs .pill-bg { position: absolute; z-index: 0; top: 4px; left: 0; height: 32px; width: var(--w, 0); transform: translateX(var(--x, 0)); border-radius: 10px;
+    background: linear-gradient(180deg, #2c2c2f, #232326); box-shadow: inset 0 0 0 1px var(--hair-strong), inset 0 1px 0 rgb(255 255 255 / 0.1), 0 2px 6px rgb(0 0 0 / 0.45);
+    transition: transform 300ms var(--ease-out), width 300ms var(--ease-out); }
+  @media (prefers-reduced-motion: reduce) { .tabs .pill-bg { transition: none; } }
+
+  /* ---------- 8. stacked fan ---------- */
+  .fan { display: grid; gap: 12px; justify-items: center; width: min(300px, 100%); }
+  .fan-toggle { height: 30px; padding: 0 12px; border: 0; border-radius: 999px; background: rgb(255 255 255 / 0.06); box-shadow: inset 0 0 0 1px var(--hair); color: var(--muted); font-size: 12.5px; }
+  .fan-toggle:hover, .fan-toggle[aria-expanded="true"] { color: var(--ink); }
+  .toasts { position: relative; width: 100%; height: 190px; }
+  .toast { position: absolute; left: 0; right: 0; bottom: 0; padding: 12px 14px; border-radius: 16px; background: var(--raised); box-shadow: var(--ring), var(--lift); font-size: 13.5px;
+    transform-origin: 50% 100%; transform: translateY(calc(var(--d) * -12px)) scale(calc(1 - var(--d) * 0.05)); opacity: calc(1 - var(--d) * 0.12); transition: transform 380ms var(--ease-out), opacity 380ms; }
+  .toast b { display: block; font-weight: 600; letter-spacing: -0.01em; } .toast span { color: var(--muted); }
+  .toast > * { opacity: calc(1 - var(--d) * 1); transition: opacity 240ms; } .toasts[data-open] .toast > * { opacity: 1; }   /* back cards show no text until fanned */
+  .toasts[data-open] .toast { transform: translateY(calc(var(--d) * -62px)); opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
+
+  /* ---------- 9. holographic tilt (the DOM-level version) ---------- */
+  .holo-wrap { perspective: 900px; }
+  .holo { --rx: 0deg; --ry: 0deg; --px: 50%; --py: 50%; position: relative; width: 176px; aspect-ratio: 5 / 7; border-radius: 16px; overflow: hidden; transform: rotateX(var(--rx)) rotateY(var(--ry)); transition: transform 500ms var(--ease-out);
+    background: radial-gradient(120% 90% at 30% 0%, #2a2f4a, #101223 70%); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.14), inset 0 1px 0 rgb(255 255 255 / 0.3), 0 30px 50px -24px rgb(0 0 0 / 0.8); }
+  .holo::before { content: ""; position: absolute; inset: 0; mix-blend-mode: color-dodge; opacity: 0.6;      /* fine diagonal grating: many narrow bands, shifted by the pointer */
+    background: repeating-linear-gradient(115deg, #ff5fa2 0%, #ffd35f 7%, #6bff9e 14%, #5fd0ff 21%, #a47bff 28%, #ff5fa2 35%) calc(var(--px) * 1.6) calc(var(--py) * 1.6) / 220% 220%;
+    mask: radial-gradient(130% 90% at var(--px) var(--py), #000 10%, rgb(0 0 0 / 0.25) 55%, transparent 80%); filter: saturate(1.2) contrast(1.1); }
+  .holo::after { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 45% at var(--px) var(--py), rgb(255 255 255 / 0.55), transparent 70%); mix-blend-mode: soft-light; }
+  .holo::before, .holo::after { z-index: 1; pointer-events: none; }
+  .holo .art { position: absolute; inset: 12px 12px 68px; border-radius: 10px; background: radial-gradient(80% 60% at 50% 30%, #8fa0ff, #3a3f8f 55%, #15173a 100%); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.18); }
+  .holo .meta { position: absolute; z-index: 2; inset: auto 0 0; padding: 9px 14px 12px; font-size: 12px; color: rgb(255 255 255 / 0.86);
+    background: rgb(9 10 20 / 0.9); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12); }   /* a stable dark plate above the foil: the label stays legible wherever the highlight goes */
+  .holo .meta b { display: block; color: #fff; font-size: 14px; letter-spacing: -0.01em; }
+  @media (prefers-reduced-motion: reduce) { .holo { transition: none; transform: none; } }
+
+  /* ---------- 10. goo merge ---------- */
+  .goo-stage { position: relative; width: 260px; height: 64px; }
+  .goo-layer { position: absolute; inset: 0; filter: url(#goo); }
+  .goo-layer i { position: absolute; top: 12px; width: 40px; height: 40px; border-radius: 50%; background: #f4f4f5; transition: transform 520ms cubic-bezier(0.24, 1.34, 0.38, 1); }
+  .goo-layer i:nth-child(1) { left: 110px; width: 44px; height: 44px; top: 10px; }
+  .goo-layer i:nth-child(2), .goo-layer i:nth-child(3), .goo-layer i:nth-child(4) { left: 112px; }
+  .goo-stage[data-open] .goo-layer i:nth-child(2) { transform: translateX(-72px); } .goo-stage[data-open] .goo-layer i:nth-child(3) { transform: translateX(-34px) scale(0.9); } .goo-stage[data-open] .goo-layer i:nth-child(4) { transform: translateX(62px); }
+  .goo-icons { position: absolute; inset: 0; color: #111; font-weight: 700; font-size: 15px; }
+  .goo-icons > * { position: absolute; top: 12px; left: 112px; width: 40px; height: 40px; display: grid; place-items: center; }
+  .goo-icons button { border: 0; background: none; border-radius: 50%; color: inherit; font: inherit; cursor: pointer; transition: transform 300ms var(--ease-out); }
+  .goo-stage[data-open] .goo-icons button { transform: rotate(45deg); }
+  /* the icons ride the same state and the same offsets as the shapes beneath them, and are hidden when the shapes are merged */
+  .goo-icons span { pointer-events: none; opacity: 0; transition: transform 520ms cubic-bezier(0.24, 1.34, 0.38, 1), opacity 160ms; }
+  .goo-stage[data-open] .goo-icons span { opacity: 1; transition-delay: 0ms, 180ms; }
+  .goo-stage[data-open] .goo-icons span:nth-of-type(1) { transform: translateX(-72px); } .goo-stage[data-open] .goo-icons span:nth-of-type(2) { transform: translateX(-34px) scale(0.9); } .goo-stage[data-open] .goo-icons span:nth-of-type(3) { transform: translateX(62px); }
+  @media (prefers-reduced-motion: reduce) { .goo-layer i, .goo-icons span, .goo-icons button { transition: none; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b"/><feColorMatrix in="b" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10"/></filter>
+</svg>
+<main>
+  <section class="tile" data-demo="beam"><h2>Border beam · signature</h2><button class="replay" type="button">Replay</button>
+    <div class="stack">
+      <span class="status" role="status"><span class="dots" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i></span><span class="shimmer" data-status-text>Ready</span></span>
+      <div class="beam"><div class="beam-bloom"></div><div class="beam-inner"></div><div class="beam-body composer"><span class="placeholder">Build anything…</span><div class="row"><span class="pill">Agent</span><span class="pill">Auto</span><button class="send" aria-label="Send">↑</button></div></div></div>
+    </div></section>
+  <section class="tile" data-demo="beam"><h2>Border beam · whisper</h2><button class="replay" type="button">Replay</button>
+    <div class="stack">
+      <span class="status" role="status"><span class="dots" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i></span><span class="shimmer" data-status-text>Ready</span></span>
+      <div class="beam" data-level="whisper"><div class="beam-bloom"></div><div class="beam-inner"></div><div class="beam-body composer"><span class="placeholder">Work on anything</span><div class="row"><span class="pill">＋</span><button class="send" aria-label="Send">↑</button></div></div></div>
+    </div></section>
+  <section class="tile"><h2>Dark gradient card</h2>
+    <div class="widget"><header><span>Living room</span><span class="seg"><span>Cool</span><span data-on>Auto</span><span>Heat</span></span></header>
+      <div class="dial"><div class="core"><div><small>Hold at</small><b>24<sup>°C</sup></b></div></div></div>
+      <footer><span>Indoor<b>26.4°</b></span><span>Humidity<b>54%</b></span></footer></div></section>
+  <section class="tile"><h2>Edge light</h2>
+    <div class="edge" id="edge" style="--lit:1; --mx: 78%; --my: 6%"><h3>Pro plan</h3><p>The rim and a faint wash on the face follow the pointer.</p></div></section>
+  <section class="tile wide"><h2>Frosted panel · blob mesh · grain</h2>
+    <div class="mesh" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="glass"><h3>Upgrade to Pro</h3><p>Saturation in the backdrop filter is what keeps glass from going grey.</p><span class="cta" aria-hidden="true">Get Pro</span></div></section>
+  <section class="tile"><h2>Hold to confirm</h2>
+    <div class="stack" style="justify-items:center"><button class="hold" id="hold" type="button"><span data-label>Hold to delete</span><span class="fill" aria-hidden="true"><span data-label>Hold to delete</span></span></button><span class="status" role="status" id="hold-result">Press and hold for a second, then release</span></div></section>
+  <section class="tile"><h2>Gliding indicator</h2>
+    <div class="tabs" role="group" aria-label="View" id="tabs"><span class="pill-bg" aria-hidden="true"></span><button type="button" aria-pressed="false">Overview</button><button type="button" aria-pressed="true">Activity</button><button type="button" aria-pressed="false">Settings</button></div></section>
+  <section class="tile"><h2>Stacked fan</h2>
+    <div class="fan"><div class="toasts" id="toasts"><div class="toast" style="--d:2"><b>Export ready</b><span>report-q3.pdf</span></div><div class="toast" style="--d:1"><b>Invite sent</b><span>maya@example.com</span></div><div class="toast" style="--d:0"><b>Changes saved</b><span>Just now</span></div></div><button class="fan-toggle" id="fan-toggle" type="button" aria-expanded="false" aria-controls="toasts">Show all 3</button></div></section>
+  <section class="tile"><h2>Holographic tilt</h2>
+    <div class="holo-wrap"><div class="holo" id="holo" style="--rx: 7deg; --ry: -11deg; --px: 68%; --py: 30%"><div class="art"></div><div class="meta"><b>Founder’s Edition</b>No. 014 / 250</div></div></div></section>
+  <section class="tile"><h2>Goo merge</h2>
+    <div class="goo-stage" id="goo-stage" data-open><div class="goo-layer" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="goo-icons"><button type="button" id="goo-toggle" aria-expanded="true" aria-label="Actions">＋</button><span aria-hidden="true">✎</span><span aria-hidden="true">⌕</span><span aria-hidden="true">♡</span></div></div></section>
+</main>
+<script>
+  // Grain: rendered once into a small tile, reused everywhere as --grain.
+  (() => { const c = document.createElement('canvas'); c.width = c.height = 160; const x = c.getContext('2d'); const d = x.createImageData(160, 160);
+    for (let i = 0; i < d.data.length; i += 4) { const v = 128 + (Math.random() - 0.5) * 110; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; }
+    x.putImageData(d, 0, 0); document.documentElement.style.setProperty('--grain', `url(${c.toDataURL()})`); })();
+  // Gliding pill: measure the selected tab; pointer changes glide, everything else jumps.
+  const tabs = document.getElementById('tabs'), pill = tabs.querySelector('.pill-bg');
+  const place = (glide) => { const t = tabs.querySelector('[aria-pressed="true"]'); pill.style.transitionDuration = glide ? '' : '0s'; tabs.style.setProperty('--x', t.offsetLeft + 'px'); tabs.style.setProperty('--w', t.offsetWidth + 'px'); };
+  place(false); addEventListener('resize', () => place(false));
+  tabs.addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; tabs.querySelectorAll('button').forEach((t) => t.setAttribute('aria-pressed', t === b)); place(e.detail !== 0); });   // these are plain selection buttons, not ARIA tabs: no panels, no arrow-key model
+  // Edge light and holo: write the pointer once per frame.
+  for (const [id, fn] of [['edge', (el, x, y) => { el.style.setProperty('--mx', x * 100 + '%'); el.style.setProperty('--my', y * 100 + '%'); }],
+                          ['holo', (el, x, y) => { el.style.setProperty('--px', x * 100 + '%'); el.style.setProperty('--py', y * 100 + '%'); el.style.setProperty('--ry', (x - 0.5) * 22 + 'deg'); el.style.setProperty('--rx', (0.5 - y) * 16 + 'deg'); }]]) {
+    const el = document.getElementById(id); let raf = 0;
+    el.addEventListener('pointermove', (e) => { if (raf) return; raf = requestAnimationFrame(() => { raf = 0; const r = el.getBoundingClientRect(); fn(el, (e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height); }); });
+  }
+  // Stacked fan: one open state, two ways in. The button works for keyboard, touch and assistive tech and pins the fan open;
+  // mouse hover is a shortcut on top and never closes a pinned fan. Touch and pen do not trigger the hover path.
+  (() => { const fan = document.getElementById('toasts'), toggle = document.getElementById('fan-toggle'); let pinned = false, hovered = false;
+    const render = () => { fan.toggleAttribute('data-open', pinned || hovered); toggle.setAttribute('aria-expanded', String(pinned)); toggle.textContent = pinned ? 'Collapse' : 'Show all 3'; };
+    toggle.addEventListener('click', () => { pinned = !pinned; render(); });
+    fan.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hovered = true; render(); } });
+    fan.addEventListener('pointerleave', () => { hovered = false; render(); });
+  })();
+  const gooStage = document.getElementById('goo-stage'), gooToggle = document.getElementById('goo-toggle');
+  gooToggle.addEventListener('click', () => { const open = gooStage.toggleAttribute('data-open'); gooToggle.setAttribute('aria-expanded', open); });
+
+  // Beams follow the floor they teach: nothing runs on its own for more than five seconds. Each plays for 4.5 s on load
+  // (standing in for a short piece of work), settles to a still state, and can be replayed.
+  const RUN_MS = 4500;
+  for (const tile of document.querySelectorAll('[data-demo="beam"]')) {
+    const beam = tile.querySelector('.beam'), status = tile.querySelector('.status'), text = tile.querySelector('[data-status-text]'); let t;
+    const play = () => { clearTimeout(t); beam.dataset.active = ''; status.dataset.live = ''; text.textContent = 'Working';
+      t = setTimeout(() => { delete beam.dataset.active; delete status.dataset.live; text.textContent = 'Done'; }, RUN_MS); };
+    tile.querySelector('.replay').addEventListener('click', play); tile.querySelector('.send').addEventListener('click', play); play();   // Send and Replay both start a run
+  }
+
+  // Hold to confirm: the same recipe as ../hold-to-confirm/index.html, which has the browser regression check.
+  (() => {
+    const HOLD_MS = 1200, IDLE = 'Hold to delete', ARMED = 'Release to confirm';
+    const btn = document.getElementById('hold'), labels = btn.querySelectorAll('[data-label]'), result = document.getElementById('hold-result');
+    let timer = null, activePointer = null, cancelled = false; window.galleryConfirmCount = 0;
+    const setLabel = (s) => labels.forEach((el) => (el.textContent = s));
+    const disarmVisual = () => { clearTimeout(timer); timer = null; delete btn.dataset.holding; delete btn.dataset.armed; setLabel(IDLE); };
+    const disarm = () => { disarmVisual(); activePointer = null; cancelled = false; };
+    const isInside = (e) => { const r = btn.getBoundingClientRect(); return e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom; };
+    const confirmAction = () => { window.galleryConfirmCount += 1; result.textContent = 'Deleted'; setTimeout(() => (result.textContent = 'Press and hold for a second, then release'), 2000); };
+    btn.addEventListener('pointerdown', (e) => { if (!e.isPrimary || e.button !== 0 || activePointer !== null) return; activePointer = e.pointerId; cancelled = false; btn.setPointerCapture(e.pointerId);
+      btn.dataset.holding = ''; timer = setTimeout(() => { btn.dataset.armed = ''; setLabel(ARMED); }, HOLD_MS); });
+    btn.addEventListener('pointermove', (e) => { if (e.pointerId !== activePointer) return; if (!isInside(e) || (e.buttons & 1) === 0) { cancelled = true; disarmVisual(); } });
+    btn.addEventListener('pointerup', (e) => { if (e.pointerId !== activePointer) return; const ok = 'armed' in btn.dataset && !cancelled && e.button === 0 && isInside(e); disarm(); if (ok) confirmAction(); });
+    const cancel = (e) => { if (e.pointerId === activePointer) disarm(); };
+    btn.addEventListener('pointercancel', cancel); btn.addEventListener('lostpointercapture', cancel); btn.addEventListener('contextmenu', (e) => e.preventDefault());
+    btn.addEventListener('click', (e) => { if (e.detail === 0 && window.confirm('Delete this item?')) confirmAction(); });
+  })();
+</script>
+</body>
+</html>

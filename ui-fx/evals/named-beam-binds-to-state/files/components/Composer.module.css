@@ -1,0 +1,10 @@
+.thread { display: flex; flex-direction: column; gap: 16px; }
+.messages { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; color: #fff; }
+.messages li[data-role="user"] { align-self: flex-end; background: #2f5fd0; padding: 6px 12px; border-radius: 14px; }
+.composer { display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 16px;
+  background: #1d1d1d; border: 1px solid rgb(255 255 255 / 0.1); }
+.input { resize: none; border: 0; background: transparent; color: #fff; font: inherit; outline: none; }
+.input:focus-visible { outline: 2px solid #8ab4ff; outline-offset: 2px; border-radius: 8px; }
+.actions { display: flex; justify-content: flex-end; }
+.send, .stop { border: 0; border-radius: 999px; padding: 6px 14px; font: inherit; background: #fff; color: #111; }
+.send:disabled { opacity: 0.4; }

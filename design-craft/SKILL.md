@@ -26,6 +26,7 @@ Don't start by changing values. First:
    | Breaks with a long name, a missing avatar, a count of 1, or a translated label | data fragility | [worst-case-data](references/worst-case-data.md) |
    | Web app feels like a website on a phone: stuck hover, tap flash, input zoom, wrong heights | mobile platform layer, not animation | `web-design` (mobile-web-native-feel) |
    | Stutter, dropped frames, scroll jank | performance, not styling | the `motion` skill's MotionScore performance audit and `web-design` (web-performance) |
+   | "Flat", "boring", "make it pop" where the user wants a visual effect (subtle or showy) | a missing signature moment, not a polish defect | `ui-fx`, which builds it even on a weak baseline and names the fundamentals to fix; when they mean stronger hierarchy or character, the Bolder and Delight moves in [refinement-moves](references/refinement-moves.md) |
    | AI-generated UI that looks generic | generation tells | `working-with-ai` (ai-ui-direction) and `frontend-design` (anti-slop-catalog) |
 
 3. **Pick one theme.** If the product already has a look, match it (reuse before inventing). If it doesn't, use polish-principles by default, tactile-design for dense product UI, or emil-kowalski when the problem is mostly motion feel. Don't average themes.

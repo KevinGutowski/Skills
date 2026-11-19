@@ -24,7 +24,7 @@ These are directional verbs for an interface that already exists. They give vagu
 
 ## Bolder: raise one part to the system's own conviction
 
-A section usually reads flat because it opts out of moves its neighbors already make: full-strength display type, the signature motif, structural devices, density shifts. **The reflex answer, more effects, is the opposite of bold. Reject it first.**
+A section usually reads flat because it opts out of moves its neighbors already make: full-strength display type, the signature motif, structural devices, density shifts. **The reflex answer, more effects, is the opposite of bold. Reject it first**, unless the user asked for an effect, which goes to `ui-fx` and is built.
 
 - **Amplify what the system owns.** Use its motif and type scale at full strength. The bolder version should look *more* like the same brand.
 - **Commit, then clarify.** Make one decisive move completely, then quiet everything around it so the move is legible. If every element got louder, the section got flatter.
@@ -68,6 +68,7 @@ Delight is product character revealed through a useful interaction, a humane res
 - **Proportion:** celebration scales with consequence and frequency. A milestone can expand; a routine save should just feel certain. Never fake progress or delay completion to stage a flourish. An error leads with the problem and the recovery: warmth is welcome, jokes about money, privacy, deletion, or blocked work are not.
 - **Protect the task:** delight never delays or obscures the primary task, overrides platform conventions or accessibility, plays sound without consent, becomes unskippable, or wears out by the hundredth repeat.
 - **Specificity test:** a neighboring product could not use the moment unchanged.
+- When the earned moment calls for a visual effect, subtle or showy (a beam, a wave transition, a material, a burst), `ui-fx` owns picking the moment, staging it, and choosing between a library and a hand-rolled build.
 
 ## Overdrive: technical ambition, proposed first
 
@@ -75,7 +76,8 @@ Delight is product character revealed through a useful interaction, a humane res
 
 - Make functional UI feel exceptional: a dialog that morphs from its trigger (View Transitions), 100k-row virtualized tables, filtering 50k items without a flicker, workers keeping the main thread free.
 - Progressive enhancement is non-negotiable: gate with `@supports` or feature detection, and make the fallback look good. Target 60fps, simplify below 50, initialize heavy contexts lazily, pause offscreen work, and test on mid-range devices.
-- Never use ambition to mask weak fundamentals, and never stack competing extraordinary moments. Apply the removal test: would anyone miss it?
+- Never use ambition to mask weak fundamentals, and never stack competing extraordinary moments. (When the user has asked for an effect on a weak baseline, `ui-fx` builds it and names the fundamentals to fix; the effect does not wait.) Apply the removal test: would anyone miss it?
+- Visual-effect directions (shaders, distortion, liquid, particles) and their fallbacks → `ui-fx`. It is more permissive than this move: it leads with the bold option (or the level the user asked for) and builds without waiting for a pick, because it is invoked when the effect is already wanted.
 - Changing what the product *does* (real-time collaboration, offline support) is a product decision, not a UI move.
 
 ## Polish: classify drift, triage, finish the whole path
@@ -123,7 +125,7 @@ Owners: overflow, reflow, and RTL → `web-design` (web-layout-design); error co
 | "Too much", "loud", "tiring", "overstimulating" | Quieter |
 | "Cluttered", "too many options", "confusing" | Distill |
 | "Lifeless", "no personality", a key moment that falls flat | Delight |
-| "Make it feel extraordinary", "wow" | Overdrive (propose first) |
+| "Make it feel extraordinary", "wow" | Overdrive (propose first); when what is wanted is a visual effect → `ui-fx`, which builds without waiting for a pick |
 | "Almost done", "feels off", "ship-ready?" | Polish |
 | "Works in the demo, breaks in production" | Harden |
 | "The concept is wrong" | Not a refinement: redesign through `frontend-design` |

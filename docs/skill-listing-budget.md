@@ -43,3 +43,7 @@ with full descriptions — their boundary clauses do real routing work.
 ## 2026-11-12 check
 
 After the November description edits the library is 42 skills and 17,552 description characters. `/doctor` and `/skill-doctor` were not run (they need a local Claude Code session); run both and record any shortened or dropped descriptions here.
+
+## 2026-11-18 check
+
+Adding `ui-fx` (445-character description after its same-day revisions) brings the library to 43 skills and 17,997 description characters. No other description changed. `/doctor` and `/skill-doctor` were not run (they need a local Claude Code session); run both and record any shortened or dropped descriptions here.
