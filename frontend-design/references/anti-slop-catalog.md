@@ -104,8 +104,8 @@ Why models do this is our reading, not Wroblewski's: the model writes for the pe
 | Colored glow shadows; radial-gradient halos or spotlights behind a hero | `dark-glow`, `radial-halo`, `radial-spotlight-glow` | Neutral elevation and solid, subtly shifted grounds. |
 | Glassmorphism and blur as decoration | — | Use blur only as a specific effect with a job. |
 | Hard offset block shadow (`4px 4px 0`) outside a world that is really neobrutalist | `hard-offset-shadow` | A review prompt, not an automatic removal: keep it when the world chose it. |
-| Repeating-gradient stripes; hairline grid-paper backgrounds | `repeating-stripes-gradient`, `codex-grid-background` | Grids belong on real canvases, maps, blueprints, and measuring tools. Elsewhere, leave the surface plain or use a texture from the subject's world. |
-| Sketch-style SVG scenes, "doodle" illustration, `feTurbulence` grain | `shape-assembled-illustration` | Real illustration, photography, or none. SVG doing geometry (diagrams, linework, data) stays first-class. |
+| Repeating-gradient stripes; hairline grid-paper backgrounds | `repeating-stripes-gradient`, `codex-grid-background` | Grids belong on real canvases, maps, blueprints, and measuring tools. Elsewhere, leave the surface plain or use a texture from the subject's world. When a pattern is earned, build it with the tile rules in [visual-execution.md](visual-execution.md) (Repeating SVG patterns). |
+| Sketch-style SVG scenes, "doodle" illustration, `feTurbulence` grain | `shape-assembled-illustration` | Real illustration, photography, or none. SVG doing geometry (diagrams, linework, data) stays first-class; for a flat construction-drawing illustration system, see `design-craft` (construction-drawings). |
 | Many-vertex `clip-path` polygons or circles approximating an organic edge | `organic-clip-path` | Derive a matte from the actual image, or produce a cut-out asset. |
 | A photo or texture buried under a near-opaque wash or at near-zero opacity | `buried-raster` | Let the material show, or remove it. |
 | Unicode glyphs or emoji standing in for an icon system | — | One real icon family, consistent stroke and weight. |

@@ -1,6 +1,6 @@
 # Dev-Data Visualization & Agent Experience (AX)
 
-*Sources: "Beyond bars and lines" (Lozhkin & Turner, 2024) · "3 rules for getting AI agents to find, use — and not exploit — your devtool" (Nazarova & Turner, 2026) · Ona Background Agents Summit 2026.*
+*Sources: "Beyond bars and lines" (Lozhkin & Turner, 2024) · "3 rules for getting AI agents to find, use — and not exploit — your devtool" (Nazarova & Turner, 2026) · Ona Background Agents Summit 2026 · Interfere's agent plugin and Landmines lint rules (2026).*
 
 ## Background-agent session UX
 
@@ -42,6 +42,28 @@ Frame: "agent-led growth." Agents are now discoverers, users, and threats simult
 ### Rule 2 — Be usable by agents
 
 "An agent that recommends your tool but can't set it up without a human hasn't converted anyone." Invert traditional onboarding ("sign up → verify → configure → use") to **use → create → claim** — let an agent deploy/create anonymously, then a human claims the resource (that claim is your conversion event). The agent-usability stack: predictable REST + OpenAPI over clever SDK fluency ("token-budget-aware design"), MCP servers (self-describing), standalone CLIs, SDK context files, agent skills. **The acceptance test: "can an external agent ship a feature with your tool using only your docs and a prompt?"** And mind payments: "agent-first growth without an agent-first payment path is a party where nobody pays for drinks."
+
+#### Worked example: a vendor's agent plugin (Interfere, 2026)
+
+Interfere, an error and session monitoring product, ships its agent surface as a hosted MCP server, a small plugin (a setup skill and an investigation skill), and a CLI generated from its API spec. It is one vendor's design, dated 2026-11; the repeatable decisions are these.
+
+- **One plugin directory, a manifest per client.** The same folder carries the Claude Code, Cursor, and Codex manifests plus the MCP config, with no build step or lockfile. Skills and server config are written once; only the manifests differ.
+- **Two tools over one tool per endpoint.** The server exposes `search` (read the API specification and return the matching operations) and `execute` (call them, with auth attached server-side). The tool list stays constant as the API grows, and the skill tells the agent to read an operation's schema before calling it and never to invent paths or IDs. This is Rule 2's "predictable REST + OpenAPI" taken to its end: the spec is the tool surface.
+- **Offer a server-enforced read-only endpoint, and mind the default.** There are two MCP URLs, read-write and read-only, and the read-only one rejects changes, so that limit does not depend on the prompt. It is opt-in: the plugin ships the read-write URL, and the investigation skill runs over that connection with only its instructions holding it back. To get enforced read-only the user configures the read-only URL directly and disables the plugin's connection. If you build this, make read-only the default connection for the read skill, or one setting away.
+- **A CLI with a machine surface next to the human one.** `--schema` on any command returns its arguments as data (`--help` stays for people). `--dry-run` shows the request without sending it, and the docs say what it does not check (permissions, live data). Piped output defaults to JSON, `--query` selects fields so the agent reads less, and errors in machine modes are JSON with a nonzero exit status.
+- **Generate the CLI's skills from the spec.** A `generate-skills` command writes one skill per command group plus a shared one for auth and global flags, by plain templates over the API spec with no model and no hand-written overlay, so skills cannot drift from the commands. The generator's own comment records the failure it guards against: "Advertising a flag the spec can never produce is worse than omitting it" (a flag was documented that 0 of 130 operations accepted, which made step one unfollowable). Emit only the affordances this API has.
+- **State limits with the remedy.** Request and response size caps are documented beside what to do when hit (narrow the time range or paginate), and troubleshooting is a result-to-next-step table an agent can act on.
+- **Split skills by intent.** Setup changes the project and the account; investigation reads. The investigation skill says so in one line: investigating an issue does not authorize changing its status or settings.
+- **The skill carries what the schema cannot.** Each of these is a line an agent gets wrong from the API contract alone:
+  - *Vocabulary bridge.* The product says "app" and the API says "surface". The skill maps the two and tells the agent which word to use with the user. The vendor's docs repo repeats the same mapping in its own AGENTS.md.
+  - *Status inside a successful call.* A tool call can succeed while the HTTP request inside it failed. Check the status first; 401 is a connection problem and 403 a permission limit, and neither is an empty result.
+  - *Ambiguous writes.* After a timeout or unclear result, read the current state before trying again. Where the operation takes an idempotency key, reuse the same one so the retry does not create a second app or key; where it takes none, the state check is the only protection.
+  - *Partial permission.* On a 403, name the step that needs an admin and continue with the rest.
+  - *Secrets.* Auth goes through the client's connection flow, never the chat. A secret returned once is stored at once, in the place the project already keeps secrets. The agent lists the variables a human must add to CI and the host by name and location, without the values.
+  - *Records are data.* Logs, error messages, and session content are evidence to cite, not instructions to follow.
+- **Name the human-only steps and the stopping point.** OAuth installs open in the browser and the skill waits for the user. It ends by reporting what changed, what still needs a person, and how to send a first test event, then checks that the event arrived. Consent and privacy-masking settings are linked for the user and left untouched.
+
+The same vendor's lint package shows the other direction, a tool whose main reader is a coding agent: every diagnostic states the replacement, not only the violation, so the agent can repair in the same turn. Treat error and lint text as part of the agent interface. The team-side use of those rules is in `working-with-ai` (agentic-coding).
 
 ### Rule 3 — Defend
 

@@ -260,7 +260,7 @@ Fixture: `docs/ui-fx-routing-probes-2026-11.md` (X1–X16), registered in `scrip
 - After the description was revised for the permissive posture, X1–X16 and the smoke packet were re-run with a second fresh judge; result recorded below under "Re-run".
 - X1–X16: 16/16. Five targets routed to `ui-fx`; eleven neighbors and controls stayed with their owners. The judge called X5 (`ui-fx` vs `ai-experience-design`) and X14 (`data-viz` vs `ui-fx`, the word "pop") close and chose as expected.
 - Existing fixtures re-run in the same packet for regression: W1–W18 18/18 (W18 answered `none`, an accepted answer), B1–B33 33/33 (B33 answered `none`, as intended).
-- Smoke packet: 43/43, including new S43.
+- Smoke packet: 43/43, including the new `ui-fx` row (S43 then; S44 since main was merged on 2026-11-19).
 
 One run, one judge. No second skill was requested for any X probe.
 
@@ -273,3 +273,7 @@ One run, one judge. No second skill was requested for any X probe.
 - The eval cases were run three times with and without the skill after QA notes (12/12 against 7/12 on three cases; 16/16 against 6/16 on four; 21/21 against 10/21 on five). Details and limits in `docs/skill-evals-2026-11.md`. One run per arm per round; nothing was rendered.
 - No library was installed or rendered in a browser.
 - `/doctor` was not run for the listing budget (needs a local Claude Code session).
+
+## Merge with main (2026-11-19)
+
+Main had gained 24 commits, including a new `make-font` skill, since this branch started. Conflicts were in four files and were resolved by keeping both sides: the mining ledger (both sets of entries), the smoke-test fixture (`make-font` keeps S43, `ui-fx` becomes S44), the listing-budget note (both checks; recounted at 44 skills and 18,418 description characters), and `frontend-design`'s ui-library-picks (main's fuller local note plus the pointer to `ui-fx`). The blind routing and smoke judge runs recorded above predate the merge and did not include `make-font`'s description; they were not repeated.

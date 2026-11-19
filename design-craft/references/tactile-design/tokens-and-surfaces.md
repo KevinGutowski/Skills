@@ -153,9 +153,9 @@ Bottom to top: the **ground** (window and rail) → the **panel** (page body; it
 - **Menu:**
   - **Trigger:** the secondary button, its chevron turning over while open.
   - **Body:** portalled, 6px from the trigger, min width about 160px, radius 8, with the menu shadow as its only edge.
-  - **Items:** button height, 2px apart. Highlight is ground + 1 and chosen is ground + 2, in full ink with no tick.
+  - **Items:** button height, 2px apart. The 2px is between the fills, drawn inside flush rows, not margin between hit boxes ([surfaces](../surfaces.md) → Contiguous Rows; our addition, not Kosta's). Highlight is ground + 1 and chosen is ground + 2, in full ink with no tick.
   - **Closing and moving:** it closes on outside press, Escape, resize or page scroll. Don't move an open menu while its items shift. A menu stays inside the container it opens in.
-- **Tooltip:** it names an icon-only action with zero delay, and is never the only place information lives.
+- **Tooltip:** it names an icon-only action with zero delay, and is never the only place information lives. (The non-theme default is a 400ms first delay: [component-details](../component-details.md) → Tooltips.)
 - **Toast:**
   - **Placement:** one at a time, bottom centre.
   - **Look:** a tinted pill (tone-3 fill, tone-6 ring, tone-11 text) with at most one action. It auto-dismisses after about 6s.

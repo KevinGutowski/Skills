@@ -90,8 +90,10 @@ Fresh descriptions-only judge (new subagent, no forked context) ran `python3 -B 
 
 ## 2026-11-18 `ui-fx` Addition
 
-Added S43 for `ui-fx`, bringing the deterministic fixture to 43 prompts for 43 local skills. `python3 -B scripts/check_skill_smoke_tests.py` passes.
+Added a smoke row for `ui-fx` (S43 on its branch at the time; renumbered S44 when main, which had added `make-font` as S43, was merged on 2026-11-19, giving 44 prompts for 44 skills). `python3 -B scripts/check_skill_smoke_tests.py` passes.
 
 Fresh descriptions-only judge (new subagent, no forked context) was given only the output of `python3 -B scripts/build_skill_smoke_packet.py`. Result: pass, 43/43 first-skill choices matched, including S43 → `ui-fx`. S16 (`frontend-design`), S22 (`motion`), S36 (`web-design`), S08 (`design-craft`) and S06 (`creative-coding`), the nearest neighbors, were unchanged. Re-run the same day with a second fresh judge after the `ui-fx` description was revised: 43/43 again. Targeted boundary probes X1–X16 are recorded in `docs/ui-fx-source-mining-2026-11.md`.
 
 Third run the same day, after the `ui-fx` description changed again ("from subtle to showpiece … rebuilds effects seen elsewhere"), with a third fresh judge: 43/43.
+
+After merging main on 2026-11-19 the judge runs above were not repeated: they were made against 43 descriptions that did not include `make-font`. `python3 -B scripts/check_skill_smoke_tests.py` passes on the merged fixture.

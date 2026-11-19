@@ -43,6 +43,7 @@ Source: Emil Kowalski's `animation-performance` skill and performance cheatsheet
 | Unexpected properties animate | Replace `transition: all` |
 | Element shifts 1px as motion starts or ends | `will-change: transform` — once you have seen the shift |
 | Long list scrolls slowly | Virtualize; render only what is visible |
+| Base UI Scroll Area scrolls slowly in Safari only | Its overflow variables inherit in WebKit; register them with `inherits: false` ([web-performance](../web-performance.md#custom-properties-written-per-frame)) |
 
 ## Frame budget
 

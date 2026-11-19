@@ -1,6 +1,6 @@
 ---
 name: design-craft
-description: "Raise design quality and feel via craft methodology (noticing, range vs depth, facets, live tuning), execution values (shadows, spacing, radii, alignment, motion, type), and Linear-style rituals/triage. Use to polish, critique, or stress-test UI, build taste, or make quality repeatable. Strategy → design-principles; shaping → shape-up; frame drops → motion. Triggers: make it look better, fix the jank, feels off, worst-case data, quality ritual."
+description: "Raise design quality via craft methodology (noticing, range vs depth, facets, live tuning), execution values (shadows, spacing, radii, motion, type), and Linear rituals/triage. Use to polish, critique, or stress-test UI, build taste, or make quality repeatable. Strategy → design-principles; shaping → shape-up; frame drops → motion. Triggers: make it look better, fix the jank, feels off, worst-case data, quality ritual, blueprint illustration."
 ---
 
 # Design Craft
@@ -26,7 +26,7 @@ Don't start by changing values. First:
    | Breaks with a long name, a missing avatar, a count of 1, or a translated label | data fragility | [worst-case-data](references/worst-case-data.md) |
    | Web app feels like a website on a phone: stuck hover, tap flash, input zoom, wrong heights | mobile platform layer, not animation | `web-design` (mobile-web-native-feel) |
    | Stutter, dropped frames, scroll jank | performance, not styling | the `motion` skill's MotionScore performance audit and `web-design` (web-performance) |
-   | "Flat", "boring", "make it pop" where the user wants a visual effect (subtle or showy) | a missing signature moment, not a polish defect | `ui-fx`, which builds it even on a weak baseline and names the fundamentals to fix; when they mean stronger hierarchy or character, the Bolder and Delight moves in [refinement-moves](references/refinement-moves.md) |
+   | "Make it pop", wanting a visual effect | a missing signature moment | `ui-fx` |
    | AI-generated UI that looks generic | generation tells | `working-with-ai` (ai-ui-direction) and `frontend-design` (anti-slop-catalog) |
 
 3. **Pick one theme.** If the product already has a look, match it (reuse before inventing). If it doesn't, use polish-principles by default, tactile-design for dense product UI, or emil-kowalski when the problem is mostly motion feel. Don't average themes.
@@ -40,13 +40,15 @@ When the question shifts from *"is this good / how far do I push"* to *"what exa
 | --- | --- |
 | [polish-principles](references/polish-principles.md) | Execution overview: concentric radii, shadows-over-borders, optical alignment, spacing scales, press motion, tabular nums, font smoothing |
 | [typography](references/typography.md) | Text wrapping, font smoothing, tabular numbers |
-| [surfaces](references/surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, document canvas background, hit areas |
+| [surfaces](references/surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, document canvas background, scroll fades, hit areas |
 | [animations](references/animations.md) | Interruptible animations, enter/exit transitions, icon animations (incl. vanilla-CSS recipe), scale on press |
 | [performance](references/performance.md) | Transition specificity, `will-change`, perceived performance (spinner choice) |
 | [emil-kowalski](references/emil-kowalski.md) | Alternate craft theme (animations.dev): taste-training, component polish, animation decisions. Second hop in `references/emil-kowalski/`: css-techniques (component, transform, clip-path, and stagger code), interaction-and-performance (springs, gesture/drag, performance rules, debugging), taste-and-craft (practitioner habits, Config-talk notes) |
 | [tactile-design](references/tactile-design.md) | Alternate theme (Kosta, kosta.fyi) for tactile, layered, quiet product UI: decision order, parent-relative surfaces, light/dark elevation, one-primary hierarchy, never-ship list. Second hop in `references/tactile-design/`: tokens-and-surfaces, controls, layout-and-data, motion-values, phone |
 | [refactoring-ui](references/refactoring-ui.md) | Visual refactor passes (hierarchy, spacing, type, color, depth); code-native gallery in `examples/refactoring-ui-gallery.html` |
 | [linear-product-craft](references/linear-product-craft.md) | Linear's operating model: redesign debt, scope control, stress tests, feature flags, quality rituals, triage, dogfood/unshipping, taste calibration |
+| [component-details](references/component-details.md) | Measured answers per component: dropdown menu width (widest item + 16px, min/max), menu rows and keys, tooltip timing (400ms first, instant next, 100ms close), empty states (one style, page/card/inline sizes, keep the frame, one action or none, never while loading; seven-style gallery in `examples/empty-states-gallery.html`) |
+| [construction-drawings](references/construction-drawings.md) | Flat blueprint-style line illustration as editable SVG (Plotter method) for empty states, 404s, heroes and docs figures: one relationship per drawing, no pictograms, 560 × 440 canvas, role opacities and dashes, compact version for small placements, animating a drawing; example in `examples/construction-drawing-empty-state.html` |
 | [worst-case-data](references/worst-case-data.md) | Stress-test a component with worst-case data: per-field catalog, failure-signature → fix table, truncate/wrap/clamp, Broken/Ugly/Fragile report |
 | [refinement-moves](references/refinement-moves.md) | Directional verbs for an existing UI: bolder, quieter, distill, delight, overdrive (propose first), polish (drift classification + triage order), harden (real data, failures, interrupted gestures) |
 | [practical-demonstrations](references/practical-demonstrations.md) | Worked walkthrough move lists: visual-language audit, mobile architecture exercise, depth-spectrum exemplars (slider, gift card, library cards) |

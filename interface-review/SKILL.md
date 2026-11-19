@@ -9,7 +9,7 @@ Review an interface as one system instead of returning disconnected specialist a
 
 **Worked report:** read [references/report-exemplar.md](references/report-exemplar.md) before writing your first report in a session, or whenever unsure how a section, the `Unverified` verdict, or the scored layout should look. It holds one complete `full` report, an `Unverified` close, and a `scored` variant.
 
-**Sources/gaps:** [references/sources.md](references/sources.md) records the external orchestration and critique-scoring patterns; [references/coverage-gaps.md](references/coverage-gaps.md) parks unverified rules and missing evals.
+**Sources/gaps:** [references/sources.md](references/sources.md) records the external orchestration, critique-scoring, and behaviour-trap sources; [references/coverage-gaps.md](references/coverage-gaps.md) parks unverified rules and missing evals.
 
 ## Resolve the review first
 
@@ -33,6 +33,8 @@ Treat review requests as read-only. Edit code only when the user also asks to im
 Identify the framework, styling system, component library, tokens, supported viewports, and available preview/test commands. Follow project conventions. Do not recommend a second styling system or a new primitive when the established one can express the fix.
 
 **Judge before you scan.** Form your own design judgment, including whether the interface is authored for this product or could ship unchanged for an unrelated one, *before* reading detector, lint, or axe output, because deterministic findings anchor judgment. Then reconcile: agreements, what the tools caught that you missed, and false positives. When subagents are available, run the two passes in isolation. State in the report how they ran.
+
+**Probe behavior; don't infer it.** When the person describes a symptom ("laggy", "it jumps", "fine on my laptop, not my phone", "I can't click it") or the review covers a running build, use [references/behaviour-traps.md](references/behaviour-traps.md): a symptom-to-trap table, citable trap IDs, the task-level criteria a domain-by-domain pass can miss (shown equals sent, feedback at its trigger), and the measured probes. Responsiveness to input is never judged from a screenshot, in either direction; focus rings are judged from a capture after real Tab presses. Every probe gets a result or a reason it did not run.
 
 Inspect rendered behavior when the claim depends on layout, appearance, animation, focus, scrolling, or interaction. Inspect source when the claim depends on semantics or implementation. Do not turn a missing runtime check into a finding; mark it not verified.
 
@@ -66,6 +68,7 @@ Every finding must:
 - show the current implementation or observed behavior;
 - propose an actionable replacement;
 - explain the user impact and owning rule;
+- where practical, state the fix as a check that fails on the current build, so it can be verified;
 - distinguish observed facts from inferences.
 
 Use one severity scale:
@@ -74,7 +77,7 @@ Use one severity scale:
 - **MEDIUM** — meaningfully harms comprehension, efficiency, adaptability, performance, or consistency.
 - **LOW** — isolated polish with limited task impact; include only in `full`.
 
-Within a severity, rank by reach and leverage. A shared-token or primitive fix outranks the same symptom in one leaf component.
+A user who believes the task finished when it did not is blocked: HIGH. A field that shows one value and sends another is HIGH when the hidden value grants access, spends money, or picks a recipient. Within a severity, rank surfaces that write data first, then by reach and leverage. A shared-token or primitive fix outranks the same symptom in one leaf component.
 
 ## Make restraint auditable
 

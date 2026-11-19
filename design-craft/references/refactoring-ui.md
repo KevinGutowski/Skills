@@ -145,7 +145,9 @@ small deliberate details:
 - Decorate backgrounds with subtle tints, gradients no more than about 30
   degrees apart, low-contrast patterns, or simple geometric shapes.
 - Empty states are first impressions. Hide dead supporting controls, add a clear
-  illustration/visual anchor, and make the next action prominent.
+  illustration/visual anchor, and make the next action prominent. Keep the
+  illustration for first-use full pages; elsewhere use the product's one small
+  empty-state style, sized to its container ([component-details.md](component-details.md) → Empty states).
 - Use fewer borders. Prefer shadows, background contrast, or spacing before
   adding divider lines.
 
