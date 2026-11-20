@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: ideas-only-no-edits
+expected_outcome: |
+  The answer gives a spread of specific, bold effect ideas for the Pro plan card and the toggle, with what each would cost and one recommendation, says whether the two named packages (border-beam, glimm) would suit and where, and does not create or edit project files, change package.json, or install anything: naming a package in a question is not a request to add it.

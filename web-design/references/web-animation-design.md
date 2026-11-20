@@ -6,6 +6,7 @@ A comprehensive guide for creating animations that feel right, based on Emil Kow
 
 ## Contents
 
+- Scope: requested effects are exempt
 - Theme Note
 - Quick Start
 - Review Format (Required)
@@ -23,6 +24,19 @@ A comprehensive guide for creating animations that feel right, based on Emil Kow
 - Easing Decision Flowchart
 - Communicating Motion to Engineers (Briggs)
 - Reference Files
+
+## Scope: requested effects are exempt
+
+Everything below (the review triggers, the frequency tiers, "when to animate", the Block and Delete verdicts) governs **everyday interface motion**: the transitions and feedback a UI has by default.
+
+An effect the user asked for, subtle or showy, or one chosen through `ui-fx` for an effects request (a sweep, beam, shader, wave, burst, material, at any intensity), is a different thing and is **not** flagged, blocked or deleted under these rules, even when it is keyboard-triggered, high-frequency, or has no purpose beyond delight. When you meet one while building or reviewing:
+
+- Record it as "requested effect" and leave it in.
+- Check it against the `ui-fx` shipping floor instead: honest about results and fired on click, a reduced-motion path, no rapid flashing, automatic motion that stops within five seconds or has a visible, keyboard-operable pause, stop or hide control, a visible still cue and a status announcement for any state it conveys, legible text, a fallback, focus not clipped or covered, holds frame rate.
+- If it is frequent or keyboard-triggered, or longer than this file's duration ceilings, you may *suggest* a shorter or smaller version. That is advice, not a finding; do not shorten it yourself.
+- Reduced-motion and performance rules in this file still apply to it when it ships.
+
+If you cannot tell whether an animation was requested, ask or check the change description before applying a Delete or Block.
 
 ## Theme Note
 
@@ -71,7 +85,7 @@ Correct format: A single markdown table with | Before | After | columns, one row
 
 Review posture: a transition that runs but feels sluggish, lands from the wrong origin, fires too often, or drops frames is a regression, not a pass. Approval is earned. (Method from Kowalski's `review-animations` skill; values are this file's.)
 
-**Flag on sight:**
+**Flag on sight** (everyday interface motion only; requested effects are exempt, see Scope above):
 
 - `transition: all`
 - `scale(0)` entrances; `ease-in` on any UI interaction; a bare keyword easing (`ease-out`, `ease-in-out`, `ease`, `linear`) on an entrance, exit, or on-screen move — not on hover/colour/opacity (`ease`), constant-rate motion (`linear`), or the toast default (see the keyword rule in Quick Start)
@@ -87,7 +101,7 @@ Review posture: a transition that runs but feels sluggish, lands from the wrong 
 
 **Fix order — prefer the earlier move:**
 
-1. Delete the animation (high-frequency, keyboard-triggered, or purposeless)
+1. Delete the animation (high-frequency, keyboard-triggered, or purposeless), unless it is a requested effect
 2. Reduce it — shorter, smaller transform, fewer properties
 3. Fix the easing
 4. Fix origin and physicality (`transform-origin`; `scale(0)` → `scale(0.95)` + opacity)
@@ -101,7 +115,7 @@ Most agent reviews start at step 8. Start at step 1.
 
 **Verdict after the table**, grouped by impact, empty tiers omitted: feel-breaking regressions → animations that should be removed or reduced → performance → interruptibility and timing → origin, physicality, cohesion → accessibility. Close with an explicit decision:
 
-- **Block** — any feel-breaking regression; animation on a keyboard or high-frequency action; `scale(0)` or `ease-in` on UI; a layout-property animation with an easy compositor swap.
+- **Block** — any feel-breaking regression; everyday animation on a keyboard or high-frequency action (a requested effect there is not a Block; check it against the `ui-fx` floor); `scale(0)` or `ease-in` on UI; a layout-property animation with an easy compositor swap.
 - **Approve** — none of the above, nothing that obviously should be deleted, durations and easing in bounds, interruptibility handled where needed, reduced motion respected.
 
 When feel cannot be judged from code, say so and name what to watch: play it at 2–5× duration or step it in the DevTools Animations panel, test gestures on a real phone, and look again the next day.
@@ -209,7 +223,7 @@ Elements that animate together must use the same easing and duration. Modal + ov
 
 Determine how often users will see the animation:
 
-- **100+ times/day** (keyboard shortcuts, command palette, toggles) → No animation
+- **100+ times/day** (keyboard shortcuts, command palette, toggles) → No animation by default. A requested effect here is kept and made brief (Scope above)
 - **Tens of times/day** (hover effects, list navigation) → Remove, or reduce to near-imperceptible
 - **Occasional** (modals, drawers, toasts) → Standard animation
 - **Rare/first-time** (onboarding, success moments) → Can be more special; the only tier where delight alone is a valid purpose
@@ -242,7 +256,7 @@ From Rachel Nabors, *Animation at Work* (A Book Apart, 2017); fuller quotes in [
 - Responses to user actions (feedback)
 - Rarely-used interactions where delight adds value
 
-**Don't animate:**
+**Don't animate** (by default; a requested effect is exempt, see Scope near the top):
 
 - Keyboard-initiated actions
 - Hover effects on frequently-used elements
@@ -488,6 +502,8 @@ Is the element entering or exiting the viewport?
 Designers specifying motion "should just use black and white shapes," get the movement dialed in, and "hand that over like as a video" — a blueprint for the engineer, never a full After Effects redesign of the screen (Briggs, Shape FM ep. 3). The motion study communicates timing and character only.
 
 ## Reference Files
+
+Visual effects beyond interface motion, subtle or showy (border beams, shader materials, distortion or wave transitions, particle bursts) and the libraries for them → `ui-fx`; see "Scope: requested effects are exempt" near the top of this file.
 
 - [PRACTICAL-TIPS.md](web-animation-design/PRACTICAL-TIPS.md) - Detailed implementations for common animation scenarios
 - [references/animation-at-work.md](web-animation-design/animation-at-work.md) - Fuller verified quotes from Nabors

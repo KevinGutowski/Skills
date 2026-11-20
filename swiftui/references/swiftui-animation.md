@@ -137,8 +137,9 @@ See [swiftui-animation/code-patterns.md](swiftui-animation/code-patterns.md) for
 - **[swiftui-identity.md](swiftui-identity.md)** — identity decides whether a change animates in place or fades as a transition; when an animation cross-fades instead of moving, the bug is there, not here.
 - **[touch-interaction-design.md](touch-interaction-design.md)** — the design layer for gestures this skill implements (hysteresis, 1:1 tracking, momentum projection, interruptibility — from "Designing Fluid Interfaces").
 - **`apple-design` (liquid-glass-design-system)** — glass morphing, sheet recession, and scroll edge effects are that system's motion; implement here, follow its rules there.
+- **`ui-fx`** — chooses a visual effect, where it lands and how it is staged (the moment, the level, the fallback) and lists SwiftUI effect kits such as the libraries.dev packages; the shader and animator mechanics stay here.
 - **[sf-symbols.md](sf-symbols.md)** — symbol animation is its own semantic preset system (wiggle/breathe/Magic Replace); use it for symbols before hand-rolling.
 - **`web-design` (web-animation-design)** / **`motion`** — web/CSS/JS counterpart; principles rhyme (springs, taste, restraint) but values and APIs don't transfer either way.
 - **`apple-design` (ios-brand-identity)** — brand-through-motion on iOS (Zoom Transitions, spring personality) routes here for implementation.
-- **`design-principles`** — *Craft* (responsive, interruptible) and *Delight* (purposeful motion); use it to decide *whether*, this skill for *how*.
+- **`design-principles`** — *Craft* (responsive, interruptible) and *Delight* (purposeful motion); use it to decide *whether*, this skill for *how*. (Everyday motion; an effect the user asked for → `ui-fx`.)
 - **`apple-design` (apple-visual-accessibility)** — Reduce Motion and Prefer Cross-Fade Transitions govern everything in this skill; check the settings before shipping motion.

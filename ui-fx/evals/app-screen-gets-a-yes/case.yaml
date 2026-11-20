@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: app-screen-gets-a-yes
+expected_outcome: |
+  The answer takes the request at face value and builds real, visible effects for the page instead of arguing that a settings page should stay plain or delivering only subtle polish. It offers several directions including a bold one, builds at least one (ideally switchable variants since the user said explore), places effects on moments such as a successful save or the toggles without getting in the way of the form, and notes what would still be needed to ship (reduced motion, fallback).

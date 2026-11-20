@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: named-beam-binds-to-state
+context:
+  scaffold_script: place-files.sh
+expected_outcome: |
+  The existing components/Composer.tsx is edited in place: BorderBeam from 'border-beam' wraps the composer form and is active only while isStreaming is true, rendered from a client component, with reduced motion handled by the developer (the rotating beam types do not handle it themselves), the streaming state shown by a visible cue that does not depend on the beam, and only props the published border-beam 1.4.1 API accepts. The existing behaviour (the local useChat hook, submit, textarea, Send and Stop) is kept, nothing is installed, and the install command is given.
