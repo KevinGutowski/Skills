@@ -44,7 +44,22 @@ const measure = async (styles, reduced, extraHtml = '') => {
     const ms = (t) => parseFloat(t) * (t.endsWith('ms') ? 1 : 1000);
     const lists = [...document.querySelectorAll('ul.list:not([data-extra])')].map((ul) => ({
       v: ul.dataset.v, n: +ul.dataset.n,
-      items: [...ul.children].map((li) => { const cs = getComputedStyle(li); return { delay: ms(cs.animationDelay), dur: ms(cs.animationDuration), name: cs.animationName }; }),
+      items: [...ul.children].map((li) => {
+        const cs = getComputedStyle(li);
+        const item = { delay: ms(cs.animationDelay), dur: ms(cs.animationDuration), name: cs.animationName };
+        // A name alone is not proof: without its @keyframes no animation exists. Scrub the real one instead.
+        const anims = li.getAnimations();
+        item.running = anims.length === 1;
+        if (item.running) {
+          const a = anims[0]; a.pause();
+          a.currentTime = 0;                                        // inside the delay: the first keyframe holds (fill: both)
+          const start = { opacity: getComputedStyle(li).opacity, transform: getComputedStyle(li).transform };
+          a.currentTime = item.delay + item.dur;                    // at the end: the item's own styles
+          const end = { opacity: getComputedStyle(li).opacity, transform: getComputedStyle(li).transform };
+          item.moves = start.opacity === '0' && start.transform !== 'none' && end.opacity === '1' && ['none', 'matrix(1, 0, 0, 1, 0, 0)'].includes(end.transform);   // fill holds the implicit to-keyframe: identity
+        }
+        return item;
+      }),
     }));
     const extra = [...document.querySelectorAll('[data-extra] > *')].map((e) => getComputedStyle(e).animationDelay);
     return { lists, extra };
@@ -72,7 +87,7 @@ const measure = async (styles, reduced, extraHtml = '') => {
     const six = mine.find((l) => l.n === 6).items.map((i) => +i.delay.toFixed(1));
     const ordered = v === 'reverse' ? six.every((d, k) => k === 0 || d <= six[k - 1]) && six[5] === 0 : six.every((d, k) => k === 0 || d >= six[k - 1]) && six[0] === 0;
     check(`${v}: ${v === 'reverse' ? 'last' : 'first'} item starts at once and the order holds`, ordered, six);
-    check(`${v}: every item animates`, mine.every((l) => l.items.every((i) => i.name === 'rise')));
+    check(`${v}: every item animates, hidden and offset before its turn and in place after`, mine.every((l) => l.items.every((i) => i.running && i.moves)));
   }
   const base6 = lists.find((l) => l.v === 'base' && l.n === 6).items.map((i) => +i.delay.toFixed(1));
   check('base: 30ms steps, held after the fourth item', JSON.stringify(base6) === JSON.stringify([0, 30, 60, 90, 90, 90]), base6);
@@ -93,7 +108,7 @@ const measure = async (styles, reduced, extraHtml = '') => {
 {
   const extra = '<ul class="list" data-extra><li style="--i:0">a</li><li style="--i:1">b</li><li style="--i:2">c</li></ul>';
   const { lists, extra: inline } = await measure(withoutSupports(recipe), false, extra);
-  check('no support: every item enters at once and still animates', lists.every((l) => l.items.every((i) => i.delay === 0 && i.name === 'rise')));
+  check('no support: every item enters at once and still animates', lists.every((l) => l.items.every((i) => i.delay === 0 && i.running && i.moves)));
   check('no support: inline --i still staggers', JSON.stringify(inline) === JSON.stringify(['0s', '0.03s', '0.06s']), inline);
 }
 
