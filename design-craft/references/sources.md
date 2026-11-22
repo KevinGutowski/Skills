@@ -140,3 +140,7 @@ Transcript access: YouTube `en` captions fetched with `yt-dlp --skip-download --
 
 - *Sizing dropdown menus* (https://www.kevdu.co/reads/sizing-dropdown-menus, 2026-11-04; X 2117975138541146303) and *Timing tooltips* (https://www.kevdu.co/reads/tooltip-delay, 2026-11-06), read 2026-11-18. Both folded into the new [component-details.md](component-details.md). Two further reads were "Coming soon" on that date.
 - *How to design empty states* (https://www.kevdu.co/reads/empty-states, 2026-11-18), read the same day. Component rules folded into [component-details.md](component-details.md) → Empty states; causes and copy into `user-onboarding` (empty-states); missing-is-not-zero into `data-viz` (editorial-interaction).
+
+## Nil.Dev / @Nil_phy_dreamer — optical icon centring
+
+- X 2124194975571230845 (2026-11-21): text plus a 25.2s video (3024×2160), read frame by frame. It quotes X 2123777217994072186, an Opus 5.5 (high) card-design challenge (image read). Folded as "Measuring the Nudge: Ink Centroid" under Optical Alignment in [surfaces.md](surfaces.md), with the §2 rule of thumb and the checklist line in [polish-principles.md](polish-principles.md) reconciled. The generated-UI tell is in `working-with-ai` (ai-ui-direction).

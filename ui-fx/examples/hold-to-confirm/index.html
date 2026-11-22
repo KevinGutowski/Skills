@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hold to confirm</title>
+<style>
+  :root { --ink: #b42318; --paper: #fff; }
+  body { font: 16px/1.4 system-ui, sans-serif; display: grid; place-items: center; min-height: 100vh; margin: 0; }
+  .hold { position: relative; touch-action: none; user-select: none; -webkit-user-select: none; overflow: hidden;
+    padding: 12px 20px; border-radius: 12px; border: 1px solid var(--ink); background: var(--paper); color: var(--ink); font: inherit; }
+  .hold .fill { position: absolute; inset: 0; display: grid; place-items: center; background: var(--ink); color: var(--paper); pointer-events: none;
+    clip-path: inset(0 100% 0 0); transition: clip-path 300ms cubic-bezier(0.22, 1, 0.36, 1); }   /* rewind */
+  .hold[data-holding] .fill { clip-path: inset(0 0 0 0); transition: clip-path 1200ms linear; }  /* fill */
+  .hold[data-armed] .fill { clip-path: inset(0 0 0 0); transition: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .hold .fill, .hold[data-holding] .fill { transition: none; clip-path: inset(0 100% 0 0); }   /* no wipe */
+    .hold[data-armed] .fill { clip-path: inset(0 0 0 0); }                                         /* fill appears once armed */
+  }
+</style>
+</head>
+<body>
+<main>
+  <button class="hold" id="delete" type="button">
+    <span data-label>Hold to delete</span>
+    <span class="fill" aria-hidden="true"><span data-label>Hold to delete</span></span>
+  </button>
+  <p id="result" role="status"></p>
+</main>
+<script>
+  // Filling arms the button; the action commits only on release of the primary button, never while it is down.
+  const HOLD_MS = 1200;
+  const IDLE = 'Hold to delete', ARMED = 'Release to confirm';
+  const btn = document.getElementById('delete');
+  const labels = btn.querySelectorAll('[data-label]');           // both text layers: base and inverted fill
+  const result = document.getElementById('result');
+  let timer = null, activePointer = null, cancelled = false;
+  window.confirmCount = 0;
+
+  const setLabel = (text) => labels.forEach((el) => (el.textContent = text));
+  function disarmVisual() {                                       // stop the fill and the timer; keep tracking the pointer
+    clearTimeout(timer); timer = null;
+    delete btn.dataset.holding; delete btn.dataset.armed;
+    setLabel(IDLE);
+  }
+  function disarm() { disarmVisual(); activePointer = null; cancelled = false; }
+  function confirmAction() { window.confirmCount += 1; result.textContent = 'Deleted'; }
+
+  btn.addEventListener('pointerdown', (e) => {
+    if (!e.isPrimary || e.button !== 0 || activePointer !== null) return;   // one primary pointer, main button only
+    activePointer = e.pointerId; cancelled = false;
+    btn.setPointerCapture(e.pointerId);
+    btn.dataset.holding = '';
+    timer = setTimeout(() => { btn.dataset.armed = ''; setLabel(ARMED); }, HOLD_MS);
+  });
+  const isInside = (e) => { const r = btn.getBoundingClientRect(); return e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom; };
+  // While captured, every move comes here. Cancel for good if the pointer leaves the button (coming back does not
+  // re-arm), or if the main button is no longer held: with two buttons down, letting go of one is a pointermove.
+  btn.addEventListener('pointermove', (e) => {
+    if (e.pointerId !== activePointer) return;
+    if (!isInside(e) || (e.buttons & 1) === 0) { cancelled = true; disarmVisual(); }
+  });
+  btn.addEventListener('pointerup', (e) => {
+    if (e.pointerId !== activePointer) return;
+    const armed = 'armed' in btn.dataset && !cancelled;                      // a hold that left the button never commits
+    const mainButton = e.button === 0;                                       // the release must be the main button's
+    const inside = isInside(e);
+    disarm();
+    if (armed && mainButton && inside) confirmAction();
+  });
+  const cancel = (e) => { if (e.pointerId === activePointer) disarm(); };
+  btn.addEventListener('pointercancel', cancel);
+  btn.addEventListener('lostpointercapture', cancel);                        // capture taken away mid-hold
+  btn.addEventListener('contextmenu', (e) => e.preventDefault());            // a long press must not open a menu mid-hold
+  // Keyboard and assistive tech: a click with no pointer hold asks in a plain confirm step instead.
+  btn.addEventListener('click', (e) => { if (e.detail === 0 && window.confirm('Delete this item?')) confirmAction(); });
+</script>
+</body>
+</html>

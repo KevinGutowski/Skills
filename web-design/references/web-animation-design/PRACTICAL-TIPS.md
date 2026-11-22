@@ -163,7 +163,7 @@ A faster-spinning spinner makes apps feel faster even with identical load times.
 
 Arrow key navigation, keyboard shortcuts—these are repeated hundreds of times daily. Animation makes them feel slow and disconnected.
 
-**Never animate:**
+**Never animate** (everyday interface motion; an effect the user asked for, or one chosen through `ui-fx` for an effects request, is exempt, see Scope in the parent reference):
 
 - List navigation with arrow keys
 - Keyboard shortcut responses
@@ -428,7 +428,7 @@ Blur bridges visual gaps between states, tricking the eye into seeing smoother t
 From Emil's interviews with Henry Heffernan (Vercel), Lochie Axon (Family), and Dennis Brotzky (Fey):
 
 **Durations & decision rules**
-- Hard ceiling: a transition should essentially never exceed **1 second**, even with an extreme curve. Click-feedback go-to is **200ms, often 150ms** (the interviewees' figure; this theme's duration table keeps press and micro-interaction feedback at 100–150ms — use the table).
+- Hard ceiling: an everyday transition should essentially never exceed **1 second**, even with an extreme curve (a requested showpiece effect built through `ui-fx` may). Click-feedback go-to is **200ms, often 150ms** (the interviewees' figure; this theme's duration table keeps press and micro-interaction feedback at 100–150ms — use the table).
 - The delete-rule: "If you ever find yourself at 150 milliseconds… 'this is not fast enough', it is probably not worth animating at all."
 - **Page-load entrances must be CSS** — a JS animation library needs JavaScript loaded, so library-driven entrances delay first visuals. Save Motion/React Spring for post-hydration interactions.
 - Simple layout changes can usually be faked with transforms instead of reaching for a layout-animation engine.

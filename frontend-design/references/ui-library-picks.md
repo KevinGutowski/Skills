@@ -53,6 +53,8 @@ Two splits he draws:
 - **Charts:** data arriving live with a time axis that scrolls → Liveline. Everything else → Recharts. Chart *type* and integrity → `data-viz`.
 - **Class names:** clsx for ad-hoc conditions; cva once a component has real variants (size, intent, state) that deserve a typed API. They compose.
 
+Effect libraries (border beams, shader backgrounds, liquid metal, confetti, Rive/Lottie) are a separate survey with licence traps: `ui-fx` (effect-libraries).
+
 Local note: the Ryo Lu evidence in [visual-field-notes.md](visual-field-notes.md) names shadcn/Radix for the same primitives slot. That is the same rule (use an established primitive) with a different pick. Follow what the project already has. shadcn/ui itself now generates on Base UI by default (its changelog, July 2026) and still supports Radix and React Aria, so a shadcn project can be on any of the three: read its `components/ui` imports before assuming which API applies. Tuning-panel practice (Leva, DialKit) → `design-prototyping`.
 
 ## Mismatches to catch in review
