@@ -24,7 +24,15 @@ The local skill adapts that pattern to this repository's existing domain owners.
 - Read: `ui-review` (SKILL and criteria) and the trap list in `build-design-system`.
 - Delta used here: [behaviour-traps.md](behaviour-traps.md). It covers the symptom-to-trap table, stable trap IDs, measured probes (Event Timing for press feedback, real Tab presses for focus rings, measurement inside the scroller), task-level criteria, the shown-versus-sent severity rule, system-caused findings, fixes stated as failing checks, and the shown/not-shown edge-case list.
 - Not imported: the source's own bucket names and ship line (this skill keeps HIGH/MEDIUM/LOW and Block/Needs changes/Approve), its multi-reviewer panel sort, its report file locations, and the capture scripts. Traps already owned by `web-design` or `design-craft` are pointed to rather than restated.
+
 ## Vercel Web Interface Guidelines
+
+- Repository: https://github.com/vercel-labs/web-interface-guidelines (MIT), its command file at rev `434b7f9` (2026-10-05). Wrapped as the `web-design-guidelines` skill in https://github.com/vercel-labs/agent-skills (rev `5a37a63`), listed on the skills.sh Design topic.
+- Read: the command file in full, `AGENTS.md`, `README.md`, and the wrapping `SKILL.md`.
+- Delta used here: [code-pass-checklist.md](code-pass-checklist.md). It regroups the source-checkable rules by local owner, adds the grep-then-confirm procedure, maps severities, and records five disagreements with local owners (title case, `autocomplete="off"`, placeholder ellipses, key handlers, copy conventions).
+- Not imported: the rule wording itself and the "sacrifice grammar for brevity" output instruction; this skill keeps its own report structure and verdicts. Ledger: `docs/skills-sh-design-topic-source-mining-2026-11.md`.
+
+## Vercel Web Interface Guidelines: sweep commands (read 2026-11-18)
 
 - Repository: https://github.com/vercel-labs/web-interface-guidelines (command.md on `main`; raw: https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md). Shipped as the `web-design-guidelines` skill in https://github.com/vercel-labs/agent-skills, a thin wrapper that fetches the raw file before each review.
 - Read: 2026-11-18, the full rule list (about 110 rules in 17 families plus the anti-pattern list and output format) and the wrapper skill body. Upstream is unversioned; no commit was pinned.

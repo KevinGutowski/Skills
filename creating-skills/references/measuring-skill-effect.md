@@ -14,6 +14,7 @@
 - Generative skills: when guidance makes output timid
 - Hygiene: don't teach to the test
 - Suite hygiene for sibling skills
+- Finish gates, retrieval-backed skills, and pinned rule files
 - Versioning and records
 
 ## Set up the arms
@@ -98,6 +99,19 @@ For a set of skills that hand off to each other (design.how's seven-skill suite,
 - **Incident cases tie a rule to its failure.** Each case records the prompt, the expected behavior, the fails-if condition, and the exact phrase in the skill that states the rule; the lint checks the phrase still exists. Be honest about what that proves: the rule is written down, not that an agent follows it. Behavior still needs the arms above.
 - **Give rules stable IDs** when findings, specs, and lint messages need to cite the same thing.
 - **A rule enters only after it cost a real run,** and each rule says when to apply it, why, where to stop, and what enforces it.
+
+## Finish gates, retrieval-backed skills, and pinned rule files
+
+*Sources: three skills on the skills.sh Design topic (read 2026-11-22). Leon's tasteskill 2.5.1 (https://github.com/Leonxlnx/taste-skill, MIT, `f6b7657`, its CHANGELOG and gate reference); `ui-ux-pro-max` (https://github.com/nextlevelbuilder/ui-ux-pro-max-skill, MIT, `6ec2bb5`, its SKILL query contract, data-provenance file, and dated maintainer journals); Vercel `web-design-guidelines` (https://github.com/vercel-labs/agent-skills, MIT, `5a37a63`). Each is one project's practice.*
+
+- **A finish gate must never trap the agent.** tasteskill runs its checker as a Claude Code Stop hook declared in the skill's frontmatter. The design choices that keep that from becoming a loop: blocks are counted and capped (three rounds, then `OPEN`); a crash or an unsupported shell blocks once and then allows; a stop before the first run is not a round, so a mid-build question costs nothing; and the gate ends on exactly one status line (`PASS`, `FAIL`, `OPEN`, `SETUP`, `ERROR`, `OFF`) that the report leads with. A failure judged false is waived in a file with its reason, five at most. If you ship a hook, ship these limits with it and tell the user it exists. Lifetime depends on where it is declared. In Claude Code, a hook in a skill's frontmatter starts only when the skill is invoked and then stays registered for the rest of the conversation, not just the skill's task (use `once` to remove it after its first successful run). A hook in settings files runs for its whole scope whether or not any skill is used. Other agents take the same gate from their own hook files, with their own lifetimes (tasteskill ships Codex and Antigravity variants). Claude Code docs: https://code.claude.com/docs/en/hooks (Hooks in skills and agents).
+- **"Partly measured" is a warning, not a pass.** A check whose measurement timed out reports WARN. A green gate that silently skipped is worse than a red one.
+- **The kit's own examples must pass the kit's own checker.** tasteskill found that 30 of its 31 bundled demo pages failed its checker and fixed them before release, with a test that rechecks them. Examples that fail the rules teach the failure.
+- **Field-test across many builds before trusting a rule pack.** tasteskill's 2.5.1 fixes came from a 44-site test of 2.5.0. The over-correction table it produced (each ban breeds a substitute) is in `frontend-design` (anti-slop-catalog).
+- **For a skill backed by a search tool, measure relevance before adding data.** `ui-ux-pro-max`'s maintainers found that unit tests and smoke tests proved only that output parsed and was non-empty, while 37 of 122 keywords returned nothing in their own domain. They froze a human-judged relevance set (P@1, MRR@3, nDCG@3, abstention, typo recovery) before changing ranking or adding rows. Their summary: structurally green gates did not show the advice was semantically safe.
+- **Give the agent a query contract.** One dominant intent and 2–5 terms per query; check the returned domain and top result fit the product before applying it; retry once with a narrower query; then say no verified match was found and label any fallback. Never persist unverified output. Treat results as recommendations that never override the user or the repo.
+- **Record provenance per row, with a freshness window and the disagreement.** `ui-ux-pro-max` ties each dataset contract to official sources, a verified date, and a review window (90 days for volatile rows, 365 for manually verified ones), plus a boundary note saying where sources disagree (for example, form-validation timing differs between Baymard, the Ontario design system, and GOV.UK). That is this library's schools rule applied to data.
+- **Pin a bundled rule file and say not to fetch it.** Vercel's `web-design-guidelines` bundles its rule file, pins it to an upstream commit and SHA-256 hash, and tells the agent to read the bundled copy and not fetch rules from the network. Its sibling `writing-guidelines` in the same repo does the opposite and fetches its rules from the upstream `main` branch at run time, unpinned. A skill that fetches its instructions at runtime has instructions that can change under it (supply-chain risk: `docs/skill-library-ops.md`, External Skill Intake).
 
 ## Versioning and records
 

@@ -70,6 +70,8 @@ Resolve distinctive type versus artifact constraints in this order:
 
 Production layouts must survive real content, localization expansion, and user font-size overrides. Do not size containers around ideal-length English.
 
+**Stand-in photographs need a licence that allows the use.** When the client has no photographs, a page of a real kind of thing (the café's trade, the product's category) beats a render or an abstract ground. Take stand-ins only under CC0, public domain, CC BY, or CC BY-SA. NC forbids commercial use, so it rules out a business site. ND forbids adaptations, and a crop or colour grade may count as one. CC BY and BY-SA 4.0 require attribution: the creator, a copyright notice if supplied, the licence with a link, a link to the source, and an indication of any changes you made ("cropped and colour-graded"), keeping any earlier modification notices. One footer credit line per image can carry all of it, and a crop or grade counts as a change to note; BY-SA also puts the shared-alike licence on any adapted image. Read the licence on the file's own page, not the search result, and list every stand-in in the report so the client can replace it. Practice from tasteskill 2.5.1 (its photo search and credits line); licence terms from https://creativecommons.org/licenses/ and Wikimedia's reuse guide, https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia.
+
 ## Fidelity survives implementation
 
 Prefer visual ideas that can be implemented faithfully, then inspect the live result at real size. A production artifact that drops the intended lighting, states, responsive fit, or motion remains unfinished.
@@ -79,6 +81,7 @@ Prefer visual ideas that can be implemented faithfully, then inspect the live re
 - Consolidate near-duplicate font families when their loading cost outweighs the difference.
 - Treat unsupported effects such as cross-browser corner smoothing as a budget choice: provide a fallback, use SVG/masking deliberately, or simplify.
 - For custom SVG animation, keep layer hierarchy legible and check for layout thrashing.
+- Watch selector specificity between section-level and element-level classes. A type selector such as `.section` and a component selector such as `.cta` easily cancel each other's padding and margin between sections. Read the computed spacing on the render, not the class list (Anthropic `frontend-design`).
 
 ## De-slop substrate
 

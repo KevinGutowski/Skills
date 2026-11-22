@@ -58,6 +58,9 @@ The same robustness argument covers view state (Vercel, Web Interface Guidelines
 - **A button that disables itself while loading must keep focus.** A natively `disabled` button drops out of the tab order and strands the keyboard user. Keep it focusable (`aria-disabled`, or the component library's focusable-when-disabled option) and ignore activation while busy.
 - **Current focus floor:** WCAG 2.2 AA requires visible focus and that author-created content does not entirely obscure the focused component. Focus Appearance's simplest strong treatment—an indicator with area equivalent to a 2 CSS px perimeter and 3:1 change contrast—is AAA, not the AA baseline. Treat it as a robust design target, not a false AA compliance claim.
 - **Current pointer-target floor:** WCAG 2.2 AA Target Size (Minimum) is `24×24 CSS px`, with defined spacing, inline, equivalent-control, and user-agent exceptions. Larger product targets may be preferable, but `40` or `44` px is a design-system/platform target, not the WCAG 2.2 AA minimum. Krehel's product rule, labeled as such: aim for `44×44` on touch screens and `40×40` on desktop where possible, and **hit areas must never overlap** — an enlarged target that steals its neighbor's clicks is worse than a small one.
+- **Every drag has a single-pointer alternative** (WCAG 2.2 SC 2.5.7 Dragging Movements, AA). Reorder, resize, slider, and drag-to-select need buttons, a menu, or tap-to-pick-then-tap-to-place, unless dragging is essential. Keyboard operation is a separate requirement (2.1.1); a keyboard path alone does not satisfy 2.5.7 for touch and head-pointer users.
+- **Help stays in the same place** (WCAG 2.2 SC 3.2.6 Consistent Help, A). Contact details, a help link, a chat widget, or self-help repeated across pages keep the same relative order on each page.
+- **Modal dialogs follow the APG pattern.** On open, focus moves inside (to the first focusable element, or to the content when it starts with long text). Tab and Shift+Tab stay inside while it is open, Escape closes it, and on close focus returns to the control that opened it, or to the next logical element if that control is gone. Native `<dialog>` with `showModal()` handles containment and Escape; verify where focus lands on close rather than assuming it (WAI-ARIA APG, Dialog (Modal) pattern).
 
 ## 5. Contrast nuance
 
@@ -87,10 +90,12 @@ The same robustness argument covers view state (Vercel, Web Interface Guidelines
 
 ## 6. Forms & errors
 
-- Format conversion is the developer's job: "that's not a user error—**that's the site developers' fault**. Formatting the content of an input field should not be a burden placed on the user; **the burden should be on the developers to convert user input into the necessary format**." Strip spaces from card numbers; accept any phone/date shape; validate asynchronously to reassure as people type.
+- Format conversion is the developer's job: "that's not a user error—**that's the site developers' fault**. Formatting the content of an input field should not be a burden placed on the user; **the burden should be on the developers to convert user input into the necessary format**." Strip spaces from card numbers; accept any phone/date shape; give reassuring feedback on the product's chosen validation timing (submit, blur, or as-you-type), not on the first keystroke. As-you-type feedback is for fields built for it (password rules, username availability, character limits) and for re-checking a field that already shows an error ([form-design.md](form-design.md) §3).
 - **"(required)" in the label, not an asterisk** — the asterisk is a convention only seasoned form-fillers know; the word works "for sighted or screen reader users… or for first-time web users." (Pair every input with a `label for=`/`id` — structural, not just visual.)
+- **Status messages carry their context** (WCAG 2.2 SC 4.1.3 Status Messages requires that status changes be programmatically determinable, usually through a live region, without moving focus). Good practice beyond the criterion: a badge or count that changes announces one meaningful message ("3 items in cart"), not a bare number. Use one live region for the update rather than making every badge a competing live region.
 - **Dynamic alerts via `aria-live`**: `polite` for most updates (announced at the next graceful interval), `assertive` only for errors/alerts relevant to the user's current action — it's obtrusive. The role shorthands map the same way: `role="status"` announces routine updates ("Copied", "Saved"); save `role="alert"` for urgent errors (Krehel).
-- **The submit-error chain** (Krehel, corroborating Dannaway's enable-and-validate rule in `form-design`): keep the submit button enabled until the request actually starts; check for errors on submit; mark each failing field `aria-invalid="true"`; connect its message with `aria-describedby`; then **move focus to the first invalid field**. Without the focus move, a keyboard or screen-reader user submits into silence.
+- **The submit-error chain** (Krehel, corroborating Dannaway's enable-and-validate rule in `form-design`): keep the submit button enabled until the request actually starts; check for errors on submit; mark each failing field `aria-invalid="true"`; connect its message with `aria-describedby`; then **move focus to the first invalid field**. Without the focus move, a keyboard or screen-reader user submits into silence. On a long form with an error summary, GOV.UK's school moves focus to the summary instead, each item linking to its field (schools: [form-design.md](form-design.md) §3).
+- **Authentication and repeated entry** (WCAG 2.2 SC 3.3.8 Accessible Authentication (Minimum), AA, and 3.3.7 Redundant Entry, A) are form-level rules; the mechanics live in [form-design.md](form-design.md) §1–2.
 - The error copy itself (tone, blame, what-now) → `ux-writing` (error-messages).
 
 ## 7. Writing accessibly (Writing Is Designing, ch. 5)
@@ -137,9 +142,10 @@ Then keep testing after launch (feedback channel, regression suite) — "Accessi
 - [ ] Nothing essential lives only in a tooltip, context menu, or hover preview; loading buttons keep focus?
 - [ ] Custom composite widgets follow the relevant APG keyboard pattern; focused controls stay visible beneath sticky/fixed content?
 - [ ] Pointer targets meet WCAG 2.2's 24×24 CSS px minimum or a documented exception; any larger local target is labeled as a product rule?
+- [ ] Every drag has a single-pointer alternative (2.5.7); repeated help stays in the same place (3.2.6); modals move focus in, contain Tab, close on Escape, and return focus to the opener?
 - [ ] Contrast passes current WCAG — but not glare-level; survives grayscale?
 - [ ] Forms: labels say "(required)", inputs forgive formats, errors use `aria-live`?
-- [ ] On submit: button stayed enabled, `aria-invalid` + `aria-describedby` set, focus moved to the first invalid field; `role="status"` vs `role="alert"` chosen deliberately?
+- [ ] On submit: button stayed enabled, `aria-invalid` + `aria-describedby` set, focus moved to the error summary if the form has one, otherwise to the first invalid field; `role="status"` vs `role="alert"` chosen deliberately?
 - [ ] Copy: chronological, device-agnostic verbs, critical info before the action?
 - [ ] Media: transcript published as HTML; captions human-checked?
 - [ ] CI fails on accessibility regressions; AT matrix maintained?
@@ -149,13 +155,13 @@ Then keep testing after launch (feedback channel, regression suite) — "Accessi
 ## Staleness appendix (book era: 2017/2020 — verify all specifics against current WAI/MDN docs)
 
 Durable: everything above. Decayed:
-- **WCAG 2.0 → 2.2** (2023; 2.4.11 focus appearance era, 2.5.8 target size); WCAG 3 in draft. "Level AA" remains the common legal bar — but check current statute.
+- **WCAG 2.0 → 2.2** (2023; adds 2.4.11 Focus Not Obscured, 2.4.13 Focus Appearance (AAA), 2.5.7 Dragging Movements, 2.5.8 Target Size (Minimum), 3.2.6 Consistent Help, 3.3.7 Redundant Entry, 3.3.8 Accessible Authentication (Minimum)); WCAG 3 in draft. "Level AA" remains the common legal bar — but check current statute.
 - **Legal landscape moved**: EU's **European Accessibility Act enforcement began June 2025** (private-sector scope); US ADA Title II web rule (2024) sets WCAG 2.1 AA deadlines for government entities. Kalbag's law chapter is historical — get current counsel.
 - **Motion**: her era predates `prefers-reduced-motion` — use it (plus `prefers-contrast`, `forced-colors`); ignore any pre-media-query workaround patterns.
 - **Three independent preference signals** (from the `apple-design` skill in Emil Kowalski's open skills, github.com/emilkowalski/skills, 2026-11; check current support on MDN): `prefers-reduced-motion: reduce` means a gentler equivalent, not no feedback — swap slides, springs, and parallax for short opacity cross-fades and keep the color/opacity changes that aid comprehension; `prefers-reduced-transparency: reduce` means raise background opacity and drop blur on translucent surfaces; `prefers-contrast: more` means near-solid backgrounds with a defined, contrasting border. Bake all three into components rather than patching per page. Also avoid full-viewport moving backgrounds, slow looping oscillation, and abrupt dark↔light brightness jumps.
 - **Tooling churn**: Tenon API is gone (axe-core, Lighthouse, Pa11y are today's CI equivalents — the failing-build *pattern* is the durable part). Window-Eyes discontinued; "NVDU" is the book's typo for **NVDA**. IE/Opera Mini/Flash-based caption editors: dead. Today's AT matrix: NVDA + JAWS + Narrator (Windows), VoiceOver (macOS/iOS), TalkBack (Android).
 - **`<dialog>` is real now** — native modal focus management shipped in all engines; don't hand-roll focus traps where it serves.
-- **WCAG 2.2 additions matter** — check Focus Not Obscured (2.4.11) and Target Size Minimum (2.5.8); do not mislabel the AAA Focus Appearance criterion (2.4.13) as AA.
+- **WCAG 2.2 additions matter** — check Focus Not Obscured (2.4.11), Dragging Movements (2.5.7), Target Size Minimum (2.5.8), Consistent Help (3.2.6), Redundant Entry (3.3.7), and Accessible Authentication (3.3.8); do not mislabel the AAA Focus Appearance criterion (2.4.13) as AA.
 - The Safari/Chrome skip-link focus bug is largely fixed, but `tabindex="-1"` on targets remains correct practice.
 - Screen readers + browsers update monthly; re-verify any specific keystroke, support claim, or quirk before citing it.
 

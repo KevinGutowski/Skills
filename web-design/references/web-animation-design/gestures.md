@@ -64,7 +64,7 @@ const project = (velocity, rate = 0.998) => ((velocity / 1000) * rate) / (1 - ra
 const target = nearestSnapPoint(current + project(releaseVelocity));
 ```
 
-  - decide commit-vs-reverse from the **sign** of the release velocity, not from which side of the midpoint the element sits: a sheet past halfway that is moving back up should stay open.
+  - decide commit-vs-reverse with the same projection: snap to whichever end (open or closed) is nearest the projected landing point, not to whichever side of the midpoint the element sits on. A sheet past halfway that is flung back up stays open. A nearly closed sheet released with a tiny upward velocity still closes, because its projection barely moves.
 - **Hand the velocity to the animation.** Motion takes absolute px/s (`velocity`). An API that expects relative velocity wants `gestureVelocity / (target − current)`.
 - **Bounce only when force was applied.** A small overshoot suits a flung element; the same element closed by a button or Escape gets none. Smaller elements need proportionally more bounce to read the same.
 - **Clamp overshoot on exits.** A dismiss spring that overshoots past the screen edge flashes a gap; use a critically damped or clamped spring for the way out.
@@ -143,7 +143,7 @@ Tracking stays: the user is producing that motion. Under `prefers-reduced-motion
 | Jumps when grabbed mid-animation | Tracking restarts from the logical value | Start from the live transform |
 | Jumps on release | Release animation starts from a stale value, or a keyframe restarts | Animate from the current position; no `@keyframes` |
 | Quick flick is ignored | Distance-only threshold | Add a velocity or projection test |
-| Past-halfway sheet closes while being dragged back up | Position decides | Use velocity sign |
+| Past-halfway sheet closes while being dragged back up | Position decides | Snap to the point nearest the projected endpoint (above) |
 | Drag dies after a few pixels on touch | Browser claimed the touch (`pointercancel`) | `touch-action` for the axis |
 | Page scrolls while swiping a carousel | No axis declared | `touch-action: pan-y pinch-zoom` on the track |
 | Cannot pinch-zoom when starting on the swipe surface | Bare `pan-y`/`pan-x` | Add `pinch-zoom` |
@@ -159,7 +159,7 @@ Tracking stays: the user is producing that motion. Under `prefers-reduced-motion
 - [ ] Pointer captured; grab offset kept; second pointer ignored
 - [ ] No animation, React state, or ancestor CSS variable in the track path
 - [ ] Limits rubber-band
-- [ ] Dismissal accepts a flick (velocity or projection); reverse-vs-commit uses velocity sign
+- [ ] Dismissal accepts a flick (velocity or projection); reverse-vs-commit uses the projected endpoint, not the raw position
 - [ ] Release starts from the live position; thrown elements inherit velocity
 - [ ] Re-grab works at any point of the release animation
 - [ ] Overlay and background derive from drag progress

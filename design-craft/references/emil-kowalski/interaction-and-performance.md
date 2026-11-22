@@ -15,13 +15,15 @@ Detailed walkthroughs and code for spring-driven interactions, gesture/drag hand
 Tying visual changes directly to mouse position feels artificial because it lacks motion. Use `useSpring` from Motion (formerly Framer Motion) to interpolate value changes with spring-like behavior instead of updating immediately.
 
 ```jsx
-import { useSpring } from 'framer-motion';
+import { useSpring, useTransform } from 'motion/react';
+
+// mouseX is a motion value (useMotionValue), updated on pointermove
 
 // Without spring: feels artificial, instant
-const rotation = mouseX * 0.1;
+const rotation = useTransform(mouseX, (x) => x * 0.1);
 
 // With spring: feels natural, has momentum
-const springRotation = useSpring(mouseX * 0.1, {
+const springRotation = useSpring(rotation, {
   stiffness: 100,
   damping: 10,
 });
@@ -69,9 +71,9 @@ Instead of preventing upward drag entirely, allow it with increasing friction. I
 
 ## Performance Rules
 
-### Only animate transform and opacity
+### Prefer transform and opacity
 
-These properties skip layout and paint, running on the GPU. Animating `padding`, `margin`, `height`, or `width` triggers all three rendering steps.
+`transform` and `opacity` skip layout and paint and run on the compositor. `clip-path` reveals (hold-to-confirm) and measured-height accordions are the documented exceptions (upstream rev `0f2e23b`); they are not compositor-only, so keep them short and measure. Animating `padding`, `margin`, `height`, or `width` triggers all three rendering steps.
 
 ### CSS variables are inheritable
 
@@ -99,11 +101,11 @@ Version-scoped (updated from Kowalski's 2026 skills; this section previously sai
 
 Main-thread in every version: layout animations (`layout`, `layoutId`), anything using `onUpdate` or `transformTemplate`, inertia, and values driven per frame by a motion value (drag, `useTransform`). Check the installed version before flagging shorthands in review.
 
-This matters when the browser is simultaneously loading content, running scripts, or painting. At Vercel, the dashboard tab animation used Shared Layout Animations and dropped frames during page loads. Switching to CSS animations (off main thread) fixed it.
+This matters when the browser is simultaneously loading content, running scripts, or painting. At Vercel, the dashboard tab animation used Shared Layout Animations and dropped frames during page loads. Switching to CSS animations (on `transform`/`opacity`, they run on the compositor) fixed it.
 
 ### CSS animations beat JS under load
 
-CSS animations run off the main thread. When the browser is busy loading a new page, Framer Motion animations (using `requestAnimationFrame`) drop frames. CSS animations remain smooth. Use CSS for predetermined animations; JS for dynamic, interruptible ones.
+CSS animations of `transform` and `opacity` run on the compositor, off the main thread. When the browser is busy loading a new page, Framer Motion animations (using `requestAnimationFrame`) drop frames. CSS animations remain smooth. Use CSS for predetermined animations; JS for dynamic, interruptible ones.
 
 ### Use WAAPI for programmatic CSS animations
 

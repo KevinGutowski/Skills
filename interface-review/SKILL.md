@@ -1,6 +1,6 @@
 ---
 name: interface-review
-description: "Run a holistic, evidence-based review of an existing UI (web by default; native Apple via apple-design/swiftui rules) across accessibility, layout, writing, type, color, performance, polish. Use for whole-screen, flow, or product audits; quick, full, and scored modes. Building → frontend-design; one craft domain → web-design, ux-writing, design-craft. Triggers: review this UI, UX audit, design review, critique this screen, rate this design."
+description: "Run a holistic, evidence-backed review of existing UI (web default; native Apple via apple-design/swiftui) across accessibility, layout, copy, type, color, performance, polish. Use for screen, flow, product, or UI-code/PR audits; quick/full/scored modes. Building → frontend-design; one craft domain → web-design, ux-writing, design-craft. Triggers: review this UI, UX audit, design review, review UI code, critique this screen, rate this design."
 ---
 
 # Interface Review
@@ -35,6 +35,8 @@ Identify the framework, styling system, component library, tokens, supported vie
 **Judge before you scan.** Form your own design judgment, including whether the interface is authored for this product or could ship unchanged for an unrelated one, *before* reading detector, lint, or axe output, because deterministic findings anchor judgment. Then reconcile: agreements, what the tools caught that you missed, and false positives. When subagents are available, run the two passes in isolation. State in the report how they ran.
 
 **Probe behavior; don't infer it.** When the person describes a symptom ("laggy", "it jumps", "fine on my laptop, not my phone", "I can't click it") or the review covers a running build, use [references/behaviour-traps.md](references/behaviour-traps.md): a symptom-to-trap table, citable trap IDs, the task-level criteria a domain-by-domain pass can miss (shown equals sent, feedback at its trigger), and the measured probes. Responsiveness to input is never judged from a screenshot, in either direction; focus rings are judged from a capture after real Tab presses. Every probe gets a result or a reason it did not run.
+
+**Source pass.** For UI code (a PR, a component, "check this against best practices"), grep and read against [references/code-pass-checklist.md](references/code-pass-checklist.md): source-checkable rules grouped by owning skill, the points where Vercel's guidelines and local owners disagree, and a terse `file:line` format for a code-only pass.
 
 Inspect rendered behavior when the claim depends on layout, appearance, animation, focus, scrolling, or interaction. Inspect source when the claim depends on semantics or implementation. Do not turn a missing runtime check into a finding; mark it not verified. Runtime check recipes (layout shift, emulated reduced motion and color scheme, dialog focus and inertness, axe scan) and the before/after evidence format live in `browser-verification`.
 

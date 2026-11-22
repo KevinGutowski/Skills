@@ -160,6 +160,18 @@ When prose "sounds like AI," diagnose the system failure instead of banning indi
 - Safe conclusions that summarize rather than land on a consequence, decision, image, or question.
 - Punctuation choices used as a house tic instead of a rhythm choice.
 
+Sentence-level shapes that survive a token ban (Vercel writing guidelines, 2026). Each is a structural habit, so fix the structure, not the word:
+
+- **Recap transitions.** A paragraph that opens by summarising the last one ("With this setup complete…", "Now that we've explored…"). Pivot straight to the next point.
+- **Stop-start fragments.** One dependent idea chopped into three sentences ("Previously this was manual. Now it's automatic. This saves time."). Join them. A short sentence for emphasis is still fine.
+- **Spec-sheet voice.** "Provides", "is configurable", "is explicitly labeled": the system reading its own datasheet. Say who does what.
+- **Cold-open paragraphs.** A body paragraph whose first sentence would work as a heading has lost its antecedent. Carry the prior subject forward ("Because…", "Once…").
+- **Personified artifacts.** Machines do not hand, hold, or reach ("hand the browser a URL" → "the browser fetches the URL").
+- **Metaphor verbs for cadence.** "Moves through", "lands", "carries", "hits" in place of the literal step.
+- **Weasel quantities.** "Significantly", "most requests", "near-zero": give the figure and its source, or say plainly that you do not have one.
+- **Template framing.** "The question most teams face is whether…": the angle must come from this piece.
+- **Second-read test.** Read each sentence once at speaking pace. If you had to re-read it, name the subject, the action, and the consequence.
+
 Fix it with the ordinary prose craft stack:
 
 1. Write the real claim in one plain sentence.
