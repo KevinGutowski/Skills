@@ -117,27 +117,45 @@ The blur test, done with numbers. Nil.Dev's demo (X 2124194975571230845, 2026-11
 
 Rules the demo shows:
 
-- **Centre the weight, not the box.** Find the ink centroid (alpha-weighted mean of the painted pixels) and move the icon until the centroid sits on the container's centre: nudge = box centre − centroid, in rendered pixels.
+- **Centre the weight, not the box.** Find the ink centroid (alpha-weighted mean of the painted pixels) and move the icon until the centroid sits on the container's centre: nudge = container centre − centroid, in rendered pixels.
 - **Check each axis on its own.** A mirror-symmetric icon still needs a vertical check. The trash can is symmetric left to right, but its open body puts more ink low, so it takes a y-only nudge. "It's symmetric, so geometric centering is fine" is true only on the axis of symmetry.
-- **Offsets shrink with render size.** ViewBox offsets scale by rendered size ÷ viewBox size. The demo's px offsets match a 24-unit icon drawn at about 14px; that is our inference from 0.71 × 14/24 ≈ 0.41, since the video does not state the size. At 14–16px expect quarter- to half-pixel nudges. The 1–2px rule of thumb is for triangles and arrows at ~24px.
+- **Offsets shrink with render size.** ViewBox offsets scale by rendered size ÷ viewBox size. The demo's px offsets match a 24-unit icon drawn at about 14px; that is our inference from 0.71 × 14/24 ≈ 0.41, since the video does not state the size. The demo's two icons, at about 14px, took 0.25–0.5px, and a filled play triangle at 14px takes 0.75px (below). The 1–2px rule of thumb is for triangles and arrows at ~24px. Measure your own icons rather than reusing either range.
 - **Snap to a grid and keep the numbers.** The demo rounds to 0.25px steps (0.41 → 0.50, 0.17 → 0.25) and prints the nudge under each icon. Keep one nudge per icon (see Fior above) and store it with the icon's definition, so the value is explained and can be reviewed.
 - **Review with an overlay and a switch.** The video draws the box centre as a red crosshair and the weight as a blue dot, then flips an "Optical centring" switch. Before/after on the same screen shows a sub-pixel change that a lone screenshot hides.
 
 Measure, don't assume. Lucide's `square-pen` and `trash-2` measure within 0.1px of centre at 14px (snippet below, headless Chromium, 2026-11-22), so those two need no nudge. The demo's set differs. Some sets build optical balance into the drawing; SF Symbols do it with margins (`swiftui` (sf-symbols)).
 
 ```js
-// DevTools diagnostic: await opticalNudge(document.querySelector('button svg'))
-// The SVG must carry its paint as attributes (fill/stroke), not CSS classes.
-async function opticalNudge(svg, { grid = 0.25, scale = 8 } = {}) {
-  const { width: w, height: h } = svg.getBoundingClientRect();
+// DevTools diagnostic. Pass the element the icon should centre in:
+//   const btn = document.querySelector('button'); await opticalNudge(btn.querySelector('svg'), { container: btn })
+// Reads the icon where the browser actually draws it (getScreenCTM), so margins, positioning,
+// transforms and mirroring are counted once. Paint set on the <svg> itself by CSS is carried over;
+// paint set by CSS classes on inner shapes is not (move it to attributes, or it throws).
+// The nudge is a change from where the icon is now: add it to any translate it already has.
+async function opticalNudge(svg, { container = svg, grid = 0.25 } = {}) {
+  const vb = svg.viewBox.baseVal;
+  const [x0, y0, w, h] = vb && vb.width ? [vb.x, vb.y, vb.width, vb.height] : [0, 0, svg.clientWidth, svg.clientHeight];
+  const k = 400 / Math.max(w, h);  // raster pixels per user unit
   const clone = svg.cloneNode(true);
-  clone.setAttribute('width', w * scale);
-  clone.setAttribute('height', h * scale);
+  clone.removeAttribute('style');
+  clone.removeAttribute('transform');
+  const cs = getComputedStyle(svg);
+  for (const prop of ['color', 'fill', 'stroke', 'stroke-width', 'stroke-linecap', 'stroke-linejoin', 'opacity'])
+    clone.setAttribute(prop, cs.getPropertyValue(prop));
+  Object.entries({ viewBox: `${x0} ${y0} ${w} ${h}`, width: w * k, height: h * k, preserveAspectRatio: 'none' })
+    .forEach(([a, v]) => clone.setAttribute(a, v));
+  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+  for (const use of clone.querySelectorAll('use')) {
+    const id = (use.getAttribute('href') || use.getAttribute('xlink:href') || '').split('#')[1];
+    const ref = id && !clone.querySelector('#' + CSS.escape(id)) && document.getElementById(id);
+    if (ref) defs.append(ref.cloneNode(true));
+  }
+  clone.prepend(defs);
   const img = new Image();
   img.src = 'data:image/svg+xml;charset=utf-8,' +
     encodeURIComponent(new XMLSerializer().serializeToString(clone));
   await img.decode();
-  const canvas = Object.assign(document.createElement('canvas'), { width: w * scale, height: h * scale });
+  const canvas = Object.assign(document.createElement('canvas'), { width: Math.round(w * k), height: Math.round(h * k) });
   const ctx = canvas.getContext('2d');
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
   const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -146,14 +164,24 @@ async function opticalNudge(svg, { grid = 0.25, scale = 8 } = {}) {
     const a = data[i], p = (i - 3) / 4;
     sum += a; sx += a * ((p % canvas.width) + 0.5); sy += a * (Math.floor(p / canvas.width) + 0.5);
   }
-  const offX = (sx / sum - canvas.width / 2) / scale;  // + = ink sits right of centre
-  const offY = (sy / sum - canvas.height / 2) / scale; // + = ink sits low
+  if (!sum) throw new Error('Nothing painted: inner shapes may take their paint from CSS classes, or a reference was not found.');
+  const ink = new DOMPoint(x0 + sx / sum / k, y0 + sy / sum / k).matrixTransform(svg.getScreenCTM());
+  const t = container.getBoundingClientRect();
+  const offX = ink.x - (t.left + t.width / 2);  // + = ink sits right of centre (screen px)
+  const offY = ink.y - (t.top + t.height / 2);  // + = ink sits low
   const snap = v => Math.round(v / grid) * grid + 0;
   return { offX: +offX.toFixed(2), offY: +offY.toFixed(2), nudgeX: snap(-offX), nudgeY: snap(-offY) };
 }
 ```
 
-On a filled play triangle at 14px it returns `offX −0.8`, `nudgeX 0.75`: nudge right, matching Play Button Triangles below. Apply the result as `transform: translate(<nudgeX>px, <nudgeY>px)` on the icon, or move the paths in the SVG. On 1x screens a fractional translate can soften thin strokes. Check there, and prefer the SVG-path fix for icons you own.
+**Applying the result.** The nudge is a change from where the icon is drawn now, in screen pixels. Add it to the icon's CSS `translate` property, on top of any value already there: `translate: <old x + nudgeX>px <old y + nudgeY>px`. Don't replace an existing offset with the nudge; that drops the old offset. `translate` applies outside `transform`, so the nudge moves the icon in screen direction even when the icon is mirrored or rotated. Run the snippet again afterwards: it should return 0, 0. Once the value is settled, moving the paths in the SVG is the cleaner fix for icons you own. On 1x screens a fractional translate can soften thin strokes, so check there.
+
+**Checked** in headless Chromium (2026-11-22) by `design-craft/examples/snippet-checks/check-optical-nudge.mjs`. It extracts this snippet from this file, applies each nudge and measures again, so re-run it after editing the snippet. Results:
+- A filled play triangle at 14px needs `nudgeX 0.75`, the same rightward nudge as Play Button Triangles below. It needs the same from a sprite `<use>`, and `−0.75` when mirrored with `scaleX(-1)`.
+- A circle without a viewBox needs 0.
+- A centred circle pushed 3px left (by `position: relative`, or by its box's margin) needs `nudgeX 3`.
+- A circle carrying `transform: translateX(1px)` needs −1.
+- Every case lands within 0.125px of centre after the nudge is applied.
 
 ### Buttons with Text + Icon
 
@@ -183,7 +211,7 @@ Use slightly less padding on the icon side to make the button feel balanced. A r
 
 ### Play Button Triangles
 
-Play icons are triangular and their geometric center is not their visual center. Shift slightly right:
+Play icons are triangular and their geometric center is not their visual center. Shift slightly right. The 2px below suits a ~24px icon; at 14px a filled triangle measured 0.75px, so scale the nudge with the size or measure it:
 
 ```css
 /* Good — optically centered */

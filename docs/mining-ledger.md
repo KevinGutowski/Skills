@@ -717,8 +717,23 @@ Ticket-driven fold of a design-engineering tip: "Always center your icons based 
   - The quoted post X 2123777217994072186: "If you find 2 issues here in this card design done by opus 5.5 (high)…" and its card image (read). Its replies (2) were not read, because the public JSON endpoints do not return them. So the card's second issue is unconfirmed, and nothing was folded about it.
 - **Density:** HIGH for one lesson. It has a single source, but the claim is measurable, so it was folded as a method and not parked.
 - **Owner:** `design-craft` (surfaces → Optical Alignment), in the new subsection "Measuring the Nudge: Ink Centroid". It holds the worked table, five rules (centre the weight, check each axis, offsets shrink with render size, snap to 0.25px and keep the numbers, review with an overlay and a switch), and the `opticalNudge()` DevTools snippet. Contents line updated.
-- **Reconciled:** polish-principles §2. The "symmetric → geometric is fine" rule of thumb is now per axis, and the 1–2px figure is scoped to ~24px (small icons take 0.25–0.5px). The Single glyphs bullet and the checklist line were updated to match. The surfaces line "smallest stable unit" now allows quarter-pixel translates.
+- **Reconciled:** polish-principles §2. The "symmetric → geometric is fine" rule of thumb is now per axis, and the 1–2px figure is scoped to ~24px (the demo's 14px icons took 0.25–0.5px). The Single glyphs bullet and the checklist line were updated to match. The surfaces line "smallest stable unit" now allows quarter-pixel translates.
 - **Pointer:** `working-with-ai` (ai-ui-direction), a "Box-centred icons" bullet in the diagnosis list: the quoted post's generated card, with a repair prompt.
 - **Synthesis flagged as ours:** the ~14px render size, inferred from viewBox offset × 14/24 matching all three px figures; the snippet; the 1x-softening caveat; and the Lucide control measurement.
 - **Verified:** headless Chromium (Playwright) ran the snippet on 14px Lucide icons. A circle gave 0 / 0. A filled play triangle gave offX −0.8 → nudgeX 0.75 (right, as the existing rule says). `square-pen` and `trash-2` were within 0.1px of centre, so Lucide pre-balances those two. The demo's icon set is not Lucide.
 - **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Same day, cross-links:** `surfaces.md` Optical Alignment now opens with "See also" pointers to `swiftui` (sf-symbols → Glyph craft: Apple's WWDC 2017 optical-positioning rule) and `design-systems` (icon-systems → Optical adjustments, keylines).
+- **QA fixes (same day):**
+  - `opticalNudge()` takes a `container` and measures against that element's centre, so a misplaced icon box shows up.
+  - SVGs without a viewBox are measured in their own px instead of being mis-scaled.
+  - Sprite `<use>` targets are copied into the sample.
+  - The copy drops `margin` and `transform`, which the box already includes and which shifted the drawing.
+  - It throws when nothing paints instead of returning NaN.
+  - Re-verified in headless Chromium: a box 3px left of its button gives `nudgeX 3`; a `translateX(1px)` gives `offX 1`; a sprite triangle gives 0.75; a circle with no viewBox gives 0.
+  - Size ranges are scoped to the measured icons, and the 2px Play Button Triangles recipe is scoped to ~24px.
+- **Second QA pass (same day):**
+  - `opticalNudge()` now reads the icon where the browser draws it (`getScreenCTM`) instead of re-creating its layout. Positioning, margins, transforms and mirroring are now counted once. Before, `position: relative; left: -3px` read 0.5 instead of 3, and a mirrored triangle got a nudge with the wrong sign.
+  - Paint set by CSS on the `<svg>` itself is now carried into the sample.
+  - The section says the nudge is a change from the current position, to be added to the CSS `translate` property.
+  - New regression check `design-craft/examples/snippet-checks/check-optical-nudge.mjs` (same pattern as `ui-fx` snippet-checks) extracts the snippet from `surfaces.md` and checks nine cases, each measured, nudged and measured again. It passes 19/19 on the new snippet and fails 14/19 on the previous one.
+  - The `working-with-ai` line now credits the box-centring measurement to the follow-up demo, not the quoted screenshot, and calls 0.17–0.41px per-axis offsets.
