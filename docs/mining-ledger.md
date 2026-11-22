@@ -821,3 +821,17 @@ Ticket-driven fold of an external agent skill for alignment passes. The full man
 - **QA (same day):** the reference said the probe "measures ink", but it measures layout boxes (text line boxes and SVG element boxes), so the claim was corrected everywhere it appeared. The new `design-craft/scripts/gridlines.test.mjs` (10/10) pins the documented behaviour and limits so the docs can't drift from the script again.
 - **Second QA (same day):** the test now loads Playwright the same way `audit.mjs` does, so there is a single setup for both. The runner's failure on strict-CSP pages is documented with a workaround, and the test pins both. 12/12 pass.
 - **Third QA (same day):** a narrower icon centred in the icon column is a false leading miss. It is documented and pinned in the test; 13/13 pass.
+
+## 2026-11-22 — @gkurttech, "Scroll-driven animations" parts 1–5 (X)
+
+Ticket-driven fold of a five-post CSS tip series.
+
+- **Manifest:**
+  - 2122222357443989782 Part 1 `scroll()`, 2122638812736029133 Part 2 `view()`, 2122947160610115866 Part 3 `animation-range`, 2124074346431799299 Part 4 parallax, 2124450831303090459 Part 5 scroll fade.
+  - Text read through `api.vxtwitter.com`. Each post has a 16–34s 1080p video; all five were downloaded and read as frames every 4s, which is how the code was captured. There were no quoted posts or reply parents. Replies were not read.
+- **Density:** MEDIUM. Clean teaching and correct code, but the mechanism was already in the library. What's new is the `scroll()`/`view()` split, the range-name table, `entry 25% exit 75%` offsets and the parallax recipe. Part 5 corroborates the existing Scroll Fades recipe.
+- **Verified:** Playwright with Chromium 159 and Firefox 159, run in a scratch directory. All post claims hold. The runs also found four traps that the posts do not state, recorded as ours: (1) the `animation` shorthand resets `animation-range`, not just `animation-timeline`; (2) without `both`, a `view()` subject outside a narrowed range shows its un-animated style (`transform: none`); (3) `contain` on a subject taller than the scrollport runs while the subject fills the scrollport; (4) a duration-less shorthand computes to `auto` and works. A non-overflowing `scroll(self)` list keeps both fade lengths at `0px`. Safari was not run.
+- **Owner:** `ui-fx` (platform-techniques → Scroll-driven animation), rewritten: timeline table, range table, an example, traps and a parallax recipe. The overscan rule (the image overflows its frame by the travel) is ours.
+- **Pointers:** `design-craft` (surfaces → Scroll Fades) adds the second-source paragraph and widens the order trap to `animation-range`. `web-design` (web-animation-design) adds a tool-ladder row. Source entries are in `ui-fx` sources and `design-craft` sources.
+- **Synthesis flagged as ours:** the use-it-for column, "`linear`, because easing lags the scroll", and the parallax overscan.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
