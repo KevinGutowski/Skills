@@ -7,7 +7,7 @@ Primary:
 
 Named voices folded into the body:
 
-- *Derek Briggs (PixelJanitor; ex-PlanetScale/Campsite/Clerk/Notion, now Design+Code at Shopify) — Shape FM ep. 3 "Motion and animation with intent" (with James McDonald, 2025, YouTube sHVKuJuseYo): physical-reference easing, front-loaded velocity peak, per-primitive motion identity, speed rules, B&W motion studies*
+- *Derek Briggs (PixelJanitor; ex-PlanetScale/Campsite/Clerk/Notion, now Design+Code at Shopify) — Shape FM ep. 3 "Motion and animation with intent" (with James McDonald, 2025, YouTube sHVKuJuseYo): physical-reference easing, front-loaded velocity peak, per-primitive motion identity, speed rules, B&W motion studies. Also X 2123512999810089444 (2026-11-19: the four-curve soft-close set with clock and perceived durations, plus a 32s side-by-side demo video) the 108s clip it quotes (Ridd, X 2123484229543854351), and the full episode, Dive Club "Scaling craft at Shopify" (2026-11-03, YouTube `r4IW73e6tE4`; not yet on dive.club when read, so transcribed locally from the podcast feed's audio with faster-whisper `small.en`). Easing ~13:40–19:45 → the parent's Physical-reference easing section (free-air vs hard-stop, momentum carry); shop.com carousel ~9:00–12:45 and ~42:40 → [choreography.md](choreography.md) worked example. Overshoot and 95%-arrival figures are ours, computed from the curves*
 - *Lochie Axon (Family) + Henry Heffernan (Vercel) — interviews (the marketing-flourish and story-test corollaries)*
 - *Ryo Lu (Cursor) — YC-website roast, 2025 (motion only when earned)*
 - *Andy Madrick + Ridd — Dive Club podcast (YouTube IfPK0LwbX_0; the overcooking hazard)*

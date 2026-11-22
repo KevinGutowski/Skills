@@ -11,6 +11,7 @@ Depth moved out of SKILL.md: the Heath & Heath sticky-framing checks, the Perri/
 - [Dive Club smaller deltas — full quotes](#dive-club-smaller-deltas--full-quotes)
 - [Soleio deltas — full quotes](#soleio-deltas--full-quotes)
 - [Briggs: craft pitch + UI-engineering org (Dive Club)](#briggs-craft-pitch--ui-engineering-org-dive-club)
+- [Briggs at Shopify: principal-IC influence (Dive Club, 2026)](#briggs-at-shopify-principal-ic-influence-dive-club-2026)
 - [Career as a business case — full quotes (Ryan Scott)](#career-as-a-business-case--full-quotes-ryan-scott)
 
 ## Sticky framing (Heath & Heath, *Made to Stick*)
@@ -71,6 +72,16 @@ Derek Briggs (PixelJanitor; ex-PlanetScale/Campsite/Clerk/Notion, now Design+Cod
 - **The before/after pitch deck.** He sold UI craft investment to leadership with side-by-side slides: the default implementation next to the crafted version. The reaction he engineered: "it's so obvious now that I see the comparison." Comparison axes that read instantly in a slide: shadow-as-border, multi-shadow stacks, subtle gradients, optical alignment, concentric border radii. The deck makes the case for craft with zero abstraction — the executive sees the delta directly (same show-don't-tell move as Nabors' animated-vs-static comp).
 - **UI engineers report to design, as translators.** "your design quality and your design capabilities of your team is only as good as the UI Engineers that are implementing it" — so he places UI engineers inside the design org, translating between design intent and product engineering. The PlanetScale pairing pattern: the designer builds the UI views in code, the product engineer plugs in the API endpoints — "we met in a PR to where it was just paint by numbers."
 - **Anti-deadline stance — Briggs' position, not house consensus.** "Setting a deadline is going to either allow the person to stretch out that amount of work" over the period — or force descoping; he prefers craft work unscheduled. This conflicts directly with the shape-up appetite school (fixed time, variable scope as a feature). Don't average the two — name both and pick per org.
+
+## Briggs at Shopify: principal-IC influence (Dive Club, 2026)
+
+Derek Briggs, Dive Club "Scaling craft at Shopify" (2026-11-03, YouTube `r4IW73e6tE4`), two years after the Clerk episode above. Now a principal IC in a design org of "300 some people", having turned down offers to lead a team.
+
+- **Read leadership memos as permission.** Tobi Lütke's weekly internal letters are "him sharing kind of his vision of where he wants things to be and giving you permission to do it", and "the people that are finding the most success are the ones that just take it and run." Nobody will stop you making something better, and no roadmap will ask you to either. His shop.com carousel rebuild was "not even an initiative".
+- **Trust before fixes.** On joining a team he spends "a day or two" with the people he'll work with, making clear he is there to make their work better, before changing anything. He contrasts this with leaders "just demanding what they want to get done."
+- **Leave the reasoning, not just the result.** "I never want to be in a role where I am coming in, making something better and just leave." He hands over the tools and the reasoning so the area stays good after he moves on. The org-scale version, skill files deployed across teams, is in `working-with-ai` (ai-enablement → Deploy taste as files).
+- **Show, don't say** (extends the before/after deck above). "Saying it could be better is one thing", but building the better version is what brings the designer and the engineer along.
+- **Hiring: 10× better, not 10× more.** He screens for people using AI to raise the quality of what they already did well, not to produce more of it, and asks "what are you doing with the extra time?" He finds that hunger more often in people newer to the industry, who "don't have any old habits to break".
 
 ## Career as a business case — full quotes (Ryan Scott)
 

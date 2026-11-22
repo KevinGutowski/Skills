@@ -127,6 +127,7 @@ Smaller deltas — read [references/influence-field-notes.md](references/influen
 - **Big redesign bets** (Batina): pre-agree the regression tolerance before the work; contest the reading of a metric, not the number.
 - **AI-era roles and shipping** (Ouriach, Lovin, Choy): write before pixels; titles are going away; everyone *can* ship ≠ everything *should* ship.
 - **Org placement** (Briggs): UI engineers report to design as translators; his anti-deadline stance is his position, not house consensus.
+- **Principal IC without a team** (Briggs, Shopify 2026): treat leadership memos as permission and run; earn trust before fixing; leave the reasoning behind; hire for 10× better, not 10× more.
 
 ## Team-of-one influence (Buley)
 

@@ -707,6 +707,29 @@ Ticket-driven: a skill for coming up with extra-creative UI effects, from two X 
 - **Routing:** X1–X19 19/19 on the latest blind judge; W and B fixtures and the 43-row smoke packet re-run clean.
 - **Parked:** React Native ports, on-device models, Pro content, a reduced-motion lint.
 
+## 2026-11-19 — Derek Briggs (@PixelJanitor), soft-close easing set (X 2123512999810089444) + Dive Club "Scaling craft at Shopify"
+
+Ticket-driven fold: "fold this into the skills", with the attached video as optional context. Second pass the next day, after the user pointed at dive.club, mined the full episode.
+
+- **Manifest:**
+  - The post: text, plus a 32s silent 2560×1440 demo video, read as a 2s-interval contact sheet.
+  - The post it quotes: Ridd (@ridd_design) X 2123484229543854351, text plus a 108s clip, frames read and audio transcribed.
+  - The full episode, Dive Club "Scaling craft at Shopify" (2026-11-03, 51 min, YouTube `r4IW73e6tE4`). YouTube refused captions from this sandbox ("Sign in to confirm you're not a bot") on every player client tried. The audio came from the rss.com podcast feed (found via the iTunes lookup for show 1686414242) and was transcribed locally with faster-whisper `small.en` in 5-minute chunks; a single pass ran out of memory.
+  - `dive.club/deep-dives/derek-briggs`, rendered with headless Chromium because it is a client-rendered Framer page. It is the Jan 2024 Clerk episode (`z4hP80tzBL4`), already mined, and has no easing content. The 2026 episode was not listed on dive.club/episodes when read; it was found on the YouTube channel.
+  - Fetch paths: posts via `api.vxtwitter.com`/`api.fxtwitter.com`, videos via `video.twimg.com`. Replies (4 on each post) were not read because the public endpoints do not return them, so Ridd's 👇 follow-up is unknown.
+- **Density:** HIGH. Roughly ten lessons, across motion, choreography, AI enablement, measurement, and influence. The sponsor reads and the hiring/background chat were skipped.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Fold map:**
+  - `web-design` web-animation-design: the four-curve soft-close table with use column; bounce into free air vs stop soft against hard (layout-shift reason); momentum carry across linked elements; corrected ease-in-out note; reconciled the 300ms duration rule and review flag.
+  - `web-design` choreography: new worked example, the gesture-driven card carousel (Lead settles last, one progress value drives children, mirrored stagger order, ambient canvas, 60fps).
+  - `working-with-ai` ai-enablement: "Deploy taste as files, not people" plus a checklist line. Also reconciled the old "Pi likely a garble" note, since Briggs names Pi beside Claude Code and Codex.
+  - `working-with-ai` agentic-coding: curate AGENTS.md from review and prune as models improve; the living agent profile.
+  - `user-research` validation-and-metrics: "Post-ship agent loops".
+  - `design-org-influence`: "Briggs at Shopify: principal-IC influence" plus one routing line in SKILL.md.
+- **Synthesis flagged as ours:** the measured 95%-arrival, overshoot, and launch-velocity figures; the bezier single-overshoot limit; the end-event trap; `useTransform` as the Motion mapping for the carousel.
+- **Not changed:** `motion` (vendored Motion AI Kit), `design-craft` motion themes (separate themes; the Theme Note forbids mixing). The SVG displacement-map glass and canvas ambient light appear only as one line in the choreography example; no recipe was given.
+- **Recheck:** quotes come from a Whisper transcript, not captions; re-verify against YouTube captions when they can be fetched.
+
 ## 2026-11-22 — Nil.Dev (@Nil_phy_dreamer), optical icon centring (X 2124194975571230845)
 
 Ticket-driven fold of a design-engineering tip: "Always center your icons based on the weight and size of the icon. See optical alignment not mathematical alignment."
