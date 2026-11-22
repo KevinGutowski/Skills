@@ -706,3 +706,66 @@ Ticket-driven: a skill for coming up with extra-creative UI effects, from two X 
 - **holospot** (`dmitrykurash/holospot`, MIT, v0.1.0): physically based holographic foil, glitter and hologram materials for three.js, as reference `holospot`, with the transferable shader ideas pulled out.
 - **Routing:** X1–X19 19/19 on the latest blind judge; W and B fixtures and the 43-row smoke packet re-run clean.
 - **Parked:** React Native ports, on-device models, Pro content, a reduced-motion lint.
+
+## 2026-11-22 — Nil.Dev (@Nil_phy_dreamer), optical icon centring (X 2124194975571230845)
+
+Ticket-driven fold of a design-engineering tip: "Always center your icons based on the weight and size of the icon. See optical alignment not mathematical alignment."
+
+- **Manifest:**
+  - Post text (read, via `api.vxtwitter.com`).
+  - The 25.2s video: a 3024×2160 MP4 from `video.twimg.com`. Read frame by frame: 1 fps contact sheets for all 25 frames, plus full-resolution crops of the measurement labels (t=6.5s) and the nudge labels (t=12s). It has four beats. "Centred by its box": a dashed box and a red crosshair at `box centre 12.00, 12.00`. "But the eye weighs the shape": a blue weight dot with `weight 11.29, 12.66` / `off by 0.41px left, 0.38px low` for the edit icon and `weight 11.97, 12.29` / `off by 0.17px low` for trash. "Nudge by the weight": `nudge x +0.50 y -0.50 px` and `nudge x 0.00 y -0.25 px`, with an "Optical centring" switch turned on. "Optically centred": the end state.
+  - The quoted post X 2123777217994072186: "If you find 2 issues here in this card design done by opus 5.5 (high)…" and its card image (read). Its replies (2) were not read, because the public JSON endpoints do not return them. So the card's second issue is unconfirmed, and nothing was folded about it.
+- **Density:** HIGH for one lesson. It has a single source, but the claim is measurable, so it was folded as a method and not parked.
+- **Owner:** `design-craft` (surfaces → Optical Alignment), in the new subsection "Measuring the Nudge: Ink Centroid". It holds the worked table, five rules (centre the weight, check each axis, offsets shrink with render size, snap to 0.25px and keep the numbers, review with an overlay and a switch), and the `opticalNudge()` DevTools snippet. Contents line updated.
+- **Reconciled:** polish-principles §2. The "symmetric → geometric is fine" rule of thumb is now per axis, and the 1–2px figure is scoped to ~24px (the demo's 14px icons took 0.25–0.5px). The Single glyphs bullet and the checklist line were updated to match. The surfaces line "smallest stable unit" now allows quarter-pixel translates.
+- **Pointer:** `working-with-ai` (ai-ui-direction), a "Box-centred icons" bullet in the diagnosis list: the quoted post's generated card, with a repair prompt.
+- **Synthesis flagged as ours:** the ~14px render size, inferred from viewBox offset × 14/24 matching all three px figures; the snippet; the 1x-softening caveat; and the Lucide control measurement.
+- **Verified:** headless Chromium (Playwright) ran the snippet on 14px Lucide icons. A circle gave 0 / 0. A filled play triangle gave offX −0.8 → nudgeX 0.75 (right, as the existing rule says). `square-pen` and `trash-2` were within 0.1px of centre, so Lucide pre-balances those two. The demo's icon set is not Lucide.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Same day, cross-links:** `surfaces.md` Optical Alignment now opens with "See also" pointers to `swiftui` (sf-symbols → Glyph craft: Apple's WWDC 2017 optical-positioning rule) and `design-systems` (icon-systems → Optical adjustments, keylines).
+- **QA fixes (same day):**
+  - `opticalNudge()` takes a `container` and measures against that element's centre, so a misplaced icon box shows up.
+  - SVGs without a viewBox are measured in their own px instead of being mis-scaled.
+  - Sprite `<use>` targets are copied into the sample.
+  - The copy drops `margin` and `transform`, which the box already includes and which shifted the drawing.
+  - It throws when nothing paints instead of returning NaN.
+  - Re-verified in headless Chromium: a box 3px left of its button gives `nudgeX 3`; a `translateX(1px)` gives `offX 1`; a sprite triangle gives 0.75; a circle with no viewBox gives 0.
+  - Size ranges are scoped to the measured icons, and the 2px Play Button Triangles recipe is scoped to ~24px.
+- **Second QA pass (same day):**
+  - `opticalNudge()` now reads the icon where the browser draws it (`getScreenCTM`) instead of re-creating its layout. Positioning, margins, transforms and mirroring are now counted once. Before, `position: relative; left: -3px` read 0.5 instead of 3, and a mirrored triangle got a nudge with the wrong sign.
+  - Paint set by CSS on the `<svg>` itself is now carried into the sample.
+  - The section says the nudge is a change from the current position, to be added to the CSS `translate` property.
+  - New regression check `design-craft/examples/snippet-checks/check-optical-nudge.mjs` (same pattern as `ui-fx` snippet-checks) extracts the snippet from `surfaces.md` and checks nine cases, each measured, nudged and measured again. It passes 19/19 on the new snippet and fails 14/19 on the previous one.
+  - The `working-with-ai` line now credits the box-centring measurement to the follow-up demo, not the quoted screenshot, and calls 0.17–0.41px per-axis offsets.
+- **Third QA pass (same day): replaced the DevTools snippet with a script that measures rendered pixels.**
+  - **Why.** All three QA rounds found the same kind of bug. The snippet redrew a copy of the SVG off-page and then guessed how that copy mapped back onto the page. Each round found another case the copy got wrong: no viewBox, sprites, margins, mirroring, stylesheet paint on inner shapes, `slice` clipping, a scaled ancestor. Patching case by case would not end that. Page JavaScript can't read screen pixels, so measurement moved to Playwright.
+  - **What replaced it.** `design-craft/scripts/optical-nudge.mjs` screenshots each container with the icon shown and with it hidden. It takes the ink centroid from the pixel difference, and prints the nudge and the `translate` value to keep, with any existing translate composed and ancestor scale divided out. `--apply` sets that value and measures again. The blur test stays as the no-tools method.
+  - **Regression check.** `design-craft/scripts/optical-nudge.test.mjs` passed 28/28. It covers every earlier case plus QA's: stylesheet paint on inner shapes (matches its attribute twin), `slice` clipping, a `scale(2)` ancestor, an existing standalone `translate`, and a known-geometry square that measures 2.000px.
+  - **Re-checked.** The Lucide `square-pen`/`trash-2` claim was measured again with the script.
+  - **Out of scope, documented as limits.** Rotated ancestors, and icons that animate or change on hover.
+  - **Superseded.** `design-craft/examples/snippet-checks/check-optical-nudge.mjs` tested the removed snippet and should be deleted.
+- **Fourth QA pass (same day): the script now observes instead of assuming.**
+  - **Why.** The pixel measurement itself held up. The remaining defects came from the surrounding steps assuming things instead of checking them:
+    - the screenshot was assumed to start where it was requested, but Playwright trims off-screen areas;
+    - an ancestor's scale was computed without its sign;
+    - `translate` was parsed as px only;
+    - images were decoded inside the inspected page.
+  - **Observed instead.**
+    - The capture area is kept inside the viewport.
+    - The CSS-px-to-screen map is found by moving the icon 4px on each axis and solving, which covers scale, mirroring and rotation.
+    - The nudge is added to the existing `translate` as written, keeping `%` and `calc()`.
+    - Screenshots are decoded in a separate blank page, so the inspected page's CSP can't block them.
+    - It refuses when the ink falls outside the icon's box.
+    - Every run measures again with the fix applied, then restores the page unless `--apply`.
+    - The CLI exits 1 on any failure.
+  - **Tests.** 43/43. New cases: origin at (0, 0) (fails on the unclamped version), percentage centring, mirrored and rotated ancestors, a page left untouched without `--apply`, a strict-CSP page through the CLI, and the CLI exit code. Rotated ancestors moved from limits to supported.
+  - **Superseded checker.** `examples/snippet-checks/check-optical-nudge.mjs` now forwards to the new test. It is safe to delete; this session could not delete files.
+- **Fifth QA pass (same day): scope frozen.**
+  - **Fixes.**
+    - The hidden frame now uses `opacity: 0`, restored in `finally`. Before, a descendant with `visibility: visible` kept painting, giving a false 3.5px nudge that still reported centred.
+    - The pointer never enters the page. Before, (0, 0) hovered a top-left button, giving a false 5px nudge that still reported centred.
+    - `translate` is split at top-level spaces, so nested `calc()`/`min()` survive.
+    - The docs now define the ink weight (colour change, not alpha), give the install location, and add the Linux `install-deps` step.
+  - **Why the earlier hover check passed.** Its button was round, so (0, 0) fell outside it. The fixture is square now.
+  - **Proof.** Both new tests fail on the old behaviour. 47/47 pass now.
+  - **Scope.** `surfaces.md` now lists what the script supports, refuses and does not measure. Anything outside that list is out of scope; use the blur test there.
