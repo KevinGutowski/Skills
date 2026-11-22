@@ -792,3 +792,18 @@ Ticket-driven fold of a design-engineering tip: "Always center your icons based 
   - **Why the earlier hover check passed.** Its button was round, so (0, 0) fell outside it. The fixture is square now.
   - **Proof.** Both new tests fail on the old behaviour. 47/47 pass now.
   - **Scope.** `surfaces.md` now lists what the script supports, refuses and does not measure. Anything outside that list is out of scope; use the blur test there.
+
+## 2026-11-22 — Sunnie Kapar (@sunniekapar), eased fade + blur (X 2124231120938029373)
+
+Ticket-driven fold of a one-line tip: "adding a slight blur to an eased gradient looks so nice".
+
+- **Manifest:**
+  - Post text (read, via `api.fxtwitter.com` and `cdn.syndication.twimg.com`).
+  - The 4096×4096 image from `pbs.twimg.com` (read whole, plus full-resolution crops of both label areas). It shows one halftone "Shader prototypes / Halftone spectrum" card twice, labelled "eased fade" and "eased fade + blur". With blur, the dots behind the label melt into smooth colour and the top stays crisp.
+  - Replies (2, read via the fxtwitter conversation endpoint): a compliment and a thank-you. Nothing to fold.
+- **Density:** MEDIUM for one lesson. Single source and a visual claim, so it was checked in a render before folding.
+- **Verified:** headless Chromium (Playwright) rendered a 7px CSS halftone card four ways. The measure is the mean neighbouring-pixel difference in the label band, with labels hidden: linear fade 1.57, eased fade 3.36, eased fade + blur with a leading mask 0.32, eased fade + blur reusing the fade's eased curve as its mask 2.29. Top band 11.39 in every case. Blur radius on the leading mask: 2px 0.70, 3px 0.34, 4px 0.31, 8px 0.32. Playwright `clip` screenshots dropped the `backdrop-filter`, so the numbers come from a full-page screenshot.
+- **Owner:** `design-craft` (surfaces → Eased Gradients), new subsection "Fading Over Texture: Add Blur": the quote, the numbers, a CSS layer recipe, and five rules (the blur leads the fade, radius about half the texture pitch, same box as the fade, bake it for static art, check from rendered pixels). Contents line updated.
+- **Pointers:** `design-craft` polish-principles (#21 sentence, common-mistakes row, checklist line); `ui-fx` surface-recipes → Progressive blur (one slight layer is enough for a label over texture).
+- **Synthesis flagged as ours:** why easing makes the blur matter more (eased fades leave more texture mid-ramp), the leading mask, the half-pitch radius, and the bake-for-static-art note. The source supplied the pairing and the visual.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
