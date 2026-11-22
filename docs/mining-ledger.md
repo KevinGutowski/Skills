@@ -737,3 +737,35 @@ Ticket-driven fold of a design-engineering tip: "Always center your icons based 
   - The section says the nudge is a change from the current position, to be added to the CSS `translate` property.
   - New regression check `design-craft/examples/snippet-checks/check-optical-nudge.mjs` (same pattern as `ui-fx` snippet-checks) extracts the snippet from `surfaces.md` and checks nine cases, each measured, nudged and measured again. It passes 19/19 on the new snippet and fails 14/19 on the previous one.
   - The `working-with-ai` line now credits the box-centring measurement to the follow-up demo, not the quoted screenshot, and calls 0.17–0.41px per-axis offsets.
+- **Third QA pass (same day): replaced the DevTools snippet with a script that measures rendered pixels.**
+  - **Why.** All three QA rounds found the same kind of bug. The snippet redrew a copy of the SVG off-page and then guessed how that copy mapped back onto the page. Each round found another case the copy got wrong: no viewBox, sprites, margins, mirroring, stylesheet paint on inner shapes, `slice` clipping, a scaled ancestor. Patching case by case would not end that. Page JavaScript can't read screen pixels, so measurement moved to Playwright.
+  - **What replaced it.** `design-craft/scripts/optical-nudge.mjs` screenshots each container with the icon shown and with it hidden. It takes the ink centroid from the pixel difference, and prints the nudge and the `translate` value to keep, with any existing translate composed and ancestor scale divided out. `--apply` sets that value and measures again. The blur test stays as the no-tools method.
+  - **Regression check.** `design-craft/scripts/optical-nudge.test.mjs` passed 28/28. It covers every earlier case plus QA's: stylesheet paint on inner shapes (matches its attribute twin), `slice` clipping, a `scale(2)` ancestor, an existing standalone `translate`, and a known-geometry square that measures 2.000px.
+  - **Re-checked.** The Lucide `square-pen`/`trash-2` claim was measured again with the script.
+  - **Out of scope, documented as limits.** Rotated ancestors, and icons that animate or change on hover.
+  - **Superseded.** `design-craft/examples/snippet-checks/check-optical-nudge.mjs` tested the removed snippet and should be deleted.
+- **Fourth QA pass (same day): the script now observes instead of assuming.**
+  - **Why.** The pixel measurement itself held up. The remaining defects came from the surrounding steps assuming things instead of checking them:
+    - the screenshot was assumed to start where it was requested, but Playwright trims off-screen areas;
+    - an ancestor's scale was computed without its sign;
+    - `translate` was parsed as px only;
+    - images were decoded inside the inspected page.
+  - **Observed instead.**
+    - The capture area is kept inside the viewport.
+    - The CSS-px-to-screen map is found by moving the icon 4px on each axis and solving, which covers scale, mirroring and rotation.
+    - The nudge is added to the existing `translate` as written, keeping `%` and `calc()`.
+    - Screenshots are decoded in a separate blank page, so the inspected page's CSP can't block them.
+    - It refuses when the ink falls outside the icon's box.
+    - Every run measures again with the fix applied, then restores the page unless `--apply`.
+    - The CLI exits 1 on any failure.
+  - **Tests.** 43/43. New cases: origin at (0, 0) (fails on the unclamped version), percentage centring, mirrored and rotated ancestors, a page left untouched without `--apply`, a strict-CSP page through the CLI, and the CLI exit code. Rotated ancestors moved from limits to supported.
+  - **Superseded checker.** `examples/snippet-checks/check-optical-nudge.mjs` now forwards to the new test. It is safe to delete; this session could not delete files.
+- **Fifth QA pass (same day): scope frozen.**
+  - **Fixes.**
+    - The hidden frame now uses `opacity: 0`, restored in `finally`. Before, a descendant with `visibility: visible` kept painting, giving a false 3.5px nudge that still reported centred.
+    - The pointer never enters the page. Before, (0, 0) hovered a top-left button, giving a false 5px nudge that still reported centred.
+    - `translate` is split at top-level spaces, so nested `calc()`/`min()` survive.
+    - The docs now define the ink weight (colour change, not alpha), give the install location, and add the Linux `install-deps` step.
+  - **Why the earlier hover check passed.** Its button was round, so (0, 0) fell outside it. The fixture is square now.
+  - **Proof.** Both new tests fail on the old behaviour. 47/47 pass now.
+  - **Scope.** `surfaces.md` now lists what the script supports, refuses and does not measure. Anything outside that list is out of scope; use the blur test there.

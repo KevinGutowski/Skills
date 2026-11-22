@@ -104,7 +104,7 @@ To *measure* an optical offset instead of guessing, blur the icon: add a heavy `
 .icon-under-test { filter: blur(6px); }
 ```
 
-Then encode the result as the smallest stable unit (`translate-x-px`, `transform: translateX(1px)`, a quarter-pixel `translate` for small icons, or a viewBox fix in the SVG) and keep it.
+Then encode the result as the smallest stable unit (`translate-x-px`, `transform: translateX(1px)`, a quarter-pixel `translate` for small icons, or a viewBox fix in the SVG) and keep it. To get the number instead of eyeballing it, use the script in the next subsection.
 
 ### Measuring the Nudge: Ink Centroid
 
@@ -117,71 +117,50 @@ The blur test, done with numbers. Nil.Dev's demo (X 2124194975571230845, 2026-11
 
 Rules the demo shows:
 
-- **Centre the weight, not the box.** Find the ink centroid (alpha-weighted mean of the painted pixels) and move the icon until the centroid sits on the container's centre: nudge = container centre − centroid, in rendered pixels.
+- **Centre the weight, not the box.** Find the ink centroid and move the icon until it sits on the container's centre: nudge = container centre − centroid, in rendered pixels. The ink centroid is the mean position of the icon's painted pixels, each weighted by how strongly it is painted. The video shows its weight point but not how it computes it.
 - **Check each axis on its own.** A mirror-symmetric icon still needs a vertical check. The trash can is symmetric left to right, but its open body puts more ink low, so it takes a y-only nudge. "It's symmetric, so geometric centering is fine" is true only on the axis of symmetry.
 - **Offsets shrink with render size.** ViewBox offsets scale by rendered size ÷ viewBox size. The demo's px offsets match a 24-unit icon drawn at about 14px; that is our inference from 0.71 × 14/24 ≈ 0.41, since the video does not state the size. The demo's two icons, at about 14px, took 0.25–0.5px, and a filled play triangle at 14px takes 0.75px (below). The 1–2px rule of thumb is for triangles and arrows at ~24px. Measure your own icons rather than reusing either range.
 - **Snap to a grid and keep the numbers.** The demo rounds to 0.25px steps (0.41 → 0.50, 0.17 → 0.25) and prints the nudge under each icon. Keep one nudge per icon (see Fior above) and store it with the icon's definition, so the value is explained and can be reviewed.
 - **Review with an overlay and a switch.** The video draws the box centre as a red crosshair and the weight as a blue dot, then flips an "Optical centring" switch. Before/after on the same screen shows a sub-pixel change that a lone screenshot hides.
 
-Measure, don't assume. Lucide's `square-pen` and `trash-2` measure within 0.1px of centre at 14px (snippet below, headless Chromium, 2026-11-22), so those two need no nudge. The demo's set differs. Some sets build optical balance into the drawing; SF Symbols do it with margins (`swiftui` (sf-symbols)).
+Measure, don't assume. Lucide's `square-pen` and `trash-2` measure within 0.1px of centre at 14px (script below, 2026-11-22), so those two need no nudge. The demo's set differs. Some sets build optical balance into the drawing; SF Symbols do it with margins (`swiftui` (sf-symbols)).
 
-```js
-// DevTools diagnostic. Pass the element the icon should centre in:
-//   const btn = document.querySelector('button'); await opticalNudge(btn.querySelector('svg'), { container: btn })
-// Reads the icon where the browser actually draws it (getScreenCTM), so margins, positioning,
-// transforms and mirroring are counted once. Paint set on the <svg> itself by CSS is carried over;
-// paint set by CSS classes on inner shapes is not (move it to attributes, or it throws).
-// The nudge is a change from where the icon is now: add it to any translate it already has.
-async function opticalNudge(svg, { container = svg, grid = 0.25 } = {}) {
-  const vb = svg.viewBox.baseVal;
-  const [x0, y0, w, h] = vb && vb.width ? [vb.x, vb.y, vb.width, vb.height] : [0, 0, svg.clientWidth, svg.clientHeight];
-  const k = 400 / Math.max(w, h);  // raster pixels per user unit
-  const clone = svg.cloneNode(true);
-  clone.removeAttribute('style');
-  clone.removeAttribute('transform');
-  const cs = getComputedStyle(svg);
-  for (const prop of ['color', 'fill', 'stroke', 'stroke-width', 'stroke-linecap', 'stroke-linejoin', 'opacity'])
-    clone.setAttribute(prop, cs.getPropertyValue(prop));
-  Object.entries({ viewBox: `${x0} ${y0} ${w} ${h}`, width: w * k, height: h * k, preserveAspectRatio: 'none' })
-    .forEach(([a, v]) => clone.setAttribute(a, v));
-  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-  for (const use of clone.querySelectorAll('use')) {
-    const id = (use.getAttribute('href') || use.getAttribute('xlink:href') || '').split('#')[1];
-    const ref = id && !clone.querySelector('#' + CSS.escape(id)) && document.getElementById(id);
-    if (ref) defs.append(ref.cloneNode(true));
-  }
-  clone.prepend(defs);
-  const img = new Image();
-  img.src = 'data:image/svg+xml;charset=utf-8,' +
-    encodeURIComponent(new XMLSerializer().serializeToString(clone));
-  await img.decode();
-  const canvas = Object.assign(document.createElement('canvas'), { width: Math.round(w * k), height: Math.round(h * k) });
-  const ctx = canvas.getContext('2d');
-  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-  const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  let sum = 0, sx = 0, sy = 0;
-  for (let i = 3; i < data.length; i += 4) {
-    const a = data[i], p = (i - 3) / 4;
-    sum += a; sx += a * ((p % canvas.width) + 0.5); sy += a * (Math.floor(p / canvas.width) + 0.5);
-  }
-  if (!sum) throw new Error('Nothing painted: inner shapes may take their paint from CSS classes, or a reference was not found.');
-  const ink = new DOMPoint(x0 + sx / sum / k, y0 + sy / sum / k).matrixTransform(svg.getScreenCTM());
-  const t = container.getBoundingClientRect();
-  const offX = ink.x - (t.left + t.width / 2);  // + = ink sits right of centre (screen px)
-  const offY = ink.y - (t.top + t.height / 2);  // + = ink sits low
-  const snap = v => Math.round(v / grid) * grid + 0;
-  return { offX: +offX.toFixed(2), offY: +offY.toFixed(2), nudgeX: snap(-offX), nudgeY: snap(-offY) };
-}
+**Measuring from rendered pixels: `design-craft/scripts/optical-nudge.mjs`.** This is an optional Node script that drives headless Chromium (Playwright). It works by observation, not by modelling the page:
+- **Where the ink is.** It screenshots each container (button, chip, avatar) with the icon shown and with the icon at `opacity: 0`. Each pixel's weight is how much its colour changes. For a one-colour icon on a flat background that matches the ink centroid above. A multicolour icon, or one on a gradient or image, is weighted by contrast with what is behind it, which can differ from its coverage.
+- **How CSS px map to the screen.** It moves the icon 4 CSS px on each axis and watches where the ink goes, so scaled, mirrored and rotated ancestors are measured rather than computed.
+- **The answer.** It solves for the nudge, snaps it to 0.25px, applies it, and measures again.
+
+```bash
+# from the repo root (Node must be able to resolve playwright-core from design-craft/scripts)
+npm i --no-save playwright-core && npx playwright-core install chromium-headless-shell
+npx playwright-core install-deps chromium-headless-shell   # bare Linux only: Chromium's system libraries (needs root)
+node design-craft/scripts/optical-nudge.mjs http://localhost:3000/settings 'button.icon-button'
+# {"i":0,"offX":-0.78,"offY":0,"nudgeX":0.75,"nudgeY":0,"translate":"0.75px 0px","afterX":-0.03,"afterY":0,"centred":true}
 ```
 
-**Applying the result.** The nudge is a change from where the icon is drawn now, in screen pixels. Add it to the icon's CSS `translate` property, on top of any value already there: `translate: <old x + nudgeX>px <old y + nudgeY>px`. Don't replace an existing offset with the nudge; that drops the old offset. `translate` applies outside `transform`, so the nudge moves the icon in screen direction even when the icon is mirrored or rotated. Run the snippet again afterwards: it should return 0, 0. Once the value is settled, moving the paths in the SVG is the cleaner fix for icons you own. On 1x screens a fractional translate can soften thin strokes, so check there.
+- **Pass the container, not the icon.** The script measures against the element the icon should sit centred in, and only the icon moves. `--icon <selector>` picks the icon inside each container (default `svg`).
+- **Put the printed `translate` in the icon's CSS.** It is the icon's existing `translate` with the nudge added. `-50% -50%` and nested math are kept as written: `-50% -50%` becomes `calc(-50% + 0.75px) -50%`. Don't write the bare nudge over an existing offset: that drops the old offset.
+- **Trust it only when `centred: true`.** `afterX`/`afterY` are measured with the value applied, and `centred` means each axis is within half a grid step. The script exits 1 if any container failed or did not end up centred, so it can gate CI. It restores the page unless you pass `--apply`, and never writes to disk.
+- **Once the value is settled, move the paths** in the SVG for icons you own, so the component code only has to centre it. On 1x screens a fractional translate can soften thin strokes, so check there.
 
-**Checked** in headless Chromium (2026-11-22) by `design-craft/examples/snippet-checks/check-optical-nudge.mjs`. It extracts this snippet from this file, applies each nudge and measures again, so re-run it after editing the snippet. Results:
-- A filled play triangle at 14px needs `nudgeX 0.75`, the same rightward nudge as Play Button Triangles below. It needs the same from a sprite `<use>`, and `−0.75` when mirrored with `scaleX(-1)`.
-- A circle without a viewBox needs 0.
-- A centred circle pushed 3px left (by `position: relative`, or by its box's margin) needs `nudgeX 3`.
-- A circle carrying `transform: translateX(1px)` needs −1.
-- Every case lands within 0.125px of centre after the nudge is applied.
+What it covers is fixed. Cases outside this list are out of scope; use the blur test there.
+- **Supported:** what one element paints in its resting state. That includes stylesheet paint, sprites, clipping, filters, descendants that set their own visibility, positioning and margins, and the element's own transforms. Scaled, mirrored or rotated ancestors are supported too, as is an existing `translate` in any unit.
+- **Refused with an error:** an icon that paints nothing visible (or only in the colour behind it), one whose ink does not move when nudged, one whose measured ink falls outside its own box, and a container outside the viewport.
+- **Not measured:** hover, focus and animated states. The pointer never enters the page and animations are disabled.
+
+`design-craft/scripts/optical-nudge.test.mjs` is the regression check. Re-run it after editing the script. Each case is measured, nudged and measured again from rendered pixels. It passed 47/47 on 2026-11-22.
+- **Checks on the measurement itself.**
+  - A filled square drawn 2px right of centre measures 2.000, 0.000.
+  - A square button at the viewport's (0, 0) with a hover style needs 0. This catches capture-origin and hover errors, which also fool a second measurement.
+  - An icon whose second dot sets `visibility: visible` needs 0. This catches a hidden frame that still paints.
+- **Shape.** A filled play triangle at 14px needs 0.75, the same rightward nudge as Play Button Triangles below. The same holds through a sprite `<use>`, inside a `scaleX(-1)` ancestor, and on x inside a `rotate(90deg)` ancestor. Mirrored by the icon's own transform, it needs −0.75.
+- **Placement.**
+  - A circle pushed 3px left, by `position: relative` or by margin, needs 3.
+  - 1px left inside a `scale(2)` ancestor needs 1 CSS px.
+  - `translate: 1px 0` composes to `0px 0px`.
+  - `-50% -50%` and `calc(-50% + min(20%, 1px)) -50%` are kept.
+- **Paint and clipping.** A stroke painted from a stylesheet matches its attribute-painted twin. Ink clipped by `preserveAspectRatio="slice"` does not count.
+- **Command line.** It works on a strict-CSP page, and exits 1 when a measurement fails.
 
 ### Buttons with Text + Icon
 
