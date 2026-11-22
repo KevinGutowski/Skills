@@ -9,6 +9,7 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 - Impeccable (Paul Bakaus)
 - Kosta — *Tactile design*
 - Pasquale Vitiello — *Plotter*
+- Pritam Paul — *gridlines*
 - Anton Sten
 - Derek Briggs (PixelJanitor)
 - Gustavo Fior — *Craft*
@@ -37,6 +38,10 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 ## Pasquale Vitiello — *Plotter*
 
 - https://plotter.pasqualevitiello.com · https://github.com/pasqualevitiello/plotter (MIT), read at commit `01df092` (2026-11-15). The `skills/plotter` package (SKILL.md and its drawing, motion, direction, visual-grammar, drafting-standard, approved-references and motion-examples references, the catalogue index, `check.py`) plus the repo's cold-run eval briefs and site docs were paraphrased into [construction-drawings.md](construction-drawings.md), with a pointer from [component-details.md](component-details.md) (Empty states). Not vendored: the 109-drawing catalogue, scripts, role CSS and the bundled Cal Sans font; the reference says how to install the upstream package. The example in [../examples/construction-drawing-empty-state.html](../examples/construction-drawing-empty-state.html) is an original drawing. Ledger: `docs/mining-ledger.md` (2026-11-18).
+
+## Pritam Paul — *gridlines*
+
+- https://github.com/pritamux/gridlines (MIT), read at commit `20d0944` (2026-11-21). The SKILL.md process and rules were paraphrased into [alignment-pass.md](alignment-pass.md). `probe.js`, `audit.mjs` and `LICENSE` are vendored unchanged (plus a provenance header) in `design-craft/scripts/gridlines/`, with a local regression check in `design-craft/scripts/gridlines.test.mjs`, and the planted-miss sidebar is in [../examples/gridlines-sidebar.html](../examples/gridlines-sidebar.html). The source credits Karri Saarinen's Linear sidebar redraw and Apple's HIG layout chapter; the redraw was not located. The README media (before/after video and images) were not read. Ledger: `docs/gridlines-source-mining-2026-11.md`.
 
 ## Anton Sten
 

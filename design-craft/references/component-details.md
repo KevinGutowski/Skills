@@ -74,7 +74,7 @@ A menu's width is a content decision, not a token. The longest label sets it, an
 
 - **Height:** 32px, clickable from edge to edge. WCAG 2.2's minimum target is 24px; touch surfaces want taller rows (the tactile theme uses 36px on desktop and more in phone sheets).
 - **No dead pixels between rows.** If rows have a visual gap, draw it inside flush rows instead of using margin: [surfaces.md](surfaces.md) → Contiguous Rows.
-- **Icons:** 16px, 8px from the label. Every item gets one or none does; a mixed column leaves labels on two different left edges.
+- **Icons:** 16px, 8px from the label. Every item gets one or none does; a mixed column leaves labels on two different left edges. To check every row's edges at once, draw guides: [alignment-pass.md](alignment-pass.md).
 - **Labels:** left-aligned, starting with a verb. Wording rules live in `ux-writing`.
 - **Dividers** group related actions. With only one or two actions, use buttons instead of a menu.
 - **Unavailable items** stay in place, greyed out, so the menu keeps its shape and people learn where things are.

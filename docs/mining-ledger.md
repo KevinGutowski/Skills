@@ -792,3 +792,17 @@ Ticket-driven fold of a design-engineering tip: "Always center your icons based 
   - **Why the earlier hover check passed.** Its button was round, so (0, 0) fell outside it. The fixture is square now.
   - **Proof.** Both new tests fail on the old behaviour. 47/47 pass now.
   - **Scope.** `surfaces.md` now lists what the script supports, refuses and does not measure. Anything outside that list is out of scope; use the blur test there.
+
+## 2026-11-22 — Pritam Paul, *gridlines* (github.com/pritamux/gridlines)
+
+Ticket-driven fold of an external agent skill for alignment passes. The full manifest, probe test runs, fold map and conflicts are in `docs/gridlines-source-mining-2026-11.md`.
+
+- **Density:** HIGH. The source is a single method for one task shape, with a working measurement script.
+- **Owner:** `design-craft`, in the new reference `references/alignment-pass.md`. The probe, runner and MIT license are vendored in `design-craft/scripts/gridlines/`, and the example is `design-craft/examples/gridlines-sidebar.html`. No new top-level skill.
+- **Pointers:** polish-principles, surfaces, component-details, practical-demonstrations, linear-product-craft, `interface-review`, README.
+- **Description:** `design-craft` gained the trigger "edges don't line up". The new routing fixture G1–G10 was run twice by a blind judge on all 83 registered probes: every probe passed, with no regressions.
+- **Parked:** the Saarinen-specific rules (headers on the icon edge, the top bar centred on the window controls) stay single-source until his redraw is found. The probe's nested-row false positive and box-on-text-line false negative are documented and were not patched in the vendored copy.
+- **Skipped:** README media and `npx skills` install steps.
+- **QA (same day):** the reference said the probe "measures ink", but it measures layout boxes (text line boxes and SVG element boxes), so the claim was corrected everywhere it appeared. The new `design-craft/scripts/gridlines.test.mjs` (10/10) pins the documented behaviour and limits so the docs can't drift from the script again.
+- **Second QA (same day):** the test now loads Playwright the same way `audit.mjs` does, so there is a single setup for both. The runner's failure on strict-CSP pages is documented with a workaround, and the test pins both. 12/12 pass.
+- **Third QA (same day):** a narrower icon centred in the icon column is a false leading miss. It is documented and pinned in the test; 13/13 pass.

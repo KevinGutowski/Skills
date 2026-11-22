@@ -5,7 +5,7 @@ The full move lists from Josh Puckett's Interface Craft practical-demonstration 
 Eight worked walkthroughs applying the principles. The recurring critique/refinement moves:
 
 **Visual-language audit moves** (Refining Today / Presscut):
-- Count the **implicit vertical rules** — more than ~2 left-edge alignment lines reads as disorder; consolidate to one content edge.
+- Count the **implicit vertical rules** — more than ~2 left-edge alignment lines reads as disorder; consolidate to one content edge. Inside one container, the measured version (text line, box line, icon column) is [alignment-pass.md](alignment-pass.md).
 - **Unify icon families**: one stroke width, one fill style, one color treatment across the interface.
 - **Tokenize metadata**: style category labels/secondary data as visually distinct tokens so they never read as user content.
 - **Standardize one divider treatment** — or try removing dividers entirely and see if spacing carries it.
