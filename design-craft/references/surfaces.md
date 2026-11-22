@@ -2,7 +2,7 @@
 
 ## Contents
 - Concentric Border Radius
-- Optical Alignment
+- Optical Alignment (blur test, ink-centroid measurement)
 - Shadows Instead of Borders
 - Natural Shadow Stacks
 - Dark Mode Edge Highlights
@@ -87,6 +87,10 @@ Fior's worked values: card 16px outer / 8px inset → 8px media; menu 12px outer
 
 When geometric centering looks off, align optically instead.
 
+See also:
+- `swiftui` (sf-symbols) → "Glyph craft". Apple's WWDC 2017 rule for optical positioning: asymmetric glyphs that are perfectly centred "just look off", so nudge a play triangle right and a share arrow up, and bake the offset into the asset so the code only has to centre it. That is the same preference as the SVG-path fix below.
+- `design-systems` (icon-systems) → "Optical adjustments" and keylines. These are corrections made while drawing the set: circles drawn larger than squares, notches where lines meet, thinner strokes where lines converge, dots sized by role, and separate drawings per size. They come before any placement nudge.
+
 > "Junior designer: This is not aligned. Senior designer: It's optically aligned." — Stammy, https://x.com/stammy/status/1276602518693445637
 
 Optical alignment "means nudging things until they look right, then keeping the nudge" (Gustavo Fior, *Craft*, craft.gustavofior.com/optical-alignment). The nudge is per icon: "The amounts are tiny and specific to each icon, so this is a per icon decision, not a global rule." Don't turn one icon's 1px offset into a token applied to the whole set.
@@ -100,7 +104,56 @@ To *measure* an optical offset instead of guessing, blur the icon: add a heavy `
 .icon-under-test { filter: blur(6px); }
 ```
 
-Then encode the result as the smallest stable unit (`translate-x-px`, `transform: translateX(1px)`, or a viewBox fix in the SVG) and keep it.
+Then encode the result as the smallest stable unit (`translate-x-px`, `transform: translateX(1px)`, a quarter-pixel `translate` for small icons, or a viewBox fix in the SVG) and keep it.
+
+### Measuring the Nudge: Ink Centroid
+
+The blur test, done with numbers. Nil.Dev's demo (X 2124194975571230845, 2026-11-21) puts an edit (pencil-in-square) icon and a trash icon in round buttons. Both are "Centred by its box": box centre `12.00, 12.00` in a 24-unit viewBox. Then a dot marks each glyph's visual weight ("But the eye weighs the shape"):
+
+| Icon | Box centre | Weight (ink centroid) | Off by (rendered px) | Nudge |
+|---|---|---|---|---|
+| Edit | 12.00, 12.00 | 11.29, 12.66 | 0.41px left, 0.38px low | x +0.50, y −0.50 px |
+| Trash | 12.00, 12.00 | 11.97, 12.29 | 0.17px low | x 0.00, y −0.25 px |
+
+Rules the demo shows:
+
+- **Centre the weight, not the box.** Find the ink centroid (alpha-weighted mean of the painted pixels) and move the icon until the centroid sits on the container's centre: nudge = box centre − centroid, in rendered pixels.
+- **Check each axis on its own.** A mirror-symmetric icon still needs a vertical check. The trash can is symmetric left to right, but its open body puts more ink low, so it takes a y-only nudge. "It's symmetric, so geometric centering is fine" is true only on the axis of symmetry.
+- **Offsets shrink with render size.** ViewBox offsets scale by rendered size ÷ viewBox size. The demo's px offsets match a 24-unit icon drawn at about 14px; that is our inference from 0.71 × 14/24 ≈ 0.41, since the video does not state the size. At 14–16px expect quarter- to half-pixel nudges. The 1–2px rule of thumb is for triangles and arrows at ~24px.
+- **Snap to a grid and keep the numbers.** The demo rounds to 0.25px steps (0.41 → 0.50, 0.17 → 0.25) and prints the nudge under each icon. Keep one nudge per icon (see Fior above) and store it with the icon's definition, so the value is explained and can be reviewed.
+- **Review with an overlay and a switch.** The video draws the box centre as a red crosshair and the weight as a blue dot, then flips an "Optical centring" switch. Before/after on the same screen shows a sub-pixel change that a lone screenshot hides.
+
+Measure, don't assume. Lucide's `square-pen` and `trash-2` measure within 0.1px of centre at 14px (snippet below, headless Chromium, 2026-11-22), so those two need no nudge. The demo's set differs. Some sets build optical balance into the drawing; SF Symbols do it with margins (`swiftui` (sf-symbols)).
+
+```js
+// DevTools diagnostic: await opticalNudge(document.querySelector('button svg'))
+// The SVG must carry its paint as attributes (fill/stroke), not CSS classes.
+async function opticalNudge(svg, { grid = 0.25, scale = 8 } = {}) {
+  const { width: w, height: h } = svg.getBoundingClientRect();
+  const clone = svg.cloneNode(true);
+  clone.setAttribute('width', w * scale);
+  clone.setAttribute('height', h * scale);
+  const img = new Image();
+  img.src = 'data:image/svg+xml;charset=utf-8,' +
+    encodeURIComponent(new XMLSerializer().serializeToString(clone));
+  await img.decode();
+  const canvas = Object.assign(document.createElement('canvas'), { width: w * scale, height: h * scale });
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  let sum = 0, sx = 0, sy = 0;
+  for (let i = 3; i < data.length; i += 4) {
+    const a = data[i], p = (i - 3) / 4;
+    sum += a; sx += a * ((p % canvas.width) + 0.5); sy += a * (Math.floor(p / canvas.width) + 0.5);
+  }
+  const offX = (sx / sum - canvas.width / 2) / scale;  // + = ink sits right of centre
+  const offY = (sy / sum - canvas.height / 2) / scale; // + = ink sits low
+  const snap = v => Math.round(v / grid) * grid + 0;
+  return { offX: +offX.toFixed(2), offY: +offY.toFixed(2), nudgeX: snap(-offX), nudgeY: snap(-offY) };
+}
+```
+
+On a filled play triangle at 14px it returns `offX −0.8`, `nudgeX 0.75`: nudge right, matching Play Button Triangles below. Apply the result as `transform: translate(<nudgeX>px, <nudgeY>px)` on the icon, or move the paths in the SVG. On 1x screens a fractional translate can soften thin strokes. Check there, and prefer the SVG-path fix for icons you own.
 
 ### Buttons with Text + Icon
 

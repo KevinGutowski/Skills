@@ -47,11 +47,11 @@ When geometric centering looks off, align optically — trust the eye over the m
 
 - **Play/triangle icons:** a geometrically centered triangle reads as shifted left because its visual mass sits left of its bounding box. Nudge right by ~6–8% of the icon's width (in a 24px control, ~1–2px) so the centroid, not the box, is centered.
 - **Icon + text buttons:** trim the padding on the icon side — give the icon ~2–4px less leading padding than the trailing text padding, so the *content* looks centered rather than the box.
-- **Single glyphs in a circle** (a chevron in a round button, an arrow): optically center the glyph's ink, not its layout box; most need a 1–2px shove toward the direction opposite their visual weight.
+- **Single glyphs in a circle** (a chevron in a round button, an arrow): optically center the glyph's ink, not its layout box; most need a 1–2px shove at ~24px (less at small sizes) toward the direction opposite their visual weight.
 - **Quote marks, bullets, badges:** hang punctuation and leading marks into the margin so the body text edge stays flush.
 - **Mixed silhouettes:** a circle or triangle drawn in the same box as a square reads smaller; let round/pointed shapes overshoot the box slightly so perceived mass, not geometric size, matches.
 
-Rule of thumb: if it's symmetric, geometric centering is fine; if it has directional mass (triangles, arrows, most logos), expect a 1–2px optical correction and tune by eye at the real render size. To *measure* rather than guess, use the blur test (Gustavo Fior, *Craft*): blur the icon heavily in the inspector, see where the blob of ink lands relative to the container's center, and nudge by the distance back — then keep that nudge per icon, never as a global offset. Recipes and the diagnostic snippet: [surfaces.md](surfaces.md) → Optical Alignment.
+Rule of thumb: on an axis where the icon is symmetric, geometric centering is fine. Check the other axis too: a trash can is symmetric left to right but bottom-heavy. If an icon has directional mass (triangles, arrows, most logos), expect a 1–2px correction at ~24px and tune by eye at the real render size. Small icons need less: at 14–16px, edit and trash icons took 0.25–0.5px (Nil.Dev). To *measure* rather than guess, use the blur test (Gustavo Fior, *Craft*): blur the icon heavily in the inspector, see where the blob of ink lands relative to the container's center, and nudge by the distance back. For numbers, compute the ink centroid, nudge it onto the box centre, and snap to 0.25px. Keep that nudge per icon, never as a global offset. Recipes, the worked table, and the `opticalNudge()` snippet: [surfaces.md](surfaces.md) → Optical Alignment.
 
 ### 3. Shadows Over Borders
 
@@ -228,7 +228,7 @@ Rows should cite the specific file and the specific property that changed when i
 ## Review Checklist
 
 - [ ] Nested rounded elements use concentric border radius
-- [ ] Icons are optically centered, not just geometrically
+- [ ] Icons are optically centered, not just geometrically: ink centroid on the container centre, both axes checked, per-icon nudge kept
 - [ ] Shadows used instead of borders where appropriate
 - [ ] Enter animations are split and staggered
 - [ ] Exit animations are subtle

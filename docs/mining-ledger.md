@@ -706,3 +706,19 @@ Ticket-driven: a skill for coming up with extra-creative UI effects, from two X 
 - **holospot** (`dmitrykurash/holospot`, MIT, v0.1.0): physically based holographic foil, glitter and hologram materials for three.js, as reference `holospot`, with the transferable shader ideas pulled out.
 - **Routing:** X1–X19 19/19 on the latest blind judge; W and B fixtures and the 43-row smoke packet re-run clean.
 - **Parked:** React Native ports, on-device models, Pro content, a reduced-motion lint.
+
+## 2026-11-22 — Nil.Dev (@Nil_phy_dreamer), optical icon centring (X 2124194975571230845)
+
+Ticket-driven fold of a design-engineering tip: "Always center your icons based on the weight and size of the icon. See optical alignment not mathematical alignment."
+
+- **Manifest:**
+  - Post text (read, via `api.vxtwitter.com`).
+  - The 25.2s video: a 3024×2160 MP4 from `video.twimg.com`. Read frame by frame: 1 fps contact sheets for all 25 frames, plus full-resolution crops of the measurement labels (t=6.5s) and the nudge labels (t=12s). It has four beats. "Centred by its box": a dashed box and a red crosshair at `box centre 12.00, 12.00`. "But the eye weighs the shape": a blue weight dot with `weight 11.29, 12.66` / `off by 0.41px left, 0.38px low` for the edit icon and `weight 11.97, 12.29` / `off by 0.17px low` for trash. "Nudge by the weight": `nudge x +0.50 y -0.50 px` and `nudge x 0.00 y -0.25 px`, with an "Optical centring" switch turned on. "Optically centred": the end state.
+  - The quoted post X 2123777217994072186: "If you find 2 issues here in this card design done by opus 5.5 (high)…" and its card image (read). Its replies (2) were not read, because the public JSON endpoints do not return them. So the card's second issue is unconfirmed, and nothing was folded about it.
+- **Density:** HIGH for one lesson. It has a single source, but the claim is measurable, so it was folded as a method and not parked.
+- **Owner:** `design-craft` (surfaces → Optical Alignment), in the new subsection "Measuring the Nudge: Ink Centroid". It holds the worked table, five rules (centre the weight, check each axis, offsets shrink with render size, snap to 0.25px and keep the numbers, review with an overlay and a switch), and the `opticalNudge()` DevTools snippet. Contents line updated.
+- **Reconciled:** polish-principles §2. The "symmetric → geometric is fine" rule of thumb is now per axis, and the 1–2px figure is scoped to ~24px (small icons take 0.25–0.5px). The Single glyphs bullet and the checklist line were updated to match. The surfaces line "smallest stable unit" now allows quarter-pixel translates.
+- **Pointer:** `working-with-ai` (ai-ui-direction), a "Box-centred icons" bullet in the diagnosis list: the quoted post's generated card, with a repair prompt.
+- **Synthesis flagged as ours:** the ~14px render size, inferred from viewBox offset × 14/24 matching all three px figures; the snippet; the 1x-softening caveat; and the Lucide control measurement.
+- **Verified:** headless Chromium (Playwright) ran the snippet on 14px Lucide icons. A circle gave 0 / 0. A filled play triangle gave offX −0.8 → nudgeX 0.75 (right, as the existing rule says). `square-pen` and `trash-2` were within 0.1px of centre, so Lucide pre-balances those two. The demo's icon set is not Lucide.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
