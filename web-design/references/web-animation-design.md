@@ -77,7 +77,7 @@ Review posture: a transition that runs but feels sluggish, lands from the wrong 
 - `scale(0)` entrances; `ease-in` on any UI interaction; a bare keyword easing (`ease-out`, `ease-in-out`, `ease`, `linear`) on an entrance, exit, or on-screen move — not on hover/colour/opacity (`ease`), constant-rate motion (`linear`), or the toast default (see the keyword rule in Quick Start)
 - Hover scale above 1.02 on a card or control
 - Any animation on a keyboard shortcut, command-palette toggle, or other 100+/day action
-- UI duration over 300ms with no stated reason
+- UI duration over 300ms with no stated reason (the Briggs soft-close set, adopted as the theme, is a stated reason; check its perceived duration instead)
 - `transform-origin: center` on a trigger-anchored popover, dropdown, or tooltip (modals are exempt — they are viewport-centered)
 - Keyframes on toasts, toggles, or anything triggered rapidly (they restart from zero; transitions retarget)
 - Animated layout properties; a parent CSS variable written per frame to drive child transforms
@@ -169,11 +169,29 @@ Derek Briggs is stricter than the keyword rule in Quick Start, which still allow
 
 - **Front-load the velocity peak**: "do not want it to evenly ease into a center point of a top speed and then ease out" — peak early so the ease-out feels natural; a late peak only reads right when the element is "coming up against something" (an edge or container).
 - **Tooling**: motion.dev for nearly everything; CSS `linear()` for tiny things only.
+- **Perceived duration vs clock duration — the soft-close set** (Briggs, Dive Club "Scaling craft at Shopify", Nov 2026, ~13:40–19:45; values from X 2123512999810089444). The movement system he built for the Shopify admin redesign. Write a clock duration longer than what the eye should register, on a curve steep enough to arrive early, so the rest is a long cushioned settle. The plain curves run about 2× their perceived time; the spring rows run much longer (5× and 3.75×) because the overshoot-and-return needs room. Perceived time is his label; time to 95% of travel (the last column) is our diagnostic for checking it, not a definition. His team calls it the "soft close drawer": the element "still operates at visually 200 milliseconds" but "reserves 200 milliseconds for that last ending bit." The first row is his default for everything, in plain CSS with no JS; he pitches it as "a 200 millisecond baseline for your product's UI movement":
+
+  | Token | Use | Curve | Clock | Perceived | Measured (95% of travel; overshoot) |
+  |---|---|---|---|---|---|
+  | `--ease-out` | default; anything stopping against something | `cubic-bezier(0.2, 0.8, 0, 1)` | 400ms | 200ms | ~170ms; none |
+  | `--ease-out-spring` | arriving into free air | `cubic-bezier(0.1, 1.25, 0, 1)` | 1000ms | 200ms | ~145ms; ~2% peak near 380ms, then settles |
+  | `--ease-in-out` | gentler arrivals such as a toast | `cubic-bezier(0.2, 0.2, 0, 1)` | 800ms | 400ms | ~500ms (90% at 400ms); none |
+  | `--ease-in-out-spring` | the same, into free air | `cubic-bezier(0.25, 1.25, 0.1, 1)` | 1500ms | 400ms | ~360ms; ~2% peak near 680ms, then settles |
+
+  Measured columns are ours, sampled from the bezier math, not Briggs's. How he chooses and what an agent gets wrong:
+  - **Bounce into free air; stop soft against anything hard.** "If it's going up against something hard, I like to just have it come in soft and just stop. If it's coming into free air, I'll let it bounce." The reason is layout, not taste: his admin sidebar slides in beside content that could be a table, and a few pixels of overshoot there "might cause like a text wrap", or a truncation flicker, in the neighbours, so it gets the plain ease-out. The floating Sidekick input rises "into free air over everything", touches nothing, and gets the spring. The physical model for the spring tail is a car braking to a stop: it settles, then rolls back slightly.
+  - **Carry momentum across linked elements.** This is the exception to the Paired Elements Rule below. The sidebar has its own ease-out tuned so its entry reads as a continuation of the Sidekick input's downward motion, and on close the pair finishes upward. Two elements caused by one action should feel like one movement, not two transitions that happen to overlap (see [choreography.md](web-animation-design/choreography.md)).
+  - **Judge the perceived column, not the clock.** A review that flags "400ms > 300ms" on `--ease-out` is reading the clock. The set is the written reason the 300ms rule asks for, but only when adopted as a whole theme: never pair Briggs's 400ms with the Kowalski `--ease-out` above, whose 200ms quint already reaches 95% at ~90ms. The token names collide, so a codebase holds one set or the other.
+  - **Bezier "springs" overshoot once.** A y-value above 1 gives a single ~2% overshoot and return, not an oscillating spring. For bounce, real physics, or gesture velocity, use a spring (Spring Animations below; `motion` css-spring for `linear()`).
+  - **His `ease-in-out` is not the blueprint's symmetric curve.** It launches already moving, at about an eighth of his ease-out's speed over the same distance (the curve's starting slope is a quarter of the ease-out's, spread over twice the duration; the CSS keyword starts from rest), accelerates for roughly the first 90ms, then spends the rest decelerating. He describes it as "subtle movement to get started and then a nice soft" landing. Use it for gentle arrivals, not where a true in/out balance is the point.
+  - **End events fire on the clock** (ours, from how transitions work). `transitionend`, unmount after exit, and focus moves wait the full 400–1500ms. Do not hang input, focus, or DOM removal on them; the element looks done at the perceived time. On exits, prefer the plain `--ease-out` row, or a shorter clock, over the spring rows.
+
+  In his side-by-side demo the browser `ease` and `ease-out` keywords at 200ms read "robotic", "a hard start and a hard stop": they arrive at the same moment with no tail. His rule of thumb: "When in doubt, ease out." Ridd, the interviewer, had been capping all of his own motion at 200ms for snappiness, and said he would change his rules after seeing this.
 - **House curves beat vague adjectives** (Kevin Kold, 2026): define a small named easing set as tokens and reuse it everywhere. Example values from his article: `--ease-smooth: cubic-bezier(0.22, 1, 0.36, 1)` for most transitions, `--ease-spring: cubic-bezier(0.35, 1.55, 0.65, 1)` only for tiny pop/overshoot moments, and a symmetric curve for moves that truly need in/out balance. The lesson is tokenized consistency more than those exact numbers; do not mix them into another motion theme unless you adopt the set as a whole.
 
 ### Paired Elements Rule
 
-Elements that animate together must use the same easing and duration. Modal + overlay, tooltip + arrow, drawer + backdrop—if they move as a unit, they should feel like a unit.
+Elements that move as one unit must use the same easing and duration. Modal + overlay, tooltip + arrow, drawer + backdrop—if they move as a unit, they should feel like a unit. The rule does not cover separate elements that one action sets moving in turn, such as Briggs's Sidekick input and the sidebar it opens: there, tune each curve on purpose so the second picks up the first's momentum (see Carry momentum above), and write that reason down.
 
 ```css
 /* Both use the same timing */
@@ -197,7 +215,7 @@ Elements that animate together must use the same easing and duration. Modal + ov
 
 **Rules:**
 
-- UI animations should stay under 300ms. The stated exceptions are the edge-attached drawer (up to 500ms on its steep curve) and the toast (400ms) in Build Order; anything else over 300ms needs a reason written down
+- UI animations should stay under 300ms. The stated exceptions are the edge-attached drawer (up to 500ms on its steep curve) and the toast (400ms) in Build Order; anything else over 300ms needs a reason written down. A curve that arrives early and settles long (Briggs's soft-close set, above) is a reason when that set is the adopted theme: judge its *perceived* duration (time to ~95% of travel) against this table, not its clock duration
 - Larger elements animate slower than smaller ones
 - Exit animations can be ~20% faster than entrance
 - **Field corroboration (Linear's stylesheet, via performance.dev 2026):** tokens of `0.1s` quick / `0.25s` regular / `0.35s` slow, hover highlight fade-in `0s` and fade-out `0.15s` — popovers and panels "appear instantly when you summon them, then fade out over 150ms when you dismiss them," and list rows get no transitions at all. Defaulting below Material's 200 ms is one of the cheapest ways to make an app feel faster.

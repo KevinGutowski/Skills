@@ -15,6 +15,7 @@ Source: Emil Kowalski's `choreograph` skill and its recipes (emilkowalski/skills
 - Step 3 — Hook secondary motion to a moment
 - Step 4 — Scale timing to the size of the change
 - Step 5 — Direction and exits
+- Worked example: a gesture-driven card carousel (Briggs)
 - Interruption checks
 - Attention loops
 - Reduced motion
@@ -114,6 +115,16 @@ Fixed timing is wrong when the size of the change varies.
 - **Exits are simultaneous, shorter, simpler.** Never reverse-stagger a group out; the user already decided to leave.
 - **An exit matches its entry** — what slid in from the right leaves to the right, not by fading.
 - For small containers or similar views, replace a full-width slide with a crossfade plus an ~8px shift and light blur: the eye barely travels and the change still reads.
+
+## Worked example: a gesture-driven card carousel (Briggs)
+
+Derek Briggs's rebuild of the shop.com merchant carousel (Dive Club "Scaling craft at Shopify", Nov 2026, ~9:00–12:45 and ~42:40). It shows the steps above under a drag, where the user scrubs the timeline by hand. His summary: "Different things moves at different speeds based on the weight of its value."
+
+- **The Lead settles last.** The merchant logo is the most substantial thing on the card, so it is "the last thing that settles". Step 1 gives the Lead the longest motion; here that means its resolve is visibly later than everything around it. The interviewer noticed the delay before anything else.
+- **One progress value drives every child.** Each element's motion is derived from the card's own movement, so dragging the card back plays every child in reverse, mid-flight, with nothing to re-trigger. This is Carry (Step 2) made scrubbable. In Motion that is `useTransform` off one shared motion value (our mapping; he did not name the API). Avoid per-child timers, and avoid a CSS variable inherited down the tree (Implementation notes).
+- **Stagger order is a decision.** He tried several orders and settled on top-left, bottom-left, top-right, bottom-right, mirrored when the swipe goes the other way. Under a gesture the order follows the drag direction; this is not the reverse-stagger exit that Step 5 rules out.
+- **Secondary detail rides the same timeline.** The rating counts up subtly as the card arrives. A canvas behind the carousel paints each video frame (or the image) blurred, as ambient light that matches the card. The glass button uses an SVG displacement-map filter rather than an image.
+- **Frame rate is part of the spec.** He swapped Swiper for Motion's carousel engine and held 60fps while flinging through cards. A choreography that drops frames under drag is not finished.
 
 ## Interruption checks
 

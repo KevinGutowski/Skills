@@ -55,12 +55,14 @@ X posts (x.com/PixelJanitor/status/`id`):
 - Campsite switch thread (middle-state swap, thumb gradient + side reflections) — thread root 1628068543261732864, Feb 2023
 - Modal stack polish (opacity duration offset + movement stagger) — 1793369802066759897, May 2024
 - Pill dot swap indicator (Reorder, drag disabled) — 1848611632802361578, Oct 2024
+- Soft-close easing set (four curves, clock vs perceived durations, demo video; quotes Ridd's Dive Club clip 2123484229543854351) — 2123512999810089444, Nov 2026; full episode below → `web-design` (web-animation-design, Physical-reference easing)
 - Figma community file for component lighting — 1630311965951422467: https://www.figma.com/community/file/1212115961000525565
 
 Video:
 
 - *Shape FM* ep. 3, "Motion and animation with intent" (with James McDonald, 2025) — YouTube sHVKuJuseYo. Cited as (Briggs, Shape FM ep. 3): top-light model, half-pixel strokes, sub-pixel radius.
 - *Dive Club* S4, "Creating a design culture of craft" (Jan 2024, Clerk era) — YouTube z4hP80tzBL4. Cited as (Briggs, Dive Club S4): formula-izing plugin shadows.
+- *Dive Club*, "Scaling craft at Shopify" (2026-11-03) — YouTube r4IW73e6tE4; podcast audio transcribed locally. Folded outside `design-craft`: easing and carousel choreography → `web-design`; taste-as-skill-files and agent profile → `working-with-ai`; post-ship agent loops → `user-research`; principal-IC influence → `design-org-influence`.
 
 ## Gustavo Fior — *Craft*
 

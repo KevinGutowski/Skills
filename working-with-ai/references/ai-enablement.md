@@ -13,7 +13,7 @@ The highest-leverage move is upstream of any tool: capture decision-making in qu
 - "We transcribe all of our meetings. We make those accessible." A homegrown tool (Vault) makes "our entire internal development process legible… all decisions made on all projects can be easily documented."
 - The wiring: "all of that data then has an MCP hooked up to it that as I'm looking to make decisions as a product leader, I can just ask my agent and it will query and find all of these previous decisions."
 - The payoff is institutional memory on tap: "we've actually worked on that before. Here's where it failed."
-- Designers there pair a harness with Claude Code, "plugging directly into production data sets." (Caption renders the harness name as "Pi" — likely a transcription garble; the pattern, not the name, is the point.)
+- Designers there pair a harness with Claude Code, "plugging directly into production data sets." (Caption renders the harness name as "Pi". A second Shopify designer names the same harness alongside Claude Code and Codex — "Cloud Code or Pi or Code X" in an independent transcript (Briggs, Nov 2026) — so it is probably a real harness name, not a garble. The pattern, not the name, is the point.)
 
 Same pattern at OpenAI, packaged as a role: "we have an internal agent that we use which is like a data scientist. Any designer working on something can ask questions" — how is this actually used, what are the use cases (Ian Silber, Dive Club podcast, oM1d9Tau27w). Wrap org data behind agents named for the *job they do*, not the system they query.
 
@@ -26,6 +26,15 @@ Internal tools spread the same way products do. Ramp reported ~1,500 vibe-coded 
 ## The visibility problem
 
 Personal context doesn't transfer by existing. Ridd: "I don't even read my markdown files. So how is another designer going to have any clue what is in there" (Dive Club podcast, OYNoy468kS8). Context that lives in one person's dotfiles is invisible to the team; someone has to deliberately promote it to a shared, named, discoverable artifact. Kris Puckett's framing of the role: "whether it's, I don't know, skills for Claude for the team, or any way I can kind of fill the gap" (Dive Club podcast, nPyxVMd1LIA) — team-level skills are the unit of shared context, and curating them is real work someone must own.
+
+## Deploy taste as files, not people (Briggs, Shopify 2026)
+
+The visibility problem's answer at a 300-designer org, from a principal IC who declined to run a team (Derek Briggs, Dive Club "Scaling craft at Shopify", Nov 2026, ~25:20–27:10 and ~45:50–47:15). Fixing one surface by hand only improves that surface. Extract "skills and systems and patterns that we can then deploy across the company" so that "greatness accidentally happens", because "everyone's agents are using the same strategies that the really good outcomes used."
+
+- **What goes in the file.** After a crafted result, write down what you did, how you approached it, which tools were needed, and how the quality was maintained. His three parts are "the reasoning on why something is as good as it is, the tools that are needed to make it as good as it is", and "the quality expectation". A skill without the reasoning is just a style list. Authoring mechanics: `creating-skills`.
+- **Few authors, horizontal reach.** "Companies are wasting their time if they're trying to like hire tons of these people to be responsible for all these areas when you can very horizontally deploy them through Markdown file." The scarce design engineer's job becomes writing the shared skill package, not owning one area. He cites Emil Kowalski's public skills as the model: run the skill and get "the things that Emil would do."
+- **Show the artifact first.** The file spreads a practice; the team adopts it only after seeing it. "Saying it could be better is one thing, but to show the artifact" is what got the designer and engineer on his carousel to agree it "feels so much better."
+- **Counterweight: the file does not supply the taste.** Agents "are capable of doing what they've learned to do, and innovation happens in what has never happened." Designers still own the quality bar, "rather than relying on their agents to determine what the quality is." Skills raise the floor; they do not set the ceiling.
 
 ## Enablement programs (Atlassian playbook)
 
@@ -64,6 +73,7 @@ The summit pattern: do not announce a giant workflow replacement. Earn trust by 
 - [ ] Are decisions captured somewhere queryable (transcripts, decision docs) — and is an agent wired to it (MCP)?
 - [ ] Do internal agents carry company-specific context, or are you shipping a general-purpose tool and hoping?
 - [ ] Has anyone promoted personal markdown/skills to named, team-level artifacts — and does anyone own that?
+- [ ] When someone produces a crafted result, is it written up as a shared skill (reasoning, tools, quality expectation) that other teams' agents load, rather than staying in one person's area?
 - [ ] Do agents run in public channels so prompting is visible and copyable?
 - [ ] Does the enablement plan have all four layers: baseline content (101s/tours), protected time (builder week/pilot team), targeted nudges (bots, not broadcasts), and leaders demoing?
 - [ ] Is spend/time explicitly unblocked, and is playground/sharing infrastructure staffed for maintenance?
