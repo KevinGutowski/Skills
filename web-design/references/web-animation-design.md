@@ -501,7 +501,7 @@ Quick reference for common scenarios. See [PRACTICAL-TIPS.md](web-animation-desi
 | Hover triggers on mobile        | Use `@media (hover: hover) and (pointer: fine)` |
 | Hover card feels inflated       | Cap hover scale at 1.01–1.02, 100–150ms         |
 | Removed item leaves a dead gap  | Take it out of flow at once (`popLayout`)       |
-| List cascade feels slow         | 30–80ms steps, ~300ms total, or no stagger      |
+| List cascade feels slow         | 30–80ms steps, last item done by ~300ms, or no stagger |
 
 ## Easing Decision Flowchart
 

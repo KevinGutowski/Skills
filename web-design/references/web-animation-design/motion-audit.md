@@ -101,7 +101,7 @@ Reduce means a smaller version of the same motion, never a different animation:
 | Hover with scale, lift, or shadow growth | Color or opacity change only, 150ms or less |
 | Slide or scale entrance on a frequent surface | Opacity only, about 150ms |
 | Product UI animation over 300ms with no stated reason | 200–250ms, same curve. Not when the project has adopted Briggs's soft-close set: check its perceived duration instead, and leave a 400ms ease-out alone |
-| Stagger over 80ms per item or over 300ms total | 30ms per item, or fade the group as one |
+| Stagger over 80ms per item, or the last item still moving after ~300ms | 30ms per item, or fade the group as one |
 | Infinite loop (pulse, shimmer, glow) on a persistent element | Run once, or keep only the static end state. Kept on purpose through `ui-fx`: an indicator or beam on work the user started, which stops with it, or deliberate atmosphere that has a visible, keyboard-operable pause control or stops within five seconds, is not an audit finding. A requested loop that starts on its own, runs past five seconds and has no control is a floor finding (add the control or the stop), not a deletion |
 
 If the reduced version no longer carries its purpose, delete it. Scope note for hover: rows a cursor sweeps across (nav, menus, long lists) get no transition at all, per the Hover States section of [PRACTICAL-TIPS.md](PRACTICAL-TIPS.md); the 150ms reduction applies to a single hovered control.
