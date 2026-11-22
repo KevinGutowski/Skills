@@ -63,7 +63,7 @@ Note on the repo name: skills.sh links `emilkowalski/skill`; the earlier ledger 
   - New section "Finish gates, retrieval-backed skills, and pinned rule files".
   - sources updated.
 
-No new top-level skill and no description changed, so no routing probes are required (Evaluation Gates: reference-only and body edits).
+No new top-level skill. *(First pass: no description changed. Superseded in the second pass, where routing probes B37–B39 led to description edits on `interface-review` and `web-design`; see "Second pass", item 5.)*
 
 ## Conflicts and how they were resolved
 
@@ -208,3 +208,11 @@ Two findings, both substantiated and fixed in `web-design`:
 - **Typing validation** (web-accessibility §6). Kalbag's "validate as people type, after they have entered something" contradicted form-design's blur and submit schools. It now follows the chosen timing policy and reserves as-you-type feedback for fields built for it, or for re-checking an existing error.
 
 Type: the IME item is a sequence a single-source fold got right in content but wrong in order. The typing item is the reconciliation miss again: a sibling file kept the pre-schools wording. Both are covered by the existing Claim audit and Fold reconciliation gates, so no process change.
+
+## Fifth QA round (same day)
+
+Three non-blocking items, all fixed:
+
+- `readOnly` inputs are exempt from the `value`-needs-`onChange` check (code-pass-checklist); React warns only for editable inputs.
+- A duplicated IME testing sentence was removed (form-design).
+- The first-pass "no description changed" notes, here and in the probe fixture, are marked superseded by the second-pass description edits.

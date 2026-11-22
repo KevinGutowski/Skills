@@ -92,7 +92,7 @@ The list is adapted from Vercel's Web Interface Guidelines (`vercel-labs/web-int
 
 - URL reflects state: filters, tabs, pagination, and expanded panels live in query params so they can be shared and restored.
 - Destructive actions get a confirmation or an undo window, never immediate effect.
-- Hydration safety (React/Next): an input with `value` has `onChange` (or uses `defaultValue`); server and client render the same dates; `suppressHydrationWarning` only where truly needed.
+- Hydration safety (React/Next): an input with `value` has `onChange`, uses `defaultValue`, or is intentionally `readOnly`; server and client render the same dates; `suppressHydrationWarning` only where truly needed.
 - Empty strings and arrays render an empty state, not broken UI → `user-onboarding` (empty-states).
 
 ## Where this list and the library disagree
