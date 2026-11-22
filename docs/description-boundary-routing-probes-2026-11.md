@@ -1,6 +1,6 @@
 # Description Boundary Routing Probes
 
-Purpose: test the 13 description edits made after [the November audit](skill-effectiveness-audit-2026-11.md): boundary clauses added to `swiftui`, `design-principles`, `design-prototyping`, `product-decision-making`, `user-onboarding`, `write-clear-prose`, `motion`, `interface-review`, `route-planning` and `frontend-design`; a "Use when" clause on `superconductor`; the Apple route in `data-viz` narrowed to Swift Charts; and the `rails` read instruction. B34–B36 were added on 2026-11-18 for the `blueprint illustration` trigger on `design-craft`. Run with a fresh descriptions-only judge after editing any of these descriptions or their named neighbors.
+Purpose: test the 13 description edits made after [the November audit](skill-effectiveness-audit-2026-11.md): boundary clauses added to `swiftui`, `design-principles`, `design-prototyping`, `product-decision-making`, `user-onboarding`, `write-clear-prose`, `motion`, `interface-review`, `route-planning` and `frontend-design`; a "Use when" clause on `superconductor`; the Apple route in `data-viz` narrowed to Swift Charts; and the `rails` read instruction. B34–B36 were added on 2026-11-18 for the `blueprint illustration` trigger on `design-craft`. B37–B39 were added on 2026-11-22 for the `interface-review` code-pass reference. Run with a fresh descriptions-only judge after editing any of these descriptions or their named neighbors.
 
 Blind packet (descriptions and prompts, no expected answers): `python3 scripts/check_routing_probe_fixtures.py --packet`
 Fixture check: `python3 scripts/check_routing_probe_fixtures.py`
@@ -45,6 +45,9 @@ Fixture check: `python3 scripts/check_routing_probe_fixtures.py`
 | B34 | "Draw a blueprint-style line illustration for our 404 page, as an editable SVG." | `design-craft` | Target: the `blueprint illustration` trigger added 2026-11-18 (construction-drawings reference). |
 | B35 | "Make a generative flow-field sketch in p5.js where particles follow Perlin noise." | `creative-coding` | Neighbor: procedural art must not move to `design-craft`. |
 | B36 | "Design a logo mark for our bakery and show it in black and white first." | `logo-design` | Neighbor: brand marks must not move to `design-craft`. |
+| B37 | "Check this React component's code against web interface best practices and give me file:line findings." | `interface-review` | Target: the code-pass-checklist reference added 2026-11-22 (Vercel Web Interface Guidelines). No description change; tests that review-of-code still routes here. |
+| B38 | "Review the UI changes in this PR before I merge — accessibility, focus states, forms." | `interface-review` | Target: PR-scoped code pass. `web-design` is an accepted second skill. |
+| B39 | "Build a settings form component with proper labels, autocomplete, and validation." | `frontend-design` | Neighbor: building must not move to `interface-review`. `web-design` (form-design) is an accepted first skill. |
 
 ## Scoring
 

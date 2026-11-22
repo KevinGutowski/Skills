@@ -201,7 +201,7 @@ Start with `clip-path: inset(0 0 100% 0)` (hidden from bottom). Animate to `inse
 
 ### Comparison sliders
 
-Overlay two images. Clip the top one with `clip-path: inset(0 50% 0 0)`. Adjust the right inset value based on drag position. No extra DOM elements needed, fully hardware-accelerated.
+Overlay two images. Clip the top one with `clip-path: inset(0 50% 0 0)`. Adjust the right inset value based on drag position. No extra DOM elements needed. (`clip-path` animation is not reliably composited across browsers; upstream removed the "fully hardware-accelerated" claim in rev `0f2e23b`.)
 
 ## Stagger Animations
 
@@ -221,10 +221,10 @@ When multiple elements enter together, stagger their appearance. Each element an
   animation-delay: 50ms;
 }
 .item:nth-child(3) {
-  animation-delay: 100ms;
+  animation-delay: 90ms;
 }
 .item:nth-child(4) {
-  animation-delay: 150ms;
+  animation-delay: 120ms;
 }
 
 @keyframes fadeIn {
@@ -235,4 +235,4 @@ When multiple elements enter together, stagger their appearance. Each element an
 }
 ```
 
-Keep stagger delays short (30-80ms between items). Long delays make the interface feel slow. Stagger is decorative — never block interaction while stagger animations are playing.
+Keep stagger delays short (30-80ms between items). Long delays make the interface feel slow. Stagger is decorative — never block interaction while stagger animations are playing. Delays shrink as the list goes on (0, 50, 90, 120ms) so the group does not read as a metronome; group-entrance method → `web-design` (web-animation-design) choreography.

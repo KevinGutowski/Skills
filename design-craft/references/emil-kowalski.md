@@ -155,7 +155,7 @@ Is the element entering or exiting?
 | Modals, drawers          | 200-500ms     |
 | Marketing/explanatory    | Can be longer |
 
-**Rule: UI animations should stay under 300ms.** A 180ms dropdown feels more responsive than a 400ms one. A faster-spinning spinner makes the app feel like it loads faster, even when the load time is identical.
+**Rule: UI animations stay under 300ms. Modals, drawers, sheets, and toasts are the documented exceptions** (modals and drawers up to 500ms; toasts use Sonner's 400ms `ease`). A 180ms dropdown feels more responsive than a 400ms one. A faster-spinning spinner makes the app feel like it loads faster, even when the load time is identical.
 
 ### Perceived performance
 
@@ -276,7 +276,7 @@ See `emil-kowalski/css-techniques.md` for the full walkthroughs and code. The es
 - **`scale()` scales children too.** Unlike `width`/`height`, fonts and icons scale proportionally. This is a feature, not a bug.
 - **3D transforms for depth.** `rotateX()`/`rotateY()` with `transform-style: preserve-3d` create orbits, coin flips, and depth effects without JavaScript.
 - **`transform-origin`.** Every element has an anchor point for transforms (default: center). Set it to match where the trigger lives for origin-aware interactions.
-- **`clip-path` is one of the most powerful animation tools in CSS**, not just for shapes. `inset(top right bottom left)` "eats" into the element from each side. Patterns: tabs with perfect color transitions (clip a duplicated "active" tab list), hold-to-delete (slow 2s linear press, snappy 200ms ease-out release), image reveals on scroll, and comparison sliders — all hardware-accelerated with no extra DOM.
+- **`clip-path` is one of the most powerful animation tools in CSS**, not just for shapes. `inset(top right bottom left)` "eats" into the element from each side. Patterns: tabs with perfect color transitions (clip a duplicated "active" tab list), hold-to-delete (slow 2s linear press, snappy 200ms ease-out release), image reveals on scroll, and comparison sliders — all with no extra DOM. `clip-path` animation is not reliably composited across browsers, so do not count on it staying smooth under main-thread load (upstream dropped its "hardware-accelerated" claim in rev `0f2e23b`).
 
 ## Gesture and Drag Interactions
 
@@ -292,11 +292,11 @@ See `emil-kowalski/interaction-and-performance.md` for the code. The rules:
 
 See `emil-kowalski/interaction-and-performance.md` for the code and full reasoning.
 
-- **Only animate `transform` and `opacity`.** They skip layout and paint, running on the GPU. Animating `padding`, `margin`, `height`, or `width` triggers all three rendering steps.
+- **Prefer `transform` and `opacity`; `clip-path` reveals and measured-height accordions are the documented exceptions.** `transform` and `opacity` skip layout and paint and run on the compositor; the exceptions do not, so keep them short and measure. Animating `padding`, `margin`, `height`, or `width` triggers all three rendering steps.
 - **CSS variables are inheritable.** Updating a variable on a parent recalculates styles for all children — set `transform` directly on the element instead.
 - **Motion shorthands (`x`, `y`, `scale`, `rotate`) are hardware-accelerated from Motion 14.2; before that they are not.** On older versions they run via `requestAnimationFrame` on the main thread — upgrade, or use the full `transform` string when the animation must stay smooth under load. Layout animations (`layout`, `layoutId`) are main-thread in every version. (Corrects this file's earlier unconditional "NOT hardware-accelerated".)
 - **`will-change` is not a default.** Add it only after seeing a 1px shift at the start/end of a transform, or for an expensive paint you have measured.
-- **CSS animations beat JS under load.** They run off the main thread. Use CSS for predetermined animations; JS for dynamic, interruptible ones.
+- **CSS animations beat JS under load.** CSS animations of `transform` and `opacity` run on the compositor, off the main thread; other properties do not. Use CSS for predetermined animations; JS for dynamic, interruptible ones.
 - **Use WAAPI for programmatic CSS animations.** JavaScript control with CSS performance — hardware-accelerated, interruptible, no library needed.
 
 **MDS field numbers** (Matt D. Smith), distilled: keep an FPS meter visible for canvas/WebGL ("If you're down in the 20s or 30s, you're doing something wrong"); icon-hover magnitudes — 1px translations, ~5° rotations, "150 milliseconds and ease out." Full numbers: [emil-kowalski/interaction-and-performance.md](emil-kowalski/interaction-and-performance.md).
@@ -310,8 +310,13 @@ Animations can cause motion sickness. Reduced motion means fewer and gentler ani
 ```css
 @media (prefers-reduced-motion: reduce) {
   .element {
-    animation: fade 0.2s ease;
-    /* No transform-based motion */
+    animation-name: fade; /* same timing, opacity only — drop transform-based motion */
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
   }
 }
 ```
@@ -400,9 +405,9 @@ When reviewing UI code, check for:
 | `ease-in` on UI element                    | Switch to `ease-out` or custom curve                             |
 | `transform-origin: center` on popover      | Set to trigger location or use Radix/Base UI CSS variable (modals are exempt — keep centered) |
 | Animation on keyboard action               | Remove animation entirely                                        |
-| Duration > 300ms on UI element             | Reduce to 150-250ms                                              |
+| Duration > 300ms on UI element (not a modal, drawer, sheet, or toast) | Reduce to 150-250ms                              |
 | Hover animation without media query        | Add `@media (hover: hover) and (pointer: fine)`                  |
 | Keyframes on rapidly-triggered element     | Use CSS transitions for interruptibility                         |
 | Motion `x`/`y` props under load, Motion < 14.2 | Upgrade, or use `transform: "translateX()"`; 14.2+ shorthands are accelerated |
-| Same enter/exit transition speed           | Make exit faster than enter (e.g., enter 2s, exit 200ms)         |
-| Elements all appear at once (low-frequency surface) | Add stagger delay (30-80ms between items, ~300ms total); none on menus/palettes |
+| Same enter/exit transition speed           | Make exit faster than enter (e.g., enter 250ms, exit 200ms)      |
+| Elements all appear at once (low-frequency surface) | Add stagger delay (30-80ms between items, non-uniform, ~300ms total); none on menus/palettes |

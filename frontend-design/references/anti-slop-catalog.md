@@ -8,13 +8,14 @@
 - Page-scaffold tells
 - Surface and material tells
 - Type and copy tells
+- Copy tells, second generation
 - Motion tells
 - Quality failures that are not taste
 - Design-system drift
 - Saturated looks: the calibration check
 - Running a deterministic pass
 
-This reference serves `frontend-design` when building and `working-with-ai` (ai-ui-direction) and `interface-review` when diagnosing. It is adapted from Impeccable (Paul Bakaus, Apache-2.0; [sources.md](sources.md)), except the copy budget, which comes from Luke Wroblewski's November 2026 exhibit. Impeccable's `craft-floor` and its 62-rule detector (`npx impeccable detect`) supply the evidence. Rule IDs in backticks are the detector's IDs, so a finding can be traced to a check.
+This reference serves `frontend-design` when building and `working-with-ai` (ai-ui-direction) and `interface-review` when diagnosing. It is adapted from Impeccable (Paul Bakaus, Apache-2.0; [sources.md](sources.md)), except the copy budget, which comes from Luke Wroblewski's November 2026 exhibit, and the rows marked (A) or (T): (A) is Anthropic's `frontend-design` skill and (T) is the `copy-tells` reference in Leon's tasteskill 2.5.1 (both screened from the skills.sh Design topic, 2026-11; [sources.md](sources.md)). Impeccable's `craft-floor` and its 62-rule detector (`npx impeccable detect`) supply the evidence. Rule IDs in backticks are the detector's IDs, so a finding can be traced to a check.
 
 ## How to use this catalog
 
@@ -92,6 +93,7 @@ Why models do this is our reading, not Wroblewski's: the model writes for the pe
 | One column of a split opening running far past the fold | `first-viewport-column-overflow` | Balance the columns, cap the tall one, or move the long content down. |
 | Modal for a task that needs neither interruption nor protected focus | — | Inline or progressive disclosure first. |
 | Hairline border plus wide soft shadow on every card in a row (the "ghost card") | `gpt-thin-border-wide-shadow` | Declare elevation once: a border *or* a shadow. One floating panel may earn both. |
+| The SaaS-card kit (A): content chopped into identical rounded cards, one radius on every container whatever its rank, the same faint grey shadow (`rgba(0,0,0,.1)`) under each, gradient washes as decoration | `nested-cards`, `gpt-thin-border-wide-shadow` (partial) | Radius and elevation follow hierarchy: the page, a panel, and a chip do not share one radius. Most content needs no container at all. |
 
 ## Surface and material tells
 
@@ -122,7 +124,7 @@ Why models do this is our reading, not Wroblewski's: the model writes for the pe
 | A system display face (Impact, Arial Black, the platform sans) as the voice of an own-world page | — | Source and self-host a face with the right character. "Closest installed font" is a failure, not a fallback. |
 | Flat hierarchy: heading/body steps under 1.25× | `flat-type-hierarchy` | At least one strong size step. |
 | Crushed tracking; wide tracking on body | `extreme-negative-tracking`, `wide-tracking` | Tighten display type optically. Reserve wide tracking for short uppercase labels. |
-| Marketing buzzwords (streamline, empower, supercharge, world-class, next-generation) | `marketing-buzzword` | A specific verb and noun for what the product literally does. |
+| Marketing buzzwords (streamline, empower, supercharge, world-class, next-generation) | `marketing-buzzword` | A specific verb and noun for what the product literally does. A word that is literal for the trade (a seamless knit, bespoke tailoring) and the client's own name stay. |
 | Aphoristic cadence ("Not a feature. A platform.", "X. No Y.") repeated across sections | `aphoristic-cadence` | Once can be voice. As a pattern, it is the tell. |
 | "…is just theater" framing | `theater-slop-phrase` | Say plainly what the thing does or does not do. |
 | Em-dash saturation in body copy | `em-dash-overuse` | Advisory only. It fires on density, never on a single dash. |
@@ -130,6 +132,44 @@ Why models do this is our reading, not Wroblewski's: the model writes for the pe
 | Explanatory copy on every surface: intro paragraph under the title, description under each heading, helper line under each control, footer note | — | Rule `copy-budget` above: start with none, then admit one line per surface that states what the controls cannot. |
 | A sentence explaining how a standard control works, or pointing to a feature elsewhere | — | Delete it. Fix the label if the control is unclear. |
 | Leading icon on every labeled button | — | Text label alone. An icon earns its place where it is the only label or distinguishes siblings. |
+| One word or phrase in a headline picked out in italic, bold, or an accent color (A) | — | Set the headline in one voice. If a word matters that much, the sentence should be built around it. |
+| Template chrome strings (A, T): meta joined with middle dots (`A · B · C`), labels built as `WORD — fragment` with a spaced em dash, `→` appended to every link and button label | `em-dash-overuse` (partial) | Plain labels. An arrow belongs only on a link that really moves the reader somewhere (next page, external site), and then consistently. |
+| Tinted near-black (`#0B0B0B`, `#111`) standing in for black by reflex (A) | — | Pick the dark from the palette's own hue, or use black. Either is fine when it is a choice. |
+
+## Copy tells, second generation
+
+The first-generation words (delve, seamless, unlock, "In today's fast-paced world") are mostly gone from current models, and the buzzword row above still catches them. What survives review now looks like good copy. These are paraphrased from tasteskill's `copy-tells` (dated November 2026, and it says itself the list moves with each model generation). One instance proves little; a cluster, or the same device on every section, is the signal. Severity: **ban** means one is a tell, **cap** means fine once.
+
+| Tell | Severity | Do instead |
+| --- | --- | --- |
+| **Invented specifics** produced as decoration: a time of day, a batch number, a percentage nobody measured | Ban | Only details the brief supplies. Without them, write a plainer line. Same rule as Truth in the SKILL.md fast path. |
+| **The figure strip**: three or four numbers over one-word labels under the hero | Ban unless the brief gives the figures | Put each number in the sentence it proves. Prices, hours, and timetables are content, not strips. |
+| **Two-fragment headings** ("Twelve rooms. Three ways to stay.") and number-pair headings ("Four projects, four problems") | Cap 1 | A name with a claim under it, a verb and its object, or a plain sentence. |
+| **Contrast frames** ("X isn't a slogan here", "not X but Y") and their substitutes ("rather than", "instead of", "without the") | Cap 2 together | State the positive fact on its own. A buyer's question in an FAQ is not this device. |
+| **Virtue words about ourselves**: honest, calm, thoughtful, genuinely, intentional, carefully | Ban | Show it with a fact or an admission. A page never calls itself honest. |
+| **The house voice**: warm, wry, modest, a little literary, whatever the client | Ban | Pick a register for this client (`ux-writing` (ui-voice-and-tone)). |
+| **The dry closer** on every paragraph, and the footer sign-off ("Made in Rotterdam, fired at 1,260°") | Cap 1 | End on information. Spend humour in microcopy. The footer holds the legal row. |
+| **The origin template** ("In 2019, two friends found an old hardware store…") and polished testimonials (three, each with a number and a punchline) | Ban unless supplied | The brief's real story and real quotes, word for word, or no section. |
+| **The default cast**: the same handful of first names and coined company names on every mock (Priya, Marcus, Acme, Northwind, Lumen…) | Ban | Names from the brief. Mock names that fit the place and generation of the audience. |
+| **Process talk**: "Below, you'll find", "Here are 3 reasons", "This section shows" | Ban | The page never talks about itself. |
+| **Perfect evenness**: every card the same length, every paragraph the same arc | Context | Spend words where the brief knows most. One section can run long and another can be two lines. |
+| **Stale year** in the copyright line; unwritten microcopy under a hand-tuned hero (stock errors, stock thank-you) | Defect | Current year; write the errors and confirmations in the same register (`ux-writing` (error-messages)). |
+
+**Placeholder facts are not decoration.** On a page for a real or realistic business, do not invent a street number, phone in a real format, register number, opening hours that drive an "open now" line, or a form that thanks the user without a real send. Use the district, an `.example` contact, and a labelled placeholder (T, house rules and system reference).
+
+**Banning a habit breeds its substitute.** Every ban needs a positive move beside it, or the model reaches for the nearest neighbour (T):
+
+| Rule applied | Habit it breeds | Counter |
+| --- | --- | --- |
+| No em dashes | Comma splices, all full stops | Colons, brackets, semicolons where natural |
+| No "not X but Y" | "rather than", "instead of" | Count them together; state the positive |
+| No hype words | Calm vocabulary (quietly, steady, practical) | A fact in place of the adjective |
+| Avoid threes | Everything in pairs | As many items as there are |
+| Be specific | Invented numbers and anecdotes | The brief's facts, or a plainer line |
+| Add personality | A joke in every section | A humour budget, spent in microcopy |
+| One rule pack on every page | A new uniform house style | Compare several builds side by side for sameness |
+
+**Not tells:** perfect grammar, plain "is" and "has", a list of three when there are three things, title case when it is the client's house style, copy the client wrote, and persuasion on a sales page when it stands on facts.
 
 ## Motion tells
 
@@ -165,7 +205,7 @@ When the project has a DESIGN.md or token file, a font, color, radius, or font-s
 
 Generated interfaces cluster around a few complete looks, whatever the subject:
 
-1. Warm cream ground, high-contrast serif display (often italic), terracotta or signal-red accent.
+1. Warm cream ground (near `#F4F1EA`), high-contrast serif display (often italic), terracotta or signal-red accent. Anthropic's own skill notes that its warm-clay accent (near `#D97757`) is Claude's interface color, so on a user's brief it reads as a tell (A).
 2. Near-black ground, one neon accent, glowing edges.
 3. Broadsheet-editorial: hairline rules, italic display serif, small tracked mono labels.
 4. Flat saturated ink, black boxes, hard offset shadows, heavy condensed display (default neobrutalism).

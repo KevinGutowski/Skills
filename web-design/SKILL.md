@@ -1,6 +1,6 @@
 ---
 name: web-design
-description: "Router for web design: layout/responsiveness, typography, accessibility, animation and gestures, performance, forms, color, mobile-browser native feel, and installed Apple web apps. Use for web/CSS craft, including Home Screen and Add to Dock behavior. Building distinctive UI → frontend-design; native Apple design → apple-design; polish/feel → design-craft. Read one named reference."
+description: "Router for web design: layout/responsiveness, typography, accessibility, animation and gestures, performance, forms, color, mobile-browser native feel, and installed Apple web apps. Use for web/CSS craft, including Home Screen and Add to Dock behavior. Building distinctive UI → frontend-design; native Apple design → apple-design; polish/feel → design-craft; reviewing UI code or a PR → interface-review. Read one named reference."
 ---
 
 # Web Design

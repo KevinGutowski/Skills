@@ -77,7 +77,7 @@ A fifth option is not a timing: **Carry.** When a child's path is out of your co
 | Product UI | 30–80ms | Whole group done in roughly 300ms |
 | Marketing hero, first-run, personal site | 100–150ms steps on 0.5–0.6s entrances | Seen once per visit; the wave is part of the message |
 
-- **Long lists:** stagger only the first handful (about six); the rest share the last delay. Item 20 never waits 20× the step.
+- **Long lists:** stagger only the first five; the rest share the fifth item's delay, so the group finishes in about 300ms. Item 20 never waits 20× the step.
 - **Order follows importance, not DOM order.** Usually the same; check. Two items can share one beat (title and first paragraph both at step 0).
 - **Vary treatment, not only delay.** Lead slides furthest, Support less, Decoration fades in place. Delays that shrink across the group (an eased stagger) read organic; equal gaps read mechanical.
 - **Direction follows reading order or cause** — top to bottom for content; outward from the point of interaction for things the user triggered.
@@ -88,7 +88,7 @@ Only where overlap would look wrong:
 
 - **Two dense states in a container that changes both width and height** (a Dynamic Island-style morph): both visible at once is chaos. Old content leaves first (`mode="wait"`). To keep a crossfade anyway, render the active view twice — one copy owns the enter, an absolutely positioned copy sits at opacity 0 and becomes visible only as the exit — and give the exiting copy a scale toward where the container is headed (up if the next state is larger, down and pulled toward center if narrower so it does not bleed past the edges). The duplicate is a picture, not a second view: an opacity-0 copy is still focusable, clickable, and read by assistive technology, so keep it `inert` and `aria-hidden` for its whole lifetime (plus `pointer-events: none` where `inert` support is a concern), give it no ids or form names that collide with the live copy, and leave focus and interaction with the live view. Unmount it when the exit ends.
 - **One element would visibly pass through another.** Items flying into a container whose front face draws above them: reveal the front with a *delay* timed to the items nearly landing, not a full sequence.
-- **Cause and effect in drawing.** A checkbox square draws, then the checkmark; the second delay equals the first duration and both hold their end state (`forwards` or `both`).
+- **Cause and effect in drawing.** A checkbox square draws, then the checkmark; the second starts about 0.1s before the first ends (a 0.6s square, checkmark at 0.5s) and both hold their end state (`forwards` or `both`).
 
 Let the handoff overlap slightly: starting the second move just before the first ends is what turns a queue into one gesture.
 
@@ -132,7 +132,7 @@ A sequence has more states than a single animation. Test each:
 
 - **Re-trigger mid-sequence** — hover out halfway, click Next twice quickly, switch menus while the first is opening. Each run stops the in-flight animations before starting new ones; never stack.
 - **Chain only after completion.** An idle loop that resumes after hover-out waits for *all* reset animations (`await Promise.all(...)`); awaiting one is safe only when all share a duration.
-- **Gate with a ref, not state.** "Click works only after the hover buildup finished" is a flag that never renders.
+- **Never gate an action on a decorative sequence.** A click, tap, or key press works at once, even mid-buildup. Keyboard and touch users may never complete a hover sequence, and fast clicks would be discarded. The action interrupts or retargets the running animations instead of waiting for them. (Kowalski's rev `0f2e23b` removed his earlier "click works only after the hover buildup finished" recipe and its readiness flag.)
 - **Rapid view switching** can leave two presence children mounted. Check it, and give each child a stable unique `key` — a missing key is also the first suspect when an exit does not play.
 
 ## Attention loops
@@ -155,7 +155,7 @@ API details: `motion` (best-practices, codex).
 
 ## Implementation notes
 
-- **CSS index stagger:** `animation-delay: calc(var(--step) * var(--i))` with `animation-fill-mode: both` — the `backwards` half applies the first keyframe during the delay so later items do not flash their final state. Omitting the `to` keyframe animates to the element's own styles.
+- **CSS stagger with a per-item delay:** set `--delay` on each item (`0ms`, `0ms` for a title and first paragraph sharing a beat, then `120ms`, `200ms`: gaps that shrink) and use `animation-delay: var(--delay, 0ms)` with `animation-fill-mode: both`. A computed `calc(var(--step) * var(--i))` gives equal gaps, which is the uniform stagger rule 3 forbids — the `backwards` half applies the first keyframe during the delay so later items do not flash their final state. Omitting the `to` keyframe animates to the element's own styles.
 - **Custom-property caution:** changing a variable on a parent recalculates style for every descendant. Fine for a one-shot entrance; never drive per-frame values (a drag) through an inherited variable on a large tree — see [animation-performance.md](animation-performance.md).
 - **One variant per role** (distance, duration); the stagger only sets *when* each starts. `from: "center"` radiates from the middle; a numeric index radiates from the item the user touched.
 - **Imperative orchestration:** target parts with data-attribute selectors inside the scope instead of a ref per element; keep the running animations in a ref and stop them all before each new run.

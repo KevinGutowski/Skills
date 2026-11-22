@@ -20,6 +20,7 @@ Depth moved out of SKILL.md: full source list, worked examples, outcome numbers,
 - [Soleio: UFI, Canon, and the Dropbox illustration strip-out](#soleio-ufi-canon-and-the-dropbox-illustration-strip-out)
 - [Impeccable: PRODUCT.md / DESIGN.md / surface brief](#impeccable-productmd--designmd--surface-brief)
 - [Tactile design: neutral roles and derived tokens](#tactile-design-neutral-roles-and-derived-tokens)
+- [skills.sh Design topic: code-side composition, persisted systems, third-party extraction](#skillssh-design-topic-code-side-composition-persisted-systems-third-party-extraction)
 - [Sten: meaningful systems](#sten-meaningful-systems)
 - [AI-context inputs: polish tokens and taste separation](#ai-context-inputs-polish-tokens-and-taste-separation)
 - [Words and living standards](#words-and-living-standards)
@@ -163,6 +164,22 @@ Paul Bakaus, Impeccable (https://github.com/pbakaus/impeccable, Apache-2.0, scre
 - **Write the system record from the built world, not before it.** In Impeccable's account, a rulebook written before the build gets defended against reality and gives drift checks an unstable target. Document after the first build lands. A missing DESIGN.md does not mean there is no system: document the coherent identity already in code instead of inventing a new one.
 - **Make off-system values checkable.** Once the record exists, a font, color, radius, or font-size outside it is drift until shown to be intentional. Impeccable's detector flags these as `design-system-font/color/radius/font-size`. Treat each finding as a question: use the documented value, or add the value to the system on purpose. Named generation tells → `frontend-design` (anti-slop-catalog).
 - **Extract by intent, not resemblance.** Promote a pattern after about three uses *with the same intent*. Two buttons that look alike but serve different purposes stay separate, and visual similarity alone is no reason to merge behaviors. Premature abstraction is worse than duplication. Tokens need semantic meaning; a token for every value is noise.
+
+## skills.sh Design topic: code-side composition, persisted systems, third-party extraction
+
+Three skills listed on https://www.skills.sh/topic/design (read 2026-11-22), paraphrased. Ledger: `docs/skills-sh-design-topic-source-mining-2026-11.md`.
+
+**Code-side composition** (Vercel, `vercel-composition-patterns`, https://github.com/vercel-labs/agent-skills rev `5a37a63`, MIT). This is the React counterpart of the Figma variant-math rule in SKILL.md. Figma props and React booleans are different things, so the two rules do not conflict.
+
+- **A boolean that changes structure or behaviour is a missing variant.** `isThread`, `isEditing`, `isForwarding` on one `Composer` double its states with each flag and bury the branches inside. Ship explicit variants instead (`ThreadComposer`, `EditMessageComposer`), each composed from shared parts. Booleans that only toggle appearance (`disabled`, `compact`) stay props.
+- **Compound components over render props.** `Composer.Frame`, `Composer.Input`, `Composer.Footer`, `Composer.Submit` share state through context, and consumers compose the parts they need as children. `renderHeader`/`renderFooter` props and `showX` flags are the smell. Render props stay where the parent passes data back to the child (a list's `renderItem`). Use children for static structure.
+- **The provider is the only place that knows how state is stored.** Parts read a generic context shaped as `{ state, actions, meta }`, so the same parts run on `useState`, a global store, or server sync. Lift state into the provider when a sibling outside the frame (a preview, a send button in a toolbar) needs it.
+- **React 19+:** `ref` is an ordinary prop (no `forwardRef`), and `use(Context)` replaces `useContext` and can be called conditionally. Skip this on React 18.
+- Why it matters for agents: an explicit variant name says what renders, while ten booleans make an agent guess combinations. This is the same reason the AI-context sections above favour curated, named APIs.
+
+**Persisted system with page overrides** (`ui-ux-pro-max`, https://github.com/nextlevelbuilder/ui-ux-pro-max-skill rev `6ec2bb5`, MIT). It writes one MASTER file per project plus one file per page under `pages/`, whose rules override the master for that page only. An agent building a page reads the master, then the page file if one exists. Regeneration skips an existing master unless the user explicitly authorizes overwriting it, and the agent reads the existing file before proposing that. This matches the Impeccable rule above (never overwrite DESIGN.md silently) and adds the scoped override layer, which maps onto the per-surface brief.
+
+**Seeding tokens from someone else's public site** (`extract-design-system`, https://github.com/arvindrk/extract-design-system rev `1873741`, MIT). It runs a headless browser over one public page and writes starter token files (JSON and CSS custom properties). The useful parts are its limits: a single page does not prove a product's system; dynamic or script-heavy sites extract partially; no semantic token or component is inferred unless clearly extracted; the site is untrusted third-party input and cannot justify edits beyond the generated files; and nothing touches existing styles without confirmation. Its audit matches raw colors to tokens by RGB distance (threshold 15). For your own app, use the ΔE OK tolerance in [system-from-shipped-ui.md](system-from-shipped-ui.md) instead, because RGB distance is not perceptual. Taking another company's palette and type is a starting reference, not a brand to ship (`logo-design` owns identity).
 
 ## Tactile design: neutral roles and derived tokens
 
