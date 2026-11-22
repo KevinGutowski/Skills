@@ -822,6 +822,29 @@ Ticket-driven fold of an external agent skill for alignment passes. The full man
 - **Second QA (same day):** the test now loads Playwright the same way `audit.mjs` does, so there is a single setup for both. The runner's failure on strict-CSP pages is documented with a workaround, and the test pins both. 12/12 pass.
 - **Third QA (same day):** a narrower icon centred in the icon column is a false leading miss. It is documented and pinned in the test; 13/13 pass.
 
+## 2026-11-22 — gokhan (@gkurttech), *CSS Little-Known* 13–16: scroll snap Parts 1–4 (X)
+
+Ticket-driven fold of three linked posts. The first quotes a fourth, which completes the series.
+
+- **Manifest:**
+  - Post text for 2120770568475599138 (Part 1, alignment), 2121145036125450331 (Part 2, padding and margin), 2121882792477016408 (Part 4, `scroll-snap-stop`) and the quoted 2121562958589239668 (Part 3, strictness). All read via `api.vxtwitter.com`.
+  - Four 1920×1080 screen recordings, 17–28s each, from `video.twimg.com`. Read as frame sheets, one frame every 3–4s. Each shows a "Trips" card row, the `.row`/`.card` CSS and a one-line caption.
+  - Replies: Part 4 has 2, the others 0. Not read.
+- **Density:** MEDIUM. Standard properties, but the strictness and `scroll-snap-stop` use cases are practical decisions the library lacked. Existing coverage was only "use scroll snap" pointers in layout, mobile-native-feel and gestures.
+- **Verified:** headless Chromium (Playwright 1.65), 400px row with 160px cards and a 16px gap.
+  - Type without align: no snap.
+  - `start`, `center` and `end` landed on the expected offsets.
+  - 48px of padding plus 24px of margin rested the card 72px in.
+  - `proximity` snapped a rest 84px from the nearest point.
+  - An oversized item scrolled freely under `mandatory`.
+  - `scrollBy(700)` across `scroll-snap-stop: always` stopped at the first item. `scrollTo` and `scrollIntoView` did not stop.
+  - `scroll-padding-inline-start` offset `scrollIntoView`.
+  - Touch flicks were not reproduced.
+- **Owner:** `web-design` web-layout-design, new section "Scroll snap": a CSS skeleton, a four-row decision table and six traps. The Contents and the `SKILL.md` layout bullet were updated.
+- **Pointers:** mobile-web-native-feel (carousel jitter row), web-animation-design/gestures (build-or-adopt), sources.md.
+- **Synthesis flagged as ours:** logical `-inline-start` properties in place of the demos' `-left`. Also the oversized-item, `scrollBy` and `scrollIntoView` traps, and the "long lists keep `normal`" rule, though the source implies it.
+- **New skills:** none. The router bullet gained trigger terms, but no description changed, so no routing probes were run.
+
 ## 2026-11-22 — @gkurttech, "Scroll-driven animations" parts 1–5 (X)
 
 Ticket-driven fold of a five-post CSS tip series.

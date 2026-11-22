@@ -23,7 +23,7 @@
 
 ## Decide first: build or adopt
 
-A correct sheet is momentum dragging, progress-linked overlay, velocity-aware dismissal, scroll-vs-drag arbitration, focus trapping, and Escape — weeks of edge cases. For a bottom sheet or drawer, adopt a maintained primitive (Vaul is the reference implementation these rules were extracted from) and hand-roll only when the interaction is different in kind: swipe cards, bespoke drag surfaces, a signature gesture. If content merely pages horizontally, native scroll with `scroll-snap` beats any JS gesture — the browser's physics are already right.
+A correct sheet is momentum dragging, progress-linked overlay, velocity-aware dismissal, scroll-vs-drag arbitration, focus trapping, and Escape — weeks of edge cases. For a bottom sheet or drawer, adopt a maintained primitive (Vaul is the reference implementation these rules were extracted from) and hand-roll only when the interaction is different in kind: swipe cards, bespoke drag surfaces, a signature gesture. If content merely pages horizontally, native scroll with `scroll-snap` beats any JS gesture — the browser's physics are already right (settings: [web-layout-design.md](../web-layout-design.md) → Scroll snap).
 
 ## The two-phase rule
 
