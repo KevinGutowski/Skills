@@ -235,4 +235,6 @@ When multiple elements enter together, stagger their appearance. Each element an
 }
 ```
 
+Where `sibling-index()` is supported, one rule replaces the `:nth-child` ladder: `animation-delay: calc((min(sibling-index(), 4) - 1) * 50ms)` reproduces the four rules above. It counts from 1, and `min()` holds later items at the fourth step. The budget counts the last item's duration as well as its delay. This ladder's last item ends at 150 + 300 = 450ms, so for a product list, shorten the entrance or stagger fewer items. Recipe with the arithmetic, fallback and checks: `web-design` (web-animation-design → choreography, CSS stagger with sibling-index()).
+
 Keep stagger delays short (30-80ms between items). Long delays make the interface feel slow. Stagger is decorative — never block interaction while stagger animations are playing.

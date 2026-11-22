@@ -188,7 +188,7 @@ Too fast is as bad as too slow — below a certain duration the eye can't track 
 - **A removed element gives up its space immediately** — siblings close the gap while it fades, not after (`AnimatePresence mode="popLayout"`, or absolutely position it at its current offset before the exit).
 - **No stagger on menus, command palettes, or tab content** — anything opened many times a day arrives together.
 
-The full method for deciding these — cast roles, pick together/overlap/sequence per pair, stagger budgets (30–80ms steps and ~300ms total in product UI), interruption checks — is [choreography.md](choreography.md). Decide the choreography there; structure the code with the storyboard pattern below.
+The full method for deciding these — cast roles, pick together/overlap/sequence per pair, stagger budgets (30–80ms steps, with the last item finished by ~300ms in product UI), interruption checks — is [choreography.md](choreography.md). Decide the choreography there; structure the code with the storyboard pattern below.
 
 ## Choreographing Multi-Step Animations
 

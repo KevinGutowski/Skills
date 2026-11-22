@@ -821,3 +821,34 @@ Ticket-driven fold of an external agent skill for alignment passes. The full man
 - **QA (same day):** the reference said the probe "measures ink", but it measures layout boxes (text line boxes and SVG element boxes), so the claim was corrected everywhere it appeared. The new `design-craft/scripts/gridlines.test.mjs` (10/10) pins the documented behaviour and limits so the docs can't drift from the script again.
 - **Second QA (same day):** the test now loads Playwright the same way `audit.mjs` does, so there is a single setup for both. The runner's failure on strict-CSP pages is documented with a workaround, and the test pins both. 12/12 pass.
 - **Third QA (same day):** a narrower icon centred in the icon column is a false leading miss. It is documented and pinned in the test; 13/13 pass.
+
+## 2026-11-22 — gokhan (@gkurttech), `sibling-index()` stagger (X 2117575754628128915)
+
+Ticket-driven fold of a one-line CSS tip: "You can implement stagger animations with one line of CSS using sibling-index()", with `animation-delay: calc(sibling-index() * 70ms)`.
+
+- **Manifest:**
+  - Post text (read, via `api.fxtwitter.com`).
+  - The 3.2s demo video, 1280×720 (read as a frame contact sheet made with ffmpeg). It shows six bars that enter at 70–420ms (`sibling-index() × 70ms`) and leave in reverse (`(sibling-count() - sibling-index()) × 70ms`). The captions say "No nth-child rules, no --i on every item" and "Chrome & Edge 138+".
+  - Replies: the conversation endpoint returned none.
+  - MDN `sibling-index()` page: 1-based, Baseline 2026, newly available. MDN browser-compat-data 8.1.10 gives Chrome and Edge 138, Safari and iOS Safari 26.2, and Firefox 154 for both `sibling-index()` and `sibling-count()`.
+- **Density:** MEDIUM. There is one mechanism, and it directly replaces the `:nth-child` and `--i` stagger snippets in four references.
+- **Verified:** in headless Chromium 159 (Playwright), we read the computed `animation-delay` of every formula we published: the tip as posted, zero-based, capped with `min(…, 6)`, reverse, a budget-fitted step through `sibling-count()`, and an eased step through `pow()`. We also checked what the index counts: a heading and a `hidden` sibling take indexes, text nodes do not, and a nested list restarts at 1. Finally we checked that an unparseable declaration drops back to the one before it.
+- **Owner:** `web-design` (web-animation-design → choreography), in a new section, "CSS stagger with sibling-index()". It holds the tip, the version to ship, and six rules: count from 1, the cap and appended items, budget-fitting, eased stagger, reverse order, what it counts, and support with fallback. The Tool choice row and the CSS index-stagger note now point there.
+- **Reconciled:** `ui-fx` control-patterns (the `sibling-index()` mention now subtracts 1 and caps), `design-craft` animations (CSS-Only Stagger) and emil-kowalski/css-techniques (the `:nth-child` ladders) now include the one-line form and a pointer.
+- **Conflict:** the demo staggers the exit in reverse. That goes against choreography's rule that "exits are simultaneous", which `ui-fx` ("Reverse the index for the exit") already broke. We scoped it in choreography Step 5: reverse exits are an effect for demos and showpieces, and product UI keeps exits simultaneous.
+- **Not adopted:** the tip's 70ms step without the `- 1`, and no cap. The sixth item then starts at 420ms, well past the ~300ms product budget.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **QA pass (same day).** QA found two defects. We fixed the class of problem behind each, then each instance.
+  - **Unit mismatch between files.** `ui-fx` told readers to put a time-valued `sibling-index()` expression into `--i`, which its rule then multiplied by 40ms again. ms × ms is invalid, so every delay computed to 0s.
+    - The convention is now the same everywhere: `--i` is a plain number, `--step` holds the time, and only the delay rule multiplies them.
+    - `sibling-index()` supplies `--i` inside `@supports (order: sibling-index())`. In browsers without it the items enter together, and inline `--i` still wins.
+    - The `ui-fx` recipe now carries this line in its checked CSS block, not in prose.
+  - **The budget ignored duration.** The ~300ms product budget is a *finish* time: (items − 1) × step + duration ≤ ~300ms. The first recipe ended at 500ms; the budget-fitting one ended at 550ms, and at 595ms for 60 items.
+    - The choreography recipes now use 30ms steps, a 200ms entrance and a cap of 4. The fit variant reserves the duration.
+    - The budget table and long-list rule now state the arithmetic, along with the ~30ms floor at which to fade the group as one.
+    - The same "~300ms total" wording was made explicit in PRACTICAL-TIPS, the parent troubleshooting table, the motion-audit fix table and `design-craft` emil-kowalski.
+    - The `design-craft` one-liners now reproduce their own ladders, a cap of 3 at 100ms and a cap of 4 at 50ms, not an invented cap of 6. The emil-kowalski one states that its ladder ends at 450ms.
+  - **Tests.**
+    - New `web-design/examples/stagger-check/check.mjs` (20/20) extracts the recipes from the markdown. It checks finish times at five lengths, ordering, the eased gaps, reduced motion, the no-support fallback, and both mistakes above.
+    - `ui-fx` snippet-checks gained the `sibling-index()` index assertion (44/44).
+    - Mutation runs confirm each check fails on the defect QA reported.
