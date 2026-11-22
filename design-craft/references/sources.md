@@ -83,7 +83,7 @@ Design-engineering concept site (craft.gustavofior.com, Jul 2026; every page has
 - *Button Press* — `0.97`–`0.98` as a second source for the restrained press alternate, 100–150ms, larger surfaces shrink less, disabled controls do not press, iOS tap-highlight and `:active` notes → [animations.md](animations.md) Scale on Press, polish-principles §12.
 - *Interruptibility* — recording vs destination, never gate input on an animation, transition vs spring, retargeting when siblings join → [animations.md](animations.md) Interruptible Animations, polish-principles §4 + Common Mistakes.
 - *Font Smoothing* — the case for the root-application school, dark mode as the trigger, thin-weight risk, `subpixel-antialiased` opt-out, Firefox 128, macOS-only review → [typography.md](typography.md) Font Smoothing, polish-principles §8. The scoped default stands; recorded as a school, not blended.
-- *Scroll Fades* — mask over overlay, fade only the edge that can scroll, scroll-driven `@property` recipe and its traps → [surfaces.md](surfaces.md) Scroll Fades, polish-principles Common Mistakes; pointer in `web-design` (web-layout-design).
+- *Scroll Fades* — mask over overlay, fade only the edge that can scroll, scroll-driven `@property` recipe and its traps → [surfaces.md](surfaces.md) Scroll Fades, polish-principles Common Mistakes; pointer in `web-design` (web-layout-design). Second source for the recipe: @gkurttech, X 2124450831303090459 (2026-11-22), with the same shape at 48px. Its no-overflow, no-fade claim was checked in Chromium and Firefox.
 
 Companion installable skill `skills/craft-design-engineering` mirrors the live pages verbatim; not imported. Ledger: `docs/mining-ledger.md` 2026-09-18 and 2026-11-18.
 
