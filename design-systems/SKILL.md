@@ -1,6 +1,6 @@
 ---
 name: design-systems
-description: "Build, govern, and scale a design system — tokens, theming, component API contracts, governance, adoption metrics, DS-as-AI-context, icon systems. Use for creating or auditing a design system, component library, or icon set, token taxonomies, or DS-to-AI codegen. Apple platform → apple-design; React code → react; brand marks → logo-design; org AI rollout → working-with-ai. Triggers: design system, design tokens, theming, Code Connect, icon set."
+description: "Build, govern, and scale a design system — tokens, theming, component API contracts, governance, DS-as-AI-context, icon systems — and run the hands-on work: extract a system from shipped UI, audit token use, document a component, migrate screens. Apple platform → apple-design; React code → react; brand marks → logo-design; one screen → interface-review. Triggers: design system, design tokens, hardcoded colors, theming, Code Connect, icon set."
 ---
 
 # Design Systems
@@ -15,6 +15,19 @@ description: "Build, govern, and scale a design system — tokens, theming, comp
 A design system is a **product with customers**, not a library: "treat it like a product team — clear OKRs, roadmap, customers — or it won't succeed" (Rahimi). Sell it honestly: "a design system is not the most efficient way to build things… it must have clear business impact and ROI" — the pitch that works is per-stakeholder incentive alignment: "components for free, performance for free, dark mode for free" (Coinbase), accessibility and i18n free.
 
 These rules have a dial, not a switch — read Counter-positions (below) before applying them at full depth.
+
+## Hands-on runs in a codebase
+
+To *do* system work in a repo that already ships UI, read the matching reference first (design.how, 2026; single source):
+
+| The ask | Reference |
+| --- | --- |
+| "We need a design system", hardcoded colors, extract tokens, add states to Button | [system-from-shipped-ui.md](references/system-from-shipped-ui.md) |
+| "Are we using our tokens?", a token audit — report only | [token-mapping.md](references/token-mapping.md) |
+| Document one component from its code and call sites | [component-docs.md](references/component-docs.md) |
+| Move the app onto an existing system, a rollout, an adoption audit | [migration.md](references/migration.md) |
+
+Across all four: the app's own look is the source; "fix it" is never clearance to migrate; map tokens by purpose before value; a system gap is a row for its owner, not a workaround; a check counts once seen failing; the writer never grades its own work.
 
 ## Opinions are the product
 
@@ -136,6 +149,7 @@ A product's interface icon set is a governed sub-system with its own optical siz
 - **`working-with-ai` (agentic-coding)** / **`design-prototyping`** — DS-as-AI-context is the constrained-generation stance applied to UI; prototype-with-the-system before codifying ownership.
 - **`creating-skills` (converting-visual-references-to-skills)** — use when the source is a visual taste corpus; this skill owns actual token/component/spec systems. Do not substitute taste rules for DS context when components, tokens, or governance already exist.
 - **`working-with-ai` (ai-enablement)** — rollout, pilots, and training for the AI-context layer.
+- **`interface-review`** — critiques one screen; its behaviour-traps reference lists defects canonical components must not ship. **`working-with-ai` (agentic-coding)** — fleet mechanics and the correction pass for a parallel migration.
 - **`design-principles`** — Craft/Simplicity judge individual components; this skill governs the system that mass-produces them.
 
 > **Staleness note:** auto-captioned 2024–25 talks; tool specifics (Figma variables/modes/Code Connect/Dev Mode, UTRA, Datadog wiring) are point-in-time — verify against current docs. The governance, token-architecture, and adoption rules are the durable layer.

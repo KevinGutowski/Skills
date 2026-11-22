@@ -40,6 +40,7 @@ If using a fresh Codex session, installed skills normally route after restart. I
 | Task | Install |
 |---|---|
 | UI polish / frontend cleanup | `design-craft frontend-design web-design` |
+| Extra-creative UI effects | `ui-fx frontend-design web-design` |
 | Admin or developer-tool UI | `devtools design-craft data-viz` |
 | AI-generated UI repair | `working-with-ai design-prototyping design-craft frontend-design` |
 | Skill authoring / source conversion | `creating-skills research-cataloging x-post-reader` |

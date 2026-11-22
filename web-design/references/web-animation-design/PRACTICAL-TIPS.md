@@ -163,7 +163,7 @@ A faster-spinning spinner makes apps feel faster even with identical load times.
 
 Arrow key navigation, keyboard shortcuts—these are repeated hundreds of times daily. Animation makes them feel slow and disconnected.
 
-**Never animate:**
+**Never animate** (everyday interface motion; an effect the user asked for, or one chosen through `ui-fx` for an effects request, is exempt, see Scope in the parent reference):
 
 - List navigation with arrow keys
 - Keyboard shortcut responses
@@ -188,7 +188,7 @@ Too fast is as bad as too slow — below a certain duration the eye can't track 
 - **A removed element gives up its space immediately** — siblings close the gap while it fades, not after (`AnimatePresence mode="popLayout"`, or absolutely position it at its current offset before the exit).
 - **No stagger on menus, command palettes, or tab content** — anything opened many times a day arrives together.
 
-The full method for deciding these — cast roles, pick together/overlap/sequence per pair, stagger budgets (30–80ms steps and ~300ms total in product UI), interruption checks — is [choreography.md](choreography.md). Decide the choreography there; structure the code with the storyboard pattern below.
+The full method for deciding these — cast roles, pick together/overlap/sequence per pair, stagger budgets (30–80ms steps, with the last item finished by ~300ms in product UI), interruption checks — is [choreography.md](choreography.md). Decide the choreography there; structure the code with the storyboard pattern below.
 
 ## Choreographing Multi-Step Animations
 
@@ -236,7 +236,7 @@ From the course's judgement exercises: a hover **scale beyond 1–2% is almost a
 
 **Sweep-through highlights get no transition at all.** Scope the 100–150ms figure to a single hovered control (a button's color, a card's lift). For nav items, menu rows, list rows, and anything the pointer crosses several times per second, Gustavo Fior's *Craft* (craft.gustavofior.com/hover-restraint) is the sharper rule: "Instant is the correct default for hover." Hover fires more than any other interaction; when each of ten crossed items fades in, "the interface is always a few frames behind the pointer, and it reads as slow even when nothing is." Both rules follow the same principle — "The more often something happens, the less animation it can afford."
 
-**Tooltips are the one hover case that wants a delay** — around 400–700ms before the *first* tooltip, so it doesn't pop while passing through; then neighbors open at once with no delay and no animation, because the user has already asked for labels (the skip-delay mechanics: `design-craft` emil-kowalski/css-techniques → Tooltips).
+**Tooltips are the one hover case that wants a delay** — around 400–700ms before the *first* tooltip, so it doesn't pop while passing through; then neighbors open at once with no delay and no animation, because the user has already asked for labels (the skip-delay mechanics: `design-craft` emil-kowalski/css-techniques → Tooltips; the full timing model — 400ms default, a 300ms warm window, a 100ms close, no wait on charts or keyboard focus: `design-craft` (component-details) → Tooltips).
 
 ### Fix Hover Flicker
 
@@ -269,6 +269,8 @@ When hover animation changes element position, the cursor may leave the element,
 ```
 
 The parent's hover area stays stable while the child moves.
+
+A different flicker, with no animation involved: a menu or list whose highlight blinks off between rows has margins or a `gap` that no row owns. That fix is geometric (flush rows, inset fill) and lives in `design-craft` (surfaces) → Contiguous Rows.
 
 ### Disable Hover on Touch Devices
 
@@ -426,7 +428,7 @@ Blur bridges visual gaps between states, tricking the eye into seeing smoother t
 From Emil's interviews with Henry Heffernan (Vercel), Lochie Axon (Family), and Dennis Brotzky (Fey):
 
 **Durations & decision rules**
-- Hard ceiling: a transition should essentially never exceed **1 second**, even with an extreme curve. Click-feedback go-to is **200ms, often 150ms** (the interviewees' figure; this theme's duration table keeps press and micro-interaction feedback at 100–150ms — use the table).
+- Hard ceiling: an everyday transition should essentially never exceed **1 second**, even with an extreme curve (a requested showpiece effect built through `ui-fx` may). Click-feedback go-to is **200ms, often 150ms** (the interviewees' figure; this theme's duration table keeps press and micro-interaction feedback at 100–150ms — use the table).
 - The delete-rule: "If you ever find yourself at 150 milliseconds… 'this is not fast enough', it is probably not worth animating at all."
 - **Page-load entrances must be CSS** — a JS animation library needs JavaScript loaded, so library-driven entrances delay first visuals. Save Motion/React Spring for post-hydration interactions.
 - Simple layout changes can usually be faked with transforms instead of reaching for a layout-animation engine.

@@ -52,6 +52,28 @@ Users change intent mid-interaction. If animations aren't interruptible, the int
 
 **Rule:** Always prefer CSS transitions for interactive elements. Reserve keyframes for one-shot sequences.
 
+### A Recording vs. a Destination
+
+The mental model behind the table (Gustavo Fior, *Craft*, craft.gustavofior.com/interruptibility): a keyframe animation is a recording. "It has a first frame and a last frame, and when you play it, it plays from the first frame no matter where the element currently is." Closing a half-open sheet therefore jumps to fully open and slides down from there. A transition is a destination: "You tell the browser where the element should be, and it animates from wherever the element is right now." The working rule: "Describe where things should end up, not the trip to get there." Transitions, Motion's `animate`, and springs all work this way; keyframes do not.
+
+**Test it by not waiting.** Trigger the toggle twice in quick succession. "Both look identical if you wait." The bug only shows to people who change their mind, and most do. To enter from `display: none` without falling back to keyframes, look up `@starting-style`.
+
+### Never Gate Input on an Animation
+
+The second failure has correct motion and a deaf interface: "An `isAnimating` flag drops clicks, or `pointer-events: none` stays on until the motion is done." Dropped taps compound, because people tap again and lose that one too. The rule is "never gate input on an animation: no `isAnimating` guards, no `pointer-events: none` while things move."
+
+This is about interactive elements going temporarily deaf. It does not touch the standing rule that purely decorative layers carry `pointer-events: none` permanently ([polish-principles.md](polish-principles.md) §16). The gesture version (a closing sheet that is grabbed again follows the finger) is in `web-design` (web-animation-design → gestures).
+
+### Transition or Spring
+
+A reversed transition still stops and restarts from a standstill: "It remembers where it is, but it forgets how fast it was going." A spring keeps both position and speed, so the turn reads as one movement.
+
+That does not make springs the default. Sonner and Vaul "both run on plain CSS transitions and never feel broken", and "A good ease-out transition is enough for most sheets, menus and sidebars." Reach for a spring "when the motion comes from a gesture, like a flicked card that should keep your finger's speed, or when something gets flipped back and forth fast enough that the restart shows." This matches the release-behaviour table in `web-design` (web-animation-design → gestures) and the spring guidance in [emil-kowalski.md](emil-kowalski.md).
+
+### When Siblings Join
+
+Interruption is also arrival: a second toast while the first is settling, a row inserted while the list is still opening. "Everything already in motion needs a new destination." With Motion, a `layout` animation re-measures and retargets anything still in flight when a sibling appears or leaves. In plain CSS, position the stack with transitions, never with per-item keyframes, for the same reason as above.
+
 ## Enter Animations: Split and Stagger
 
 Don't animate a single large container. Break content into semantic chunks and animate each individually.
@@ -120,6 +142,11 @@ function PageHeader() {
 .stagger-item:nth-child(1) { animation-delay: 0ms; }
 .stagger-item:nth-child(2) { animation-delay: 100ms; }
 .stagger-item:nth-child(3) { animation-delay: 200ms; }
+
+/* The same ladder as one rule (sibling-index() counts from 1; min() holds the rest at the third step):
+   .stagger-item { animation-delay: calc((min(sibling-index(), 3) - 1) * 100ms); }
+   100ms steps are this theme's marketing pace. Product-UI budget, fallback and caveats:
+   web-design (web-animation-design → choreography, CSS stagger with sibling-index()). */
 
 @keyframes fadeInUp {
   to {
@@ -423,7 +450,18 @@ The `0.95` floor is scoped to label-bearing targets — buttons, pills, cards, r
 
 Not every button needs this. Add a `static` prop to your button component that disables the scale effect when the motion would be distracting.
 
-Theme note: Kevin Kold's Claude-polish article uses `0.98` as a lighter press value. That is a valid restrained alternate, but this reference's house value remains `0.96`; pick one press scale per project and keep it consistent.
+Theme note: Kevin Kold's Claude-polish article uses `0.98` as a lighter press value, and Gustavo Fior's *Craft* prefers "`0.98` or `0.97`" (craft.gustavofior.com/button-press). That is a valid restrained alternate with two sources behind it, but this reference's house value remains `0.96`; pick one press scale per project and keep it consistent. All three agree on the floor: "Below `0.95` it starts to look like an effect, and people notice the animation instead of the click."
+
+### Tuning and Platform Details
+
+From Fior's *Button Press* page. These hold whichever press value the project uses.
+
+- **The goal is invisible feedback.** "Nobody should think "oh, the button scales". If they do, the animation is too much."
+- **Duration 100–150ms.** "Longer than that and the button lags behind your finger, which feels worse than no feedback at all."
+- **Larger surfaces shrink less.** The same ratio moves more pixels on a bigger target: "A full-width card at `0.97` moves several pixels at the edges, which is a lot more than a button does at the same scale." Press cards, tiles and rows more shallowly than buttons. The tactile ladder ([tactile-design.md](tactile-design.md)) is the same rule written as a scale.
+- **Disabled controls do not press.** Guard the rule: `:active:not(:disabled)`, or `disabled:active:scale-100` in Tailwind.
+- **Touch.** Clear the grey iOS tap highlight so it does not flash over the scale. The source also reports that iOS Safari applies `:active` only while something on the page listens for touches: frameworks such as React already do, but a plain HTML page needs an empty `touchstart` listener or the press never shows. Check on a device; the rest of the touch layer is in `web-design` (mobile-web-native-feel).
+- **Reduced motion.** Drop the transition under `prefers-reduced-motion: reduce`; the state change can stay.
 
 ### CSS Example
 
@@ -434,7 +472,7 @@ Theme note: Kevin Kold's Claude-polish article uses `0.98` as a lighter press va
   transition-timing-function: ease-out;
 }
 
-.button:active {
+.button:active:not(:disabled) {
   scale: 0.96;
 }
 ```
@@ -442,7 +480,7 @@ Theme note: Kevin Kold's Claude-polish article uses `0.98` as a lighter press va
 ### Tailwind Example
 
 ```tsx
-<button className="transition-transform duration-150 ease-out active:scale-[0.96]">
+<button className="transition-transform duration-150 ease-out active:not-disabled:scale-[0.96]">
   Click me
 </button>
 ```

@@ -214,7 +214,7 @@ cell.likeButton.addAction(like, for: .primaryActionTriggered)
 
 ## Empty and loading states
 
-Use `UIContentUnavailableConfiguration` (iOS 17+), never a label laid over the collection view. Override `updateContentUnavailableConfiguration(using:)` on the view controller: `.loading()` while loading, `.empty()` with `image`/`text`/`secondaryText` (localized) when empty, `.search()` for no search results, `nil` otherwise. Add "Try Again" via `config.button` + `config.buttonProperties.primaryAction`. Call `setNeedsUpdateContentUnavailableConfiguration()` whenever the inputs change.
+Use `UIContentUnavailableConfiguration` (iOS 17+), never a label laid over the collection view. Override `updateContentUnavailableConfiguration(using:)` on the view controller: `.loading()` while loading, `.empty()` with `image`/`text`/`secondaryText` (localized) when empty, `.search()` for no search results, `nil` otherwise. Add "Try Again" via `config.button` + `config.buttonProperties.primaryAction`. Call `setNeedsUpdateContentUnavailableConfiguration()` whenever the inputs change. Choose `.empty()` only after a load has finished with zero items, never from `snapshot.numberOfItems == 0` alone, which is also true before the first load. Why each state is empty and what its text and button should say: `user-onboarding` (empty-states) and `design-craft` (component-details → Empty states).
 
 ## Table views
 

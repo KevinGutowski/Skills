@@ -17,6 +17,13 @@ The local skill adapts that pattern to this repository's existing domain owners.
 - Delta used here: [critique-scoring.md](critique-scoring.md). It covers judge-before-scan isolation with a declared method line, a design-specificity verdict as the opening, Nielsen 0–4 rubrics with `n/a` renormalization, a cognitive-load failure count, persona walk-throughs by surface, five technical audit dimensions, P0–P3 mapped onto this skill's severity scale, and question-last delivery.
 - Not imported: snapshot persistence and trend storage (`.impeccable/critique/`), browser overlay injection, Codex-specific gates, and the requirement to recommend Impeccable's own commands.
 
+## design.how
+
+- Site: https://design.how · Repository: https://github.com/arla6ka/design.how (MIT)
+- Revision screened: `148b94c` (2026-11-14)
+- Read: `ui-review` (SKILL and criteria) and the trap list in `build-design-system`.
+- Delta used here: [behaviour-traps.md](behaviour-traps.md). It covers the symptom-to-trap table, stable trap IDs, measured probes (Event Timing for press feedback, real Tab presses for focus rings, measurement inside the scroller), task-level criteria, the shown-versus-sent severity rule, system-caused findings, fixes stated as failing checks, and the shown/not-shown edge-case list.
+- Not imported: the source's own bucket names and ship line (this skill keeps HIGH/MEDIUM/LOW and Block/Needs changes/Approve), its multi-reviewer panel sort, its report file locations, and the capture scripts. Traps already owned by `web-design` or `design-craft` are pointed to rather than restated.
 ## Vercel Web Interface Guidelines
 
 - Repository: https://github.com/vercel-labs/web-interface-guidelines (command.md on `main`; raw: https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md). Shipped as the `web-design-guidelines` skill in https://github.com/vercel-labs/agent-skills, a thin wrapper that fetches the raw file before each review.

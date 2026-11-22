@@ -149,6 +149,8 @@ Small, verified, single-meaning corrections. No description text changed, so no 
 
 Both judges answered `none` for W18 and for B33 (single A→B directions), which is the expected pass. No neighbor or control was taken by an edited skill. The `skill-creator` description optimizer was not run: with both contested pairs already at 100% there was nothing for it to optimize against.
 
+**2026-11-18 re-run.** The `design-craft` description gained the trigger `blueprint illustration` (446 characters; "and feel", "alignment" and "-style" were cut to make room) for the new construction-drawings reference, and B34–B36 were added. Two fresh descriptions-only judges (the session's default model and Haiku) got the same blind packet: W1–W18 18/18 and B1–B36 36/36 for both. B34 went to `design-craft`; B35 and B36 stayed with `creative-coding` and `logo-design`; B10 and W10/W16/W17 still route to `design-craft`.
+
 ## Follow-up status — 2026-11-12
 
 The owner asked for every recommendation above to be applied. Status against "Suggested order":

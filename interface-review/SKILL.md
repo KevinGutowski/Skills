@@ -9,7 +9,7 @@ Review an interface as one system instead of returning disconnected specialist a
 
 **Worked report:** read [references/report-exemplar.md](references/report-exemplar.md) before writing your first report in a session, or whenever unsure how a section, the `Unverified` verdict, or the scored layout should look. It holds one complete `full` report, an `Unverified` close, and a `scored` variant.
 
-**Sources/gaps:** [references/sources.md](references/sources.md) records the external orchestration and critique-scoring patterns; [references/coverage-gaps.md](references/coverage-gaps.md) parks unverified rules and missing evals.
+**Sources/gaps:** [references/sources.md](references/sources.md) records the external orchestration, critique-scoring, and behaviour-trap sources; [references/coverage-gaps.md](references/coverage-gaps.md) parks unverified rules and missing evals.
 
 ## Resolve the review first
 
@@ -34,6 +34,8 @@ Identify the framework, styling system, component library, tokens, supported vie
 
 **Judge before you scan.** Form your own design judgment, including whether the interface is authored for this product or could ship unchanged for an unrelated one, *before* reading detector, lint, or axe output, because deterministic findings anchor judgment. Then reconcile: agreements, what the tools caught that you missed, and false positives. When subagents are available, run the two passes in isolation. State in the report how they ran.
 
+**Probe behavior; don't infer it.** When the person describes a symptom ("laggy", "it jumps", "fine on my laptop, not my phone", "I can't click it") or the review covers a running build, use [references/behaviour-traps.md](references/behaviour-traps.md): a symptom-to-trap table, citable trap IDs, the task-level criteria a domain-by-domain pass can miss (shown equals sent, feedback at its trigger), and the measured probes. Responsiveness to input is never judged from a screenshot, in either direction; focus rings are judged from a capture after real Tab presses. Every probe gets a result or a reason it did not run.
+
 Inspect rendered behavior when the claim depends on layout, appearance, animation, focus, scrolling, or interaction. Inspect source when the claim depends on semantics or implementation. Do not turn a missing runtime check into a finding; mark it not verified. Runtime check recipes (layout shift, emulated reduced motion and color scheme, dialog focus and inertness, axe scan) and the before/after evidence format live in `browser-verification`.
 
 **Source-level sweep.** For the mechanical pass over web UI code (grep-able rule families from Vercel's Web Interface Guidelines, house positions where they conflict with local owners, terse `file:line` candidates that feed the findings table under the same evidence rules and caps), run [references/code-compliance-sweep.md](references/code-compliance-sweep.md) after the judgment pass; what it cannot prove from source goes to `browser-verification`.
@@ -51,12 +53,12 @@ Read and apply only the references needed for the requested surface:
 5. `web-design` (web-typography) — measure, type scale, font use, wrapping, and numeric alignment.
 6. `web-design` (oklch-skill) — color usage, contrast, palettes, gamut, and theming.
 7. `web-design` (web-performance and web-animation-design) — responsiveness, loading, motion values, and reduced motion.
-8. `design-craft` — spacing, radii, shadows, alignment, state polish, and interface feel; its worst-case-data reference when the review should stress components with realistic extreme data. If the product has committed to one of its named themes (polish-principles, emil-kowalski, tactile-design), review against that theme, including tactile-design's never-ship list. Don't report the theme's deliberate choices as violations of another theme; only flag the theme's choices if it doesn't fit the surface's mode.
+8. `design-craft` — spacing, radii, shadows, alignment, state polish, and interface feel; its worst-case-data reference when the review should stress components with realistic extreme data; its alignment-pass reference (drawn guides plus a probe) when edges look ragged. If the product has committed to one of its named themes (polish-principles, emil-kowalski, tactile-design), review against that theme, including tactile-design's never-ship list. Don't report the theme's deliberate choices as violations of another theme; only flag the theme's choices if it doesn't fit the surface's mode.
 9. `rails` (optimizing-rails, perceived-speed) — only when the interface under review is a Rails/Hotwire app: spinners on navigation, row-by-row pop-in, prefetch/morph/optimistic-update mechanics, and the `ps-…` checklist names. Browser budgets still go to item 7.
 
 For a motion-only pass across an app (what should animate, what to remove, or a roadmap of motion fixes as handoff plans), use `web-design` (web-animation-design)'s motion-audit member instead of a full review. Inside a full review, use its gate and removal hazards for the motion slice and report on this skill's severity scale.
 
-For AI-generated UI, also read `working-with-ai` (ai-ui-direction) and check the named tells in `frontend-design` (anti-slop-catalog). Respect the brief and the surface's mode (Persuade, Operate, Read, Experience): a tell the brief pinned or the world earned is not a finding. For a native Apple-platform interface, replace web-specific rules with `apple-design` and `swiftui`; do not cross-apply web conventions. A website installed to the iOS/iPadOS Home Screen or macOS Dock remains web work and adds `web-design` (apple-installed-web-apps).
+For AI-generated UI, also read `working-with-ai` (ai-ui-direction) and check the named tells in `frontend-design` (anti-slop-catalog). Respect the brief and the surface's mode (Persuade, Operate, Read, Experience): a tell the brief pinned or the world earned is not a finding. An effect the user asked for, subtle or showy, or one chosen through `ui-fx` for an effects request, is such a pin: review it against the shipping floor in `ui-fx` (honest about results and fired on click, a reduced-motion path, no rapid flashing, automatic motion that stops within five seconds or has a visible, keyboard-operable pause, stop or hide control, a visible still cue and a status announcement for any state it conveys, legible text, a fallback, focus not clipped or covered, holds frame rate) instead of flagging its presence, its boldness, its frequency or its length, including under a theme's never-ship list. A missing floor item is a finding to fix in shipped work (in a prototype, list it as open; only the flash limit always applies), not a reason to remove the effect. If you cannot tell whether an effect was requested, ask or check the change description before treating it as a finding. The motion-audit gate in `web-design` (web-animation-design) carries the same exemption. For a native Apple-platform interface, replace web-specific rules with `apple-design` and `swiftui`; do not cross-apply web conventions. A website installed to the iOS/iPadOS Home Screen or macOS Dock remains web work and adds `web-design` (apple-installed-web-apps).
 
 Assign an issue to the owner of its underlying rule and mention secondary effects in the rationale. Report one root cause once, even when it appears in several files or affects several domains.
 
@@ -68,6 +70,7 @@ Every finding must:
 - show the current implementation or observed behavior;
 - propose an actionable replacement;
 - explain the user impact and owning rule;
+- where practical, state the fix as a check that fails on the current build, so it can be verified;
 - distinguish observed facts from inferences.
 
 Use one severity scale:
@@ -76,7 +79,7 @@ Use one severity scale:
 - **MEDIUM** — meaningfully harms comprehension, efficiency, adaptability, performance, or consistency.
 - **LOW** — isolated polish with limited task impact; include only in `full`.
 
-Within a severity, rank by reach and leverage. A shared-token or primitive fix outranks the same symptom in one leaf component.
+A user who believes the task finished when it did not is blocked: HIGH. A field that shows one value and sends another is HIGH when the hidden value grants access, spends money, or picks a recipient. Within a severity, rank surfaces that write data first, then by reach and leverage. A shared-token or primitive fix outranks the same symptom in one leaf component.
 
 ## Make restraint auditable
 

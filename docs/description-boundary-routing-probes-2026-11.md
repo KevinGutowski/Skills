@@ -1,6 +1,6 @@
 # Description Boundary Routing Probes
 
-Purpose: test the 13 description edits made after [the November audit](skill-effectiveness-audit-2026-11.md): boundary clauses added to `swiftui`, `design-principles`, `design-prototyping`, `product-decision-making`, `user-onboarding`, `write-clear-prose`, `motion`, `interface-review`, `route-planning` and `frontend-design`; a "Use when" clause on `superconductor`; the Apple route in `data-viz` narrowed to Swift Charts; and the `rails` read instruction. Run with a fresh descriptions-only judge after editing any of these descriptions or their named neighbors.
+Purpose: test the 13 description edits made after [the November audit](skill-effectiveness-audit-2026-11.md): boundary clauses added to `swiftui`, `design-principles`, `design-prototyping`, `product-decision-making`, `user-onboarding`, `write-clear-prose`, `motion`, `interface-review`, `route-planning` and `frontend-design`; a "Use when" clause on `superconductor`; the Apple route in `data-viz` narrowed to Swift Charts; and the `rails` read instruction. B34–B36 were added on 2026-11-18 for the `blueprint illustration` trigger on `design-craft`. Run with a fresh descriptions-only judge after editing any of these descriptions or their named neighbors.
 
 Blind packet (descriptions and prompts, no expected answers): `python3 scripts/check_routing_probe_fixtures.py --packet`
 Fixture check: `python3 scripts/check_routing_probe_fixtures.py`
@@ -42,6 +42,9 @@ Fixture check: `python3 scripts/check_routing_probe_fixtures.py`
 | B31 | "Explain how JPEG chroma subsampling works." | `graphics-fundamentals` | Control. |
 | B32 | "Help me prepare for a difficult 1:1 with a report who keeps missing deadlines." | `people-management` | Control. |
 | B33 | "Give me turn-by-turn directions from the airport to my hotel." | `route-planning` | Control: single A→B is excluded by the description. The judge should answer `none`; the expected-skill cell names the skill that must *not* be chosen. |
+| B34 | "Draw a blueprint-style line illustration for our 404 page, as an editable SVG." | `design-craft` | Target: the `blueprint illustration` trigger added 2026-11-18 (construction-drawings reference). |
+| B35 | "Make a generative flow-field sketch in p5.js where particles follow Perlin noise." | `creative-coding` | Neighbor: procedural art must not move to `design-craft`. |
+| B36 | "Design a logo mark for our bakery and show it in black and white first." | `logo-design` | Neighbor: brand marks must not move to `design-craft`. |
 
 ## Scoring
 

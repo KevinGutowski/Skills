@@ -15,11 +15,13 @@ Source: Emil Kowalski's `choreograph` skill and its recipes (emilkowalski/skills
 - Step 3 — Hook secondary motion to a moment
 - Step 4 — Scale timing to the size of the change
 - Step 5 — Direction and exits
+- Worked example: a gesture-driven card carousel (Briggs)
 - Interruption checks
 - Attention loops
 - Reduced motion
 - Tool choice
 - Implementation notes
+- CSS stagger with sibling-index()
 - Deliverable: the timeline
 - Scoped conflict: stagger step size
 
@@ -73,10 +75,10 @@ A fifth option is not a timing: **Carry.** When a child's path is out of your co
 
 | Surface | Step between items | Budget |
 | --- | --- | --- |
-| Product UI | 30–80ms | Whole group done in roughly 300ms |
+| Product UI | 30–80ms | Whole group done in roughly 300ms: the last staggered item *finishes* by then, so (items − 1) × step + duration ≤ ~300ms |
 | Marketing hero, first-run, personal site | 100–150ms steps on 0.5–0.6s entrances | Seen once per visit; the wave is part of the message |
 
-- **Long lists:** stagger only the first handful (about six); the rest share the last delay. Item 20 never waits 20× the step.
+- **Long lists:** stagger only the first handful (as many as the budget allows, about six at most); the rest share the last delay. Item 20 never waits 20× the step. If the budget leaves under ~30ms per step, fade the group as one.
 - **Order follows importance, not DOM order.** Usually the same; check. Two items can share one beat (title and first paragraph both at step 0).
 - **Vary treatment, not only delay.** Lead slides furthest, Support less, Decoration fades in place. Delays that shrink across the group (an eased stagger) read organic; equal gaps read mechanical.
 - **Direction follows reading order or cause** — top to bottom for content; outward from the point of interaction for things the user triggered.
@@ -111,9 +113,19 @@ Fixed timing is wrong when the size of the change varies.
 
 - **Direction follows the mental model.** Forward: new content enters from the right, old leaves left. Back: the reverse. Sibling-menu content enters from the side of the trigger the user came from.
 - **Exits read their direction when they start.** In Motion, pass direction through `custom` on *both* `AnimatePresence` and the child, or the leaving element uses the direction it mounted with.
-- **Exits are simultaneous, shorter, simpler.** Never reverse-stagger a group out; the user already decided to leave.
+- **Exits are simultaneous, shorter, simpler.** Never reverse-stagger a group out; the user already decided to leave. Demos that stagger the exit in reverse (`ui-fx` control-patterns, the `sibling-count()` tip [above](#css-stagger-with-sibling-index)) are showing an effect. In product UI the exit stays simultaneous.
 - **An exit matches its entry** — what slid in from the right leaves to the right, not by fading.
 - For small containers or similar views, replace a full-width slide with a crossfade plus an ~8px shift and light blur: the eye barely travels and the change still reads.
+
+## Worked example: a gesture-driven card carousel (Briggs)
+
+Derek Briggs's rebuild of the shop.com merchant carousel (Dive Club "Scaling craft at Shopify", Nov 2026, ~9:00–12:45 and ~42:40). It shows the steps above under a drag, where the user scrubs the timeline by hand. His summary: "Different things moves at different speeds based on the weight of its value."
+
+- **The Lead settles last.** The merchant logo is the most substantial thing on the card, so it is "the last thing that settles". Step 1 gives the Lead the longest motion; here that means its resolve is visibly later than everything around it. The interviewer noticed the delay before anything else.
+- **One progress value drives every child.** Each element's motion is derived from the card's own movement, so dragging the card back plays every child in reverse, mid-flight, with nothing to re-trigger. This is Carry (Step 2) made scrubbable. In Motion that is `useTransform` off one shared motion value (our mapping; he did not name the API). Avoid per-child timers, and avoid a CSS variable inherited down the tree (Implementation notes).
+- **Stagger order is a decision.** He tried several orders and settled on top-left, bottom-left, top-right, bottom-right, mirrored when the swipe goes the other way. Under a gesture the order follows the drag direction; this is not the reverse-stagger exit that Step 5 rules out.
+- **Secondary detail rides the same timeline.** The rating counts up subtly as the card arrives. A canvas behind the carousel paints each video frame (or the image) blurred, as ambient light that matches the card. The glass button uses an SVG displacement-map filter rather than an image.
+- **Frame rate is part of the spec.** He swapped Swiper for Motion's carousel engine and held 60fps while flinging through cards. A choreography that drops frames under drag is not finished.
 
 ## Interruption checks
 
@@ -130,13 +142,13 @@ An idle animation that invites interaction (a hand that occasionally taps, an ic
 
 ## Reduced motion
 
-Collapse the choreography; do not merely shorten it. Under `prefers-reduced-motion: reduce`, drop the delays and the movement, keep opacity, and let the group appear together. Where the sequence *is* the explanation (a step-by-step illustration), jump between its frames instead of animating between them.
+Collapse the choreography; do not merely shorten it. Under `prefers-reduced-motion: reduce`, drop the delays and the movement, keep opacity, and let the group appear together. Where the sequence *is* the explanation (a step-by-step illustration), jump between its frames instead of animating between them. For a looping explanatory drawing, show one deliberately chosen still: `design-craft` (construction-drawings → Animating a drawing).
 
 ## Tool choice
 
 | Need | Tool |
 | --- | --- |
-| One-shot entrance | CSS keyframe with a per-item index custom property × a step variable |
+| One-shot entrance | CSS keyframe with `sibling-index()` × a step ([below](#css-stagger-with-sibling-index)), or a per-item index custom property where support is missing |
 | Group that enters/exits with React state | Motion variants with `delayChildren: stagger(...)` on the parent; `stagger` accepts `from` and `ease`, giving non-uniform delays for free (older versions: `staggerChildren`) |
 | Several elements coordinating across several events (hover, click, idle timer) with awaited completion | Motion `useAnimate` — more powerful, much harder to maintain; not for a plain stagger |
 
@@ -144,11 +156,67 @@ API details: `motion` (best-practices, codex).
 
 ## Implementation notes
 
-- **CSS index stagger:** `animation-delay: calc(var(--step) * var(--i))` with `animation-fill-mode: both` — the `backwards` half applies the first keyframe during the delay so later items do not flash their final state. Omitting the `to` keyframe animates to the element's own styles.
+- **CSS index stagger:** `animation-delay: calc(var(--step) * var(--i))` with `animation-fill-mode: both` — the `backwards` half applies the first keyframe during the delay so later items do not flash their final state. Omitting the `to` keyframe animates to the element's own styles. Where `sibling-index()` is supported, CSS supplies the index itself (next section).
 - **Custom-property caution:** changing a variable on a parent recalculates style for every descendant. Fine for a one-shot entrance; never drive per-frame values (a drag) through an inherited variable on a large tree — see [animation-performance.md](animation-performance.md).
 - **One variant per role** (distance, duration); the stagger only sets *when* each starts. `from: "center"` radiates from the middle; a numeric index radiates from the item the user touched.
 - **Imperative orchestration:** target parts with data-attribute selectors inside the scope instead of a ref per element; keep the running animations in a ref and stop them all before each new run.
 - **SVG draw sequences:** `pathLength="100"` on each path makes dash array/offset values round numbers.
+
+## CSS stagger with sibling-index()
+
+`sibling-index()` returns an element's position among its parent's element children as an integer, and `sibling-count()` returns how many there are. Both can go inside `calc()`, so a stagger needs no `:nth-child` ladder and no `--i` written on every item. The tip as posted (gokhan, @gkurttech, 2026-11-03):
+
+```css
+li {
+  animation-delay: calc(sibling-index() * 70ms);
+}
+```
+
+Its demo enters with `sibling-index() × 70ms` and leaves in reverse with `(sibling-count() - sibling-index()) × 70ms`. That one line is the mechanism. It is not yet the stagger this file asks for. Applied as written, the first item waits a full step, the sixth starts at 420ms and is still moving well after that, and item 40 waits 2.8s.
+
+**The budget is a finish time.** The group is done when the last staggered item *finishes*:
+
+> (staggered items − 1) × step + item duration ≤ ~300ms
+
+Duration counts. A 200ms entrance leaves 100ms for the whole spread: four items at 30ms. The version to ship:
+
+```css
+.list > * {
+  --step: 30ms;
+  --dur: 200ms;
+  animation: rise var(--dur) var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * var(--step));   /* --i is a plain number; this rule owns the unit */
+}
+@supports (order: sibling-index()) {
+  .list > * { --i: calc(min(sibling-index(), 4) - 1); }   /* 0, 1, 2, 3, then held: last ends at 90 + 200 = 290ms */
+}
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+@media (prefers-reduced-motion: reduce) { .list > * { animation: none; } }
+```
+
+Variants. Each one changes only `--i` or `--step`, so the delay rule, the fallback and reduced motion stay as above:
+
+```css
+@supports (order: sibling-index()) {
+  /* Fit: short lists of varying length get up to 60ms steps; the step shrinks so the last item still ends by 300ms. */
+  .list.fit > * { --i: calc(sibling-index() - 1); --step: min(60ms, (300ms - var(--dur)) / max(sibling-count() - 1, 1)); }
+  /* Eased: gaps of 40, 25 and 21ms shrink down the list ("no uniform stagger"); last ends at 286ms. */
+  .list.eased > * { --step: 40ms; --i: pow(min(sibling-index(), 4) - 1, 0.7); }
+  /* Reverse: builds from the end, e.g. a stack whose newest item is last in the DOM. */
+  .list.reverse > * { --i: min(sibling-count() - sibling-index(), 3); }
+}
+```
+
+- **It counts from 1.** Subtract 1 so the first item starts at once.
+- **`--i` stays unitless.** Write the time into `--i` (`--i: calc(… * 40ms)`) under a rule that multiplies it by a step, and the result is ms × ms. That is invalid, and every delay computes to 0s with no error. Index in `--i`, time in `--step`, and only the delay rule multiplies them.
+- **Cap it with `min()`, at what the budget allows.** The "stagger only the first handful" rule becomes one function, and the budget sets the handful: with 30ms steps, four items for a 200ms entrance and five for 180ms. The cap also covers items appended later (infinite scroll, "load more"). An appended item starts its animation when it is inserted, with a delay set by its index, so without the cap, item 60 sits invisible for seconds.
+- **When the budget leaves less than about 30ms per step, drop the stagger** and fade the group as one. On a long list, `.fit` reaches that point (60 items get under 2ms steps), so use it on short lists of varying length and the capped version everywhere else.
+- **What it counts:** every element child of the same parent, whatever its type. That includes a heading before the items and siblings with `hidden` or `display: none`; text nodes are not counted. Nested lists start again at 1. Put the animated items in a wrapper of their own, or the heading shifts every delay by one step. It counts the way `:nth-child()` does, not `:nth-of-type()`.
+- **Descendants re-evaluate it.** `--i` inherits as the unevaluated `sibling-index()` expression, so a child that also reads `var(--i)` gets its own index among its own siblings, not its parent's. Give nested animated parts their own variable.
+- **Support:** Chrome and Edge 138, Safari 26.2 (macOS and iOS) and Firefox 154. MDN marks it Baseline 2026, newly available. Older browsers skip the `@supports` block, so `--i` falls back to 0 and the items enter together. That is a safe result. An inline `style="--i: 2"` beats the stylesheet in every browser: use it to hand-order a few items, or to stagger in browsers without support.
+- **Leaving:** see the conflict note in Step 5. In product UI the group exits together.
+
+Checked by [examples/stagger-check/check.mjs](../../examples/stagger-check/check.mjs), which extracts the CSS blocks above and runs them in headless Chromium. It checks the computed delays, that every recipe finishes by 300ms at lengths 1, 2, 3, 6 and 60, the eased gaps, reduced motion, and the fallback with the `@supports` block removed, including inline `--i` still applying. It also checks that the tip as posted puts the sixth item at 420ms, and that a time written into `--i` collapses every delay to 0s. Counting (headings, `hidden` siblings, nested lists) was checked by hand in Chromium 159 on 2026-11-22.
 
 ## Deliverable: the timeline
 

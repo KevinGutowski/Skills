@@ -1,6 +1,6 @@
 ---
 name: design-craft
-description: "Raise design quality and feel via craft methodology (noticing, range vs depth, facets, live tuning), execution values (shadows, spacing, radii, alignment, motion, type), and Linear-style rituals/triage. Use to polish, critique, or stress-test UI, build taste, or make quality repeatable. Strategy → design-principles; shaping → shape-up; frame drops → motion. Triggers: make it look better, fix the jank, feels off, worst-case data, quality ritual."
+description: "Raise design quality via craft method (noticing, range vs depth, facets), execution values (shadows, spacing, radii, motion, type), and Linear rituals/triage. Use to polish, critique, or stress-test UI, build taste, or make quality repeatable. Strategy → design-principles; shaping → shape-up; frame drops → motion. Triggers: make it look better, fix the jank, feels off, edges don't line up, worst-case data, quality ritual, blueprint illustration."
 ---
 
 # Design Craft
@@ -20,12 +20,13 @@ Don't start by changing values. First:
 
    | Symptom | Kind | Go to |
    | --- | --- | --- |
-   | Misaligned edges, mismatched siblings, uneven or cramped spacing, heavy borders, muddy hierarchy | visual inconsistency | [polish-principles](references/polish-principles.md) and the Polish move in [refinement-moves](references/refinement-moves.md); for dense app UI (dashboards, settings, tables, modals), the decision order in [tactile-design](references/tactile-design.md) |
+   | Misaligned edges, mismatched siblings, uneven or cramped spacing, heavy borders, muddy hierarchy | visual inconsistency | edges: [alignment-pass](references/alignment-pass.md); the rest: [polish-principles](references/polish-principles.md) and the Polish move in [refinement-moves](references/refinement-moves.md); for dense app UI (dashboards, settings, tables, modals), the decision order in [tactile-design](references/tactile-design.md) |
    | No press feedback; animation too slow, abrupt or bouncy; sticky touch hover; menus that blink in and out | interaction feel | [animations](references/animations.md) and [emil-kowalski](references/emil-kowalski.md); motion values from `web-design` (web-animation-design) |
    | Content shifts on load; buttons move when a label or loading state changes | layout instability | polish-principles §17; `web-design` (web-performance) for CLS |
    | Breaks with a long name, a missing avatar, a count of 1, or a translated label | data fragility | [worst-case-data](references/worst-case-data.md) |
    | Web app feels like a website on a phone: stuck hover, tap flash, input zoom, wrong heights | mobile platform layer, not animation | `web-design` (mobile-web-native-feel) |
    | Stutter, dropped frames, scroll jank | performance, not styling | the `motion` skill's MotionScore performance audit and `web-design` (web-performance) |
+   | "Make it pop", wanting a visual effect | a missing signature moment | `ui-fx` |
    | AI-generated UI that looks generic | generation tells | `working-with-ai` (ai-ui-direction) and `frontend-design` (anti-slop-catalog) |
 
 3. **Pick one theme.** If the product already has a look, match it (reuse before inventing). If it doesn't, use polish-principles by default, tactile-design for dense product UI, or emil-kowalski when the problem is mostly motion feel. Don't average themes.
@@ -39,13 +40,16 @@ When the question shifts from *"is this good / how far do I push"* to *"what exa
 | --- | --- |
 | [polish-principles](references/polish-principles.md) | Execution overview: concentric radii, shadows-over-borders, optical alignment, spacing scales, press motion, tabular nums, font smoothing |
 | [typography](references/typography.md) | Text wrapping, font smoothing, tabular numbers |
-| [surfaces](references/surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, document canvas background, hit areas |
+| [surfaces](references/surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, document canvas background, scroll fades, hit areas |
 | [animations](references/animations.md) | Interruptible animations, enter/exit transitions, icon animations (incl. vanilla-CSS recipe), scale on press |
 | [performance](references/performance.md) | Transition specificity, `will-change`, perceived performance (spinner choice) |
 | [emil-kowalski](references/emil-kowalski.md) | Alternate craft theme (animations.dev): taste-training, component polish, animation decisions. Second hop in `references/emil-kowalski/`: css-techniques (component, transform, clip-path, and stagger code), interaction-and-performance (springs, gesture/drag, performance rules, debugging), taste-and-craft (practitioner habits, Config-talk notes) |
 | [tactile-design](references/tactile-design.md) | Alternate theme (Kosta, kosta.fyi) for tactile, layered, quiet product UI: decision order, parent-relative surfaces, light/dark elevation, one-primary hierarchy, never-ship list. Second hop in `references/tactile-design/`: tokens-and-surfaces, controls, layout-and-data, motion-values, phone |
 | [refactoring-ui](references/refactoring-ui.md) | Visual refactor passes (hierarchy, spacing, type, color, depth); code-native gallery in `examples/refactoring-ui-gallery.html` |
 | [linear-product-craft](references/linear-product-craft.md) | Linear's operating model: redesign debt, scope control, stress tests, feature flags, quality rituals, triage, dogfood/unshipping, taste calibration |
+| [component-details](references/component-details.md) | Measured answers per component: dropdown menu width (widest item + 16px, min/max), menu rows and keys, tooltip timing (400ms first, instant next, 100ms close), empty states (one style, page/card/inline sizes, keep the frame, one action or none, never while loading; seven-style gallery in `examples/empty-states-gallery.html`) |
+| [construction-drawings](references/construction-drawings.md) | Flat blueprint-style line illustration as editable SVG (Plotter method) for empty states, 404s, heroes and docs figures: one relationship per drawing, no pictograms, 560 × 440 canvas, role opacities and dashes, compact version for small placements, animating a drawing; example in `examples/construction-drawing-empty-state.html` |
+| [alignment-pass](references/alignment-pass.md) | Gridlines: draw guides, list items off their line, fix container padding; text vs box line, sidebar icon column, toolbar centre line; probe in `scripts/gridlines/` |
 | [worst-case-data](references/worst-case-data.md) | Stress-test a component with worst-case data: per-field catalog, failure-signature → fix table, truncate/wrap/clamp, Broken/Ugly/Fragile report |
 | [refinement-moves](references/refinement-moves.md) | Directional verbs for an existing UI: bolder, quieter, distill, delight, overdrive (propose first), polish (drift classification + triage order), harden (real data, failures, interrupted gestures) |
 | [practical-demonstrations](references/practical-demonstrations.md) | Worked walkthrough move lists: visual-language audit, mobile architecture exercise, depth-spectrum exemplars (slider, gift card, library cards) |
@@ -66,7 +70,7 @@ What to notice (use as an observation checklist):
 - **How it looks** — cheap or crafted? colors cooperating or fighting? one clear hierarchy or everything competing?
 - **How it feels** — fast or sluggish? durable or fragile?
 
-Practice: spend ten minutes only noticing something you use daily and write down *specific* whys — never "it feels clean." Field rep (MDS): time-box one hour on a duplicated before/after copy and write the observations as a numbered list *before* touching pixels.
+Practice: ten minutes noticing something you use daily, writing *specific* whys. Field rep (MDS): time-box one hour on a duplicated before/after copy and write the observations as a numbered list *before* touching pixels.
 
 ## Conceptual range (`/library/conceptual-range`)
 
@@ -79,7 +83,7 @@ Ways to push past the obvious:
 - **Set an arbitrary quota** — force 5/12/20 ideas.
 - **Optimize for one facet at a time** — what would 10/10 *durable* look like? 10/10 *desirable*?
 
-Also a **hedge against your own taste**: taste is limited by what you've seen; going straight to depth on a familiar idea robs you of directions you'd never otherwise try. (The *Maintenance: Of Everything* cover: ~15 structurally distinct directions before choosing.) And concept outranks execution (Craig Henry): execution facets polish the concept, never substitute for it.
+Also a **hedge against your own taste**: going straight to depth on a familiar idea skips directions you'd never otherwise try. (The *Maintenance: Of Everything* cover: ~15 directions before choosing.) And concept outranks execution (Craig Henry): execution facets polish the concept, never substitute for it.
 
 Sten's problem-solver warning: before pushing craft depth, ask whether this is the surface where better craft changes the user's outcome — redesigning an already-working surface is often visual exercise, not product progress ([references/field-notes.md](references/field-notes.md)).
 
@@ -105,7 +109,7 @@ Sequencing and deadline rules (field corroborations, quotes in [references/field
 
 ## Live tuning (`/library/live-tuning`)
 
-Expose key parameters (duration, easing, spacing, shadows, blur, position, scale) as real-time controls so you *feel* differences instantly instead of edit-save-refresh guessing. Builds intuition faster and surfaces combinations you'd never reach one change at a time (e.g. a grid of N random-parameter iterations). Josh ships **DialKit** (`/library/dial-kit`), a React/Motion tuning-panel library; the underlying move is just "ask the agent for a control panel." For many parameters, drive them all from one position on a Lissajous curve — one fidgetable control.
+Expose key parameters (duration, easing, spacing, shadows, blur, position, scale) as real-time controls so you *feel* differences instantly instead of edit-save-refresh guessing. Builds intuition faster and surfaces combinations you'd never reach one change at a time. Josh ships **DialKit** (`/library/dial-kit`), a React/Motion tuning-panel library; the underlying move is just "ask the agent for a control panel." For many parameters, drive them all from one position on a Lissajous curve — one fidgetable control.
 
 ## Separation of concerns (`/library/separation-of-concerns`)
 
@@ -125,7 +129,7 @@ Rams' discipline: fight the urge to add features/scope/flourish. Do as little as
 
 ## Uncommon care (`/library/uncommon-care`)
 
-"How much did the creator care?" shows up most in **the places you could have skipped**: edge cases, error states, invoices, refunds — "the effort no one would have blamed you for not making" (the Porsche 928 clutch pedal; logo-shaped screw heads; 100 personalized member notes). With AI making *passable* trivial, spend the leverage on what can't be generated. Self-prompts: Where are you stopping at good enough? What's the skeleton in the closet everyone knows is broken? Where are you holding back because leaning in feels uncomfortable?
+"How much did the creator care?" shows up most in **the places you could have skipped**: edge cases, error states, invoices, refunds — "the effort no one would have blamed you for not making" (the Porsche 928 clutch pedal). With AI making *passable* trivial, spend the leverage on what can't be generated. Self-prompts: Where are you stopping at good enough? What's the skeleton in the closet everyone knows is broken? Where are you holding back because leaning in feels uncomfortable?
 
 Sten's whole-journey variant: the care test includes off-screen business surfaces — confirmation emails, invoices, PDFs, fulfillment status, returns, cancellation, support scripts. A crafted main screen still feels careless if these break the promise.
 
@@ -133,7 +137,7 @@ Minor's below-noticing variant: corrections nobody can point at are still the st
 
 ## Industry standards (`/library/industry-standards`)
 
-Daily-driver apps (iOS, Linear, Figma, Instagram…) set an **invisible bar**; below it, people silently discount your work and never tell you why. The bar is the **floor, not the goal**. Shortcut: **"start with how iOS would design it, then improve"** (web equivalent: default shadcn + Tailwind, then improve) — never from scratch. Exemplars: Family (iOS defaults respected, then innovated on) and Raycast (native-feeling, better-than-Spotlight). Your own bar drifts down without exposure (MDS) — keep seeing fantastic work. And AI-generated imagery is never ship-ready (Katie Dill): hand-rework it.
+Daily-driver apps (iOS, Linear, Figma, Instagram…) set an **invisible bar**; below it, people silently discount your work and never tell you why. The bar is the **floor, not the goal**. Shortcut: **"start with how iOS would design it, then improve"** (web equivalent: default shadcn + Tailwind, then improve) — never from scratch. Exemplars: Family and Raycast. Your own bar drifts down without exposure (MDS) — keep seeing fantastic work. And AI-generated imagery is never ship-ready (Katie Dill): hand-rework it.
 
 ## Recreate everything (`/library/recreate-everything`)
 

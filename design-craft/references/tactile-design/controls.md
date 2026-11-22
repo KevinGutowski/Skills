@@ -109,7 +109,7 @@ Deep file for [../tactile-design.md](../tactile-design.md). These are the defaul
 ## Choice rows, tiles, filter pills
 
 - **Choice rows: the row is the control and the mark is only drawn.**
-  - **Layout:** rows sit 2–4px apart with no box and no lines between them.
+  - **Layout:** rows sit 2–4px apart with no box and no lines between them. That gap is between the fills, not the hit boxes: see [surfaces](../surfaces.md) → Contiguous Rows.
   - **States:** hover is ground + 1 and selected is ground + 2, with no stroke.
   - **Marks:** the mark sits at the far right. Single choice uses circles and multiple choice uses squares, so the checkbox is the radio made square.
   - **"Other"** comes last. Picking it opens and focuses an inline field.
@@ -124,10 +124,10 @@ Deep file for [../tactile-design.md](../tactile-design.md). These are the defaul
 - **Trigger:** the secondary button with a chevron that turns over (180°) while the menu is open.
 - **Shadow:** the menu has the button's ring and 1px drop plus one short drop, and no big soft blur.
 - **Motion:** it grows from the trigger, `scale(.97)` to 1 with a fade, over 150ms in and 120ms out, with the transform origin at the trigger.
-- **Items:** button height (taller in long lists and phone sheets), 2px apart, at control radius. Highlight (pointer or keys share one state) is ground + 1; chosen is ground + 2 in full ink, with **no tick**. A tick needs a reserved column that pushes every label right, and a fill already says "chosen".
+- **Items:** button height (taller in long lists and phone sheets), 2px apart, at control radius. The 2px is drawn inside flush rows (an inset fill), not made with margin, so the highlight never drops out between items ([surfaces](../surfaces.md) → Contiguous Rows; our addition, not Kosta's). Highlight (pointer or keys share one state) is ground + 1; chosen is ground + 2 in full ink, with **no tick**. A tick needs a reserved column that pushes every label right, and a fill already says "chosen".
 - **A destructive item** uses red text with a red tint on hover.
 - **A multi-select menu** ends with a primary Apply, faint until there is something to apply.
-- **One dropdown component everywhere.**
+- **One dropdown component everywhere.** Its width comes from its widest item, with a floor and a ceiling: [component-details](../component-details.md) → Dropdown menus (our pointer, not Kosta's).
 
 ## Badges, key chips, status dots
 

@@ -531,6 +531,18 @@ Ticket-driven intake of Kosta's tactile-design agent skill (MIT, `30495a2`) and 
 - **Conflicts:** recorded as scoped schools (dark-mode lit edges, press scale, button colour, disabled buttons and error placement, type weight).
 - **Descriptions:** `design-craft` gained plain triggers on 2026-11-12, verified by blind routing probes V16–V18.
 
+## 2026-11-14 — design.how skills (arla6ka/design.how, Arlan Marat)
+
+Ticket-driven intake of the seven skills under `skills/` (MIT, `148b94c`). Full manifest, fold map, conflicts and parked items: `docs/design-how-source-mining-2026-11.md`.
+
+- **Density:** HIGH for build-design-system, migrate-design-system, token-mapping, component-docs and the boss router; HIGH but overlapping for ui-review and the trap list; make-font is high but bound to unreviewed scripts.
+- **New skills:** `make-font` (cross-domain tool; twelve upstream scripts vendored after a security read, then changed in every file after five QA passes and a line-by-line hardening pass on 2026-11-18: it is a maintained fork, see `make-font/references/sources.md`). The design-system suite added no skill; its router became a table in `design-systems` SKILL.md.
+- **New references:** `design-systems` (system-from-shipped-ui, token-mapping, component-docs, migration); `interface-review` (behaviour-traps).
+- **Extended:** `design-systems` (SKILL.md, sources, coverage-gaps), `interface-review` (SKILL.md, sources, coverage-gaps), `working-with-ai` (agentic-coding: running many agents on one repo, correction pass), `creating-skills` (measuring-skill-effect: suite hygiene), `web-design` (web-typography → choosing-and-pairing: fitting an open-licence base).
+- **Descriptions:** `design-systems` changed and `make-font` is new; blind routing probes V19–V24 pass.
+- **Not read:** the ten design-system scripts, `systems/` (four design systems) and `vault/` (visual effects). None of those vendored.
+- **Parked:** the design-system scripts, `systems/` and `vault/` as future candidates, the no-persona reviewer panel, and the single-source numbers.
+
 ## 2026-11-17 — Luke Wroblewski, "why designers still have jobs." (X 2122727731389685951)
 
 Ticket-driven fold: instruct agents that less is more, starting with no supporting copy and then adding a little.
@@ -543,6 +555,340 @@ Ticket-driven fold: instruct agents that less is more, starting with no supporti
 - **Synthesis flagged as ours:** the staged procedure, the one-line budget, the exceptions, and the reason models over-explain. Wroblewski supplied the exhibit and the 75% prompt only.
 - **Parked:** single source. Recorded in `frontend-design/references/coverage-gaps.md` with what would promote it: a with/without comparison on the same briefs, a second source, and a container word-count detector. No eval case was added.
 
+## 2026-11-18 — Interfere: Landmines lint rules and agent plugin (X 2122782710414336458)
+
+Ticket-driven fold: fold in Interfere's skills as needed. Full manifest and fold map: `docs/interfere-source-mining-2026-11.md`.
+
+- **Manifest:** Luke Shiels's announcement post (text read; attached video and replies not read), `interfere-inc/landmines` at `92084b1` (README, config, rule messages, allowlist logic), `interfere-inc/plugins` at `f3c066f` (both skills and READMEs), `interfere-inc/docs` AGENTS.md. Other org repos were scanned by filename and skipped.
+- **Density:** HIGH for Landmines, MEDIUM for the plugin, LOW for the docs AGENTS.md.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Extended:** `working-with-ai` (agentic-coding: new "Lint the evasions" section, constraint-stack item 4, the merge-without-human-read rule, a checklist line; router bullet; sources; coverage gaps) and `devtools` (devtool-interface-design: vendor agent plugin worked example in the AX file, AX summary bullet, a checklist line; sources; coverage gaps).
+- **Skipped:** vendoring the two Interfere skills (bound to their MCP server), the house-style lint rules, any fold into `rails` testing references (Vitest-specific), `superconductor` (rule already present).
+- **Parked:** both folds are single-vendor. Promotion conditions are in each skill's coverage-gaps file. `dmmulroy/anti-slop`, linked from the Landmines README, was not read.
+- **Second pass (same day):** read `dmmulroy/anti-slop` at `13909c9` and the rejected/allowed case lists in Landmines' `no-test-doubles.test.ts`. Added a type-silencing row, three design moves (chase aliases, define the allowed side, own the rules), and the comment-policy disagreement to the agentic-coding section. The section's core now has two independent sources.
+- **Third pass (same day, user asked for more from Interfere):** read the CLI, MCP, and AI Agents docs pages and the CLI's `skill_emitter.rs`. Extended the devtools AX worked example (read-only endpoint, machine CLI surface, spec-generated skills, limits with remedies) and constraint-stack item 6 in agentic-coding (vocabulary mapping in AGENTS.md).
+
+## 2026-11-18 — Pratik (@maybepratikk), menu hover dead zones (X 2122963896042713492)
+
+Ticket-driven question: where should small UI implementation details like this live?
+
+- **Manifest:** the post text (read, via `api.fxtwitter.com` and `cdn.syndication.twimg.com`) and its 12.4s video (the 1440×1080 MP4 from `video.twimg.com`, sampled with ffmpeg at 2 fps into a contact sheet plus two full-size crops, read). The video toggles one context menu between "Margin" (hatched bands labelled "4px dead zone", "Nothing hovered") and "Inset" ("No dead zone", "Copy link hovered"). Replies (4) were not read: the public JSON endpoints do not return them.
+- **Density:** HIGH for one lesson. Single source, but the claim is DOM hit-testing behaviour that anyone can reproduce, so it was folded as a rule and not parked.
+- **Placement answer:** a detail like this goes in the reference that owns its *mechanism*, as a subsection beside its nearest existing rule, with one-line pointers from the places an agent would be reading when the symptom or the component comes up. Here the mechanism is hit-area geometry, so the owner is `design-craft` (surfaces) → Minimum Hit Area, next to the collision rule it mirrors (never overlap, never gap). It is not a new skill, a new reference, or a SKILL.md body line.
+- **Owner:** `design-craft` (surfaces), new subsection "Contiguous Rows: No Dead Zones" with bad/good CSS, a Tailwind line, the padded-wrapper variant, focus-ring placement, a `background-clip` alternative, a check, and where a gap is correct.
+- **Pointers:** `design-craft` polish-principles (#16, common-mistakes row, checklist line), linear-product-craft (Interaction Details), tactile-design/controls (menu items and choice rows say "2px apart"; reconciled as a gap between fills, not hit boxes), and `web-design` (web-animation-design PRACTICAL-TIPS → Fix Hover Flicker, which covers a different cause).
+- **Synthesis flagged as ours:** the padding variant, the focus-ring note, the `background-clip` alternative, the DevTools check, and the exceptions. The source supplied the diagnosis and `::before { inset: 2px 0 }`.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+
+### Follow-up the same day — Kevin Dukkon (@keviduk), kevdu.co/reads
+
+A second snippet on the same ticket (X 2117975138541146303), then the author's site at the user's request.
+
+- **Manifest:**
+  - X post: text (read, via `api.fxtwitter.com`), 15.2s video (1440×1080 MP4, sampled with ffmpeg at 1.6 fps into a contact sheet, read), one still (read). Replies (8) not read.
+  - https://www.kevdu.co/reads/sizing-dropdown-menus (4 Nov 2026): fetched with curl, text extracted from the HTML, read in full. Interactive demos were not run; their captions were read.
+  - https://www.kevdu.co/reads/tooltip-delay (6 Nov 2026): same method, read in full.
+  - https://www.kevdu.co/reads index: read. *Spacing navigation* and *Designing interface icons* are "Coming soon".
+  - The articles' cited sources (APG, WCAG, NN/g, HIG, Fluent 2, Material, Primer, shadcn/ui, Radix, Base UI, MUI, React Aria, Microsoft Learn) were not re-read; the two comparison tables are recorded as Dukkon's readings.
+- **Density:** HIGH for both articles: each gives one measured default, its bounds, the reason, a comparison across design systems, and code.
+- **Owner:** new reference `design-craft` (component-details), organized by component: Dropdown menus (width, rows, keyboard, system table) and Tooltips (timing, when not to wait, closing, content, system table). The dropdown-width rule was first folded into `web-design` (web-layout-design) from the post alone; once the article supplied rows, keys and a second component, it moved here and web-layout-design keeps a one-paragraph pointer.
+- **Placement rule, refined:** a rule about one mechanism that applies to many components stays with the mechanism (the dead-zone rule stays in surfaces → Minimum Hit Area). A complete, measured answer for one component goes in component-details, which points to the mechanism rules it depends on.
+- **Registered in:** `design-craft/SKILL.md` reference table and the polish-principles quick-reference table. Pointers from surfaces (Contiguous Rows), worst-case-data (failure table), tactile-design controls and tokens-and-surfaces, emil-kowalski/css-techniques (Tooltips), and `web-design` (web-layout-design; web-animation-design PRACTICAL-TIPS).
+- **Conflicts, kept as scoped schools:** first-tooltip delay is 400ms here, 400–700ms in Emil Kowalski's notes (compatible), and zero for icon-only names in the tactile theme (theme wins inside that theme). Menu row height is 32px here and 36px in the tactile theme.
+- **Synthesis flagged as ours:** `min-width: 0` on the label, trailing columns, the trigger-width floor for selects, the viewport cap.
+- **New skills:** none. The `design-craft` description was not changed, so no routing probes were run.
+- **Recheck:** kevdu.co/reads for the two unpublished reads.
+
+## 2026-11-18 — Kevin Dukkon, *How to design empty states* (kevdu.co/reads/empty-states)
+
+Ticket-driven: "We already have empty state design in our skills right? This one specifically too?" Answer: yes. `user-onboarding` (empty-states) held Hulick's first-run method plus Impeccable's five-cause table. It did not have this read, which was published 2026-11-18 (the same day as the earlier kevdu.co entry above, but after it).
+
+- **Manifest:** the article, fetched with curl and text extracted from the HTML, read in full. The six interactive demos (seven styles, before/after, page/card/inline, missing/zero, done/no access, no results/hidden by filter) are drawn client-side. The first pass read only their captions, and the user flagged the missing visual examples. Second pass: every tab of each demo was rendered with headless Chromium (Playwright), screenshotted and inspected. The DOM and CSS were read for each style's size, construction, colour tokens and motion. Screenshots were kept out of the repo. The reads index was rechecked: *Spacing navigation* and *Designing interface icons* are still "Coming soon". The cited sources (NN/g, Primer, PatternFly, SAP Fiori, GitLab Pajamas, Atlassian, Carbon, Datawrapper, Grafana) were not re-read; the size table is recorded as Dukkon's reading.
+- **Density:** HIGH. The library had causes and first-run copy but nothing on the component: visual style consistency, container sizes, keeping the frame, one action or none, loading/error sequencing, missing vs zero on charts.
+- **Fold map (extend only, by use):**
+  - Component → `design-craft` (component-details), new "Empty states" section: seven styles table and one-style rule, keep the visual small, page/card/inline sizes with the design-system table, keep the frame, missing is not zero, one action or none, no results and hidden by filter, loading and failure are not empty. Registered in the `design-craft` SKILL.md reference row and the polish-principles quick-reference row.
+  - Causes and copy → `user-onboarding` (empty-states): "Write it short" section; the cause table gains "All done" and "No data in range" rows, an example title → action column, and a note that loading is not a cause.
+  - Charts → `data-viz` (editorial-interaction → Product Dashboard Conventions): one "Missing is not zero" bullet.
+  - Pointers: `design-craft` refactoring-ui (empty-state bullet) and worst-case-data (Related).
+  - Visual examples → `design-craft` (component-details → What each style looks like): an anatomy table with measured sizes, shared type/spacing, the one-accent rule, "swap the glyph, not the style", and motion. Plus a code-native gallery, `design-craft/examples/empty-states-gallery.html`: the seven styles, Preview reused across five causes, page/card/inline sizes via a container query, missing vs zero, and before/after. It is original markup and drawings built from the measurements, following the Refactoring UI gallery precedent (no source screenshots or code committed).
+- **Conflicts, kept as scoped schools:** Hulick's long benefit copy against Dukkon's five-word title and one sentence. Hulick applies to first-use full pages, Dukkon everywhere else. Both rule out blame and "No data". Refactoring UI's "add a clear illustration" is narrowed to first-use full pages. Its "hide dead supporting controls" is reconciled with "keep the frame": keep the structure that says where you are, and hide controls that have nothing to act on. "Don't use dummy data" is reconciled with Dukkon's Preview style: a faint shape is fine, believable fake content is not. On what to show while loading, polish-principles §17 (preload, then a matching skeleton) stays the owner.
+- **Synthesis flagged as ours:** preferring a check or arrow badge mark over a "0" count, the container-query implementation, the explicit `loading | error | empty | ready` status in place of `items.length === 0`, and the keep-frame/hide-controls reconciliation.
+- **Apple follow-up (same ticket):** asked whether the Apple skills cover empty states and whether they link to the general rules. They did cover it, but in separate pieces with no links to the general rules: `apple-design` (apple-search-design: no-results view, echo the query, from a talk), `uikit` (uikit-lists: `UIContentUnavailableConfiguration` `.loading()`/`.empty()`/`.search()`), `swiftui` (swiftui-lazy-stacks: `ContentUnavailableView` higher up), and a Liquid Glass case study (empty-state delight). No HIG page exists, but **Writing** has the guideline "Provide clear next steps on any blank screens", including "don't show crucial information that could then disappear". A QA pass found it after the first sweep missed it. It is now cited in component-details (On Apple platforms), user-onboarding (empty-states) and apple-design coverage-gaps. Checked via the Markdown endpoint: writing, loading, onboarding, lists-and-tables, collections, searching, launching, charts. The `ContentUnavailableView` and `UIContentUnavailableConfiguration` API docs were fetched to confirm availability (iOS 17+) and the built-ins. Fold: a new "On Apple platforms" subsection in `design-craft` (component-details → Empty states). It explicitly composes the generic rules with the system component, which is allowed under the platform-separation rule because the subsection is scoped to Apple. Also one-line pointers back from apple-search-design (Relationship), uikit-lists (Empty and loading states, plus a guard against `.empty()` before the first load), swiftui-lazy-stacks and `user-onboarding` (empty-states), and a "no HIG page" note in `apple-design` coverage-gaps. Synthesis flagged as ours: the flash trap in Apple's own `.search` sample, and the long-query rule for search titles (the quoted query is exempt from the five-word cap; truncate it or move it to the line).
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Recheck:** kevdu.co/reads for *Spacing navigation* and *Designing interface icons*.
+
+## 2026-11-18 — Gustavo Fior, *Craft* (craft.gustavofior.com) — delta sweep, four new pages
+
+Ticket-driven: "maybe useful to add to our existing craft skill?" The site was already folded on 2026-09-18 (entry above), so this pass covers only what changed.
+
+- **Manifest:** site index `/` (read; 11 concept links live, 23 marked "Soon"), `/goats` and `/resources` (re-read, link lists only), repo `gustavo-fior/craft` cloned at `586e23b` (2026-10-14): `content/**/*.mdx` for the 11 live concepts read in full, the companion `skills/craft-design-engineering/SKILL.md` read, its four generated references not read separately because the build script generates them from the same `.mdx`. The 23 unreleased `.mdx` files were not mined: the index says "the articles in the repo that are not out yet are AI placeholders." The repo's own `AGENTS.md` / `CLAUDE.md` were not followed. Outbound links were not re-fetched, except shadcn/ui's scroll-fade page, which is client-rendered and yielded no text.
+- **Delta:** four pages published 2026-10-14: Button Press, Interruptibility, Font Smoothing, Scroll Fades. The seven earlier pages were spot-checked: six quotes the library already carries still verify against the current `.mdx`. All 24 new quotes verified with `verify_quotes.py`.
+- **Density:** MEDIUM. Interruptibility and Button Press mostly restate Krehel and Kowalski rules the library holds, with better mental models and a few failure cases. Scroll Fades is new to the library. Font Smoothing argues the opposite default from ours.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Fold map (extend only):**
+  - **Button Press** → `design-craft` animations, Scale on Press: second source for the `0.97`–`0.98` restrained alternate (house `0.96` unchanged), new Tuning and Platform Details subsection (invisible-feedback test, 100–150ms, larger surfaces shrink less, disabled does not press, iOS tap highlight and `:active` listener, reduced motion); the existing CSS and Tailwind examples now guard `:disabled`; polish-principles §12, one Common Mistakes row, checklist.
+  - **Interruptibility** → `design-craft` animations, Interruptible Animations: four subsections (A Recording vs. a Destination, Never Gate Input on an Animation, Transition or Spring, When Siblings Join); polish-principles §4, two Common Mistakes rows, checklist. Agrees with `web-design` gestures' release-behaviour table; cross-referenced, not duplicated.
+  - **Font Smoothing** → `design-craft` typography: attached to the existing root-application school note (dark mode as trigger, thin-weight risk at 300 and below, `subpixel-antialiased` opt-out, Firefox 128), plus a Platform scope and review subsection (macOS only; a Windows or Linux screenshot proves nothing); polish-principles §8.
+  - **Scroll Fades** → `design-craft` surfaces: NEW section (mask not overlay, fade only the scrollable edge, compact `@property` + scroll-timeline recipe with its traps, horizontal rows; the source's always-on `@supports not` fallback was deliberately not imported after QA showed it fading non-overflowing lists, so unsupported browsers get no fade); `design-craft/SKILL.md` and polish-principles routing rows; worst-case-data fix-table link; one bullet in `web-design` (web-layout-design → Discoverable overflow).
+- **Conflicts, kept as scoped schools:** (1) Fior applies `antialiased` on `body`; the library's default stays scoped to light-on-dark and display type. (2) Fior hides the scrollbar on horizontal chip rows; `web-design` requires overflow to stay operable, so the fold limits that to short rows that still scroll by keyboard and touch.
+- **Source defects noted, not imported:** in `interruptibility.mdx` and `font-smoothing.mdx` some CSS comments are mangled to `/_ … _/`; the scroll-fades page says a visible scrollbar can be saved by masking an inner wrapper, which would move the fade with the content.
+- **Verification:** the scroll-fade and press CSS were run in Chromium and Firefox during QA. Still unverified: the inner-wrapper scrollbar variant, the single-source iOS `:active` listener claim, and font smoothing on a Mac. These are in `design-craft/references/coverage-gaps.md`.
+- **Parked:** the 23 "Soon" concepts (OKLCH, shadows-not-borders, hit areas, clip-path, squircles, easings, stagger, exits, sound, charts and the five craft essays). Re-check the index; fold each when its page goes live.
+
+## 2026-11-18 — Dmytro, "4 css rules that make safari 35x faster" (X 2122725141285364024)
+
+Ticket-driven fold: keep the Base UI Scroll Area Safari workaround in the skills until it is fixed upstream.
+
+- **Manifest:** the X article 2122725135098814464 (text and six images read through `api.fxtwitter.com` and `pbs.twimg.com`; the embedded video was not watched), the linked agent prompt gist `pqoqubbw/a5d168f571d0283269f2987a7de3728f` (read), Base UI `ScrollAreaViewport.tsx` on `master` (read, confirms the `platform.engine.webkit` skip), the Base UI Scroll Area docs page (read). WebKit bug 325900: title and status read (NEW, "Explicit `inherit` of a non-inherited registered custom property resolves to a stale or sibling value"); comments not read. The four replies were not read.
+- **Density:** HIGH for one narrow workaround.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Owner:** `web-design` (web-performance), new section "Custom properties written per frame" holding the general rule and the dated Base UI workaround, plus a checklist line and a Contents block. The older Vaul line in Planning rules now points to it.
+- **Extended:** `web-design` (web-animation-design/animation-performance: one symptom row; sources; coverage gaps) and `frontend-design` (ui-library-picks: a Base UI trap pointer; sources).
+- **Synthesis flagged as ours:** the general per-frame rule (already supported locally by the Vaul bug and Motion's tier list) and the note that the registered property kills the docs' SSR `var()` fallback before hydration. The second follows from the gist's step 5 and the docs, and was not tested.
+- **Not done:** no Safari test here. The 106 ms and 3 ms figures are the author's.
+- **Removal:** conditions are in `web-design/references/coverage-gaps.md`. `motion/performance-audit` already teaches `inherits: false` and was left alone (vendored).
+- **Second pass (same day, user asked what else Base UI teaches):** read the Base UI docs at 1.9.0 through `llms.txt`: quick start, accessibility, community, six handbook pages, 37 component and 4 utility pages (prose and usage guidelines; demo code and API tables scanned by keyword), and release notes 1.0.0 to 1.9.0 for breaking changes. shadcn's changelog was checked for the Base UI default.
+  - **Folded:** `frontend-design` (ui-library-picks: the Scroll Area note became four "Base UI traps" tables covering setup, part choice, composition, and open/close animation; shadcn note corrected; `llms.txt` in Look it up; sources; coverage gaps), `motion` (best-practices/base-ui: one dated library note, vendored text untouched), `web-design` (web-accessibility §4: hover-revealed popups and loading-button focus, plus a checklist line; mobile-web-native-feel: iOS 26 backdrop row; sources; coverage gaps).
+  - **Conflict recorded:** the vendored Motion kit says any of `opacity`, `transform`, `filter`, `clipPath` keeps a Base UI popup mounted; Base UI's handbook says Motion animations are detected when they include `opacity`. The note follows Base UI.
+  - **Skipped (docs cover it, link out):** styling hooks, TypeScript namespaces, the forms API, per-component props, CSS variables and data attributes. Release notes held three breaking changes after 1.0 (Drawer and OTP Field leaving preview, `sanitizeValue` renamed `normalizeValue`); none earned a row.
+  - **Not done:** nothing was run in a project or on a device. The iOS 26 backdrop fix is Base UI's guidance only.
+- **Review corrections (same day):** retirement is now tied to the installed Base UI version registering the properties in WebKit, not to the WebKit bug closing; the `var()` fallback claim is limited to registrations with an initial value; the hydration row notes that Base UI's published mask is `none` before hydration either way; the tooltip `aria-label` rule is scoped to triggers without an accessible name (WCAG 2.5.3); the CSP row says `disableStyleElements` needs the scrollbar-hiding rules supplied externally; shadcn's Base UI default is dated July 2026. A review fixture in Playwright WebKit reproduced the workaround's behavior on Base UI 1.9.0; Safari frame timing and the iOS 26 backdrop remain unverified.
+
+## 2026-11-18 — Pasquale Vitiello, *Plotter* (plotter.pasqualevitiello.com)
+
+Ticket-driven: "Lets add these cool skills … probably should fold them into empty state design or something!" Plotter is one installable skill (drawing and animation workflows behind one entry point), not several. It was folded as source material under the External Skill Intake rules, not vendored.
+
+- **Manifest:** site home page (fetched, summary only; the catalogue, grammar and docs pages were read from the repo instead, which holds their sources). Repo `pasqualevitiello/plotter` cloned at `01df092` (2026-11-15), MIT. Read in full: `skills/plotter/SKILL.md`, `README.md`, `NOTICE.md`, and references `direction`, `visual-grammar`, `drawing`, `drafting-standard`, `motion`, `motion-examples`, `approved-references`; `scripts/check.py`; `evals/README.md` and the brief texts; repo `README.md` (first half), `AGENTS.md`, `ATTRIBUTION.md`; site docs `drawing.md` and `customization.md`. Read in part: `catalogue/index.md` (header, Geometry, Empty states rows), `standards-background.md`, `verification-prompt.md` (steps 1–3), `content-state-studies.tsx` and `blueprint-drawing.tsx` (how the site builds compact versions). Rendered and looked at: catalogue drawings EMP-06 and EMP-08 (cairosvg, so without Cal Sans). Not read: `foundation.md` and the helper modules, `export-svg.py`, `render.py`, `build-standard.py`, site docs `animation.md` and `installation.md`, the three HTML motion examples (not played), the other ~100 catalogue SVGs, the website components, and the eval attachment `upload-card.svg`. The repo's own `AGENTS.md` was read as a source and not followed.
+- **Density:** HIGH for one narrow task shape (explanatory line illustration). The library had seven empty-state styles and nothing on how to draw the Illustration one.
+- **Why not a new top-level skill or a vendored copy:** single source, and the package is 1.4 MB of drawings, scripts and a font. The reference carries the decisions and tells agents how to install the upstream package when they need its catalogue and checker. Revisit if the user wants `/plotter` available from this repo; the `motion` kit is the vendoring precedent.
+- **Fold map (by use):**
+  - Method → `design-craft` (construction-drawings), NEW reference: three deciding rules, numbers table, marks table, workflow, compact-version derivation, empty-state cause → relationship table, faults, animation, upstream install pointer, scoped conflicts. Registered in the `design-craft` SKILL.md reference table and README row.
+  - Empty states → `design-craft` (component-details): pointer in the seven-styles table and a "draw the cause, not the icon" paragraph. `user-onboarding` (empty-states): one pointer under the cause table.
+  - Example → `design-craft/examples/construction-drawing-empty-state.html`: one original drawing (no data in range), full and compact, placed in the page and card sizes, plus a don't. Generated from named parameters; no upstream drawing or code is included.
+  - Skill authoring → `creating-skills` (measuring-skill-effect → Cold-run briefs for a visual skill): clean-install runs outside the checkout, brief groups, the counter-case brief, planted-fault critique, faults-from-real-output list, one numeric source generating prose tables, script only what a render cannot show.
+  - Pointers: `frontend-design` (anti-slop-catalog, illustration row) and `web-design` (web-animation-design/choreography → Reduced motion).
+- **Conflicts, kept as scoped schools:** Plotter's no-pictogram rule against Dukkon's "swap the glyph" (glyph styles keep their glyphs; the rule applies once a drawn illustration is chosen). Plotter is flat; Dukkon's demo illustration is isometric with a shadow (two themes for one slot). Plotter's site loops have no controls; WCAG 2.2.2 and choreography's attention-loop rule still apply. Plotter's empty-state drawings label zero counts ("0 matches", "0 unread"); the library's zero-count rule wins.
+- **Synthesis flagged as ours:** the cause → relationship table (a reading of the EMP catalogue rows against the library's cause table), the zero-count label rule, the WCAG loop note.
+- **Verification:** the example's two SVGs passed upstream `check.py` (full, and `--compact`). The example page was rendered in headless Chromium at 1200px in light and dark and inspected. The page was rendered again at 320px after the QA corrections. Not done: no drawing was produced by a fresh agent using only the new reference, and the motion guidance was not exercised.
+- **New skills:** none. **Description edit:** `design-craft` gained the trigger `blueprint illustration` (446 characters). Probes B34–B36 were added to `docs/description-boundary-routing-probes-2026-11.md` and both fixtures were re-run with two fresh blind judges: 18/18 and 36/36 each (recorded in `docs/skill-effectiveness-audit-2026-11.md`).
+- **QA corrections (same day):** the example now shows the full drawing at native size in a scrolling panel and keeps the compact drawing visible at a 320px viewport (the container threshold moved from 300px to 240px); its action is a static specimen, not a focusable no-op button. The loop-control note now states WCAG 2.2.2 correctly: autoplay ends within five seconds in total or gets a pause, stop or hide control; playing once is not enough if it runs longer.
+- **Parked:** role-token theming (`data-plotter-role`, CSS variables), the arrow/dimension/hatch helpers, the full verification prompt and the ISO/IEC/HABS background. They are implementation of the upstream package; link out.
+- **Recheck:** the repo for a changed standard (numbers live in `skills/plotter/assets/foundation/standard.json`) and for new catalogue families.
+
+## 2026-11-18 — Nucleo, *SVG Patterns* (nucleoapp.com/svg-patterns)
+
+Ticket-driven evaluation: is the tool useful for patterns and textures, and can we learn to generate them?
+
+- **Manifest:** the page HTML (fetched with curl; 179 48px tile SVGs, 32 family names from the input ids, How It Works, FAQ, and usage terms all read) and `js/main.js?v=15` (read: `svgToCssUrl`, `generateSvgCode`, layer order and opacity defaults). `js/theme.js` and `Sortable.min.js` were not read because they are UI plumbing. No other pages were read, including the linked icon store.
+- **Density:** MEDIUM. The tool works as a picker, and its tile markup teaches the construction method. It has no design guidance.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Owner:** `frontend-design` (visual-execution), new section "Repeating SVG patterns" covering the gate, the picker with its terms, and seven tile rules. The `visual-execution` bullet in the parent `SKILL.md` names it. The `codex-grid-background` row in anti-slop-catalog points to it.
+- **New script:** `frontend-design/scripts/svg_pattern.py` (stdlib only) generates seamless layered tiles (grid, lines, dashed and dotted lines, diagonals, dots, staggered dots, crosses, x marks, checker) as SVG, a CSS data URI, or a CSS mask. It refuses periods that don't divide the tile.
+- **Read from the source:** shared 48px tile with divisor periods; edge lines drawn on one side only (`x=47.5`); 1px strokes on half pixels and fills on whole pixels; clipPath plus wrapped copies for marks that cross an edge; `currentColor` replaced with a hex at export; default layer opacity 0.15 on `#fafafa`; the `x-grid-pixel` family hard-codes `#0E0E0E`, so the color control skips it (from the code path, not clicked in the UI).
+- **Synthesis flagged as ours:** the gate (tie a pattern to the subject's world, in line with the existing anti-slop row), mask-image theming, the `%23` encoding trap, and the inline clipPath id collision.
+- **Skipped:** copying any tile, because the terms forbid redistribution and competing libraries.
+- **Verified:** headless Chromium (Playwright) rendered every kind, an edge-anchored set, a three-layer stack, and the mask in light and dark, with no seams. A 1x pixel read of 1px lines every 24px showed single dark pixels at 23, 47, 71, and 95 with no blur and no doubled seam line. Safari, Firefox, and HiDPI were not checked.
+- **QA corrections (same day):** fractional dashes such as `dash=1,gap=0.5` now render as given. They used to collapse to solid lines, and `0.25/0.25` crashed. `offset` now moves `diag` and `checker`, which both default to 0. Tile size, numbers, and opacity are validated with clean errors, and user-supplied attribute values are escaped. Added `frontend-design/scripts/test_svg_pattern.py` (15 stdlib tests, run in CI). The reference now notes that Nucleo exports an opaque `#fafafa` background unless Background opacity is set to 0%, and that its terms also bar using the tiles in a competing generator.
+## 2026-11-18 — UI FX: libraries.dev (Jakub Antalik) plus effect-library and platform surveys
+
+Ticket-driven: a skill for coming up with extra-creative UI effects, from two X posts (border-beam; distortion waves). Full manifest, fold map, conflicts, parked items and probe results: `docs/ui-fx-source-mining-2026-11.md`.
+
+- **Density:** HIGH for the libraries.dev agent references and vendor skill (placement rules, traps) and for the distortion-waves video (staging); MEDIUM for the survey of other effect libraries; HIGH for platform support and accessibility facts.
+- **New skill:** `ui-fx` (SKILL.md plus references effect-ideation, libraries-dev, effect-libraries, platform-techniques, sources, coverage-gaps; five eval cases, run three times: latest 21/21 with the skill, 10/21 without).
+- **Extended (one-line pointers):** `frontend-design` (SKILL.md, ui-library-picks), `design-craft` (SKILL.md, refinement-moves), `web-design` (SKILL.md, web-animation-design, motion-audit), `creative-coding`, `swiftui` (SKILL.md, swiftui-animation), `ai-experience-design`, `interface-review`. No neighbor description changed.
+- **Posture:** revised the same day at the owner's request to be less cautious: say yes and push further, Explore and Finish modes, hard limits reduced to a short shipping floor.
+- **Conflicts:** anti-slop tells vs requested effects, settled by the catalog's pin rule (invoking `ui-fx` pins effects for the surface); vendor reduced-motion claim vs its own references.
+- **Synthesis flagged as ours:** the gate, moment inventory, seven families, five-beat names, the ladder.
+- **Added the same day:** glimm (glimm.dev, npm 0.4.1, `nomanjack/glimm-skill`) as reference `glimm`: sweep transitions for routes and in-app moments, the work/change model, live-DOM movement through HTML-in-Canvas. Second independent source for the staging anatomy.
+- **Also added the same day:** ittybitty (ittybitty.dev, `blakecyze/ittybitty-shaders`, MIT) as reference `ittybitty`: 74 copy-in WebGL2 shaders indexed by job and by moment, with usage, layers, shape clipping and device-reach cautions.
+- **Later the same day:** an intensity dial for subtle use (from a second border-beam post) and reference `reverse-engineering` for rebuilding effects seen on other sites (from a post listing five kit sites, which were inspected briefly and not folded as dependencies). Three independent reviews and a second pass corrected rule drift across files, about thirty vendor facts, and several accessibility statements; root causes and the ten canonical rules are in the source-mining doc.
+- **Pattern study:** the example components of Arc UI and Bencho (free MIT source read in full), and the public pages of HorizonX, uberdesigner and Grainient, were mined for techniques. New references `control-patterns` and `surface-recipes` carry about forty patterns and recipes with original code; no third-party code was copied, and paid-tier source was not read.
+- **holospot** (`dmitrykurash/holospot`, MIT, v0.1.0): physically based holographic foil, glitter and hologram materials for three.js, as reference `holospot`, with the transferable shader ideas pulled out.
+- **Routing:** X1–X19 19/19 on the latest blind judge; W and B fixtures and the 43-row smoke packet re-run clean.
+- **Parked:** React Native ports, on-device models, Pro content, a reduced-motion lint.
+
+## 2026-11-19 — Derek Briggs (@PixelJanitor), soft-close easing set (X 2123512999810089444) + Dive Club "Scaling craft at Shopify"
+
+Ticket-driven fold: "fold this into the skills", with the attached video as optional context. Second pass the next day, after the user pointed at dive.club, mined the full episode.
+
+- **Manifest:**
+  - The post: text, plus a 32s silent 2560×1440 demo video, read as a 2s-interval contact sheet.
+  - The post it quotes: Ridd (@ridd_design) X 2123484229543854351, text plus a 108s clip, frames read and audio transcribed.
+  - The full episode, Dive Club "Scaling craft at Shopify" (2026-11-03, 51 min, YouTube `r4IW73e6tE4`). YouTube refused captions from this sandbox ("Sign in to confirm you're not a bot") on every player client tried. The audio came from the rss.com podcast feed (found via the iTunes lookup for show 1686414242) and was transcribed locally with faster-whisper `small.en` in 5-minute chunks; a single pass ran out of memory.
+  - `dive.club/deep-dives/derek-briggs`, rendered with headless Chromium because it is a client-rendered Framer page. It is the Jan 2024 Clerk episode (`z4hP80tzBL4`), already mined, and has no easing content. The 2026 episode was not listed on dive.club/episodes when read; it was found on the YouTube channel.
+  - Fetch paths: posts via `api.vxtwitter.com`/`api.fxtwitter.com`, videos via `video.twimg.com`. Replies (4 on each post) were not read because the public endpoints do not return them, so Ridd's 👇 follow-up is unknown.
+- **Density:** HIGH. Roughly ten lessons, across motion, choreography, AI enablement, measurement, and influence. The sponsor reads and the hiring/background chat were skipped.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Fold map:**
+  - `web-design` web-animation-design: the four-curve soft-close table with use column; bounce into free air vs stop soft against hard (layout-shift reason); momentum carry across linked elements; corrected ease-in-out note; reconciled the 300ms duration rule and review flag.
+  - `web-design` choreography: new worked example, the gesture-driven card carousel (Lead settles last, one progress value drives children, mirrored stagger order, ambient canvas, 60fps).
+  - `working-with-ai` ai-enablement: "Deploy taste as files, not people" plus a checklist line. Also reconciled the old "Pi likely a garble" note, since Briggs names Pi beside Claude Code and Codex.
+  - `working-with-ai` agentic-coding: curate AGENTS.md from review and prune as models improve; the living agent profile.
+  - `user-research` validation-and-metrics: "Post-ship agent loops".
+  - `design-org-influence`: "Briggs at Shopify: principal-IC influence" plus one routing line in SKILL.md.
+- **Synthesis flagged as ours:** the measured 95%-arrival, overshoot, and launch-velocity figures; the bezier single-overshoot limit; the end-event trap; `useTransform` as the Motion mapping for the carousel.
+- **Not changed:** `motion` (vendored Motion AI Kit), `design-craft` motion themes (separate themes; the Theme Note forbids mixing). The SVG displacement-map glass and canvas ambient light appear only as one line in the choreography example; no recipe was given.
+- **Recheck:** quotes come from a Whisper transcript, not captions; re-verify against YouTube captions when they can be fetched.
+
+## 2026-11-22 — Nil.Dev (@Nil_phy_dreamer), optical icon centring (X 2124194975571230845)
+
+Ticket-driven fold of a design-engineering tip: "Always center your icons based on the weight and size of the icon. See optical alignment not mathematical alignment."
+
+- **Manifest:**
+  - Post text (read, via `api.vxtwitter.com`).
+  - The 25.2s video: a 3024×2160 MP4 from `video.twimg.com`. Read frame by frame: 1 fps contact sheets for all 25 frames, plus full-resolution crops of the measurement labels (t=6.5s) and the nudge labels (t=12s). It has four beats. "Centred by its box": a dashed box and a red crosshair at `box centre 12.00, 12.00`. "But the eye weighs the shape": a blue weight dot with `weight 11.29, 12.66` / `off by 0.41px left, 0.38px low` for the edit icon and `weight 11.97, 12.29` / `off by 0.17px low` for trash. "Nudge by the weight": `nudge x +0.50 y -0.50 px` and `nudge x 0.00 y -0.25 px`, with an "Optical centring" switch turned on. "Optically centred": the end state.
+  - The quoted post X 2123777217994072186: "If you find 2 issues here in this card design done by opus 5.5 (high)…" and its card image (read). Its replies (2) were not read, because the public JSON endpoints do not return them. So the card's second issue is unconfirmed, and nothing was folded about it.
+- **Density:** HIGH for one lesson. It has a single source, but the claim is measurable, so it was folded as a method and not parked.
+- **Owner:** `design-craft` (surfaces → Optical Alignment), in the new subsection "Measuring the Nudge: Ink Centroid". It holds the worked table, five rules (centre the weight, check each axis, offsets shrink with render size, snap to 0.25px and keep the numbers, review with an overlay and a switch), and the `opticalNudge()` DevTools snippet. Contents line updated.
+- **Reconciled:** polish-principles §2. The "symmetric → geometric is fine" rule of thumb is now per axis, and the 1–2px figure is scoped to ~24px (the demo's 14px icons took 0.25–0.5px). The Single glyphs bullet and the checklist line were updated to match. The surfaces line "smallest stable unit" now allows quarter-pixel translates.
+- **Pointer:** `working-with-ai` (ai-ui-direction), a "Box-centred icons" bullet in the diagnosis list: the quoted post's generated card, with a repair prompt.
+- **Synthesis flagged as ours:** the ~14px render size, inferred from viewBox offset × 14/24 matching all three px figures; the snippet; the 1x-softening caveat; and the Lucide control measurement.
+- **Verified:** headless Chromium (Playwright) ran the snippet on 14px Lucide icons. A circle gave 0 / 0. A filled play triangle gave offX −0.8 → nudgeX 0.75 (right, as the existing rule says). `square-pen` and `trash-2` were within 0.1px of centre, so Lucide pre-balances those two. The demo's icon set is not Lucide.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **Same day, cross-links:** `surfaces.md` Optical Alignment now opens with "See also" pointers to `swiftui` (sf-symbols → Glyph craft: Apple's WWDC 2017 optical-positioning rule) and `design-systems` (icon-systems → Optical adjustments, keylines).
+- **QA fixes (same day):**
+  - `opticalNudge()` takes a `container` and measures against that element's centre, so a misplaced icon box shows up.
+  - SVGs without a viewBox are measured in their own px instead of being mis-scaled.
+  - Sprite `<use>` targets are copied into the sample.
+  - The copy drops `margin` and `transform`, which the box already includes and which shifted the drawing.
+  - It throws when nothing paints instead of returning NaN.
+  - Re-verified in headless Chromium: a box 3px left of its button gives `nudgeX 3`; a `translateX(1px)` gives `offX 1`; a sprite triangle gives 0.75; a circle with no viewBox gives 0.
+  - Size ranges are scoped to the measured icons, and the 2px Play Button Triangles recipe is scoped to ~24px.
+- **Second QA pass (same day):**
+  - `opticalNudge()` now reads the icon where the browser draws it (`getScreenCTM`) instead of re-creating its layout. Positioning, margins, transforms and mirroring are now counted once. Before, `position: relative; left: -3px` read 0.5 instead of 3, and a mirrored triangle got a nudge with the wrong sign.
+  - Paint set by CSS on the `<svg>` itself is now carried into the sample.
+  - The section says the nudge is a change from the current position, to be added to the CSS `translate` property.
+  - New regression check `design-craft/examples/snippet-checks/check-optical-nudge.mjs` (same pattern as `ui-fx` snippet-checks) extracts the snippet from `surfaces.md` and checks nine cases, each measured, nudged and measured again. It passes 19/19 on the new snippet and fails 14/19 on the previous one.
+  - The `working-with-ai` line now credits the box-centring measurement to the follow-up demo, not the quoted screenshot, and calls 0.17–0.41px per-axis offsets.
+- **Third QA pass (same day): replaced the DevTools snippet with a script that measures rendered pixels.**
+  - **Why.** All three QA rounds found the same kind of bug. The snippet redrew a copy of the SVG off-page and then guessed how that copy mapped back onto the page. Each round found another case the copy got wrong: no viewBox, sprites, margins, mirroring, stylesheet paint on inner shapes, `slice` clipping, a scaled ancestor. Patching case by case would not end that. Page JavaScript can't read screen pixels, so measurement moved to Playwright.
+  - **What replaced it.** `design-craft/scripts/optical-nudge.mjs` screenshots each container with the icon shown and with it hidden. It takes the ink centroid from the pixel difference, and prints the nudge and the `translate` value to keep, with any existing translate composed and ancestor scale divided out. `--apply` sets that value and measures again. The blur test stays as the no-tools method.
+  - **Regression check.** `design-craft/scripts/optical-nudge.test.mjs` passed 28/28. It covers every earlier case plus QA's: stylesheet paint on inner shapes (matches its attribute twin), `slice` clipping, a `scale(2)` ancestor, an existing standalone `translate`, and a known-geometry square that measures 2.000px.
+  - **Re-checked.** The Lucide `square-pen`/`trash-2` claim was measured again with the script.
+  - **Out of scope, documented as limits.** Rotated ancestors, and icons that animate or change on hover.
+  - **Superseded.** `design-craft/examples/snippet-checks/check-optical-nudge.mjs` tested the removed snippet and should be deleted.
+- **Fourth QA pass (same day): the script now observes instead of assuming.**
+  - **Why.** The pixel measurement itself held up. The remaining defects came from the surrounding steps assuming things instead of checking them:
+    - the screenshot was assumed to start where it was requested, but Playwright trims off-screen areas;
+    - an ancestor's scale was computed without its sign;
+    - `translate` was parsed as px only;
+    - images were decoded inside the inspected page.
+  - **Observed instead.**
+    - The capture area is kept inside the viewport.
+    - The CSS-px-to-screen map is found by moving the icon 4px on each axis and solving, which covers scale, mirroring and rotation.
+    - The nudge is added to the existing `translate` as written, keeping `%` and `calc()`.
+    - Screenshots are decoded in a separate blank page, so the inspected page's CSP can't block them.
+    - It refuses when the ink falls outside the icon's box.
+    - Every run measures again with the fix applied, then restores the page unless `--apply`.
+    - The CLI exits 1 on any failure.
+  - **Tests.** 43/43. New cases: origin at (0, 0) (fails on the unclamped version), percentage centring, mirrored and rotated ancestors, a page left untouched without `--apply`, a strict-CSP page through the CLI, and the CLI exit code. Rotated ancestors moved from limits to supported.
+  - **Superseded checker.** `examples/snippet-checks/check-optical-nudge.mjs` now forwards to the new test. It is safe to delete; this session could not delete files.
+- **Fifth QA pass (same day): scope frozen.**
+  - **Fixes.**
+    - The hidden frame now uses `opacity: 0`, restored in `finally`. Before, a descendant with `visibility: visible` kept painting, giving a false 3.5px nudge that still reported centred.
+    - The pointer never enters the page. Before, (0, 0) hovered a top-left button, giving a false 5px nudge that still reported centred.
+    - `translate` is split at top-level spaces, so nested `calc()`/`min()` survive.
+    - The docs now define the ink weight (colour change, not alpha), give the install location, and add the Linux `install-deps` step.
+  - **Why the earlier hover check passed.** Its button was round, so (0, 0) fell outside it. The fixture is square now.
+  - **Proof.** Both new tests fail on the old behaviour. 47/47 pass now.
+  - **Scope.** `surfaces.md` now lists what the script supports, refuses and does not measure. Anything outside that list is out of scope; use the blur test there.
+
+## 2026-11-22 — Sunnie Kapar (@sunniekapar), eased fade + blur (X 2124231120938029373)
+
+Ticket-driven fold of a one-line tip: "adding a slight blur to an eased gradient looks so nice".
+
+- **Manifest:**
+  - Post text (read, via `api.fxtwitter.com` and `cdn.syndication.twimg.com`).
+  - The 4096×4096 image from `pbs.twimg.com` (read whole, plus full-resolution crops of both label areas). It shows one halftone "Shader prototypes / Halftone spectrum" card twice, labelled "eased fade" and "eased fade + blur". With blur, the dots behind the label melt into smooth colour and the top stays crisp.
+  - Replies (2, read via the fxtwitter conversation endpoint): a compliment and a thank-you. Nothing to fold.
+- **Density:** MEDIUM for one lesson. Single source and a visual claim, so it was checked in a render before folding.
+- **Verified:** headless Chromium (Playwright) rendered a 7px CSS halftone card four ways. The measure is the mean neighbouring-pixel difference in the label band, with labels hidden: linear fade 1.57, eased fade 3.36, eased fade + blur with a leading mask 0.32, eased fade + blur reusing the fade's eased curve as its mask 2.29. Top band 11.39 in every case. Blur radius on the leading mask: 2px 0.70, 3px 0.34, 4px 0.31, 8px 0.32. Playwright `clip` screenshots dropped the `backdrop-filter`, so the numbers come from a full-page screenshot.
+- **Owner:** `design-craft` (surfaces → Eased Gradients), new subsection "Fading Over Texture: Add Blur": the quote, the numbers, a CSS layer recipe, and five rules (the blur leads the fade, radius about half the texture pitch, same box as the fade, bake it for static art, check from rendered pixels). Contents line updated.
+- **Pointers:** `design-craft` polish-principles (#21 sentence, common-mistakes row, checklist line); `ui-fx` surface-recipes → Progressive blur (one slight layer is enough for a label over texture).
+- **Synthesis flagged as ours:** why easing makes the blur matter more (eased fades leave more texture mid-ramp), the leading mask, the half-pitch radius, and the bake-for-static-art note. The source supplied the pairing and the visual.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+
+## 2026-11-22 — Pritam Paul, *gridlines* (github.com/pritamux/gridlines)
+
+Ticket-driven fold of an external agent skill for alignment passes. The full manifest, probe test runs, fold map and conflicts are in `docs/gridlines-source-mining-2026-11.md`.
+
+- **Density:** HIGH. The source is a single method for one task shape, with a working measurement script.
+- **Owner:** `design-craft`, in the new reference `references/alignment-pass.md`. The probe, runner and MIT license are vendored in `design-craft/scripts/gridlines/`, and the example is `design-craft/examples/gridlines-sidebar.html`. No new top-level skill.
+- **Pointers:** polish-principles, surfaces, component-details, practical-demonstrations, linear-product-craft, `interface-review`, README.
+- **Description:** `design-craft` gained the trigger "edges don't line up". The new routing fixture G1–G10 was run twice by a blind judge on all 83 registered probes: every probe passed, with no regressions.
+- **Parked:** the Saarinen-specific rules (headers on the icon edge, the top bar centred on the window controls) stay single-source until his redraw is found. The probe's nested-row false positive and box-on-text-line false negative are documented and were not patched in the vendored copy.
+- **Skipped:** README media and `npx skills` install steps.
+- **QA (same day):** the reference said the probe "measures ink", but it measures layout boxes (text line boxes and SVG element boxes), so the claim was corrected everywhere it appeared. The new `design-craft/scripts/gridlines.test.mjs` (10/10) pins the documented behaviour and limits so the docs can't drift from the script again.
+- **Second QA (same day):** the test now loads Playwright the same way `audit.mjs` does, so there is a single setup for both. The runner's failure on strict-CSP pages is documented with a workaround, and the test pins both. 12/12 pass.
+- **Third QA (same day):** a narrower icon centred in the icon column is a false leading miss. It is documented and pinned in the test; 13/13 pass.
+
+## 2026-11-22 — gokhan (@gkurttech), *CSS Little-Known* 13–16: scroll snap Parts 1–4 (X)
+
+Ticket-driven fold of three linked posts. The first quotes a fourth, which completes the series.
+
+- **Manifest:**
+  - Post text for 2120770568475599138 (Part 1, alignment), 2121145036125450331 (Part 2, padding and margin), 2121882792477016408 (Part 4, `scroll-snap-stop`) and the quoted 2121562958589239668 (Part 3, strictness). All read via `api.vxtwitter.com`.
+  - Four 1920×1080 screen recordings, 17–28s each, from `video.twimg.com`. Read as frame sheets, one frame every 3–4s. Each shows a "Trips" card row, the `.row`/`.card` CSS and a one-line caption.
+  - Replies: Part 4 has 2, the others 0. Not read.
+- **Density:** MEDIUM. Standard properties, but the strictness and `scroll-snap-stop` use cases are practical decisions the library lacked. Existing coverage was only "use scroll snap" pointers in layout, mobile-native-feel and gestures.
+- **Verified:** headless Chromium (Playwright 1.65), 400px row with 160px cards and a 16px gap.
+  - Type without align: no snap.
+  - `start`, `center` and `end` landed on the expected offsets.
+  - 48px of padding plus 24px of margin rested the card 72px in.
+  - `proximity` snapped a rest 84px from the nearest point.
+  - An oversized item scrolled freely under `mandatory`.
+  - `scrollBy(700)` across `scroll-snap-stop: always` stopped at the first item. `scrollTo` and `scrollIntoView` did not stop.
+  - `scroll-padding-inline-start` offset `scrollIntoView`.
+  - Touch flicks were not reproduced.
+- **Owner:** `web-design` web-layout-design, new section "Scroll snap": a CSS skeleton, a four-row decision table and six traps. The Contents and the `SKILL.md` layout bullet were updated.
+- **Pointers:** mobile-web-native-feel (carousel jitter row), web-animation-design/gestures (build-or-adopt), sources.md.
+- **Synthesis flagged as ours:** logical `-inline-start` properties in place of the demos' `-left`. Also the oversized-item, `scrollBy` and `scrollIntoView` traps, and the "long lists keep `normal`" rule, though the source implies it.
+- **New skills:** none. The router bullet gained trigger terms, but no description changed, so no routing probes were run.
+
+## 2026-11-22 — @gkurttech, "Scroll-driven animations" parts 1–5 (X)
+
+Ticket-driven fold of a five-post CSS tip series.
+
+- **Manifest:**
+  - 2122222357443989782 Part 1 `scroll()`, 2122638812736029133 Part 2 `view()`, 2122947160610115866 Part 3 `animation-range`, 2124074346431799299 Part 4 parallax, 2124450831303090459 Part 5 scroll fade.
+  - Text read through `api.vxtwitter.com`. Each post has a 16–34s 1080p video; all five were downloaded and read as frames every 4s, which is how the code was captured. There were no quoted posts or reply parents. Replies were not read.
+- **Density:** MEDIUM. Clean teaching and correct code, but the mechanism was already in the library. What's new is the `scroll()`/`view()` split, the range-name table, `entry 25% exit 75%` offsets and the parallax recipe. Part 5 corroborates the existing Scroll Fades recipe.
+- **Verified:** Playwright with Chromium 159 and Firefox 159, run in a scratch directory. All post claims hold. The runs also found four traps that the posts do not state, recorded as ours: (1) the `animation` shorthand resets `animation-range`, not just `animation-timeline`; (2) without `both`, a `view()` subject outside a narrowed range shows its un-animated style (`transform: none`); (3) `contain` on a subject taller than the scrollport runs while the subject fills the scrollport; (4) a duration-less shorthand computes to `auto` and works. A non-overflowing `scroll(self)` list keeps both fade lengths at `0px`. Safari was not run.
+- **Owner:** `ui-fx` (platform-techniques → Scroll-driven animation), rewritten: timeline table, range table, an example, traps and a parallax recipe. The overscan rule (the image overflows its frame by the travel) is ours.
+- **Pointers:** `design-craft` (surfaces → Scroll Fades) adds the second-source paragraph and widens the order trap to `animation-range`. `web-design` (web-animation-design) adds a tool-ladder row. Source entries are in `ui-fx` sources and `design-craft` sources.
+- **Synthesis flagged as ours:** the use-it-for column, "`linear`, because easing lags the scroll", and the parallax overscan.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+
+## 2026-11-22 — gokhan (@gkurttech), `sibling-index()` stagger (X 2117575754628128915)
+
+Ticket-driven fold of a one-line CSS tip: "You can implement stagger animations with one line of CSS using sibling-index()", with `animation-delay: calc(sibling-index() * 70ms)`.
+
+- **Manifest:**
+  - Post text (read, via `api.fxtwitter.com`).
+  - The 3.2s demo video, 1280×720 (read as a frame contact sheet made with ffmpeg). It shows six bars that enter at 70–420ms (`sibling-index() × 70ms`) and leave in reverse (`(sibling-count() - sibling-index()) × 70ms`). The captions say "No nth-child rules, no --i on every item" and "Chrome & Edge 138+".
+  - Replies: the conversation endpoint returned none.
+  - MDN `sibling-index()` page: 1-based, Baseline 2026, newly available. MDN browser-compat-data 8.1.10 gives Chrome and Edge 138, Safari and iOS Safari 26.2, and Firefox 154 for both `sibling-index()` and `sibling-count()`.
+- **Density:** MEDIUM. There is one mechanism, and it directly replaces the `:nth-child` and `--i` stagger snippets in four references.
+- **Verified:** in headless Chromium 159 (Playwright), we read the computed `animation-delay` of every formula we published: the tip as posted, zero-based, capped with `min(…, 6)`, reverse, a budget-fitted step through `sibling-count()`, and an eased step through `pow()`. We also checked what the index counts: a heading and a `hidden` sibling take indexes, text nodes do not, and a nested list restarts at 1. Finally we checked that an unparseable declaration drops back to the one before it.
+- **Owner:** `web-design` (web-animation-design → choreography), in a new section, "CSS stagger with sibling-index()". It holds the tip, the version to ship, and six rules: count from 1, the cap and appended items, budget-fitting, eased stagger, reverse order, what it counts, and support with fallback. The Tool choice row and the CSS index-stagger note now point there.
+- **Reconciled:** `ui-fx` control-patterns (the `sibling-index()` mention now subtracts 1 and caps), `design-craft` animations (CSS-Only Stagger) and emil-kowalski/css-techniques (the `:nth-child` ladders) now include the one-line form and a pointer.
+- **Conflict:** the demo staggers the exit in reverse. That goes against choreography's rule that "exits are simultaneous", which `ui-fx` ("Reverse the index for the exit") already broke. We scoped it in choreography Step 5: reverse exits are an effect for demos and showpieces, and product UI keeps exits simultaneous.
+- **Not adopted:** the tip's 70ms step without the `- 1`, and no cap. The sixth item then starts at 420ms, well past the ~300ms product budget.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **QA pass (same day).** QA found two defects. We fixed the class of problem behind each, then each instance.
+  - **Unit mismatch between files.** `ui-fx` told readers to put a time-valued `sibling-index()` expression into `--i`, which its rule then multiplied by 40ms again. ms × ms is invalid, so every delay computed to 0s.
+    - The convention is now the same everywhere: `--i` is a plain number, `--step` holds the time, and only the delay rule multiplies them.
+    - `sibling-index()` supplies `--i` inside `@supports (order: sibling-index())`. In browsers without it the items enter together, and inline `--i` still wins.
+    - The `ui-fx` recipe now carries this line in its checked CSS block, not in prose.
+  - **The budget ignored duration.** The ~300ms product budget is a *finish* time: (items − 1) × step + duration ≤ ~300ms. The first recipe ended at 500ms; the budget-fitting one ended at 550ms, and at 595ms for 60 items.
+    - The choreography recipes now use 30ms steps, a 200ms entrance and a cap of 4. The fit variant reserves the duration.
+    - The budget table and long-list rule now state the arithmetic, along with the ~30ms floor at which to fade the group as one.
+    - The same "~300ms total" wording was made explicit in PRACTICAL-TIPS, the parent troubleshooting table, the motion-audit fix table and `design-craft` emil-kowalski.
+    - The `design-craft` one-liners now reproduce their own ladders, a cap of 3 at 100ms and a cap of 4 at 50ms, not an invented cap of 6. The emil-kowalski one states that its ladder ends at 450ms.
+  - **Tests.**
+    - New `web-design/examples/stagger-check/check.mjs` (20/20) extracts the recipes from the markdown. It checks finish times at five lengths, ordering, the eased gaps, reduced motion, the no-support fallback, and both mistakes above.
+    - `ui-fx` snippet-checks gained the `sibling-index()` index assertion (44/44).
+    - Mutation runs confirm each check fails on the defect QA reported.
 ## 2026-11-18 — Vercel agent skills (X 2122816672625275030; vercel-labs/agent-browser, agent-skills, skills; vercel/next.js)
 
 Ticket-driven: catalog Vercel's published skills and fold the best of them. Full manifest, per-repository catalog with verdicts, fold map, conflicts and parked items: `docs/vercel-skills-source-mining-2026-11.md`.

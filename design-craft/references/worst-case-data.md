@@ -96,7 +96,7 @@ Each of these is visible in a screenshot, and the listed cause is nearly always 
 | Trailing action pushed off-screen | Middle content took all the space | `min-width: 0` on the middle, `flex-shrink: 0` on the action |
 | Badge wraps to two lines | Badge allowed to shrink | `white-space: nowrap; flex-shrink: 0`, then decide what yields instead |
 | Avatar adrift beside a three-line name | `align-items: center` on rows of varying height | Top-align once text can wrap |
-| Last row cut off mid-glyph | Fixed-height container, no scroll affordance | Visible scrollbar or fade mask; confirm the `overflow` is intended |
+| Last row cut off mid-glyph | Fixed-height container, no scroll affordance | Visible scrollbar or fade mask ([surfaces.md](surfaces.md) → Scroll Fades); confirm the `overflow` is intended |
 | Heading breaks mid-word | `word-break: break-all` | `overflow-wrap: anywhere`, which breaks only when it must |
 | Wrong initials (`J`, `CI`, `�`) | `.split(' ')[0][0]`-style code | Grapheme clusters via `Intl.Segmenter`, first + last word, icon fallback |
 | Orphaned dash or blank line for a missing field | Placeholder rendered for an optional value | Omit the line, or reserve its height on purpose |
@@ -104,6 +104,7 @@ Each of these is visible in a screenshot, and the listed cause is nearly always 
 | Numbers jitter or columns misalign | Proportional figures | `font-variant-numeric: tabular-nums` |
 | `1284`, long float tails, `NaN`, `undefined` | Raw number rendered | `Intl.NumberFormat` with the user's locale; guard null |
 | Translated button label overflows | Fixed-width button | Width from content plus `min-width` |
+| Menu has dead space beside short labels, or clips long ones | Fixed-width menu | Width from the widest item, with `min-width` and `max-width` then truncate ([component-details.md](component-details.md) → Dropdown menus) |
 | Diacritics or tall scripts clipped | Tight `line-height` with `overflow: hidden` | Looser `line-height`, or no clipping on text boxes |
 | Broken-image icon in the avatar | No error fallback | Fall back to initials; `object-fit: cover` |
 | Truncated text with no way to read it | Ellipsis and nothing else | The full value in a detail view or expandable row, plus a tooltip that also opens on keyboard focus and touch (`title` alone reaches neither) |
@@ -137,5 +138,5 @@ Close with where the toggle lives and which states it has. Keep the tone matter-
 
 - Reflow thresholds, logical properties, RTL mirroring, and Arabic-script data → `web-design` (web-layout-design). This file supplies the data and the diagnosis table; that one owns the layout rules.
 - Network failures, status-code states, double submission, and interrupted gestures → the Harden move in [refinement-moves.md](refinement-moves.md).
-- Empty-state content and first-run design → `user-onboarding`. Error wording → `ux-writing` (error-messages).
+- Empty-state component (style, sizes, frame, action, not while loading) → [component-details.md](component-details.md) → Empty states. Empty-state causes, copy and first-run design → `user-onboarding`. Error wording → `ux-writing` (error-messages).
 - Redesigning the component, or comparing alternative directions → `design-prototyping`.

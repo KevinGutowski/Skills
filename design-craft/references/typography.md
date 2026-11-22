@@ -104,7 +104,16 @@ html {
 
 Treat this as a theme decision made once and consciously: it trades body-copy legibility (lighter dark-on-light text at small sizes) for uniformity. Adopt it only when the product's type was designed for the lighter rendering — check Principle 8's conditions first. Whichever school you pick, be consistent: per-element smoothing sprinkled inconsistently (a smoothed heading over unsmoothed body of the same color/size) is worse than either.
 
-**Note:** This only affects macOS WebKit/Blink rendering. Other platforms ignore these properties.
+Gustavo Fior's *Craft* (craft.gustavofior.com/font-smoothing) makes the fullest case for this school, recommending the rule on `body`. The two schools agree about light text on dark; they differ only on dark-on-light body copy. What the page adds applies to either:
+
+- **Dark mode is where the problem appears.** macOS thickens the edges of every glyph, and on dark backgrounds that reads as bloom. "Everything looks fine in light mode, then the dark theme arrives and every heading feels half a weight heavier than the design file." When a dark theme ships, revisit smoothing even if light mode never needed it.
+- **Thin weights are the risk.** "From 400 up, the antialiased side just looks cleaner. At 300 the text comes out lighter than you meant, and at 200 the strokes start to fall apart." A light weight may only have been readable on dark because the renderer was fattening it. If body text is 300 or lighter, check it on a 1x (non-Retina) display before smoothing it.
+- **The opt-out is `subpixel-antialiased`.** Once smoothing is global, this value is the only way to exempt a region: `-webkit-font-smoothing: subpixel-antialiased; -moz-osx-font-smoothing: auto;` (Tailwind `subpixel-antialiased`).
+- **The Firefox line is legacy.** Since Firefox 128, Firefox on macOS honours `-webkit-font-smoothing` itself, so `-moz-osx-font-smoothing` only serves older versions. Keep it while those are supported.
+
+### Platform scope and review
+
+Both properties are non-standard and only act on macOS (WebKit, Blink, and Firefox as above). "Windows renders with ClearType and ignores the property, Linux never had it, and iOS Safari does not do subpixel antialiasing at all." So judge this on a Mac. A screenshot from a Linux CI browser or a Windows machine cannot show the change in either direction, and "looks the same" there proves nothing.
 
 ## Tabular Numbers
 

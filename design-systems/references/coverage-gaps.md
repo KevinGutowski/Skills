@@ -20,6 +20,10 @@ Use this file for design-system standards that are plausible but not yet support
 - **Marketplaces:** one named platform (21st.dev) and no outcome data. Kept to a risk list.
 - **Source license mismatch:** vercel/components.build's LICENSE file is Apache-2.0 and its README says MIT (at `0861fbc`). Nothing was copied; recheck if a later fold wants to quote at length.
 
+- **Hands-on run numbers (design.how, single source):** merge tolerances (ΔE OK 2, 2 px, 1 px font size, 30 ms), the 30%-and-12 gap threshold, capture widths 390/1280 and scroller widths 390/768/1280/1920, the eight-surface "small app" cutoff, and the nine-heading doc order all come from one practitioner's migration. Treat them as defaults until a second source or a local run corroborates them.
+- **Upstream scripts unreviewed:** the drift check, guarded capture, pixel diff, legacy ratchet, landing, and parity scripts are linked, not vendored. A line-by-line review is needed before recommending them as installable tooling rather than as a pointer.
+- **No local exemplar of a hands-on run:** there is no accepted before/after report, mapping table, or component entry produced with these references yet.
+
 ## Candidate promotion form
 
 ```markdown

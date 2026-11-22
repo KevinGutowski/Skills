@@ -9,6 +9,7 @@ Sources: Laura Klein, *Build Better Products* (Rosenfeld Media, 2016); Melissa P
 - Lean UX as validation economics
 - Metrics hygiene
 - Decision rules
+- Post-ship agent loops
 
 ## Assumption stacks
 
@@ -77,3 +78,15 @@ Validation is not "learning theater." Write this before launch:
 Klein's no-neutral rule: "If this happens, it is not a neutral result. If this happens, the experiment is a failure." Opportunity cost still counts; ambiguous experiments consumed time that could have tested a sharper assumption.
 
 Perri's MVP definition is the useful one: "the minimum amount of effort to learn." It is not the smallest embarrassing release, not a scope excuse, and not a promise of Version 2.
+
+## Post-ship agent loops
+
+Derek Briggs's practice at Shopify (Dive Club "Scaling craft at Shopify", Nov 2026, ~30:20–36:45) puts the Decision rules table on a schedule an agent runs, so measuring a shipped change does not depend on someone remembering to check.
+
+- **Nothing ships without success data.** "If you're shipping something without any sort of data around its success, I don't understand how you'll be able to know if what you did was the right thing."
+- **Ask the agent what to measure.** If the metric is unclear: "Here's the thing that I did. What should I measure around this to prove that this is successful or not?" Then check its answer against Metrics hygiene above; a proposed metric still needs a baseline, a time component, and a danger metric.
+- **Start small, inside the rules.** First use the telemetry you are already authorized to read. If the one thing you need is not tracked, an agent can build a small temporary tracking experiment for it, rather than waiting on a big instrumentation project. Scope it with engineering and the data owner, who decide where the data is stored and how. Briggs offers this as "maybe instead of having to go get an approval on some big system" and adds that "there might be engineering that needs to be involved".
+- **A daily report with a criticality call.** A scheduled run reads yesterday's interactions, reports the conversion numbers, and says whether something is "not working at all" and needs a change soon, or should be left to bake. The usual answer is bake: "we shouldn't take swings every day"; people react to change at first, so wait for patterns. This is the Decision rules table's "next decision" with a cadence.
+- **The agent proposes, a human reviews and shares.** It can prepare PRs for the small fixes it suggests. He reviews them rather than writing them, and brings the proposals to his growth and product partners, because the changes touch their goals too.
+
+Era note: scheduled agents in an off-the-shelf harness (2026). The durable part is the cadence and the defaults: measure every ship, wait before reacting, and keep a human on the decision.

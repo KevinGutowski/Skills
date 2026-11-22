@@ -13,7 +13,7 @@ Detailed walkthroughs and code for the CSS-level component and animation techniq
 
 ### Tooltips: skip delay on subsequent hovers
 
-Tooltips should delay before appearing to prevent accidental activation. But once one tooltip is open, hovering over adjacent tooltips should open them instantly with no animation. This feels faster without defeating the purpose of the initial delay.
+Tooltips should delay before appearing to prevent accidental activation. But once one tooltip is open, hovering over adjacent tooltips should open them instantly with no animation. This feels faster without defeating the purpose of the initial delay. Delay values, the warm window, and closing: [component-details.md](../component-details.md) → Tooltips.
 
 ```css
 .tooltip {
@@ -234,5 +234,7 @@ When multiple elements enter together, stagger their appearance. Each element an
   }
 }
 ```
+
+Where `sibling-index()` is supported, one rule replaces the `:nth-child` ladder: `animation-delay: calc((min(sibling-index(), 4) - 1) * 50ms)` reproduces the four rules above. It counts from 1, and `min()` holds later items at the fourth step. The budget counts the last item's duration as well as its delay. This ladder's last item ends at 150 + 300 = 450ms, so for a product list, shorten the entrance or stagger fewer items. Recipe with the arithmetic, fallback and checks: `web-design` (web-animation-design → choreography, CSS stagger with sibling-index()).
 
 Keep stagger delays short (30-80ms between items). Long delays make the interface feel slow. Stagger is decorative — never block interaction while stagger animations are playing.

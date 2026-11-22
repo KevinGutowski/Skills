@@ -13,6 +13,7 @@
 - Wording that causes detours
 - Generative skills: when guidance makes output timid
 - Hygiene: don't teach to the test
+- Suite hygiene for sibling skills
 - Versioning and records
 
 ## Set up the arms
@@ -69,11 +70,34 @@ The skill went from 3,928 to 621 words (later 826 after targeted additions) with
 - **Retire a field with its reason.** Told only that a field is deprecated, models preserved it "just in case," so a retired axis kept steering output. State why it is gone and what replaces it.
 - **Behavior tests assert on the tool-call trace, not the prose.** Test that the skill made the agent read X before writing Y, across at least two model families, because the most useful failures show up as divergence between families. Drop below-tier models whose failures are model-floor rather than skill-text defects, or the suite stays red and nobody reads it. Re-run an activation test whenever the description changes.
 
+### Cold-run briefs for a visual skill
+
+*Third source: Plotter (Pasquale Vitiello, MIT, https://github.com/pasqualevitiello/plotter at `01df092`, Nov 2026), its `evals/` folder, skill body and maintainer AGENTS file. One project's practice; no measured numbers.*
+
+- **Run each brief in a fresh session, in a temp folder outside the skill's repo.** A session started inside the checkout reads the repo's own AGENTS file and is no longer a clean install. Test the packaged download, not the working tree.
+- **Give each group of briefs one job.** Plotter's seventeen split into: briefs that describe an existing catalogue item (retrieval), vague briefs where the right move is to stop and offer options, plain-language subjects, a critique of a file with a listed set of planted faults that must be reported and not fixed, and small-size placements.
+- **Include the case where the banned thing is correct.** The skill forbids a magnifier as a sign for "search", so one brief is "Draw a magnifying glass". It catches a rule that has been over-learned.
+- **One run per brief is one sample.** A difference between two runs is not evidence until it repeats. Judge visual output by eye from the same render the agent saw.
+- **List faults the skill has actually produced, in the skill.** Plotter's "faults to catch" section says each item came from a drawing the skill made. This is the incident rule below applied to a body section.
+- **Keep numbers in one file and generate the prose tables from it.** One JSON standard feeds marked blocks in the skill body, the stylesheet and the checker, so the three cannot drift.
+- **Script only what a render cannot show.** The checker covers inherited strokes on text, label size, stroke width and canvas. Composition stays with render-and-look, and the skill requires the report to say so when no render was possible.
+- **Skill files address a stranger's agent.** Maintainer rules (approval records, regeneration steps) stay in the repo's AGENTS file, outside the installed folder.
+
 ## Hygiene: don't teach to the test
 
 - The installed skill names no benchmark, build, round, harness, or measured number; every rule reads as plain guidance. The evidence trail (tags, numbers, run ids per rule) lives in a sources doc *outside* the installed folder.
 - Before each arm, grep the skill for the task's app name, prompt file name, harness labels, and the benchmark's specific counts.
 - A rule added because a benchmark build failed is allowed only if any app of that kind would want it, and the changelog names the run that prompted it.
+
+## Suite hygiene for sibling skills
+
+For a set of skills that hand off to each other (design.how's seven-skill suite, 2026):
+
+- **Trigger fixtures name the neighbor.** Per skill, keep prompts that should fire it and prompts that should not, and give each should-not prompt the skill it goes to instead, or "none". "None" cases matter: the suite should stay quiet on work it does not own.
+- **One glossary, linted.** Define each working word once, list the synonyms to avoid beside it, and have a lint fail when an avoided word creeps back into any skill. A scoped ban ("lead, when it means the coordinator") is beyond a word lint and stays with review.
+- **Incident cases tie a rule to its failure.** Each case records the prompt, the expected behavior, the fails-if condition, and the exact phrase in the skill that states the rule; the lint checks the phrase still exists. Be honest about what that proves: the rule is written down, not that an agent follows it. Behavior still needs the arms above.
+- **Give rules stable IDs** when findings, specs, and lint messages need to cite the same thing.
+- **A rule enters only after it cost a real run,** and each rule says when to apply it, why, where to stop, and what enforces it.
 
 ## Versioning and records
 
