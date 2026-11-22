@@ -403,7 +403,7 @@ Blur bridges visual gaps between states, tricking the eye into seeing smoother t
 - **Scroll reveals are for marketing surfaces and fire once** — an element that re-animates every time it re-enters the viewport is noise.
 
 **Techniques**
-- **The clip-path duplicate-overlay**: duplicate an element, style the duplicate as the "after" state, and animate `clip-path: inset(...)` to reveal it — seamless tab highlights (no color-transition timing problems), theme-change reveals, comparison sliders, and image reveals with zero layout shift; hardware-accelerated.
+- **The clip-path duplicate-overlay**: duplicate an element, style the duplicate as the "after" state, and animate `clip-path: inset(...)` to reveal it — seamless tab highlights (no color-transition timing problems), theme-change reveals, comparison sliders, and image reveals with zero layout shift. `clip-path` animation is not reliably composited across browsers: keep the reveal short and measure it under load ([animation-performance.md](animation-performance.md)).
 - **Desynced idle drift**: barely-visible float (~3s period) on the group + subtle rotate (~4s) on the background — different periods never sync, so the scene feels organic, not mechanical.
 - **Hover-intent debounce (~100ms)** before triggering rich hover animations — short enough to feel responsive, long enough to kill accidental triggers (Apple's Dynamic Island does this).
 - **Two-tap pattern on touch**: `pointer: coarse` devices get tap-once = hover state, tap-again = action; hover and click firing together on touch glitches the choreography.

@@ -13,6 +13,7 @@ The task shape: an AI produced UI and you have to make it *right* — which is a
 - Escape the model's defaults
 - Direct the loop (generate and prompt · prompt vs edit · when words are the wrong tool · evaluate, apply review, and finish)
 - Borrow, codify, and merge techniques
+- Turn corrections into standing rules
 - Checklist
 - Relationship to other skills
 
@@ -78,6 +79,7 @@ Ten numbered moves in working order, grouped by what they are for. The numbers r
 1. **Substrate first** (Ryo): generate onto a constrained base — shadcn/Radix-grade primitives and "a really robust like foundational set of tokens and components" — because AI "is really good at composing patterns that exist." Then theme by hand. (Full de-slop rules → `frontend-design`.)
 2. **Prompt surgically, in primitive vocabulary**, scoped to the right container level. Batch-generate options and cull ("five vastly different hover effects" → keep one, ask for five more in its direction).
    - **For polish, prompt buildable values, not adjectives** (Kevin Kold, X Article 2064972712729292800): "smooth/premium/polished" is not an instruction. Give the actual motion curve, duration, offset, blur, shadow stack, radius token, state list, and allowed variables. Start with the token block and say "use only these tokens, no one-off values." Then isolate each polish pass: "only tune the shadow stack," "only tune the entrance," "only tune pressed state." One variable at a time prevents the agent from compensating in unrelated places.
+   - **Brief a design generator with a committed style direction** (Sleek's `design-mobile-apps` skill, 2026): when the user gave anything to ground it (reference images, apps they like, adjectives, things to avoid), or when you want variations, write one paragraph per direction. Cover mood in two or three adjectives, the color *strategy* (its logic, not hex values), the type feel, the layout philosophy, the component style (radii, borders vs shadows, nav treatment), imagery, and one or two distinctive details. A paragraph that only sets a mood reads as a hint, so commit to a palette, a type direction, and a feel. On app screens, put the personality in color, type, and imagery rather than in unusual layout or navigation. The generator sees only what you pass it, so describe local references in the paragraph, borrow their patterns, and leave their branding, content, and names behind. Pass a bare request through unchanged.
    - **Hand Figma properties over explicitly.** When using Figma/MCP context, do not assume the bridge preserves every relevant style. Point at the current selection and list the properties the agent must read: padding, gaps, token names, colors, radii, type sizes/weights, shadows, motion notes, and known variants. Treat the file as a hypothesis for the build, not the final state system.
 
 ### Prompt vs edit
@@ -91,7 +93,7 @@ Ten numbered moves in working order, grouped by what they are for. The numbers r
 
 ### Evaluate, apply review, and finish
 
-6. **Evaluate agents by how they drive** (Tommy Geoco, Dive Club podcast, OYNoy468kS8): don't judge a model/tool on one-shot output — "you have to drive them for a little while. When you drive it with intent and you're just like… that's wrong fix, that's wrong fix, and you do that a few iterations, I think then you have a good feel." (Turning those corrections into standing rules → [agentic-coding.md](agentic-coding.md) / `creating-skills`.)
+6. **Evaluate agents by how they drive** (Tommy Geoco, Dive Club podcast, OYNoy468kS8): don't judge a model/tool on one-shot output — "you have to drive them for a little while. When you drive it with intent and you're just like… that's wrong fix, that's wrong fix, and you do that a few iterations, I think then you have a good feel." (Turning those corrections into standing rules → "Turn corrections into standing rules" below.)
 7. **Build once, then discover missing states by touching it.** A static mock rarely names every state. After implementation, operate the component and add the states the live thing reveals: idle, hover, pressed, loading/working, disabled, success/error, empty/overflow, snap-caught, drag-release, and reduced-motion. If a number hard-cuts, make it roll or cross-fade; if a task is working, prefer a calm state treatment over a default spinner when the wait is short and controlled. The user feels the state system, not the screenshot.
 8. **Apply review notes the way the reviewer works** (Kosta, tactile-design, distilled from hundreds of pixel-level review notes). A designer's note is usually one element and one change, so:
    - read it literally, and ask one short question only if it is ambiguous;
@@ -112,6 +114,19 @@ Three ways to bring outside taste or a diverged build into the loop above. None 
 - **Codify taste as an auditor** (Santos): curate ~15–20 CodePens/posts/tweets from designers you admire into a skill that runs as a "visual design interaction design auditor" subagent. Iterate by re-synthesizing, not stacking: zoom "back to the source material and think about what the general philosophy becomes" when adding a perspective. Caution: "don't don't create one skill that is every designer you've ever thought was cool." When the source is a visual reference corpus rather than posts/code examples, use `creating-skills` (converting-visual-references-to-skills) to extract the taste rules; this reference owns applying those rules as an auditor or repair loop.
 - **Style-transfer merge** (Madrick): when a designer build and an engineer build diverge, don't reconcile by hand — "Can you keep all the functionality of the engineer's version and give it all the styling that I have here." For motion, prompt with a labeled keyframe sketch — "a picture's literally worth a thousand words" — labeling each state in the drawing.
 
+## Turn corrections into standing rules
+
+Every design correction the user makes is taste the agent lacked. Unless it is written down where the next session reads it, the next session repeats the mistake. This is the method from Emil Kowalski's `learn-taste` skill (MIT, rev `64eb3de`), paraphrased.
+
+- **Only the user's taste.** Every rule traces to something the user said, edited, or confirmed. Never add one because it seems like good practice: your own taste is what the user was correcting.
+- **Collect all five signals, not just explicit corrections:** a stated correction ("shadow, not a border"), a silent edit (the user changed `400` to `200` in a file you wrote), a run of nudges (record where they landed, not each step), a revert or a variant picked over another, and a confirmed non-obvious choice a fresh agent would plausibly not repeat. Skip functional bugs, one-screen content, and corrections to your understanding of the task.
+- **Filter.** Would a fresh agent building a *different* component here make the same mistake? If not, skip it. If an existing rule already says the same thing, that rule failed: make it stricter (a number, a token, "never") instead of adding a duplicate. If an existing rule contradicts it, show both and let the user pick.
+- **Generalize to the class level.** "The pricing card gets a shadow" is too narrow, and "never use borders" breaks inputs and tables. "Raised surfaces (cards, popovers, menus) use `shadow-raised`, never a solid border" is the right level. Two components corrected the same way is evidence for the class level.
+- **Never invent the why.** Use the user's reason in their words. Otherwise propose one marked *inferred* and get it confirmed, because the next agent extends a wrong reason to cases it does not fit.
+- **A check beats a sentence.** When a violation is matchable in code (a banned value, a raw hex, a forbidden property), propose a lint rule, token restriction, or test, and keep a one-line rule so the why is recorded. A sentence in a long file gets skipped when context is full.
+- **Write it where it will be read.** The default is DESIGN.md under a matching section, with a comment holding the date and the user's words so later conflicts show which rule is newer. A section that grows past about 40 lines and matters only to some tasks moves into a project skill. If neither CLAUDE.md nor AGENTS.md points to DESIGN.md, propose adding the line "Before building or changing UI, read DESIGN.md." Do not edit those files without approval. DESIGN.md structure → `design-systems`.
+- **Propose, then stop.** Present each candidate (what the user said, the rule, the why, where it goes) and write only what the user approves. Never fix existing violations a new check finds without asking. Same human-acceptance gate as the library's agent-standard governance (`docs/skill-library-ops.md`).
+
 ## Checklist
 
 - [ ] Complaint translated into primitive vocabulary (which container, which axis, which behavior) before prompting?
@@ -126,6 +141,7 @@ Three ways to bring outside taste or a diverged build into the loop above. None 
 - [ ] Supporting lines and actions counted per surface, and over-explained surfaces stripped to zero before one line was re-admitted?
 - [ ] For a new direction, did something other than the generating model pick from its shortlist, and was the concept committed before the clarity pass?
 - [ ] Independent fresh-context judge run before calling it done?
+- [ ] Session corrections proposed as class-level rules with the user's why (or an *inferred* one awaiting confirmation), and written only after approval?
 
 ## Relationship to other skills
 

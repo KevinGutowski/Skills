@@ -26,6 +26,7 @@ Use this when the app already ships UI and the complaint is drift: hardcoded col
 | Document one component | [component-docs.md](component-docs.md) |
 | Move every screen onto a system that already exists, a rollout, an adoption audit | [migration.md](migration.md) |
 | Review one named screen or flow before shipping | `interface-review` |
+| Seed starter tokens from someone else's public website | starter only, not this method: [field-notes](field-notes.md#skillssh-design-topic-code-side-composition-persisted-systems-third-party-extraction) |
 
 ## Match the ask before doing anything
 
