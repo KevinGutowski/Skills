@@ -7,7 +7,7 @@
 - Natural Shadow Stacks
 - Dark Mode Edge Highlights
 - Elevation Systems & Light-Source Shadows
-- Eased Gradients
+- Eased Gradients (incl. fading over texture: add blur)
 - Translucent Materials on the Web
 - Backdrop Blur × mix-blend-mode (Chrome Gotcha)
 - Image Outlines
@@ -471,6 +471,33 @@ Two separate problems, two separate fixes — large color jumps often need both:
 
 - **Muddy gray midpoints** come from interpolating in sRGB. Use a better interpolation space: `linear-gradient(in oklab, blue, hotpink)`. (See `web-design` (oklch-skill) for color-space details.)
 - **Hard start/end edges** come from linear stop spacing. Only eased stops fix this — interpolation space doesn't.
+
+### Fading Over Texture: Add Blur
+
+When an eased fade sits over a busy image — halftone, grain, photo detail, a shader — so text can sit on it, add a slight blur in the same zone. The fade lightens the texture but keeps every dot; the blur melts the dots into their colour, so the bottom reads as smooth colour and the top stays crisp.
+
+> "adding a slight blur to an eased gradient looks so nice" — Sunnie Kapar, Nov 2026: https://x.com/sunniekapar/status/2124231120938029373 (halftone card, "eased fade" vs "eased fade + blur")
+
+Easing makes this matter more. An eased fade lets more of the image through in its middle than a linear one, so more texture is left under the label. Measured on a 7px halftone card (headless Chromium, mean neighbouring-pixel difference in the label band, labels hidden): linear fade 1.57, eased fade 3.36, eased fade + blur 0.32. The crisp top band was unchanged in all three (11.39).
+
+```css
+.card  { position: relative; isolation: isolate; overflow: hidden; }
+.art   { position: absolute; inset: 0; }        /* the image, canvas or shader */
+.blur  {                                        /* between the art and the fade */
+  position: absolute; inset: auto 0 0 0; height: 70%;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  --m: linear-gradient(to top, #000 0%, #000 35%, rgb(0 0 0 / .8) 50%,
+       rgb(0 0 0 / .5) 65%, rgb(0 0 0 / .2) 80%, rgb(0 0 0 / .05) 92%, transparent 100%);
+  -webkit-mask-image: var(--m); mask-image: var(--m);
+}
+.fade  { position: absolute; inset: auto 0 0 0; height: 70%; background: /* eased stops, as above */; }
+```
+
+- **The blur leads the fade.** Give the blur mask its own, gentler curve that is fully on by the time the label starts. Reusing the colour fade's eased curve as the blur mask left most of the dots (2.29 against 0.32): the eased curve is nearly transparent until the very bottom.
+- **Slight means about half the texture's pitch.** On the 7px grid, 2px left dots (0.70); 3px, 4px and 8px all measured about the same (0.31–0.34). Past that, a bigger radius only costs more to paint.
+- **Same box as the fade.** Keep the blur layer the same height as the fade so there is no second edge.
+- **Static art:** bake the blur and fade into the asset or do it in the shader, and skip the live `backdrop-filter`. Use the layer when the art moves or is generated. Several stacked layers for a deep blur are in `ui-fx` (surface-recipes → Progressive blur); one slight layer is enough here.
+- **Check from rendered pixels.** In our run Playwright's `clip` screenshots dropped the `backdrop-filter`; crop a full-page screenshot instead. The blur also does not change the text contrast arithmetic: still measure the label against the lightest and darkest pixels behind it.
 
 ### Dark Mode Note
 

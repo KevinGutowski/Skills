@@ -165,6 +165,8 @@ The text stays real text. The sweep is gated on `data-live`: put that attribute 
 
 Blur that deepens toward an edge (under a sticky header, at the bottom of a sheet): stack four to six `backdrop-filter: blur()` layers, each double the previous radius (1, 2, 4, 8, 16 px), each masked to its own feathered band with `mask-image: linear-gradient(...)`. Move the whole stack with a transform when it enters; clipping or fading the stack breaks the backdrop sampling.
 
+For a text label over textured art, one slight layer under an eased fade is enough: `design-craft` (surfaces → Fading Over Texture: Add Blur).
+
 ## Frosted panel
 
 ```css
