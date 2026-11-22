@@ -89,6 +89,7 @@ When geometric centering looks off, align optically instead.
 
 See also:
 - `swiftui` (sf-symbols) → "Glyph craft". Apple's WWDC 2017 rule for optical positioning: asymmetric glyphs that are perfectly centred "just look off", so nudge a play triangle right and a share arrow up, and bake the offset into the asset so the code only has to centre it. That is the same preference as the SVG-path fix below.
+- [alignment-pass.md](alignment-pass.md) when the problem is edges, not one icon's centre: rows whose labels, icons or counts miss a shared line.
 - `design-systems` (icon-systems) → "Optical adjustments" and keylines. These are corrections made while drawing the set: circles drawn larger than squares, notches where lines meet, thinner strokes where lines converge, dots sized by role, and separate drawings per size. They come before any placement nudge.
 
 > "Junior designer: This is not aligned. Senior designer: It's optically aligned." — Stammy, https://x.com/stammy/status/1276602518693445637

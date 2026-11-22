@@ -175,6 +175,7 @@ Two-stop linear gradients leave a visible edge where they start and stop — esp
 | --- | --- |
 | Same border radius on parent and child | Calculate `outerRadius = innerRadius + padding` |
 | Icons look off-center | Adjust optically with padding or fix SVG directly |
+| Labels, icons or counts start 1–3px apart from row to row | Draw guides, then fix the container's padding, not single items ([alignment-pass.md](alignment-pass.md)) |
 | Hard borders between sections | Use layered `box-shadow` with transparency |
 | Jarring enter/exit animations | Split, stagger, and keep exits subtle |
 | Numbers cause layout shift | Apply `tabular-nums` |
@@ -230,6 +231,7 @@ Rows should cite the specific file and the specific property that changed when i
 
 - [ ] Nested rounded elements use concentric border radius
 - [ ] Icons are optically centered, not just geometrically: ink centroid on the container centre, both axes checked, per-icon nudge kept
+- [ ] Every row in a container starts on its text line or box line and ends on its trailing line, checked with drawn guides ([alignment-pass.md](alignment-pass.md))
 - [ ] Shadows used instead of borders where appropriate
 - [ ] Enter animations are split and staggered
 - [ ] Exit animations are subtle
@@ -274,6 +276,7 @@ Rows should cite the specific file and the specific property that changed when i
 
 - [typography.md](typography.md) — Text wrapping, font smoothing, tabular numbers
 - [surfaces.md](surfaces.md) — Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, document canvas, scroll fades
+- [alignment-pass.md](alignment-pass.md) — Edge alignment across containers: drawn guides, text and box lines, sidebar and toolbar lines, vendored probe
 - [animations.md](animations.md) — Interruptible animations, enter/exit transitions, icon animations, scale on press
 - [performance.md](performance.md) — Transition specificity, `will-change` usage, perceived performance (spinner choice assigns blame)
 - [refactoring-ui.md](refactoring-ui.md) — Wathan/Schoger's visual refactor method, with a code-native bad/good gallery at [../examples/refactoring-ui-gallery.html](../examples/refactoring-ui-gallery.html)
