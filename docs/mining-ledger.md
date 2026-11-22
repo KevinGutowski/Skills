@@ -793,6 +793,103 @@ Ticket-driven fold of a design-engineering tip: "Always center your icons based 
   - **Proof.** Both new tests fail on the old behaviour. 47/47 pass now.
   - **Scope.** `surfaces.md` now lists what the script supports, refuses and does not measure. Anything outside that list is out of scope; use the blur test there.
 
+## 2026-11-22 — Sunnie Kapar (@sunniekapar), eased fade + blur (X 2124231120938029373)
+
+Ticket-driven fold of a one-line tip: "adding a slight blur to an eased gradient looks so nice".
+
+- **Manifest:**
+  - Post text (read, via `api.fxtwitter.com` and `cdn.syndication.twimg.com`).
+  - The 4096×4096 image from `pbs.twimg.com` (read whole, plus full-resolution crops of both label areas). It shows one halftone "Shader prototypes / Halftone spectrum" card twice, labelled "eased fade" and "eased fade + blur". With blur, the dots behind the label melt into smooth colour and the top stays crisp.
+  - Replies (2, read via the fxtwitter conversation endpoint): a compliment and a thank-you. Nothing to fold.
+- **Density:** MEDIUM for one lesson. Single source and a visual claim, so it was checked in a render before folding.
+- **Verified:** headless Chromium (Playwright) rendered a 7px CSS halftone card four ways. The measure is the mean neighbouring-pixel difference in the label band, with labels hidden: linear fade 1.57, eased fade 3.36, eased fade + blur with a leading mask 0.32, eased fade + blur reusing the fade's eased curve as its mask 2.29. Top band 11.39 in every case. Blur radius on the leading mask: 2px 0.70, 3px 0.34, 4px 0.31, 8px 0.32. Playwright `clip` screenshots dropped the `backdrop-filter`, so the numbers come from a full-page screenshot.
+- **Owner:** `design-craft` (surfaces → Eased Gradients), new subsection "Fading Over Texture: Add Blur": the quote, the numbers, a CSS layer recipe, and five rules (the blur leads the fade, radius about half the texture pitch, same box as the fade, bake it for static art, check from rendered pixels). Contents line updated.
+- **Pointers:** `design-craft` polish-principles (#21 sentence, common-mistakes row, checklist line); `ui-fx` surface-recipes → Progressive blur (one slight layer is enough for a label over texture).
+- **Synthesis flagged as ours:** why easing makes the blur matter more (eased fades leave more texture mid-ramp), the leading mask, the half-pitch radius, and the bake-for-static-art note. The source supplied the pairing and the visual.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+
+## 2026-11-22 — Pritam Paul, *gridlines* (github.com/pritamux/gridlines)
+
+Ticket-driven fold of an external agent skill for alignment passes. The full manifest, probe test runs, fold map and conflicts are in `docs/gridlines-source-mining-2026-11.md`.
+
+- **Density:** HIGH. The source is a single method for one task shape, with a working measurement script.
+- **Owner:** `design-craft`, in the new reference `references/alignment-pass.md`. The probe, runner and MIT license are vendored in `design-craft/scripts/gridlines/`, and the example is `design-craft/examples/gridlines-sidebar.html`. No new top-level skill.
+- **Pointers:** polish-principles, surfaces, component-details, practical-demonstrations, linear-product-craft, `interface-review`, README.
+- **Description:** `design-craft` gained the trigger "edges don't line up". The new routing fixture G1–G10 was run twice by a blind judge on all 83 registered probes: every probe passed, with no regressions.
+- **Parked:** the Saarinen-specific rules (headers on the icon edge, the top bar centred on the window controls) stay single-source until his redraw is found. The probe's nested-row false positive and box-on-text-line false negative are documented and were not patched in the vendored copy.
+- **Skipped:** README media and `npx skills` install steps.
+- **QA (same day):** the reference said the probe "measures ink", but it measures layout boxes (text line boxes and SVG element boxes), so the claim was corrected everywhere it appeared. The new `design-craft/scripts/gridlines.test.mjs` (10/10) pins the documented behaviour and limits so the docs can't drift from the script again.
+- **Second QA (same day):** the test now loads Playwright the same way `audit.mjs` does, so there is a single setup for both. The runner's failure on strict-CSP pages is documented with a workaround, and the test pins both. 12/12 pass.
+- **Third QA (same day):** a narrower icon centred in the icon column is a false leading miss. It is documented and pinned in the test; 13/13 pass.
+
+## 2026-11-22 — gokhan (@gkurttech), *CSS Little-Known* 13–16: scroll snap Parts 1–4 (X)
+
+Ticket-driven fold of three linked posts. The first quotes a fourth, which completes the series.
+
+- **Manifest:**
+  - Post text for 2120770568475599138 (Part 1, alignment), 2121145036125450331 (Part 2, padding and margin), 2121882792477016408 (Part 4, `scroll-snap-stop`) and the quoted 2121562958589239668 (Part 3, strictness). All read via `api.vxtwitter.com`.
+  - Four 1920×1080 screen recordings, 17–28s each, from `video.twimg.com`. Read as frame sheets, one frame every 3–4s. Each shows a "Trips" card row, the `.row`/`.card` CSS and a one-line caption.
+  - Replies: Part 4 has 2, the others 0. Not read.
+- **Density:** MEDIUM. Standard properties, but the strictness and `scroll-snap-stop` use cases are practical decisions the library lacked. Existing coverage was only "use scroll snap" pointers in layout, mobile-native-feel and gestures.
+- **Verified:** headless Chromium (Playwright 1.65), 400px row with 160px cards and a 16px gap.
+  - Type without align: no snap.
+  - `start`, `center` and `end` landed on the expected offsets.
+  - 48px of padding plus 24px of margin rested the card 72px in.
+  - `proximity` snapped a rest 84px from the nearest point.
+  - An oversized item scrolled freely under `mandatory`.
+  - `scrollBy(700)` across `scroll-snap-stop: always` stopped at the first item. `scrollTo` and `scrollIntoView` did not stop.
+  - `scroll-padding-inline-start` offset `scrollIntoView`.
+  - Touch flicks were not reproduced.
+- **Owner:** `web-design` web-layout-design, new section "Scroll snap": a CSS skeleton, a four-row decision table and six traps. The Contents and the `SKILL.md` layout bullet were updated.
+- **Pointers:** mobile-web-native-feel (carousel jitter row), web-animation-design/gestures (build-or-adopt), sources.md.
+- **Synthesis flagged as ours:** logical `-inline-start` properties in place of the demos' `-left`. Also the oversized-item, `scrollBy` and `scrollIntoView` traps, and the "long lists keep `normal`" rule, though the source implies it.
+- **New skills:** none. The router bullet gained trigger terms, but no description changed, so no routing probes were run.
+
+## 2026-11-22 — @gkurttech, "Scroll-driven animations" parts 1–5 (X)
+
+Ticket-driven fold of a five-post CSS tip series.
+
+- **Manifest:**
+  - 2122222357443989782 Part 1 `scroll()`, 2122638812736029133 Part 2 `view()`, 2122947160610115866 Part 3 `animation-range`, 2124074346431799299 Part 4 parallax, 2124450831303090459 Part 5 scroll fade.
+  - Text read through `api.vxtwitter.com`. Each post has a 16–34s 1080p video; all five were downloaded and read as frames every 4s, which is how the code was captured. There were no quoted posts or reply parents. Replies were not read.
+- **Density:** MEDIUM. Clean teaching and correct code, but the mechanism was already in the library. What's new is the `scroll()`/`view()` split, the range-name table, `entry 25% exit 75%` offsets and the parallax recipe. Part 5 corroborates the existing Scroll Fades recipe.
+- **Verified:** Playwright with Chromium 159 and Firefox 159, run in a scratch directory. All post claims hold. The runs also found four traps that the posts do not state, recorded as ours: (1) the `animation` shorthand resets `animation-range`, not just `animation-timeline`; (2) without `both`, a `view()` subject outside a narrowed range shows its un-animated style (`transform: none`); (3) `contain` on a subject taller than the scrollport runs while the subject fills the scrollport; (4) a duration-less shorthand computes to `auto` and works. A non-overflowing `scroll(self)` list keeps both fade lengths at `0px`. Safari was not run.
+- **Owner:** `ui-fx` (platform-techniques → Scroll-driven animation), rewritten: timeline table, range table, an example, traps and a parallax recipe. The overscan rule (the image overflows its frame by the travel) is ours.
+- **Pointers:** `design-craft` (surfaces → Scroll Fades) adds the second-source paragraph and widens the order trap to `animation-range`. `web-design` (web-animation-design) adds a tool-ladder row. Source entries are in `ui-fx` sources and `design-craft` sources.
+- **Synthesis flagged as ours:** the use-it-for column, "`linear`, because easing lags the scroll", and the parallax overscan.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+
+## 2026-11-22 — gokhan (@gkurttech), `sibling-index()` stagger (X 2117575754628128915)
+
+Ticket-driven fold of a one-line CSS tip: "You can implement stagger animations with one line of CSS using sibling-index()", with `animation-delay: calc(sibling-index() * 70ms)`.
+
+- **Manifest:**
+  - Post text (read, via `api.fxtwitter.com`).
+  - The 3.2s demo video, 1280×720 (read as a frame contact sheet made with ffmpeg). It shows six bars that enter at 70–420ms (`sibling-index() × 70ms`) and leave in reverse (`(sibling-count() - sibling-index()) × 70ms`). The captions say "No nth-child rules, no --i on every item" and "Chrome & Edge 138+".
+  - Replies: the conversation endpoint returned none.
+  - MDN `sibling-index()` page: 1-based, Baseline 2026, newly available. MDN browser-compat-data 8.1.10 gives Chrome and Edge 138, Safari and iOS Safari 26.2, and Firefox 154 for both `sibling-index()` and `sibling-count()`.
+- **Density:** MEDIUM. There is one mechanism, and it directly replaces the `:nth-child` and `--i` stagger snippets in four references.
+- **Verified:** in headless Chromium 159 (Playwright), we read the computed `animation-delay` of every formula we published: the tip as posted, zero-based, capped with `min(…, 6)`, reverse, a budget-fitted step through `sibling-count()`, and an eased step through `pow()`. We also checked what the index counts: a heading and a `hidden` sibling take indexes, text nodes do not, and a nested list restarts at 1. Finally we checked that an unparseable declaration drops back to the one before it.
+- **Owner:** `web-design` (web-animation-design → choreography), in a new section, "CSS stagger with sibling-index()". It holds the tip, the version to ship, and six rules: count from 1, the cap and appended items, budget-fitting, eased stagger, reverse order, what it counts, and support with fallback. The Tool choice row and the CSS index-stagger note now point there.
+- **Reconciled:** `ui-fx` control-patterns (the `sibling-index()` mention now subtracts 1 and caps), `design-craft` animations (CSS-Only Stagger) and emil-kowalski/css-techniques (the `:nth-child` ladders) now include the one-line form and a pointer.
+- **Conflict:** the demo staggers the exit in reverse. That goes against choreography's rule that "exits are simultaneous", which `ui-fx` ("Reverse the index for the exit") already broke. We scoped it in choreography Step 5: reverse exits are an effect for demos and showpieces, and product UI keeps exits simultaneous.
+- **Not adopted:** the tip's 70ms step without the `- 1`, and no cap. The sixth item then starts at 420ms, well past the ~300ms product budget.
+- **New skills:** none. No descriptions changed, so no routing probes were run.
+- **QA pass (same day).** QA found two defects. We fixed the class of problem behind each, then each instance.
+  - **Unit mismatch between files.** `ui-fx` told readers to put a time-valued `sibling-index()` expression into `--i`, which its rule then multiplied by 40ms again. ms × ms is invalid, so every delay computed to 0s.
+    - The convention is now the same everywhere: `--i` is a plain number, `--step` holds the time, and only the delay rule multiplies them.
+    - `sibling-index()` supplies `--i` inside `@supports (order: sibling-index())`. In browsers without it the items enter together, and inline `--i` still wins.
+    - The `ui-fx` recipe now carries this line in its checked CSS block, not in prose.
+  - **The budget ignored duration.** The ~300ms product budget is a *finish* time: (items − 1) × step + duration ≤ ~300ms. The first recipe ended at 500ms; the budget-fitting one ended at 550ms, and at 595ms for 60 items.
+    - The choreography recipes now use 30ms steps, a 200ms entrance and a cap of 4. The fit variant reserves the duration.
+    - The budget table and long-list rule now state the arithmetic, along with the ~30ms floor at which to fade the group as one.
+    - The same "~300ms total" wording was made explicit in PRACTICAL-TIPS, the parent troubleshooting table, the motion-audit fix table and `design-craft` emil-kowalski.
+    - The `design-craft` one-liners now reproduce their own ladders, a cap of 3 at 100ms and a cap of 4 at 50ms, not an invented cap of 6. The emil-kowalski one states that its ladder ends at 450ms.
+  - **Tests.**
+    - New `web-design/examples/stagger-check/check.mjs` (20/20) extracts the recipes from the markdown. It checks finish times at five lengths, ordering, the eased gaps, reduced motion, the no-support fallback, and both mistakes above.
+    - `ui-fx` snippet-checks gained the `sibling-index()` index assertion (44/44).
+    - Mutation runs confirm each check fails on the defect QA reported.
+
 ## 2026-11-22 — skills.sh Design topic (skills.sh/topic/design), 16 listed skills
 
 Index page listing 16 design skills. Ten were unmined and screened. Impeccable's six were already mined at `b3ced85`. Emil Kowalski's `emil-design-eng` was re-diffed from `715c180` to `64eb3de`. Folds: `frontend-design` (copy tells, second generation; Anthropic deltas), `interface-review` (NEW code-pass-checklist from Vercel's Web Interface Guidelines), `design-systems` (code-side composition, persisted overrides, third-party extraction limits), `design-craft` (Emil upstream corrections), `working-with-ai` (turn corrections into standing rules; generator style brief), `design-prototyping` (NEW mockup-to-app), `creating-skills` (finish gates, retrieval relevance, pinned rule files). Parked: `canvas-design`, ui-ux-pro-max catalogs, tasteskill kit internals, Sleek API mechanics. Second pass (same day): Emil `0f2e23b` fixes applied across web-design, swiftui, design-craft, frontend-design, and design-prototyping; tasteskill copy method → `ux-writing`; Vercel writing-guidelines → `ux-writing` and `write-clear-prose`; ui-ux-pro-max guidelines → `web-design` form-design and web-accessibility; routing probes B37–B39 and an `interface-review`/`web-design` description edit; coverage gaps logged. Full manifest, conflicts, and recheck triggers: `docs/skills-sh-design-topic-source-mining-2026-11.md`.

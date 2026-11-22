@@ -81,7 +81,7 @@ Practical moves:
 - **Structure should be felt, not seen.** Borders, separators, and panels are there to explain relationships. If the line does not clarify a relationship, soften it or remove it and let spacing/grouping carry the structure.
 - **Compress support surfaces.** Tabs and sidebar items can be smaller and quieter than content controls. Compact chrome is not a density flex; it is attention budgeting.
 - **Reduce icon noise.** Icons help recognition, but too many colored or treated icons become visual static. Scale down, remove decorative backgrounds, and reserve treatments for status or identity.
-- **Align what users feel, not just what screenshots show.** Linear spent time aligning labels, icons, and buttons vertically and horizontally in tiny surfaces. Users may not identify the change, but the product feels calmer after minutes of use.
+- **Align what users feel, not just what screenshots show.** Linear spent time aligning labels, icons, and buttons vertically and horizontally in tiny surfaces (the guide-drawing method and sidebar/toolbar line rules: [alignment-pass.md](alignment-pass.md)). Users may not identify the change, but the product feels calmer after minutes of use.
 
 ## Color And Theme Craft
 

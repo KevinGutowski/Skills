@@ -157,7 +157,7 @@ Visual emphasis backfires past a threshold: banner blindness means highly differ
 
 ### 21. Eased Gradients
 
-Two-stop linear gradients leave a visible edge where they start and stop — especially fade-to-transparent scrims and significant color changes. Add intermediate stops sampled from an easing curve so the transition starts and ends gently. For color-to-color gradients also interpolate in a better space (`in oklab`) to avoid muddy midpoints — but only eased stops fix the hard edges. For dark mode, make a dedicated dark-mode hero asset rather than overlaying a gradient on the light-mode one.
+Two-stop linear gradients leave a visible edge where they start and stop — especially fade-to-transparent scrims and significant color changes. Add intermediate stops sampled from an easing curve so the transition starts and ends gently. For color-to-color gradients also interpolate in a better space (`in oklab`) to avoid muddy midpoints — but only eased stops fix the hard edges. For dark mode, make a dedicated dark-mode hero asset rather than overlaying a gradient on the light-mode one. When the fade sits over texture (halftone, grain, photo detail) under text, add a slight blur in the same zone whose mask is fully on before the label starts ([surfaces.md](surfaces.md) → Fading Over Texture: Add Blur).
 
 ### 22. Spacing Scale Construction
 
@@ -175,6 +175,7 @@ Two-stop linear gradients leave a visible edge where they start and stop — esp
 | --- | --- |
 | Same border radius on parent and child | Calculate `outerRadius = innerRadius + padding` |
 | Icons look off-center | Adjust optically with padding or fix SVG directly |
+| Labels, icons or counts start 1–3px apart from row to row | Draw guides, then fix the container's padding, not single items ([alignment-pass.md](alignment-pass.md)) |
 | Hard borders between sections | Use layered `box-shadow` with transparency |
 | Jarring enter/exit animations | Split, stagger, and keep exits subtle |
 | Numbers cause layout shift | Apply `tabular-nums` |
@@ -196,6 +197,7 @@ Two-stop linear gradients leave a visible edge where they start and stop — esp
 | Disabled button still squeezes on press | Scope the press: `:active:not(:disabled)` |
 | Grain looks different depending on where the card sits | Add `isolation: isolate` to the grain's container so `mix-blend-mode` only sees the surface |
 | Visible band/edge where a gradient ends | Use eased gradient stops; `in oklab` for muddy color midpoints |
+| Dots or grain still busy under text after an eased fade | Add a slight masked `backdrop-filter: blur()` (about half the texture pitch) that reaches full strength before the label |
 | Backdrop blur silently stops rendering (Chrome) | Wrap the page's `mix-blend-mode` element in a div with `backdrop-filter: opacity(1)` |
 | Custom branded loader on slow, uncontrollable waits | Use the system spinner — custom loaders make users blame *you* for the wait |
 
@@ -229,6 +231,7 @@ Rows should cite the specific file and the specific property that changed when i
 
 - [ ] Nested rounded elements use concentric border radius
 - [ ] Icons are optically centered, not just geometrically: ink centroid on the container centre, both axes checked, per-icon nudge kept
+- [ ] Every row in a container starts on its text line or box line and ends on its trailing line, checked with drawn guides ([alignment-pass.md](alignment-pass.md))
 - [ ] Shadows used instead of borders where appropriate
 - [ ] Enter animations are split and staggered
 - [ ] Exit animations are subtle
@@ -245,6 +248,7 @@ Rows should cite the specific file and the specific property that changed when i
 - [ ] Interactive elements have at least 40×40px hit area
 - [ ] Menu and list rows have no dead pixels between them (the gap is drawn inside the row, not made with margin)
 - [ ] Gradients (scrims, fades, large color changes) use eased stops, not two-stop linear
+- [ ] Fades over textured art under text also blur the texture in that zone
 
 ## Rendering physics worth knowing
 
@@ -272,6 +276,7 @@ Rows should cite the specific file and the specific property that changed when i
 
 - [typography.md](typography.md) — Text wrapping, font smoothing, tabular numbers
 - [surfaces.md](surfaces.md) — Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, document canvas, scroll fades
+- [alignment-pass.md](alignment-pass.md) — Edge alignment across containers: drawn guides, text and box lines, sidebar and toolbar lines, vendored probe
 - [animations.md](animations.md) — Interruptible animations, enter/exit transitions, icon animations, scale on press
 - [performance.md](performance.md) — Transition specificity, `will-change` usage, perceived performance (spinner choice assigns blame)
 - [refactoring-ui.md](refactoring-ui.md) — Wathan/Schoger's visual refactor method, with a code-native bad/good gallery at [../examples/refactoring-ui-gallery.html](../examples/refactoring-ui-gallery.html)

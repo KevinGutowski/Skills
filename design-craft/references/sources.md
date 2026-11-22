@@ -9,6 +9,7 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 - Impeccable (Paul Bakaus)
 - Kosta — *Tactile design*
 - Pasquale Vitiello — *Plotter*
+- Pritam Paul — *gridlines*
 - Anton Sten
 - Derek Briggs (PixelJanitor)
 - Gustavo Fior — *Craft*
@@ -37,6 +38,10 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 ## Pasquale Vitiello — *Plotter*
 
 - https://plotter.pasqualevitiello.com · https://github.com/pasqualevitiello/plotter (MIT), read at commit `01df092` (2026-11-15). The `skills/plotter` package (SKILL.md and its drawing, motion, direction, visual-grammar, drafting-standard, approved-references and motion-examples references, the catalogue index, `check.py`) plus the repo's cold-run eval briefs and site docs were paraphrased into [construction-drawings.md](construction-drawings.md), with a pointer from [component-details.md](component-details.md) (Empty states). Not vendored: the 109-drawing catalogue, scripts, role CSS and the bundled Cal Sans font; the reference says how to install the upstream package. The example in [../examples/construction-drawing-empty-state.html](../examples/construction-drawing-empty-state.html) is an original drawing. Ledger: `docs/mining-ledger.md` (2026-11-18).
+
+## Pritam Paul — *gridlines*
+
+- https://github.com/pritamux/gridlines (MIT), read at commit `20d0944` (2026-11-21). The SKILL.md process and rules were paraphrased into [alignment-pass.md](alignment-pass.md). `probe.js`, `audit.mjs` and `LICENSE` are vendored unchanged (plus a provenance header) in `design-craft/scripts/gridlines/`, with a local regression check in `design-craft/scripts/gridlines.test.mjs`, and the planted-miss sidebar is in [../examples/gridlines-sidebar.html](../examples/gridlines-sidebar.html). The source credits Karri Saarinen's Linear sidebar redraw and Apple's HIG layout chapter; the redraw was not located. The README media (before/after video and images) were not read. Ledger: `docs/gridlines-source-mining-2026-11.md`.
 
 ## Anton Sten
 
@@ -78,7 +83,7 @@ Design-engineering concept site (craft.gustavofior.com, Jul 2026; every page has
 - *Button Press* — `0.97`–`0.98` as a second source for the restrained press alternate, 100–150ms, larger surfaces shrink less, disabled controls do not press, iOS tap-highlight and `:active` notes → [animations.md](animations.md) Scale on Press, polish-principles §12.
 - *Interruptibility* — recording vs destination, never gate input on an animation, transition vs spring, retargeting when siblings join → [animations.md](animations.md) Interruptible Animations, polish-principles §4 + Common Mistakes.
 - *Font Smoothing* — the case for the root-application school, dark mode as the trigger, thin-weight risk, `subpixel-antialiased` opt-out, Firefox 128, macOS-only review → [typography.md](typography.md) Font Smoothing, polish-principles §8. The scoped default stands; recorded as a school, not blended.
-- *Scroll Fades* — mask over overlay, fade only the edge that can scroll, scroll-driven `@property` recipe and its traps → [surfaces.md](surfaces.md) Scroll Fades, polish-principles Common Mistakes; pointer in `web-design` (web-layout-design).
+- *Scroll Fades* — mask over overlay, fade only the edge that can scroll, scroll-driven `@property` recipe and its traps → [surfaces.md](surfaces.md) Scroll Fades, polish-principles Common Mistakes; pointer in `web-design` (web-layout-design). Second source for the recipe: @gkurttech, X 2124450831303090459 (2026-11-22), with the same shape at 48px. Its no-overflow, no-fade claim was checked in Chromium and Firefox.
 
 Companion installable skill `skills/craft-design-engineering` mirrors the live pages verbatim; not imported. Ledger: `docs/mining-ledger.md` 2026-09-18 and 2026-11-18.
 

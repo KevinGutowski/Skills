@@ -7,7 +7,7 @@
 - Natural Shadow Stacks
 - Dark Mode Edge Highlights
 - Elevation Systems & Light-Source Shadows
-- Eased Gradients
+- Eased Gradients (incl. fading over texture: add blur)
 - Translucent Materials on the Web
 - Backdrop Blur × mix-blend-mode (Chrome Gotcha)
 - Image Outlines
@@ -89,6 +89,7 @@ When geometric centering looks off, align optically instead.
 
 See also:
 - `swiftui` (sf-symbols) → "Glyph craft". Apple's WWDC 2017 rule for optical positioning: asymmetric glyphs that are perfectly centred "just look off", so nudge a play triangle right and a share arrow up, and bake the offset into the asset so the code only has to centre it. That is the same preference as the SVG-path fix below.
+- [alignment-pass.md](alignment-pass.md) when the problem is edges, not one icon's centre: rows whose labels, icons or counts miss a shared line.
 - `design-systems` (icon-systems) → "Optical adjustments" and keylines. These are corrections made while drawing the set: circles drawn larger than squares, notches where lines meet, thinner strokes where lines converge, dots sized by role, and separate drawings per size. They come before any placement nudge.
 
 > "Junior designer: This is not aligned. Senior designer: It's optically aligned." — Stammy, https://x.com/stammy/status/1276602518693445637
@@ -472,6 +473,33 @@ Two separate problems, two separate fixes — large color jumps often need both:
 - **Muddy gray midpoints** come from interpolating in sRGB. Use a better interpolation space: `linear-gradient(in oklab, blue, hotpink)`. (See `web-design` (oklch-skill) for color-space details.)
 - **Hard start/end edges** come from linear stop spacing. Only eased stops fix this — interpolation space doesn't.
 
+### Fading Over Texture: Add Blur
+
+When an eased fade sits over a busy image — halftone, grain, photo detail, a shader — so text can sit on it, add a slight blur in the same zone. The fade lightens the texture but keeps every dot; the blur melts the dots into their colour, so the bottom reads as smooth colour and the top stays crisp.
+
+> "adding a slight blur to an eased gradient looks so nice" — Sunnie Kapar, Nov 2026: https://x.com/sunniekapar/status/2124231120938029373 (halftone card, "eased fade" vs "eased fade + blur")
+
+Easing makes this matter more. An eased fade lets more of the image through in its middle than a linear one, so more texture is left under the label. Measured on a 7px halftone card (headless Chromium, mean neighbouring-pixel difference in the label band, labels hidden): linear fade 1.57, eased fade 3.36, eased fade + blur 0.32. The crisp top band was unchanged in all three (11.39).
+
+```css
+.card  { position: relative; isolation: isolate; overflow: hidden; }
+.art   { position: absolute; inset: 0; }        /* the image, canvas or shader */
+.blur  {                                        /* between the art and the fade */
+  position: absolute; inset: auto 0 0 0; height: 70%;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  --m: linear-gradient(to top, #000 0%, #000 35%, rgb(0 0 0 / .8) 50%,
+       rgb(0 0 0 / .5) 65%, rgb(0 0 0 / .2) 80%, rgb(0 0 0 / .05) 92%, transparent 100%);
+  -webkit-mask-image: var(--m); mask-image: var(--m);
+}
+.fade  { position: absolute; inset: auto 0 0 0; height: 70%; background: /* eased stops, as above */; }
+```
+
+- **The blur leads the fade.** Give the blur mask its own, gentler curve that is fully on by the time the label starts. Reusing the colour fade's eased curve as the blur mask left most of the dots (2.29 against 0.32): the eased curve is nearly transparent until the very bottom.
+- **Slight means about half the texture's pitch.** On the 7px grid, 2px left dots (0.70); 3px, 4px and 8px all measured about the same (0.31–0.34). Past that, a bigger radius only costs more to paint.
+- **Same box as the fade.** Keep the blur layer the same height as the fade so there is no second edge.
+- **Static art:** bake the blur and fade into the asset or do it in the shader, and skip the live `backdrop-filter`. Use the layer when the art moves or is generated. Several stacked layers for a deep blur are in `ui-fx` (surface-recipes → Progressive blur); one slight layer is enough here.
+- **Check from rendered pixels.** In our run Playwright's `clip` screenshots dropped the `backdrop-filter`; crop a full-page screenshot instead. The blur also does not change the text contrast arithmetic: still measure the label against the lightest and darkest pixels behind it.
+
 ### Dark Mode Note
 
 Don't fake a dark-mode variant by overlaying a gradient on a light-mode hero asset — the seam where the gradient meets the asset is exactly where banding shows. Ideally produce both a dedicated dark-mode version of the asset *and* an eased gradient:
@@ -643,9 +671,11 @@ html { background-color: var(--background); }   /* same token the app surface us
 }
 ```
 
-The start fade grows from `0` over the first `3rem` of scrolling; the end fade shrinks to `0` over the last `3rem`. Traps:
+The start fade grows from `0` over the first `3rem` of scrolling; the end fade shrinks to `0` over the last `3rem`.
 
-- **Declare `animation-timeline` after the `animation` shorthand.** The shorthand resets the timeline, so the order above is load-bearing.
+A second source (@gkurttech, "Scroll-driven animations, Part 5: scroll fade", x.com/gkurttech/status/2124450831303090459) independently uses the same pattern: two registered lengths, `scroll(self)`, and ranges `0 48px, calc(100% - 48px) 100%`. Its shorter version leaves out the duration and the `from` keyframe (`@keyframes start { to { --start: 48px; } }`, `@keyframes end { from { --end: 48px; } }`), and both work, because the property's `0px` initial value fills the missing keyframe. Its claim that "a list that doesn't scroll gets no fade" holds: in Chromium 159 and Firefox 159 a list that does not overflow kept both lengths at `0px`, because a scroller that cannot scroll has no active timeline. The general mechanics (`scroll()` vs `view()`, range names, the order of the shorthand) are in `ui-fx` (platform-techniques → Scroll-driven animation). Traps:
+
+- **Declare `animation-timeline` and `animation-range` after the `animation` shorthand.** The shorthand resets both, so the order above is load-bearing. A range placed before it silently reverts to `normal`.
 - **Without `@property` the fade snaps.** An unregistered custom property cannot interpolate.
 - **Fall back to no fade, not a static one.** Without scroll timelines both properties stay at `0px` and the list keeps a plain hard edge and its scrollbar. The source instead adds an `@supports not (animation-timeline: scroll())` branch that sets both fades to `2.5rem` permanently. That reintroduces the misleading fade above, dims the first and last rows at rest, and fades lists that do not overflow at all, so it is left out here. If the hint must exist everywhere, set the two properties from a small scroll listener instead.
 - **The mask covers the scrollbar too.** A visible scrollbar fades out at both ends. Hide it, or keep it and accept that. The source also suggests moving the mask to an inner wrapper; that variant was not tested here.

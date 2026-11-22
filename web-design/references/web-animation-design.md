@@ -324,6 +324,7 @@ Decide in this order; each step can end the work:
 | Loops, multi-step, or run-once sequences | CSS keyframe animation — restarts from zero when re-triggered, so not for rapid triggers |
 | Programmatic values with compositor performance | Web Animations API (`element.animate()`) |
 | Springs, gestures, shared layout, exit of unmounting components | Motion — only if the project already has it or the user asked |
+| Progress tied to scroll position (reading bar, per-card progress, parallax) | CSS scroll-driven animation: `animation-timeline: scroll()` / `view()` with `linear` easing. Mechanics and traps are in `ui-fx` (platform-techniques → Scroll-driven animation) |
 
 4. **Values** from the Easing and Duration sections.
 5. **Reduced-motion variant and hover gating ship in the same change**, not as a follow-up.
@@ -500,7 +501,7 @@ Quick reference for common scenarios. See [PRACTICAL-TIPS.md](web-animation-desi
 | Hover triggers on mobile        | Use `@media (hover: hover) and (pointer: fine)` |
 | Hover card feels inflated       | Cap hover scale at 1.01–1.02, 100–150ms         |
 | Removed item leaves a dead gap  | Take it out of flow at once (`popLayout`)       |
-| List cascade feels slow         | 30–80ms steps, ~300ms total, or no stagger      |
+| List cascade feels slow         | 30–80ms steps, last item done by ~300ms, or no stagger |
 
 ## Easing Decision Flowchart
 

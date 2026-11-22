@@ -410,4 +410,4 @@ When reviewing UI code, check for:
 | Keyframes on rapidly-triggered element     | Use CSS transitions for interruptibility                         |
 | Motion `x`/`y` props under load, Motion < 14.2 | Upgrade, or use `transform: "translateX()"`; 14.2+ shorthands are accelerated |
 | Same enter/exit transition speed           | Make exit faster than enter (e.g., enter 250ms, exit 200ms)      |
-| Elements all appear at once (low-frequency surface) | Add stagger delay (30-80ms between items, non-uniform, ~300ms total); none on menus/palettes |
+| Elements all appear at once (low-frequency surface) | Add stagger delay (30-80ms between items, non-uniform, last item done by ~300ms); none on menus/palettes |

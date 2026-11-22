@@ -235,4 +235,6 @@ When multiple elements enter together, stagger their appearance. Each element an
 }
 ```
 
-Keep stagger delays short (30-80ms between items). Long delays make the interface feel slow. Stagger is decorative — never block interaction while stagger animations are playing. Delays shrink as the list goes on (0, 50, 90, 120ms) so the group does not read as a metronome; group-entrance method → `web-design` (web-animation-design) choreography.
+Where `sibling-index()` is supported, one rule replaces the `:nth-child` ladder: `animation-delay: calc(pow(min(sibling-index(), 4) - 1, 0.8) * 50ms)` gives 0, 50, 87, and 120ms, close to the four rules above. It counts from 1, `pow()` below 1 shrinks the gaps down the list, and `min()` holds later items at the fourth step. The budget counts the last item's duration as well as its delay. This ladder's last item ends at 120 + 300 = 420ms, so for a product list, shorten the entrance or stagger fewer items. Recipe with the arithmetic, fallback and checks: `web-design` (web-animation-design → choreography, CSS stagger with sibling-index()).
+
+Keep stagger delays short (30-80ms between items). Long delays make the interface feel slow. Stagger is decorative — never block interaction while stagger animations are playing. Delays shrink as the list goes on (0, 50, 90, 120ms) so the group does not read as a metronome (Kowalski rev `0f2e23b`); group-entrance method → `web-design` (web-animation-design) choreography.

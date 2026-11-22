@@ -143,6 +143,11 @@ function PageHeader() {
 .stagger-item:nth-child(2) { animation-delay: 100ms; }
 .stagger-item:nth-child(3) { animation-delay: 200ms; }
 
+/* The same ladder as one rule (sibling-index() counts from 1; min() holds the rest at the third step):
+   .stagger-item { animation-delay: calc((min(sibling-index(), 3) - 1) * 100ms); }
+   100ms steps are this theme's marketing pace. Product-UI budget, fallback and caveats:
+   web-design (web-animation-design → choreography, CSS stagger with sibling-index()). */
+
 @keyframes fadeInUp {
   to {
     opacity: 1;
