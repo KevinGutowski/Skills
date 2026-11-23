@@ -7,8 +7,9 @@
 //
 // What is asserted, at every width: the page does not scroll sideways; the
 // thing each picture is about is whole inside its stage or tile; no element
-// with real words is cut by the stage edge; and each picture's accessible
-// label names nothing that this width hides.
+// with real words is cut by the stage edge; every piece of text meets WCAG AA
+// contrast against what is behind it; and each picture's accessible label
+// names nothing that this width hides.
 
 import test from 'node:test'
 import assert from 'node:assert/strict'
@@ -69,6 +70,42 @@ const probe = ({ stageSel, mustBeWhole, wordSel }) => {
       if (partly && !inside(r, s)) out.cutWords.push(el.textContent.trim().slice(0, 30))
     }
   }
+  // Contrast of every piece of real text against what is actually behind it.
+  const parse = (c) => {
+    const m = /rgba?\(([^)]+)\)/.exec(c)
+    if (!m) return null
+    const p = m[1].split(/[,\s\/]+/).filter(Boolean).map(Number)
+    return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 }
+  }
+  const over = (top, under) => ({ r: top.r * top.a + under.r * (1 - top.a), g: top.g * top.a + under.g * (1 - top.a), b: top.b * top.a + under.b * (1 - top.a), a: 1 })
+  const lum = ({ r, g, b }) => [r, g, b].map((v) => v / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4)).reduce((s, v, i) => s + v * [0.2126, 0.7152, 0.0722][i], 0)
+  const backdrop = (el) => {
+    const layers = []
+    for (let n = el; n; n = n.parentElement) {
+      const cs = getComputedStyle(n)
+      const grad = cs.backgroundImage.includes('gradient') ? parse(cs.backgroundImage) : null
+      const bg = grad || parse(cs.backgroundColor)
+      if (bg && bg.a > 0) layers.push(bg)
+      if (bg && bg.a === 1) break
+    }
+    return layers.reduceRight((under, top) => over(top, under), { r: 255, g: 255, b: 255, a: 1 })
+  }
+  out.lowContrast = []
+  for (const el of document.querySelectorAll(stageSel + ' *')) {
+    const own = [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim())
+    if (!own || !shown(el)) continue
+    const cs = getComputedStyle(el)
+    let alpha = 1
+    for (let n = el; n; n = n.parentElement) alpha *= Number(getComputedStyle(n).opacity)
+    const ink = parse(cs.color)
+    const bg = backdrop(el)
+    const fg = over({ ...ink, a: ink.a * alpha }, bg)
+    const [hi, lo] = [lum(fg), lum(bg)].sort((a, b) => b - a)
+    const ratio = (hi + 0.05) / (lo + 0.05)
+    const px = parseFloat(cs.fontSize)
+    const large = px >= 24 || (px >= 18.66 && Number(cs.fontWeight) >= 700)
+    if (ratio < (large ? 3 : 4.5)) out.lowContrast.push(`${el.textContent.trim().slice(0, 24)} ${ratio.toFixed(2)}`)
+  }
   for (const pic of document.querySelectorAll('[role="img"]')) {
     const label = pic.getAttribute('aria-label') || ''
     const leaves = [...pic.querySelectorAll('*')].filter((el) => el.children.length === 0 && el.textContent.trim().length > 2)
@@ -110,6 +147,7 @@ for (const { file, args } of CASES) {
       assert.deepEqual(m.missing, [], 'the subject of the picture is hidden')
       assert.deepEqual(m.cutWhole, [], 'the subject of the picture is cut by its stage or tile')
       assert.deepEqual(m.cutWords, [], 'real words are cut by the stage or tile edge')
+      assert.deepEqual(m.lowContrast, [], 'text below WCAG AA contrast (4.5:1, or 3:1 for large text)')
       assert.ok(m.labels.length > 0 && m.labels.every((l) => l.label.length > 10), 'every picture needs an accessible label')
       assert.deepEqual(m.labels.flatMap((l) => l.namesHidden), [], 'an accessible label names content this width hides')
     })

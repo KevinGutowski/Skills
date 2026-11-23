@@ -26,7 +26,7 @@ jobs:
       - run: python3 -B -m unittest discover -s browser-verification/scripts -p 'test_*.py'
       - run: python3 -B -m unittest discover -s interface-review/scripts -p 'test_*.py'
 
-  faux-ui-capture:
+  browser-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -36,4 +36,4 @@ jobs:
       # The script resolves Playwright from the working directory.
       - run: npm install --no-save --no-audit --no-fund playwright
       - run: npx playwright install --with-deps chromium
-      - run: node --test faux-ui/scripts/contact-sheet.test.mjs faux-ui/scripts/examples.test.mjs
+      - run: node --test faux-ui/scripts/contact-sheet.test.mjs faux-ui/scripts/examples.test.mjs web-design/scripts/offscreen-animations.test.mjs

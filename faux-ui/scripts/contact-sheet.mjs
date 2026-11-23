@@ -17,9 +17,9 @@
 // crop only decides which pixels are kept.
 //
 // Crop:     --select <css>   the element to capture, whole, even when it is larger
-//                            than the viewport. Waits up to --wait ms (default
-//                            5000) for it to be visible, then measures it after
-//                            --start. Or:
+//                            than the viewport. The first visible match is used.
+//                            Waits up to --wait ms (default 5000; 0 = check once,
+//                            no waiting) for one to be visible. Or:
 //           --x --y --width --height   a rectangle in CSS px (default 0 0 720 340,
 //                            or as much of that as the viewport holds)
 // Viewport: --viewport WxH   default 1280x800; never changed to suit the crop.
@@ -29,7 +29,9 @@
 //                            loop plus a second past the seam
 //           --every <ms>     between frames (default 500)
 //           --count <n>      frames (default 24; ignored when --loop is given)
-//           --start <ms>     wait after load before the first frame (default 0)
+//           --start <ms>     wait before the first frame (default 0), counted from
+//                            when the page has loaded and any --select target is
+//                            visible; frame labels count from the first frame
 // Sheet:    --cols <n> (default 4), --thumb <scale of each frame> (default 0.5)
 // Modes:    --still [--scale 2]   one frame only
 //           --reduced             emulate prefers-reduced-motion: reduce
@@ -196,28 +198,47 @@ try {
   if (isHttp && response && !response.ok()) {
     throw Object.assign(new Error(`${url} answered HTTP ${response.status()}; nothing written`), { exit: 3 })
   }
-  const t0 = Date.now()
-  if (start > 0) await page.waitForTimeout(start)
+  const loaded = Date.now()
 
   let clip = rect
   // A selected element is captured whole, in document coordinates, even when it
   // is taller or wider than the viewport. The viewport still decides the layout.
   let shot = { clip }
+  let el = null
   if (selector) {
     // A stage that mounts after load (a hydrated app, a lazy route) is still the
     // stage: wait for it to exist and be visible, up to --wait, before giving up.
-    const el = page.locator(selector).first()
+    // "The element" is the first *visible* match: a page that keeps a hidden
+    // desktop twin before the visible phone one still has one stage on screen.
+    const matches = page.locator(selector)
+    el = matches.locator('visible=true').first()
     try {
-      await el.waitFor({ state: 'visible', timeout: wait })
+      if (wait === 0) {
+        // --wait 0 means "check now", not "wait forever".
+        if (!(await el.count())) throw new Error('not visible now')
+      } else {
+        await el.waitFor({ state: 'visible', timeout: wait })
+      }
     } catch (e) {
-      const seen = await el.count().catch(() => 0)
+      const seen = await matches.count().catch(() => 0)
+      const when = wait === 0 ? 'at load' : `within ${wait}ms`
       const why = /is not a valid selector|Unexpected token|SyntaxError/i.test(e.message)
         ? `${selector} is not a valid selector`
         : seen
-          ? `${selector} matched an element that never became visible within ${wait}ms`
-          : `no element matched ${selector} within ${wait}ms`
+          ? `${selector} matched ${seen} element(s), none visible ${when}`
+          : `no element matched ${selector} ${when}`
       throw Object.assign(new Error(`${why}; nothing written`), { exit: 3 })
     }
+  }
+
+  // The capture clock starts here: after the page loaded and the selected stage
+  // was visible. --start and every frame time are measured from this moment, so
+  // time spent waiting for a late stage is never taken out of the sheet.
+  const ready = Date.now()
+  if (start > 0) await page.waitForTimeout(start)
+  const t0 = Date.now()
+  if (ready - loaded > 250) console.log(`note: the stage was ready ${((ready - loaded) / 1000).toFixed(1)}s after load; frame times count from then${start ? ` plus the ${start}ms --start` : ''}`)
+  if (selector) {
     const box = await el.evaluate((node) => {
       const r = node.getBoundingClientRect()
       return { x: r.left + window.scrollX, y: r.top + window.scrollY, width: r.width, height: r.height }
@@ -238,7 +259,7 @@ try {
   } else {
     const frames = []
     for (let i = 0; i < count; i++) {
-      const due = start + i * every
+      const due = i * every
       const now = Date.now() - t0
       if (due > now) await page.waitForTimeout(due - now)
       const at = Date.now() - t0

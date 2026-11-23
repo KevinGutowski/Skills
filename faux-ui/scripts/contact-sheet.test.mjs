@@ -66,6 +66,31 @@ async function centerPixel(png) {
   }
 }
 
+// Read each frame's color from a contact sheet whose frames are 200px wide at
+// --thumb 1 (8px margin, 8px gap).
+async function sheetColors(png, n) {
+  const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {})
+  try {
+    const page = await browser.newPage()
+    return await page.evaluate(async ({ src, n }) => {
+      const img = new Image()
+      img.src = src
+      await img.decode()
+      const c = document.createElement('canvas')
+      c.width = img.width
+      c.height = img.height
+      const g = c.getContext('2d')
+      g.drawImage(img, 0, 0)
+      return Array.from({ length: n }, (_, i) => {
+        const [r, gr, b] = g.getImageData(8 + i * 208 + 100, img.height - 40, 1, 1).data
+        return gr > b ? 'green' : b > r ? 'blue' : 'other'
+      })
+    }, { src: `data:image/png;base64,${readFileSync(png).toString('base64')}`, n })
+  } finally {
+    await browser.close()
+  }
+}
+
 test('--select crops a centered stage without changing the breakpoint', { skip }, async () => {
   const out = join(dir, 'select.png')
   const r = run(fixture, '--select', '#stage', '--viewport', '1200x800', '--still', '--scale', '1', '--out', out)
@@ -169,8 +194,39 @@ test('an element that exists but never shows exits 3', { skip }, () => {
   const out = join(dir, 'hidden.png')
   const r = run(hidden, '--select', '#h', '--wait', '300', '--still', '--out', out)
   assert.equal(r.status, 3)
-  assert.match(r.stderr, /never became visible within 300ms/)
+  assert.match(r.stderr, /matched 1 element\(s\), none visible within 300ms/)
   assert.equal(existsSync(out), false)
+})
+
+test('a hidden match before the visible one does not hide the stage', { skip }, async () => {
+  // A page that keeps a hidden desktop twin ahead of the visible phone stage.
+  const twins = join(dir, 'twins.html')
+  writeFileSync(
+    twins,
+    `<!doctype html><style>body{margin:0}.demo{width:200px;height:100px}</style>
+    <div class="demo" style="display:none;background:rgb(200,0,0)"></div>
+    <div class="demo" style="background:rgb(0,128,0)"></div>`,
+  )
+  const out = join(dir, 'twins.png')
+  const r = run(twins, '--viewport', '390x800', '--select', '.demo', '--still', '--scale', '1', '--out', out)
+  assert.equal(r.status, 0, r.stderr)
+  const px = await centerPixel(out)
+  assert.deepEqual([px.r, px.g, px.b], [0, 128, 0], 'the visible match is the one captured')
+})
+
+test('--wait 0 checks once and does not wait', { skip }, () => {
+  const out = join(dir, 'wait0.png')
+  assert.equal(run(fixture, '--select', '#stage', '--wait', '0', '--still', '--out', out).status, 0)
+  // The late fixture mounts at 600ms; with --wait 0 it is not there yet.
+  const late = join(dir, 'late0.html')
+  writeFileSync(late, `<!doctype html><script>setTimeout(() => { const d = document.createElement('div'); d.id = 'late'; d.style.cssText = 'width:10px;height:10px'; document.body.append(d) }, 600)</script>`)
+  const out2 = join(dir, 'wait0-late.png')
+  const started = Date.now()
+  const r = run(late, '--select', '#late', '--wait', '0', '--still', '--out', out2)
+  assert.equal(r.status, 3)
+  assert.match(r.stderr, /no element matched #late at load/)
+  assert.equal(existsSync(out2), false)
+  assert.ok(Date.now() - started < 5000, 'returned without waiting')
 })
 
 // The argument contract. None of these reach a browser, so none is skipped.
@@ -319,6 +375,31 @@ test('--loop covers a real loop past its seam', { skip }, async () => {
     await browser.close()
   }
   assert.equal(colors[0], 'green')
+  assert.ok(colors.includes('blue'), `second half of the loop missing: ${colors}`)
+  assert.ok(colors.slice(colors.indexOf('blue') + 1).includes('green'), `the sheet stops before the seam: ${colors}`)
+})
+
+test('--loop covers the whole loop when the stage mounts late', { skip }, async () => {
+  // The stage, and its 2s loop, appear 1.7s after load. The sheet must still
+  // span the loop and its seam: waiting for the stage may not eat the frames.
+  const lateLoop = join(dir, 'late-loop.html')
+  writeFileSync(
+    lateLoop,
+    `<!doctype html><style>body{margin:0}
+    #s{width:200px;height:100px;animation:k 2s steps(1) infinite}
+    @keyframes k{0%{background:rgb(0,128,0)}50%{background:rgb(0,0,200)}}</style>
+    <script>setTimeout(() => { const d = document.createElement('div'); d.id = 's'; document.body.append(d) }, 1700)</script>`,
+  )
+  const out = join(dir, 'late-loop.png')
+  const r = run(lateLoop, '--select', '#s', '--loop', '2000', '--cols', '7', '--thumb', '1', '--out', out)
+  assert.equal(r.status, 0, r.stderr)
+  assert.match(r.stdout, /frames=7 /)
+  assert.match(r.stdout, /the stage was ready 1\.[6-9]s after load/)
+  const span = Number(/span=([\d.]+)s/.exec(r.stdout)[1])
+  assert.ok(span >= 2.9 && span <= 3.4, `the sheet spans ${span}s; it should span about 3s`)
+  assert.doesNotMatch(r.stdout, /inconclusive/)
+  const colors = await sheetColors(out, 7)
+  assert.equal(colors[0], 'green', `the first frame is the start of the loop: ${colors}`)
   assert.ok(colors.includes('blue'), `second half of the loop missing: ${colors}`)
   assert.ok(colors.slice(colors.indexOf('blue') + 1).includes('green'), `the sheet stops before the seam: ${colors}`)
 })

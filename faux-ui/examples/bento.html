@@ -32,8 +32,8 @@
     --bx-line-faint: rgba(20, 20, 18, 0.06);
     --bx-text-strong: #1b1b19;
     --bx-text: #55554f;
-    --bx-text-faint: #8b8b84;
-    --bx-copy-faint: #77776f;
+    --bx-text-faint: #6b6b64;
+    --bx-copy-faint: #686861;   /* 5:1 on the tile; page copy has to pass AA */
     --bx-bar: #e9e9e4;
     --bx-accent: #2f6fed;
     --bx-accent-soft: #e6eefd;
@@ -81,7 +81,7 @@
   .bx-slot[data-gap] { background: none; height: 14px; }
   .bx-event { height: 56px; margin-bottom: 6px; padding: 7px 8px; border-radius: 6px; background: var(--bx-accent); color: #fff; box-shadow: 0 6px 14px -6px rgba(47, 111, 237, 0.55); }
   .bx-event b { display: block; font-size: 12px; font-weight: 600; white-space: nowrap; }
-  .bx-event em { display: block; margin-top: 2px; font-style: normal; font-size: 11px; opacity: 0.85; white-space: nowrap; }
+  .bx-event em { display: block; margin-top: 2px; font-style: normal; font-size: 11px; white-space: nowrap; }
 
   /* 2. Stat, on the one dark tile. Number and unit share a line; the label sits close under it. */
   .bx-tile[data-dark] { background: var(--bx-tile-dark); }
