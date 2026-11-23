@@ -23,7 +23,7 @@
 
 ## Decide first: build or adopt
 
-A correct sheet is momentum dragging, progress-linked overlay, velocity-aware dismissal, scroll-vs-drag arbitration, focus trapping, and Escape — weeks of edge cases. For a bottom sheet or drawer, adopt a maintained primitive (Vaul is the reference implementation these rules were extracted from) and hand-roll only when the interaction is different in kind: swipe cards, bespoke drag surfaces, a signature gesture. If content merely pages horizontally, native scroll with `scroll-snap` beats any JS gesture — the browser's physics are already right.
+A correct sheet is momentum dragging, progress-linked overlay, velocity-aware dismissal, scroll-vs-drag arbitration, focus trapping, and Escape — weeks of edge cases. For a bottom sheet or drawer, adopt a maintained primitive (Vaul is the reference implementation these rules were extracted from) and hand-roll only when the interaction is different in kind: swipe cards, bespoke drag surfaces, a signature gesture. React Aria's Sheet (2026-10) is a second reference built the other way: the sheet is a scroll container with snap points, and `view-timeline` drives the overlay. Swipe, momentum and elastic edges are native scrolling, so they run at the display's full rate even on iOS, where JS-driven drags are held to 60 Hz. The overlay animations linked to them follow WebKit's own frame-rate rules ([web-performance.md](../web-performance.md#ios-safaris-60-hz-cap)). If the project already uses React Aria, prefer it; otherwise Vaul's rules below still apply. If content merely pages horizontally, native scroll with `scroll-snap` beats any JS gesture — the browser's physics are already right (settings: [web-layout-design.md](../web-layout-design.md) → Scroll snap).
 
 ## The two-phase rule
 
@@ -64,7 +64,7 @@ const project = (velocity, rate = 0.998) => ((velocity / 1000) * rate) / (1 - ra
 const target = nearestSnapPoint(current + project(releaseVelocity));
 ```
 
-  - decide commit-vs-reverse from the **projected endpoint**, not from which side of the midpoint the element sits at release: snap to the point nearest where the throw would land, so a sheet past halfway that is moving back up stays open. (Kowalski's Apple-design port at `64eb3de` states only the projection rule. Reading the sign of the release velocity is this library's shortcut for the two-target case; it agrees with projection whenever the throw is fast enough to cross the midpoint.)
+  - decide commit-vs-reverse with the same projection: snap to whichever end (open or closed) is nearest the projected landing point, not to whichever side of the midpoint the element sits on. A sheet past halfway that is flung back up stays open. A nearly closed sheet released with a tiny upward velocity still closes, because its projection barely moves.
 - **Hand the velocity to the animation.** Motion takes absolute px/s (`velocity`). An API that expects relative velocity wants `gestureVelocity / (target − current)`.
 - **Bounce only when force was applied.** A small overshoot suits a flung element; the same element closed by a button or Escape gets none. Smaller elements need proportionally more bounce to read the same.
 - **Clamp overshoot on exits.** A dismiss spring that overshoots past the screen edge flashes a gap; use a critically damped or clamped spring for the way out.
@@ -143,7 +143,7 @@ Tracking stays: the user is producing that motion. Under `prefers-reduced-motion
 | Jumps when grabbed mid-animation | Tracking restarts from the logical value | Start from the live transform |
 | Jumps on release | Release animation starts from a stale value, or a keyframe restarts | Animate from the current position; no `@keyframes` |
 | Quick flick is ignored | Distance-only threshold | Add a velocity or projection test |
-| Past-halfway sheet closes while being dragged back up | Position decides | Use velocity sign |
+| Past-halfway sheet closes while being dragged back up | Position decides | Snap to the point nearest the projected endpoint (above) |
 | Drag dies after a few pixels on touch | Browser claimed the touch (`pointercancel`) | `touch-action` for the axis |
 | Page scrolls while swiping a carousel | No axis declared | `touch-action: pan-y pinch-zoom` on the track |
 | Cannot pinch-zoom when starting on the swipe surface | Bare `pan-y`/`pan-x` | Add `pinch-zoom` |
@@ -159,7 +159,7 @@ Tracking stays: the user is producing that motion. Under `prefers-reduced-motion
 - [ ] Pointer captured; grab offset kept; second pointer ignored
 - [ ] No animation, React state, or ancestor CSS variable in the track path
 - [ ] Limits rubber-band
-- [ ] Dismissal accepts a flick (velocity or projection); reverse-vs-commit uses velocity sign
+- [ ] Dismissal accepts a flick (velocity or projection); reverse-vs-commit uses the projected endpoint, not the raw position
 - [ ] Release starts from the live position; thrown elements inherit velocity
 - [ ] Re-grab works at any point of the release animation
 - [ ] Overlay and background derive from drag progress
@@ -167,4 +167,4 @@ Tracking stays: the user is producing that motion. Under `prefers-reduced-motion
 - [ ] Every drag, swipe, and hold has a button and keyboard path to the same result
 - [ ] Dismiss direction matches entry direction
 - [ ] Reduced-motion path keeps tracking, drops fling and bounce
-- [ ] Tried on a real phone: flick it, catch it mid-flight, reverse it. Trackpad emulation hides touch behaviour and a 60Hz monitor hides roughness a 120Hz phone shows
+- [ ] Tried on a real phone: flick it, catch it mid-flight, reverse it. Trackpad emulation hides touch behaviour and a 60Hz monitor hides roughness a 120Hz phone shows. On iOS Safari a JS-driven drag runs at 60 Hz while native scrolling beside it runs at 120 Hz: compare against a native scroller, or film both in 240 fps slow motion

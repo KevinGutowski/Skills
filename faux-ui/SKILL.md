@@ -84,4 +84,6 @@ Check these before handing over. Each has its rule in the named reference.
 - **The landing page around the demo** (copy, section order, conversion) → `devtools` (developer-tool-gtm) or `frontend-design`. Bento tile copy is page type and belongs to the page.
 - **A chart as the subject** → `data-viz` for the chart's form; this skill only frames it.
 - **Hand-drawn or generated illustration and photography** are out of scope: this skill cannot draw. Use a real asset or pick another tile kind. Brand marks and app icons → the owner's official artwork; original marks → `logo-design`.
+- **A showpiece effect inside the demo** (a border beam, a shader ground, a gooey merge) → `ui-fx` for the effect; this skill still decides whether it serves the story.
+- **Proving a real page works in a browser** (layout shift, focus, reduced motion on shipped UI) → `browser-verification`. This skill's contact-sheet script films an authored demo and measures nothing.
 - **A design to evaluate before building the real thing** → `design-prototyping`. A faux UI sells a product that exists; a prototype tests one that does not.

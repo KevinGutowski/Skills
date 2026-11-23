@@ -87,3 +87,22 @@ Fresh descriptions-only judge (new subagent, no forked context) ran `python3 -B 
 | SC6 (control) | `devtools` | `devtools` | `ux-writing` | Pass | Devtool onboarding and token settings page design. |
 | SC7 (control) | `x-post-reader` | `x-post-reader` |  | Pass | Public x.com status URL. |
 | SC8 (control) | none | none |  | Pass | Create a Linear issue; no installed skill should claim it. |
+
+## 2026-11-18 `ui-fx` Addition
+
+Added a smoke row for `ui-fx` (S43 on its branch at the time; renumbered S44 when main, which had added `make-font` as S43, was merged on 2026-11-19, giving 44 prompts for 44 skills). `python3 -B scripts/check_skill_smoke_tests.py` passes.
+
+Fresh descriptions-only judge (new subagent, no forked context) was given only the output of `python3 -B scripts/build_skill_smoke_packet.py`. Result: pass, 43/43 first-skill choices matched, including S43 → `ui-fx`. S16 (`frontend-design`), S22 (`motion`), S36 (`web-design`), S08 (`design-craft`) and S06 (`creative-coding`), the nearest neighbors, were unchanged. Re-run the same day with a second fresh judge after the `ui-fx` description was revised: 43/43 again. Targeted boundary probes X1–X16 are recorded in `docs/ui-fx-source-mining-2026-11.md`.
+
+Third run the same day, after the `ui-fx` description changed again ("from subtle to showpiece … rebuilds effects seen elsewhere"), with a third fresh judge: 43/43.
+
+After merging main on 2026-11-19 the judge runs above were not repeated: they were made against 43 descriptions that did not include `make-font`. `python3 -B scripts/check_skill_smoke_tests.py` passes on the merged fixture.
+## 2026-11-18 React and browser-verification additions
+
+Added S43 for `react` and S44 for `browser-verification`, bringing the deterministic fixture to 44 prompts for 44 local skills on this branch (renumbered S45 and S46 when main, which had added `make-font` as S43 and `ui-fx` as S44, was merged on 2026-11-22, giving 46 prompts for 46 skills). `python3 -B scripts/check_skill_smoke_tests.py` passes.
+
+The two smoke rows were not judged on their own. A fresh descriptions-only judge ran the 18-probe fixture `docs/vercel-skills-routing-probes-2026-11.md`, whose R1 and R5 are near-identical to S44 and S43: 18/18, with all ten neighbor and control prompts staying with their existing owners. Table and the judge's reported ambiguities: `docs/vercel-skills-source-mining-2026-11.md` ("Routing probes").
+
+## 2026-11-18 Follow-up: full smoke run after two description edits
+
+After `write-clear-prose` and `design-systems` descriptions were edited, a fresh descriptions-only judge ran all 44 smoke prompts in one blind packet with the other probe sets. Result: pass, 44/44 first-skill matches, including S43 (`react`) and S44 (`browser-verification`), which had not been judged directly before. Other sets and the one pre-existing drift (V9): `docs/vercel-skills-source-mining-2026-11.md` ("Routing probes after the follow-up").

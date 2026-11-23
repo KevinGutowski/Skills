@@ -17,6 +17,12 @@ python /root/.codex/skills/.system/skill-installer/scripts/install-skill-from-gi
   --path design-craft devtools working-with-ai
 ```
 
+The cross-agent Skills CLI discovers the same root-level directories; name each skill:
+
+```bash
+npx skills add KevinGutowski/Skills --skill design-craft --skill devtools
+```
+
 If a listing command fails, inspect the repo tree instead of stopping:
 
 ```bash
@@ -34,5 +40,7 @@ python3 scripts/check_vercel_routing_probes.py
 python3 scripts/check_routing_probe_fixtures.py
 python3 scripts/check_skill_smoke_tests.py
 python3 scripts/check_application_fixtures.py
+python3 -B -m unittest discover -s browser-verification/scripts -p 'test_*.py'   # needs node
+python3 -B -m unittest discover -s interface-review/scripts -p 'test_*.py'     # needs ripgrep
 git diff --check
 ```

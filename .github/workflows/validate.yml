@@ -21,3 +21,19 @@ jobs:
       - run: python3 scripts/check_skill_smoke_tests.py
       - run: python3 scripts/check_application_fixtures.py
       - run: python3 -B -m unittest discover -s superconductor/scripts -p 'test_*.py'
+      - run: python3 -B -m unittest discover -s frontend-design/scripts -p 'test_*.py'
+      - run: sudo apt-get update && sudo apt-get install -y ripgrep
+      - run: python3 -B -m unittest discover -s browser-verification/scripts -p 'test_*.py'
+      - run: python3 -B -m unittest discover -s interface-review/scripts -p 'test_*.py'
+
+  faux-ui-capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      # The script resolves Playwright from the working directory.
+      - run: npm install --no-save --no-audit --no-fund playwright
+      - run: npx playwright install --with-deps chromium
+      - run: node --test faux-ui/scripts/contact-sheet.test.mjs

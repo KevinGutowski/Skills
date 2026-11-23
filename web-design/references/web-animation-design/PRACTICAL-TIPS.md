@@ -163,7 +163,7 @@ A faster-spinning spinner makes apps feel faster even with identical load times.
 
 Arrow key navigation, keyboard shortcuts—these are repeated hundreds of times daily. Animation makes them feel slow and disconnected.
 
-**Never animate:**
+**Never animate** (everyday interface motion; an effect the user asked for, or one chosen through `ui-fx` for an effects request, is exempt, see Scope in the parent reference):
 
 - List navigation with arrow keys
 - Keyboard shortcut responses
@@ -188,7 +188,7 @@ Too fast is as bad as too slow — below a certain duration the eye can't track 
 - **A removed element gives up its space immediately** — siblings close the gap while it fades, not after (`AnimatePresence mode="popLayout"`, or absolutely position it at its current offset before the exit).
 - **No stagger on menus, command palettes, or tab content** — anything opened many times a day arrives together.
 
-The full method for deciding these — cast roles, pick together/overlap/sequence per pair, stagger budgets (30–80ms steps and ~300ms total in product UI), interruption checks — is [choreography.md](choreography.md). Decide the choreography there; structure the code with the storyboard pattern below.
+The full method for deciding these — cast roles, pick together/overlap/sequence per pair, stagger budgets (30–80ms steps, with the last item finished by ~300ms in product UI), interruption checks — is [choreography.md](choreography.md). Decide the choreography there; structure the code with the storyboard pattern below.
 
 ## Choreographing Multi-Step Animations
 
@@ -408,7 +408,7 @@ Blur bridges visual gaps between states, tricking the eye into seeing smoother t
 - **Scroll reveals are for marketing surfaces and fire once** — an element that re-animates every time it re-enters the viewport is noise.
 
 **Techniques**
-- **The clip-path duplicate-overlay**: duplicate an element, style the duplicate as the "after" state, and animate `clip-path: inset(...)` to reveal it — seamless tab highlights (no color-transition timing problems), theme-change reveals, comparison sliders, and image reveals with zero layout shift; hardware-accelerated.
+- **The clip-path duplicate-overlay**: duplicate an element, style the duplicate as the "after" state, and animate `clip-path: inset(...)` to reveal it — seamless tab highlights (no color-transition timing problems), theme-change reveals, comparison sliders, and image reveals with zero layout shift. `clip-path` animation is not reliably composited across browsers: keep the reveal short and measure it under load ([animation-performance.md](animation-performance.md)).
 - **Desynced idle drift**: barely-visible float (~3s period) on the group + subtle rotate (~4s) on the background — different periods never sync, so the scene feels organic, not mechanical.
 - **Hover-intent debounce (~100ms)** before triggering rich hover animations — short enough to feel responsive, long enough to kill accidental triggers (Apple's Dynamic Island does this).
 - **Two-tap pattern on touch**: `pointer: coarse` devices get tap-once = hover state, tap-again = action; hover and click firing together on touch glitches the choreography.
@@ -433,7 +433,7 @@ Blur bridges visual gaps between states, tricking the eye into seeing smoother t
 From Emil's interviews with Henry Heffernan (Vercel), Lochie Axon (Family), and Dennis Brotzky (Fey):
 
 **Durations & decision rules**
-- Hard ceiling: a transition should essentially never exceed **1 second**, even with an extreme curve. Click-feedback go-to is **200ms, often 150ms** (the interviewees' figure; this theme's duration table keeps press and micro-interaction feedback at 100–150ms — use the table).
+- Hard ceiling: an everyday transition should essentially never exceed **1 second**, even with an extreme curve (a requested showpiece effect built through `ui-fx` may). Click-feedback go-to is **200ms, often 150ms** (the interviewees' figure; this theme's duration table keeps press and micro-interaction feedback at 100–150ms — use the table).
 - The delete-rule: "If you ever find yourself at 150 milliseconds… 'this is not fast enough', it is probably not worth animating at all."
 - **Page-load entrances must be CSS** — a JS animation library needs JavaScript loaded, so library-driven entrances delay first visuals. Save Motion/React Spring for post-hydration interactions.
 - Simple layout changes can usually be faked with transforms instead of reaching for a layout-animation engine.

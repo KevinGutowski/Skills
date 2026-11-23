@@ -28,7 +28,7 @@ These values are the *how* of the **Craft** principle. For the strategic layer �
 | [Typography](typography.md) | Text wrapping, font smoothing, tabular numbers |
 | [Surfaces](surfaces.md) | Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain overlays, document canvas background, scroll fades, hit areas |
 | [Animations](animations.md) | Interruptible animations, enter/exit transitions, icon animations, scale on press |
-| [Component details](component-details.md) | Dropdown menu width, rows and keys; tooltip timing |
+| [Component details](component-details.md) | Dropdown menu width, rows and keys; tooltip timing; empty-state style, sizes, frame and action |
 | [Performance](performance.md) | Transition specificity, `will-change` usage, perceived performance (spinner choice) |
 | [Refactoring UI](refactoring-ui.md) | Visual refactor passes: hierarchy, spacing, type, color, depth, images, empty states; example gallery in `../examples/refactoring-ui-gallery.html` |
 | [Emil Kowalski — Design Engineering](emil-kowalski.md) | Alternate craft theme (animations.dev): training taste, component polish, animation decisions, the invisible details that make software feel right; deeper cuts in `emil-kowalski/` (css-techniques, interaction-and-performance, taste-and-craft) |
@@ -47,11 +47,11 @@ When geometric centering looks off, align optically — trust the eye over the m
 
 - **Play/triangle icons:** a geometrically centered triangle reads as shifted left because its visual mass sits left of its bounding box. Nudge right by ~6–8% of the icon's width (in a 24px control, ~1–2px) so the centroid, not the box, is centered.
 - **Icon + text buttons:** trim the padding on the icon side — give the icon ~2–4px less leading padding than the trailing text padding, so the *content* looks centered rather than the box.
-- **Single glyphs in a circle** (a chevron in a round button, an arrow): optically center the glyph's ink, not its layout box; most need a 1–2px shove toward the direction opposite their visual weight.
+- **Single glyphs in a circle** (a chevron in a round button, an arrow): optically center the glyph's ink, not its layout box; most need a 1–2px shove at ~24px (less at small sizes) toward the direction opposite their visual weight.
 - **Quote marks, bullets, badges:** hang punctuation and leading marks into the margin so the body text edge stays flush.
 - **Mixed silhouettes:** a circle or triangle drawn in the same box as a square reads smaller; let round/pointed shapes overshoot the box slightly so perceived mass, not geometric size, matches.
 
-Rule of thumb: if it's symmetric, geometric centering is fine; if it has directional mass (triangles, arrows, most logos), expect a 1–2px optical correction and tune by eye at the real render size. To *measure* rather than guess, use the blur test (Gustavo Fior, *Craft*): blur the icon heavily in the inspector, see where the blob of ink lands relative to the container's center, and nudge by the distance back — then keep that nudge per icon, never as a global offset. Recipes and the diagnostic snippet: [surfaces.md](surfaces.md) → Optical Alignment.
+Rule of thumb: on an axis where the icon is symmetric, geometric centering is fine. Check the other axis too: a trash can is symmetric left to right but bottom-heavy. If an icon has directional mass (triangles, arrows, most logos), expect a 1–2px correction at ~24px and tune by eye at the real render size. Small icons need less: at about 14px, Nil.Dev's edit and trash icons took 0.25–0.5px, and a filled play triangle measured 0.75px. To *measure* rather than guess, use the blur test (Gustavo Fior, *Craft*): blur the icon heavily in the inspector, see where the blob of ink lands relative to the container's center, and nudge by the distance back. For numbers, compute the ink centroid, nudge it onto the container's centre, and snap to 0.25px. Keep that nudge per icon, never as a global offset. Recipes, the worked table, and the pixel-measuring script (`scripts/optical-nudge.mjs`): [surfaces.md](surfaces.md) → Optical Alignment.
 
 ### 3. Shadows Over Borders
 
@@ -157,7 +157,7 @@ Visual emphasis backfires past a threshold: banner blindness means highly differ
 
 ### 21. Eased Gradients
 
-Two-stop linear gradients leave a visible edge where they start and stop — especially fade-to-transparent scrims and significant color changes. Add intermediate stops sampled from an easing curve so the transition starts and ends gently. For color-to-color gradients also interpolate in a better space (`in oklab`) to avoid muddy midpoints — but only eased stops fix the hard edges. For dark mode, make a dedicated dark-mode hero asset rather than overlaying a gradient on the light-mode one.
+Two-stop linear gradients leave a visible edge where they start and stop — especially fade-to-transparent scrims and significant color changes. Add intermediate stops sampled from an easing curve so the transition starts and ends gently. For color-to-color gradients also interpolate in a better space (`in oklab`) to avoid muddy midpoints — but only eased stops fix the hard edges. For dark mode, make a dedicated dark-mode hero asset rather than overlaying a gradient on the light-mode one. When the fade sits over texture (halftone, grain, photo detail) under text, add a slight blur in the same zone whose mask is fully on before the label starts ([surfaces.md](surfaces.md) → Fading Over Texture: Add Blur).
 
 ### 22. Spacing Scale Construction
 
@@ -175,6 +175,7 @@ Two-stop linear gradients leave a visible edge where they start and stop — esp
 | --- | --- |
 | Same border radius on parent and child | Calculate `outerRadius = innerRadius + padding` |
 | Icons look off-center | Adjust optically with padding or fix SVG directly |
+| Labels, icons or counts start 1–3px apart from row to row | Draw guides, then fix the container's padding, not single items ([alignment-pass.md](alignment-pass.md)) |
 | Hard borders between sections | Use layered `box-shadow` with transparency |
 | Jarring enter/exit animations | Split, stagger, and keep exits subtle |
 | Numbers cause layout shift | Apply `tabular-nums` |
@@ -196,6 +197,7 @@ Two-stop linear gradients leave a visible edge where they start and stop — esp
 | Disabled button still squeezes on press | Scope the press: `:active:not(:disabled)` |
 | Grain looks different depending on where the card sits | Add `isolation: isolate` to the grain's container so `mix-blend-mode` only sees the surface |
 | Visible band/edge where a gradient ends | Use eased gradient stops; `in oklab` for muddy color midpoints |
+| Dots or grain still busy under text after an eased fade | Add a slight masked `backdrop-filter: blur()` (about half the texture pitch) that reaches full strength before the label |
 | Backdrop blur silently stops rendering (Chrome) | Wrap the page's `mix-blend-mode` element in a div with `backdrop-filter: opacity(1)` |
 | Custom branded loader on slow, uncontrollable waits | Use the system spinner — custom loaders make users blame *you* for the wait |
 
@@ -228,7 +230,8 @@ Rows should cite the specific file and the specific property that changed when i
 ## Review Checklist
 
 - [ ] Nested rounded elements use concentric border radius
-- [ ] Icons are optically centered, not just geometrically
+- [ ] Icons are optically centered, not just geometrically: ink centroid on the container centre, both axes checked, per-icon nudge kept
+- [ ] Every row in a container starts on its text line or box line and ends on its trailing line, checked with drawn guides ([alignment-pass.md](alignment-pass.md))
 - [ ] Shadows used instead of borders where appropriate
 - [ ] Enter animations are split and staggered
 - [ ] Exit animations are subtle
@@ -245,6 +248,7 @@ Rows should cite the specific file and the specific property that changed when i
 - [ ] Interactive elements have at least 40×40px hit area
 - [ ] Menu and list rows have no dead pixels between them (the gap is drawn inside the row, not made with margin)
 - [ ] Gradients (scrims, fades, large color changes) use eased stops, not two-stop linear
+- [ ] Fades over textured art under text also blur the texture in that zone
 
 ## Rendering physics worth knowing
 
@@ -272,6 +276,7 @@ Rows should cite the specific file and the specific property that changed when i
 
 - [typography.md](typography.md) — Text wrapping, font smoothing, tabular numbers
 - [surfaces.md](surfaces.md) — Border radius, optical alignment, shadows, eased gradients, backdrop blur, image outlines, grain, document canvas, scroll fades
+- [alignment-pass.md](alignment-pass.md) — Edge alignment across containers: drawn guides, text and box lines, sidebar and toolbar lines, vendored probe
 - [animations.md](animations.md) — Interruptible animations, enter/exit transitions, icon animations, scale on press
 - [performance.md](performance.md) — Transition specificity, `will-change` usage, perceived performance (spinner choice assigns blame)
 - [refactoring-ui.md](refactoring-ui.md) — Wathan/Schoger's visual refactor method, with a code-native bad/good gallery at [../examples/refactoring-ui-gallery.html](../examples/refactoring-ui-gallery.html)

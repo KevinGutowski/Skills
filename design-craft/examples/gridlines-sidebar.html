@@ -1,0 +1,26 @@
+<!doctype html>
+<!-- A sidebar with four planted misses. Run the probe on it to see what a report looks like:
+     PW_DIR=<dir with playwright> node design-craft/scripts/gridlines/audit.mjs "file://$PWD/design-craft/examples/gridlines-sidebar.html" .gridlines 800
+     From https://github.com/pritamux/gridlines (MIT) at commit 20d0944. -->
+<html>
+<body style="margin:0;background:#111;color:#eee;font:14px system-ui">
+  <aside aria-label="Sidebar" style="width:240px;height:400px;background:#1b1b1b;padding:8px 0">
+    <div style="display:flex;align-items:center;gap:8px;height:32px;padding:0 12px">
+      <svg width="16" height="16"><rect width="16" height="16" fill="#888"/></svg><span>Inbox</span>
+      <span style="margin-left:auto;background:#333;padding:0 6px;border-radius:4px">3</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;height:32px;padding:0 12px">
+      <svg width="16" height="16"><rect width="16" height="16" fill="#888"/></svg><span>My issues</span>
+      <!-- miss: the count ends 3px short of the trailing line -->
+      <span style="margin-left:auto;margin-right:3px;background:#333;padding:0 6px;border-radius:4px">12</span>
+    </div>
+    <!-- miss: the section header starts 3px right of the icon edge -->
+    <div style="height:32px;padding:0 15px;display:flex;align-items:center;color:#888">Workspace</div>
+    <div style="display:flex;align-items:center;gap:8px;height:32px;padding:0 12px">
+      <svg width="16" height="16"><rect width="16" height="16" fill="#888"/></svg>
+      <!-- misses: the label sits 2px right of the label line and 3px below the row's centre -->
+      <span style="position:relative;top:3px;left:2px">Views</span>
+    </div>
+  </aside>
+</body>
+</html>

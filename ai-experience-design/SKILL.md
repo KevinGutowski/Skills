@@ -115,6 +115,7 @@ The on-device model is ~3B parameters: great at summarization, classification, c
 - **Show real progress but curate focus** (Ryo Lu): no twin spinners, no vanity status lines — complements the HIG's specific-progress rule in the generative layer.
 - **Choreograph latency into an interaction the user wants anyway** (CapWords): the confirm step *is* the API wait.
 - **Use load time as an education surface** (Xantos).
+- **The indicator itself** (thinking orbs, a beam on the working element, voice glow, agent avatars) and how to make it striking → `ui-fx`. This skill decides what the wait should say; the effect must follow real state and never be the only signal. An orb plus an edge beam for one wait counts as one indicator, not the twin spinners ruled out above.
 - **Agent-turn mechanics** (one status line per turn, elapsed time from 1s, tool calls labeled by what they did and folded when consecutive, send-becomes-stop): single-source worked rules in `references/patterns.md`, Agent-turn surfaces.
 
 ## Product posture

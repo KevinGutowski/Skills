@@ -50,4 +50,12 @@ After adding `make-font` and rewording `design-systems` the library is 43 skills
 
 ## 2026-11-18 check
 
-After adding `faux-ui` and adding one trigger each to `frontend-design`, `working-with-ai`, and `creative-coding`, the library is 44 skills and 18,478 description characters. `/doctor` and `/skill-doctor` were not run.
+Adding `ui-fx` (445-character description after its same-day revisions) to the library as it stood with `make-font` brings it to 44 skills and 18,418 description characters (recounted after merging main on 2026-11-19). No other description changed on this branch. `/doctor` and `/skill-doctor` were not run (they need a local Claude Code session); run both and record any shortened or dropped descriptions here.
+
+## 2026-11-18 check
+
+After adding `faux-ui` and adding one trigger each to `frontend-design`, `working-with-ai`, and `creative-coding`, the library on that branch was 44 skills and 18,478 description characters. `/doctor` and `/skill-doctor` were not run.
+
+## 2026-11-23 check
+
+After merging main (which added `ui-fx`, `react`, and `browser-verification`) into the `faux-ui` branch, the library is 47 skills and 19,899 description characters. `/doctor` and `/skill-doctor` were not run.

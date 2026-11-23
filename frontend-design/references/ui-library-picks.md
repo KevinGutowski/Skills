@@ -33,7 +33,7 @@ Use this when a build needs a standard behavior (toast, dialog, command menu, vi
 | Toasts | [Sonner](https://sonner.emilkowal.ski) (his own) |
 | One-time-code input | [input-otp](https://input-otp.rodz.dev) |
 | Drawers / bottom sheets | [Vaul](https://vaul.emilkowal.ski) (his own) |
-| Tuning GUI / control panel | [Leva](https://github.com/pmndrs/leva) |
+| Tuning GUI / control panel | [Leva](https://github.com/pmndrs/leva). Kowalski's list dropped DialKit in rev `0f2e23b`; it stays Josh Puckett's live-tuning option in `web-design` (web-animation-design) |
 | General animation (springs, layout, enter/exit) | [Motion](https://motion.dev) |
 | Animated numbers | [NumberFlow](https://number-flow.barvian.me) |
 | Animated text | [torph](https://torph.lochie.me/) |
@@ -53,6 +53,8 @@ Two splits he draws:
 
 - **Charts:** data arriving live with a time axis that scrolls → Liveline. Everything else → Recharts. Chart *type* and integrity → `data-viz`.
 - **Class names:** clsx for ad-hoc conditions; cva once a component has real variants (size, intent, state) that deserve a typed API. They compose.
+
+Effect libraries (border beams, shader backgrounds, liquid metal, confetti, Rive/Lottie) are a separate survey with licence traps: `ui-fx` (effect-libraries).
 
 Local note: the Ryo Lu evidence in [visual-field-notes.md](visual-field-notes.md) names shadcn/Radix for the same primitives slot. That is the same rule (use an established primitive) with a different pick. Follow what the project already has. shadcn/ui itself now generates on Base UI by default (its changelog, July 2026) and still supports Radix and React Aria, so a shadcn project can be on any of the three: read its `components/ui` imports before assuming which API applies. Tuning-panel practice (Leva, DialKit) → `design-prototyping`.
 
@@ -122,7 +124,7 @@ Only what agents get wrong even with the docs open. Props, types, and defaults �
 | Symptom | Cause and fix |
 | --- | --- |
 | Toast never appears | No `<Toaster />` mounted, or it unmounted (rendered per page or conditionally). Mount exactly one near the root. `toast()` is client-only: from a server action, return the result and call `toast()` in the client code that receives it. |
-| Same toast twice | Two Toasters mounted (layout *and* page) without their own `id`: keep one. Or `toast()` fires inside an effect that React StrictMode double-invokes in development: move the call to the event handler, or pass a stable `id` so the second call updates the first. |
+| Same toast twice | Two Toasters without their own `id` mounted (layout *and* page) without their own `id`: keep one. Or `toast()` fires inside an effect that React StrictMode double-invokes in development: move the call to the event handler, or pass a stable `id` so the second call updates the first. |
 | Tailwind or CSS classes do nothing | Sonner's injected styles win the cascade. Classes passed through `classNames` need `!important` (Tailwind's important modifier). Needing it on more than a few parts is the signal to go headless. |
 | Building a design-system toast | Skip the class overrides. Use `toast.custom()` with your own JSX, which keeps Sonner's positioning, stacking, and swipe, and wrap it in your own `toast()` helper. |
 | Completely unstyled (seen with Astro and view transitions) | The injected stylesheet was lost. Import the package stylesheet explicitly in a layout. |
@@ -133,7 +135,7 @@ Only what agents get wrong even with the docs open. Props, types, and defaults �
 | Loading toast never resolves | `toast.promise` needs a promise (or a function returning one) that actually settles. For manual control, keep the id from `toast.loading()` and call `toast.success(…, { id })`: reusing an id updates the toast in place instead of adding a second one. |
 | Toast shows in every toaster, or in the wrong one | With several Toasters, give each an `id` and target it with `toasterId`. A Toaster with an `id` renders only toasts targeted at it; a Toaster without one renders only untargeted toasts. (Corrected 2026-11-18: this row used to say untargeted toasts render in all of them. Checked against Sonner's source on `main`, which filters on exactly that.) |
 | Action button closes the toast too early | An action's click closes the toast unless the handler calls `event.preventDefault()`. |
-| Need one "closed" callback | There isn't one. `onDismiss` covers the close button and swipe; `onAutoClose` covers the timeout. Wire both. |
+| Need one "closed" callback | There isn't one. `onDismiss` covers the close button, swipe, and `toast.dismiss()`; `onAutoClose` covers the timeout. Wire both. |
 
 ## Look it up
 

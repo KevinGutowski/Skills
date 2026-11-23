@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Many shifts</title><style>body{margin:0;font:16px system-ui}#top{height:0}#late{height:0}</style></head><body>
+<div id="top"></div><div id="late"></div><p id="content">Content that gets pushed down</p><div style="height:900px"></div><p id="state">running</p>
+<script>
+// 170 small shifts (a 10 px spacer toggling), then one large shift. The browser's buffered
+// layout-shift history keeps fewer entries than this, so a scorer that reads only the buffer
+// never sees the large one.
+var n = 0, spacer = document.getElementById('top');
+function step() {
+  if (n < 170) {
+    n++; spacer.style.height = (n % 2 ? 10 : 0) + 'px';
+    requestAnimationFrame(function () { requestAnimationFrame(step); });
+    return;
+  }
+  setTimeout(function () { document.getElementById('late').style.height = '400px'; document.getElementById('state').textContent = 'done'; }, 1500);
+}
+requestAnimationFrame(step);
+</script></body></html>

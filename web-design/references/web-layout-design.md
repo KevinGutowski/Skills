@@ -13,6 +13,7 @@
 - Reflow and content stress
 - Safe areas and stable controls
 - Discoverable overflow and disclosure
+- Scroll snap
 - Review sequence
 - Sources and staleness
 
@@ -98,7 +99,8 @@ WCAG 2.2 Reflow requires vertically scrolling content to work at a width equival
 Build toward that outcome:
 
 - avoid fixed block sizes on text-bearing containers;
-- let rows wrap or recompose instead of clipping labels;
+- let rows wrap or recompose instead of clipping labels; a flex or grid child that holds text needs `min-width: 0` (`min-w-0`, or `minmax(0, 1fr)` in grid) before it can shrink, wrap, or truncate — the failure table is in `design-craft` (worst-case-data);
+- fix the element that overflows instead of putting `overflow-x: hidden` on a wrapper (upstream Vercel guidance suggests the wrapper; house position is the opposite): hiding clips focus rings and content and stops `position: sticky` descendants from sticking to the viewport. Where clipping is the intent, `overflow-x: clip` avoids creating a scroll container;
 - make actions size from content and padding, not ideal English copy;
 - preserve access to every action when zoom, text size, or content length grows;
 - allow essential two-dimensional content such as data tables to use a deliberate overflow treatment.
@@ -116,6 +118,8 @@ Stress-test with:
 - Preserve the Zero-Width Non-Joiner (U+200C). Persian and Kurdish use it inside compound words, and a sanitizer that strips it changes meaning.
 - Store Persian ی/ک (U+06CC/U+06A9) and Arabic ي/ك (U+064A/U+0643) as typed, but treat them as equivalent for search and validation. Rejecting one form locks out users whose keyboard sends the other.
 - Format digits and dates with the locale: `Intl.NumberFormat('fa-IR')` gives ۱٬۲۳۴, and `Intl.DateTimeFormat('fa-IR')` uses the Solar Hijri calendar. Never hard-code Western digits or the Gregorian calendar.
+
+Locale mechanics for every language (Vercel, Web Interface Guidelines; formatting failures and plural rules are in `design-craft` (worst-case-data)): build dates, numbers, and currency with `Intl.DateTimeFormat` / `Intl.NumberFormat` rather than hand-assembled strings; choose the language from `Accept-Language` or `navigator.languages`, never from IP geolocation; and mark brand names, code tokens, and identifiers `translate="no"` so browser auto-translation leaves them intact.
 
 The external source's `30–40%` translation expansion is a useful test stimulus, not a safe sizing formula. Real expansion varies by source language, target language, string length, and context.
 
@@ -154,10 +158,45 @@ Hidden content needs a visible, operable path:
 - provide visible previous/next controls for carousels and make them keyboard operable;
 - communicate carousel changes to assistive technology;
 - stop auto-rotation when users interact and provide pause/stop control;
-- use scroll snap only as motion/position assistance, never as the sole discoverability cue;
+- use scroll snap only as motion/position assistance, never as the sole discoverability cue (mechanics in the next section);
 - treat an edge fade the same way: it hints that a scroller continues, and should show only on the side with more content (mask recipe in `design-craft` (surfaces → Scroll Fades)). Hiding the scrollbar behind a fade is acceptable only for a short row that still scrolls by keyboard and touch.
 
 A partially visible next item can hint that a horizontal list continues, but the external source's `16–32px` peek is a visual heuristic, not an accessibility guarantee. Pair visual continuation with controls, semantics, and keyboard behavior. WAI notes that carousel content is intrinsically hard to discover; first ask whether a simpler list or grid is better.
+
+## Scroll snap
+
+Native snapping is the default for carousels, paged rows, and full-height home-page sections; it beats a JS gesture because the browser already owns the physics ([gestures](web-animation-design/gestures.md)). Four controls, each with one job (@gkurttech's *CSS Little-Known* scroll-snap series, Parts 1–4, Nov 2026):
+
+```css
+.row {                                   /* the scroll container */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;         /* axis + strictness */
+  scroll-padding-inline-start: 48px;     /* insets the snapport */
+}
+.card {                                  /* each child */
+  scroll-snap-align: start;              /* which edge lines up: start | center | end */
+  scroll-margin-inline-start: 24px;      /* outsets this child's snap area */
+  scroll-snap-stop: always;              /* fast flicks cannot pass this item */
+}
+```
+
+| Decision | Choose | Why |
+|---|---|---|
+| Strictness | `mandatory` for carousels and paged sections, where resting between items is always wrong. `proximity` for long or uneven content, where a reader may stop mid-item | With `proximity` the browser decides how near a snap position has to be, and it can be generous: Chromium snapped a rest 84px from the nearest point in a 400px row. Do not design around a threshold |
+| Alignment | `start` for rows that read from the leading edge. `center` for a focused item with neighbours peeking on both sides. `end` rarely, for rows anchored to the trailing edge | Alignment is set per child, so one row can mix them |
+| Breathing room | `scroll-padding` on the container for an inset every item shares: the row's gutter, or the height of a sticky header in a vertical feed. `scroll-margin` on a child for an offset only that child needs | Padding moves the snapport and margin moves the item's snap area. The two add: 48px of padding and 24px of margin rest the card 72px in |
+| Flick past items | `scroll-snap-stop: always` on onboarding slides, home-page sections and short carousels, where each stop should be seen. Leave the default `normal` on long lists | On a long list, `always` turns a fast flick into one item per swipe |
+
+Traps:
+
+- **Type without align does nothing.** `scroll-snap-type` on the container is inert until children declare `scroll-snap-align`. Chromium left the scroll exactly where it was put.
+- **Use logical properties.** The demos use `scroll-padding-left` and `scroll-margin-left`. Write `-inline-start` instead so the inset follows RTL, as the rest of this reference does.
+- **Items larger than the snapport scroll freely.** A card wider than its row, under `mandatory` too, lets the reader scroll within it and only snaps once the card's edge would leave the snapport. `mandatory` cannot hide the middle of tall content. It still forces a snap at the edge, so `proximity` is the safer choice when item sizes vary.
+- **`scroll-snap-stop` also stops your buttons.** In Chromium, `scrollBy()` 700px across `always` items stopped at the first one. `scrollTo()` and `scrollIntoView()` jumped straight to the target. A Next button that moves one item with `scrollBy` is fine. Jump-to-item navigation should use `scrollIntoView` or `scrollTo`.
+- **Padding also applies to `scrollIntoView`.** `scroll-padding` and `scroll-margin` also shape scroll-into-view operations (`scrollIntoView()`, fragment navigation, focus scrolling), not just snaps. Coordinate scrolls are different: with snapping off, `scrollTo({left})` lands on the exact coordinate and subtracts neither, so derive offsets from `scrollIntoView` instead of hand-computing them. One `scroll-padding-block-start` equal to the header height fixes snapping, anchor links and focus scrolling below a sticky header together (the anchor-target rule above is the per-target version).
+- **Snap is not a discoverability cue.** Keep the visible controls, keyboard access and edge hint from the section above.
+
+Behaviour above was checked in headless Chromium (Playwright 1.65) on 2026-11-22. For the padding trap, only `scrollIntoView` was measured; anchor links and focus scrolling rest on the spec. Snap-stop on fast touch flicks was not reproduced headlessly; it rests on the source's screen recording and the spec. Re-check Safari and Firefox before relying on the `scrollBy` result.
 
 ## Review sequence
 
@@ -172,6 +211,7 @@ A partially visible next item can hint that a horizontal list continues, but the
 
 ## Sources and staleness
 
+- Vercel, Web Interface Guidelines (command.md, read 2026-11-18): locale detection and `translate="no"`, the `min-width: 0` reminder, and the `overflow-x: hidden` advice recorded here as a house disagreement. https://github.com/vercel-labs/web-interface-guidelines
 - Impeccable (Paul Bakaus), `harden` at `b3ced85`, Apache-2.0: the Arabic-script data-handling notes. https://github.com/pbakaus/impeccable
 - Jakub Krehel, `better-layout`, revision `f2d1354f9966fd4d03f9c2beb69591ecec22af54`: grouping, alignment, adaptivity, safe-area, and disclosure heuristics. https://github.com/jakubkrehel/skills
 - MDN, CSS logical properties and values: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values
@@ -180,5 +220,7 @@ A partially visible next item can hint that a horizontal list continues, but the
 - W3C WAI, Understanding SC 1.4.10 Reflow: https://www.w3.org/WAI/WCAG22/Understanding/reflow.html
 - W3C WAI, Understanding SC 2.4.11 Focus Not Obscured: https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html
 - W3C WAI, Carousels Tutorial: https://www.w3.org/WAI/tutorials/carousels/
+- gokhan (@gkurttech), *CSS Little-Known* 13–16, scroll snap Parts 1–4 (X, 2026-11-12 to 11-15): https://x.com/gkurttech/status/2120770568475599138 (alignment), https://x.com/gkurttech/status/2121145036125450331 (padding, margin), https://x.com/gkurttech/status/2121562958589239668 (strictness), https://x.com/gkurttech/status/2121882792477016408 (`scroll-snap-stop`)
+- MDN, CSS scroll snap: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll_snap
 
 Verify browser support and current WCAG text before treating an exact API or conformance detail as current. The structural principles are durable; syntax and standards details can move.

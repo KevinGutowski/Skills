@@ -1,13 +1,17 @@
 # Empty States (Blank States)
 
-The most overlooked onboarding opportunity. Empty states are what users see when a content area has no data yet — dashboards with zero activity, friend lists with no friends, project lists with no projects. These are often the very first thing a user sees after signing up.
+The most overlooked onboarding opportunity. Empty states are what users see when a content area has no data yet — dashboards with zero activity, friend lists with no friends, project lists with no projects. These are often the very first thing a user sees after signing up, and many lists end up empty again later.
+
+This file owns *why* a state is empty and *what it says*. The component itself (one visual style product-wide, page/card/inline sizes, keeping the table or chart frame, one action or none, not showing it while loading) lives in `design-craft` (component-details → Empty states). On Apple platforms, that section maps the causes onto `ContentUnavailableView` / `UIContentUnavailableConfiguration`. The copy rules here still apply to its title and description.
 
 ## Contents
 
 - The Problem
 - Tone Rules
 - The Empty State Formula
+- Write it short (recurring empty states)
 - Emotional job of an empty state
+  - Name the cause before writing the copy
 - Examples
 - Anti-Patterns
 - Applying the Rider/Elephant/Path Framework
@@ -41,6 +45,19 @@ These sound adversarial. They point fingers at the user for an absence that was 
 3. Clear CTA: [Button to take the action that fills this state]
 ```
 
+## Write it short (recurring empty states)
+
+Hulick's formula is for first-run surfaces, where the empty state is part of selling the better user. Most empty states are not first-run: a filtered list, a cleared inbox, a quiet week on a dashboard, seen again and again. For those, Kevin Dukkon's rules (*How to design empty states*, 2026) apply:
+
+- **Title: up to five words, no full stop.** Name what is missing: "No invoices yet", not "Nothing here". Naming the object is not blame; "You haven't created any invoices" is.
+- **One sentence below** that adds to the title instead of repeating it, usually what makes things appear: "Paid invoices show up here."
+- **No blame and no jokes.** A joke is fun the first time and tiring by the tenth.
+- **Nothing crucial lives only in the empty state.** It disappears once content arrives (Apple HIG, Writing: "Provide clear next steps on any blank screens"). Put lasting information somewhere that stays.
+- **Search titles quote the query, which can be long** (ours). The quoted query does not count toward the five-word cap. If it would wrap past one line, truncate it inside the quotes with an ellipsis, since the field above still shows the whole query; or use "No results" as the title and quote the query in full in the line below.
+- **The button names the action and the thing:** "Create invoice", not "Get started".
+
+**Scoped schools, do not blend.** The one-sentence limit is for recurring empty states. A first-use, full-page empty state is the exception: it may follow Hulick's formula with two short sentences, one painting the future and one selling the benefit, plus one CTA, as in the Examples below. Keep the short title above it. Everywhere else, use the short form. Both schools agree on no blame, no "No data to display", and one clear action.
+
 ## Emotional job of an empty state
 
 Sten's "good enough" chapter adds a useful review lens: an empty state is not only blank-space management; it is often a user's first emotional proof of whether the product understands them. A strong empty state should leave the user feeling oriented, capable, and one step closer to value.
@@ -52,19 +69,27 @@ Check four moments:
 - **Completion:** confirm the specific accomplishment, not just "success."
 - **Recovery:** if something failed, switch to `ux-writing` (error-messages) and prioritize reassurance over welcome copy.
 
-**Name the cause before writing the copy** (Impeccable, `onboard`/`clarify`, 2026). "Empty" covers five different states, and each needs its own next action:
+### Name the cause before writing the copy
 
-| Cause | Next action |
-| --- | --- |
-| First use (never used the feature) | Value plus a starter action or template |
-| User cleared it (deleted everything on purpose) | Light touch and an easy way to recreate; no re-onboarding |
-| No results (search or filter returned nothing) | Show the active query or filters, offer to clear them, suggest alternatives |
-| No permission | Why, and how to get access |
-| Failed to load | What happened and a retry → `ux-writing` (error-messages) |
+"Empty" covers several different states, and each needs its own next action. Causes from Impeccable (`onboard`/`clarify`, 2026); "All done" and "No data in range", and the example titles and actions, from Dukkon (2026). Only the title and action change; the component stays the same.
 
-A single generic "Nothing here yet" for all five hides the one action each case needs.
+| Cause | Next action | Example title → action |
+| --- | --- | --- |
+| First use (never used the feature) | Value plus a starter action or template | "No projects yet" → Create project |
+| User cleared it (deleted everything on purpose) | Light touch and an easy way to recreate; no re-onboarding | "No projects" → Create project |
+| All done (worked through it: inbox zero, no open tasks) | Confirm it and stop; no button | "You're all caught up" → none |
+| No results (search or filter returned nothing) | Repeat the exact query in quotes, keep it in the field, offer to widen the search or clear the filter. If a filter hides items, name it and the count | "No results for “march invoice”" → Search all files; "3 tasks are hidden by Status: Open" |
+| No permission | Why, who can, and a way to ask; never a disabled button | "Only owners can see billing" → Request access |
+| No data in range (nothing measured in this period) | Say so; on a chart draw no line, not a zero line | "No requests this week" → none, or widen the range |
+| Failed to load | What happened and a retry → `ux-writing` (error-messages) | "Couldn't load projects" → Try again |
+
+If the product's empty states use a drawn illustration, each cause also suggests what to draw (the gap the missing thing leaves, not the feature's icon): `design-craft` (construction-drawings → In an empty state).
+
+Still loading is not a cause: show no empty state until the request returns empty (`design-craft` (component-details → Loading and failure are not empty)). A single generic "Nothing here yet" for all of these hides the one action each case needs.
 
 ## Examples
+
+First-run, full-page examples in Hulick's school. For recurring empty states use the short form above.
 
 **Bad empty state:**
 > You have no chats.
@@ -84,6 +109,8 @@ A single generic "Nothing here yet" for all five hides the one action each case 
 ## Anti-Patterns
 
 ### Don't use dummy/fake data
+A faint *preview* of the row or card that will appear (one of the visual styles in `design-craft` (component-details)) is fine: it shows a shape, not numbers. The problem is believable fake content.
+
 Filling empty areas with fake activity and statistics creates confusion:
 - "Am I supposed to do something with this, or just look at it?"
 - "Am I looking at my own data, or is this fake?"

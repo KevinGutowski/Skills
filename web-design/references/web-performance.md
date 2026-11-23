@@ -12,6 +12,7 @@ The frame: **"Performance is a feature. If it doesn't feel good, it's not workin
 - [Fluid UI — the three principles (frame.io)](#fluid-ui--the-three-principles-frameio)
 - [Load lifecycle & metrics (Vazquez)](#load-lifecycle--metrics-vazquez)
 - [Planning rules](#planning-rules)
+- [iOS Safari's 60 Hz cap](#ios-safaris-60-hz-cap)
 - [Custom properties written per frame](#custom-properties-written-per-frame)
 - [Process & culture](#process--culture)
 - [Checklist](#checklist)
@@ -19,7 +20,7 @@ The frame: **"Performance is a feature. If it doesn't feel good, it's not workin
 
 ## The two numbers
 
-**60 fps and 16 ms.** 60fps is the frame rate of the web; one frame is ~16.7ms — and on the 120Hz displays most current phones and many laptops ship, ~8ms; budget against the smaller number where animation is concerned. Fluid-app teams "see in frames": thresholds are counted in frames, not vibes. (Their customers ship Oscar movies where one dropped frame is an incident — meet users where their quality bar already is.)
+**60 fps and 16 ms.** 60fps is the frame rate of the web; one frame is ~16.7ms — and on the 120Hz displays most current phones and many laptops ship, ~8ms; budget against the smaller number where animation is concerned. **iOS Safari is the exception:** see [iOS Safari's 60 Hz cap](#ios-safaris-60-hz-cap). Fluid-app teams "see in frames": thresholds are counted in frames, not vibes. (Their customers ship Oscar movies where one dropped frame is an incident — meet users where their quality bar already is.)
 
 ## Fluid UI — the three principles (frame.io)
 
@@ -32,6 +33,7 @@ The frame: **"Performance is a feature. If it doesn't feel good, it's not workin
 The car analogy: **TTFB** = key in the ignition → **First Contentful Paint** = dashboard lights → **First Meaningful Paint** = engine running, still in park → **Time to Interactive** = shifts into drive — **"the most critical performance metric for both UX and engineering."** A page that looks ready but can't respond is the worst breach of trust.
 
 - Map to **Core Web Vitals**: LCP (loading), **INP** (responsiveness — superseded FID in 2024; the field version of *Instant*), CLS (layout stability — doctrine in `design-craft` (polish-principles) §17: preload over skeletons, content lands exactly where its placeholder was).
+- **Markup floor for LCP and CLS** (Vercel, Web Interface Guidelines; verify attribute support on MDN): every `<img>` carries `width` and `height` (or a CSS `aspect-ratio`) so its box is reserved; below-the-fold images get `loading="lazy"`, and the LCP image is never lazy and gets `fetchpriority="high"`. Prefer making it discoverable in the HTML as an `<img>`; when it cannot be (a CSS background, a video poster), preload it and put the priority on the preload too (`<link rel="preload" as="image" fetchpriority="high">`), because an image preload is low priority by default. Keep high priority to one or two images (Chrome, Modern Web Guidance, `optimize-preload-priority`, retrieved 2026-11-22). Framework image components have their own props for this, which change between releases: read the installed version's docs; `<link rel="preconnect">` for the few third-party origins that serve critical assets. Ship motion content as `<video autoplay muted loop playsinline>` with a poster rather than an animated GIF, and show the still under `prefers-reduced-motion`. Font preload → [`web-typography`](web-typography.md).
 - **Thresholds as a scale**: ~100 ms = lightning; **7 s = the failure point**. Shopify POS dashboard scoring: 1.0 is rarely achievable ("we're competing with our customers' Wi-Fi"); **0.8–0.97 = OK; ~0.5 = go deep**. Treat performance "at the same level as weekly active users." Outcome: checkout time cut by more than half.
 - **Bind every principle to a metric** or it's a poster: "Don't make me wait" → app-ready-on-load ("even a 500 ms delay feels like an eternity" mid-transaction); "Smooth like butter" → FPS; "Make it snappy" → responsiveness (catches looks-interactive-but-isn't).
 - **Problem-framing cards**: a one-sheet pairing the performance scorecard + product-quality scorecard + satisfaction metrics, reviewed in critiques and quarterly retros — "minimum viable structure" for a shared language; "true craft begins with understanding the problem."
@@ -50,6 +52,18 @@ The car analogy: **TTFB** = key in the ignition → **First Contentful Paint** =
 - **Page-load entrances must be CSS** (Heffernan): JS-library entrance animations wait on JavaScript — they visibly delay first paint. Save Motion/React Spring for post-hydration interactions.
 - Animating `box-shadow` is expensive; animate the opacity of a pre-rendered shadow layer. Avoid animating inherited CSS variables on ancestors (recalc storms across all children — the Vaul drag bug). When a library does the writing and you cannot move it, register the property instead: [Custom properties written per frame](#custom-properties-written-per-frame).
 - **An animation that janks only while the page is busy is a thread problem, not a property problem** (Kowalski): `requestAnimationFrame`-driven motion — including shared-layout animation — shares the main thread with navigation, fetching, and hydration; CSS transitions/keyframes and WAAPI can leave it. Move the indicator, page transition, or loading-adjacent motion to CSS. Per-animation diagnosis (cost tiers, driver/thread table, `will-change`, ordered checklist): [web-animation-design/animation-performance.md](web-animation-design/animation-performance.md).
+
+## iOS Safari's 60 Hz cap
+
+On a 120 Hz ProMotion iPhone, WebKit holds `requestAnimationFrame` to 60 Hz. On an ordinary page it also delivers touch and pointer events at that rate. The user setting "Prefer Page Rendering Updates near 60fps" lifts the cap, and almost nobody changes it. Low Power Mode caps the rate as well. So anything JavaScript moves frame by frame on iOS (a drag, a spring, a canvas sketch, a shader, a pointer-reactive texture) runs at half the rate of native scrolling, and of the CSS `transform` animations WebKit lets run at a high frame rate (see route 1). A 120 Hz phone makes the gap visible (Rida F'kih, 2026-11-20; React Aria, 2026-10-08).
+
+Routes, in order of preference:
+
+1. **Let the compositor do it.** Native scrolling, `scroll-snap` and overscroll run off the main thread at the display's rate. That is what F'kih measured and React Aria relies on. React Aria's Sheet is built this way: a hidden scroll container with snap points stands in for the drag, and `view-timeline` drives the backdrop and corner radius. Swipe, momentum and the elastic edge come from the browser, with no JavaScript touch handling. Prefer this whenever the gesture can be expressed as scrolling (paging, dials with notches via snap points, sheets, drawers). Compositor-driven CSS and WAAPI animations are a separate case. They leave the main thread, but which of them WebKit updates at a high frame rate is a WebKit policy that changes between releases. Since early 2026 (WebKit bug 307554, "only opt animations affecting transform into high frame rate on iOS"), only `transform` animations qualify; `opacity` and `filter` animations do not. Put the motion that has to feel native on `transform`, expect a fading backdrop or a blur to stay at 60 Hz, and check the iOS version you target on a device.
+2. **Read input from a scroller.** If the interaction needs no momentum, snapping or rubber-banding, a passive `touchmove` listener on a scrollable element fires at 120 Hz on iOS. That is input only: the DOM still repaints at 60 Hz. Reading `scrollTop`/`scrollLeft` at a high rate takes more work. Scroll events arrive only 5–26 times a second during momentum, and the values are rounded to whole points. F'kih's workaround polls them on a vsync-locked timer and keeps an empty `requestAnimationFrame` loop running. It is a hack. Use it in a showpiece, not in a component library.
+3. **Draw a canvas from a worker.** `canvas.transferControlToOffscreen()` returns an `OffscreenCanvas` whose frames WebKit presents without waiting for the 60 Hz rendering update, so a worker-driven canvas or WebGL scene can present at 120 Hz. This is WebKit behaviour the spec allows but does not require, and the author warns Apple could remove it. Ship it as an enhancement over a correct 60 Hz path.
+
+Do not burn time trying to make a main-thread `requestAnimationFrame` loop faster on iOS; it cannot be done. Do not promise 120 Hz for DOM changes driven from JavaScript. To compare two versions, film the phone in 240 fps slow motion with a moving marker for input and one for rendered output, and count frames. A 60 Hz desktop monitor shows neither version's flaws.
 
 ## Custom properties written per frame
 
@@ -121,4 +135,4 @@ Source: Dmytro (@pqoqubbw), "4 css rules that make safari 35x faster" (X article
 - **`devtools` (devtool-interface-design)** — the speed usage-law and frequency rules for tools people live in.
 - **`swiftui` (swiftui-lazy-stacks)** / **`swiftui` (swift-concurrency)** — the native-platform analogs (scroll perf; coalesce-before-isolation).
 
-> **Staleness note:** framework specifics (Next.js app router, React `useTransition`/`useOptimistic`/compiler, router-cache behavior) are 2024–25-era — verify against current docs. INP replaced FID as a Core Web Vital in March 2024. The frame budgets, fluid-UI principles, triage model, and process rules are the durable layer.
+> **Staleness note:** framework specifics (Next.js app router, React `useTransition`/`useOptimistic`/compiler, router-cache behavior) are 2024–25-era — verify against current docs; current React/Next.js implementation rules (waterfalls, bundle, Server Components) live in `react`, and measuring a load in a real browser (CLS before/after, cold cache) in `browser-verification`. INP replaced FID as a Core Web Vital in March 2024. The frame budgets, fluid-UI principles, triage model, and process rules are the durable layer.

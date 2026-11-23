@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: cls-scored-before-content-settled
+expected_outcome: |
+  The fix is reported as not verified: both readings were taken before the late content arrived, so a zero baseline shows the measurement cannot see the shift. The answer gives a corrected procedure (cold load, wait for the reviews block, then score, before and after) and does not call the fix confirmed.

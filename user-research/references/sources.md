@@ -15,6 +15,8 @@ Section map (where each supporting source lands in SKILL.md):
 
 Interview/podcast field notes (§5):
 
+- *Derek Briggs — Dive Club "Scaling craft at Shopify" (2026-11-03, YouTube `r4IW73e6tE4`; transcribed locally from the podcast audio) — post-ship agent measurement loops, `validation-and-metrics.md` Post-ship agent loops.*
+
 - *Ron Goldin — Dive Club podcast (UkQpgslyR3A) — the empathy-transfer note.*
 - *Polly D'Arcy — Dive Club podcast (vdYBohOQYm0) — dogfooding-with-your-own-money.*
 - *Soleio Cuervo — Design MBA podcast, 2023 (hZ3Z2frAWvM) — dogfooding-as-research: the Dropbox-collaboration "hot garbage" observation and the single-player-tools insight behind his Figma investment. Auto-captioned; quotes are verbatim caption text ("state-ofthe-art" = state-of-the-art).*

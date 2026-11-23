@@ -38,6 +38,8 @@ Documented decisions win. If a comment or design doc explains why an animation e
 
 Four questions, asked in this order. Record which one decided each candidate, because the report must show it.
 
+**Scope: the gate judges everyday interface motion.** An effect the user asked for, subtle or showy, or one chosen through `ui-fx` for an effects request, is pinned and skips all four gate questions (frequency, purpose, budget, function), even when it is keyboard-triggered, seen often, or longer than the product-UI budget. List it as "requested effect" and check it against the `ui-fx` shipping floor instead (honest about results and fired on click, a reduced-motion path, no rapid flashing, automatic motion that stops within five seconds or has a visible, keyboard-operable pause, stop or hide control, a visible still cue and a status announcement for any state it conveys, legible text, a fallback, focus not clipped or covered, holds frame rate). If it is frequent, the audit may suggest a shorter or smaller version; it does not issue a Reject, Delete or Reduce, and Remove mode leaves it untouched. If you cannot tell whether an effect was requested, ask or check the change description before treating it as a finding. The same holds in `interface-review`.
+
 1. **Frequency.** Use the tiers in `web-design` (web-animation-design), "The Frequency". For audit work, treat the top tier strictly:
 
    | Tier | Find | Remove |
@@ -51,7 +53,7 @@ Four questions, asked in this order. Record which one decided each candidate, be
 
 2. **Purpose.** Name it in one of these words: feedback, spatial consistency, state indication, preventing a jarring change, explanation (marketing and onboarding only), or delight (rare tier only). If none fits, the candidate fails. "It looks nice" and "it is already there" are not purposes.
 
-3. **Budget.** The motion must work inside the active theme's duration table (product UI under 300ms). If the moment only works as a slow, showy animation, it fails. A slide or scale where a fade carries the same meaning is over budget too.
+3. **Budget.** The motion must work inside the active theme's duration table (product UI under 300ms). Under Briggs's soft-close set, judge the perceived duration (time to ~95% of travel), not the clock: a 400ms `cubic-bezier(0.2, 0.8, 0, 1)` passes. If the moment only works as a slow, showy animation, it fails. A slide or scale where a fade carries the same meaning is over budget too.
 
 4. **Function.** Data the user is reading or acting on (charts, tables, numbers, dashboards) does not move for style. The one exception is showing a real change in value in response to a user action, such as a number moving from old to new. Re-animating on every mount or refresh is decoration.
 
@@ -98,9 +100,9 @@ Reduce means a smaller version of the same motion, never a different animation:
 | --- | --- |
 | Hover with scale, lift, or shadow growth | Color or opacity change only, 150ms or less |
 | Slide or scale entrance on a frequent surface | Opacity only, about 150ms |
-| Product UI animation over 300ms | 200–250ms, same curve |
-| Stagger over 80ms per item or over 300ms total | 30ms per item, or fade the group as one |
-| Infinite loop (pulse, shimmer, glow) on a persistent element | Run once, or keep only the static end state |
+| Product UI animation over 300ms with no stated reason | 200–250ms, same curve. Not when the project has adopted Briggs's soft-close set: check its perceived duration instead, and leave a 400ms ease-out alone |
+| Stagger over 80ms per item, or the last item still moving after ~300ms | 30ms per item, or fade the group as one |
+| Infinite loop (pulse, shimmer, glow) on a persistent element | Run once, or keep only the static end state. Kept on purpose through `ui-fx`: an indicator or beam on work the user started, which stops with it, or deliberate atmosphere that has a visible, keyboard-operable pause control or stops within five seconds, is not an audit finding. A requested loop that starts on its own, runs past five seconds and has no control is a floor finding (add the control or the stop), not a deletion |
 
 If the reduced version no longer carries its purpose, delete it. Scope note for hover: rows a cursor sweeps across (nav, menus, long lists) get no transition at all, per the Hover States section of [PRACTICAL-TIPS.md](PRACTICAL-TIPS.md); the 150ms reduction applies to a single hovered control.
 
@@ -143,7 +145,7 @@ Use judgment where it compounds (understanding the motion surface, deciding what
 | # | Category | Hunt for |
 | --- | --- | --- |
 | 1 | Purpose and frequency | Motion on keyboard actions and constantly hit surfaces. The strongest fix is often deletion. |
-| 2 | Easing and duration | `ease-in` on UI; a bare keyword (`ease`, `ease-out`, `ease-in-out`, `linear`) on entrances, exits, or on-screen movement — `ease` on hover/colour and `linear` on constant-rate motion are fine; product UI over 300ms; delay plus animation on every tooltip in a group |
+| 2 | Easing and duration | `ease-in` on UI; a bare keyword (`ease`, `ease-out`, `ease-in-out`, `linear`) on entrances, exits, or on-screen movement — `ease` on hover/colour and `linear` on constant-rate motion are fine; product UI over 300ms outside the stated drawer and toast exceptions in the main file (perceived, not clock, under the Briggs soft-close set); a Sonner-style toast's 400ms `ease` is not a finding; delay plus animation on every tooltip in a group |
 | 3 | Physicality and origin | `scale(0)`; pure-fade entrances with no transform; anchored surfaces scaling from center; pressables with no press feedback |
 | 4 | Interruptibility | Keyframes on toasts, toggles, and other rapidly retriggered UI; fixed-duration tweens on gestures; distance-only dismissal; hard stops at drag bounds; identical timing for a deliberate press and its release |
 | 5 | Performance | `transition: all`; animated layout properties; a parent CSS variable driving child transforms; rAF loops doing what CSS could; heavy transition-time blur |

@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Motion</title><style>
+#pad{padding-left:0;transition:padding-left .2s}#pad.on{padding-left:160px}
+#fade{opacity:.2;transition:opacity .2s}#fade.on{opacity:1}
+#slide{opacity:0;translate:0 150px;transition:opacity .2s,translate .05s}#slide.on{opacity:1;translate:0 0}
+#slow{transition:max-height 3s;max-height:0;overflow:hidden}#slow.on{max-height:200px}
+#loop.on{animation:there-and-back .4s}@keyframes there-and-back{0%,100%{padding-left:0}50%{padding-left:240px}}
+#pseudo::before{content:"*";display:inline-block}#pseudo.on::before{animation:spin .3s}@keyframes spin{to{transform:rotate(1turn)}}
+#clip{clip-path:inset(0 100% 0 0);transition:clip-path .2s}#clip.on{clip-path:inset(0 0 0 0)}
+#wipe{clip-path:inset(0 100% 0 0);transition:clip-path 2s}#wipe.on{clip-path:inset(0 0 0 0)}
+#fadekf.on{animation:fade-in .2s}@keyframes fade-in{from{opacity:.4;transform:translateX(0)}to{opacity:1;transform:translateX(0)}}
+#over::before{content:"*";display:inline-block}#over.on::before{animation:slide-in .3s}@keyframes slide-in{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){#over::before{transform:none !important}}
+#delayed.on{animation:fade-quick .1s,slide-late .2s 1.5s}@keyframes fade-quick{from{opacity:.3}}@keyframes slide-late{from{translate:200px 0}}
+#static::before{content:"*";position:relative}#static.on::before{animation:drop .3s}@keyframes drop{from{top:0}to{top:160px}}
+@media (prefers-reduced-motion: reduce){#static::before{position:static}}
+#pfade::before{content:"*"}#pfade.on::before{animation:pulse .2s}
+#spinner.on{animation:pulse 1s infinite}@keyframes pulse{50%{opacity:.4}}
+</style></head><body>
+<button id="shadow-go" onclick="document.getElementById('shadowhost').shadowRoot.getElementById('inner').classList.add('on')">shadow</button>
+<button id="late-shadow" onclick="var h=document.createElement('div');h.id='latehost';document.body.appendChild(h);h.attachShadow({mode:'open'}).innerHTML='<p>late</p>'">late shadow</button>
+<script>for (const id of ['pad','fade','slide','slow','loop','pseudo','clip','wipe','fadekf','over','static','pfade','delayed','waapi','spinner']) document.write('<button id="'+id+'-go" onclick="document.getElementById(\''+id+'\').classList.add(\'on\');if(\''+id+'\'===\'waapi\')document.getElementById(\'waapi\').animate([{translate:\'0 0\'},{translate:\'120px 0\'}],300)">'+id+'</button>')</script>
+<div id="pad">padded text</div><div id="fade">fade only</div><div id="slide">fast slide</div><div id="slow">slow<br>reveal</div>
+<div id="loop">there and back</div><div id="pseudo">pseudo</div><div id="clip">wipe</div><div id="wipe">slow wipe</div><div id="fadekf">fade with a constant transform</div><div id="over">overridden pseudo</div><div id="delayed">delayed slide</div><div id="waapi">script animation</div><div id="static">static pseudo</div><div id="pfade">pseudo fade</div><div id="spinner">pulse</div>
+<div id="shadowhost"></div><script>document.getElementById('shadowhost').attachShadow({mode:'open'}).innerHTML='<style>#inner{translate:0 0;transition:translate .2s}#inner.on{translate:200px 0}</style><div id="inner">in shadow</div>'</script>
+</body></html>

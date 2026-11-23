@@ -1,15 +1,16 @@
 ---
 name: design-systems
-description: "Build, govern, and scale a design system — tokens, theming, governance, adoption, DS-as-AI-context, icon systems — and run the hands-on work: extract a system from an app's shipped UI, audit token use, document a component, migrate screens onto it. Apple platform → apple-design; brand marks → logo-design; reviewing one screen → interface-review. Triggers: design system, design tokens, hardcoded colors, theming, Code Connect, icon set."
+description: "Build, govern, and scale a design system — tokens, theming, component API contracts, governance, DS-as-AI-context, icon systems — and run the hands-on work: extract a system from shipped UI, audit token use, document a component, migrate screens. Apple platform → apple-design; React code → react; brand marks → logo-design; one screen → interface-review. Triggers: design system, design tokens, hardcoded colors, theming, Code Connect, icon set."
 ---
 
 # Design Systems
 
-**References — read on demand:**
+**References:**
 
-- [references/field-notes.md](references/field-notes.md) — worked examples, outcome numbers, full quotes, and playbook specifics behind every rule below. Read the matching section before applying a rule at full depth.
-- [references/icon-systems.md](references/icon-systems.md) — interface icon-set method; read for any icon-set build, audit, or migration.
-- [references/sources.md](references/sources.md) — source list (9 Figma Config talks '24–25, Dive Club, books); [references/coverage-gaps.md](references/coverage-gaps.md) — unresolved promotion candidates.
+- [references/field-notes.md](references/field-notes.md) — worked examples, outcome numbers, full quotes, and playbook specifics behind every rule below. Read the matching section before applying a rule in depth.
+- [references/icon-systems.md](references/icon-systems.md) — icon-set method: build, audit, migration.
+- [references/component-api-contracts.md](references/component-api-contracts.md) — library component contracts and distribution.
+- [references/sources.md](references/sources.md) — source list; [references/coverage-gaps.md](references/coverage-gaps.md) — open candidates.
 
 A design system is a **product with customers**, not a library: "treat it like a product team — clear OKRs, roadmap, customers — or it won't succeed" (Rahimi). Sell it honestly: "a design system is not the most efficient way to build things… it must have clear business impact and ROI" — the pitch that works is per-stakeholder incentive alignment: "components for free, performance for free, dark mode for free" (Coinbase), accessibility and i18n free.
 
@@ -61,6 +62,7 @@ Across all four: the app's own look is the source; "fix it" is never clearance t
 - **Variant math forces the decision**: a 16-variant button becomes 160 with leading+trailing icons — use **props** instead. Variants visualize *states*; props signal *what's overridable*.
 - **Split-the-set tests** — split if either is no: (a) is every option crystal clear on sight? (b) is every variant used interchangeably in the same use cases? Every addition raises cost and dilutes per-component value (Curtis).
 - Order props so related ones stack; action-verb booleans; expose nested instances only when key to flows — past an inflection point exposure is information overload.
+- **In code, a structural boolean is a missing variant** (Vercel): compose explicit variants from compound parts ([field-notes](references/field-notes.md)).
 - Spec the invisible: i18n/long-string behavior, focus-visible, tab order, ARIA, reflow — "code-only concerns designers skip" (Albaugh/Bergman).
 - **Prework before redesign** (MailChimp): harvest repeated UI into reusable patterns before the visual direction lands; keep the pattern library as both shortcut and regression test page.
 
@@ -109,7 +111,7 @@ A product's interface icon set is a governed sub-system with its own optical siz
 ## The design system as AI context
 
 - "The best time to invest in design systems — LLMs are really good at understanding the structure of a design system" (Weekes). Default prompt-to-app output converges on the same generic look; **your DS fed as context (Code Connect, token JSON, component specs) is how generated UI keeps your identity.**
-- **Use the DS as the mechanical substrate, not the whole agent standard** (Vercel product-design pattern; Jaytel Taste): expose tokens, component APIs, recipes, allowed composition paths, lintable rules, and canonical product names. Product judgment, exceptions, and surface examples go in routed skills/references; aesthetic taste rules go in a separate, explicit input; missing standards go in coverage gaps.
+- **Use the DS as the mechanical substrate, not the whole agent standard** (Vercel product-design pattern; Jaytel Taste): it exposes tokens, component APIs, recipes, composition paths, lintable rules, and product names; judgment and exceptions go in routed references, taste rules in a separate input, missing standards in coverage gaps.
 - **Primitives once, extrapolated forever** (Lovin) and **build bricks** (Ryo Lu): hand-sweat the primitive set and pull shipped patterns into the system so agents compose instead of reinvent; generation without a system "will just pile up like a landfill" (Ouriach). The DS team's emerging job is de-slop.
 - **Make the polish layer token-addressable** (Kevin Kold, 2026): export durations, easing curves, spring presets, radii, shadow stacks, press scales, snap thresholds, and state treatments with stable names mirrored 1:1 in Figma and code, so prompts can say "use only these tokens, no one-off values."
 - **Designers write the first draft of the prompt** when product UX is determined by AI behavior (Mounter); keep the *why* attached to the *what* — rationale scattered across docs/Slack/Jira kills adoption.
@@ -139,7 +141,7 @@ A product's interface icon set is a governed sub-system with its own optical siz
 
 ## Relationship to other skills
 
-- **`apple-design` (liquid-glass-design-system)** — consuming Apple's *platform* design system; this skill is about *owning* one. The panel's "respect the platform: 80% Android, 20% Microsoft" is the bridge rule.
+- **`apple-design` (liquid-glass-design-system)** — consuming Apple's *platform* design system; this skill is about *owning* one.
 - **`apple-design` (ios-brand-identity)** — where brand may live inside a platform's system; this skill governs the brand's own token/theming machinery.
 - **`logo-design` / `apple-design` (app-icon-design) / `swiftui` (sf-symbols)** — brand marks, app icons, and Apple system-symbol usage respectively; this skill's icon-systems reference owns the product's *interface* icon set. Icon-craft depth methodology (exploration volume, below-noticing corrections) → `design-craft`.
 - **`web-design` (oklch-skill)** — the color math behind programmable tokens.

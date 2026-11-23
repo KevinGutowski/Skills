@@ -56,18 +56,18 @@ Two things decide whether a frame fits: **what** is animated (how much work per 
 
 | Tier | Properties | Per-frame cost |
 | --- | --- | --- |
-| Composite only | `transform`, `opacity`; in current Chrome/Firefox also `filter`, `clip-path`, `background-color` | Cheapest — promoted to own layer |
+| Composite only | `transform`, `opacity` | Cheapest — promoted to own layer |
 | Paint + composite | `box-shadow`, `border-radius`, `color` | No re-measure, but a redraw every frame |
 | Layout + paint + composite | `width`, `height`, `padding`, `margin`, `top`, `left`, `border-width` | Most expensive — one growing element can move everything around it |
 
-Only `transform` and `opacity` are reliable across engines; the other composite-tier entries need cross-browser and device testing.
+Only `transform` and `opacity` are composited reliably across engines. Chrome also composites `filter` (and some `clip-path` and `background-color` animations); other engines may repaint, so measure before relying on them. Kowalski's skill dropped them from the composite tier in rev `0f2e23b`. The documented exceptions people accept anyway are `clip-path` reveals (hold-to-confirm) and measured-height accordions: keep them short and measure.
 
 | Instead of | Animate |
 | --- | --- |
 | `width`/`height`/`padding` to grow or shrink | `scale()`, when the caveats below are acceptable |
 | `top`/`left`/`margin` to move | `translate()` (percentages resolve against the element's own size) |
 | `display`/`visibility` swaps | `opacity` for the visual fade, plus real hiding at the end (see below) |
-| `box-shadow` | `filter: drop-shadow(...)` |
+| `box-shadow` | `filter: drop-shadow(...)` (Chrome composites `filter`; other engines may repaint, so measure) |
 
 - **The paint tier is the one people miss.** `box-shadow` and `border-radius` do not look like layout, so they slip through review, and each repaints the element every frame.
 - **Layout animation does not always drop frames** — an absolutely positioned element with few children may animate `padding` invisibly. But on a simple surface with no text, `padding` and `scale()` can look the same, and only `scale()` cannot regress on a slower device.

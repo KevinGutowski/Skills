@@ -54,7 +54,7 @@ y.target = nearestCornerPosition.y
 *(2018, from the session slides; velocity in points/sec, deceleration per-ms — hence the /1000. The pattern survives directly in modern SwiftUI spring APIs.)*
 
 - **One spring per axis.** The sample drives `x` and `y` as separate springs on purpose: a single spring over the 2D distance desynchronises when the two axes carry different velocities.
-- **Commit or reverse on the projected endpoint.** A corollary of projecting intent, stated in Emil Kowalski's web port of these principles rather than in the talk: at release, snap to the point nearest where the throw would land, never to the side of the midpoint the element happens to be on. A sheet past the midpoint that is moving back returns. (The port at `64eb3de` states only the projection rule; reading the sign of the release velocity is a two-target shortcut that agrees with it.)
+- **Commit or reverse by the projected endpoint.** A corollary of projecting intent: at release, a sheet past the midpoint that is moving back should return, so snap to the point nearest the projected landing position, never the raw position. (Kowalski's port first stated this as "use the velocity sign"; his rev `0f2e23b` replaced it with the projected endpoint, which is the talk's own method.)
 
 - **Stay in character:** scroll-drag and tap-status-bar-to-top use different mechanisms, but the page must feel like the same object; carry one motion character across the app.
 - **Go beyond motion:** combine dynamic behaviors with **sound and haptics** (see [../sound-design.md](../sound-design.md)).

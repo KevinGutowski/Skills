@@ -149,6 +149,12 @@ Small, verified, single-meaning corrections. No description text changed, so no 
 
 Both judges answered `none` for W18 and for B33 (single A→B directions), which is the expected pass. No neighbor or control was taken by an edited skill. The `skill-creator` description optimizer was not run: with both contested pairs already at 100% there was nothing for it to optimize against.
 
+**2026-11-18 re-run.** The `design-craft` description gained the trigger `blueprint illustration` (446 characters; "and feel", "alignment" and "-style" were cut to make room) for the new construction-drawings reference, and B34–B36 were added. Two fresh descriptions-only judges (the session's default model and Haiku) got the same blind packet: W1–W18 18/18 and B1–B36 36/36 for both. B34 went to `design-craft`; B35 and B36 stayed with `creative-coding` and `logo-design`; B10 and W10/W16/W17 still route to `design-craft`.
+
+**2026-11-22 re-run.** B37–B39 were added for the `interface-review` code-pass reference (skills.sh Design topic fold). First fresh judge, with both descriptions unchanged: B37 and B38 went to `web-design` first and `interface-review` second, so the new reference was not reachable. The `interface-review` description gained "UI-code/PR audits" and the trigger "review UI code" (446 characters). "evidence-based", "an existing", "rules" and "writing"→"copy" were tightened to make room. `web-design` gained the boundary "reviewing UI code or a PR → interface-review" (431). A second fresh judge on the regenerated packet: B37 and B38 went to `interface-review`; B39 stayed with `web-design`, an accepted first skill. W1–W18 18/18, X1–X19 19/19, and B1–B36 35/36. The miss was B15 (discussion guide for usability sessions): `design-prototyping` first, `user-research` second. The first judge got B15 right, and neither edited description touches it, so this is recorded as judge variance. Re-probe B15 at the next `design-prototyping` or `user-research` description edit.
+
+**2026-11-22 post-merge run.** After merging `origin/main` (which added the `design-craft` "edges don't line up" trigger and fixture G1–G10), one fresh descriptions-only judge on the combined 86-probe packet routed every probe to its expected skill: W 18/18, B 39/39 (B15 back to `user-research`), X 19/19, G 10/10.
+
 ## Follow-up status — 2026-11-12
 
 The owner asked for every recommendation above to be applied. Status against "Suggested order":

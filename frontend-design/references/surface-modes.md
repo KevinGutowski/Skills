@@ -113,7 +113,7 @@ The product slop test asks whether a category-fluent user can trust the interfac
 - **Layout:** responsive behavior is structural (collapse the sidebar, reflow the table), not fluid type.
 - **Components:** every interactive component has default, hover, focus, active, disabled, loading, and error states. Use skeletons in place of mid-content spinners. Empty states teach the interface. Use one button shape, one form-control vocabulary, one icon style. If "Save" looks different in two places, one is wrong.
 - **Copy:** start each sheet, dialog, card, and settings group with no supporting copy, then add at most one line that states what the controls cannot show (rule `copy-budget` in [anti-slop-catalog.md](anti-slop-catalog.md)). A fluent user reads labels, not paragraphs.
-- **Motion:** 150–250 ms. Motion conveys state, never decoration. No orchestrated page-load sequences, because the product loads into a task.
+- **Motion:** 150–250 ms. Motion conveys state, never decoration (an effect the user asked for, or one chosen through `ui-fx` for an effects request, is the exception and follows that skill's floor). No orchestrated page-load sequences, because the product loads into a task.
 - **Modals are rarely the first answer.** Exhaust inline and progressive alternatives.
 - **Permissions:** system fonts, standard navigation (top bar plus side nav, breadcrumbs, tabs, command palette), density, and consistency over surprise. Save delight for moments, not pages.
 

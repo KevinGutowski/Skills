@@ -13,6 +13,8 @@ Use this as provenance for the `ux-writing` router and its references. It is not
 - Anton Sten, *Products People Actually Want* (2025 ebook, local attachment) — writing before pixels, words as a design-thinking tool, problem/feeling/scenario prewriting prompts, and business/design storytelling. Folded lightly here; long-form craft routes to `write-clear-prose`, stakeholder selling to `design-org-influence`.
 - Jakub Krehel, *Interfaces* Cheat Sheet, Writing section (https://interfaces.dev/cheat-sheet, Sep 2026) — three microcopy defaults folded into `ui-voice-and-tone.md`: one advance label per flow, toggles labeled by their on state, address the reader as "you". Button-verb, confirmation-label, sentence-case, empty-state, and link-text rules were already covered here and in `web-design` (form-design).
 
+- Vercel, Web Interface Guidelines (https://github.com/vercel-labs/web-interface-guidelines, Content & Copy and Typography families) and Writing Guidelines (https://github.com/vercel-labs/writing-guidelines, Punctuation & typography), both command.md on `main`, unversioned, read 2026-11-18 — three microcopy defaults folded into `ui-voice-and-tone.md`: numerals for counts, in-progress labels ending in `…`, `&` only where space is tight. Active voice, second person, specific button labels, and errors that give the next step were already covered here. Their Title Case rule for headings and buttons conflicts with the local sentence-case convention and is recorded in `coverage-gaps.md` instead of adopted. The full rule-family map lives in `interface-review` (code-pass-checklist); the docs-writing material went to `write-clear-prose` (technical-docs).
+
 ## Error Messages And Failure States
 
 - Wix UX error-message rules — practical failure-copy anti-patterns and recovery mechanics.
@@ -46,3 +48,8 @@ Use this as provenance for the `ux-writing` router and its references. It is not
 - `naming-features-and-labels.md`: feature names, labels, button grammar, plan names, setting names.
 - `linear-settings-copy.md`: settings IA and row copy.
 - `coverage-gaps.md`: candidate copy standards that need more evidence or accepted examples before promotion.
+
+## skills.sh Design topic (2026-11-22)
+
+- Leon's tasteskill 2.5.1 (https://github.com/Leonxlnx/taste-skill, MIT, rev `f6b7657`): copy method → `ui-voice-and-tone/marketing-page-copy.md`.
+- Vercel Writing Guidelines (https://github.com/vercel-labs/writing-guidelines rev `83e2316`, via vercel-labs/agent-skills `5a37a63`): unit-format convention → `ui-voice-and-tone.md` (Simplify, word list). Ledger: `docs/skills-sh-design-topic-source-mining-2026-11.md`.

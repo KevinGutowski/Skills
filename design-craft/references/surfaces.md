@@ -2,12 +2,12 @@
 
 ## Contents
 - Concentric Border Radius
-- Optical Alignment
+- Optical Alignment (blur test, ink-centroid measurement)
 - Shadows Instead of Borders
 - Natural Shadow Stacks
 - Dark Mode Edge Highlights
 - Elevation Systems & Light-Source Shadows
-- Eased Gradients
+- Eased Gradients (incl. fading over texture: add blur)
 - Translucent Materials on the Web
 - Backdrop Blur × mix-blend-mode (Chrome Gotcha)
 - Image Outlines
@@ -87,6 +87,11 @@ Fior's worked values: card 16px outer / 8px inset → 8px media; menu 12px outer
 
 When geometric centering looks off, align optically instead.
 
+See also:
+- `swiftui` (sf-symbols) → "Glyph craft". Apple's WWDC 2017 rule for optical positioning: asymmetric glyphs that are perfectly centred "just look off", so nudge a play triangle right and a share arrow up, and bake the offset into the asset so the code only has to centre it. That is the same preference as the SVG-path fix below.
+- [alignment-pass.md](alignment-pass.md) when the problem is edges, not one icon's centre: rows whose labels, icons or counts miss a shared line.
+- `design-systems` (icon-systems) → "Optical adjustments" and keylines. These are corrections made while drawing the set: circles drawn larger than squares, notches where lines meet, thinner strokes where lines converge, dots sized by role, and separate drawings per size. They come before any placement nudge.
+
 > "Junior designer: This is not aligned. Senior designer: It's optically aligned." — Stammy, https://x.com/stammy/status/1276602518693445637
 
 Optical alignment "means nudging things until they look right, then keeping the nudge" (Gustavo Fior, *Craft*, craft.gustavofior.com/optical-alignment). The nudge is per icon: "The amounts are tiny and specific to each icon, so this is a per icon decision, not a global rule." Don't turn one icon's 1px offset into a token applied to the whole set.
@@ -100,7 +105,63 @@ To *measure* an optical offset instead of guessing, blur the icon: add a heavy `
 .icon-under-test { filter: blur(6px); }
 ```
 
-Then encode the result as the smallest stable unit (`translate-x-px`, `transform: translateX(1px)`, or a viewBox fix in the SVG) and keep it.
+Then encode the result as the smallest stable unit (`translate-x-px`, `transform: translateX(1px)`, a quarter-pixel `translate` for small icons, or a viewBox fix in the SVG) and keep it. To get the number instead of eyeballing it, use the script in the next subsection.
+
+### Measuring the Nudge: Ink Centroid
+
+The blur test, done with numbers. Nil.Dev's demo (X 2124194975571230845, 2026-11-21) puts an edit (pencil-in-square) icon and a trash icon in round buttons. Both are "Centred by its box": box centre `12.00, 12.00` in a 24-unit viewBox. Then a dot marks each glyph's visual weight ("But the eye weighs the shape"):
+
+| Icon | Box centre | Weight (ink centroid) | Off by (rendered px) | Nudge |
+|---|---|---|---|---|
+| Edit | 12.00, 12.00 | 11.29, 12.66 | 0.41px left, 0.38px low | x +0.50, y −0.50 px |
+| Trash | 12.00, 12.00 | 11.97, 12.29 | 0.17px low | x 0.00, y −0.25 px |
+
+Rules the demo shows:
+
+- **Centre the weight, not the box.** Find the ink centroid and move the icon until it sits on the container's centre: nudge = container centre − centroid, in rendered pixels. The ink centroid is the mean position of the icon's painted pixels, each weighted by how strongly it is painted. The video shows its weight point but not how it computes it.
+- **Check each axis on its own.** A mirror-symmetric icon still needs a vertical check. The trash can is symmetric left to right, but its open body puts more ink low, so it takes a y-only nudge. "It's symmetric, so geometric centering is fine" is true only on the axis of symmetry.
+- **Offsets shrink with render size.** ViewBox offsets scale by rendered size ÷ viewBox size. The demo's px offsets match a 24-unit icon drawn at about 14px; that is our inference from 0.71 × 14/24 ≈ 0.41, since the video does not state the size. The demo's two icons, at about 14px, took 0.25–0.5px, and a filled play triangle at 14px takes 0.75px (below). The 1–2px rule of thumb is for triangles and arrows at ~24px. Measure your own icons rather than reusing either range.
+- **Snap to a grid and keep the numbers.** The demo rounds to 0.25px steps (0.41 → 0.50, 0.17 → 0.25) and prints the nudge under each icon. Keep one nudge per icon (see Fior above) and store it with the icon's definition, so the value is explained and can be reviewed.
+- **Review with an overlay and a switch.** The video draws the box centre as a red crosshair and the weight as a blue dot, then flips an "Optical centring" switch. Before/after on the same screen shows a sub-pixel change that a lone screenshot hides.
+
+Measure, don't assume. Lucide's `square-pen` and `trash-2` measure within 0.1px of centre at 14px (script below, 2026-11-22), so those two need no nudge. The demo's set differs. Some sets build optical balance into the drawing; SF Symbols do it with margins (`swiftui` (sf-symbols)).
+
+**Measuring from rendered pixels: `design-craft/scripts/optical-nudge.mjs`.** This is an optional Node script that drives headless Chromium (Playwright). It works by observation, not by modelling the page:
+- **Where the ink is.** It screenshots each container (button, chip, avatar) with the icon shown and with the icon at `opacity: 0`. Each pixel's weight is how much its colour changes. For a one-colour icon on a flat background that matches the ink centroid above. A multicolour icon, or one on a gradient or image, is weighted by contrast with what is behind it, which can differ from its coverage.
+- **How CSS px map to the screen.** It moves the icon 4 CSS px on each axis and watches where the ink goes, so scaled, mirrored and rotated ancestors are measured rather than computed.
+- **The answer.** It solves for the nudge, snaps it to 0.25px, applies it, and measures again.
+
+```bash
+# from the repo root (Node must be able to resolve playwright-core from design-craft/scripts)
+npm i --no-save playwright-core && npx playwright-core install chromium-headless-shell
+npx playwright-core install-deps chromium-headless-shell   # bare Linux only: Chromium's system libraries (needs root)
+node design-craft/scripts/optical-nudge.mjs http://localhost:3000/settings 'button.icon-button'
+# {"i":0,"offX":-0.78,"offY":0,"nudgeX":0.75,"nudgeY":0,"translate":"0.75px 0px","afterX":-0.03,"afterY":0,"centred":true}
+```
+
+- **Pass the container, not the icon.** The script measures against the element the icon should sit centred in, and only the icon moves. `--icon <selector>` picks the icon inside each container (default `svg`).
+- **Put the printed `translate` in the icon's CSS.** It is the icon's existing `translate` with the nudge added. `-50% -50%` and nested math are kept as written: `-50% -50%` becomes `calc(-50% + 0.75px) -50%`. Don't write the bare nudge over an existing offset: that drops the old offset.
+- **Trust it only when `centred: true`.** `afterX`/`afterY` are measured with the value applied, and `centred` means each axis is within half a grid step. The script exits 1 if any container failed or did not end up centred, so it can gate CI. It restores the page unless you pass `--apply`, and never writes to disk.
+- **Once the value is settled, move the paths** in the SVG for icons you own, so the component code only has to centre it. On 1x screens a fractional translate can soften thin strokes, so check there.
+
+What it covers is fixed. Cases outside this list are out of scope; use the blur test there.
+- **Supported:** what one element paints in its resting state. That includes stylesheet paint, sprites, clipping, filters, descendants that set their own visibility, positioning and margins, and the element's own transforms. Scaled, mirrored or rotated ancestors are supported too, as is an existing `translate` in any unit.
+- **Refused with an error:** an icon that paints nothing visible (or only in the colour behind it), one whose ink does not move when nudged, one whose measured ink falls outside its own box, and a container outside the viewport.
+- **Not measured:** hover, focus and animated states. The pointer never enters the page and animations are disabled.
+
+`design-craft/scripts/optical-nudge.test.mjs` is the regression check. Re-run it after editing the script. Each case is measured, nudged and measured again from rendered pixels. It passed 47/47 on 2026-11-22.
+- **Checks on the measurement itself.**
+  - A filled square drawn 2px right of centre measures 2.000, 0.000.
+  - A square button at the viewport's (0, 0) with a hover style needs 0. This catches capture-origin and hover errors, which also fool a second measurement.
+  - An icon whose second dot sets `visibility: visible` needs 0. This catches a hidden frame that still paints.
+- **Shape.** A filled play triangle at 14px needs 0.75, the same rightward nudge as Play Button Triangles below. The same holds through a sprite `<use>`, inside a `scaleX(-1)` ancestor, and on x inside a `rotate(90deg)` ancestor. Mirrored by the icon's own transform, it needs −0.75.
+- **Placement.**
+  - A circle pushed 3px left, by `position: relative` or by margin, needs 3.
+  - 1px left inside a `scale(2)` ancestor needs 1 CSS px.
+  - `translate: 1px 0` composes to `0px 0px`.
+  - `-50% -50%` and `calc(-50% + min(20%, 1px)) -50%` are kept.
+- **Paint and clipping.** A stroke painted from a stylesheet matches its attribute-painted twin. Ink clipped by `preserveAspectRatio="slice"` does not count.
+- **Command line.** It works on a strict-CSP page, and exits 1 when a measurement fails.
 
 ### Buttons with Text + Icon
 
@@ -130,7 +191,7 @@ Use slightly less padding on the icon side to make the button feel balanced. A r
 
 ### Play Button Triangles
 
-Play icons are triangular and their geometric center is not their visual center. Shift slightly right:
+Play icons are triangular and their geometric center is not their visual center. Shift slightly right. The 2px below suits a ~24px icon; at 14px a filled triangle measured 0.75px, so scale the nudge with the size or measure it:
 
 ```css
 /* Good — optically centered */
@@ -412,6 +473,33 @@ Two separate problems, two separate fixes — large color jumps often need both:
 - **Muddy gray midpoints** come from interpolating in sRGB. Use a better interpolation space: `linear-gradient(in oklab, blue, hotpink)`. (See `web-design` (oklch-skill) for color-space details.)
 - **Hard start/end edges** come from linear stop spacing. Only eased stops fix this — interpolation space doesn't.
 
+### Fading Over Texture: Add Blur
+
+When an eased fade sits over a busy image — halftone, grain, photo detail, a shader — so text can sit on it, add a slight blur in the same zone. The fade lightens the texture but keeps every dot; the blur melts the dots into their colour, so the bottom reads as smooth colour and the top stays crisp.
+
+> "adding a slight blur to an eased gradient looks so nice" — Sunnie Kapar, Nov 2026: https://x.com/sunniekapar/status/2124231120938029373 (halftone card, "eased fade" vs "eased fade + blur")
+
+Easing makes this matter more. An eased fade lets more of the image through in its middle than a linear one, so more texture is left under the label. Measured on a 7px halftone card (headless Chromium, mean neighbouring-pixel difference in the label band, labels hidden): linear fade 1.57, eased fade 3.36, eased fade + blur 0.32. The crisp top band was unchanged in all three (11.39).
+
+```css
+.card  { position: relative; isolation: isolate; overflow: hidden; }
+.art   { position: absolute; inset: 0; }        /* the image, canvas or shader */
+.blur  {                                        /* between the art and the fade */
+  position: absolute; inset: auto 0 0 0; height: 70%;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  --m: linear-gradient(to top, #000 0%, #000 35%, rgb(0 0 0 / .8) 50%,
+       rgb(0 0 0 / .5) 65%, rgb(0 0 0 / .2) 80%, rgb(0 0 0 / .05) 92%, transparent 100%);
+  -webkit-mask-image: var(--m); mask-image: var(--m);
+}
+.fade  { position: absolute; inset: auto 0 0 0; height: 70%; background: /* eased stops, as above */; }
+```
+
+- **The blur leads the fade.** Give the blur mask its own, gentler curve that is fully on by the time the label starts. Reusing the colour fade's eased curve as the blur mask left most of the dots (2.29 against 0.32): the eased curve is nearly transparent until the very bottom.
+- **Slight means about half the texture's pitch.** On the 7px grid, 2px left dots (0.70); 3px, 4px and 8px all measured about the same (0.31–0.34). Past that, a bigger radius only costs more to paint.
+- **Same box as the fade.** Keep the blur layer the same height as the fade so there is no second edge.
+- **Static art:** bake the blur and fade into the asset or do it in the shader, and skip the live `backdrop-filter`. Use the layer when the art moves or is generated. Several stacked layers for a deep blur are in `ui-fx` (surface-recipes → Progressive blur); one slight layer is enough here.
+- **Check from rendered pixels.** In our run Playwright's `clip` screenshots dropped the `backdrop-filter`; crop a full-page screenshot instead. The blur also does not change the text contrast arithmetic: still measure the label against the lightest and darkest pixels behind it.
+
 ### Dark Mode Note
 
 Don't fake a dark-mode variant by overlaying a gradient on a light-mode hero asset — the seam where the gradient meets the asset is exactly where banding shows. Ideally produce both a dedicated dark-mode version of the asset *and* an eased gradient:
@@ -598,9 +686,11 @@ html { background-color: var(--background); }   /* same token the app surface us
 }
 ```
 
-The start fade grows from `0` over the first `3rem` of scrolling; the end fade shrinks to `0` over the last `3rem`. Traps:
+The start fade grows from `0` over the first `3rem` of scrolling; the end fade shrinks to `0` over the last `3rem`.
 
-- **Declare `animation-timeline` after the `animation` shorthand.** The shorthand resets the timeline, so the order above is load-bearing.
+A second source (@gkurttech, "Scroll-driven animations, Part 5: scroll fade", x.com/gkurttech/status/2124450831303090459) independently uses the same pattern: two registered lengths, `scroll(self)`, and ranges `0 48px, calc(100% - 48px) 100%`. Its shorter version leaves out the duration and the `from` keyframe (`@keyframes start { to { --start: 48px; } }`, `@keyframes end { from { --end: 48px; } }`), and both work, because the property's `0px` initial value fills the missing keyframe. Its claim that "a list that doesn't scroll gets no fade" holds: in Chromium 159 and Firefox 159 a list that does not overflow kept both lengths at `0px`, because a scroller that cannot scroll has no active timeline. The general mechanics (`scroll()` vs `view()`, range names, the order of the shorthand) are in `ui-fx` (platform-techniques → Scroll-driven animation). Traps:
+
+- **Declare `animation-timeline` and `animation-range` after the `animation` shorthand.** The shorthand resets both, so the order above is load-bearing. A range placed before it silently reverts to `normal`.
 - **Without `@property` the fade snaps.** An unregistered custom property cannot interpolate.
 - **Fall back to no fade, not a static one.** Without scroll timelines both properties stay at `0px` and the list keeps a plain hard edge and its scrollbar. The source instead adds an `@supports not (animation-timeline: scroll())` branch that sets both fades to `2.5rem` permanently. That reintroduces the misleading fade above, dims the first and last rows at rest, and fades lists that do not overflow at all, so it is left out here. If the hint must exist everywhere, set the two properties from a small scroll listener instead.
 - **The mask covers the scrollbar too.** A visible scrollbar fades out at both ends. Hide it, or keep it and accept that. The source also suggests moving the mask to an inner wrapper; that variant was not tested here.

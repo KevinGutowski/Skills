@@ -32,3 +32,15 @@ The local skill adapts that pattern to this repository's existing domain owners.
 - Read: `ui-review` (SKILL and criteria) and the trap list in `build-design-system`.
 - Delta used here: [behaviour-traps.md](behaviour-traps.md). It covers the symptom-to-trap table, stable trap IDs, measured probes (Event Timing for press feedback, real Tab presses for focus rings, measurement inside the scroller), task-level criteria, the shown-versus-sent severity rule, system-caused findings, fixes stated as failing checks, and the shown/not-shown edge-case list.
 - Not imported: the source's own bucket names and ship line (this skill keeps HIGH/MEDIUM/LOW and Block/Needs changes/Approve), its multi-reviewer panel sort, its report file locations, and the capture scripts. Traps already owned by `web-design` or `design-craft` are pointed to rather than restated.
+
+## Vercel Web Interface Guidelines
+
+- Repository: https://github.com/vercel-labs/web-interface-guidelines (MIT), its command file at rev `434b7f9` (2026-10-05). Wrapped as the `web-design-guidelines` skill in https://github.com/vercel-labs/agent-skills (rev `5a37a63`), listed on the skills.sh Design topic.
+- Read: the command file in full, `AGENTS.md`, `README.md`, and the wrapping `SKILL.md`.
+- Delta used here: [code-pass-checklist.md](code-pass-checklist.md). It regroups the source-checkable rules by local owner, adds the grep-then-confirm procedure, maps severities, and records five disagreements with local owners (title case, `autocomplete="off"`, placeholder ellipses, key handlers, copy conventions).
+- Not imported: the rule wording itself and the "sacrifice grammar for brevity" output instruction; this skill keeps its own report structure and verdicts. Ledger: `docs/skills-sh-design-topic-source-mining-2026-11.md`.
+
+## Sweep commands for the code pass
+
+- [code-compliance-sweep.md](code-compliance-sweep.md) holds the ripgrep commands for the checklist's grep step. They were written from the same Vercel rule list (read on `main`, 2026-11-18), run once against vercel-labs/json-render (394 `.tsx` files), corrected over several reviews, and are exercised by `scripts/test_sweep_patterns.py` against hit and miss fixtures.
+- This file began as a separate full fold of the guidelines made on another branch the same week. On 2026-11-22 its rule families, conflict table, and output format were removed in favor of [code-pass-checklist.md](code-pass-checklist.md), which is pinned to an upstream revision.

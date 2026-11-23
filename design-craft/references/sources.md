@@ -8,6 +8,8 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 - Adam Wathan and Steve Schoger
 - Impeccable (Paul Bakaus)
 - Kosta — *Tactile design*
+- Pasquale Vitiello — *Plotter*
+- Pritam Paul — *gridlines*
 - DeepLethe — *Solid Glass*
 - Anton Sten
 - Derek Briggs (PixelJanitor)
@@ -34,6 +36,14 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 
 - https://kosta.fyi/skills/tactile-design (landing page with before/after demos; `/md` export) · https://github.com/kosta4a/tactile-design (MIT), read at commit `30495a2` (2026-11-02). Its SKILL.md and all seven references (tokens, buttons-and-controls, surfaces-and-layering, layout-and-hierarchy, motion, mobile, decisions) were paraphrased into [tactile-design.md](tactile-design.md) and its second hop `tactile-design/`, with dark-mode counter-school notes in [surfaces.md](surfaces.md) and the Theme Note in [polish-principles.md](polish-principles.md). Credits inside the source: Emil Kowalski (motion, sheet drag), Radix Colors (12-step scales), Apple HIG (touch and sheet sizes). Ledger: `docs/tactile-design-source-mining-2026-11.md`.
 
+## Pasquale Vitiello — *Plotter*
+
+- https://plotter.pasqualevitiello.com · https://github.com/pasqualevitiello/plotter (MIT), read at commit `01df092` (2026-11-15). The `skills/plotter` package (SKILL.md and its drawing, motion, direction, visual-grammar, drafting-standard, approved-references and motion-examples references, the catalogue index, `check.py`) plus the repo's cold-run eval briefs and site docs were paraphrased into [construction-drawings.md](construction-drawings.md), with a pointer from [component-details.md](component-details.md) (Empty states). Not vendored: the 109-drawing catalogue, scripts, role CSS and the bundled Cal Sans font; the reference says how to install the upstream package. The example in [../examples/construction-drawing-empty-state.html](../examples/construction-drawing-empty-state.html) is an original drawing. Ledger: `docs/mining-ledger.md` (2026-11-18).
+
+## Pritam Paul — *gridlines*
+
+- https://github.com/pritamux/gridlines (MIT), read at commit `20d0944` (2026-11-21). The SKILL.md process and rules were paraphrased into [alignment-pass.md](alignment-pass.md). `probe.js`, `audit.mjs` and `LICENSE` are vendored unchanged (plus a provenance header) in `design-craft/scripts/gridlines/`, with a local regression check in `design-craft/scripts/gridlines.test.mjs`, and the planted-miss sidebar is in [../examples/gridlines-sidebar.html](../examples/gridlines-sidebar.html). The source credits Karri Saarinen's Linear sidebar redraw and Apple's HIG layout chapter; the redraw was not located. The README media (before/after video and images) were not read. Ledger: `docs/gridlines-source-mining-2026-11.md`.
+
 ## DeepLethe — *Solid Glass*
 
 - https://github.com/deeplethe/solid-glass (MIT) · https://deeplethe.github.io/solid-glass, read at commit `6e8903e` (2026-11-18). Read in full: `src/solid-glass.css` (1,409 lines, with its why-comments), the Introduction, Material, and Theming pages under `content/docs/`, and the contributing guide. Paraphrased into [solid-glass.md](solid-glass.md); the edge-drawing traps and the opaque token swap went into [surfaces.md](surfaces.md) (Translucent Materials on the Web). The agent components' behavior rules went to `ai-experience-design` (patterns). Not used: the stock components, examples, and component docs, which are shadcn/ui's per the repo's notice file. The repo has no tests and names its origin product only as "the product this material comes from".
@@ -55,12 +65,14 @@ X posts (x.com/PixelJanitor/status/`id`):
 - Campsite switch thread (middle-state swap, thumb gradient + side reflections) — thread root 1628068543261732864, Feb 2023
 - Modal stack polish (opacity duration offset + movement stagger) — 1793369802066759897, May 2024
 - Pill dot swap indicator (Reorder, drag disabled) — 1848611632802361578, Oct 2024
+- Soft-close easing set (four curves, clock vs perceived durations, demo video; quotes Ridd's Dive Club clip 2123484229543854351) — 2123512999810089444, Nov 2026; full episode below → `web-design` (web-animation-design, Physical-reference easing)
 - Figma community file for component lighting — 1630311965951422467: https://www.figma.com/community/file/1212115961000525565
 
 Video:
 
 - *Shape FM* ep. 3, "Motion and animation with intent" (with James McDonald, 2025) — YouTube sHVKuJuseYo. Cited as (Briggs, Shape FM ep. 3): top-light model, half-pixel strokes, sub-pixel radius.
 - *Dive Club* S4, "Creating a design culture of craft" (Jan 2024, Clerk era) — YouTube z4hP80tzBL4. Cited as (Briggs, Dive Club S4): formula-izing plugin shadows.
+- *Dive Club*, "Scaling craft at Shopify" (2026-11-03) — YouTube r4IW73e6tE4; podcast audio transcribed locally. Folded outside `design-craft`: easing and carousel choreography → `web-design`; taste-as-skill-files and agent profile → `working-with-ai`; post-ship agent loops → `user-research`; principal-IC influence → `design-org-influence`.
 
 ## Gustavo Fior — *Craft*
 
@@ -76,7 +88,7 @@ Design-engineering concept site (craft.gustavofior.com, Jul 2026; every page has
 - *Button Press* — `0.97`–`0.98` as a second source for the restrained press alternate, 100–150ms, larger surfaces shrink less, disabled controls do not press, iOS tap-highlight and `:active` notes → [animations.md](animations.md) Scale on Press, polish-principles §12.
 - *Interruptibility* — recording vs destination, never gate input on an animation, transition vs spring, retargeting when siblings join → [animations.md](animations.md) Interruptible Animations, polish-principles §4 + Common Mistakes.
 - *Font Smoothing* — the case for the root-application school, dark mode as the trigger, thin-weight risk, `subpixel-antialiased` opt-out, Firefox 128, macOS-only review → [typography.md](typography.md) Font Smoothing, polish-principles §8. The scoped default stands; recorded as a school, not blended.
-- *Scroll Fades* — mask over overlay, fade only the edge that can scroll, scroll-driven `@property` recipe and its traps → [surfaces.md](surfaces.md) Scroll Fades, polish-principles Common Mistakes; pointer in `web-design` (web-layout-design).
+- *Scroll Fades* — mask over overlay, fade only the edge that can scroll, scroll-driven `@property` recipe and its traps → [surfaces.md](surfaces.md) Scroll Fades, polish-principles Common Mistakes; pointer in `web-design` (web-layout-design). Second source for the recipe: @gkurttech, X 2124450831303090459 (2026-11-22), with the same shape at 48px. Its no-overflow, no-fade claim was checked in Chromium and Firefox.
 
 Companion installable skill `skills/craft-design-engineering` mirrors the live pages verbatim; not imported. Ledger: `docs/mining-ledger.md` 2026-09-18 and 2026-11-18.
 
@@ -124,7 +136,7 @@ Transcript access: YouTube `en` captions fetched with `yt-dlp --skip-download --
 
 ## Emil Kowalski — open skills (aiforui.dev)
 
-- https://aiforui.dev/skills · https://github.com/emilkowalski/skills (MIT), read at rev `715c1807e08c497cfd1dc4feb450a2a3300ef2a9` (2026-11-10). `break-ui` and its catalog were paraphrased into [worst-case-data.md](worst-case-data.md) with a pointer from the harden move in [refinement-moves.md](refinement-moves.md); `emil-design-eng` deltas (Motion 14.2 shorthand acceleration, `will-change` rule, delight and function checks, stagger scoping) were merged into [emil-kowalski.md](emil-kowalski.md); the materials section of `apple-design` was folded into [surfaces.md](surfaces.md). Full screening ledger: `docs/emilkowalski-skills-source-mining-2026-11.md`. Rechecked at rev `64eb3de` (2026-11-15): `break-ui` now skips name suffixes when taking initials, applied to worst-case-data.
+- https://aiforui.dev/skills · https://github.com/emilkowalski/skills (MIT), read at rev `715c1807e08c497cfd1dc4feb450a2a3300ef2a9` (2026-11-10). `break-ui` and its catalog were paraphrased into [worst-case-data.md](worst-case-data.md) with a pointer from the harden move in [refinement-moves.md](refinement-moves.md); `emil-design-eng` deltas (Motion 14.2 shorthand acceleration, `will-change` rule, delight and function checks, stagger scoping) were merged into [emil-kowalski.md](emil-kowalski.md); the materials section of `apple-design` was folded into [surfaces.md](surfaces.md). Full screening ledger: `docs/emilkowalski-skills-source-mining-2026-11.md`. Rechecked at rev `64eb3de` (2026-11-15) from the skills.sh Design topic: upstream commit `0f2e23b` ("Fix wrong APIs and cross-skill contradictions") was applied to the Emil Kowalski files (the 300ms rule's modal/drawer/sheet/toast exceptions, the enter-250ms/exit-200ms example, compositor-only wording for CSS animations, the dropped `clip-path` acceleration claim, non-uniform stagger delays, and the `motion/react` `useSpring` + `useTransform` example). Ledger: `docs/skills-sh-design-topic-source-mining-2026-11.md`. The same recheck also took `break-ui`'s rule that initials skip name suffixes, applied to worst-case-data.
 
 ## Luke Wroblewski — copy volume in generated UI
 
@@ -137,3 +149,8 @@ Transcript access: YouTube `en` captions fetched with `yt-dlp --skip-download --
 ## Kevin Dukkon / @keviduk — component reads
 
 - *Sizing dropdown menus* (https://www.kevdu.co/reads/sizing-dropdown-menus, 2026-11-04; X 2117975138541146303) and *Timing tooltips* (https://www.kevdu.co/reads/tooltip-delay, 2026-11-06), read 2026-11-18. Both folded into the new [component-details.md](component-details.md). Two further reads were "Coming soon" on that date.
+- *How to design empty states* (https://www.kevdu.co/reads/empty-states, 2026-11-18), read the same day. Component rules folded into [component-details.md](component-details.md) → Empty states; causes and copy into `user-onboarding` (empty-states); missing-is-not-zero into `data-viz` (editorial-interaction).
+
+## Nil.Dev / @Nil_phy_dreamer — optical icon centring
+
+- X 2124194975571230845 (2026-11-21): text plus a 25.2s video (3024×2160), read frame by frame. It quotes X 2123777217994072186, an Opus 5.5 (high) card-design challenge (image read). Folded as "Measuring the Nudge: Ink Centroid" under Optical Alignment in [surfaces.md](surfaces.md), with the §2 rule of thumb and the checklist line in [polish-principles.md](polish-principles.md) reconciled. The generated-UI tell is in `working-with-ai` (ai-ui-direction).
