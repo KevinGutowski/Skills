@@ -844,3 +844,33 @@ Ticket-driven fold of three linked posts. The first quotes a fourth, which compl
 - **Pointers:** mobile-web-native-feel (carousel jitter row), web-animation-design/gestures (build-or-adopt), sources.md.
 - **Synthesis flagged as ours:** logical `-inline-start` properties in place of the demos' `-left`. Also the oversized-item, `scrollBy` and `scrollIntoView` traps, and the "long lists keep `normal`" rule, though the source implies it.
 - **New skills:** none. The router bullet gained trigger terms, but no description changed, so no routing probes were run.
+
+## 2026-11-22 — Textures (textures.dev), hover textures for agents
+
+Ticket-driven fold: "fold the general ideas and some specific examples into the skills". The full manifest, fold map and conflicts are in `docs/textures-source-mining-2026-11.md`.
+
+- **Density:** HIGH for the component pattern and for agent experience. The free set is MIT; Pro code was not read.
+- **Owner:** `ui-fx`, new reference `references/textures.md`. It covers the catalogue, the 12 free examples by response, the design-space grid, install and mount, traps, a 12-point anatomy read from `beam.tsx`, and an original skeleton (run once in headless Chromium). No new top-level skill.
+- **Second owner:** `devtools` (data-viz-and-agents) gets a second vendor worked example: markdown twins, ordered ways in, a small search-first MCP tool list, registry install, SHA provenance, a fixed per-item brief with a token estimate, the paid stop message, and the consent-gated rules block. It also gets a checklist line. The devtools coverage gap on the two-tool MCP shape is updated: the search-then-act shape is corroborated in design, and the exact two-tool count is not (Textures lists a third tool, `check_textures`).
+- **Pointers:** ui-fx SKILL.md (one link on ladder rung 3; the body was already at its 5k-token budget, so a duplicated dependency sentence was collapsed to make room), effect-libraries, effect-ideation, control-patterns, `frontend-design` visual-execution.
+- **Description:** `ui-fx` trigger list swapped "wow, UI FX" for "hover textures" (449 chars). Probes X20–X21 added.
+- **Eval:** `ui-fx/evals/hover-texture-hero` (four graders: install not imitate, size the host, content still works, touch ambient handled).
+- **Conflict settled:** the vendor's ambient touch play breaks `ui-fx`'s five-second rule; the remedies are `data-motion` and `static`.
+- **Skipped:** the MCP server (disallowed in `robots.txt`), Pro code, previews, the vendor skill install.
+
+## 2026-11-22 — Rida F'kih, iOS Safari's 60 FPS limit (X 2124325907058053256 → rida.dev)
+
+The library owner shared this as related to the Textures fold.
+
+- **Manifest:** the X post text and card, via `api.vxtwitter.com` and `api.fxtwitter.com`. The linked article (https://rida.dev/blog/bypassing-ios-safari-60-fps-limit, 2026-11-20) was read in full, with tags stripped; its live demos are iOS-only and were not run. Its cited React Aria post (https://react-aria.adobe.com/blog/sheet, Devon Govett, 2026-10-08) was read as a corroborator. Jordan Walke's video, the WebKit bug tracker and the `web-haptics` reference were not followed. Replies (15) were not read.
+- **Density:** MEDIUM-HIGH. One durable platform fact: iOS Safari holds main-thread `requestAnimationFrame` and page input to 60 Hz on 120 Hz screens. Two routes around it: the compositor (native scroll, snap, view timelines), corroborated by React Aria, and a worker `OffscreenCanvas`, single-source and fragile by the author's own disclaimer.
+- **Owner:** `web-design` web-performance, new section "iOS Safari's 60 Hz cap", with three ordered routes and the 240 fps slow-motion comparison method.
+- **Pointers:**
+  - web-animation-design/gestures: React Aria's Sheet as a second, scroll-built sheet reference beside Vaul, and the iOS note in the checklist.
+  - `ui-fx` platform-techniques: a Performance floor line.
+  - `ui-fx` textures: Textures run at 60 Hz on iOS.
+- **Parked as too fragile to teach:** vsync-locked `MessageChannel`/`setTimeout` polling of `scrollTop`, the empty-rAF flush, the invisible smooth-scroller that lifts ProMotion to 120 Hz, the DPR-scaled scroller for sub-point precision, and the viewport `initial-scale` trick. They are named in one sentence as a hack and are not given as recipes.
+- **Description:** none changed, so no routing probes were run.
+- **QA (same day):**
+  - The section first said all CSS, WAAPI and scroll-driven animations run at full rate on iOS, opacity included. WebKit bug 307554 (fixed 2026-02) limits high frame rate to `transform` animations. The claim is now narrowed in web-performance, gestures and `ui-fx` platform-techniques, and recorded in sources and coverage-gaps.
+  - The `ui-fx` floor's blanket "effect layers are `pointer-events: none`" contradicted the Textures reference, which needs the texture to receive the pointer. The floor now makes an exception for pointer-reactive backdrops, provided every control above them still receives clicks and focus. `textures.md` points to it. To stay within the 5k body budget, a sentence in the same body was tightened.

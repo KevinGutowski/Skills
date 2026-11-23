@@ -7,6 +7,7 @@
 - glimm (Noman Ijaz)
 - ittybitty (Blake Cyze)
 - holospot (Dmitry Kurash)
+- Textures (textures.dev)
 - Component kits studied for patterns
 - Other libraries
 - Platform facts
@@ -73,6 +74,22 @@ Added 2026-11-18 at the library owner's request, from X post 2122691075890704598
 Used for [holospot.md](holospot.md) and two pointers in [surface-recipes.md](surface-recipes.md). The "what to carry into your own shaders" section is our distillation of the author's how-it-works page. The floor guidance there (reduced motion, pausing, fallback) is ours: the documents read do not describe any.
 
 Not read: the post's 20-second video, the engine source, the per-material and scene-settings docs, the recipes, the schema, the tools. Nothing was run.
+
+## Textures (textures.dev)
+
+Added 2026-11-22 for a ticket that asked for the site's general ideas and some specific examples to be folded into the skills.
+
+- <https://textures.dev>: home page, `llms.txt`, `llms-full.txt` (all 40 entries; the 12 free ones with code), <https://textures.dev/agents.md>, <https://textures.dev/skill.md> (the vendor's agent skill), the `beam` markdown twin, <https://textures.dev/r/registry.json>, <https://textures.dev/r/beam.json>, `/api/textures` (metadata for the free set: mood, intensity, aliases, use cases), `robots.txt`.
+- <https://github.com/Textures-dev/textures> (MIT, pushed 2026-11-19): README (mount example, the three props, the free table), CONTRIBUTING (the repository is generated from the catalogue), CHANGELOG (per-file SHA-256 prefixes), file tree.
+- `beam.tsx` read in full for the engine: the sprung weight, passive pointer reads, box measurement, ambient wander, IntersectionObserver pause, `data-motion` override, focus host, reduced-motion snap and the neighbour-shift maths. The other eleven free files were not read line by line; the agent briefs say they share the engine.
+
+Used for: [textures.md](textures.md), the hover-texture pointers in SKILL.md and the moment row in [effect-libraries.md](effect-libraries.md), the Atmosphere note in [effect-ideation.md](effect-ideation.md), the pointer in [control-patterns.md](control-patterns.md), and the Textures worked example in `devtools` (data-viz-and-agents). The descriptions of the free set, the design-space grid, the anatomy list and the skeleton are ours; the skeleton was written for this library and not copied from the vendor's code.
+
+Corrections and conflicts against the source: the per-Texture markdown says "Free (MIT)" and the file header says "License: free to use"; the repository's LICENSE is MIT, which is what this skill relies on. The ambient touch mode runs for as long as the panel is on screen, which this skill's five-second rule does not allow without a control, so the reference adds the `data-motion` and `static` remedies. The vendor's markdown recipe and its README disagree on which layer takes `pointer-events: none` behind content; both are documented with their effect. The `llms.txt` says the vocabulary is defined on <https://textures.dev/agents.md>, but that page did not contain the definitions when read.
+
+Not read: the MCP server (`/mcp` is disallowed in `robots.txt`, and its tools, `search_textures`, `get_texture` and `check_textures`, were taken from `llms.txt` and the repo README), Pro code (paywalled), the `/embed/` previews, the clips, the pricing and terms pages beyond the price, the licence page (404 at `/legal/licenses`).
+
+Also on 2026-11-22: Rida F'kih's post on iOS Safari's 60 Hz cap (<https://rida.dev/blog/bypassing-ios-safari-60-fps-limit>), shared by the library owner as related. It is folded mainly into `web-design` (web-performance); here it adds one Performance floor line in [platform-techniques.md](platform-techniques.md) and the 60 Hz note in [textures.md](textures.md).
 
 ## Component kits studied for patterns
 

@@ -28,6 +28,8 @@ Fixture check: `python3 scripts/check_routing_probe_fixtures.py`
 | X17 | "I want a very subtle animated edge around our composer while the AI is drafting, barely noticeable." | `ui-fx` | Target: the quiet end of the dial. `web-design` is an accepted second skill. |
 | X18 | "There's a glowing card effect on this component kit's preview page. Figure out how it's made and build something similar for our pricing card." | `ui-fx` | Target: reverse-engineering. |
 | X19 | "Our modal feels abrupt when it opens. Make the transition subtler." | `web-design` | Neighbor: "subtle" must not pull everyday transitions to `ui-fx`. `design-craft` is an accepted first skill. |
+| X20 | "Our pricing hero feels flat. Put a hover texture behind it, like a field of lines or dots that reacts to the cursor." | `ui-fx` | Target: hover textures (textures reference). `frontend-design` is an accepted second skill. |
+| X21 | "Add a subtle static dot-grid SVG pattern behind our docs landing page." | `frontend-design` | Neighbor: a static repeating pattern stays out of `ui-fx`, even though "dot grid" and "subtle" are near the hover-texture trigger. The tile recipe lives in `frontend-design` (visual-execution); `web-design` is an accepted first skill, since "web/CSS craft" is a fair read from descriptions alone. |
 
 ## Scoring
 
