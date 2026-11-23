@@ -10,3 +10,5 @@
 - Whether isolating the judgment pass from detector output measurably changes findings has only the source project's claim behind it. A local A/B comparison is needed.
 - The behaviour-trap catalog and its thresholds (100 ms press feedback, 1 px control-height tolerance, 20 px dot-loader floor) come from one external implementation. Its IDs match that project's lint, which is not installed here.
 - The source's no-persona reviewer panel (identical prompts, findings raised independently by two reviewers rank highest) conflicts in spirit with the persona walk-throughs in `scored` mode. Neither has a local comparison; the panel is parked.
+
+- The scoring-discipline rules (worst sustained band, no averaging up, all-high means no review) come from one product's critique template and are untested here. Whether worst-band scoring makes two reviewers agree more often, or just lowers every score, needs the same local calibration as the `scored` lenses.

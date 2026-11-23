@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Relay hero</title>
+<style>
+html,body{margin:0;padding:0;background:#fff}
+.fx{position:relative;width:720px;height:340px;overflow:hidden;border-radius:12px;font:13px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#1f2430;-webkit-font-smoothing:antialiased}
+.fx *{box-sizing:border-box}
+.fx .win{position:absolute;left:24px;top:24px;width:900px;height:420px;background:#fff;border-radius:12px;box-shadow:0 0 0 1px rgba(20,24,40,.09),0 24px 60px rgba(20,24,40,.16),0 4px 12px rgba(20,24,40,.06);overflow:hidden}
+.fx .bar{height:38px;background:#f6f7f9;border-bottom:1px solid #e8eaee;display:flex;align-items:center;padding:0 14px;gap:7px}
+.fx .bar i{width:11px;height:11px;border-radius:50%;background:#d9dce2;display:block}
+.fx .bar b{margin-left:14px;font-weight:600;font-size:12px;color:#6b7280}
+.fx .body{position:absolute;top:38px;left:0;right:0;bottom:0;display:flex}
+.fx .list{width:222px;flex:none;background:#fafbfc;border-right:1px solid #e8eaee;padding:8px}
+.fx .row{display:flex;align-items:center;gap:10px;height:52px;padding:0 10px;border-radius:8px}
+.fx .row.sel{background:#fff;box-shadow:0 0 0 1px #e3e6eb,0 1px 2px rgba(20,24,40,.05)}
+.fx .av{width:28px;height:28px;border-radius:50%;flex:none;color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.fx .gray{background:#e3e6eb}
+.fx .tx{flex:1;min-width:0}
+.fx .t{font-weight:600;font-size:13px;white-space:nowrap;overflow:hidden}
+.fx .m{font-size:11px;color:#8a909c;margin-top:2px;white-space:nowrap}
+.fx .ln{height:6px;border-radius:3px;background:#e6e8ec;margin-top:7px}
+.fx .detail{flex:none;width:474px;position:relative;padding:0 24px}
+.fx .head{height:56px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eef0f3}
+.fx .subj{font-weight:600;font-size:14px;white-space:nowrap}
+.fx .btn{height:28px;padding:0 12px;border-radius:7px;background:#fff;box-shadow:0 0 0 1px #d5d9e0;font-weight:500;font-size:12px;display:flex;align-items:center;gap:7px;color:#1f2430;flex:none}
+.fx .btn s{width:14px;height:14px;border-radius:50%;border:1.5px dashed #9aa1ad;display:block}
+.fx .btn.on{box-shadow:0 0 0 1px #4f6bed;color:#3a53d6}
+.fx .msg{position:absolute;left:24px;top:72px;width:186px;display:flex;gap:10px}
+.fx .msg .tx .t{font-size:12px}
+.fx .msg p{margin:6px 0 0;font-size:13px;line-height:1.4;color:#3b4150}
+.fx .pop{position:absolute;right:24px;top:60px;width:216px;background:#fff;border-radius:12px;padding:6px;box-shadow:0 0 0 1px rgba(20,24,40,.08),0 12px 32px rgba(20,24,40,.18),0 2px 6px rgba(20,24,40,.08)}
+.fx .ph{height:30px;margin:2px 2px 6px;padding:0 10px;border-radius:7px;background:#f3f4f6;display:flex;align-items:center}
+.fx .ph span{display:block;width:70px;height:6px;border-radius:3px;background:#d9dce2}
+.fx .opt{height:36px;display:flex;align-items:center;gap:10px;padding:0 8px;border-radius:8px}
+.fx .opt .av{width:24px;height:24px;font-size:10px}
+.fx .opt .n{flex:1;font-size:13px;font-weight:500;white-space:nowrap}
+.fx .opt.hot{background:#eef1fe}
+.fx .opt.hot .n{color:#2f46c4}
+.fx .opt .d{width:8px;height:8px;border-radius:50%;background:#4f6bed;flex:none}
+</style>
+</head>
+<body>
+<div class="fx">
+  <div class="win">
+    <div class="bar"><i></i><i></i><i></i><b>Support inbox</b></div>
+    <div class="body">
+      <div class="list">
+        <div class="row sel">
+          <div class="av" style="background:#e08a4a">JW</div>
+          <div class="tx"><div class="t">Refund for order 4821</div><div class="m">Jordan Wells</div></div>
+        </div>
+        <div class="row">
+          <div class="av gray"></div>
+          <div class="tx"><div class="ln" style="width:78%;margin-top:0"></div><div class="ln" style="width:52%"></div></div>
+        </div>
+        <div class="row">
+          <div class="av gray"></div>
+          <div class="tx"><div class="ln" style="width:62%;margin-top:0"></div><div class="ln" style="width:70%"></div></div>
+        </div>
+        <div class="row">
+          <div class="av gray"></div>
+          <div class="tx"><div class="ln" style="width:85%;margin-top:0"></div><div class="ln" style="width:44%"></div></div>
+        </div>
+        <div class="row">
+          <div class="av gray"></div>
+          <div class="tx"><div class="ln" style="width:70%;margin-top:0"></div><div class="ln" style="width:58%"></div></div>
+        </div>
+      </div>
+      <div class="detail">
+        <div class="head">
+          <div class="subj">Refund for order 4821</div>
+          <div class="btn on"><s style="border-color:#4f6bed"></s>Assign</div>
+        </div>
+        <div class="msg">
+          <div class="av" style="background:#e08a4a">JW</div>
+          <div class="tx">
+            <div class="t">Jordan Wells</div>
+            <p>I was charged twice for the same order. Can you refund one?</p>
+            <div class="ln" style="width:60%;margin-top:12px"></div>
+          </div>
+        </div>
+        <div class="pop">
+          <div class="ph"><span></span></div>
+          <div class="opt"><div class="av" style="background:#3f9a78">DP</div><div class="n">Dev Patel</div></div>
+          <div class="opt hot"><div class="av" style="background:#4f6bed">MC</div><div class="n">Maya Chen</div><div class="d"></div></div>
+          <div class="opt"><div class="av" style="background:#c0568a">LO</div><div class="n">Lena Ortiz</div></div>
+          <div class="opt"><div class="av" style="background:#7a6fd0">SA</div><div class="n">Sam Adeyemi</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

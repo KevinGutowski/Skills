@@ -47,7 +47,7 @@
 
 ## Notes on the non-obvious fixes
 
-**Hover gating.** `(hover: hover)` says the primary input can hover; adding `(pointer: fine)` excludes styluses and devices that over-report hover. Tailwind v4's `hover:` variant already compiles to a `(hover: hover)` query; v3 needs `future.hoverOnlyWhenSupported`.
+**Hover gating.** `(hover: hover)` says the primary input can hover; adding `(pointer: fine)` requires a precise primary pointer, which rules out touchscreens that claim hover with a coarse pointer (some Android devices). It does not exclude a stylus: MDN defines `fine` as an accurate pointing device and `coarse` as one of limited accuracy such as a finger, so a pen-first device can match (checked 2026-11-18; corrected to match Kowalski's wording at `64eb3de`). Tailwind v4's `hover:` variant already compiles to a `(hover: hover)` query; v3 needs `future.hoverOnlyWhenSupported`.
 
 **Viewport units.** `dvh` follows the browser chrome as it shows and hides: correct for an app shell, but it shifts layout mid-scroll on marketing content. `svh` is the smallest viewport and never overflows: correct for heroes. `lvh` equals legacy `vh` and is almost never wanted. Add a `100vh` fallback line only if the support matrix requires it. Installed standalone apps behave differently at cold launch; follow the installed-apps reference there rather than this rule.
 

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Relay features</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{width:1000px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111318;-webkit-font-smoothing:antialiased}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:1000px}
+.tile{position:relative;overflow:hidden;background:#f5f5f3;border-radius:24px;height:380px}
+.hero{grid-column:span 2}
+.copy{position:absolute;left:28px;top:28px;right:28px;font-size:19px;line-height:1.35;letter-spacing:-.01em;font-weight:600;color:#111318}
+.copy span{color:#8a8d94}
+.t{font-size:13px;line-height:1.4}
+.ui{position:absolute}
+.disc{width:28px;height:28px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff}
+.bar{height:6px;border-radius:3px;background:#e4e4e1}
+
+/* Inbox hero */
+.win{left:28px;top:128px;width:780px;height:420px;background:#fff;border-radius:14px;box-shadow:0 0 0 1px rgba(17,19,24,.06),0 18px 40px -12px rgba(17,19,24,.18),0 4px 10px rgba(17,19,24,.05);overflow:hidden}
+.chrome{height:38px;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid #eeeeec}
+.chrome i{width:11px;height:11px;border-radius:50%;background:#e3e3e0;display:block}
+.chrome b{margin-left:10px;font-size:12px;font-weight:600;color:#55585f}
+.panes{display:flex;height:calc(100% - 38px)}
+.list{width:236px;border-right:1px solid #eeeeec;padding:8px;flex:none}
+.row{display:flex;gap:10px;padding:10px 8px;border-radius:10px;align-items:flex-start}
+.row.sel{background:#eef3ff}
+.row .n{font-size:13px;font-weight:600;line-height:1.3;color:#111318}
+.row .s{font-size:12px;line-height:1.3;color:#6b6e75;margin-top:2px;white-space:nowrap}
+.row .b{display:flex;flex-direction:column;gap:6px;padding-top:4px}
+.thread{flex:1;padding:16px 190px 0 20px;min-width:0}
+.th-head{display:flex;align-items:center;gap:10px}
+.th-head .n{font-size:14px;font-weight:600}
+.th-head .s{font-size:12px;color:#6b6e75}
+.msg{margin-top:16px;background:#f3f3f1;border-radius:14px 14px 14px 4px;padding:12px 14px;font-size:13px;line-height:1.45;color:#2b2e35;max-width:330px}
+.msg.me{background:#2563eb;color:#fff;border-radius:14px 14px 4px 14px;margin-left:auto;max-width:270px}
+
+/* SLA */
+.sla{left:28px;top:132px;right:28px}
+.lead{font-size:13px;color:#6b6e75;line-height:1.3}
+.big{font-size:72px;line-height:1;font-weight:650;letter-spacing:-.04em;color:#c2410c;margin-top:10px}
+.track{margin-top:26px;height:8px;border-radius:4px;background:#e4e4e1;position:relative;overflow:hidden}
+.track i{position:absolute;left:0;top:0;bottom:0;width:76%;background:#ea580c;border-radius:4px}
+.ticks{display:flex;justify-content:space-between;margin-top:10px;font-size:12px;color:#8a8d94}
+.who{display:flex;align-items:center;gap:10px;margin-top:30px;padding-top:20px;border-top:1px solid #e6e6e3;font-size:13px;color:#2b2e35}
+.who .disc{width:24px;height:24px;font-size:10px}
+
+/* Assign */
+.menu{left:28px;right:28px;top:128px;height:320px;background:#fff;border-radius:14px;box-shadow:0 0 0 1px rgba(17,19,24,.06),0 14px 32px -10px rgba(17,19,24,.18),0 3px 8px rgba(17,19,24,.05);padding:8px}
+.field{height:36px;border-radius:9px;background:#f3f3f1;display:flex;align-items:center;padding:0 12px;font-size:13px;color:#8a8d94}
+.mrow{display:flex;align-items:center;gap:10px;height:48px;padding:0 12px;border-radius:9px;margin-top:4px}
+.mrow.on{background:#eef3ff}
+.mrow .n{font-size:13px;font-weight:600;line-height:1.3}
+.mrow .s{font-size:12px;color:#6b6e75;line-height:1.3}
+.mrow .txt{flex:1;min-width:0}
+.chk{width:16px;height:16px;flex:none}
+
+/* Drafts */
+.draft{left:28px;right:28px;top:128px;height:236px;background:#fff;border-radius:14px;box-shadow:0 0 0 1px rgba(17,19,24,.06),0 14px 32px -10px rgba(17,19,24,.18),0 3px 8px rgba(17,19,24,.05);padding:16px}
+.dh{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#6b6e75}
+.tag{background:#eef3ff;color:#1d4ed8;font-weight:600;border-radius:6px;padding:3px 8px;font-size:12px;line-height:1.3}
+.dbody{margin-top:14px;font-size:14px;line-height:1.5;color:#1c1f26}
+.dbody p+p{margin-top:8px}
+.send{position:absolute;right:16px;bottom:16px;height:36px;padding:0 18px;border-radius:10px;background:#2563eb;color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center}
+
+/* Integrations */
+.marks{left:0;right:0;top:128px}
+.mr{display:flex;gap:10px;margin-bottom:10px;white-space:nowrap}
+.mr span{flex:none;height:56px;padding:0 22px;border-radius:14px;background:#fff;box-shadow:0 0 0 1px rgba(17,19,24,.06),0 2px 6px rgba(17,19,24,.04);display:flex;align-items:center;font-size:17px;font-weight:650;letter-spacing:-.02em;color:#2b2e35}
+.mr.a{margin-left:28px}
+.mr.b{margin-left:60px}
+.mr.c{margin-left:12px}
+</style>
+</head>
+<body>
+<div class="grid">
+
+  <!-- 1. Shared inbox (hero) -->
+  <section class="tile hero">
+    <div class="copy">Shared inbox. <span>Every conversation in one place, so nobody replies twice.</span></div>
+    <div class="ui win">
+      <div class="chrome"><i></i><i></i><i></i><b>Inbox</b></div>
+      <div class="panes">
+        <div class="list">
+          <div class="row sel">
+            <div class="disc" style="background:#e5484d">MC</div>
+            <div><div class="n">Maya Chen</div><div class="s">Refund for order #4821</div></div>
+          </div>
+          <div class="row">
+            <div class="disc" style="background:#3e8e7e">TR</div>
+            <div><div class="n">Tomás Ruiz</div><div class="s">Can't reset my password</div></div>
+          </div>
+          <div class="row">
+            <div class="disc" style="background:#8b6fd1">HO</div>
+            <div><div class="n">Hana Ogawa</div><div class="s">Invoice sent to wrong email</div></div>
+          </div>
+          <div class="row">
+            <div class="disc" style="background:#e9e9e6"></div>
+            <div class="b"><div class="bar" style="width:78px"></div><div class="bar" style="width:120px"></div></div>
+          </div>
+        </div>
+        <div class="thread">
+          <div class="th-head"><div class="disc" style="background:#e5484d">MC</div><div><div class="n">Refund for order #4821</div><div class="s">Maya Chen, 2 min ago</div></div></div>
+          <div class="msg">Hi, my headphones arrived with a cracked band. Can I get a refund?</div>
+          <div class="msg me">Sorry about that, Maya. I'm refunding it now.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. SLA timers (stat) -->
+  <section class="tile">
+    <div class="copy">SLA timers. <span>Never miss a reply deadline.</span></div>
+    <div class="ui sla">
+      <div class="lead">First reply due in</div>
+      <div class="big">14m</div>
+      <div class="track"><i></i></div>
+      <div class="ticks"><span>0</span><span>1h target</span></div>
+      <div class="who"><div class="disc" style="background:#3e8e7e">TR</div>Can't reset my password</div>
+    </div>
+  </section>
+
+  <!-- 3. Assigning -->
+  <section class="tile">
+    <div class="copy">Assignments. <span>Hand a ticket to the right person.</span></div>
+    <div class="ui menu">
+      <div class="field">Assign to</div>
+      <div class="mrow on">
+        <div class="disc" style="background:#2563eb">PN</div>
+        <div class="txt"><div class="n">Priya Nair</div><div class="s">Billing</div></div>
+        <svg class="chk" viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="mrow">
+        <div class="disc" style="background:#d9822b">JW</div>
+        <div class="txt"><div class="n">Jonas Weber</div><div class="s">Support</div></div>
+      </div>
+      <div class="mrow">
+        <div class="disc" style="background:#3e8e7e">AC</div>
+        <div class="txt"><div class="n">Ana Costa</div><div class="s">Support</div></div>
+      </div>
+      <div class="mrow">
+        <div class="disc" style="background:#e9e9e6"></div>
+        <div class="txt"><div class="bar" style="width:90px"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. AI drafts -->
+  <section class="tile">
+    <div class="copy">Drafted replies. <span>A first answer, ready to edit.</span></div>
+    <div class="ui draft">
+      <div class="dh"><span>Reply to Hana Ogawa</span><span class="tag">Draft</span></div>
+      <div class="dbody">
+        <p>Hi Hana, thanks for flagging this. I've resent the invoice to your new address.</p>
+        <p>Anything else I can help with?</p>
+      </div>
+      <div class="send">Send</div>
+    </div>
+  </section>
+
+  <!-- 5. Integrations -->
+  <section class="tile">
+    <div class="copy">Integrations. <span>Works with the tools you already use.</span></div>
+    <div class="ui marks">
+      <div class="mr a"><span>Slack</span><span>GitHub</span><span>Zoom</span><span>Gmail</span></div>
+      <div class="mr b"><span>Linear</span><span>Shopify</span><span>Notion</span><span>Asana</span></div>
+      <div class="mr c"><span>Stripe</span><span>HubSpot</span><span>Jira</span><span>Salesforce</span></div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

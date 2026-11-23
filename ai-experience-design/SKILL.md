@@ -115,6 +115,7 @@ The on-device model is ~3B parameters: great at summarization, classification, c
 - **Show real progress but curate focus** (Ryo Lu): no twin spinners, no vanity status lines — complements the HIG's specific-progress rule in the generative layer.
 - **Choreograph latency into an interaction the user wants anyway** (CapWords): the confirm step *is* the API wait.
 - **Use load time as an education surface** (Xantos).
+- **Agent-turn mechanics** (one status line per turn, elapsed time from 1s, tool calls labeled by what they did and folded when consecutive, send-becomes-stop): single-source worked rules in `references/patterns.md`, Agent-turn surfaces.
 
 ## Product posture
 

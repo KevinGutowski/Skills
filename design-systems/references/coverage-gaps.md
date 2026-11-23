@@ -11,6 +11,7 @@ Use this file for design-system standards that are plausible but not yet support
 - **Governance fixtures:** Contribution, deprecation, and adoption dashboards need concrete templates if this skill starts generating DS governance artifacts repeatedly.
 - **System quality audit examples:** Sten's warning that systems can speed, standardize, and scale poor work needs accepted examples before becoming a deterministic preflight beyond the current guidance.
 
+- **Correction capture (Kowalski learn-taste, single source):** the five signals and the roughly 40-line threshold for moving a DESIGN.md section into a skill are one author's skill, not run here. Wanted: one real session mined this way, with the approved and skipped rules recorded.
 - **Hands-on run numbers (design.how, single source):** merge tolerances (ΔE OK 2, 2 px, 1 px font size, 30 ms), the 30%-and-12 gap threshold, capture widths 390/1280 and scroller widths 390/768/1280/1920, the eight-surface "small app" cutoff, and the nine-heading doc order all come from one practitioner's migration. Treat them as defaults until a second source or a local run corroborates them.
 - **Upstream scripts unreviewed:** the drift check, guarded capture, pixel diff, legacy ratchet, landing, and parity scripts are linked, not vendored. A line-by-line review is needed before recommending them as installable tooling rather than as a pointer.
 - **No local exemplar of a hands-on run:** there is no accepted before/after report, mapping table, or component entry produced with these references yet.

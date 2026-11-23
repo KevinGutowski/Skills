@@ -17,6 +17,14 @@ The local skill adapts that pattern to this repository's existing domain owners.
 - Delta used here: [critique-scoring.md](critique-scoring.md). It covers judge-before-scan isolation with a declared method line, a design-specificity verdict as the opening, Nielsen 0–4 rubrics with `n/a` renormalization, a cognitive-load failure count, persona walk-throughs by surface, five technical audit dimensions, P0–P3 mapped onto this skill's severity scale, and question-last delivery.
 - Not imported: snapshot persistence and trend storage (`.impeccable/critique/`), browser overlay injection, Codex-specific gates, and the requirement to recommend Impeccable's own commands.
 
+## Open Design and Meng To (2026-11-18)
+
+- Open Design: https://github.com/nexu-io/open-design (Apache-2.0), `0725880`. Read: the scoring rules in the `design-templates/critique` skill, the self-critique step in `apps/daemon/src/prompts/discovery.ts`, and the panel weights in its critique-theater doc.
+- Meng To skills: https://github.com/MengTo/skills (MIT), `3cc9345`. Read: the `audit-ai-design-slop` skill under `agent-skills/ui`. Its linked article was not read.
+- Impeccable recheck at `d41d986` (2026-11-16): `critique` was split into a rubric file with no change in doctrine; `audit` gained right-to-left checks.
+- Delta used here: the "Scoring discipline" section of [critique-scoring.md](critique-scoring.md) (evidence per score, worst sustained band, no averaging up, defect versus repeated-default classification, an Unknowns list, audit-only restraint) and one right-to-left line in the Responsive dimension.
+- Not adopted: Open Design's 0 to 10 scale and radar chart, its builder self-score as a substitute for review, and its single-session weighted jury, which contradicts this skill's isolated passes. Meng To's "no numeric slop score" rule is compatible: this skill scores heuristics, not slop.
+
 ## design.how
 
 - Site: https://design.how · Repository: https://github.com/arla6ka/design.how (MIT)

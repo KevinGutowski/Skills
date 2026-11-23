@@ -14,6 +14,9 @@ This source map records where the skill-authoring guidance comes from.
 - `docs/vercel-product-design-overhaul-2026-06.md` records the Vercel-derived standard: skill body + routed evidence + coverage gaps + deterministic checks + human review.
 - House rule 16 (register skills at work-creating surfaces): Matt Pocock's `/wayfinder` planning skill (https://github.com/mattpocock/skills, 2026) and Will Ness's fork routing `grilling-frontend-prototyping` from wayfinder's ticket types (https://github.com/will-ness-ai/skills), endorsed in https://x.com/mattpocockuk/status/2077743625639714850.
 - House rule 17 and `references/measuring-skill-effect.md`: Fernando Olivares, uikit-skill (MIT, Oct 2026) — upstream docs: experiment-plan, thinning-plan, v0.9-adversarial-review, uikit-chat-list-sources (https://github.com/notolivaresf/uikit-skill). Single-author benchmark of one UIKit chat task; treat numbers as one task's evidence, the method as general.
+- `references/converting-codebases-to-skills.md` (One technique from code you built): Meng To, `agent-skills/codex/web-technique-to-skill` and `article-prompts-to-skills` (https://github.com/MengTo/skills, MIT, screened at `3cc9345`, 2026-11-18). Single author. Its exact-fidelity demo rules were not folded.
+- `references/measuring-skill-effect.md` (Visual skills): Benji Taylor, "Stageshow" (https://benji.org/stageshow, 2026-10-31) and the skill itself (https://github.com/benjitaylor/skills, MIT, `299140f`). Method only; the write-up gives no iteration counts or scores.
+- `references/measuring-skill-effect.md` (Rules that reach the model by more than one path): Open Design, its prompt-composition doc (https://github.com/nexu-io/open-design, Apache-2.0, screened at `0725880`, 2026-11-18). One product's post-mortem of two of its own pull requests.
 
 ## Promotion rule
 

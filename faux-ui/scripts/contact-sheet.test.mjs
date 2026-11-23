@@ -1,0 +1,234 @@
+// Browser smoke test for contact-sheet.mjs. Run from a directory whose
+// node_modules has Playwright and a browser:
+//
+//   node --test <skill>/scripts/contact-sheet.test.mjs
+//
+// Every case is skipped when Playwright cannot be loaded from the working
+// directory, so the file is safe to run anywhere.
+
+import test from 'node:test'
+import assert from 'node:assert/strict'
+import { createRequire } from 'node:module'
+import { createServer } from 'node:http'
+import { spawnSync } from 'node:child_process'
+import { mkdtempSync, writeFileSync, existsSync, readFileSync, rmSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join, resolve, dirname } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
+
+const script = join(dirname(fileURLToPath(import.meta.url)), 'contact-sheet.mjs')
+const req = createRequire(pathToFileURL(resolve(process.cwd(), 'noop.js')))
+let chromium = null
+for (const name of ['playwright', 'playwright-core']) {
+  try {
+    chromium ??= req(name).chromium
+  } catch {}
+}
+const skip = chromium ? false : 'Playwright not installed in the working directory'
+
+const dir = mkdtempSync(join(tmpdir(), 'contact-sheet-'))
+test.after(() => rmSync(dir, { recursive: true, force: true }))
+
+// A centered 720 x 340 stage that changes color below a 1000px viewport, the
+// way a page with a breakpoint would recompose.
+const fixture = join(dir, 'centered.html')
+writeFileSync(
+  fixture,
+  `<!doctype html><style>
+  body{margin:0;background:#fff}
+  #stage{width:720px;height:340px;margin:120px auto 0;background:rgb(0,128,0)}
+  @media (max-width: 999px){#stage{background:rgb(200,0,0)}}
+  </style><div id="stage"></div>`,
+)
+
+const run = (...a) => spawnSync(process.execPath, [script, ...a], { encoding: 'utf8', cwd: process.cwd() })
+
+// Read the color of the center pixel of a PNG by loading it in the browser.
+async function centerPixel(png) {
+  const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {})
+  try {
+    const page = await browser.newPage()
+    const data = readFileSync(png).toString('base64')
+    return await page.evaluate(async (src) => {
+      const img = new Image()
+      img.src = src
+      await img.decode()
+      const c = document.createElement('canvas')
+      c.width = img.width
+      c.height = img.height
+      const g = c.getContext('2d')
+      g.drawImage(img, 0, 0)
+      const [r, gr, b] = g.getImageData(img.width >> 1, img.height >> 1, 1, 1).data
+      return { r, g: gr, b, width: img.width, height: img.height }
+    }, `data:image/png;base64,${data}`)
+  } finally {
+    await browser.close()
+  }
+}
+
+test('--select crops a centered stage without changing the breakpoint', { skip }, async () => {
+  const out = join(dir, 'select.png')
+  const r = run(fixture, '--select', '#stage', '--viewport', '1200x800', '--still', '--scale', '1', '--out', out)
+  assert.equal(r.status, 0, r.stderr)
+  assert.match(r.stdout, /viewport 1200x800 {2}crop 720x340 at 240,120/)
+  const px = await centerPixel(out)
+  assert.deepEqual([px.width, px.height], [720, 340])
+  assert.deepEqual([px.r, px.g, px.b], [0, 128, 0], 'wide-layout color: the breakpoint did not fire')
+})
+
+test('an offset rectangle keeps the default viewport', { skip }, async () => {
+  const out = join(dir, 'rect.png')
+  const r = run(fixture, '--viewport', '1200x800', '--x', '240', '--y', '120', '--still', '--scale', '1', '--out', out)
+  assert.equal(r.status, 0, r.stderr)
+  const px = await centerPixel(out)
+  assert.deepEqual([px.r, px.g, px.b], [0, 128, 0])
+})
+
+test('a narrow viewport is honored when asked for', { skip }, async () => {
+  const out = join(dir, 'narrow.png')
+  const r = run(fixture, '--viewport', '800x800', '--select', '#stage', '--still', '--scale', '1', '--out', out)
+  assert.equal(r.status, 0, r.stderr)
+  const px = await centerPixel(out)
+  assert.deepEqual([px.r, px.g, px.b], [200, 0, 0], 'narrow-layout color')
+})
+
+test('a phone viewport with no crop flags stays a phone viewport', { skip }, async () => {
+  const out = join(dir, 'phone-default.png')
+  const phone = join(dir, 'phone.html')
+  writeFileSync(
+    phone,
+    `<!doctype html><style>body{margin:0;background:rgb(0,128,0)}
+    @media (max-width: 999px){body{background:rgb(200,0,0)}}</style>`,
+  )
+  const r = run(phone, '--viewport', '390x800', '--still', '--scale', '1', '--out', out)
+  assert.equal(r.status, 0, r.stderr)
+  assert.match(r.stdout, /viewport 390x800 {2}crop 390x340 at 0,0/)
+  const px = await centerPixel(out)
+  assert.deepEqual([px.width, px.height], [390, 340])
+  assert.deepEqual([px.r, px.g, px.b], [200, 0, 0], 'narrow-layout color: the viewport was not widened')
+})
+
+test('an explicit rectangle wider than the viewport is refused', { skip }, () => {
+  const out = join(dir, 'too-wide.png')
+  const r = run(fixture, '--viewport', '390x800', '--width', '720', '--still', '--out', out)
+  assert.equal(r.status, 1)
+  assert.match(r.stderr, /does not fit the 390x800 viewport/)
+  assert.equal(existsSync(out), false)
+})
+
+test('an HTTP 404 exits 3 and writes nothing', { skip }, async () => {
+  const server = createServer((_, res) => {
+    res.statusCode = 404
+    res.end('<h1>Not found</h1>')
+  })
+  await new Promise((ok) => server.listen(0, '127.0.0.1', ok))
+  const out = join(dir, 'missing.png')
+  try {
+    const { port } = server.address()
+    // spawnSync would block the server's event loop, so run it async.
+    const { spawn } = await import('node:child_process')
+    const result = await new Promise((ok) => {
+      const child = spawn(process.execPath, [script, `http://127.0.0.1:${port}/nope`, '--still', '--out', out], { cwd: process.cwd() })
+      let err = ''
+      child.stderr.on('data', (d) => (err += d))
+      child.on('close', (status) => ok({ status, err }))
+    })
+    assert.equal(result.status, 3)
+    assert.match(result.err, /HTTP 404/)
+    assert.equal(existsSync(out), false)
+  } finally {
+    server.close()
+  }
+})
+
+test('a missing element exits 3 and writes nothing', { skip }, () => {
+  const out = join(dir, 'noel.png')
+  const r = run(fixture, '--select', '#absent', '--still', '--out', out)
+  assert.equal(r.status, 3)
+  assert.equal(existsSync(out), false)
+})
+
+test('a selection taller than the viewport is captured whole, undistorted', { skip }, async () => {
+  // A 300 x 1700 column, red on top and blue below 800px, in a 390 x 800 viewport.
+  const tall = join(dir, 'tall.html')
+  writeFileSync(
+    tall,
+    `<!doctype html><style>body{margin:0}
+    #col{width:300px;height:1700px;background:linear-gradient(rgb(200,0,0) 0 800px, rgb(0,0,200) 800px)}</style><div id="col"></div>`,
+  )
+  const out = join(dir, 'tall.png')
+  const r = run(tall, '--select', '#col', '--viewport', '390x800', '--still', '--scale', '1', '--out', out)
+  assert.equal(r.status, 0, r.stderr)
+  assert.match(r.stdout, /crop 300x1700 at 0,0/)
+  const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {})
+  try {
+    const page = await browser.newPage()
+    const got = await page.evaluate(async (src) => {
+      const img = new Image()
+      img.src = src
+      await img.decode()
+      const c = document.createElement('canvas')
+      c.width = img.width
+      c.height = img.height
+      const g = c.getContext('2d')
+      g.drawImage(img, 0, 0)
+      const at = (y) => Array.from(g.getImageData(150, y, 1, 1).data.slice(0, 3))
+      return { width: img.width, height: img.height, top: at(400), seamAbove: at(790), seamBelow: at(810), bottom: at(1650) }
+    }, `data:image/png;base64,${readFileSync(out).toString('base64')}`)
+    assert.deepEqual([got.width, got.height], [300, 1700])
+    assert.deepEqual(got.top, [200, 0, 0])
+    assert.deepEqual(got.seamAbove, [200, 0, 0], 'the color change must sit at 800px, not stretched')
+    assert.deepEqual(got.seamBelow, [0, 0, 200])
+    assert.deepEqual(got.bottom, [0, 0, 200], 'the part below the viewport must be in the picture')
+  } finally {
+    await browser.close()
+  }
+})
+
+test('--loop covers a real loop past its seam', { skip }, async () => {
+  // A 2s CSS loop: green for the first half, blue for the second. A sheet that
+  // covers the loop and its seam shows green, then blue, then green again.
+  const moving = join(dir, 'moving.html')
+  writeFileSync(
+    moving,
+    `<!doctype html><style>body{margin:0}
+    #s{width:200px;height:100px;animation:k 2s steps(1) infinite}
+    @keyframes k{0%{background:rgb(0,128,0)}50%{background:rgb(0,0,200)}}</style><div id="s"></div>`,
+  )
+  const out = join(dir, 'moving.png')
+  const r = run(moving, '--select', '#s', '--loop', '2000', '--cols', '7', '--thumb', '1', '--out', out)
+  assert.equal(r.status, 0, r.stderr)
+  assert.match(r.stdout, /frames=7 /)
+  assert.doesNotMatch(r.stdout, /inconclusive|no --loop/)
+  // Frames are 200px wide, 8px apart, after an 8px margin.
+  const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {})
+  let colors
+  try {
+    const page = await browser.newPage()
+    colors = await page.evaluate(async (src) => {
+      const img = new Image()
+      img.src = src
+      await img.decode()
+      const c = document.createElement('canvas')
+      c.width = img.width
+      c.height = img.height
+      const g = c.getContext('2d')
+      g.drawImage(img, 0, 0)
+      return Array.from({ length: 7 }, (_, i) => {
+        const [r, gr, b] = g.getImageData(8 + i * 208 + 100, img.height - 40, 1, 1).data
+        return gr > b ? 'green' : b > r ? 'blue' : 'other'
+      })
+    }, `data:image/png;base64,${readFileSync(out).toString('base64')}`)
+  } finally {
+    await browser.close()
+  }
+  assert.equal(colors[0], 'green')
+  assert.ok(colors.includes('blue'), `second half of the loop missing: ${colors}`)
+  assert.ok(colors.slice(colors.indexOf('blue') + 1).includes('green'), `the sheet stops before the seam: ${colors}`)
+})
+
+test('without --loop the sheet says it may miss the seam', { skip }, () => {
+  const r = run(fixture, '--count', '2', '--every', '100', '--out', join(dir, 'short.png'))
+  assert.equal(r.status, 0, r.stderr)
+  assert.match(r.stdout, /no --loop given/)
+})

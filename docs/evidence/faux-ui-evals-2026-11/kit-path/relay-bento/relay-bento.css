@@ -1,0 +1,409 @@
+/* All rules belong to this example, including its responsive variants. */
+.relay-bento {
+  /* Relay's features section. Everything nests under .relay-bento so another
+     demo on the page can't restyle it. The grid is the page's (container
+     queries on the section); each picture is its own Stage at 1:1, pinned to
+     its tile's bottom and cropped by the tile. */
+    --pad: 28px;
+    --gap: 14px;
+    --tile: #f4f3f0;
+    --ink: #1c1b1a;
+    --ink-2: #6f6d68;
+    --accent: #e5482d;
+    container-type: inline-size;
+    /* No padding of its own: on a page, the tiles span the content column */
+    box-sizing: border-box;
+    background: #fff;
+    font-family: var(--rb-font, inherit);
+    -webkit-font-smoothing: antialiased;
+
+  & .rb-grid {
+    display: grid;
+    gap: var(--gap);
+    max-width: 1000px;
+    margin: 0 auto;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 410px 380px 320px 320px 320px;
+    grid-template-areas: 'hero' 'stat' 'assign' 'draft' 'apps';
+  }
+
+  /* The column of a docs page, a tablet: the hero across the top, then pairs */
+  @container (min-width: 600px) {
+    & .rb-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: 380px 380px 320px;
+      grid-template-areas: 'hero hero' 'stat assign' 'draft apps';
+    }
+  }
+
+  /* A homepage: hero and strip */
+  @container (min-width: 900px) {
+    & .rb-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: 380px 320px;
+      grid-template-areas: 'hero hero stat' 'assign draft apps';
+    }
+  }
+
+  @container (max-width: 599px) {
+    & .rb-grid {
+      --pad: 24px;
+    }
+  }
+
+  /* ---- The tile: one frame for all five ---- */
+
+  & .rb-tile {
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    background: var(--tile);
+  }
+
+  & .rb-tile--hero { grid-area: hero; }
+  & .rb-tile--stat { grid-area: stat; }
+  & .rb-tile--assign { grid-area: assign; }
+  & .rb-tile--draft { grid-area: draft; }
+  & .rb-tile--apps { grid-area: apps; }
+
+  /* Run-in copy: the bold lead and its gray continuation at one size */
+  & .rb-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 380px;
+    margin: 0;
+    padding: 24px var(--pad) 0;
+    font-size: 17px;
+    line-height: 24px;
+    letter-spacing: -0.012em;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+
+  & .rb-copy b {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  & .rb-tile--hero .rb-copy {
+    max-width: 460px;
+  }
+
+  /* ---- Pictures: pinned to the tile's bottom, cropped by the tile ---- */
+
+  /* Each measured Stage reaches the tile's edges, where the crop belongs. */
+  & .rb-picture {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  & .rb-stage .ss-stage {
+    overflow: hidden;
+    background: transparent;
+  }
+
+  /* ---- Inbox (hero) ---- */
+
+  & .rb-window {
+    position: absolute;
+    /* One gutter above and to the left: a corner bleed */
+    top: var(--pad);
+    left: var(--pad);
+    width: max(780px, calc(100% + var(--pad)));
+    height: 380px;
+    --ss-canvas: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 10px 30px -10px rgba(50, 40, 30, 0.2), 0 2px 6px rgba(0, 0, 0, 0.04);
+  }
+
+  & .rb-window--compact {
+    top: 24px;
+    left: 24px;
+    width: calc(100% + 24px);
+    height: 340px;
+  }
+
+  & .rb-side {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 12px;
+  }
+
+  & .rb-nav {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    height: 30px;
+    padding: 0 8px;
+    border-radius: 7px;
+  }
+
+  & .rb-nav[data-active] {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  & .rb-nav-rule {
+    height: 1px;
+    margin: 12px 8px;
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  & .rb-tools {
+    display: flex;
+    gap: 6px;
+  }
+
+  /* 6px here and the rows' 10px put names on the title's 16px inset */
+  & .rb-list {
+    padding: 2px 6px 0;
+    --ss-row-title: 13px;
+    --ss-row-subtitle: 12.5px;
+  }
+
+  /* Compact: the list ends a gutter inside the tile, so the times read whole */
+  & .rb-window--compact .rb-list {
+    width: calc(100% - 58px);
+  }
+
+  /* Who has it, how long ago, then filler the tile crops. Fixed tracks, so
+     the three columns line up down the list. */
+  & .rb-trail {
+    display: grid;
+    grid-template-columns: 108px 30px 178px;
+    align-items: center;
+    column-gap: 14px;
+  }
+
+  & .rb-owner,
+  & .rb-rest {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  & .rb-rest {
+    padding-left: 2px;
+  }
+
+  & .rb-time {
+    justify-self: end;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-2);
+  }
+
+  & .rb-live {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  & .rb-live[data-on] {
+    opacity: 1;
+  }
+
+  & .rb-window--compact .rb-trail {
+    grid-template-columns: 30px;
+  }
+
+  & .rb-window--compact .rb-owner,
+  & .rb-window--compact .rb-rest {
+    display: none;
+  }
+
+  /* ---- SLA (stat): the one dark tile ---- */
+
+  & .rb-tile--stat {
+    background: #171513;
+  }
+
+  & .rb-stat {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 24px var(--pad) 28px;
+  }
+
+  & .rb-stat-lead {
+    font-size: 17px;
+    line-height: 24px;
+    letter-spacing: -0.012em;
+    font-weight: 600;
+    color: #f6f5f2;
+  }
+
+  /* The number sits directly under its lead, unit on the same line */
+  & .rb-stat-number {
+    display: block;
+    margin-top: 18px;
+    font-size: 156px;
+    line-height: 0.86;
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    color: #fff;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  & .rb-stat-unit {
+    font-size: 60px;
+    letter-spacing: -0.03em;
+  }
+
+  & .rb-stat-label {
+    max-width: 230px;
+    margin-top: 18px;
+    font-size: 15px;
+    line-height: 21px;
+    color: #a5a29b;
+    text-wrap: pretty;
+  }
+
+  /* The timer itself closes the tile: four minutes used of fifteen */
+  & .rb-timer {
+    display: grid;
+    gap: 10px;
+    margin-top: auto;
+  }
+
+  & .rb-timer-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    line-height: 18px;
+    color: #a5a29b;
+  }
+
+  & .rb-timer-value {
+    color: #f6f5f2;
+    font-variant-numeric: tabular-nums;
+  }
+
+  & .rb-meter {
+    background: #34312d;
+  }
+
+  & .rb-meter .ss-meter__fill {
+    background: var(--accent);
+  }
+
+  /* ---- Assign (diagram) ---- */
+
+  & .rb-node {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+    height: 38px;
+    border-radius: 11px;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 6px -2px rgba(0, 0, 0, 0.08);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* On the copy gutter, level with the middle teammate */
+  & .rb-ticket {
+    position: absolute;
+    top: 78px;
+    left: var(--pad);
+    padding: 0 12px 0 10px;
+    --ss-icon: var(--ink-2);
+  }
+
+  /* One column on the right gutter; the pills share the widest one's width,
+     so every line arrives on one edge. Three pills and two gaps fill the
+     slot, leaving the tile's own gutter under the last one */
+  & .rb-team {
+    position: absolute;
+    top: 16px;
+    right: var(--pad);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  & .rb-person {
+    padding: 0 14px 0 7px;
+    color: var(--ink-2);
+    transition: color 0.3s ease 0.7s, box-shadow 0.3s ease 0.7s;
+  }
+
+  /* The one it went to: its own lift and full ink, no ring */
+  & .rb-person[data-picked] {
+    color: var(--ink);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 8px 18px -8px rgba(60, 30, 20, 0.32);
+  }
+
+  & .rb-line {
+    --ss-accent: #d4d1cb;
+  }
+
+  & .rb-line--picked {
+    --ss-accent: var(--accent);
+  }
+
+  /* ---- Drafts (component) ---- */
+
+  & .rb-draft {
+    position: absolute;
+    top: 16px;
+    left: var(--pad);
+    box-sizing: border-box;
+    width: calc(100% - 2 * var(--pad));
+  }
+
+  & .rb-draft-source {
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--ink-2);
+  }
+
+  & .rb-draft-body {
+    display: block;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+
+  & .rb-draft-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  /* The message being answered, as filler under the rule, cut by the tile */
+  & .rb-draft-quote {
+    display: grid;
+    gap: 7px;
+    padding-bottom: 8px;
+  }
+
+  /* ---- Integrations (collection) ---- */
+
+  & .rb-marks {
+    position: absolute;
+    top: 16px;
+    left: var(--pad);
+  }
+
+  & .rb-mark {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(10px);
+    will-change: transform;
+    transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  & .rb-marks[data-on] .rb-mark {
+    opacity: 1;
+    transform: none;
+  }
+
+  & .rb-mark .ss-brand {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 4px 10px -4px rgba(0, 0, 0, 0.12);
+  }
+}

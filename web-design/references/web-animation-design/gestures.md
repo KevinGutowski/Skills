@@ -64,7 +64,7 @@ const project = (velocity, rate = 0.998) => ((velocity / 1000) * rate) / (1 - ra
 const target = nearestSnapPoint(current + project(releaseVelocity));
 ```
 
-  - decide commit-vs-reverse from the **sign** of the release velocity, not from which side of the midpoint the element sits: a sheet past halfway that is moving back up should stay open.
+  - decide commit-vs-reverse from the **projected endpoint**, not from which side of the midpoint the element sits at release: snap to the point nearest where the throw would land, so a sheet past halfway that is moving back up stays open. (Kowalski's Apple-design port at `64eb3de` states only the projection rule. Reading the sign of the release velocity is this library's shortcut for the two-target case; it agrees with projection whenever the throw is fast enough to cross the midpoint.)
 - **Hand the velocity to the animation.** Motion takes absolute px/s (`velocity`). An API that expects relative velocity wants `gestureVelocity / (target − current)`.
 - **Bounce only when force was applied.** A small overshoot suits a flung element; the same element closed by a button or Escape gets none. Smaller elements need proportionally more bounce to read the same.
 - **Clamp overshoot on exits.** A dismiss spring that overshoots past the screen edge flashes a gap; use a critically damped or clamped spring for the way out.

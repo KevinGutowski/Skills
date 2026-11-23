@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>faux-ui exemplar: still hero, corner bleed with one satellite</title>
+<!--
+  A starting point for the no-kit path. Copy this file, keep its structure
+  (stage size, gutter, type sizes, row pitch, shadows), then replace the look
+  tokens and the content with the brief's product. Original to this library.
+
+  Layout: corner bleed (framing.md). 720 x 340 stage on a white page, no plate.
+  The window sits one 32px gutter from the top, runs off the right and bottom.
+  One satellite straddles the window's left edge over its sidebar, half outside.
+  Real strings: 7 (Bookings, three client names, the service, Confirmed, the total).
+  Below 760px it recomposes for a 358px phone column: see the media query.
+-->
+<style>
+  /* The look. Replace these with the product's tokens. */
+  .fx {
+    --fx-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    --fx-surface: #ffffff;
+    --fx-chrome: #f6f6f4;
+    --fx-line: rgba(20, 20, 18, 0.09);
+    --fx-line-faint: rgba(20, 20, 18, 0.06);
+    --fx-text-strong: #1b1b19;
+    --fx-text: #55554f;
+    --fx-text-faint: #8b8b84;
+    --fx-bar: #ebebe7;          /* placeholder ink */
+    --fx-bar-soft: #f1f1ee;
+    --fx-accent: #2f6fed;
+    --fx-accent-soft: #eaf1fe;
+    --fx-success-soft: #e4f4ea;
+    --fx-success-text: #1d7a45;
+    --fx-radius-sm: 6px;
+    --fx-radius-md: 8px;
+    --fx-radius-lg: 10px;
+    --fx-radius-window: 12px;
+    --fx-gutter: 32px;
+    --fx-shadow-hero: 0 0 0 1px rgba(20, 20, 18, 0.07), 0 2px 4px rgba(20, 20, 18, 0.04), 0 18px 44px -12px rgba(20, 20, 18, 0.16);
+    --fx-shadow-satellite: 0 0 0 1px rgba(20, 20, 18, 0.07), 0 1px 2px rgba(20, 20, 18, 0.05), 0 10px 22px -8px rgba(20, 20, 18, 0.18);
+  }
+
+  body { margin: 0; background: #fff; }
+
+  /* The stage is the shot: it masks everything and has no ground of its own. */
+  .fx { position: relative; width: 720px; height: 340px; overflow: hidden; font: 12px/1.35 var(--fx-font); color: var(--fx-text); -webkit-font-smoothing: antialiased; }
+  .fx *, .fx *::before, .fx *::after { box-sizing: border-box; }
+
+  /* Hero: a window wider and taller than what shows, so the crop is deliberate. */
+  .fx-window { position: absolute; left: 120px; top: var(--fx-gutter); width: 760px; height: 420px; display: grid; grid-template-columns: 168px 1fr; background: var(--fx-surface); border-radius: var(--fx-radius-window); box-shadow: var(--fx-shadow-hero); overflow: hidden; }
+
+  .fx-side { background: var(--fx-chrome); border-right: 1px solid var(--fx-line); padding: 14px 12px; }
+  .fx-lights { display: flex; gap: 7px; height: 12px; margin: 0 0 18px 2px; }
+  .fx-lights i { width: 11px; height: 11px; border-radius: 50%; background: #dcdcd7; }
+  .fx-lights i:nth-child(1) { background: #fe5f57; }
+  .fx-lights i:nth-child(2) { background: #febc2e; }
+  .fx-lights i:nth-child(3) { background: #28c840; }
+  .fx-nav { display: grid; gap: 2px; }
+  .fx-nav div { display: flex; align-items: center; gap: 8px; height: 28px; padding: 0 8px; border-radius: var(--fx-radius-sm); }
+  .fx-nav div[data-on] { background: rgba(20, 20, 18, 0.06); }
+  .fx-nav i { flex: none; width: 14px; height: 14px; border-radius: 4px; background: #dfdfda; }
+  .fx-nav span { height: 6px; border-radius: 3px; background: #dfdfda; }
+
+  .fx-main { min-width: 0; }
+  .fx-head { display: flex; align-items: center; height: 46px; padding: 0 20px; border-bottom: 1px solid var(--fx-line); }
+  .fx-title { font-size: 14px; font-weight: 600; color: var(--fx-text-strong); letter-spacing: -0.005em; }
+
+  /* Every list is one grid template, so columns line up and bars keep the row pitch. */
+  .fx-list { padding: 6px 8px; }
+  /* The last track is filler only: it is the part the stage crops. Everything with words ends before it. */
+  .fx-row { position: relative; display: grid; grid-template-columns: 26px 148px 84px 84px 1fr; align-items: center; column-gap: 12px; height: 44px; padding: 0 12px; border-radius: var(--fx-radius-md); }
+  .fx-row + .fx-row::before { content: ""; position: absolute; left: 12px; right: 0; top: 0; height: 1px; background: var(--fx-line-faint); }
+  .fx-row[data-on] { background: var(--fx-accent-soft); }
+  .fx-row[data-on]::before, .fx-row[data-on] + .fx-row::before { display: none; }
+  .fx-avatar { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 600; color: #fff; background: #d9d9d4; }
+  .fx-name { color: var(--fx-text-strong); font-size: 13px; white-space: nowrap; }
+  .fx-row[data-on] .fx-name { font-weight: 600; }
+  .fx-meta { color: var(--fx-text-faint); white-space: nowrap; }
+  .fx-bar { display: block; height: 6px; border-radius: 3px; background: var(--fx-bar); }
+  .fx-pill { justify-self: start; display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: 999px; font-size: 11px; font-weight: 600; color: var(--fx-success-text); background: var(--fx-success-soft); }
+  .fx-pill[data-blank] { width: 62px; background: var(--fx-bar-soft); }
+
+  /* Satellite: half outside the window, over its sidebar (chrome), never over content. */
+  .fx-card { position: absolute; left: var(--fx-gutter); top: 132px; width: 196px; padding: 14px; background: var(--fx-surface); border-radius: var(--fx-radius-lg); box-shadow: var(--fx-shadow-satellite); }
+  .fx-card-head { display: grid; grid-template-columns: 28px 1fr; column-gap: 10px; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--fx-line); }
+  .fx-card-head .fx-avatar { width: 28px; height: 28px; }
+  .fx-card-name { font-size: 13px; font-weight: 600; color: var(--fx-text-strong); }
+  .fx-card-sub { margin-top: 2px; font-size: 11px; color: var(--fx-text-faint); }
+  .fx-card-lines { display: grid; gap: 12px; padding: 14px 0; }
+  .fx-card-lines div { display: flex; justify-content: space-between; }
+  .fx-card-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 12px; border-top: 1px solid var(--fx-line); }
+  .fx-card-total b { font-size: 15px; font-weight: 650; color: var(--fx-text-strong); font-variant-numeric: tabular-nums; }
+
+  /* Phone column: a second composition, not a squeeze (framing.md, Small formats).
+     A 358px stage with one 16px gutter. The sidebar, the time column, and the
+     satellite go; the selected booking and its status stay whole, and the window
+     still runs off the right and the bottom. */
+  @media (max-width: 759px) {
+    .fx { --fx-gutter: 16px; width: 358px; margin: 0 auto; }
+    .fx-window { left: var(--fx-gutter); width: 420px; grid-template-columns: 1fr; }
+    .fx-side, .fx-card, .fx-row > :nth-child(3) { display: none; }
+    .fx-row { grid-template-columns: 26px 148px 84px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="fx" role="img" aria-label="A bookings list with Maren Holt selected and a card showing her haircut booking, total 64 dollars">
+  <div class="fx-window">
+    <div class="fx-side">
+      <div class="fx-lights"><i></i><i></i><i></i></div>
+      <div class="fx-nav">
+        <div data-on><i></i><span style="width:62px"></span></div>
+        <div><i></i><span style="width:48px"></span></div>
+        <div><i></i><span style="width:70px"></span></div>
+        <div><i></i><span style="width:54px"></span></div>
+      </div>
+    </div>
+    <div class="fx-main">
+      <div class="fx-head"><div class="fx-title">Bookings</div></div>
+      <div class="fx-list">
+        <div class="fx-row">
+          <div class="fx-avatar" style="background:#c98a5b">I</div>
+          <div class="fx-name">Ines Okoro</div>
+          <span class="fx-bar" style="width:58px"></span>
+          <span class="fx-pill" data-blank></span>
+          <span class="fx-bar" style="width:72px"></span>
+        </div>
+        <div class="fx-row" data-on>
+          <div class="fx-avatar" style="background:#2f6fed">M</div>
+          <div class="fx-name">Maren Holt</div>
+          <div class="fx-meta">Today, 2:30</div>
+          <span class="fx-pill">Confirmed</span>
+          <span class="fx-bar" style="width:56px; background:#d5e2fb"></span>
+        </div>
+        <div class="fx-row">
+          <div class="fx-avatar" style="background:#6f8f72">T</div>
+          <div class="fx-name">Theo Lindqvist</div>
+          <span class="fx-bar" style="width:46px"></span>
+          <span class="fx-pill" data-blank></span>
+          <span class="fx-bar" style="width:72px"></span>
+        </div>
+        <div class="fx-row">
+          <div class="fx-avatar"></div>
+          <span class="fx-bar" style="width:112px"></span>
+          <span class="fx-bar" style="width:52px"></span>
+          <span class="fx-pill" data-blank></span>
+          <span class="fx-bar" style="width:72px"></span>
+        </div>
+        <div class="fx-row">
+          <div class="fx-avatar"></div>
+          <span class="fx-bar" style="width:84px"></span>
+          <span class="fx-bar" style="width:60px"></span>
+          <span class="fx-pill" data-blank></span>
+          <span class="fx-bar" style="width:72px"></span>
+        </div>
+        <div class="fx-row">
+          <div class="fx-avatar"></div>
+          <span class="fx-bar" style="width:126px"></span>
+          <span class="fx-bar" style="width:44px"></span>
+          <span class="fx-pill" data-blank></span>
+          <span class="fx-bar" style="width:72px"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fx-card">
+    <div class="fx-card-head">
+      <div class="fx-avatar" style="background:#2f6fed">M</div>
+      <div>
+        <div class="fx-card-name">Maren Holt</div>
+        <div class="fx-card-sub">Cut and color</div>
+      </div>
+    </div>
+    <div class="fx-card-lines">
+      <div><span class="fx-bar" style="width:64px"></span><span class="fx-bar" style="width:30px"></span></div>
+      <div><span class="fx-bar" style="width:48px"></span><span class="fx-bar" style="width:24px"></span></div>
+    </div>
+    <div class="fx-card-total"><span>Total</span><b>$64.00</b></div>
+  </div>
+</div>
+
+</body>
+</html>

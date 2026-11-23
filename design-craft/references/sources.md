@@ -8,6 +8,7 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 - Adam Wathan and Steve Schoger
 - Impeccable (Paul Bakaus)
 - Kosta — *Tactile design*
+- DeepLethe — *Solid Glass*
 - Anton Sten
 - Derek Briggs (PixelJanitor)
 - Gustavo Fior — *Craft*
@@ -27,11 +28,15 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 
 ## Impeccable (Paul Bakaus)
 
-- https://impeccable.style · https://github.com/pbakaus/impeccable (Apache-2.0), screened at commit `b3ced85` (2026-11-09). Command references `bolder`, `quieter`, `distill`, `delight`, `overdrive`, `polish`, `harden` were paraphrased and merged into [refinement-moves.md](refinement-moves.md). Ledger: `docs/impeccable-source-mining-2026-11.md`.
+- https://impeccable.style · https://github.com/pbakaus/impeccable (Apache-2.0), screened at commit `b3ced85` (2026-11-09). Command references `bolder`, `quieter`, `distill`, `delight`, `overdrive`, `polish`, `harden` were paraphrased and merged into [refinement-moves.md](refinement-moves.md). Ledger: `docs/impeccable-source-mining-2026-11.md`. Rechecked at `d41d986` (2026-11-16, skill 4.9.2): two corrections applied to refinement-moves (no transparency for text on a colored ground; the 1–2 color limit excludes semantic colors).
 
 ## Kosta — *Tactile design*
 
 - https://kosta.fyi/skills/tactile-design (landing page with before/after demos; `/md` export) · https://github.com/kosta4a/tactile-design (MIT), read at commit `30495a2` (2026-11-02). Its SKILL.md and all seven references (tokens, buttons-and-controls, surfaces-and-layering, layout-and-hierarchy, motion, mobile, decisions) were paraphrased into [tactile-design.md](tactile-design.md) and its second hop `tactile-design/`, with dark-mode counter-school notes in [surfaces.md](surfaces.md) and the Theme Note in [polish-principles.md](polish-principles.md). Credits inside the source: Emil Kowalski (motion, sheet drag), Radix Colors (12-step scales), Apple HIG (touch and sheet sizes). Ledger: `docs/tactile-design-source-mining-2026-11.md`.
+
+## DeepLethe — *Solid Glass*
+
+- https://github.com/deeplethe/solid-glass (MIT) · https://deeplethe.github.io/solid-glass, read at commit `6e8903e` (2026-11-18). Read in full: `src/solid-glass.css` (1,409 lines, with its why-comments), the Introduction, Material, and Theming pages under `content/docs/`, and the contributing guide. Paraphrased into [solid-glass.md](solid-glass.md); the edge-drawing traps and the opaque token swap went into [surfaces.md](surfaces.md) (Translucent Materials on the Web). The agent components' behavior rules went to `ai-experience-design` (patterns). Not used: the stock components, examples, and component docs, which are shadcn/ui's per the repo's notice file. The repo has no tests and names its origin product only as "the product this material comes from".
 
 ## Anton Sten
 
@@ -119,7 +124,7 @@ Transcript access: YouTube `en` captions fetched with `yt-dlp --skip-download --
 
 ## Emil Kowalski — open skills (aiforui.dev)
 
-- https://aiforui.dev/skills · https://github.com/emilkowalski/skills (MIT), read at rev `715c1807e08c497cfd1dc4feb450a2a3300ef2a9` (2026-11-10). `break-ui` and its catalog were paraphrased into [worst-case-data.md](worst-case-data.md) with a pointer from the harden move in [refinement-moves.md](refinement-moves.md); `emil-design-eng` deltas (Motion 14.2 shorthand acceleration, `will-change` rule, delight and function checks, stagger scoping) were merged into [emil-kowalski.md](emil-kowalski.md); the materials section of `apple-design` was folded into [surfaces.md](surfaces.md). Full screening ledger: `docs/emilkowalski-skills-source-mining-2026-11.md`.
+- https://aiforui.dev/skills · https://github.com/emilkowalski/skills (MIT), read at rev `715c1807e08c497cfd1dc4feb450a2a3300ef2a9` (2026-11-10). `break-ui` and its catalog were paraphrased into [worst-case-data.md](worst-case-data.md) with a pointer from the harden move in [refinement-moves.md](refinement-moves.md); `emil-design-eng` deltas (Motion 14.2 shorthand acceleration, `will-change` rule, delight and function checks, stagger scoping) were merged into [emil-kowalski.md](emil-kowalski.md); the materials section of `apple-design` was folded into [surfaces.md](surfaces.md). Full screening ledger: `docs/emilkowalski-skills-source-mining-2026-11.md`. Rechecked at rev `64eb3de` (2026-11-15): `break-ui` now skips name suffixes when taking initials, applied to worst-case-data.
 
 ## Luke Wroblewski — copy volume in generated UI
 

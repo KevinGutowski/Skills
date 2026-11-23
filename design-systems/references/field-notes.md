@@ -19,6 +19,7 @@ Depth moved out of SKILL.md: full source list, worked examples, outcome numbers,
 - [Linear theme tooling and redesign substrate](#linear-theme-tooling-and-redesign-substrate)
 - [Soleio: UFI, Canon, and the Dropbox illustration strip-out](#soleio-ufi-canon-and-the-dropbox-illustration-strip-out)
 - [Impeccable: PRODUCT.md / DESIGN.md / surface brief](#impeccable-productmd--designmd--surface-brief)
+- [Capturing session corrections as rules (Kowalski)](#capturing-session-corrections-as-rules-kowalski)
 - [Tactile design: neutral roles and derived tokens](#tactile-design-neutral-roles-and-derived-tokens)
 - [Sten: meaningful systems](#sten-meaningful-systems)
 - [AI-context inputs: polish tokens and taste separation](#ai-context-inputs-polish-tokens-and-taste-separation)
@@ -164,11 +165,38 @@ Paul Bakaus, Impeccable (https://github.com/pbakaus/impeccable, Apache-2.0, scre
 - **Make off-system values checkable.** Once the record exists, a font, color, radius, or font-size outside it is drift until shown to be intentional. Impeccable's detector flags these as `design-system-font/color/radius/font-size`. Treat each finding as a question: use the documented value, or add the value to the system on purpose. Named generation tells → `frontend-design` (anti-slop-catalog).
 - **Extract by intent, not resemblance.** Promote a pattern after about three uses *with the same intent*. Two buttons that look alike but serve different purposes stay separate, and visual similarity alone is no reason to merge behaviors. Premature abstraction is worse than duplication. Tokens need semantic meaning; a token for every value is noise.
 
+## Capturing session corrections as rules (Kowalski)
+
+Emil Kowalski, `learn-taste` skill (https://github.com/emilkowalski/skills, MIT, `64eb3de`, added after the `715c180` intake; indexed at https://aiforui.dev/skills), paraphrased. This is how entries reach the DESIGN.md described in the section above: every correction a person makes is taste the agent did not have, and an unrecorded one gets corrected again next session.
+
+- **Look for five signals, not only the spoken ones.** Explicit corrections are the minority.
+
+  | Signal | Example | What to record |
+  |---|---|---|
+  | Explicit correction | "No, a semi-transparent shadow, not a border" | The rule, often with its reason |
+  | Silent edit | The person changed `duration: 400` to `200` in a file the agent wrote | Their value. Find these by diffing the file against what the agent last wrote |
+  | Repeated nudge | "Smaller." "Still too big." "OK" | Where they landed, not the steps |
+  | Revert or rejection | "Undo that"; picking variant B; deleting something added | What not to do. The reason is usually missing, so ask |
+  | Confirmed non-obvious choice | "Yes, keep the icon outside the button" | Only if a fresh agent would plausibly do otherwise |
+
+- **Skip what is not taste:** functional bugs, content for one screen, corrections to the agent's understanding of the task.
+- **Keep only what a fresh agent would repeat on a different component.** A one-off (this campaign's color) is skipped. If an existing rule already says it, the rule failed: rewrite it stricter (a number, a token, "never") instead of adding a duplicate. If an existing rule contradicts it, show both and let the person pick.
+- **Generalise to the component class.** "The pricing card gets a shadow" protects one card; "never use borders" breaks inputs and tables; "raised surfaces (cards, popovers, menus) use the raised-shadow token, never a solid border" is the level to write. The same correction on two different components is evidence for the class level. This is the same judgment as "extract by intent" above: promote on repeated intent, not resemblance.
+- **Only the person's taste.** Every rule traces to something they said, edited, or confirmed. Do not add a rule because it seems like good practice; the agent's defaults are what was being corrected.
+- **Never invent a why.** With no stated reason, propose one marked *inferred* and get it confirmed before writing. A wrong reason is worse than none, because the next agent extends it to cases it does not fit.
+- **A check beats a sentence.** If a violation can be found by matching code (a banned value, a raw hex where a token exists, a forbidden property), propose a lint rule, token restriction, or test, and keep a one-line rule so the reason is recorded. A check runs every time; a sentence in a long file is skipped when context is full. Running a new check may flag existing code: report the count and ask before fixing anything.
+- **Write for an agent that was not there.** Name the component class, the value, the token, the file. Then test the rule alone: would an agent that knows nothing else produce what the person wanted?
+- **Propose, then write only what is approved.** A wrong rule repeats in every later session exactly as the mistake would have. Each written entry carries the date and the person's words in a comment, so a later conflicting correction shows which is newer.
+- **Make sure the record is read.** If no always-loaded instruction file points at DESIGN.md, propose the one line that does. Move a section past about 40 lines that only some tasks need (motion rules while building a settings form) into a project skill, leaving a pointer.
+
+A session with no taste corrections is a good result; say so in one line.
+
 ## Tactile design: neutral roles and derived tokens
 
 Source: Kosta, *Tactile design* (kosta4a/tactile-design, MIT, `30495a2`); ledger `docs/tactile-design-source-mining-2026-11.md`. Single-source; corroborated in part by Radix Colors' 12-step scale structure.
 
 - **Neutral roles, not hex** (Kosta, tactile-design). Write components against a 12-step neutral where each step has a job: 1–2 grounds, 3–5 fills, 6–8 lines, 9–10 faint text, 11 secondary text, 12 strong text and the primary fill. Any neutral can then be swapped in. After a remap, re-run the contrast gates (secondary text ≥4.5:1 on the well step, hairline step ≥~1.35:1 on white, focus step ≥3:1 everywhere), because stock scales often fail on the faint steps. Full gates and the step-shift rule: `design-craft` (tactile-design → tokens-and-surfaces).
+- **A restyle layer hangs off what components already carry** (DeepLethe, Solid Glass, MIT, `6e8903e`; single source, on shadcn/ui with Tailwind 4). Its stylesheet finds each part by the `data-slot` and classes the stock component already has, so someone who installed the unmodified components gets the material; a fix that only works after editing a component file is rejected in review. It attaches the material to the color utilities themselves and keeps those rules outside any cascade layer on purpose, so a utility a component adds later cannot switch it off. The cost is the usual one for unlayered CSS: it outranks everything layered, so keep that file small and deliberate.
 - **Derived CSS tokens resolve where they are declared.** `--shadow-button: 0 0 0 0.5px var(--ink-7)` set on `:root` won't follow a container that remaps `--ink-7`. Redeclare every token built from a working step on each surface or theme class. Alpha-based and `currentColor`-mixed values adapt by themselves.
 
 ## Sten: meaningful systems

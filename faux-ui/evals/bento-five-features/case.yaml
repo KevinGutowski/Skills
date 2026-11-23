@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: bento-five-features
+expected_outcome: |
+  A five-tile feature grid planned as one picture: only some tiles show product UI, one tile clearly leads, window chrome appears at most once, neighbors differ in kind, a stat keeps its unit on the same line, and nothing is said twice across tiles.

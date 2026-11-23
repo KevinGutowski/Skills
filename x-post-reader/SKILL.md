@@ -24,7 +24,7 @@ Probed with `curl --max-time 15` against `jack/status/20` and the `jack` profile
 | Path | Used for | Status 2026-11-12 | Verdict |
 |---|---|---|---|
 | `api.vxtwitter.com/{handle}/status/{id}` and `/{handle}` | single post, profile | `200` JSON with curl's default User-Agent; `403` Cloudflare "Just a moment..." challenge when a browser User-Agent is sent | Working — do not add `-A` |
-| `api.fxtwitter.com/{handle}/status/{id}` and `/{handle}` | single post, profile (fallback) | `200` JSON with either User-Agent | Working |
+| `api.fxtwitter.com/{handle}/status/{id}` and `/{handle}` | single post, profile (fallback; first choice for long posts) | `200` JSON with either User-Agent. On 2026-11-18 it returned a long post in full where VxTwitter truncated it | Working |
 | `syndication.twitter.com/srv/timeline-profile/screen-name/{handle}` | timeline, top ~100 | `200`, ~300KB HTML, 101 tweet entries, with either User-Agent. An earlier November probe from this sandbox returned `429` | Working, rate-limited at times — first choice for timelines |
 | `cdn.syndication.twimg.com/timeline/profile?screen_name={handle}` | (old JSON variant) | empty `200` | Dead — do not use |
 | Google `site:x.com` via WebSearch | older/topical posts | not re-probed (not a curl path) | Assume working |
@@ -42,9 +42,11 @@ Swap the host for `api.vxtwitter.com` and keep the `/{handle}/status/{tweet_id}`
 curl -sS "https://api.vxtwitter.com/{handle}/status/{tweet_id}"
 ```
 
-No auth header. No bearer token. Works for any public post. Leave curl's default User-Agent in place: on 2026-11-12 a browser User-Agent (`-A "Mozilla/5.0"`) got a `403` Cloudflare challenge page from VxTwitter while the default got `200`.
+No auth header. No bearer token. Works for any public post.
 
-If VxTwitter errors, times out, or returns an HTML challenge page instead of JSON, swap the host to `api.fxtwitter.com` (same path shape, different field names: the post is nested under `tweet`, with `tweet.text`, `tweet.author.screen_name`, `tweet.created_at`, `tweet.likes`/`retweets`/`replies`, `tweet.community_note`, `tweet.replying_to`) before giving up.
+**A `200` from VxTwitter is not proof you have the whole post.** For long posts (note tweets) it can return only the opening of `text`, with nothing in the JSON to say so (seen 2026-11-18; details under Tips, Long posts). Whenever the text itself matters (summarizing, quoting, pulling links or a list out of it, drafting a reply), also fetch `https://api.fxtwitter.com/{handle}/status/{tweet_id}` and use the longer of VxTwitter's `text` and FxTwitter's `tweet.text`. VxTwitter alone is enough only for metrics, media, and quote or reply structure. Leave curl's default User-Agent in place: on 2026-11-12 a browser User-Agent (`-A "Mozilla/5.0"`) got a `403` Cloudflare challenge page from VxTwitter while the default got `200`.
+
+If VxTwitter errors, times out, or returns an HTML challenge page instead of JSON, use `api.fxtwitter.com` alone (same path shape, different field names: the post is nested under `tweet`, with `tweet.text`, `tweet.author.screen_name`, `tweet.created_at`, `tweet.likes`/`retweets`/`replies`, `tweet.community_note`, `tweet.replying_to`) before giving up.
 
 ### Example
 
@@ -95,7 +97,7 @@ Returns JSON like:
 - **Threads**: VxTwitter returns a single post, not the full thread. If the user wants a thread, fetch the root post, then walk replies via the `x-api` skill if installed (`conversation_id` search) — otherwise ask the user for each URL in the chain.
 - **Replies**: if `replyingTo` is set, the post may not make sense in isolation. Fetch the parent (`replyingToID`) for context before drafting your own reply.
 - **Media**: `media_extended` has richer info (type, dimensions, video bitrates) than `mediaURLs`. For images you can `curl -O` directly; for video, pick the highest-bitrate variant from `media_extended[].variants`.
-- **Long posts**: VxTwitter returns the full text for long-form posts — no `note_tweet` flag needed (unlike the official API).
+- **Long posts**: do not trust VxTwitter for long-form posts (note tweets). On 2026-11-18 it returned only the opening line and the list's first numeral of a 655-character post (the text ended at `1.`), with no flag saying it was cut, while FxTwitter returned the whole post with every link expanded (`tweet.text`, plus `tweet.raw_text.facets` for the `t.co` → real URL map and `tweet.is_note_tweet: true`). If a post ends mid-list or mid-sentence, or reads like the start of a thread, fetch it again from `api.fxtwitter.com` before concluding the rest is in replies.
 - **Deleted/protected posts**: a 404 or error response means the post is gone, private, or the handle/ID is wrong. Tell the user; don't guess at the contents.
 - **URL parsing**: handle is the segment after the host; tweet ID is the segment after `/status/`. Strip query strings, fragments, and trailing slashes before constructing the API URL.
 
@@ -188,7 +190,7 @@ Then enrich any post you want full structured data for (metrics, media, qrt, etc
 2. If still thin, run `WebSearch` with `{handle} {topic} site:x.com` (Path B) to surface historical posts.
 3. Only if the user needs the last few weeks specifically and steps 1–2 did not cover them: probe Nitter RSS (Path C) once. Every mirror was down on 2026-11-12 (see Path health); if the response is not the user's timeline, stop rather than retrying.
 4. Collect candidate tweet IDs from all sources.
-5. For each candidate, `curl https://api.vxtwitter.com/{handle}/status/{id}` (default User-Agent; FxTwitter as fallback) to confirm it's real, get the full text, metrics, media, and quote-tweet context.
+5. For each candidate, `curl https://api.vxtwitter.com/{handle}/status/{id}` (default User-Agent; FxTwitter as fallback) to confirm it's real and get metrics, media, and quote-tweet context. For any post you will quote or summarize, take the text from the longer of the VxTwitter and FxTwitter responses (see How to fetch): VxTwitter can truncate long posts silently.
 6. Present the user a short ranked list with URL + 1-line summary + why it matched.
 
 ### Profile metadata

@@ -35,6 +35,7 @@ If using a fresh Codex session, installed skills normally route after restart. I
 |---|---|
 | UI polish / frontend cleanup | `design-craft frontend-design web-design` |
 | Admin or developer-tool UI | `devtools design-craft data-viz` |
+| Marketing product shots / bento grids | `faux-ui frontend-design web-design` |
 | AI-generated UI repair | `working-with-ai design-prototyping design-craft frontend-design` |
 | Skill authoring / source conversion | `creating-skills research-cataloging x-post-reader` |
 | Rails work | `rails dhh` |

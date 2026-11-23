@@ -37,7 +37,7 @@ A section usually reads flat because it opts out of moves its neighbors already 
 Quiet design is harder than bold design. **Generic quiet** (gray text on white, one sans at one weight, a grid of identical cards) is a failure, not restraint.
 
 - **Find the intensity sources:** saturation, extreme contrasts, too many heavy weights competing, motion excess, decorative complexity, everything large.
-- **Color:** desaturate toward roughly 70–85% of the original, use fewer hues, let neutrals do more work, and use tinted rather than pure grays. Never put gray text on a colored ground: use a darker shade of that hue or transparency.
+- **Color:** desaturate toward roughly 70–85% of the original, use fewer hues, let neutrals do more work, and use tinted rather than pure grays. Never put gray text on a colored ground: use a darker shade of that hue. Not transparency, which ties the text's contrast to whatever sits behind it.
 - **Weight:** step weights down (900→600, 700→500) and carry hierarchy with size, weight, and space instead of color.
 - **Simplify:** remove decorative gradients, glows, stacked shadows, and textures, flatten layering, and tame radius extremes.
 - **Motion:** shorter travel (10–20px rather than 40px), a gentle ease-out, no bounce. Remove motion that serves no clear purpose.
@@ -52,7 +52,7 @@ Simplicity removes what stands between users and their goal. Every element must 
 - **Find the essence:** the one primary goal, what is essential versus nice-to-have, what can be hidden, combined, or removed.
 - **Information architecture:** one primary action, few secondary actions, the rest tertiary or disclosed. Say each thing once.
 - **Copy:** go to zero, then add back. Remove every supporting line (intro, helper text, caption, footnote), fix unclear labels, then re-admit at most one line per surface that states what the controls cannot show: a consequence, limit, expiry, or audience. Trimming sentence by sentence keeps too much, because each line looks reasonable alone. Rule `copy-budget` in `frontend-design` (anti-slop-catalog). Copy the user wrote is proposed for removal, not removed.
-- **Visual:** 1–2 colors plus neutrals, one family, 3–4 sizes, 2–3 weights. Remove decoration that serves neither hierarchy nor function. Never nest cards, and drop cards that only do layout work.
+- **Visual:** 1–2 decorative or brand colors plus neutrals (semantic colors for success, warning, and error stay, each paired with a non-color cue), one family, 3–4 sizes, 2–3 weights. Remove decoration that serves neither hierarchy nor function. Never nest cards, and drop cards that only do layout work.
 - **Layout:** a linear flow where possible, consistent alignment, generous space.
 - **Interaction:** fewer choices, smart defaults, inline edits instead of modal flows, fewer steps, one obvious next action.
 - **Code:** delete dead CSS and orphaned components, cut variants (three may cover 90%), flatten trees.

@@ -436,6 +436,21 @@ Web port of Apple's material rules, for floating chrome built with `backdrop-fil
 - **Scroll-edge fade instead of a hard divider.** Where content passes under floating chrome, fade a small blur or gradient mask at the overlap instead of drawing a 1px border, and only where chrome actually overlaps content.
 - **Materialize, don't just fade.** Animate blur radius and scale together on enter and exit so the surface arrives as a material. Blur is paint-heavy; check the cost in `web-design` (web-animation-design)'s animation-performance member before animating it on large surfaces.
 - **Honor the preference queries.** Under `prefers-reduced-transparency: reduce`, raise the background opacity and drop the blur; under `prefers-contrast: more`, go near-solid with a defined border. See `web-design` (web-accessibility).
+- **Make the opaque fallback a token swap.** Give each translucent fill token an opaque twin per theme and switch them inside the reduced-transparency query, with `backdrop-filter: none`. Keep the edge highlight, hairline, and shadow: they carry most of the material, so the surface still reads as itself. A per-region opt-out attribute that only drops the blur is a useful second lever for performance (pattern from Solid Glass, [solid-glass.md](solid-glass.md)).
+
+### Edge-drawing traps on translucent panes
+
+Recorded in the comments of the Solid Glass stylesheet (deeplethe/solid-glass, MIT, `6e8903e`), the first two were shipped and taken back, per its contributing guide. The first three follow from how CSS paints borders and shadows and hold on any pane, translucent or not.
+
+| Trap | Why it happens | Do instead |
+|---|---|---|
+| A lit top edge made with a brighter `border-top-color` breaks at rounded corners | Two border colors meet on a diagonal join at each corner | One border color all round (or none), and the highlight as `inset 0 1px 0` |
+| A second ring appears round the pane | Inset shadows paint inside the padding edge and outer shadows outside the border edge, so a border left between them, even a transparent one, is a 1px band neither line covers: bare fill, or the page itself where the fill is clipped to the padding box | Set `border-width: 0` and draw both lines as shadows. Where a component needs its border for layout (a button in a group, a tab), make the border the hairline and draw nothing outside it; `background-clip` decides whether the fill runs under it |
+| A highlight drawn inside a kept border sits one pixel in and reads as a second edge | Same cause: the inset line starts at the padding edge | Drop the border on small filled parts such as badges. Where the border must stay for layout (a switch, checkbox, radio), make the border itself the two lines: transparent sides, the top in the highlight color, the bottom in the shade, with `background-clip: border-box` |
+| A hairline mixed toward gray comes out the wrong hue (a green button with a brown edge) | `color-mix(in oklch, …)` interpolates hue, and a neutral written with an explicit hue of 0 can pull the result round the hue wheel | Mix toward a neutral `in oklab`, which has no hue axis. Not re-tested here across browsers; the source hit it in practice |
+| SVG chart bars cannot take the inset highlight | `box-shadow` does not apply to SVG shapes | `filter: drop-shadow(0 -1px 0 <highlight>)` on the shape, with opacity applied to the whole mark rather than the fill. The source found an inner-shadow filter made bars vanish when an ancestor was zoomed |
+| A "text in the middle of a rule" separator shows a mismatched patch | The label hides the rule with a patch of page color, and no patch can match a see-through pane | No patch: draw two rules, one each side of the label, as pseudo-elements, and clip the container |
+| Browser autofill paints a pale lit rectangle on a dark pane | Chromium and WebKit force their own autofill background, which cannot be turned off | Outlast it: `transition: background-color 99999s, color 99999s` on `:-webkit-autofill`, with `-webkit-text-fill-color` and `caret-color` set to the text color |
 
 ## Backdrop Blur × mix-blend-mode (Chrome Gotcha)
 

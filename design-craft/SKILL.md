@@ -28,7 +28,7 @@ Don't start by changing values. First:
    | Stutter, dropped frames, scroll jank | performance, not styling | the `motion` skill's MotionScore performance audit and `web-design` (web-performance) |
    | AI-generated UI that looks generic | generation tells | `working-with-ai` (ai-ui-direction) and `frontend-design` (anti-slop-catalog) |
 
-3. **Pick one theme.** If the product already has a look, match it (reuse before inventing). If it doesn't, use polish-principles by default, tactile-design for dense product UI, or emil-kowalski when the problem is mostly motion feel. Don't average themes.
+3. **Pick one theme.** If the product already has a look, match it (reuse before inventing). If it doesn't, use polish-principles by default, tactile-design for dense product UI, solid-glass for a dark agent or chat workspace on shadcn, or emil-kowalski when the problem is mostly motion feel. Don't average themes.
 4. **Make the smallest changes first and apply them consistently within the scope the user named.** Widen to a system-wide pass only when asked. Then report what changed and where.
 
 ## Execution values — make the pixels right
@@ -44,6 +44,7 @@ When the question shifts from *"is this good / how far do I push"* to *"what exa
 | [performance](references/performance.md) | Transition specificity, `will-change`, perceived performance (spinner choice) |
 | [emil-kowalski](references/emil-kowalski.md) | Alternate craft theme (animations.dev): taste-training, component polish, animation decisions. Second hop in `references/emil-kowalski/`: css-techniques (component, transform, clip-path, and stagger code), interaction-and-performance (springs, gesture/drag, performance rules, debugging), taste-and-craft (practitioner habits, Config-talk notes) |
 | [tactile-design](references/tactile-design.md) | Alternate theme (Kosta, kosta.fyi) for tactile, layered, quiet product UI: decision order, parent-relative surfaces, light/dark elevation, one-primary hierarchy, never-ship list. Second hop in `references/tactile-design/`: tokens-and-surfaces, controls, layout-and-data, motion-values, phone |
+| [solid-glass](references/solid-glass.md) | Alternate theme (DeepLethe, shadcn + Tailwind 4) for dark, text-dense agent workspaces: thick neutral panes finished at the edge, thickness ladder, one shared look for selected, held-open, and highlighted menu or list rows (ordinary hover is a flat fill), a partial reduced-transparency fallback, conflicts with the other themes. Single file |
 | [refactoring-ui](references/refactoring-ui.md) | Visual refactor passes (hierarchy, spacing, type, color, depth); code-native gallery in `examples/refactoring-ui-gallery.html` |
 | [linear-product-craft](references/linear-product-craft.md) | Linear's operating model: redesign debt, scope control, stress tests, feature flags, quality rituals, triage, dogfood/unshipping, taste calibration |
 | [component-details](references/component-details.md) | Measured answers per component: dropdown menu width (widest item + 16px, min/max), menu rows and keys, tooltip timing (400ms first, instant next, 100ms close) |
@@ -52,7 +53,7 @@ When the question shifts from *"is this good / how far do I push"* to *"what exa
 | [practical-demonstrations](references/practical-demonstrations.md) | Worked walkthrough move lists: visual-language audit, mobile architecture exercise, depth-spectrum exemplars (slider, gift card, library cards) |
 | [field-notes](references/field-notes.md) | Verbatim practitioner quotes behind the methodology rules (MDS, Valio, Dive Club, Minor, Sten) and the Jaytel reference-to-rule recipe |
 
-Theme discipline: pick one coherent value-set and don't average (polish-principles' Theme Note). `emil-kowalski` and `tactile-design` are complete alternate themes; each keeps its deep files in a same-named subdirectory that only its parent reference links (one sanctioned second hop). For motion *values*, `web-design` (web-animation-design) is the default theme.
+Theme discipline: pick one coherent value-set and don't average (polish-principles' Theme Note). `emil-kowalski`, `tactile-design`, and `solid-glass` are complete alternate themes; the first two each keep its deep files in a same-named subdirectory that only its parent reference links (one sanctioned second hop). For motion *values*, `web-design` (web-animation-design) is the default theme.
 
 ## Noticing (`/library/noticing`)
 

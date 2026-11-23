@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Stash demo</title>
+<style>
+@property --p { syntax: '<integer>'; inherits: true; initial-value: 0; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { width: 720px; height: 340px; overflow: hidden; }
+#demo {
+  position: relative; width: 720px; height: 340px; overflow: hidden;
+  background: #f7f8fa; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1c2230; --loop: 9s;
+}
+#demo * { box-sizing: border-box; }
+.top { position: absolute; left: 0; top: 0; width: 720px; height: 44px; background: #fff; border-bottom: 1px solid #e6e9ef; display: flex; align-items: center; padding: 0 20px; gap: 10px; }
+.logo { width: 22px; height: 22px; border-radius: 6px; background: linear-gradient(135deg,#4f7cff,#7a5cff); }
+.brand { font-weight: 700; font-size: 15px; letter-spacing: -.01em; }
+.crumb { color: #8a93a5; font-size: 13px; margin-left: 6px; }
+.crumb b { color: #1c2230; font-weight: 600; }
+.label { position: absolute; left: 24px; top: 58px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #8a93a5; display: none; }
+
+.tile { position: absolute; top: 60px; width: 150px; height: 56px; background: #fff; border: 1px solid #e2e6ee; border-radius: 12px; display: flex; align-items: center; gap: 10px; padding: 0 12px; font-size: 13px; font-weight: 600; }
+.tile small { display: block; font-weight: 400; color: #8a93a5; font-size: 11px; margin-top: 1px; }
+.fold { width: 28px; height: 22px; border-radius: 4px 4px 5px 5px; background: #f6b94a; position: relative; flex: none; }
+.fold::before { content: ""; position: absolute; left: 0; top: -4px; width: 12px; height: 6px; border-radius: 3px 3px 0 0; background: #f6b94a; }
+.fold.b { background: #6aa8ff; } .fold.b::before { background: #6aa8ff; }
+.fold.g { background: #8fd19e; } .fold.g::before { background: #8fd19e; }
+#t1 { left: 24px; animation: tile var(--loop) infinite; }
+#t2 { left: 190px; } #t3 { left: 356px; }
+@keyframes tile {
+  0%, 28% { transform: none; border-color: #e2e6ee; background: #fff; box-shadow: none; }
+  34%, 40% { transform: scale(1.04); border-color: #4f7cff; background: #eef3ff; box-shadow: 0 6px 18px rgba(79,124,255,.25); }
+  38% { transform: scale(1.0); }
+  48%, 100% { transform: none; border-color: #e2e6ee; background: #fff; box-shadow: none; }
+}
+
+.chip { position: absolute; left: 540px; top: 64px; width: 150px; height: 44px; background: #fff; border: 1px solid #dfe3ec; border-radius: 10px; display: flex; align-items: center; gap: 9px; padding: 0 10px; font-size: 12px; font-weight: 600; box-shadow: 0 2px 8px rgba(20,30,60,.08); animation: chip var(--loop) infinite; z-index: 5; }
+.chip small { display: block; font-weight: 400; color: #8a93a5; font-size: 10px; }
+.ico { width: 24px; height: 28px; border-radius: 4px; background: #ff6b5e; position: relative; flex: none; }
+.ico::after { content: "PDF"; position: absolute; left: 0; right: 0; bottom: 4px; text-align: center; font-size: 7px; font-weight: 800; color: #fff; }
+.ico::before { content: ""; position: absolute; right: 0; top: 0; border-left: 7px solid rgba(255,255,255,.55); border-bottom: 7px solid transparent; }
+.ico.d { background: #6aa8ff; } .ico.d::after { content: "DOC"; }
+.ico.x { background: #4cc38a; } .ico.x::after { content: "XLS"; }
+.ico.i { background: #b58cff; } .ico.i::after { content: "IMG"; }
+@keyframes chip {
+  0% { opacity: 0; transform: translate(0,0) scale(1); }
+  4%, 10% { opacity: 1; transform: translate(0,0) scale(1); }
+  13% { opacity: 1; transform: translate(0,0) scale(.96); box-shadow: 0 8px 20px rgba(20,30,60,.2); }
+  22% { transform: translate(-260px,-36px) rotate(-3deg) scale(.96); box-shadow: 0 10px 24px rgba(20,30,60,.22); }
+  34% { opacity: 1; transform: translate(-516px,-2px) rotate(0) scale(.96); }
+  38% { opacity: 0; transform: translate(-516px,-2px) scale(.25); }
+  97% { opacity: 0; transform: translate(-516px,-2px) scale(.25); }
+  97.1% { opacity: 0; transform: translate(0,0) scale(1); }
+  100% { opacity: 0; transform: translate(0,0) scale(1); }
+}
+
+.head { position: absolute; left: 24px; top: 130px; width: 672px; font-size: 11px; color: #8a93a5; display: flex; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.head span:first-child { flex: 1; } .head span:last-child { width: 200px; }
+.list { position: absolute; left: 24px; top: 150px; width: 672px; height: 180px; }
+.row { position: absolute; left: 0; width: 672px; height: 42px; background: #fff; border: 1px solid #e8ebf1; border-radius: 10px; display: flex; align-items: center; padding: 0 12px; gap: 12px; font-size: 13px; font-weight: 500; }
+.row .ico { width: 20px; height: 24px; } .row .ico::after { font-size: 6px; bottom: 3px; }
+.row .meta { margin-left: auto; color: #8a93a5; font-size: 12px; font-weight: 400; width: 200px; }
+.row .nm { flex: 1; }
+.old { animation: shift var(--loop) infinite; }
+@keyframes shift {
+  0%, 39% { transform: translateY(0); }
+  45%, 94% { transform: translateY(46px); }
+  100% { transform: translateY(0); }
+}
+#newrow { top: 0; opacity: 0; border-color: #e8ebf1; animation: newrow var(--loop) infinite; z-index: 2; }
+@keyframes newrow {
+  0%, 39% { opacity: 0; transform: translateY(-10px); background: #fff; border-color: #cfdcff; }
+  45% { opacity: 1; transform: translateY(0); background: #fff; border-color: #cfdcff; }
+  70% { background: #fff; border-color: #cfdcff; }
+  73% { background: #eaf8ef; border-color: #a9dcbb; }
+  84% { background: #fff; border-color: #e8ebf1; }
+  93% { opacity: 1; transform: translateY(0); background: #fff; border-color: #e8ebf1; }
+  96%, 100% { opacity: 0; transform: translateY(-10px); background: #fff; border-color: #e8ebf1; }
+}
+.prog { position: absolute; right: 12px; top: 0; height: 100%; width: 200px; display: flex; align-items: center; gap: 10px; animation: prog var(--loop) infinite; }
+.bar { flex: 1; height: 6px; border-radius: 3px; background: #e8ecf6; overflow: hidden; }
+.bar i { display: block; height: 100%; width: calc(var(--p) * 1%); background: linear-gradient(90deg,#4f7cff,#7a5cff); border-radius: 3px; }
+.pct { width: 38px; text-align: right; font-size: 12px; color: #4f7cff; font-weight: 600; font-variant-numeric: tabular-nums; }
+.pct::after { content: counter(p) "%"; }
+.prog { counter-reset: p var(--p); }
+@keyframes prog {
+  0%, 45% { --p: 0; opacity: 1; }
+  47% { --p: 3; opacity: 1; }
+  58% { --p: 55; }
+  62% { --p: 62; }
+  70% { --p: 100; opacity: 1; }
+  72%, 94% { --p: 100; opacity: 0; }
+  96%, 100% { --p: 0; opacity: 0; }
+}
+.done { position: absolute; right: 12px; top: 0; height: 100%; width: 200px; display: flex; align-items: center; gap: 8px; color: #2e9e5b; font-size: 12px; font-weight: 600; opacity: 0; animation: done var(--loop) infinite; }
+.done .meta2 { color: #8a93a5; font-weight: 400; }
+.chk { width: 18px; height: 18px; border-radius: 50%; background: #2e9e5b; position: relative; flex: none; }
+.chk::after { content: ""; position: absolute; left: 6px; top: 3px; width: 4px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+@keyframes done {
+  0%, 70% { opacity: 0; transform: scale(.9); }
+  74%, 93% { opacity: 1; transform: scale(1); }
+  96%, 100% { opacity: 0; transform: scale(.9); }
+}
+.nsub { color: #8a93a5; font-weight: 400; font-size: 12px; }
+
+.cursor { position: absolute; left: 0; top: 0; width: 22px; height: 26px; z-index: 10; pointer-events: none; animation: cur var(--loop) infinite; filter: drop-shadow(0 2px 3px rgba(0,0,0,.3)); }
+@keyframes cur {
+  0% { opacity: 0; transform: translate(400px,300px); }
+  4% { opacity: 1; }
+  10% { opacity: 1; transform: translate(615px,86px) scale(1); }
+  13% { transform: translate(615px,86px) scale(.88); }
+  22% { transform: translate(355px,50px) scale(.88); }
+  34% { transform: translate(99px,84px) scale(.88); }
+  38% { transform: translate(99px,84px) scale(1); }
+  46% { transform: translate(230px,200px) scale(1); }
+  60% { transform: translate(330px,236px) scale(1); }
+  90% { opacity: 1; transform: translate(330px,236px) scale(1); }
+  97% { opacity: 0; transform: translate(400px,300px); }
+  100% { opacity: 0; transform: translate(400px,300px); }
+}
+</style>
+</head>
+<body>
+<div id="demo">
+  <div class="top"><div class="logo"></div><div class="brand">Stash</div><div class="crumb">My files / <b>Design</b></div></div>
+
+  <div class="tile" id="t1"><div class="fold"></div><div>Design<small>12 files</small></div></div>
+  <div class="tile" id="t2"><div class="fold b"></div><div>Launch<small>6 files</small></div></div>
+  <div class="tile" id="t3"><div class="fold g"></div><div>Archive<small>41 files</small></div></div>
+
+  <div class="head"><span>Name</span><span>Status</span></div>
+  <div class="list">
+    <div class="row" id="newrow"><div class="ico"></div><div class="nm">brand-guide.pdf <span class="nsub">&nbsp;4.2 MB</span></div>
+      <div class="prog"><div class="bar"><i></i></div><div class="pct"></div></div>
+      <div class="done"><div class="chk"></div>Uploaded <span class="meta2">just now</span></div>
+    </div>
+    <div class="row old" style="top:0"><div class="ico d"></div><div class="nm">Q4-roadmap.docx</div><div class="meta">Yesterday</div></div>
+    <div class="row old" style="top:46px"><div class="ico x"></div><div class="nm">budget-2027.xlsx</div><div class="meta">Mon</div></div>
+    <div class="row old" style="top:92px"><div class="ico i"></div><div class="nm">hero-mockup.png</div><div class="meta">Last week</div></div>
+  </div>
+
+  <div class="chip"><div class="ico"></div><div>brand-guide.pdf<small>4.2 MB</small></div></div>
+
+  <svg class="cursor" viewBox="0 0 22 26"><path d="M2 1 L2 20 L7 15.5 L10.5 23 L13.5 21.6 L10.2 14.4 L17 14 Z" fill="#111" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+</div>
+</body>
+</html>

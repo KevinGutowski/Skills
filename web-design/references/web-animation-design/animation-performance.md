@@ -16,6 +16,7 @@ Source: Emil Kowalski's `animation-performance` skill and performance cheatsheet
 - `will-change`
 - Is JS animation the problem?
 - Diagnosis order
+- Work that runs off screen
 - Reporting a finding
 - Scoped conflicts
 - Staleness
@@ -125,6 +126,27 @@ Inventory first: one row per animation in scope — element, driver, properties,
 7. Still shifting or stuttering? Now try `will-change: transform` on the animating element.
 
 Confirm with a recording, not by feel: DevTools Performance panel for dropped frames and long tasks, Animations panel to slow playback. Profile a real mid-range phone over remote debugging — desktop CPU throttling models a slow CPU, not a weak GPU or a small memory budget.
+
+## Work that runs off screen
+
+An animation nobody can see still costs frames, battery, and sometimes memory. Long marketing pages are the usual offenders: a hero canvas, marquees, and skeleton shimmers all running while the reader is at the footer. (Method from Meng To's `optimize-web-animations`, `3cc9345`; single-source, the counts are a method, not a benchmark.)
+
+**Measure before editing.** The aim is not less motion; it is that off-screen work stops, visible motion resumes correctly, and nothing outlives its route.
+
+1. Count running CSS animations by computed `animation-name` and `animation-play-state`, **including `::before` and `::after`**, and note which are outside the viewport and which element owns each.
+2. Sample at the top, mid-page, the footer, and one mobile viewport. A single top-of-page sample proves nothing about a long page.
+3. Inspect canvas and WebGL loops separately. A CSS count says nothing about `requestAnimationFrame`.
+4. Target: zero animations running off screen in the sections under test, with every visible animation still running or resuming on re-entry.
+
+**Fix at the smallest owner.**
+
+- Toggle a class from an `IntersectionObserver` (a threshold near zero is enough) on the section *and* on long sections' animated children, then pause with `animation-play-state: paused` on targeted selectors. Add the pseudo-element selectors explicitly where a shimmer lives on `::before` or `::after`.
+- **`animation-play-state` does not stop a JavaScript loop.** Gate `requestAnimationFrame` directly: start when the canvas intersects, cancel when it leaves, resume on re-entry.
+- **Cap the frame delta on resume.** The first frame after a pause otherwise runs one oversized simulation step. (The sketch-side loop is in `creative-coding`.)
+- Watch the selector's reach: a broad ancestor rule that pauses the visible hero is the common regression.
+- Do not make a profile pass by deleting the motion, and do not treat screenshots as performance evidence.
+
+**Leak probe.** Cycle the route a few times and idle for 10–30 seconds: DOM node, canvas, image, and iframe counts should return to their baseline. If heap counters are unavailable, say so; that is not proof of no leak. Cleanup list for anything long-lived: timers and intervals, `requestAnimationFrame` handles, every observer, global listeners (removed with the same handler reference), media streams, tweens on plain objects such as shader uniforms, GPU resources, and a disposed flag for loaders that may resolve after unmount.
 
 ## Reporting a finding
 
