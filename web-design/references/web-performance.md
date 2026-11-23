@@ -121,6 +121,7 @@ Source: Dmytro (@pqoqubbw), "4 css rules that make safari 35x faster" (X article
 - [ ] Every list has an infinity plan (limit or engineering)?
 - [ ] Expensive work triaged: defer / anticipate / offload?
 - [ ] No inheriting custom property written per frame on a container with a large subtree (Base UI Scroll Area in Safari included)?
+- [ ] Nothing animates off screen: CSS animations (pseudo-elements included) paused and `requestAnimationFrame` loops canceled outside the viewport ([animation-performance](web-animation-design/animation-performance.md), Work that runs off screen)?
 - [ ] Performance regressions block merges; flags gate non-compliant work; periodic audits scheduled?
 - [ ] Debugged by frame-stepping a screen recording, not by feel?
 

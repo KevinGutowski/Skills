@@ -126,3 +126,36 @@ A third fresh judge read a blind packet built from the merged descriptions (V1�
 ## 2026-11-18 recheck after the Vercel skills intake
 
 V1–V18 were re-judged blind in a 137-prompt packet after two unrelated description edits (`write-clear-prose`, `design-systems`). 17/18: V9 drifted the same way as before (`working-with-ai` first, `ux-writing` second); V12 matched its expected `design-prototyping` this time. V3, V4, and V14 still route to `design-systems` with its edited description.
+
+## 2026-11-18 `faux-ui` and three new references (V25–V31)
+
+Change: new top-level skill `faux-ui` with a new description. `frontend-design` gained "hand-drawn SVG illustration" and the "illustration" trigger, `working-with-ai` gained "reference page/recording → build prompt", and `creative-coding` gained "three.js/WebGL scenes", each for a new reference. No other description changed.
+
+Judges: two fresh general-purpose subagents with no repo context, one after the other. Each read only a blind packet: the descriptions plus the prompts, with the Expected and Notes columns removed.
+
+First run (V1–V29, before the three trigger edits; `faux-ui` still listed "hero illustration" as a trigger):
+
+| Probe | Expected | Judge first / second | Result |
+| --- | --- | --- | --- |
+| V25 | `faux-ui` | `faux-ui` | Pass; cited "animated cursor demo" and "loop story". |
+| V26 | `faux-ui` | `faux-ui` | Pass; cited "bento grid". |
+| V27 | `web-design` | `web-design` / `motion` | Pass (control); the judge cited the "product animation values → web-design" boundary in `faux-ui`. |
+| V28 | `frontend-design` | `frontend-design` / `web-design` | Pass (control). |
+| V29 | `frontend-design` | `creative-coding` (weak fit) | **Fail.** No description mentioned illustration; the judge listed `faux-ui` ("hero illustration") among the candidates. |
+
+Fix: `frontend-design` now names hand-drawn SVG illustration, and `faux-ui`'s "hero illustration" trigger became "product shot". The same pass added the `working-with-ai` and `creative-coding` triggers and probes V30 and V31.
+
+Second run (V1–V31, after the edits):
+
+| Probe | Expected | Judge first / second | Result |
+| --- | --- | --- | --- |
+| V25, V26 | `faux-ui` | `faux-ui` | Pass. |
+| V27 | `web-design` | `web-design` / `motion` | Pass (control). |
+| V28 | `frontend-design` | `frontend-design` | Pass (control); cited "real product screens → frontend-design" in `faux-ui`. |
+| V29 | `frontend-design` | `frontend-design` | Pass; cited "hand-drawn SVG illustration". |
+| V30 | `working-with-ai` | `working-with-ai` | Pass; neither `frontend-design` nor `creating-skills` took over. |
+| V31 | `creative-coding` | `creative-coding` | Pass; the judge noted that nothing in the description names lighting or texture filtering, with `photographic-lighting` and `graphics-fundamentals` as weak distractors. |
+| V6 | `frontend-design` | `frontend-design` | Pass (no regression from the description edit). |
+| V2 | `working-with-ai` | `working-with-ai` / `ux-writing` | Pass (no regression). |
+
+Other probes in both runs: V3, V5, V7, V8 and V10–V24 matched their first skill. V1 came back as the accepted pair in reverse order, as before. V4's second skill is still `working-with-ai`. **V9 still drifts** (`working-with-ai` + `ux-writing`), as in every run since 2026-11-14.

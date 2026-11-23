@@ -1,6 +1,6 @@
 ---
 name: creative-coding
-description: "Build procedural/generative visual systems: canvas/p5/Processing sketches, particles, steering agents, automata, fractals, noise, and evolutionary variation. Use when making generative art, interactive sketches, simulation-driven visuals, or code-first visual studies. UI polish → frontend-design/web-design; end-user tool reshaping → malleable-software. Based on Shiffman + Generative Design."
+description: "Build procedural/generative visual systems: canvas/p5/Processing sketches, particles, steering agents, automata, fractals, noise, and evolutionary variation. Use when making generative art, interactive sketches, simulation-driven visuals, code-first visual studies, or three.js/WebGL scenes. UI polish → frontend-design/web-design; end-user tool reshaping → malleable-software. Based on Shiffman + Generative Design."
 ---
 
 # Creative Coding
@@ -8,6 +8,8 @@ description: "Build procedural/generative visual systems: canvas/p5/Processing s
 **Sources/gaps:** [references/sources.md](references/sources.md) — Shiffman, *The Nature of Code* (2012) + Gross/Bohnacker/Laub/Lazzeroni, *Generative Design* (p5.js edition); unresolved API/fixture candidates in [references/coverage-gaps.md](references/coverage-gaps.md). API examples are era-tagged: Processing and p5.js details date; verify current canvas/p5/Three/WebGL APIs before prescribing exact syntax.
 
 **Starting code:** read [references/current-api-scaffolds.md](references/current-api-scaffolds.md) before writing the first lines of a sketch in p5.js 2.x (async `setup()` loading, instance mode, 1.x→2.x traps), Canvas 2D (devicePixelRatio sizing, fixed-timestep `requestAnimationFrame` loop), or three.js (minimal WebGL 2 scene), and whenever output must be reproducible (seeded PRNG). It lists what was checked against live docs on 2026-11-12 and what still needs checking.
+
+**Lit three.js scenes:** read [references/threejs-scene-craft.md](references/threejs-scene-craft.md) when a three.js scene must look photographic or misbehaves without an error: tone-map order with HDR targets, metal that reads as gray plastic, far detail that shimmers or boils, renderer vs post-processing pixel ratio and what "200%" means, particle volumes that miss the camera, and a table of silent failures.
 
 Use this skill for code-first visual systems whose output comes from rules, parameters, simulation, or data. The operating question is Shiffman's: "How do we define the rules that govern the behavior of our objects?"
 

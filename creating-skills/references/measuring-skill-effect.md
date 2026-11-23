@@ -12,6 +12,8 @@
 - Thin by evidence
 - Wording that causes detours
 - Generative skills: when guidance makes output timid
+- Visual skills: examples, re-runs, and filmed evidence
+- Rules that reach the model by more than one path
 - Hygiene: don't teach to the test
 - Suite hygiene for sibling skills
 - Finish gates, retrieval-backed skills, and pinned rule files
@@ -83,6 +85,27 @@ The skill went from 3,928 to 621 words (later 826 after targeted additions) with
 - **Keep numbers in one file and generate the prose tables from it.** One JSON standard feeds marked blocks in the skill body, the stylesheet and the checker, so the three cannot drift.
 - **Script only what a render cannot show.** The checker covers inherited strokes on text, label size, stroke width and canvas. Composition stays with render-and-look, and the skill requires the report to say so when no render was possible.
 - **Skill files address a stranger's agent.** Maintainer rules (approval records, regeneration steps) stay in the repo's AGENTS file, outside the installed folder.
+
+## Visual skills: examples, re-runs, and filmed evidence
+
+*Third source: Benji Taylor's account of building Stageshow (https://benji.org/stageshow, 31 October 2026; skill MIT at `299140f`). It reports a method and no scores; treat it as one practitioner's process that agrees with the two benchmarks above.*
+
+- **Same arms, visual scoring.** A fresh agent with the skill and a fresh agent without it get the same short prompt, and the outputs are compared side by side. This is "Set up the arms" with a designer's eye as the score.
+- **Fix the skill, not the output, then re-run from scratch.** When a result looked wrong, the author wrote down the fault, changed the skill, and ran the whole test again on a fresh agent. Hand-fixing the output hides whether the skill now prevents the fault. Many of its rules began as a note on one demo ("the shadow is too harsh") and then applied to every later one.
+- **Where a rule fails, ship an example to copy.** Told to crop a phone off-frame, agents rarely did; given an example that does it, they did. If transcripts show a rule being read and not followed, the next move is a copyable exemplar next to the rule, and a workflow step that says to start from it, before any rewording. This fits the transcript finding above: instructions that are *executed* (a file to copy, a script that prints) beat instructions that are only read.
+- **Give the agent evidence that shows the failure.** Agents verified by reading code or taking one settled screenshot, which misses the frames between states where motion bugs live (a 4px hop, a frame where everything has faded out). A skill for anything that moves should hand the agent a way to sample frames and should name the faults to look for. Deterministic checks catch execution mistakes only; a dull concept passes every check, so a human or fresh-context review still closes the loop.
+- **Retire rules the models outgrow.** Early rules about window-control sizing stopped mattering as models improved, while framing and motion rules held across models: the models could do those things and did not prioritize them unprompted. This is "Cut rules the no-skill controls already follow" seen over time, so re-run the no-skill control on each new model tier and delete what it now gets right.
+
+## Rules that reach the model by more than one path
+
+*Source: Open Design's maintainer note on prompt composition (nexu-io/open-design, Apache-2.0, `0725880`, its prompt-composition doc), which records a fix that reached one of two prompt-assembly paths and needed a second change nearly twice the size to finish.*
+
+The same failure exists wherever one rule is carried by several files or assembly paths: a skill copied into two harness folders, a rule stated in both `AGENTS.md` and a skill body, a prompt built by one code path for one mode and another for a second.
+
+- **Before changing a rule, name every path that composes what the model sees, and say for each whether the change reaches it.** "I'll do the other path later" leaves the old behavior live for every run that takes it, and when the path taken varies run to run the result looks like an intermittent bug.
+- **A test name is not coverage.** A test called "ships new decks with protocol v1" passed while half the runs shipped none, because its inputs could only reach one path. Check what a test's inputs can actually reach; a snapshot that updates cleanly proves only the paths its scenarios take.
+- **A contract the host code depends on gets one source** that every path consumes. Sharing only the constant fixes the machine-readable half; the prose around it still drifts between hand-kept copies.
+- **Keep maintenance notes out of anything sent to the model verbatim.** Files concatenated into the prompt hold only prompt text; notes for maintainers go in a sibling file the assembler does not read. The same holds for a skill folder: the evidence trail stays outside the installed files (next section).
 
 ## Hygiene: don't teach to the test
 

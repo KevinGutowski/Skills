@@ -62,6 +62,13 @@ RTL review is more than flipping a row:
 - keep numbers and mixed-direction identifiers legible;
 - test the real `dir="rtl"` state instead of reasoning from screenshots.
 
+Reviewing existing CSS for RTL (Impeccable `audit`, `d41d986`). The table above is the default for new code; in an audit, a physical property is a signal to check the rendering, not a defect by itself:
+
+- **Scope.** Flag physical directional properties only on pages that declare `dir="rtl"` on `<html>` or `<body>`, and only where the rendered result is wrong. `dir` sets direction; `lang` never does. An RTL-script `lang` with no `dir` is worth a note, not a finding.
+- **Do not convert centering.** `left: 50%; transform: translateX(-50%)` is direction-agnostic. Swapping `left` for `inset-inline-start` breaks it, because `translateX` is physical and does not mirror.
+- **An override must clear what it replaces.** `[dir="rtl"] .x { margin-right: 1rem }` is only correct if it also resets the base rule's `margin-left`; otherwise both margins apply.
+- **Check the drawn icon.** An RTL-only page may ship arrows already drawn the right way; a missing mirror transform is not a defect until the rendered chevron points the wrong way.
+
 ## Adapt at the owning boundary
 
 Choose a breakpoint where the content stops working, not because a framework names a device width.

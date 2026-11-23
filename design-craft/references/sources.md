@@ -10,6 +10,7 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 - Kosta — *Tactile design*
 - Pasquale Vitiello — *Plotter*
 - Pritam Paul — *gridlines*
+- DeepLethe — *Solid Glass*
 - Anton Sten
 - Derek Briggs (PixelJanitor)
 - Gustavo Fior — *Craft*
@@ -29,7 +30,7 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 
 ## Impeccable (Paul Bakaus)
 
-- https://impeccable.style · https://github.com/pbakaus/impeccable (Apache-2.0), screened at commit `b3ced85` (2026-11-09). Command references `bolder`, `quieter`, `distill`, `delight`, `overdrive`, `polish`, `harden` were paraphrased and merged into [refinement-moves.md](refinement-moves.md). Ledger: `docs/impeccable-source-mining-2026-11.md`.
+- https://impeccable.style · https://github.com/pbakaus/impeccable (Apache-2.0), screened at commit `b3ced85` (2026-11-09). Command references `bolder`, `quieter`, `distill`, `delight`, `overdrive`, `polish`, `harden` were paraphrased and merged into [refinement-moves.md](refinement-moves.md). Ledger: `docs/impeccable-source-mining-2026-11.md`. Rechecked at `d41d986` (2026-11-16, skill 4.9.2): two corrections applied to refinement-moves (no transparency for text on a colored ground; the 1–2 color limit excludes semantic colors).
 
 ## Kosta — *Tactile design*
 
@@ -42,6 +43,10 @@ Hollick, Jhey Tompkins, etc.) carry their citations in the body files.
 ## Pritam Paul — *gridlines*
 
 - https://github.com/pritamux/gridlines (MIT), read at commit `20d0944` (2026-11-21). The SKILL.md process and rules were paraphrased into [alignment-pass.md](alignment-pass.md). `probe.js`, `audit.mjs` and `LICENSE` are vendored unchanged (plus a provenance header) in `design-craft/scripts/gridlines/`, with a local regression check in `design-craft/scripts/gridlines.test.mjs`, and the planted-miss sidebar is in [../examples/gridlines-sidebar.html](../examples/gridlines-sidebar.html). The source credits Karri Saarinen's Linear sidebar redraw and Apple's HIG layout chapter; the redraw was not located. The README media (before/after video and images) were not read. Ledger: `docs/gridlines-source-mining-2026-11.md`.
+
+## DeepLethe — *Solid Glass*
+
+- https://github.com/deeplethe/solid-glass (MIT) · https://deeplethe.github.io/solid-glass, read at commit `6e8903e` (2026-11-18). Read in full: `src/solid-glass.css` (1,409 lines, with its why-comments), the Introduction, Material, and Theming pages under `content/docs/`, and the contributing guide. Paraphrased into [solid-glass.md](solid-glass.md); the edge-drawing traps and the opaque token swap went into [surfaces.md](surfaces.md) (Translucent Materials on the Web). The agent components' behavior rules went to `ai-experience-design` (patterns). Not used: the stock components, examples, and component docs, which are shadcn/ui's per the repo's notice file. The repo has no tests and names its origin product only as "the product this material comes from".
 
 ## Anton Sten
 
@@ -131,7 +136,7 @@ Transcript access: YouTube `en` captions fetched with `yt-dlp --skip-download --
 
 ## Emil Kowalski — open skills (aiforui.dev)
 
-- https://aiforui.dev/skills · https://github.com/emilkowalski/skills (MIT), read at rev `715c1807e08c497cfd1dc4feb450a2a3300ef2a9` (2026-11-10). `break-ui` and its catalog were paraphrased into [worst-case-data.md](worst-case-data.md) with a pointer from the harden move in [refinement-moves.md](refinement-moves.md); `emil-design-eng` deltas (Motion 14.2 shorthand acceleration, `will-change` rule, delight and function checks, stagger scoping) were merged into [emil-kowalski.md](emil-kowalski.md); the materials section of `apple-design` was folded into [surfaces.md](surfaces.md). Full screening ledger: `docs/emilkowalski-skills-source-mining-2026-11.md`. Rechecked at rev `64eb3de` (2026-11-15) from the skills.sh Design topic: upstream commit `0f2e23b` ("Fix wrong APIs and cross-skill contradictions") was applied to the Emil Kowalski files (the 300ms rule's modal/drawer/sheet/toast exceptions, the enter-250ms/exit-200ms example, compositor-only wording for CSS animations, the dropped `clip-path` acceleration claim, non-uniform stagger delays, and the `motion/react` `useSpring` + `useTransform` example). Ledger: `docs/skills-sh-design-topic-source-mining-2026-11.md`.
+- https://aiforui.dev/skills · https://github.com/emilkowalski/skills (MIT), read at rev `715c1807e08c497cfd1dc4feb450a2a3300ef2a9` (2026-11-10). `break-ui` and its catalog were paraphrased into [worst-case-data.md](worst-case-data.md) with a pointer from the harden move in [refinement-moves.md](refinement-moves.md); `emil-design-eng` deltas (Motion 14.2 shorthand acceleration, `will-change` rule, delight and function checks, stagger scoping) were merged into [emil-kowalski.md](emil-kowalski.md); the materials section of `apple-design` was folded into [surfaces.md](surfaces.md). Full screening ledger: `docs/emilkowalski-skills-source-mining-2026-11.md`. Rechecked at rev `64eb3de` (2026-11-15) from the skills.sh Design topic: upstream commit `0f2e23b` ("Fix wrong APIs and cross-skill contradictions") was applied to the Emil Kowalski files (the 300ms rule's modal/drawer/sheet/toast exceptions, the enter-250ms/exit-200ms example, compositor-only wording for CSS animations, the dropped `clip-path` acceleration claim, non-uniform stagger delays, and the `motion/react` `useSpring` + `useTransform` example). Ledger: `docs/skills-sh-design-topic-source-mining-2026-11.md`. The same recheck also took `break-ui`'s rule that initials skip name suffixes, applied to worst-case-data.
 
 ## Luke Wroblewski — copy volume in generated UI
 

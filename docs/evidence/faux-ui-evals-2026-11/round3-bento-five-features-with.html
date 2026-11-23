@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Relay features</title>
+<style>
+  .bx {
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    --tile: #f3f3f0; --surface: #fff;
+    --line: rgba(20,20,18,.09); --line-faint: rgba(20,20,18,.06);
+    --strong: #1b1b19; --text: #55554f; --faint: #8b8b84; --copy-faint: #77776f;
+    --bar: #e4e4df; --accent: #2f6fed; --warm: #e8920c; --ok: #23a05a;
+    --gap: 14px; --pad: 28px; --radius: 20px;
+    --shadow: 0 0 0 1px rgba(20,20,18,.07), 0 1px 2px rgba(20,20,18,.04), 0 12px 28px -10px rgba(20,20,18,.14);
+  }
+  html, body { margin: 0; padding: 0; background: #fff; }
+  .bx { width: 1000px; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); font: 12px/1.35 var(--font); color: var(--text); -webkit-font-smoothing: antialiased; }
+  .bx *, .bx *::before, .bx *::after { box-sizing: border-box; }
+  .bx-tile { position: relative; height: 330px; padding: var(--pad); border-radius: var(--radius); background: var(--tile); overflow: hidden; }
+  .bx-tile[data-span="2"] { grid-column: span 2; }
+  .bx-copy { margin: 0; max-width: 27em; text-wrap: pretty; font-size: 17px; line-height: 1.4; letter-spacing: -.01em; color: var(--copy-faint); }
+  .bx-copy b { font-weight: 650; color: var(--strong); }
+  .bx-pic { position: absolute; left: var(--pad); right: var(--pad); top: 104px; bottom: 0; }
+  .bx-bar { display: block; height: 6px; border-radius: 3px; background: var(--bar); }
+  .bx-av { flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 10px; font-weight: 600; color: #fff; }
+
+  /* 1 Hero: inbox window, bleeds off right and bottom */
+  .bx-hero .bx-pic { right: 0; }
+  .bx-window { position: absolute; left: 0; top: 0; width: 700px; height: 320px; display: grid; grid-template-columns: 116px 232px 1fr; background: var(--surface); border-radius: 12px 0 0 0; box-shadow: var(--shadow); overflow: hidden; }
+  .bx-side { padding: 13px 12px; background: #f7f7f5; border-right: 1px solid var(--line); }
+  .bx-lights { display: flex; gap: 6px; margin: 0 0 16px 2px; }
+  .bx-lights i { width: 10px; height: 10px; border-radius: 50%; }
+  .bx-lights i:nth-child(1) { background: #fe5f57; } .bx-lights i:nth-child(2) { background: #febc2e; } .bx-lights i:nth-child(3) { background: #28c840; }
+  .bx-nav { display: grid; gap: 2px; }
+  .bx-nav div { display: flex; align-items: center; gap: 8px; height: 26px; padding: 0 8px; border-radius: 6px; }
+  .bx-nav div[data-on] { background: rgba(20,20,18,.06); }
+  .bx-nav i { flex: none; width: 13px; height: 13px; border-radius: 4px; background: #dcdcd7; }
+  .bx-nav span { height: 6px; border-radius: 3px; background: #dcdcd7; }
+  .bx-list { border-right: 1px solid var(--line); }
+  .bx-head { display: flex; align-items: center; height: 42px; padding: 0 16px; border-bottom: 1px solid var(--line); font-size: 13px; font-weight: 600; color: var(--strong); }
+  .bx-rows { padding: 6px; display: grid; gap: 2px; }
+  .bx-row { display: grid; grid-template-columns: 24px 1fr auto; gap: 4px 10px; align-items: center; padding: 8px 8px; border-radius: 8px; }
+  .bx-row[data-on] { background: #eef3fe; }
+  .bx-row .bx-av { grid-row: span 2; }
+  .bx-name { font-size: 12.5px; font-weight: 600; color: var(--strong); white-space: nowrap; }
+  .bx-time { font-size: 11px; color: var(--faint); }
+  .bx-subj { grid-column: 2 / 4; font-size: 12px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bx-thread { padding-bottom: 0; }
+  .bx-msg { margin: 16px 16px 0; display: grid; grid-template-columns: 24px 1fr; gap: 10px; }
+  .bx-msg-body { max-width: 200px; font-size: 12.5px; line-height: 1.5; color: var(--text); }
+  .bx-msg-body b { display: block; margin-bottom: 2px; font-weight: 600; color: var(--strong); }
+  .bx-lines { display: grid; gap: 7px; margin-top: 8px; }
+
+  /* 2 Stat */
+  .bx-stat { position: absolute; left: var(--pad); right: var(--pad); bottom: var(--pad); }
+  .bx-lead { font-size: 13px; color: var(--faint); margin-bottom: 6px; }
+  .bx-num { font-size: 96px; line-height: .9; font-weight: 650; letter-spacing: -.04em; color: var(--warm); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .bx-num small { font-size: 44px; letter-spacing: -.02em; margin-left: 3px; }
+  .bx-label { margin-top: 14px; font-size: 14px; color: var(--text); }
+  .bx-track { margin-top: 14px; height: 6px; border-radius: 3px; background: #e2e2dc; }
+  .bx-track i { display: block; height: 100%; width: 78%; border-radius: 3px; background: var(--warm); }
+
+  /* 3 Component: assignee menu */
+  .bx-menu { position: absolute; left: 0; right: 0; top: 0; padding: 6px; border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); }
+  .bx-menu-title { padding: 8px 8px 6px; font-size: 11px; color: var(--faint); }
+  .bx-opt { display: flex; align-items: center; gap: 10px; height: 36px; padding: 0 8px; border-radius: 8px; font-size: 13px; color: var(--strong); }
+  .bx-opt[data-on] { background: #eef3fe; font-weight: 600; }
+  .bx-opt .chk { margin-left: auto; width: 14px; height: 14px; color: var(--accent); }
+
+  /* 4 Component: draft */
+  .bx-draft { position: absolute; left: 0; right: 0; top: 0; padding: 16px; border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); }
+  .bx-draft-top { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--faint); margin-bottom: 10px; }
+  .bx-draft-top b { font-weight: 600; color: var(--strong); font-size: 12px; }
+  .bx-draft p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--strong); }
+  .bx-draft-foot { display: flex; align-items: center; gap: 8px; margin-top: 14px; }
+  .bx-btn { height: 28px; padding: 0 12px; border-radius: 7px; display: inline-flex; align-items: center; font-size: 12px; font-weight: 600; }
+  .bx-btn[data-p] { background: var(--accent); color: #fff; }
+  .bx-btn[data-g] { color: var(--text); box-shadow: inset 0 0 0 1px var(--line); }
+
+  /* 5 Collection */
+  .bx-coll { position: absolute; left: var(--pad); right: 0; top: 112px; display: grid; gap: 10px; }
+  .bx-line { display: flex; gap: 10px; white-space: nowrap; }
+  .bx-line:nth-child(2) { margin-left: 34px; } .bx-line:nth-child(3) { margin-left: 12px; }
+  .bx-chip { flex: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; border-radius: 10px; background: var(--surface); box-shadow: var(--shadow); font-size: 14px; font-weight: 650; letter-spacing: -.01em; color: var(--strong); }
+</style>
+</head>
+<body>
+<div class="bx">
+
+  <section class="bx-tile bx-hero" data-span="2">
+    <p class="bx-copy"><b>One inbox for the whole team.</b> Every customer email lands in one place, and everyone sees who has it.</p>
+    <div class="bx-pic" role="img" aria-label="A shared inbox with a refund request from Priya Nair selected">
+      <div class="bx-window">
+        <div class="bx-side">
+          <div class="bx-lights"><i></i><i></i><i></i></div>
+          <div class="bx-nav">
+            <div data-on><i></i><span style="width:44px"></span></div>
+            <div><i></i><span style="width:56px"></span></div>
+            <div><i></i><span style="width:38px"></span></div>
+            <div><i></i><span style="width:50px"></span></div>
+          </div>
+        </div>
+        <div class="bx-list">
+          <div class="bx-head">Inbox</div>
+          <div class="bx-rows">
+            <div class="bx-row" data-on><div class="bx-av" style="background:#d9645a">PN</div><span class="bx-name">Priya Nair</span><span class="bx-time">2m</span><span class="bx-subj">Refund for order 4471</span></div>
+            <div class="bx-row"><div class="bx-av" style="background:#3f8f7a">TB</div><span class="bx-name">Tom Becker</span><span class="bx-time">9m</span><span class="bx-subj">Can't reset my password</span></div>
+            <div class="bx-row"><div class="bx-av" style="background:#8a6bc9">LO</div><span class="bx-name">Lena Ortiz</span><span class="bx-time">1h</span><span class="bx-subj">Invoice shows the wrong plan</span></div>
+          </div>
+        </div>
+        <div class="bx-thread">
+          <div class="bx-head">Refund for order 4471</div>
+          <div class="bx-msg">
+            <div class="bx-av" style="background:#d9645a">PN</div>
+            <div class="bx-msg-body"><b>Priya Nair</b>I was charged twice for this order. Can you refund one?
+              <div class="bx-lines"><span class="bx-bar" style="width:86%"></span><span class="bx-bar" style="width:58%"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bx-tile">
+    <p class="bx-copy"><b>Never miss a reply.</b></p>
+    <div class="bx-stat" role="img" aria-label="14 minutes left on the first-reply timer">
+      <div class="bx-lead">First reply due in</div>
+      <div class="bx-num">14<small>m</small></div>
+      <div class="bx-label">Priority tickets, 30 min target</div>
+      <div class="bx-track"><i></i></div>
+    </div>
+  </section>
+
+  <section class="bx-tile">
+    <p class="bx-copy"><b>Assign in one click.</b> Hand a ticket to whoever should own it.</p>
+    <div class="bx-pic" role="img" aria-label="An assignee menu with Dana Reyes checked">
+      <div class="bx-menu">
+        <div class="bx-menu-title">Assign to</div>
+        <div class="bx-opt"><div class="bx-av" style="background:#e0953a">MK</div>Marcus Kim</div>
+        <div class="bx-opt" data-on><div class="bx-av" style="background:#2f6fed">DR</div>Dana Reyes
+          <svg class="chk" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg></div>
+        <div class="bx-opt"><div class="bx-av" style="background:#3f8f7a">IA</div>Ines Alvarez</div>
+        <div class="bx-opt"><div class="bx-av" style="background:#8a6bc9">SO</div>Sam Okafor</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bx-tile">
+    <p class="bx-copy"><b>Replies drafted for you.</b> Review, tweak, send.</p>
+    <div class="bx-pic" role="img" aria-label="A drafted reply with a Send button">
+      <div class="bx-draft">
+        <div class="bx-draft-top"><b>Draft reply</b><span>To Hollis Grant</span></div>
+        <p>Hi Hollis, thanks for flagging this. I've reissued your invoice on the Team plan and it's on its way to your inbox now.</p>
+        <div class="bx-draft-foot"><span class="bx-btn" data-p>Send</span><span class="bx-btn" data-g>Edit</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bx-tile">
+    <p class="bx-copy"><b>Works with your tools.</b> Tickets flow to your team's apps.</p>
+    <div class="bx-coll" role="img" aria-label="Integrations including Slack, GitHub, Stripe, Shopify, Linear and Jira">
+      <div class="bx-line"><span class="bx-chip">Slack</span><span class="bx-chip">GitHub</span><span class="bx-chip">Stripe</span><span class="bx-chip">Figma</span></div>
+      <div class="bx-line"><span class="bx-chip">Shopify</span><span class="bx-chip">Linear</span><span class="bx-chip">Notion</span></div>
+      <div class="bx-line"><span class="bx-chip">Jira</span><span class="bx-chip">HubSpot</span><span class="bx-chip">Zoom</span><span class="bx-chip">Intercom</span></div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

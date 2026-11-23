@@ -11,6 +11,7 @@ The task shape: an AI produced UI and you have to make it *right* — which is a
 - Recognize the failure modes
 - Name the tell, then pick the move
 - Escape the model's defaults
+- Ask before building only when the answer changes the build
 - Direct the loop (generate and prompt · prompt vs edit · when words are the wrong tool · evaluate, apply review, and finish)
 - Borrow, codify, and merge techniques
 - Turn corrections into standing rules
@@ -70,6 +71,18 @@ Impeccable's evaluation campaign ("The model can't roll its own dice", https://i
 
 These are one project's results on its own briefs. Treat them as strong defaults for direction prompts, not laws.
 
+## Ask before building only when the answer changes the build
+
+"Commit first, then clarify" above is about the *design*: commit to the concept, then run a clarity pass on the output. This section is about *questions to the person*, and the default is the same shape: build on stated assumptions unless a missing answer would change the direction, the content structure, or the delivery format. From Open Design's discovery prompt (nexu-io/open-design, Apache-2.0, `0725880`; the file says it is distilled from alchaincyf/huashu-design, which was not read directly):
+
+- **A new project is not a reason to ask.** Neither is a first turn or an empty metadata field. A missing fact is something to infer a default for. Skip questions for local tweaks and for "just build it".
+- **One batch, hard cap of five questions, then stop the turn.** Count the draft; cut the least build-critical until five or fewer remain. A second short batch later beats a fixed checklist now. No code, no tool calls, no "I'll wait" after asking.
+- **Prefill every answer** with the recommendation inferred from the brief, so the person can accept it unchanged and still get a sensible build. At most six or seven options per question, labeled in the person's own words and language.
+- **Never re-ask what the brief, the repo, or an attached file already answers.**
+- **Do not put the visual direction to a vote here.** Naming looks in a question anchors the answer, and a model's own shortlist is not a fair draw (above). If there is no brand source, pick one direction, say it in one sentence, and build.
+- **A brand source means extract, never guess.** Given a brand guide, site, or screenshot: fetch the real CSS, pull the actual color values out of it (search for the hex and color functions; do not recall a brand's colors from memory), read type from the rendered page, and write a small brand spec: six color roles (background, surface, text, muted, border, accent), three font stacks, and three to five posture rules. If the person says they have a spec but none is attached, ask for it and stop; do not invent a domain or tokens. Extracting a whole system from shipped UI → `design-systems`.
+- **Say the system back in one sentence before building** ("deep navy canvas, one cyan accent, geometric display over system body"). It is the cheapest redirect the person will get.
+
 ## Direct the loop
 
 Ten numbered moves in working order, grouped by what they are for. The numbers run across the groups; the three borrow-and-codify techniques sit in their own unnumbered section after the loop because they are optional inputs to it, not steps in it.
@@ -93,7 +106,7 @@ Ten numbered moves in working order, grouped by what they are for. The numbers r
 
 ### Evaluate, apply review, and finish
 
-6. **Evaluate agents by how they drive** (Tommy Geoco, Dive Club podcast, OYNoy468kS8): don't judge a model/tool on one-shot output — "you have to drive them for a little while. When you drive it with intent and you're just like… that's wrong fix, that's wrong fix, and you do that a few iterations, I think then you have a good feel." (Turning those corrections into standing rules → "Turn corrections into standing rules" below.)
+6. **Evaluate agents by how they drive** (Tommy Geoco, Dive Club podcast, OYNoy468kS8): don't judge a model/tool on one-shot output — "you have to drive them for a little while. When you drive it with intent and you're just like… that's wrong fix, that's wrong fix, and you do that a few iterations, I think then you have a good feel." (Turning those corrections into standing rules → "Turn corrections into standing rules" below; mining a whole session for the corrections worth keeping, including silent edits and reverts → `design-systems` field notes, "Capturing session corrections as rules".)
 7. **Build once, then discover missing states by touching it.** A static mock rarely names every state. After implementation, operate the component and add the states the live thing reveals: idle, hover, pressed, loading/working, disabled, success/error, empty/overflow, snap-caught, drag-release, and reduced-motion. If a number hard-cuts, make it roll or cross-fade; if a task is working, prefer a calm state treatment over a default spinner when the wait is short and controlled. The user feels the state system, not the screenshot.
 8. **Apply review notes the way the reviewer works** (Kosta, tactile-design, distilled from hundreds of pixel-level review notes). A designer's note is usually one element and one change, so:
    - read it literally, and ask one short question only if it is ambiguous;
@@ -110,7 +123,7 @@ Ten numbered moves in working order, grouped by what they are for. The numbers r
 
 Three ways to bring outside taste or a diverged build into the loop above. None is a prompt-vs-edit question; use them when a reference, a taste corpus, or a second build exists.
 
-- **Rip techniques from reference URLs** (Santos): "I dropped in this URL and I said, 'This technique is awesome. I want it applied to our components. Go do that'" — then extrapolate the theory, not the snippet: "take the same theory but make it stronger. Maybe do like five layers."
+- **Rip techniques from reference URLs** (Santos): "I dropped in this URL and I said, 'This technique is awesome. I want it applied to our components. Go do that'" — then extrapolate the theory, not the snippet: "take the same theory but make it stronger. Maybe do like five layers." When the reference is a whole page or a recording rather than one technique, capture it properly and write a full build prompt with a reference boundary: [reference-to-build-prompt.md](reference-to-build-prompt.md).
 - **Codify taste as an auditor** (Santos): curate ~15–20 CodePens/posts/tweets from designers you admire into a skill that runs as a "visual design interaction design auditor" subagent. Iterate by re-synthesizing, not stacking: zoom "back to the source material and think about what the general philosophy becomes" when adding a perspective. Caution: "don't don't create one skill that is every designer you've ever thought was cool." When the source is a visual reference corpus rather than posts/code examples, use `creating-skills` (converting-visual-references-to-skills) to extract the taste rules; this reference owns applying those rules as an auditor or repair loop.
 - **Style-transfer merge** (Madrick): when a designer build and an engineer build diverge, don't reconcile by hand — "Can you keep all the functionality of the engineer's version and give it all the styling that I have here." For motion, prompt with a labeled keyframe sketch — "a picture's literally worth a thousand words" — labeling each state in the drawing.
 
@@ -140,6 +153,7 @@ Every design correction the user makes is taste the agent lacked. Unless it is w
 - [ ] Generation tells named by catalog ID and each fix chosen as a named move (bolder/quieter/distill/polish/harden) with an explicit scope?
 - [ ] Supporting lines and actions counted per surface, and over-explained surfaces stripped to zero before one line was re-admitted?
 - [ ] For a new direction, did something other than the generating model pick from its shortlist, and was the concept committed before the clarity pass?
+- [ ] Questions asked only where the answer changes direction, structure, or format: one batch of five or fewer, defaults prefilled, brand values extracted from the source and said back in one sentence?
 - [ ] Independent fresh-context judge run before calling it done?
 - [ ] Session corrections proposed as class-level rules with the user's why (or an *inferred* one awaiting confirmation), and written only after approval?
 
@@ -147,6 +161,7 @@ Every design correction the user makes is taste the agent lacked. Unless it is w
 
 - **`frontend-design`** — generates the UI well (de-slop substrate, distinctive aesthetics); this reference takes over when output needs direction and repair.
 - **`design-prototyping`** — the agents tier owns the broader prototyping workflow, the mock-diff checklist, and the judge pattern; this reference is its layout-diagnosis sharp end.
+- **[reference-to-build-prompt.md](reference-to-build-prompt.md)** — building from someone's page, recording, or HTML: evidence capture, the spec, the reference boundary, the originality audit.
 - **[agentic-coding.md](agentic-coding.md)** — agent workflow mechanics (plan mode, prompt protocol, topology); this reference is UI-specific direction.
 - **`creating-skills` (converting-visual-references-to-skills)** — turns a curated image corpus into reusable visual-taste criteria; this reference uses those criteria to steer, audit, and repair generated UI.
 - **`design-systems`** — the bricks/DS-as-AI-context doctrine that makes step 1 possible.

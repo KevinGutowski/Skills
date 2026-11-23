@@ -4,6 +4,17 @@
 
 > **Prerequisites:** For general skill authoring see `creating-skills`. For book/documentation sources see `converting-books-to-skills` — this reference is for *living repos with PR history*; the boundary is whether the source has a review process to mine.
 
+## Contents
+
+- Why PRs, Not Just Code
+- Qualify the Source First
+- Step 1 — Catalog Before Extracting
+- Step 2 — Deep-Dive Per Topic
+- Step 3 — Two-Layer Output
+- One technique from code you built
+- Honesty & Licensing
+- When NOT to Use This Skill
+
 ## Why PRs, Not Just Code
 
 "Reading the code shows the outcome. Pull requests show the decisions." (Rob Zolkos.) PRs carry the options considered, the review pushback, the failed first attempt, the trade-offs that survived. A skill distilled only from source code captures conventions; one distilled from PRs also captures decision rules — which is what agents actually need.
@@ -78,6 +89,30 @@ Skill packaging rules from the case study:
 - Optionally one **persona review skill** (e.g. `/dhh`) when the source has a distinctive reviewer voice worth replaying. Its source material is the reviewer's verbatim comments collected in Step 2 — quotes like "We should never let our desire for ease of testing bleed into the application itself" are the persona; don't paraphrase them away.
 - Keep guide and skills in sync; the skill cites the guide topic, the guide cites the PRs.
 
+## One technique from code you built
+
+A different starting point from a repo with review history: the thing works, you built it, and the knowledge is trapped in one file. From Meng To's `web-technique-to-skill` and `article-prompts-to-skills` (https://github.com/MengTo/skills, MIT, `3cc9345`); single author, written for visual web techniques, and the method carries to any working mechanism.
+
+1. **Write the mechanism in one sentence first:** the one thing that, removed, makes the effect stop working. Test it by changing the subject, the palette, and the layout in your head. If the sentence still holds, it is the mechanism; if it stops making sense, you named the staging. No sentence means there is a look here and no skill yet. One mechanism per skill; a page that turned out well usually holds several.
+2. **Sort every part of the source into three piles and keep the first.**
+
+   | Pile | Goes | Examples |
+   |---|---|---|
+   | Mechanism | The skill | The maths, the state model, an ordering constraint, a budget |
+   | Staging | The demo only | Palette, copy, imagery, page layout, brand |
+   | Incidental | Nowhere | Selector names, a font choice, a one-off asset path |
+
+3. **Every rule names the wrong result, not the right adjective.** "Vary the rotation for a natural feel" is untestable; "drive rotation from the tumble angle, because an independent sine reads as a wobble" can be checked. If you cannot say what goes wrong, you probably never tried the alternative: cut the rule or go and find out.
+4. **Carry numbers, not adjectives.** Ship the constants you landed on, as ranges per layer or state, and say which were tuned by measurement and what was measured. Three or more parameters that vary together go in a table.
+5. **Write the expensive gotchas symptom-first,** so a reader recognizes the bug they are staring at. The ones that cost hours and cannot be re-derived from the code are usually one of: color space (right in the editor, wrong on screen), layout timing (measured once, before layout happened), stacking and compositing (a context created three ancestors up), ordering (two correct operations, wrong in one order), or a property that silently does nothing on one engine. This is house rule territory already (gotchas are the highest-signal content); the symptom-first form is the addition.
+6. **Disclose the verified stack.** Name the runtime, the renderer or API, and the technique layer, checked against the imports and not guessed from the look. Where the result could be mistaken for a heavier stack, say what is absent ("no WebGL").
+7. **State the boundary against the nearest existing skill in the opening lines,** and extend that skill instead if it already covers the mechanism.
+8. **State the cost honestly:** profile before claiming, then name the real bottleneck, the cheap lever, and the thing that does not matter.
+
+Four ways the extraction fails: **page clone** (the layout came across and the mechanism did not), **mega-skill** (independent techniques merged into one vague skill), **micro-fragments** (every sentence became a skill with no reusable behavior), and **theme lock-in** (the source's palette, assets, or copy hard-coded into the rules).
+
+The source also asks for a demo that reproduces the original staging exactly; that only applies to staging you own. Building from someone else's page → `working-with-ai` (reference-to-build-prompt).
+
 ## Honesty & Licensing
 
 - State that content is LLM-extracted and may contain inaccuracies; tell readers to verify against the actual implementations.
@@ -88,4 +123,5 @@ Skill packaging rules from the case study:
 
 - Source is a book, talk series, or docs site → `converting-books-to-skills`.
 - You only need the final conventions of a small codebase → read the code directly; the catalog step isn't worth it below ~50 substantive PRs.
+- The source is one working technique you built, with no review history → skip Steps 1 to 3 and use "One technique from code you built" above.
 - Repo has no public PR history (mirrored exports, force-pushed mains) → fall back to `git log` archaeology: commit messages and revert/fix chains carry a weaker version of the same signal.

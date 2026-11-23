@@ -5,7 +5,7 @@
 ## Contents
 
 - Data & metrics (2019) · Output patterns (2019) · Input patterns (2019) · Generative layer (2025)
-- Fairies (Ruiz multi-agent canvas) · Shape of AI (Campbell) · Tokens before pixels (Silber) · Swarms and waiting · Linear worked patterns
+- Fairies (Ruiz multi-agent canvas) · Shape of AI (Campbell) · Tokens before pixels (Silber) · Swarms and waiting · Linear worked patterns · Agent-turn surfaces (Solid Glass components: status line, tool-call rows, composer)
 - Full quote texture moved from SKILL.md: Proactive AI over bolt-on chat (Evil Martians) · Zhuo's conversational-interface critique · Confirmation fatigue (Stamatiou) · Relational & agentic AI (Config) · Cursor's AI-surface laws (Ryo Lu + MDS) · CapWords field notes · Agent-era surfaces (additional quote texture)
 - Source-keyed summaries (moved from SKILL.md, 2026-11): output pattern 5 (Ballard, Park) · personalization stack (Soleio Cuervo) · the eleven former body paragraphs, by source
 
@@ -91,6 +91,33 @@ Emily Campbell (VP Design at HackerRank; creator of Shape of AI) pockets "the pa
 - **Agent identity.** An agent should have a visible workspace identity, admin-manageable permissions, and a clear agent marker. It may appear in people-like surfaces such as mentions or assignee menus only when explicitly scoped to do so.
 - **Session state.** Wrap agent interactions in sessions with states like waiting, working, completed, and errored. This gives users a handle for what the agent is doing and gives developers a consistent surface for replies.
 - **Delegation, not assignment.** Assignment transfers accountability to a person. Agents cannot be accountable, so show the human owner and delegated agent separately. This prevents orphaned work and clarifies whom to talk to when output needs review.
+
+## Agent-turn surfaces — Solid Glass components (2026)
+
+*Single source: the docblocks and code of DeepLethe's Solid Glass agent components (github.com/deeplethe/solid-glass, MIT, `6e8903e`). One team's shipped choices, not tested findings; the numbers are theirs. The visual theme itself is `design-craft` (solid-glass).*
+
+These fill in the mechanics under two rules above: Linear's "show a meaningful thinking state and elapsed time" and session states, and Ryo Lu's curated-focus waiting states.
+
+- **One status line per turn, present from the first moment to the last,** whatever else comes and goes above it. It carries four things: that the turn is going (an animated glyph), what it is doing right now (a few words), for how long, and roughly how much it has written (a token count).
+- **Elapsed time starts at send and shows nothing until a full second has passed.** "0s" is a figure about nothing. Format compactly (8s, 1m 15s, 1h 1m). Use tabular numerals so the line does not shift.
+- **The token count climbs to each new value** (350ms in the source) rather than jumping, and snaps under reduced motion.
+- **The glyph says what kind of work is happening, not only that work is happening.** The source uses three points of light with a different movement per activity (thinking, writing, searching, running a command, compacting). When the activity changes, the points travel to the new figure over 450ms; they never jump.
+- **A state that lasts minutes is not minutes of one motion.** Long activities rotate through several figures, each held 4 to 5.2s with a 0.7s blend into the next.
+- **Reduced motion holds a still pose,** so the words beside the glyph must carry the state alone. An off-screen glyph keeps its clock but schedules no frames.
+- **Label a tool call by what it did,** in one line ("Read search.py", "Searched for …"), not by the tool's name and arguments. The full command, query, or path is one click away, in its own scroll box; a call that changed a file opens as a diff.
+- **Fold a run of consecutive calls into one line** ("Ran 6 steps", or "Running 6 steps" while live) that still shows the summed diff stats. A single finished call is not wrapped in a group. The reason: several calls in a row say little more than one, and an unfolded run keeps pushing the bottom of the page down.
+- **What the agent is doing this moment belongs on the status line only,** not repeated in the step list.
+- **Reasoning is folded by default:** it explains the answer but is not the answer. While the model is thinking and no answer has started, the folded header says so, so the wait does not look empty.
+- **A background-task notice is styled as agent activity, not as a message.** News that a background command, subagent, or schedule finished is set in the same gray as the lines saying what the agent did, with a status dot for how it went. It is the reason the agent is about to speak; it is not something the user said and not a banner across the thread. Nothing in it moves.
+- **An answered question stays as a record.** A decision card shows the question and its choices as buttons; once the conversation has moved on, the choices are disabled and the card remains.
+- **Send becomes stop while a turn runs, unless the user has typed something.** Typed text is queued behind the running turn like any other message, so the same button sends it.
+- **Ignore Enter during IME composition.** Check `isComposing`, and also `keyCode === 229`, because Safari reports the candidate-confirming Enter after composition has ended.
+- **Settings sit under the composer, not in it:** what decides how the assistant works (mode, model, effort) on one side, what the next message is sent with on the other. Backspace at the very start of the text arms the last attachment tag; a second press removes it.
+- **A context-window ring changes color at 70% and again at 90%** (amber, then the failure color). It opens to the numbers and to what the context is full of.
+- **An uploading attachment is its own progress bar:** the tag fills from the left, and its percentage reserves the width of "100%" from the start so the row does not shift as digits are added. A tag is sized to its label, never to a minimum width, so the close button sits at the same distance on every tag.
+- **Motion means running; hue means finished or stopped.** Running states are gray and moving. Status color marks something that has ended or halted (done, succeeded, interrupted or awaiting a decision, failed), and those hold still; a merely stopped background task gets a gray dot. The context ring is the exception: a gauge that is colored while live.
+
+**Tension with Ryo Lu's laws, unresolved.** The status line pairs a moving glyph with a shimmer across its label, and a running step can pulse as well: that is close to the "twin spinners" he warns against. The source does not address this. The nearest defense available is that glyph and shimmer sit on one line in one place and the label names real activity; the pulsing step row is a second moving place. Hold it to his test: one place for the eye, real progress, no vanity messages. Also note the decision card's default eyebrow ("Needs your decision") is the kind of kicker label that `frontend-design` (anti-slop-catalog) bans on marketing surfaces; here it is a status in the status color, which is a different job.
 
 ## Proactive AI over bolt-on chat — Evil Martians (2024), full quotes
 

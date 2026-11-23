@@ -43,3 +43,28 @@ Verified quotes:
 
 - "True randomness rarely produces compositionally interesting results."
 - "randomness is limited and applied in measured doses"
+
+## Meng To, open agent skills: 3D and weather (2026)
+
+Meng To, `MengTo/skills` (MIT), revision `3cc9345`, read 2026-11-18: `agent-skills/3d/` README and the
+metal-material, wood-lighting-scorecard, ultra-realistic-water, retina-resolution and falling-leaves skills, plus
+`agent-skills/web-design/threejs-weather`. Demos ran on three.js r169 with `WebGLRenderer`.
+Density: HIGH but narrow, and one author. Folded in this library's own words into
+[threejs-scene-craft.md](threejs-scene-craft.md); no code, shader, asset, or script was imported.
+
+Used for:
+
+- tone-map-once pipeline order with half-float targets and linear bloom
+- conductor materials and the dark-room-with-bright-cards environment
+- per-term footprint fade for procedural detail
+- renderer and composer pixel-ratio sync; the three meanings of "200%"
+- dark-interior lighting, shadow bias, volumetric planes
+- particle volume anchoring, draw-range density, tumbling instanced leaves
+- the silent-failure table
+
+Checked against three.js source on 2026-11-18 (`mrdoob/three.js`, tags r162 and r163 and the `dev` branch at r188dev):
+the `envMapIntensity` / `material.envMap` condition and `Scene.environmentIntensity`, `Float32BufferAttribute`
+copying its input, the default `customProgramCacheKey`, and `EffectComposer` sizing. All numeric constants remain
+single-source.
+
+Not read: the other ten 3d skills, the ocean module and its long reference, all demos and scripts.

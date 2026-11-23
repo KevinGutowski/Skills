@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Stash upload demo</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; }
+  .stash-demo, .stash-demo * { box-sizing: border-box; }
+  .stash-demo {
+    --ink: #1c2330; --ink2: #667085; --ink3: #98a2b3; --line: #e8ebf1;
+    --accent: #2f6df6; --soft: #f0f5ff; --bar: #eceff4;
+    position: relative; width: 720px; height: 340px; overflow: hidden; background: #fff;
+    font: 13px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink); -webkit-font-smoothing: antialiased; user-select: none;
+  }
+  .stash-demo svg { display: block; flex: none; }
+  .stash-demo .ic { fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+  .stash-demo .win {
+    position: absolute; left: 24px; top: 24px; width: 780px; height: 360px;
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 0 0 1px rgba(16,24,40,.08), 0 24px 56px -12px rgba(16,24,40,.22), 0 6px 14px rgba(16,24,40,.06);
+    display: grid; grid-template-columns: 168px 1fr; grid-template-rows: 38px 1fr; overflow: hidden;
+  }
+  .stash-demo .chrome { grid-column: 1 / 3; display: flex; align-items: center; gap: 7px; padding: 0 14px; border-bottom: 1px solid var(--line); background: #fafbfc; }
+  .stash-demo .chrome i { width: 10px; height: 10px; border-radius: 50%; background: #dde1e8; }
+  .stash-demo .side { background: #f6f7f9; border-right: 1px solid var(--line); padding: 12px 8px; }
+  .stash-demo .nav { display: flex; align-items: center; gap: 10px; height: 30px; padding: 0 10px; border-radius: 8px; color: var(--ink2); }
+  .stash-demo .nav.on { background: #e8edf6; color: var(--ink); font-weight: 600; }
+  .stash-demo .nav .ic { width: 15px; height: 15px; }
+  .stash-demo .nav.b { gap: 10px; }
+  .stash-demo .nav.b span { height: 7px; border-radius: 4px; background: var(--bar); display: block; }
+  .stash-demo .nav.b .ic { color: #cfd4dd; }
+
+  .stash-demo .main { padding: 0 8px; min-width: 0; }
+  .stash-demo .head { height: 52px; display: flex; align-items: center; gap: 12px; padding: 0 12px; }
+  .stash-demo .title { font-size: 15px; font-weight: 600; }
+  .stash-demo .avs { display: flex; }
+  .stash-demo .avs b { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #fff; margin-left: -6px; }
+  .stash-demo .avs b:first-child { margin-left: 0; }
+  .stash-demo .cols, .stash-demo .row { display: grid; grid-template-columns: 28px 170px 76px 84px 28px; column-gap: 12px; align-items: center; padding: 0 12px; }
+  .stash-demo .cols { height: 26px; font-size: 11px; color: var(--ink3); }
+  .stash-demo .cols span:first-child { grid-column: 1 / 3; }
+  .stash-demo .list { position: relative; border-radius: 10px; padding-top: 2px; height: 220px; }
+  .stash-demo .tint { position: absolute; inset: 0; border-radius: 10px; background: var(--soft); opacity: 0; }
+  .stash-demo .slot { position: relative; height: 0; overflow: hidden; }
+  .stash-demo .row { position: relative; height: 44px; background: transparent; border-radius: 8px; }
+  .stash-demo .row .t { width: 28px; height: 28px; border-radius: 7px; display: grid; place-items: center; }
+  .stash-demo .row .t .ic { width: 14px; height: 14px; }
+  .stash-demo .nm { font-weight: 500; white-space: nowrap; }
+  .stash-demo .meta { color: var(--ink2); font-size: 12px; white-space: nowrap; }
+  .stash-demo .barx { height: 7px; border-radius: 4px; background: var(--bar); }
+  .stash-demo .newrow { background: transparent; }
+  .stash-demo .cellx { position: relative; height: 18px; overflow: hidden; }
+  .stash-demo .cellx > * { position: absolute; left: 0; top: 0; line-height: 18px; white-space: nowrap; }
+  .stash-demo .track { top: 7px !important; width: 60px; height: 4px; border-radius: 2px; background: #e4e9f2; overflow: hidden; }
+  .stash-demo .track i { display: block; height: 100%; width: 0%; background: var(--accent); border-radius: 2px; }
+  .stash-demo .pct { font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 500; font-size: 12px; }
+  .stash-demo .del { width: 28px; height: 28px; border-radius: 7px; display: grid; place-items: center; color: var(--ink2); opacity: 0; }
+  .stash-demo .del .ic { width: 15px; height: 15px; }
+
+  .stash-demo .cur { position: absolute; left: 0; top: 0; z-index: 10; width: 0; height: 0; will-change: transform; }
+  .stash-demo .cur svg.arrow { position: absolute; left: 0; top: 0; filter: drop-shadow(0 1px 1px rgba(16,24,40,.25)); transform-origin: 1px 1px; }
+  .stash-demo .chip {
+    position: absolute; z-index: 9; display: grid; grid-template-columns: 28px 170px; column-gap: 12px; align-items: center;
+    height: 44px; width: 232px; padding: 0 12px; background: #fff; border-radius: 8px;
+    box-shadow: 0 0 0 1px rgba(16,24,40,.08), 0 14px 28px -6px rgba(16,24,40,.28);
+    transform-origin: 20% 50%;
+  }
+  .stash-demo .chip .t { width: 28px; height: 28px; border-radius: 7px; display: grid; place-items: center; }
+  .stash-demo .chip .t .ic { width: 14px; height: 14px; }
+  .stash-demo .tp { background: #fdeceb; color: #e04a3f; }
+  .stash-demo .tz { background: #fff3dc; color: #d98a0b; }
+  .stash-demo .ti { background: #e3f6ec; color: #1f9d62; }
+  .stash-demo .tf { background: #e8efff; color: #2f6df6; }
+  .stash-demo .tv { background: #fdeaf3; color: #d6336c; }
+</style>
+</head>
+<body>
+<div class="stash-demo" id="demo" aria-label="Stash demo: a file is dragged into the Brand folder, uploads, and settles into the list" role="img">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-file" viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M13 2v7h7"/></symbol>
+      <symbol id="i-folder" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="win">
+    <div class="chrome"><i></i><i></i><i></i></div>
+    <div class="side">
+      <div class="nav on"><svg class="ic"><use href="#i-folder"/></svg>Brand</div>
+      <div class="nav"><svg class="ic"><use href="#i-folder"/></svg>Invoices</div>
+      <div class="nav"><svg class="ic"><use href="#i-folder"/></svg>Photos</div>
+      <div class="nav"><svg class="ic"><use href="#i-folder"/></svg>Contracts</div>
+      <div class="nav b"><svg class="ic"><use href="#i-folder"/></svg><span style="width:62px"></span></div>
+      <div class="nav b"><svg class="ic"><use href="#i-folder"/></svg><span style="width:48px"></span></div>
+    </div>
+    <div class="main">
+      <div class="head"><div class="title">Brand</div><div class="avs"><b style="background:#f2a65a"></b><b style="background:#5aa9f2"></b><b style="background:#6cc496"></b></div></div>
+      <div class="cols"><span>Name</span><span>Size</span><span>Modified</span></div>
+      <div class="list" id="list">
+        <div class="tint" id="tint"></div>
+        <div class="slot" id="slot">
+          <div class="row newrow" id="newrow" style="visibility:hidden">
+            <div class="t tp" id="nt"><svg class="ic"><use href="#i-file"/></svg></div>
+            <div class="nm" id="nname">Q3-report.pdf</div>
+            <div class="cellx"><span class="sz meta" id="nsize" style="opacity:0">2.4 MB</span><span class="track" id="ntrack"><i id="nfill"></i></span></div>
+            <div class="cellx"><span class="pct" id="npct">0%</span><span class="meta" id="nwhen" style="transform:translateY(18px)">Just now</span></div>
+            <div class="del" id="ndel"><svg class="ic"><use href="#i-trash"/></svg></div>
+          </div>
+        </div>
+        <div class="row"><div class="t tz"><svg class="ic"><use href="#i-file"/></svg></div><div class="nm">Logo-pack.zip</div><div class="meta">8.1 MB</div><div class="meta">Tue</div><div></div></div>
+        <div class="row"><div class="t tp"><svg class="ic"><use href="#i-file"/></svg></div><div class="nm">Style-guide.pdf</div><div class="meta">3.7 MB</div><div class="meta">Mon</div><div></div></div>
+        <div class="row"><div class="t ti"><svg class="ic"><use href="#i-file"/></svg></div><div class="nm">Moodboard.png</div><div class="meta">5.2 MB</div><div class="meta">Oct 28</div><div></div></div>
+        <div class="row"><div class="t tf"><svg class="ic"><use href="#i-file"/></svg></div><div class="nm">Brand-colors.fig</div><div class="meta">1.9 MB</div><div class="meta">Oct 21</div><div></div></div>
+        <div class="row"><div class="t" style="background:var(--bar)"></div><div><div class="barx" style="width:96px"></div></div><div><div class="barx" style="width:36px"></div></div><div><div class="barx" style="width:42px"></div></div><div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cur" id="cur">
+    <div class="chip" id="chip" style="left:12px;top:10px">
+      <div class="t tp" id="ct"><svg class="ic"><use href="#i-file"/></svg></div>
+      <div class="nm" id="cname">Q3-report.pdf</div>
+    </div>
+    <svg class="arrow" width="14" height="20" viewBox="0 0 14 20"><path d="M1 1v15l3.6-3.2L7.2 19l2.6-1.1-2.5-6H12z" fill="#fff" stroke="#111827" stroke-width="1.2" stroke-linejoin="round"/></svg>
+  </div>
+</div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var stage = $('demo'), cur = $('cur'), chip = $('chip'), tint = $('tint'), list = $('list');
+  var slot = $('slot'), newrow = $('newrow'), del = $('ndel');
+  var TRAVEL = 'cubic-bezier(0.45,0,0.1,1)', ARRIVE = 'cubic-bezier(0.25,0.8,0.25,1)';
+  var files = [
+    { n: 'Q3-report.pdf', s: '2.4 MB', c: 'tp' },
+    { n: 'Pitch-deck.zip', s: '6.8 MB', c: 'tz' },
+    { n: 'Launch-hero.png', s: '3.1 MB', c: 'ti' }
+  ];
+  var cx = 760, cy = -40, k = 0, dead = false;
+  var wait = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };
+  var anim = function (el, kf, o) {
+    var a = el.animate(kf, Object.assign({ fill: 'forwards' }, o));
+    return a.finished.then(function () { try { a.commitStyles(); } catch (e) {} a.cancel(); });
+  };
+  function setCur(x, y) { cx = x; cy = y; cur.style.transform = 'translate(' + x + 'px,' + y + 'px)'; }
+  function moveCur(x, y, d, ease) {
+    var fx = cx, fy = cy; cx = x; cy = y;
+    return anim(cur, [{ transform: 'translate(' + fx + 'px,' + fy + 'px)' }, { transform: 'translate(' + x + 'px,' + y + 'px)' }], { duration: d, easing: ease || TRAVEL });
+  }
+  function rel(el) {
+    var r = el.getBoundingClientRect(), s = stage.getBoundingClientRect();
+    return { x: r.left - s.left, y: r.top - s.top, w: r.width, h: r.height };
+  }
+  function setFile(f) {
+    ['tp','tz','ti','tf','tv'].forEach(function (c) { $('nt').classList.remove(c); $('ct').classList.remove(c); });
+    $('nt').classList.add(f.c); $('ct').classList.add(f.c);
+    $('nname').textContent = f.n; $('cname').textContent = f.n; $('nsize').textContent = f.s;
+  }
+  function resetRow() {
+    newrow.style.visibility = 'hidden'; slot.style.height = '0px';
+    $('nsize').style.opacity = 0; $('ntrack').style.opacity = 1; $('nfill').style.width = '0%';
+    $('npct').textContent = '0%'; $('npct').style.transform = ''; $('nwhen').style.transform = 'translateY(18px)';
+    $('npct').style.opacity = 1; del.style.opacity = 0; del.style.background = '';
+    ['nsize','ntrack','nname'].forEach(function () {});
+    $('nsize').style.visibility = 'hidden'; $('ntrack').style.visibility = 'hidden'; $('npct').style.visibility = 'hidden'; $('nwhen').style.visibility = 'hidden';
+  }
+
+  function finalState() {
+    setFile(files[0]);
+    slot.style.height = '44px'; newrow.style.visibility = 'visible';
+    ['nsize','ntrack','npct','nwhen'].forEach(function (id) { $(id).style.visibility = 'visible'; });
+    $('nsize').style.opacity = 1; $('ntrack').style.opacity = 0; $('npct').style.opacity = 0; $('nwhen').style.transform = 'none';
+    chip.style.display = 'none'; cur.style.display = 'none';
+  }
+
+  async function loop() {
+    while (!dead) {
+      var f = files[k++ % files.length];
+      setFile(f); resetRow();
+      chip.style.display = 'grid'; chip.style.transform = 'rotate(-2deg) scale(1.03)'; chip.style.boxShadow = '';
+      cur.querySelector('.arrow').style.transform = '';
+      setCur(770, -30);
+      await wait(250);
+
+      // The held file glides in from beyond the top-right edge to the file list.
+      var L = rel(list);
+      var tx = L.x + 150, ty = L.y + 70;
+      var enter = moveCur(tx, ty, 1500);
+      wait(850).then(function () { anim(tint, [{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: 'ease-out' }); });
+      await enter;
+      await wait(450);
+
+      // Release: room opens, the file flies to its slot as one object.
+      var C = rel(chip), L2 = rel(list);
+      var lx = L2.x, ly = L2.y + 2, lw = L2.w;
+      stage.appendChild(chip);
+      Object.assign(chip.style, { left: C.x + 'px', top: C.y + 'px', transform: 'rotate(-2deg) scale(1.03)' });
+      var open = anim(slot, [{ height: '0px' }, { height: '44px' }], { duration: 650, easing: ARRIVE });
+      anim(tint, [{ opacity: 1 }, { opacity: 0 }], { duration: 450, easing: 'ease-out' });
+      var fly = chip.animate([
+        { left: C.x + 'px', top: C.y + 'px', width: '232px', transform: 'rotate(-2deg) scale(1.03)', boxShadow: '0 0 0 1px rgba(16,24,40,.08), 0 14px 28px -6px rgba(16,24,40,.28)', offset: 0 },
+        { left: lx + 'px', top: ly + 'px', width: lw + 'px', transform: 'rotate(0deg) scale(1)', boxShadow: '0 0 0 1px rgba(16,24,40,0), 0 0 0 rgba(16,24,40,0)', offset: 1 }
+      ], { duration: 900, easing: TRAVEL, fill: 'forwards' });
+      moveCur(L2.x + 330, L2.y + 120, 900, ARRIVE);
+      await Promise.all([open, fly.finished]);
+      // Swap on the same frame: the real row takes the chip's exact place.
+      newrow.style.visibility = 'visible';
+      ['nsize','ntrack','npct'].forEach(function (id) { $(id).style.visibility = 'visible'; });
+      $('nwhen').style.visibility = 'visible';
+      fly.cancel(); chip.style.display = 'none'; cur.appendChild(chip);
+      Object.assign(chip.style, { left: '12px', top: '10px', width: '', boxShadow: '' });
+
+      // Upload progress with a counting percentage.
+      var t0 = performance.now(), D = 2400;
+      await new Promise(function (res) {
+        (function step(now) {
+          var p = Math.min(1, (now - t0) / D);
+          var e = p < 0.5 ? 0.5 * Math.pow(p * 2, 1.4) : 1 - 0.5 * Math.pow((1 - p) * 2, 1.7);
+          var v = Math.round(e * 100);
+          $('nfill').style.width = e * 100 + '%'; $('npct').textContent = v + '%';
+          if (p < 1) requestAnimationFrame(step); else res();
+        })(t0);
+      });
+      await wait(150);
+      // Settle: the status rolls to "Just now"; the track hands over to the size.
+      anim($('npct'), [{ transform: 'translateY(0)' }, { transform: 'translateY(-18px)' }], { duration: 450, easing: ARRIVE });
+      anim($('nwhen'), [{ transform: 'translateY(18px)' }, { transform: 'translateY(0)' }], { duration: 450, easing: ARRIVE });
+      anim($('ntrack'), [{ opacity: 1 }, { opacity: 0 }], { duration: 250 });
+      await anim($('nsize'), [{ opacity: 0 }, { opacity: 1 }], { duration: 350 });
+
+      await wait(2200);
+
+      // Cause for the reset: the cursor deletes the file from its row.
+      var D0 = rel(del);
+      await moveCur(D0.x + 18, D0.y + 18, 1000);
+      anim(del, [{ opacity: 0 }, { opacity: 1 }], { duration: 150 });
+      await wait(200);
+      var arrow = cur.querySelector('.arrow');
+      await Promise.all([
+        anim(arrow, [{ transform: 'scale(1)' }, { transform: 'scale(.88)' }], { duration: 110 }),
+        anim(del, [{ background: 'rgba(0,0,0,0)' }, { background: '#eceff4' }], { duration: 110 })
+      ]);
+      await Promise.all([
+        anim(arrow, [{ transform: 'scale(.88)' }, { transform: 'scale(1)' }], { duration: 140 }),
+        anim(del, [{ background: '#eceff4' }, { background: 'rgba(0,0,0,0)' }], { duration: 140 })
+      ]);
+      await anim(newrow, [{ opacity: 1 }, { opacity: 0 }], { duration: 220 });
+      await anim(slot, [{ height: '44px' }, { height: '0px' }], { duration: 600, easing: ARRIVE });
+      newrow.style.opacity = 1;
+      await wait(200);
+      await moveCur(780, cy + 40, 900);
+      await wait(500);
+    }
+  }
+
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) finalState();
+  else loop();
+})();
+</script>
+</body>
+</html>

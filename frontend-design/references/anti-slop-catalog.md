@@ -12,10 +12,11 @@
 - Motion tells
 - Quality failures that are not taste
 - Design-system drift
+- Invented proof, filler, and leftover scaffolding
 - Saturated looks: the calibration check
 - Running a deterministic pass
 
-This reference serves `frontend-design` when building and `working-with-ai` (ai-ui-direction) and `interface-review` when diagnosing. It is adapted from Impeccable (Paul Bakaus, Apache-2.0; [sources.md](sources.md)), except the copy budget, which comes from Luke Wroblewski's November 2026 exhibit, and the rows marked (A) or (T): (A) is Anthropic's `frontend-design` skill and (T) is the `copy-tells` reference in Leon's tasteskill 2.5.1 (both screened from the skills.sh Design topic, 2026-11; [sources.md](sources.md)). Impeccable's `craft-floor` and its 62-rule detector (`npx impeccable detect`) supply the evidence. Rule IDs in backticks are the detector's IDs, so a finding can be traced to a check.
+This reference serves `frontend-design` when building and `working-with-ai` (ai-ui-direction) and `interface-review` when diagnosing. It is adapted from Impeccable (Paul Bakaus, Apache-2.0; [sources.md](sources.md)), except the copy budget, which comes from Luke Wroblewski's November 2026 exhibit, a few rows marked *OD*, which come from Open Design's artifact lint (Apache-2.0; its rules are adapted from refero_skill, MIT), and the rows marked (A) or (T): (A) is Anthropic's `frontend-design` skill and (T) is the `copy-tells` reference in Leon's tasteskill 2.5.1 (both screened from the skills.sh Design topic, 2026-11; [sources.md](sources.md)). Impeccable's `craft-floor` and its 62-rule detector (`npx impeccable detect`) supply the evidence. Rule IDs in backticks are the detector's IDs, so a finding can be traced to a check.
 
 ## How to use this catalog
 
@@ -102,15 +103,18 @@ Why models do this is our reading, not Wroblewski's: the model writes for the pe
 | Thick colored `border-left`/`border-right` on cards, list items, alerts | `side-tab`, `border-accent-on-rounded` | Remove it, or carry the accent another way. Above 1px it is the most recognizable tell. |
 | Gradient text on headings or metrics | `gradient-text` | Solid color. Emphasis comes from weight or size. |
 | Purple/violet gradients; cyan or neon on dark | `ai-color-palette` | A palette derived from the product's world (see [surface-modes.md](surface-modes.md)). |
+| A stock framework indigo or violet as the solid accent: exactly `#6366f1`, `#4f46e5`, `#4338ca`, `#3730a3`, `#8b5cf6`, `#7c3aed`, `#a855f7` (Tailwind's indigo, violet, and purple steps) | *OD* `ai-default-indigo` | The project's accent token. These seven values are greppable, which makes this the cheapest tell to check mechanically. |
+| Two-stop "trust" gradient on a hero (purple to blue, blue to cyan, indigo to pink) | *OD* `trust-gradient` | A flat ground and deliberate type. |
+| The accent color on many elements of one screen | *OD* `accent-overuse` | Open Design caps the accent at about two visible uses per screen and lints at six or more token uses. Compatible with the Restrained color strategy in [surface-modes.md](surface-modes.md); a Committed or Drenched strategy is a chosen exception. |
 | Warm cream/beige page ground chosen by reflex | `cream-palette` | A ground chosen from the use scene and the world's materials. |
 | Colored glow shadows; radial-gradient halos or spotlights behind a hero | `dark-glow`, `radial-halo`, `radial-spotlight-glow` | Neutral elevation and solid, subtly shifted grounds. |
-| Glassmorphism and blur as decoration | — | Use blur only as a specific effect with a job. |
+| Glassmorphism and blur as decoration | — | Use blur only as a specific effect with a job. Scoped exception: a project that has committed to a glass material system as its theme (see `design-craft` (solid-glass)) applies that theme's own rules instead; the tell is glass as a reflex, not glass as a system. |
 | Hard offset block shadow (`4px 4px 0`) outside a world that is really neobrutalist | `hard-offset-shadow` | A review prompt, not an automatic removal: keep it when the world chose it. |
 | Repeating-gradient stripes; hairline grid-paper backgrounds | `repeating-stripes-gradient`, `codex-grid-background` | Grids belong on real canvases, maps, blueprints, and measuring tools. Elsewhere, leave the surface plain or use a texture from the subject's world. When a pattern is earned, build it with the tile rules in [visual-execution.md](visual-execution.md) (Repeating SVG patterns). |
-| Sketch-style SVG scenes, "doodle" illustration, `feTurbulence` grain | `shape-assembled-illustration` | Real illustration, photography, or none. SVG doing geometry (diagrams, linework, data) stays first-class; for a flat construction-drawing illustration system, see `design-craft` (construction-drawings). |
+| Sketch-style SVG scenes, "doodle" illustration, `feTurbulence` grain | `shape-assembled-illustration` | Real illustration, photography, or none. SVG doing geometry (diagrams, linework, data) stays first-class; for a flat construction-drawing illustration system, see `design-craft` (construction-drawings). If an illustration must be drawn in code, it needs a named style, exemplars, and a render loop: [svg-illustration.md](svg-illustration.md). |
 | Many-vertex `clip-path` polygons or circles approximating an organic edge | `organic-clip-path` | Derive a matte from the actual image, or produce a cut-out asset. |
 | A photo or texture buried under a near-opaque wash or at near-zero opacity | `buried-raster` | Let the material show, or remove it. |
-| Unicode glyphs or emoji standing in for an icon system | — | One real icon family, consistent stroke and weight. |
+| Unicode glyphs or emoji standing in for an icon system | *OD* `emoji-icon` | One real icon family, consistent stroke and weight. |
 | Monospace as a costume for "technical" | — | Mono is for code, data, and measurement. |
 | Sparklines, progress rings, or soft rounded rectangles standing in for content | — | Real content, or nothing. |
 | Light vs dark picked by category ("dev tool = dark") | — | Write one sentence about the physical scene (who, where, what light) and let it decide. |
@@ -124,6 +128,7 @@ Why models do this is our reading, not Wroblewski's: the model writes for the pe
 | A system display face (Impact, Arial Black, the platform sans) as the voice of an own-world page | — | Source and self-host a face with the right character. "Closest installed font" is a failure, not a fallback. |
 | Flat hierarchy: heading/body steps under 1.25× | `flat-type-hierarchy` | At least one strong size step. |
 | Crushed tracking; wide tracking on body | `extreme-negative-tracking`, `wide-tracking` | Tighten display type optically. Reserve wide tracking for short uppercase labels. |
+| Uppercase text with no added tracking | *OD* `all-caps-no-tracking` | Open Design lints below 0.06em. Tracking values → `web-design` (web-typography), which starts caps at 0.05em. |
 | Marketing buzzwords (streamline, empower, supercharge, world-class, next-generation) | `marketing-buzzword` | A specific verb and noun for what the product literally does. A word that is literal for the trade (a seamless knit, bespoke tailoring) and the client's own name stay. |
 | Aphoristic cadence ("Not a feature. A platform.", "X. No Y.") repeated across sections | `aphoristic-cadence` | Once can be voice. As a pattern, it is the tell. |
 | "…is just theater" framing | `theater-slop-phrase` | Say plainly what the thing does or does not do. |
@@ -200,6 +205,21 @@ Accessibility depth stays with `web-design` (web-accessibility). Layout and refl
 ## Design-system drift
 
 When the project has a DESIGN.md or token file, a font, color, radius, or font-size outside it is drift until shown to be intentional (`design-system-font`, `design-system-color`, `design-system-radius`, `design-system-font-size`). Treat a finding as a question: either use the documented value, or record the addition in the system. Ownership of the system file → `design-systems`.
+
+## Invented proof, filler, and leftover scaffolding
+
+These come from Open Design's `lint-artifact` (rows marked *OD*; provenance in [sources.md](sources.md)). The first two restate this skill's Truth rule as things a script can grep. They are review prompts with regex-level precision, so expect false positives and confirm each hit by reading it.
+
+| Tell | Rule | Do instead |
+| --- | --- | --- |
+| A round performance claim with no source: "10× faster", "99.9% uptime", "3× more productive" | *OD* `invented-metric` | A sourced figure, a clearly labeled placeholder, or no number. Never perturb an invented number to make it look measured. |
+| `lorem ipsum`, "Feature one / two / three", "placeholder text", "sample content" | *OD* `filler-copy` | Real, brief-derived words. An empty section is a composition problem, not a reason to invent copy. |
+| Images hot-linked from placeholder or stock CDNs (`placehold.co`, `picsum.photos`, `placekitten.com`, `unsplash.com` URLs) | *OD* `external-image` | A local asset, or a styled placeholder block that is honest about being one. Hot-links break and look fake when they 404. |
+| More than about 12 raw hex values outside the token block | *OD* `raw-hex` | Use the tokens. The count is Open Design's threshold; treat a high count as the drift question in the section above. |
+| Designer or demo controls left in a product artifact: a floating tweaks panel, theme knobs, viewport or platform toggles, generation metadata | — | Remove them from the final files unless the user asked for a spec or design-system dashboard. This does not ban the in-app variant switcher used while converging on a look (`design-prototyping` (agents-field-notes)): that is a working tool on a throwaway route, and it is deleted when a variant is chosen. |
+| Slide decks: three consecutive slides on the same theme | *OD* `slide-rhythm` | Alternate light, dark, and full-bleed slides so the deck has a rhythm. Decks only. |
+
+Not adopted: Open Design's "about 80% proven patterns, 20% distinctive choice" ratio and its rule that headings must be serif when its seed binds one. Both are that product's house choices.
 
 ## Saturated looks: the calibration check
 

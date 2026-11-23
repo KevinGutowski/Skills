@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>faux-ui exemplar: five-tile bento, hero and strip</title>
+<!--
+  A starting point for the no-kit path. Copy this file, keep its structure
+  (tile frame, copy size, UI type sizes, one picture per tile), then replace
+  the look tokens and every tile's content. Original to this library.
+
+  The plan (bento-grids.md), written before any tile was built:
+
+  | Tile      | Span  | Kind       | The one thing                              | Words                   |
+  | Calendar  | 2 x 1 | Hero UI    | A week with one booking selected           | "Your week, already full." |
+  | No-shows  | 1 x 1 | Stat, dark | "38%" on one line                          | "Fewer no-shows."       |
+  | Reminders | 1 x 1 | Diagram    | Booked -> reminder -> confirmed            | "Reminders that land."  |
+  | Deposit   | 1 x 1 | Component  | One deposit control, the rule switched on  | "Deposits, optional."   |
+  | Pass      | 1 x 1 | Object     | A paper appointment pass                   | "A pass for every visit." |
+
+  Checks: 2 of 5 tiles are UI; one hero; window chrome once; no neighbor of the
+  same kind; no person, service, or figure appears in two tiles.
+-->
+<style>
+  /* The look. Replace these with the product's tokens. */
+  .bx {
+    --bx-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    --bx-tile: #f3f3f0;
+    --bx-tile-dark: #17171a;
+    --bx-surface: #ffffff;
+    --bx-line: rgba(20, 20, 18, 0.09);
+    --bx-line-faint: rgba(20, 20, 18, 0.06);
+    --bx-text-strong: #1b1b19;
+    --bx-text: #55554f;
+    --bx-text-faint: #6b6b64;
+    --bx-copy-faint: #686861;   /* 5:1 on the tile; page copy has to pass AA */
+    --bx-bar: #e9e9e4;
+    --bx-accent: #2f6fed;
+    --bx-accent-soft: #e6eefd;
+    --bx-success: #23a05a;
+    --bx-warm: #f4b740;
+    --bx-gap: 14px;            /* gap between tiles */
+    --bx-pad: 28px;            /* tile padding; the copy's gutter */
+    --bx-radius: 20px;
+    --bx-shadow: 0 0 0 1px rgba(20, 20, 18, 0.07), 0 1px 2px rgba(20, 20, 18, 0.04), 0 12px 28px -10px rgba(20, 20, 18, 0.14);
+  }
+
+  body { margin: 0; background: #fff; }
+  .bx { width: 1000px; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--bx-gap); font: 12px/1.35 var(--bx-font); color: var(--bx-text); -webkit-font-smoothing: antialiased; }
+  .bx *, .bx *::before, .bx *::after { box-sizing: border-box; }
+
+  /* One frame for every tile: radius, padding, copy at the top, one gap, then the picture. */
+  .bx-tile { position: relative; height: 330px; padding: var(--bx-pad); border-radius: var(--bx-radius); background: var(--bx-tile); overflow: hidden; }
+  .bx-tile[data-span="2"] { grid-column: span 2; }
+  /* Tile copy is page type: 17px, a bold lead running into a gray sentence. */
+  .bx-copy { margin: 0; max-width: 27em; text-wrap: pretty; font-size: 17px; line-height: 1.4; letter-spacing: -0.01em; color: var(--bx-copy-faint); }
+  .bx-copy b { font-weight: 650; color: var(--bx-text-strong); }
+  .bx-pic { position: absolute; left: var(--bx-pad); right: var(--bx-pad); top: 104px; bottom: 0; }
+
+  .bx-bar { display: block; height: 6px; border-radius: 3px; background: var(--bx-bar); }
+  .bx-avatar { flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 10px; font-weight: 600; color: #fff; }
+
+  /* 1. Hero UI: the one window. It bleeds off the right and the bottom of its tile. */
+  .bx-window { position: absolute; left: 0; top: 0; width: 720px; height: 320px; display: grid; grid-template-columns: 132px 1fr; background: var(--bx-surface); border-radius: 12px 0 0 0; box-shadow: var(--bx-shadow); overflow: hidden; }
+  .bx-side { padding: 13px 12px; background: #f7f7f5; border-right: 1px solid var(--bx-line); }
+  .bx-lights { display: flex; gap: 6px; margin: 0 0 16px 2px; }
+  .bx-lights i { width: 10px; height: 10px; border-radius: 50%; }
+  .bx-lights i:nth-child(1) { background: #fe5f57; } .bx-lights i:nth-child(2) { background: #febc2e; } .bx-lights i:nth-child(3) { background: #28c840; }
+  .bx-nav { display: grid; gap: 2px; }
+  .bx-nav div { display: flex; align-items: center; gap: 8px; height: 26px; padding: 0 8px; border-radius: 6px; }
+  .bx-nav div[data-on] { background: rgba(20, 20, 18, 0.06); }
+  .bx-nav i { flex: none; width: 13px; height: 13px; border-radius: 4px; background: #dfdfda; }
+  .bx-nav span { height: 6px; border-radius: 3px; background: #dfdfda; }
+  .bx-cal-head { display: flex; align-items: center; height: 42px; padding: 0 16px; border-bottom: 1px solid var(--bx-line); font-size: 13px; font-weight: 600; color: var(--bx-text-strong); }
+  .bx-days { display: grid; grid-template-columns: repeat(5, 104px); height: 100%; }
+  .bx-day { position: relative; border-right: 1px solid var(--bx-line-faint); padding: 8px 6px; }
+  .bx-day > span { display: block; margin: 0 2px 8px; font-size: 11px; color: var(--bx-text-faint); }
+  .bx-day[data-today] > span { color: var(--bx-accent); font-weight: 600; }
+  .bx-slot { height: 30px; margin-bottom: 6px; border-radius: 6px; background: #f1f1ee; }
+  .bx-slot[data-tall] { height: 48px; }
+  .bx-slot[data-gap] { background: none; height: 14px; }
+  .bx-event { height: 56px; margin-bottom: 6px; padding: 7px 8px; border-radius: 6px; background: var(--bx-accent); color: #fff; box-shadow: 0 6px 14px -6px rgba(47, 111, 237, 0.55); }
+  .bx-event b { display: block; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .bx-event em { display: block; margin-top: 2px; font-style: normal; font-size: 11px; white-space: nowrap; }
+
+  /* 2. Stat, on the one dark tile. Number and unit share a line; the label sits close under it. */
+  .bx-tile[data-dark] { background: var(--bx-tile-dark); }
+  .bx-tile[data-dark] .bx-copy { color: #a3a39c; }
+  .bx-tile[data-dark] .bx-copy b { color: #fff; }
+  .bx-stat { position: absolute; left: var(--bx-pad); right: var(--bx-pad); bottom: var(--bx-pad); }
+  .bx-stat-num { font-size: 112px; line-height: 0.9; font-weight: 650; letter-spacing: -0.04em; color: #fff; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .bx-stat-num small { font-size: 56px; letter-spacing: -0.02em; margin-left: 2px; color: var(--bx-warm); }
+  .bx-stat-label { margin-top: 14px; max-width: 16em; font-size: 14px; line-height: 1.4; color: #a3a39c; }
+  .bx-ticks { display: flex; gap: 4px; margin-top: 18px; }
+  .bx-ticks i { flex: 1; height: 18px; border-radius: 2px; background: #34343a; }
+  .bx-ticks i[data-on] { background: var(--bx-warm); }
+
+  /* 3. Diagram: three nodes and two lines. One color for the one relationship. */
+  .bx-flow { position: absolute; left: 0; top: 40px; width: 268px; height: 150px; }
+  .bx-node { position: absolute; display: flex; align-items: center; gap: 8px; height: 34px; padding: 0 12px 0 10px; border-radius: 999px; background: var(--bx-surface); box-shadow: var(--bx-shadow); font-size: 12px; font-weight: 600; color: var(--bx-text-strong); white-space: nowrap; }
+  .bx-node i { width: 8px; height: 8px; border-radius: 50%; background: #cfcfc9; }
+  .bx-node[data-done] i { background: var(--bx-success); }
+  .bx-flow svg { position: absolute; left: 0; top: 0; overflow: visible; }
+  .bx-flow path { fill: none; stroke: var(--bx-accent); stroke-width: 1.5; stroke-dasharray: 1 5; stroke-linecap: round; }
+  .bx-flow circle { fill: var(--bx-accent); stroke: #fff; stroke-width: 2; }
+
+  /* 4. One component at real size: a single control, not a window. */
+  .bx-panel { position: absolute; left: 0; right: 0; top: 0; padding: 16px; border-radius: 12px; background: var(--bx-surface); box-shadow: var(--bx-shadow); }
+  .bx-panel-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .bx-panel-title { font-size: 13px; font-weight: 600; color: var(--bx-text-strong); }
+  .bx-panel-sub { margin-top: 3px; font-size: 12px; color: var(--bx-text-faint); }
+  .bx-toggle { flex: none; width: 34px; height: 20px; padding: 2px; border-radius: 999px; background: var(--bx-accent); }
+  .bx-toggle::after { content: ""; display: block; width: 16px; height: 16px; margin-left: 14px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); }
+  .bx-seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 14px; padding: 2px; border-radius: 8px; background: #f1f1ee; }
+  .bx-seg span { display: grid; place-items: center; height: 28px; border-radius: 6px; font-size: 12px; color: var(--bx-text); font-variant-numeric: tabular-nums; }
+  .bx-seg span[data-on] { background: var(--bx-surface); color: var(--bx-text-strong); font-weight: 600; box-shadow: 0 0 0 1px var(--bx-line), 0 1px 2px rgba(20, 20, 18, 0.08); }
+  .bx-panel-foot { display: grid; gap: 9px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--bx-line); }
+  .bx-panel-foot div { display: flex; justify-content: space-between; }
+
+  /* 5. Object: paper, lit from above, with its own material edges. It holds still. */
+  .bx-pass { position: absolute; left: 50%; top: 4px; width: 216px; margin-left: -108px; border-radius: 14px; background: linear-gradient(180deg, #ffffff, #fbfbf8); box-shadow: 0 0 0 1px rgba(20, 20, 18, 0.06), 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 2px 3px rgba(20, 20, 18, 0.05), 0 22px 36px -16px rgba(20, 20, 18, 0.22); transform: rotate(-3deg); }
+  .bx-pass-top { padding: 16px 18px 14px; }
+  .bx-pass-kicker { font-size: 11px; color: var(--bx-text-faint); }
+  .bx-pass-time { margin-top: 4px; font-size: 26px; line-height: 1.05; font-weight: 650; letter-spacing: -0.02em; color: var(--bx-text-strong); font-variant-numeric: tabular-nums; }
+  .bx-pass-what { margin-top: 6px; font-size: 13px; color: var(--bx-text); }
+  /* The tear line: two notches cut from the paper and a dashed rule between them. */
+  .bx-pass-tear { position: relative; height: 1px; margin: 0 14px; background-image: linear-gradient(90deg, rgba(20, 20, 18, 0.18) 50%, transparent 0); background-size: 8px 1px; }
+  .bx-pass-tear::before, .bx-pass-tear::after { content: ""; position: absolute; top: -7px; width: 14px; height: 14px; border-radius: 50%; background: var(--bx-tile); box-shadow: inset 0 0 0 1px rgba(20, 20, 18, 0.06); }
+  .bx-pass-tear::before { left: -21px; } .bx-pass-tear::after { right: -21px; }
+  .bx-pass-foot { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px 16px; }
+  .bx-code { display: flex; gap: 2px; align-items: stretch; height: 26px; }
+  .bx-code i { width: 2px; background: #2a2a27; } .bx-code i:nth-child(3n) { width: 4px; } .bx-code i:nth-child(4n) { width: 1px; } .bx-code i:nth-child(5n) { margin-right: 2px; }
+
+  /* Between phone and desktop the three-column grid stops fitting. Two columns:
+     the hero keeps the full row, then the other four tiles pair up. */
+  @media (max-width: 1031px) {
+    .bx { width: auto; max-width: 660px; margin: 0 auto; padding: 0 16px; grid-template-columns: 1fr 1fr; }
+    .bx-flow { left: 50%; margin-left: -134px; }
+  }
+
+  /* Narrow hosts get a second composition, not a squeeze: one column, hero first,
+     and the hero's picture recropped so the selected booking is still whole. */
+  @media (max-width: 760px) {
+    .bx { width: auto; max-width: 420px; margin: 0 auto; padding: 0 16px; grid-template-columns: 1fr; }
+    .bx-tile[data-span="2"] { grid-column: auto; }
+    .bx-window { grid-template-columns: 1fr; }
+    .bx-side, .bx-day:first-child, .bx-day:last-child { display: none; }
+    .bx-flow, .bx-pass { left: 50%; margin-left: -134px; }
+    .bx-pass { margin-left: -108px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bx">
+
+  <section class="bx-tile" data-span="2">
+    <p class="bx-copy"><b>Your week, already full.</b> Clients pick a time, and it lands on the right chair.</p>
+    <div class="bx-pic" role="img" aria-label="A week calendar with a 2:30 color appointment for Maren Holt selected on Wednesday">
+      <div class="bx-window">
+        <div class="bx-side">
+          <div class="bx-lights"><i></i><i></i><i></i></div>
+          <div class="bx-nav">
+            <div data-on><i></i><span style="width:52px"></span></div>
+            <div><i></i><span style="width:40px"></span></div>
+            <div><i></i><span style="width:60px"></span></div>
+          </div>
+        </div>
+        <div>
+          <div class="bx-cal-head">This week</div>
+          <div class="bx-days">
+            <div class="bx-day"><span>Mon</span><div class="bx-slot"></div><div class="bx-slot" data-gap></div><div class="bx-slot" data-tall></div><div class="bx-slot"></div></div>
+            <div class="bx-day"><span>Tue</span><div class="bx-slot" data-tall></div><div class="bx-slot"></div><div class="bx-slot" data-gap></div><div class="bx-slot"></div></div>
+            <div class="bx-day" data-today><span>Wed</span><div class="bx-slot"></div><div class="bx-event"><b>Maren Holt</b><em>2:30, color</em></div><div class="bx-slot"></div><div class="bx-slot" data-tall></div></div>
+            <div class="bx-day"><span>Thu</span><div class="bx-slot" data-gap></div><div class="bx-slot" data-tall></div><div class="bx-slot"></div><div class="bx-slot"></div></div>
+            <div class="bx-day"><span>Fri</span><div class="bx-slot"></div><div class="bx-slot"></div><div class="bx-slot" data-tall></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bx-tile" data-dark>
+    <p class="bx-copy"><b>Fewer no-shows.</b></p>
+    <div class="bx-stat" role="img" aria-label="38 percent fewer missed appointments">
+      <div class="bx-stat-num">38<small>%</small></div>
+      <div class="bx-stat-label">fewer missed appointments in the first three months.</div>
+      <div class="bx-ticks"><i data-on></i><i data-on></i><i data-on></i><i data-on></i><i data-on></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <section class="bx-tile">
+    <p class="bx-copy"><b>Reminders that land.</b> A text the day before, with one tap to confirm.</p>
+    <div class="bx-pic" role="img" aria-label="A booking flows to a reminder and then to a confirmation">
+      <div class="bx-flow">
+        <!-- Coordinates are the nodes' own edges: out of a node's underside, into the next node's left side, stopping 6px short at a dot. -->
+        <svg width="268" height="150" viewBox="0 0 268 150" aria-hidden="true">
+          <path d="M 40 36 V 63 Q 40 75 52 75 H 86" />
+          <path d="M 132 94 V 121 Q 132 133 144 133 H 148" />
+          <circle cx="86" cy="75" r="3.5" /><circle cx="148" cy="133" r="3.5" />
+        </svg>
+        <div class="bx-node" style="left:0; top:0"><i></i>Booked</div>
+        <div class="bx-node" style="left:92px; top:58px"><i></i>Reminder sent</div>
+        <div class="bx-node" data-done style="left:154px; top:116px"><i></i>Confirmed</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bx-tile">
+    <p class="bx-copy"><b>Deposits, optional.</b> Ask for one only where it helps.</p>
+    <div class="bx-pic" role="img" aria-label="A deposit setting switched on at 20 percent">
+      <div class="bx-panel">
+        <div class="bx-panel-row">
+          <div><div class="bx-panel-title">Require a deposit</div><div class="bx-panel-sub">New clients only</div></div>
+          <div class="bx-toggle"></div>
+        </div>
+        <div class="bx-seg"><span>10%</span><span data-on>20%</span><span>50%</span></div>
+        <div class="bx-panel-foot">
+          <div><span class="bx-bar" style="width:88px"></span><span class="bx-bar" style="width:34px"></span></div>
+          <div><span class="bx-bar" style="width:62px"></span><span class="bx-bar" style="width:26px"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bx-tile">
+    <p class="bx-copy"><b>A pass for every visit.</b> In their wallet before they leave the page.</p>
+    <div class="bx-pic" role="img" aria-label="A paper appointment pass for Friday at 11:15">
+      <div class="bx-pass">
+        <div class="bx-pass-top">
+          <div class="bx-pass-kicker">Friday</div>
+          <div class="bx-pass-time">11:15</div>
+          <div class="bx-pass-what">Beard trim, chair 4</div>
+        </div>
+        <div class="bx-pass-tear"></div>
+        <div class="bx-pass-foot">
+          <span class="bx-bar" style="width:58px"></span>
+          <div class="bx-code"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

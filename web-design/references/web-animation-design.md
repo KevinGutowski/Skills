@@ -44,6 +44,11 @@ The specific values in this skill (durations, easings, scale magnitudes, stagger
 
 **This skill is the default theme for motion-related work.** When motion questions arise and multiple skills could apply, prefer these values unless the user opts into another. If the user is mixing skills and a genuine choice surfaces, briefly present the options as a menu rather than picking silently. That menu is for a choice *between themes* only. Inside one theme, make the call: do not hand the user three easings or two durations to pick from — choose, state the reason in a clause, and move on (Kowalski's skills are explicit that motion options are not a menu).
 
+**Two scoped schools that are not this theme.** Keep them where they belong rather than averaging them in:
+
+- *Authored marketing demos.* A faux-UI illustration that a visitor watches (a cursor walkthrough, a looping product shot) uses slow storytelling curves and 0.8–1s arrivals so the story can be read. Those values live in `faux-ui` (demo-motion) and are never product values; inside such a demo, press and hover feedback still uses this file's speeds.
+- *Cinematic scroll sites.* Meng To's open skills (MIT, `3cc9345`) set section entrances at 300–700ms, reveals at 0.75–1.1s, and scroll scrub lag of 0.8–1.4 for editorial, portfolio, and Awwwards-style pages. Treat that as an Experience-mode school for marketing surfaces only (surface modes: `frontend-design` (surface-modes)). On Operate and Read surfaces, the 300ms flag below stands.
+
 These values and techniques are for **web/CSS/JS** motion. On **iOS/SwiftUI**, animations/transitions/effects are covered by `swiftui` (swiftui-animation), scroll-driven motion by `swiftui` (swiftui-lazy-stacks), and brand-through-motion by `apple-design` (ios-brand-identity) — don't cross-apply CSS specifics there.
 
 ## Quick Start
@@ -119,6 +124,19 @@ Most agent reviews start at step 8. Start at step 1.
 - **Approve** — none of the above, nothing that obviously should be deleted, durations and easing in bounds, interruptibility handled where needed, reduced motion respected.
 
 When feel cannot be judged from code, say so and name what to watch: play it at 2–5× duration or step it in the DevTools Animations panel, test gestures on a real phone, and look again the next day.
+
+**Reviewing from captures.** When the motion can be recorded, review frames, not a single settled screenshot and not the code. (Method from Impeccable's motion reviewer, `d41d986`; its capture CLI is tool-specific and not used here.)
+
+- **Pair the captures.** Record the same interaction over the same region twice: normally, and with reduced motion emulated. Capture entrance and exit separately.
+- **Five frames minimum per capture:** before, first animated, middle, last animated, settled. Compare before against first, each middle against its neighbors, and last against settled; most defects sit at those two boundaries.
+- **Check five continuity failures by name:**
+  - *Entrance replay* — content that was already on screen plays its entrance again.
+  - *Crossfade dip* — during a crossfade the region dims or flashes at the midpoint. Judge it from the rendered middle frame, not from the opacity values: with normal (source-over) compositing two stacked layers at 50% opacity cover only 75% of what is behind them, so a symmetric crossfade whose opacities sum to 1 still lets the background through and dips (gray over white, for example). The upstream check that the two opacities sum to about 1 (roughly 0.95–1.05) is valid only where the layers are composited additively: `mix-blend-mode: plus-lighter` inside an `isolation: isolate` wrapper (without the wrapper the layers also add to the page behind them and blow out to white), or a view transition's old and new images, which get both by default. Elsewhere, hold the outgoing layer opaque while the incoming one fades in over it, or blend additively inside an isolated group.
+  - *Orphan linger* — something that exists only in the old or only in the new state keeps animating after the motion around it has finished.
+  - *End paint swap* — the item on top changes on the frame where transition layers are removed.
+  - *Shadow jump* — a `box-shadow` switches off on the first frame or on at the last, even though the boxes line up.
+- **Reduced motion is judged by distance, not duration.** A shorter run of the same full-length travel is not a reduced-motion path. Compare matching frames: spatial movement should be gone or much smaller while state, feedback, and meaning stay visible.
+- **Bad evidence means recapture, never approve.** Blank, half-loaded, wrong-region, stale, or missing frames bind no verdict. Anything the capture could not measure is an unmeasured check, not a pass.
 
 ## The Easing Blueprint
 
@@ -225,11 +243,11 @@ Elements that move as one unit must use the same easing and duration. Modal + ov
 | --------------------------------- | --------- |
 | Micro-interactions                | 100-150ms |
 | Standard UI (tooltips, dropdowns) | 150-250ms |
-| Modals, drawers                   | 200-300ms |
+| Modals, drawers, sheets           | 200-300ms (see exceptions below) |
 
 **Rules:**
 
-- UI animations should stay under 300ms. The stated exceptions are the edge-attached drawer (up to 500ms on its steep curve) and the toast (400ms) in Build Order; anything else over 300ms needs a reason written down. A curve that arrives early and settles long (Briggs's soft-close set, above) is a reason when that set is the adopted theme: judge its *perceived* duration (time to ~95% of travel) against this table, not its clock duration
+- UI animations should stay under 300ms. The stated exceptions are the edge-attached drawer or sheet (up to 500ms on its steep curve) and the toast (400ms) in Build Order; anything else over 300ms needs a reason written down. Kowalski's skills at `64eb3de` now state the exception list as modals, drawers, sheets, and toasts, with modals and drawers both allowed up to 500ms. This theme keeps a centered modal at 200–300ms: it travels almost no distance, and the field corroboration below points faster, not slower. Read upstream's 500ms as a ceiling for large edge-attached surfaces, not a target for dialogs. A curve that arrives early and settles long (Briggs's soft-close set, above) is a reason when that set is the adopted theme: judge its *perceived* duration (time to ~95% of travel) against this table, not its clock duration
 - Larger elements animate slower than smaller ones
 - Exit animations can be ~20% faster than entrance
 - **Field corroboration (Linear's stylesheet, via performance.dev 2026):** tokens of `0.1s` quick / `0.25s` regular / `0.35s` slow, hover highlight fade-in `0s` and fade-out `0.15s` — popovers and panels "appear instantly when you summon them, then fade out over 150ms when you dismiss them," and list rows get no transitions at all. Defaulting below Material's 200 ms is one of the cheapest ways to make an app feel faster.
@@ -325,6 +343,13 @@ Decide in this order; each step can end the work:
 | Programmatic values with compositor performance | Web Animations API (`element.animate()`) |
 | Springs, gestures, shared layout, exit of unmounting components | Motion — only if the project already has it or the user asked |
 | Progress tied to scroll position (reading bar, per-card progress, parallax) | CSS scroll-driven animation: `animation-timeline: scroll()` / `view()` with `linear` easing. Mechanics and traps are in `ui-fx` (platform-techniques → Scroll-driven animation) |
+
+   Scroll-linked work has its own short ladder (from Meng To's `html-to-interaction-prompts`, `3cc9345`; prefer the project's existing stack at every step):
+
+   - CSS `position: sticky` before any pinning library; CSS scroll-snap before a carousel library.
+   - `IntersectionObserver` or the Web Animations API for a reveal that needs no timeline.
+   - A scroll-timeline library (GSAP ScrollTrigger and similar) only when a section needs pinning, scrubbed values, or a multi-element handoff. It writes inline styles from JavaScript on scroll, so it runs on the main thread ([animation-performance.md](web-animation-design/animation-performance.md)).
+   - A smooth-scroll engine only when the choreography depends on it, never as general polish, and **at most one per site**: never install or initialise two.
 
 4. **Values** from the Easing and Duration sections.
 5. **Reduced-motion variant and hover gating ship in the same change**, not as a follow-up.

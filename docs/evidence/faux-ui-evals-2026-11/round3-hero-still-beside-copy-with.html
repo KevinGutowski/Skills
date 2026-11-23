@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Relay hero</title>
+<style>
+  body { margin: 0; background: #fff; }
+  .fx {
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    --surface: #fff; --chrome: #f6f6f4; --line: rgba(20,20,18,.09); --line-faint: rgba(20,20,18,.06);
+    --strong: #1b1b19; --text: #55554f; --faint: #8b8b84; --bar: #ebebe7;
+    --accent: #0f7b6c; --accent-soft: #e5f3f0;
+    position: relative; width: 720px; height: 340px; overflow: hidden;
+    font: 12px/1.35 var(--font); color: var(--text); -webkit-font-smoothing: antialiased;
+  }
+  .fx *, .fx *::before, .fx *::after { box-sizing: border-box; }
+  .fx-window { position: absolute; left: 32px; top: 32px; width: 780px; height: 420px; display: grid; grid-template-columns: 150px 1fr; background: var(--surface); border-radius: 12px; box-shadow: 0 0 0 1px rgba(20,20,18,.07), 0 2px 4px rgba(20,20,18,.04), 0 18px 44px -12px rgba(20,20,18,.16); overflow: hidden; }
+  .fx-side { background: var(--chrome); border-right: 1px solid var(--line); padding: 14px 12px; }
+  .fx-lights { display: flex; gap: 7px; height: 12px; margin: 0 0 18px 2px; }
+  .fx-lights i { width: 11px; height: 11px; border-radius: 50%; }
+  .fx-lights i:nth-child(1) { background: #fe5f57; } .fx-lights i:nth-child(2) { background: #febc2e; } .fx-lights i:nth-child(3) { background: #28c840; }
+  .fx-nav { display: grid; gap: 2px; }
+  .fx-nav div { display: flex; align-items: center; gap: 8px; height: 28px; padding: 0 8px; border-radius: 6px; }
+  .fx-nav div[data-on] { background: rgba(20,20,18,.06); }
+  .fx-nav i { flex: none; width: 14px; height: 14px; border-radius: 4px; background: #dfdfda; }
+  .fx-nav span { height: 6px; border-radius: 3px; background: #dfdfda; }
+  .fx-main { min-width: 0; }
+  .fx-head { display: flex; align-items: center; height: 46px; padding: 0 20px; border-bottom: 1px solid var(--line); }
+  .fx-title { font-size: 14px; font-weight: 600; color: var(--strong); }
+  .fx-list { padding: 6px 8px; }
+  .fx-row { position: relative; display: grid; grid-template-columns: 26px 230px 112px 1fr; align-items: center; column-gap: 12px; height: 44px; padding: 0 12px; border-radius: 8px; }
+  .fx-row + .fx-row::before { content: ""; position: absolute; left: 12px; right: 0; top: 0; height: 1px; background: var(--line-faint); }
+  .fx-row[data-on] { background: var(--accent-soft); }
+  .fx-row[data-on]::before, .fx-row[data-on] + .fx-row::before { display: none; }
+  .fx-avatar { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 600; color: #fff; background: #d9d9d4; }
+  .fx-name { color: var(--strong); font-size: 13px; white-space: nowrap; font-weight: 600; }
+  .fx-sub { color: var(--faint); font-size: 11px; white-space: nowrap; }
+  .fx-bar { display: block; height: 6px; border-radius: 3px; background: var(--bar); }
+  .fx-chip { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 6px; font-size: 12px; color: var(--strong); background: #fff; box-shadow: 0 0 0 1px rgba(20,20,18,.16); white-space: nowrap; justify-self: start; }
+  .fx-pop { position: absolute; left: 482px; top: 164px; width: 200px; padding: 4px; background: #fff; border-radius: 10px; box-shadow: 0 0 0 1px rgba(20,20,18,.08), 0 2px 4px rgba(20,20,18,.05), 0 12px 28px -6px rgba(20,20,18,.22); }
+  .fx-opt { display: flex; align-items: center; gap: 10px; height: 34px; padding: 0 8px; border-radius: 6px; font-size: 13px; color: var(--strong); white-space: nowrap; }
+  .fx-opt .fx-avatar { width: 22px; height: 22px; font-size: 10px; }
+  .fx-opt[data-hot] { background: var(--accent); color: #fff; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="fx" role="img" aria-label="Relay inbox with a ticket selected and a menu assigning it to Priya Nair">
+  <div class="fx-window">
+    <div class="fx-side">
+      <div class="fx-lights"><i></i><i></i><i></i></div>
+      <div class="fx-nav">
+        <div data-on><i></i><span style="width:44px"></span></div>
+        <div><i></i><span style="width:58px"></span></div>
+        <div><i></i><span style="width:40px"></span></div>
+        <div><i></i><span style="width:64px"></span></div>
+      </div>
+    </div>
+    <div class="fx-main">
+      <div class="fx-head"><div class="fx-title">Inbox</div></div>
+      <div class="fx-list">
+        <div class="fx-row"><div class="fx-avatar" style="background:#c98a5b"></div><span class="fx-bar" style="width:170px"></span><span class="fx-bar" style="width:70px"></span><span class="fx-bar" style="width:56px"></span></div>
+        <div class="fx-row" data-on>
+          <div class="fx-avatar" style="background:#0f7b6c">J</div>
+          <div><div class="fx-name">Refund for order 4821</div><div class="fx-sub">Jonas Meyer</div></div>
+          <span class="fx-chip">Unassigned</span>
+          <span class="fx-bar" style="width:56px;background:#cde6e1"></span>
+        </div>
+        <div class="fx-row"><div class="fx-avatar" style="background:#6f8f72"></div><span class="fx-bar" style="width:132px"></span><span class="fx-bar" style="width:58px"></span><span class="fx-bar" style="width:56px"></span></div>
+        <div class="fx-row"><div class="fx-avatar"></div><span class="fx-bar" style="width:190px"></span><span class="fx-bar" style="width:66px"></span><span class="fx-bar" style="width:56px"></span></div>
+        <div class="fx-row"><div class="fx-avatar"></div><span class="fx-bar" style="width:150px"></span><span class="fx-bar" style="width:52px"></span><span class="fx-bar" style="width:56px"></span></div>
+        <div class="fx-row"><div class="fx-avatar"></div><span class="fx-bar" style="width:110px"></span><span class="fx-bar" style="width:60px"></span><span class="fx-bar" style="width:56px"></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="fx-pop">
+    <div class="fx-opt" data-hot><div class="fx-avatar" style="background:#fff;color:#0f7b6c">P</div>Priya Nair</div>
+    <div class="fx-opt"><div class="fx-avatar" style="background:#b5654a">M</div>Marcus Webb</div>
+    <div class="fx-opt"><div class="fx-avatar" style="background:#7a6bb0">D</div>Dana Okafor</div>
+    <div class="fx-opt"><div class="fx-avatar" style="background:#c0902f">S</div>Sam Reyes</div>
+  </div>
+</div>
+</body>
+</html>

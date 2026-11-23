@@ -30,6 +30,13 @@ Purpose: test whether the Vercel-pattern overhaul loads the right skill before j
 | V22 | "Check the checkout page before I ship. It feels laggy on my phone." | `interface-review` | Control: one named screen must not route to `design-systems`. |
 | V23 | "I love these three typefaces but can't license them for the app. Can you build us our own font that feels like them?" | `make-font` | New tool skill; control against `web-design` and `logo-design`. |
 | V24 | "Which two fonts should we pair for the marketing site, and how do I set the type scale?" | `web-design` | Control: choosing and setting existing fonts must not route to `make-font`. |
+| V25 | "Our landing page hero needs a fake version of the app with a cursor clicking through the assign flow, looping." | `faux-ui` | New skill; control against `frontend-design` (the real screen) and `web-design` (animation values). |
+| V26 | "Lay out a bento grid for the features section. Right now every tile is a tiny screenshot of the dashboard." | `faux-ui` | Bento set planning; control against `frontend-design` and `devtools` (landing page). |
+| V27 | "The assign menu in our actual dashboard animates too slowly and the dropdown feels janky. Fix the timing." | `web-design` | Control: motion in the working product must not route to `faux-ui`. |
+| V28 | "Build the settings page for the app: sections, form fields, save states." | `frontend-design` | Control: a real product screen must not route to `faux-ui`. |
+| V29 | "I want to draw a little hand-made SVG spot illustration of a person holding a phone for the empty state." | `frontend-design` | Control: illustration is outside `faux-ui`; the svg-illustration reference owns it. |
+| V30 | "Here's a screen recording of a landing page I love. Turn it into a prompt my agent can build from without ripping it off." | `working-with-ai` | New reference-to-build-prompt member; control against `frontend-design` and `creating-skills`. |
+| V31 | "My three.js chrome sphere looks flat and gray and the far water shimmers. How do I light and filter the scene properly?" | `creative-coding` | New threejs-scene-craft reference; control against `graphics-fundamentals` and `motion`. |
 
 ## Scoring
 

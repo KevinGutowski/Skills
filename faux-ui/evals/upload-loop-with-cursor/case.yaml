@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: upload-loop-with-cursor
+expected_outcome: |
+  A short looping cursor demo with a readable story: it opens on a finished screen, the cursor's moves are explained, changes move rather than swap, the result holds, and the loop returns to its opening state through a visible cause rather than rewinding data in view.

@@ -1,0 +1,176 @@
+/* All rules belong to this example, including its compact variant. */
+.rl {
+  /* Pinned, bottom bleed, as hero-demo: the window sits one gutter in from
+     the top and sides and runs a gutter past the stage's bottom. The page is
+     white, so the stage is transparent: no well, no plate. With no ground to
+     hide a cut, the window's shadow is the hero shadow drawn tighter: it
+     reaches 16px sideways, inside the gutter, so the crop never slices it */
+  & .ss-stage {
+    --gutter: 32px;
+    overflow: hidden;
+  }
+
+  .rl-window {
+    position: absolute;
+    top: var(--gutter);
+    left: var(--gutter);
+    width: 656px;
+    height: 340px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 16px 32px -16px rgba(50, 50, 93, 0.25), 0 8px 20px -8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* ---- The inbox ---- */
+
+  /* The label sits on the rows' text edge: the list's 8px plus a row's 10px */
+  .rl-inbox {
+    display: flex;
+    flex: none;
+    align-items: center;
+    height: 28px;
+    padding: 0 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ss-text-strong);
+  }
+
+  .rl-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0 8px;
+  }
+
+  /* The selected ticket is lifted onto the thread's own surface */
+  .rl-list .ss-row[data-selected] {
+    background: var(--ss-surface);
+    box-shadow: 0 0 0 1px var(--ss-line), var(--ss-shadow-card);
+  }
+
+  /* The new assignee grows into the slot the row keeps for one */
+  .rl-who {
+    opacity: 0;
+    scale: 0.6;
+    transition: opacity 0.2s ease, scale 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .rl-who[data-show] {
+    opacity: 1;
+    scale: 1;
+  }
+
+  /* ---- The ticket ---- */
+
+  .rl-status {
+    margin-left: 8px;
+  }
+
+  /* An avatar in the button's glyph slot: the slot takes the avatar's size */
+  .rl-assign .ss-button__lead {
+    --ss-button-icon: 18px;
+    will-change: transform;
+  }
+
+  /* and sits the same 5px from the button's left edge as from its top and bottom */
+  .rl-assign[data-leading] {
+    padding-left: 5px;
+  }
+
+  .rl-assign .ss-button__icon {
+    color: var(--ss-icon);
+  }
+
+  /* Open, the trigger keeps its hovered look */
+  .rl-assign[data-open] {
+    background: color-mix(in srgb, var(--ss-surface), #000 4%);
+  }
+
+  .rl-body {
+    background: var(--ss-surface);
+  }
+
+  /* 4px here and the rows' own 12px put every message on the bar's 16px inset */
+  .rl-thread {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 4px;
+    font-size: 12px;
+  }
+
+  /* The customer's words stop 16px short of where the menu opens */
+  .rl-message {
+    max-width: 240px;
+  }
+
+  /* ---- The menu ---- */
+
+  .rl-menu {
+    z-index: 30;
+  }
+
+  /* An avatar leads each row: it keeps the 4px it has above and below on its
+     left too, so the highlight wraps it evenly */
+  .rl-menu .ss-menu__item {
+    padding-left: 4px;
+  }
+
+  /* ---- The toast ---- */
+
+  /* On the thread's inset, clear of the crop by a gutter from the first frame
+     of its rise, and covering exactly two lines of the reply behind it. The
+     Undo button nests evenly: 4px round it, the toast's 10px corner over the
+     button's 6px */
+  & .ss-toast.rl-toast {
+    position: absolute;
+    left: 280px;
+    bottom: calc(var(--gutter) + 8px);
+    z-index: 25;
+    --ss-toast-rise: 8px;
+    padding: 4px 4px 4px 12px;
+  }
+
+  .rl-toast .ss-toast__action {
+    margin-left: 4px;
+  }
+
+  .rl-undo {
+    color: #fff;
+  }
+
+  .rl-undo[data-hover] {
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  /* ---- Compact: the ticket alone, its subject moved under the bar and its
+     status left out, so every word stays clear of the menu's left edge ---- */
+
+  & .ss-stage[data-layout='compact'] {
+    --gutter: 16px;
+  }
+
+  & .ss-stage[data-layout='compact'] .rl-window {
+    width: 326px;
+    height: 360px;
+  }
+
+  .rl-subject {
+    display: flex;
+    align-items: center;
+    padding: 12px 12px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    color: var(--ss-text-strong);
+  }
+
+  & .ss-stage[data-layout='compact'] .rl-message {
+    max-width: none;
+  }
+
+  /* The narrow crop keeps its own gutter under the toast, which fades in
+     where it sits rather than rising through it */
+  & .ss-stage[data-layout='compact'] .ss-toast.rl-toast {
+    left: 32px;
+    bottom: var(--gutter);
+    --ss-toast-rise: 0px;
+  }
+}

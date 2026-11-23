@@ -8,6 +8,7 @@
 - Nielsen heuristics, scored 0–4
 - Cognitive load checklist
 - Persona walk-throughs
+- Scoring discipline
 - Technical audit dimensions
 - Severity mapping and delivery
 
@@ -87,6 +88,22 @@ Pick 2–3 personas for the surface and walk the primary action as each. Report 
 
 Derive one or two project-specific personas only from real audience context the project has written down. Never invent audience facts.
 
+## Scoring discipline
+
+These apply to every number in this file. They come from Open Design's `critique` template (Apache-2.0, `0725880`) and match what the rubrics above already imply.
+
+- **Every score cites evidence:** an element, a file and line, a class, a frame. A number with no evidence is dropped from the report.
+- **Score the worst sustained band, and do not average up.** If one screen of a flow breaks a heuristic, the flow scores at that screen's level, and the report says which screen.
+- **All-high scores mean no review happened.** If nothing scores below "good", look again before reporting.
+- **Classify each finding** as a quality defect (usability, accessibility, content, responsive, runtime) or a repeated default with no job (a tell from `frontend-design` (anti-slop-catalog)). The first is fixed; the second is a question about intent.
+- **Say what was not seen.** End a review that had partial evidence with an Unknowns list (states not reachable, viewports not rendered, code not read), and do not guess whether a model made the design.
+- **In an audit-only request, do not prescribe a new font, palette, or direction.** If one thing would help most, name the single highest-impact removal. (These three are from Meng To's audit skill, MIT, `3cc9345`.)
+
+Two contrasts, recorded and not adopted:
+
+- **A builder's self-check.** Open Design has the generating agent score itself on five dimensions at 1 to 5, treat anything under 3 as a regression, fix the weakest, and re-score ("two passes is normal"). That is a pre-handover habit for the builder. It is not a review: the reviewer here is a separate context (Two isolated passes, above).
+- **A weighted jury in one session.** Open Design's "critique theater" runs critic, brand, accessibility, and copy roles at weights 0.4, 0.2, 0.2, 0.2, gives the designer role weight 0 (aesthetic preference is not a ship gate), and ships at a composite of 8.0 or after three rounds. The zero weight on taste is a useful idea. The single shared session is the opposite of this file's isolation rule, so the mechanism is not used here.
+
 ## Technical audit dimensions
 
 For an implementation-focused audit, score five dimensions 0–4 (out of 20: 18+ Excellent, 14+ Good, 10+ Acceptable, 6+ Poor):
@@ -94,7 +111,7 @@ For an implementation-focused audit, score five dimensions 0–4 (out of 20: 18+
 1. **Accessibility:** contrast, keyboard and focus, semantics and landmarks, labels, alt text, a reduced-motion path that keeps meaningful feedback (flag a global `0.01ms` kill that erases state changes), and target size (WCAG 2.2 AA 24×24 CSS px or the spacing exception; 44px is the comfort target).
 2. **Performance:** layout thrash, unbounded blur, filter, or shadow animation, `will-change` left on at rest, unoptimized images, bundle weight, needless re-renders.
 3. **Theming:** hard-coded values that bypass tokens, broken dark mode, values that do not update on theme switch.
-4. **Responsive:** fixed widths, overflow, text scaling, and **touch gestures that actually work**. A custom slider or drag surface that swallows scroll, lacks `touch-action`, or sticks after an interrupted gesture fails. Say what produced the evidence: an emulated viewport proves layout, not the gesture.
+4. **Responsive:** fixed widths, overflow, text scaling, right-to-left rendering on pages that declare `dir="rtl"` (flag a physical property only where the render is actually wrong; method in `web-design` (web-layout-design)), and **touch gestures that actually work**. A custom slider or drag surface that swallows scroll, lacks `touch-action`, or sticks after an interrupted gesture fails. Say what produced the evidence: an emulated viewport proves layout, not the gesture.
 5. **Implementation integrity:** design-system drift, repeated shortcuts, decorative or misleading content, and structure that is interchangeable with an unrelated product.
 
 Name systemic patterns ("hard-coded colors in 15+ components") separately from one-offs, and keep the low-severity tail short so it does not bury what matters.

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Relay hero illustration</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{width:720px;height:340px;overflow:hidden;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#1c2140}
+.art{position:relative;width:720px;height:340px;overflow:hidden;border-radius:18px;background:linear-gradient(135deg,#eef1ff,#f7f2ff)}
+.abs{position:absolute}
+.win{left:24px;top:28px;width:310px;height:284px;background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(60,70,150,.16),0 0 0 1px rgba(60,70,150,.08)}
+.bar{left:0;top:0;width:100%;height:36px;border-bottom:1px solid #eceefa;display:flex;align-items:center;padding:0 14px;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;background:#d9dcf2}
+.bar b{margin-left:10px;font-size:13px;color:#4a4fe0}
+.bar span{margin-left:auto;font-size:11px;color:#8a8fb0}
+.row{left:12px;width:286px;height:52px;border-radius:10px;display:flex;align-items:center;gap:10px;padding:0 12px}
+.av{width:28px;height:28px;border-radius:50%;flex:none;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.lines{flex:1;min-width:0}
+.l1{height:8px;border-radius:4px;background:#2b3060;width:62%;margin-bottom:7px;opacity:.85}
+.l2{height:6px;border-radius:3px;background:#c9cce6;width:90%}
+.tag{font-size:10px;font-weight:600;padding:3px 8px;border-radius:99px;background:#eef0ff;color:#4a4fe0;white-space:nowrap}
+.sel{background:#f1f2ff;box-shadow:inset 0 0 0 1.5px #c9ccff}
+.sel .tag{background:#dff6e8;color:#17803d}
+/* floating ticket */
+.ticket{left:322px;top:120px;width:184px;padding:12px;background:#fff;border-radius:12px;transform:rotate(4deg);
+box-shadow:0 18px 36px rgba(60,70,200,.28),0 0 0 1.5px #4a4fe0;z-index:3}
+.ticket .t{font-size:12px;font-weight:700;margin-bottom:3px}
+.ticket .s{font-size:10.5px;color:#6b7099;line-height:1.35}
+.ticket .m{display:flex;align-items:center;gap:6px;margin-top:9px;font-size:10px;color:#6b7099}
+.pill{padding:2px 7px;border-radius:99px;background:#ffe9e0;color:#c4471b;font-weight:600}
+/* assign panel */
+.pop{left:524px;top:48px;width:172px;height:244px;background:#fff;border-radius:14px;box-shadow:0 14px 34px rgba(60,70,150,.2),0 0 0 1px rgba(60,70,150,.08);padding:14px 12px}
+.pop h4{font-size:12px;margin:0 4px 10px;color:#4a4fe0}
+.mate{position:relative;height:46px;border-radius:10px;display:flex;align-items:center;gap:10px;padding:0 10px;margin-bottom:6px;font-size:12.5px;font-weight:600}
+.mate small{display:block;font-size:10px;font-weight:500;color:#8a8fb0}
+.mate.on{background:#4a4fe0;color:#fff;box-shadow:0 6px 16px rgba(74,79,224,.4)}
+.mate.on small{color:#d6d8ff}
+.mate .ck{margin-left:auto;width:18px;height:18px;border-radius:50%;background:#fff;color:#4a4fe0;font-size:11px;display:flex;align-items:center;justify-content:center}
+.arrow{left:0;top:0;z-index:4}
+.cursor{left:640px;top:158px;z-index:5;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:18px solid #1c2140;transform:rotate(-30deg);filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}
+</style>
+</head>
+<body>
+<div class="art" role="img" aria-label="An agent drags a support ticket in the Relay inbox onto a teammate in the assign list">
+  <div class="abs win">
+    <div class="abs bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><b>Relay</b><span>Shared inbox</span></div>
+    <div class="abs row" style="top:46px"><div class="av" style="background:#f08a5d">JP</div><div class="lines"><div class="l1"></div><div class="l2"></div></div><span class="tag">Open</span></div>
+    <div class="abs row sel" style="top:104px"><div class="av" style="background:#4a4fe0">AK</div><div class="lines"><div class="l1" style="width:48%"></div><div class="l2" style="width:70%"></div></div><span class="tag">Assigning</span></div>
+    <div class="abs row" style="top:162px"><div class="av" style="background:#2fa77a">TR</div><div class="lines"><div class="l1" style="width:70%"></div><div class="l2"></div></div><span class="tag">Open</span></div>
+    <div class="abs row" style="top:220px"><div class="av" style="background:#c46bd6">SL</div><div class="lines"><div class="l1" style="width:55%"></div><div class="l2" style="width:80%"></div></div><span class="tag">Open</span></div>
+  </div>
+
+
+  <div class="abs ticket">
+    <div class="t">Refund not received</div>
+    <div class="s">Hi, I was charged twice for my plan last week and...</div>
+    <div class="m"><span class="pill">Urgent</span><span>Ana K. &middot; 2m ago</span></div>
+  </div>
+
+  <div class="abs pop">
+    <h4>Assign to</h4>
+    <div class="mate"><div class="av" style="background:#f08a5d">JP</div><div>Jon<small>3 open</small></div></div>
+    <div class="mate on"><div class="av" style="background:#fff;color:#4a4fe0">MR</div><div>Maya<small>1 open</small></div><div class="ck">&#10003;</div></div>
+    <div class="mate"><div class="av" style="background:#2fa77a">TR</div><div>Theo<small>5 open</small></div></div>
+    <div class="mate"><div class="av" style="background:#c46bd6">SL</div><div>Sam<small>2 open</small></div></div>
+  </div>
+  <div class="abs cursor"></div>
+</div>
+</body>
+</html>

@@ -157,7 +157,7 @@ Popovers should scale from their trigger, not from center.
 
 A faster-spinning spinner makes apps feel faster even with identical load times. A 180ms select animation feels more responsive than 400ms.
 
-**Rule:** UI animations should stay under 300ms. The exceptions are named, not open-ended: an edge-attached drawer on a steep curve (see "A steep curve buys a longer duration" below) and the toast default in the parent file.
+**Rule:** UI animations should stay under 300ms. The exceptions are named, not open-ended: an edge-attached drawer or sheet on a steep curve (see "A steep curve buys a longer duration" below) and the toast default in the parent file. Upstream now lists modals among the exceptions too; this theme keeps centered modals at 200–300ms (reasoning in the parent's Duration Guidelines).
 
 ### Don't Animate Keyboard Interactions
 
@@ -269,6 +269,11 @@ When hover animation changes element position, the cursor may leave the element,
 ```
 
 The parent's hover area stays stable while the child moves.
+
+Two companion rules (Impeccable `animate`, `d41d986`):
+
+- **Hover motion never moves a neighbor** and never takes a neighbor's pointer target. A card that grows on hover must not push its siblings; use `transform`, which does not affect layout, and check that the enlarged shape does not cover the next item's hit area.
+- **A hover preview that should wait for the pointer to settle puts its delay on the hover state only.** Set `transition-delay` inside the `:hover` rule, not on the base rule, so the preview waits to appear and leaves at once.
 
 A different flicker, with no animation involved: a menu or list whose highlight blinks off between rows has margins or a `gap` that no row owns. That fix is geometric (flush rows, inset fill) and lives in `design-craft` (surfaces) → Contiguous Rows.
 
