@@ -130,6 +130,10 @@ Practitioners:
 - Maxime Heckel on shader light effects (URL in platform-techniques)
 - Chrome team, "Misconceptions about view transitions"
 
+Scroll-driven animation series (added 2026-11-22):
+
+- @gkurttech, "Scroll-driven animations" parts 1–5 on X: 2122222357443989782 (`scroll()`), 2122638812736029133 (`view()`), 2122947160610115866 (`animation-range`), 2124074346431799299 (parallax), 2124450831303090459 (scroll fade), posted 2026-11-16 to 2026-11-22. The text was read through VxTwitter and the code from frames of each video. The timelines, range names and parallax recipe went into [platform-techniques.md](platform-techniques.md), and the scroll fade into `design-craft` (surfaces → Scroll Fades). The shorthand-order, `both` fill, taller-than-scrollport `contain` and inactive-timeline traps come from our own Chromium 159 and Firefox 159 runs, not from the posts. Ledger: `docs/mining-ledger.md` 2026-11-22.
+
 ## Local material this skill builds on
 
 - `design-craft` (refinement-moves): Delight (one earned moment, the specificity test) and Overdrive (propose 2–3 directions first; progressive enhancement). This skill extends those moves and deliberately leans further toward doing the effect: it is invoked when the user already wants one.

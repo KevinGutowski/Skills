@@ -66,12 +66,47 @@ Timing values for everyday motion belong to `web-design` (web-animation-design).
 - Feature-detect `document.startViewTransition` and fall through to the plain update. Skip the transition under reduced motion or reduce it to a crossfade.
 - In React, check the installed version's own view-transition support before wiring the DOM API by hand.
 
-**Scroll-driven animation.** `animation-timeline: view()` plus `animation-range` on a keyframe animation.
+**Scroll-driven animation.** A normal `@keyframes` animation whose progress comes from scrolling instead of time. Choose the timeline first, then the slice of it the animation uses.
 
-- Declare `animation-timeline` *after* the `animation` shorthand; the shorthand resets it.
-- A named timeline resolves only through scroll ancestors; hoist it with `timeline-scope` when the subject is elsewhere.
-- Content must be visible by default. Put the hidden start state inside `@supports (animation-timeline: view())` so a browser without it shows the content.
-- Scroll-linked parallax and zoom are vestibular triggers: remove them under reduced motion.
+| Timeline | 0% → 100% | Use it for |
+| --- | --- | --- |
+| `scroll()` | The scroller's start → its end. By default this is the nearest scrolling ancestor on the block axis; `scroll(self)` uses the element's own scrolling | Reading-progress bar, header that shrinks or changes as the page scrolls, scroll-edge fades |
+| `view()` | The subject's edge entering the scrollport → its far edge leaving it. Each element gets its own timeline | Per-card reveal, per-item progress, parallax |
+
+`animation-range` picks the part of a `view()` trip that the keyframes map onto. The default is `cover`.
+
+| Range | Runs while | Note |
+| --- | --- | --- |
+| `cover` | Any part of the subject is visible | Default |
+| `entry` | The subject is crossing the edge it enters through | Reveal that finishes as the subject arrives |
+| `contain` | The subject is fully inside the scrollport | If the subject is taller than the scrollport, it runs while the subject fills the scrollport instead |
+| `exit` | The subject is crossing the edge it leaves through | |
+
+Names and offsets combine. `entry 25% exit 75%` starts a quarter of the way through entry and ends three quarters through exit. On a `scroll()` timeline use lengths: `0 48px` is the first 48px of scrolling, and `calc(100% - 48px) 100%` is the last 48px.
+
+```css
+@keyframes grow { from { transform: scaleX(0); } }
+.progress { animation: grow linear; animation-timeline: scroll(); }   /* page-reading bar */
+
+.card-bar {
+  animation: grow linear both;     /* `both`: hold the start and end states outside the range */
+  animation-timeline: view();
+  animation-range: entry 25% exit 75%;
+}
+```
+
+Traps (checked in Chromium 159 and Firefox 159 on 2026-11-22; Safari not run):
+
+- **Write the `animation` shorthand first, then `animation-timeline` and `animation-range`.** The shorthand resets both properties. If `animation-range` comes before it, the range falls back to `normal` and you get no error.
+- **Use `linear` and leave out the duration.** Easing is applied on top of scroll progress, so `ease` makes the motion lag the scroll and then catch up. A shorthand without a duration computes to `auto`, and scroll timelines handle that. A `1ms` placeholder also works.
+- **Add `both` once the range is narrower than the whole scroll.** A `scroll()` bar over the full scroller is never outside its range. With `view()` or a narrowed `animation-range`, a subject outside the range drops back to its un-animated style. In the example above, leaving out `both` would make the bar show at full width before it scrolls in.
+- **Content must be visible by default.** Put the hidden start state inside `@supports (animation-timeline: view())` so a browser without it shows the content.
+- **A named timeline resolves only through scroll ancestors.** Hoist it with `timeline-scope` when the subject is somewhere else.
+- **A scroller that cannot scroll has an inactive timeline.** The animation has no effect and the element keeps its base style. That is right for a scroll fade, whose base style is no fade. It is wrong for a progress bar, whose base style is a full bar. Make the base style the one that should show when there is nothing to scroll.
+
+**Parallax with `view()`.** Animate the image inside its card from `translateY(-40px)` to `translateY(40px)` on `view()`. The photo then moves 80px less than its card over the trip, so it reads as farther away (@gkurttech). The image must overflow its frame by at least the travel, or the frame shows an empty band at the ends: make it 80px taller than the frame, centred, with `overflow: hidden` on the frame. Scroll-linked parallax and zoom are vestibular triggers, so remove the animation under `prefers-reduced-motion: reduce`.
+
+Scroll-edge fades that appear only where there is more to scroll use the same mechanism. The recipe lives in `design-craft` (surfaces → Scroll Fades).
 
 **Enter and exit.** `@starting-style` gives the first-frame values; `transition-behavior: allow-discrete` lets `display` (not yet in Firefox) and `overlay` (Chromium only) take part. Animating to `height: auto` with `interpolate-size` is *Chromium only* (129): treat as enhancement.
 
@@ -189,7 +224,7 @@ Names as search terms; mechanics and code live in `swiftui` (swiftui-animation).
 ## Look it up
 
 - View Transitions: <https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API> · misconceptions: <https://developer.chrome.com/blog/view-transitions-misconceptions> · element-scoped: <https://developer.chrome.com/blog/element-scoped-view-transitions>
-- Scroll-driven animations: <https://developer.chrome.com/docs/css-ui/scroll-driven-animations> · scroll-triggered: <https://developer.chrome.com/blog/scroll-triggered-animations>
+- Scroll-driven animations: <https://developer.chrome.com/docs/css-ui/scroll-driven-animations> · range names, visualised: <https://scroll-driven-animations.style/tools/view-timeline/ranges/> · @gkurttech's five-part series (`scroll()`, `view()`, `animation-range`, parallax, scroll fade): <https://x.com/gkurttech/status/2122222357443989782> · scroll-triggered: <https://developer.chrome.com/blog/scroll-triggered-animations>
 - `@property`: <https://developer.mozilla.org/en-US/docs/Web/CSS/@property> · `linear()` springs: <https://www.joshwcomeau.com/animation/linear-timing-function/>
 - `backdrop-filter` craft: <https://www.joshwcomeau.com/css/backdrop-filter/> · refractive glass with SVG: <https://kube.io/blog/liquid-glass-css-svg/>
 - Gooey: <https://css-tricks.com/gooey-effect/> · grain: <https://css-tricks.com/grainy-gradients/>

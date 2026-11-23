@@ -671,9 +671,11 @@ html { background-color: var(--background); }   /* same token the app surface us
 }
 ```
 
-The start fade grows from `0` over the first `3rem` of scrolling; the end fade shrinks to `0` over the last `3rem`. Traps:
+The start fade grows from `0` over the first `3rem` of scrolling; the end fade shrinks to `0` over the last `3rem`.
 
-- **Declare `animation-timeline` after the `animation` shorthand.** The shorthand resets the timeline, so the order above is load-bearing.
+A second source (@gkurttech, "Scroll-driven animations, Part 5: scroll fade", x.com/gkurttech/status/2124450831303090459) independently uses the same pattern: two registered lengths, `scroll(self)`, and ranges `0 48px, calc(100% - 48px) 100%`. Its shorter version leaves out the duration and the `from` keyframe (`@keyframes start { to { --start: 48px; } }`, `@keyframes end { from { --end: 48px; } }`), and both work, because the property's `0px` initial value fills the missing keyframe. Its claim that "a list that doesn't scroll gets no fade" holds: in Chromium 159 and Firefox 159 a list that does not overflow kept both lengths at `0px`, because a scroller that cannot scroll has no active timeline. The general mechanics (`scroll()` vs `view()`, range names, the order of the shorthand) are in `ui-fx` (platform-techniques → Scroll-driven animation). Traps:
+
+- **Declare `animation-timeline` and `animation-range` after the `animation` shorthand.** The shorthand resets both, so the order above is load-bearing. A range placed before it silently reverts to `normal`.
 - **Without `@property` the fade snaps.** An unregistered custom property cannot interpolate.
 - **Fall back to no fade, not a static one.** Without scroll timelines both properties stay at `0px` and the list keeps a plain hard edge and its scrollbar. The source instead adds an `@supports not (animation-timeline: scroll())` branch that sets both fades to `2.5rem` permanently. That reintroduces the misleading fade above, dims the first and last rows at rest, and fades lists that do not overflow at all, so it is left out here. If the hint must exist everywhere, set the two properties from a small scroll listener instead.
 - **The mask covers the scrollbar too.** A visible scrollbar fades out at both ends. Hide it, or keep it and accept that. The source also suggests moving the mask to an inner wrapper; that variant was not tested here.

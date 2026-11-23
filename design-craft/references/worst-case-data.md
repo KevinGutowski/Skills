@@ -16,7 +16,7 @@ Use this when asked to stress-test, break, or find edge cases in a component or 
 
 ## Decision rules
 
-1. **Plausible or schema-backed, never random.** Every worst-case value is either a real pattern (a hyphenated surname, a long corporate email) or the actual limit from the validation schema, database column, or API contract. A 5,000-character string of `a` proves nothing; the designer answers, in the source's words, "that never happens" and stops listening. If no limit exists anywhere, record the field as *unbounded*. That is itself a finding.
+1. **Plausible or schema-backed, never random.** Every worst-case value is either a real pattern (a hyphenated surname, a long corporate email) or the actual limit from the validation schema, database column, or API contract. A 5,000-character string of `a` proves nothing; the designer answers, in the source's words, "that never happens" and stops listening. If no limit exists anywhere, record the field as *no limit found*. That is itself a finding.
 2. **Short and missing break more than long.** Long names are the obvious test. What ships broken is the two-letter name, the absent avatar, the count of exactly 1, the empty list, and the translated badge.
 3. **"Change the data, not the component."** The worst case enters through the same boundary the demo data does: the fixture, mock, props, or API stub. Editing markup or CSS to force a break tests your edit.
 4. **One dataset, many failures, spread across rows.** Row 1 gets the long name, row 2 the long email, row 3 the one-letter name. Real data mixes failures; stacking them all into one row hides which value caused what. The first rows matter most because they are on screen.
@@ -26,7 +26,7 @@ Use this when asked to stress-test, break, or find edge cases in a component or 
 
 ## Method: map, build, toggle, break, report
 
-**1. Map the surface.** List every rendered value with its source, type, limit, and whether it is optional. Include the ones people forget: header counts, relative timestamps, badge and status text, button labels that come from data, tooltips, avatar images, and the list's own length. Find limits in the validation schema (Zod, Yup, Valibot), migrations, API types, and `maxLength` attributes. Note where frontend and backend disagree: a 50-character input saving to a 255-character column will eventually receive something longer through an import or the API. Done when every value has a source and either a limit or "unbounded".
+**1. Map the surface.** List every rendered value with its source, type, limit, and whether it is optional. Include the ones people forget: header counts, relative timestamps, badge and status text, button labels that come from data, tooltips, avatar images, and the list's own length. Find limits in the validation schema (Zod, Yup, Valibot), migrations, API types, and `maxLength` attributes. Note where frontend and backend disagree: a 50-character input saving to a 255-character column will eventually receive something longer through an import or the API. Done when every value has a source and either a limit or "no limit found".
 
 **2. Build the worst case.** Pick values from the catalog below and assemble one fixture next to the demo data, in the same shape and file conventions. Three cases don't fit a single dataset and still need covering: **empty** (zero items, no results), **one** (a single item, every count at exactly 1), and **huge** (the realistic upper bound; 1,000+ rows if the list is unpaginated, which is a performance break as well as a visual one). Use `example.com`, `example.org`, or `.test` domains so a fixture never points at a real inbox or site.
 
@@ -53,7 +53,7 @@ Use the rows that match the fields in the map. Example values are illustrative s
 | | Emoji first (`🦊 Fox`); ZWJ sequence | `.charAt(0)` returns half a surrogate pair; slicing splits the emoji |
 | | Leading, trailing, and doubled spaces; no name at all (email only) | Initials from empty words; the fallback itself |
 | **Email, URL, identifier** | Long corporate email; many subdomains with a two-part TLD | No wrap opportunities, so siblings get pushed off the row; "domain" extraction |
-| | Shortest realistic (`a@b.co`); plus-addressing | Layout sized for long values looks empty; validation rejecting `+` |
+| | Shortest realistic (`a@b.test`; `.test` is reserved, so fixtures never hit a real domain); plus-addressing | Layout sized for long values looks empty; validation rejecting `+` |
 | | Long URL with query string; UUID | Overflow; end-truncation hides the part that differs |
 | | File name with version and brackets; camera file name with uppercase extension | End-truncation hides version and extension |
 | | Handle at minimum and maximum length | Both extremes of the slot |
@@ -71,7 +71,7 @@ Use the rows that match the fields in the map. Example values are illustrative s
 | **Collections** | 0 items; 1 item | Whether an empty state exists; grids that look broken with one card |
 | | Exactly page size, and page size + 1 | Off-by-one counts, an empty page 2 |
 | | 1,000+ unpaginated; one item 10× the others; identical names | Scroll and render cost; rows stretched to the tallest item; nothing to tell items apart |
-| **Time** | Now; 12 days, 11 months, 3 years ago; a future date | "0 seconds ago"; relative-time thresholds; "-3 days ago" |
+| **Time** | Now; 12 days, 11 months, 3 years ago; a future date | "0 seconds ago"; relative-time thresholds (switch to an absolute date after 7 days); "-3 days ago" |
 | | `1970-01-01`; a late-evening timestamp with an offset; a very long duration | Zero timestamp shown as real; different day in UTC vs local; hours that never roll up to days |
 | **Images and media** | Avatar URL that 404s; no avatar | Broken-image icon; fallback parity with real avatars |
 | | 4000×200 and 200×4000 images | Distortion without `object-fit: cover`; blown-out card height |
@@ -98,7 +98,7 @@ Each of these is visible in a screenshot, and the listed cause is nearly always 
 | Avatar adrift beside a three-line name | `align-items: center` on rows of varying height | Top-align once text can wrap |
 | Last row cut off mid-glyph | Fixed-height container, no scroll affordance | Visible scrollbar or fade mask ([surfaces.md](surfaces.md) → Scroll Fades); confirm the `overflow` is intended |
 | Heading breaks mid-word | `word-break: break-all` | `overflow-wrap: anywhere`, which breaks only when it must |
-| Wrong initials (`J`, `CI`, `�`) | `.split(' ')[0][0]`-style code | Grapheme clusters via `Intl.Segmenter`, first + last word, icon fallback |
+| Wrong initials (`CI` for "… Montgomery III", `�` for an emoji-first name) | `.split(' ')[0][0]`-style code | Grapheme clusters via `Intl.Segmenter`, first + last word skipping suffixes (Jr, Sr, II, III), icon fallback |
 | Orphaned dash or blank line for a missing field | Placeholder rendered for an optional value | Omit the line, or reserve its height on purpose |
 | "1 members", "0 member" | Hardcoded plural | `Intl.PluralRules`, or separate strings per count |
 | Numbers jitter or columns misalign | Proportional figures | `font-variant-numeric: tabular-nums` |
@@ -120,7 +120,7 @@ Every long string forces this choice. Make it per field, never globally.
 - **Wrap** what the user needs in full to identify a thing: names, titles in a detail view. Two lines is fine. Four means the column is too narrow.
 - **Truncate at the end** when the start carries the meaning: role, description, message preview. Always pair it with a way to read the full value.
 - **Truncate in the middle** when items differ at the *end*: file names, emails sharing a long domain, paths, hashes. End-truncation makes them look identical.
-- **Clamp** to a line count for multi-line previews in cards, so card heights stay predictable.
+- **Clamp** to a line count for multi-line previews in cards, so card heights stay predictable (`-webkit-line-clamp: 2` with `display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden`, or Tailwind `line-clamp-2`).
 - **Never truncate** numbers, amounts, dates, or anything the user compares.
 
 ## Report format

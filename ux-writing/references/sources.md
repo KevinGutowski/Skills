@@ -46,3 +46,8 @@ Use this as provenance for the `ux-writing` router and its references. It is not
 - `naming-features-and-labels.md`: feature names, labels, button grammar, plan names, setting names.
 - `linear-settings-copy.md`: settings IA and row copy.
 - `coverage-gaps.md`: candidate copy standards that need more evidence or accepted examples before promotion.
+
+## skills.sh Design topic (2026-11-22)
+
+- Leon's tasteskill 2.5.1 (https://github.com/Leonxlnx/taste-skill, MIT, rev `f6b7657`): copy method → `ui-voice-and-tone/marketing-page-copy.md`.
+- Vercel Writing Guidelines (https://github.com/vercel-labs/writing-guidelines rev `83e2316`, via vercel-labs/agent-skills `5a37a63`): unit-format convention → `ui-voice-and-tone.md` (Simplify, word list). Ledger: `docs/skills-sh-design-topic-source-mining-2026-11.md`.

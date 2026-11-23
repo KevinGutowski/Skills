@@ -126,6 +126,18 @@ Watch for:
 - Caveats before the reader understands the main idea.
 - False simplicity that erases uncertainty.
 
+**Product and developer documentation** (Vercel writing guidelines, 2026; docs-specific, not general prose rules):
+
+- **One page, one job.** Tutorial, how-to, reference, conceptual, or troubleshooting. A page that teaches, instructs, and specifies at once serves none of them. Tone follows the type: tutorials warm and predictable, how-tos terse (the reader is mid-task), reference neutral and exhaustive, conceptual pages teach-it-back clear, troubleshooting acknowledges and then fixes without apologising.
+- **Title the reader's question, not the feature's name.** "Configure environment variables", not the internal product noun. State the page goal as a testable verb (configure, explain, debug).
+- **Open with a one-paragraph summary** of what the page covers, and open each major section with its summary sentence. Subheadings say what the section holds ("Caveats when self-hosting"), never a bare "Overview" or "Notes".
+- **Imperative for steps, `you` for the reader.** "Click **Add Project**", not "You will need to click". `We` only for the organisation's own deliberate acts ("we deprecated").
+- **Code blocks:** a language tag, about 25 lines at most before prose resumes, every block explained in prose, defaults omitted. Inline the code the guide needs instead of pointing at an example file at the end.
+- **Placeholders the reader can spot and replace:** descriptive `snake_case` text (`your_access_token_here`, selectable by double-click) and obviously fake numbers (`1234567890123`), never `<TOKEN>` or `xxx`.
+- **Pricing and limits get too much detail, in tables.** Never assume the reader knows the pricing model or what counts as one unit.
+- **Test the page with a fresh model:** given the page's goal, can a model complete the task using only this page? Docs are read by models as well as people, so a wrong page teaches the wrong answer twice.
+- Local conflicts: Vercel bans em dashes outright; this skill treats punctuation as a rhythm choice (AI-Default Pass), so follow the house style where one exists. Interface copy (buttons, errors) stays with `ux-writing`.
+
 ## Business Writing
 
 Reader promise: "I will help you decide or act."

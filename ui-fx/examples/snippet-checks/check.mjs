@@ -103,7 +103,7 @@ if (process.argv.includes('--browser')) {
     <div class="reveal" id="rev"><div class="inner"><p style="margin:0;height:80px">content</p></div></div>
     <div class="beam" id="beam" style="width:220px"><div class="beam-bloom" id="bloom"></div><div class="beam-inner"></div><div class="beam-body" style="height:80px"></div></div>
     <p class="shimmer" id="shim">Thinking…</p><div class="widget" id="w"><div class="dial" id="dial"></div></div>
-    <div class="edge" id="card" style="--lit:1"></div><div class="glass" id="glass">x</div><ul><li class="item" style="--i:2" id="item">x</li></ul><button class="hold"><span>Hold</span><span class="fill" id="holdfill"><span>Hold</span></span></button>`;
+    <div class="edge" id="card" style="--lit:1"></div><div class="glass" id="glass">x</div><ul><li class="item" style="--i:2" id="item">x</li></ul><ul id="autoIdx"><li class="item">x</li><li class="item">x</li><li class="item">x</li><li class="item">x</li><li class="item">x</li><li class="item">x</li><li class="item">x</li><li class="item">x</li></ul><button class="hold"><span>Hold</span><span class="fill" id="holdfill"><span>Hold</span></span></button>`;
   const browser = await chromium.launch();
   for (const reduced of [false, true]) {
     const ctx = await browser.newContext({ reducedMotion: reduced ? 'reduce' : 'no-preference' });
@@ -129,7 +129,7 @@ if (process.argv.includes('--browser')) {
       };
       const out = { decl, closed: cs('#rev').gridTemplateRows, sweepIdle: cs('#beam').animationName, beamIdleOpacity: cs('#beam', '::before').opacity, shimmerIdle: cs('#shim').animationName,
         widgetBg: cs('#w').backgroundImage.includes('radial-gradient'), cardMask: cs('#card', '::before').maskImage || cs('#card', '::before').webkitMaskImage,
-        itemDelay: cs('#item').animationDelay, itemTransform: cs('#item').transform, itemOpacity: cs('#item').opacity, revealChildTransition: cs('#rev .inner > *').transitionDuration, goo: !!document.getElementById('goo'), grain: !!document.getElementById('grain'),
+        itemDelay: cs('#item').animationDelay, autoDelays: [...document.querySelectorAll('#autoIdx > .item')].map((e) => getComputedStyle(e).animationDelay).join(' '), itemTransform: cs('#item').transform, itemOpacity: cs('#item').opacity, revealChildTransition: cs('#rev .inner > *').transitionDuration, goo: !!document.getElementById('goo'), grain: !!document.getElementById('grain'),
         dialTicks: cs('#dial', '::before').backgroundImage.includes('repeating-conic-gradient'), glass: (cs('#glass').backdropFilter || cs('#glass').webkitBackdropFilter || '').includes('blur') };
       document.getElementById('rev').dataset.open = 'true'; document.getElementById('beam').dataset.active = ''; document.getElementById('shim').dataset.live = '';
       await new Promise((res) => setTimeout(res, 700));
@@ -147,6 +147,8 @@ if (process.argv.includes('--browser')) {
     check(`${tag}: grid reveal is closed, then opens to content height`, r.closed === '0px' && Math.abs(r.openHeight - 80) < 1, `${r.closed} -> ${r.openHeight}`);
     check(`${tag}: beam is invisible and still until active`, r.sweepIdle === 'none' && r.beamIdleOpacity === '0', `${r.sweepIdle} ${r.beamIdleOpacity}`);
     check(`${tag}: beam ${reduced ? 'shows but stays still when active' : 'shows and turns when active'}`, (reduced ? r.sweepActive === 'none' : r.sweepActive === 'beam-turn') && Number(r.beamActiveOpacity) > 0.3, `${r.sweepActive} ${r.beamActiveOpacity}`);
+    // The index comes from sibling-index() (capped at the sixth step) and must stay unitless; inline --i (#item above) still wins.
+    check(`${tag}: sibling-index() supplies the stagger index, capped at six`, r.autoDelays === (reduced ? Array(8).fill('0s').join(' ') : '0s 0.04s 0.08s 0.12s 0.16s 0.2s 0.2s 0.2s'), r.autoDelays);
     if (reduced) check('reduced motion: the stagger item is in place at once and the reveal opens with no transition', r.itemTransform === 'none' && r.itemOpacity === '1' && r.revealChildTransition.split(', ').every((d) => d === '0s'), `${r.itemTransform} ${r.itemOpacity} ${r.revealChildTransition}`);
     check(`${tag}: shimmer is still until its state is live, ${reduced ? 'stays still when live' : 'sweeps while live'}, and stops when the state ends`,
       r.shimmerIdle === 'none' && r.shimmerAfter === 'none' && (reduced ? r.shimmerLive === 'none' : r.shimmerLive === 'shimmer-sweep'), `${r.shimmerIdle} / ${r.shimmerLive} / ${r.shimmerAfter}`);

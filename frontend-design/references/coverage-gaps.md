@@ -15,6 +15,9 @@ Use this file for frontend-generation guidance that needs screenshots, assets, o
 - **Background patterns:** The construction rules in [visual-execution.md](visual-execution.md) come from one tool's tile markup, and `scripts/svg_pattern.py` was checked only in headless Chromium: a contact sheet of every kind, and a 1x pixel read showing 1px lines stay one pixel across the seam. Safari and Firefox mask rendering and HiDPI output were not checked. The 15% opacity starting value is Nucleo's default, not a tested rule. Still needed: an accepted example where a pattern came from the subject's world, next to a rejected decorative grid.
 - **Theme selection:** Add examples where the right move was bold/distinctive vs restrained/platform-native rather than blending both.
 - **Accessibility/performance:** This skill builds; `web-design` and `design-craft` own many tactical checks. Promote only rules that reliably improve generated frontend outcomes.
+- **Second-generation copy tells (2026-11):** The table in [anti-slop-catalog.md](anti-slop-catalog.md) comes from one project (tasteskill 2.5.1), which dates the list itself and expects it to move with each model generation. Recheck against fresh generated pages from current models every half-year, and promote a tell to **Ban** only after it shows up in local output. Ledger: `docs/skills-sh-design-topic-source-mining-2026-11.md`.
+- **Anthropic (A) rows:** The single-word accent, template chrome, and reflex near-black rows have one source each (the `→` row has two). Confirm on local generated output before treating them as more than defaults.
+- **Stand-in photo licensing:** The rule in [visual-execution.md](visual-execution.md) rests on the Creative Commons licence terms plus one project's practice. Add a second practitioner source, or a checked local example, before extending it to video, fonts, or icons.
 
 ## Candidate promotion form
 

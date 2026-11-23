@@ -101,7 +101,7 @@ Reduce means a smaller version of the same motion, never a different animation:
 | Hover with scale, lift, or shadow growth | Color or opacity change only, 150ms or less |
 | Slide or scale entrance on a frequent surface | Opacity only, about 150ms |
 | Product UI animation over 300ms with no stated reason | 200–250ms, same curve. Not when the project has adopted Briggs's soft-close set: check its perceived duration instead, and leave a 400ms ease-out alone |
-| Stagger over 80ms per item or over 300ms total | 30ms per item, or fade the group as one |
+| Stagger over 80ms per item, or the last item still moving after ~300ms | 30ms per item, or fade the group as one |
 | Infinite loop (pulse, shimmer, glow) on a persistent element | Run once, or keep only the static end state. Kept on purpose through `ui-fx`: an indicator or beam on work the user started, which stops with it, or deliberate atmosphere that has a visible, keyboard-operable pause control or stops within five seconds, is not an audit finding. A requested loop that starts on its own, runs past five seconds and has no control is a floor finding (add the control or the stop), not a deletion |
 
 If the reduced version no longer carries its purpose, delete it. Scope note for hover: rows a cursor sweeps across (nav, menus, long lists) get no transition at all, per the Hover States section of [PRACTICAL-TIPS.md](PRACTICAL-TIPS.md); the 150ms reduction applies to a single hovered control.
@@ -145,7 +145,7 @@ Use judgment where it compounds (understanding the motion surface, deciding what
 | # | Category | Hunt for |
 | --- | --- | --- |
 | 1 | Purpose and frequency | Motion on keyboard actions and constantly hit surfaces. The strongest fix is often deletion. |
-| 2 | Easing and duration | `ease-in` on UI; a bare keyword (`ease`, `ease-out`, `ease-in-out`, `linear`) on entrances, exits, or on-screen movement — `ease` on hover/colour and `linear` on constant-rate motion are fine; product UI over 300ms (perceived, not clock, under the Briggs soft-close set); delay plus animation on every tooltip in a group |
+| 2 | Easing and duration | `ease-in` on UI; a bare keyword (`ease`, `ease-out`, `ease-in-out`, `linear`) on entrances, exits, or on-screen movement — `ease` on hover/colour and `linear` on constant-rate motion are fine; product UI over 300ms outside the stated drawer and toast exceptions in the main file (perceived, not clock, under the Briggs soft-close set); a Sonner-style toast's 400ms `ease` is not a finding; delay plus animation on every tooltip in a group |
 | 3 | Physicality and origin | `scale(0)`; pure-fade entrances with no transform; anchored surfaces scaling from center; pressables with no press feedback |
 | 4 | Interruptibility | Keyframes on toasts, toggles, and other rapidly retriggered UI; fixed-duration tweens on gestures; distance-only dismissal; hard stops at drag bounds; identical timing for a deliberate press and its release |
 | 5 | Performance | `transition: all`; animated layout properties; a parent CSS variable driving child transforms; rAF loops doing what CSS could; heavy transition-time blur |

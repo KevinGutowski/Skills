@@ -247,12 +247,13 @@ This recipe has been run: a complete page and a browser check are in [../example
 Every piece runs the same keyframe; only a custom property differs. Reverse the index for the exit.
 
 ```css
-.item { animation: rise 420ms cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: calc(var(--i) * 40ms); }
+.item { animation: rise 420ms cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: calc(var(--i, 0) * 40ms); }
+@supports (order: sibling-index()) { .item { --i: calc(min(sibling-index(), 6) - 1); } }   /* CSS supplies the index; inline --i still wins */
 @keyframes rise { from { opacity: 0; transform: translateY(8px); filter: blur(4px); } }
 @media (prefers-reduced-motion: reduce) { .item { animation: none; } }   /* in place at once: no travel, no stagger */
 ```
 
-Set `--i` inline, or with `sibling-index()` where supported. For grids, delay by row plus column, or by distance from the pressed cell, so the change ripples outward (a split-flap board uses about 45 ms per cell of distance).
+`--i` is a plain number and the delay rule owns the unit. The `@supports` line supplies the number from `sibling-index()`, which counts from 1, so it subtracts 1; `min()` holds long lists at the sixth step. Without support, set `--i` inline, or the items enter together. For what `sibling-index()` counts and why `--i` must stay unitless, see `web-design` (web-animation-design → choreography, CSS stagger with sibling-index()). For grids, delay by row plus column, or by distance from the pressed cell, so the change ripples outward (a split-flap board uses about 45 ms per cell of distance).
 
 ## Blur as the entrance material
 

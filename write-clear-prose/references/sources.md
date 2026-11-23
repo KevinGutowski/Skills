@@ -20,3 +20,7 @@ This source map records the prose craft authorities named in `SKILL.md` and the 
 ## Promotion rule
 
 Promote a prose rule when it is a durable craft principle, a genre pattern that repeatedly helps, or a user-accepted rewrite move. Do not add author-voice fingerprints; characterize transferable moves from genuine samples instead.
+
+## skills.sh Design topic (2026-11-22)
+
+- Vercel, Writing Guidelines: https://github.com/vercel-labs/writing-guidelines (rev `83e2316`, 2026-06-01), wrapped as the `writing-guidelines` skill in https://github.com/vercel-labs/agent-skills (`5a37a63`). Read: its command file in full. Folded, paraphrased: the sentence-level shapes in the AI-Default Pass (revision-moves) and the product-documentation block in the technical-explanation playbook (form-playbooks). Not imported: Vercel-specific rules (MDX meta fields, dashboard links, model strings), source-formatting rules, and the PR review process. UI-copy deltas went to `ux-writing`. Ledger: `docs/skills-sh-design-topic-source-mining-2026-11.md`.

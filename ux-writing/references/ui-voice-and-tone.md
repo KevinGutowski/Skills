@@ -48,7 +48,7 @@ The sticky-note exercise (one idea per note, don't filter):
 - **Declarative statements** are the other documentation format (Mailchimp's 2018 rebrand) — flat assertions of what the voice is.
 - **Tie voice to strategy — Pickard's priority stack** (Slack): "'Clear' makes work simpler. 'Concise' makes work productive. And 'human' makes work pleasant." Each principle earns its place by connecting to the mission, and the order resolves conflicts.
 - **Voice recedes in urgent flows.** Geico's app is gecko-friendly throughout — until accident reporting and roadside assistance, where "the friendly phrases and exclamation marks drop away" and the app acts like an emergency dispatcher.
-- **Plan the surface taper** (Walter ch. 3; Dave Gorum of Carbonmade): "We lay it on pretty thick in our marketing site, dial it back a bit in our admin tools, and remove it all together on the product." Decide personality density per surface, deliberately.
+- **Plan the surface taper** (Walter ch. 3; Dave Gorum of Carbonmade): "We lay it on pretty thick in our marketing site, dial it back a bit in our admin tools, and remove it all together on the product." Decide personality density per surface, deliberately. For the loud end (a landing page, company site, or product page), use [ui-voice-and-tone/marketing-page-copy.md](ui-voice-and-tone/marketing-page-copy.md): a fact sheet from the brief before any sentence, a voice card with one chosen register, page shape from the reader's questions, moves for each part of the page, a per-page device budget, and the rival-name swap test.
 
 ## Dial the tone for the moment
 
@@ -102,7 +102,7 @@ This is not documentation theater. It is a cheap coherence test. If the brain du
 1. **Remove fillers** — adverbs like *easily/quickly/simply* (test: does each word add value?), interjections (*oops/hooray*), empty pleasantries (*we're sorry* in an alert "sounds insincere"), decorative punctuation. Keep a modifier only when it clarifies behavior ("feed your pets **automatically**").
 2. **Avoid repetition** — don't restate the headline in the body; combine. ("Uh oh. We're running late…" collapsed to **"Delivery delayed 10 minutes. Check the app for your driver's location."**)
 3. **Lead with the why** — "To get reservation updates, enter your phone number," not the reverse. Especially for errors, notifications, and tips.
-4. **Keep a word list** — words you use / words you avoid / definitions ("alias," not Handle/User Name); button labels belong on it; seed from the Apple Style Guide. "Consistency helps provide clarity." Metts & Welfle's case for it: **one term per action** — label an action "Delete" in one place and "Erase" in another and "the user will have to pause whatever they are doing and think about it." Choosing the one word (with rationale) is naming → [`naming-features-and-labels`](naming-features-and-labels.md).
+4. **Keep a word list** — words you use / words you avoid / definitions ("alias," not Handle/User Name); button labels belong on it; seed from the Apple Style Guide. "Consistency helps provide clarity." Metts & Welfle's case for it: **one term per action** — label an action "Delete" in one place and "Erase" in another and "the user will have to pause whatever they are doing and think about it." Choosing the one word (with rationale) is naming → [`naming-features-and-labels`](naming-features-and-labels.md). Put number formats on the list too: one convention for units (Vercel's writing guidelines: a space and an uppercase unit, `64 KB`, `200 ms`, joined by a non-breaking space so they never wrap apart), applied everywhere so readers can scan.
 
 Two boundaries on the simplify pass (Metts & Welfle ch. 3):
 - **When words can't fix it, the module is wrong.** From Welfle's impasse over an overloaded notification string: "We either need to be concise, or we need to simplify the functionality." Escalate to design/product rather than writing around complexity.
@@ -146,6 +146,7 @@ From Andy Welfle's "Writing is designing" (Config 2025):
 - [ ] Alerts reserved for a real choice; destructive action clearly marked?
 - [ ] Empty states educate or guide (not just decorate)?
 - [ ] Personality density decided per surface (marketing → admin → product taper), and voice receding in urgent flows?
+- [ ] Marketing page: fact sheet written before copy, one register chosen, devices within budget, and every heading survives the rival-name swap?
 - [ ] One term per action everywhere (no Delete/Erase splits); one advance label per flow (Continue *or* Next)?
 - [ ] Toggles labeled by their on state; reader addressed as "you"; links say where they go?
 - [ ] Plain language; no untranslatable idioms; localization-safe?
