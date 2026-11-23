@@ -20,6 +20,7 @@ Use this as provenance for the `user-onboarding` skill and references. It is not
 - Rafa Conde, Dive Club — conversion cost of delight and targeted onboarding.
 - Brandon Jacoby, Dive Club — pattern fidelity for utilitarian signup/setup flows.
 - Anton Sten, *Products People Actually Want* (2025 ebook, local attachment) — onboarding/integration explanation, reducing initial commitment, designing for anxious/distracted contexts, and business-case storytelling around onboarding drop-off.
+- Matter, *The new Matter for Web* (launch post, November 2026, https://www.getmatter.com/web-app/) — the import flow from its demo video (where to find each export, preview with destinations and exclusions, whole-window drop target), in selling-the-dream.
 
 ## Reference Map
 

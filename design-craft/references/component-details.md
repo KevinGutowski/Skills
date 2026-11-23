@@ -27,6 +27,14 @@
   - No results and hidden by filter
   - Loading and failure are not empty
   - On Apple platforms
+- Selecting many rows
+  - Keys
+  - Choose a selection model
+  - Show that selection mode is on
+  - Act on the whole selection
+- Text selection toolbar
+- Position marks on the scroll edge
+- Command palette
 - Sources
 
 ## Dropdown menus
@@ -260,6 +268,8 @@ No results means the person did something, so the empty state is about their inp
 
 ### Loading and failure are not empty
 
+Matter's PDF import shows the waiting version (launch video): the reader opens at once with the file name as the title, the line "Matter is still reading this PDF. Its text will appear here in a moment." and grey bars in the shape of paragraphs. The real title replaces the file name when the text arrives.
+
 Show the empty state only when the request returned zero items. "No projects yet" flashing for half a second before projects load is, in Dukkon's words, the most common empty-state bug. Until the request settles, show the loading treatment from [polish-principles.md](polish-principles.md) §17 (preload first; a skeleton that matches the final layout if you must). A failed request gets its own message with a retry ("Couldn't load projects" / "Try again"), never the empty state, so the person knows which one happened. Error wording → `ux-writing` (error-messages).
 
 In code (ours): render from an explicit status (`loading | error | empty | ready`), not from `items.length === 0`, which is also true before the first response. In a review, this failure is trap `select-async` in `interface-review` (behaviour-traps).
@@ -278,11 +288,98 @@ It agrees with this section and with `user-onboarding` (empty-states); the last 
 - **Trap in Apple's own sample** (ours): the `ContentUnavailableView` doc shows `.search` when `searchResults.isEmpty && !searchText.isEmpty`. That is also true while the fetch for the new text is still running, so the view flashes. Gate it on a finished request.
 - Implementation: `uikit` (uikit-lists → Empty and loading states); `swiftui` (swiftui-lazy-stacks), which shows the view *instead of* the stack when content is gated. Search-specific rules: `apple-design` (apple-search-design → Fail gracefully).
 
+## Selecting many rows
+
+Read-later apps, mail and file lists all have the same job: pick several rows, then act on them once. Matter's 2026 web app calls this bulk triage and says it will feel familiar to Superhuman users.
+
+### Keys
+
+Two independent sources agree on the core: Matter's launch post and video, and the WAI-ARIA APG listbox pattern.
+
+| Key | Action |
+| --- | --- |
+| Shift+↓ / Shift+↑ | Move focus to the next or previous row and add it to the selection |
+| ⌘A (Ctrl+A on Windows and Linux) | Select every row in the list, not the text on the page |
+| Shift+click (ours) | Select the range from the last selected row to this one |
+| Escape (ours) | Clear the selection and return to the focused row |
+
+In the APG pattern Shift+↓ *toggles* the next option rather than extending a range from an anchor, and Shift+Space selects the contiguous range. If you want Finder-style anchor ranges, where Shift+↑ shrinks the range again, say so in the shortcut help (ours); test both directions either way.
+
+### Choose a selection model
+
+The APG names two, and the list's plain arrow keys decide which one fits:
+
+- **Plain ↓ opens the next item** (a list beside a reading pane, as in Matter): use the APG's *alternative* model. Moving without a modifier keeps only the focused row selected, so a bulk selection ends as soon as the person goes back to reading. Make that visible: the selection's count and checkboxes disappear with it.
+- **Plain ↓ only moves focus** (a file manager without a preview pane): the *recommended* model fits. Space toggles a row and the selection survives moving around.
+
+Mixing them is the bug: a list whose arrows open items but also keep an old selection leaves people archiving rows they forgot they had picked.
+
+### Show that selection mode is on
+
+Seen in Matter's video:
+
+- **Checkboxes appear on every row once the first extra row is selected**, not before. A single open article is not a selection, so a list beside a reader keeps its rows clean until the person starts picking.
+- **Selected rows share one tint** and sit flush, so the selection reads as a block.
+- **The reading pane keeps showing the focused row.** Selecting does not stop reading.
+
+### Act on the whole selection
+
+Two ways to offer the actions. Pick by how many there are:
+
+- **A pill that points to the palette** (Matter): a small floating pill reads "4 selected · ⌘K for actions", and ⌘K opens already scoped to the four. It suits an app where the palette already holds every action and the batch set is long (archive, favorite, tag, export and more).
+- **A batch toolbar** (ours): the count plus the three or four batch actions, in place of the single-item toolbar. It suits a mouse-first list with few batch actions, where a shortcut hint alone would hide them.
+
+Either way:
+
+- **Report progress and the result in the same place.** Matter's pill becomes "Making the PDF…", then "Exported 4 articles as one PDF", then goes back to "4 selected". The selection is kept, so the next action can follow.
+- **Say what an option will produce before it runs.** Matter's export lists each format with its result, "4 files, zipped", and the label changes to "One .md file" when "Combine into one document" is switched on. A combined PDF gets a table of contents.
+- Every action a single row supports should also work on the selection, or should be visibly unavailable (ours).
+- Undo the batch as one step (ours).
+- Announce the count for screen readers (ours): `aria-multiselectable="true"` on the listbox and `aria-selected` on each option carry the state; the count is a live-region message.
+- **Listbox only when the rows hold nothing else interactive** (APG). The listbox pattern assumes options with no interactive content inside them. Matter's row checkboxes fit only as indicators: draw them with `aria-hidden="true"` and let `aria-selected` carry the state. If a row holds its own buttons, links or real checkboxes (Matter's hover archive and ⋯ buttons, for example), use the APG grid pattern, where each cell can take focus, or a plain list of focusable controls. Don't nest controls inside a listbox option.
+
+## Text selection toolbar
+
+A toolbar that appears over selected text (highlight, note, share) has to wait until the selection is finished. Matter's 2026 redesign of this toolbar (single source: post and video) shows where it goes wrong.
+
+- **Don't show it on a double-click.** Selecting a paragraph takes three clicks: the first places the caret, the second selects a word, the third selects the paragraph. A toolbar shown after the second click flashes and moves for a moment before the paragraph is selected. Matter suppresses it on the second click.
+  - In the DOM, `event.detail` on `mouseup` is the click count. When it is 2, wait (ours): show the toolbar only if no third click arrives in the multi-click interval, so a deliberate word selection still gets one.
+- **Offer a one-gesture paragraph selection, and preview it.** Matter selects a paragraph on ⌘-click. While ⌘ is held, a thin line appears in the margin beside the paragraph under the pointer, so the person sees what the click will take before clicking. Check the modifier against the platform's own meaning of ⌘-click and Ctrl-click (ours): on Windows and Linux Ctrl-click opens links in a new tab.
+- **Label each action with its key.** Matter's toolbar sits above the selection and reads "Highlight H · Add note N · Copy ⌘C · Share quote Q · Ask Co-Reader A". The mouse path teaches the keyboard path, as in [linear-product-craft.md](linear-product-craft.md) → Interaction Details.
+- **Turn the toolbar into the note field.** Choosing "Add note" changes the toolbar into a text field in the same place, anchored to the same selection. A second popover would cover the text the note is about. Matter's field says "Add a note…" and its Submit button, marked with ↩, stays disabled until something is typed. The saved note sits in the margin beside the highlight.
+- Keyboard path (ours): a selection made with Shift and the arrow keys needs the same actions, either on a shortcut or from the toolbar reached by keyboard.
+
+## Position marks on the scroll edge
+
+Marks along the edge of a long document show where things are. Full-height versions are the overview ruler beside VS Code's scrollbar (search hits, changes, errors) and the find-in-page ticks some browsers draw on the scrollbar. Matter's 2026 reader calls its version the annotations minimap, and its video shows a compact variant:
+
+- **A short track, not the scrollbar.** Matter's marks sit in a short column of ticks at mid-height on each edge, a few hundred pixels tall, not spread over the window's height. Grey ticks appear above and below the highlight ticks; they look like the start and end of the article (inferred from the video, not stated).
+- **One kind of mark per edge, two encodings.**
+  - Highlights (right edge) keep their relative position in the article, so clusters show where the piece was marked up most.
+  - Headings (left edge) are one evenly spaced tick per heading, in order. As the reader scrolls, the current section's tick turns dark: the column is a table of contents with "you are here".
+  - Choose per kind (ours): position when *where* matters (density, hot spots), order when *which* matters (an outline).
+- **Hover opens the whole list, with the hovered item picked out.** Pointing at a highlight tick opens a card with every highlight ("16 Highlights", with "Open Notebook"); the one under the pointer is emphasized and the rest are dimmed. Pointing at the heading column opens the outline. Clicking an entry scrolls to it.
+- **Recompute after every reflow** (ours) when marks encode position. In a reader that lets people change font, size or measure, every reflow moves every highlight. For position marks, use the element's offset from the top of the article divided by the article's height, times the track height.
+- **Marks are a shortcut, not the only way there** (ours). The hover card is pointer-only; keep the same list reachable by keyboard and screen reader (Matter's Notebook panel lists the highlights, and headings belong in the document outline). Treat the whole column as one target that opens the list, not 2px ticks that each need hitting.
+
+## Command palette
+
+⌘K for nearly every action is common; what Matter's 2026 video adds is how the palette carries context (single source):
+
+- **Show the scope.** The palette's header names what it will act on: the open article's title, or "4 selected" when rows are selected.
+- **The empty query is a menu.** Before typing, it lists five actions on that scope (Archive, Favorite, Tags…, Play, Open original), each with its one-key shortcut.
+- **Settings are commands, and show their current value.** "Theme… Light", "Reader font… Geist Serif", "Text size… Default". Typing "dark", "kindle" or "import" finds the setting or flow.
+- **One search for commands and content.** Results mix commands, settings ("Settings: Connections"), tags, articles and sources; each content row carries a type label on the right (Newsletter, Publication, Queue, Archive).
+- **An ellipsis marks a further step.** "Tags…", "Import a library…" open a second stage inside the palette; bare verbs run at once.
+- Open it without an enter animation; that is [animations.md](animations.md)'s rule for menus opened many times a session.
+
 ## Sources
 
 - Kevin Dukkon (@keviduk), *Sizing dropdown menus*, 4 Nov 2026. https://www.kevdu.co/reads/sizing-dropdown-menus and X 2117975138541146303 (text, a 15.2s video, one still). The article cites WAI-ARIA APG Menu Button, WCAG 2.2 SC 2.5.8, Nielsen Norman Group on drop-down menus, Apple's HIG on pull-down buttons, and the Fluent 2, Material, Primer and shadcn/ui docs; those were not re-read here.
 - Kevin Dukkon, *Timing tooltips*, 6 Nov 2026. https://www.kevdu.co/reads/tooltip-delay. It cites WCAG 2.2 SC 1.4.13, the APG Tooltip pattern, Nielsen Norman Group's timing guidelines, Microsoft's `TTM_SETDELAYTIME`, React Aria, Radix UI, Base UI and MUI; not re-read here.
 - Kevin Dukkon, *How to design empty states*, 18 Nov 2026. https://www.kevdu.co/reads/empty-states, read 2026-11-18 (text read; interactive demos rendered headless and inspected for anatomy, sizes, colour and motion). It cites NN/g *Designing Empty States in Complex Applications*, Primer Blankslate, PatternFly, SAP Fiori Illustrated Message, GitLab Pajamas, Atlassian, Carbon, Datawrapper Academy *Patchy data* and Grafana's No value option; not re-read here, so both tables are Dukkon's readings. Copy rules and the per-cause table from the same read are in `user-onboarding` (empty-states).
 - Pasquale Vitiello, *Plotter* (2026), https://plotter.pasqualevitiello.com — the drawn-illustration pointer in Empty states; full record in [construction-drawings.md](construction-drawings.md).
-- Lines marked "ours" are this library's additions, not Dukkon's.
+- Matter, *The new Matter for Web*, November 2026, https://www.getmatter.com/web-app/, read 2026-11-23: the text, the three stills, and all twelve demo videos (contact sheets, then full-resolution frames of each step). The app itself was not used, so behaviour is what the videos show, not what was tried. Source for Selecting many rows (the post likens it to Superhuman), Text selection toolbar, Position marks on the scroll edge and Command palette.
+- W3C WAI-ARIA Authoring Practices, *Listbox Pattern*, keyboard interaction for multi-select lists, read 2026-11-23: https://www.w3.org/WAI/ARIA/apg/patterns/listbox/
+- Lines marked "ours" are this library's additions, not Dukkon's or Matter's.
 - Two more reads were listed as "Coming soon" on 2026-11-18 (*Spacing navigation*, *Designing interface icons*). Recheck https://www.kevdu.co/reads; navigation spacing would get a section here, and icon design routes to `design-systems` (icon-systems).

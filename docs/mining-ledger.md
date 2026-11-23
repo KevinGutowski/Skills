@@ -970,3 +970,43 @@ Five QA rounds on the 2026-11-18 intake kept finding the same kinds of defect on
 - **Capture script.** `faux-ui/scripts/contact-sheet.mjs` now parses strictly, waits a bounded time for a selected element, and has a dry-run mode; its tests cover the argument contract, lint every documented command, and run in CI with a new layout test for the two exemplars.
 - **Records.** Status facts about `faux-ui` now have one owner each (sources, coverage gaps, eval write-up); the intake ledger and audit row point to them.
 - **Left out on purpose:** with/without evals for the other four new references; a controlled kit-against-no-kit comparison; an animated exemplar; mining Open Design's upstreams; `/doctor`; WebKit and Firefox runs of the browser claims.
+
+## 2026-11-23 — Matter, *The new Matter for Web* (getmatter.com/web-app)
+
+Ticket: "Anything useful to fold in from here?" A launch post for a rebuilt read-later web app. A first pass read only the text and three stills; on review, the twelve demo videos were read too and changed several folds.
+
+- **Manifest.**
+  - Page text (curl, read in full).
+  - Three stills (`m/hero`, `m/before`, `m/after`.webp) and their dark variants.
+  - Twelve looping demo videos, 12–39 s each at 1600×1000, 60 fps: `looks`, `rail`, `focus`, `panel`, `cmdk`, `multi`, `note`, `ticks`, `quote`, `print`, `drop`, `import` (.mp4; the `-dark` variants were not watched). Each was read as a 16-frame contact sheet, then full-resolution frames of each step. Each `<video>` also has a descriptive `aria-label` in the page source; they are a useful index.
+  - Outbound links: web.getmatter.com (the app; needs an account, not used) and cmdk (named only). No repo, docs or tests.
+- **Density:** MEDIUM-HIGH once the videos are included. The post states settings; the videos show the interaction details the post only names.
+- **What the videos corrected.**
+  - The highlight marks sit in a short track at mid-height, not along the whole scrollbar.
+  - Heading marks are evenly spaced, one per heading, and show the current section.
+  - Hovering a mark opens the full list with that item picked out, not a tooltip for one item.
+  - Focus mode's toolbar returns on scroll-up as a slim title bar.
+  - Bulk selection uses a "N selected · ⌘K for actions" pill, not a batch toolbar.
+- **Folded:**
+  - `web-design` (web-typography): reader-settings measure steps (§2), faces matched to one x-height with `font-size-adjust` (§3), Bringhurst's `2 3` hyphen minimums as a second school beside Rutter's `6 3 2`, and bounded word spaces needing whole-paragraph breaking (§6), 6% caps tracking (§7), two checklist lines.
+  - `web-design` (web-layout-design): new Print section (margins, strip images because unsplittable images leave gaps, hide chrome). The `print` video added the switch's place (beside the export formats in the ⋯ menu) and the running title and page numbers.
+  - `design-craft` (component-details): four new sections.
+    - Selecting many rows, corroborated by the WAI-ARIA APG listbox pattern: which selection model fits, checkboxes that appear with the selection, pill vs batch toolbar, progress in the same place, results labelled before export.
+    - Text selection toolbar: no toolbar on the double-click, ⌘-hold preview line, key labels, morph into the note field.
+    - Position marks on the scroll edge: compact track, position vs order encodings, hover opens the list.
+    - Command palette: scope header, empty query as a menu, settings with their current value, mixed results with type labels, ellipsis for a further step.
+    - A PDF-loading example under "Loading and failure are not empty".
+  - `design-craft` (linear-product-craft → Dense App Chrome): one corroboration bullet (nav rail, hidden side panel, efficient default with a cheap focus mode).
+  - `user-onboarding` (selling-the-dream): the import flow (where to find each export, preview with destinations, duplicates and exclusions, capped landing, count on the button, whole-window drop target).
+  - `ai-experience-design` (patterns): Co-Reader as corroboration for suggestion mode and wayfinders (summary, then article-specific questions, then the field).
+- **Skipped or parked:**
+  - `looks`: settings changes crossfade the old layout into the new one instead of animating the reflow. One example only; recheck if a second source does the same, for `web-design` (web-animation-design).
+  - `quote`: share-image templates (Post/Story/Square sizes, per-style swatches, a Customize panel with element toggles and the watermark switch, Save/Copy image with shortcuts). A growth feature with no design rule stated.
+  - PDF drop beyond the loading state and the drop target: the PDF is reflowed into the reader's typography with its outline, not shown in a PDF viewer.
+  - Paragraph and heading spacing (half a line between paragraphs, a full line above headings, half below) corroborates web-typography §5 and was not added.
+- **Not verified:**
+  - `hyphenate-limit-chars` rests on the spec, not a run. QA ran the `font-size-adjust` case in Chromium: equal x-heights did not keep one column width, because `ch` follows the adjusted face. web-typography §3 was corrected to say so.
+  - QA also scoped the listbox recipe in component-details to rows with no interactive content, per the APG; rows with their own controls go to the grid pattern.
+  - The book behind the hyphen minimums (Bringhurst) is not in this library; the rule is cited through Matter.
+  - Behaviour is as recorded in Matter's own demo videos, not tried in the app.
+- **Descriptions:** none changed, so no routing probes.

@@ -30,7 +30,12 @@ Users are already solving this problem somehow — even if it's with spreadsheet
 **Acknowledge their current solution.** Don't pretend it doesn't exist. Instead, show how your product fits into what they already do while removing their specific pain points.
 
 **Lower the switching barrier:**
-- Offer importers/migration tools prominently
+- Offer importers/migration tools prominently. Accept the competitor's own export file as it is, by drag and drop, and name the products you read. Matter's 2026 import flow (launch video; single source) shows the rest:
+  - **Tell people where their export is.** Under the drop zone, one row per app gives the exact step and a link: "Click Export Library as CSV" (Readwise Reader), "Click Export .CSV to email, under Import" (Instapaper). For a product that has shut down: "Pocket has closed. Drop the .csv or .zip it emailed you."
+  - **Preview before importing.** After the drop, show the source it detected, the file name and size, and the count ("7,835 articles"). Then say where things will go, what was already there, and what is left out and why: "The newest 1,000 unread go to your Queue, and the other 6,835 to your Archive. 3 articles already in your library stay as they are. Left out: 67,657 feed items you never saved and 126 rows without a web address."
+  - **Don't flood the new home.** Capping what lands in the active list (the newest 1,000 unread) and filing the rest keeps the first session usable after a large import.
+  - **Let the whole window take the drop.** Dragging a file over Matter washes out the app and names the destination and the accepted types: "Drop to add it to your Queue · PDF, Markdown, HTML and text files". A file dropped twice lands once.
+  - **Put the count on the button** ("Import 7,835 articles") and offer "Choose a different file…" beside it.
 - Show how familiar workflows map to your product
 - Emphasize what they gain, not what they leave behind
 - Address the fear directly: "Bring your existing data in one click"
