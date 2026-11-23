@@ -82,6 +82,10 @@ Practical moves:
 - **Compress support surfaces.** Tabs and sidebar items can be smaller and quieter than content controls. Compact chrome is not a density flex; it is attention budgeting.
 - **Reduce icon noise.** Icons help recognition, but too many colored or treated icons become visual static. Scale down, remove decorative backgrounds, and reserve treatments for status or identity.
 - **Align what users feel, not just what screenshots show.** Linear spent time aligning labels, icons, and buttons vertically and horizontally in tiny surfaces (the guide-drawing method and sidebar/toolbar line rules: [alignment-pass.md](alignment-pass.md)). Users may not identify the change, but the product feels calmer after minutes of use.
+- **Corroboration from a reading app (Matter for Web, 2026; not Linear).** The same attention budget applied where the content is long-form text:
+  - A navigation rail that hides its labels at rest and opens transient menus on hover: a popover for a short list, a full-height sheet with search for long ones (feeds, tags). The menus close and never compete with the article. A label hidden at rest still needs an accessible name and a tooltip, and the menus must open from keyboard focus, not only on hover (ours).
+  - A side panel (AI summary and questions, notes, related reading) hidden by default and toggled with one key (`]`).
+  - **Default to the efficient layout and make the quiet one cheap.** Matter had kept a single full-width list so reading had no distractions, but the wide list "makes poor use of space". The new default puts the list beside the article, and focus mode is one step away: Return, a double-click on the row, or an expand icon. In focus mode the rail and list leave and the column slides to the centre at the same width. The toolbar hides while the reader scrolls down and comes back on scrolling up as a slim bar with the article title, previous/next arrows and panel toggles (from the launch video).
 
 ## Color And Theme Craft
 

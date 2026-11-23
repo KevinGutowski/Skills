@@ -35,6 +35,7 @@ Use this skill when setting, sizing, pairing, or loading type for the web. Refer
 Latin's equilateral triangle (ch. 'Equilateral triangle of a perfect paragraph'): size, measure, and line-height are one decision, never three. Skew one, fix the others.
 
 - **Measure: 45–75 characters, ~66 ideal** (Rutter, citing six centuries of print). No `ch` reliability → use ems: 1em ≈ 2 characters, so `max-width: 23–38em` (66ch ≈ 32em). Today `max-width: 65ch` is fine for the font it's set in.
+  - **Reader settings offer steps inside the band, not a free slider.** Matter's 2026 web reader ships about 66 characters by default and 75 at its "wide" setting, and both sit inside the range. When readers can change the size, keep the measure in characters so it holds as the size changes.
 - **Start from the default size**: "The browser default is always the best place to start for text size" (Rutter, 'Use the default font size for paragraphs') — 16px is the user's choice, adjust from there only if the typeface demands it (small x-height → bigger; see §3).
 - **Line-height: unitless, ~1.4 to start.** Browser `normal` (~1.2) "is usually too small" for screens (Rutter, 'Increase line spacing from the browser default'). Always unitless so it inherits as a multiplier, not a computed length.
 - **Latin's covariation rules** (ch. 'Equilateral triangle'): more leading when text is **darker/heavier**, **larger**, **longer-measured**, or the typeface **seems heavier** (most serifs). Body: **1.3–1.6**. Headings: **1–1.2** — short lines drift apart at body leading; "once you see the difference you can't unsee it."
@@ -47,6 +48,8 @@ Latin's equilateral triangle (ch. 'Equilateral triangle of a perfect paragraph')
 - Rutter's arcminutes model ('Adjust type size according to reading distance'): perceived size is an *angle* (text height ÷ distance). Book at 35cm/10pt ≈ 30 arcminutes. To hold that: **~16px phone** (close), **18–19px laptop/tablet** (~45cm), **~22px large desktop** (~60cm). Implement with `em`-based min-width media queries (60em ≈ laptop).
 - **Aspect-value matching** ('Adjust the font size if the typeface requires it'): apparent size is x-height, not font-size. aspect value = x-height ÷ font-size (Helvetica 0.521, Futura 0.417). Equivalent size = `16 × 0.521 ÷ 0.417 = 20.1px` — Futura needs ~20px to look like Helvetica at 16.
 - `font-size-adjust: <aspect-value>` does this automatically for fallback fonts — rendered size changes, computed size (and line-height) doesn't.
+- **When readers pick the face, match every face to one x-height and one line spacing.** Matter's reader offers nine faces "each sized to the same x-height and line spacing" (2026), so switching faces changes the voice but not the apparent size. It does not hold the column: faces with equal x-heights still differ in width. `font-size-adjust` scales every face in the stack, not only fallbacks, so one value on the text container covers the whole menu. Set `line-height` in a unit that does not depend on the face, such as a unitless number or `rem`.
+  - **Control the column separately.** `font-size-adjust` also changes the `ch` unit, because `ch` is measured from the adjusted face. So `max-width: 65ch` gives a different pixel width for each face. In Chromium, with `font-size-adjust: 0.5` and `width: 65ch`, DejaVu Sans set 755px and Nimbus Roman 726px (QA run, 2026-11-23). Pick one: a `ch` width keeps roughly the same number of characters per line while the column's width moves, or a `rem` width per measure step keeps the column fixed while characters per line move. Either way, count characters per line for each face on real text.
 
 ## 4. Scales & hierarchy
 
@@ -67,11 +70,13 @@ Latin's equilateral triangle (ch. 'Equilateral triangle of a perfect paragraph')
 
 - Left-align by default. "Justify well or not at all; if in doubt, align left" and **"Never set justified text without using hyphenation"** (Rutter). Don't center long passages.
 - The full justification kit (Rutter, 'Hyphenate judiciously and with care'): `text-align: justify` + `hyphens: auto` (+ correct `lang` attribute), then tame with `hyphenate-limit-lines: 2` (no ladders), `hyphenate-limit-chars: 6 3 2` (word/before/after minimums), `hyphenate-limit-zone: 8%` (less hyphenation for ragged text), `hyphenate-limit-last: always` (no orphaned half-word). Hyphenation *without* justification also reduces rag.
+- **Hyphen minimums are two schools; pick one.** Rutter's `6 3 2` keeps three letters before the break and two after. Matter's 2026 reader, which says it follows Bringhurst (the book is not in this library), keeps "at least two letters before a break and three after": `hyphenate-limit-chars: auto 2 3`. Both keep the hyphen off a paragraph's last full line (`hyphenate-limit-last`, patchy support, §12).
+- **Justifying well means bounding word spaces, which needs the whole paragraph.** Matter justifies with a line breaker that "weighs the whole paragraph before it breaks any line" and keeps word spaces between a fifth and a third of an em. By default a browser breaks each line in turn and then stretches it to fit; no widely shipped CSS property caps how far it stretches a space. `text-wrap: pretty` asks for better breaks, but each engine decides how many lines it reconsiders. To meet a word-space bound, lay out the paragraph in script (a Knuth–Plass-style breaker) or left-align. Check the result at the narrowest measure the reader can choose, where rivers appear first.
 
 ## 7. Tracking (letterspacing)
 
 - **"Don't letterspace lowercase without good cause"** (Rutter) — lowercase spacing is the type designer's job.
-- **Do** letterspace strings of capitals and 3+ digit runs: `letter-spacing: 0.05em` (~5%). More for all-caps headings in light weights; if another letter fits in the gap, too much. Not initials (use narrow no-break spaces) or small caps (spacing built in).
+- **Do** letterspace strings of capitals and 3+ digit runs: `letter-spacing: 0.05em` (~5%). More for all-caps headings in light weights; if another letter fits in the gap, too much. Not initials (use narrow no-break spaces) or small caps (spacing built in). Matter's 2026 reader uses 6%, about the same.
 - **Gently tighten big/bold/wide**: −1% to −3% (`h1 { letter-spacing: -0.03em }`). Treat −0.04em as a floor: past it, letters lose their own shapes (Impeccable's `extreme-negative-tracking` check).
 - **Retune light-on-dark text; don't just invert it.** Reversed text often looks *heavier* and blurs together (irradiation, antialiasing). That is why faces such as Signika ship a lighter "Negative" cut. Thin hairlines and small sizes can instead break up or drop out. Judge the actual face at the actual size and rendering: usually a little more line-height and tracking help, and the weight goes down a step for bold-looking faces or up for hairline faces that disappear. Impeccable's `typeset` suggests compensating on all three axes; the direction of the weight change depends on the face.
 - **Optical vertical centering of a label** (Impeccable `typeset`, `d41d986`; syntax checked on MDN 2026-11-18):
@@ -135,7 +140,8 @@ Durable: everything above. Decayed specifics:
 - [ ] Unitless line-height, ~1.4 start, covaried with size/measure/weight/darkness? Headings 1–1.2?
 - [ ] Sizes from a scale, smallest first; one attribute changed at a time for hierarchy?
 - [ ] 16px-equivalent on phones, 18–19px laptop, ~22px large desktop (or aspect-adjusted)?
-- [ ] Justified text hyphenated — or left-aligned?
+- [ ] Justified text hyphenated, with one school's hyphen minimums and word spaces checked at the narrowest measure — or left-aligned?
+- [ ] If readers choose the face: every face matched to one x-height and one line-height, and characters per line checked for each face?
 - [ ] No letterspaced lowercase; +5% on caps/digit runs; big/bold gently tightened; ligatures off where tracked?
 - [ ] Real small caps, correct numeral style per context, proper quotes/dashes/primes/ellipsis?
 - [ ] WOFF2, subset, `font-display` chosen deliberately, fallback metrics matched?

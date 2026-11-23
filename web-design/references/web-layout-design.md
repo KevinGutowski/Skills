@@ -14,6 +14,7 @@
 - Safe areas and stable controls
 - Discoverable overflow and disclosure
 - Scroll snap
+- Print
 - Review sequence
 - Sources and staleness
 
@@ -198,6 +199,17 @@ Traps:
 
 Behaviour above was checked in headless Chromium (Playwright 1.65) on 2026-11-22. For the padding trap, only `scrollIntoView` was measured; anchor links and focus scrolling rest on the spec. Snap-stop on fast touch flicks was not reproduced headlessly; it rests on the source's screen recording and the spec. Re-check Safari and Firefox before relying on the `scrollBy` result.
 
+## Print
+
+Long reads still get printed. Matter's 2026 web reader treats print as its own layout (launch post and its print video; single source):
+
+- **Wide margins and the screen's text setting.** Keep the justification and hyphenation from the screen reader; set the page with `@page { margin: … }` rather than the screen column.
+- **Let readers leave images out.** An image cannot split across pages, so one that does not fit moves to the next page and leaves a large blank gap behind it. Matter offers a "Without images" switch for this reason; it sits beside the export formats in the article's ⋯ menu and applies to print too. Where images stay, cap their height in print (for example `max-height` in `vh` or `cm`) so fewer of them jump a page.
+- **Give the pages a book's furniture.** Matter's print preview has the article title as a small running header and a page number at the foot. In CSS these belong in `@page` margin boxes (`@top-center`, `@bottom-center` with `counter(page)`), whose support varies by browser; check before relying on them.
+- **Drop the chrome.** Navigation, toolbars, side panels and the reading-position UI go in `@media print { display: none }`.
+
+These are a product's choices, not a print standard. Preview with the browser's print preview or a PDF export at two paper sizes; the screen layout does not predict where breaks fall.
+
 ## Review sequence
 
 1. **Source order:** does DOM order match the intended reading and focus sequence?
@@ -221,6 +233,7 @@ Behaviour above was checked in headless Chromium (Playwright 1.65) on 2026-11-22
 - W3C WAI, Understanding SC 2.4.11 Focus Not Obscured: https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html
 - W3C WAI, Carousels Tutorial: https://www.w3.org/WAI/tutorials/carousels/
 - gokhan (@gkurttech), *CSS Little-Known* 13–16, scroll snap Parts 1–4 (X, 2026-11-12 to 11-15): https://x.com/gkurttech/status/2120770568475599138 (alignment), https://x.com/gkurttech/status/2121145036125450331 (padding, margin), https://x.com/gkurttech/status/2121562958589239668 (strictness), https://x.com/gkurttech/status/2121882792477016408 (`scroll-snap-stop`)
+- Matter, *The new Matter for Web* (launch post, November 2026), read 2026-11-23: the Print section and its print video. https://www.getmatter.com/web-app/
 - MDN, CSS scroll snap: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll_snap
 
 Verify browser support and current WCAG text before treating an exact API or conformance detail as current. The structural principles are durable; syntax and standards details can move.
