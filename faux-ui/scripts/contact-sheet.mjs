@@ -17,7 +17,9 @@
 // crop only decides which pixels are kept.
 //
 // Crop:     --select <css>   the element to capture, whole, even when it is larger
-//                            than the viewport (measured after --start), or
+//                            than the viewport. Waits up to --wait ms (default
+//                            5000) for it to be visible, then measures it after
+//                            --start. Or:
 //           --x --y --width --height   a rectangle in CSS px (default 0 0 720 340,
 //                            or as much of that as the viewport holds)
 // Viewport: --viewport WxH   default 1280x800; never changed to suit the crop.
@@ -32,6 +34,10 @@
 // Modes:    --still [--scale 2]   one frame only
 //           --reduced             emulate prefers-reduced-motion: reduce
 //           --dark                emulate prefers-color-scheme: dark
+//           --dry-run             check the arguments, print what would be captured, exit
+//
+// Arguments are strict: an unknown flag, a flag with no value, or a value of
+// the wrong kind stops the run before a browser starts.
 //
 // Exit codes: 0 written; 1 bad arguments; 2 Playwright missing;
 //             3 the page did not load (HTTP error, missing file, no element).
@@ -40,58 +46,110 @@ import { createRequire } from 'node:module'
 import { pathToFileURL } from 'node:url'
 import { resolve, dirname } from 'node:path'
 import { mkdirSync, existsSync } from 'node:fs'
+import { parseArgs } from 'node:util'
 
 const MAX_FRAMES = 240
-const args = process.argv.slice(2)
-const flag = (name, fallback) => {
-  const i = args.indexOf(`--${name}`)
-  return i === -1 ? fallback : args[i + 1]
-}
-const has = (name) => args.includes(`--${name}`)
+const USAGE = 'usage: node contact-sheet.mjs <url-or-file> --out <png> [--select <css> [--wait <ms>] | --x --y --width --height] [--viewport WxH] [--loop <ms> | --count <n>] [--every <ms>] [--start <ms>] [--cols <n>] [--thumb <scale>] [--still [--scale <n>]] [--reduced] [--dark] [--dry-run]'
 const fail = (code, message) => {
   console.error(message)
   process.exit(code)
 }
-const num = (name, fallback) => {
-  const v = Number(flag(name, fallback))
-  if (!Number.isFinite(v)) fail(1, `--${name} must be a number`)
+
+// Every flag is declared here. Unknown flags, a flag given without its value,
+// and a value that is not what the flag takes are all refused before a browser
+// starts, so a typo cannot quietly produce a picture of the wrong thing.
+const NUMERIC = {
+  // name: [default, minimum, whether the minimum itself is allowed]
+  x: [0, 0, true],
+  y: [0, 0, true],
+  width: [null, 0, false],
+  height: [null, 0, false],
+  every: [500, 0, false],
+  count: [24, 1, true],
+  start: [0, 0, true],
+  loop: [null, 0, false],
+  wait: [5000, 0, true],
+  cols: [4, 1, true],
+  thumb: [0.5, 0, false],
+  scale: [2, 0, false],
+}
+const STRINGS = ['out', 'select', 'viewport']
+const BOOLEANS = ['still', 'reduced', 'dark', 'help', 'dry-run']
+let parsed
+try {
+  parsed = parseArgs({
+    args: process.argv.slice(2),
+    allowPositionals: true,
+    strict: true,
+    options: Object.fromEntries([
+      ...[...Object.keys(NUMERIC), ...STRINGS].map((n) => [n, { type: 'string' }]),
+      ...BOOLEANS.map((n) => [n, { type: 'boolean' }]),
+    ]),
+  })
+} catch (e) {
+  fail(1, `${e.message}\n${USAGE}`)
+}
+const { values, positionals } = parsed
+if (values.help) {
+  console.log(USAGE)
+  process.exit(0)
+}
+if (positionals.length !== 1) fail(1, `expected one page (a URL or a file), got ${positionals.length}\n${USAGE}`)
+const target = positionals[0]
+const has = (name) => values[name] !== undefined
+for (const name of STRINGS) {
+  // parseArgs takes the next token as the value, so `--select --still` would
+  // make "--still" the selector. A value that looks like a flag is a mistake.
+  if (has(name) && (values[name] === '' || values[name].startsWith('--'))) fail(1, `--${name} needs a value\n${USAGE}`)
+}
+const num = (name) => {
+  const [fallback, min, inclusive] = NUMERIC[name]
+  if (!has(name)) return fallback
+  const v = Number(values[name])
+  if (values[name].trim() === '' || !Number.isFinite(v)) fail(1, `--${name} must be a number, got "${values[name]}"`)
+  if (inclusive ? v < min : v <= min) fail(1, `--${name} must be ${inclusive ? 'at least' : 'above'} ${min}, got ${v}`)
   return v
 }
 
-const target = args[0]
-if (!target || target.startsWith('--')) {
-  console.log('usage: node contact-sheet.mjs <url-or-file> --out <png> [--select <css> | --x --y --width --height] [--viewport WxH] [--loop <ms> | --count <n>] [--every <ms>] [--start <ms>] [--still] [--reduced] [--dark]')
-  process.exit(has('help') ? 0 : 1)
-}
-
-const every = num('every', 500)
-if (every <= 0) fail(1, '--every must be above 0')
-const start = Math.max(0, num('start', 0))
-const loop = has('loop') ? num('loop', 0) : null
-if (loop !== null && loop <= 0) fail(1, '--loop must be above 0')
+const every = num('every')
+const start = num('start')
+const loop = num('loop')
+const wait = num('wait')
+if (has('loop') && has('count')) fail(1, 'give --loop or --count, not both')
 // One full loop, the seam, and a second of the next loop.
-const wanted = loop !== null ? Math.ceil((loop + 1000) / every) + 1 : num('count', 24)
+const wanted = loop !== null ? Math.ceil((loop + 1000) / every) + 1 : num('count')
 const count = Math.max(1, Math.min(MAX_FRAMES, Math.round(wanted)))
 if (wanted > MAX_FRAMES) console.log(`note: ${Math.round(wanted)} frames requested, capped at ${MAX_FRAMES}; raise --every to cover the whole loop`)
-const cols = Math.max(1, Math.round(num('cols', 4)))
-const thumb = num('thumb', 0.5)
-const selector = flag('select', null)
-const out = resolve(flag('out', 'contact-sheet.png'))
+const cols = Math.round(num('cols'))
+const thumb = num('thumb')
+const scale = num('scale')
+const selector = values.select ?? null
+const out = resolve(values.out ?? 'contact-sheet.png')
 
-const vp = /^(\d+)x(\d+)$/.exec(flag('viewport', '1280x800'))
-if (!vp) fail(1, '--viewport must look like 1280x800')
+const vp = /^(\d+)x(\d+)$/.exec(values.viewport ?? '1280x800')
+if (!vp || Number(vp[1]) < 1 || Number(vp[2]) < 1) fail(1, '--viewport must look like 1280x800')
 // The viewport is never changed to suit the crop: it decides the breakpoint.
 const viewport = { width: Number(vp[1]), height: Number(vp[2]) }
+const rectFlags = ['x', 'y', 'width', 'height'].filter(has)
+if (selector && rectFlags.length) fail(1, `--select and a rectangle (--${rectFlags.join(', --')}) are two ways to say what to capture; give one`)
+if (has('wait') && !selector) fail(1, '--wait only applies with --select')
+if (has('scale') && !values.still) fail(1, '--scale only applies with --still')
 // With no rectangle given, the default 720 x 340 crop shrinks to fit the
 // viewport. A rectangle the caller asked for must fit, or it is an error.
-const rect = { x: num('x', 0), y: num('y', 0), width: 0, height: 0 }
-rect.width = has('width') ? num('width', 0) : Math.min(720, viewport.width - rect.x)
-rect.height = has('height') ? num('height', 0) : Math.min(340, viewport.height - rect.y)
+const rect = { x: num('x'), y: num('y'), width: 0, height: 0 }
+rect.width = num('width') ?? Math.min(720, viewport.width - rect.x)
+rect.height = num('height') ?? Math.min(340, viewport.height - rect.y)
 if (!selector) {
-  if (rect.width < 1 || rect.height < 1 || rect.x < 0 || rect.y < 0) fail(1, 'the crop rectangle is empty; check --x --y --width --height against --viewport')
+  if (rect.width < 1 || rect.height < 1) fail(1, 'the crop rectangle is empty; check --x --y --width --height against --viewport')
   if (rect.x + rect.width > viewport.width || rect.y + rect.height > viewport.height) {
     fail(1, `the crop ${rect.width}x${rect.height} at ${rect.x},${rect.y} does not fit the ${viewport.width}x${viewport.height} viewport. Shrink the crop, use --select, or pass the --viewport the page ships at; the viewport is not widened for you because that changes the breakpoint.`)
   }
+}
+
+// --dry-run stops here: the arguments are valid and this is what would be captured.
+if (values['dry-run']) {
+  console.log(`dry run: ${target}  viewport ${viewport.width}x${viewport.height}  ${selector ? `select ${selector} (wait ${wait}ms)` : `crop ${rect.width}x${rect.height} at ${rect.x},${rect.y}`}  ${values.still ? `still at ${scale}x` : `${count} frames every ${every}ms from ${start}ms`}  -> ${out}`)
+  process.exit(0)
 }
 
 const isHttp = /^https?:\/\//.test(target)
@@ -120,9 +178,9 @@ let code = 0
 try {
   const context = await browser.newContext({
     viewport,
-    deviceScaleFactor: has('still') ? num('scale', 2) : 1,
-    reducedMotion: has('reduced') ? 'reduce' : 'no-preference',
-    colorScheme: has('dark') ? 'dark' : 'light',
+    deviceScaleFactor: values.still ? scale : 1,
+    reducedMotion: values.reduced ? 'reduce' : 'no-preference',
+    colorScheme: values.dark ? 'dark' : 'light',
   })
   const page = await context.newPage()
   page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') console.log(`[page ${m.type()}] ${m.text()}`) })
@@ -146,8 +204,20 @@ try {
   // is taller or wider than the viewport. The viewport still decides the layout.
   let shot = { clip }
   if (selector) {
+    // A stage that mounts after load (a hydrated app, a lazy route) is still the
+    // stage: wait for it to exist and be visible, up to --wait, before giving up.
     const el = page.locator(selector).first()
-    if ((await el.count()) === 0) throw Object.assign(new Error(`no element matches ${selector}; nothing written`), { exit: 3 })
+    try {
+      await el.waitFor({ state: 'visible', timeout: wait })
+    } catch (e) {
+      const seen = await el.count().catch(() => 0)
+      const why = /is not a valid selector|Unexpected token|SyntaxError/i.test(e.message)
+        ? `${selector} is not a valid selector`
+        : seen
+          ? `${selector} matched an element that never became visible within ${wait}ms`
+          : `no element matched ${selector} within ${wait}ms`
+      throw Object.assign(new Error(`${why}; nothing written`), { exit: 3 })
+    }
     const box = await el.evaluate((node) => {
       const r = node.getBoundingClientRect()
       return { x: r.left + window.scrollX, y: r.top + window.scrollY, width: r.width, height: r.height }
@@ -162,7 +232,7 @@ try {
   console.log(`viewport ${viewport.width}x${viewport.height}  crop ${Math.round(clip.width)}x${Math.round(clip.height)} at ${Math.round(clip.x)},${Math.round(clip.y)}`)
 
   mkdirSync(dirname(out), { recursive: true })
-  if (has('still')) {
+  if (values.still) {
     await page.screenshot({ path: out, ...shot })
     console.log(`still: ${out}`)
   } else {

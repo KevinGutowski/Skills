@@ -69,6 +69,6 @@ node scripts/film.mjs "http://127.0.0.1:5173/?capture=relay-hero" --select '#exa
 node "$S" "http://127.0.0.1:5173/?capture=relay-bento" --viewport 1280x1000 --select '#example' --start 2500 --still --scale 2 --out "$E/kit-path-bento.png"
 ```
 
-Both gates ended `rehearsal passed` when these were made on 2026-11-18. The hero's loop run also printed `film: inconclusive` (sampling gaps in headless Chrome), and the bento printed two `lopsided` candidate lines on its routing pills. The builds were made by a stronger model than the eval's arms, in about 25 tool calls each, and were not graded blind.
+Both gates printed `rehearsal passed` when these were made on 2026-11-18. The hero's loop run also printed `film: inconclusive` and exited 2 (sampling gaps in headless Chrome; expect the same when regenerating), and the bento printed two `lopsided` candidate lines on its routing pills. The builds were made by a stronger model than the eval's arms, in about 25 tool calls each, and were not graded blind.
 
 These renders replace an earlier pair of kit-path builds from the same day whose sources were not kept. The briefs and method were the same; the pictures differ in detail.

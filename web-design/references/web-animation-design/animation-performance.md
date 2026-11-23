@@ -133,7 +133,26 @@ An animation nobody can see still costs frames, battery, and sometimes memory. L
 
 **Measure before editing.** The aim is not less motion; it is that off-screen work stops, visible motion resumes correctly, and nothing outlives its route.
 
-1. Count running CSS animations by computed `animation-name` and `animation-play-state`, **including `::before` and `::after`**, and note which are outside the viewport and which element owns each.
+1. Count live animations from the browser's animation objects, not from computed style. Computed `animation-name` and `animation-play-state` still read as a running animation after a one-shot has finished, on a `display: none` element, and during a long delay, and they miss transitions and Web Animations API animations entirely (checked in Chromium 159, 2026-11-23). Use `document.getAnimations()`, plus `shadowRoot.getAnimations()` for each shadow root, and count an animation as doing work when all of these hold:
+   - `playState === 'running'` (a finished one-shot is absent, or `finished` if it fills forwards; a paused one is `paused`);
+   - `effect.getComputedTiming().progress !== null` (it is past its delay);
+   - its `timeline` is the document timeline (a scroll-driven animation is not time-based work);
+   - its owner passes `checkVisibility({ contentVisibilityAuto: true })` (a skipped `content-visibility: auto` subtree is listed as running but does no work). `visibility: hidden` does not exempt it: that animation still ticks.
+
+   The owner is `effect.target`; for `::before` and `::after`, `effect.pseudoElement` names the pseudo-element and the target is its owner, whose box stands in for position. An animation is off screen when the owner's `getBoundingClientRect()` misses the viewport.
+
+   ```js
+   const roots = [document, ...[...document.querySelectorAll('*')].map((e) => e.shadowRoot).filter(Boolean)]
+   const live = roots.flatMap((r) => r.getAnimations()).filter((a) => {
+     const el = a.effect?.target
+     return el && a.playState === 'running' && a.effect.getComputedTiming().progress !== null
+       && a.timeline instanceof DocumentTimeline && el.checkVisibility({ contentVisibilityAuto: true })
+   })
+   const offscreen = live.filter((a) => {
+     const b = a.effect.target.getBoundingClientRect()
+     return !(b.bottom > 0 && b.right > 0 && b.top < innerHeight && b.left < innerWidth && (b.width || b.height))
+   })
+   ```
 2. Sample at the top, mid-page, the footer, and one mobile viewport. A single top-of-page sample proves nothing about a long page.
 3. Inspect canvas and WebGL loops separately. A CSS count says nothing about `requestAnimationFrame`.
 4. Target: zero animations running off screen in the sections under test, with every visible animation still running or resuming on re-entry.

@@ -129,7 +129,7 @@ All keyframes are disabled under `prefers-reduced-motion: reduce`.
 
 Worth copying even without the look:
 
-- **The material hangs off the color utilities** (`bg-card`, `bg-popover`, `bg-sidebar`), so a stock component gets it by using the token it already used. Those rules sit outside any cascade layer on purpose, so a utility written later cannot switch the blur or rim off.
+- **The material hangs off the color utilities** (`bg-card`, `bg-popover`, `bg-sidebar`), so a stock component gets it by using the token it already used. Those rules sit outside any cascade layer on purpose, so a layered utility written later cannot switch the blur or rim off unless it is `!important`.
 - **Restyle, don't ask for edits.** Parts are found by `data-slot` and existing classes. A fix that only works after editing the component file does nothing for someone who installed the stock component.
 - **Comments record the traps fallen into**, not what the code does. The reusable ones are in [surfaces.md](surfaces.md) under Translucent Materials on the Web.
 

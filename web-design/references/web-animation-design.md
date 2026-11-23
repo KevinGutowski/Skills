@@ -131,7 +131,7 @@ When feel cannot be judged from code, say so and name what to watch: play it at 
 - **Five frames minimum per capture:** before, first animated, middle, last animated, settled. Compare before against first, each middle against its neighbors, and last against settled; most defects sit at those two boundaries.
 - **Check five continuity failures by name:**
   - *Entrance replay* — content that was already on screen plays its entrance again.
-  - *Crossfade dip* — during a crossfade the region dims or flashes at the midpoint. Judge it from the rendered middle frame, not from the opacity values: with normal (source-over) compositing two stacked layers at 50% opacity cover only 75% of what is behind them, so a symmetric crossfade whose opacities sum to 1 still lets the background through and dips (gray over white, for example). The upstream check that the two opacities sum to about 1 (roughly 0.95–1.05) is valid only where the layers are composited additively (`mix-blend-mode: plus-lighter`, or a view transition's old and new images, which use it by default). Elsewhere, hold the outgoing layer opaque while the incoming one fades in over it, or blend additively inside an isolated group.
+  - *Crossfade dip* — during a crossfade the region dims or flashes at the midpoint. Judge it from the rendered middle frame, not from the opacity values: with normal (source-over) compositing two stacked layers at 50% opacity cover only 75% of what is behind them, so a symmetric crossfade whose opacities sum to 1 still lets the background through and dips (gray over white, for example). The upstream check that the two opacities sum to about 1 (roughly 0.95–1.05) is valid only where the layers are composited additively: `mix-blend-mode: plus-lighter` inside an `isolation: isolate` wrapper (without the wrapper the layers also add to the page behind them and blow out to white), or a view transition's old and new images, which get both by default. Elsewhere, hold the outgoing layer opaque while the incoming one fades in over it, or blend additively inside an isolated group.
   - *Orphan linger* — something that exists only in the old or only in the new state keeps animating after the motion around it has finished.
   - *End paint swap* — the item on top changes on the frame where transition layers are removed.
   - *Shadow jump* — a `box-shadow` switches off on the first frame or on at the last, even though the boxes line up.
@@ -348,7 +348,7 @@ Decide in this order; each step can end the work:
 
    - CSS `position: sticky` before any pinning library; CSS scroll-snap before a carousel library.
    - `IntersectionObserver` or the Web Animations API for a reveal that needs no timeline.
-   - A scroll-timeline library (GSAP ScrollTrigger and similar) only when a section needs pinning, scrubbed values, or a multi-element handoff. It runs on the main thread ([animation-performance.md](web-animation-design/animation-performance.md)).
+   - A scroll-timeline library (GSAP ScrollTrigger and similar) only when a section needs pinning, scrubbed values, or a multi-element handoff. It writes inline styles from JavaScript on scroll, so it runs on the main thread ([animation-performance.md](web-animation-design/animation-performance.md)).
    - A smooth-scroll engine only when the choreography depends on it, never as general polish, and **at most one per site**: never install or initialise two.
 
 4. **Values** from the Easing and Duration sections.

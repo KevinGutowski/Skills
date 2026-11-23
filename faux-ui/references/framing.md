@@ -78,7 +78,7 @@ Use a small fixed set of shadows and give each one job: one for the page's hero 
 
 Fades are for moving or stacked content: about a 32px edge mask on a sliding track, or the last 25 to 30% of a stack or chart.
 
-A window may fade out instead of running off, **at its foot only**. Top and sides stay whole and hard-edged; the fade covers the last third; only filler is under it. Fade with a mask, never a color overlay, so the window dissolves into whatever ground it sits on. Never fade a side, the focal content, or more than one window in a scene.
+A window may fade out instead of running off, **at its foot only**. Top and sides stay whole and hard-edged; the fade covers the last third; only filler is under it. Fade with a mask, never a color overlay, so the window dissolves into whatever ground it sits on. A mask also removes the element's own `box-shadow`, which rule 8 puts on that element: add `mask-clip: no-clip` to keep the shadow, and it fades with the foot. Never fade a side, the focal content, or more than one window in a scene.
 
 ## Small formats and the page
 

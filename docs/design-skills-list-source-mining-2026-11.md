@@ -4,7 +4,13 @@ Ticket: "Check out these skills and the stage show skill. Fold them into the rep
 
 Entry point: x.com/MengTo/status/2122984275566076395 (18 November 2026), "My personal list of UI design skills that give your agent real taste". VxTwitter returned only the first line of the note tweet; FxTwitter returned the full text with its six links. The post quotes Benji Taylor's Stageshow launch (x.com/benjitaylor/status/2116593247854453244, 31 October 2026).
 
-Everything below is paraphrased. No skill text, kit code, script, palette, or asset was imported, and no upstream script was run.
+Everything below is paraphrased. No skill text, kit code, script, palette, or asset was imported into a skill.
+
+**This file is the intake record:** what was read, where each lesson went, what conflicted, what was parked. It does not track what happened afterwards. Three other files own that, and this one only points to them:
+
+- What was run, installed, verified, or security-read from each upstream → the owning skill's `references/sources.md` (for Stageshow, `faux-ui/references/sources.md`).
+- Eval results and their evidence → `docs/skill-evals-2026-11.md` and `docs/evidence/faux-ui-evals-2026-11/`.
+- What is still untested or unknown → the owning skill's `references/coverage-gaps.md`.
 
 ## Sources
 
@@ -57,7 +63,7 @@ Everything below is paraphrased. No skill text, kit code, script, palette, or as
 
 ### Repo docs
 
-README (new row, bundle recipe, routing rule, reference mentions), `agent-quickstart.md` (bundle recipe), audit row, smoke test S44, routing probes V25–V31 and their results, listing budget, the `faux-ui` section of `skill-evals-2026-11.md`, this file, `mining-ledger.md`.
+README (new row, bundle recipe, routing rule, reference mentions), `agent-quickstart.md` (bundle recipe), audit row, a smoke-test row for `faux-ui`, routing probes V25–V31 and their results, listing budget, the `faux-ui` section of `skill-evals-2026-11.md`, this file, `mining-ledger.md`.
 
 ## Descriptions changed
 
@@ -91,7 +97,7 @@ README (new row, bundle recipe, routing rule, reference mentions), `agent-quicks
 
 ## Parked or skipped
 
-- **Stageshow:** the kit, examples, teaching pairs, and scripts (not vendored; not security-reviewed); the kit's API names.
+- **Stageshow:** the kit, examples, teaching pairs, and scripts (not vendored); the kit's API names.
 - **Meng To:** about 40 one-look style recipes (several are looks the anti-slop catalog lists as tells), the library how-tos, all game skills, the media skills bound to his own editor and a TTS vendor, `workflow-ship-change` (it grants standing authority to push and publish), `ui/*/ARTICLE.md` (not read), palettes and kits, numeric three.js constants.
 - **Open Design:** the app, 115 design templates, 153 design-system packages, 107 prompt templates, the stubs and vendored copies of skills already local. Parked pending corroboration: loading and retry thresholds, text-overflow fates, the image-ratio rule. Its upstreams `huashu-design` and `refero_skill` were not read; prefer them before crediting Open Design further.
 - **Solid Glass:** shadcn's stock components and examples; the theme's use of raw palette classes where it has status tokens (noted, not folded).
@@ -103,8 +109,5 @@ README (new row, bundle recipe, routing rule, reference mentions), `agent-quicks
 - **Read in full:** Stageshow's SKILL.md and ten references; Solid Glass's stylesheet, docs, contributing guide, and six agent components; Meng To's nine capture and meta skills, the shared illustration craft file, and six 3D skills; Open Design's discovery prompt, core system prompt, prompt-composition doc, and four craft files; every Impeccable and Emil skill file changed since the last intake.
 - **Read in part:** Stageshow's teaching, rehearse, annotations, brands, and kit references; 22 of Meng To's 92 web-design skills; Open Design's directions, orchestration, and lint rule list.
 - **Not read:** Stageshow's example and kit source; Meng To's other 70 web-design bodies, scripts, and demos; Open Design's app code and catalogs.
-- **Eval:** `faux-ui` was run with and without the skill on three cases and graded blind from rendered images, twice: 18/18 against 9/18 on the first wording, then 17/18 against 8/18 after the skill and graders were revised (see `skill-evals-2026-11.md`; renders in `docs/evidence/faux-ui-evals-2026-11/`).
-- **QA follow-up:** `contact-sheet.mjs` now separates the viewport from the crop, refuses pages that fail to load, and sizes the sheet from the loop length, with a browser smoke test beside it. Corrected: the proxy-free Stageshow setup, the claim that presentation attributes protect inline SVG from host CSS, and the scope of Solid Glass's shared highlight treatment.
-- **Kit path:** a hero loop and a bento were then built with Stageshow installed, starting from its gold examples. Both passed its gate and are clearly closer to its examples than the no-kit builds; the skill now recommends the kit for anything that ships. Not graded blind.
-- **Exemplars:** `faux-ui` gained two original plain-HTML exemplars for the fallback path (a still hero and a bento), tuned beside captures of the upstream gold. Rebuilt from them, the hero and bento eval cases scored 6/6 and 5/6 against 3/6 and 2/6, with real-size type and density.
+- **After intake:** `faux-ui` was evaluated, its capture script and exemplars were added, Stageshow's kit was installed and run for a comparison, and several references were corrected after review. None of that is recorded here; see the three files named at the top.
 - **Not done:** the other new references have no with/without eval, and `/doctor` was not run after the description changes.

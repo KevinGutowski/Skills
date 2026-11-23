@@ -14,6 +14,8 @@
   One satellite straddles the window's left edge over its sidebar, half outside.
   Real strings: 7 (Bookings, three client names, the service, Confirmed, the total).
   Below 760px it recomposes for a 358px phone column: see the media query.
+  The accessible label describes only what both compositions show. The satellite
+  card is hidden on phones, so its total is not in the label.
 -->
 <style>
   /* The look. Replace these with the product's tokens. */
@@ -106,7 +108,7 @@
 </head>
 <body>
 
-<div class="fx" role="img" aria-label="A bookings list with Maren Holt selected and a card showing her haircut booking, total 64 dollars">
+<div class="fx" role="img" aria-label="A bookings list with Maren Holt's appointment selected and marked confirmed">
   <div class="fx-window">
     <div class="fx-side">
       <div class="fx-lights"><i></i><i></i><i></i></div>

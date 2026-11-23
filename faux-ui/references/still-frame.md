@@ -69,7 +69,7 @@ Rules for the screen itself, moving or not. How it sits in its space is in [fram
 - Nested shapes pad evenly, and the outer radius equals the inner radius plus that padding. Carry the inset round the bottom: a comfortable top does not excuse a cramped action.
 - Content clears the bar above it by at least the content's side inset.
 - Whitespace groups: a title sits closer to its metadata than to the next record. Never spread lines evenly to fill a frame.
-- Center a label on its letters, not its line box. Capitals sit low in a plain line box, so a label beside an icon, in a pill, or an initial in a disc reads low. Trim it with `text-box: trim-both cap alphabetic` (verify browser support for the page's targets).
+- Center a label on its letters, not its line box. Capitals are rarely centered in a plain line box: they sit high or low depending on the font's metrics, so a label beside an icon, in a pill, or an initial in a disc reads off-center. (Upstream says low; in the six fonts tried here they sat high.) Trim it with `text-box: trim-both cap alphabetic` (verify browser support for the page's targets).
 - **A centered amount centers its digits.** `$45` centered as one string sits right of center to the eye. Center the digits and hang the sign outside the centered box (`position: absolute; right: 100%`). A rolling amount rolls only the digits.
 - A progress ring is one track and one arc with round caps, never chopped dashes. A number inside it uses proportional figures and is trimmed to cap height so it centers.
 - Columns line up: every row shares one grid template with fixed tracks; optional content leaves its track empty.
@@ -83,8 +83,8 @@ Rules for the screen itself, moving or not. How it sits in its space is in [fram
 - **Icons come from a set, never from your hand.** A hand-drawn glyph is the first tell of generated UI because its weight never matches its neighbors. Use the product's own pack first (its dependencies, icons folder, sprite, or icon component).
 - Otherwise choose a set on purpose: SF-style filled glyphs for Apple chrome, Material Symbols for Android, else Phosphor, Iconoir, Radix, Tabler, or Heroicons. Lucide only as a deliberate choice, never by reflex.
 - One family, one stroke weight, one size (14 to 16px) per scene. Filled beside outline in one nav, list, or toolbar is a fault. At 14px and under, and inside tinted tiles, use filled glyphs; thin outlines go wiry.
-- Icons are one opaque color. Quieten with a lighter opaque gray, not a translucent ink: translucent strokes paint darker where they cross ("onion skin"). No duotone.
-- Even-sized glyphs in even-sized boxes; an odd glyph in an even box snaps by half a pixel when motion ends. Icon buttons and chips in a flex row get `flex: none`.
+- Icons are one opaque color. Quieten with a lighter opaque gray, not a translucent ink: translucent strokes paint darker where separate paths cross, or where a stroke overlaps its own fill ("onion skin"). No duotone.
+- Even-sized glyphs in even-sized boxes; an odd glyph cannot center in an even box: it lands on a half pixel and is drawn a pixel off-center (upstream reports it as a snap when motion ends). Icon buttons and chips in a flex row get `flex: none`.
 - Center glyphs by eye: shift a play triangle toward its point by about a sixth of its width.
 - Emoji are content (messages, reactions), never icons. A playful look rounds the icons; it does not swap them for emoji.
 - No hand-drawn pins, cursors, badges, chips, or contactless arcs. Use the product's asset or leave it out. If something must be drawn, check it at 4x beside the real thing and ask whether a stranger would know what it is.

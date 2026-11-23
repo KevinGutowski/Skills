@@ -143,9 +143,105 @@ test('an HTTP 404 exits 3 and writes nothing', { skip }, async () => {
 
 test('a missing element exits 3 and writes nothing', { skip }, () => {
   const out = join(dir, 'noel.png')
-  const r = run(fixture, '--select', '#absent', '--still', '--out', out)
+  const r = run(fixture, '--select', '#absent', '--wait', '300', '--still', '--out', out)
   assert.equal(r.status, 3)
+  assert.match(r.stderr, /no element matched #absent within 300ms/)
   assert.equal(existsSync(out), false)
+})
+
+test('a stage that mounts after load is waited for', { skip }, async () => {
+  const late = join(dir, 'late.html')
+  writeFileSync(
+    late,
+    `<!doctype html><style>body{margin:0}#late{width:200px;height:100px;background:rgb(0,128,0)}</style>
+    <script>setTimeout(() => { const d = document.createElement('div'); d.id = 'late'; document.body.append(d) }, 600)</script>`,
+  )
+  const out = join(dir, 'late.png')
+  const r = run(late, '--select', '#late', '--still', '--scale', '1', '--out', out)
+  assert.equal(r.status, 0, r.stderr)
+  const px = await centerPixel(out)
+  assert.deepEqual([px.width, px.height, px.r, px.g, px.b], [200, 100, 0, 128, 0])
+})
+
+test('an element that exists but never shows exits 3', { skip }, () => {
+  const hidden = join(dir, 'hidden.html')
+  writeFileSync(hidden, `<!doctype html><div id="h" style="display:none;width:10px;height:10px"></div>`)
+  const out = join(dir, 'hidden.png')
+  const r = run(hidden, '--select', '#h', '--wait', '300', '--still', '--out', out)
+  assert.equal(r.status, 3)
+  assert.match(r.stderr, /never became visible within 300ms/)
+  assert.equal(existsSync(out), false)
+})
+
+// The argument contract. None of these reach a browser, so none is skipped.
+const BAD = [
+  [['--select'], /--select/],
+  [['--select', '--still'], /--select/],
+  [['--out'], /--out/],
+  [['--viewport'], /--viewport/],
+  [['--viewport', 'wide'], /--viewport must look like/],
+  [['--selct', '#stage'], /Unknown option '--selct'/],
+  [['--width', 'abc'], /--width must be a number/],
+  [['--width', '0'], /--width must be above 0/],
+  [['--every', '0'], /--every must be above 0/],
+  [['--count', '0'], /--count must be at least 1/],
+  [['--x=-5'], /--x must be at least 0/],
+  [['--x', '-5'], /--x/],
+  [['--loop', '2000', '--count', '5'], /--loop or --count, not both/],
+  [['--select', '#stage', '--width', '300'], /two ways to say what to capture/],
+  [['--wait', '100'], /--wait only applies with --select/],
+  [['--scale', '2'], /--scale only applies with --still/],
+]
+for (const [flags, message] of BAD) {
+  test(`bad arguments are refused: ${flags.join(' ')}`, () => {
+    const out = join(dir, `bad-${flags.join('_').replace(/[^a-z0-9_-]/gi, '')}.png`)
+    const extra = flags.includes('--out') ? [] : ['--out', out]
+    const r = run(fixture, ...extra, ...flags)
+    assert.equal(r.status, 1, `expected exit 1, got ${r.status}: ${r.stdout}${r.stderr}`)
+    assert.match(r.stderr, message)
+    assert.equal(existsSync(out), false, 'nothing may be written')
+  })
+}
+
+// Every command shown in the skill's docs must be one the script accepts. The
+// commands are read from the Markdown, so a doc edit that breaks one fails here.
+const DOCS = [
+  join(dirname(fileURLToPath(import.meta.url)), '..', 'references', 'rehearsal.md'),
+  join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'docs', 'evidence', 'faux-ui-evals-2026-11', 'README.md'),
+]
+const documented = []
+for (const doc of DOCS) {
+  if (!existsSync(doc)) continue
+  const text = readFileSync(doc, 'utf8')
+  for (const block of text.matchAll(/```sh\n([\s\S]*?)```/g)) {
+    for (const line of block[1].split('\n')) {
+      const m = /contact-sheet\.mjs"?\s+(.*)$/.exec(line) || /node "\$S"\s+(.*)$/.exec(line)
+      if (m) documented.push({ doc, args: m[1].replace(/\s+#.*$/, '') })
+    }
+  }
+}
+test('the docs show commands to lint', () => {
+  assert.ok(documented.length >= 8, `found only ${documented.length} documented commands`)
+})
+for (const { doc, args } of documented) {
+  test(`documented command is accepted: ${args.slice(0, 70)}`, () => {
+    // Split like a shell would for these simple lines: quoted strings stay whole.
+    const parts = (args.match(/'[^']*'|"[^"]*"|\S+/g) || []).map((p) => p.replace(/^['"]|['"]$/g, ''))
+    const r = spawnSync(process.execPath, [script, ...parts, '--dry-run'], { encoding: 'utf8' })
+    assert.equal(r.status, 0, `${doc}\n${args}\n${r.stderr}`)
+    assert.match(r.stdout, /^dry run: /)
+  })
+}
+
+test('no page, or two pages, is refused', () => {
+  assert.equal(run('--still').status, 1)
+  assert.equal(run(fixture, fixture, '--still').status, 1)
+})
+
+test('--help prints usage and exits 0', () => {
+  const r = run('--help')
+  assert.equal(r.status, 0)
+  assert.match(r.stdout, /usage: node contact-sheet\.mjs/)
 })
 
 test('a selection taller than the viewport is captured whole, undistorted', { skip }, async () => {

@@ -46,7 +46,7 @@ An inline illustration shares a document with the page and with every other illu
 
 - **Isolation needed (unknown or third-party host CSS, CMS content, email):** embed the file with `<img src="card.svg">` or as a CSS background. The document's styles cannot reach inside. The costs: no `currentColor` theming, no styling from the page, and the file must be fully self-contained.
 - **Inline, on a page you control:** keep host selectors off bare SVG elements. Scope icon rules to a class (`.icon path`, never `path`), and put the illustration in a wrapper the resets exclude.
-- **Inline, on a page you do not fully control:** carry paint in the `style` attribute (`style="fill:#1f6feb"`), which outranks every author rule that is not `!important`. This is the one place the contract's "presentation attributes only" gives way.
+- **Inline, on a page you do not fully control:** carry paint in the `style` attribute (`style="fill:#1f6feb"`), which outranks every author declaration except `!important` ones and a running CSS animation on that property. This is the one place the contract's "presentation attributes only" gives way.
 
 Check it the cheap way: load the card into the real page and compare it with the standalone render.
 
