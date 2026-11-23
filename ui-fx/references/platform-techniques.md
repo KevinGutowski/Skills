@@ -167,6 +167,7 @@ Whatever the route: when the effect and the change start together, swap the cont
 - Cap device pixel ratio at 2 (lower for full-screen shaders). Treat samples per pixel as the quality knob.
 - Lazy-load three.js, Rive, Lottie and similar runtimes at the moment the effect is first needed, never in the initial bundle.
 - Promote layers deliberately; each one costs memory. Remove `will-change` afterwards.
+- iOS Safari holds main-thread `requestAnimationFrame` (and on an ordinary page, pointer events) to 60 Hz even on 120 Hz screens. Native scrolling runs at full rate. Compositor-driven CSS and WAAPI animation leaves the main thread, but WebKit decides which animations get a high frame rate: since early 2026 only `transform` animations qualify, and `opacity` and `filter` do not (WebKit bug 307554). Verify on a device. For a canvas or shader showpiece, a worker-driven `OffscreenCanvas` (`transferControlToOffscreen()`) can present at 120 Hz there. That is current WebKit behaviour and could change, so keep the 60 Hz path correct. Details: `web-design` (web-performance, iOS Safari's 60 Hz cap).
 - Budget: the effect must not push interaction latency. If frames drop on a mid-range phone, simplify or drop to the fallback. Frame budgets and measurement → `web-design` (web-performance).
 
 ## Accessibility constraints, with sources

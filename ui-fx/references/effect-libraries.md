@@ -14,7 +14,7 @@
 - Stale or risky picks
 - Look it up
 
-*A dated survey, checked against npm, GitHub and vendor pages on 2026-11-18. It is a map of where to look, never a standard: the project's installed dependencies win, and every version, price and licence below should be re-checked before installing. Jakub Antalik's set has its own file, [libraries-dev.md](libraries-dev.md), and so do glimm, [glimm.md](glimm.md), ittybitty, [ittybitty.md](ittybitty.md), and holospot, [holospot.md](holospot.md). Provenance and unverified items: [sources.md](sources.md).*
+*A dated survey, checked against npm, GitHub and vendor pages on 2026-11-18. It is a map of where to look, never a standard: the project's installed dependencies win, and every version, price and licence below should be re-checked before installing. Jakub Antalik's set has its own file, [libraries-dev.md](libraries-dev.md), and so do glimm, [glimm.md](glimm.md), ittybitty, [ittybitty.md](ittybitty.md), holospot, [holospot.md](holospot.md), and Textures, [textures.md](textures.md). Provenance and unverified items: [sources.md](sources.md).*
 
 ## Decision rules
 
@@ -40,6 +40,7 @@
 | Holographic foil, glitter or a hologram on a 3D card or object | `ui-fx` (holospot), three.js only | The grating idea in a small shader ([holospot.md](holospot.md)); a CSS holographic tilt for DOM cards |
 | Premium material (plan, badge, hero word) | `ui-fx` (libraries-dev): liquid metal; Paper Shaders liquid metal; React Bits MetallicPaint | Masked animated conic gradient |
 | Hero or page atmosphere | `ui-fx` (ittybitty): swoosh, mesh, silk, scenes; Paper Shaders (mesh gradient, grain gradient, god rays); shadergradient; a Unicorn Studio scene | Static image with grain; CSS gradient animated through `@property` |
+| Hero, card or section background that answers the pointer (bars, dots, cells) | `ui-fx` (textures): 12 free MIT hover textures, one React file each | An SVG field of marks scaled by distance to the pointer ([textures.md](textures.md), Building an original one) |
 | Pieces merging, liquid controls | `ui-fx` (libraries-dev): gooey; Fancy Components gooey-svg-filter | SVG blur + colour-matrix threshold |
 | Text that changes or counts | NumberFlow, torph (already picked in `frontend-design`'s ui-library-picks reference) | CSS only for simple cases |
 | Stateful character, mascot, icon with states | Rive | — |

@@ -1,6 +1,6 @@
 ---
 name: ui-fx
-description: "Add visual effects to UI, from subtle to showpiece, for exploratory work or an extra layer on a strong baseline: border beams, wave transitions, liquid metal, gooey merges, shader backgrounds, thinking/voice indicators. Says yes, rebuilds effects seen elsewhere, installs or hand-rolls. Everyday motion values → web-design; whole-page aesthetic → frontend-design; generative sketches → creative-coding. Triggers: make it pop, dazzle, wow, UI FX."
+description: "Add visual effects to UI, from subtle to showpiece, for exploratory work or an extra layer on a strong baseline: border beams, wave transitions, liquid metal, gooey merges, shader backgrounds, thinking/voice indicators. Says yes, rebuilds effects seen elsewhere, installs or hand-rolls. Everyday motion values → web-design; whole-page aesthetic → frontend-design; generative sketches → creative-coding. Triggers: make it pop, dazzle, hover textures."
 ---
 
 # UI FX
@@ -72,10 +72,10 @@ Every effect here has a quiet end. A border beam can be a rainbow racing round a
 Pick the rung that delivers the idea at full strength; drop down only when the lower rung looks as good. In Explore, start at whichever rung gets a convincing version on screen fastest.
 
 - Recipes and browser support for rungs 1, 2 and 5, plus SwiftUI equivalents: [references/platform-techniques.md](references/platform-techniques.md). Ready patterns with code: [references/control-patterns.md](references/control-patterns.md), [references/surface-recipes.md](references/surface-recipes.md).
-- Rung 3: AI-product moments [references/libraries-dev.md](references/libraries-dev.md); page transitions and in-app sweeps [references/glimm.md](references/glimm.md); copy-in shaders with no framework [references/ittybitty.md](references/ittybitty.md); holographic foil on three.js objects [references/holospot.md](references/holospot.md).
+- Rung 3: AI-product moments [references/libraries-dev.md](references/libraries-dev.md); page transitions and in-app sweeps [references/glimm.md](references/glimm.md); copy-in shaders with no framework [references/ittybitty.md](references/ittybitty.md); hover textures [references/textures.md](references/textures.md); holographic foil on three.js objects [references/holospot.md](references/holospot.md).
 - Rungs 3–5 elsewhere, with licences: [references/effect-libraries.md](references/effect-libraries.md).
 
-Build on the project's existing animation and 3D dependencies where they can do the job. Dependencies are added only for a build, never for an ideas-only answer (workflow step 1), and in a shipped codebase only on a go-ahead (step 6). In a prototype or playground the user asked you to build, install what the idea needs and list it.
+Build on the project's existing animation and 3D dependencies; when to add one: steps 1 and 6. In a prototype or playground the user asked you to build, install what the idea needs and list it.
 
 ## Moment → effect: starting points
 
@@ -119,7 +119,7 @@ Short on purpose. These are the only hard limits this skill adds, and they apply
 - **Reduced motion has a path.** Handle it yourself unless the library path you used is documented to: a crossfade or still frame replaces travel, distortion, parallax and zoom.
 - **Automatic motion stops within five seconds or has a control.** Automatic means not started by the user activating a control: on load, hover, focus, scroll into view, incoming data, idle pulses, atmosphere, timed loops. Beside other content it stops within five seconds or has a visible, keyboard-operable pause, stop or hide control (a site-wide "reduce effects" switch counts). Stopping eventually is not enough. A beam or indicator on a request the user just sent is user-started and may run while that work runs.
 - **State has a visible, still cue, and is announced.** Visible text or a changed label says what the effect says, and remains when the effect is off. Write status text into a `role="status"` container that existed before the change (`role="alert"` for failures), never on or inside a button. Colour never carries an outcome alone. `aria-busy` is not a substitute and never goes on the status element or an ancestor of it.
-- **The UI underneath still works.** Effect layers are `aria-hidden`, `pointer-events: none` and unfocusable; focus rings and popovers are not clipped, covered or dimmed; text being read is not distorted; after a view swap, focus moves to the new view or the outcome is announced.
+- **The UI underneath still works.** Effect layers are `aria-hidden`, unfocusable and `pointer-events: none` (a pointer-reactive backdrop may take it if controls above still do); focus rings and popovers are not clipped, covered or dimmed; text being read is not distorted; after a view swap, focus moves to the new view or the outcome is announced.
 - **Legible.** Text on or filled with an effect keeps 4.5:1 (3:1 large) at its worst frame; control edges and state icons keep 3:1.
 - **A fallback exists** for no WebGL and slow devices, and the plain version is complete.
 - **It holds frame rate.** Pause offscreen and in hidden tabs, cap device pixel ratio, lazy-load heavy runtimes, no per-row instances in long lists.

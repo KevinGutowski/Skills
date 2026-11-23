@@ -43,7 +43,7 @@ Walk the surface and list where something *happens*. Events and states are where
 | **Arrival of a result** | The wait is over and the thing exists | Per action |
 | **Achievement** | A milestone, first success, streak, completion | Rare by design |
 | **Touch** | Pointer or finger meets a surface: hover, press, drag | Constant, so brief and instant |
-| **Atmosphere** | The page or a region has a mood: a hero, a backdrop, an empty state | Persistent; slow, and better when it reacts to pointer or scroll |
+| **Atmosphere** | The page or a region has a mood: a hero, a backdrop, an empty state | Persistent; slow, and better when it reacts to pointer or scroll. A hover texture (a quiet field of marks that answers the pointer, [textures.md](textures.md)) is atmosphere and touch in one |
 | **Premium** | A thing costs money or is special: a plan, a badge, a limited item | Persistent, small area |
 
 Use two axes to size each idea, not to rule it out: **consequence** (how much does the user care that this happened) and **frequency** (how often will they see it). High consequence and low frequency can take the full showpiece. High frequency wants something short that still looks good the hundredth time.
