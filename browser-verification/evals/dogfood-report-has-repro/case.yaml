@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: dogfood-report-has-repro
+expected_outcome: |
+  A QA pass that starts without unnecessary questions, documents each issue as it is found with reproducible steps and evidence matched to the issue type, assigns severity, stays out of the app source, and avoids destructive actions on real data.

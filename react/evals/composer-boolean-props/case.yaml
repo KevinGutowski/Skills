@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: composer-boolean-props
+expected_outcome: |
+  Does not simply add an isScheduled boolean; names the flag proliferation, and delivers the scheduled mode as a composed variant built from shared parts with state in a provider, scoped so existing call sites keep working.

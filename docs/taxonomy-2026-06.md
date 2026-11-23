@@ -6,11 +6,11 @@ The organizing principle (Kevin: "the details is in the abstractions" / "skill o
 
 ## Levels
 
-- **Platform clusters:** `rails` · `swiftui` · `uikit` (added 2026-11 from the uikit-skill intake) · `apple-design` (+hig, +chart-experience-design per this plan) · `web-design` (new)
+- **Platform clusters:** `rails` · `react` (added 2026-11 from the Vercel skills intake) · `swiftui` · `uikit` (added 2026-11 from the uikit-skill intake) · `apple-design` (+hig, +chart-experience-design per this plan) · `web-design` (new)
 - **Activity skills (flat):** frontend-design (build UI) · design-craft (refine) · design-systems · design-principles (judge) · design-prototyping (validate) · user-research · user-onboarding · shape-up · product-decision-making · logo-design · learning-experience-design · photographic-lighting · hardware-product-design (literally physical goods) · malleable-software · ai-experience-design (designing AI INTO the product — deliberately apart from working-with-ai) · design-org-influence (influence up/sideways) · people-management (manage down) · building-in-public · feature-discoverability · notification-design
 - **Activity clusters (new):** `ux-writing` · `working-with-ai` · `devtools` · `client-work`
 - **Existing knowledge clusters:** data-viz · creating-skills · research-cataloging
-- **Cross-domain tools (flat):** x-post-reader · route-planning · motion (vendor kit) · write-clear-prose · dhh (user-invocable /dhh — commands must stay top-level to remain invocable)
+- **Cross-domain tools (flat):** x-post-reader · route-planning · browser-verification (added 2026-11 from the Vercel skills intake; drives agent-browser) · motion (vendor kit) · write-clear-prose · dhh (user-invocable /dhh — commands must stay top-level to remain invocable)
 - **Local-only (gitignored):** goal
 
 ## This reorganization

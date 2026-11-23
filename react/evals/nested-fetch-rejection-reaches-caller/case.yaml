@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: nested-fetch-rejection-reaches-caller
+expected_outcome: |
+  Each chat chains its own author lookup so a slow chat does not hold the others, the function returns resolved author values, and a rejected lookup rejects the awaited call so the caller's try/catch handles it.

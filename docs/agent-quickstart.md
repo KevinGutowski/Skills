@@ -27,6 +27,12 @@ python /root/.codex/skills/.system/skill-installer/scripts/install-skill-from-gi
   --path design-craft devtools working-with-ai
 ```
 
+With the cross-agent Skills CLI (`npx skills`), the same root-level directories are discovered directly; pass each skill by name:
+
+```bash
+npx skills add KevinGutowski/Skills --skill design-craft --skill devtools
+```
+
 If using a fresh Codex session, installed skills normally route after restart. In the current session, read the installed `SKILL.md` files directly.
 
 ## Bundle Recipes
@@ -41,6 +47,8 @@ If using a fresh Codex session, installed skills normally route after restart. I
 | Rails work | `rails dhh` |
 | Apple platform design | `apple-design swiftui` |
 | UIKit app work | `uikit apple-design` |
+| React / Next.js work | `react web-design browser-verification` |
+| Verify a UI change or QA a running app in a browser | `browser-verification interface-review` |
 
 Keep bundles small. Install the few skills that match the task, then follow their `SKILL.md` routing to references.
 

@@ -123,3 +123,6 @@ All other probes matched the run above, including the standing V9 drift and V4's
 Main rewrote 13 descriptions and slimmed several bodies. The `design-systems` description from this branch applied cleanly on top; its body kept main's slimmed text and gained a compact hands-on router, staying under the 5k-token budget.
 
 A third fresh judge read a blind packet built from the merged descriptions (V1–V24, no expected answers). V19–V24 all pass, with `web-design` as an accepted second skill on V22. V3, V14 and every other first-skill match is unchanged; V9 still drifts as before, and V4's second skill is still `working-with-ai`.
+## 2026-11-18 recheck after the Vercel skills intake
+
+V1–V18 were re-judged blind in a 137-prompt packet after two unrelated description edits (`write-clear-prose`, `design-systems`). 17/18: V9 drifted the same way as before (`working-with-ai` first, `ux-writing` second); V12 matched its expected `design-prototyping` this time. V3, V4, and V14 still route to `design-systems` with its edited description.

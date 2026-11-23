@@ -919,6 +919,29 @@ Ticket-driven fold of a one-line CSS tip: "You can implement stagger animations 
     - New `web-design/examples/stagger-check/check.mjs` (20/20) extracts the recipes from the markdown. It checks finish times at five lengths, ordering, the eased gaps, reduced motion, the no-support fallback, and both mistakes above.
     - `ui-fx` snippet-checks gained the `sibling-index()` index assertion (44/44).
     - Mutation runs confirm each check fails on the defect QA reported.
+## 2026-11-18 — Vercel agent skills (X 2122816672625275030; vercel-labs/agent-browser, agent-skills, skills; vercel/next.js)
+
+Ticket-driven: catalog Vercel's published skills and fold the best of them. Full manifest, per-repository catalog with verdicts, fold map, conflicts and parked items: `docs/vercel-skills-source-mining-2026-11.md`.
+
+- **Density:** HIGH for agent-browser `modern-web-guidance` / `core` / `dogfood`, `react-best-practices`, `composition-patterns`, the two guideline rule files, and `vercel-optimize` as an authoring exemplar; MEDIUM for `react-view-transitions` and the Next.js workflow skills; LOW for platform-ops and per-package API skills (linked out).
+- **New skills:** `browser-verification` (cross-domain tool) and `react` (platform). Each has sources, coverage gaps, and three unrun eval cases.
+- **New references:** `interface-review` (code-compliance-sweep), `write-clear-prose` (technical-docs), `creating-skills` (skill-delivery-patterns, with house rule 20).
+- **Extended:** `web-design` (seven references, a sentence or two each), `write-clear-prose` (revision-moves, editing-rubric), `ux-writing` (ui-voice-and-tone), `working-with-ai` (agentic-coding pointer), `interface-review` and `web-design` (web-performance) pointers to the new skills.
+- **Ours, not upstream's:** the warm-cache CLS trap and cold-launch recipe (re-run, three launches), the "Not exercised" row in the QA report, the delivery-choice table, and every house position in the conflict tables.
+- **Conflicts:** view-transition motion values, Title Case, em-dash and banned-word rules, live-fetched rule files, description length. Recorded as house positions, none blended.
+- **Descriptions:** no existing description changed. Two new ones, verified by blind probes R1–R18 (18/18, one run).
+- **Parked:** `cli-ux` → `devtools`, `building-components` → `design-systems`, `agent-friendly-apis` → `devtools`, portless → `working-with-ai`, json-render → `ai-experience-design`, `derive-client` / `webmcp-gen`, `adr-skill`. Reasons and promotion bars are in the ledger doc.
+- **Not done:** with/without eval runs for the six new cases; a re-run of `write-clear-prose`'s `ai-sounding-draft`; `npx skills add` against the GitHub remote (local path only).
+
+## 2026-11-18 — Vercel agent skills, follow-up pass
+
+Cleared the items the first pass parked or left unvalidated. Full table: `docs/vercel-skills-source-mining-2026-11.md` ("Follow-up pass").
+
+- **Folded:** `cli-ux` (vercel/vercel) and `agent-friendly-apis` (academy-skills) → `devtools` (devtool-interface-design: cli-for-humans-and-agents, data-viz-and-agents); `building-components` (components.build) → `design-systems` (component-api-contracts).
+- **Tested and extended:** `browser-verification` gained three checks and shift attribution, each run; the `interface-review` sweep patterns were run on a real repository and three were tightened.
+- **Evals:** 14 runs, with skill 32/33 against 26/33 without; two fixes from the grading (exploratory-qa stalling, react-composition dropped behavior), not re-run. Three of six new cases do not discriminate.
+- **Descriptions:** `write-clear-prose` and `design-systems` edited; 137-prompt blind run passed everything except V9, a drift recorded before this change.
+- **Still parked:** portless, json-render, `derive-client`, `webmcp-gen`, `adr-skill`.
 
 ## 2026-11-22 — skills.sh Design topic (skills.sh/topic/design), 16 listed skills
 

@@ -495,6 +495,7 @@ Quick reference for common scenarios. See [PRACTICAL-TIPS.md](web-animation-desi
 | Element shifts 1px at start/end | Add `will-change: transform` (only once seen)   |
 | Hover causes flicker            | Animate child element, not parent               |
 | Popover scales from wrong point | Set `transform-origin` to trigger location      |
+| SVG part rotates or scales around the wrong point | Transform a wrapping `<g>` with `transform-box: fill-box; transform-origin: center` (Vercel WIG) |
 | Sequential tooltips feel slow   | Skip delay/animation after first tooltip        |
 | Small buttons hard to tap       | 44px hit area via pseudo-element (theme target; WCAG 2.2 AA floor is 24×24 CSS px) |
 | Something still feels off       | Add subtle blur (under 20px) to mask it         |

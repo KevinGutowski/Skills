@@ -41,7 +41,9 @@ Cut:
 - Redundant pairs: "each and every," "basic fundamentals," "future plans."
 - Hedging by reflex: "sort of," "kind of," "perhaps," "somewhat," "arguably." Keep hedges only when truth requires them.
 - Zombie nouns: "implementation," "optimization," "utilization," "alignment" when a verb can carry the action.
-- Passive evasions: "mistakes were made," "it was decided." Name the actor when the actor matters.
+- Passive evasions: "mistakes were made," "it was decided." Name the actor when the actor matters. Quick detector: if "by monkeys" fits after the verb, the sentence is passive; then decide whether the actor matters.
+- Vague quantifiers standing in for a figure: "significantly," "many," "often," "near-zero," "most requests." Give the number and where it comes from, or narrow the claim to what is known. Never supply a figure the writer did not.
+- Reader-pressure words: "easy," "simple," "quick," "just" about something the reader has to do. The writer cannot promise that experience. Say what makes it small ("one command," "no configuration").
 - Abstract fog: claims about excellence, impact, innovation, authenticity, empowerment, or transformation with no observable detail.
 
 Keep:
@@ -143,16 +145,18 @@ Prefer:
 
 Do not ban large words. Ban lazy large words.
 
-Use metaphor sparingly. A metaphor should clarify an idea or create felt recognition. If it asks the reader to admire the writer, cut it.
+Use metaphor sparingly. A metaphor should clarify an idea or create felt recognition. If it asks the reader to admire the writer, cut it. In explanatory prose that includes verbs chosen for cadence ("lands," "carries," "moves through," "hits") and machines given hands ("hand the browser a URL"): name the literal step ("the browser fetches the URL").
 
 ## AI-Default Pass
 
 When prose "sounds like AI," diagnose the system failure instead of banning individual tokens. Most generic assistant prose shares a few visible habits:
 
-- Stock openings that announce the category before saying anything specific.
+- Stock openings and borrowed frames ("The question most teams face is whether...") that announce the category before saying anything specific to this piece.
 - Smooth but weightless abstractions: impact, unlock, elevate, transform, seamless, robust, leverage.
 - Symmetrical list cadence where every paragraph has the same length and pressure.
-- Passive or actorless claims that hide who chose, built, shipped, failed, or changed something.
+- Passive or actorless claims that hide who chose, built, shipped, failed, or changed something, including datasheet verbs ("provides," "is configurable," "is supported") where the reader wants to know what they can do.
+- Paragraphs that open by recapping the last one ("With this setup complete," "Now that we've covered...") instead of moving to the next point.
+- Staccato runs that split one dependent idea into fragments ("Previously this was manual. Now it's automatic. This saves time."). A short sentence for emphasis is a different thing.
 - Safe conclusions that summarize rather than land on a consequence, decision, image, or question.
 - Punctuation choices used as a house tic instead of a rhythm choice.
 
@@ -179,6 +183,8 @@ Fix it with the ordinary prose craft stack:
 
 Ban lists are allowed only as local evidence: if the same writer repeatedly deletes a phrase from accepted drafts, promote that phrase to a house-style warning with the reason attached.
 
+House vs Vercel: Vercel's docs handbook, the source of several habits above, also bans em dashes as punctuation, bans "easy/simple/quick" outright, and requires curly quotes. Here those are a publication's style choices, applied when writing for a house that sets them ([technical-docs.md](technical-docs.md)); otherwise judge the dash or the word by its craft reason.
+
 ## Evidence and Specificity
 
 Ask:
@@ -195,7 +201,7 @@ For nonfiction, do not improve drama by bending facts. If a scene, quotation, ch
 A paragraph should give the reader one manageable unit of thought. Revise paragraphs by asking:
 
 - What is this paragraph doing?
-- Does the first sentence orient the reader?
+- Does the first sentence orient the reader? If it could stand alone as a heading, it has no antecedent: connect it to what came before ("Because...," "Once...") without recapping it.
 - Does the last sentence push the piece forward?
 - Is there a buried topic sentence that should move up?
 - Are two jobs fighting inside one paragraph?
@@ -221,6 +227,7 @@ Use these tactics during a deep edit:
 - **Heat map**: Mark the most alive passages. Move the piece toward that energy.
 - **Cold spot pass**: Mark where attention drops. Cut, compress, or add tension.
 - **Read-aloud pass**: Fix stumbles, unintended repetition, weak endings, and monotone cadence.
+- **Second-read test**: Read each sentence once at speaking pace. Where you had to go back, restate the subject, the action, and the consequence; the usual causes are a metaphor verb or a pronoun reaching back several sentences.
 - **Last-line test**: Try ending earlier than the draft currently ends.
 - **Title promise test**: Make sure the title and opening promise the same piece the body delivers.
 
@@ -289,6 +296,7 @@ The edit removes the summary formula and the all-purpose hedge, and lands on a c
 - Define terms only when needed.
 - Use one concrete example before abstractions multiply.
 - Separate "how it works" from "how to use it."
+- For documentation pages (content types, code samples, placeholders, review flags), use [technical-docs.md](technical-docs.md).
 
 **Business memo**
 

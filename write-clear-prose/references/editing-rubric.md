@@ -124,6 +124,11 @@ Use these patterns to revise without flattening voice.
 - Before pattern: "In today's rapidly changing environment, it is important to consider..."
 - After pattern: Begin with the actual change, question, or recommendation.
 
+**Vague quantifier to figure**
+
+- Before pattern: "Most requests see near-zero cold starts."
+- After pattern: State the measured share and its source. If the writer has no figure, say what is known ("cold starts are rare in our tests") and flag the missing number.
+
 **Overcertain to honest**
 
 - Before pattern: "This proves the strategy will work."
@@ -158,6 +163,7 @@ If meaning changed, flag it. If a claim needs verification, say so.
 Before considering the edit done, ask:
 
 - Can the reader say what this is about after the first paragraph?
+- Did any sentence need a second read to parse?
 - Does the piece start at the real beginning?
 - Does every section answer a question the reader might have?
 - Are the strongest nouns and verbs carrying the load?

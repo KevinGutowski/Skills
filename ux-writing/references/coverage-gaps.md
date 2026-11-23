@@ -9,6 +9,9 @@ Use this file to park candidate copy standards that should not yet become reusab
 - **Rule IDs for copy reviews.** The Vercel pattern calls for stable rule IDs when review findings need citations. Existing references have strong rules, but not a normalized `rule/{stable-id}` format yet.
 - **Localization-risk examples.** The voice reference has localization-ready principles; the naming reference has "works everywhere." The skill still needs concrete examples of names or labels rejected for translation, market, or grammar reasons.
 
+- **Title Case vs sentence case for headings and buttons.** Vercel's Web Interface Guidelines call for Title Case (Chicago style) on headings and buttons, while their Writing Guidelines use sentence case for docs page headings. The local web convention is sentence case (`web-design` (form-design), `linear-settings-copy.md`), with Title Case left to Apple platforms via `apple-design` (hig). Recorded as a house choice, not blended: a review flags mixed casing inside one product, and follows the product's own style guide when it sets Title Case. No accepted local example yet shows a product that deliberately uses Title Case on the web.
+- **Numerals, ellipsis, and ampersand defaults.** Folded into `ui-voice-and-tone.md` from Vercel's two guideline lists (2026-11). No exceptions are written down yet (numbers that open a sentence, "one" as a pronoun, locales where the ellipsis convention differs); add them when a real case appears.
+
 ## Promotion Form
 
 ```markdown

@@ -2,7 +2,7 @@
 
 *Scope: Design interfaces for developer tools — software with no happy path: the five UI zones, CLI progress and clean-log rules, devtool onboarding, agent experience (AX). Use for a devtool's UI, panel layout, CLI output, onboarding, or agent-facing surface. Triggers: dev tool UI, properties panel, command palette, CLI UX, devtool onboarding, agent experience, AX.*
 
-**Sources:** [devtool-interface-design/sources.md](devtool-interface-design/sources.md) — 7 Evil Martians Chronicles posts + Cursor/tldraw/Notion interviews.
+**Sources:** [devtool-interface-design/sources.md](devtool-interface-design/sources.md) — 7 Evil Martians Chronicles posts + Cursor/tldraw/Notion interviews + Vercel CLI's `cli-ux` contributor standard and the Vercel Academy agent-friendly-APIs course skill (both single-vendor, 2026-11).
 
 The worldview: dev tools are **workbenches, not funnels**. "There is no 'happy path' for a dev tool… what seems to be a tiny edge case might actually be the main case for a particular user." Users live in the tool for hours daily and paths jump between panels with no final conversion action — so optimize for density, control-flow legibility, friction-per-repetition, and time-to-a-ha, not guided journeys.
 
@@ -11,7 +11,7 @@ The worldview: dev tools are **workbenches, not funnels**. "There is no 'happy p
 - The three contexts
 - The control-flow rule
 - The five zones (do/don't anatomy)
-- CLI progress & output
+- CLI progress & output (incl. the contract for scripts and agents)
 - Onboarding to the a-ha moment
 - Pro-tool lessons from Config
 - Visualizing dev data & designing for agents (AX)
@@ -41,7 +41,15 @@ Layout dominance: if most work happens in one surface (canvas/editor), make it d
 
 ## CLI progress & output
 
-Never the silent treatment — "I strongly advise against leaving users staring at a blinking cursor." Choose by shape of work: **spinner** (liveness only; tick it per completed unit so a stall is visible) → **X of Y** ("make it your standard" for measurable step-wise work) → **progress bar** ("in the CLI world, they might be overkill. Think twice" — best for parallel long tasks, or one aggregate bar). Clean-log rules: clear transient UI when done; green + checkmarks; honor `NO_COLOR`; test piped output (`> file.txt`, `| grep`); and switch "-ing" to "-ed" in final logs — "once it's done, they're misleading."
+Never the silent treatment — "I strongly advise against leaving users staring at a blinking cursor." Choose by shape of work: **spinner** (liveness only; name the phase and tick it per completed unit so a stall is visible) → **X of Y** ("make it your standard" for measurable step-wise work) → **progress bar** ("in the CLI world, they might be overkill. Think twice" — best for parallel long tasks, or one aggregate bar). Clean-log rules: clear transient UI when done; green + checkmarks for *completed* work only (never for accepted, queued or partial work, and never color or glyph as the sole carrier of meaning); animate only on an interactive TTY and print each phase once as a plain line in CI, pipes and agent runs; honor `NO_COLOR`; test piped output (`> file.txt`, `| grep`); and switch "-ing" to "-ed" in final logs — "once it's done, they're misleading."
+
+**The CLI contract for scripts and agents** (Vercel CLI's contributor standard, 2026 — one vendor's target; full rules in [devtool-interface-design/cli-for-humans-and-agents.md](devtool-interface-design/cli-for-humans-and-agents.md): modes, prompts, consent tiers, error anatomy, `--json`, exit codes, naming, help, secrets, deprecation, test matrix). The load-bearing part:
+
+- **Interaction, format, presentation and consent are separate settings, resolved once** in shared code; no command checks TTY, CI, or agent variables itself. `--json` turns prompts off but grants no consent; `--yes` grants consent but supplies no data and picks no target; a pipe changes presentation only.
+- **Never prompt non-interactively** (no-prompt flag, `--json`, CI, detected agent, stdin as payload, no TTY on stdin or stderr). Every prompt has a flag, argument, or stdin equivalent, and the error names it.
+- **stdout is the answer, stderr is everything else.** With `--json`: one document on stdout on success; on failure an empty stdout and one JSON error document on stderr, carrying a stable reason code, runnable next commands, and whether a human must act.
+- **Consent scales with consequence:** ordinary writes run; destructive ones preview and default to No; severe ones need the name typed, or `--yes` plus an explicitly named target and scope. An agent never adds `--yes` on its own.
+- **Report reality:** accepted is not ready, partial is not success, an unknown outcome is recovered by inspecting, never by retrying; the exit code agrees with the text.
 
 For long-running async work beyond the CLI (builds, deploys, queues, agent runs), two rules from designing around blockchain latency (Paul Stamatiou, 2021 — https://paulstamatiou.com/crypto-design-challenges/): a bare "pending" state is not enough — "can you imagine not having a progress bar when you were downloading an mp3 on dialup?" Show queue position, ETA, and what's blocking; the user should never need an external dashboard to learn the status of their own operation. And **make in-flight state global**: visible from anywhere in the product, glanceable like a menubar sync icon — "I don't have to go anywhere or do anything to see its state."
 
@@ -68,7 +76,7 @@ Motion policy for docs (Lochie Axon, Family — animations.dev interview): "docs
 The load-bearing **agent experience (AX)** rules (full treatment plus the dev-tool data→chart mapping — heatmaps for activity density, force-directed graphs for dependencies, treemaps/sunbursts for hierarchy+size, Sankey for pipelines/flows, bullet charts for metric-vs-target, box plots for latency distributions — in [devtool-interface-design/data-viz-and-agents.md](devtool-interface-design/data-viz-and-agents.md)):
 
 - **Agents as discoverers — specificity wins.** Agents recommend from baked-in training data or live retrieval; concrete claims get chosen: "'P95 latency of 62ms' gets recommended. 'Fast and reliable' gets listed but not chosen."
-- **Agents as users — the external-agent test.** Invert the funnel to **use → create → claim**; the bar: "can an external agent ship a feature with your tool using only your docs and a prompt?" When you ship the integration as a plugin, the skill carries what the schema cannot (vocabulary mismatches, ambiguous-write handling, human-only steps), and diagnostics state the fix. For a catalogue, give every page a markdown twin, name the routes in, in order, and make locked items answer with the price and "stop, do not reconstruct". The linked file has two worked examples (Interfere, Textures).
+- **Agents as users — the external-agent test.** Invert the funnel to **use → create → claim**; the bar: "can an external agent ship a feature with your tool using only your docs and a prompt?" Docs pass three gates in order — reachable (no 403 or bot challenge), readable (in the raw body, no JavaScript), actionable (exact requests, complete responses, every error). When you ship the integration as a plugin, the skill carries what the schema cannot (vocabulary mismatches, ambiguous-write handling, human-only steps), and diagnostics state the fix. For a catalogue, give every page a markdown twin, name the routes in, in order, and make locked items answer with the price and "stop, do not reconstruct". The linked file has two worked examples (Interfere, Textures).
 - **Agents as threats — progressive trust.** Four progressive-trust tiers, tiered structured errors, rate-limit by identity.
 - **Agents as durable background sessions.** Slack thread, queue, DAG, citations, PR/IDE handoff — the session is a shared object teammates can join late.
 
@@ -96,15 +104,15 @@ A practitioner's market read on the integration surface (Kris Puckett, Dive Club
 - [ ] No-happy-path honored — edge cases treated as someone's main case; settings breadth matched to daily-use friction?
 - [ ] Control flow reads top→bottom, left→right; bottom/right reserved for transforms; hierarchy mirrored?
 - [ ] Five zones pass their do/don't lists; property controls consistent; nothing truncated?
-- [ ] CLI: right progress pattern, clean final logs, pipe/`NO_COLOR` safe, past-tense done states?
+- [ ] CLI: right progress pattern, clean final logs, pipe/`NO_COLOR` safe, past-tense done states; no prompt without a TTY, `--json` clean on stdout with errors as JSON on stderr, exit code matches the outcome?
 - [ ] Onboarding: skippable everything, test data, a real project at the end, never a blank workspace?
 - [ ] Agent-facing install/use path: exact prompt or commands a coding agent can run, with the human-only decision named?
 - [ ] Agent CLI/MCP: machine-readable schema per command, dry run, JSON errors with nonzero exit, a server-enforced read-only path that read-only skills use by default, generated docs/skills that list only what exists?
 - [ ] Agent plugin/skill: read and write intents separated, ambiguous writes checked before retry, secrets kept out of chat, human-only steps named, errors that state the fix?
 - [ ] Agent-readable catalogue/docs: markdown twin per page (or `Accept: text/markdown`), `llms.txt` with use-when tags, one ordered list of ways in repeated on every surface, locked content that states the price and tells the agent to stop, project-rules writes only after an explicit yes?
-- [ ] Agents: discoverable with specifics, usable from docs + a prompt, defended with progressive trust?
+- [ ] Agents: discoverable with specifics, usable from docs + a prompt (reachable, readable, actionable), defended with progressive trust?
 
-> **Staleness note:** tool examples (Figma, VS Code, Linear, Xcode) and the AX post's retrieval statistics/vendor landscape date fast — the frameworks (contexts, control-flow rule, zones, progress patterns, a-ha steps, trust tiers) are the durable layer.
+> **Staleness note:** tool examples (Figma, VS Code, Linear, Xcode) and the AX post's retrieval statistics/vendor landscape date fast — the frameworks (contexts, control-flow rule, zones, progress patterns, a-ha steps, trust tiers) are the durable layer. The CLI contract comes from one vendor's 2026 target standard: its separations (mode, stream, consent, outcome) are the durable part; its specific numbers, flag names and exit-code mapping are house choices.
 
 ## Relationship to other skills
 
@@ -112,7 +120,7 @@ A practitioner's market read on the integration surface (Kris Puckett, Dive Club
 - **`frontend-design`** — builds the UI; this skill shapes what a dev tool's UI should be.
 - **`user-onboarding`** — consumer onboarding (sell the better user); devtool onboarding here is its explicit counter-model. **`feature-discoverability`** agrees on "never a blank workspace."
 - **`data-viz` (chart selection / Tufte critique)** — general chart choice and integrity; only the dev-data mapping lives here.
-- **`ux-writing` (linear-settings-copy)** — wording of settings rows; this skill argues for their existence and density.
-- **`working-with-ai` (agentic-coding)** — agents working *on your codebase*; this skill's AX section is the inverse: agents as *customers of your tool*.
+- **`ux-writing` (linear-settings-copy)** — wording of settings rows; this skill argues for their existence and density. Words in CLI errors and output → `ux-writing` (error-messages); this skill owns their structure, stream and exit code.
+- **`working-with-ai` (agentic-coding)** — agents working *on your codebase*; this skill's AX section and CLI contract are the inverse: agents as *customers of your tool*.
 - **[developer-tool-gtm.md](developer-tool-gtm.md)** — getting the tool adopted; this reference makes the tool worth adopting.
 - **`malleable-software`** — end-user customization/extensibility of the tool (plugins, user scripts, exposing structure) routes there; this skill owns the tool's own UI conventions.

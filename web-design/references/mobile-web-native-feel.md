@@ -42,7 +42,8 @@
 | Bottom input or bar covered by the keyboard | Keyboard overlays the layout viewport by default | Android/Chromium: `interactive-widget=resizes-content` in the viewport meta. Safari: `visualViewport` (see the installed-apps reference's keyboard section) |
 | iOS 26 Safari: a modal backdrop leaves a strip uncovered beneath the browser chrome | Safari now shows page content under its chrome, and a `position: fixed` layer does not cover the whole visual viewport | Under `@supports (-webkit-touch-callout: none)`, make the backdrop `position: absolute` and set `body { position: relative }` so it covers after scrolling (Base UI's setup guidance, 2026-11; verify on a device and re-check after Safari point releases) |
 | Text inflates in landscape | iOS text autosizing | `-webkit-text-size-adjust: 100%` on `html` |
-| Wrong keyboard, autocorrect mangles a code | Field semantics missing | `type`/`inputmode`, `autocapitalize`, `autocorrect`, `enterkeyhint`; field-type choice → [form-design.md](form-design.md) |
+| Wrong keyboard, autocorrect mangles a code | Field semantics missing | `type`/`inputmode`, `autocapitalize`, `autocorrect`, `enterkeyhint`, and `spellcheck="false"` on emails, codes, and usernames; field-type choice → [form-design.md](form-design.md) |
+| Keyboard opens on page load and covers the screen before anything is read | `autofocus` on a field | Autofocus only on desktop, for the single primary input of the view; on touch let the person tap the field |
 | Looks right in Chrome device mode, wrong on the phone | Emulation simulates size, not browser behaviour | Test on hardware (below) |
 
 ## Notes on the non-obvious fixes
@@ -57,7 +58,7 @@
 .button:active { transform: scale(0.97); }
 ```
 
-**Overscroll.** `none` on the root removes pull-to-refresh and the page-level bounce; leave it off for scrolling documents where refresh is welcome. `contain` on an inner scroller keeps that container's own bounce and stops the chain. Do not solve this with a `touchmove` listener calling `preventDefault()`: it blocks scrolling and forces a non-passive listener.
+**Overscroll.** `none` on the root removes pull-to-refresh and the page-level bounce; leave it off for scrolling documents where refresh is welcome. `contain` on an inner scroller keeps that container's own bounce and stops the chain. Do not solve this with a `touchmove` listener calling `preventDefault()`: it blocks scrolling and forces a non-passive listener. When the only goal is to stop desktop trackpad rubber-banding on a page that should keep pull-to-refresh on phones, scope the root rule to `@media (pointer: fine)` (Vercel, Web Interface Guidelines). Two cautions from the same source: `pointer` reports the *primary* input, so check a touchscreen laptop and an iPad with a trackpad, and root `none` also turns off scroll chaining and the browser's swipe-to-navigate overscroll.
 
 **`touch-action` reads from the browser's side.** The value lists what the browser may still handle: `pan-y pinch-zoom` on a horizontal carousel leaves vertical scrolling and pinch zoom to the browser. Bare `pan-y` or `pan-x` also turns off pinch zoom for touches that start on that surface, which takes magnification away from people who rely on it, so add `pinch-zoom` by default and drop it only when the surface implements its own pinch; `none` means the element handles everything and the user cannot scroll past it, so reserve it for true two-axis surfaces. `manipulation` allows pan and pinch but drops double-tap zoom, which removes the tap wait.
 

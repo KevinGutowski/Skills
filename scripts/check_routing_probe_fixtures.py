@@ -24,6 +24,7 @@ DEFAULT_FIXTURES = [
     ROOT / "docs" / "description-boundary-routing-probes-2026-11.md",
     ROOT / "docs" / "ui-fx-routing-probes-2026-11.md",
     ROOT / "docs" / "gridlines-routing-probes-2026-11.md",
+    ROOT / "docs" / "vercel-skills-routing-probes-2026-11.md",
 ]
 
 ROW_RE = re.compile(r"^\| ([A-Z]+)(\d+) \|")

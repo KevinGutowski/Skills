@@ -134,6 +134,7 @@ From Andy Welfle's "Writing is designing" (Config 2025):
 - **Voice run amok kills usability**: Caviar's "Eat a salad cuz sure" — brand personality applied where a person just needs to order food. The triad to balance: *usable* (helps do), *useful* (does what's wanted), *responsible* (serves stress cases — "content designers are the connective tissue").
 - **Research the language itself**: harvest users' own words from interviews for terms and actions; run card sorts for taxonomy and mental models; usability-test for language gaps. Vocabulary should come from users, not the org chart (cautionary tale: a transit kiosk's "Accept an e-cash upgrade" meaning "add $20").
 - **Three microcopy defaults from Krehel's Interfaces Cheat Sheet** (web-scoped, consistent with the Apple guidance above): **label toggles by what happens when they're on** ("Send read receipts", never "Disable read receipts" — a negated label makes the on state mean off); **address the reader as "you"**, never "the user"; **describe where a link goes** ("Read the docs", not "Click here"). Button verb grammar → `naming-features-and-labels` (CTA and button grammar); capitalization consistency → `web-design` (form-design) for web, `apple-design` (hig) on Apple platforms.
+- **Three mechanical defaults from Vercel's guidelines** (Web Interface Guidelines and Writing Guidelines, 2026-11; web-scoped): **counts are numerals** ("8 deployments", not "eight deployments"); **an in-progress label ends with a real ellipsis** ("Saving…", "Loading…", one `…` character, never three dots); **`&` only where space is tight** (nav labels, buttons) and "and" in sentences. Their specific-button-label and error-names-the-next-step rules are already the PACE Context rule above and `error-messages`. One rule is not adopted: Vercel sets headings and buttons in Title Case; the web default here stays sentence case.
 
 ## Checklist
 
@@ -149,6 +150,7 @@ From Andy Welfle's "Writing is designing" (Config 2025):
 - [ ] Marketing page: fact sheet written before copy, one register chosen, devices within budget, and every heading survives the rival-name swap?
 - [ ] One term per action everywhere (no Delete/Erase splits); one advance label per flow (Continue *or* Next)?
 - [ ] Toggles labeled by their on state; reader addressed as "you"; links say where they go?
+- [ ] Counts as numerals; in-progress labels end in `…`; `&` only in tight labels?
 - [ ] Plain language; no untranslatable idioms; localization-safe?
 - [ ] Accessibility text conveys intention + context; no unnecessary gender?
 - [ ] Read aloud — sounds conversational and like *us*?

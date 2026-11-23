@@ -1,15 +1,16 @@
 ---
 name: design-systems
-description: "Build, govern, and scale a design system — tokens, theming, governance, adoption, DS-as-AI-context, icon systems — and run the hands-on work: extract a system from an app's shipped UI, audit token use, document a component, migrate screens onto it. Apple platform → apple-design; brand marks → logo-design; reviewing one screen → interface-review. Triggers: design system, design tokens, hardcoded colors, theming, Code Connect, icon set."
+description: "Build, govern, and scale a design system — tokens, theming, component API contracts, governance, DS-as-AI-context, icon systems — and run the hands-on work: extract a system from shipped UI, audit token use, document a component, migrate screens. Apple platform → apple-design; React code → react; brand marks → logo-design; one screen → interface-review. Triggers: design system, design tokens, hardcoded colors, theming, Code Connect, icon set."
 ---
 
 # Design Systems
 
-**References — read on demand:**
+**References:**
 
-- [references/field-notes.md](references/field-notes.md) — worked examples, outcome numbers, full quotes, and playbook specifics behind every rule below. Read the matching section before applying a rule at full depth.
-- [references/icon-systems.md](references/icon-systems.md) — interface icon-set method; read for any icon-set build, audit, or migration.
-- [references/sources.md](references/sources.md) — source list (9 Figma Config talks '24–25, Dive Club, books); [references/coverage-gaps.md](references/coverage-gaps.md) — unresolved promotion candidates.
+- [references/field-notes.md](references/field-notes.md) — worked examples, outcome numbers, full quotes, and playbook specifics behind every rule below. Read the matching section before applying a rule in depth.
+- [references/icon-systems.md](references/icon-systems.md) — icon-set method: build, audit, migration.
+- [references/component-api-contracts.md](references/component-api-contracts.md) — library component contracts and distribution.
+- [references/sources.md](references/sources.md) — source list; [references/coverage-gaps.md](references/coverage-gaps.md) — open candidates.
 
 A design system is a **product with customers**, not a library: "treat it like a product team — clear OKRs, roadmap, customers — or it won't succeed" (Rahimi). Sell it honestly: "a design system is not the most efficient way to build things… it must have clear business impact and ROI" — the pitch that works is per-stakeholder incentive alignment: "components for free, performance for free, dark mode for free" (Coinbase), accessibility and i18n free.
 

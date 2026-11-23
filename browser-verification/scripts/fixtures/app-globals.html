@@ -1,0 +1,10 @@
+<!doctype html><html><head><meta charset="utf-8"><title>App globals</title></head><body>
+<button id="check" onclick="document.getElementById('out').textContent = classify('x') + '|' + scoreShifts() + '|' + motionCssName + '|' + MOTION_STATIONARY">check</button>
+<p id="out">not run</p>
+<script>
+// A page that happens to use the same names as the injected instruments.
+function classify(value) { return 'app:valid'; }
+function scoreShifts() { return 'app:score'; }
+var motionCssName = 'app:name';
+var MOTION_STATIONARY = 'app:const';
+</script></body></html>
