@@ -32,10 +32,7 @@ The local skill adapts that pattern to this repository's existing domain owners.
 - Delta used here: [code-pass-checklist.md](code-pass-checklist.md). It regroups the source-checkable rules by local owner, adds the grep-then-confirm procedure, maps severities, and records five disagreements with local owners (title case, `autocomplete="off"`, placeholder ellipses, key handlers, copy conventions).
 - Not imported: the rule wording itself and the "sacrifice grammar for brevity" output instruction; this skill keeps its own report structure and verdicts. Ledger: `docs/skills-sh-design-topic-source-mining-2026-11.md`.
 
-## Vercel Web Interface Guidelines: sweep commands (read 2026-11-18)
+## Sweep commands for the code pass
 
-- Repository: https://github.com/vercel-labs/web-interface-guidelines (command.md on `main`; raw: https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md). Shipped as the `web-design-guidelines` skill in https://github.com/vercel-labs/agent-skills, a thin wrapper that fetches the raw file before each review.
-- Read: 2026-11-18, the full rule list (about 110 rules in 17 families plus the anti-pattern list and output format) and the wrapper skill body. Upstream is unversioned; no commit was pinned.
-- Delta used here: [code-compliance-sweep.md](code-compliance-sweep.md). It covers the fetch-first habit, the rule families mapped to local owners, grep patterns for the anti-pattern list, a conflicts table with house positions, and the terse `file:line` list as an input to this skill's findings.
-- Folded elsewhere in the same change: rules new to the library went to their owners in `web-design` (see its sources file) and UI-copy rules to `ux-writing`.
-- Not imported: the standalone "check every rule, output only the list" workflow (it bypasses judgment-first, root-cause consolidation, and the finding caps); the rules listed as conflicts; React hydration and controlled-input rules, which belong to `react`.
+- [code-compliance-sweep.md](code-compliance-sweep.md) holds the ripgrep commands for the checklist's grep step. They were written from the same Vercel rule list (read on `main`, 2026-11-18), run once against vercel-labs/json-render (394 `.tsx` files), corrected over several reviews, and are exercised by `scripts/test_sweep_patterns.py` against hit and miss fixtures.
+- This file began as a separate full fold of the guidelines made on another branch the same week. On 2026-11-22 its rule families, conflict table, and output format were removed in favor of [code-pass-checklist.md](code-pass-checklist.md), which is pinned to an upstream revision.

@@ -67,7 +67,7 @@ Shape legend: **stub** (points at a CLI or bundled docs) · **CLI-served** · **
 
 ### vercel-labs/agent-skills — `npx skills add vercel-labs/agent-skills --skill <frontmatter name>`
 
-The selector is the frontmatter `name`. The four React packs are named with a `vercel-` prefix their directories lack: `vercel-react-best-practices`, `vercel-composition-patterns`, `vercel-react-view-transitions`, `vercel-react-native-skills`. The table lists directory names. Commit hashes in this document are short provenance IDs; to pin an install, append a tag or the full hash.
+The selector is the frontmatter `name`. The four React packs are named with a `vercel-` prefix their directories lack: `vercel-react-best-practices`, `vercel-composition-patterns`, `vercel-react-view-transitions`, `vercel-react-native-skills`. The table lists directory names. Commit hashes in this document are short provenance IDs, not pins. To pin an install use `owner/repo#<branch, tag, or full hash>`; after `@`, only a dotted version tag or a full hash is read as a pin, and anything else (`@v1`, a short hash) is read as a skill name and silently installs the default branch. Check the commit in `skills-lock.json` afterwards.
 
 | Skill | What it does | Shape | Verdict |
 | --- | --- | --- | --- |
@@ -176,11 +176,12 @@ Listed on skills.sh under `vercel` / `vercel-labs` and not cloned: ci, examples,
 ## Validation
 
 - Repo validators (all eight in AGENTS.md) and `git diff --check`: pass.
-- Smoke fixture: S43 (`react`), S44 (`browser-verification`) added; 44 prompts for 44 skills.
+- Smoke fixture: `react` and `browser-verification` rows added (S43 and S44 on this branch at the time; S45 and S46 after main was merged on 2026-11-22, 46 prompts for 46 skills).
 - Routing probes R1–R18: fixture `docs/vercel-skills-routing-probes-2026-11.md`, registered in `scripts/check_routing_probe_fixtures.py`. Results below.
 - Commands in `browser-verification` were executed on agent-browser 0.43.0 / modern-web-guidance 1.0.1; observed output is recorded in that skill's sources file.
 - **Done in the follow-up pass:** the six new eval cases and the `write-clear-prose` re-run (one run per arm), and the sweep's patterns on a real repository. See "Follow-up pass".
 - **Still not done:** `npx skills add` against the GitHub remote (local path only); replacements for the three eval cases that did not discriminate. The two eval-driven fixes were re-run after a review (dogfood 5/5 against 1/5; composer 5/6 against 4/6 with one new gap); see the re-runs table in `docs/skill-evals-2026-11.md`.
+- **Eighth review fixes (2026-11-22):** iframe CLS measured through the frame's own window (or reported unverified), reduced-motion check lists running animations, session names carry a run suffix, the sweep's label row separates unnamed from unlabeled, and three `react` wording fixes. Details in `docs/skill-evals-2026-11.md`.
 - **Paraphrase cut (2026-11-18, maintainer-approved):** react-performance reduced to the impact order, a generated index of upstream rule IDs, and five rules checked here; the Next.js workflow-skill table reduced to a one-line chooser. The three `react` eval cases scored 15/15 with the cut skill.
 - **Seventh review fixes (2026-11-18):** CLS verdicts are scoped to the top document; the nested-fetch example regained its outer `Promise.all`; the Next.js Cache Components and Partial Prefetching notes were removed in favor of the installed guides; the sweep's label row skips hidden inputs and accepts native names; the flat bundle eval was swapped for a nested-fetch regression guard. Details in `docs/skill-evals-2026-11.md`.
 - **Sixth review fixes (2026-11-18):** the CLS example waits on rendered content, not a static heading; react-view-transitions cut to a short react.dev-checked file; react-performance categories 7–8 replaced with a pointer; sweep label and date rows corrected; `next/image` LCP advice clarified; a vacuous composer grader replaced. Details in `docs/skill-evals-2026-11.md`.
@@ -242,3 +243,33 @@ One fresh descriptions-only judge read a single packet with all five probe sets 
 - **V: 17/18.** V9 again went to `working-with-ai` first, the drift already recorded in `docs/vercel-routing-probe-results-2026-06.md`; none of those descriptions were edited here. V12, which had also drifted, matched this time.
 
 One judge, one run. The judge's most-torn list named R10 and R18 again and added nothing involving the edited descriptions except V14 ("DS-to-AI codegen" against `working-with-ai`), which it still routed to `design-systems`.
+
+## Review pattern and scope (2026-11-22)
+
+Fifteen QA rounds, about seventy findings. Sorted by kind rather than by round:
+
+| Kind | Share | Examples | Structural response |
+| --- | --- | --- | --- |
+| A check that read clean on a broken page | about half | CLS scored early, late, rounded, summed, on the wrong document; reduced motion judged by duration; modal that leaks focus; `body` read for color | Scripts with tests for the two fragile checks; four outcomes instead of "pass"; blind spots listed per check |
+| A third-party fact paraphrased wrong | about a third | React rule code, Next.js build behavior and version floors, view-transition rules, Skills CLI selector and pin syntax | Removed, generated from source, or replaced by a discovery command; each remaining fact says whether it was run or read |
+| An owner's rule restated wrong in a second place | a few | The sweep's accessible-name and locale criteria | The sweep names owners and stops |
+| A new script with only its arithmetic tested, or "unknown" treated as "fine" (round ten) | seven | Frame readiness evaluated in the host, an argument loop, a property allowlist that missed `padding-left`, examples without a session | Three test layers (logic, control flow against a fake tool, real browser on fixtures), measurement instead of a property list, an examples lint |
+| An eval grader that rewarded the wrong thing | a few | Vacuous `forwardRef` check, compound assertions, "zero means broken" | Graders rewritten from observed failures; flat cases dropped or kept only as regression guards |
+
+**In scope and delivered:** the catalog with a verdict per skill; `browser-verification` as the tweet's workflow (guidance, then evidence from a real browser) with its two fragile checks scripted; `react` as an impact order, a generated rule index, and the handful of rules verified here; the two Vercel guideline folds; the delivery-patterns reference; the `devtools` and `design-systems` folds.
+
+**Deliberately not in scope:**
+
+- Being a manual for agent-browser, the Skills CLI, React, or Next.js. Those are version-matched upstream; the library points at them.
+- Certifying that a page has no motion. After eight designs of the reduced-motion probe, the claim was narrowed: it measures named element targets (never pseudo-elements) and supports "fixed" only for a target it measured moving before the change and not after. Everything else is "not observed" plus a recording.
+- A complete instrument for every web check. Overflow, keyboard, and target-size reads are described with their blind spots, not certified. Screen readers, real devices, cross-origin frames, INP, field data, and JavaScript-driven animation are reported unverified.
+- A full eval suite at one wording. Cases were run singly as the skills changed; the latest runs per skill are in `docs/skill-evals-2026-11.md`. The reviewer could not re-run them (no model access in its environment), so those scores are this session's.
+- Line-by-line verification of the single-vendor design references (`devtools` cli-for-humans-and-agents, `design-systems` component-api-contracts, `write-clear-prose` technical-docs). They are judgment guidance labeled with their source, not instruments or fact tables, and review found nothing in them; they were not re-audited.
+
+## Reconciled with main (2026-11-22)
+
+While this branch was open, main merged a separate intake of the skills.sh Design topic that folded two of the same Vercel sources:
+
+- **Web Interface Guidelines.** Main added `interface-review` (code-pass-checklist), pinned to an upstream revision, covering the rules by owner, the disagreements, and the output format. This branch's `interface-review` (code-compliance-sweep) covered the same ground. Kept: main's checklist as the one write-up, and the sweep reduced to what the checklist lacks, the tested ripgrep commands for its grep step. Where this document says the guidelines were folded into code-compliance-sweep, read code-pass-checklist for the rules and code-compliance-sweep for the commands.
+- **`vercel-composition-patterns`.** Main summarized it in `design-systems` (field-notes) from the design-system side; this branch has the React mechanics in `react` (react-composition). Both stay, each pointing at the other.
+- Main's expanded form rules in `web-design` (form-design) replaced this branch's unsaved-changes sentence; the autofill naming rule from this branch was kept.

@@ -390,3 +390,97 @@ All three `react` cases were run once more against the cut skill, blind-graded:
 | nested-fetch-rejection-reaches-caller | 3/3 | 3/3 |
 
 15/15 with the skill after removing the paraphrased tables, so nothing the cases measure depended on them. This is the first run in which every `react` case was taken at the same skill wording; `browser-verification`'s three cases were last run at earlier wordings of that skill.
+
+### Eighth review round (2026-11-22)
+
+Seven findings, each reproduced here before the fix; no eval runs this round.
+
+- **Iframe CLS.** `frame` changes the snapshot, but `eval` still runs in the host on agent-browser 0.43.0. The recipe now measures a same-origin frame through its own window and returns the scored document's URL (run here: host 0, frame 0.0667); cross-origin frames are reported unverified.
+- **Reduced motion.** A shortened duration passed the old check while the dialog still slid. The check now lists running animations after the trigger and fails on movement properties.
+- **Session names.** `session id --scope worktree` prints the same id for every pass in a checkout; the recipes add a run suffix.
+- **Sweep label row** distinguishes "no computed accessible name" from "named only by `title` or `placeholder`, no visible label".
+- **`react`:** the serialization rule is scoped to the server-to-client boundary; the unhandled-promise rule separates safe sequential awaits from start-both-then-await-in-turn; the Next.js docs lookup uses a wildcard for numbered file names.
+
+### Ninth review round and restructure (2026-11-22)
+
+Five more findings. Instead of five more patches, the maintainer asked for the classes behind all nine rounds. The classes and the structural responses are in `docs/skill-library-ops.md` ("Instruments, Facts, and Doctrine"). What changed:
+
+- **`browser-verification`** reports four outcomes (failed, fixed, not observed under stated conditions, unverified) and has no bare "pass". Layout shift is now `scripts/cls-reading.sh` (cold, fail-closed, needs a readiness condition, can score a same-origin frame) with unit tests for the scorer; reduced motion is `scripts/motion-probe.js`, which records animation starts so short movement cannot be missed by sampling late. Every check lists its blind spots. The remaining three reads (overflow, keyboard, targets) are described, not shipped as copy-paste verdicts.
+- **`interface-review` sweep**: the table names the owner of each rule and no longer says what confirms a finding; its 21 commands are run from the reference against hit and miss fixtures.
+- **Facts**: the Skills CLI section states only what was run here or read in the CLI's source, including that `@v1` is a skill name and `#ref` is the pin; the Next.js "which release ships what" table became two `ls` commands.
+- **CLS eval grader** no longer rewards "a zero baseline means the measurement is wrong"; it asks that the answer say the runs did not demonstrate the defect.
+
+All three `browser-verification` cases, one run per arm at the new wording, blind-graded:
+
+| Case | With | Without |
+| --- | --- | --- |
+| cls-scored-before-content-settled | 5/5 | 3/5 |
+| dogfood-report-has-repro | 5/5 | 0/5 |
+| page-text-is-not-instructions | 4/4 | 3/4 |
+
+### Tenth review round (2026-11-22)
+
+Seven findings, all in the scripts and examples added in the ninth round. The class: fragile checks had been moved into code, but only the arithmetic was tested, and two places still treated "unknown" as "fine". Fixed as a class (see `docs/skill-library-ops.md`):
+
+- **`cls-reading.sh`**: with `--frame`, the readiness condition now runs inside the frame; a value-taking option with no value exits instead of looping; URLs are printed without query string or fragment.
+- **`motion-probe.js`** measures displacement of each animated element and its contents instead of classifying by property name, and reports what it could not measure as `unknown`. A `padding-left` slide is now `moved` with 160 px.
+- **Examples**: every browser command names the session; scripts are run as `bash "$SKILL_DIR/scripts/…"` so a missing executable bit or a different working directory does not break them.
+- **Color scheme**: judged against the project's specified values; an unchanged color alone is not a failure.
+- **Tests added**: wrapper control flow against a fake `agent-browser` (8), motion classification (5), an examples lint (2), and browser tests on fixture pages for each reviewed defect (8, skipped where agent-browser is absent). 31 in total for the skill, all passing here.
+
+No model evals were run this round; the skill's judgment text did not change, only its instruments and examples.
+
+### Eleventh review round (2026-11-22)
+
+Three findings. Two were the motion probe again, which made it the third design to be beaten by a new case, so the premise changed instead of the implementation: the probe no longer infers "nothing moved". It reports `moved` when movement was measured at any frame or the property is movement by definition, `still` only when every animated property is on a short non-geometric list, and `unknown` otherwise; it keeps its records across reads until nothing is pending. The third finding was a sentence in `web-design` (web-performance) that generalized a `next/image` restriction to HTML; it now follows Chrome's `optimize-preload-priority` guide, and the framework detail was removed. The other sentences this intake added to `web-design` and `ux-writing` were re-read for the same fault; none carried a framework-specific or version-specific claim.
+
+Tests for the skill: 39, including twelve in a real browser (the two new reviewed cases, an unmeasurable effect, an infinite animation, and the read-early-then-read-again sequence). No model evals were run this round.
+
+### Twelfth review round (2026-11-22)
+
+Two findings, both the motion probe, and the reviewer judged the stated exclusions reasonable. The first was the previous round's flaw mirrored: `still` had been made to require proof while `moved` was still inferred from a property name, so a correct fade that declares an unchanging `transform` was reported as movement. Both results now need proof (`moved` from a measurement, or a changing movement property where no box can be measured; `still` from changing properties that are all non-geometric), and an invariant test checks that over every combination of property, completion, measurability and displacement. The second was shadow DOM: open roots present at arming are now watched, roots attached later are counted and make a clean conclusion inconclusive, and closed roots are documented as invisible.
+
+Writing the invariant test found one more classifier bug before review did (an animation with no known properties was called `still`). The browser tests now fail on a failed tool command; one had been silently asserting after a rejected click.
+
+Tests for the skill: 46, fifteen of them in a real browser. No model evals were run this round.
+
+### Thirteenth review round (2026-11-22)
+
+Three findings: two on the motion probe (a pseudo-element reported as moving from its keyframes although an override pinned it; a clean result while a delayed slide had not started) and an optional one on frame readiness under a strict Content-Security-Policy. The reviewer named the cause: the probe inferred rendered behavior from declarations and completion from an incomplete event history.
+
+Changed basis, not another patch: the probe now reads the browser's own list of animations every frame (which includes delayed ones, Web Animations API animations and open shadow roots, attached at any time) and measures effective geometry (boxes for elements, computed geometric style for pseudo-elements). `moved` is only ever a measurement. The skill's claim was narrowed with it: reduced-motion evidence supports "fixed" for a named target that was measured moving before the change and not after; any other clean read is "not observed". `cls-reading.sh` gained `--ready-selector`, which needs no eval, and names the CSP when a frame blocks a `--ready` expression.
+
+Tests for the skill: 50, seventeen in a real browser. No model evals were run this round.
+
+### Fourteenth review round (2026-11-22)
+
+Two findings. The motion probe treated a pseudo-element's changed computed style as measured movement, and so failed a marker whose `top` animates while `position: static` keeps it in place. A computed value is still a description, not a rendering, and a pseudo-element has no box script can read; the probe now never reports a pseudo-element as `moved`. Its animations are `unknown` (with the computed-style change kept as a hint for a person) unless they only fade or recolor, which is `still`. The browser tests for these cases assert what a person would see from how the fixture is built, not the probe's own measurement fields.
+
+The second was a body-budget overrun in `design-systems/SKILL.md` after main's additions and this branch's routing line met in the merge (about 5,114 tokens against 5,000). The references list was shortened; the validator shows no warnings. That warning had been hidden by the way this session filtered validator output, which is corrected.
+
+Tests for the skill: 54, nineteen in a real browser. No model evals were run this round.
+
+### Fifteenth review round (2026-11-22)
+
+Two findings, and for the first time none about a motion verdict. Both concerned what the injected scripts do besides measuring.
+
+- **Isolation.** `motion-probe.js` and `cls.js` declared helpers at top level, so evaluating them created page globals; the probe's `classify()` replaced a page's own and changed what a button returned. Both scripts are now single enclosed functions. The frame selector reaches the scorer by substitution, not through a global, and the probe's one state object is namespaced and removed on disarm.
+- **Disclosure.** The script promised redacted output but echoed the frame selector and readiness condition, which can contain URLs with tokens. It now describes its inputs and never repeats them.
+
+Each is tested as a property: a sandbox test that no global is replaced or added, and a test that runs every success and failure path with a sentinel in every input. The second found a remaining leak in the first version of the fix (the success-path conditions line). Real-browser regressions cover a page with same-named globals and a token-bearing frame selector.
+
+Tests for the skill: 61, twenty-one in a real browser. No model evals were run this round.
+
+### Sixteenth review round (2026-11-22)
+
+One defect and one optional cleanup. `cls-reading.sh` trimmed the URL at the first `?` or `#`, which left `user:password@` in what it printed. The shown URL is now rebuilt from a parse (scheme, host, port, path), and anything unparseable is printed as "the given URL". The no-echo test had put its sentinel in the query and fragment only; it now puts one in every URL part that can carry a secret, and runs three malformed URLs. The string-shape test in `test_isolation.py` was removed as the reviewer suggested: the sandbox and browser tests check the behavior, and it only constrained formatting.
+
+Tests for the skill: 60, twenty-one in a real browser. No model evals were run this round.
+
+### Seventeenth review round (2026-11-23)
+
+One finding. `cls.js` created its observer at scoring time and read the browser's buffered layout-shift history, which keeps only its first 150 entries: a page with 170 small shifts followed by a large one scored `good`. This is the completeness rule again, one level down: the platform's own inventory had a limit nobody had checked.
+
+`cls-reading.sh` now registers `cls-collector.js` as an init script, so shifts are recorded from navigation in every document, and `cls.js` uses that record. Evaluated without the collector it falls back to the buffer through a callback, reads the browser's dropped-entries count, and returns an error instead of a score when the history is full or entries were dropped. Reproduced here on a fixture built for it: wrapper 170 shifts and `good: false`; scorer alone "150 entries kept, 20 reported dropped".
+
+Tests for the skill: 66, twenty-four in a real browser. No model evals were run this round.

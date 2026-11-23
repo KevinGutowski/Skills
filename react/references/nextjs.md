@@ -13,15 +13,18 @@
 
 ## Read the installed docs first
 
-Vercel retired its standalone Next.js reference skills (`next-best-practices`, `next-upgrade`, `next-cache-components`) so that guidance stays matched to the framework version. Reference knowledge now arrives two ways:
+Vercel retired its standalone Next.js reference skills (`next-best-practices`, `next-upgrade`, `next-cache-components`) so that guidance stays matched to the framework version. Which release ships what has shifted (an earlier table here by version number was wrong for 16.2), so look instead of assuming:
 
-| Project's Next.js | Where to read |
-|---|---|
-| 16.3+ | `node_modules/next/dist/docs/` plus the `AGENTS.md` / `CLAUDE.md` that `next dev` generates. Follow them over this skill |
-| 16.2 | Bundled docs exist under `node_modules/next/dist/docs/` (per the workflow skills); no generated agent file |
-| 16.1 or earlier | `npx @next/codemod@canary agents-md` downloads version-matched docs to `.next-docs/` and points `AGENTS.md` at them. It writes into the user's repo: ask first |
+```bash
+ls node_modules/next/dist/docs 2>/dev/null | head     # bundled, version-matched docs, if this release has them
+ls AGENTS.md CLAUDE.md .next-docs 2>/dev/null         # agent rules or docs already written into the project
+```
 
-- The bundled tree is numbered for ordering (for example `01-app/02-guides/…`). When the prefix is unknown: `find node_modules/next/dist/docs -name '<slug>.md'`.
+- Bundled docs present: read them; they outrank this skill.
+- An `AGENTS.md` or `CLAUDE.md` that points at Next.js docs: follow it. Depending on the release it comes from `create-next-app` scaffolding or from `next dev`.
+- Neither: upstream's README says `npx @next/codemod@canary agents-md` downloads version-matched docs into `.next-docs/` and points `AGENTS.md` at them. It writes into the user's repository: ask first.
+
+- The bundled tree is numbered for ordering (for example `01-app/02-guides/…`). File names carry the number too (`08-caching.md`, `06-fetching-data.md`), so search with a wildcard: `find node_modules/next/dist/docs -name '*<slug>.md'` (a reviewer's 16.3.8 install returned nothing for the exact name).
 - Error pages under `nextjs.org/docs/messages/*` are **not** bundled. Each build or dev-overlay error prints its link; fetch it, and if offline say so in the report.
 - Upgrades: `npx @next/codemod@latest upgrade`, then the version upgrade guide in the docs. There is no upgrade skill any more.
 - Check the version before anything else (`next --version` or `package.json`). The workflow skills state their own version floors.

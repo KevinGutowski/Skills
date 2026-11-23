@@ -10,7 +10,7 @@ Reach for these patterns when at least one is true:
 - The task is "add one more variant" to such a component.
 - A sibling or a parent needs the component's state or actions (a submit button outside the form frame, a preview next to an editor) and the code reaches for refs, an `onChange` mirror or an effect that syncs state upward.
 - A component takes `renderHeader`, `renderFooter`, `renderActions` props to customize static structure.
-- You are designing a component other teams will reuse. The library-level contract for such a component (prop pass-through, merged `className`, `asChild`, data-attribute state hooks, controlled/uncontrolled trios, package vs copy-in registry) is in `design-systems` (component-api-contracts); this file covers the React mechanics of composing it.
+- You are designing a component other teams will reuse. The library-level contract for such a component (prop pass-through, merged `className`, `asChild`, data-attribute state hooks, controlled/uncontrolled trios, package vs copy-in registry) is in `design-systems` (component-api-contracts); this file covers the React mechanics of composing it. `design-systems` (field-notes) carries a short design-system-side summary of the same boolean-versus-variant rule, folded separately from the same upstream skill.
 
 Do not apply them to a leaf component with one or two orthogonal visual flags (`disabled`, `size`, `loading`). A boolean that toggles a style or a state is fine; a boolean that swaps *what is rendered or which behavior runs* is the smell. Do not refactor a working flag-based component in passing: propose it, or do it when the requested change would add another mode.
 

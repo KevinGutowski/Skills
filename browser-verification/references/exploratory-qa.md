@@ -32,7 +32,7 @@ Only the target URL is required. Start immediately with defaults; the one questi
 
 | Parameter | Default |
 | --- | --- |
-| Session name | Stable per worktree, with the domain slug as prefix: `agent-browser session id --scope worktree --prefix app-example-com`. A domain-only name (upstream's default) lets two QA passes against the same host share one browser's cookies and tabs |
+| Session name | The domain slug as prefix, the worktree id, and a run suffix generated once for this pass: `$(agent-browser session id --scope worktree --prefix app-example-com)-<run>`. Use the same suffix for the output directory when two passes may run in one checkout. A domain-only name (upstream's default) lets two QA passes against the same host share one browser's cookies and tabs |
 | Output directory | `./dogfood-output/` with `screenshots/` and `videos/` |
 | Scope | The whole app, weighted toward core flows |
 | Authentication | None. For one-time codes, ask the user and wait |

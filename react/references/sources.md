@@ -11,7 +11,7 @@ Provenance map for the `react` skill. All sources are Vercel-authored agent skil
   - `react-native-skills` v1.0.0 (January 2026): SKILL.md index only was skimmed (36 rules); pointer in `nextjs`, no distillation.
 - **vercel/next.js `skills/` directory** (MIT, repo license file), https://github.com/vercel/next.js/tree/canary/skills, canary read 2026-11-18 at `ad2642a9`. Six workflow skills: `next-dev-loop`, `next-bundle-optimizer`, `next-cache-components-adoption`, `next-cache-components-optimizer`, `next-partial-prefetching-adoption`, `next-partial-prefetching-optimizer`. SKILL.md bodies were read (the two longest in part); their rig/test templates and reference files were not.
 - **vercel-labs/next-skills README** (pointer repo, read at `c522619`, 2026-09-16): states that Next.js reference knowledge moved into the bundled docs and the agent file `next dev` generates in 16.3+, and that workflow skills moved to vercel/next.js.
-- **Vercel Web Interface Guidelines** (https://github.com/vercel-labs/web-interface-guidelines, rule file read 2026-11-18): its hydration-safety and input rules are not restated in this skill; the source-level sweep that flags them is `interface-review` (code-compliance-sweep).
+- **Vercel Web Interface Guidelines** (https://github.com/vercel-labs/web-interface-guidelines, rule file read 2026-11-18): its hydration-safety and input rules are not restated in this skill; the source-level sweep that flags them is `interface-review` (code-pass-checklist).
 
 ## Sources the upstream skills cite (not read by this library)
 

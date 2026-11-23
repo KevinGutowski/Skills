@@ -22,3 +22,6 @@ jobs:
       - run: python3 scripts/check_application_fixtures.py
       - run: python3 -B -m unittest discover -s superconductor/scripts -p 'test_*.py'
       - run: python3 -B -m unittest discover -s frontend-design/scripts -p 'test_*.py'
+      - run: sudo apt-get update && sudo apt-get install -y ripgrep
+      - run: python3 -B -m unittest discover -s browser-verification/scripts -p 'test_*.py'
+      - run: python3 -B -m unittest discover -s interface-review/scripts -p 'test_*.py'

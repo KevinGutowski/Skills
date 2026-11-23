@@ -40,5 +40,7 @@ python3 scripts/check_vercel_routing_probes.py
 python3 scripts/check_routing_probe_fixtures.py
 python3 scripts/check_skill_smoke_tests.py
 python3 scripts/check_application_fixtures.py
+python3 -B -m unittest discover -s browser-verification/scripts -p 'test_*.py'   # needs node
+python3 -B -m unittest discover -s interface-review/scripts -p 'test_*.py'     # needs ripgrep
 git diff --check
 ```
