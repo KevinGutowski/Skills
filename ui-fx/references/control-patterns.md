@@ -283,6 +283,8 @@ function tick(now) {
 }
 ```
 
+A decorative field of marks behind content (a hover texture) is the same idea with one sprung on/off weight multiplying every mark; its full anatomy, touch and focus behaviour are in [textures.md](textures.md).
+
 Measure the home positions once and on resize, not per frame. Pick a "hovered" index from the pointer's fraction along the row, not from the element under the pointer, or it flickers as elements move. Off for coarse pointers and reduced motion.
 
 ## Decaying energy

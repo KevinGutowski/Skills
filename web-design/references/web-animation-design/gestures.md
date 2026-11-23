@@ -23,7 +23,7 @@
 
 ## Decide first: build or adopt
 
-A correct sheet is momentum dragging, progress-linked overlay, velocity-aware dismissal, scroll-vs-drag arbitration, focus trapping, and Escape — weeks of edge cases. For a bottom sheet or drawer, adopt a maintained primitive (Vaul is the reference implementation these rules were extracted from) and hand-roll only when the interaction is different in kind: swipe cards, bespoke drag surfaces, a signature gesture. If content merely pages horizontally, native scroll with `scroll-snap` beats any JS gesture — the browser's physics are already right (settings: [web-layout-design.md](../web-layout-design.md) → Scroll snap).
+A correct sheet is momentum dragging, progress-linked overlay, velocity-aware dismissal, scroll-vs-drag arbitration, focus trapping, and Escape — weeks of edge cases. For a bottom sheet or drawer, adopt a maintained primitive (Vaul is the reference implementation these rules were extracted from) and hand-roll only when the interaction is different in kind: swipe cards, bespoke drag surfaces, a signature gesture. React Aria's Sheet (2026-10) is a second reference built the other way: the sheet is a scroll container with snap points, and `view-timeline` drives the overlay. Swipe, momentum and elastic edges are native scrolling, so they run at the display's full rate even on iOS, where JS-driven drags are held to 60 Hz. The overlay animations linked to them follow WebKit's own frame-rate rules ([web-performance.md](../web-performance.md#ios-safaris-60-hz-cap)). If the project already uses React Aria, prefer it; otherwise Vaul's rules below still apply. If content merely pages horizontally, native scroll with `scroll-snap` beats any JS gesture — the browser's physics are already right (settings: [web-layout-design.md](../web-layout-design.md) → Scroll snap).
 
 ## The two-phase rule
 
@@ -167,4 +167,4 @@ Tracking stays: the user is producing that motion. Under `prefers-reduced-motion
 - [ ] Every drag, swipe, and hold has a button and keyboard path to the same result
 - [ ] Dismiss direction matches entry direction
 - [ ] Reduced-motion path keeps tracking, drops fling and bounce
-- [ ] Tried on a real phone: flick it, catch it mid-flight, reverse it. Trackpad emulation hides touch behaviour and a 60Hz monitor hides roughness a 120Hz phone shows
+- [ ] Tried on a real phone: flick it, catch it mid-flight, reverse it. Trackpad emulation hides touch behaviour and a 60Hz monitor hides roughness a 120Hz phone shows. On iOS Safari a JS-driven drag runs at 60 Hz while native scrolling beside it runs at 120 Hz: compare against a native scroller, or film both in 240 fps slow motion

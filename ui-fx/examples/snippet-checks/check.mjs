@@ -1,4 +1,4 @@
-// Checks that the copyable snippets in ../../references/control-patterns.md and surface-recipes.md behave as their text says.
+// Checks that the copyable snippets in ../../references/control-patterns.md, surface-recipes.md and textures.md behave as their text says.
 // The code under test is extracted from the markdown, so the check fails if a snippet is edited into something broken.
 // Run: node check.mjs            (helpers only, no browser)
 //      node check.mjs --browser  (also parses and applies the CSS in headless Chromium; needs playwright-core and a browser)
@@ -51,6 +51,47 @@ const check = (name, ok, detail = '') => { results.push(ok); console.log(`${ok ?
     }
     let worst = 0; for (const t of flips) worst = Math.max(worst, flips.filter((u) => u >= t && u < t + 1000).length);
     check(`limiter: ${hz} Hz input gives at most 4 reversals in any second`, worst <= 4, `worst ${worst}`);
+  }
+}
+
+// --- hover-texture skeleton (textures.md): the weight spring stays bounded and settles at 30, 60 and 120 Hz
+{
+  const sk = blocks(read('textures.md'), 'js').find((code) => code.includes('function stepWeight'));
+  if (!sk) throw new Error('snippet not found: function stepWeight');
+  const { stepWeight } = new Function(sk.split('const spring =')[0] + '\nreturn { stepWeight };')();
+  const run = (hz, ms, target = 1) => { const s = { w: 0, v: 0 }; let lo = 0, hi = 0, restAt = null;
+    for (let i = 0, n = Math.round((ms * hz) / 1000); i < n; i++) { const t = (i * 1000) / hz; const rest = stepWeight(s, target, Math.min(1 / hz, 1 / 30)); lo = Math.min(lo, s.w); hi = Math.max(hi, s.w); if (rest && restAt === null) restAt = t; }
+    return { w: s.w, lo, hi, restAt }; };
+  for (const hz of [30, 60, 120]) {
+    const r = run(hz, 1000);
+    check(`texture spring at ${hz} Hz: bounded, no overshoot, at rest within 0.5 s`, r.lo >= 0 && r.hi <= 1 && r.w === 1 && r.restAt !== null && r.restAt < 500, `range ${r.lo.toFixed(3)}..${r.hi.toFixed(3)}, rest at ${r.restAt?.toFixed(0)} ms`);
+  }
+  const a = run(60, 100), b = run(120, 100);
+  check('texture spring: 60 Hz and 120 Hz agree after 100 ms', Math.abs(a.w - b.w) < 0.02, `${a.w.toFixed(3)} vs ${b.w.toFixed(3)}`);
+  const big = { w: 0, v: 0 }; stepWeight(big, 1, 5);
+  check('texture spring: a 5 s step lands on the target', Number.isFinite(big.w) && Math.abs(big.w - 1) < 0.01, big.w.toFixed(4));
+
+  // Whole skeleton with a stubbed DOM and a fixed frame clock: hover in, rest, leave; frames stop each time.
+  for (const hz of [30, 60, 120]) {
+    const handlers = {}; let queue = [], now = 0, requested = 0;
+    const el = () => ({ style: {} });
+    const marks = Array.from({ length: 20 }, (_, i) => ({ el: el(), x: 36 * i, y: 258 }));
+    const env = {
+      W: 732, H: 516, REACH: 60, marks,
+      root: { addEventListener: (type, fn) => { handlers[type] = fn; } },
+      svg: { getBoundingClientRect: () => ({ left: 0, top: 0, width: 732, height: 516 }) },
+      matchMedia: () => ({ matches: false }),
+      requestAnimationFrame: (fn) => { requested++; queue.push(fn); return requested; },
+    };
+    new Function(...Object.keys(env), sk)(...Object.values(env));
+    const pump = (maxFrames) => { let n = 0; while (queue.length && n < maxFrames) { const q = queue; queue = []; now += 1000 / hz; for (const fn of q) fn(now); n++; } return n; };
+    handlers.pointerenter(); handlers.pointermove({ pointerType: 'mouse', clientX: 360, clientY: 258 });
+    const inFrames = pump(200);
+    const scaled = marks.some((m) => /scale\(/.test(m.el.style.transform || ''));
+    const finite = marks.every((m) => !/NaN|Infinity/.test(m.el.style.transform || ''));
+    handlers.pointerleave(); const outFrames = pump(200);
+    const cleared = marks.every((m) => !m.el.style.transform);
+    check(`texture skeleton at ${hz} Hz: hover settles and leave clears, and the frame loop stops both times`, inFrames < 200 && outFrames < 200 && queue.length === 0 && scaled && finite && cleared, `in ${inFrames} frames, out ${outFrames} frames`);
   }
 }
 
